@@ -1,0 +1,822 @@
+{
+  "$schema": "./signals.schema.json",
+  "title": "Standard hand signals (Appendix A to Subpart CC of 29 CFR 1926)",
+  "section_id": "29cfr1926.cc.appA",
+  "source": {
+    "url": "https://www.govinfo.gov/content/pkg/CFR-2025-title29-vol8/pdf/CFR-2025-title29-vol8-part1926-subpartCC-appA.pdf",
+    "edition": "29 CFR Ch. XVII (7-1-25 Edition), Part 1926, Subpart CC, Appendix A",
+    "sha256": "4d1b6a76f457e576eacf7f33a8a0494af6c3834c4b6cd547cc20b8bfd0ea4b4b",
+    "license": "Public domain. Work of the United States Government (17 U.S.C. 105)."
+  },
+  "notes": [
+    {
+      "section_id": "29cfr1926.1401",
+      "quote": "Standard Method means the protocol in appendix A of this subpart for hand signals."
+    },
+    {
+      "section_id": "29cfr1926.1419(c)(1)",
+      "quote": "When using hand signals, the Standard Method must be used (see appendix A of this subpart). Exception: Where use of the Standard Method for hand signals is infeasible, or where an operation or use of an attachment is not covered in the Standard Method, non-standard hand signals may be used in accordance with paragraph (c)(2) of this section."
+    },
+    {
+      "section_id": "29cfr1926.1419(c)(2)",
+      "quote": "When using non-standard hand signals, the signal person, operator, and lift director (where there is one) must contact each other prior to the operation and agree on the non-standard hand signals that will be used."
+    },
+    {
+      "section_id": "29cfr1926.1419(j)",
+      "quote": "Anyone who becomes aware of a safety problem must alert the operator or signal person by giving the stop or emergency stop signal."
+    },
+    {
+      "section_id": "29cfr1926.1417(y)",
+      "quote": "The operator must obey a stop (or emergency stop) signal, irrespective of who gives it."
+    },
+    {
+      "section_id": "29cfr1926.1422",
+      "quote": "Hand signal charts must be either posted on the equipment or conspicuously posted in the vicinity of the hoisting operations."
+    },
+    {
+      "section_id": "29cfr1926.1428(c)(1)",
+      "quote": "If hand signals are used, the signal person must know and understand the Standard Method for hand signals."
+    }
+  ],
+  "signals": [
+    {
+      "signal_id": "stop",
+      "name": "STOP",
+      "description": "With arm extended horizontally to the side, palm down, arm is swung back and forth.",
+      "caption": "STOP – With arm extended horizontally to the side, palm down, arm is swung back and forth.",
+      "svg": {
+        "path": "svg/stop.svg",
+        "width": 721,
+        "height": 564,
+        "bytes": 9158
+      },
+      "kind": "action",
+      "motion": "stop",
+      "crane_types": [
+        "all"
+      ],
+      "modifiers": [],
+      "section_id": "29cfr1926.cc.appA",
+      "related_section_ids": [
+        "29cfr1926.1419(c)(1)",
+        "29cfr1926.1419(j)",
+        "29cfr1926.1417(y)",
+        "29cfr1926.1422"
+      ],
+      "teaching_tip": {
+        "text": "One arm out flat, palm down, sweeping side to side, means stop the motion now.",
+        "verbatim": false
+      },
+      "source": {
+        "url": "https://www.govinfo.gov/content/pkg/CFR-2025-title29-vol8/pdf/CFR-2025-title29-vol8-part1926-subpartCC-appA.pdf",
+        "edition": "29 CFR Ch. XVII (7-1-25 Edition), Part 1926, Subpart CC, Appendix A",
+        "sha256": "4d1b6a76f457e576eacf7f33a8a0494af6c3834c4b6cd547cc20b8bfd0ea4b4b",
+        "page": 1,
+        "printed_page": 741,
+        "graphic": "ER09AU10.003",
+        "cell": {
+          "row": 1,
+          "col": 1
+        }
+      }
+    },
+    {
+      "signal_id": "emergency-stop",
+      "name": "EMERGENCY STOP",
+      "description": "With both arms extended horizontally to the side, palms down, arms are swung back and forth.",
+      "caption": "EMERGENCY STOP – With both arms extended horizontally to the side, palms down, arms are swung back and forth.",
+      "svg": {
+        "path": "svg/emergency-stop.svg",
+        "width": 948,
+        "height": 515,
+        "bytes": 8153
+      },
+      "kind": "action",
+      "motion": "emergency-stop",
+      "crane_types": [
+        "all"
+      ],
+      "modifiers": [],
+      "section_id": "29cfr1926.cc.appA",
+      "related_section_ids": [
+        "29cfr1926.1419(c)(1)",
+        "29cfr1926.1419(j)",
+        "29cfr1926.1417(y)",
+        "29cfr1926.1422"
+      ],
+      "teaching_tip": {
+        "text": "It is STOP done with both arms at once; two arms means emergency.",
+        "verbatim": false
+      },
+      "source": {
+        "url": "https://www.govinfo.gov/content/pkg/CFR-2025-title29-vol8/pdf/CFR-2025-title29-vol8-part1926-subpartCC-appA.pdf",
+        "edition": "29 CFR Ch. XVII (7-1-25 Edition), Part 1926, Subpart CC, Appendix A",
+        "sha256": "4d1b6a76f457e576eacf7f33a8a0494af6c3834c4b6cd547cc20b8bfd0ea4b4b",
+        "page": 1,
+        "printed_page": 741,
+        "graphic": "ER09AU10.003",
+        "cell": {
+          "row": 1,
+          "col": 2
+        }
+      }
+    },
+    {
+      "signal_id": "hoist",
+      "name": "HOIST",
+      "description": "With upper arm extended to the side, forearm and index finger pointing straight up, hand and finger make small circles.",
+      "caption": "HOIST – With upper arm extended to the side, forearm and index finger pointing straight up, hand and finger make small circles.",
+      "svg": {
+        "path": "svg/hoist.svg",
+        "width": 439,
+        "height": 586,
+        "bytes": 6977
+      },
+      "kind": "action",
+      "motion": "hoist",
+      "crane_types": [
+        "all"
+      ],
+      "modifiers": [
+        "move-slowly",
+        "use-main-hoist",
+        "use-auxiliary-hoist"
+      ],
+      "section_id": "29cfr1926.cc.appA",
+      "related_section_ids": [
+        "29cfr1926.1419(c)(1)",
+        "29cfr1926.1422"
+      ],
+      "teaching_tip": {
+        "text": "The finger points up and circles, as if winding the load line up.",
+        "verbatim": false
+      },
+      "source": {
+        "url": "https://www.govinfo.gov/content/pkg/CFR-2025-title29-vol8/pdf/CFR-2025-title29-vol8-part1926-subpartCC-appA.pdf",
+        "edition": "29 CFR Ch. XVII (7-1-25 Edition), Part 1926, Subpart CC, Appendix A",
+        "sha256": "4d1b6a76f457e576eacf7f33a8a0494af6c3834c4b6cd547cc20b8bfd0ea4b4b",
+        "page": 1,
+        "printed_page": 741,
+        "graphic": "ER09AU10.003",
+        "cell": {
+          "row": 1,
+          "col": 3
+        }
+      }
+    },
+    {
+      "signal_id": "raise-boom",
+      "name": "RAISE BOOM",
+      "description": "With arm extended horizontally to the side, thumb points up with other fingers closed.",
+      "caption": "RAISE BOOM – With arm extended horizontally to the side, thumb points up with other fingers closed.",
+      "svg": {
+        "path": "svg/raise-boom.svg",
+        "width": 601,
+        "height": 561,
+        "bytes": 8261
+      },
+      "kind": "action",
+      "motion": "boom-up",
+      "crane_types": [
+        "all"
+      ],
+      "modifiers": [
+        "move-slowly"
+      ],
+      "section_id": "29cfr1926.cc.appA",
+      "related_section_ids": [
+        "29cfr1926.1419(c)(1)",
+        "29cfr1926.1422"
+      ],
+      "teaching_tip": {
+        "text": "A thumb is the boom; thumb up on a straight arm raises it.",
+        "verbatim": false
+      },
+      "source": {
+        "url": "https://www.govinfo.gov/content/pkg/CFR-2025-title29-vol8/pdf/CFR-2025-title29-vol8-part1926-subpartCC-appA.pdf",
+        "edition": "29 CFR Ch. XVII (7-1-25 Edition), Part 1926, Subpart CC, Appendix A",
+        "sha256": "4d1b6a76f457e576eacf7f33a8a0494af6c3834c4b6cd547cc20b8bfd0ea4b4b",
+        "page": 1,
+        "printed_page": 741,
+        "graphic": "ER09AU10.003",
+        "cell": {
+          "row": 2,
+          "col": 1
+        }
+      }
+    },
+    {
+      "signal_id": "swing",
+      "name": "SWING",
+      "description": "With arm extended horizontally, index finger points in direction that boom is to swing.",
+      "caption": "SWING – With arm extended horizontally, index finger points in direction that boom is to swing.",
+      "svg": {
+        "path": "svg/swing.svg",
+        "width": 605,
+        "height": 592,
+        "bytes": 9598
+      },
+      "kind": "action",
+      "motion": "swing",
+      "crane_types": [
+        "all"
+      ],
+      "modifiers": [
+        "move-slowly"
+      ],
+      "section_id": "29cfr1926.cc.appA",
+      "related_section_ids": [
+        "29cfr1926.1419(c)(1)",
+        "29cfr1926.1422"
+      ],
+      "teaching_tip": {
+        "text": "Point where the boom should go; the pointing finger, not the thumb, means swing.",
+        "verbatim": false
+      },
+      "source": {
+        "url": "https://www.govinfo.gov/content/pkg/CFR-2025-title29-vol8/pdf/CFR-2025-title29-vol8-part1926-subpartCC-appA.pdf",
+        "edition": "29 CFR Ch. XVII (7-1-25 Edition), Part 1926, Subpart CC, Appendix A",
+        "sha256": "4d1b6a76f457e576eacf7f33a8a0494af6c3834c4b6cd547cc20b8bfd0ea4b4b",
+        "page": 1,
+        "printed_page": 741,
+        "graphic": "ER09AU10.003",
+        "cell": {
+          "row": 2,
+          "col": 2
+        }
+      }
+    },
+    {
+      "signal_id": "retract-telescoping-boom",
+      "name": "RETRACT TELESCOPING BOOM",
+      "description": "With hands to the front at waist level, thumbs point at each other with other fingers closed.",
+      "caption": "RETRACT TELESCOPING BOOM – With hands to the front at waist level, thumbs point at each other with other fingers closed.",
+      "svg": {
+        "path": "svg/retract-telescoping-boom.svg",
+        "width": 427,
+        "height": 537,
+        "bytes": 8419
+      },
+      "kind": "action",
+      "motion": "telescope-in",
+      "crane_types": [
+        "telescoping-boom"
+      ],
+      "modifiers": [
+        "move-slowly"
+      ],
+      "section_id": "29cfr1926.cc.appA",
+      "related_section_ids": [
+        "29cfr1926.1419(c)(1)",
+        "29cfr1926.1422"
+      ],
+      "teaching_tip": {
+        "text": "Thumbs pointing toward each other pull the boom sections in.",
+        "verbatim": false
+      },
+      "source": {
+        "url": "https://www.govinfo.gov/content/pkg/CFR-2025-title29-vol8/pdf/CFR-2025-title29-vol8-part1926-subpartCC-appA.pdf",
+        "edition": "29 CFR Ch. XVII (7-1-25 Edition), Part 1926, Subpart CC, Appendix A",
+        "sha256": "4d1b6a76f457e576eacf7f33a8a0494af6c3834c4b6cd547cc20b8bfd0ea4b4b",
+        "page": 1,
+        "printed_page": 741,
+        "graphic": "ER09AU10.003",
+        "cell": {
+          "row": 2,
+          "col": 3
+        }
+      }
+    },
+    {
+      "signal_id": "raise-the-boom-and-lower-the-load",
+      "name": "RAISE THE BOOM AND LOWER THE LOAD",
+      "description": "With arm extended horizontally to the side and thumb pointing up, fingers open and close while load movement is desired.",
+      "caption": "RAISE THE BOOM AND LOWER THE LOAD – With arm extended horizontally to the side and thumb pointing up, fingers open and close while load movement is desired.",
+      "svg": {
+        "path": "svg/raise-the-boom-and-lower-the-load.svg",
+        "width": 591,
+        "height": 542,
+        "bytes": 8630
+      },
+      "kind": "action",
+      "motion": "boom-up-load-down",
+      "crane_types": [
+        "all"
+      ],
+      "modifiers": [
+        "move-slowly",
+        "use-main-hoist",
+        "use-auxiliary-hoist"
+      ],
+      "section_id": "29cfr1926.cc.appA",
+      "related_section_ids": [
+        "29cfr1926.1419(c)(1)",
+        "29cfr1926.1422"
+      ],
+      "teaching_tip": {
+        "text": "Start from RAISE BOOM (thumb up), then flex the fingers for as long as the load should move.",
+        "verbatim": false
+      },
+      "source": {
+        "url": "https://www.govinfo.gov/content/pkg/CFR-2025-title29-vol8/pdf/CFR-2025-title29-vol8-part1926-subpartCC-appA.pdf",
+        "edition": "29 CFR Ch. XVII (7-1-25 Edition), Part 1926, Subpart CC, Appendix A",
+        "sha256": "4d1b6a76f457e576eacf7f33a8a0494af6c3834c4b6cd547cc20b8bfd0ea4b4b",
+        "page": 1,
+        "printed_page": 741,
+        "graphic": "ER09AU10.003",
+        "cell": {
+          "row": 3,
+          "col": 1
+        }
+      }
+    },
+    {
+      "signal_id": "dog-everything",
+      "name": "DOG EVERYTHING",
+      "description": "Hands held together at waist level.",
+      "caption": "DOG EVERYTHING – Hands held together at waist level.",
+      "svg": {
+        "path": "svg/dog-everything.svg",
+        "width": 443,
+        "height": 580,
+        "bytes": 9281
+      },
+      "kind": "action",
+      "motion": "dog-everything",
+      "crane_types": [
+        "all"
+      ],
+      "modifiers": [],
+      "section_id": "29cfr1926.cc.appA",
+      "related_section_ids": [
+        "29cfr1926.1419(c)(1)",
+        "29cfr1926.1422"
+      ],
+      "teaching_tip": {
+        "text": "Hands together at the waist means hold everything; no motion until the next signal.",
+        "verbatim": false
+      },
+      "source": {
+        "url": "https://www.govinfo.gov/content/pkg/CFR-2025-title29-vol8/pdf/CFR-2025-title29-vol8-part1926-subpartCC-appA.pdf",
+        "edition": "29 CFR Ch. XVII (7-1-25 Edition), Part 1926, Subpart CC, Appendix A",
+        "sha256": "4d1b6a76f457e576eacf7f33a8a0494af6c3834c4b6cd547cc20b8bfd0ea4b4b",
+        "page": 1,
+        "printed_page": 741,
+        "graphic": "ER09AU10.003",
+        "cell": {
+          "row": 3,
+          "col": 2
+        }
+      }
+    },
+    {
+      "signal_id": "lower",
+      "name": "LOWER",
+      "description": "With arm and index finger pointing down, hand and finger make small circles.",
+      "caption": "LOWER – With arm and index finger pointing down, hand and finger make small circles.",
+      "svg": {
+        "path": "svg/lower.svg",
+        "width": 428,
+        "height": 560,
+        "bytes": 8990
+      },
+      "kind": "action",
+      "motion": "lower",
+      "crane_types": [
+        "all"
+      ],
+      "modifiers": [
+        "move-slowly",
+        "use-main-hoist",
+        "use-auxiliary-hoist"
+      ],
+      "section_id": "29cfr1926.cc.appA",
+      "related_section_ids": [
+        "29cfr1926.1419(c)(1)",
+        "29cfr1926.1422"
+      ],
+      "teaching_tip": {
+        "text": "The mirror of HOIST; the finger points down and circles.",
+        "verbatim": false
+      },
+      "source": {
+        "url": "https://www.govinfo.gov/content/pkg/CFR-2025-title29-vol8/pdf/CFR-2025-title29-vol8-part1926-subpartCC-appA.pdf",
+        "edition": "29 CFR Ch. XVII (7-1-25 Edition), Part 1926, Subpart CC, Appendix A",
+        "sha256": "4d1b6a76f457e576eacf7f33a8a0494af6c3834c4b6cd547cc20b8bfd0ea4b4b",
+        "page": 1,
+        "printed_page": 741,
+        "graphic": "ER09AU10.003",
+        "cell": {
+          "row": 3,
+          "col": 3
+        }
+      }
+    },
+    {
+      "signal_id": "lower-boom",
+      "name": "LOWER BOOM",
+      "description": "With arm extended horizontally to the side, thumb points down with other fingers closed.",
+      "caption": "LOWER BOOM – With arm extended horizontally to the side, thumb points down with other fingers closed.",
+      "svg": {
+        "path": "svg/lower-boom.svg",
+        "width": 532,
+        "height": 570,
+        "bytes": 7637
+      },
+      "kind": "action",
+      "motion": "boom-down",
+      "crane_types": [
+        "all"
+      ],
+      "modifiers": [
+        "move-slowly"
+      ],
+      "section_id": "29cfr1926.cc.appA",
+      "related_section_ids": [
+        "29cfr1926.1419(c)(1)",
+        "29cfr1926.1422"
+      ],
+      "teaching_tip": {
+        "text": "The mirror of RAISE BOOM; thumb down on a straight arm lowers the boom.",
+        "verbatim": false
+      },
+      "source": {
+        "url": "https://www.govinfo.gov/content/pkg/CFR-2025-title29-vol8/pdf/CFR-2025-title29-vol8-part1926-subpartCC-appA.pdf",
+        "edition": "29 CFR Ch. XVII (7-1-25 Edition), Part 1926, Subpart CC, Appendix A",
+        "sha256": "4d1b6a76f457e576eacf7f33a8a0494af6c3834c4b6cd547cc20b8bfd0ea4b4b",
+        "page": 1,
+        "printed_page": 741,
+        "graphic": "ER09AU10.003",
+        "cell": {
+          "row": 4,
+          "col": 1
+        }
+      }
+    },
+    {
+      "signal_id": "extend-telescoping-boom",
+      "name": "EXTEND TELESCOPING BOOM",
+      "description": "With hands to the front at waist level, thumbs point outward with other fingers closed.",
+      "caption": "EXTEND TELESCOPING BOOM – With hands to the front at waist level, thumbs point outward with other fingers closed.",
+      "svg": {
+        "path": "svg/extend-telescoping-boom.svg",
+        "width": 438,
+        "height": 532,
+        "bytes": 6612
+      },
+      "kind": "action",
+      "motion": "telescope-out",
+      "crane_types": [
+        "telescoping-boom"
+      ],
+      "modifiers": [
+        "move-slowly"
+      ],
+      "section_id": "29cfr1926.cc.appA",
+      "related_section_ids": [
+        "29cfr1926.1419(c)(1)",
+        "29cfr1926.1422"
+      ],
+      "teaching_tip": {
+        "text": "Thumbs pointing away from each other push the boom sections out.",
+        "verbatim": false
+      },
+      "source": {
+        "url": "https://www.govinfo.gov/content/pkg/CFR-2025-title29-vol8/pdf/CFR-2025-title29-vol8-part1926-subpartCC-appA.pdf",
+        "edition": "29 CFR Ch. XVII (7-1-25 Edition), Part 1926, Subpart CC, Appendix A",
+        "sha256": "4d1b6a76f457e576eacf7f33a8a0494af6c3834c4b6cd547cc20b8bfd0ea4b4b",
+        "page": 1,
+        "printed_page": 741,
+        "graphic": "ER09AU10.003",
+        "cell": {
+          "row": 4,
+          "col": 2
+        }
+      }
+    },
+    {
+      "signal_id": "travel-tower-travel",
+      "name": "TRAVEL/TOWER TRAVEL",
+      "description": "With all fingers pointing up, arm is extended horizontally out and back to make a pushing motion in the direction of travel.",
+      "caption": "TRAVEL/TOWER TRAVEL – With all fingers pointing up, arm is extended horizontally out and back to make a pushing motion in the direction of travel.",
+      "svg": {
+        "path": "svg/travel-tower-travel.svg",
+        "width": 513,
+        "height": 557,
+        "bytes": 7419
+      },
+      "kind": "action",
+      "motion": "travel",
+      "crane_types": [
+        "all"
+      ],
+      "modifiers": [
+        "move-slowly"
+      ],
+      "section_id": "29cfr1926.cc.appA",
+      "related_section_ids": [
+        "29cfr1926.1419(c)(1)",
+        "29cfr1926.1422"
+      ],
+      "teaching_tip": {
+        "text": "An open hand pushes the air the way the machine should travel.",
+        "verbatim": false
+      },
+      "source": {
+        "url": "https://www.govinfo.gov/content/pkg/CFR-2025-title29-vol8/pdf/CFR-2025-title29-vol8-part1926-subpartCC-appA.pdf",
+        "edition": "29 CFR Ch. XVII (7-1-25 Edition), Part 1926, Subpart CC, Appendix A",
+        "sha256": "4d1b6a76f457e576eacf7f33a8a0494af6c3834c4b6cd547cc20b8bfd0ea4b4b",
+        "page": 1,
+        "printed_page": 741,
+        "graphic": "ER09AU10.003",
+        "cell": {
+          "row": 4,
+          "col": 3
+        }
+      }
+    },
+    {
+      "signal_id": "lower-the-boom-and-raise-the-load",
+      "name": "LOWER THE BOOM AND RAISE THE LOAD",
+      "description": "With arm extended horizontally to the side and thumb pointing down, fingers open and close while load movement is desired.",
+      "caption": "LOWER THE BOOM AND RAISE THE LOAD – With arm extended horizontally to the side and thumb pointing down, fingers open and close while load movement is desired.",
+      "svg": {
+        "path": "svg/lower-the-boom-and-raise-the-load.svg",
+        "width": 629,
+        "height": 553,
+        "bytes": 9848
+      },
+      "kind": "action",
+      "motion": "boom-down-load-up",
+      "crane_types": [
+        "all"
+      ],
+      "modifiers": [
+        "move-slowly",
+        "use-main-hoist",
+        "use-auxiliary-hoist"
+      ],
+      "section_id": "29cfr1926.cc.appA",
+      "related_section_ids": [
+        "29cfr1926.1419(c)(1)",
+        "29cfr1926.1422"
+      ],
+      "teaching_tip": {
+        "text": "Start from LOWER BOOM (thumb down), then flex the fingers for as long as the load should move.",
+        "verbatim": false
+      },
+      "source": {
+        "url": "https://www.govinfo.gov/content/pkg/CFR-2025-title29-vol8/pdf/CFR-2025-title29-vol8-part1926-subpartCC-appA.pdf",
+        "edition": "29 CFR Ch. XVII (7-1-25 Edition), Part 1926, Subpart CC, Appendix A",
+        "sha256": "4d1b6a76f457e576eacf7f33a8a0494af6c3834c4b6cd547cc20b8bfd0ea4b4b",
+        "page": 2,
+        "printed_page": 742,
+        "graphic": "ER09AU10.004",
+        "cell": {
+          "row": 1,
+          "col": 1
+        }
+      }
+    },
+    {
+      "signal_id": "move-slowly",
+      "name": "MOVE SLOWLY",
+      "description": "A hand is placed in front of the hand that is giving the action signal.",
+      "caption": "MOVE SLOWLY – A hand is placed in front of the hand that is giving the action signal.",
+      "svg": {
+        "path": "svg/move-slowly.svg",
+        "width": 544,
+        "height": 588,
+        "bytes": 11888
+      },
+      "kind": "modifier",
+      "motion": "slow",
+      "crane_types": [
+        "all"
+      ],
+      "modifiers": [],
+      "section_id": "29cfr1926.cc.appA",
+      "related_section_ids": [
+        "29cfr1926.1419(c)(1)",
+        "29cfr1926.1422"
+      ],
+      "teaching_tip": {
+        "text": "Not a motion on its own; the second hand in front slows whatever the signaling hand calls for.",
+        "verbatim": false
+      },
+      "source": {
+        "url": "https://www.govinfo.gov/content/pkg/CFR-2025-title29-vol8/pdf/CFR-2025-title29-vol8-part1926-subpartCC-appA.pdf",
+        "edition": "29 CFR Ch. XVII (7-1-25 Edition), Part 1926, Subpart CC, Appendix A",
+        "sha256": "4d1b6a76f457e576eacf7f33a8a0494af6c3834c4b6cd547cc20b8bfd0ea4b4b",
+        "page": 2,
+        "printed_page": 742,
+        "graphic": "ER09AU10.004",
+        "cell": {
+          "row": 1,
+          "col": 2
+        }
+      }
+    },
+    {
+      "signal_id": "use-auxiliary-hoist",
+      "name": "USE AUXILIARY HOIST (whipline)",
+      "description": "With arm bent at elbow and forearm vertical, elbow is tapped with other hand. Then regular signal is used to indicate desired action.",
+      "caption": "USE AUXILIARY HOIST (whipline) – With arm bent at elbow and forearm vertical, elbow is tapped with other hand. Then regular signal is used to indicate desired action.",
+      "svg": {
+        "path": "svg/use-auxiliary-hoist.svg",
+        "width": 451,
+        "height": 543,
+        "bytes": 9585
+      },
+      "kind": "modifier",
+      "motion": "select-auxiliary-hoist",
+      "crane_types": [
+        "all"
+      ],
+      "modifiers": [],
+      "section_id": "29cfr1926.cc.appA",
+      "related_section_ids": [
+        "29cfr1926.1419(c)(1)",
+        "29cfr1926.1422"
+      ],
+      "teaching_tip": {
+        "text": "Tap the elbow to pick the whipline, then give the motion signal.",
+        "verbatim": false
+      },
+      "source": {
+        "url": "https://www.govinfo.gov/content/pkg/CFR-2025-title29-vol8/pdf/CFR-2025-title29-vol8-part1926-subpartCC-appA.pdf",
+        "edition": "29 CFR Ch. XVII (7-1-25 Edition), Part 1926, Subpart CC, Appendix A",
+        "sha256": "4d1b6a76f457e576eacf7f33a8a0494af6c3834c4b6cd547cc20b8bfd0ea4b4b",
+        "page": 2,
+        "printed_page": 742,
+        "graphic": "ER09AU10.004",
+        "cell": {
+          "row": 1,
+          "col": 3
+        }
+      }
+    },
+    {
+      "signal_id": "crawler-crane-travel-both-tracks",
+      "name": "CRAWLER CRANE TRAVEL, BOTH TRACKS",
+      "description": "Rotate fists around each other in front of body; direction of rotation away from body indicates travel forward; rotation towards body indicates travel backward.",
+      "caption": "CRAWLER CRANE TRAVEL, BOTH TRACKS – Rotate fists around each other in front of body; direction of rotation away from body indicates travel forward; rotation towards body indicates travel backward.",
+      "svg": {
+        "path": "svg/crawler-crane-travel-both-tracks.svg",
+        "width": 462,
+        "height": 585,
+        "bytes": 8853
+      },
+      "kind": "action",
+      "motion": "travel-both-tracks",
+      "crane_types": [
+        "crawler"
+      ],
+      "modifiers": [
+        "move-slowly"
+      ],
+      "section_id": "29cfr1926.cc.appA",
+      "related_section_ids": [
+        "29cfr1926.1419(c)(1)",
+        "29cfr1926.1422"
+      ],
+      "teaching_tip": {
+        "text": "Fists roll like the tracks; rolling away from the body is forward, toward the body is backward.",
+        "verbatim": false
+      },
+      "source": {
+        "url": "https://www.govinfo.gov/content/pkg/CFR-2025-title29-vol8/pdf/CFR-2025-title29-vol8-part1926-subpartCC-appA.pdf",
+        "edition": "29 CFR Ch. XVII (7-1-25 Edition), Part 1926, Subpart CC, Appendix A",
+        "sha256": "4d1b6a76f457e576eacf7f33a8a0494af6c3834c4b6cd547cc20b8bfd0ea4b4b",
+        "page": 2,
+        "printed_page": 742,
+        "graphic": "ER09AU10.004",
+        "cell": {
+          "row": 2,
+          "col": 1
+        }
+      }
+    },
+    {
+      "signal_id": "use-main-hoist",
+      "name": "USE MAIN HOIST",
+      "description": "A hand taps on top of the head. Then regular signal is given to indicate desired action.",
+      "caption": "USE MAIN HOIST – A hand taps on top of the head. Then regular signal is given to indicate desired action.",
+      "svg": {
+        "path": "svg/use-main-hoist.svg",
+        "width": 426,
+        "height": 595,
+        "bytes": 8795
+      },
+      "kind": "modifier",
+      "motion": "select-main-hoist",
+      "crane_types": [
+        "all"
+      ],
+      "modifiers": [],
+      "section_id": "29cfr1926.cc.appA",
+      "related_section_ids": [
+        "29cfr1926.1419(c)(1)",
+        "29cfr1926.1422"
+      ],
+      "teaching_tip": {
+        "text": "Tap the head to pick the main hoist, then give the motion signal.",
+        "verbatim": false
+      },
+      "source": {
+        "url": "https://www.govinfo.gov/content/pkg/CFR-2025-title29-vol8/pdf/CFR-2025-title29-vol8-part1926-subpartCC-appA.pdf",
+        "edition": "29 CFR Ch. XVII (7-1-25 Edition), Part 1926, Subpart CC, Appendix A",
+        "sha256": "4d1b6a76f457e576eacf7f33a8a0494af6c3834c4b6cd547cc20b8bfd0ea4b4b",
+        "page": 2,
+        "printed_page": 742,
+        "graphic": "ER09AU10.004",
+        "cell": {
+          "row": 2,
+          "col": 2
+        }
+      }
+    },
+    {
+      "signal_id": "crawler-crane-travel-one-track",
+      "name": "CRAWLER CRANE TRAVEL, ONE TRACK",
+      "description": "Indicate track to be locked by raising fist on that side. Rotate other fist in front of body in direction that other track is to travel.",
+      "caption": "CRAWLER CRANE TRAVEL, ONE TRACK – Indicate track to be locked by raising fist on that side. Rotate other fist in front of body in direction that other track is to travel.",
+      "svg": {
+        "path": "svg/crawler-crane-travel-one-track.svg",
+        "width": 464,
+        "height": 567,
+        "bytes": 7166
+      },
+      "kind": "action",
+      "motion": "travel-one-track",
+      "crane_types": [
+        "crawler"
+      ],
+      "modifiers": [
+        "move-slowly"
+      ],
+      "section_id": "29cfr1926.cc.appA",
+      "related_section_ids": [
+        "29cfr1926.1419(c)(1)",
+        "29cfr1926.1422"
+      ],
+      "teaching_tip": {
+        "text": "The raised fist marks the track that stays locked; the rolling fist drives the other one.",
+        "verbatim": false
+      },
+      "source": {
+        "url": "https://www.govinfo.gov/content/pkg/CFR-2025-title29-vol8/pdf/CFR-2025-title29-vol8-part1926-subpartCC-appA.pdf",
+        "edition": "29 CFR Ch. XVII (7-1-25 Edition), Part 1926, Subpart CC, Appendix A",
+        "sha256": "4d1b6a76f457e576eacf7f33a8a0494af6c3834c4b6cd547cc20b8bfd0ea4b4b",
+        "page": 2,
+        "printed_page": 742,
+        "graphic": "ER09AU10.004",
+        "cell": {
+          "row": 2,
+          "col": 3
+        }
+      }
+    },
+    {
+      "signal_id": "trolley-travel",
+      "name": "TROLLEY TRAVEL",
+      "description": "With palm up, fingers closed and thumb pointing in direction of motion, hand is jerked horizontally in direction trolley is to travel.",
+      "caption": "TROLLEY TRAVEL – With palm up, fingers closed and thumb pointing in direction of motion, hand is jerked horizontally in direction trolley is to travel.",
+      "svg": {
+        "path": "svg/trolley-travel.svg",
+        "width": 605,
+        "height": 554,
+        "bytes": 8352
+      },
+      "kind": "action",
+      "motion": "trolley-travel",
+      "crane_types": [
+        "tower"
+      ],
+      "modifiers": [
+        "move-slowly"
+      ],
+      "section_id": "29cfr1926.cc.appA",
+      "related_section_ids": [
+        "29cfr1926.1419(c)(1)",
+        "29cfr1926.1422"
+      ],
+      "teaching_tip": {
+        "text": "Palm up, thumb leading, short jerks toward where the trolley should run.",
+        "verbatim": false
+      },
+      "source": {
+        "url": "https://www.govinfo.gov/content/pkg/CFR-2025-title29-vol8/pdf/CFR-2025-title29-vol8-part1926-subpartCC-appA.pdf",
+        "edition": "29 CFR Ch. XVII (7-1-25 Edition), Part 1926, Subpart CC, Appendix A",
+        "sha256": "4d1b6a76f457e576eacf7f33a8a0494af6c3834c4b6cd547cc20b8bfd0ea4b4b",
+        "page": 2,
+        "printed_page": 742,
+        "graphic": "ER09AU10.004",
+        "cell": {
+          "row": 3,
+          "col": 1
+        }
+      }
+    }
+  ]
+}

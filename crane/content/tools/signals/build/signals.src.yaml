@@ -1,0 +1,227 @@
+# Hand-maintained input for build_signals.py.
+#
+# name / description: transcribed verbatim from the printed figure (line
+#   breaks and double spaces collapsed to one space). build_signals.py OCRs
+#   every caption crop and fails on any unresolved disagreement.
+# kind, motion, crane_types, modifiers, tip: editorial classification for the
+#   app. Not regulatory text. The appendix does not restrict a signal to an
+#   equipment type; crane_types names the equipment that has the function.
+
+title: Standard hand signals (Appendix A to Subpart CC of 29 CFR 1926)
+
+source:
+  url: https://www.govinfo.gov/content/pkg/CFR-2025-title29-vol8/pdf/CFR-2025-title29-vol8-part1926-subpartCC-appA.pdf
+  edition: 29 CFR Ch. XVII (7-1-25 Edition), Part 1926, Subpart CC, Appendix A
+  sha256: 4d1b6a76f457e576eacf7f33a8a0494af6c3834c4b6cd547cc20b8bfd0ea4b4b
+  license: Public domain. Work of the United States Government (17 U.S.C. 105).
+  dash: "–"
+  pages:
+    - {pdf_page: 1, printed_page: 741, graphic: ER09AU10.003}
+    - {pdf_page: 2, printed_page: 742, graphic: ER09AU10.004}
+
+notes:
+  - section_id: 29cfr1926.1401
+    quote: Standard Method means the protocol in appendix A of this subpart for hand signals.
+  - section_id: 29cfr1926.1419(c)(1)
+    quote: "When using hand signals, the Standard Method must be used (see appendix A of this subpart). Exception: Where use of the Standard Method for hand signals is infeasible, or where an operation or use of an attachment is not covered in the Standard Method, non-standard hand signals may be used in accordance with paragraph (c)(2) of this section."
+  - section_id: 29cfr1926.1419(c)(2)
+    quote: When using non-standard hand signals, the signal person, operator, and lift director (where there is one) must contact each other prior to the operation and agree on the non-standard hand signals that will be used.
+  - section_id: 29cfr1926.1419(j)
+    quote: Anyone who becomes aware of a safety problem must alert the operator or signal person by giving the stop or emergency stop signal.
+  - section_id: 29cfr1926.1417(y)
+    quote: The operator must obey a stop (or emergency stop) signal, irrespective of who gives it.
+  - section_id: 29cfr1926.1422
+    quote: Hand signal charts must be either posted on the equipment or conspicuously posted in the vicinity of the hoisting operations.
+  - section_id: 29cfr1926.1428(c)(1)
+    quote: If hand signals are used, the signal person must know and understand the Standard Method for hand signals.
+
+# Order is row-major through the printed grid: page 1 (3 x 4), then page 2.
+signals:
+  - signal_id: stop
+    name: STOP
+    description: With arm extended horizontally to the side, palm down, arm is swung back and forth.
+    kind: action
+    motion: stop
+    crane_types: [all]
+    related_section_ids: ["29cfr1926.1419(c)(1)", "29cfr1926.1419(j)", "29cfr1926.1417(y)", "29cfr1926.1422"]
+    tip: One arm out flat, palm down, sweeping side to side, means stop the motion now.
+
+  - signal_id: emergency-stop
+    name: EMERGENCY STOP
+    description: With both arms extended horizontally to the side, palms down, arms are swung back and forth.
+    kind: action
+    motion: emergency-stop
+    crane_types: [all]
+    related_section_ids: ["29cfr1926.1419(c)(1)", "29cfr1926.1419(j)", "29cfr1926.1417(y)", "29cfr1926.1422"]
+    tip: It is STOP done with both arms at once; two arms means emergency.
+
+  - signal_id: hoist
+    name: HOIST
+    description: With upper arm extended to the side, forearm and index finger pointing straight up, hand and finger make small circles.
+    kind: action
+    motion: hoist
+    crane_types: [all]
+    modifiers: [move-slowly, use-main-hoist, use-auxiliary-hoist]
+    related_section_ids: ["29cfr1926.1419(c)(1)", "29cfr1926.1422"]
+    tip: The finger points up and circles, as if winding the load line up.
+
+  - signal_id: raise-boom
+    name: RAISE BOOM
+    description: With arm extended horizontally to the side, thumb points up with other fingers closed.
+    kind: action
+    motion: boom-up
+    crane_types: [all]
+    modifiers: [move-slowly]
+    related_section_ids: ["29cfr1926.1419(c)(1)", "29cfr1926.1422"]
+    tip: A thumb is the boom; thumb up on a straight arm raises it.
+    ocr_resolution: 'OCR reads the dash as "--". The crop shows one en dash between "BOOM" and "With"; transcription kept.'
+
+  - signal_id: swing
+    name: SWING
+    description: With arm extended horizontally, index finger points in direction that boom is to swing.
+    kind: action
+    motion: swing
+    crane_types: [all]
+    modifiers: [move-slowly]
+    related_section_ids: ["29cfr1926.1419(c)(1)", "29cfr1926.1422"]
+    tip: Point where the boom should go; the pointing finger, not the thumb, means swing.
+    ocr_resolution: 'OCR reads "is" as "1s". The crop reads "in direction that boom is to swing."; transcription kept.'
+
+  - signal_id: retract-telescoping-boom
+    name: RETRACT TELESCOPING BOOM
+    description: With hands to the front at waist level, thumbs point at each other with other fingers closed.
+    kind: action
+    motion: telescope-in
+    crane_types: [telescoping-boom]
+    modifiers: [move-slowly]
+    related_section_ids: ["29cfr1926.1419(c)(1)", "29cfr1926.1422"]
+    tip: Thumbs pointing toward each other pull the boom sections in.
+    ocr_resolution: 'OCR reads the bold dash as "--". The crop shows one bold en dash after "BOOM" (followed by two spaces, collapsed to one); transcription kept.'
+
+  - signal_id: raise-the-boom-and-lower-the-load
+    name: RAISE THE BOOM AND LOWER THE LOAD
+    description: With arm extended horizontally to the side and thumb pointing up, fingers open and close while load movement is desired.
+    kind: action
+    motion: boom-up-load-down
+    crane_types: [all]
+    modifiers: [move-slowly, use-main-hoist, use-auxiliary-hoist]
+    related_section_ids: ["29cfr1926.1419(c)(1)", "29cfr1926.1422"]
+    tip: Start from RAISE BOOM (thumb up), then flex the fingers for as long as the load should move.
+
+  - signal_id: dog-everything
+    name: DOG EVERYTHING
+    description: Hands held together at waist level.
+    kind: action
+    motion: dog-everything
+    crane_types: [all]
+    related_section_ids: ["29cfr1926.1419(c)(1)", "29cfr1926.1422"]
+    tip: Hands together at the waist means hold everything; no motion until the next signal.
+
+  - signal_id: lower
+    name: LOWER
+    description: With arm and index finger pointing down, hand and finger make small circles.
+    kind: action
+    motion: lower
+    crane_types: [all]
+    modifiers: [move-slowly, use-main-hoist, use-auxiliary-hoist]
+    related_section_ids: ["29cfr1926.1419(c)(1)", "29cfr1926.1422"]
+    tip: The mirror of HOIST; the finger points down and circles.
+
+  - signal_id: lower-boom
+    name: LOWER BOOM
+    description: With arm extended horizontally to the side, thumb points down with other fingers closed.
+    kind: action
+    motion: boom-down
+    crane_types: [all]
+    modifiers: [move-slowly]
+    related_section_ids: ["29cfr1926.1419(c)(1)", "29cfr1926.1422"]
+    tip: The mirror of RAISE BOOM; thumb down on a straight arm lowers the boom.
+
+  - signal_id: extend-telescoping-boom
+    name: EXTEND TELESCOPING BOOM
+    description: With hands to the front at waist level, thumbs point outward with other fingers closed.
+    kind: action
+    motion: telescope-out
+    crane_types: [telescoping-boom]
+    modifiers: [move-slowly]
+    related_section_ids: ["29cfr1926.1419(c)(1)", "29cfr1926.1422"]
+    tip: Thumbs pointing away from each other push the boom sections out.
+
+  - signal_id: travel-tower-travel
+    name: TRAVEL/TOWER TRAVEL
+    description: With all fingers pointing up, arm is extended horizontally out and back to make a pushing motion in the direction of travel.
+    kind: action
+    motion: travel
+    crane_types: [all]
+    modifiers: [move-slowly]
+    related_section_ids: ["29cfr1926.1419(c)(1)", "29cfr1926.1422"]
+    tip: An open hand pushes the air the way the machine should travel.
+
+  - signal_id: lower-the-boom-and-raise-the-load
+    name: LOWER THE BOOM AND RAISE THE LOAD
+    description: With arm extended horizontally to the side and thumb pointing down, fingers open and close while load movement is desired.
+    kind: action
+    motion: boom-down-load-up
+    crane_types: [all]
+    modifiers: [move-slowly, use-main-hoist, use-auxiliary-hoist]
+    related_section_ids: ["29cfr1926.1419(c)(1)", "29cfr1926.1422"]
+    tip: Start from LOWER BOOM (thumb down), then flex the fingers for as long as the load should move.
+
+  - signal_id: move-slowly
+    name: MOVE SLOWLY
+    description: A hand is placed in front of the hand that is giving the action signal.
+    kind: modifier
+    motion: slow
+    crane_types: [all]
+    related_section_ids: ["29cfr1926.1419(c)(1)", "29cfr1926.1422"]
+    tip: Not a motion on its own; the second hand in front slows whatever the signaling hand calls for.
+    ocr_resolution: 'OCR reads "is" as "1s". The crop reads "the hand that is giving"; transcription kept.'
+
+  - signal_id: use-auxiliary-hoist
+    name: USE AUXILIARY HOIST (whipline)
+    description: With arm bent at elbow and forearm vertical, elbow is tapped with other hand. Then regular signal is used to indicate desired action.
+    kind: modifier
+    motion: select-auxiliary-hoist
+    crane_types: [all]
+    related_section_ids: ["29cfr1926.1419(c)(1)", "29cfr1926.1422"]
+    tip: Tap the elbow to pick the whipline, then give the motion signal.
+
+  - signal_id: crawler-crane-travel-both-tracks
+    name: CRAWLER CRANE TRAVEL, BOTH TRACKS
+    description: Rotate fists around each other in front of body; direction of rotation away from body indicates travel forward; rotation towards body indicates travel backward.
+    kind: action
+    motion: travel-both-tracks
+    crane_types: [crawler]
+    modifiers: [move-slowly]
+    related_section_ids: ["29cfr1926.1419(c)(1)", "29cfr1926.1422"]
+    tip: Fists roll like the tracks; rolling away from the body is forward, toward the body is backward.
+    ocr_resolution: 'OCR reads the bold dash after "TRACKS" as "--". The crop shows one bold en dash; transcription kept.'
+
+  - signal_id: use-main-hoist
+    name: USE MAIN HOIST
+    description: A hand taps on top of the head. Then regular signal is given to indicate desired action.
+    kind: modifier
+    motion: select-main-hoist
+    crane_types: [all]
+    related_section_ids: ["29cfr1926.1419(c)(1)", "29cfr1926.1422"]
+    tip: Tap the head to pick the main hoist, then give the motion signal.
+
+  - signal_id: crawler-crane-travel-one-track
+    name: CRAWLER CRANE TRAVEL, ONE TRACK
+    description: Indicate track to be locked by raising fist on that side. Rotate other fist in front of body in direction that other track is to travel.
+    kind: action
+    motion: travel-one-track
+    crane_types: [crawler]
+    modifiers: [move-slowly]
+    related_section_ids: ["29cfr1926.1419(c)(1)", "29cfr1926.1422"]
+    tip: The raised fist marks the track that stays locked; the rolling fist drives the other one.
+
+  - signal_id: trolley-travel
+    name: TROLLEY TRAVEL
+    description: With palm up, fingers closed and thumb pointing in direction of motion, hand is jerked horizontally in direction trolley is to travel.
+    kind: action
+    motion: trolley-travel
+    crane_types: [tower]
+    modifiers: [move-slowly]
+    related_section_ids: ["29cfr1926.1419(c)(1)", "29cfr1926.1422"]
+    tip: Palm up, thumb leading, short jerks toward where the trolley should run.
