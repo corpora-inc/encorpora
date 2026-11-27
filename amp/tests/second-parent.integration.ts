@@ -33,6 +33,8 @@ test(
     const admin = new Pool({ connectionString: url, max: 1 });
     const scoped = new URL(url);
     scoped.searchParams.set("options", `-c search_path=${schema}`);
+    // The lock-wait probe below counts only this file's own sessions.
+    scoped.searchParams.set("application_name", schema);
     await admin.query(`CREATE SCHEMA ${schema}`);
     await migrate(scoped.href);
     const learning = new PostgresRepository(scoped.href);
@@ -740,13 +742,14 @@ test(
       assert.equal((await secondParent(holder)).status, "invited");
     });
 
-    /** Backends of this database waiting on a lock. */
+    /** This file's backends waiting on a lock. */
     const waiting = async (count: number) => {
       for (let tries = 0; tries < 200; tries++) {
         const { n } = (
           await admin.query(
             `SELECT count(*)::int AS n FROM pg_stat_activity
-             WHERE datname=current_database() AND wait_event_type='Lock'`,
+             WHERE application_name=$1 AND wait_event_type='Lock'`,
+            [schema],
           )
         ).rows[0];
         if (n >= count) return;

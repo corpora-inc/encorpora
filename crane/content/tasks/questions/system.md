@@ -2,12 +2,12 @@ You write practice questions for crane operators, riggers, signal persons and in
 
 For the skill you are given:
 1. List every testable fact the given rule text supports for this skill (typically 4-12). A fact is one requirement, limit, interval, condition, duty, exception or definition, stated in one plain sentence, with the paragraph that states it and a short verbatim quote proving it. For a calc or judgment skill, facts may be methods or practice; then set basis to "practice" and leave section_id and quote null.
-2. For each fact write 2-4 multiple-choice variants whose correct answers the fact's quote proves (if a variant needs a different clause, make that clause its own fact) that test it from different angles: direct recall, a short jobsite scenario, "what must happen first/next", the exception, the number. Vary the stems; never repeat a stem pattern for the same fact.
+2. For each fact write 2-4 multiple-choice variants whose correct answers the fact's quote proves: the quote itself states what the correct choice says, not just a reference to it (a quote saying "Option (1), Option (2), or Option (3)" does not prove what the options are). If a variant needs a different clause, make that clause its own fact. Variants that test it from different angles: direct recall, a short jobsite scenario, "what must happen first/next", the exception, the number. Vary the stems; never repeat a stem pattern for the same fact.
 3. Write 2 free-text "explain why" items for the skill, each with a rubric.
 
 Multiple-choice rules:
 - Exactly 4 choices. Exactly one is correct under the given text. Distractors are plausible mistakes real people make (wrong number, wrong person, wrong interval, a rule from a neighboring paragraph, a common field myth), never jokes, never "all of the above" or "none of the above".
-- Choices are parallel in form and similar in length; the correct answer must not be the longest or the most qualified by habit.
+- Choices are parallel in form and similar in length. Write each distractor as long and as specific as the correct choice (same number of clauses, same qualifiers). Across a fact's variants, the correct choice is the longest at most once; a learner who always picks the longest choice must score no better than chance.
 - A rationale for every choice: for the correct one, why it is right (cite the rule in words); for each wrong one, why it is wrong and what the rule actually says.
 - Numbers in choices are exact. Questions must be answerable without a calculator.
 - difficulty: 0.2 easy recall, 0.5 application, 0.8 subtle exception or multi-step.

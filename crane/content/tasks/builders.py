@@ -191,6 +191,13 @@ def questions_inputs():
     return items
 
 
+def key_stands_out(choices: list[str], answer: int) -> bool:
+    """The key gives itself away by length: over 1.5x the longest distractor and 20+ chars longer."""
+    key = len(choices[answer])
+    other = max(len(c) for i, c in enumerate(choices) if i != answer)
+    return key > 1.5 * other and key - other >= 20
+
+
 def questions_write(task, items):
     stats = {"skills": 0, "facts": 0, "mc": 0, "free_text": 0, "pass": 0, "fail": 0, "quotes_repaired": 0, "answer_pos": [0, 0, 0, 0], "fail_reasons": {}}
     by_topic: dict[str, list] = {}
@@ -219,6 +226,8 @@ def questions_write(task, items):
                     e2.append("duplicate choices")
                 if not 0 <= item["answer"] < 4 or len(item["rationales"]) != 4:
                     e2.append("bad answer/rationales")
+                elif key_stands_out(ch, item["answer"]):
+                    e2.append("key conspicuously longest")
                 p = perm(item["stem"], 4)
                 choices = [ch[i] for i in p]
                 rats = [item["rationales"][i] for i in p]
@@ -231,6 +240,8 @@ def questions_write(task, items):
                     stats["fail_reasons"][r.split(":")[0][:40]] = stats["fail_reasons"].get(r.split(":")[0][:40], 0) + 1
                 if verdict == "pass":
                     stats["answer_pos"][answer] += 1
+                    lens = [len(c) for c in choices]
+                    stats["key_longest"] = stats.get("key_longest", 0) + (lens[answer] == max(lens) and lens.count(max(lens)) == 1)
                 stats["mc"] += 1
                 rows.append({"q_id": q_id, "skill_id": skill_id, "topic_id": topic_id, "variant_of": None if group == q_id else group,
                              "kind": "mc", "stem": item["stem"], "choices": choices, "answer": str(answer), "rationales": rats,
@@ -287,6 +298,7 @@ def answers_write(task, items):
         for a in out["answers"]:
             ok, rep, errs = repair_quotes(a["body"])
             errs += segments_ok(a["body"])
+            errs += direct_answer_first(a["question"], a["body"])
             stats["quotes_ok"] += ok
             stats["quotes_repaired"] += rep
             seen = {norm_key(a["question"])}
@@ -309,9 +321,126 @@ def answers_write(task, items):
             rows.append({"answer_id": f"a.{skill_id}.{sha(a['question'])[:10]}", "question": a["question"], "body": a["body"],
                          "section_ids": sids, "level": a["level"], "lang": "en", "skill_id": skill_id, "topic_id": topic_id,
                          "aliases": aliases, "prov": provenance(rec, VERIFIER, verdict, "; ".join(errs) or None)})
+    intent_check([r for rows in by_topic.values() for r in rows], stats)
     for topic_id, rows in by_topic.items():
         _write_jsonl(CONTENT / "data" / "answers" / f"{topic_id}.jsonl", rows)
     return stats
+
+
+_YES_NO = re.compile(r"^(is|are|am|was|were|do|does|did|can|could|must|may|might|should|shall|will|would|has|have|had|need|needs)\b", re.I)
+_QUANT = re.compile(r"^(how (many|much|far|long|often|close|high|low|wide|heavy|fast|deep)|what('s| is| are)? (the )?(minimum|maximum|max|min|distance|clearance|interval|limit|percent|percentage|number))\b", re.I)
+_NUMBERISH = re.compile(r"\d|\b(zero|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|fifteen|twenty|thirty|forty|fifty|sixty|hundred|half|quarter|once|twice|daily|weekly|monthly|annually|every (shift|day|week|month|year)|each (shift|day|week|month|year)|no (limit|minimum|maximum|set)|none)\b", re.I)
+
+
+def direct_answer_first(question: str, body: list) -> list[str]:
+    """The answer opens with a text segment whose first sentence is the direct answer:
+    Yes/No for a yes/no question, a number (or interval) for a how-many/how-far question."""
+    if not body or body[0].get("t") != "text" or not (body[0].get("text") or "").strip():
+        return ["answer does not open with a text segment"]
+    first = re.sub(r"^practice:\s*", "", body[0]["text"].strip(), flags=re.I)
+    first = re.split(r"(?<=[.!?])\s", first, maxsplit=1)[0]
+    q = question.strip()
+    request = re.match(r"^(can|could|would) you (show|give|explain|walk|tell|list|describe|help)\b", q, re.I)
+    if _YES_NO.match(q) and not request and " or " not in q.lower() and not re.match(r"^(yes|no|not|never|only|always)\b", first, re.I):
+        return ["yes/no question not answered yes or no first"]
+    if _QUANT.match(q) and not _NUMBERISH.search(first):
+        return ["quantity question without a number first"]
+    return []
+
+
+def _neighbour_stems() -> list[tuple[str, str]]:
+    """(skill_id, stem) for every passing practice question on disk."""
+    out = []
+    for f in sorted((CONTENT / "data" / "questions").glob("*.jsonl")):
+        for line in f.read_text().splitlines():
+            r = json.loads(line) if line.strip() else None
+            if r and r["prov"]["verdict"] == "pass" and r["kind"] == "mc":
+                out.append((r["skill_id"], r["stem"]))
+    return out
+
+
+def _collisions(texts: list[tuple], pairs):
+    """Yield (n, m, score) for text pairs (n a row text, m any other) scoring >= intent.COLLIDE.
+
+    `pairs(n, m)` filters candidate pairs before scoring."""
+    from collections import Counter
+    from itertools import chain
+
+    import intent
+
+    stems = [set(intent.concepts(x[2])) for x in texts]
+    post: dict[str, list[int]] = {}
+    for n, st in enumerate(stems):
+        for s in st:
+            post.setdefault(s, []).append(n)
+    for n in range(len(texts)):
+        if texts[n][0] < 0:
+            continue
+        for m, k in Counter(chain.from_iterable(post[s] for s in stems[n])).items():
+            if m == n or not pairs(n, m):
+                continue
+            if 2 * k / (len(stems[n]) + len(stems[m])) < 0.5 * intent.COLLIDE:
+                continue  # cheap prefilter: set Dice; a query that repeats a stem can score up to ~1.5x it
+            score = intent.collision(texts[n][2], texts[m][2])
+            if score >= intent.COLLIDE:
+                yield n, m, score
+
+
+def intent_check(rows: list[dict], stats: dict) -> None:
+    """Every answer keeps its exact question plus paraphrases that point to it alone.
+
+    1. An answer whose question reaches the cache threshold against an earlier answer's
+       question duplicates it and fails.
+    2. Among the remaining answers, an alias is dropped when it comes within
+       intent.COLLIDE of another answer's question or alias, or of a practice question
+       of another skill (those name neighbouring intents).
+    3. Fewer than 3 surviving paraphrases fails."""
+    import intent
+
+    live = [i for i, r in enumerate(rows) if r["prov"]["verdict"] == "pass"]
+    qs = [(i, rows[i]["skill_id"], rows[i]["question"], True) for i in live]
+    hits: dict[int, list[tuple[float, int]]] = {}
+    for n, m, score in _collisions(qs, lambda n, m: qs[m][0] < qs[n][0]):
+        if score >= intent.CACHE_THRESHOLD:
+            hits.setdefault(qs[n][0], []).append((score, qs[m][0]))
+    dup: dict[int, tuple[str, float]] = {}
+    for i in sorted(hits):  # a row only duplicates a row that is itself kept
+        kept = [(s, j) for s, j in hits[i] if j not in dup]
+        if kept:
+            s, j = max(kept)
+            dup[i] = (rows[j]["answer_id"], s)
+    texts = []  # (row index or -1, skill_id, text, is_question)
+    for i in live:
+        if i in dup:
+            continue
+        texts.append((i, rows[i]["skill_id"], rows[i]["question"], True))
+        texts += [(i, rows[i]["skill_id"], a, False) for a in rows[i]["aliases"]]
+    texts += [(-1, sk, stem, True) for sk, stem in _neighbour_stems()]
+
+    def pair(n, m):
+        (i, sk, _, is_q), (j, sk2, _, _) = texts[n], texts[m]
+        return not is_q and j != i and not (j < 0 and sk2 == sk)
+
+    drop = {(texts[n][0], texts[n][2]) for n, m, _ in _collisions(texts, pair)}
+    stats["aliases_dropped_intent"] = len(drop)
+    stats["duplicate_intent"] = len(dup)
+    for i, r in enumerate(rows):
+        if r["prov"]["verdict"] != "pass":
+            continue
+        r["aliases"] = [a for a in r["aliases"] if (i, a) not in drop]
+        errs = []
+        if i in dup:
+            errs.append(f"duplicate intent of {dup[i][0]}")
+        if len(r["aliases"]) < 3:
+            errs.append(f"only {len(r['aliases'])} paraphrases after intent check")
+        if errs:
+            r["prov"] = {**r["prov"], "verdict": "fail", "notes": "; ".join(errs)}
+            stats["pass"] -= 1
+            stats["fail"] += 1
+            for e in errs:
+                key = e.split(" of ")[0].split(" after")[0][:40]
+                stats["fail_reasons"][key] = stats["fail_reasons"].get(key, 0) + 1
+    stats["aliases"] = sum(len(r["aliases"]) for r in rows)
 
 
 # ================================================================ lessons

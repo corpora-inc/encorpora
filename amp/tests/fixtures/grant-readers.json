@@ -468,5 +468,20 @@
     "path": "src/server/schema.ts",
     "hash": "ef6185c9580e4d4dbf784fde5bdeeb5a9d4d4c2c63a5508e3a415083c06bd641",
     "reason": "Drizzle schema declaration maps the grants export to its physical ledger; it defines the table and does not execute a reader."
+  },
+  {
+    "path": "src/server/session-revocation.ts",
+    "hash": "6342eedc9fde8fccb6e314aa79031b6e8d74c8e481833eb105481b08500feb45",
+    "reason": "Incident session revocation builds its count from four fixed session tables (amp_auth_sessions, amp_student_sessions, amp_provider_sessions, amp_auth_verifications); it never reads grants or adult access."
+  },
+  {
+    "path": "src/server/session-revocation.ts",
+    "hash": "ee2632a4da4d932545b3f0a862d5edeed2301db24971ddb0dc86fb64ebfee3cd",
+    "reason": "Runs the session-revocation statement assembled from those four fixed session tables; no grant ledger is named or reachable."
+  },
+  {
+    "path": "src/server/session-tokens.ts",
+    "hash": "fe875883259e9e5a3686d95b33fd39b74559d8eadd43a4beb0825758f9e2be24",
+    "reason": "Better Auth adapter pass-through that only rewrites session-token lookups; Better Auth owns no grant ledger, so no adult entitlement is read here."
   }
 ]

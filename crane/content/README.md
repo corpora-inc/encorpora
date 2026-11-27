@@ -43,7 +43,7 @@ reads `up to 50 | 10`. Appendices are `29cfr1926.cc.appA`, `.appB`, `.appC`.
 ## Verify
 
 ```sh
-python -m venv .venv && .venv/bin/pip install pyyaml        # any venv
+python -m venv .venv && .venv/bin/pip install pyyaml "snowballstemmer>=3,<4"   # any venv
 .venv/bin/python crane/content/verify/ecfr.py                # fetch + index (cached in ~/.cache/crane-content)
 .venv/bin/python crane/content/verify/verify.py              # every citation and quote in crane/content
 .venv/bin/python -m unittest discover -s crane/content/verify
@@ -64,10 +64,41 @@ re-verifies every imported row against its own stage, and the two must agree.
 
 ```sh
 # the runner calls the headless CLI from an empty directory itself
-.venv/bin/python crane/content/tasks/run.py procedures|questions|answers|lessons|glossary [--limit N] [--only ids]
+.venv/bin/python crane/content/tasks/run.py procedures|questions|answers|lessons|glossary [--limit N] [--only ids] [--model M]
 ```
 
-Outputs are cached by prompt and input hash under `~/.cache/crane-content/gen`,
-so a run stops cleanly at the weekly-usage ceiling (`HARVEST_USAGE_CEILING`,
-default 60%) and resumes without repeating work. `--write-only` rebuilds the
-files from cache.
+`--model` (or `model:` in `task.yaml`) is `opus`, `sonnet` (Claude CLI) or
+`codex:<model>` (`codex exec`, read-only, strict output schema). Every row's
+`prov.model` names the model that wrote it, and every row passes the same
+deterministic checks whichever model wrote it.
+
+Outputs are cached by prompt, input and model under `~/.cache/crane-content/gen`,
+so a run stops cleanly and resumes without repeating work. It stops before a
+batch that would pass:
+
+| Limit | Env | Default |
+|---|---|---|
+| Claude weekly usage | `HARVEST_USAGE_CEILING` | 55% |
+| Run dollars (Claude-reported) | `HARVEST_BUDGET_USD` | 60 |
+| Run output tokens (all backends; Codex reasoning counted) | `HARVEST_BUDGET_OUTPUT_TOKENS` | 4,000,000 |
+
+The run budget is the sum over a ledger, `gen/budget/$HARVEST_BUDGET_ID.jsonl`,
+one line per call with its model, dollars and output tokens, across tasks and
+resumes. `--write-only` rebuilds the files from cache. The writer takes the
+output for the current prompt version from any model (the task's model first);
+for an input with none, it takes an output of a version listed under
+`accept_versions` in `task.yaml`, so a partial re-run never drops verified rows.
+
+## Writer checks
+
+- Quotes and citations against the eCFR index (above).
+- Questions: 4 distinct choices, a rationale each, and a key that does not stand out
+  by length (over 1.5x the longest distractor and 20+ characters longer fails).
+  Free-text sample answers must pass their own rubric under the practice grader.
+- Answers open with a text segment whose first sentence is the direct answer: Yes or
+  No for a yes/no question, a number for a how-many or how-far question.
+- Answer-cache intent (`tasks/intent.py`, the engine's alias similarity ported): an
+  answer whose question reaches the cache threshold (0.75) against an earlier answer's
+  question is a duplicate and fails; an alias within 0.6 of another answer's question
+  or alias, or of a practice question of another skill, is dropped; an answer left
+  with fewer than 3 paraphrases fails.

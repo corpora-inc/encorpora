@@ -68,6 +68,11 @@ html:has(.live-index), html:has(.live-index) body { overflow: auto; }
 /* ✕: the film closes to the screen it was opened from. */
 .live-close { flex: none; display: grid; place-items: center; width: 44px; height: 44px; border: 1.5px solid var(--color-border-strong); border-radius: 50%; box-sizing: border-box; color: var(--color-on-surface); background: var(--color-surface); }
 .live-close svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; }
+/* "Report this film": a quiet flag beside ✕, the same round 44 px target. It
+   is in the bar from the first frame, so nothing moves when it arrives. */
+.live-flag { flex: none; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 1.5px solid var(--color-border-strong); border-radius: 50%; box-sizing: border-box; background: transparent; color: var(--color-muted-text); cursor: pointer; }
+.live-flag:hover { color: var(--color-on-surface); background: color-mix(in srgb, var(--color-on-surface) 8%, transparent); }
+.live-flag svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
 /* A phone on its side: the picture takes the whole screen and the bar floats over its foot. */
 @media (orientation: landscape) and (max-height: 500px) {

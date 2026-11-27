@@ -18,6 +18,9 @@ async function schema(run: (url: string, db: Pool) => Promise<void>) {
   await admin.query(`CREATE SCHEMA ${name}`);
   const scoped = new URL(url);
   scoped.searchParams.set("options", `-c search_path=${name}`);
+  // Other test files migrate their own schemas in this database at the same
+  // time; a test that ends a backend must find only its own.
+  scoped.searchParams.set("application_name", name);
   const db = new Pool({ connectionString: scoped.href, max: 4 });
   db.on("error", () => undefined);
   try {
@@ -177,15 +180,21 @@ test(
           "INSERT INTO amp_learners(id,account_id,name) VALUES('writer','amp|writer','Writer')",
         );
         const run = migrate(url);
-        // The runner is waiting for the writer: end its connection.
+        // The runner is waiting for the writer: end its connection. Only this
+        // test's runner: another file building the same index in its own
+        // schema must not be ended. Ending it once left this runner holding
+        // the database's migration lock behind the writer, and every other
+        // file's migration waited for that lock until the job was cancelled.
         let terminated = 0;
         for (let i = 0; i < 100 && !terminated; i++) {
           await new Promise((resolve) => setTimeout(resolve, 50));
           terminated = (
             await db.query(
               `SELECT pg_terminate_backend(pid) FROM pg_stat_activity
-               WHERE query LIKE 'CREATE UNIQUE INDEX CONCURRENTLY amp_learners_one_level_practice_idx%'
+               WHERE application_name=$1 AND state='active'
+                 AND query LIKE 'CREATE UNIQUE INDEX CONCURRENTLY amp_learners_one_level_practice_idx%'
                  AND pid<>pg_backend_pid()`,
+              [new URL(url).searchParams.get("application_name")],
             )
           ).rowCount!;
         }

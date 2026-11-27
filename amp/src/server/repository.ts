@@ -144,6 +144,8 @@ import type { LearnerSkillProgress } from "./progress";
 import type { GeneratedProblem, ProblemVariant } from "../math/contracts";
 import type { PracticeSkip } from "../learning/skip";
 import type { ProblemFlag } from "../feedback/problem-flags";
+import type { FilmFlag } from "../feedback/film-flags";
+import { saveFilmFlag } from "../feedback/film-flag-store.js";
 import type { WorkbookRecord } from "../workbook/contracts";
 import {
   UNCHOSEN_ADULT_START,
@@ -324,6 +326,9 @@ export interface Repository {
     learnerId: string,
     body: unknown,
   ): Promise<boolean>;
+  /** Saves a "Report this film" report; a retry returns the saved one, and
+   * null when another viewer used the request id (feedback/film-flag-store). */
+  saveFilmFlag?(flag: FilmFlag): Promise<{ id: string } | null>;
   /** Whether learning is allowed: for the account, or for one of its
    * learners, where the account's adult learner needs no parental consent. */
   hasConsent(accountId: string, learnerId?: string): Promise<boolean>;
@@ -381,6 +386,9 @@ export class PostgresRepository implements Repository {
   }
   recordActivity(accountId: string, learnerId: string, body: unknown) {
     return recordLearnerActivity(this.pool, accountId, learnerId, body);
+  }
+  saveFilmFlag(flag: FilmFlag) {
+    return saveFilmFlag(this.pool, flag);
   }
   constructor(
     connectionString: string,
