@@ -1921,6 +1921,12 @@ jobs:
     runs-on: macos-26
     # A cold cache builds llama.cpp twice (macOS, iOS) and whisper.cpp once.
     timeout-minutes: 75
+    env:
+      # llama.cpp's bundled cpp-httplib finds the runner's Homebrew OpenSSL and
+      # fails to compile against its newer const API. The app is offline and
+      # never speaks HTTPS, so build without it. The vendored llama-cpp-sys-2
+      # build.rs forwards every CMAKE_* variable to CMake as a define.
+      CMAKE_DISABLE_FIND_PACKAGE_OpenSSL: "ON"
     steps:
       - name: Initialize verified client trust
         id: ci-trust
