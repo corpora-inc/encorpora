@@ -1,0 +1,6 @@
+/target/
+# Local embedding/LLM weights for feature-gated tests. Never commit weights.
+/models/
+*.gguf
+# Commit the lock (the repo root ignores Cargo.lock by default).
+!Cargo.lock
