@@ -65,7 +65,7 @@ CREATE TABLE question (
   kind TEXT NOT NULL,               -- mc|free_text|numeric
   stem TEXT NOT NULL,
   choices TEXT,                     -- json array of strings (mc)
-  answer TEXT NOT NULL,             -- mc: index as text; numeric: value; free_text: rubric json
+  answer TEXT NOT NULL,             -- mc: index as text; numeric: value or value±tolerance; free_text: rubric json (below)
   rationales TEXT,                  -- json array, one per choice: why right / why wrong
   section_ids TEXT NOT NULL,        -- json array
   difficulty REAL NOT NULL,         -- 0..1 prior
@@ -86,7 +86,7 @@ CREATE TABLE proc_step (proc_id TEXT NOT NULL, ord INTEGER NOT NULL,
   text TEXT NOT NULL, detail TEXT NOT NULL,        -- json {trainee, operator, inspector}
   check_kind TEXT NOT NULL,                        -- pass_fail|value|note|photo
   section_ids TEXT NOT NULL,
-  deficiency TEXT,                                 -- json {guidance, action, section_id, quote}
+  deficiency TEXT,                                 -- json {guidance, action, section_id, quote}: see below
   lang TEXT NOT NULL, prov_id TEXT NOT NULL, PRIMARY KEY (proc_id, ord));
 
 CREATE TABLE chunk (chunk_id TEXT PRIMARY KEY, ref_kind TEXT NOT NULL, ref_id TEXT NOT NULL,
