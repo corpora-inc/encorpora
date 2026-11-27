@@ -1,0 +1,852 @@
+[
+ {
+  "lesson_id": "l.rules.01",
+  "topic_id": "rules",
+  "ord": 1,
+  "title": "Two rule books: 1926 Subpart CC for construction, 1910.179 and 1910.180 for general industry",
+  "skills": [
+   "rules.construction-vs-general",
+   "rules.scope"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Federal crane rules sit in two parts of Title 29 of the Code of Federal Regulations. **Part 1926** covers construction work. Its Subpart CC (sections 1926.1400 through 1926.1442) governs cranes and derricks used in construction. **Part 1910** covers general industry: plants, warehouses, yards, mills."
+   },
+   {
+    "t": "text",
+    "text": "What decides which book applies is the work being done, not the type of machine. Subpart CC applies when the equipment is used in construction."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1400(a)",
+    "text": "This standard applies to power-operated equipment, when used in construction, that can hoist, lower and horizontally move a suspended load."
+   },
+   {
+    "t": "text",
+    "text": "In general industry, overhead and gantry cranes fall under 1910.179."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(b)(1)",
+    "text": "This section applies to overhead and gantry cranes, including semigantry, cantilever gantry, wall cranes, storage bridge cranes, and others having the same fundamental characteristics."
+   },
+   {
+    "t": "text",
+    "text": "Crawler, locomotive, truck and wheel-mounted cranes used in general industry fall under 1910.180, which defines each type by its rotating superstructure and base."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(a)(3)",
+    "text": "A truck crane consists of a rotating superstructure with powerplant, operating machinery and boom, mounted on an automotive truck equipped with a powerplant for travel."
+   },
+   {
+    "t": "text",
+    "text": "Slings used in general industry are covered by 1910.184."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(a)",
+    "text": "This section applies to slings used in conjunction with other material handling equipment for the movement of material by hoisting, in employments covered by this part."
+   },
+   {
+    "t": "text",
+    "text": "So the same machine can fall under either book. A bridge crane in a factory falls under 1910.179. If it is used in construction, for example to set new building components, it falls under Subpart CC, because overhead and gantry cranes appear in the Subpart CC equipment list."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1400(a)"
+   },
+   {
+    "t": "text",
+    "text": "Field practice: before a job starts, ask \"Is this work construction?\" Building, altering, repairing or demolishing a structure points to 1926. Routine production and material handling at a fixed facility point to 1910."
+   },
+   {
+    "t": "check",
+    "question": "A truck crane unloads steel coils at a mill as part of routine production. Which rule applies?",
+    "answer": "General industry, 1910.180, because the work is not construction."
+   },
+   {
+    "t": "check",
+    "question": "The same crane sets roof trusses on a new building. Which rule applies?",
+    "answer": "1926 Subpart CC, because the work is construction."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "cc159c7fd2887b7c5811",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "f075fba5b5de427d5f97b362e261a33c437b021441db0ebf8deffb8ccea46279",
+   "output_sha256": "76f63f621f58528a48237c6fb4b720af5b76e833a2348f42fc261744b1f462b4",
+   "created_at": "2026-11-27T22:22:09+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.rules.02",
+  "topic_id": "rules",
+  "ord": 2,
+  "title": "Reading a citation: title, part, section, paragraph",
+  "skills": [
+   "rules.definitions",
+   "rules.construction-vs-general"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Every rule has an address. Take 29 CFR 1926.1400(c)(17)(iii)(A):"
+   },
+   {
+    "t": "text",
+    "text": "- 29: Title 29, Labor.\n- CFR: Code of Federal Regulations.\n- 1926: the part (construction). 1910 would mean general industry.\n- .1400: the section (Scope).\n- (c): paragraph c (Exclusions).\n- (17): subparagraph 17 (Material delivery).\n- (iii): the next level (when the exclusion does not apply).\n- (A): the specific case (holding or stabilizing material)."
+   },
+   {
+    "t": "text",
+    "text": "Each level narrows the one above it. When you read a low-level paragraph, read its parent too. (c)(17)(iii)(A) only makes sense once you know it limits the exclusion in (c)(17)."
+   },
+   {
+    "t": "text",
+    "text": "Inside Subpart CC, the bare words **paragraph** and **section** have fixed meanings."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Paragraph refers to a paragraph in the same section of this subpart that the word “paragraph” is used, unless otherwise specified."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Section means a section of this subpart, unless otherwise specified."
+   },
+   {
+    "t": "text",
+    "text": "So \"paragraph (c) of this section\" inside 1926.1400 means 1926.1400(c). The \"§\" symbol means section, and \"§§\" means sections."
+   },
+   {
+    "t": "text",
+    "text": "Subpart CC applies as a whole to covered equipment unless a rule says otherwise. Do not assume a section is optional."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1400(d)",
+    "text": "All sections of this subpart CC apply to the equipment covered by this standard unless specified otherwise."
+   },
+   {
+    "t": "text",
+    "text": "Some sections are switched off in stated cases. For power line work covered by subpart V, compliance with § 1926.959 counts as compliance with the power line sections."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1400(g)",
+    "text": "For work covered by subpart V of this part, compliance with § 1926.959 is deemed compliance with §§ 1926.1407 through 1926.1411."
+   },
+   {
+    "t": "text",
+    "text": "Section 1926.1402 also does not apply to cranes designed for railroad tracks when they are used on general-system railroad track that complies with Federal Railroad Administration rules."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1400(h)"
+   },
+   {
+    "t": "check",
+    "question": "In 29 CFR 1910.179(b)(8), what is 1910 and what is .179?",
+    "answer": "1910 is the general industry part; .179 is the section on overhead and gantry cranes."
+   },
+   {
+    "t": "check",
+    "question": "Inside 1926.1400, what does \"paragraph (a) of this section\" refer to?",
+    "answer": "1926.1400(a)."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "cc159c7fd2887b7c5811",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "f075fba5b5de427d5f97b362e261a33c437b021441db0ebf8deffb8ccea46279",
+   "output_sha256": "76f63f621f58528a48237c6fb4b720af5b76e833a2348f42fc261744b1f462b4",
+   "created_at": "2026-11-27T22:22:09+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.rules.03",
+  "topic_id": "rules",
+  "ord": 3,
+  "title": "What Subpart CC covers: the equipment list and attachments",
+  "skills": [
+   "rules.scope"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "The coverage test has three parts. The equipment is power-operated, it is used in construction, and it can hoist, lower and horizontally move a suspended load. If all three are true, the machine is covered unless a listed exclusion applies."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1400(a)",
+    "text": "This standard applies to power-operated equipment, when used in construction, that can hoist, lower and horizontally move a suspended load."
+   },
+   {
+    "t": "text",
+    "text": "The rule names many machines, and the list is open (\"includes, but is not limited to\"):"
+   },
+   {
+    "t": "text",
+    "text": "- Articulating (knuckle-boom) cranes\n- Crawler, floating, barge-mounted and locomotive cranes\n- Mobile cranes: wheel-mounted, rough-terrain, all-terrain, commercial truck-mounted, boom trucks\n- Multi-purpose machines when configured to hoist and lower by winch or hook and horizontally move a suspended load\n- Industrial cranes such as carry-deck cranes\n- Dedicated pile drivers\n- Service/mechanic trucks with a hoisting device\n- Cranes on a monorail\n- Tower cranes: hammerhead, luffing boom, self-erecting\n- Pedestal, portal, overhead, gantry, straddle and sideboom cranes\n- Derricks, and variations of all of these"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1400(a)"
+   },
+   {
+    "t": "text",
+    "text": "A multi-purpose machine changes status with its setup. It is covered when rigged with a winch or hook."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "When configured with the forks/tongs, it is not covered by this subpart."
+   },
+   {
+    "t": "text",
+    "text": "**Attachments** do not take a machine out of the rule. Hooks, magnets, grapples, clamshell, orange peel and concrete buckets, drag lines, personnel platforms, augers or drills, and pile driving equipment are all covered, whether crane-attached or suspended."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1400(b)",
+    "text": "This standard applies to equipment included in paragraph (a) of this section when used with attachments."
+   },
+   {
+    "t": "text",
+    "text": "Tower crane status turns on design, not appearance."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Mobile cranes that are configured with luffing jib and/or tower attachments are not considered tower cranes under this section."
+   },
+   {
+    "t": "check",
+    "question": "A crawler crane on a construction site is fitted with an auger. Is it covered?",
+    "answer": "Yes. Covered equipment used with attachments stays covered."
+   },
+   {
+    "t": "check",
+    "question": "A telehandler-type multi-purpose machine is carrying pallets on forks. Covered?",
+    "answer": "No. With forks or tongs it is not covered. With a winch or a hook-ended jib it is."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "cc159c7fd2887b7c5811",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "f075fba5b5de427d5f97b362e261a33c437b021441db0ebf8deffb8ccea46279",
+   "output_sha256": "76f63f621f58528a48237c6fb4b720af5b76e833a2348f42fc261744b1f462b4",
+   "created_at": "2026-11-27T22:22:09+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.rules.04",
+  "topic_id": "rules",
+  "ord": 4,
+  "title": "Exclusions: machines and uses outside Subpart CC",
+  "skills": [
+   "rules.exclusions"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Paragraph 1926.1400(c) lists what the subpart does not cover. Many exclusions depend on the **use**, not the machine. The same machine can be in scope one hour and out of scope the next."
+   },
+   {
+    "t": "text",
+    "text": "A covered machine converted to non-lifting use is out, for example a crane base set up as a power shovel or concrete pump."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1400(c)(1)",
+    "text": "Machinery included in paragraph (a) of this section while it has been converted or adapted for a non-hoisting/lifting use."
+   },
+   {
+    "t": "text",
+    "text": "Earthmoving machines are excluded even when used to lift with rigging. This covers power shovels, excavators, wheel loaders, backhoes, loader backhoes and track loaders."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1400(c)(2)",
+    "text": "This machinery is also excluded when used with chains, slings or other rigging to lift suspended loads."
+   },
+   {
+    "t": "text",
+    "text": "Forklifts are out unless they are rigged to hoist a suspended load."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1400(c)(8)",
+    "text": "Powered industrial trucks (forklifts), except when configured to hoist and lower (by means of a winch or hook) and horizontally move a suspended load."
+   },
+   {
+    "t": "text",
+    "text": "A mechanic's truck crane is out only while it is doing maintenance and repair work. It is covered when it lifts construction materials."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1400(c)(9)",
+    "text": "Mechanic's truck with a hoisting device when used in activities related to equipment maintenance and repair."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1400(c)(10)",
+    "text": "Machinery that hoists by using a come-a-long or chainfall."
+   },
+   {
+    "t": "text",
+    "text": "The rest of the list:\n- Automotive wreckers and tow trucks clearing wrecks and hauling vehicles\n- Digger derricks doing pole work or other work under subpart V, provided that work complies with subpart V (or with § 1910.268 for telecommunication construction)\n- Vehicle-mounted aerial devices built for lifting personnel, and self-propelled elevating work platforms\n- Telescopic/hydraulic gantry systems\n- Stacker cranes\n- Dedicated drilling rigs\n- Gin poles used to erect communication towers\n- Tree trimming and tree removal work\n- Anchor handling or dredge work from a vessel or barge using an affixed A-frame\n- Roustabouts\n- Helicopter cranes\n- Flash-butt welding trucks and similar roadway maintenance machines used only for railroad track work, with no hoist other than the one for the welding device or workhead"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1400(c)(3)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1400(c)(4)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1400(c)(5)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1400(c)(18)"
+   },
+   {
+    "t": "check",
+    "question": "An excavator lifts a pipe section with a choker on a construction site. Does Subpart CC apply?",
+    "answer": "No. Excavators are excluded even when lifting with rigging."
+   },
+   {
+    "t": "check",
+    "question": "A mechanic's truck crane lifts a pallet of block onto a scaffold. Excluded?",
+    "answer": "No. The exclusion covers only equipment maintenance and repair activities."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "cc159c7fd2887b7c5811",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "f075fba5b5de427d5f97b362e261a33c437b021441db0ebf8deffb8ccea46279",
+   "output_sha256": "76f63f621f58528a48237c6fb4b720af5b76e833a2348f42fc261744b1f462b4",
+   "created_at": "2026-11-27T22:22:09+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.rules.05",
+  "topic_id": "rules",
+  "ord": 5,
+  "title": "The material delivery exclusion for knuckle-boom truck cranes",
+  "skills": [
+   "rules.exclusions",
+   "rules.scope"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Articulating (knuckle-boom) truck cranes that deliver material get a narrow exclusion. The exclusion can apply in only two cases, and four conditions cancel it."
+   },
+   {
+    "t": "text",
+    "text": "Case 1 is ground drop. The crane moves material from the truck to the ground and does not arrange it in sequence for hoisting."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1400(c)(17)(i)",
+    "text": "Articulating/knuckle-boom truck cranes that deliver material to a construction site when used to transfer materials from the truck crane to the ground, without arranging the materials in a particular sequence for hoisting."
+   },
+   {
+    "t": "text",
+    "text": "Case 2 is sheet goods or packaged materials placed onto a structure with a fork or cradle. Examples are sheetrock, plywood, bags of cement, shingles and roofing felt. This case applies only if the crane has a working automatic overload prevention device."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1400(c)(17)(ii)",
+    "text": "but only when the truck crane is equipped with a properly functioning automatic overload prevention device."
+   },
+   {
+    "t": "text",
+    "text": "The exclusion does **not** apply, and Subpart CC applies in full, when any of these is true:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1400(c)(17)(iii)(A)",
+    "text": "The articulating/knuckle-boom crane is used to hold, support or stabilize the material to facilitate a construction activity, such as holding material in place while it is attached to the structure;"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1400(c)(17)(iii)(B)",
+    "text": "The material being handled by the articulating/knuckle-boom crane is a prefabricated component."
+   },
+   {
+    "t": "text",
+    "text": "Prefabricated components include precast concrete members or panels, roof trusses of any material, and prefabricated floor, wall or roof panels and sections."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1400(c)(17)(iii)(C)",
+    "text": "The material being handled by the crane is a structural steel member"
+   },
+   {
+    "t": "text",
+    "text": "Structural steel includes joists, beams, columns, steel decking (bundled or unbundled) and components of systems-engineered metal buildings. The last condition is a catch-all: any activity not specifically excluded by case 1 or case 2 is covered."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1400(c)(17)(iii)(D)"
+   },
+   {
+    "t": "text",
+    "text": "Field check: ask \"What is the load, where does it go, and does the crane hold it while workers fasten it?\" A truss bundle, a steel joist, or holding anything in place means the crane is covered."
+   },
+   {
+    "t": "check",
+    "question": "A knuckle-boom truck drops bundled plywood on the ground beside the building. Covered?",
+    "answer": "No. This is excluded under (c)(17)(i), provided the material is not sequenced for hoisting."
+   },
+   {
+    "t": "check",
+    "question": "The same truck sets roof trusses on the walls. Covered?",
+    "answer": "Yes. Trusses are prefabricated components, so the exclusion does not apply."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "cc159c7fd2887b7c5811",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "f075fba5b5de427d5f97b362e261a33c437b021441db0ebf8deffb8ccea46279",
+   "output_sha256": "76f63f621f58528a48237c6fb4b720af5b76e833a2348f42fc261744b1f462b4",
+   "created_at": "2026-11-27T22:22:09+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.rules.06",
+  "topic_id": "rules",
+  "ord": 6,
+  "title": "Defined terms you must use exactly",
+  "skills": [
+   "rules.definitions"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Section 1926.1401 fixes the meaning of the words used across Subpart CC. When a rule uses a defined term, the definition controls, not everyday usage."
+   },
+   {
+    "t": "text",
+    "text": "Small words matter. Lists in the rules are open, and limits include the stated number."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Include/including means “including, but not limited to.”"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Up to means “up to and including.”"
+   },
+   {
+    "t": "text",
+    "text": "**Load** includes the rigging. The weight you compare to the chart is the object plus the block, ropes, slings and shackles."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Load refers to the object(s) being hoisted and/or the weight of the object(s); both uses refer to the object(s) and the load-attaching equipment, such as, the load block, ropes, slings, shackles, and any other ancillary attachment."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Rated capacity means the maximum working load permitted by the manufacturer under specified working conditions."
+   },
+   {
+    "t": "text",
+    "text": "Worked example (arithmetic): a 9,000 lb load, a 500 lb hook block and 300 lb of slings and shackles add up to 9,800 lb. That total is what the rated capacity must cover."
+   },
+   {
+    "t": "text",
+    "text": "**Competent person** and **qualified person** are different roles. The competent person spots hazards and has authority to fix them. The qualified person has the knowledge to solve problems in the subject."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Competent person means one who is capable of identifying existing and predictable hazards in the surroundings or working conditions which are unsanitary, hazardous, or dangerous to employees, and who has authorization to take prompt corrective measures to eliminate them."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Qualified rigger is a rigger who meets the criteria for a qualified person."
+   },
+   {
+    "t": "text",
+    "text": "Other terms used often:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Hoisting is the act of raising, lowering or otherwise moving a load in the air with equipment covered by this standard."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Mobile crane means a lifting device incorporating a cable suspended latticed boom or hydraulic telescopic boom designed to be moved between operating locations by transport over the road."
+   },
+   {
+    "t": "text",
+    "text": "General industry has its own definitions. In 1910.179, only **designated** personnel may operate overhead and gantry cranes."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(a)(35)",
+    "text": "Designated means selected or assigned by the employer or the employer's representative as being qualified to perform specific duties."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1910.179(b)(8)"
+   },
+   {
+    "t": "check",
+    "question": "The chart allows 10,000 lb. The object weighs 9,600 lb and the block and rigging weigh 600 lb. Is the lift within capacity?",
+    "answer": "No. The load is 10,200 lb because rigging counts as load."
+   },
+   {
+    "t": "check",
+    "question": "A rule allows \"up to\" a stated value. Is that exact value allowed?",
+    "answer": "Yes. \"Up to\" means up to and including."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "cc159c7fd2887b7c5811",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "f075fba5b5de427d5f97b362e261a33c437b021441db0ebf8deffb8ccea46279",
+   "output_sha256": "76f63f621f58528a48237c6fb4b720af5b76e833a2348f42fc261744b1f462b4",
+   "created_at": "2026-11-27T22:22:09+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.rules.07",
+  "topic_id": "rules",
+  "ord": 7,
+  "title": "The controlling entity and the employer's work-rule duty",
+  "skills": [
+   "rules.controlling-entity",
+   "rules.definitions"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "On a multi-employer site, the crane owner, the operator's employer, the rigging contractor and the general contractor are often different companies. Subpart CC assigns some duties to the **controlling entity**, the firm with overall responsibility for the project."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Controlling entity means an employer that is a prime contractor, general contractor, construction manager or any other legal entity which has the overall responsibility for the construction of the project—its planning, quality and completion."
+   },
+   {
+    "t": "text",
+    "text": "The controlling entity is identified by its role, not its title. Whoever holds overall responsibility for planning, quality and completion carries the duties, whether it is called a prime contractor, a GC or a construction manager."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1400(e)",
+    "text": "The duties of controlling entities under this subpart include, but are not limited to, the duties specified in §§ 1926.1402(c), 1926.1402(e) and 1926.1424(b)."
+   },
+   {
+    "t": "text",
+    "text": "Those three paragraphs are the named minimum. \"Include, but are not limited to\" means other sections can also place duties on the controlling entity. Each of those paragraphs is taught in the lesson for its own section."
+   },
+   {
+    "t": "text",
+    "text": "Every employer has a second duty. When a rule tells an operator, crew member or other employee to act, the employer must turn that rule into enforced work rules."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1400(f)",
+    "text": "the employer must establish, effectively communicate to the relevant persons, and enforce, work rules to ensure compliance with such provisions."
+   },
+   {
+    "t": "text",
+    "text": "That is three separate duties: write the rule, communicate it to the people who must follow it, and enforce it. A rule that exists only in a binder meets the first duty and fails the other two."
+   },
+   {
+    "t": "text",
+    "text": "Field practice: at the pre-job meeting, name the controlling entity and its site contact. Confirm which employer supplies the operator, rigger and signal person, and who resolves conflicts between crews."
+   },
+   {
+    "t": "check",
+    "question": "A construction manager runs the project schedule and quality while subcontractors run the cranes. Who is the controlling entity?",
+    "answer": "The construction manager, because it holds overall responsibility for planning, quality and completion."
+   },
+   {
+    "t": "check",
+    "question": "What three things must an employer do with work rules under 1926.1400(f)?",
+    "answer": "Establish them, effectively communicate them to the relevant persons, and enforce them."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "cc159c7fd2887b7c5811",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "f075fba5b5de427d5f97b362e261a33c437b021441db0ebf8deffb8ccea46279",
+   "output_sha256": "76f63f621f58528a48237c6fb4b720af5b76e833a2348f42fc261744b1f462b4",
+   "created_at": "2026-11-27T22:22:09+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.rules.08",
+  "topic_id": "rules",
+  "ord": 8,
+  "title": "Consensus standards (ASME B30) alongside the federal rules",
+  "skills": [
+   "rules.standards",
+   "rules.construction-vs-general"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Federal rules are law. **Consensus standards**, mainly the ASME B30 series (formerly issued under ANSI), are industry documents written by committees. A consensus standard binds you only where a rule incorporates it, but in practice it fills in detail the rules leave out."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(a)(16)",
+    "text": "ANSI means the American National Standards Institute."
+   },
+   {
+    "t": "text",
+    "text": "The general industry crane rule incorporates a specific B30 edition for design."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(b)(2)",
+    "text": "All new overhead and gantry cranes constructed and installed on or after August 31, 1971, shall meet the design specifications of the American National Standard Safety Code for Overhead and Gantry Cranes, ANSI B30.2.0-1967, which is incorporated by reference as specified in § 1910.6."
+   },
+   {
+    "t": "text",
+    "text": "Note the edition year. The rule names a 1967 edition, while the current B30 volumes are later editions. Comply with the edition the rule names, and use the current edition as guidance."
+   },
+   {
+    "t": "text",
+    "text": "Rules also refer to standards to draw distinctions. For example, hoist chain is separated from sling chain:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(a)(43)",
+    "text": "Chain properties do not conform to those shown in ANSI B30.9-1971, Safety Code for Slings."
+   },
+   {
+    "t": "text",
+    "text": "Practice, not federal rule: the B30 volumes most used on crane work are:\n- B30.2 overhead and gantry cranes\n- B30.3 tower cranes\n- B30.5 mobile and locomotive cranes\n- B30.9 slings\n- B30.10 hooks\n- B30.22 articulating boom cranes\n- B30.23 personnel lifting systems\n- B30.26 rigging hardware\nEmployers and project specifications often require them by contract."
+   },
+   {
+    "t": "text",
+    "text": "The manufacturer's information sits beside both. Subpart CC refers repeatedly to manufacturer **equipment criteria**."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Equipment criteria means instructions, recommendations, limitations and specifications."
+   },
+   {
+    "t": "text",
+    "text": "Order of reading on site: first the federal rule, which is the legal minimum. Then the manufacturer's criteria for that machine. Then any consensus standard or project specification that goes further. Where they differ, meet all of them, which in practice means following the strictest."
+   },
+   {
+    "t": "check",
+    "question": "Does a current ASME B30 volume become a legal requirement just because it exists?",
+    "answer": "No. It binds only where a rule incorporates it or a contract requires it; otherwise it is guidance."
+   },
+   {
+    "t": "check",
+    "question": "Which ANSI edition does 1910.179 require for the design of new overhead cranes?",
+    "answer": "ANSI B30.2.0-1967, for cranes constructed and installed on or after August 31, 1971."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "cc159c7fd2887b7c5811",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "f075fba5b5de427d5f97b362e261a33c437b021441db0ebf8deffb8ccea46279",
+   "output_sha256": "76f63f621f58528a48237c6fb4b720af5b76e833a2348f42fc261744b1f462b4",
+   "created_at": "2026-11-27T22:22:09+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.rules.09",
+  "topic_id": "rules",
+  "ord": 9,
+  "title": "Common scope mistakes",
+  "skills": [
+   "rules.scope",
+   "rules.exclusions",
+   "rules.construction-vs-general",
+   "rules.controlling-entity"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Most scope errors come from judging by the machine instead of by the use. Check each of these before a job starts."
+   },
+   {
+    "t": "text",
+    "text": "- **\"It's an overhead crane, so 1910 applies.\"** Overhead and gantry cranes are on the Subpart CC list when used in construction."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1400(a)"
+   },
+   {
+    "t": "text",
+    "text": "- **\"It's just a boom truck delivering.\"** The delivery exclusion is lost when the crane holds material for attachment, or when it handles trusses, panels, precast or structural steel."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1400(c)(17)(iii)"
+   },
+   {
+    "t": "text",
+    "text": "- **\"The overload device is broken, but we only set plywood on the roof.\"** Case 2 of the delivery exclusion requires a properly functioning automatic overload prevention device. Without one, the crane is covered."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1400(c)(17)(ii)"
+   },
+   {
+    "t": "text",
+    "text": "- **\"The forklift has a hook now, but it's still a forklift.\"** A forklift rigged to hoist a suspended load by winch or hook is covered."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1400(c)(8)"
+   },
+   {
+    "t": "text",
+    "text": "- **\"An excavator lifting pipe is a crane.\"** Under Subpart CC it is excluded even with slings. Practice: it is still a lift, and its manufacturer's lifting limits still matter."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1400(c)(2)"
+   },
+   {
+    "t": "text",
+    "text": "- **\"The magnet or bucket makes it a different machine.\"** Attachments do not remove coverage."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1400(b)"
+   },
+   {
+    "t": "text",
+    "text": "- **\"Rigging weight doesn't count.\"** By definition, load includes the load-attaching equipment."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1401"
+   },
+   {
+    "t": "text",
+    "text": "- **\"The GC has no crane duties because it doesn't own the crane.\"** Controlling entity duties come from overall project responsibility, not ownership."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1400(e)"
+   },
+   {
+    "t": "text",
+    "text": "- **\"We told the crew once.\"** Work rules must be established, effectively communicated, and enforced."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1400(f)"
+   },
+   {
+    "t": "check",
+    "question": "A knuckle-boom truck with a working overload device holds a wall panel while carpenters nail it. Excluded?",
+    "answer": "No. Holding material for attachment, and handling a prefabricated panel, each cancel the exclusion."
+   },
+   {
+    "t": "check",
+    "question": "A carry-deck crane sets equipment during a building renovation. Which rule applies?",
+    "answer": "1926 Subpart CC. Carry-deck cranes are listed industrial cranes, and the work is construction."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "cc159c7fd2887b7c5811",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "f075fba5b5de427d5f97b362e261a33c437b021441db0ebf8deffb8ccea46279",
+   "output_sha256": "76f63f621f58528a48237c6fb4b720af5b76e833a2348f42fc261744b1f462b4",
+   "created_at": "2026-11-27T22:22:09+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ }
+]

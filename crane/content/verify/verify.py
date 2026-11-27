@@ -98,6 +98,8 @@ def load_file(f: Path):
 def walk(node, path, out):
     """Collect (path, kind, section_id, quote) checks from any nested structure."""
     if isinstance(node, dict):
+        if isinstance(node.get("prov"), dict) and node["prov"].get("verdict") != "pass":
+            return  # a generated row its writer already failed: kept for the record, never shipped
         sid = node.get("section_id")
         if node.get("t") == "quote":
             out.append((path, "quote", node.get("section_id"), node.get("text")))

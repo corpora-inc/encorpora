@@ -1,0 +1,976 @@
+[
+ {
+  "lesson_id": "l.rigging.01",
+  "topic_id": "rigging",
+  "ord": 1,
+  "title": "Load weight: verify it, then add the rigging",
+  "skills": [
+   "rigging.load-weight",
+   "rigging.hook-blocks"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Every lift starts with a number: the **load weight**. If that number is wrong, the load chart, the sling choice and the ground bearing are all wrong too."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(o)(1)",
+    "text": "The equipment must not be operated in excess of its rated capacity."
+   },
+   {
+    "t": "text",
+    "text": "The rule gives the operator two ways to check that the load is within capacity. The first is a known weight or a recognized calculation."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(o)(3)(i)",
+    "text": "The weight of the load must be determined from a source recognized by the industry (such as the load's manufacturer), or by a calculation method recognized by the industry (such as calculating a steel beam from measured dimensions and a known per foot weight), or by other equally reliable means."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(o)(3)(i)",
+    "text": "In addition, when requested by the operator, this information must be provided to the operator prior to the lift; or"
+   },
+   {
+    "t": "text",
+    "text": "The second way is to start hoisting and read a load weighing device, load moment indicator, rated capacity indicator or rated capacity limiter. If the reading is too high, the lift stops until the weight is verified the first way."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(o)(3)(ii)",
+    "text": "if it exceeds 75 percent of the maximum rated capacity at the longest radius that will be used during the lift operation."
+   },
+   {
+    "t": "text",
+    "text": "Example: the chart allows 8,000 lb at the longest radius you will use. 75 percent of that is 6,000 lb. If the indicator reads over 6,000 lb, set the load down and verify the weight from a recognized source or a calculation."
+   },
+   {
+    "t": "text",
+    "text": "Calculation practice, in round numbers:\n- Steel beam: the per-foot weight times the length. A beam that weighs 50 lb/ft and is 30 ft long weighs 1,500 lb.\n- Steel plate: steel weighs about 490 lb per cubic foot, so 1-inch plate weighs about 40 lb per square foot. A 4 ft x 10 ft x 1 in plate is 40 sq ft x 40 = 1,600 lb.\n- Add the weight of anything attached or inside the load: fixtures, fluids, packing."
+   },
+   {
+    "t": "text",
+    "text": "**Hook blocks and overhaul balls** count too. This is practice that load charts state: chart capacities are usually gross. You subtract the hook block or overhaul ball, the slings, shackles, spreaders, and anything else the chart lists to get the net capacity left for the load."
+   },
+   {
+    "t": "text",
+    "text": "In the diagram, look at how the chart cell (gross) is reduced to net capacity."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "load-chart-reading"
+   },
+   {
+    "t": "text",
+    "text": "Example: chart cell 10,000 lb. Hook block 600 lb, slings and shackles 200 lb. Net capacity = 10,000 − 600 − 200 = 9,200 lb. A 1,600 lb plate fits; a 9,500 lb load does not, even though it is under the chart number."
+   },
+   {
+    "t": "check",
+    "question": "The chart allows 12,000 lb at the longest radius. Above what indicator reading must you stop and verify the weight?",
+    "answer": "9,000 lb (75 percent of 12,000)."
+   },
+   {
+    "t": "check",
+    "question": "Chart cell 6,000 lb, hook block 400 lb, rigging 100 lb. What is the largest load you can pick?",
+    "answer": "5,500 lb net."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "db2fbaecc78bb6ed7595",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "e2302eef5ac18a0806cd2a14ba08876d16d843b1a2b4293b1b48e4f32bff5dc9",
+   "output_sha256": "73e80b465089d38d2a44bca42a76b380b5cac87528ff120034ea00efbeb8b57f",
+   "created_at": "2026-11-27T22:25:26+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.rigging.02",
+  "topic_id": "rigging",
+  "ord": 2,
+  "title": "Center of gravity and choosing the hitch",
+  "skills": [
+   "rigging.center-of-gravity",
+   "rigging.hitches"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "A freely hanging load always swings until its **center of gravity** (CG) is directly under the hook. If you rig with the hook off the CG, the load tilts or swings sideways the moment it clears the ground."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(h)(6)(i)",
+    "text": "The center of gravity of the load must be identified if that is necessary for the method used for maintaining stability."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(h)(6)(ii)",
+    "text": "Where there is insufficient information to accurately identify the center of gravity, measures designed to prevent unintended dangerous movement resulting from an inaccurate identification of the center of gravity must be used."
+   },
+   {
+    "t": "text",
+    "text": "Finding the CG in practice:\n- Use drawings or the manufacturer's marked CG when they exist.\n- For a uniform beam or plate, the CG is at the middle. For a load with heavy equipment at one end, the CG moves toward that end.\n- Make a trial lift a few inches off the ground. If the load tilts, set it down and move the hook or adjust the rigging toward the low side."
+   },
+   {
+    "t": "text",
+    "text": "Physics: when the CG is not centered between two pick points, the closer leg carries more. With a 4,000 lb load and the CG one quarter of the way from leg A, leg A carries 3,000 lb and leg B carries 1,000 lb. Each leg must be rated for its own share."
+   },
+   {
+    "t": "text",
+    "text": "The diagram shows the three basic **hitches**."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "hitches"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(b)",
+    "text": "Vertical hitch is a method of supporting a load by a single, vertical part or leg of the sling."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(b)",
+    "text": "Choker hitch is a sling configuration with one end of the sling passing under the load and through an end attachment, handle or eye on the other end of the sling."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(b)",
+    "text": "Basket hitch is a sling configuration whereby the sling is passed under the load and has both ends, end attachments, eyes or handles on the hook or a single master link."
+   },
+   {
+    "t": "text",
+    "text": "Choosing, as practice:\n- Vertical: one leg to a lifting eye. No grip on the load, so it does nothing to stop rotation.\n- Choker: grips bundles and round stock. The sharp bend at the choke point lowers capacity, so the choker rating on the tag is lower than the vertical rating.\n- Basket: two legs share the load, so with vertical legs it carries more than a vertical hitch. It does not grip; the load must be balanced."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(c)(5)",
+    "text": "Slings used in a basket hitch shall have the loads balanced to prevent slippage."
+   },
+   {
+    "t": "check",
+    "question": "Your trial lift tilts down at the left end. Which way do you move the hook?",
+    "answer": "Toward the left (low) end, over the true CG."
+   },
+   {
+    "t": "check",
+    "question": "Which hitch grips a bundle of pipe so it cannot slide out?",
+    "answer": "A choker hitch (or a double-wrapped choker)."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "db2fbaecc78bb6ed7595",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "e2302eef5ac18a0806cd2a14ba08876d16d843b1a2b4293b1b48e4f32bff5dc9",
+   "output_sha256": "73e80b465089d38d2a44bca42a76b380b5cac87528ff120034ea00efbeb8b57f",
+   "created_at": "2026-11-27T22:25:26+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.rigging.03",
+  "topic_id": "rigging",
+  "ord": 3,
+  "title": "Sling angle: leg tension and multi-leg bridles",
+  "skills": [
+   "rigging.sling-angle",
+   "rigging.multi-leg"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "When sling legs lean out from vertical, each leg must pull sideways as well as up. The **sling angle** (measured from horizontal) sets how much extra tension the leg carries. Lower angle means more tension, even though the load weight is the same."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(b)",
+    "text": "Angle of loading is the inclination of a leg or branch of a sling measured from the horizontal or vertical plane as shown in Fig. N-184-5; provided that an angle of loading of five degrees or less from the vertical may be considered a vertical angle of loading."
+   },
+   {
+    "t": "text",
+    "text": "In the diagram, look at how the leg tension grows as the angle drops from 90 to 30 degrees."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "sling-angle-tension"
+   },
+   {
+    "t": "text",
+    "text": "Physics: leg tension = (load ÷ number of legs carrying) x **load angle factor**. The factor is 1 ÷ sine of the angle from horizontal:\n- 90 degrees: 1.000\n- 60 degrees: 1.155\n- 45 degrees: 1.414\n- 30 degrees: 2.000"
+   },
+   {
+    "t": "text",
+    "text": "Example: a 2,000 lb load on a two-leg bridle. Each leg's vertical share is 1,000 lb.\n- At 60 degrees: 1,000 x 1.155 = 1,155 lb per leg.\n- At 45 degrees: 1,000 x 1.414 = 1,414 lb per leg.\n- At 30 degrees: 1,000 x 2.000 = 2,000 lb per leg. Each leg now carries the full load weight.\nBelow 30 degrees the tension climbs fast; in practice, avoid it."
+   },
+   {
+    "t": "text",
+    "text": "Field method: measure the leg length (L) along the sling and the height (H) from the load to the hook. Factor = L ÷ H. A 10 ft leg with 7 ft of height gives 10 ÷ 7 = about 1.43, about 45 degrees. The sideways pull also squeezes the load inward; flimsy loads can buckle."
+   },
+   {
+    "t": "text",
+    "text": "Sling tags show ratings for a stated angle and number of legs. Do not use a rating for a different angle than the one you have."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(f)(1)",
+    "text": "Employers must use only wire-rope slings that have permanently affixed and legible identification markings as prescribed by the manufacturer, and that indicate the recommended safe working load for the type(s) of hitch(es) used, the angle upon which it is based, and the number of legs if more than one."
+   },
+   {
+    "t": "text",
+    "text": "**Multi-leg bridles**: on a rigid load, legs are never exactly the same length and the load cannot flex. So in practice two legs of a three- or four-leg bridle end up carrying almost all the weight while the others go slack. Common practice is to size each leg as if only two legs carry the load."
+   },
+   {
+    "t": "text",
+    "text": "Example: 4,000 lb load, four-leg bridle at 60 degrees. Assume two legs carry it: 2,000 x 1.155 = 2,310 lb per leg. Each leg must be rated for at least 2,310 lb."
+   },
+   {
+    "t": "check",
+    "question": "A 3,000 lb load on two legs at 30 degrees. What is the tension in each leg?",
+    "answer": "3,000 lb (1,500 x 2.000)."
+   },
+   {
+    "t": "check",
+    "question": "Why size a four-leg bridle on a rigid load as if it had two legs?",
+    "answer": "Unequal leg lengths leave two legs carrying nearly all the load."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "db2fbaecc78bb6ed7595",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "e2302eef5ac18a0806cd2a14ba08876d16d843b1a2b4293b1b48e4f32bff5dc9",
+   "output_sha256": "73e80b465089d38d2a44bca42a76b380b5cac87528ff120034ea00efbeb8b57f",
+   "created_at": "2026-11-27T22:25:26+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.rigging.04",
+  "topic_id": "rigging",
+  "ord": 4,
+  "title": "D/d and softeners: bends and edges cut capacity",
+  "skills": [
+   "rigging.d-over-d",
+   "rigging.softeners"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "A sling is strongest when it runs straight. Bend it around a pin, a hook or a load edge and the outside wires or fibers stretch more than the inside ones, so the sling fails sooner. **D/d** measures how sharp the bend is: D is the diameter of the object the sling bends around, d is the sling or rope diameter."
+   },
+   {
+    "t": "text",
+    "text": "In the diagram, compare the bend diameter D with the rope diameter d."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "d-over-d"
+   },
+   {
+    "t": "text",
+    "text": "This is practice: the rules do not set D/d values. Typical published efficiencies for wire rope bent around a pin, in round numbers:\n- D/d of 1: about 50 percent of straight strength\n- D/d of 2: about 65 percent\n- D/d of 4: about 75 percent\nEfficiency keeps rising toward full strength as D/d grows. Use the sling manufacturer's table when it gives one."
+   },
+   {
+    "t": "text",
+    "text": "Example: a 1-inch wire rope leg passes around a 2-inch shackle pin. D/d = 2 ÷ 1 = 2, so about 65 percent. If that leg must carry 2,000 lb, treat a leg rated 2,000 lb straight as only about 1,300 lb. Choose a bigger sling, or put the eye over a larger bearing surface so D goes up."
+   },
+   {
+    "t": "text",
+    "text": "A sharp **load edge** is the worst case: D is close to zero. It can cut a synthetic sling in one lift and crush wire rope strands."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(c)(7)",
+    "text": "Slings shall be padded or protected from the sharp edges of their loads."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(r)(2)",
+    "text": "Synthetic slings are protected from: Abrasive, sharp or acute edges, and configurations that could cause a reduction of the sling's rated capacity, such as distortion or localized compression."
+   },
+   {
+    "t": "text",
+    "text": "Using **softeners** in practice:\n- Use purpose-made corner protectors, split pipe, or wear pads that are rated for the edge.\n- The softener must stay in place as the sling tightens. Fix it before the slack comes out, not after.\n- A softener increases the effective bend diameter and spreads the pressure. Wood blocking can do this, but it can split; check it.\n- Keep hands out while slings tighten."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(c)(10)",
+    "text": "Hands or fingers shall not be placed between the sling and its load while the sling is being tightened around the load."
+   },
+   {
+    "t": "check",
+    "question": "A 1/2-inch rope bends around a 2-inch pin. What is D/d, and about what efficiency is typical?",
+    "answer": "D/d = 4; about 75 percent."
+   },
+   {
+    "t": "check",
+    "question": "What must protect a synthetic sling at the edge of a steel beam?",
+    "answer": "Padding or a protector that keeps the sling off the sharp edge."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "db2fbaecc78bb6ed7595",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "e2302eef5ac18a0806cd2a14ba08876d16d843b1a2b4293b1b48e4f32bff5dc9",
+   "output_sha256": "73e80b465089d38d2a44bca42a76b380b5cac87528ff120034ea00efbeb8b57f",
+   "created_at": "2026-11-27T22:25:26+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.rigging.05",
+  "topic_id": "rigging",
+  "ord": 5,
+  "title": "Hooks, shackles and attachments",
+  "skills": [
+   "rigging.hardware",
+   "rigging.hook-blocks"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "A rigging assembly is only as strong as its weakest part. **Hardware** (hooks, shackles, master links, coupling links) must be rated at least as high as the sling, or the whole sling is limited to the weakest piece."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(e)(2)(i)",
+    "text": "Hooks, rings, oblong links, pear shaped links, welded or mechanical coupling links or other attachments shall have a rated capacity at least equal to that of the alloy steel chain with which they are used or the sling shall not be used in excess of the rated capacity of the weakest component."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(e)(2)(ii)",
+    "text": "Makeshift links or fasteners formed from bolts or rods, or other such attachments, shall not be used."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(c)(2)",
+    "text": "Slings shall not be shortened with knots or bolts or other makeshift devices."
+   },
+   {
+    "t": "text",
+    "text": "**Shackles**, as practice (the given rules do not detail them):\n- Use only rated shackles with the capacity marked. Never swap in a bolt for the pin.\n- Thread a screw pin fully home, then back it off no more than needed to avoid binding. Use a bolt-type shackle with nut and cotter where the pin could turn loose.\n- Load the shackle in line with its body. Side loading lowers capacity.\n- Put two sling legs in the bow, not on the pin, and keep the angle between them small.\n- The bow gives a larger bend diameter than the pin, which helps D/d."
+   },
+   {
+    "t": "text",
+    "text": "**Hooks** stretch open before they break. Measure the throat opening and look for twist."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(e)(9)(ii)",
+    "text": "Slings shall be removed from service if hooks are cracked, have been opened more than 15 percent of the normal throat opening measured at the narrowest point or twisted more than 10 degrees from the plane of the unbent hook."
+   },
+   {
+    "t": "text",
+    "text": "Example: a hook with a 2-inch normal throat opening must come out of service if it measures more than 2.3 inches."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1425(c)(2)",
+    "text": "Hooks with self-closing latches or their equivalent must be used. Exception: “J” hooks are permitted to be used for setting wooden trusses."
+   },
+   {
+    "t": "text",
+    "text": "That latch requirement applies when workers are in the fall zone hooking, unhooking or guiding the load. The crane's **hook block** or **overhaul ball** is part of the load on the boom: its weight is deducted from chart capacity, as in the load-weight lesson. Seat slings in the bowl of the hook, never on the tip."
+   },
+   {
+    "t": "check",
+    "question": "A sling with a 5-ton master link carries a 3-ton shackle. What is the most the assembly may lift?",
+    "answer": "3 tons, the weakest component."
+   },
+   {
+    "t": "check",
+    "question": "A hook's normal throat is 4 inches. Above what opening is it removed?",
+    "answer": "4.6 inches (15 percent over)."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "db2fbaecc78bb6ed7595",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "e2302eef5ac18a0806cd2a14ba08876d16d843b1a2b4293b1b48e4f32bff5dc9",
+   "output_sha256": "73e80b465089d38d2a44bca42a76b380b5cac87528ff120034ea00efbeb8b57f",
+   "created_at": "2026-11-27T22:25:26+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.rigging.06",
+  "topic_id": "rigging",
+  "ord": 6,
+  "title": "Sling safe operating practices",
+  "skills": [
+   "rigging.safe-practices"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Fourteen practices apply every time any sling is used. They cover the condition of the sling, how it is loaded, and where people stand."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(c)",
+    "text": "Safe operating practices. Whenever any sling is used, the following practices shall be observed:"
+   },
+   {
+    "t": "text",
+    "text": "**Condition and markings**:\n- Damaged or defective slings are not used.\n- Slings without affixed, legible identification are not used.\n- Sling legs are not kinked, and slings are not shortened with knots, bolts or makeshift devices."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1910.184(c)(1)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(c)(14)",
+    "text": "Employers must not use slings without affixed and legible identification markings."
+   },
+   {
+    "t": "text",
+    "text": "**Loading**: stay within the rated capacity on the tag for the hitch and angle you are using. Balance basket loads and attach slings securely."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(c)(13)",
+    "text": "Employers must not load a sling in excess of its recommended safe working load as prescribed by the sling manufacturer on the identification markings permanently affixed to the sling."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(c)(11)",
+    "text": "Shock loading is prohibited."
+   },
+   {
+    "t": "text",
+    "text": "Physics of **shock loading**: a load that drops even a short distance into slack rigging, or is jerked off the ground, can briefly put several times its weight into the sling. Take slack out slowly and lift smoothly."
+   },
+   {
+    "t": "text",
+    "text": "**People and the load**:\n- Keep everyone clear of loads about to be lifted and of suspended loads.\n- Keep suspended loads clear of all obstructions.\n- No hands or fingers between sling and load while it tightens.\n- Pad or protect slings from sharp edges."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(c)(9)",
+    "text": "All employees shall be kept clear of loads about to be lifted and of suspended loads."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(c)(12)",
+    "text": "A sling shall not be pulled from under a load when the load is resting on the sling."
+   },
+   {
+    "t": "text",
+    "text": "In practice, land loads on blocking or dunnage so the sling can be removed by hand without dragging it out from under the weight. Pulling it out with the crane damages the sling and can tip the load."
+   },
+   {
+    "t": "check",
+    "question": "The tag is missing but the sling looks new. Can you use it?",
+    "answer": "No. Slings without affixed, legible markings must not be used."
+   },
+   {
+    "t": "check",
+    "question": "How do you get a sling out from under a landed load?",
+    "answer": "Land on blocking so it comes free by hand; never pull it from under the resting load."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "db2fbaecc78bb6ed7595",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "e2302eef5ac18a0806cd2a14ba08876d16d843b1a2b4293b1b48e4f32bff5dc9",
+   "output_sha256": "73e80b465089d38d2a44bca42a76b380b5cac87528ff120034ea00efbeb8b57f",
+   "created_at": "2026-11-27T22:25:26+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.rigging.07",
+  "topic_id": "rigging",
+  "ord": 7,
+  "title": "Fall zone, tag lines and the qualified rigger",
+  "skills": [
+   "rigging.tag-lines",
+   "rigging.qualified-rigger",
+   "rigging.safe-practices"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Riggers often have to be near the load. The crane rules limit who may be in the **fall zone** and set conditions for those who are."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1425(a)",
+    "text": "Where available, hoisting routes that minimize the exposure of employees to hoisted loads must be used, to the extent consistent with public safety."
+   },
+   {
+    "t": "text",
+    "text": "While the load is not moving, only these workers may be in the fall zone: those hooking, unhooking or guiding the load; those making the initial attachment to a component or structure; and those operating a concrete hopper or bucket."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1425(b)"
+   },
+   {
+    "t": "text",
+    "text": "When workers are in the fall zone hooking, unhooking, guiding, or making the initial connection, all three conditions apply:\n- The load is rigged to prevent unintentional displacement.\n- Hooks have self-closing latches or the equivalent.\n- A **qualified rigger** did the rigging."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1425(c)(3)",
+    "text": "The materials must be rigged by a qualified rigger."
+   },
+   {
+    "t": "text",
+    "text": "A qualified rigger is also required for rigging used in crane assembly and disassembly."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(r)(1)",
+    "text": "The rigging work is done by a qualified rigger."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1425(d)",
+    "text": "Receiving a load. Only employees needed to receive a load are permitted to be within the fall zone when a load is being landed."
+   },
+   {
+    "t": "text",
+    "text": "**Tag lines** control rotation and swing from a distance, so the rigger does not have to hold the load by hand."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(w)",
+    "text": "A tag or restraint line must be used if necessary to prevent rotation of the load that would be hazardous."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1408(b)(2)",
+    "text": "If tag lines are used, they must be non-conductive."
+   },
+   {
+    "t": "text",
+    "text": "Tag line practice:\n- Attach before the lift, at a point that gives leverage against rotation, such as the end of a long member.\n- Stand clear of the load path and never under the load. Keep your footing clear of trip hazards.\n- Never wrap the line around your hand or body. If the load gets away, let go.\n- Use the line to steady the load, not to drag it. Large forces mean the crane must move instead."
+   },
+   {
+    "t": "check",
+    "question": "A worker is guiding a load in the fall zone. Name the three required conditions.",
+    "answer": "Rigged against unintentional displacement, self-closing latch hooks, rigged by a qualified rigger."
+   },
+   {
+    "t": "check",
+    "question": "What property must a tag line have?",
+    "answer": "It must be non-conductive."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "db2fbaecc78bb6ed7595",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "e2302eef5ac18a0806cd2a14ba08876d16d843b1a2b4293b1b48e4f32bff5dc9",
+   "output_sha256": "73e80b465089d38d2a44bca42a76b380b5cac87528ff120034ea00efbeb8b57f",
+   "created_at": "2026-11-27T22:25:26+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.rigging.08",
+  "topic_id": "rigging",
+  "ord": 8,
+  "title": "Daily sling inspection and alloy chain slings",
+  "skills": [
+   "rigging.sling-inspection",
+   "rigging.chain-slings"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Every sling, of every type, is checked **each day before use**. Any sling that fails comes out of service right away."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(d)",
+    "text": "Each day before being used, the sling and all fastenings and attachments shall be inspected for damage or defects by a competent person designated by the employer."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(d)",
+    "text": "Additional inspections shall be performed during sling use, where service conditions warrant."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(d)",
+    "text": "Damaged or defective slings shall be immediately removed from service."
+   },
+   {
+    "t": "text",
+    "text": "Daily routine, as practice: confirm the tag is present and legible; run the full length by eye and hand; check eyes, fittings, hooks and links; tag a failed sling out of service and keep it out of the rigging box so it is not reused."
+   },
+   {
+    "t": "text",
+    "text": "**Alloy steel chain slings** must carry durable identification."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(e)(1)",
+    "text": "Sling identification. Alloy steel chain slings shall have permanently affixed durable identification stating size, grade, rated capacity, and reach."
+   },
+   {
+    "t": "text",
+    "text": "Beyond the daily check, chain slings need a thorough periodic inspection by a competent person. It looks for wear, defective welds, deformation and increase in length. The interval depends on use, but has a maximum."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(e)(3)(i)",
+    "text": "Such inspections shall in no event be at intervals greater than once every 12 months."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1910.184(e)(3)(ii)"
+   },
+   {
+    "t": "text",
+    "text": "The employer keeps a record of the most recent month each chain sling was thoroughly inspected."
+   },
+   {
+    "t": "text",
+    "text": "**Wear limits** come from Table N-184-1. Measure the thinnest point of a link. Examples from the table: 3/8-inch chain is removed below 19/64 inch; 1/2-inch below 25/64 inch; 3/4-inch below 19/32 inch."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1910.184(e)(8)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(e)(9)(i)",
+    "text": "Alloy steel chain slings with cracked or deformed master links, coupling links or other components shall be removed from service."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(e)(6)",
+    "text": "Employers must permanently remove an alloy steel-chain slings from service if it is heated above 1000 degrees F."
+   },
+   {
+    "t": "text",
+    "text": "Above 600 degrees F, the working load limit is reduced per the chain or sling manufacturer. New, repaired or reconditioned chain slings are proof tested by the manufacturer or an equivalent entity before use, and the certificate is kept."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1910.184(e)(4)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(e)(7)(ii)",
+    "text": "Mechanical coupling links or low carbon steel repair links shall not be used to repair broken lengths of chain."
+   },
+   {
+    "t": "check",
+    "question": "What is the longest allowed interval between thorough inspections of a chain sling?",
+    "answer": "12 months."
+   },
+   {
+    "t": "check",
+    "question": "A 1/2-inch chain link measures 3/8 inch (24/64) at its thinnest point. Keep it?",
+    "answer": "No. It is below 25/64 inch; remove it."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "db2fbaecc78bb6ed7595",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "e2302eef5ac18a0806cd2a14ba08876d16d843b1a2b4293b1b48e4f32bff5dc9",
+   "output_sha256": "73e80b465089d38d2a44bca42a76b380b5cac87528ff120034ea00efbeb8b57f",
+   "created_at": "2026-11-27T22:25:26+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.rigging.09",
+  "topic_id": "rigging",
+  "ord": 9,
+  "title": "Wire rope slings: markings, length, heat and removal",
+  "skills": [
+   "rigging.wire-rope-slings",
+   "rigging.sling-inspection"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Wire rope slings must be marked with the safe working load for each hitch, the angle it is based on, and the number of legs. A sling without a legible tag is not used."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1910.184(f)(1)"
+   },
+   {
+    "t": "text",
+    "text": "**Minimum clear length** keeps the rope between fittings long enough to share the load evenly and bend without damage."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(f)(2)(i)",
+    "text": "Cable laid and 6 × 19 and 6 × 37 slings shall have a minimum clear length of wire rope 10 times the component rope diameter between splices, sleeves or end fittings."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(f)(2)(ii)",
+    "text": "Braided slings shall have a minimum clear length of wire rope 40 times the component rope diameter between the loops or end fittings."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(f)(2)(iii)",
+    "text": "Cable laid grommets, strand laid grommets and endless slings shall have a minimum circumferential length of 96 times their body diameter."
+   },
+   {
+    "t": "text",
+    "text": "Example: a 1/2-inch 6 × 19 sling needs at least 5 inches of clear rope between sleeves (10 x 1/2). A 1-inch grommet needs at least 96 inches (8 ft) around."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(f)(3)",
+    "text": "Fiber core wire rope slings of all grades shall be permanently removed from service if they are exposed to temperatures in excess of 200 °F."
+   },
+   {
+    "t": "text",
+    "text": "For non-fiber-core slings above 400 degrees F or below minus 60 degrees F, follow the sling manufacturer's recommendations. Welded end attachments are proof tested at twice their rated capacity before first use."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1910.184(f)(4)(ii)"
+   },
+   {
+    "t": "text",
+    "text": "**Removal criteria**: remove the sling immediately if you find any of these."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(f)(5)(i)",
+    "text": "Ten randomly distributed broken wires in one rope lay, or five broken wires in one strand in one rope lay."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(f)(5)(ii)",
+    "text": "Wear or scraping of one-third the original diameter of outside individual wires."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(f)(5)(iii)",
+    "text": "Kinking, crushing, bird caging or any other damage resulting in distortion of the wire rope structure."
+   },
+   {
+    "t": "text",
+    "text": "Also remove for: evidence of heat damage; cracked, deformed or worn end attachments; hooks opened more than 15 percent or twisted more than 10 degrees; corrosion of the rope or end attachments."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1910.184(f)(5)"
+   },
+   {
+    "t": "text",
+    "text": "Counting practice: one rope lay is the length along the rope in which one strand makes a full turn around it. Count the broken wires inside that length. Bend the sling slightly to reveal breaks hidden in the valleys between strands."
+   },
+   {
+    "t": "check",
+    "question": "You count 6 broken wires, all in one strand, within one lay. Remove?",
+    "answer": "Yes. Five in one strand in one lay is the limit."
+   },
+   {
+    "t": "check",
+    "question": "A fiber core wire rope sling lay on a 250 °F surface. What now?",
+    "answer": "Remove it from service permanently (over 200 °F)."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "db2fbaecc78bb6ed7595",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "e2302eef5ac18a0806cd2a14ba08876d16d843b1a2b4293b1b48e4f32bff5dc9",
+   "output_sha256": "73e80b465089d38d2a44bca42a76b380b5cac87528ff120034ea00efbeb8b57f",
+   "created_at": "2026-11-27T22:25:26+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.rigging.10",
+  "topic_id": "rigging",
+  "ord": 10,
+  "title": "Synthetic web and fiber rope slings",
+  "skills": [
+   "rigging.synthetic-slings",
+   "rigging.sling-inspection",
+   "rigging.softeners"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Synthetic slings are light and protect finished surfaces, but heat, chemicals and edges damage them quickly. Follow the manufacturer's limits, especially when they are used for crane assembly or disassembly."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(r)(3)",
+    "text": "When synthetic slings are used, the synthetic sling manufacturer's instructions, limitations, specifications and recommendations must be followed."
+   },
+   {
+    "t": "text",
+    "text": "**Synthetic web slings** must be marked with rated capacities for each hitch and the web material. Fittings must be as strong as the sling and free of sharp edges. Eyes and fittings are attached only by stitching."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1910.184(i)(1)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(i)(6)(i)",
+    "text": "Nylon web slings shall not be used where fumes, vapors, sprays, mists or liquids of acids or phenolics are present."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(i)(6)(ii)",
+    "text": "Polyester and polypropylene web slings shall not be used where fumes, vapors, sprays, mists or liquids of caustics are present."
+   },
+   {
+    "t": "text",
+    "text": "Web slings with aluminum fittings are also kept away from caustics."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(i)(7)",
+    "text": "Synthetic web slings of polyester and nylon shall not be used at temperatures in excess of 180 °F."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(i)(7)",
+    "text": "Polypropylene web slings shall not be used at temperatures in excess of 200 °F."
+   },
+   {
+    "t": "text",
+    "text": "Remove a web sling immediately for: acid or caustic burns; melting or charring; snags, punctures, tears or cuts; broken or worn stitches; distortion of fittings. Repairs are made only by a sling manufacturer or equivalent entity and proof tested to twice the rated capacity; temporary repairs are not allowed."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1910.184(i)(9)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1910.184(i)(8)(ii)"
+   },
+   {
+    "t": "text",
+    "text": "**Fiber rope slings** must be marked with rated capacity for each hitch and angle, fiber type, and number of legs."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(h)(2)",
+    "text": "Natural and synthetic fiber rope slings, except for wet frozen slings, may be used in a temperature range from minus 20 °F to plus 180 °F without decreasing the working load limit."
+   },
+   {
+    "t": "text",
+    "text": "Splice rules: synthetic eye splices need at least four full tucks, manila at least three. Clear length between eye splices is at least 10 rope diameters. The eye's included angle at the splice is not greater than 60 degrees."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1910.184(h)(3)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(h)(3)(v)",
+    "text": "Knots shall not be used in lieu of splices."
+   },
+   {
+    "t": "text",
+    "text": "Remove a fiber rope sling immediately for: abnormal wear; powdered fiber between strands; broken or cut fibers; variations in size or roundness of strands; discoloration or rotting; distortion of hardware."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1910.184(h)(5)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.184(h)(6)",
+    "text": "Use of repaired or reconditioned fiber rope slings is prohibited."
+   },
+   {
+    "t": "check",
+    "question": "Which web material must be kept away from acids?",
+    "answer": "Nylon."
+   },
+   {
+    "t": "check",
+    "question": "A fiber rope sling shows powder between the strands. What do you do?",
+    "answer": "Remove it from service immediately."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "db2fbaecc78bb6ed7595",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "e2302eef5ac18a0806cd2a14ba08876d16d843b1a2b4293b1b48e4f32bff5dc9",
+   "output_sha256": "73e80b465089d38d2a44bca42a76b380b5cac87528ff120034ea00efbeb8b57f",
+   "created_at": "2026-11-27T22:25:26+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ }
+]

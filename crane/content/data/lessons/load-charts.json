@@ -1,0 +1,569 @@
+[
+ {
+  "lesson_id": "l.load-charts.01",
+  "topic_id": "load-charts",
+  "ord": 1,
+  "title": "Load chart terms: radius, boom length, rated capacity, load",
+  "skills": [
+   "loadchart.terminology",
+   "loadchart.chart-in-cab"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "A **load chart** is the manufacturer's table of rated capacities. Each capacity applies to one set of conditions: boom length, radius, configuration (outriggers, on rubber, crawler), counterweight, and the area of operation. Change any one of those and the number changes."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Rated capacity means the maximum working load permitted by the manufacturer under specified working conditions."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(o)(1)",
+    "text": "The equipment must not be operated in excess of its rated capacity."
+   },
+   {
+    "t": "text",
+    "text": "**Radius** is the horizontal distance from the center of rotation to the center of the hoist line with the load on it. It is not the boom length and not the distance from the outrigger or the cab. The rules state this definition in the stipulations for locomotive cranes, and charts for other cranes measure radius the same way."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(c)(1)(ii)(c)",
+    "text": "Radius of the load is the horizontal distance from a projection of the axis of rotation to the rail support surface, before loading, to the center of vertical hoist line or tackle with load applied."
+   },
+   {
+    "t": "text",
+    "text": "The diagram shows one boom at two angles. Notice that lowering the boom angle makes the radius longer, and capacity drops as radius grows."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "radius-vs-boom-angle"
+   },
+   {
+    "t": "text",
+    "text": "Physics: a loaded boom deflects and the machine leans slightly, so the loaded radius is longer than the unloaded radius. Measure or read radius with the load hanging free."
+   },
+   {
+    "t": "text",
+    "text": "- **Boom length**: the length of the main boom as shown on the boom length indicator or the boom markings.\n- **Boom angle**: the angle of the boom above horizontal, read on the boom angle indicator.\n- **Load**: everything below the boom tip, not just the object."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Load refers to the object(s) being hoisted and/or the weight of the object(s); both uses refer to the object(s) and the load-attaching equipment, such as, the load block, ropes, slings, shackles, and any other ancillary attachment."
+   },
+   {
+    "t": "text",
+    "text": "The chart has to be in the cab at all times. If the chart is only electronic and the display fails, stop."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(c)(1)",
+    "text": "The procedures applicable to the operation of the equipment, including rated capacities (load charts), recommended operating speeds, special hazard warnings, instructions, and operator's manual, must be readily available in the cab at all times for use by the operator."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(c)(2)",
+    "text": "In the event of a failure which makes the rated capacities inaccessible, the operator must immediately cease operations or follow safe shut-down procedures until the rated capacities (in electronic or other form) are available."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(c)(2)",
+    "text": "A substantial and durable rating chart with clearly legible letters and figures shall be provided with each crane and securely fixed to the crane cab in a location easily visible to the operator while seated at his control station."
+   },
+   {
+    "t": "check",
+    "question": "Where is radius measured from and to?",
+    "answer": "From the center of rotation to the center of the loaded hoist line, measured horizontally."
+   },
+   {
+    "t": "check",
+    "question": "The electronic chart screen goes blank mid-shift. What do you do?",
+    "answer": "Stop immediately, or follow safe shut-down procedures, until the rated capacities are available again."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "5bdda4fdccf3926873d2",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "f6f21c03ec841dd075d26215cda99af39052d3e2f55c596700aa9c61f4001aba",
+   "output_sha256": "7384efedd746208d5ffe0d124442042f6aee0f66b3e867734364a4ea70ece21f",
+   "created_at": "2026-11-27T22:24:32+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.load-charts.02",
+  "topic_id": "load-charts",
+  "ord": 2,
+  "title": "Reading gross capacity: rows, columns and the next longer radius",
+  "skills": [
+   "loadchart.read-gross",
+   "loadchart.radius-between-rows",
+   "loadchart.boom-between-columns"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "On most charts, radius runs down the left side in rows and boom length runs across the top in columns. The cell where your row and column meet is the **gross capacity**: the most the crane may hold at that radius and boom length, before any deductions."
+   },
+   {
+    "t": "text",
+    "text": "The diagram shows how to read a cell, how to step to the next longer radius, and how gross becomes net."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "load-chart-reading"
+   },
+   {
+    "t": "text",
+    "text": "Practice example (made-up chart, outriggers fully extended, 360 degrees):\n- 30 ft radius: 60 ft boom 20,000 lb; 70 ft boom 18,000 lb\n- 35 ft radius: 60 ft boom 16,000 lb; 70 ft boom 15,000 lb\n- 40 ft radius: 60 ft boom 13,000 lb; 70 ft boom 12,000 lb"
+   },
+   {
+    "t": "text",
+    "text": "**Radius between rows**: never estimate a value between two rows. Use the next longer radius. At 32 ft with a 60 ft boom, read the 35 ft row: 16,000 lb, not 20,000 lb and not a value in between. Plan for the longest radius the load will reach during the whole lift, including the set point."
+   },
+   {
+    "t": "text",
+    "text": "**Boom length between columns**: with 65 ft of boom at 35 ft radius, the two columns give 16,000 and 15,000 lb. Unless the chart notes say otherwise, use the lower value, 15,000 lb. This is common practice. Some charts let you interpolate and some tell you to use the next longer boom column, so read the notes. If you're unsure, use the lower number."
+   },
+   {
+    "t": "text",
+    "text": "**Blank cells** mean no rating. Do not lift there, even if the cells around it have numbers. Your load also has to stay within rated capacity at every point of the lift, so check every radius the load will pass through."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(o)(1)",
+    "text": "The equipment must not be operated in excess of its rated capacity."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(o)(2)",
+    "text": "The operator must not be required to operate the equipment in a manner that would violate paragraph (o)(1) of this section."
+   },
+   {
+    "t": "check",
+    "question": "Using the example chart, what is the gross capacity at 37 ft radius with a 60 ft boom?",
+    "answer": "13,000 lb, from the next longer radius row (40 ft)."
+   },
+   {
+    "t": "check",
+    "question": "Boom is 65 ft, radius 30 ft, and the notes allow no interpolation. What value do you use?",
+    "answer": "The lower of the two columns: 18,000 lb."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "5bdda4fdccf3926873d2",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "f6f21c03ec841dd075d26215cda99af39052d3e2f55c596700aa9c61f4001aba",
+   "output_sha256": "7384efedd746208d5ffe0d124442042f6aee0f66b3e867734364a4ea70ece21f",
+   "created_at": "2026-11-27T22:24:32+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.load-charts.03",
+  "topic_id": "load-charts",
+  "ord": 3,
+  "title": "Gross to net: deductions, load weight and percent of capacity",
+  "skills": [
+   "loadchart.net-capacity",
+   "loadchart.deductions",
+   "loadchart.load-weight",
+   "loadchart.percent-capacity"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Gross capacity covers everything hanging from the boom tip. **Net capacity** is gross capacity minus the weight of every load-handling device. Net is the most the object itself may weigh."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(c)(1)(ii)(e)",
+    "text": "The weight of all auxiliary handling devices such as hoist blocks, hooks, and slings shall be considered a part of the load rating."
+   },
+   {
+    "t": "text",
+    "text": "Typical **deductions**, as listed in the chart notes:\n- the hook block or overhaul ball in use\n- slings, shackles, spreader or lifting beams, and below-the-hook devices\n- a stowed or erected jib or extension, if the notes call for it\n- an auxiliary boom head, or a second block left reeved\n- hoist rope weight, where the chart requires it"
+   },
+   {
+    "t": "text",
+    "text": "Worked example (practice): gross 20,000 lb. Hook block 800 lb, rigging 200 lb, stowed jib deduction 1,000 lb. Net = 20,000 − 800 − 200 − 1,000 = 18,000 lb. A 13,000 lb object fits."
+   },
+   {
+    "t": "text",
+    "text": "**Load weight** must come from a reliable source. Common calculations (practice): a steel beam 40 ft long at 50 lb/ft weighs 2,000 lb. A concrete block 10 ft × 4 ft × 2 ft is 80 ft³. At a typical 150 lb/ft³, that is 12,000 lb. Always use the unit weight for the actual material."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(o)(3)(i)",
+    "text": "The weight of the load must be determined from a source recognized by the industry (such as the load's manufacturer), or by a calculation method recognized by the industry (such as calculating a steel beam from measured dimensions and a known per foot weight), or by other equally reliable means."
+   },
+   {
+    "t": "text",
+    "text": "The other way to verify the weight is to start hoisting while you read an indicator. If the reading is over 75 percent, stop and verify the weight by the method above."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(o)(3)(ii)",
+    "text": "The operator must begin hoisting the load to determine, using a load weighing device, load moment indicator, rated capacity indicator, or rated capacity limiter, if it exceeds 75 percent of the maximum rated capacity at the longest radius that will be used during the lift operation."
+   },
+   {
+    "t": "text",
+    "text": "**Percent of capacity** = total load ÷ gross capacity × 100. In the example, total load is 13,000 + 800 + 200 + 1,000 = 15,000 lb, and 15,000 ÷ 20,000 = 75 percent. Use the gross capacity at the longest radius of the lift."
+   },
+   {
+    "t": "check",
+    "question": "Gross 10,000 lb, block 500 lb, slings and shackles 500 lb. What is the net capacity?",
+    "answer": "9,000 lb."
+   },
+   {
+    "t": "check",
+    "question": "A steel beam is 30 ft long at 40 lb/ft. What does it weigh?",
+    "answer": "1,200 lb."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "5bdda4fdccf3926873d2",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "f6f21c03ec841dd075d26215cda99af39052d3e2f55c596700aa9c61f4001aba",
+   "output_sha256": "7384efedd746208d5ffe0d124442042f6aee0f66b3e867734364a4ea70ece21f",
+   "created_at": "2026-11-27T22:24:32+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.load-charts.04",
+  "topic_id": "load-charts",
+  "ord": 4,
+  "title": "Choosing the chart: outriggers, on rubber, crawler, counterweight, quadrants",
+  "skills": [
+   "loadchart.configuration",
+   "loadchart.on-rubber",
+   "loadchart.quadrants",
+   "loadchart.counterweight"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "A crane usually has several charts. Pick the one that matches how the machine is actually set up. Using the wrong chart is the same as having no chart."
+   },
+   {
+    "t": "text",
+    "text": "**Outriggers**: there are separate charts for fully extended, partly extended (mid-span), and retracted. Use the partly extended chart only if the manufacturer provides one for that exact beam position."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(q)(1)",
+    "text": "The outriggers or stabilizers must be either fully extended or, if manufacturer procedures permit, deployed as specified in the load chart."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(q)(2)",
+    "text": "The outriggers must be set to remove the equipment weight from the wheels, except for locomotive cranes (see paragraph (q)(6) of this section for use of outriggers on locomotive cranes)."
+   },
+   {
+    "t": "text",
+    "text": "The outrigger loads go into the ground through the floats. The diagram shows the ground bearing pressure under a float on a mat."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "outrigger-ground-bearing"
+   },
+   {
+    "t": "text",
+    "text": "**On rubber**: the on-rubber chart is much lower than the outrigger chart. It has separate columns for stationary lifts and pick-and-carry, and it may be limited to over the front or require a specific tire pressure. The crane must stay within the on-rubber numbers through the whole travel."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(u)(2)(i)",
+    "text": "A competent person supervises the operation, determines if it is necessary to reduce rated capacity, and makes determinations regarding load position, boom location, ground support, travel route, overhead obstructions, and speed of movement necessary to ensure safety."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(u)(2)(iii)",
+    "text": "For equipment with tires, tire pressure specified by the manufacturer is maintained."
+   },
+   {
+    "t": "text",
+    "text": "**Crawlers**: the charts depend on whether the tracks are extended or retracted, and may rate over the side differently from over the end."
+   },
+   {
+    "t": "text",
+    "text": "**Quadrants**: the chart may rate over the rear, over the side, over the front, or 360 degrees. If the load will swing through more than one area, use the lowest rating along the path. On truck cranes, the front is often the least stable area."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(r)",
+    "text": "On wheel-mounted equipment, no loads must be lifted over the front area, except as permitted by the manufacturer."
+   },
+   {
+    "t": "text",
+    "text": "**Counterweight**: each chart assumes a specific counterweight. Install exactly that counterweight, no less and no more."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(aa)(1)(i)",
+    "text": "Equipment must not be operated without the counterweight or ballast in place as specified by the manufacturer."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(aa)(1)(ii)",
+    "text": "The maximum counterweight or ballast specified by the manufacturer for the equipment must not be exceeded."
+   },
+   {
+    "t": "check",
+    "question": "The outriggers are at mid-span but you read the fully extended chart. Why is that wrong?",
+    "answer": "Capacities depend on configuration. You must use the chart for the actual outrigger position, if the manufacturer provides one."
+   },
+   {
+    "t": "check",
+    "question": "May you add extra counterweight to raise capacity?",
+    "answer": "No. The manufacturer's maximum counterweight must not be exceeded."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "5bdda4fdccf3926873d2",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "f6f21c03ec841dd075d26215cda99af39052d3e2f55c596700aa9c61f4001aba",
+   "output_sha256": "7384efedd746208d5ffe0d124442042f6aee0f66b3e867734364a4ea70ece21f",
+   "created_at": "2026-11-27T22:24:32+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.load-charts.05",
+  "topic_id": "load-charts",
+  "ord": 5,
+  "title": "Range diagram, maximum radius, and jib capacities by offset",
+  "skills": [
+   "loadchart.range-diagram",
+   "loadchart.max-radius",
+   "loadchart.jib"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "The **range diagram** is a side-view grid. Radius runs along the bottom, height above ground runs up the side, and there are lines for boom length and arcs or lines for boom angle. Use it to choose a boom length and angle that reach a set point at the needed height and clear obstacles."
+   },
+   {
+    "t": "text",
+    "text": "Steps (practice):\n- Mark the set point: its radius, and the height needed for the load, rigging and block, plus clearance.\n- Mark any obstacle the boom must clear, such as a roof edge, measured from the center of rotation.\n- Find the shortest boom length whose line passes above both points, and read the boom angle and radius.\n- Take that boom length and radius to the capacity chart."
+   },
+   {
+    "t": "text",
+    "text": "**Maximum radius for a load**: go down the boom column and find the longest radius where net capacity is still at least the load. Example (practice): a 9,000 lb load with 1,000 lb of deductions needs 10,000 lb gross. The column reads 35 ft 12,000 lb, 40 ft 10,500 lb, 45 ft 9,000 lb. The maximum radius is 40 ft. Do not go past 40 ft, and do not interpolate toward 45 ft."
+   },
+   {
+    "t": "text",
+    "text": "**Jibs and extensions** have their own charts. Capacities are listed by jib length and **offset** (for example 0, 15 and 30 degrees), and are often indexed by main boom angle instead of radius. More offset gives more radius and less capacity."
+   },
+   {
+    "t": "text",
+    "text": "Practice example: a 30 ft jib at a 60-degree main boom angle reads 6,000 lb at 0 degrees, 5,000 lb at 15 degrees and 4,200 lb at 30 degrees. Read the row for your actual offset. If the main boom angle is between rows, use the lower angle, because a lower angle means a longer radius. Then make the deductions the notes require, such as the main boom hook block that stays reeved."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(a)",
+    "text": "The employer must comply with all manufacturer procedures applicable to the operational functions of equipment, including its use with attachments."
+   },
+   {
+    "t": "check",
+    "question": "A jib chart is indexed by boom angle and your angle falls between 65 and 60 degrees. Which row do you use?",
+    "answer": "60 degrees, the lower angle, which is the longer radius and the lower capacity."
+   },
+   {
+    "t": "check",
+    "question": "Needed gross is 10,000 lb. The column reads 40 ft 10,500 lb and 45 ft 9,000 lb. What is the maximum radius?",
+    "answer": "40 ft."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "5bdda4fdccf3926873d2",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "f6f21c03ec841dd075d26215cda99af39052d3e2f55c596700aa9c61f4001aba",
+   "output_sha256": "7384efedd746208d5ffe0d124442042f6aee0f66b3e867734364a4ea70ece21f",
+   "created_at": "2026-11-27T22:24:32+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.load-charts.06",
+  "topic_id": "load-charts",
+  "ord": 6,
+  "title": "Parts of line, line pull and the 90% brake test",
+  "skills": [
+   "loadchart.parts-of-line",
+   "loadchart.percent-capacity"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "A crane can be within its chart and still be over the hoist's limit. **Line pull** is the force on a single part of hoist rope. The chart gives a maximum line pull per part, and a **parts-of-line** table shows the most each reeving can lift."
+   },
+   {
+    "t": "text",
+    "text": "Arithmetic (practice): load capacity of the reeving is about the allowable line pull times the number of parts. With 8,000 lb per part, 3 parts gives 24,000 lb and 4 parts gives 32,000 lb. Sheave friction reduces this, so use the manufacturer's table when it gives lower values."
+   },
+   {
+    "t": "text",
+    "text": "Example: the total load is 26,000 lb and the chart cell allows 30,000 lb. Three parts allow only 24,000 lb, so reeve 4 parts. The lift is limited by whichever is lower: the chart capacity or the reeving capacity. More parts also means more block weight to deduct."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1414(c)",
+    "text": "Wire rope must be compatible with the safe functioning of the equipment."
+   },
+   {
+    "t": "text",
+    "text": "**Brake test**: when a lift loads the hoist to 90 percent or more of maximum line pull, test the brakes first."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(s)",
+    "text": "The operator must test the brakes each time a load that is 90% or more of the maximum line pull is handled by lifting the load a few inches and applying the brakes."
+   },
+   {
+    "t": "text",
+    "text": "Example (practice): 4 parts, total load 30,000 lb. The pull per part is 30,000 ÷ 4 = 7,500 lb, and 7,500 ÷ 8,000 is about 94 percent. Lift a few inches and apply the brakes. On repeated lifts at that level, test on the first lift only."
+   },
+   {
+    "t": "check",
+    "question": "Line pull is 6,000 lb per part and the load is 20,000 lb. What is the fewest parts that works?",
+    "answer": "4 parts (24,000 lb). 3 parts give only 18,000 lb."
+   },
+   {
+    "t": "check",
+    "question": "Line pull is 10,000 lb per part, 2 parts, total load 19,000 lb. Is a brake test needed?",
+    "answer": "Yes. 9,500 lb per part is 95 percent of maximum line pull."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "5bdda4fdccf3926873d2",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "f6f21c03ec841dd075d26215cda99af39052d3e2f55c596700aa9c61f4001aba",
+   "output_sha256": "7384efedd746208d5ffe0d124442042f6aee0f66b3e867734364a4ea70ece21f",
+   "created_at": "2026-11-27T22:24:32+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.load-charts.07",
+  "topic_id": "load-charts",
+  "ord": 7,
+  "title": "Chart notes, structural vs stability limits, and common mistakes",
+  "skills": [
+   "loadchart.chart-notes",
+   "loadchart.structural-vs-stability",
+   "loadchart.rated-capacity-rules"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "The **chart notes** are part of the rating. A capacity read without its notes is incomplete. Typical notes (practice; they vary by machine) cover:\n- level and firm supporting surface\n- which deductions apply\n- telescoping sequence or boom mode\n- wind limits\n- measuring radius with the load applied\n- using no capacities beyond the listed radii or boom lengths"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1417(a)"
+   },
+   {
+    "t": "text",
+    "text": "**Structural vs stability**: many charts mark a line or shading between the two regions. At short radius, capacity is set by **structural strength**: the boom, pendants, outrigger beams. At long radius, it is set by **stability**: tipping. Structural failure can come with no warning such as a lifting outrigger, so never use \"the crane didn't tip\" as a test of capacity (practice)."
+   },
+   {
+    "t": "text",
+    "text": "Stability ratings are a set percentage of the tipping load, in the least stable direction, under static conditions."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(c)(1)(i)",
+    "text": "The load ratings shall not exceed the following percentages for cranes, with the indicated types of mounting under conditions stipulated in paragraphs (c)(1) (ii) and (iii) of this section."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(c)(1)(ii)(d)",
+    "text": "Tipping loads from which ratings are determined shall be applied under static conditions only, i.e., without dynamic effect of hoisting, lowering, or swinging."
+   },
+   {
+    "t": "text",
+    "text": "Because the chart is based on static loads, swinging, sudden stops, wind and soft ground all use up the margin. The user has to account for these conditions."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(c)(1)(iv)",
+    "text": "All of these shall be taken into account by the user."
+   },
+   {
+    "t": "text",
+    "text": "Common mistakes:\n- Interpolating between radius rows instead of using the next longer radius.\n- Reading the outrigger chart while on rubber or at mid-span.\n- Forgetting the block, rigging or stowed jib deductions.\n- Checking capacity only at the pick and not at the set point.\n- Ignoring a swing over the front or into a lower-rated area.\n- Checking the chart but not line pull and parts of line.\n- Treating a blank cell as permission to lift."
+   },
+   {
+    "t": "check",
+    "question": "At short radius, which limit usually governs?",
+    "answer": "Structural strength, not tipping."
+   },
+   {
+    "t": "check",
+    "question": "Do chart ratings include the effect of swinging and sudden stops?",
+    "answer": "No. Ratings are based on static conditions, so the user must account for dynamic effects."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "5bdda4fdccf3926873d2",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "f6f21c03ec841dd075d26215cda99af39052d3e2f55c596700aa9c61f4001aba",
+   "output_sha256": "7384efedd746208d5ffe0d124442042f6aee0f66b3e867734364a4ea70ece21f",
+   "created_at": "2026-11-27T22:24:32+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ }
+]

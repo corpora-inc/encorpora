@@ -1,0 +1,929 @@
+[
+ {
+  "lesson_id": "l.assembly.01",
+  "topic_id": "assembly",
+  "ord": 1,
+  "title": "A/D procedures: manufacturer or employer",
+  "skills": [
+   "assembly.procedures"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "**Assembly/disassembly (A/D)** means putting a crane, its boom, jib, counterweights and attachments together or taking them apart. Most A/D accidents happen when a section drops, swings or collapses as a pin comes out. The rules handle this by requiring a written method that keeps every part supported at every step."
+   },
+   {
+    "t": "text",
+    "text": "Two limits always apply: you must obey every manufacturer prohibition, and you must follow one of two kinds of procedure."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1403",
+    "text": "When assembling or disassembling equipment (or attachments), the employer must comply with all applicable manufacturer prohibitions and must comply with either:"
+   },
+   {
+    "t": "text",
+    "text": "- **Manufacturer procedures** for assembly and disassembly.\n- **Employer procedures**, but only if the employer can show they meet § 1926.1406."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1403(a)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1403(b)",
+    "text": "Employer procedures may be used only where the employer can demonstrate that the procedures used meet the requirements in § 1926.1406."
+   },
+   {
+    "t": "text",
+    "text": "Employer procedures must do three things: prevent unintended movement and collapse, support every part, and position the crew so their exposure is as small as possible."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1406(a)(1)",
+    "text": "Prevent unintended dangerous movement, and prevent collapse, of any part of the equipment."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1406(a)(2)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1406(a)(3)"
+   },
+   {
+    "t": "text",
+    "text": "Only a **qualified person** may write employer procedures."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1406(b)",
+    "text": "Employer procedures must be developed by a qualified person."
+   },
+   {
+    "t": "text",
+    "text": "There is one case where you have no choice. If synthetic slings are used in A/D rigging, you must follow the manufacturer procedures."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1403(b)",
+    "text": "The employer must follow manufacturer procedures when an employer uses synthetic slings during assembly or disassembly rigging."
+   },
+   {
+    "t": "text",
+    "text": "The boom and jib dismantling rules in § 1926.1405 apply whichever kind of procedure you use. Employer procedures never let you skip them."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1405"
+   },
+   {
+    "t": "text",
+    "text": "On site: before work starts, confirm which procedure is in use, that it matches this model and configuration, and that it is on hand. If it is an employer procedure, confirm a qualified person wrote it."
+   },
+   {
+    "t": "check",
+    "question": "Your crew wants to use nylon round slings to set boom sections under the company's own A/D procedure. Is that allowed?",
+    "answer": "No. When synthetic slings are used in A/D rigging, you must follow the manufacturer procedures."
+   },
+   {
+    "t": "check",
+    "question": "Who may write employer A/D procedures?",
+    "answer": "A qualified person."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "852eb12fe51762a0e797",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "8a773d8a71647af28a39650af798d532bbe9f4b6b8f93a929654c283491b90d6",
+   "output_sha256": "12dd329b58607b6153a2732cc6f32161858f2038c0febde1f6c2ba72416545b2",
+   "created_at": "2026-11-27T22:27:15+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.assembly.02",
+  "topic_id": "assembly",
+  "ord": 2,
+  "title": "The A/D director, crew instructions and crew out of view",
+  "skills": [
+   "assembly.director",
+   "assembly.out-of-view"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Every A/D job has one person in charge: the **A/D director**. This person must be both competent and qualified, or be a competent person assisted by one or more qualified persons."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(a)(1)",
+    "text": "Assembly/disassembly must be directed by a person who meets the criteria for both a competent person and a qualified person, or by a competent person who is assisted by one or more qualified persons (“A/D director”)."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(a)(2)",
+    "text": "Where the assembly/disassembly is being performed by only one person, that person must meet the criteria for both a competent person and a qualified person."
+   },
+   {
+    "t": "text",
+    "text": "The director must understand the procedures. The director must also review them right before starting, unless the director already knows them and has used them on the same type and configuration of equipment."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(b)",
+    "text": "The A/D director must understand the applicable assembly/disassembly procedures."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(c)",
+    "text": "The A/D director must review the applicable assembly/disassembly procedures immediately prior to the commencement of assembly/disassembly unless the A/D director understands the procedures and has applied them to the same type and configuration of equipment (including accessories, if any)."
+   },
+   {
+    "t": "text",
+    "text": "**Crew instructions.** Before work starts, the director makes sure each crew member understands three things:\n- their tasks;\n- the hazards of those tasks;\n- the hazardous positions and locations they must avoid."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1404(d)(1)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(d)(1)(iii)",
+    "text": "The hazardous positions/locations that they need to avoid."
+   },
+   {
+    "t": "text",
+    "text": "The director repeats these instructions when a crew member changes tasks or a new person joins partway through."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1404(d)(2)"
+   },
+   {
+    "t": "text",
+    "text": "**Crew out of view.** A crew member is out of view when the operator cannot see them and they are in, on or under the equipment, or close enough to be hurt if it moves. Before going there, they must tell the operator."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(e)(1)",
+    "text": "the crew member must inform the operator that he/she is going to that location."
+   },
+   {
+    "t": "text",
+    "text": "The operator then holds every control until a signal agreed in advance confirms the crew member is safe."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(e)(2)",
+    "text": "the operator must not move any part of the equipment (or load) until the operator is informed in accordance with a pre-arranged system of communication that the crew member is in a safe position."
+   },
+   {
+    "t": "text",
+    "text": "Practice: settle the \"I'm clear\" signal at the pre-job briefing, whether by radio call, horn or a set hand signal, and make sure everyone knows it. Silence never means clear."
+   },
+   {
+    "t": "check",
+    "question": "A rigger goes behind the counterweight, out of the operator's sight. Can the operator swing once the rigger seems to have finished?",
+    "answer": "No. The operator waits for the pre-arranged signal that the rigger is in a safe position."
+   },
+   {
+    "t": "check",
+    "question": "A new laborer joins the crew at noon. What must happen first?",
+    "answer": "The A/D director makes sure the laborer understands their tasks, the hazards of those tasks and the positions to avoid."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "852eb12fe51762a0e797",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "8a773d8a71647af28a39650af798d532bbe9f4b6b8f93a929654c283491b90d6",
+   "output_sha256": "12dd329b58607b6153a2732cc6f32161858f2038c0febde1f6c2ba72416545b2",
+   "created_at": "2026-11-27T22:27:15+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.assembly.03",
+  "topic_id": "assembly",
+  "ord": 3,
+  "title": "Pin removal: under the boom, blocking and the boom hoist brake",
+  "skills": [
+   "assembly.under-boom",
+   "assembly.specific-hazards"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Once a pin comes out, the section it held is supported only by your blocking, rigging or assist crane. If that support is wrong, the section falls on whoever is below. So the basic rule is that **no one is under the boom** while pins are being removed."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(f)(1)",
+    "text": "When pins (or similar devices) are being removed, employees must not be under the boom, jib, or other components, except where the requirements of paragraph (f)(2) of this section are met."
+   },
+   {
+    "t": "text",
+    "text": "The only exception is when the employer can show that site constraints force someone to be under the boom. In that case the director must use procedures that reduce the risk of movement and keep exposure as short and small as possible."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1404(f)(2)"
+   },
+   {
+    "t": "text",
+    "text": "The non-mandatory appendix gives an example. Pipe racks stop the boom from being lowered, so an aerial lift has to reach under it. An assist crane supports the section, and the far-side pins come out first."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.cc.appB",
+    "text": "The duration and extent of exposure is minimized by removing the far side pins first, moving the aerial lift basket as soon as possible to the near side so that the employees are no longer under the boom, and then removing the near side pins."
+   },
+   {
+    "t": "text",
+    "text": "**Support before pins.** Rig or support every section and suspension member before any pin comes out."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(h)(7)",
+    "text": "The boom sections, boom suspension systems (such as gantry A-frames and jib struts), and components must be rigged or supported to maintain stability upon the removal of the pins."
+   },
+   {
+    "t": "text",
+    "text": "**Blocking.** The blocking must be big enough, plentiful enough, sound, and stacked properly to carry the load. Under lattice booms, place it where it protects the structure and prevents movement and collapse."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(h)(2)",
+    "text": "The size, amount, condition and method of stacking the blocking must be sufficient to sustain the loads and maintain stability."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1404(h)(3)"
+   },
+   {
+    "t": "text",
+    "text": "**Snagging.** Do not let pendants or suspension ropes catch on connection pins, cotter pins or keepers."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1404(h)(8)"
+   },
+   {
+    "t": "text",
+    "text": "**Boom hoist brake.** If the brake is the only thing holding the boom, test it first. If it will not hold, use a pawl, another locking or backup device, blocking, or an assist crane."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(h)(10)",
+    "text": "Each time reliance is to be placed on the boom hoist brake to prevent boom movement during assembly/disassembly, the brake must be tested prior to such reliance to determine if it is sufficient to prevent boom movement."
+   },
+   {
+    "t": "text",
+    "text": "Field practice: stand beside the section and drive pins out from the side, never from below. Keep your hands out of the gap between connection lugs."
+   },
+   {
+    "t": "check",
+    "question": "The boom is resting on blocking and the brake is set. Can a crew member stand under the boom to drive out a bottom pin?",
+    "answer": "No, unless the employer shows site constraints require it and the director has put minimizing procedures in place."
+   },
+   {
+    "t": "check",
+    "question": "When must the boom hoist brake be tested?",
+    "answer": "Each time you will rely on it to prevent boom movement, before you rely on it."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "852eb12fe51762a0e797",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "8a773d8a71647af28a39650af798d532bbe9f4b6b8f93a929654c283491b90d6",
+   "output_sha256": "12dd329b58607b6153a2732cc6f32161858f2038c0febde1f6c2ba72416545b2",
+   "created_at": "2026-11-27T22:27:15+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.assembly.04",
+  "topic_id": "assembly",
+  "ord": 4,
+  "title": "Dismantling booms and jibs: pin order, cantilever limits and jib work",
+  "skills": [
+   "assembly.boom-dismantling",
+   "assembly.jibs-extensions"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Section 1926.1405 sets the pin order for dismantling booms and jibs, including when you only change their length. It applies under both manufacturer and employer procedures. The idea is simple: never pull a pin that is carrying load."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1405"
+   },
+   {
+    "t": "text",
+    "text": "**Pendant pins.** Never pull pendant pins, even partly, while the pendants are in tension."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1405(a)",
+    "text": "None of the pins in the pendants are to be removed (partly or completely) when the pendants are in tension."
+   },
+   {
+    "t": "text",
+    "text": "**Sections inboard of the pendants.** These pins are loaded while the pendants are tight."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1405(b)",
+    "text": "None of the pins (top or bottom) on boom sections located between the pendant attachment points and the crane/derrick body are to be removed (partly or completely) when the pendants are in tension."
+   },
+   {
+    "t": "text",
+    "text": "**Boom resting on its tip.** If the top section is sitting on the ground and holding up the boom, every connection between the tip and the crane is loaded."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1405(c)",
+    "text": "None of the pins (top or bottom) on boom sections located between the uppermost boom section and the crane/derrick body are to be removed (partly or completely) when the boom is being supported by the uppermost boom section resting on the ground (or other support)."
+   },
+   {
+    "t": "text",
+    "text": "**Cantilevered sections.** For a section that sticks out ahead of the pendant attachment points, the top pins stay in until that section is fully supported."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1405(d)",
+    "text": "None of the top pins on boom sections located on the cantilevered portion of the boom being removed (the portion being removed ahead of the pendant attachment points) are to be removed (partly or completely) until the cantilevered section to be removed is fully supported."
+   },
+   {
+    "t": "text",
+    "text": "Never exceed the manufacturer's limit on how much boom may be cantilevered. If the manufacturer has no limit, a registered professional engineer must set one in writing."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1404(j)"
+   },
+   {
+    "t": "text",
+    "text": "**Jibs and extensions.** Rig jib and boom sections only at pick points that will not damage them. Know the weight of each component before you lift it."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1404(h)(5)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1404(k)"
+   },
+   {
+    "t": "text",
+    "text": "Jib struts are suspension members, so support them before pulling their pins. If a jib is attached, the rules call for jib stops (derricks excepted). A jib may not be attached during pile driving."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1415(a)(3)",
+    "text": "Jib stops (if a jib is attached), except for derricks."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(p)",
+    "text": "Equipment used for pile driving must not have a jib attached during pile driving operations."
+   },
+   {
+    "t": "text",
+    "text": "Practice when swinging a side-stowed jib out or back in: follow the manufacturer's sequence exactly. Use tag lines so the jib cannot swing freely, and keep people out of its arc. Make sure the stow pins or latches are fully engaged before you release the rigging."
+   },
+   {
+    "t": "check",
+    "question": "The pendants are slack, but the boom is resting on its tip section. Can you pull the pins on the middle sections?",
+    "answer": "No. Pins between the tip and the crane stay in while the tip section is holding up the boom."
+   },
+   {
+    "t": "check",
+    "question": "When can the top pins on a cantilevered section ahead of the pendants come out?",
+    "answer": "Only after that section is fully supported."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "852eb12fe51762a0e797",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "8a773d8a71647af28a39650af798d532bbe9f4b6b8f93a929654c283491b90d6",
+   "output_sha256": "12dd329b58607b6153a2732cc6f32161858f2038c0febde1f6c2ba72416545b2",
+   "created_at": "2026-11-27T22:27:15+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.assembly.05",
+  "topic_id": "assembly",
+  "ord": 5,
+  "title": "Site hazards the A/D director must address",
+  "skills": [
+   "assembly.specific-hazards",
+   "assembly.capacity-limits"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "The director must deal with the specific hazards of each A/D job. The list below comes from § 1926.1404(h). Treat it as a pre-job checklist."
+   },
+   {
+    "t": "text",
+    "text": "**Ground.** The ground must support the crane during assembly, when loads shift as parts are added."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(h)(1)",
+    "text": "Site and ground conditions must be adequate for safe assembly/disassembly operations and to support the equipment during assembly/disassembly"
+   },
+   {
+    "t": "text",
+    "text": "**Assist crane loads.** If an assist crane is used, check the load it will carry at each phase before work starts."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1404(h)(4)"
+   },
+   {
+    "t": "text",
+    "text": "**Center of gravity (CG).** Identify the CG when your method of keeping the load stable depends on it. If you cannot identify it accurately, take measures to prevent the movement a wrong guess would cause."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1404(h)(6)(i)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1404(h)(6)(ii)"
+   },
+   {
+    "t": "text",
+    "text": "The appendix gives an example with a lopsided boom top section. Everyone stays clear while the section is lifted slightly. If it tips, set it down, move the hook and try again."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.cc.appB",
+    "text": "the section is first raised a few inches to determine whether it tips when raised"
+   },
+   {
+    "t": "text",
+    "text": "**Counterweights and backward stability.** Without the boom, a crane with its counterweight on can tip backward. Hanging counterweight slabs can also swing or drop."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(h)(9)",
+    "text": "The potential for unintended movement from inadequately supported counterweights and from hoisting counterweights."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(h)(11)",
+    "text": "Backward stability before swinging the upperworks, travel, and when attaching or removing equipment components."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(h)(12)",
+    "text": "The effect of wind speed and weather on the equipment."
+   },
+   {
+    "t": "text",
+    "text": "**Capacity.** Rated limits apply at every phase. That includes rigging, lifting lugs and accessories, not just the crane."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(g)",
+    "text": "During all phases of assembly/disassembly, rated capacity limits for loads imposed on the equipment, equipment components (including rigging), lifting lugs and equipment accessories, must not be exceeded for the equipment being assembled/disassembled."
+   },
+   {
+    "t": "text",
+    "text": "**Power lines.** Before starting, determine whether any part of the equipment, load line or load could come within 20 feet of a line. If so, use Option 1, 2 or 3."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1407(a)",
+    "text": "Before assembling or disassembling equipment, the employer must determine if any part of the equipment, load line, or load (including rigging and lifting accessories) could get, in the direction or area of assembly/disassembly, closer than 20 feet to a power line during the assembly/disassembly process."
+   },
+   {
+    "t": "text",
+    "text": "Look at the diagram for the 20 ft zone and the Table A clearances that apply during A/D."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "power-line-table-a-zones"
+   },
+   {
+    "t": "text",
+    "text": "Never assemble below a power line unless the utility has deenergized it and visibly grounded it at the site. Treat every line as energized until the utility confirms it is not."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1407(c)",
+    "text": "No part of a crane/derrick, load line, or load (including rigging and lifting accessories), whether partially or fully assembled, is allowed below a power line unless the employer has confirmed that the utility owner/operator has deenergized and (at the worksite) visibly grounded the power line."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1407(f)"
+   },
+   {
+    "t": "check",
+    "question": "You can't tell where the CG of an odd-shaped section is. What does the appendix example do?",
+    "answer": "Keep everyone clear, lift it a few inches, and re-rig if it tips until it hangs level."
+   },
+   {
+    "t": "check",
+    "question": "May you lay out the boom under a line the utility says is \"off\" but has not grounded?",
+    "answer": "No. It must be deenergized and visibly grounded at the worksite."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "852eb12fe51762a0e797",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "8a773d8a71647af28a39650af798d532bbe9f4b6b8f93a929654c283491b90d6",
+   "output_sha256": "12dd329b58607b6153a2732cc6f32161858f2038c0febde1f6c2ba72416545b2",
+   "created_at": "2026-11-27T22:27:15+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.assembly.06",
+  "topic_id": "assembly",
+  "ord": 6,
+  "title": "A/D rigging and outrigger setup",
+  "skills": [
+   "assembly.rigging",
+   "assembly.outriggers",
+   "assembly.capacity-limits"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "All A/D rigging work must be done by a **qualified rigger**."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(r)(1)",
+    "text": "The rigging work is done by a qualified rigger."
+   },
+   {
+    "t": "text",
+    "text": "Protect synthetic slings from sharp or abrasive edges and from bends or crushing that reduce their capacity. Follow the sling manufacturer's instructions. Steel boom chords have hard edges, so pad them."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1404(r)(2)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1404(r)(3)"
+   },
+   {
+    "t": "text",
+    "text": "Physics (not a rule): the lower the sling angle, the higher the tension in each leg. Take a 10,000 lb boom section on two legs. At 60 degrees from horizontal each leg carries about 5,800 lb, at 45 degrees about 7,100 lb, and at 30 degrees about 10,000 lb. Check that each leg's rating covers its actual tension."
+   },
+   {
+    "t": "text",
+    "text": "In the diagram, compare the leg tension at 60 and at 30 degrees for the same load."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "sling-angle-tension"
+   },
+   {
+    "t": "text",
+    "text": "**Outriggers.** Extend them fully, or deploy them to a partial position only if the manufacturer permits it and the load chart covers it. Raise the crane until the tires carry no weight."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(q)(1)",
+    "text": "The outriggers or stabilizers must be either fully extended or, if manufacturer procedures permit, deployed as specified in the load chart."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(q)(2)",
+    "text": "The outriggers must be set to remove the equipment weight from the wheels, except for locomotive cranes"
+   },
+   {
+    "t": "text",
+    "text": "Floats must be attached to the outriggers. Someone must be able to see each outrigger as it extends and sets: the operator or a signal person."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1404(q)(3)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(q)(4)",
+    "text": "Each outrigger or stabilizer must be visible to the operator or to a signal person during extension and setting."
+   },
+   {
+    "t": "text",
+    "text": "Blocking goes only under the float or pad, never under the beam itself."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(q)(5)(ii)",
+    "text": "Be placed only under the outrigger or stabilizer float/pad of the jack or, where the outrigger or stabilizer is designed without a jack, under the outer bearing surface of the extended outrigger or stabilizer beam."
+   },
+   {
+    "t": "text",
+    "text": "Ground bearing practice: pressure equals force divided by area. Suppose an outrigger pushes down with 40,000 lb. On a 2 ft x 2 ft float (4 sq ft), that is 10,000 lb per sq ft. On a 4 ft x 4 ft mat (16 sq ft), it drops to 2,500 lb per sq ft. Compare the result with what the ground can carry."
+   },
+   {
+    "t": "text",
+    "text": "The diagram works through the float-on-mat calculation."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "outrigger-ground-bearing"
+   },
+   {
+    "t": "check",
+    "question": "Where does outrigger blocking go?",
+    "answer": "Only under the float or pad, or under the outer bearing surface of a jackless beam."
+   },
+   {
+    "t": "check",
+    "question": "An outrigger pushes down with 30,000 lb on a 3 ft x 3 ft mat. What is the bearing pressure?",
+    "answer": "30,000 / 9 sq ft = about 3,300 lb per sq ft."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "852eb12fe51762a0e797",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "8a773d8a71647af28a39650af798d532bbe9f4b6b8f93a929654c283491b90d6",
+   "output_sha256": "12dd329b58607b6153a2732cc6f32161858f2038c0febde1f6c2ba72416545b2",
+   "created_at": "2026-11-27T22:27:15+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.assembly.07",
+  "topic_id": "assembly",
+  "ord": 7,
+  "title": "Components, post-assembly inspection, shipping pins and fall protection",
+  "skills": [
+   "assembly.components",
+   "assembly.post-assembly",
+   "assembly.fall-protection"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Any component or configuration that affects capacity must match the manufacturer's instructions, or an approved modification. Examples are boom sections, inserts, pendants and counterweight. If there are no manufacturer criteria, a registered professional engineer must approve the components in writing."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(m)(1)(i)",
+    "text": "Where these are unavailable, a registered professional engineer familiar with the type of equipment involved must approve, in writing, the selection and configuration of components; or"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1404(m)(1)(ii)"
+   },
+   {
+    "t": "text",
+    "text": "Practice: check section serial or part numbers, the order of the inserts, pendant lengths and the counterweight slabs against the manufacturer's configuration list and the load chart you will use."
+   },
+   {
+    "t": "text",
+    "text": "**Post-assembly inspection.** When assembly is finished, a qualified person inspects the crane against the manufacturer's configuration criteria. The crane may not be used until it passes."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1412(c)(1)",
+    "text": "Upon completion of assembly, the equipment must be inspected by a qualified person to assure that it is configured in accordance with manufacturer equipment criteria."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1412(c)(3)",
+    "text": "Equipment must not be used until an inspection under this paragraph demonstrates that the equipment is configured in accordance with the applicable criteria."
+   },
+   {
+    "t": "text",
+    "text": "If there are no manufacturer criteria, the qualified person decides whether a registered professional engineer must write them. The crane is then checked against those criteria."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1412(c)(2)"
+   },
+   {
+    "t": "text",
+    "text": "**Shipping pins.** Remove reusable shipping pins, straps and links. Stow them so they cannot fall."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(o)",
+    "text": "Once they are removed they must either be stowed or otherwise stored so that they do not present a falling object hazard."
+   },
+   {
+    "t": "text",
+    "text": "**Fall protection.** On A/D work, fall protection is required above 15 feet at an unprotected side or edge. It is not required at the draw-works while the equipment is running, in the cab, or on the deck."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1423(f)",
+    "text": "For assembly/disassembly work, the employer must provide and ensure the use of fall protection equipment for employees who are on a walking/working surface with an unprotected side or edge more than 15 feet above a lower level"
+   },
+   {
+    "t": "text",
+    "text": "You may anchor personal fall arrest to any part of the equipment that looks substantial, unless a competent person's visual check says it would not meet the anchorage criteria. Fall restraint anchors must hold twice the load an employee could put on them."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1423(g)(2)(i)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1423(g)(3)",
+    "text": "Fall restraint systems must be anchored to any part of the equipment that is capable of withstanding twice the maximum load that an employee may impose on it during reasonably anticipated conditions of use."
+   },
+   {
+    "t": "check",
+    "question": "Assembly is done and the first lift is waiting. What has to happen first?",
+    "answer": "A qualified person inspects the crane and confirms it matches the configuration criteria."
+   },
+   {
+    "t": "check",
+    "question": "A rigger is pinning a section from atop the boom at 18 ft. Is fall protection required?",
+    "answer": "Yes. The boom top is more than 15 ft up with unprotected edges, and it is not the cab or deck."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "852eb12fe51762a0e797",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "8a773d8a71647af28a39650af798d532bbe9f4b6b8f93a929654c283491b90d6",
+   "output_sha256": "12dd329b58607b6153a2732cc6f32161858f2038c0febde1f6c2ba72416545b2",
+   "created_at": "2026-11-27T22:27:15+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.assembly.08",
+  "topic_id": "assembly",
+  "ord": 8,
+  "title": "Common A/D mistakes and the rule each one breaks",
+  "skills": [
+   "assembly.under-boom",
+   "assembly.boom-dismantling",
+   "assembly.director",
+   "assembly.capacity-limits",
+   "assembly.specific-hazards"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Most A/D accidents come from the same few shortcuts. Learn them so you can spot them on site."
+   },
+   {
+    "t": "text",
+    "text": "- **Pulling a pin from under the boom.** People stand under a section \"just for a second\" to drive out a bottom pin. Work from the side, with the section blocked or held by an assist crane."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1404(f)(1)"
+   },
+   {
+    "t": "text",
+    "text": "- **Pulling pins with the pendants still tight**, or while the boom rests on its tip. When the pin comes out, the load is released all at once."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1405(a)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1405(c)"
+   },
+   {
+    "t": "text",
+    "text": "- **Trusting the boom hoist brake without testing it.** Test it every time you are going to rely on it."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1404(h)(10)"
+   },
+   {
+    "t": "text",
+    "text": "- **Guessing a section's weight or CG.** Component weights must be readily available. If you are unsure of the CG, keep everyone clear and test-lift a few inches."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(k)",
+    "text": "Weight of components. The weight of each of the components must be readily available."
+   },
+   {
+    "t": "text",
+    "text": "- **Overloading rigging or lugs.** The crane has capacity to spare, but the sling at a 30 degree angle is overloaded. Capacity limits apply to rigging and lugs too."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1404(g)"
+   },
+   {
+    "t": "text",
+    "text": "- **Swinging the upperworks without the boom** and with full counterweight, which can tip the crane backward."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1404(h)(11)"
+   },
+   {
+    "t": "text",
+    "text": "- **Moving the crane while someone is out of view.** Wait for the pre-arranged \"safe\" signal."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1404(e)(2)"
+   },
+   {
+    "t": "text",
+    "text": "- **Briefing only at the start of the day.** Re-brief when tasks change or new people arrive."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1404(d)(2)"
+   },
+   {
+    "t": "text",
+    "text": "- **Using the crane before the post-assembly inspection.**"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1412(c)(3)"
+   },
+   {
+    "t": "check",
+    "question": "Name two conditions under which boom section pins must stay in.",
+    "answer": "While the pendants are in tension, and while the boom is held up by its tip section resting on the ground or another support."
+   },
+   {
+    "t": "check",
+    "question": "The boom hoist brake held yesterday. Do you need to test it again today before relying on it?",
+    "answer": "Yes. Test it each time you are going to rely on it."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "852eb12fe51762a0e797",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "8a773d8a71647af28a39650af798d532bbe9f4b6b8f93a929654c283491b90d6",
+   "output_sha256": "12dd329b58607b6153a2732cc6f32161858f2038c0febde1f6c2ba72416545b2",
+   "created_at": "2026-11-27T22:27:15+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ }
+]

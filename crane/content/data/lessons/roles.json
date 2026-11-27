@@ -1,0 +1,811 @@
+[
+ {
+  "lesson_id": "l.roles.01",
+  "topic_id": "roles",
+  "ord": 1,
+  "title": "Competent person, qualified person, qualified rigger and A/D director",
+  "skills": [
+   "roles.competent-vs-qualified",
+   "roles.ad-director"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "The crane rules give duties to roles, not to job titles. Two definitions come up again and again: **competent person** and **qualified person**. They are different, and some tasks need both."
+   },
+   {
+    "t": "text",
+    "text": "A competent person must be able to spot hazards and must also have the **authority** to correct them. Knowing alone is not enough. A person who cannot stop or change the work is not the competent person."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Competent person means one who is capable of identifying existing and predictable hazards in the surroundings or working conditions which are unsanitary, hazardous, or dangerous to employees, and who has authorization to take prompt corrective measures to eliminate them."
+   },
+   {
+    "t": "text",
+    "text": "A qualified person is defined by demonstrated **problem-solving ability** in the subject. That ability can come from a degree, certificate or professional standing, or from extensive knowledge, training and experience. The definition says nothing about authority."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Qualified person means a person who, by possession of a recognized degree, certificate, or professional standing, or who by extensive knowledge, training and experience, successfully demonstrated the ability to solve/resolve problems relating to the subject matter, the work, or the project."
+   },
+   {
+    "t": "text",
+    "text": "In short:\n- Competent person: recognizes hazards and has the authority to fix them.\n- Qualified person: can solve the technical problem.\n- Qualified rigger: a rigger who meets the qualified-person criteria."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Qualified rigger is a rigger who meets the criteria for a qualified person."
+   },
+   {
+    "t": "text",
+    "text": "Some provisions specifically require a qualified rigger. Two examples:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(r)(1)",
+    "text": "The rigging work is done by a qualified rigger."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1425(c)(3)",
+    "text": "The materials must be rigged by a qualified rigger."
+   },
+   {
+    "t": "text",
+    "text": "Assembly and disassembly need both kinds of person. The **A/D director** is either one person who meets both definitions, or a competent person assisted by one or more qualified persons. When only one person does the work, that person must meet both definitions and is the A/D director."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1404(a)(1)",
+    "text": "Assembly/disassembly must be directed by a person who meets the criteria for both a competent person and a qualified person, or by a competent person who is assisted by one or more qualified persons (“A/D director”)."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1404(a)(2)"
+   },
+   {
+    "t": "text",
+    "text": "The A/D director role depends on meeting these requirements. Rank and title do not matter."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "A/D director (Assembly/Disassembly director) means an individual who meets this subpart's requirements for an A/D director, irrespective of the person's formal job title or whether the person is non-management or management personnel."
+   },
+   {
+    "t": "text",
+    "text": "The employer must train each competent person and each qualified person in the subpart requirements that apply to their role."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1430(d)"
+   },
+   {
+    "t": "check",
+    "question": "A highly experienced engineer on site can solve any boom problem but has no authority to change the work. Which role does the engineer fill?",
+    "answer": "Qualified person only. A competent person must also have authority to take prompt corrective measures."
+   },
+   {
+    "t": "check",
+    "question": "One worker disassembles a crane alone. What must that worker be?",
+    "answer": "Both a competent person and a qualified person. That worker is the A/D director."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "d48834c9115ab1e8305a",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "41eb77fa24a8e706d98a4c196985a3c96977eb20bd634b7f6a681d2a7df57be9",
+   "output_sha256": "61d300cb45b30c507453f1ce7293708330b48474ace3e865d47495ad98acb279",
+   "created_at": "2026-11-27T22:22:56+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.roles.02",
+  "topic_id": "roles",
+  "ord": 2,
+  "title": "Operator certification: license, accredited certification, audited employer program, military",
+  "skills": [
+   "roles.operator-certification"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Before operating, every crane operator must be **trained, certified or licensed, and evaluated**. Certification proves general knowledge and skill on a type of equipment. The employer's evaluation, covered in a later lesson, is a separate requirement."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1427(a)",
+    "text": "The employer must ensure that each operator is trained, certified/licensed, and evaluated in accordance with this section before operating any equipment covered under subpart CC, except for the equipment listed in paragraph (a)(2) of this section."
+   },
+   {
+    "t": "text",
+    "text": "Three kinds of equipment are exempt from this section. Their own training requirements still apply."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1427(a)(2)",
+    "text": "Operators of derricks (see § 1926.1436), sideboom cranes (see § 1926.1440), or equipment with a maximum manufacturer-rated hoisting/lifting capacity of 2,000 pounds or less (see § 1926.1441) are not required to comply with § 1926.1427."
+   },
+   {
+    "t": "text",
+    "text": "**Route 1: state or local license.** Where a state or local government licenses crane operators and its program meets the federal criteria, the operator must hold that license to work in that jurisdiction."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1427(c)(1)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1427(c)(1)(v)",
+    "text": "For the purposes of compliance with this section, a license is valid for the period of time stipulated by the licensing department/office, but no longer than 5 years."
+   },
+   {
+    "t": "text",
+    "text": "Where no license is required, the operator must be certified through Route 2 or Route 3."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1427(c)(2)"
+   },
+   {
+    "t": "text",
+    "text": "**Route 2: accredited testing organization.** The organization must be accredited and must give written and practical tests. Certification is by equipment type, or by type and capacity."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1427(d)(1)(ii)(B)",
+    "text": "Provide certification based on equipment type, or type and capacity."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1427(d)(3)",
+    "text": "A certification issued under this option is portable among employers who are required to have operators certified under this option."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1427(d)(4)",
+    "text": "A certification issued under this paragraph is valid for 5 years."
+   },
+   {
+    "t": "text",
+    "text": "If no accredited exam exists for a machine type, certification for the most similar type counts. The certificate must state the type."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1427(d)(2)"
+   },
+   {
+    "t": "text",
+    "text": "**Route 3: audited employer program.** The employer certifies its own operators with tests that are developed by an accredited organization or approved by an outside certified auditor. The program is audited within 3 months of starting and at least every 3 years after that."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1427(e)(3)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1427(e)(6)(i)",
+    "text": "Not portable: Such a certification meets the requirements of paragraph (c) of this section only where the operator is employed by (and operating the equipment for) the employer that issued the certification."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1427(e)(6)(ii)"
+   },
+   {
+    "t": "text",
+    "text": "**Route 4: U.S. military.** A current military operator qualification covers federal employees of the Department of Defense or the Armed Forces. It does not cover private contractors. It is not portable, and it is valid for the period the issuing entity sets."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1427(a)(3)(i)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1427(a)(3)(ii)(A)"
+   },
+   {
+    "t": "text",
+    "text": "Whichever route is used, the employee pays nothing."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1427(c)(3)",
+    "text": "Whenever operator certification/licensure is required under this section, the employer must provide the certification/licensure at no cost to employees."
+   },
+   {
+    "t": "check",
+    "question": "An operator certified under an audited employer program changes employers. Is the certification still valid at the new employer?",
+    "answer": "No. Audited-program certificates are not portable."
+   },
+   {
+    "t": "check",
+    "question": "How long is an accredited-organization certification valid?",
+    "answer": "5 years."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "d48834c9115ab1e8305a",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "41eb77fa24a8e706d98a4c196985a3c96977eb20bd634b7f6a681d2a7df57be9",
+   "output_sha256": "61d300cb45b30c507453f1ce7293708330b48474ace3e865d47495ad98acb279",
+   "created_at": "2026-11-27T22:22:56+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.roles.03",
+  "topic_id": "roles",
+  "ord": 3,
+  "title": "What certification tests cover, and language and literacy rules",
+  "skills": [
+   "roles.operator-certification",
+   "roles.language-literacy"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Every certification route must test the same core content: a **written test** of knowledge and a **practical test** of skill. Knowing the content tells you what a certified operator can be expected to do."
+   },
+   {
+    "t": "text",
+    "text": "The written test must cover, for the specific equipment type:\n- Controls and operational/performance characteristics.\n- Load chart use and calculation on a variety of configurations.\n- Preventing and responding to power line contact.\n- The technical subject criteria in appendix C.\n- Ground and surface suitability for expected loads, site hazards and site access.\n- The crane subpart itself."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1427(j)(1)(i)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1427(j)(1)(i)(B)",
+    "text": "Use of, and the ability to calculate (manually or with a calculator), load/capacity information on a variety of configurations of the equipment."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1427(j)(1)(ii)",
+    "text": "The individual is able to read and locate relevant information in the equipment manual and other materials containing information referred to in paragraph (j)(1)(i) of this section."
+   },
+   {
+    "t": "text",
+    "text": "The practical test must cover:\n- Recognizing shift-inspection items by sight and sound.\n- Operating and maneuvering skills.\n- Applying load chart information.\n- Safe shut-down and securing."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1427(j)(2)"
+   },
+   {
+    "t": "text",
+    "text": "**Verbal testing.** A test may be given and answered verbally only if the candidate first shows written literacy relevant to the work and can use the manufacturer's written procedures for that equipment type."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1427(h)(1)(i)",
+    "text": "Passes a written demonstration of literacy relevant to the work."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1427(h)(1)(ii)"
+   },
+   {
+    "t": "text",
+    "text": "**Test language.** A test may be given in any language the candidate understands, and the certificate must record that language. This limits which machines the operator may run: the manual and load chart must be in the language of the certification."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1427(h)(2)",
+    "text": "The operator is only permitted to operate equipment that is furnished with materials required by this subpart, such as operations manuals and load charts, that are written in the language of the certification."
+   },
+   {
+    "t": "text",
+    "text": "On site, check the certificate's language note against the documents in the cab. If the operator was tested in Spanish and the crane's load chart is only in English, that operator may not run that crane until a Spanish chart and manual are provided."
+   },
+   {
+    "t": "check",
+    "question": "An operator certified in Spanish is assigned a crane whose manual and load chart are only in English. May the operator run it?",
+    "answer": "No. The required materials must be in the language of the certification."
+   },
+   {
+    "t": "check",
+    "question": "What must a candidate show before taking the test verbally?",
+    "answer": "Written literacy relevant to the work, and the ability to use the manufacturer's written procedures for that equipment type."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "d48834c9115ab1e8305a",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "41eb77fa24a8e706d98a4c196985a3c96977eb20bd634b7f6a681d2a7df57be9",
+   "output_sha256": "61d300cb45b30c507453f1ce7293708330b48474ace3e865d47495ad98acb279",
+   "created_at": "2026-11-27T22:22:56+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.roles.04",
+  "topic_id": "roles",
+  "ord": 4,
+  "title": "Employer evaluation of operators and its documentation",
+  "skills": [
+   "roles.operator-evaluation"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Certification is general. The **evaluation** is the employer's own check that the operator can safely run the specific equipment and configuration on the assigned work. The employer must do both."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1427(f)(1)(i)"
+   },
+   {
+    "t": "text",
+    "text": "The operator must demonstrate skill, knowledge and the ability to recognize and avert risk. This includes the safety devices, operational aids, software, and the size and configuration of the machine."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1427(f)(1)(i)",
+    "text": "Size and configuration includes, but is not limited to, lifting capacity, boom length, attachments, luffing jib, and counterweight set-up."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1427(f)(1)(ii)",
+    "text": "The ability to perform the hoisting activities required for assigned work, including, if applicable, blind lifts, personnel hoisting, and multi-crane lifts."
+   },
+   {
+    "t": "text",
+    "text": "A certificate alone does not pass the evaluation. The operator has to demonstrate the ability."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1427(f)(3)",
+    "text": "Possession of a certificate or degree cannot, by itself, cause a person to be qualified for purposes of paragraph (f)(1)."
+   },
+   {
+    "t": "text",
+    "text": "**Who evaluates.** The evaluator must have the knowledge, training and experience to assess operators, and must be an employee or agent of the employer. An employer that uses an agent still owns the duty."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1427(f)(4)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1427(f)(5)",
+    "text": "The evaluator must be an employee or agent of the employer."
+   },
+   {
+    "t": "text",
+    "text": "After passing, the operator may run other equipment only if the employer can demonstrate that it does not require substantially different skills, knowledge, or ability to recognize and avert risk. Example: an operator evaluated on a 100 ft hydraulic boom is then assigned the same model rigged with a luffing jib. A luffing jib is a listed configuration item, so in practice plan a new evaluation unless the employer can show the skills are not substantially different."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1427(f)(5)"
+   },
+   {
+    "t": "text",
+    "text": "**Documentation.** The record must be available at the worksite for as long as the operator works for that employer."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1427(f)(6)",
+    "text": "This document must provide: The operator's name; the evaluator's name and signature; the date; and the make, model, and configuration of equipment used in the evaluation."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1427(f)(6)",
+    "text": "The employer must make the document available at the worksite while the operator is employed by the employer."
+   },
+   {
+    "t": "text",
+    "text": "For operators employed before December 10, 2018, the employer may rely on its earlier assessments. The record must still show the date of that determination and the make, model and configuration involved."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1427(f)(2)"
+   },
+   {
+    "t": "text",
+    "text": "**Retraining.** If the operator's performance or knowledge shows that retraining is needed, the employer must retrain and then re-evaluate on that subject."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1427(b)(5)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1427(f)(7)",
+    "text": "When an employer is required to provide an operator with retraining under paragraph (b)(5) of this section, the employer must re-evaluate the operator with respect to the subject of the retraining."
+   },
+   {
+    "t": "check",
+    "question": "Name the five items the evaluation record must contain.",
+    "answer": "Operator's name, evaluator's name, evaluator's signature, the date, and the make/model/configuration of the equipment."
+   },
+   {
+    "t": "check",
+    "question": "An operator holds a valid accredited certificate. Is an evaluation still required?",
+    "answer": "Yes. A certificate alone cannot make the operator qualified for the evaluation."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "d48834c9115ab1e8305a",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "41eb77fa24a8e706d98a4c196985a3c96977eb20bd634b7f6a681d2a7df57be9",
+   "output_sha256": "61d300cb45b30c507453f1ce7293708330b48474ace3e865d47495ad98acb279",
+   "created_at": "2026-11-27T22:22:56+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.roles.05",
+  "topic_id": "roles",
+  "ord": 5,
+  "title": "Operating before certification: operators-in-training and maintenance personnel",
+  "skills": [
+   "roles.operator-in-training",
+   "roles.maintenance-operators"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Only two groups may run a crane without being certified and evaluated as an operator: **operators-in-training** under a trainer, and **maintenance, inspection and repair personnel** within strict limits."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1427(a)(1)",
+    "text": "An employee who has not been certified/licensed and evaluated to operate assigned equipment in accordance with this section may only operate the equipment as an operator-in-training under supervision in accordance with the requirements of paragraph (b) of this section."
+   },
+   {
+    "t": "text",
+    "text": "**The trainer.** The trainer must be an employee or agent of the trainee's employer, must know the equipment in use, and must do no other task that takes attention away from watching the trainee."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1427(b)(4)(i)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1427(b)(4)(ii)",
+    "text": "While monitoring the operator-in-training, the operator's trainer performs no tasks that detract from the trainer's ability to monitor the operator-in-training."
+   },
+   {
+    "t": "text",
+    "text": "For equipment other than tower cranes, the trainer and trainee must be in direct line of sight and must communicate by voice or hand signals. On tower cranes they must be in direct communication."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1427(b)(4)(iii)",
+    "text": "The operator's trainer and the operator-in-training must be in direct line of sight of each other."
+   },
+   {
+    "t": "text",
+    "text": "Breaks are allowed only if all three conditions are met: the break is short and limited as quoted below; just before the break the trainer tells the trainee the specific tasks and limits; and those tasks are within the trainee's ability."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1427(b)(4)(iv)(A)",
+    "text": "The break lasts no longer than 15 minutes and there is no more than one break per hour."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1427(b)(4)(iv)"
+   },
+   {
+    "t": "text",
+    "text": "**Prohibited work for trainees:**\n- Power lines: any part of the equipment, load line or load could get within 20 feet of a line up to 350 kV, or within 50 feet of a line over 350 kV, if operated out to maximum working radius.\n- Hoisting personnel.\n- Multiple-equipment lifts.\n- Over a shaft or cofferdam, or in a tank farm.\n- Multiple-lift rigging, unless the trainer judges the trainee's skills sufficient."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1427(b)(3)(i)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1427(b)(3)(ii)",
+    "text": "If the equipment is used to hoist personnel."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1427(b)(3)(iii)",
+    "text": "In multiple-equipment lifts."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1427(b)(3)(iv)",
+    "text": "If the equipment is used over a shaft, cofferdam, or in a tank farm."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1427(b)(3)(v)"
+   },
+   {
+    "t": "text",
+    "text": "In the diagram, look at the 20 ft zone. For a trainee, measure it from where the crane could reach at maximum working radius, not from where today's lift happens to be."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "power-line-table-a-zones"
+   },
+   {
+    "t": "text",
+    "text": "**Maintenance personnel.** They may operate only for maintenance, inspection or performance checks. They must either work under the direct supervision of an operator who meets the operator rules, or be familiar with the operation, limitations, characteristics and hazards of that equipment type."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1429(a)(1)",
+    "text": "The operation is limited to those functions necessary to perform maintenance, inspect the equipment, or verify its performance."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1429(a)(2)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1429(b)",
+    "text": "Maintenance and repair personnel must meet the definition of a qualified person with respect to the equipment and maintenance/repair tasks performed."
+   },
+   {
+    "t": "check",
+    "question": "A trainee's lift is 60 ft from a 230 kV line, but at maximum working radius the boom could come within 15 ft of it. May the trainee operate?",
+    "answer": "No. The test is whether the crane could get within 20 ft at maximum working radius."
+   },
+   {
+    "t": "check",
+    "question": "May a mechanic use the crane to set a load after a repair?",
+    "answer": "No. Mechanics may only operate the functions needed for maintenance, inspection or verifying performance."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "d48834c9115ab1e8305a",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "41eb77fa24a8e706d98a4c196985a3c96977eb20bd634b7f6a681d2a7df57be9",
+   "output_sha256": "61d300cb45b30c507453f1ce7293708330b48474ace3e865d47495ad98acb279",
+   "created_at": "2026-11-27T22:22:56+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.roles.06",
+  "topic_id": "roles",
+  "ord": 6,
+  "title": "Signal person qualification and documentation",
+  "skills": [
+   "roles.signal-person-qualification"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "A signal person must be **qualified before giving any signal**. The duty belongs to the signal person's employer. A dedicated spotter for power lines must meet the same signal person qualifications."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1428(a)",
+    "text": "The employer of the signal person must ensure that each signal person meets the Qualification Requirements (paragraph (c) of this section) prior to giving any signals."
+   },
+   {
+    "t": "text",
+    "text": "**The qualification requirements.** Each signal person must:\n- Know and understand the type of signals used, including the Standard Method if hand signals are used.\n- Be competent in applying those signals.\n- Have a basic understanding of equipment operation and limitations, including how loads swing and stop and how the boom deflects under load.\n- Know the relevant rules on signals and on signal person qualification.\n- Prove all of this by an oral or written test plus a practical test."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1428(c)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1428(c)(1)",
+    "text": "If hand signals are used, the signal person must know and understand the Standard Method for hand signals."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1428(c)(5)",
+    "text": "Demonstrate that he/she meets the requirements in paragraphs (c)(1) through (4) of this section through an oral or written test, and through a practical test."
+   },
+   {
+    "t": "text",
+    "text": "The chart shows the Standard Method hand signals that a hand-signal person must know."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "hand-signals"
+   },
+   {
+    "t": "text",
+    "text": "**Two ways to qualify:**\n- Option 1: documentation from a third-party qualified evaluator.\n- Option 2: assessment and documentation by the employer's own qualified evaluator. This is not portable to other employers."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1428(a)(1)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1428(a)(2)",
+    "text": "An assessment by an employer's qualified evaluator under this option is not portable—other employers are not permitted to use it to meet the requirements of this section."
+   },
+   {
+    "t": "text",
+    "text": "**Documentation.** It must be available on site while the signal person is employed, and it must list each type of signaling covered. A person qualified only for hand signals is not documented for radio signals."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1428(a)(3)",
+    "text": "The documentation must specify each type of signaling (e.g. hand signals, radio signals, etc.) for which the signal person meets the requirements of paragraph (c) of this section."
+   },
+   {
+    "t": "text",
+    "text": "**Loss of qualification.** If the person's actions show they do not meet the requirements, they must stop signaling until retrained and re-assessed. The employer must train anyone assigned as a signal person who does not yet meet the requirements."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1428(b)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1430(b)"
+   },
+   {
+    "t": "check",
+    "question": "A signal person's card lists hand signals only. The lift requires radio signals. May this person signal by radio?",
+    "answer": "No. The documentation must specify each type of signaling the person is qualified for."
+   },
+   {
+    "t": "check",
+    "question": "Can a new employer rely on another employer's in-house signal person assessment?",
+    "answer": "No. An employer's qualified-evaluator assessment is not portable."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "d48834c9115ab1e8305a",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "41eb77fa24a8e706d98a4c196985a3c96977eb20bd634b7f6a681d2a7df57be9",
+   "output_sha256": "61d300cb45b30c507453f1ce7293708330b48474ace3e865d47495ad98acb279",
+   "created_at": "2026-11-27T22:22:56+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.roles.07",
+  "topic_id": "roles",
+  "ord": 7,
+  "title": "Required training topics and the operator's authority to stop",
+  "skills": [
+   "roles.training",
+   "roles.authority-to-stop"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Beyond operator certification, the employer must give **specific training** to the people around the crane. The topics required:\n- Overhead power lines, for the employees named in the power line rules.\n- Signal persons who do not yet meet the qualification requirements.\n- Operators: safe operation of their equipment, including operators of exempt equipment.\n- Competent and qualified persons, on the requirements for their roles.\n- Everyone who works with the equipment: holes, crush/pinch points and work area control.\n- Operators and anyone else authorized to start equipment or use its controls: tag-out and start-up procedures."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1430(a)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1430(c)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1430(e)",
+    "text": "The employer must train each employee who works with the equipment to keep clear of holes, and crush/pinch points and the hazards addressed in § 1926.1424 (Work area control)."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1430(f)"
+   },
+   {
+    "t": "text",
+    "text": "Operators must also be trained in two practices. First, when moving a boom off a support, raise it a short distance to check whether the boom hoist brake holds. Second, where available, learn the manufacturer's emergency procedures for halting unintended movement."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1430(c)(3)"
+   },
+   {
+    "t": "text",
+    "text": "The employer must confirm each trainee understood the training, give refresher training when conduct or knowledge shows it is needed, and pay for all of it."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1430(g)(1)",
+    "text": "The employer must evaluate each employee required to be trained under this subpart to confirm that the employee understands the information provided in the training."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1430(g)(3)",
+    "text": "Whenever training is required under subpart CC, the employer must provide the training at no cost to the employee."
+   },
+   {
+    "t": "text",
+    "text": "**Authority to stop.** The operator may stop and refuse a load whenever safety is in doubt. Work resumes only after a **qualified person** determines that safety has been assured. Schedule pressure or a supervisor's insistence does not replace that determination."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1418",
+    "text": "Whenever there is a concern as to safety, the operator must have the authority to stop and refuse to handle loads until a qualified person has determined that safety has been assured."
+   },
+   {
+    "t": "text",
+    "text": "A stop signal is different. The operator must obey a stop or emergency stop from anyone, qualified or not."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(y)",
+    "text": "The operator must obey a stop (or emergency stop) signal, irrespective of who gives it."
+   },
+   {
+    "t": "text",
+    "text": "Applying it on site (practice): stop the motion, land or hold the load in a safe state, and state the concern plainly. Examples include soft ground under a float, a rigging change you were not told about, or a load weight that does not match the plan. Resume only once a qualified person has resolved the concern.\n\nCommon mistakes:\n- Treating a stop signal from a laborer as optional.\n- Restarting because a foreman said to, with no qualified person's determination.\n- Assuming a certificate means the evaluation, signal person documentation or training is complete."
+   },
+   {
+    "t": "check",
+    "question": "A laborer with no signal qualification gives an emergency stop. What does the operator do?",
+    "answer": "Stop. A stop signal must be obeyed no matter who gives it."
+   },
+   {
+    "t": "check",
+    "question": "After refusing a load over ground concerns, when may the operator resume?",
+    "answer": "When a qualified person has determined that safety has been assured."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "d48834c9115ab1e8305a",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "41eb77fa24a8e706d98a4c196985a3c96977eb20bd634b7f6a681d2a7df57be9",
+   "output_sha256": "61d300cb45b30c507453f1ce7293708330b48474ace3e865d47495ad98acb279",
+   "created_at": "2026-11-27T22:22:56+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ }
+]
