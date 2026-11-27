@@ -1,6 +1,6 @@
 {
  "meta": {
-  "started_at": "2026-11-27T15:40:50+00:00",
+  "started_at": "2026-11-27T16:09:36+00:00",
   "set": {
    "path": "../../crane/eval/results/2026-11-27-baseline/../../heldout-v1.jsonl",
    "sha256": "21f018c2ce5a65ba481bf1ffc59129489d21fe5d647859b1c813dc7f2a66acc3",
@@ -10,7 +10,7 @@
    "path": "../../crane/eval/results/2026-11-27-baseline/../../sources/sections-2026-11-24.jsonl",
    "sha256": "95762f535457192699565a367cf8593e6538e22bb799cdcbad9167ff78db0777"
   },
-  "harness_commit": "7397e8b9b206de587624ac5216728b295282215a",
+  "harness_commit": "e1086068e286d32c70f35b650c1bc7bb7fd49259",
   "host": {
    "machine": "arm64",
    "system": "Darwin",
@@ -22,9 +22,11 @@
    "model": "opus",
    "agreement_model": "sonnet",
    "agreement_sample": 0.15,
-   "calls": 0,
-   "cost_usd": 0.0,
-   "models_seen": []
+   "calls": 26,
+   "cost_usd": 12.3171,
+   "models_seen": [
+    "claude-opus-5-5"
+   ]
   },
   "backends": {
    "harvest-model-off": {
@@ -113,7 +115,7 @@
     ]
    }
   },
-  "finished_at": "2026-11-27T15:41:09+00:00",
+  "finished_at": "2026-11-27T16:15:37+00:00",
   "incomplete": []
  },
  "backends": {
@@ -163,7 +165,7 @@
     0.6517754868270332
    ],
    "citation_precision_gold": 0.4983164983164983,
-   "citation_precision_supported": 0.06209150326797386,
+   "citation_precision_supported": 0.058823529411764705,
    "cites_exist_rate": 1.0,
    "claims": {
     "supported": 12,
@@ -357,15 +359,15 @@
    "n_answerable": 291,
    "n_must_decline": 51,
    "citation_precision_gold": 0.3148671565856416,
-   "citation_precision_supported": 0.6983050847457627,
+   "citation_precision_supported": 0.7423728813559322,
    "cites_exist_rate": 0.9610169491525423,
    "claims": {
-    "supported": 2458,
-    "unsupported": 1092,
+    "supported": 2680,
+    "unsupported": 907,
     "answers_judged": 285
    },
-   "unsupported_claim_rate": 0.3076056338028169,
-   "answers_with_unsupported_claim": 0.8736842105263158,
+   "unsupported_claim_rate": 0.2528575411207137,
+   "answers_with_unsupported_claim": 0.8175438596491228,
    "quotes": {
     "total": 0,
     "verbatim_ok": 0
@@ -564,10 +566,10 @@
    "cites_exist_rate": 0.8395061728395061,
    "claims": {
     "supported": 2,
-    "unsupported": 375,
+    "unsupported": 374,
     "answers_judged": 76
    },
-   "unsupported_claim_rate": 0.9946949602122016,
+   "unsupported_claim_rate": 0.9946808510638298,
    "answers_with_unsupported_claim": 1.0,
    "quotes": {
     "total": 0,
@@ -758,14 +760,14 @@
    "n_answerable": 291,
    "n_must_decline": 51,
    "citation_precision_gold": 0.026525198938992044,
-   "citation_precision_supported": 0.018229166666666668,
+   "citation_precision_supported": 0.0234375,
    "cites_exist_rate": 0.8958333333333334,
    "claims": {
-    "supported": 16,
-    "unsupported": 1131,
+    "supported": 18,
+    "unsupported": 1140,
     "answers_judged": 145
    },
-   "unsupported_claim_rate": 0.986050566695728,
+   "unsupported_claim_rate": 0.9844559585492227,
    "answers_with_unsupported_claim": 1.0,
    "quotes": {
     "total": 0,
@@ -956,14 +958,14 @@
    "n_answerable": 291,
    "n_must_decline": 51,
    "citation_precision_gold": 0.006033182503770739,
-   "citation_precision_supported": 0.004405286343612335,
+   "citation_precision_supported": 0.005873715124816446,
    "cites_exist_rate": 0.5565345080763583,
    "claims": {
-    "supported": 3,
-    "unsupported": 1258,
+    "supported": 5,
+    "unsupported": 1256,
     "answers_judged": 277
    },
-   "unsupported_claim_rate": 0.9976209357652657,
+   "unsupported_claim_rate": 0.9960348929421095,
    "answers_with_unsupported_claim": 1.0,
    "quotes": {
     "total": 0,
