@@ -350,9 +350,9 @@ function baseSetup(chart: Chart, cfg: Configuration | null, L?: number, R?: numb
 
 function jibStatusRow(chart: Chart, ids: readonly string[]): { label: string; value: string } | null {
   if (!chart.jib) return null;
-  if (ids.some((id) => getDeduction(chart, id).kind === 'jib-stowed')) return { label: 'Jib/extension', value: 'Stowed on the boom' };
-  if (ids.some((id) => getDeduction(chart, id).kind === 'jib-erected')) return { label: 'Jib/extension', value: 'Erected, not used' };
-  return { label: 'Jib/extension', value: 'Removed' };
+  // name the exact chart item, so a chart with several jib deductions is never ambiguous
+  const jib = ids.map((id) => getDeduction(chart, id)).find((d) => d.kind === 'jib-stowed' || d.kind === 'jib-erected');
+  return { label: 'Jib/extension', value: jib ? jib.item : 'Removed' };
 }
 
 /** Deductions on a main-boom lift: one block or ball, plus jib status and attachments sometimes. */
@@ -373,7 +373,8 @@ function deductionSetup(chart: Chart, ids: readonly string[], rigging: readonly 
     const d = getDeduction(chart, id);
     if (d.kind === 'jib-stowed' || d.kind === 'jib-erected') continue;
     const label = d.kind === 'hook-block' ? 'Hook block' : d.kind === 'headache-ball' ? 'Headache ball' : 'Also on the boom';
-    out.push({ label, value: showWeights ? `${d.item} (${formatLb(d.weightLb)})` : d.item });
+    const item = d.item.replace(/, if (installed|fitted|mounted on the boom)$/, '');
+    out.push({ label, value: showWeights ? `${item} (${formatLb(d.weightLb)})` : item });
   }
   if (rigging.length) out.push({ label: 'Rigging', value: riggingText(rigging) });
   return out;
@@ -539,7 +540,7 @@ function genDeductions(rng: Rng): Problem {
   const riggingLb = sum(riggingLines(rigging).map((l) => l.weightLb));
   const multi = rigging.find((r) => r.count > 1);
   const cands: Cand[] = [];
-  if (jibId) cands.push({ value: d.total - getDeduction(chart, jibId).weightLb, why: 'This leaves out the jib or extension. A stowed or erected jib is always deducted.' });
+  if (jibId) cands.push({ value: d.total - getDeduction(chart, jibId).weightLb, why: 'This leaves out the jib or extension. This chart deducts a stowed or erected jib.' });
   cands.push({ value: d.total - riggingLb, why: 'This leaves out the rigging. Slings, shackles, and spreaders are part of the load.' });
   if (multi) cands.push({ value: d.total - multi.eachLb * (multi.count - 1), why: `This counts one ${multi.item.replace(/s$/, '')} instead of ${multi.count}.` });
   cands.push({ value: d.total - blockLb, why: 'This leaves out the hook block or ball.' });
@@ -703,6 +704,7 @@ function genPercent(rng: Rng): Problem {
       chartId: chart.id,
       setup: [
         ...baseSetup(chart, cfg, L, R),
+        ...(chart.jib ? [{ label: 'Jib/extension', value: 'Removed' }] : []),
         { label: block.kind === 'hook-block' ? 'Hook block' : 'Headache ball', value: `${block.item} (${formatLb(block.weightLb)})` },
         { label: 'Rigging', value: riggingText(rigging) },
         { label: 'Load', value: formatLb(load) },
@@ -766,6 +768,10 @@ const CONFIG_PAIRS = configPairs(
   (_, a, b) => RANK[a.support] < RANK[b.support] && (a.workArea === b.workArea || b.workArea === '360' || RANK[a.support] <= 1),
 );
 
+function zone(cfg: Configuration): string {
+  return cfg.workArea === 'over-front' ? ', boom over the front' : cfg.workArea === 'over-rear' ? ', boom over the rear' : '';
+}
+
 function lc(s: string): string {
   return s.charAt(0).toLowerCase() + s.slice(1);
 }
@@ -798,8 +804,8 @@ function genConfiguration(rng: Rng): Problem {
     setup: [...baseSetup(chart, null, L, R), { label: 'Planned setup', value: a.label }, { label: 'Actual setup', value: b.label }],
     stem:
       ask === 'loss'
-        ? `Planned: ${lc(a.label)}. Actual: ${lc(b.label)}. Same boom and radius. How much gross capacity is lost?`
-        : `Planned: ${lc(a.label)}. Actual: ${lc(b.label)}. Same boom and radius. What gross capacity applies now?`,
+        ? `Planned: ${lc(a.label)}. Actual: ${lc(b.label)}. Same boom and radius${zone(b)}. How much gross capacity is lost?`
+        : `Planned: ${lc(a.label)}. Actual: ${lc(b.label)}. Same boom and radius${zone(b)}. What gross capacity applies now?`,
     answerValue: answer,
     unit: 'lb',
     correctWhy:
@@ -832,6 +838,13 @@ function cellAtRef(chart: Chart, cfg: Configuration, L: number, R: number): Capa
     valueLb: ok ? cfg.capacitiesLb[i][j] : null,
     structural: ok ? cfg.structural[i][j] : false,
   };
+}
+
+/** Jib ratings apply on the strongest support only (outriggers or tracks fully extended). */
+function jibSetupLabel(chart: Chart): string {
+  const cfg = chart.configurations.find((c) => c.support === 'outriggers-full' || c.support === 'tracks-extended');
+  if (!cfg) throw new Error(`loadcharts: ${chart.id} jib has no full-support configuration`);
+  return cfg.label;
 }
 
 type JibPick = { chart: Chart; t: NonNullable<Chart['jib']>['tables'][number]; k: number };
@@ -894,6 +907,7 @@ function genJib(rng: Rng): Problem {
     chartId: chart.id,
     setup: [
       { label: 'Chart', value: chart.title },
+      { label: 'Configuration', value: jibSetupLabel(chart) },
       { label: 'Main boom', value: `${t.mainBoomLengthFt} ft` },
       { label: 'Jib/extension', value: `${t.jibLengthFt} ft at ${t.offsetDeg}° offset, lifting from it` },
       { label: byAngle ? 'Main boom angle' : 'Radius', value: byAngle ? `${key}°` : `${key} ft` },

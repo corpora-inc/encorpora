@@ -223,6 +223,15 @@ function checkProblem(p: Problem, family: FamilyId): void {
   if (family !== 'load-weight' || p.inputs.family !== 'load-weight' || p.inputs.ask === 'margin') assert.ok(p.cells.length >= 1, `${where}: no cells`);
   for (const c of p.cells) assert.ok(cellResolves(chart, c), `${where}: cell ${JSON.stringify(c)} does not match ${chart.id}`);
 
+  // a setup that names a jib deduction names the exact chart item, never a generic status
+  const inp = p.inputs as { deductionIds?: string[] };
+  for (const id of inp.deductionIds ?? []) {
+    const d = chart.deductions.find((x) => x.id === id);
+    if (d && (d.kind === 'jib-stowed' || d.kind === 'jib-erected'))
+      assert.ok(p.setup.some((r) => r.label === 'Jib/extension' && r.value === d.item), `${where}: jib deduction ${id} not named in the setup`);
+  }
+  if (p.setup.some((r) => / if (installed|fitted|mounted)/.test(r.value))) assert.fail(`${where}: conditional item in setup`);
+
   // public-content guard on generated text
   const text = `${p.stem} ${p.setup.map((s) => s.value).join(' ')} ${p.steps.join(' ')} ${p.mc.rationales.join(' ')}`.toLowerCase();
   for (const b of ['nccco', 'osha', 'certified by', 'endorsed']) assert.ok(!text.includes(b), `${where}: mentions ${b}`);
