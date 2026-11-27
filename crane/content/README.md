@@ -35,8 +35,9 @@ natural JSON values (the pipeline JSON-encodes array columns), plus:
   and `quotes` (the verbatim support); for answers `aliases`.
 
 Section ids follow the CONTRACT citation paths: `29cfr1926.1408(a)(2)`. Tables
-are part of their section's text (`29cfr1926.1408` holds Table A). Appendices
-are `29cfr1926.cc.appA`, `.appB`, `.appC`.
+are part of their section's text (`29cfr1926.1408` holds Table A), one row at a
+time with cells joined by ` | ` as in the pipeline's stage, so a table quote
+reads `up to 50 | 10`. Appendices are `29cfr1926.cc.appA`, `.appB`, `.appC`.
 
 ## Verify
 
@@ -53,8 +54,10 @@ normalization) of the cited section's or paragraph's text, where a node's text
 includes its subparagraphs. Generation prompts require each quote to come from
 a single paragraph; the verifier does not reject a quote that runs across two
 adjacent subparagraphs of the cited node. The generators
-repair typography only (curly vs straight quotes, dashes) and may re-point a
-quote to the sibling paragraph that contains it verbatim; anything else fails.
+repair typography only (curly vs straight quotes, dashes, `§1926` vs `§ 1926`,
+a space where a table row has ` | `) and may re-point a quote to the sibling
+paragraph that contains it verbatim; anything else fails. The pipeline
+re-verifies every imported row against its own stage, and the two must agree.
 
 ## Generate
 

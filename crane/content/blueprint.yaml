@@ -363,7 +363,7 @@ topics:
       - {skill_id: ops.free-fall, title: Know boom and load-line free fall prohibitions, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1426"], exam: [core.ops.1]}
       - {skill_id: ops.counterweight, title: Run only with the specified counterweight or ballast, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1417(aa)"], exam: [core.ops.1]}
       - {skill_id: ops.duty-cycle, title: Know duty-cycle work limits, kind: knowledge, levels: [operator], section_ids: ["29cfr1926.1414(c)"], exam: [core.ops.8, core.ops.16]}
-      - {skill_id: ops.multi-drum, title: Run multi-drum and main/auxiliary hoist operations, kind: knowledge, levels: [operator], section_ids: ["29cfr1926.cc.appA"], exam: [core.ops.8]}
+      - {skill_id: ops.multi-drum, title: Run multi-drum and main/auxiliary hoist operations, kind: knowledge, levels: [operator], section_ids: ["29cfr1910.179(a)(17)", "29cfr1910.180(a)(47)", "29cfr1910.179(b)(5)", "29cfr1926.1431(k)(11)"], exam: [core.ops.8]}
       - {skill_id: ops.barge, title: Know the added rules for cranes on barges and floating cranes, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1437"], exam: [core.ops.8, core.ops.19]}
       - {skill_id: ops.lifting-from-water, title: Account for buoyancy, suction and water weight when lifting from water, kind: judgment, levels: [operator], section_ids: ["29cfr1926.1417(o)(3)"], exam: [core.ops.9]}
       - {skill_id: ops.emergencies, title: Respond to control, travel, two-block, overload and fire emergencies, kind: judgment, levels: [trainee, operator], section_ids: ["29cfr1926.1417(j)", "29cfr1926.1418"], exam: [core.ops.15]}

@@ -17,6 +17,7 @@ import datetime as dt
 import hashlib
 import json
 import os
+import re
 import subprocess
 import sys
 import time
@@ -76,10 +77,17 @@ def ground(section_ids: list[str], cap: int = 24000) -> tuple[str, list[str]]:
 
     One line per node: `[section_id] own text`. Quotes must be copied from a
     single line, so each quote is a substring of that node's text.
+    A node longer than the whole budget (the 1926.1401 definitions, ~21k chars)
+    is split into definitions (or sentences), one line each under the same id,
+    and placed after the other sections in the remaining budget, definitions
+    whose term appears in the other text first. Every line stays a verbatim span of its
+    node. Table rows are shown space-joined (`own`); a quote copied from a row
+    verifies after repair() maps it onto the ` | ` row in `text`.
     Returns (text, ids_included)."""
     S = index().s
-    seen, lines, ids = set(), [], []
+    seen, lines, ids, big = set(), [], [], []
     total = 0
+    truncated = False
     for sid in section_ids:
         for k in subtree(sid):
             if k in seen:
@@ -91,12 +99,44 @@ def ground(section_ids: list[str], cap: int = 24000) -> tuple[str, list[str]]:
             if not own and n["kind"] != "section":
                 continue
             line = f"[{k}]{head} {own}".rstrip()
-            if total + len(line) > cap:
-                lines.append(f"[... text truncated at {cap} characters; cite only the ids shown above ...]")
-                return "\n".join(lines), ids
+            if len(line) > cap:
+                big.append((k, head, own))
+                continue
+            if truncated or total + len(line) > cap:
+                truncated = True
+                continue
             lines.append(line)
             ids.append(k)
             total += len(line)
+        if truncated:
+            break
+    context = " ".join(lines).lower()
+    for k, head, own in big:
+        # one piece per definition ("<Term> means ..."), else per sentence
+        pieces = re.split(r"(?<=[.;:”])\s+(?=[A-Z“][^.;]{0,80}? means )", own)
+        if len(pieces) == 1:
+            pieces = re.split(r"(?<=[.;:”])\s+(?=[A-Z“])", own)
+        sents = [s for s in pieces if s]
+        term = [s.split(" means ", 1)[0].lower() if " means " in s[:100] else "" for s in sents]
+        rank = sorted(range(len(sents)), key=lambda i: (not (term[i] and term[i] in context), i))
+        keep: set[int] = set()
+        used = len(f"[{k}]{head}")
+        for i in rank:
+            add = len(sents[i]) + len(k) + 3
+            if total + used + add > cap:
+                truncated = True
+                continue
+            keep.add(i)
+            used += add
+        if keep:
+            first = True
+            for i in sorted(keep):
+                lines.append(f"[{k}]{head if first else ''} {sents[i]}")
+                first = False
+            ids.append(k)
+            total += used
+    if truncated:
+        lines.append(f"[... text truncated at {cap} characters; cite only the ids shown above ...]")
     return "\n".join(lines), ids
 
 
@@ -245,13 +285,21 @@ def repair_quotes(obj) -> tuple[int, int, list[str]]:
             if k.split("(")[0] != base:
                 continue
             r = ix.repair(k, q) if n["own"] else None
-            if r and r in n["own"] and (best is None or k.count("(") > best[0].count("(")):
+            if r and r in n.get("own_cells", n["own"]) and (best is None or k.count("(") > best[0].count("(")):
                 best = (k, r)
         if best:
             d["section_id"], d[key] = best
             rep += 1
-        else:
-            errs.append(f"quote not in {sid}: {q[:100]}")
+            return
+        # a section heading is not section text: a "quote" of the heading becomes a cite
+        head = (ix.s[sid].get("heading") or "").rstrip(". ")
+        qn = ecfr.norm(q).rstrip(". ")
+        if d.get("t") == "quote" and head and qn and (head.endswith(qn) or qn.endswith(head)):
+            d["t"] = "cite"
+            d.pop("text", None)
+            rep += 1
+            return
+        errs.append(f"quote not in {sid}: {q[:100]}")
 
     def walk(n):
         if isinstance(n, dict):

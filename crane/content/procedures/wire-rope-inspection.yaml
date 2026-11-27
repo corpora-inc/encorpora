@@ -1,0 +1,709 @@
+proc_id: wire-rope-inspection
+title: Wire rope inspection (shift, monthly, annual)
+kind: inspection
+summary: This procedure covers the visual wire rope inspection for Category I, II and III deficiencies, the critical
+  review items, the removal-from-service decision and the records. A competent person does it before or during every
+  shift the equipment is used and again each month, and a qualified person does a full-length inspection at least
+  every 12 months.
+roles:
+- operator
+- competent_person
+- qualified_person
+- inspector
+lang: en
+section_ids:
+- 29cfr1926.1413
+- 29cfr1926.1414(e)
+- 29cfr1926.1417(t)
+- 29cfr1910.180(g)
+steps:
+- ord: 1
+  phase: Before you start
+  text: Confirm a competent person starts the rope inspection before the shift begins.
+  detail:
+    trainee: Someone who can spot rope damage and has authority to fix it must start looking at the ropes before
+      work begins. The look can be finished during the shift, but it has to start first. Good means the inspection
+      is underway before the first lift.
+    operator: Do not start the shift until the competent person has started the rope inspection. It must be finished
+      before the end of the shift.
+    inspector: Verify a competent person was designated and began the visual inspection before the shift, per 1926.1413(a)(1).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1413(a)(1)
+  deficiency:
+    guidance: No competent person has started the shift rope inspection.
+    action: Do not use the equipment until a competent person has started the inspection.
+    section_id: 29cfr1926.1413(a)(1)
+    quote: A competent person must begin a visual inspection prior to each shift the equipment is used, which must
+      be completed before or during that shift.
+  practice_only: false
+- ord: 2
+  phase: Before you start
+  text: List the running and standing ropes likely in use this shift, with an identifier for each.
+  detail:
+    trainee: 'Write down which ropes you will check: hoist lines, boom hoist rope, pendants and other standing ropes.
+      Each rope gets an ID so its records stay with it.'
+    operator: Record the rope ID, its use (main hoist, whip, boom hoist, pendant), whether it is rotation resistant,
+      and its nominal diameter.
+    inspector: Confirm the scope covers every running and standing rope likely in use, per 1926.1413(a)(1). For
+      1910.180 cranes, the record must include a rope identifier.
+  check_kind: note
+  section_ids:
+  - 29cfr1926.1413(a)(1)
+  - 29cfr1910.180(g)(1)
+  deficiency: null
+  practice_only: false
+- ord: 3
+  phase: Before you start
+  text: Review earlier records for monitored deficiencies and past reduced-design-factor lifts.
+  detail:
+    trainee: Read the last monthly and annual records first. They may flag spots the qualified person wants watched,
+      and they may list lifts made on rotation resistant rope at a design factor below 5.
+    operator: Note every monitored location and any lifts logged under 1926.1414(e)(3) so they get checked today.
+    inspector: Verify the earlier documents were available to the person inspecting, per 1926.1413(e), and that
+      monitored items were carried forward, per 1926.1413(b)(2).
+  check_kind: note
+  section_ids:
+  - 29cfr1926.1413(e)
+  - 29cfr1926.1413(b)(2)
+  - 29cfr1926.1414(e)(3)(iii)
+  deficiency: null
+  practice_only: false
+- ord: 4
+  phase: Before you start
+  text: Confirm rotation resistant rope is not used for boom hoist reeving unless the exception applies.
+  detail:
+    trainee: Rotation resistant rope is generally not allowed on the boom hoist. The one exception is a load hoist
+      used as a boom hoist for luffing or boom-and-mast attachments, and only if extra drum, sheave and design-factor
+      conditions are met.
+    operator: If rotation resistant rope is reeved on a boom hoist, confirm it is a load hoist on a luffing or boom-and-mast
+      attachment. Confirm drum and sheave pitch diameters are at least 18 times the nominal rope diameter and the
+      reeving design factor is at least five.
+    inspector: Verify the configuration and documentation meet 1926.1414(e)(4)(ii)(A) through (G) before accepting
+      rotation resistant boom hoist reeving.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1414(e)(4)(i)
+  - 29cfr1926.1414(e)(4)(ii)
+  - 29cfr1926.1414(e)(4)(ii)(A)
+  - 29cfr1926.1414(e)(4)(ii)(D)
+  - 29cfr1926.1414(e)(4)(ii)(E)
+  deficiency:
+    guidance: Rotation resistant rope is on a boom hoist and the exception conditions are not met.
+    action: Do not use the boom hoist. Re-reeve with suitable rope or document that every exception condition is
+      met.
+    section_id: 29cfr1926.1414(e)(4)(i)
+    quote: Rotation resistant ropes must not be used for boom hoist reeving, except where the requirements of paragraph
+      (e)(4)(ii) of this section are met.
+  practice_only: false
+- ord: 5
+  phase: Before you start
+  text: Confirm the rotation resistant rope's operating design factor meets the minimums for this work.
+  detail:
+    trainee: Rotation resistant rope needs a larger safety margin than many other ropes. The design factor is breaking
+      strength divided by the load on the rope.
+    operator: All types need at least 3.5. Type I needs 5 unless both the rope and equipment manufacturers approve
+      otherwise in writing. Types II and III need 5, and below 5 they must not be used for duty cycle or repetitive
+      lifts.
+    inspector: Check the design factor against 1926.1414(e)(2)(i) through (iv), and check any written manufacturer
+      approval for Type I.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1414(e)(2)(i)
+  - 29cfr1926.1414(e)(2)(ii)
+  - 29cfr1926.1414(e)(2)(iii)
+  - 29cfr1926.1414(e)(2)(iv)
+  deficiency:
+    guidance: The design factor is below the required minimum for the rope type or the type of lifting.
+    action: Do not make the lift. Change the reeving or load, or meet the 1926.1414(e)(3) conditions for Types II
+      and III.
+    section_id: 29cfr1926.1414(e)(2)(ii)
+    quote: Rotation resistant ropes (including Types I, II and III) must have an operating design factor of no less
+      than 3.5.
+  practice_only: false
+- ord: 6
+  phase: Visual inspection
+  text: Check that the rope lubricant does not hide the wires.
+  detail:
+    trainee: Some heavy coatings cover the rope so you cannot see broken wires or corrosion. If you cannot see the
+      wires, you cannot inspect the rope.
+    operator: If the coating hides wire surfaces, stop and get the rope cleaned so it can be inspected. Do not use
+      that lubricant again.
+    inspector: Verify the lubricant in use lets you see the rope surface, per 1926.1413(d).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1413(d)
+  deficiency:
+    guidance: The lubricant hinders inspection, so the rope's condition cannot be confirmed.
+    action: Stop using that lubricant. Clean the rope enough to inspect it before you use it.
+    section_id: 29cfr1926.1413(d)
+    quote: Rope lubricants that are of the type that hinder inspection must not be used.
+  practice_only: false
+- ord: 7
+  phase: Visual inspection
+  text: Look for kinking, crushing, unstranding, birdcaging, cutting or core protrusion.
+  detail:
+    trainee: 'Look along the rope for any spot where its shape is wrong: bends that won''t straighten, flattened
+      sections, strands opening up like a cage, or the core pushing out between the outer strands. You do not need
+      to untwist the rope or boom down for this check.'
+    operator: Significant distortion is Category I. Have the competent person decide right away whether it is a
+      safety hazard.
+    inspector: Record the location and type of distortion and the competent person's hazard decision, per 1926.1413(a)(2)(i)(A)
+      and (a)(4)(i). For 1910.180 cranes, also look for severe cutting.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1413(a)(2)(i)(A)
+  - 29cfr1926.1413(a)(4)(i)
+  - 29cfr1910.180(g)(1)(vi)
+  deficiency:
+    guidance: Category I deficiency.
+    action: The competent person decides immediately whether it is a hazard. If it is, stop using the rope, tag
+      it out, and replace it or sever off a localized defect.
+    section_id: 29cfr1926.1413(a)(4)(i)
+    quote: an immediate determination must be made by the competent person as to whether the deficiency constitutes
+      a safety hazard.
+  practice_only: false
+- ord: 8
+  phase: Visual inspection
+  text: Look for significant corrosion on the rope.
+  detail:
+    trainee: Look for rust, pitting or wires that look thinned or eaten away. Light surface discoloration is different
+      from wires losing metal.
+    operator: Significant corrosion is Category I. Have the competent person decide right away whether it is a safety
+      hazard.
+    inspector: Document the location and extent of corrosion and the hazard decision, per 1926.1413(a)(2)(i)(B).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1413(a)(2)(i)(B)
+  - 29cfr1926.1413(a)(4)(i)
+  deficiency:
+    guidance: Category I deficiency.
+    action: The competent person decides immediately whether it is a hazard. If it is, stop using the rope, tag
+      it out, and replace it or sever off a localized defect.
+    section_id: 29cfr1926.1413(a)(4)(i)
+    quote: an immediate determination must be made by the competent person as to whether the deficiency constitutes
+      a safety hazard.
+  practice_only: false
+- ord: 9
+  phase: Visual inspection
+  text: Look for electric arc damage or heat damage.
+  detail:
+    trainee: Look for pitted, fused, blackened or discolored wires from welding, arcing or heat. Damage from a power
+      line is a separate, more serious category.
+    operator: Arc damage from a source other than a power line, or heat damage, is Category I. Have the competent
+      person decide right away whether it is a safety hazard.
+    inspector: Document the damage and its source, per 1926.1413(a)(2)(i)(C). If a power line was involved, treat
+      it as Category III.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1413(a)(2)(i)(C)
+  - 29cfr1926.1413(a)(4)(i)
+  deficiency:
+    guidance: Category I deficiency.
+    action: The competent person decides immediately whether it is a hazard. If it is, stop using the rope, tag
+      it out, and replace it or sever off a localized defect.
+    section_id: 29cfr1926.1413(a)(4)(i)
+    quote: an immediate determination must be made by the competent person as to whether the deficiency constitutes
+      a safety hazard.
+  practice_only: false
+- ord: 10
+  phase: Visual inspection
+  text: Check end connections for bad installation, corrosion, cracks, bends, wear and broken wires.
+  detail:
+    trainee: Check every socket, wedge socket, clip and swaged fitting. Each should be installed correctly and free
+      of cracks, bends, heavy wear or rust, with no broken wires where the rope enters it.
+    operator: An improperly applied or significantly damaged end connection is Category I. Count broken wires at
+      the end connection in the pendant step.
+    inspector: Verify end connections against 1926.1413(a)(2)(i)(D) and (E), and against 1910.180(g)(1)(iv) and
+      (v) for 1910.180 cranes.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1413(a)(2)(i)(D)
+  - 29cfr1926.1413(a)(2)(i)(E)
+  - 29cfr1910.180(g)(1)(iv)
+  - 29cfr1910.180(g)(1)(v)
+  deficiency:
+    guidance: Category I deficiency at the end connection.
+    action: The competent person decides immediately whether it is a hazard. If it is, stop using the rope, tag
+      it out, and re-terminate or replace it.
+    section_id: 29cfr1926.1413(a)(4)(i)
+    quote: an immediate determination must be made by the competent person as to whether the deficiency constitutes
+      a safety hazard.
+  practice_only: false
+- ord: 11
+  phase: Broken wires and diameter
+  text: 'Running ropes: count the visible broken wires in the worst rope lay.'
+  detail:
+    trainee: A rope lay is the length of rope in which one strand goes once all the way around. In practice, mark
+      a strand and follow it around until it comes back to the same side. Count the broken wires in that length,
+      both in total and in any single strand.
+    operator: 'Removal criteria: 6 randomly distributed broken wires in one lay, or 3 broken wires in one strand
+      in one lay. Either one is Category II.'
+    inspector: Record the worst count, its location and the lay length, per 1926.1413(a)(2)(ii)(A)(1).
+  check_kind: value
+  value_unit: broken wires per rope lay
+  section_ids:
+  - 29cfr1926.1413(a)(2)(ii)(A)(1)
+  - 29cfr1910.180(g)(1)(ii)
+  deficiency:
+    guidance: Category II deficiency in a running rope.
+    action: Stop using the rope and tag it out. Use the manufacturer's removal criterion, replace the rope, or sever
+      off a localized defect.
+    section_id: 29cfr1926.1413(a)(4)(ii)
+    quote: 'If a deficiency in Category II (see paragraph (a)(2)(ii) of this section) is identified, operations
+      involving use of the wire rope in question must be prohibited until:'
+  practice_only: false
+- ord: 12
+  phase: Broken wires and diameter
+  text: 'Rotation resistant ropes: count broken wires in 6 and in 30 rope diameters.'
+  detail:
+    trainee: Rotation resistant rope is a critical review item, and it can fail inside before much shows outside,
+      so look closely. Measure 6 rope diameters and 30 rope diameters along the rope. For a 3/4-inch rope, that
+      is 4-1/2 in and 22-1/2 in (simple arithmetic).
+    operator: 'Removal criteria: 2 randomly distributed broken wires in 6 rope diameters, or 4 in 30 rope diameters.
+      Either one is Category II.'
+    inspector: Record both counts and their locations, per 1926.1413(a)(2)(ii)(A)(2) and (a)(3)(i), and 1910.180(g)(2)(iii)
+      for 1910.180 cranes.
+  check_kind: value
+  value_unit: broken wires in 6 and 30 rope diameters
+  section_ids:
+  - 29cfr1926.1413(a)(2)(ii)(A)(2)
+  - 29cfr1926.1413(a)(3)(i)
+  - 29cfr1910.180(g)(2)(iii)
+  deficiency:
+    guidance: Category II deficiency in rotation resistant rope.
+    action: Stop using the rope and tag it out. Use the manufacturer's removal criterion, replace the rope, or sever
+      off a localized defect.
+    section_id: 29cfr1926.1413(a)(4)(ii)
+    quote: 'If a deficiency in Category II (see paragraph (a)(2)(ii) of this section) is identified, operations
+      involving use of the wire rope in question must be prohibited until:'
+  practice_only: false
+- ord: 13
+  phase: Broken wires and diameter
+  text: 'Pendants and standing ropes: count broken wires per lay away from and at end connections.'
+  detail:
+    trainee: Standing ropes don't move over sheaves, so their limits are tighter, especially where the rope enters
+      a fitting. Count separately along the body of the rope and right at each end connection.
+    operator: 'Removal criteria: more than 2 broken wires in one lay beyond the end connections, or more than 1
+      broken wire in a lay at an end connection. Either one is Category II.'
+    inspector: Record both counts for each pendant or standing rope, per 1926.1413(a)(2)(ii)(A)(3).
+  check_kind: value
+  value_unit: broken wires per rope lay
+  section_ids:
+  - 29cfr1926.1413(a)(2)(ii)(A)(3)
+  deficiency:
+    guidance: Category II deficiency in a pendant or standing rope.
+    action: Stop using the rope and tag it out. Use the manufacturer's removal criterion, replace the rope, or sever
+      off a localized defect.
+    section_id: 29cfr1926.1413(a)(4)(ii)
+    quote: 'If a deficiency in Category II (see paragraph (a)(2)(ii) of this section) is identified, operations
+      involving use of the wire rope in question must be prohibited until:'
+  practice_only: false
+- ord: 14
+  phase: Broken wires and diameter
+  text: Measure rope diameter at the smallest point and compare it with nominal.
+  detail:
+    trainee: Rope gets thinner from wear, corrosion or loss of core support. In practice, use calipers across the
+      strand crowns (the widest points), not across the flat between strands. Look for worn outside wires at the
+      same time.
+    operator: 'A reduction of more than 5% from nominal is Category II. Worked example (arithmetic): on a 3/4-in
+      rope, 5% is 0.0375 in, so anything under 0.7125 in fails.'
+    inspector: Record nominal diameter, measured diameter and location, per 1926.1413(a)(2)(ii)(B). For 1910.180
+      cranes, also check 1910.180(g)(1)(i) and (iii).
+  check_kind: value
+  value_unit: in
+  section_ids:
+  - 29cfr1926.1413(a)(2)(ii)(B)
+  - 29cfr1910.180(g)(1)(i)
+  - 29cfr1910.180(g)(1)(iii)
+  deficiency:
+    guidance: 'Diameter reduced more than 5% from nominal: Category II.'
+    action: Stop using the rope and tag it out. Use the manufacturer's removal criterion, replace the rope, or sever
+      off a localized defect.
+    section_id: 29cfr1926.1413(a)(4)(ii)
+    quote: 'If a deficiency in Category II (see paragraph (a)(2)(ii) of this section) is identified, operations
+      involving use of the wire rope in question must be prohibited until:'
+  practice_only: false
+- ord: 15
+  phase: Category III
+  text: Check for broken strands and for core failure in rotation resistant rope.
+  detail:
+    trainee: A whole strand broken, or the core pushing out of rotation resistant rope, means the rope has lost
+      much of its strength. Rope in this condition does not stay in service.
+    operator: Either condition is Category III. Stop using the rope now. No hazard judgment is needed.
+    inspector: Document the Category III finding and the tag-out, per 1926.1413(a)(2)(iii)(A) and (C), and (a)(4)(iii).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1413(a)(2)(iii)(A)
+  - 29cfr1926.1413(a)(2)(iii)(C)
+  - 29cfr1926.1413(a)(4)(iii)
+  deficiency:
+    guidance: Category III deficiency.
+    action: Stop using the rope and tag it out. Replace it, or sever off a localized defect with no splicing.
+    section_id: 29cfr1926.1413(a)(4)(iii)
+    quote: 'If a deficiency in Category III is identified, operations involving use of the wire rope in question
+      must be prohibited until:'
+  practice_only: false
+- ord: 16
+  phase: Category III
+  text: Confirm the rope has never contacted a power line.
+  detail:
+    trainee: Ask about any power line contact and look for arc marks. Rope that touched an energized line cannot
+      be cut and reused. It must be replaced.
+    operator: Any prior power line contact is Category III. Replace the rope, because repair is not allowed.
+    inspector: Verify the incident history and record it, per 1926.1413(a)(2)(iii)(B) and (a)(4)(iii)(B).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1413(a)(2)(iii)(B)
+  - 29cfr1926.1413(a)(4)(iii)(A)
+  - 29cfr1926.1413(a)(4)(iii)(B)
+  deficiency:
+    guidance: The rope contacted a power line. Severing is not an option.
+    action: Stop using the rope, tag it out, and replace it.
+    section_id: 29cfr1926.1413(a)(4)(iii)(B)
+    quote: Repair of wire rope that contacted an energized power line is also prohibited.
+  practice_only: false
+- ord: 17
+  phase: Critical review items
+  text: Inspect boom hoist and luffing hoist rope closely, especially at reverse bends.
+  detail:
+    trainee: Where rope bends one way and then the other, wires fatigue faster. Look extra closely at those sections.
+    operator: Apply the Category I, II and III criteria to these sections, and treat what you find the same way.
+    inspector: Verify particular attention was given here, per 1926.1413(a)(3)(ii).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1413(a)(3)(ii)
+  deficiency:
+    guidance: A deficiency was found at a critical review location.
+    action: Classify it as Category I, II or III and apply the matching removal rule. Tag out if removal is required.
+    section_id: 29cfr1926.1413(a)(4)(iv)
+    quote: Where a wire rope is required to be removed from service under this section, either the equipment (as
+      a whole) or the hoist with that wire rope must be tagged-out
+  practice_only: false
+- ord: 18
+  phase: Critical review items
+  text: Inspect rope at drum flange points, crossover points and repetitive pickup points.
+  detail:
+    trainee: On the drum, rope gets crushed and scuffed where layers cross over, at the flanges, and where it picks
+      up off the drum in the same place on every lift.
+    operator: Look for crushing, flattening and broken wires at these points. Apply the category criteria.
+    inspector: Verify the drum locations were examined, per 1926.1413(a)(3)(iii).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1413(a)(3)(iii)
+  deficiency:
+    guidance: A deficiency was found at a drum critical point.
+    action: Classify it as Category I, II or III and apply the matching removal rule. Tag out if removal is required.
+    section_id: 29cfr1926.1413(a)(4)(iv)
+    quote: Where a wire rope is required to be removed from service under this section, either the equipment (as
+      a whole) or the hoist with that wire rope must be tagged-out
+  practice_only: false
+- ord: 19
+  phase: Critical review items
+  text: Inspect rope at or near terminal ends.
+  detail:
+    trainee: Rope next to sockets, wedges and dead-end anchors bends and vibrates. Broken wires often show up there
+      first.
+    operator: Check the first few lays next to each termination for broken wires, corrosion and distortion.
+    inspector: Verify terminal ends were examined, per 1926.1413(a)(3)(iv).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1413(a)(3)(iv)
+  deficiency:
+    guidance: A deficiency was found at or near a terminal end.
+    action: Classify it as Category I, II or III and apply the matching removal rule. Tag out if removal is required.
+    section_id: 29cfr1926.1413(a)(4)(iv)
+    quote: Where a wire rope is required to be removed from service under this section, either the equipment (as
+      a whole) or the hoist with that wire rope must be tagged-out
+  practice_only: false
+- ord: 20
+  phase: Critical review items
+  text: Inspect rope at saddles, equalizer sheaves and other sheaves where rope travel is limited.
+  detail:
+    trainee: Where rope barely moves over a sheave or rests on a saddle, the same short section takes all the wear.
+      Heavy wear and broken wires collect there.
+    operator: Check these sections closely for wear and broken wires. Apply the category criteria.
+    inspector: Verify these locations were examined, per 1926.1413(a)(3)(v), and 1910.180(g)(2)(i) for 1910.180
+      cranes.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1413(a)(3)(v)
+  - 29cfr1910.180(g)(2)(i)
+  deficiency:
+    guidance: A deficiency was found where rope travel is limited.
+    action: Classify it as Category I, II or III and apply the matching removal rule. Tag out if removal is required.
+    section_id: 29cfr1926.1413(a)(4)(iv)
+    quote: Where a wire rope is required to be removed from service under this section, either the equipment (as
+      a whole) or the hoist with that wire rope must be tagged-out
+  practice_only: false
+- ord: 21
+  phase: Critical review items
+  text: Photograph each deficiency with a scale reference and the rope ID.
+  detail:
+    trainee: A clear photo with a ruler or caliper in the frame helps the next inspector see whether the damage
+      is getting worse.
+    operator: Take one close-up and one location shot for each finding.
+    inspector: Attach the photos to the inspection record. This is good practice, not a stated requirement.
+  check_kind: photo
+  section_ids: []
+  deficiency: null
+  practice_only: true
+- ord: 22
+  phase: Removal from service
+  text: Tag out the equipment or the affected hoist when a rope must come out of service.
+  detail:
+    trainee: A tag tells everyone the rope cannot be used. It stays on until the rope is repaired or replaced.
+    operator: Tag the whole machine or the hoist with that rope. Do not run that hoist.
+    inspector: Verify the tag-out was done under 1926.1417(f)(1) and stayed in place until repair or replacement,
+      per 1926.1413(a)(4)(iv).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1413(a)(4)(iv)
+  deficiency:
+    guidance: A rope that must be removed from service is not tagged out.
+    action: Tag out the equipment or the hoist now.
+    section_id: 29cfr1926.1413(a)(4)(iv)
+    quote: Where a wire rope is required to be removed from service under this section, either the equipment (as
+      a whole) or the hoist with that wire rope must be tagged-out
+  practice_only: false
+- ord: 23
+  phase: Removal from service
+  text: For a Category II alternative, record the manufacturer's removal criterion or its written approval.
+  detail:
+    trainee: For Category II only, the rope maker's own removal criterion can be used instead of replacing or cutting
+      the rope. A different criterion is allowed only if the rope maker approved it in writing for that specific
+      rope.
+    operator: Record which criterion was used and where the written approval is kept.
+    inspector: Verify the criterion is from the manufacturer, or approved in writing for that rope, per 1926.1413(a)(4)(ii)(A).
+  check_kind: note
+  section_ids:
+  - 29cfr1926.1413(a)(4)(ii)(A)
+  deficiency: null
+  practice_only: false
+- ord: 24
+  phase: Removal from service
+  text: If you sever a localized defect, confirm there is no splice and count the drum wraps at the lowest position.
+  detail:
+    trainee: You may cut out a damaged section and keep using the good part. You may never splice two pieces together.
+      The shorter rope must still leave at least two wraps on the drum with the hook or boom at its lowest point.
+    operator: Lower the load or boom to its lowest working position and count the full wraps left on the drum. Two
+      or more passes.
+    inspector: Verify no splice and at least two full wraps, per 1926.1413(a)(4)(i)(B), (ii)(C), (iii)(B), (c)(3)(i)(B)
+      and 1926.1417(t).
+  check_kind: value
+  value_unit: full wraps on drum
+  section_ids:
+  - 29cfr1926.1413(a)(4)(i)(B)
+  - 29cfr1926.1413(a)(4)(ii)(C)
+  - 29cfr1926.1413(a)(4)(iii)(B)
+  - 29cfr1926.1413(c)(3)(i)(B)
+  - 29cfr1926.1417(t)
+  deficiency:
+    guidance: Fewer than two full wraps at the lowest position, or the rope was spliced.
+    action: Do not use the rope. Replace it with a rope long enough to leave two full wraps, or limit lowering so
+      two full wraps remain.
+    section_id: 29cfr1926.1417(t)
+    quote: Neither the load nor the boom must be lowered below the point where less than two full wraps of rope
+      remain on their respective drums.
+  practice_only: false
+- ord: 25
+  phase: Rotation resistant, design factor below 5
+  text: For a Type II or III lift below design factor 5, have a qualified person count broken wires per lay.
+  detail:
+    trainee: When Type II or III rope is used at a design factor below 5, it is only for non-duty-cycle, non-repetitive
+      lifts. A qualified person must inspect it before each lift under tighter limits.
+    operator: More than 1 broken wire in any one lay is a hazard, so do not lift. Run at speeds that minimize dynamic
+      effects, per 1926.1414(e)(3)(ii).
+    inspector: Verify the per-lift qualified person inspection and that prior uses were considered, per 1926.1414(e)(3)(i)
+      and (iii).
+  check_kind: value
+  value_unit: broken wires per rope lay
+  section_ids:
+  - 29cfr1926.1414(e)(3)
+  - 29cfr1926.1414(e)(3)(i)
+  - 29cfr1926.1414(e)(3)(ii)
+  - 29cfr1926.1414(e)(3)(iii)
+  deficiency:
+    guidance: More than one broken wire in a lay counts as a hazard for this rope.
+    action: Do not make the lift with this rope.
+    section_id: 29cfr1926.1414(e)(3)(i)
+    quote: In making this determination, more than one broken wire in any one rope lay must be considered a hazard.
+  practice_only: false
+- ord: 26
+  phase: Monthly
+  text: Do the full shift-inspection checks monthly, including every monitored deficiency.
+  detail:
+    trainee: The monthly inspection repeats all the shift checks above. It also checks the specific spots the annual
+      inspector asked to be watched.
+    operator: Do not use the ropes until the monthly inspection shows no corrective action is needed.
+    inspector: Verify the monthly inspection covered the shift scope and the monitored items, per 1926.1413(b)(1)
+      through (3).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1413(b)(1)
+  - 29cfr1926.1413(b)(2)
+  - 29cfr1926.1413(b)(3)
+  deficiency:
+    guidance: The monthly inspection is not done, or it found a condition needing corrective action.
+    action: Do not use the rope until the monthly inspection is complete and no corrective action is required.
+    section_id: 29cfr1926.1413(b)(3)
+    quote: Wire ropes on equipment must not be used until an inspection under this paragraph demonstrates that no
+      corrective action under paragraph (a)(4) of this section is required.
+  practice_only: false
+- ord: 27
+  phase: Monthly
+  text: On 1910.180 cranes, do a thorough inspection before using rope that sat idle a month or more.
+  detail:
+    trainee: Rope on a crane that has been shut down or stored for a month or more can corrode or deteriorate. It
+      needs a thorough check before use.
+    operator: An appointed or authorized person inspects for all types of deterioration and must approve the rope
+      before use.
+    inspector: Verify the certification record has the date, the signature and the rope identifier, per 1910.180(g)(2)(ii).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1910.180(g)(2)(ii)
+  deficiency:
+    guidance: Idle rope has not been inspected and approved.
+    action: Do not use the rope until an appointed or authorized person has inspected and approved it.
+    section_id: 29cfr1910.180(g)(2)(ii)
+    quote: This inspection shall be for all types of deterioration and shall be performed by an appointed or authorized
+      person whose approval shall be required for further use of the rope.
+  practice_only: false
+- ord: 28
+  phase: Monthly
+  text: Document the monthly inspection with the date, the inspector's signature and the rope identifiers.
+  detail:
+    trainee: The monthly record shows the rope was checked and who checked it.
+    operator: Fill out the monthly record. On 1910.180 cranes, include the date, the signature and the rope identifier,
+      and keep it on file where it is easy to find.
+    inspector: Verify documentation under 1926.1412(e)(3), per 1926.1413(b)(4), and the 1910.180(g)(1) certification
+      record. Log any 1926.1414(e)(3) lifts.
+  check_kind: note
+  section_ids:
+  - 29cfr1926.1413(b)(4)
+  - 29cfr1910.180(g)(1)
+  - 29cfr1926.1414(e)(3)(iii)
+  deficiency: null
+  practice_only: false
+- ord: 29
+  phase: Annual/comprehensive
+  text: Confirm a qualified person has inspected the ropes within the last 12 months.
+  detail:
+    trainee: Once a year, a qualified person does all the shift checks plus a complete, full-length inspection.
+    operator: Check the date of the last annual rope inspection. Schedule the next one before 12 months pass.
+    inspector: Verify the qualified person and the interval, per 1926.1413(c)(1) and (c)(2).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1413(c)(1)
+  - 29cfr1926.1413(c)(2)
+  - 29cfr1926.1413(c)(2)(i)
+  deficiency:
+    guidance: The annual inspection is overdue, or was not done by a qualified person.
+    action: Notify the employer and have a qualified person do the annual inspection.
+    section_id: 29cfr1926.1413(c)(1)
+    quote: At least every 12 months, wire ropes in use on equipment must be inspected by a qualified person in accordance
+      with paragraph (a) of this section (shift inspection).
+  practice_only: false
+- ord: 30
+  phase: Annual/comprehensive
+  text: Inspect the full surface of each rope, including normally hidden sections, reverse bends and sheave contact.
+  detail:
+    trainee: Unspool or travel the rope so every foot can be seen, including rope that normally stays on the drum
+      or inside the boom.
+    operator: Run the rope out so the qualified person can see its whole length. Give particular attention to the
+      critical review items, reverse bends and rope passing over sheaves.
+    inspector: Verify full-length coverage and the focus areas, per 1926.1413(c)(2)(ii)(A) through (D).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1413(c)(2)(ii)
+  - 29cfr1926.1413(c)(2)(ii)(A)
+  - 29cfr1926.1413(c)(2)(ii)(B)
+  - 29cfr1926.1413(c)(2)(ii)(C)
+  - 29cfr1926.1413(c)(2)(ii)(D)
+  deficiency:
+    guidance: Part of the rope length was not inspected.
+    action: Complete the full-length inspection, or document why it is not feasible and use the exception.
+    section_id: 29cfr1926.1413(c)(2)(ii)
+    quote: 'The inspection must be complete and thorough, covering the surface of the entire length of the wire
+      ropes, with particular attention given to all of the following:'
+  practice_only: false
+- ord: 31
+  phase: Annual/comprehensive
+  text: If the full-length inspection is not feasible, record why and the latest allowed date.
+  detail:
+    trainee: Sometimes the setup or the site makes a full inspection impossible, for example when an assist crane
+      is needed or the site is a dense urban setting. It must still be done as soon as it becomes feasible.
+    operator: 'Running ropes: no more than an additional 6 months. Standing ropes: at the time of disassembly.'
+    inspector: Record the reason and the deadline, per 1926.1413(c)(2)(iii).
+  check_kind: note
+  section_ids:
+  - 29cfr1926.1413(c)(2)(iii)
+  deficiency: null
+  practice_only: false
+- ord: 32
+  phase: Annual/comprehensive
+  text: 'Qualified person decides on each deficiency: safety hazard, monitor, or acceptable.'
+  detail:
+    trainee: For each problem found, the qualified person decides on the spot. A hazard stops use. A problem that
+      isn't a hazard yet can be put on a watch list for the monthly checks.
+    operator: If it is a hazard, stop using the rope, tag it out, and replace it or sever off a localized defect.
+      If it needs monitoring, add it to the monthly checklist.
+    inspector: Document each determination, per 1926.1413(c)(3), (c)(3)(i) and (c)(3)(ii).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1413(c)(3)
+  - 29cfr1926.1413(c)(3)(i)
+  - 29cfr1926.1413(c)(3)(ii)
+  deficiency:
+    guidance: The deficiency is a safety hazard.
+    action: Stop using the rope and tag it out. Replace it, or sever off a localized defect with no splicing.
+    section_id: 29cfr1926.1413(c)(3)(i)
+    quote: 'If the deficiency is determined to constitute a safety hazard, operations involving use of the wire
+      rope in question must be prohibited until:'
+  practice_only: false
+- ord: 33
+  phase: Records
+  text: Document the annual inspection and list the deficiencies to monitor monthly.
+  detail:
+    trainee: The annual record carries forward the watch list the monthly inspector will use.
+    operator: Record findings, determinations, monitored items and any 1926.1414(e)(3) lifts.
+    inspector: Verify documentation under 1926.1412(f)(7), per 1926.1413(c)(4), and that monitored items appear
+      in the monthly records, per (c)(3)(ii).
+  check_kind: note
+  section_ids:
+  - 29cfr1926.1413(c)(4)
+  - 29cfr1926.1413(c)(3)(ii)
+  - 29cfr1926.1414(e)(3)(iii)
+  deficiency: null
+  practice_only: false
+- ord: 34
+  phase: Records
+  text: Confirm all rope inspection documents are available to everyone who inspects.
+  detail:
+    trainee: The next person to inspect needs to see what was found before. Keep the records where inspectors can
+      get to them.
+    operator: Keep shift, monthly and annual rope records with the machine or in a place inspectors can reach.
+    inspector: Verify the documents are available for the full retention period, per 1926.1413(e).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1413(e)
+  deficiency:
+    guidance: Inspectors cannot get to the earlier rope documents.
+    action: Make the records available before the next inspection.
+    section_id: 29cfr1926.1413(e)
+    quote: All documents produced under this section must be available, during the applicable document retention
+      period, to all persons who conduct inspections under this section.
+  practice_only: false
+prov:
+  prov_id: 1ccb95805d870eb19cff
+  backend: claude-cli
+  model: claude-opus-5-5
+  prompt_id: procedures
+  prompt_version: '1'
+  prompt_sha256: 739cedd36ddf99f40f81ae9030ade12697499f0414421879c8bf963c86c8454f
+  input_sha256: 6797b3174f7d0b19c2e50cc5b2a9e3808b3d1da1a45d14f67d98b06886a9afcc
+  output_sha256: d39572bd9ac98116d70b6a4dd1d30499e8ce036f9aefa36fcd57191573b585e0
+  created_at: '2026-11-27T06:47:58+00:00'
+  verifier: crane-content/verify v1 (exact substring of eCFR text, typography repair)
+  verdict: pass
+  notes: null

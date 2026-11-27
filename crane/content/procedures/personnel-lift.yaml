@@ -1,0 +1,1001 @@
+proc_id: personnel-lift
+title: Hoisting Personnel with a Crane (Personnel Platform)
+kind: operation
+summary: This procedure covers the justification, set-up, equipment, platform, rigging, trial lift, proof test,
+  pre-lift meeting and work-practice requirements for hoisting employees with a crane or derrick under 1926.1431.
+  It applies whenever one or more employees are hoisted. Use it before each shift of personnel hoisting, at each
+  new jobsite and set-up location, and whenever the equipment, route or crew changes.
+roles:
+- operator
+- competent_person
+- qualified_person
+- signal_person
+lang: en
+section_ids:
+- 29cfr1926.1431
+steps:
+- ord: 1
+  phase: Before you start
+  text: Confirm conventional access would be more hazardous or is not possible.
+  detail:
+    trainee: A crane may hoist people only when ladders, stairs, scaffolds, aerial lifts, work platforms or personnel
+      hoists would be more dangerous or cannot be used. Good means the employer has a written reason for why those
+      options do not work here.
+    operator: Do not hoist personnel until the employer has shown why conventional access would be more hazardous
+      or is not possible because of the structure or site conditions. This does not apply to subpart R steel erection
+      or to routine shaft access under 1926.800.
+    inspector: Verify and document the employer's justification under 1926.1431(a). Note any subpart R or 1926.800
+      exemption that applies.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(a)
+  deficiency:
+    guidance: Without a justification, using the crane to hoist employees is prohibited.
+    action: Stop. Do not hoist personnel. Use conventional access or get a documented justification first.
+    section_id: 29cfr1926.1431(a)
+    quote: The use of equipment to hoist employees is prohibited except where the employer demonstrates that the
+      erection, use, and dismantling of conventional means of reaching the work area
+  practice_only: false
+- ord: 2
+  phase: Before you start
+  text: Record the operation type and what carries the employees.
+  detail:
+    trainee: Employees must ride in a personnel platform. The only exceptions are drill shafts up to and including
+      8 feet in diameter, pile driving, marine transfer, and storage-tank, shaft and chimney work, and each of these
+      has its own rules. This checklist covers platform hoisting.
+    operator: Write down whether this is a platform lift or one of the four exceptions. For an exception, also apply
+      paragraph (o), (p), (r) or (s).
+    inspector: Record the carrier type (platform, boatswain's chair or marine transfer device) and the paragraphs
+      that apply under 1926.1431(b).
+  check_kind: note
+  section_ids:
+  - 29cfr1926.1431(b)(1)
+  - 29cfr1926.1431(b)(2)
+  deficiency: null
+  practice_only: false
+- ord: 3
+  phase: Before you start
+  text: Confirm no part of the lift comes within the power line clearance limits.
+  detail:
+    trainee: People may not be hoisted near power lines. The limit is 20 feet for lines up to 350 kV and 50 feet
+      for lines over 350 kV. Good means the whole route, including boom, platform and rigging, stays outside those
+      distances.
+    operator: Find the voltage of every nearby line and check the whole lift route against the 20 ft (up to 350
+      kV) or 50 ft (over 350 kV) limit. Subpart V work is excepted.
+    inspector: Document the line voltages, the closest planned approach distance and any subpart V exception under
+      1926.1431(n).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(n)
+  deficiency:
+    guidance: Hoisting personnel inside these distances is prohibited.
+    action: Stop. Re-plan the set-up or route so the lift stays outside the limit, or use another means of access.
+    section_id: 29cfr1926.1431(n)
+    quote: Hoisting personnel within 20 feet of a power line that is up to 350 kV, and hoisting personnel within
+      50 feet of a power line that is over 350 kV, is prohibited
+  practice_only: false
+- ord: 4
+  phase: Before you start
+  text: Measure wind speed, sustained and gusts, at the platform height.
+  detail:
+    trainee: Wind moves the platform and the people in it. Above 20 mph at the platform, a qualified person has
+      to decide whether lifting people is still safe.
+    operator: Read the wind at the platform. If sustained wind or gusts exceed 20 mph, get a qualified person's
+      decision before lifting, and stop if it is not safe.
+    inspector: Record the wind reading and, when it is over 20 mph, the qualified person's determination under 1926.1431(k)(8)(i).
+  check_kind: value
+  value_unit: mph
+  section_ids:
+  - 29cfr1926.1431(k)(8)(i)
+  deficiency:
+    guidance: Wind over 20 mph requires a qualified person's determination. If it is not safe, the lift may not
+      go ahead.
+    action: Do not begin, or stop the lift already in progress, until the qualified person finds it safe.
+    section_id: 29cfr1926.1431(k)(8)(i)
+    quote: If it is not, the lifting operation must not begin (or, if already in progress, must be terminated).
+  practice_only: false
+- ord: 5
+  phase: Before you start
+  text: Have a qualified person assess weather and other dangers to the lift.
+  detail:
+    trainee: Lightning, storms, ice or any other current or approaching danger can make it unsafe to lift people.
+      A qualified person makes the call.
+    operator: Get the qualified person's decision on weather and other hazards before the lift. Keep watching for
+      changes during the work.
+    inspector: Document the qualified person's weather and hazard determination under 1926.1431(k)(8)(ii).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(k)(8)(ii)
+  deficiency:
+    guidance: Dangerous weather or another danger makes lifting personnel unsafe.
+    action: Do not begin, or end the lift in progress.
+    section_id: 29cfr1926.1431(k)(8)(ii)
+    quote: If it is not, the lifting operation must not begin (or, if already in progress, must be terminated).
+  practice_only: false
+- ord: 6
+  phase: Set-up
+  text: Check that the crane is level within one percent.
+  detail:
+    trainee: Lifting people needs a crane that is level within one percent of level grade. Check the crane's level
+      indicator or use an instrument.
+    operator: Confirm the crane is uniformly level within 1 percent. If it is not, re-level before lifting.
+    inspector: Verify and record the level check under 1926.1431(c)(1).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(c)(1)
+  deficiency:
+    guidance: The crane is out of level beyond the allowed limit.
+    action: Re-level the crane before any personnel lift.
+    section_id: 29cfr1926.1431(c)(1)
+    quote: The equipment must be uniformly level, within one percent of level grade
+  practice_only: false
+- ord: 7
+  phase: Set-up
+  text: Confirm a qualified person found the footing firm and stable.
+  detail:
+    trainee: The ground or support under the crane must carry the load without sinking or shifting. A qualified
+      person has to make that decision. Your own judgment is not enough.
+    operator: Record who made the footing determination and what was used (mats, cribbing, ground conditions).
+    inspector: Verify the qualified person's footing determination under 1926.1431(c)(1).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(c)(1)
+  deficiency:
+    guidance: No qualified person has found the footing firm and stable.
+    action: Do not lift until a qualified person has evaluated the footing and it has been corrected if needed.
+    section_id: 29cfr1926.1431(c)(1)
+    quote: located on footing that a qualified person has determined to be sufficiently firm and stable.
+  practice_only: false
+- ord: 8
+  phase: Set-up
+  text: Extend and lock all outriggers or stabilizers to the same amount.
+  detail:
+    trainee: Every outrigger or stabilizer must be extended the same amount and locked, as the manufacturer's procedures
+      and load chart require.
+    operator: Check that all outriggers are extended equally, locked, and match the load chart setting you are using.
+    inspector: Verify equal extension, locking and agreement with the load chart under 1926.1431(c)(2).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(c)(2)
+  deficiency:
+    guidance: Outriggers are not fully extended, not locked, uneven, or do not match the chart.
+    action: Correct the outrigger set-up before lifting.
+    section_id: 29cfr1926.1431(c)(2)
+    quote: Equipment with outriggers or stabilizers must have them all extended and locked.
+  practice_only: false
+- ord: 9
+  phase: Equipment devices
+  text: Test the boom angle indicator and boom hoist limiting device.
+  detail:
+    trainee: Equipment with a variable angle boom, other than derricks and articulating cranes, needs a boom angle
+      indicator the operator can easily see and a boom hoist limiting device. Both must work.
+    operator: Confirm you can read the angle indicator from the seat and that the boom hoist limit works.
+    inspector: Verify both devices are present and in proper working order under 1926.1431(d)(5)(i) and (d)(5)(vii).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(d)(5)(i)(A)
+  - 29cfr1926.1431(d)(5)(i)(B)
+  - 29cfr1926.1431(d)(5)(vii)
+  deficiency:
+    guidance: A required device is missing or not working. No alternative measures are allowed.
+    action: Do not begin. Tag out per 1926.1417 and repair.
+    section_id: 29cfr1926.1431(d)(5)(vii)
+    quote: Personnel hoisting operations must not begin unless the devices listed in this section are in proper
+      working order.
+  practice_only: false
+- ord: 10
+  phase: Equipment devices
+  text: Check jib devices on luffing jib equipment and confirm the platform is not attached to the jib.
+  detail:
+    trainee: A luffing jib needs a jib angle indicator the operator can easily see and a jib hoist limiting device.
+      A personnel platform may never be attached directly to a luffing jib.
+    operator: Test both jib devices. Confirm the platform hangs from the hoist line and is not attached directly
+      to the luffing jib.
+    inspector: Verify the devices under 1926.1431(d)(5)(iii) and the attachment method under 1926.1431(d)(6). Mark
+      N/A if there is no luffing jib.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(d)(5)(iii)(A)
+  - 29cfr1926.1431(d)(5)(iii)(B)
+  - 29cfr1926.1431(d)(6)
+  deficiency:
+    guidance: A jib device is missing or faulty, or the platform is attached directly to the luffing jib.
+    action: Do not begin. Repair the devices or change the attachment.
+    section_id: 29cfr1926.1431(d)(6)
+    quote: Direct attachment of a personnel platform to a luffing jib is prohibited.
+  practice_only: false
+- ord: 11
+  phase: Equipment devices
+  text: Check the boom length indicator or marks, and the overload device on articulating cranes.
+  detail:
+    trainee: A telescoping boom needs a length indicator or measuring marks the operator can clearly see. An articulating
+      crane needs an automatic overload protection device that works properly.
+    operator: Confirm you can read the extended length clearly. On an articulating crane, confirm the overload protection
+      works.
+    inspector: Verify under 1926.1431(d)(5)(ii) and (d)(5)(iv).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(d)(5)(ii)
+  - 29cfr1926.1431(d)(5)(iv)
+  - 29cfr1926.1431(d)(5)(vii)
+  deficiency:
+    guidance: A required indicator or overload device is missing or not working.
+    action: Do not begin. Tag out and repair.
+    section_id: 29cfr1926.1431(d)(5)(vii)
+    quote: Alternative measures are not permitted.
+  practice_only: false
+- ord: 12
+  phase: Equipment devices
+  text: Test the anti two-block device at every point where two-blocking could occur.
+  detail:
+    trainee: Two-blocking is when the hook block or overhaul ball is pulled into the boom tip, which can part the
+      line and drop the platform. The anti two-block device must stop this automatically.
+    operator: Function-test the anti two-block on every line and boom tip in use. In pile driving, follow (p)(2)
+      instead.
+    inspector: Verify anti two-block coverage and function under 1926.1431(d)(5)(v).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(d)(5)(v)
+  - 29cfr1926.1431(d)(5)(vii)
+  deficiency:
+    guidance: Anti two-block protection is missing or not working.
+    action: Do not begin. Tag out and repair.
+    section_id: 29cfr1926.1431(d)(5)(v)
+    quote: The device(s) must prevent such damage/failure at all points where two-blocking could occur.
+  practice_only: false
+- ord: 13
+  phase: Equipment devices
+  text: Confirm controlled load lowering is in use and free fall is off.
+  detail:
+    trainee: The hoist drum must have a system, separate from the brake, that controls lowering speed, and that
+      system must be used. Free fall of the load line or boom hoist is not allowed.
+    operator: Engage power-controlled lowering and confirm free fall is disabled. Equipment whose boom hoist can
+      free fall may not be used.
+    inspector: Verify the controlled lowering system and that free fall is prohibited under 1926.1431(d)(5)(vi).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(d)(5)(vi)
+  deficiency:
+    guidance: Controlled lowering is not available or not in use, or free fall is possible.
+    action: Do not hoist personnel with this equipment until this is corrected.
+    section_id: 29cfr1926.1431(d)(5)(vi)
+    quote: Free fall of the load line hoist is prohibited
+  practice_only: false
+- ord: 14
+  phase: Platform
+  text: Verify the platform's design, weld and strength documentation.
+  detail:
+    trainee: A qualified person familiar with structural design must design the platform and its attachment or suspension
+      system. It must hold its own weight plus at least five times the maximum intended load. A certified welder
+      must do all welding.
+    operator: Check that the platform's design documents and capacity rating are available and the platform matches
+      them.
+    inspector: Verify the design by a qualified person, the strength rating (own weight plus at least 5 times the
+      intended load, excluding guardrails and PFAS anchorages), and welding by a certified welder, under 1926.1431(e)(1),
+      (e)(4) and (e)(5).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(e)(1)
+  - 29cfr1926.1431(e)(4)
+  - 29cfr1926.1431(e)(5)
+  deficiency:
+    guidance: The platform's design or construction cannot be verified.
+    action: Do not use the platform for personnel.
+    section_id: 29cfr1926.1431(e)(1)
+    quote: A qualified person familiar with structural design must design the personnel platform and attachment/suspension
+      system used for hoisting personnel.
+  practice_only: false
+- ord: 15
+  phase: Platform
+  text: Confirm the suspension keeps the platform within 10 degrees of level and resists tipping.
+  detail:
+    trainee: Whatever the boom angle, the connection must keep the platform within 10 degrees of level. The suspension
+      must also limit tipping when people move around inside.
+    operator: Check that the rigging geometry matches the platform design and that the platform hangs close to level.
+    inspector: Verify under 1926.1431(e)(2) and (e)(3).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(e)(2)
+  - 29cfr1926.1431(e)(3)
+  deficiency:
+    guidance: The platform hangs more than 10 degrees out of level, or the suspension lets it tip.
+    action: Correct the suspension system before use.
+    section_id: 29cfr1926.1431(e)(2)
+    quote: The system used to connect the personnel platform to the equipment must allow the platform to remain
+      within 10 degrees of level, regardless of boom angle.
+  practice_only: false
+- ord: 16
+  phase: Platform
+  text: Inspect the guardrails, enclosure, grab rail and fall arrest anchorages.
+  detail:
+    trainee: Guardrails must meet subpart M. The sides must be closed in from the toeboard to the mid-rail with
+      solid material or expanded metal with openings no larger than 1/2 inch. A grab rail must run all the way around
+      the inside except at gates.
+    operator: Look for missing or damaged rails, enclosure gaps over 1/2 inch, and a missing grab rail. Confirm
+      the fall arrest anchorages are marked and undamaged.
+    inspector: Verify the guardrail and enclosure, the grab rail, and that anchorages meet subpart M, under 1926.1431(e)(6)
+      and (e)(7).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(e)(6)
+  - 29cfr1926.1431(e)(7)
+  deficiency:
+    guidance: Guarding or anchorages do not meet the requirements.
+    action: Remove the platform from service until it is corrected.
+    section_id: 29cfr1926.1431(e)(6)
+    quote: must be enclosed at least from the toeboard to mid-rail with either solid construction material or expanded
+      metal having openings no greater than 1/2 inch (1.27 cm).
+  practice_only: false
+- ord: 17
+  phase: Platform
+  text: Check that gates swing inward and have a latch that prevents accidental opening.
+  detail:
+    trainee: Gates and doors must not swing outward, unless the platform is too small (for example a 1-person platform)
+      for safe entry with an inward door. Each one must have a device that keeps it from opening by accident.
+    operator: Open and close each gate. Confirm the latch holds and the swing direction is correct.
+    inspector: Verify under 1926.1431(e)(8).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(e)(8)(i)
+  - 29cfr1926.1431(e)(8)(ii)
+  deficiency:
+    guidance: A gate swings outward without justification or can open by accident.
+    action: Repair before use.
+    section_id: 29cfr1926.1431(e)(8)(ii)
+    quote: Be equipped with a device that prevents accidental opening.
+  practice_only: false
+- ord: 18
+  phase: Platform
+  text: Check headroom, overhead protection and edges.
+  detail:
+    trainee: Workers must be able to stand upright. If falling objects are possible, the platform needs overhead
+      protection, such as mesh with openings up to 1/2 inch, that still lets people see, unless full protection
+      is needed. Edges that people can touch must be smooth.
+    operator: Confirm there is room to stand, overhead protection is fitted where objects could fall, and there
+      are no sharp edges. Hard hats are still required.
+    inspector: Verify under 1926.1431(e)(9), (e)(10) and (e)(11).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(e)(9)
+  - 29cfr1926.1431(e)(10)
+  - 29cfr1926.1431(e)(11)
+  deficiency:
+    guidance: There is not enough headroom, overhead protection is missing where falling objects are a hazard, or
+      an edge can cut someone.
+    action: Correct before use.
+    section_id: 29cfr1926.1431(e)(10)
+    quote: employees must be protected by overhead protection on the personnel platform when employees are exposed
+      to falling objects.
+  practice_only: false
+- ord: 19
+  phase: Platform
+  text: Confirm the platform weight and rated capacity are permanently posted.
+  detail:
+    trainee: A plate or other permanent marking on the platform must show its weight and its rated capacity. You
+      need both numbers for the load calculation.
+    operator: Read the plate and note the platform weight and rated capacity.
+    inspector: Verify the marking under 1926.1431(e)(12).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(e)(12)
+  deficiency:
+    guidance: The marking is missing or cannot be read.
+    action: Do not use the platform until it is properly marked.
+    section_id: 29cfr1926.1431(e)(12)
+    quote: The weight of the platform and its rated capacity must be conspicuously posted on the platform with a
+      plate or other permanent marking.
+  practice_only: false
+- ord: 20
+  phase: Platform
+  text: Photograph the platform capacity plate.
+  detail:
+    trainee: A photo of the plate keeps the weight and capacity on record for the lift.
+    operator: Take a clear photo of the plate.
+    inspector: Attach the photo to the lift record. This is practice, not a rule requirement.
+  check_kind: photo
+  section_ids: []
+  deficiency: null
+  practice_only: true
+- ord: 21
+  phase: Loading
+  text: 'Record the planned platform load: people, tools and materials.'
+  detail:
+    trainee: Add up the weight of the occupants, their tools and the materials for the job. The total may not exceed
+      the platform's posted rated capacity.
+    operator: Compare the planned load in pounds with the plate rating. If it is over, reduce the load.
+    inspector: Record the planned load and verify it is at or below rated capacity under 1926.1431(f)(1).
+  check_kind: value
+  value_unit: lb
+  section_ids:
+  - 29cfr1926.1431(f)(1)
+  deficiency:
+    guidance: The planned load exceeds the platform's rated capacity.
+    action: Reduce the people or materials before lifting.
+    section_id: 29cfr1926.1431(f)(1)
+    quote: The personnel platform must not be loaded in excess of its rated capacity.
+  practice_only: false
+- ord: 22
+  phase: Loading
+  text: Limit occupants to the design maximum or the number the work needs, whichever is less.
+  detail:
+    trainee: Only the people needed for the work ride, and never more than the platform was designed for.
+    operator: Count the occupants against the design maximum and the crew the task needs.
+    inspector: Verify under 1926.1431(f)(4).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(f)(4)
+  deficiency:
+    guidance: There are too many occupants.
+    action: Reduce the occupants before lifting.
+    section_id: 29cfr1926.1431(f)(4)
+    quote: The number of employees occupying the personnel platform must not exceed the maximum number the platform
+      was designed to hold or the number required to perform the work, whichever is less.
+  practice_only: false
+- ord: 23
+  phase: Loading
+  text: Carry only workers, their tools and needed materials, secured and evenly distributed.
+  detail:
+    trainee: The platform is for people and the tools and materials they need, and it is not used to lift materials
+      when no one is riding. Tie off or secure loose items so they cannot shift, and spread them evenly.
+    operator: Check that every item belongs to the task, is secured, and is spread evenly while the platform is
+      suspended. Never use the platform for material-only lifts.
+    inspector: Verify under 1926.1431(f)(2)(i) and (f)(3).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(f)(2)(i)
+  - 29cfr1926.1431(f)(3)(i)
+  - 29cfr1926.1431(f)(3)(ii)
+  deficiency:
+    guidance: Items are unsecured or uneven, or the platform is being misused.
+    action: Secure and redistribute, or remove the items, before lifting.
+    section_id: 29cfr1926.1431(f)(3)(i)
+    quote: Secured to prevent displacement.
+  practice_only: false
+- ord: 24
+  phase: Loading
+  text: Calculate the total load as a percent of rated capacity at the planned radius.
+  detail:
+    trainee: For a suspended platform, the total load is the loaded platform plus the hook, load line and rigging.
+      For a boom-attached platform, it is the weight of the loaded platform. Either way, it may not exceed 50 percent
+      of the chart capacity for the radius and configuration.
+    operator: Divide the total load by the load chart capacity at the maximum radius and configuration for the lift.
+      The result must be 50 percent or less, except during proof testing.
+    inspector: Record the total load, the chart capacity, the radius and the percent under 1926.1431(d)(1) or (d)(2).
+  check_kind: value
+  value_unit: percent
+  section_ids:
+  - 29cfr1926.1431(d)(1)
+  - 29cfr1926.1431(d)(2)
+  deficiency:
+    guidance: The lift exceeds 50 percent of rated capacity.
+    action: Reduce the load or radius, or change the configuration, before hoisting personnel.
+    section_id: 29cfr1926.1431(d)(1)
+    quote: The total load (with the platform loaded, including the hook, load line and rigging) must not exceed
+      50 percent of the rated capacity for the radius and configuration of the equipment, except during proof testing.
+  practice_only: false
+- ord: 25
+  phase: Rigging
+  text: Close and lock every hook, shackle and detachable device in the connection.
+  detail:
+    trainee: Every hook between the hoist line and the platform must be a type that closes and locks with no throat
+      opening, and it must be locked. Shackles must be the alloy anchor type with a bolt, nut and retaining pin,
+      or a screw pin secured against removal.
+    operator: Check each hook latch, shackle pin and any other detachable device in the connection, and confirm
+      each one is closed and locked.
+    inspector: Verify the device types and locking under 1926.1431(g)(1).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(g)(1)(i)(A)
+  - 29cfr1926.1431(g)(1)(i)(B)
+  - 29cfr1926.1431(g)(1)(ii)
+  - 29cfr1926.1431(g)(1)(iii)
+  deficiency:
+    guidance: A hook or device is the wrong type or is not locked.
+    action: Replace it or lock it before lifting.
+    section_id: 29cfr1926.1431(g)(1)(i)(B)
+    quote: Closed and locked when attached.
+  practice_only: false
+- ord: 26
+  phase: Rigging
+  text: Confirm bridle legs share load evenly through a master link and sling eyes have thimbles.
+  detail:
+    trainee: With a rope bridle, each leg connects to a master link or shackle so the load is shared evenly. Every
+      eye in a wire rope sling must have a thimble.
+    operator: Check that leg lengths and connections are even and that each wire rope eye has a thimble.
+    inspector: Verify under 1926.1431(g)(2) and (g)(4).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(g)(2)
+  - 29cfr1926.1431(g)(4)
+  deficiency:
+    guidance: The load is not shared evenly, or a sling eye has no thimble.
+    action: Re-rig or replace the sling before lifting.
+    section_id: 29cfr1926.1431(g)(4)
+    quote: Eyes in wire rope slings must be fabricated with thimbles.
+  practice_only: false
+- ord: 27
+  phase: Rigging
+  text: Confirm the rigging strength rating and that the rigging is used only for personnel hoisting.
+  detail:
+    trainee: Rigging and hooks must hold at least five times the maximum intended load. Slings used with rotation
+      resistant rope must hold ten times. The bridle and its rigging may never have been used for anything except
+      hoisting personnel.
+    operator: Check the rigging tags and ratings, and confirm the bridle set is dedicated to the platform.
+    inspector: Verify the strength factors and dedicated use under 1926.1431(g)(3) and (g)(5).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(g)(3)
+  - 29cfr1926.1431(g)(5)
+  deficiency:
+    guidance: The rigging is under-rated or has been used for other lifts.
+    action: Replace it with properly rated, dedicated personnel rigging.
+    section_id: 29cfr1926.1431(g)(5)
+    quote: The bridles and associated rigging must not have been used for any purpose other than hoisting personnel.
+  practice_only: false
+- ord: 28
+  phase: Pre-lift meeting
+  text: Hold the pre-lift meeting before the trial lift.
+  detail:
+    trainee: Before the trial lift at each new work location, the crew reviews the requirements of this section
+      and the procedures they will follow. Repeat the meeting for anyone newly assigned.
+    operator: Run the meeting, cover the steps and signals, and confirm everyone required attended.
+    inspector: Verify the meeting's timing and content under 1926.1431(m)(1) and (m)(3).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(m)(1)
+  - 29cfr1926.1431(m)(3)
+  deficiency:
+    guidance: The meeting was not held, or a new crew member was not briefed.
+    action: Hold the meeting before the trial lift or before the new employee is hoisted.
+    section_id: 29cfr1926.1431(m)(3)
+    quote: Held prior to the trial lift at each new work location, and must be repeated for any employees newly
+      assigned to the operation.
+  practice_only: false
+- ord: 29
+  phase: Pre-lift meeting
+  text: Record the meeting attendees.
+  detail:
+    trainee: The meeting must include the operator, the signal person if one is used, everyone being hoisted, and
+      the person responsible for the task.
+    operator: Make sure each required person attended.
+    inspector: Record the attendees and their roles under 1926.1431(m)(2).
+  check_kind: note
+  section_ids:
+  - 29cfr1926.1431(m)(2)
+  deficiency: null
+  practice_only: false
+- ord: 30
+  phase: Trial lift and proof test
+  text: Make the trial lift with the unoccupied platform loaded to at least the anticipated lift weight.
+  detail:
+    trainee: Before anyone rides, run the empty platform, loaded at least to the expected weight, from where people
+      will get in to every work position. Use the same method you will use with people aboard.
+    operator: Run the trial lift right before each shift of personnel hoisting. For several locations from one set-up,
+      use individual lifts or one sequential lift, matching the real method.
+    inspector: Verify the trial lift's load, route and timing under 1926.1431(h)(1) and (h)(2).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(h)(1)
+  - 29cfr1926.1431(h)(2)
+  deficiency:
+    guidance: The trial lift was not made, was underloaded, or did not reach every position.
+    action: Do not hoist personnel until a compliant trial lift is complete.
+    section_id: 29cfr1926.1431(h)(2)
+    quote: The trial lift must be performed immediately prior to each shift in which personnel will be hoisted.
+  practice_only: false
+- ord: 31
+  phase: Trial lift and proof test
+  text: Have the competent person confirm devices, clearances and the 50 percent limit during the trial lift.
+  detail:
+    trainee: During the trial lift, the competent person confirms the required safety devices work, nothing gets
+      in the way of the crane or platform, and the lift stays at or under 50 percent of capacity the whole way.
+    operator: Watch the load moment indicator and clearances at every position and report any interference.
+    inspector: Document the competent person's determinations under 1926.1431(h)(3)(i) through (iii). Other operational
+      aids must meet 1926.1415 and 1926.1416.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(h)(3)(i)
+  - 29cfr1926.1431(h)(3)(ii)
+  - 29cfr1926.1431(h)(3)(iii)
+  deficiency:
+    guidance: A device failed, there was interference, or capacity went over 50 percent.
+    action: Correct the problem and repeat the trial lift before hoisting personnel.
+    section_id: 29cfr1926.1431(h)(3)(iii)
+    quote: The lift will not exceed 50 percent of the equipment's rated capacity at any time during the lift.
+  practice_only: false
+- ord: 32
+  phase: Trial lift and proof test
+  text: Record the load radius determined for the lift.
+  detail:
+    trainee: Capacity depends on radius, so the competent person must determine the working radius accurately.
+    operator: Read or measure the maximum radius reached at each position.
+    inspector: Record the radius and how it was determined under 1926.1431(h)(3)(iv).
+  check_kind: value
+  value_unit: ft
+  section_ids:
+  - 29cfr1926.1431(h)(3)(iv)
+  deficiency:
+    guidance: The radius was not accurately determined.
+    action: Determine the radius accurately and recheck the 50 percent limit before hoisting personnel.
+    section_id: 29cfr1926.1431(h)(3)(iv)
+    quote: The load radius to be used during the lift has been accurately determined.
+  practice_only: false
+- ord: 33
+  phase: Trial lift and proof test
+  text: Proof test the platform and rigging to 125 percent of the platform's rated capacity.
+  detail:
+    trainee: At each jobsite, and after any repair or modification, the platform and rigging are tested with 125
+      percent of the platform's rated capacity before anyone rides. This can be done during the trial lift.
+    operator: Multiply the plate rated capacity by 1.25 and load that test weight evenly. Record the test load in
+      pounds.
+    inspector: Record the test load and confirm it is at least 125 percent of rated capacity under 1926.1431(j)(1).
+  check_kind: value
+  value_unit: lb
+  section_ids:
+  - 29cfr1926.1431(j)(1)
+  deficiency:
+    guidance: The proof test was not done, or the test load was below 125 percent.
+    action: Do not hoist personnel until a proper proof test is done.
+    section_id: 29cfr1926.1431(j)(1)
+    quote: the platform and rigging must be proof tested to 125 percent of the platform's rated capacity.
+  practice_only: false
+- ord: 34
+  phase: Trial lift and proof test
+  text: Lower by controlled lowering, brake, and hold the test load suspended for five minutes.
+  detail:
+    trainee: The test load is lowered under power control, braked, and held in the air for at least five minutes,
+      spread evenly on the platform.
+    operator: Use controlled load lowering, set the brake, and time a hold of at least 5 minutes with the load evenly
+      distributed.
+    inspector: Record the hold time and the distribution under 1926.1431(j)(2).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(j)(2)
+  deficiency:
+    guidance: The hold was too short, the load was uneven, or the lowering was not controlled.
+    action: Repeat the proof test correctly.
+    section_id: 29cfr1926.1431(j)(2)
+    quote: held in a suspended position for a minimum of five minutes with the test load evenly distributed on the
+      platform.
+  practice_only: false
+- ord: 35
+  phase: Trial lift and proof test
+  text: Have the competent person inspect the equipment, ground and platform immediately after the trial lift.
+  detail:
+    trainee: Right after the trial lift, the competent person looks over the crane, the ground or base support,
+      and the platform for any defect or bad effect the lift caused.
+    operator: Check the outrigger pads and ground for settlement, and look over the platform and crane. Report anything
+      you find.
+    inspector: Document the inspection under 1926.1431(h)(4)(i). Every condition found must be corrected before
+      hoisting personnel under (h)(6).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(h)(4)(i)
+  - 29cfr1926.1431(h)(6)
+  deficiency:
+    guidance: The trial lift exposed a defect or hazard.
+    action: Correct it before hoisting personnel. Tag out per 1926.1417 as needed.
+    section_id: 29cfr1926.1431(h)(6)
+    quote: Any condition found during the trial lift and subsequent inspection(s) that fails to meet a requirement
+      of this standard or otherwise creates a safety hazard must be corrected before hoisting personnel.
+  practice_only: false
+- ord: 36
+  phase: Trial lift and proof test
+  text: Have the competent person inspect the platform and rigging and pass the proof test.
+  detail:
+    trainee: After the proof test, the competent person inspects the platform and rigging and decides whether the
+      test passed. No one rides until it passes.
+    operator: Wait for the competent person's pass before any personnel lift.
+    inspector: Record the pass decision. If deficiencies were found, record the corrections and the repeat test,
+      under 1926.1431(j)(3) and (j)(4).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(j)(3)
+  - 29cfr1926.1431(j)(4)
+  deficiency:
+    guidance: The proof test revealed hazardous deficiencies.
+    action: Do not hoist personnel. Correct the deficiencies, repeat the test and get the competent person's pass.
+    section_id: 29cfr1926.1431(j)(3)
+    quote: the platform and rigging must not be used to hoist personnel unless the deficiencies are corrected, the
+      test is repeated, and a competent person determines that the test has been passed.
+  practice_only: false
+- ord: 37
+  phase: Trial lift and proof test
+  text: Confirm the test weight has been removed from the platform.
+  detail:
+    trainee: Test weights must come off before people board, or the platform could be overloaded.
+    operator: Check that the platform is empty of test weights.
+    inspector: Verify the removal under 1926.1431(h)(4)(ii).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(h)(4)(ii)
+  deficiency:
+    guidance: Test weight is still on the platform.
+    action: Remove it before personnel board.
+    section_id: 29cfr1926.1431(h)(4)(ii)
+    quote: Confirm that, upon the completion of the trial lift process, the test weight has been removed.
+  practice_only: false
+- ord: 38
+  phase: Each lift
+  text: Have occupants tie off a personal fall arrest system to a structural member in the platform.
+  detail:
+    trainee: Except over water, everyone in the platform wears a personal fall arrest system attached to a structural
+      member inside the platform. Over or near water, 1926.106 applies instead.
+    operator: Check that each occupant is tied off to a platform anchorage before you lift.
+    inspector: Verify the PFAS use and that the system and anchorage meet 1926.502, under 1926.1431(k)(10).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(k)(10)(i)
+  - 29cfr1926.1431(k)(10)(ii)
+  deficiency:
+    guidance: An occupant is not tied off properly.
+    action: Do not lift until every occupant is correctly tied off.
+    section_id: 29cfr1926.1431(k)(10)(i)
+    quote: Except over water, employees occupying the personnel platform must be provided and use a personal fall
+      arrest system.
+  practice_only: false
+- ord: 39
+  phase: Each lift
+  text: Lift the loaded platform a few inches and have the competent person check security and balance.
+  detail:
+    trainee: Right before each lift, with people and tools aboard, raise the platform a few inches so the competent
+      person can confirm it is secure and balanced.
+    operator: Raise the platform a few inches, hold it, and wait for the competent person's OK.
+    inspector: Document the check under 1926.1431(h)(5)(i).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(h)(5)(i)
+  deficiency:
+    guidance: The platform is not secure or not balanced.
+    action: Land it and correct the load or rigging before lifting.
+    section_id: 29cfr1926.1431(h)(5)(i)
+    quote: The platform must be hoisted a few inches with the personnel and materials/tools on board and inspected
+      by a competent person to ensure that it is secure and properly balanced.
+  practice_only: false
+- ord: 40
+  phase: Each lift
+  text: Have the competent person confirm the hoist ropes, line twist, attachment centering and rope seating.
+  detail:
+    trainee: Before people go up, the hoist ropes must have no deficiencies, multiple part lines must not be twisted
+      around each other, and the main attachment must be centered over the platform. If the rope went slack, ropes
+      must be checked for proper seating on the drums and in the sheaves.
+    operator: Look at the ropes, the reeving and the attachment point. After any slack rope, inspect the drum and
+      sheave seating.
+    inspector: Document the determinations under 1926.1431(h)(5)(ii)(A) through (D), with rope condition judged
+      per 1926.1413(a).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(h)(5)(ii)(A)
+  - 29cfr1926.1431(h)(5)(ii)(B)
+  - 29cfr1926.1431(h)(5)(ii)(C)
+  - 29cfr1926.1431(h)(5)(ii)(D)
+  deficiency:
+    guidance: A rope, reeving or attachment condition is not met.
+    action: Do not proceed until it is corrected.
+    section_id: 29cfr1926.1431(h)(5)(ii)
+    quote: 'The following conditions must be determined by a competent person to exist before the lift of personnel
+      proceeds:'
+  practice_only: false
+- ord: 41
+  phase: Each lift
+  text: Confirm direct communication between the occupants and the signal person or operator.
+  detail:
+    trainee: The people being hoisted must stay in direct contact with the signal person, or with the operator if
+      there is no signal person, for the whole lift.
+    operator: Test the radio or the line of sight for signals before lifting.
+    inspector: Verify the communication method under 1926.1431(k)(9).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(k)(9)
+  deficiency:
+    guidance: Direct communication has been lost or is not set up.
+    action: Do not lift, or stop the lift, until communication is restored.
+    section_id: 29cfr1926.1431(k)(9)
+    quote: Employees being hoisted must remain in direct communication with the signal person (where used), or the
+      operator.
+  practice_only: false
+- ord: 42
+  phase: Each lift
+  text: Keep the operator at the controls, on site and in view, while the platform is occupied.
+  detail:
+    trainee: If the platform has no controls, the operator stays at the crane controls the whole time. If it has
+      controls, the person using them must be qualified, the operator must stay at controls that include boom and
+      swing, and the platform operating manual must be in the platform or on the crane.
+    operator: Do not leave the controls while anyone is in the platform.
+    inspector: Verify under 1926.1431(k)(6) or (k)(7), including the platform operator's qualification and where
+      the manual is kept.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(k)(6)
+  - 29cfr1926.1431(k)(7)(i)
+  - 29cfr1926.1431(k)(7)(ii)
+  - 29cfr1926.1431(k)(7)(iii)
+  deficiency:
+    guidance: The operator is not at the controls, or a platform-controls condition is not met.
+    action: Do not occupy the platform until this is corrected.
+    section_id: 29cfr1926.1431(k)(6)
+    quote: the equipment operator must remain at the equipment controls, on site, and in view of the equipment,
+      at all times while the platform is occupied.
+  practice_only: false
+- ord: 43
+  phase: Work practices
+  text: Hoist slowly and smoothly, using tag lines when needed to control the platform.
+  detail:
+    trainee: Move the platform slowly and carefully, with no sudden starts, stops or swings. Use tag lines when
+      they are needed to control the platform.
+    operator: Feather every function. Assign tag line handlers when wind or the route calls for them.
+    inspector: Observe the motion control and tag line use under 1926.1431(k)(1) and (k)(5).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(k)(1)
+  - 29cfr1926.1431(k)(5)
+  deficiency:
+    guidance: Movements are sudden or the platform is not controlled.
+    action: Stop and correct the operating technique before continuing.
+    section_id: 29cfr1926.1431(k)(1)
+    quote: Hoisting of the personnel platform must be performed in a slow, controlled, cautious manner, with no
+      sudden movements of the equipment or the platform.
+  practice_only: false
+- ord: 44
+  phase: Work practices
+  text: Keep occupants inside, off the rails, and not pulling the platform out of plumb.
+  detail:
+    trainee: While moving, keep your whole body inside the platform, unless you are positioning the platform or
+      acting as the signal person. Never stand or sit on rails or the toeboard or use anything to raise your height.
+      Do not pull the platform out of plumb.
+    operator: Stop movement if an occupant leans out or climbs the rails.
+    inspector: Observe occupant behavior under 1926.1431(k)(2).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(k)(2)(i)
+  - 29cfr1926.1431(k)(2)(ii)
+  - 29cfr1926.1431(k)(2)(iii)
+  deficiency:
+    guidance: Occupants are breaking the platform work rules.
+    action: Stop movement and correct before continuing.
+    section_id: 29cfr1926.1431(k)(2)(ii)
+    quote: Not stand, sit on, or work from the top or intermediate rail or toeboard, or use any other means/device
+      to raise their working height.
+  practice_only: false
+- ord: 45
+  phase: Work practices
+  text: Secure a platform that has not landed to the structure before anyone enters or exits.
+  detail:
+    trainee: If people get on or off while the platform is in the air, it must first be tied to the structure, unless
+      the employer shows tying it off would be more dangerous. Once it is tied, the operator must not move it until
+      someone confirms it hangs free.
+    operator: Do not move a tied platform until you get confirmation that it is freely suspended.
+    inspector: Verify the tie-off practice under 1926.1431(k)(3) and (k)(4).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(k)(3)
+  - 29cfr1926.1431(k)(4)
+  deficiency:
+    guidance: Someone entered or exited without the platform secured, or the platform was moved while still tied.
+    action: Stop and correct before continuing.
+    section_id: 29cfr1926.1431(k)(4)
+    quote: the operator must not move the platform until the operator receives confirmation that it is freely suspended.
+  practice_only: false
+- ord: 46
+  phase: Work practices
+  text: Engage all brakes and locks while the occupied platform is stationary.
+  detail:
+    trainee: When the platform stops at the work position, set the load and boom hoist brakes, the swing brakes,
+      and the pawls, dogs or automatic secondary brakes.
+    operator: Set every brake and lock at each work position.
+    inspector: Verify brake and lock engagement under 1926.1431(d)(4).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(d)(4)
+  deficiency:
+    guidance: Brakes or locks are not engaged at the work position.
+    action: Engage them immediately.
+    section_id: 29cfr1926.1431(d)(4)
+    quote: the load and boom hoist brakes, swing brakes, and operator actuated secondary braking and locking features
+      (such as pawls or dogs) or automatic secondary brakes must be engaged.
+  practice_only: false
+- ord: 47
+  phase: Work practices
+  text: Make no lifts on other load lines while personnel are hoisted.
+  detail:
+    trainee: While people are in the air, no other line on the crane lifts anything, except in pile driving. A factory-built
+      boom-mounted platform with an original winch may lift up to 500 pounds, within the winch and platform ratings.
+    operator: Keep the auxiliary lines idle. If an original-equipment platform winch is used, keep its load at or
+      below 500 lb and the ratings.
+    inspector: Verify under 1926.1431(k)(11).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(k)(11)(i)
+  - 29cfr1926.1431(k)(11)(ii)
+  deficiency:
+    guidance: Another load line is being used during personnel hoisting.
+    action: Stop the other lift.
+    section_id: 29cfr1926.1431(k)(11)(i)
+    quote: No lifts must be made on any other of the equipment's load lines while personnel are being hoisted, except
+      in pile driving operations.
+  practice_only: false
+- ord: 48
+  phase: Work practices
+  text: Do not travel with personnel aboard unless a travel exception and all its criteria apply.
+  detail:
+    trainee: Traveling with people aboard is prohibited, except on fixed rails or where the employer shows there
+      is no less hazardous way, and never with rubber-tired equipment. Derricks may never travel. Allowed travel
+      needs a fixed track or prepared runway, travel limited to boom length, the boom parallel to travel unless
+      another position is safer, and a complete trial run first.
+    operator: Keep the crane stationary unless the travel exception and every criterion are documented and the trial
+      run is done.
+    inspector: Verify any travel exception and its criteria under 1926.1431(k)(12) and (k)(13).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(k)(12)(i)
+  - 29cfr1926.1431(k)(12)(ii)
+  - 29cfr1926.1431(k)(12)(ii)(E)
+  - 29cfr1926.1431(k)(13)
+  deficiency:
+    guidance: The crane is traveling with personnel aboard without a valid exception.
+    action: Stop travel. Land the personnel.
+    section_id: 29cfr1926.1431(k)(12)(i)
+    quote: 'Hoisting of employees while the equipment is traveling is prohibited, except for:'
+  practice_only: false
+- ord: 49
+  phase: Work practices
+  text: Stop safely if any required device stops working properly.
+  detail:
+    trainee: If any required safety device stops working during the lift, the operator brings the platform down
+      safely and stops. Work resumes only after the device is fixed. Workarounds are not allowed.
+    operator: Stop safely, land the personnel, and tag out per 1926.1417.
+    inspector: Document any device failure and its repair under 1926.1431(d)(5)(vii).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(d)(5)(vii)
+  deficiency:
+    guidance: A required device failed during operations.
+    action: Safely stop operations. Do not resume until the device is working properly.
+    section_id: 29cfr1926.1431(d)(5)(vii)
+    quote: If a device stops working properly during such operations, the operator must safely stop operations.
+  practice_only: false
+- ord: 50
+  phase: Changes
+  text: Repeat the trial lift after a move, return to a prior location, or a route change.
+  detail:
+    trainee: A new trial lift is needed if the crane is moved and set up in a new location or returned to one used
+      before, or if the lift route changes, unless the competent person finds the new route adds no new safety factors.
+    operator: Do not hoist people on a new set-up or changed route until the trial lift is repeated or the competent
+      person's route determination is recorded.
+    inspector: Verify a repeat trial lift or a route determination under 1926.1431(h)(2).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(h)(2)(i)
+  - 29cfr1926.1431(h)(2)(ii)
+  deficiency:
+    guidance: A triggering change happened without a new trial lift.
+    action: Repeat the trial lift before hoisting employees.
+    section_id: 29cfr1926.1431(h)(2)(ii)
+    quote: The lift route is changed, unless the competent person determines that the new route presents no new
+      factors affecting safety.
+  practice_only: false
+- ord: 51
+  phase: Records
+  text: Record the names of the competent person and the qualified person.
+  detail:
+    trainee: Write down who made the footing, weather and trial lift decisions.
+    operator: Record the names for the lift file.
+    inspector: Record the names and roles of the competent person and qualified person tied to each determination.
+      This is practice, not a stated rule requirement.
+  check_kind: note
+  section_ids: []
+  deficiency: null
+  practice_only: true
+prov:
+  prov_id: c6c7ed8c95970da22df2
+  backend: claude-cli
+  model: claude-opus-5-5
+  prompt_id: procedures
+  prompt_version: '1'
+  prompt_sha256: 739cedd36ddf99f40f81ae9030ade12697499f0414421879c8bf963c86c8454f
+  input_sha256: 25e9467e586ad97d3cc4f177d53f2fa60d73d2af272dbfb019c0a656a19aeee8
+  output_sha256: 0eab53a5c3609c8df264f251aeaffe29efcc9b2d67189bab2e7a63329e6a5bd7
+  created_at: '2026-11-27T06:51:21+00:00'
+  verifier: crane-content/verify v1 (exact substring of eCFR text, typography repair)
+  verdict: pass
+  notes: null

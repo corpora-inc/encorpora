@@ -216,7 +216,7 @@ diagrams:
       - section_id: 29cfr1926.1408(a)(2)
         quote: Determine if any part of the equipment, load line or load (including rigging and lifting accessories), if operated up to the equipment's maximum working radius in the work zone, could get closer than 20 feet to a power line.
       - section_id: 29cfr1926.1408
-        quote: over 1,000 (as established by the utility owner/operator or registered professional engineer who is a qualified person with respect to electrical power transmission and distribution).
+        quote: "over 1,000 | (as established by the utility owner/operator or registered professional engineer who is a qualified person with respect to electrical power transmission and distribution)."
       - section_id: 29cfr1926.1408(b)(2)
         quote: If tag lines are used, they must be non-conductive.
       - section_id: 29cfr1926.1409

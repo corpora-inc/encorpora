@@ -52,20 +52,20 @@ class Index:
             return q
 
         def canon(s):
+            # one character for one character, so positions in canon(text) are positions in text
             s = s.replace("’", "'").replace("‘", "'").replace("“", '"').replace("”", '"')
-            s = s.replace("—", "-").replace("–", "-").replace("§ ", "§")
+            s = s.replace("—", "-").replace("–", "-")
             return s.lower()
 
         ct, cq = canon(text), canon(q)
-        # canon() keeps length except the '§ ' fold; map positions by rebuilding
-        if len(ct) == len(text):
-            i = ct.find(cq)
-            if i >= 0:
-                return text[i:i + len(cq)]
-        # fall back: whitespace-insensitive regex over the original
-        pat = re.escape(cq).replace(r"\ ", r"\s*")
+        i = ct.find(cq)
+        if i >= 0:
+            return text[i:i + len(cq)]
+        # any run of whitespace for a space ('§1926' also matches '§ 1926'); a quote may
+        # join table cells with a space where the source row has ' | '
+        pat = re.escape(cq).replace(r"\ ", r"\s+(?:\|\s+)?").replace("§", r"§\s*")
         m = re.search(pat, ct)
-        if m and len(ct) == len(text):
+        if m:
             return text[m.start():m.end()]
         return None
 

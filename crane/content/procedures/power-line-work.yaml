@@ -1,0 +1,736 @@
+proc_id: power-line-work
+title: Working Near Power Lines (Up to 350 kV and Over 350 kV)
+kind: operation
+summary: This procedure sets up and runs crane operations near power lines. It covers the work zone and the 20-foot
+  (or 50-foot) determination, Option 1/2/3 clearance, the encroachment prevention measures, work below lines, training,
+  and travel with no load. It is required before you start equipment operations whenever any part of the equipment,
+  load line or load could get closer to a power line than the threshold distance.
+roles:
+- operator
+- signal_person
+- competent_person
+lang: en
+section_ids:
+- 29cfr1926.1408
+- 29cfr1926.1409
+- 29cfr1926.1410(c)
+- 29cfr1926.1411
+- 29cfr1926.1419(a)
+steps:
+- ord: 1
+  phase: Before you start
+  text: Identify the work zone by marking its boundaries or using the full 360-degree maximum working radius.
+  detail:
+    trainee: The work zone is the area where the crane may operate. You either mark its edges (flags, a range limit
+      device or a range control warning device) and keep the operator inside them, or you treat everything 360 degrees
+      around the crane out to its maximum working radius as the zone. Good looks like boundaries everyone on site
+      can see, or a clear decision to use the full radius.
+    operator: Confirm which method is in use. If boundaries are marked, you must not operate past them.
+    inspector: Verify the work zone was identified before equipment operations began and document the method used,
+      per 1926.1408(a)(1)(i) or (a)(1)(ii).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1408(a)
+  - 29cfr1926.1408(a)(1)
+  - 29cfr1926.1408(a)(1)(i)
+  - 29cfr1926.1408(a)(1)(ii)
+  deficiency:
+    guidance: Without a defined work zone, the power line hazard assessment cannot be done.
+    action: Do not begin equipment operations until the work zone is identified.
+    section_id: 29cfr1926.1408(a)
+    quote: 'Before beginning equipment operations, the employer must:'
+  practice_only: false
+- ord: 2
+  phase: Before you start
+  text: Treat every power line as energized and uninsulated unless the utility confirms otherwise.
+  detail:
+    trainee: You can't tell by looking whether a line is live. Assume every line is energized until the utility
+      owner/operator confirms it has been, and still is, deenergized and visibly grounded at the worksite. Assume
+      it is uninsulated unless the utility or a qualified registered engineer confirms it is insulated.
+    operator: Without written or direct confirmation from the utility, run the job as if the line is live and bare.
+    inspector: Verify that any deenergized status is backed by utility confirmation that the line has been and continues
+      to be deenergized and visibly grounded at the worksite.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1408(e)
+  - 29cfr1926.1408(g)(1)(ii)
+  - 29cfr1926.1408(g)(1)(iii)
+  deficiency:
+    guidance: Treating a line as dead without utility confirmation exposes the crew to electrocution.
+    action: Stop and treat the line as energized until the utility owner/operator confirms deenergizing and visible
+      grounding.
+    section_id: 29cfr1926.1408(e)
+    quote: The employer must assume that all power lines are energized unless the utility owner/operator confirms
+      that the power line has been and continues to be deenergized and visibly grounded at the worksite.
+  practice_only: false
+- ord: 3
+  phase: Before you start
+  text: Determine if equipment, load line or load could get within 20 feet of a line (50 feet over 350 kV).
+  detail:
+    trainee: Picture the crane swinging and booming out to its maximum working radius anywhere in the work zone,
+      including the load and rigging. If any part could get closer than 20 feet to a power line, you must use Option
+      1, 2 or 3. For lines over 350 kV up to 1,000 kV, use 50 feet instead of 20 feet. For lines over 1,000 kV,
+      the utility or a qualified registered professional engineer sets the distance.
+    operator: Check the maximum working radius against the line locations. If the answer is yes, or you aren't sure,
+      an Option must be selected before you operate.
+    inspector: Document the determination, the line's distance from the work zone, and whether the 1926.1409 substitution
+      (50 feet at or below 1,000 kV; utility/RPE distance over 1,000 kV) applies.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1408(a)(2)
+  - 29cfr1926.1409
+  - 29cfr1926.1409(a)
+  - 29cfr1926.1409(b)
+  deficiency:
+    guidance: If any part could get within the threshold distance, Option 1, 2 or 3 is mandatory.
+    action: Do not operate until Option 1, 2 or 3 is selected and its requirements are met.
+    section_id: 29cfr1926.1408(a)(2)
+    quote: 'If so, the employer must meet the requirements in Option (1), Option (2), or Option (3) of this section,
+      as follows:'
+  practice_only: false
+- ord: 4
+  phase: Before you start
+  text: 'Record the option selected: 1 deenergize and ground, 2 20-foot clearance, or 3 Table A.'
+  detail:
+    trainee: Option 1 means the utility deenergizes and visibly grounds the line. Option 2 means you keep everything
+      at least 20 feet away (50 feet over 350 kV, up to 1,000 kV) using the encroachment measures. Option 3 means
+      you keep everything outside the Table A distance for the line's voltage, using the same measures.
+    operator: Know which option is in use. It sets where the warning line goes and what distance you must hold.
+    inspector: Record the option and the distance it sets for the job.
+  check_kind: note
+  section_ids:
+  - 29cfr1926.1408(a)(2)
+  - 29cfr1926.1408(a)(2)(i)
+  - 29cfr1926.1408(a)(2)(ii)
+  - 29cfr1926.1408(a)(2)(iii)
+  deficiency: null
+  practice_only: false
+- ord: 5
+  phase: Option 1
+  text: If using Option 1, confirm with the utility that the line is deenergized and visibly grounded at the worksite.
+  detail:
+    trainee: Under Option 1, the utility owner/operator must confirm the line is deenergized, and the grounds must
+      be visible at your worksite. Someone else saying 'it's off' does not count.
+    operator: Do not operate near the line until utility confirmation is in hand and you can see the grounds at
+      the site.
+    inspector: Document the utility confirmation (who confirmed, when) and verify the visible grounding at the worksite.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1408(a)(2)(i)
+  - 29cfr1926.1408(e)
+  deficiency:
+    guidance: Without utility confirmation and visible grounds, Option 1 is not met and the line is presumed energized.
+    action: Stop. Treat the line as energized and use Option 2 or 3 measures, or wait for utility confirmation.
+    section_id: 29cfr1926.1408(a)(2)(i)
+    quote: Confirm from the utility owner/operator that the power line has been deenergized and visibly grounded
+      at the worksite.
+  practice_only: false
+- ord: 6
+  phase: Option 3
+  text: If using Option 3, record the line voltage and the date you requested it from the utility.
+  detail:
+    trainee: Option 3 depends on knowing the line's voltage. Ask the utility owner/operator. They must give the
+      voltage within two working days of your request.
+    operator: Record the nominal kV, the source, the request date and the response date.
+    inspector: Verify the voltage came from the utility owner/operator. Note whether it was provided within two
+      working days of the employer's request.
+  check_kind: note
+  section_ids:
+  - 29cfr1926.1408(a)(2)(iii)(A)
+  - 29cfr1926.1408(c)
+  deficiency: null
+  practice_only: false
+- ord: 7
+  phase: Option 3
+  text: Read and record the Table A minimum clearance distance for the recorded voltage.
+  detail:
+    trainee: 'Table A: up to 50 kV, 10 ft; over 50 to 200 kV, 15 ft; over 200 to 350 kV, 20 ft; over 350 to 500
+      kV, 25 ft; over 500 to 750 kV, 35 ft; over 750 to 1,000 kV, 45 ft. Over 1,000 kV, the utility owner/operator
+      or a qualified registered professional engineer sets the distance. Each range includes the number after ''to'';
+      for example, 200 kV falls in the 15-foot row.'
+    operator: Use the row that contains the voltage. If the voltage is unknown, you cannot use Option 3.
+    inspector: Verify the recorded distance matches Table A for the confirmed voltage, or matches the utility/RPE
+      value for lines over 1,000 kV.
+  check_kind: value
+  value_unit: feet
+  section_ids:
+  - 29cfr1926.1408
+  - 29cfr1926.1408(a)(2)(iii)(A)
+  - 29cfr1926.1409(b)
+  deficiency:
+    guidance: A wrong or unsupported distance means Option 3 is not properly established.
+    action: Do not operate under Option 3 until the voltage and the correct Table A distance are determined.
+    section_id: 29cfr1926.1408(a)(2)(iii)(A)
+    quote: Determine the line's voltage and the minimum approach distance permitted under Table A (see § 1926.1408).
+  practice_only: false
+- ord: 8
+  phase: Option 3
+  text: Determine if any part could get closer than the Table A distance within the work zone.
+  detail:
+    trainee: Repeat the reach check using the Table A distance instead of 20 feet. If any part of the crane, load
+      line or load could get closer, all of the encroachment prevention measures below apply.
+    operator: If the answer is yes, the planning meeting, warning line and additional measure are required before
+      you operate.
+    inspector: Document the determination and confirm the paragraph (b) measures are in place where it is yes.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1408(a)(2)(iii)(B)
+  deficiency:
+    guidance: Possible encroachment inside the Table A distance triggers all paragraph (b) requirements.
+    action: Implement all paragraph (b) measures before operating.
+    section_id: 29cfr1926.1408(a)(2)(iii)(B)
+    quote: If so, then the employer must follow the requirements in paragraph (b) of this section to ensure that
+      no part of the equipment, load line, or load (including rigging and lifting accessories), gets closer to the
+      line than the minimum approach distance.
+  practice_only: false
+- ord: 9
+  phase: Encroachment prevention
+  text: Hold a planning meeting on line locations and encroachment prevention steps with operator and crew.
+  detail:
+    trainee: Before work starts, the operator and everyone who will be near the crane or load meet to go over where
+      the power lines are and exactly how contact will be prevented. Good looks like every worker able to point
+      to the lines and the warning line.
+    operator: Attend, and make sure the meeting covers each line, the clearance distance, the warning line and the
+      selected additional measure.
+    inspector: Verify the meeting took place with the operator and the workers in the area. Document attendees and
+      the topics covered.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1408(b)
+  - 29cfr1926.1408(b)(1)
+  deficiency:
+    guidance: The crew has not been briefed on the line hazard and the controls.
+    action: Do not start until the planning meeting is held.
+    section_id: 29cfr1926.1408(b)(1)
+    quote: Conduct a planning meeting with the operator and the other workers who will be in the area of the equipment
+      or load to review the location of the power line(s), and the steps that will be implemented to prevent encroachment/electrocution.
+  practice_only: false
+- ord: 10
+  phase: Encroachment prevention
+  text: 'Brief the contact emergency response: operator stays in cab, crew stays clear of equipment and load.'
+  detail:
+    trainee: 'Practice tip: during the planning meeting, walk through what happens if the crane contacts a line.
+      The operator stays in the cab unless fire or another emergency forces them out. Everyone else stays away from
+      the crane and the load because the ground around them may be energized.'
+    operator: State who calls the utility and emergency services, and how you would leave the cab if you had to.
+    inspector: Good practice only. The required training content is in 1926.1408(g)(1)(i).
+  check_kind: pass_fail
+  section_ids: []
+  deficiency:
+    guidance: The crew is not prepared to respond to a power line contact.
+    action: Brief the response before starting work.
+    section_id: null
+    quote: null
+  practice_only: true
+- ord: 11
+  phase: Encroachment prevention
+  text: Verify any tag lines in use are nonconductive.
+  detail:
+    trainee: Tag lines that conduct electricity can carry current to the worker holding them. Use only nonconductive
+      tag lines, and keep them clean and dry as a matter of good practice.
+    operator: Reject wire rope, chain or any other conductive tag line.
+    inspector: Verify tag line material is nonconductive.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1408(b)(2)
+  deficiency:
+    guidance: A conductive tag line can carry current to a worker.
+    action: Remove conductive tag lines and replace them with nonconductive ones before use.
+    section_id: 29cfr1926.1408(b)(2)
+    quote: If tag lines are used, they must be non-conductive.
+  practice_only: false
+- ord: 12
+  phase: Encroachment prevention
+  text: Erect an elevated warning line, barricade or line of signs with high-visibility markings at the clearance
+    distance.
+  detail:
+    trainee: Put up an elevated warning line, barricade or line of signs, flagged or marked so it stands out, at
+      20 feet from the line under Option 2 (50 feet over 350 kV, up to 1,000 kV) or at the Table A distance under
+      Option 3. The operator must be able to see it, and it has to stay up for the whole job.
+    operator: Check the warning line is at the correct distance, flagged and in your view, and that it stays in
+      place while you work.
+    inspector: Measure and document the warning line's distance from the power line, and verify high-visibility
+      markings and operator view.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1408(b)(3)
+  - 29cfr1926.1409(a)
+  deficiency:
+    guidance: The operator has no visual reference for the clearance boundary.
+    action: 'Correct before operating: erect or reposition the warning line and keep it maintained.'
+    section_id: 29cfr1926.1408(b)(3)
+    quote: Erect and maintain an elevated warning line, barricade, or line of signs, in view of the operator, equipped
+      with flags or similar high-visibility markings
+  practice_only: false
+- ord: 13
+  phase: Encroachment prevention
+  text: Confirm the operator can see the warning line; if not, add a dedicated spotter plus another measure.
+  detail:
+    trainee: 'If the operator can''t see the warning line from the seat, a dedicated spotter is required. That is
+      in addition to one of the other measures: proximity alarm, range control warning device, range limiting device
+      or insulating link.'
+    operator: From the operator's seat, look across the full swing. Report any spot where the warning line is out
+      of view.
+    inspector: Verify operator line of sight. Where it is obstructed, document both the dedicated spotter and the
+      second measure.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1408(b)(3)
+  deficiency:
+    guidance: The operator cannot use the warning line, so a spotter plus another measure is required.
+    action: Do not operate until a dedicated spotter and one of the (b)(4)(i), (iii), (iv) or (v) measures are in
+      place.
+    section_id: 29cfr1926.1408(b)(3)
+    quote: If the operator is unable to see the elevated warning line, a dedicated spotter must be used as described
+      in § 1926.1408(b)(4)(ii) in addition to implementing one of the measures described in §§ 1926.1408(b)(4)(i),
+      (iii), (iv) and (v).
+  practice_only: false
+- ord: 14
+  phase: Encroachment prevention
+  text: Record which additional measure(s) from 1408(b)(4) are implemented.
+  detail:
+    trainee: 'At least one more safeguard is required: a proximity alarm, a dedicated spotter, a range control warning
+      device, a range limiting device, or an insulating link. This requirement does not apply to work covered by
+      subpart V.'
+    operator: Know which device or spotter is in use and how it warns you or stops you.
+    inspector: Record the measure(s) selected. If the (b)(4) requirement was not applied, note the subpart V basis.
+  check_kind: note
+  section_ids:
+  - 29cfr1926.1408(b)(4)
+  - 29cfr1926.1408(b)(5)
+  deficiency: null
+  practice_only: false
+- ord: 15
+  phase: Encroachment prevention
+  text: Verify at least one additional measure is in place and working before operations.
+  detail:
+    trainee: The warning line alone is not enough. At least one of the listed measures has to be set up and working
+      before the crane moves.
+    operator: Confirm the selected measure is installed, set and working.
+    inspector: Verify at least one (b)(4) measure is implemented, unless the work is covered by subpart V.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1408(b)(4)
+  - 29cfr1926.1408(b)(5)
+  deficiency:
+    guidance: No secondary protection against encroachment is in place.
+    action: Do not operate until at least one measure is implemented.
+    section_id: 29cfr1926.1408(b)(4)
+    quote: 'Implement at least one of the following measures:'
+  practice_only: false
+- ord: 16
+  phase: Encroachment prevention
+  text: If using a proximity alarm, verify it is set to give sufficient warning to prevent encroachment.
+  detail:
+    trainee: A proximity alarm warns the operator when the crane nears the line. It has to sound early enough for
+      the operator to stop in time.
+    operator: Set and test the alarm following the manufacturer's procedures, and allow for stopping distance.
+    inspector: Verify the alarm setting and that use follows the manufacturer's procedures and conditions of use.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1408(b)(4)(i)
+  - 29cfr1926.1408(h)
+  deficiency:
+    guidance: The alarm may not warn in time to prevent encroachment.
+    action: Reset and retest the alarm before operating.
+    section_id: 29cfr1926.1408(b)(4)(i)
+    quote: A proximity alarm set to give the operator sufficient warning to prevent encroachment.
+  practice_only: false
+- ord: 17
+  phase: Encroachment prevention
+  text: If using a range control warning device, verify it is set to give sufficient warning.
+  detail:
+    trainee: A range control warning device automatically tells the operator when to stop moving. It has to be set
+      so the operator can stop before encroaching.
+    operator: Set the limits inside the clearance boundary, with enough margin to stop, and test them.
+    inspector: Verify the settings and that use follows the manufacturer's procedures and conditions of use.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1408(b)(4)(iii)
+  - 29cfr1926.1408(h)
+  deficiency:
+    guidance: The device may not warn in time.
+    action: Reset and test the device before operating.
+    section_id: 29cfr1926.1408(b)(4)(iii)
+    quote: Such a device must be set to give the operator sufficient warning to prevent encroachment.
+  practice_only: false
+- ord: 18
+  phase: Encroachment prevention
+  text: If using a range limiting device, verify it is set to prevent encroachment.
+  detail:
+    trainee: A range limiting device physically stops crane movement at a set boundary. That boundary has to keep
+      every part of the crane outside the clearance distance.
+    operator: Set the limits and test each motion (swing, boom, extend) to confirm the crane stops short of the
+      boundary.
+    inspector: Verify the settings and that use follows the manufacturer's procedures and conditions of use.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1408(b)(4)(iv)
+  - 29cfr1926.1408(h)
+  deficiency:
+    guidance: The device would allow encroachment.
+    action: Reset and test the device before operating.
+    section_id: 29cfr1926.1408(b)(4)(iv)
+    quote: A device that automatically limits range of movement, set to prevent encroachment.
+  practice_only: false
+- ord: 19
+  phase: Encroachment prevention
+  text: If using an insulating link, verify it is installed between the load line end (or below) and the load.
+  detail:
+    trainee: An insulating link isolates the load from the load line. It must sit between the end of the load line
+      (or below it) and the load. It does not protect the boom.
+    operator: Check the link's position and condition, and that it is used within the manufacturer's conditions
+      of use.
+    inspector: Verify placement and that use follows the manufacturer's procedures and conditions of use.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1408(b)(4)(v)
+  - 29cfr1926.1408(h)
+  deficiency:
+    guidance: A misplaced link does not isolate the load.
+    action: Reinstall the link correctly before operating.
+    section_id: 29cfr1926.1408(b)(4)(v)
+    quote: An insulating link/device, as defined in § 1926.1401, installed at a point between the end of the load
+      line (or below) and the load.
+  practice_only: false
+- ord: 20
+  phase: Encroachment prevention
+  text: Confirm safety devices and aids used for compliance follow the manufacturer's procedures and conditions
+    of use.
+  detail:
+    trainee: Any device built as a safety device, an operational aid, or a way to prevent power line contact must
+      be used the way its manufacturer specifies.
+    operator: Have the manufacturer's instructions on hand, and stay within the stated conditions of use (weather,
+      setup, testing).
+    inspector: Verify device use against the manufacturer's procedures and conditions of use.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1408(h)
+  deficiency:
+    guidance: A device used outside its conditions cannot be relied on for compliance.
+    action: Correct the device use, or substitute another (b)(4) measure, before operating.
+    section_id: 29cfr1926.1408(h)
+    quote: when used to comply with this section, must meet the manufacturer's procedures for use and conditions
+      of use.
+  practice_only: false
+- ord: 21
+  phase: Dedicated spotter
+  text: Set up the dedicated spotter with a visual aid, a good vantage point and direct communication.
+  detail:
+    trainee: The spotter's only job is watching the clearance. They need a visual aid such as a painted ground line,
+      stanchions or line-of-sight landmarks. They must stand where they can actually judge the gap, and stay in
+      continuous contact with the operator, by radio where needed.
+    operator: Confirm the radio or other communication works before the first move, and agree on the stop signal.
+    inspector: Verify the visual aid, the spotter's position and the communication method.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1408(b)(4)(ii)
+  - 29cfr1926.1408(b)(4)(ii)(A)
+  - 29cfr1926.1408(b)(4)(ii)(B)
+  - 29cfr1926.1408(b)(4)(ii)(C)
+  deficiency:
+    guidance: The spotter cannot reliably judge or communicate the clearance.
+    action: Correct the spotter setup before operating.
+    section_id: 29cfr1926.1408(b)(4)(ii)(A)
+    quote: Be equipped with a visual aid to assist in identifying the minimum clearance distance.
+  practice_only: false
+- ord: 22
+  phase: Dedicated spotter
+  text: Verify the dedicated spotter is trained on the task and on 1926.1408 requirements.
+  detail:
+    trainee: A spotter must be trained to do the job well, including the rules in this section, before they spot
+      near power lines.
+    operator: Confirm the spotter is trained before relying on them.
+    inspector: Verify and document spotter training administered in accordance with 1926.1430(g).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1408(g)(2)
+  - 29cfr1926.1408(g)(3)
+  deficiency:
+    guidance: An untrained spotter cannot be relied on.
+    action: Replace the spotter with a trained one before operating.
+    section_id: 29cfr1926.1408(g)(2)
+    quote: Employees working as dedicated spotters must be trained to enable them to effectively perform their task,
+      including training on the applicable requirements of this section.
+  practice_only: false
+- ord: 23
+  phase: Training
+  text: Verify the operator and crew are trained on power line contact emergency procedures.
+  detail:
+    trainee: 'Training must cover: the danger of touching the equipment and the ground at the same time; staying
+      in the cab unless fire, explosion or another emergency forces you out; the safest way to get off energized
+      equipment; step potential around the equipment; crew staying away from the equipment and the load; and safe
+      clearance distances.'
+    operator: Be able to explain each point, and how you would leave the cab if you had to.
+    inspector: Verify training records cover (g)(1)(i)(A) through (F) for each operator and crew member, administered
+      per 1926.1430(g).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1408(g)(1)
+  - 29cfr1926.1408(g)(1)(i)
+  - 29cfr1926.1408(g)(1)(i)(A)
+  - 29cfr1926.1408(g)(1)(i)(B)
+  - 29cfr1926.1408(g)(1)(i)(C)
+  - 29cfr1926.1408(g)(1)(i)(D)
+  - 29cfr1926.1408(g)(1)(i)(E)
+  - 29cfr1926.1408(g)(1)(i)(F)
+  - 29cfr1926.1408(g)(3)
+  deficiency:
+    guidance: Untrained workers may respond to a contact in ways that kill them.
+    action: Do not assign untrained workers to the equipment until training is completed.
+    section_id: 29cfr1926.1408(g)(1)
+    quote: 'The employer must train each operator and crew member assigned to work with the equipment on all of
+      the following:'
+  practice_only: false
+- ord: 24
+  phase: Training
+  text: Verify training covers the presumptions, device limitations, and grounding procedures and limits.
+  detail:
+    trainee: Crew must also know that lines are presumed energized and uninsulated unless confirmed otherwise, what
+      insulating links, proximity alarms and range control devices cannot do, and how to ground equipment properly,
+      including the limits of grounding.
+    operator: Know the limitations of any device in use on this job.
+    inspector: Verify training records cover (g)(1)(ii) through (v).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1408(g)(1)(ii)
+  - 29cfr1926.1408(g)(1)(iii)
+  - 29cfr1926.1408(g)(1)(iv)
+  - 29cfr1926.1408(g)(1)(v)
+  deficiency:
+    guidance: Training is incomplete.
+    action: Complete the missing training before assigning the worker.
+    section_id: 29cfr1926.1408(g)(1)
+    quote: 'The employer must train each operator and crew member assigned to work with the equipment on all of
+      the following:'
+  practice_only: false
+- ord: 25
+  phase: Operations
+  text: Provide a signal person when the point of operation is out of the operator's full view.
+  detail:
+    trainee: If the operator can't fully see the load's travel or where it lands, a signal person is required. One
+      is also required when the operator or the person handling the load decides site safety concerns call for one.
+    operator: If you lose sight of the load path or the landing area, stop and get a signal person.
+    inspector: Verify a signal person is assigned wherever the 1926.1419(a) conditions exist.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1419(a)
+  - 29cfr1926.1419(a)(1)
+  - 29cfr1926.1419(a)(3)
+  deficiency:
+    guidance: The operator cannot see the load path near the lines.
+    action: Stop and provide a signal person before continuing.
+    section_id: 29cfr1926.1419(a)(1)
+    quote: The point of operation, meaning the load travel or the area near or at load placement, is not in full
+      view of the operator.
+  practice_only: false
+- ord: 26
+  phase: Operations
+  text: Keep all equipment, load line and load out from below the line unless deenergized/grounded or an exception
+    applies.
+  detail:
+    trainee: 'Nothing goes under a power line unless the utility has deenergized it and visibly grounded it at the
+      worksite. The exceptions: subpart V work; the top of the equipment at true vertical (fully extended, for extensible
+      or articulating booms) stays more than 20 feet or more than the Table A distance below the line; or compliance
+      is shown to be infeasible and 1926.1410 is met.'
+    operator: Do not swing or boom under a line unless the exception has been demonstrated and documented.
+    inspector: Verify the utility confirmation, or the documented exception and the boom height calculation.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1408(d)(1)
+  - 29cfr1926.1408(d)(2)
+  - 29cfr1926.1408(d)(2)(i)
+  - 29cfr1926.1408(d)(2)(ii)
+  - 29cfr1926.1408(d)(2)(iii)
+  - 29cfr1926.1408(d)(2)(iv)
+  deficiency:
+    guidance: Equipment below an energized line without an exception is prohibited.
+    action: Stop and move the equipment out from below the line.
+    section_id: 29cfr1926.1408(d)(1)
+    quote: No part of the equipment, load line, or load (including rigging and lifting accessories) is allowed below
+      a power line unless the employer has confirmed that the utility owner/operator has deenergized and (at the
+      worksite) visibly grounded the power line,
+  practice_only: false
+- ord: 27
+  phase: Operations
+  text: If relying on the 1926.1410 exception, record the minimum clearance set by the utility or qualified RPE.
+  detail:
+    trainee: Under the 1926.1410 route, the line owner/operator or a qualified registered professional engineer
+      sets the clearance for the site conditions. They must consider atmospheric conductivity, stopping time, wind,
+      line sway, lighting and other conditions.
+    operator: Record the distance and who set it, and hold it.
+    inspector: Document the clearance value, who determined it, and the factors considered. This does not apply
+      to subpart V work.
+  check_kind: note
+  section_ids:
+  - 29cfr1926.1410(c)
+  - 29cfr1926.1410(c)(1)
+  - 29cfr1926.1410(c)(2)
+  deficiency: null
+  practice_only: false
+- ord: 28
+  phase: Operations
+  text: Spotter gives timely clearance information; operator holds the required distance throughout the lift.
+  detail:
+    trainee: While the crane moves, the spotter watches the gap and warns the operator early enough to stop. The
+      operator keeps every part of the crane, load line and load outside the clearance distance.
+    operator: On a stop call or an alarm, stop all motion right away and reassess before moving again.
+    inspector: Observe operations and verify the spotter communicates continuously and early, and that the clearance
+      holds.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1408(b)(4)(ii)(D)
+  - 29cfr1926.1408(a)(2)(ii)
+  deficiency:
+    guidance: The clearance is being lost or is at risk.
+    action: Stop operations and correct communication or positioning before resuming.
+    section_id: 29cfr1926.1408(b)(4)(ii)(D)
+    quote: Give timely information to the operator so that the required clearance distance can be maintained.
+  practice_only: false
+- ord: 29
+  phase: Operations
+  text: Near transmitter/communication towers, deenergize the transmitter or ground the equipment and use nonconductive
+    tag lines.
+  detail:
+    trainee: Radio transmitters can induce a charge in the crane or the load. Either the transmitter is turned off,
+      or the equipment is grounded and only nonconductive tag lines are used.
+    operator: Confirm the ground connection, or the transmitter shutdown, before work.
+    inspector: Verify the transmitter status or the equipment ground, and the tag line material.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1408(f)
+  - 29cfr1926.1408(f)(1)
+  - 29cfr1926.1408(f)(2)
+  deficiency:
+    guidance: An induced charge can shock workers.
+    action: Stop. Ground the equipment or have the transmitter deenergized before continuing.
+    section_id: 29cfr1926.1408(f)(1)
+    quote: The equipment must be provided with an electrical ground.
+  practice_only: false
+- ord: 30
+  phase: Travel with no load
+  text: Lower the boom/mast and support system enough to keep Table T clearances.
+  detail:
+    trainee: Before driving under or near lines with no load, lower the boom/mast so it stays clear. If the crane
+      is traveling with a load, the 1926.1408 operating rules apply instead.
+    operator: Lower the boom/mast and its support system before travel.
+    inspector: Verify boom position before travel.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1411(a)
+  - 29cfr1926.1411(b)(1)
+  deficiency:
+    guidance: A raised boom can breach the travel clearance.
+    action: Lower the boom before travel.
+    section_id: 29cfr1926.1411(b)(1)
+    quote: The boom/mast and boom/mast support system are lowered sufficiently to meet the requirements of this
+      paragraph.
+  practice_only: false
+- ord: 31
+  phase: Travel with no load
+  text: Record the Table T travel clearance for the line voltage.
+  detail:
+    trainee: 'Table T: up to 0.75 kV, 4 ft; over 0.75 to 50 kV, 6 ft; over 50 to 345 kV, 10 ft; over 345 to 750
+      kV, 16 ft; over 750 to 1,000 kV, 20 ft. Over 1,000 kV, the utility owner/operator or a qualified registered
+      professional engineer sets the distance.'
+    operator: Hold at least this distance for the whole travel path.
+    inspector: Verify the value matches Table T for the confirmed voltage.
+  check_kind: value
+  value_unit: feet
+  section_ids:
+  - 29cfr1926.1411
+  - 29cfr1926.1411(b)(2)
+  deficiency:
+    guidance: The Table T clearance is not established or not maintained.
+    action: Stop travel until the correct clearance is established and can be held.
+    section_id: 29cfr1926.1411(b)(2)
+    quote: The clearances specified in Table T of this section are maintained.
+  practice_only: false
+- ord: 32
+  phase: Travel with no load
+  text: Account for speed and terrain so boom movement cannot breach Table T clearance.
+  detail:
+    trainee: Bumps, slopes and speed make the boom bounce and sway. Drive slowly enough and pick a route so that
+      movement can't close the gap.
+    operator: Walk the route first, and travel slowly over rough ground.
+    inspector: Verify speed and terrain effects were considered for the route.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1411(b)(3)
+  deficiency:
+    guidance: Boom bounce or sway may breach the clearance.
+    action: Reduce speed or change the route before travel.
+    section_id: 29cfr1926.1411(b)(3)
+    quote: are considered so that those effects do not cause the minimum clearance distances specified in Table
+      T of this section to be breached.
+  practice_only: false
+- ord: 33
+  phase: Travel with no load
+  text: Use a dedicated spotter if any part will come within 20 feet of the line while traveling.
+  detail:
+    trainee: If the crane will get within 20 feet of a line while traveling, a dedicated spotter must stay in continuous
+      contact with the driver/operator. They must be positioned to judge the gap, use communication equipment where
+      needed, and give timely warnings.
+    operator: Don't move until the spotter is in place and communication is confirmed.
+    inspector: Verify the spotter's position, communication and continuous contact.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1411(b)(4)
+  - 29cfr1926.1411(b)(4)(i)
+  - 29cfr1926.1411(b)(4)(ii)
+  - 29cfr1926.1411(b)(4)(iii)
+  deficiency:
+    guidance: Travel within 20 feet of the line without a spotter is not allowed.
+    action: Stop travel until a dedicated spotter is in place.
+    section_id: 29cfr1926.1411(b)(4)
+    quote: If any part of the equipment while traveling will get closer than 20 feet to the power line, the employer
+      must ensure that a dedicated spotter who is in continuous contact with the driver/operator is used.
+  practice_only: false
+- ord: 34
+  phase: Travel with no load
+  text: At night or in poor visibility, illuminate or mark the lines and use an identified safe path.
+  detail:
+    trainee: In the dark or in poor visibility, light the lines or mark their location some other way, and travel
+      only on a safe path that was picked out in advance.
+    operator: Do not travel unless you can identify the lines and the path.
+    inspector: Verify the line illumination or marking and the identified travel path.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1411(b)(5)
+  - 29cfr1926.1411(b)(5)(i)
+  - 29cfr1926.1411(b)(5)(ii)
+  deficiency:
+    guidance: The lines or the safe route cannot be seen.
+    action: Stop travel until the lines are illuminated or identified and a safe path is set.
+    section_id: 29cfr1926.1411(b)(5)(i)
+    quote: The power lines are illuminated or another means of identifying the location of the lines is used.
+  practice_only: false
+- ord: 35
+  phase: Travel with no load
+  text: Provide a signal person when the view in the direction of travel is obstructed.
+  detail:
+    trainee: If the operator can't see where the crane is going, a signal person must guide the move.
+    operator: Stop if your view ahead is blocked, and get a signal person.
+    inspector: Verify a signal person was provided for obstructed-view travel.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1419(a)(2)
+  deficiency:
+    guidance: Blind travel near lines is not allowed.
+    action: Stop and provide a signal person before moving.
+    section_id: 29cfr1926.1419(a)(2)
+    quote: When the equipment is traveling, the view in the direction of travel is obstructed.
+  practice_only: false
+prov:
+  prov_id: 6161ed9b213c1aad4522
+  backend: claude-cli
+  model: claude-opus-5-5
+  prompt_id: procedures
+  prompt_version: '1'
+  prompt_sha256: 739cedd36ddf99f40f81ae9030ade12697499f0414421879c8bf963c86c8454f
+  input_sha256: a2261cce5bf42394bfd29df734b1c6f83a685c5241e44d4c82d3e1c010ae000b
+  output_sha256: 5ce8c8bc51296da9c55f8acadc765d698dee7d498c5ab1fe7ea7a42bcd230071
+  created_at: '2026-11-27T06:50:31+00:00'
+  verifier: crane-content/verify v1 (exact substring of eCFR text, typography repair)
+  verdict: pass
+  notes: null
