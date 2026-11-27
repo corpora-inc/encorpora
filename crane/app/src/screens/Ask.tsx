@@ -1,4 +1,4 @@
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 import { Mic, Search, Square, Volume2 } from "lucide-react";
 import { engine } from "../engine/index.ts";
@@ -32,7 +32,12 @@ export function AskBox({ initial = "", autoFocus = false }: { initial?: string; 
     }
     navigate(askQueryPath(text));
   };
+  // Starting can take seconds (whisper loads its model on first use); a second
+  // tap in that window must not open a second session that nobody stops.
+  const busy = useRef(false);
   const toggleVoice = async () => {
+    if (busy.current) return;
+    busy.current = true;
     try {
       if (listening) {
         const text = await voice.stop(listening);
@@ -42,6 +47,8 @@ export function AskBox({ initial = "", autoFocus = false }: { initial?: string; 
     } catch (err) {
       setListening(null);
       reportError("ask.voice", err, t("ask.voiceError"));
+    } finally {
+      busy.current = false;
     }
   };
   return (

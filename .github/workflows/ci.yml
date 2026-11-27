@@ -173,8 +173,8 @@ jobs:
           # TypeScript directly and links harvest-core and the shared plugins
           # by path, so each consumer filter includes what it compiles. Every
           # job below skips its steps cleanly until its directory exists.
-          set_output crane_app '^(crane/(app|content)/|harvest/practice/|amp/(browser-security\.mjs|scripts/(install-browser\.mjs|configure-browser-sandbox\.sh))$|\.github/workflows/ci\.yml$)'
-          set_output crane_native '^(crane/app/src-tauri/|harvest/core/|corpan/plugins/|\.github/workflows/ci\.yml$)'
+          set_output crane_app '^(crane/(app|content)/|harvest/practice/|corpan/plugins/|amp/(browser-security\.mjs|scripts/(install-browser\.mjs|configure-browser-sandbox\.sh))$|\.github/workflows/ci\.yml$)'
+          set_output crane_native '^(crane/app/src-tauri/|harvest/core/|corpan/plugins/|corpan/corpan-app/src-tauri/vendor/|\.github/workflows/ci\.yml$)'
           set_output harvest_core '^(harvest/core/|\.github/workflows/ci\.yml$)'
           set_output harvest_pipeline '^(harvest/pipeline/|\.github/workflows/ci\.yml$)'
           set_output harvest_practice '^(harvest/practice/|\.github/workflows/ci\.yml$)'
@@ -1919,7 +1919,19 @@ jobs:
     needs: changes
     if: needs.changes.outputs.crane_native == 'true'
     runs-on: macos-26
-    timeout-minutes: 30
+    # A cold cache builds llama.cpp twice (macOS, iOS) and whisper.cpp once.
+    timeout-minutes: 75
+    env:
+      # llama.cpp's bundled cpp-httplib finds the runner's Homebrew OpenSSL and
+      # fails to compile against its newer const API. The app is offline and
+      # never speaks HTTPS, so build without it. The vendored llama-cpp-sys-2
+      # build.rs forwards every CMAKE_* variable to CMake as a define.
+      CMAKE_DISABLE_FIND_PACKAGE_OpenSSL: "ON"
+      # Plugin Swift compiles against this (tauri-utils defaults to iOS 13.0,
+      # below what tauri-plugin-stt uses). The Tauri CLI sets it from
+      # bundle.iOS.minimumSystemVersion in tauri.conf.json; a bare cargo check
+      # does not, so mirror that value here.
+      IPHONEOS_DEPLOYMENT_TARGET: "16.0"
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -1972,9 +1984,38 @@ jobs:
       - if: steps.tree.outputs.present == 'true'
         working-directory: crane/app/src-tauri
         run: cargo clippy --locked --all-targets -- -D warnings
+      # tauri-plugin-stt's build script panics on an iOS target without the
+      # prebuilt whisper.cpp XCFramework, which is gitignored (~150 MB). Same
+      # pinned build and cache key as release-mobile.yml, so it builds once.
+      - name: Cache whisper.xcframework
+        if: steps.tree.outputs.present == 'true'
+        id: whisper_cache
+        uses: actions/cache@v4
+        with:
+          path: corpan/plugins/tauri-plugin-stt/ios/whisper.xcframework
+          key: whisper-xcframework-v1.8.4-${{ runner.os }}
+      - name: Build whisper.xcframework
+        if: steps.tree.outputs.present == 'true' && steps.whisper_cache.outputs.cache-hit != 'true'
+        run: |
+          git clone --depth 1 --branch v1.8.4 https://github.com/ggml-org/whisper.cpp.git "$RUNNER_TEMP/whisper.cpp"
+          cd "$RUNNER_TEMP/whisper.cpp"
+          BUILD_STATIC_XCFRAMEWORK=ON ./build-xcframework.sh
+          DEST="$GITHUB_WORKSPACE/corpan/plugins/tauri-plugin-stt/ios"
+          rm -rf "$DEST/whisper.xcframework"
+          mv build-apple/whisper.xcframework "$DEST/"
+          test -f "$DEST/whisper.xcframework/ios-arm64/whisper.framework/whisper"
       - if: steps.tree.outputs.present == 'true'
         working-directory: crane/app/src-tauri
         run: cargo check --locked --lib --target aarch64-apple-ios
+      # ADR-0011: [patch] is honoured only from this app's own root manifest. If it
+      # silently stops applying, Android loses the vectorised llama.cpp kernels
+      # and everything still compiles, so assert the fork is what resolved.
+      - name: llama-cpp-sys-2 resolves to the vendored fork
+        if: steps.tree.outputs.present == 'true'
+        working-directory: crane/app/src-tauri
+        run: |
+          cargo metadata --locked --format-version 1 \
+            | jq -e '[.packages[] | select(.name=="llama-cpp-sys-2") | .manifest_path | test("corpan-app/src-tauri/vendor/llama-cpp-sys-2/")] | length == 1 and all'
 
   harvest-core:
     name: harvest-core
