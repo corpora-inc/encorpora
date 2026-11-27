@@ -222,10 +222,11 @@ dense retrieval ran), the engine also declines when `top_dense < min_dense`,
 with the model on as well, and `threshold` is the gate's coverage bar.
 The cache answers first when `cache_similarity >= cache_threshold`.
 
-Composed answers open with the answer: the most relevant verified line (a
-baked fact's statement, or a sentence of the role's explanation, covering at
-least 30% of the question), then the rule's own words. When the question
-states a number in the unit of a retrieved range table (a `table` section
+Composed answers open with the answer: the clearly most relevant verified
+line (a baked fact's statement whose quote is in the shown passage, or a
+sentence of the role's explanation, covering at least 30% of the question),
+then the rule's own words and the explanation. When the question states a
+number in the unit of a range table the gate chose (a `table` section
 with `x | y` rows such as `over 50 to 200 | 15`), the row is looked up and the
 answer states it, quoting the header and the row (and the table's note when
 the number is a band's bound); `tool` names the table. A cache hit with
