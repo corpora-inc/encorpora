@@ -1,0 +1,267 @@
+# Teaching diagrams for the crane app. Each SVG is hand-authored, scales to
+# its container width, and themes through currentColor plus the CSS custom
+# properties --crane-accent, --crane-danger and --crane-muted (fallbacks are
+# built in). Inline the SVG markup so currentColor follows the page theme.
+#
+# section_ids and quotes were checked locally against the eCFR text with the
+# crane content verifier (verify.py). Physics and common rigging practice
+# (sling-angle factors, ground bearing arithmetic, D/d) cite nothing.
+# Charts and numbers marked fictional are for teaching only.
+
+diagrams:
+  - diagram_id: sling-angle-tension
+    file: sling-angle-tension.svg
+    lang: en
+    title: Sling angle and leg tension
+    caption: >-
+      The flatter the sling, the harder each leg pulls: tension per leg =
+      (load ÷ 2) × load-angle factor, with the angle measured from horizontal.
+      At 30° each leg of a two-leg bridle carries the whole load, so common
+      rigging practice avoids angles below 30°. The cited sling rule is the
+      general-industry standard.
+    alt: >-
+      A 1,000 lb load lifted by a two-leg bridle at four sling angles measured
+      from horizontal. At 90° the legs hang straight from a spreader bar and
+      each carries 500 lb (factor 1.000). At 60° each leg carries about 577 lb
+      (factor 1.155). At 45° each carries 707 lb (factor 1.414). At 30° each
+      carries 1,000 lb (factor 2.000), the full weight of the load. The rule
+      shown: tension per leg equals load divided by 2, times the factor, and
+      the factor equals 1 divided by the sine of the sling angle. Below 30°
+      tension climbs steeply, and common rigging practice avoids it.
+    section_ids:
+      - 29cfr1910.184(c)(4)
+    quotes:
+      - section_id: 29cfr1910.184(c)(4)
+        quote: Slings shall not be loaded in excess of their rated capacities.
+
+  - diagram_id: load-chart-reading
+    file: load-chart-reading.svg
+    lang: en
+    title: Reading a load chart
+    caption: >-
+      Find the boom length column and the radius row; if your radius is not
+      listed, use the next longer radius. The chart gives gross capacity:
+      subtract the hook block, stowed jib and rigging to get the net the load
+      may weigh.
+    alt: >-
+      A fictional load chart excerpt in pounds. Boom lengths of 40, 60 and 80
+      feet run across the top; radii of 10, 15, 20, 25, 30, 40 and 50 feet run
+      down the side. Shaded cells at short radius, bounded by a bold line, are
+      limited by structural strength; the unshaded cells are limited by
+      stability (tipping). Some cells show a dash where the boom length cannot
+      reach that radius or has no rating. Example lift: 60 ft boom at 27 ft
+      radius. 27 ft is not listed, so use the next longer radius, 30 ft, never
+      the shorter 25 ft. The 60 ft column at 30 ft reads 16,500 lb gross.
+      Subtract hook block 450 lb, stowed jib 1,200 lb and slings and shackles
+      150 lb to get 14,700 lb net capacity, the most the load may weigh. Real
+      charts mark the structural region with shading, a bold line or an
+      asterisk.
+    section_ids:
+      - 29cfr1926.1417(o)(1)
+      - 29cfr1926.1417(c)(1)
+      - 29cfr1926.1401
+    quotes:
+      - section_id: 29cfr1926.1417(o)(1)
+        quote: The equipment must not be operated in excess of its rated capacity.
+      - section_id: 29cfr1926.1401
+        quote: Rated capacity means the maximum working load permitted by the manufacturer under specified working conditions.
+
+  - diagram_id: radius-vs-boom-angle
+    file: radius-vs-boom-angle.svg
+    lang: en
+    title: Radius and boom angle
+    caption: >-
+      Radius is measured level with the ground, from the center of rotation to
+      the center of the hook and load. Lowering the boom, or letting it deflect
+      under load, lengthens the radius and cuts capacity.
+    alt: >-
+      Side view of one crane with the same boom length raised to 60 degrees
+      and lowered to 30 degrees. A dashed line marks the center of rotation.
+      Horizontal dimension lines run from that center line to each hook line:
+      the radius at 30 degrees is much longer than the radius at 60 degrees. A
+      dashed curve shows the lower boom deflecting under load, which moves the
+      hook farther out and adds radius (exaggerated for clarity). Below, the
+      chain: lower angle, longer radius, less capacity.
+    section_ids:
+      - 29cfr1926.1401
+    quotes:
+      - section_id: 29cfr1926.1401
+        quote: Such working conditions typically include a specific combination of factors such as equipment configuration, radii, boom length, and other parameters of use.
+
+  - diagram_id: swing-radius-clearance
+    file: swing-radius-clearance.svg
+    lang: en
+    title: Swing radius and work zone
+    caption: >-
+      The rotating counterweight can strike or crush anyone inside its swing
+      area, so barricade it. One way to define the work zone (from the power
+      line rule) is 360° around the crane out to its maximum working radius.
+    alt: >-
+      Plan view of a crane on four outriggers with its boom pointing up and to
+      the right and its counterweight down and to the left. A shaded circle
+      around the crane marks the area the counterweight sweeps when the upper
+      works rotate, a struck-by and crush zone. A dashed barricade line with
+      posts surrounds it. A large dashed circle marks the work zone, 360
+      degrees around the crane out to the maximum working radius, with an
+      arrow from the center to its edge.
+    section_ids:
+      - 29cfr1926.1424(a)(1)
+      - 29cfr1926.1424(a)(2)
+      - 29cfr1926.1408(a)(1)(ii)
+    quotes:
+      - section_id: 29cfr1926.1424(a)(2)
+        quote: Erect and maintain control lines, warning lines, railings or similar barriers to mark the boundaries of the hazard areas.
+      - section_id: 29cfr1926.1408(a)(1)(ii)
+        quote: Defining the work zone as the area 360 degrees around the equipment, up to the equipment's maximum working radius.
+
+  - diagram_id: outrigger-ground-bearing
+    file: outrigger-ground-bearing.svg
+    lang: en
+    title: Outrigger ground bearing pressure
+    caption: >-
+      Ground bearing pressure = force ÷ area. The same 60,000 lb outrigger
+      force is 15,000 psf on a 2 ft × 2 ft float but about 1,667 psf on a stiff
+      6 ft × 6 ft mat. Set up level on firm, drained ground.
+    alt: >-
+      Side view of a crane outrigger beam fully extended, its jack and float
+      resting on a timber mat on firm, level ground, with arrows showing the
+      mat spreading 60,000 lb into the ground. Below, the rule pressure equals
+      force divided by area, and two plan views drawn to scale. Float: 2 ft by
+      2 ft is 4 square feet; 60,000 lb divided by 4 is 15,000 pounds per
+      square foot. Mat: 6 ft by 6 ft is 36 square feet; 60,000 lb divided by
+      36 is about 1,667 pounds per square foot. Nine times the area gives one
+      ninth the pressure, assuming a stiff mat that bears evenly. Set up on
+      firm, drained, level ground.
+    section_ids:
+      - 29cfr1926.1402(a)
+      - 29cfr1926.1402(b)
+      - 29cfr1926.1404(q)(1)
+      - 29cfr1926.1404(q)(3)
+    quotes:
+      - section_id: 29cfr1926.1402(b)
+        quote: The equipment must not be assembled or used unless ground conditions are firm, drained, and graded to a sufficient extent
+      - section_id: 29cfr1926.1402(a)
+        quote: means blocking, mats, cribbing, marsh buggies (in marshes/wetlands), or similar supporting materials or devices.
+      - section_id: 29cfr1926.1404(q)(1)
+        quote: The outriggers or stabilizers must be either fully extended or, if manufacturer procedures permit, deployed as specified in the load chart.
+
+  - diagram_id: two-blocking
+    file: two-blocking.svg
+    lang: en
+    title: Two-blocking and the anti-two-block device
+    caption: >-
+      Two-blocking is the hook block being pulled into the boom tip, which can
+      part the hoist line and drop the load. An anti-two-block device senses
+      the block lifting its weight and locks out the motions that close the
+      gap, on telescopic cranes typically hoist up, telescope out and boom
+      down.
+    alt: >-
+      Two views of a boom tip. Left, with the device: the hook block has risen
+      and lifted the anti-two-block weight that hangs on a chain around the
+      hoist line; the chain goes slack, the switch on the boom head opens, and
+      the crane stops with a gap left between block and sheave. Right,
+      two-blocked: the block is jammed against the boom tip sheave and the
+      hoist line can part. Below: when the block lifts the weight the device
+      locks out hoist up, telescope out and boom down, preventing a parted
+      hoist line, a dropped load and a damaged boom tip.
+    section_ids:
+      - 29cfr1926.1416(d)(3)(i)
+    quotes:
+      - section_id: 29cfr1926.1416(d)(3)(i)
+        quote: Telescopic boom cranes manufactured after February 28, 1992, must be equipped with a device which automatically prevents damage from contact between the load block, overhaul ball, or similar component, and the boom tip (or fixed upper block or similar component).
+
+  - diagram_id: power-line-table-a-zones
+    file: power-line-table-a-zones.svg
+    lang: en
+    title: Power line clearance zones
+    caption: >-
+      If any part of the crane, load line or load could get within 20 ft of a
+      power line (50 ft for lines over 350 kV to 1,000 kV) anywhere in the work
+      zone, have the utility deenergize and visibly ground it, or prevent
+      encroachment. The work zone is either marked boundaries the operator may
+      not pass or 360° out to the maximum working radius. Table A sets the
+      minimum clearance by voltage.
+    alt: >-
+      Side view of a crane working near an energized power line seen end-on.
+      A dashed circle 20 ft around the line marks the distance to check: if
+      any part of the crane, load line or load could get that close while
+      working anywhere in the work zone, 360 degrees out to the maximum
+      working radius, the line must be deenergized and grounded or
+      encroachment must be prevented. (The work zone may instead be set by
+      marked boundaries the operator may not pass.) For lines over 350 kV up to 1,000 kV the
+      20 ft becomes 50 ft. A solid inner circle shows the Table A minimum
+      clearance, 10 ft for a line up to 50 kV. Numbered callouts mark an
+      elevated warning line with a flag at the zone edge (1; at 20 ft under
+      the 20 ft option, or at the Table A distance under the Table A option), a worker holding
+      a tag line (2), a dedicated spotter (3) and the crane cab where a
+      proximity alarm or range device works (4). Table A, minimum clearance by
+      nominal voltage: up to 50 kV, 10 ft; over 50 to 200 kV, 15 ft; over 200
+      to 350 kV, 20 ft; over 350 to 500 kV, 25 ft; over 500 to 750 kV, 35 ft;
+      over 750 to 1,000 kV, 45 ft; over 1,000 kV, set by the utility
+      owner/operator or a registered professional engineer. To prevent
+      encroachment: hold a planning meeting with the crew, erect an elevated
+      warning line with flags, keep tag lines non-conductive, plus at least
+      one of a dedicated spotter, a proximity alarm, a range control warning
+      or limiting device, or an insulating link.
+    section_ids:
+      - 29cfr1926.1408
+      - 29cfr1926.1408(a)(1)
+      - 29cfr1926.1408(a)(2)
+      - 29cfr1926.1408(b)(1)
+      - 29cfr1926.1408(b)(2)
+      - 29cfr1926.1408(b)(3)
+      - 29cfr1926.1408(b)(4)
+      - 29cfr1926.1409
+    quotes:
+      - section_id: 29cfr1926.1408(a)(2)
+        quote: Determine if any part of the equipment, load line or load (including rigging and lifting accessories), if operated up to the equipment's maximum working radius in the work zone, could get closer than 20 feet to a power line.
+      - section_id: 29cfr1926.1408
+        quote: over 1,000 (as established by the utility owner/operator or registered professional engineer who is a qualified person with respect to electrical power transmission and distribution).
+      - section_id: 29cfr1926.1408(b)(2)
+        quote: If tag lines are used, they must be non-conductive.
+      - section_id: 29cfr1926.1409
+        quote: For power lines at or below 1000 kV, wherever the distance “20 feet” is specified, the distance “50 feet” must be substituted
+
+  - diagram_id: hitches
+    file: hitches.svg
+    lang: en
+    title: Vertical, choker and basket hitches
+    caption: >-
+      How a sling is rigged changes what it can carry. A choker rates below
+      vertical; a basket can reach twice vertical only with vertical legs. The
+      sling tag gives the rating for each hitch. The cited sling rules are the
+      general-industry standard.
+    alt: >-
+      Three ways to rig one sling, side by side. Vertical: one sling leg runs
+      straight from the hook to a lifting eye on the load. Choker: the sling
+      wraps a round load and chokes through its own eye. Basket: the sling
+      cradles a round load with both eyes on the hook. A bar chart compares
+      capacity with vertical: vertical 1 times, choker less than 1 times,
+      basket up to 2 times. Notes: a tighter choke lowers the choker rating;
+      a basket reaches 2 times only with vertical legs; balance basket loads
+      so they cannot slip; use the rating on the sling tag.
+    section_ids:
+      - 29cfr1910.184(c)(5)
+      - 29cfr1910.184(c)(13)
+    quotes:
+      - section_id: 29cfr1910.184(c)(5)
+        quote: Slings used in a basket hitch shall have the loads balanced to prevent slippage.
+      - section_id: 29cfr1910.184(c)(13)
+        quote: Employers must not load a sling in excess of its recommended safe working load as prescribed by the sling manufacturer on the identification markings permanently affixed to the sling.
+
+  - diagram_id: d-over-d
+    file: d-over-d.svg
+    lang: en
+    title: D/d ratio
+    caption: >-
+      D/d is the diameter a rope bends around divided by the rope's own
+      diameter. The smaller the ratio, the sharper the bend, the less strength
+      the rope keeps and the faster it wears.
+    alt: >-
+      Left: a rope over a large sheave twenty times the rope's diameter, D/d
+      of 20, a gentle bend. Right: the same rope around a pin three times its
+      diameter, D/d of 3, a sharp bend. D is the sheave or pin diameter and d
+      is the rope diameter; a 20 inch sheave with a 1 inch rope gives a D/d of
+      20. Lower D/d means less strength and faster wear. Use the rope or sling
+      maker's rating for the D/d in use.
+    section_ids: []

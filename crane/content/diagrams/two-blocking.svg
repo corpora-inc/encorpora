@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 522" role="img" aria-labelledby="tbk-title tbk-desc" font-family="system-ui, sans-serif" font-size="18" fill="currentColor" stroke-linecap="round" stroke-linejoin="round">
+  <title id="tbk-title">Two-blocking and the anti-two-block device</title>
+  <desc id="tbk-desc">Two views of a boom tip. Left: as the hook block rises it lifts the anti-two-block weight that hangs on a chain around the hoist line; the slack chain opens the switch on the boom head, which stops the crane with a gap left. Right: without that protection the block is pulled into the boom tip sheave, called two-blocking, which can part the hoist line and drop the load. The device typically locks out hoist up, telescope out and boom down.</desc>
+  <style>svg:root{color:#111}@media (prefers-color-scheme:dark){svg:root{color:#eee}}</style>
+
+  <line x1="240" y1="12" x2="240" y2="304" stroke="var(--crane-muted, #8a8f98)" stroke-width="1" stroke-opacity="0.6"/>
+
+  <!-- LEFT: device trips -->
+  <text x="120" y="30" text-anchor="middle" font-weight="700">With the device</text>
+  <line x1="0" y1="180" x2="150" y2="80" stroke="currentColor" stroke-width="20"/>
+  <line x1="0" y1="180" x2="150" y2="80" stroke="var(--crane-muted, #8a8f98)" stroke-width="14"/>
+  <circle cx="150" cy="80" r="16" fill="var(--crane-muted, #8a8f98)" stroke="currentColor" stroke-width="3"/>
+  <circle cx="150" cy="80" r="3" fill="currentColor"/>
+  <line x1="166" y1="80" x2="166" y2="162" stroke="currentColor" stroke-width="2.5"/>
+  <!-- switch on boom head -->
+  <line x1="152" y1="84" x2="180" y2="100" stroke="currentColor" stroke-width="3"/>
+  <rect x="178" y="96" width="18" height="16" rx="2" fill="var(--crane-accent, #d97706)" stroke="currentColor" stroke-width="2"/>
+  <text x="187" y="58" text-anchor="middle">Switch</text>
+  <!-- slack chain to lifted weight -->
+  <path d="M187 112 Q204 134 175 140" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="3 3"/>
+  <rect x="156" y="140" width="20" height="22" rx="2" fill="var(--crane-accent, #d97706)" stroke="currentColor" stroke-width="2"/>
+  <text x="148" y="158" text-anchor="end">Weight</text>
+  <!-- block and hook -->
+  <rect x="144" y="162" width="44" height="40" rx="4" fill="var(--crane-muted, #8a8f98)" fill-opacity="0.5" stroke="currentColor" stroke-width="3"/>
+  <path d="M166 202 V222 a12 12 0 1 1 -12 12" fill="none" stroke="currentColor" stroke-width="4"/>
+  <text x="120" y="270" text-anchor="middle">Block lifts the weight;</text>
+  <text x="120" y="294" text-anchor="middle">crane stops with a gap.</text>
+
+  <!-- RIGHT: two-blocked -->
+  <text x="360" y="30" text-anchor="middle" font-weight="700" fill="var(--crane-danger, #dc2626)">Two-blocked</text>
+  <line x1="252" y1="172" x2="390" y2="80" stroke="currentColor" stroke-width="20"/>
+  <line x1="252" y1="172" x2="390" y2="80" stroke="var(--crane-muted, #8a8f98)" stroke-width="14"/>
+  <circle cx="390" cy="80" r="16" fill="var(--crane-muted, #8a8f98)" stroke="currentColor" stroke-width="3"/>
+  <circle cx="390" cy="80" r="3" fill="currentColor"/>
+  <rect x="384" y="96" width="44" height="40" rx="4" fill="var(--crane-muted, #8a8f98)" fill-opacity="0.5" stroke="var(--crane-danger, #dc2626)" stroke-width="3"/>
+  <path d="M406 136 V156 a12 12 0 1 1 -12 12" fill="none" stroke="currentColor" stroke-width="4"/>
+  <path d="M440 84 L448 70 L452 86 L466 80 L458 94 L472 102 L456 104 L460 118 L448 108 L438 118" fill="none" stroke="var(--crane-danger, #dc2626)" stroke-width="3"/>
+  <text x="360" y="270" text-anchor="middle">Block hits the boom tip;</text>
+  <text x="360" y="294" text-anchor="middle" fill="var(--crane-danger, #dc2626)">line can part.</text>
+
+  <!-- explanation -->
+  <line x1="8" y1="314" x2="472" y2="314" stroke="var(--crane-muted, #8a8f98)" stroke-width="1" stroke-opacity="0.6"/>
+  <text x="240" y="346" text-anchor="middle" font-size="20" font-weight="700">Anti-two-block device</text>
+  <text x="240" y="374" text-anchor="middle">When the block lifts the weight, it locks</text>
+  <text x="240" y="398" text-anchor="middle">out the motions that close the gap:</text>
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <rect x="8" y="414" width="144" height="40" rx="20"/>
+    <rect x="168" y="414" width="144" height="40" rx="20"/>
+    <rect x="328" y="414" width="144" height="40" rx="20"/>
+  </g>
+  <g text-anchor="middle" font-weight="700">
+    <text x="80" y="440">Hoist up</text>
+    <text x="240" y="440">Telescope out</text>
+    <text x="400" y="440">Boom down</text>
+  </g>
+  <text x="240" y="486" text-anchor="middle">It prevents a parted hoist line,</text>
+  <text x="240" y="510" text-anchor="middle">a dropped load and a damaged boom tip.</text>
+</svg>

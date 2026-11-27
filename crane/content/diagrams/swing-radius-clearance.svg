@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 584" role="img" aria-labelledby="srz-title srz-desc" font-family="system-ui, sans-serif" font-size="18" fill="currentColor" stroke-linecap="round" stroke-linejoin="round">
+  <title id="srz-title">Swing radius and work zone</title>
+  <desc id="srz-desc">Plan view of a crane on outriggers. A small shaded circle around the crane is the area swept by the rotating counterweight, a struck-by and crush hazard. A dashed barricade surrounds it to keep people out. A large dashed circle marks the work zone: 360 degrees around the crane out to its maximum working radius.</desc>
+  <style>svg:root{color:#111}@media (prefers-color-scheme:dark){svg:root{color:#eee}}</style>
+  <defs>
+    <marker id="srz-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="var(--crane-accent, #d97706)"/>
+    </marker>
+  </defs>
+
+  <text x="240" y="30" text-anchor="middle" font-weight="700" fill="var(--crane-accent, #d97706)">Work zone: 360° to max working radius</text>
+
+  <!-- work zone -->
+  <circle cx="240" cy="250" r="200" fill="var(--crane-accent, #d97706)" fill-opacity="0.06" stroke="var(--crane-accent, #d97706)" stroke-width="3" stroke-dasharray="14 8"/>
+  <line x1="240" y1="250" x2="79.6" y2="137.7" stroke="var(--crane-accent, #d97706)" stroke-width="2.5" marker-end="url(#srz-arrow)"/>
+  <text x="126.3" y="150.9" text-anchor="middle" transform="rotate(35 126.3 150.9)" fill="var(--crane-accent, #d97706)">Max radius</text>
+
+  <!-- counterweight swing area and barricade -->
+  <circle cx="240" cy="250" r="70" fill="var(--crane-danger, #dc2626)" fill-opacity="0.18" stroke="var(--crane-danger, #dc2626)" stroke-width="2"/>
+  <circle cx="240" cy="250" r="100" fill="none" stroke="var(--crane-danger, #dc2626)" stroke-width="3" stroke-dasharray="12 8"/>
+  <g fill="var(--crane-danger, #dc2626)">
+    <circle cx="332.4" cy="288.3" r="5"/><circle cx="278.3" cy="342.4" r="5"/>
+    <circle cx="201.7" cy="342.4" r="5"/><circle cx="147.6" cy="288.3" r="5"/>
+    <circle cx="147.6" cy="211.7" r="5"/><circle cx="201.7" cy="157.6" r="5"/>
+    <circle cx="278.3" cy="157.6" r="5"/><circle cx="332.4" cy="211.7" r="5"/>
+  </g>
+
+  <!-- carrier on outriggers -->
+  <g stroke="currentColor" stroke-width="3">
+    <line x1="180" y1="190" x2="300" y2="190"/>
+    <line x1="180" y1="310" x2="300" y2="310"/>
+    <rect x="212" y="165" width="56" height="170" rx="6" fill="var(--crane-muted, #8a8f98)" fill-opacity="0.35"/>
+    <rect x="172" y="182" width="16" height="16" fill="var(--crane-muted, #8a8f98)"/>
+    <rect x="292" y="182" width="16" height="16" fill="var(--crane-muted, #8a8f98)"/>
+    <rect x="172" y="302" width="16" height="16" fill="var(--crane-muted, #8a8f98)"/>
+    <rect x="292" y="302" width="16" height="16" fill="var(--crane-muted, #8a8f98)"/>
+  </g>
+
+  <!-- rotating superstructure, boom up and right, counterweight down and left -->
+  <g transform="translate(240 250) rotate(-35)" stroke="currentColor" stroke-width="3">
+    <rect x="20" y="-9" width="176" height="18" rx="3" fill="var(--crane-muted, #8a8f98)" fill-opacity="0.6"/>
+    <rect x="-36" y="-28" width="76" height="56" rx="6" fill="var(--crane-muted, #8a8f98)" fill-opacity="0.6"/>
+    <rect x="-64" y="-28" width="28" height="56" rx="3" fill="var(--crane-muted, #8a8f98)"/>
+    <circle cx="196" cy="0" r="6" fill="none"/>
+  </g>
+  <circle cx="240" cy="250" r="4" fill="currentColor"/>
+
+  <text x="240" y="392" text-anchor="middle" font-weight="700" fill="var(--crane-danger, #dc2626)">Counterweight swing area</text>
+  <text x="240" y="416" text-anchor="middle" fill="var(--crane-danger, #dc2626)">Barricade it</text>
+
+  <!-- legend -->
+  <rect x="24" y="474" width="40" height="24" rx="3" fill="var(--crane-danger, #dc2626)" fill-opacity="0.18" stroke="var(--crane-danger, #dc2626)" stroke-width="2"/>
+  <text x="78" y="492">Struck-by and crush zone</text>
+  <line x1="24" y1="522" x2="64" y2="522" stroke="var(--crane-danger, #dc2626)" stroke-width="3" stroke-dasharray="12 8"/>
+  <text x="78" y="528">Barricade or warning line</text>
+  <line x1="24" y1="558" x2="64" y2="558" stroke="var(--crane-accent, #d97706)" stroke-width="3" stroke-dasharray="14 8"/>
+  <text x="78" y="564">Work zone boundary</text>
+</svg>

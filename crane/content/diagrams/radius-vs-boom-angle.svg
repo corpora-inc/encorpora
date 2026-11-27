@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 612" role="img" aria-labelledby="rba-title rba-desc" font-family="system-ui, sans-serif" font-size="18" fill="currentColor" stroke-linecap="round" stroke-linejoin="round">
+  <title id="rba-title">Radius and boom angle</title>
+  <desc id="rba-desc">Side view of one crane with the same boom length at 60 degrees and at 30 degrees. Radius is measured horizontally from the center of rotation to the center of the hook and load. At 30 degrees the radius is much longer than at 60 degrees. Under load the boom deflects, moving the hook farther out and adding radius. Lower boom angle, longer radius, less capacity.</desc>
+  <style>svg:root{color:#111}@media (prefers-color-scheme:dark){svg:root{color:#eee}}</style>
+  <defs>
+    <marker id="rba-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="var(--crane-accent, #d97706)"/>
+    </marker>
+    <marker id="rba-arrow-fg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="currentColor"/>
+    </marker>
+  </defs>
+
+  <!-- ground -->
+  <line x1="0" y1="430" x2="480" y2="430" stroke="currentColor" stroke-width="2"/>
+
+  <!-- center of rotation -->
+  <text x="90" y="272" text-anchor="middle">Center of</text>
+  <text x="90" y="292" text-anchor="middle">rotation</text>
+  <line x1="90" y1="302" x2="90" y2="516" stroke="var(--crane-muted, #8a8f98)" stroke-width="2" stroke-dasharray="6 6"/>
+
+  <!-- crane -->
+  <rect x="20" y="376" width="200" height="36" rx="4" fill="var(--crane-muted, #8a8f98)" fill-opacity="0.25" stroke="currentColor" stroke-width="3"/>
+  <circle cx="60" cy="416" r="12" fill="var(--crane-muted, #8a8f98)" stroke="currentColor" stroke-width="3"/>
+  <circle cx="180" cy="416" r="12" fill="var(--crane-muted, #8a8f98)" stroke="currentColor" stroke-width="3"/>
+  <rect x="40" y="336" width="110" height="40" rx="4" fill="var(--crane-muted, #8a8f98)" fill-opacity="0.25" stroke="currentColor" stroke-width="3"/>
+  <rect x="20" y="340" width="22" height="32" rx="2" fill="var(--crane-muted, #8a8f98)" stroke="currentColor" stroke-width="3"/>
+
+  <!-- angle reference and arcs -->
+  <line x1="130" y1="340" x2="240" y2="340" stroke="var(--crane-muted, #8a8f98)" stroke-width="2" stroke-dasharray="4 5"/>
+  <path d="M190 340 A60 60 0 0 0 181.96 310" fill="none" stroke="var(--crane-accent, #d97706)" stroke-width="3"/>
+  <path d="M220 340 A90 90 0 0 0 175 262.06" fill="none" stroke="var(--crane-accent, #d97706)" stroke-width="3"/>
+  <text x="226" y="332" font-weight="700">30°</text>
+  <text x="206" y="268" font-weight="700">60°</text>
+
+  <!-- booms (same length) -->
+  <line x1="130" y1="340" x2="275" y2="88.9" stroke="currentColor" stroke-width="8"/>
+  <line x1="130" y1="340" x2="381.1" y2="195" stroke="currentColor" stroke-width="8"/>
+  <!-- loaded, deflected boom -->
+  <path d="M130 340 Q280.7 253 400.7 236.1" fill="none" stroke="var(--crane-accent, #d97706)" stroke-width="4" stroke-dasharray="10 7"/>
+  <circle cx="130" cy="340" r="5" fill="currentColor"/>
+
+  <!-- hook lines and loads -->
+  <line x1="275" y1="89" x2="275" y2="384" stroke="currentColor" stroke-width="2"/>
+  <rect x="262" y="386" width="26" height="26" rx="2" fill="var(--crane-muted, #8a8f98)" stroke="currentColor" stroke-width="2"/>
+  <line x1="381" y1="195" x2="381" y2="384" stroke="currentColor" stroke-width="2"/>
+  <rect x="368" y="386" width="26" height="26" rx="2" fill="var(--crane-muted, #8a8f98)" stroke="currentColor" stroke-width="2"/>
+  <line x1="400.7" y1="236.1" x2="400.7" y2="512" stroke="var(--crane-accent, #d97706)" stroke-width="2" stroke-dasharray="6 5"/>
+
+  <!-- radius dimensions -->
+  <g stroke="var(--crane-muted, #8a8f98)" stroke-width="1.5" stroke-dasharray="3 4">
+    <line x1="275" y1="418" x2="275" y2="468"/>
+    <line x1="381" y1="418" x2="381" y2="510"/>
+  </g>
+  <line x1="92" y1="460" x2="273" y2="460" stroke="var(--crane-accent, #d97706)" stroke-width="2.5" marker-start="url(#rba-arrow)" marker-end="url(#rba-arrow)"/>
+  <text x="182" y="451" text-anchor="middle" font-weight="700">Radius at 60°</text>
+  <line x1="92" y1="502" x2="379" y2="502" stroke="var(--crane-accent, #d97706)" stroke-width="2.5" marker-start="url(#rba-arrow)" marker-end="url(#rba-arrow)"/>
+  <text x="235" y="493" text-anchor="middle" font-weight="700">Radius at 30°</text>
+  <text x="470" y="534" text-anchor="end" fill="var(--crane-accent, #d97706)">Deflection adds radius</text>
+
+  <!-- rule -->
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <rect x="8" y="556" width="144" height="40" rx="20"/>
+    <rect x="168" y="556" width="144" height="40" rx="20"/>
+    <rect x="328" y="556" width="144" height="40" rx="20" stroke="var(--crane-danger, #dc2626)"/>
+  </g>
+  <line x1="153" y1="576" x2="166" y2="576" stroke="currentColor" stroke-width="2" marker-end="url(#rba-arrow-fg)"/>
+  <line x1="313" y1="576" x2="326" y2="576" stroke="currentColor" stroke-width="2" marker-end="url(#rba-arrow-fg)"/>
+  <text x="80" y="582" text-anchor="middle">Lower angle</text>
+  <text x="240" y="582" text-anchor="middle">Longer radius</text>
+  <text x="400" y="582" text-anchor="middle" fill="var(--crane-danger, #dc2626)" font-weight="700">Less capacity</text>
+</svg>

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 560" role="img" aria-labelledby="dod-title dod-desc" font-family="system-ui, sans-serif" font-size="18" fill="currentColor" stroke-linecap="round" stroke-linejoin="round">
+  <title id="dod-title">D/d ratio</title>
+  <desc id="dod-desc">The D/d ratio is the diameter of the sheave, pin or other object a rope bends around (D) divided by the rope diameter (d). Left: a rope over a sheave twenty times its own diameter, D/d of 20, a gentle bend. Right: the same rope around a pin three times its diameter, D/d of 3, a sharp bend. The lower the D/d ratio, the more the rope loses strength and the faster it wears. Use the rope or sling maker's rating for the D/d in use.</desc>
+  <style>svg:root{color:#111}@media (prefers-color-scheme:dark){svg:root{color:#eee}}</style>
+  <defs>
+    <marker id="dod-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="currentColor"/>
+    </marker>
+  </defs>
+
+  <!-- large sheave: D = 160, rope d = 8, D/d = 20 -->
+  <circle cx="130" cy="150" r="80" fill="var(--crane-muted, #8a8f98)" fill-opacity="0.3" stroke="currentColor" stroke-width="3"/>
+  <circle cx="130" cy="150" r="6" fill="currentColor"/>
+  <path d="M46 290 V150 A84 84 0 0 1 214 150 V290" fill="none" stroke="var(--crane-accent, #d97706)" stroke-width="8" stroke-linecap="butt"/>
+  <line x1="52" y1="196" x2="208" y2="196" stroke="currentColor" stroke-width="2" marker-start="url(#dod-arrow)" marker-end="url(#dod-arrow)"/>
+  <text x="130" y="188" text-anchor="middle" font-size="22" font-weight="700">D</text>
+  <text x="26" y="254" text-anchor="end" font-size="22" font-weight="700">d</text>
+  <line x1="30" y1="248" x2="40" y2="248" stroke="currentColor" stroke-width="2"/>
+
+  <!-- small pin: D = 24, rope d = 8, D/d = 3 -->
+  <circle cx="360" cy="150" r="12" fill="var(--crane-muted, #8a8f98)" fill-opacity="0.3" stroke="currentColor" stroke-width="3"/>
+  <path d="M344 290 V150 A16 16 0 0 1 376 150 V290" fill="none" stroke="var(--crane-danger, #dc2626)" stroke-width="8" stroke-linecap="butt"/>
+  <text x="360" y="110" text-anchor="middle" font-size="22" font-weight="700">D</text>
+  <text x="326" y="254" text-anchor="end" font-size="22" font-weight="700">d</text>
+  <line x1="330" y1="248" x2="338" y2="248" stroke="currentColor" stroke-width="2"/>
+
+  <g text-anchor="middle">
+    <text x="130" y="324" font-size="20" font-weight="700">D/d = 20</text>
+    <text x="130" y="350">Gentle bend</text>
+    <text x="360" y="324" font-size="20" font-weight="700" fill="var(--crane-danger, #dc2626)">D/d = 3</text>
+    <text x="360" y="350">Sharp bend</text>
+  </g>
+
+  <line x1="8" y1="372" x2="472" y2="372" stroke="var(--crane-muted, #8a8f98)" stroke-width="1" stroke-opacity="0.6"/>
+  <text x="24" y="404"><tspan font-weight="700">D</tspan> = sheave or pin diameter</text>
+  <text x="24" y="430"><tspan font-weight="700">d</tspan> = rope diameter</text>
+  <text x="24" y="462">20 in sheave ÷ 1 in rope = 20</text>
+  <text x="24" y="500" fill="var(--crane-danger, #dc2626)">Lower D/d: less strength, faster wear.</text>
+  <text x="24" y="540" font-weight="700">Use the maker's rating for your D/d.</text>
+</svg>
