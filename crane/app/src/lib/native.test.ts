@@ -27,6 +27,11 @@ const grantFor = ({ plugin, cmd }: { plugin: string; cmd: string }) => `${plugin
 test("every invoked command is granted, and every grant is invoked", () => {
   assert.ok(invoked.length > 0);
   const wanted = new Set(invoked.map(grantFor));
+  // addPluginListener("<plugin>", …) calls the plugin's register/remove-listener pair.
+  for (const m of native.matchAll(/addPluginListener<[^>]*>\("([a-z-]+)"/g)) {
+    wanted.add(`${m[1]}:allow-register-listener`);
+    wanted.add(`${m[1]}:allow-remove-listener`);
+  }
   assert.deepEqual([...wanted].sort(), [...grants].sort());
   for (const g of grants) assert.doesNotMatch(g, /:default$/, `${g}: grant single commands, never a plugin default`);
 });

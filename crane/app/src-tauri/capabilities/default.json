@@ -1,18 +1,22 @@
 {
   "$schema": "../gen/schemas/desktop-schema.json",
   "identifier": "default",
-  "description": "Least privilege for the main window. Every grant names a single command, never <plugin>:default, and each one is a command src/lib/native.ts invokes (native.test.ts asserts both directions).",
+  "description": "Least privilege for the main window. Every grant names a single command, never <plugin>:default. Each plugin grant is a command src/lib/native.ts invokes, or (register/remove-listener) the pair addPluginListener uses for the microphone level; native.test.ts asserts both.",
   "windows": [
     "main"
   ],
   "permissions": [
     "tts:allow-speak",
     "tts:allow-stop",
+    "tts:allow-list-voices",
     "stt:allow-is-available",
     "stt:allow-validate-model",
     "stt:allow-prepare",
     "stt:allow-start-session",
     "stt:allow-stop-session",
-    "corpan-llm:allow-llm-status"
+    "corpan-llm:allow-llm-status",
+    "stt:allow-cancel-session",
+    "stt:allow-register-listener",
+    "stt:allow-remove-listener"
   ]
 }

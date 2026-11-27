@@ -3,3 +3,4 @@ dist/
 artifacts/
 src-tauri/target/
 src-tauri/gen/
+src-tauri/voice/

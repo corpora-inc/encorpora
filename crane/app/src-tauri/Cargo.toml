@@ -41,6 +41,8 @@ tauri-plugin-dialog = "2"
 tauri-plugin-fs = "2"
 # Android's IPC cannot carry raw bytes, so there the export arrives as base64 JSON.
 base64 = "0.23"
+# SHA-256 of the bundled speech model as it is installed (src/voice.rs).
+sha2 = "0.10"
 
 # iOS has no save dialog: export opens the share sheet instead. Same crate AHA uses.
 [target.'cfg(target_os = "ios")'.dependencies]

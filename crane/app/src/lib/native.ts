@@ -4,6 +4,10 @@
  * browser they fall back to what the platform offers, or report unavailable
  * so the UI never shows a control that cannot work.
  */
+import { addPluginListener } from "@tauri-apps/api/core";
+import VOICE_MODEL from "../../src-tauri/voice-model.json";
+import { VOCAB_PROMPT } from "../voice/prompt.ts";
+import { pickVoice, type VoiceOption } from "../voice/voices.ts";
 import { logError } from "./log.ts";
 
 type Invoke = (cmd: string, args?: Record<string, unknown> | Uint8Array, options?: { headers?: Record<string, string> }) => Promise<unknown>;
@@ -15,7 +19,39 @@ function tauriInvoke(): Invoke | null {
 
 export const isNative = () => tauriInvoke() !== null;
 
-/** Read aloud. */
+/** The most natural offline voice for a language, looked up once per language. */
+const voiceChoice = new Map<string, Promise<string | null>>();
+function chosenVoice(invoke: Invoke, lang: string): Promise<string | null> {
+  let p = voiceChoice.get(lang);
+  if (!p) {
+    p = (async () => {
+      try {
+        const voices = (await invoke("plugin:tts|list_voices")) as VoiceOption[];
+        return pickVoice(voices, lang)?.id ?? null;
+      } catch (e) {
+        logError("speech.voices", e);
+        return null; // the platform default voice still works
+      }
+    })();
+    voiceChoice.set(lang, p);
+  }
+  return p;
+}
+
+function browserVoice(lang: string): SpeechSynthesisVoice | null {
+  const all = speechSynthesis.getVoices();
+  const options: VoiceOption[] = all.map((v) => ({
+    id: v.voiceURI,
+    language: v.lang,
+    name: v.name,
+    quality: /premium|enhanced|neural|natural/i.test(v.name) ? "enhanced" : null,
+    networkRequired: !v.localService,
+  }));
+  const pick = pickVoice(options, lang);
+  return pick ? (all.find((v) => v.voiceURI === pick.id) ?? null) : null;
+}
+
+/** Read aloud, with the most natural voice the device has offline (voice/voices.ts). */
 export const speech = {
   available(): boolean {
     return isNative() || (typeof speechSynthesis !== "undefined" && typeof SpeechSynthesisUtterance !== "undefined");
@@ -23,12 +59,16 @@ export const speech = {
   async speak(text: string, lang: string): Promise<void> {
     const invoke = tauriInvoke();
     if (invoke) {
-      await invoke("plugin:tts|speak", { args: { text, language: lang } });
+      const voiceId = await chosenVoice(invoke, lang);
+      // An undefined voiceId is dropped from the JSON: the platform default voice speaks.
+      await invoke("plugin:tts|speak", { args: { text, language: lang, voiceId: voiceId ?? undefined } });
       return;
     }
     speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(text);
     u.lang = lang;
+    const v = browserVoice(lang);
+    if (v) u.voice = v;
     await new Promise<void>((resolve, reject) => {
       u.onend = () => resolve();
       u.onerror = (e) => (e.error === "interrupted" || e.error === "canceled" ? resolve() : reject(new Error(e.error)));
@@ -47,42 +87,98 @@ export const speech = {
 };
 
 /**
- * Voice input: on-device only (whisper.cpp in tauri-plugin-stt). Available
- * only when the platform supports it AND the default model is installed and
- * valid on disk: `is_available` alone is true on iOS with no model, which
- * would offer a microphone that fails on every tap. The caller owns the
- * session id.
- * Payloads match the plugin's `StartSessionArgs` / `StopSessionArgs`
- * (camelCase, wrapped in `args`); native.test.ts pins them to the plugin source.
+ * Voice input: on-device only (whisper.cpp in tauri-plugin-stt), with the
+ * speech model bundled in the app (src-tauri/voice-model.json; the Rust side
+ * installs it on first launch, see src-tauri/src/voice.rs). Available only
+ * when the bundled model is installed AND the plugin can use it: `is_available`
+ * alone is true on iOS with no model, which would offer a microphone that
+ * fails on every tap. The caller owns the session id.
+ *
+ * Payloads match the plugin (`StartSessionArgs`: camelCase in `args`, the
+ * whisper overrides snake_case as in whisper.h); native.test.ts pins them to
+ * the plugin source. Audio never leaves the device: the plugin records and
+ * transcribes locally, and the app has no network access (CSP).
  */
+export type VoiceErrorKind = "permission" | "busy" | "failed";
+
+/** What went wrong, from the plugin's rejection (iOS: "CODE: message"; Android: a code field). */
+export function voiceErrorKind(raw: unknown): VoiceErrorKind {
+  const code = typeof raw === "object" && raw !== null && "code" in raw ? String((raw as { code: unknown }).code) : "";
+  const text = raw instanceof Error ? raw.message : typeof raw === "string" ? raw : JSON.stringify(raw ?? "");
+  if (code === "MIC_PERMISSION_DENIED" || /MIC_PERMISSION_DENIED|microphone access/i.test(text)) return "permission";
+  if (code === "BUSY" || /^BUSY\b/.test(text)) return "busy";
+  return "failed";
+}
+
+export class VoiceError extends Error {
+  readonly kind: VoiceErrorKind;
+  constructor(raw: unknown) {
+    super(raw instanceof Error ? raw.message : String(raw));
+    this.name = "VoiceError";
+    this.kind = voiceErrorKind(raw);
+  }
+}
+
+const asVoiceError = async <T>(p: Promise<T>): Promise<T> => {
+  try {
+    return await p;
+  } catch (e) {
+    throw new VoiceError(e);
+  }
+};
+
 export const voice = {
+  /** The bundled model's file name, which the plugin also uses as its model id. */
+  model: VOICE_MODEL.file,
   async available(): Promise<boolean> {
     const invoke = tauriInvoke();
     if (!invoke) return false;
     try {
+      const bundled = (await invoke("voice_model")) as { status: string; file: string };
+      if (bundled.status !== "ready") return false;
       if ((await invoke("plugin:stt|is_available")) !== true) return false;
-      const model = (await invoke("plugin:stt|validate_model", {})) as { valid?: boolean };
+      const model = (await invoke("plugin:stt|validate_model", { model: bundled.file })) as { valid?: boolean };
       return model.valid === true;
     } catch (e) {
       logError("voice.available", e);
       return false;
     }
   },
+  /** Load the model and start recording. The first call asks for microphone permission, in context. */
   async start(lang: string): Promise<string> {
     const invoke = tauriInvoke();
-    if (!invoke) throw new Error("Voice input needs the app");
-    const ready = (await invoke("plugin:stt|prepare", { args: {} })) as { ready: boolean; message?: string | null };
-    if (!ready.ready) throw new Error(ready.message ?? "Voice input is not ready on this device");
+    if (!invoke) throw new VoiceError("Voice input needs the app");
+    const ready = (await asVoiceError(invoke("plugin:stt|prepare", { args: { model: VOICE_MODEL.file } }))) as { ready: boolean; message?: string | null };
+    if (!ready.ready) throw new VoiceError(ready.message ?? "The speech model could not load");
     const sessionId = crypto.randomUUID();
-    const started = (await invoke("plugin:stt|start_session", { args: { sessionId, language: lang, expectedText: "" } })) as { started: boolean };
-    if (!started.started) throw new Error("Voice input could not start");
+    const started = (await asVoiceError(invoke("plugin:stt|start_session", { args: { sessionId, language: lang, expectedText: "", whisperParams: { initial_prompt: VOCAB_PROMPT } } }))) as { started: boolean };
+    if (!started.started) throw new VoiceError("Voice input could not start");
     return sessionId;
   },
+  /** Stop recording and return the transcript. */
   async stop(sessionId: string): Promise<string> {
     const invoke = tauriInvoke();
-    if (!invoke) throw new Error("Voice input needs the app");
-    const r = (await invoke("plugin:stt|stop_session", { args: { sessionId } })) as { text: string };
+    if (!invoke) throw new VoiceError("Voice input needs the app");
+    const r = (await asVoiceError(invoke("plugin:stt|stop_session", { args: { sessionId } }))) as { text: string };
     return r.text.trim();
+  },
+  /** Stop recording and discard it. */
+  async cancel(sessionId: string): Promise<void> {
+    const invoke = tauriInvoke();
+    if (!invoke) return;
+    try {
+      await invoke("plugin:stt|cancel_session", { args: { sessionId } });
+    } catch (e) {
+      logError("voice.cancel", e);
+    }
+  },
+  /** Microphone level while recording (about 8 per second): RMS 0..1, and ms since recording began. */
+  async onLevel(cb: (rms: number, t: number) => void): Promise<() => void> {
+    if (!isNative()) return () => {};
+    const handle = await addPluginListener<{ rms: number; t: number }>("stt", "audio_level", (e) => cb(e.rms, e.t));
+    return () => {
+      handle.unregister().catch((e: unknown) => logError("voice.onLevel", e));
+    };
   },
 };
 
