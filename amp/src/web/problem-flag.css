@@ -1,5 +1,5 @@
 /* "Report a problem": a quiet flag in the feedback sheet's tool row, and a
-   compact sheet of reasons. Loaded after the theme so the round flag keeps
+   compact sheet of reasons, which "Report this film" shares (ReportForm). Loaded after the theme so the round flag keeps
    its exact size where the row's text actions flex. */
 .feedback .practice-tools button.report-problem,
 .shell .feedback .practice-tools button.report-problem {
@@ -42,6 +42,11 @@
 .report-dialog {
   width: min(480px, calc(100% - 32px));
 }
+/* The title shares the content's 20px edge at every width (a tablet's
+   reading-column inset is for the lesson panels, not this compact sheet). */
+.practice-dialog.report-dialog {
+  --dialog-inset: 20px;
+}
 .report-dialog .dialog-heading h2 {
   font-size: 22px;
 }
@@ -59,6 +64,18 @@
   font-size: var(--text-label);
   line-height: 1.4;
   color: var(--color-danger-accent);
+}
+/* On the narrowest phones the message takes two lines: both are reserved,
+   so a failure or a thanks never grows the sheet. */
+@media (max-width: 420px) {
+  .report-error {
+    min-height: 2.8em;
+  }
+}
+/* A sent report's thanks, in the same reserved line (ReportForm `thanks`). */
+.report-error.report-sent {
+  color: var(--color-success-accent);
+  font-weight: 600;
 }
 .report-send {
   width: 100%;

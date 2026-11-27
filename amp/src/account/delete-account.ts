@@ -203,6 +203,9 @@ export const ACCOUNT_TABLES: Record<string, TableHandling> = {
   amp_practice_settings: "learner",
   amp_privacy_events: "account",
   amp_problem_flags: "learner",
+  // An adult's film reports are unlinked here (their note goes with the
+  // link); a learner's are unlinked with the learner, by foreign key.
+  amp_film_flags: "account",
   amp_provider_signup_exports: "sign-in",
   amp_provider_principals: "account",
   amp_provider_identities: "account",
@@ -720,6 +723,9 @@ export async function deleteAccount(
         );
       }
       for (const sql of [
+        // Film reports stay as reports about a film; the trigger erases the
+        // note with the link (migration 0158).
+        "UPDATE amp_film_flags SET account_id=NULL WHERE account_id=$1",
         "DELETE FROM amp_family_approvals WHERE account_id=$1",
         "DELETE FROM amp_family_spaces WHERE account_id=$1",
         "DELETE FROM amp_account_profiles WHERE account_id=$1",
