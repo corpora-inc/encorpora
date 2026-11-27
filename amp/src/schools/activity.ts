@@ -130,6 +130,8 @@ export function describeEvent({
       return `${who} reset ${possessive(student)} sign-in pictures`;
     case "student.sessions-revoked":
       return `${who} signed ${student} out everywhere`;
+    case "signin.sessions-revoked":
+      return `${who} signed out everyone at ${school}`;
     case "student.card-issued":
       return `${who} made a sign-in card for ${student}`;
     case "student.card-reissued":
