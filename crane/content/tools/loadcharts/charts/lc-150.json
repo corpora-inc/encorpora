@@ -1,0 +1,377 @@
+{
+  "$schema": "../schema.json",
+  "id": "lc-150",
+  "class": "lattice-crawler-crane",
+  "title": "Class LC-150 lattice-boom crawler crane (fictional)",
+  "fictional": true,
+  "summary": "Lattice-boom crawler crane: 50 to 190 ft boom in 20 ft steps, 300,000 lb maximum rating, 30 ft and 60 ft fixed jib at 5°, 15° and 25° offset.",
+  "units": {
+    "weight": "lb",
+    "length": "ft",
+    "angle": "deg",
+    "statement": "All capacities in pounds. Lengths and radii in feet."
+  },
+  "boom": {
+    "type": "lattice",
+    "minLengthFt": 50,
+    "maxLengthFt": 190,
+    "sections": null
+  },
+  "counterweight": {
+    "weightLb": 150000,
+    "description": "110,000 lb upper counterweight plus 40,000 lb carbody counterweight. All ratings require both installed."
+  },
+  "rules": {
+    "betweenRadii": "next-longer",
+    "betweenBoomLengths": "next-longer",
+    "jibBetweenKeys": "next-longer-radius"
+  },
+  "geometry": {
+    "pivotOffsetFt": 4,
+    "pivotHeightFt": 6,
+    "minLoadedBoomAngleDeg": 0,
+    "maxLoadedBoomAngleDeg": 82
+  },
+  "configurations": [
+    {
+      "id": "tracks-extended-360",
+      "label": "Crawler tracks fully extended (20 ft gauge), 360°",
+      "support": "tracks-extended",
+      "workArea": "360",
+      "stabilityPercent": 75,
+      "counterweightLb": 150000,
+      "boomLengthsFt": [50, 70, 90, 110, 130, 150, 170, 190],
+      "radiiFt": [15, 18, 20, 25, 30, 35, 40, 45, 50, 60, 70, 80, 90, 100, 120, 140, 160],
+      "capacitiesLb": [
+        [300000, 237100, null, null, null, null, null, null],
+        [263600, 204800, 169600, null, null, null, null, null],
+        [241600, 187700, 155500, 133700, null, null, null, null],
+        [200000, 155300, 128600, 110700, 97600, 87700, null, null],
+        [158300, 132500, 109700, 94400, 83300, 74800, 68100, null],
+        [131000, 115500, 95600, 82300, 72600, 65200, 59300, 54600],
+        [111700, 102400, 84800, 72900, 64300, 57800, 52600, 48400],
+        [97400, 91800, 76100, 65500, 57800, 51900, 47200, 43400],
+        [86300, 81400, 69100, 59400, 52400, 47100, 42800, 39400],
+        [null, 66300, 58300, 50100, 44200, 39700, 36100, 33200],
+        [null, 55900, 50400, 43300, 38200, 34300, 31300, 28700],
+        [null, null, 44400, 38200, 33700, 30200, 27500, 25300],
+        [null, null, 39700, 34100, 30100, 27000, 24600, 22600],
+        [null, null, null, 30800, 27200, 24400, 22200, 20400],
+        [null, null, null, null, 22800, 20500, 18600, 17100],
+        [null, null, null, null, null, 17600, 16000, 14700],
+        [null, null, null, null, null, null, null, 12900]
+      ],
+      "structural": [
+        [true, true, false, false, false, false, false, false],
+        [true, true, true, false, false, false, false, false],
+        [true, true, true, true, false, false, false, false],
+        [true, true, true, true, true, true, false, false],
+        [false, true, true, true, true, true, true, false],
+        [false, true, true, true, true, true, true, true],
+        [false, true, true, true, true, true, true, true],
+        [false, false, true, true, true, true, true, true],
+        [false, false, true, true, true, true, true, true],
+        [false, false, true, true, true, true, true, true],
+        [false, false, true, true, true, true, true, true],
+        [false, false, true, true, true, true, true, true],
+        [false, false, true, true, true, true, true, true],
+        [false, false, false, true, true, true, true, true],
+        [false, false, false, false, true, true, true, true],
+        [false, false, false, false, false, true, true, true],
+        [false, false, false, false, false, false, false, true]
+      ]
+    },
+    {
+      "id": "tracks-retracted-360",
+      "label": "Crawler tracks retracted (14 ft gauge), 360°",
+      "support": "tracks-retracted",
+      "workArea": "360",
+      "stabilityPercent": 75,
+      "counterweightLb": 150000,
+      "boomLengthsFt": [50, 70, 90, 110, 130],
+      "radiiFt": [15, 18, 20, 25, 30, 35, 40, 45, 50, 60, 70, 80, 90, 100, 120, 140, 160],
+      "capacitiesLb": [
+        [250000, 235700, null, null, null],
+        [192300, 181300, 169600, null, null],
+        [166600, 157100, 147600, 133700, null],
+        [125000, 117800, 110700, 103500, 96400],
+        [100000, 94200, 88500, 82800, 77100],
+        [83300, 78500, 73800, 69000, 64200],
+        [71400, 67300, 63200, 59100, 55100],
+        [62500, 58900, 55300, 51700, 48200],
+        [55500, 52300, 49200, 46000, 42800],
+        [null, 42800, 40200, 37600, 35000],
+        [null, 36200, 34000, 31800, 29600],
+        [null, null, 29500, 27600, 25700],
+        [null, null, 26000, 24300, 22600],
+        [null, null, null, 21800, 20300],
+        [null, null, null, null, 16700],
+        [null, null, null, null, null],
+        [null, null, null, null, null]
+      ],
+      "structural": [
+        [false, false, false, false, false],
+        [false, false, true, false, false],
+        [false, false, false, true, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false]
+      ],
+      "notes": ["Tracks-retracted ratings are for assembly, disassembly, and light work. Extend the tracks for production lifting."]
+    }
+  ],
+  "rangeDiagram": {
+    "boomLengthsFt": [50, 70, 90, 110, 130, 150, 170, 190],
+    "radiiFt": [15, 18, 20, 25, 30, 35, 40, 45, 50, 60, 70, 80, 90, 100, 120, 140, 160],
+    "angleDeg": [
+      [77, 81, null, null, null, null, null, null],
+      [74, 78, 81, null, null, null, null, null],
+      [71, 77, 80, 82, null, null, null, null],
+      [65, 73, 77, 79, 81, 82, null, null],
+      [59, 68, 73, 76, 78, 80, 81, null],
+      [52, 64, 70, 74, 76, 78, 79, 81],
+      [44, 59, 66, 71, 74, 76, 78, 79],
+      [35, 54, 63, 68, 72, 74, 76, 78],
+      [23, 49, 59, 65, 69, 72, 74, 76],
+      [null, 37, 52, 59, 64, 68, 71, 73],
+      [null, 19, 43, 53, 59, 64, 67, 70],
+      [null, null, 32, 46, 54, 60, 63, 66],
+      [null, null, 17, 39, 49, 55, 60, 63],
+      [null, null, null, 29, 42, 50, 56, 60],
+      [null, null, null, null, 27, 39, 47, 52],
+      [null, null, null, null, null, 25, 37, 44],
+      [null, null, null, null, null, null, 23, 35]
+    ],
+    "tipHeightFt": [
+      [55, 75, null, null, null, null, null, null],
+      [54, 75, 95, null, null, null, null, null],
+      [53, 74, 95, 115, null, null, null, null],
+      [51, 73, 94, 114, 134, 155, null, null],
+      [49, 71, 92, 113, 133, 154, 174, null],
+      [45, 69, 90, 112, 132, 153, 173, 193],
+      [41, 66, 88, 110, 131, 152, 172, 193],
+      [35, 63, 86, 108, 129, 150, 171, 192],
+      [26, 59, 83, 106, 128, 149, 170, 190],
+      [null, 48, 76, 101, 123, 145, 167, 188],
+      [null, 29, 67, 94, 118, 141, 163, 184],
+      [null, null, 54, 86, 111, 135, 158, 180],
+      [null, null, 33, 75, 103, 129, 153, 175],
+      [null, null, null, 60, 94, 121, 146, 170],
+      [null, null, null, null, 65, 101, 130, 156],
+      [null, null, null, null, null, 69, 108, 139],
+      [null, null, null, null, null, null, 74, 114]
+    ]
+  },
+  "jib": {
+    "description": "Fixed lattice jib, 30 ft or 60 ft, mounted at 5°, 15° or 25° offset. Ratings are by radius for the listed main boom lengths.",
+    "lengthsFt": [30, 60],
+    "offsetsDeg": [5, 15, 25],
+    "tables": [
+      {
+        "mainBoomLengthFt": 130,
+        "jibLengthFt": 30,
+        "offsetDeg": 5,
+        "basis": "radius",
+        "keys": [30, 35, 40, 45, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160],
+        "capacitiesLb": [24000, 23700, 23500, 23200, 23000, 22500, 22000, 21600, 21100, 20600, 20100, 19600, 19200, 17800, 16600, null]
+      },
+      {
+        "mainBoomLengthFt": 130,
+        "jibLengthFt": 30,
+        "offsetDeg": 15,
+        "basis": "radius",
+        "keys": [30, 35, 40, 45, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160],
+        "capacitiesLb": [null, 20100, 19900, 19700, 19500, 19100, 18700, 18300, 17900, 17500, 17100, 16700, 16300, 15900, 15500, null]
+      },
+      {
+        "mainBoomLengthFt": 130,
+        "jibLengthFt": 30,
+        "offsetDeg": 25,
+        "basis": "radius",
+        "keys": [30, 35, 40, 45, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160],
+        "capacitiesLb": [null, null, 16400, 16200, 16100, 15700, 15400, 15100, 14700, 14400, 14100, 13700, 13400, 13100, 12700, null]
+      },
+      {
+        "mainBoomLengthFt": 130,
+        "jibLengthFt": 60,
+        "offsetDeg": 5,
+        "basis": "radius",
+        "keys": [30, 35, 40, 45, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160],
+        "capacitiesLb": [null, null, 14700, 14500, 14400, 14100, 13800, 13500, 13200, 12900, 12600, 12300, 12000, 11700, 11400, 11100]
+      },
+      {
+        "mainBoomLengthFt": 130,
+        "jibLengthFt": 60,
+        "offsetDeg": 15,
+        "basis": "radius",
+        "keys": [30, 35, 40, 45, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160],
+        "capacitiesLb": [null, null, null, null, 12200, 11900, 11700, 11400, 11200, 10900, 10700, 10400, 10200, 9900, 9600, 9400]
+      },
+      {
+        "mainBoomLengthFt": 130,
+        "jibLengthFt": 60,
+        "offsetDeg": 25,
+        "basis": "radius",
+        "keys": [30, 35, 40, 45, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160],
+        "capacitiesLb": [null, null, null, null, null, 9800, 9600, 9400, 9200, 9000, 8800, 8600, 8400, 8100, 7900, 7700]
+      },
+      {
+        "mainBoomLengthFt": 170,
+        "jibLengthFt": 30,
+        "offsetDeg": 5,
+        "basis": "radius",
+        "keys": [30, 35, 40, 45, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160],
+        "capacitiesLb": [null, 21300, 21100, 20900, 20700, 20300, 19800, 19400, 19000, 18500, 18100, 17500, 16100, 14900, 13800, 12900]
+      },
+      {
+        "mainBoomLengthFt": 170,
+        "jibLengthFt": 30,
+        "offsetDeg": 15,
+        "basis": "radius",
+        "keys": [30, 35, 40, 45, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160],
+        "capacitiesLb": [null, null, 17900, 17800, 17600, 17200, 16800, 16500, 16100, 15700, 15400, 15000, 14600, 14300, 13800, 12900]
+      },
+      {
+        "mainBoomLengthFt": 170,
+        "jibLengthFt": 30,
+        "offsetDeg": 25,
+        "basis": "radius",
+        "keys": [30, 35, 40, 45, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160],
+        "capacitiesLb": [null, null, null, 14600, 14500, 14200, 13900, 13600, 13300, 13000, 12700, 12300, 12000, 11700, 11400, 11100]
+      },
+      {
+        "mainBoomLengthFt": 170,
+        "jibLengthFt": 60,
+        "offsetDeg": 5,
+        "basis": "radius",
+        "keys": [30, 35, 40, 45, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160],
+        "capacitiesLb": [null, null, null, 13000, 12900, 12600, 12400, 12100, 11800, 11600, 11300, 11000, 10800, 10500, 10200, 9900]
+      },
+      {
+        "mainBoomLengthFt": 170,
+        "jibLengthFt": 60,
+        "offsetDeg": 15,
+        "basis": "radius",
+        "keys": [30, 35, 40, 45, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160],
+        "capacitiesLb": [null, null, null, null, null, 10700, 10500, 10300, 10000, 9800, 9600, 9400, 9100, 8900, 8700, 8400]
+      },
+      {
+        "mainBoomLengthFt": 170,
+        "jibLengthFt": 60,
+        "offsetDeg": 25,
+        "basis": "radius",
+        "keys": [30, 35, 40, 45, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160],
+        "capacitiesLb": [null, null, null, null, null, null, 8600, 8500, 8300, 8100, 7900, 7700, 7500, 7300, 7100, 6900]
+      }
+    ],
+    "notes": ["Jib ratings are by radius. For a radius between two listed radii, use the rating at the next longer listed radius.", "Jib ratings apply with the tracks fully extended only, at the listed main boom lengths only.", "When lifting from the jib, deduct the headache ball on the jib line, and the main hook block if it stays reeved on the main boom."]
+  },
+  "deductions": [
+    {
+      "id": "block-150t",
+      "kind": "hook-block",
+      "item": "150-ton, 6-sheave hook block",
+      "weightLb": 3500,
+      "maxParts": 12
+    },
+    {
+      "id": "block-60t",
+      "kind": "hook-block",
+      "item": "60-ton, 3-sheave hook block",
+      "weightLb": 1600,
+      "maxParts": 6
+    },
+    {
+      "id": "ball-15t",
+      "kind": "headache-ball",
+      "item": "15-ton headache ball",
+      "weightLb": 900,
+      "maxParts": 1
+    },
+    {
+      "id": "jib-erected-30",
+      "kind": "jib-erected",
+      "item": "30 ft jib installed, lifting from the main boom",
+      "weightLb": 3000
+    },
+    {
+      "id": "jib-erected-60",
+      "kind": "jib-erected",
+      "item": "60 ft jib installed, lifting from the main boom",
+      "weightLb": 4800
+    },
+    {
+      "id": "aux-head",
+      "kind": "aux-head",
+      "item": "Upper boom point (auxiliary sheave), if installed",
+      "weightLb": 400
+    }
+  ],
+  "linePull": {
+    "rope": "Main hoist rope (fictional rating)",
+    "maxPermissibleLinePullLb": 25000,
+    "maxParts": 12,
+    "rows": [
+      {
+        "parts": 1,
+        "maxLoadLb": 25000
+      },
+      {
+        "parts": 2,
+        "maxLoadLb": 50000
+      },
+      {
+        "parts": 3,
+        "maxLoadLb": 75000
+      },
+      {
+        "parts": 4,
+        "maxLoadLb": 100000
+      },
+      {
+        "parts": 5,
+        "maxLoadLb": 125000
+      },
+      {
+        "parts": 6,
+        "maxLoadLb": 150000
+      },
+      {
+        "parts": 7,
+        "maxLoadLb": 175000
+      },
+      {
+        "parts": 8,
+        "maxLoadLb": 200000
+      },
+      {
+        "parts": 9,
+        "maxLoadLb": 225000
+      },
+      {
+        "parts": 10,
+        "maxLoadLb": 250000
+      },
+      {
+        "parts": 11,
+        "maxLoadLb": 275000
+      },
+      {
+        "parts": 12,
+        "maxLoadLb": 300000
+      }
+    ]
+  },
+  "notes": ["This chart is fictional. It is written for training and exam-style practice only and must never be used to plan or make a lift. Always use the chart supplied with the crane, matched to its serial number.", "Capacities are in pounds. Lengths and radii are in feet. Boom angles are loaded boom angles in degrees above horizontal.", "Operating radius is the horizontal distance from the axis of rotation to the center of the hoist line or load block with the load applied.", "Capacities are gross. The weight of all load-handling devices (hook blocks, headache balls, slings, shackles, spreader bars, and other rigging) is part of the load and must be deducted from the gross capacity to get the net load that may be lifted.", "Capacities in shaded (structural) cells are limited by the strength of the crane, not by tipping. Do not use tipping as a warning: the crane can fail structurally before it shows any sign of tipping.", "For a radius between two listed radii, use the capacity at the next longer listed radius. Do not interpolate.", "Do not lift beyond the longest listed radius, inside the shortest listed radius, at a boom length outside the listed lengths, or where no capacity is shown. A blank cell means no load may be handled there.", "Capacities assume a freely suspended load, the crane level within 1 percent, and a firm, uniform supporting surface. Reduce capacities for wind, side loading, swing speed, and dynamic loading.", "Stability-limited capacities on crawlers do not exceed 75 percent of tipping.", "For a boom length between two listed lengths, use the capacity of the next longer listed boom.", "Long booms have a minimum loaded boom angle. Blank cells at long radius on long booms are no-load zones: do not lower the boom into them, even with no load.", "When a jib is installed and the load is on the main boom, deduct the jib deduction from every main boom capacity.", "Travel with a load only with the boom in line with the tracks, on firm level ground, at the slowest speed."]
+}

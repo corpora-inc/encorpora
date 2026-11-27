@@ -1,0 +1,163 @@
+{
+  "$schema": "../schema.json",
+  "id": "ak-30",
+  "class": "articulating-crane",
+  "title": "Class AK-30 articulating (knuckle) boom crane (fictional)",
+  "fictional": true,
+  "summary": "Truck-mounted articulating boom crane: inner and outer boom with up to four hydraulic extensions, 9,000 lb maximum rating, hook on the boom tip.",
+  "units": {
+    "weight": "lb",
+    "length": "ft",
+    "angle": "deg",
+    "statement": "All capacities in pounds. Reach and radii in feet."
+  },
+  "boom": {
+    "type": "articulating",
+    "minLengthFt": 21,
+    "maxLengthFt": 49,
+    "sections": 6
+  },
+  "boomConfigurations": [
+    {
+      "lengthFt": 21,
+      "label": "No extensions out (21 ft reach)"
+    },
+    {
+      "lengthFt": 28,
+      "label": "1 extension out (28 ft reach)"
+    },
+    {
+      "lengthFt": 35,
+      "label": "2 extensions out (35 ft reach)"
+    },
+    {
+      "lengthFt": 42,
+      "label": "3 extensions out (42 ft reach)"
+    },
+    {
+      "lengthFt": 49,
+      "label": "4 extensions out (49 ft reach)"
+    }
+  ],
+  "counterweight": {
+    "weightLb": 0,
+    "description": "No counterweight."
+  },
+  "rules": {
+    "betweenRadii": "next-longer",
+    "betweenBoomLengths": "next-longer",
+    "jibBetweenKeys": "next-lower-angle"
+  },
+  "geometry": null,
+  "configurations": [
+    {
+      "id": "stabilizers-full-360",
+      "label": "Stabilizers fully extended and set, 360°",
+      "support": "stabilizers-full",
+      "workArea": "360",
+      "stabilityPercent": 85,
+      "counterweightLb": 0,
+      "boomLengthsFt": [21, 28, 35, 42, 49],
+      "radiiFt": [8, 10, 12, 15, 18, 21, 25, 28, 32, 35, 39, 42, 46, 49],
+      "capacitiesLb": [
+        [9000, 9000, 9000, 8500, 8000],
+        [8000, 7600, 7200, 6800, 6400],
+        [6600, 6300, 6000, 5600, 5300],
+        [5300, 5000, 4800, 4500, 4200],
+        [4400, 4200, 4000, 3700, 3500],
+        [3800, 3600, 3400, 3200, 3000],
+        [null, 3000, 2800, 2700, 2500],
+        [null, 2700, 2500, 2400, 2200],
+        [null, null, 2200, 2100, 2000],
+        [null, null, 2000, 1900, 1800],
+        [null, null, null, 1700, 1600],
+        [null, null, null, 1600, 1500],
+        [null, null, null, null, 1350],
+        [null, null, null, null, 1300]
+      ],
+      "structural": [
+        [true, true, true, true, true],
+        [true, true, true, true, true],
+        [true, true, true, true, true],
+        [true, true, true, true, true],
+        [true, true, true, true, true],
+        [true, true, true, true, true],
+        [false, true, true, true, true],
+        [false, true, true, true, true],
+        [false, false, true, true, true],
+        [false, false, true, true, true],
+        [false, false, false, true, true],
+        [false, false, false, true, true],
+        [false, false, false, false, true],
+        [false, false, false, false, true]
+      ]
+    },
+    {
+      "id": "stabilizers-mid-360",
+      "label": "Stabilizers mid-extended and set, 360°",
+      "support": "stabilizers-mid",
+      "workArea": "360",
+      "stabilityPercent": 85,
+      "counterweightLb": 0,
+      "boomLengthsFt": [21, 28, 35, 42, 49],
+      "radiiFt": [8, 10, 12, 15, 18, 21, 25, 28, 32, 35, 39, 42, 46, 49],
+      "capacitiesLb": [
+        [9000, 9000, 8800, 8200, 7600],
+        [7500, 7000, 6600, 6100, 5700],
+        [6000, 5600, 5200, 4900, 4500],
+        [4600, 4300, 4000, 3700, 3500],
+        [3700, 3500, 3300, 3000, 2800],
+        [3100, 2900, 2700, 2500, 2400],
+        [null, 2400, 2200, 2100, 1950],
+        [null, 2100, 2000, 1850, 1750],
+        [null, null, 1750, 1600, 1500],
+        [null, null, 1600, 1450, 1350],
+        [null, null, null, 1300, 1200],
+        [null, null, null, 1200, 1100],
+        [null, null, null, null, 1000],
+        [null, null, null, null, 950]
+      ],
+      "structural": [
+        [true, true, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false]
+      ]
+    }
+  ],
+  "rangeDiagram": null,
+  "jib": null,
+  "deductions": [
+    {
+      "id": "hook",
+      "kind": "hook-block",
+      "item": "Hook and swivel link",
+      "weightLb": 100,
+      "maxParts": 1
+    },
+    {
+      "id": "rotator-grapple",
+      "kind": "attachment",
+      "item": "Rotator and grapple, if fitted",
+      "weightLb": 500
+    },
+    {
+      "id": "forks",
+      "kind": "attachment",
+      "item": "Pallet forks, if fitted",
+      "weightLb": 400
+    }
+  ],
+  "linePull": null,
+  "notes": ["This chart is fictional. It is written for training and exam-style practice only and must never be used to plan or make a lift. Always use the chart supplied with the crane, matched to its serial number.", "Capacities are in pounds. Lengths and radii are in feet. Boom angles are loaded boom angles in degrees above horizontal.", "Capacities are gross. The weight of all load-handling devices (hook blocks, headache balls, slings, shackles, spreader bars, and other rigging) is part of the load and must be deducted from the gross capacity to get the net load that may be lifted.", "Capacities in shaded (structural) cells are limited by the strength of the crane, not by tipping. Do not use tipping as a warning: the crane can fail structurally before it shows any sign of tipping.", "For a radius between two listed radii, use the capacity at the next longer listed radius. Do not interpolate.", "Do not lift beyond the longest listed radius, inside the shortest listed radius, at a boom length outside the listed lengths, or where no capacity is shown. A blank cell means no load may be handled there.", "Capacities assume a freely suspended load, the crane level within 1 percent, and a firm, uniform supporting surface. Reduce capacities for wind, side loading, swing speed, and dynamic loading.", "Radius is the horizontal distance from the axis of rotation to the hook. Capacity columns are set by how many hydraulic extensions are out, not by boom angle.", "For a boom configuration between two columns, use the column with more extensions out.", "Stability-limited capacities do not exceed 85 percent of tipping.", "Attachments on the boom tip (rotator, grapple, forks) and the hook are part of the load."]
+}
