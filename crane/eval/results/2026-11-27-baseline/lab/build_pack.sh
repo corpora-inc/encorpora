@@ -11,8 +11,10 @@ PORT=${PORT:-18096}
   --host 127.0.0.1 -c 8192 -b 8192 -ub 8192 -np 1 > $LAB/logs/embed-$TAG.log 2>&1 &
 SRV=$!
 trap "kill $SRV 2>/dev/null || true" EXIT
-for i in $(seq 120); do curl -sf http://127.0.0.1:$PORT/health >/dev/null && break; sleep 1; done
-cd $SRC/crane/content
+ok=0
+for i in $(seq 120); do curl -sf "http://127.0.0.1:$PORT/health" >/dev/null && { ok=1; break; }; sleep 1; done
+test $ok = 1 || { echo "embedder did not become healthy; see $LAB/logs/embed-$TAG.log" >&2; exit 1; }
+cd "$SRC/crane/content"
 cp corpus.sources.lock.json corpus.eval.sources.lock.json
 sed "s|^embedder: {kind: embeddinggemma-2}|embedder: {kind: embeddinggemma-2, base_url: \"http://127.0.0.1:$PORT\"}|" \
   corpus.yaml > corpus.eval.yaml

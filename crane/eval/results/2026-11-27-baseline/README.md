@@ -1,7 +1,7 @@
 # Baseline, 2026-11-27
 
 The first full run of the held-out set (`heldout-v1.jsonl`, 342 items: 291
-answerable, 51 must-decline) against the crane pack as `main` builds it today,
+answerable, 51 must-decline) against the crane pack as `main` built it at `8a8eccc16`,
 with the model off, and against general-purpose models with no retrieval.
 
 `report.md`, `results.json` and `items.csv` are the harness outputs;
@@ -11,7 +11,7 @@ with the model off, and against general-purpose models with no retrieval.
 
 | System | What it is | Where |
 |---|---|---|
-| `harvest-model-off` | `harvest ask --json --llm off --role operator` (core CLI, lexical BM25; see *Limits*) over the pack built from `main` | Lab machine |
+| `harvest-model-off` | `harvest ask --json --llm off --role operator` (core CLI, lexical BM25; see *Limits*) over the pack built from `main` at `8a8eccc16` | Lab machine |
 | `frontier-alone` | Claude Sonnet (`claude-sonnet-5-5`), headless, no tools, no retrieval | Anthropic API via `claude -p` |
 | `gemma4-e4b-alone` | Gemma 4 E4B instruct, Google QAT Q4_0 GGUF, thinking off, no retrieval | Lab machine, llama-server |
 | `granite42-3b-alone` | Granite 4.2 3B instruct, Q4_K_M GGUF, thinking off, no retrieval | Lab machine, llama-server |
@@ -34,7 +34,8 @@ parentheses.
 | | Model-off engine | Sonnet alone | Gemma 4 E4B alone | Granite 4.2 3B alone | gpt-oss 20B alone |
 |---|---|---|---|---|---|
 | Fully correct, answerable | **19.2%** (14.8–24.1) | **80.1%** (75.6–84.5) | 1.4% (0.3–2.7) | 2.7% (1.0–4.8) | 3.4% (1.4–5.5) |
-| Must-decline items declined | 92.2% | 96.1% | 96.1% | 76.5% | 76.5% |
+| Must-decline items declined | 92.2% | 98.0% | 100% | 92.2% | 78.4% |
+| Must-decline items handled (judge score 2) | 92.2% | 96.1% | 96.1% | 76.5% | 76.5% |
 | Answerable items declined | 57.4% | 2.4% | 73.9% | 51.5% | 8.6% |
 | Unsupported-claim rate | **0.0%** | 28.7% | 99.7% | 99.5% | 99.7% |
 | Answers with any unsupported claim | **0.0%** | 85.6% | 100% | 100% | 100% |
@@ -42,7 +43,7 @@ parentheses.
 | Citations that exist in the corpus | **100%** | 96.1% | 84.0% | 89.6% | 55.7% |
 | Quotes verbatim | **100%** (307/307) | no quotes | no quotes | no quotes | no quotes |
 | Retrieval R@5, lineage / section | 0.601 / 0.824 | – | – | – | – |
-| Bake hit rate | 0% (no answer rows on `main`) | – | – | – | – |
+| Bake hit rate | 0% (no answer rows in the pack) | – | – | – | – |
 | Equipment-specific items fully correct (n=122) | 29.5% | 69.7% | 1.6% | 3.3% | 4.1% |
 | Latency p50 / p95 | 2 / 5 ms in the engine | 10.1 / 17.6 s | 1.7 / 4.0 s | 2.9 / 10.0 s | 6.6 / 34.0 s |
 | Judge agreement, exact / κ (Sonnet re-grade) | 0.95 / 0.92 (n=20) | 0.95 / 0.87 (n=60) | 0.97 / 0.91 (n=60) | 0.97 / 0.92 (n=60) | 0.93 / 0.85 (n=60) |
@@ -68,21 +69,23 @@ McNemar p = 6e-10). Full tables: `report.md`.
    line", "the book") rarely shares half its words with the rule text.
    `tools/decline_analysis.py` reproduces the split.
 3. **Retrieval finds the right section more often than the right paragraph.**
-   Lineage R@5 is 0.60; section-level R@5 is 0.82. The pack on `main` has
+   Lineage R@5 is 0.60; section-level R@5 is 0.82. The pack at `8a8eccc16` has
    section text only (no facts, explanations, terms, answer cache or
-   applicability rows yet), and the CLI searches it lexically.
+   applicability rows), and the CLI searches it lexically.
 4. **Sonnet alone knows the rules well but cannot show its work.** It is fully
    correct on 80% of answerable items and declines must-decline items as well as
    the engine does. But 29% of its claims are not supported by the sections it
-   cites, 86% of its answers carry at least one such claim, only 32% of its
+   cites, 86% of its answers carry at least one such claim, only 31% of its
    citations sit on the gold section's lineage, and 4% cite paragraphs that do
    not exist. It answers from memory, and its citations are often approximate.
 5. **On-device-class models alone are not usable for this.** Gemma 4 E4B is
    fully correct on 1% of answerable items: without the text it declines 74% of
    them, and nearly every claim it does make is unsupported by what it cites.
    Granite 4.2 3B (2.7%) and gpt-oss 20B (3.4%) are no better. gpt-oss
-   answers nearly everything and declines only 77% of must-decline items, and
-   44% of its citations name paragraphs that do not exist. A small model without
+   answers nearly everything and declines only 78% of must-decline items, and
+   44% of its citations name paragraphs that do not exist. A decline is not
+   always clean: eight of Granite's 47 declines come with made-up or
+   misattributed citations, so the judge counts only 39 as handled. A small model without
    the text either refuses or invents.
 6. **The gap to close is clear.** The engine already has the grounding (0%
    unsupported, 100% verbatim) that no baseline has; the model-off composer and
@@ -90,7 +93,7 @@ McNemar p = 6e-10). Full tables: `report.md`.
    that gap: expand job-site phrasing into retrieval queries, choose among
    retrieved passages, and compose from them under the support check. The
    answer cache in the bake is the other lever: the bake hit rate is 0% on this
-   pack because `main` has no answer rows yet.
+   pack because it has no answer rows.
 
 ## Configuration and provenance
 
@@ -98,9 +101,9 @@ McNemar p = 6e-10). Full tables: `report.md`.
 |---|---|
 | Set | `heldout-v1.jsonl`, sha256 `21f018c2ce5a65ba…` (in `results.json`), 342 items |
 | Source edition | eCFR Title 29, up to date as of 2026-11-24 (same bytes as the set's `sources/registry.json`; `harvest-bake fetch` reported all four sources unchanged) |
-| Code | `main` at `8a8eccc16` (#2538): `harvest/core`, `harvest/pipeline`, `harvest/eval`, `crane/content` exported with `git archive` |
+| Code | `main` at `8a8eccc16` (#2538): `harvest/core`, `harvest/pipeline`, `harvest/eval`, `crane/content` exported with `git archive`. The Granite re-run used this change's `harvest_eval/backends.py` fix on top of that commit, so `results.json` records the harness as `8a8eccc16` |
 | Pack | `crane-us` 2026.11.27-1, sqlite sha256 `d36fbdad33e72e4f…`, manifest sha256 `e34a0b12617deab5…`, signed with a throwaway lab key made for this run (not a release key) |
-| Pack contents | 4 sources, 2,258 sections, 565 cross-references, 33 equipment rows, 18 topics, 213 skills, 2,248 chunks with int8 EmbeddingGemma 2 vectors; 0 terms, facts, explanations, answers, procedures, applicability rows (the frontier cache and content imports are not on `main` yet) |
+| Pack contents | 4 sources, 2,258 sections, 565 cross-references, 33 equipment rows, 18 topics, 213 skills, 2,248 chunks with int8 EmbeddingGemma 2 vectors; 0 terms, facts, explanations, answers, procedures, applicability rows (the frontier cache reached `main` later, in #2539; content imports are not on `main` yet) |
 | Embedder (bake) | `ggml-org/embeddinggemma-2-GGUF` Q8_0, sha256 `2188ac1deca4b77d…` |
 | Core CLI | `cargo build --release` of `harvest/core` on the lab machine |
 | Lab machine | NVIDIA DGX Spark: GB10 (Grace, 10 Cortex-X925 + 10 Cortex-A725; Blackwell GPU), 128 GB unified memory, Linux 7.0 aarch64, driver 580 |

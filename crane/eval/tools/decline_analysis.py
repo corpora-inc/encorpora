@@ -33,7 +33,9 @@ def main() -> None:
     ap.add_argument("--k", type=int, default=5, choices=(1, 5, 10))
     a = ap.parse_args()
     rows = [r for r in csv.DictReader(open(a.items_csv, newline=""))
-            if r["mode"] and (a.backend is None or r["backend"] == a.backend)]
+            if a.backend is None or r["backend"] == a.backend]
+    failed = [r["id"] for r in rows if not r["mode"]]
+    rows = [r for r in rows if r["mode"]]
     col = f"r@{a.k}.lineage"
     ans = [r for r in rows if not truthy(r["must_decline"])]
     must = [r for r in rows if truthy(r["must_decline"])]
@@ -43,6 +45,7 @@ def main() -> None:
     for r in ans:
         by_cat[r["category"]][0 if r["mode"] == "declined" else 1] += 1
     out = {
+        "failed_calls_excluded": len(failed),
         "answerable": len(ans),
         "answerable_declined": len(dec),
         f"declined_with_gold_in_top{a.k}": sum(hit(r[col]) for r in dec),
