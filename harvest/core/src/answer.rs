@@ -628,44 +628,56 @@ impl Engine {
         opts: &AskOptions,
     ) -> Result<Vec<SupportCandidate>> {
         let mut out = Vec::new();
-        // (section, its retrieved chunk text, first rank, best score)
-        let mut hit_text: Vec<(String, String, usize, f64)> = Vec::new();
+        // (section, its retrieved chunk texts, first rank, best score)
+        let mut hit_text: Vec<(String, Vec<String>, usize, f64)> = Vec::new();
         for (i, h) in hits.iter().enumerate() {
             if let Some(s) = &h.section_id {
                 match hit_text.iter_mut().find(|(id, ..)| id == s) {
                     Some((_, t, _, best)) => {
-                        t.push(' ');
-                        t.push_str(&h.text);
+                        t.push(h.text.clone());
                         *best = best.max(h.score);
                     }
-                    None => hit_text.push((s.clone(), h.text.clone(), i + 1, h.score)),
+                    None => hit_text.push((s.clone(), vec![h.text.clone()], i + 1, h.score)),
                 }
             }
         }
-        for (section_id, extra, rank, retrieval) in hit_text {
+        for (section_id, chunks, rank, retrieval) in hit_text {
             let Some(sec) = self.pack.section(&section_id)? else {
                 continue;
             };
-            let mut doc = format!(
-                "{} {} {}",
-                sec.heading.as_deref().unwrap_or(""),
-                sec.text,
-                extra
-            );
+            // Support is local: the best single passage of the section (the
+            // size of the quote an answer would show), one retrieved chunk,
+            // or the role's explanation, each with the heading. Not the union
+            // of everything the section says: a long section (a definitions
+            // list, a broad summary) mentions nearly any word, so the union
+            // let it support nearly any question.
+            let heading = sec.heading.as_deref().unwrap_or("");
+            let mut units: Vec<String> = vec![best_passage(
+                &sec.text,
+                &norm.concepts,
+                opts.max_quote_chars,
+            )];
+            units.extend(chunks);
             if let Some(e) = self
                 .pack
                 .explanation(&section_id, opts.role.as_str(), &opts.lang)?
             {
-                doc.push(' ');
-                doc.push_str(&e);
+                units.push(best_passage(&e, &norm.concepts, opts.max_quote_chars));
             }
-            let stems = normalize::stem_set(&doc);
+            let best = units
+                .iter()
+                .map(|u| normalize::stem_set(&format!("{heading} {u}")))
+                .map(|stems| (coverage(&norm.concepts, &stems), stems))
+                .fold(
+                    (0.0f64, BTreeSet::new()),
+                    |a, b| if b.0 > a.0 { b } else { a },
+                );
             out.push(SupportCandidate {
-                coverage: coverage(&norm.concepts, &stems),
+                coverage: best.0,
                 covered: norm
                     .concepts
                     .iter()
-                    .filter(|c| c.satisfied_by(&stems))
+                    .filter(|c| c.satisfied_by(&best.1))
                     .map(|c| c.stem.clone())
                     .collect(),
                 section_id,
