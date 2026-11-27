@@ -143,7 +143,8 @@ with or without the feature, clone 600 MB). Until then the CLI reaches the
 bake's own embedder over HTTP: `--embedder http://host:port --embedder-gguf
 <file>` (or `--embedder-sha256 <hex>` when the file is elsewhere) uses any
 `/v1/embeddings` server, `llama-server --embedding` included, with the id built
-from that file's hash. On Linux, bindgen may need
+from that file's hash. Prefer `--embedder-gguf`: a declared hash is trusted as
+given. On Linux, bindgen may need
 `BINDGEN_EXTRA_CLANG_ARGS=-I/usr/lib/gcc/<triple>/<ver>/include`.
 
 Dense retrieval runs only when `Embedder::id()` equals `pack_meta.embedder_id`
@@ -185,7 +186,7 @@ These fill gaps CONTRACT leaves open. The pipeline writes packs this way.
 
 ```
 harvest verify  <pack-dir> [--pubkey KEY] [--json]
-harvest search  <pack-dir> "<query>" [--k 10] [--equip ID] [--embedder auto|none|hashing|<file.gguf>|<url>] [--json]
+harvest search  <pack-dir> "<query>" [--k 10] [--equip ID] [--embedder auto|none|hashing|<file.gguf>|<url> [--embedder-gguf FILE]] [--json]
 harvest ask     <pack-dir> "<question>" [--role operator] [--equip ID] [--llm off|http://host:port/v1]
                 [--llm-model NAME] [--embedder auto|none|hashing|<file.gguf>|<url> [--embedder-gguf FILE]] [--audit <records-db> [--records-key FILE]] [--json]
 harvest audit   <records-db> [--records-key FILE] [--json]   # verify the chain; modes and bake hit rate

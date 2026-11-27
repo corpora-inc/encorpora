@@ -104,6 +104,8 @@ pub struct ServerEmbedder {
     url: String,
     id: String,
     dim: usize,
+    /// The pack's vectors are Matryoshka-truncated to `dim`.
+    mrl: bool,
     query_template: String,
     agent: ureq::Agent,
 }
@@ -138,6 +140,12 @@ impl ServerEmbedder {
             .meta("embed_dim")
             .and_then(|d| d.parse::<usize>().ok())
             .ok_or_else(|| Error::Embed("pack has no embed_dim".into()))?;
+        if mrl.is_some_and(|m| m != dim) {
+            return Err(Error::Embed(format!(
+                "embedder_id says /mrl{} but embed_dim is {dim}",
+                mrl.unwrap_or_default()
+            )));
+        }
         let mut id = format!("{name}@{}", &sha[..16]);
         if let Some(m) = mrl {
             id.push_str(&format!("/mrl{m}"));
@@ -148,6 +156,7 @@ impl ServerEmbedder {
             url: format!("{root}/v1/embeddings"),
             id,
             dim,
+            mrl: mrl.is_some(),
             query_template: pack
                 .meta("embed_query_template")
                 .unwrap_or("{query}")
@@ -177,14 +186,21 @@ impl ServerEmbedder {
             .map(|x| x.as_f64().map(|f| f as f32))
             .collect::<Option<_>>()
             .ok_or_else(|| Error::Embed("embedding is not numeric".into()))?;
-        if out.len() < self.dim {
+        // Truncate only where the pack says its vectors were (Matryoshka);
+        // any other size difference means a different model.
+        let fits = if self.mrl {
+            out.len() >= self.dim
+        } else {
+            out.len() == self.dim
+        };
+        if !fits {
             return Err(Error::Embed(format!(
-                "server returned {} dimensions, the pack has {}",
+                "server returned {} dimensions, the pack has {}{}",
                 out.len(),
-                self.dim
+                self.dim,
+                if self.mrl { "" } else { " (no MRL)" }
             )));
         }
-        // Matryoshka: the leading `dim` components, renormalized.
         out.truncate(self.dim);
         normalize_l2(&mut out);
         Ok(out)

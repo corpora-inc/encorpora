@@ -13,7 +13,7 @@ use std::time::Instant;
 
 const USAGE: &str = "usage:
   harvest verify  <pack-dir> [--pubkey KEY] [--json]
-  harvest search  <pack-dir> \"<query>\" [--k 10] [--equip ID] [--embedder auto|none|hashing|<url>] [--pubkey KEY] [--json]
+  harvest search  <pack-dir> \"<query>\" [--k 10] [--equip ID] [--embedder auto|none|hashing|<file.gguf>|<url> [--embedder-gguf FILE|--embedder-sha256 HEX]] [--pubkey KEY] [--json]
   harvest ask     <pack-dir> \"<question>\" [--role operator] [--equip ID] [--llm off|http://host:port/v1]
                   [--llm-model NAME] [--embedder auto|none|hashing|<file.gguf>|<url> [--embedder-gguf FILE|--embedder-sha256 HEX]] [--audit <records-db> [--records-key FILE]] [--pubkey KEY] [--json]
   harvest audit   <records-db> [--records-key FILE] [--json]
@@ -207,7 +207,12 @@ fn embedder(args: &Args, pack: &Pack) -> Result<Option<Arc<dyn Embedder>>, CliEr
             // The id must name the weights the server loaded: hash the file
             // when it is here, or take its declared SHA-256.
             let sha = match (args.get("embedder-gguf"), args.get("embedder-sha256")) {
-                (Some(path), _) => harvest_core::packs::sha256_file(Path::new(path))?,
+                (Some(_), Some(_)) => {
+                    return Err(CliError::Usage(
+                        "give --embedder-gguf or --embedder-sha256, not both".into(),
+                    ));
+                }
+                (Some(path), None) => harvest_core::packs::sha256_file(Path::new(path))?,
                 (None, Some(sha)) => sha.to_string(),
                 (None, None) => {
                     return Err(CliError::Usage(
