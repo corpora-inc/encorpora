@@ -55,7 +55,7 @@ def cmd_enrich(a):
     p = c.profile(a.profile)
     stage, _ = build_stage(c, work_dir(c, p) / "stage.sqlite")
     reps = enrich(c, p, stage, offline=False, task_names=_csv(a.tasks), limit=a.limit,
-                  keys=set(_csv(a.keys) or []) or None, no_judge=a.no_judge)
+                  keys=set(_csv(a.keys) or []) or None, no_judge=a.no_judge, prune=a.prune)
     path = save_report(c, p, reps)
     print(f"report: {path}")
     stopped = [r for r in reps if r.stopped]
@@ -191,6 +191,8 @@ def main(argv=None) -> int:
         s.add_argument("--limit", type=int)
         s.add_argument("--keys", help="only these input keys (comma-separated)")
         s.add_argument("--no-judge", action="store_true")
+        s.add_argument("--prune", action="store_true",
+                       help="after a complete run, drop cache entries no current input uses (old prompt versions)")
         if name == "all":
             s.add_argument("--only")
             s.add_argument("--out")

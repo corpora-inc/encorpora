@@ -122,13 +122,17 @@ def quoted_spans(body: str) -> list[str]:
 
 def check_inline_quotes(body: str, source_text: str, min_len: int = 25) -> list[str]:
     """Any passage in quotation marks (min_len+ chars) must be verbatim from the source."""
-    bad = [q[:60] for q in quoted_spans(body) if len(q) >= min_len and locate(q, source_text) is None]
+    def ok(q: str) -> bool:
+        # American style puts the sentence's comma or period inside the closing quote
+        return locate(q, source_text) is not None or locate(q.rstrip(",.;: "), source_text) is not None
+
+    bad = [q[:60] for q in quoted_spans(body) if len(q) >= min_len and not ok(q)]
     return [f"quoted text not in source: {b!r}" for b in bad]
 
 
 def id_refs(body: str) -> list[str]:
-    """Section ids cited inline as [29cfr1926.1408(a)(2)]."""
-    return _ID_REF.findall(body or "")
+    """Section ids cited inline as [29cfr1926.1408(a)(2)]; a range '[..(j)(2)-(4)]' names its first id."""
+    return [re.sub(r"[-\u2013]\([^)]*\)(\([^)]*\))*$", "", r) for r in _ID_REF.findall(body or "")]
 
 
 def check_id_refs(body: str, stage: Stage) -> list[str]:
@@ -140,5 +144,9 @@ def check_new_numbers(body: str, source_text: str, allowed: set[str] | None = No
     Inline [section_id] references and citation tokens are ignored; `allowed` adds known numbers."""
     have = _num_forms(source_text) | (allowed or set())
     text = strip_citations(_ID_REF.sub(" ", body or ""))
-    extra = sorted({n for n in numbers_in(text) if n not in have})
+    def known(n: str) -> bool:
+        # "50/10" written as a pair (voltage/distance) is fine when each part is in the source
+        return n in have or ("/" in n and all(part in have for part in n.split("/")))
+
+    extra = sorted({n for n in numbers_in(text) if not known(n)})
     return [f"numbers not in source: {', '.join(extra)}"] if extra else []

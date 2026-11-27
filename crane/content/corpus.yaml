@@ -5,6 +5,11 @@
 #   harvest-bake all crane/content/corpus.yaml                 # fetch + enrich + build
 #   harvest-bake build crane/content/corpus.yaml               # from raw sources + cache, no model
 #
+# The release pack embeds on the lab machine: start llama-server --embedding there on the pinned
+# EmbeddingGemma 2 GGUF, tunnel it (ssh -L 18095:127.0.0.1:8095 HOST), then
+#   HARVEST_EMBED_BASE_URL=http://127.0.0.1:18095 HARVEST_SIGNING_KEY_FILE=KEY.pem \
+#     harvest-bake build crane/content/corpus.yaml
+#
 # Every source is a US government work. Consensus standards the rules cite (ASME B30.x) are
 # copyrighted: they appear as xref rows by number only and are never fetched or ingested.
 corpus_id: crane-us

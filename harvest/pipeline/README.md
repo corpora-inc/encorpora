@@ -176,6 +176,13 @@ stored as int8 with one scale per vector (`float = int8 * scale`). `pack_meta` r
 `embedder_id`, `embed_dim`, `embed_query_template` and `embed_doc_template`; queries must use the
 same model, dimension and query template.
 
+To embed on another machine, run `llama-server --embedding -np 1` there and point the build at it:
+`HARVEST_EMBED_BASE_URL=http://127.0.0.1:PORT` (an SSH tunnel). The weights are not readable from
+here, so the id uses `HARVEST_EMBED_MODEL_SHA256`, defaulting to the pinned EmbeddingGemma 2 file's
+hash; check the remote file with `sha256sum` first, or the device will never match the vectors.
+`enrich --prune` drops cache entries no current input uses (old prompt versions), and only after a
+complete run.
+
 ## Signing
 
 `HARVEST_SIGNING_KEY` (base64 32-byte seed) or `HARVEST_SIGNING_KEY_FILE` (PEM). The signature

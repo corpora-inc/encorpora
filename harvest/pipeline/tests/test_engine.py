@@ -173,3 +173,16 @@ def test_compare_two_profiles(corpus, tmp_path):
     assert rig["test"]["deterministic_ok"] is False and rig["test"]["judge"] is None
     f = s["tasks"]["harvest.facts"]
     assert f["matched"] == 3 and f["matched_verdict_agree"] == 3
+
+
+def test_prune_drops_stale_prompt_versions(corpus):
+    run(corpus)
+    p = corpus.profile()
+    f = p.cache_dir / "facts.jsonl"
+    stale = json.loads(f.read_text().splitlines()[0])
+    stale["prompt_version"] = "0"
+    with f.open("a") as fh:
+        fh.write(json.dumps(stale) + "\n")
+    stage, _ = build_stage(corpus, log=None)
+    enrich(corpus, p, stage, offline=True, prune=True, log=None)
+    assert all(json.loads(x)["prompt_version"] != "0" for x in f.read_text().splitlines())

@@ -22,6 +22,7 @@ import os
 import re
 import socket
 import subprocess
+import sys
 import time
 import urllib.request
 from pathlib import Path
@@ -99,20 +100,28 @@ class LlamaServerEmbedder(Embedder):
 
     def __init__(self, model_path: str, model_name: str, dim: int | None = None, binary: str = "llama-server",
                  query_template: str = "{query}", doc_template: str = "{text}", batch: int = 32,
-                 base_url: str | None = None, ctx: int = 8192, threads: int | None = None):
+                 base_url: str | None = None, ctx: int = 8192, threads: int | None = None,
+                 model_sha256: str | None = None):
         self.model_path = Path(os.path.expanduser(model_path))
         self.binary = binary
         self.batch = batch
         self.query_template = query_template
         self.doc_template = doc_template
         self._proc = None
+        self._logfh = None
         self._base = base_url
         self.ctx = ctx
         self.threads = threads
         self.truncate = dim
         if not base_url and not self.model_path.exists():
             raise SystemExit(f"embedding model not found: {self.model_path} (see README: embedder setup)")
-        sha = _file_sha256(self.model_path)[:16] if self.model_path.exists() else "remote"
+        # The id must name the exact weights: the device compares it with pack_meta.embedder_id before
+        # it uses any vector. A remote server's file is not readable here, so its SHA-256 is declared
+        # (and must be checked on that machine); "remote" marks a pack whose vectors no device can match.
+        if self.model_path.exists():
+            sha = _file_sha256(self.model_path)[:16]
+        else:
+            sha = (model_sha256 or "remote")[:16]
         self.id = f"{model_name}@{sha}" + (f"/mrl{dim}" if dim else "")
         self.dim = dim or 0
 
@@ -121,14 +130,19 @@ class LlamaServerEmbedder(Embedder):
             return
         port = _free_port()
         cmd = ["nice", "-n", "20", self.binary, "-m", str(self.model_path), "--embedding", "--port", str(port),
-               "--host", "127.0.0.1", "-c", str(self.ctx), "-b", str(self.ctx), "-ub", str(self.ctx)]
+               "--host", "127.0.0.1", "-c", str(self.ctx), "-b", str(self.ctx), "-ub", str(self.ctx), "-np", "1"]
         if self.threads:
             cmd += ["-t", str(self.threads)]
-        self._proc = subprocess.Popen(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
+        # server logs go to a file: an unread pipe fills up and stalls the server
+        log_dir = harvest_home() / "logs"
+        log_dir.mkdir(parents=True, exist_ok=True)
+        self._log = log_dir / f"embed-server-{port}.log"
+        self._logfh = self._log.open("wb")
+        self._proc = subprocess.Popen(cmd, stdout=subprocess.DEVNULL, stderr=self._logfh)
         self._base = f"http://127.0.0.1:{port}"
         for _ in range(240):
             if self._proc.poll() is not None:
-                raise SystemExit(f"llama-server exited: {self._proc.stderr.read().decode()[-800:]}")
+                raise SystemExit(f"llama-server exited: {self._log.read_text(errors='replace')[-800:]}")
             try:
                 with urllib.request.urlopen(f"{self._base}/health", timeout=2) as r:
                     if r.status == 200:
@@ -144,8 +158,16 @@ class LlamaServerEmbedder(Embedder):
             body = json.dumps({"input": texts[i:i + self.batch], "model": "embed"}).encode()
             req = urllib.request.Request(f"{self._base}/v1/embeddings", data=body,
                                          headers={"Content-Type": "application/json"})
-            with urllib.request.urlopen(req, timeout=600) as r:
-                data = json.loads(r.read())
+            for attempt in range(3):
+                try:
+                    with urllib.request.urlopen(req, timeout=600) as r:
+                        data = json.loads(r.read())
+                    break
+                except (TimeoutError, OSError):
+                    if attempt == 2:
+                        raise
+            if len(texts) > 500 and (i // self.batch) % 25 == 0:
+                print(f"[embed] {i}/{len(texts)}", file=sys.stderr, flush=True)
             for d in sorted(data["data"], key=lambda d: d["index"]):
                 rows.append(d["embedding"])
         m = np.asarray(rows, dtype=np.float32)
@@ -161,6 +183,9 @@ class LlamaServerEmbedder(Embedder):
                 self._proc.wait(timeout=20)
             except subprocess.TimeoutExpired:
                 self._proc.kill()
+        if self._logfh:
+            self._logfh.close()
+            self._logfh = None
         self._proc = None
 
 
@@ -191,7 +216,15 @@ EMBEDDINGGEMMA2 = {
 
 
 def make_embedder(cfg: dict | None) -> Embedder:
+    """HARVEST_EMBED_BASE_URL points a llama-server embedder at an already running server
+    (e.g. the lab machine through an SSH tunnel) instead of starting one locally.
+    HARVEST_EMBED_MODEL_SHA256 declares the SHA-256 of the GGUF that server loaded when the file is
+    not on this machine; embeddinggemma-2 defaults to the pinned release file's hash."""
     cfg = dict(cfg or {"kind": "hash"})
+    if os.environ.get("HARVEST_EMBED_BASE_URL") and cfg.get("kind") != "hash":
+        cfg.setdefault("base_url", os.environ["HARVEST_EMBED_BASE_URL"])
+    if os.environ.get("HARVEST_EMBED_MODEL_SHA256") and cfg.get("kind") != "hash":
+        cfg.setdefault("model_sha256", os.environ["HARVEST_EMBED_MODEL_SHA256"])
     kind = cfg.pop("kind", "hash")
     if kind == "hash":
         return HashEmbedder(int(cfg.get("dim", 256)))
@@ -199,9 +232,11 @@ def make_embedder(cfg: dict | None) -> Embedder:
         path = cfg.get("model_path") or str(harvest_home() / "models" / EMBEDDINGGEMMA2["file"])
         return LlamaServerEmbedder(path, EMBEDDINGGEMMA2["model_name"], dim=cfg.get("dim"),
                                    query_template=EMBEDDINGGEMMA2["query_template"],
-                                   doc_template=EMBEDDINGGEMMA2["doc_template"], base_url=cfg.get("base_url"))
+                                   doc_template=EMBEDDINGGEMMA2["doc_template"], base_url=cfg.get("base_url"),
+                                   model_sha256=cfg.get("model_sha256") or EMBEDDINGGEMMA2["sha256"])
     if kind == "llama-server":
         return LlamaServerEmbedder(cfg["model_path"], cfg["model_name"], dim=cfg.get("dim"),
                                    query_template=cfg.get("query_template", "{query}"),
-                                   doc_template=cfg.get("doc_template", "{text}"), base_url=cfg.get("base_url"))
+                                   doc_template=cfg.get("doc_template", "{text}"), base_url=cfg.get("base_url"),
+                                   model_sha256=cfg.get("model_sha256"))
     raise SystemExit(f"unknown embedder kind {kind!r} (hash | embeddinggemma-2 | llama-server)")

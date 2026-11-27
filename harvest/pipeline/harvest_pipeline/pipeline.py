@@ -59,7 +59,7 @@ def load_tasks(corpus: Corpus, names: list[str] | None = None):
 
 def enrich(corpus: Corpus, profile: Profile, stage: Stage, offline: bool, task_names: list[str] | None = None,
            limit: int | None = None, keys: set[str] | None = None, author=None, judge=None,
-           no_judge: bool = False, log=sys.stderr) -> list[TaskReport]:
+           no_judge: bool = False, prune: bool = False, log=sys.stderr) -> list[TaskReport]:
     cache = ResponseCache(profile.cache_dir)
     eng = Engine(stage=stage, cache=cache, author_cfg=profile.author, judge_cfg=None if no_judge else profile.judge,
                  offline=offline, concurrency=profile.concurrency, author=author, judge=judge, log=log)
@@ -71,7 +71,9 @@ def enrich(corpus: Corpus, profile: Profile, stage: Stage, offline: bool, task_n
             if rep.stopped:
                 break
     finally:
-        cache.close()
+        # prune only after a complete run (no limit/keys filter, nothing stopped), so no live entry is dropped
+        complete = limit is None and not keys and not any(r.stopped or r.author_failed for r in reports)
+        cache.close(prune=prune and complete)
     if corpus.raw.get("imports"):
         from .importer import import_rows
         for ir in import_rows(stage, corpus.dir, corpus.raw["imports"]):

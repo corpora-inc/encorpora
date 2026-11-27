@@ -210,3 +210,24 @@ def test_inline_quotes_pair_properly_and_id_refs():
     assert quoted_spans(body) == ["Load", "Rated capacity", "the maximum working load permitted"]
     assert check_new_numbers("See [29cfr1926.1408(a)(2)] and 29 CFR 1926.1408.", "nothing") == []
     assert check_new_numbers("Within 25 feet [29cfr1926.1408].", "within 20 feet") != []
+
+
+def test_verifier_tolerates_style_not_substance():
+    from harvest_pipeline.verify import check_inline_quotes, check_new_numbers, id_refs
+    src = "The devices are: Anti two-blocking device; Load weighing devices. Up to 50 kV: 10 feet."
+    assert check_inline_quotes('Check the "Anti two-blocking device," first.', src) == []
+    assert check_new_numbers("Pairs: 50/10.", src) == []
+    assert check_new_numbers("Pairs: 50/12.", src) != []
+    assert id_refs("see [29cfr1926.1431(j)(2)-(4)] and [29cfr1926.1408]") == ["29cfr1926.1431(j)(2)", "29cfr1926.1408"]
+
+
+def test_remote_embedder_id_names_declared_weights(monkeypatch, tmp_path):
+    from harvest_pipeline.embed import EMBEDDINGGEMMA2, make_embedder
+    monkeypatch.setenv("HARVEST_HOME", str(tmp_path))  # no local model file
+    monkeypatch.setenv("HARVEST_EMBED_BASE_URL", "http://127.0.0.1:9")
+    e = make_embedder({"kind": "embeddinggemma-2"})
+    assert e.id == f"{EMBEDDINGGEMMA2['model_name']}@{EMBEDDINGGEMMA2['sha256'][:16]}" and e._base == "http://127.0.0.1:9"
+    monkeypatch.setenv("HARVEST_EMBED_MODEL_SHA256", "ab" * 32)
+    assert make_embedder({"kind": "llama-server", "model_path": "/x.gguf", "model_name": "m"}).id == "m@" + "ab" * 8
+    assert make_embedder({"kind": "hash", "dim": 8}).id == "hash-v1-8"
+    e.close()  # never started: nothing to stop, no log handle
