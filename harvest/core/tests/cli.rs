@@ -214,3 +214,53 @@ fn ask_with_an_openai_compatible_server_and_audit() {
     let (code, _, _) = harvest(&["audit", tmp.path().join("missing.db").to_str().unwrap()]);
     assert_eq!(code, 1);
 }
+
+#[test]
+fn a_declined_question_is_queued_and_the_outbox_flushes_to_a_folder() {
+    let tmp = tempfile::tempdir().unwrap();
+    let dir = tmp.path().join("fx");
+    let d = dir.to_str().unwrap();
+    let (_, out, _) = harvest(&["fixture", d, "--json"]);
+    let key = serde_json::from_str::<Value>(&out).unwrap()["pubkey"]
+        .as_str()
+        .unwrap()
+        .to_string();
+    let db = tmp.path().join("records.db");
+    let db = db.to_str().unwrap();
+    let (code, out, err) = harvest(&[
+        "ask",
+        d,
+        "best pizza recipe",
+        "--audit",
+        db,
+        "--pubkey",
+        &key,
+        "--json",
+    ]);
+    assert_eq!(code, 0, "{err}");
+    assert_eq!(
+        serde_json::from_str::<Value>(&out).unwrap()["mode"],
+        "declined"
+    );
+
+    let (code, out, err) = harvest(&["outbox", db, "--json"]);
+    assert_eq!(code, 0, "{err}");
+    let s: Value = serde_json::from_str(&out).unwrap();
+    assert_eq!(s["status"]["pending_by_kind"]["miss"], 1);
+
+    let drive = tmp.path().join("drive");
+    let (code, out, err) = harvest(&["outbox", db, "--to", drive.to_str().unwrap(), "--json"]);
+    assert_eq!(code, 0, "{err}");
+    let s: Value = serde_json::from_str(&out).unwrap();
+    assert_eq!(s["flush"]["acked"], 1);
+    assert_eq!(s["status"]["pending"], 0);
+    assert_eq!(std::fs::read_dir(&drive).unwrap().count(), 1);
+
+    // The audit log in the same file still verifies.
+    let (code, out, _) = harvest(&["audit", db, "--json"]);
+    assert_eq!(code, 0);
+    assert_eq!(
+        serde_json::from_str::<Value>(&out).unwrap()["modes"]["declined"],
+        1
+    );
+}
