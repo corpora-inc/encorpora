@@ -17,6 +17,7 @@ a reader must embed queries with the same model, dimension and query template.
 from __future__ import annotations
 
 import hashlib
+import http.client
 import json
 import os
 import re
@@ -24,6 +25,7 @@ import socket
 import subprocess
 import sys
 import time
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -108,6 +110,7 @@ class LlamaServerEmbedder(Embedder):
         self.query_template = query_template
         self.doc_template = doc_template
         self._proc = None
+        self._log = None
         self._logfh = None
         self._base = base_url
         self.ctx = ctx
@@ -120,8 +123,11 @@ class LlamaServerEmbedder(Embedder):
         # (and must be checked on that machine); "remote" marks a pack whose vectors no device can match.
         if self.model_path.exists():
             sha = _file_sha256(self.model_path)[:16]
+        elif model_sha256:
+            sha = model_sha256[:16]
         else:
-            sha = (model_sha256 or "remote")[:16]
+            raise SystemExit("remote embedder needs the served GGUF's SHA-256 (HARVEST_EMBED_MODEL_SHA256 or "
+                             "model_sha256): without it no device can match the pack's vectors")
         self.id = f"{model_name}@{sha}" + (f"/mrl{dim}" if dim else "")
         self.dim = dim or 0
 
@@ -163,9 +169,15 @@ class LlamaServerEmbedder(Embedder):
                     with urllib.request.urlopen(req, timeout=600) as r:
                         data = json.loads(r.read())
                     break
-                except (TimeoutError, OSError):
-                    if attempt == 2:
-                        raise
+                except urllib.error.HTTPError:
+                    raise  # the server answered: retrying the same request gets the same answer
+                except (TimeoutError, ConnectionResetError, http.client.RemoteDisconnected,
+                        urllib.error.URLError) as e:
+                    transient = not isinstance(e, urllib.error.URLError) or isinstance(
+                        e.reason, (TimeoutError, ConnectionResetError))
+                    if not transient or attempt == 2:
+                        raise  # e.g. connection refused: the server or tunnel is gone
+                    time.sleep(2 * (attempt + 1))
             if len(texts) > 500 and (i // self.batch) % 25 == 0:
                 print(f"[embed] {i}/{len(texts)}", file=sys.stderr, flush=True)
             for d in sorted(data["data"], key=lambda d: d["index"]):

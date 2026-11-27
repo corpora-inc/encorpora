@@ -188,9 +188,9 @@ def test_llama_server_embedder_against_stub():
     threading.Thread(target=s.serve_forever, daemon=True).start()
     try:
         e = LlamaServerEmbedder("/nonexistent.gguf", "stub-model", dim=2, base_url=f"http://127.0.0.1:{s.server_address[1]}",
-                                doc_template="title: {title} | text: {text}", batch=2)
+                                doc_template="title: {title} | text: {text}", batch=2, model_sha256="cd" * 32)
         m = e.embed_docs([(None, "a"), ("T", "bb"), (None, "ccc")])
-        assert m.shape == (3, 2) and e.dim == 2 and e.id == "stub-model@remote/mrl2"
+        assert m.shape == (3, 2) and e.dim == 2 and e.id == "stub-model@" + "cd" * 8 + "/mrl2"
         assert np.allclose(np.linalg.norm(m, axis=1), 1.0)
         assert e.meta()["embed_doc_template"] == "title: {title} | text: {text}"
     finally:
@@ -231,3 +231,6 @@ def test_remote_embedder_id_names_declared_weights(monkeypatch, tmp_path):
     assert make_embedder({"kind": "llama-server", "model_path": "/x.gguf", "model_name": "m"}).id == "m@" + "ab" * 8
     assert make_embedder({"kind": "hash", "dim": 8}).id == "hash-v1-8"
     e.close()  # never started: nothing to stop, no log handle
+    monkeypatch.delenv("HARVEST_EMBED_MODEL_SHA256")
+    with pytest.raises(SystemExit, match="SHA-256"):
+        make_embedder({"kind": "llama-server", "model_path": "/x.gguf", "model_name": "m"})

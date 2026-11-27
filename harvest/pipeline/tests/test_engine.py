@@ -186,3 +186,29 @@ def test_prune_drops_stale_prompt_versions(corpus):
     stage, _ = build_stage(corpus, log=None)
     enrich(corpus, p, stage, offline=True, prune=True, log=None)
     assert all(json.loads(x)["prompt_version"] != "0" for x in f.read_text().splitlines())
+
+
+def test_prune_skipped_when_run_aborts(corpus, monkeypatch):
+    run(corpus)
+    p = corpus.profile()
+    f = p.cache_dir / "facts.jsonl"
+    before = f.read_text()
+    from harvest_pipeline import pipeline as pl
+    real = pl.Engine.run
+
+    calls = []
+
+    def run_then_abort(self, task, **kw):
+        calls.append(task.name)
+        if len(calls) > 1:  # terms completes; facts reads one cache entry, then the run is interrupted
+            e = json.loads(before.splitlines()[0])
+            assert self.cache.get(e["task"], e["prompt_version"], e["input_sha256"], e["model"])
+            raise KeyboardInterrupt
+        return real(self, task, **kw)
+
+    monkeypatch.setattr(pl.Engine, "run", run_then_abort)
+    stage, _ = build_stage(corpus, log=None)
+    with pytest.raises(KeyboardInterrupt):
+        enrich(corpus, p, stage, offline=True, prune=True, log=None)
+    assert len(calls) == 2 and "facts" in calls[1] and len(before.splitlines()) > 1
+    assert f.read_text() == before  # facts was cut short: its unread entries must survive
