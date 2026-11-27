@@ -9,13 +9,20 @@ export function normalizeSpace(s: string): string {
   return s.replace(/\s+/g, " ").trim();
 }
 
-/** At most `max` characters, cut at a word boundary with an ellipsis, never mid-word. */
+/**
+ * At most `max` characters with an ellipsis, cut at a word boundary. Only a
+ * single word longer than half of `max` is cut inside the word. Never splits
+ * a surrogate pair.
+ */
 export function excerpt(text: string, max = 120): string {
-  const s = normalizeSpace(text);
-  if (s.length <= max) return s;
-  const cut = s.slice(0, max - 1);
+  const chars = Array.from(normalizeSpace(text));
+  if (chars.length <= max) return chars.join("");
+  const cut = chars.slice(0, max - 1).join("");
+  // The next character is a space: the cut already ends on a whole word.
+  const atBoundary = chars[max - 1] === " ";
   const space = cut.lastIndexOf(" ");
-  return `${(space > max / 2 ? cut.slice(0, space) : cut).replace(/[\s,;:.\u2013\u2014-]+$/, "")}…`;
+  const kept = atBoundary ? cut : space > cut.length / 2 ? cut.slice(0, space) : cut;
+  return `${kept.replace(/[\s,;:.\u2013\u2014-]+$/, "")}…`;
 }
 
 /** A light English stem: enough to match "inspections"/"inspection", "lines"/"line". */

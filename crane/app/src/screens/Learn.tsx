@@ -32,11 +32,12 @@ export function TopicScreen() {
   const { id = "" } = useParams();
   const t = useT();
   const e = engine();
+  // Before any early return: hooks run in the same order on every render.
+  const rules = useMemo(() => topicSections(e, id), [e, id]);
   const topic = e.topics.find((x) => x.topic_id === id);
   if (!topic) return <NotFound />;
   const lessons = e.lessons.filter((l) => l.topic_id === id).sort((a, b) => a.ord - b.ord);
   const skills = e.skills.filter((s) => s.topic_id === id);
-  const rules = topicSections(e, id);
   return (
     <Page title={topic.title} up={{ to: "/learn", label: t("tab.learn") }}>
       <p className="m-0 text-body text-ink-2">{topic.summary}</p>

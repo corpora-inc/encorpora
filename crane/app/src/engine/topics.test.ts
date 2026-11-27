@@ -1,6 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import type { Question, Section, SkillRow } from "./types.ts";
+import { excerpt } from "./text.ts";
 import { topicSections } from "./topics.ts";
 
 const sec = (id: string, ord: number): Section => ({ section_id: id, source_id: "s", parent_id: null, ord, depth: 0, kind: "section", citation: id, heading: null, text: "", lang: "en" });
@@ -19,12 +20,21 @@ test("a topic's rules are the sections its questions cite, most cited first, exi
   assert.deepEqual(topicSections(e, "none"), []);
 });
 
-test("excerpts end on a whole word", async () => {
-  const { excerpt } = await import("./text.ts");
+test("excerpts end on a whole word", () => {
   assert.equal(excerpt("short text"), "short text");
   const e = excerpt("The equipment must not be assembled or used unless ground conditions are firm, drained, and graded to a sufficient extent", 100);
   assert.ok(e.length <= 100, e);
   assert.ok(e.endsWith("…"));
   assert.match(e, /\b(a|to|graded|sufficient)…$/);
   assert.doesNotMatch(excerpt("one, two, three, four", 12), /,…$/);
+});
+
+test("excerpt edge cases: exact length, a boundary at the cut, one long word, astral characters", () => {
+  assert.equal(excerpt("abcde", 5), "abcde");
+  assert.equal(excerpt("alpha beta gamma", 11), "alpha beta…");
+  const long = excerpt("x".repeat(50), 10);
+  assert.equal(Array.from(long).length, 10);
+  const emoji = excerpt("🏗️".repeat(30), 9);
+  assert.ok(Array.from(emoji).length <= 9);
+  assert.doesNotMatch(emoji, /[\uD800-\uDBFF]…$/, "no lone high surrogate before the ellipsis");
 });
