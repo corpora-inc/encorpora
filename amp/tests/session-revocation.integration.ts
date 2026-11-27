@@ -530,7 +530,7 @@ test(
           await db.query(
             await readFile(
               new URL(
-                "../migrations/0158-hash-session-tokens.sql",
+                "../migrations/0159-hash-session-tokens.sql",
                 import.meta.url,
               ),
               "utf8",
