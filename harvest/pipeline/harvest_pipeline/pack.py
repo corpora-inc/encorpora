@@ -69,6 +69,14 @@ def _chunks(stage: Stage, dst: sqlite3.Connection) -> list[tuple[str, str, str, 
         out.append((f"e:{r[0]}:{r[1]}", "explanation", f"{r[0]}:{r[1]}", r[2], sec_title(r[0])))
     for r in dst.execute("SELECT answer_id, question FROM answer ORDER BY answer_id"):
         out.append((f"a:{r[0]}", "answer", r[0], r[1], None))
+    for r in dst.execute("SELECT s.proc_id, s.ord, s.text, s.detail, p.title FROM proc_step s "
+                         "JOIN procedure p USING (proc_id) ORDER BY s.proc_id, s.ord"):
+        try:
+            detail = json.loads(r[3] or "{}")
+        except ValueError:
+            detail = {}
+        op = detail.get("operator") if isinstance(detail, dict) else None
+        out.append((f"p:{r[0]}#{r[1]}", "proc_step", f"{r[0]}#{r[1]}", "\n".join(x for x in (r[2], op) if x), r[4]))
     return out
 
 

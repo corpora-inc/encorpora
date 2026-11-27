@@ -109,9 +109,9 @@ def extract_xrefs(doc: ParsedDoc, prefix: str) -> list[Xref]:
         if not text or node.kind in ("part", "subpart", "figure"):
             continue
         base = _section_base(node.section_id)
-        # appendix ids keep their full base ('29cfr1926-subpart-CC-appendix-C')
-        if node.kind == "appendix" or "-appendix-" in node.section_id:
-            base = re.sub(r"(-appendix-[A-Z0-9]+).*$", r"\1", node.section_id)
+        # appendix ids keep their full base ('29cfr1926.cc.appC')
+        if node.kind == "appendix" or ".app" in node.section_id:
+            base = re.sub(r"(\.app[A-Z0-9]+).*$", r"\1", node.section_id)
         own_head = node.own_text.split("\n", 1)[0] if node.kind in ("section", "appendix") else ""
 
         for m in _SEC_REF.finditer(text):
@@ -157,7 +157,7 @@ def extract_xrefs(doc: ParsedDoc, prefix: str) -> list[Xref]:
             p = part.group(1)
             for m in _APPX_REF.finditer(text):
                 if subpart:
-                    add(node.section_id, f"{prefix}{p}-subpart-{subpart}-appendix-{m.group(1)}")
+                    add(node.section_id, f"{prefix}{p}.{subpart.lower()}.app{m.group(1)}")
             for m in _SUBPART_REF.finditer(text):
                 add(node.section_id, f"{prefix}{p}-subpart-{m.group(1)}")
 

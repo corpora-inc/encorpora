@@ -8,6 +8,7 @@
   harvest-bake stats  CORPUS.yaml [--profile P]          row counts, verdicts per task, cost
   harvest-bake review CORPUS.yaml --task NAME [--n 20] [--verdict fail]
   harvest-bake diff   OLD.sqlite NEW.sqlite [--json]     edition diff of sections
+  harvest-bake compare CORPUS.yaml --a P1 --b P2 [--out F.jsonl]  item-by-item comparison of two bakes
   harvest-bake verify PACK_DIR [--pubkey FILE]           manifest hashes (+ signature)
   harvest-bake keygen KEY.pem                            new ed25519 signing key (keep out of git)
   harvest-bake tasks  [CORPUS.yaml]                      registered tasks
@@ -33,7 +34,8 @@ def cmd_fetch(a):
     c = load_corpus(a.corpus)
     for f in fetch(c, set(_csv(a.only) or []) or None):
         r = f.record
-        print(f"{f.status:13} {r['source_id']:28} {r['edition']:36} {r['sha256'][:16]} {r['bytes']:>9} B")
+        print(f"{f.status:13} {r['source_id']:28} {r['edition']:36} {r['sha256'][:16]} {r['bytes']:>9} B"
+              + (f"\n              {r['note']}" if r.get("note") else ""))
     print(f"lock: {c.lock_path}")
 
 
@@ -152,6 +154,14 @@ def cmd_keygen(a):
     print(f"private: {p}\npublic: {p.with_suffix('.pub')}\nkey_id: {key_id(k.public_key())}")
 
 
+def cmd_compare(a):
+    from .compare import compare
+    from .corpus import harvest_home
+    c = load_corpus(a.corpus)
+    out = Path(a.out) if a.out else harvest_home() / "compare" / f"{c.corpus_id}-{a.a}-vs-{a.b}.jsonl"
+    print(json.dumps(compare(c, a.a, a.b, out), indent=2))
+
+
 def cmd_tasks(a):
     from .tasks import load_task_module, task_names
     if a.corpus:
@@ -196,6 +206,12 @@ def main(argv=None) -> int:
     s.add_argument("--n", type=int, default=20)
     s.add_argument("--verdict")
     s.add_argument("--json", action="store_true")
+    s = sub.add_parser("compare", help="item-by-item comparison of two profiles' bakes")
+    s.add_argument("corpus")
+    s.add_argument("--a", required=True)
+    s.add_argument("--b", required=True)
+    s.add_argument("--out")
+    s.set_defaults(fn=cmd_compare)
     s = sub.add_parser("diff")
     s.add_argument("old")
     s.add_argument("new")

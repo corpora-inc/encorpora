@@ -11,7 +11,7 @@ import re
 
 from ..stage import Stage
 from ..textutil import norm_ws, sha256_text, slug
-from ..verify import (check_inline_quotes, check_new_numbers, check_no_outside_standard, check_numbers,
+from ..verify import (check_id_refs, check_inline_quotes, check_new_numbers, check_no_outside_standard, check_numbers,
                       check_quote, check_unit)
 from .base import Task, TaskInput, register_task
 from .units import section_units
@@ -49,7 +49,7 @@ class TermsTask(Task):
     """Defined terms with a verbatim definition quote. The example task the README walks through."""
 
     name = "terms"
-    prompt_version = "1"
+    prompt_version = "2"
     tables = ("term",)
     system = (
         "You extract defined terms from regulatory and technical text for a glossary. " + GROUNDING
@@ -79,9 +79,16 @@ class TermsTask(Task):
         return _unit_inputs(stage, self.options, self.options.get("pattern", self.PATTERN))
 
     def prompt(self, inp):
-        return ("List every term this text defines or explicitly explains (\"X means ...\", \"X is a ...\","
-                " definitions lists). Skip terms only mentioned. Return an empty list if there are none.\n\n"
-                + inp.material)
+        return ("List every term of art this text defines or explicitly explains (\"X means ...\", \"X is a ...\","
+                " definitions lists). Skip terms only mentioned and ordinary words.\n"
+                "Rules:\n"
+                "- quote: the complete defining sentence or sentences, verbatim, including every condition, example "
+                "and exception the definition relies on. If the definition continues in the next lines of the same "
+                "id (lists, (A)-(E) items), quote through them.\n"
+                "- definition: a plain restatement of the quote only. Add nothing the quote does not say; drop "
+                "nothing essential (scope limits, exceptions). No section numbers in the definition.\n"
+                "- The term itself must appear in the quote.\n"
+                "Return an empty list if there are none.\n\n" + inp.material)
 
     def check(self, item, inp, stage):
         p = check_quote(item, stage, inp.data["ids"])
@@ -104,7 +111,7 @@ FACT_KINDS = ["limit", "clearance", "interval", "capacity", "requirement", "proh
 @register_task
 class FactsTask(Task):
     name = "facts"
-    prompt_version = "1"
+    prompt_version = "2"
     tables = ("fact",)
     system = (
         "You extract the testable facts in regulatory and technical text: limits, clearances, intervals, "
@@ -135,15 +142,25 @@ class FactsTask(Task):
 
     def prompt(self, inp):
         return ("Extract every distinct testable fact. One fact per requirement; split compound "
-                "requirements; keep conditions and exceptions in the statement. Quote the exact words.\n\n"
-                + inp.material)
+                "requirements; keep conditions and exceptions in the statement.\n"
+                "Rules:\n"
+                "- quote: the exact words that state the fact. When the fact has a number, the quote must contain "
+                "that number and its unit, so pick the span that states them (quote across consecutive lines of the "
+                "same id when needed).\n"
+                "- kind: limit, clearance, interval, capacity, requirement (a duty), prohibition (must not), or "
+                "definition. An exception or exclusion is a requirement whose statement says what is excepted.\n"
+                "- value and unit only when the fact states a number; null otherwise.\n"
+                "- statement: one plain sentence a learner can be tested on; same actor, conditions and exceptions "
+                "as the source.\n\n" + inp.material)
 
     def check(self, item, inp, stage):
         p = check_quote(item, stage, inp.data["ids"])
         if p:
             return p
         p += check_numbers(item.get("value"), item["quote"], "value")
-        p += check_numbers(item["statement"], item["quote"], "statement")
+        sec = stage.section(item["section_id"])
+        context = stage.text(sec["parent_id"]) if sec is not None and sec["parent_id"] else ""
+        p += check_numbers(item["statement"], item["quote"], "statement", context=context or "")
         p += check_unit(item.get("unit"), item["quote"])
         p += check_no_outside_standard([item["statement"]], inp.data["source_text"])
         return p
@@ -162,7 +179,7 @@ LEVELS = ["trainee", "operator", "inspector"]
 @register_task
 class ExplanationsTask(Task):
     name = "explanations"
-    prompt_version = "1"
+    prompt_version = "2"
     tables = ("explanation",)
     system = (
         "You explain regulatory and technical sections to the people who must apply them, at three "
@@ -176,13 +193,14 @@ class ExplanationsTask(Task):
         "properties": {"items": {"type": "array", "items": {
             "type": "object", "additionalProperties": False, "required": ["level", "body"],
             "properties": {"level": {"type": "string", "enum": LEVELS},
-                           "body": {"type": "string", "description": "80-220 words, plain prose, no headings"}},
+                           "body": {"type": "string", "description": "plain prose paragraphs, no headings or lists"}},
         }}},
     }
     judge_rubric = (
-        "Pass only if the explanation is accurate to the section, complete on its main duties and limits, "
-        "fits its level, and adds no requirement, number or standard content the section lacks. Fail any "
-        "error of fact, invented duty, or wrong number."
+        "Pass only if the explanation is accurate to the section, fits its level, and adds no requirement, "
+        "advice, number or standard content the section lacks. A long section may be summarized: fail for "
+        "omission only when a central duty or numeric limit of the section is missing entirely, or when "
+        "leaving something out makes a statement wrong. Fail any error of fact, invented duty, or wrong number."
     )
 
     def select(self, stage):
@@ -199,13 +217,30 @@ class ExplanationsTask(Task):
         return out
 
     def prompt(self, inp):
-        return ("Write one explanation of this section for each level: trainee, operator, inspector.\n\n"
-                + inp.material)
+        words = "120-250" if len(inp.data["source_text"]) < 6000 else "200-400"
+        return ("Write one explanation of this section for each level: trainee, operator, inspector.\n"
+                f"Rules: {words} words each, plain prose paragraphs, no headings, no lists. Cite the paragraph "
+                "behind a statement with its bracketed id, e.g. [29cfr1926.1408(a)(2)]. Quote only short exact "
+                "phrases, in double quotes, copied character for character. Say only what the section says: no "
+                "advice, tips or duties of your own, and no numbers the section does not contain. Cover every "
+                "numeric limit and central duty; summarize long lists.\n\n" + inp.material)
+
+    def _known_numbers(self, stage):
+        if getattr(self, "_known", None) is None:
+            from ..textutil import numbers_in
+            known = set()
+            for r in stage.conn.execute("SELECT citation FROM section"):
+                for tok in numbers_in(r[0] or ""):
+                    known.add(tok)
+                    known.update(tok.split("."))
+            self._known = known
+        return self._known
 
     def check(self, item, inp, stage):
         src = inp.data["source_text"]
         p = check_inline_quotes(item["body"], src)
-        p += check_new_numbers(item["body"], src)
+        p += check_id_refs(item["body"], stage)
+        p += check_new_numbers(item["body"], src, allowed=self._known_numbers(stage))
         p += check_no_outside_standard([item["body"]], src)
         if len(item["body"].split()) < 30:
             p.append("explanation too short")

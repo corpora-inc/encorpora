@@ -1,7 +1,7 @@
 """eCFR XML (versioner API `full` endpoint) -> section tree with stable citation paths.
 
 Ids: `29cfr1926.1408`, `29cfr1926.1408(a)(2)`, `29cfr1926.1408-table-A`, `29cfr1926.1404-note-1`,
-`29cfr1926-subpart-CC`, `29cfr1926-subpart-CC-appendix-A`, `29cfr1926-subpart-CC-appendix-C(d)(3)`.
+`29cfr1926-subpart-CC`, `29cfr1926.cc.appA` (Appendix A to Subpart CC), `29cfr1926.cc.appC(d)(3)`.
 
 Paragraph levels follow the Federal Register convention: (a) lowercase letter, (1) number,
 (i) lowercase roman, (A) capital letter, then italic (a)/(1)/(i) for deeper levels. Markers sit
@@ -427,8 +427,8 @@ def parse_ecfr(data: bytes, source_id: str, title: int, options: dict | None = N
         head = _text(div.find("HEAD")) if div.find("HEAD") is not None else name
         m = re.match(r"Appendix\s+([A-Z0-9]+)", name)
         letter = m.group(1) if m else str(len(parent.children) if parent else 0)
-        scope = f"{prefix}{part}" + (f"-subpart-{subpart}" if subpart else "")
-        base = f"{scope}-appendix-{letter}"
+        # '29cfr1926.cc.appA' (Appendix A to Subpart CC of Part 1926); '29cfr1910.appA' without a subpart
+        base = f"{prefix}{part}" + (f".{subpart.lower()}" if subpart else "") + f".app{letter}"
         node = Node(base, "appendix", name, heading=head, own_text=head)
         if parent:
             parent.add(node)

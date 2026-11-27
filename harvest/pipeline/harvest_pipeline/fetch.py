@@ -24,10 +24,14 @@ USER_AGENT = "harvest-pipeline/0.1 (corpus-to-knowledge-pack engine)"
 ECFR_API = "https://www.ecfr.gov/api/versioner/v1"
 
 
+class ManualSourceMissing(RuntimeError):
+    """A manual source has not been downloaded yet."""
+
+
 @dataclass
 class Fetched:
     record: dict     # the `source` row plus lock extras (fetched_url)
-    status: str      # new | unchanged | changed | edition-only
+    status: str      # new | unchanged | changed | edition-only | missing
     previous: dict | None
 
 
@@ -83,11 +87,15 @@ def _retrieve(spec: SourceSpec, corpus_dir: Path) -> tuple[bytes, str, str, str]
         data, ctype = http_get(url)
         mt = spec.media_type or ctype or mimetypes.guess_type(url)[0] or "application/octet-stream"
         return data, mt, url, spec.edition or "unversioned"
-    if kind == "file":
-        p = (corpus_dir / f["path"]).resolve()
+    if kind in ("file", "manual"):
+        # manual: a file a person downloaded in a browser (hosts that refuse automated clients);
+        # the path may be absolute or ~-relative, and `url` records where it came from
+        p = (corpus_dir / Path(f["path"]).expanduser()).resolve()
+        if not p.exists():
+            raise ManualSourceMissing(f"{spec.id}: download {f.get('url') or spec.url} in a browser and save it as {p}")
         data = p.read_bytes()
         mt = spec.media_type or mimetypes.guess_type(p.name)[0] or "application/octet-stream"
-        return data, mt, p.as_uri(), spec.edition or "unversioned"
+        return data, mt, f.get("url") or p.as_uri(), spec.edition or "unversioned"
     raise SystemExit(f"source {spec.id}: unknown fetch kind {kind!r}")
 
 
@@ -108,7 +116,14 @@ def fetch(corpus: Corpus, only: set[str] | None = None, now: str | None = None) 
     for spec in corpus.sources:
         if only and spec.id not in only:
             continue
-        data, media_type, fetched_url, edition = _retrieve(spec, corpus.dir)
+        try:
+            data, media_type, fetched_url, edition = _retrieve(spec, corpus.dir)
+        except ManualSourceMissing as e:
+            if not spec.optional:
+                raise SystemExit(str(e))
+            out.append(Fetched({"source_id": spec.id, "edition": "-", "sha256": "-" * 16, "bytes": 0, "note": str(e)},
+                               "missing", lock["sources"].get(spec.id)))
+            continue
         sha = sha256_bytes(data)
         p = raw_path(sha)
         if not p.exists():

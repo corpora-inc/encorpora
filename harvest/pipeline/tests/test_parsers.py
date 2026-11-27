@@ -242,3 +242,11 @@ def test_custom_paragraph_numbers():
                                                "para_number_regex": r"^(\d+\.[A-Z]\.\d+)\b"})
     ids = d.by_id()
     assert ids["em:16.A.02"].citation == "EM 16.A.02" and ids["em:16.A.02"].parent_id == "em:16"
+
+
+def test_keep_headings_prunes_to_matching_subtrees():
+    src = "# 1 General\n\nText.\n\n# 2 Cranes\n\nCrane text.\n\n## 2.1 Rigging\n\nSling text.\n\n# 3 Ladders\n\nLadder text.\n"
+    d = parse("markdown", src.encode(), "m", {**OPTS, "keep_headings": "(?i)crane"})
+    ids = d.by_id()
+    assert "man:2" in ids and "man:2.1-p1" in ids
+    assert "man:1" not in ids and "man:3" not in ids
