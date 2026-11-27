@@ -18,9 +18,12 @@ required-features = ["cli"]
 
 [features]
 default = ["cli"]
-# The `harvest` binary (eval, bake verifier). The app links the library with
-# `default-features = false`.
-cli = []
+# The `harvest` binary (eval, bake verifier) and its OpenAI-compatible HTTP
+# client. The app links the library with `default-features = false`.
+cli = ["dep:ureq"]
+# In-process llama.cpp embedder. Off by default: CI and the eval CLI stay
+# offline and model-free; the app enables it (or bridges its own runtime).
+llama = ["dep:llama-cpp-2", "dep:llama-cpp-sys-2"]
 
 [dependencies]
 # `bundled` compiles SQLite with FTS5 and needs no system library or OpenSSL,
@@ -35,6 +38,16 @@ base64 = "0.22"
 rust-stemmers = "1.2"
 # Archives are optional transport for packs; deflate only, pure Rust.
 zip = { version = "2", default-features = false, features = ["deflate"] }
+# Plain-HTTP client for a local or lab OpenAI-compatible server (CLI only).
+ureq = { version = "3", default-features = false, features = ["json"], optional = true }
+# Same pins as corpan/plugins/tauri-plugin-corpan-llm.
+llama-cpp-sys-2 = { version = "=0.1.146", optional = true }
+
+[target.'cfg(any(target_os = "macos", target_os = "ios"))'.dependencies]
+llama-cpp-2 = { version = "=0.1.146", features = ["metal"], optional = true }
+
+[target.'cfg(not(any(target_os = "macos", target_os = "ios")))'.dependencies]
+llama-cpp-2 = { version = "=0.1.146", optional = true }
 
 [dev-dependencies]
 tempfile = "3"

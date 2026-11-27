@@ -107,3 +107,110 @@ fn usage_errors_exit_2() {
     assert_eq!(harvest(&["frobnicate"]).0, 2);
     assert_eq!(harvest(&["search", "x", "q", "--bogus", "1"]).0, 2);
 }
+
+/// A one-thread OpenAI-compatible server answering from a script.
+fn mock_server(contents: Vec<String>) -> (String, std::thread::JoinHandle<Vec<String>>) {
+    use std::io::{BufRead, BufReader, Read, Write};
+    let listener = std::net::TcpListener::bind("127.0.0.1:0").unwrap();
+    let base = format!("http://{}/v1", listener.local_addr().unwrap());
+    let handle = std::thread::spawn(move || {
+        let mut queue: std::collections::VecDeque<String> = contents.into();
+        let mut seen = Vec::new();
+        // /models + one request per scripted completion.
+        for _ in 0..queue.len() + 1 {
+            let (stream, _) = listener.accept().unwrap();
+            let mut reader = BufReader::new(stream.try_clone().unwrap());
+            let mut line = String::new();
+            reader.read_line(&mut line).unwrap();
+            let path = line.split_whitespace().nth(1).unwrap_or("").to_string();
+            let mut len = 0usize;
+            loop {
+                let mut h = String::new();
+                reader.read_line(&mut h).unwrap();
+                if h == "\r\n" || h.is_empty() {
+                    break;
+                }
+                if let Some(v) = h.to_ascii_lowercase().strip_prefix("content-length:") {
+                    len = v.trim().parse().unwrap();
+                }
+            }
+            let mut body = vec![0u8; len];
+            reader.read_exact(&mut body).unwrap();
+            seen.push(format!("{path} {}", String::from_utf8_lossy(&body)));
+            let reply = if path.ends_with("/models") {
+                serde_json::json!({"data": [{"id": "mock-model"}]})
+            } else {
+                serde_json::json!({"choices": [{"message": {"content": queue.pop_front().unwrap()}}]})
+            }
+            .to_string();
+            let mut s = stream;
+            write!(
+                s,
+                "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nContent-Length: {}\r\nConnection: close\r\n\r\n{}",
+                reply.len(),
+                reply
+            )
+            .unwrap();
+        }
+        seen
+    });
+    (base, handle)
+}
+
+#[test]
+fn ask_with_an_openai_compatible_server_and_audit() {
+    let tmp = tempfile::tempdir().unwrap();
+    let dir = tmp.path().join("fx");
+    let d = dir.to_str().unwrap();
+    let (_, out, _) = harvest(&["fixture", d, "--json"]);
+    let key = serde_json::from_str::<Value>(&out).unwrap()["pubkey"]
+        .as_str()
+        .unwrap()
+        .to_string();
+    let (base, server) = mock_server(vec![
+        serde_json::json!({"queries": ["shift inspection competent person"], "ambiguous": false, "clarify": null}).to_string(),
+        serde_json::json!({"section_ids": ["ex.3", "ex.999"]}).to_string(),
+        serde_json::json!({"segments": [
+            {"t": "text", "text": "A competent person inspects before each shift."},
+            {"t": "quote", "section_id": "ex.3", "text": "A competent person must inspect the machine each shift before use."}
+        ]})
+        .to_string(),
+    ]);
+    let db = tmp.path().join("records.db");
+    let (code, out, err) = harvest(&[
+        "ask",
+        d,
+        "who checks the machine every shift",
+        "--llm",
+        &base,
+        "--audit",
+        db.to_str().unwrap(),
+        "--pubkey",
+        &key,
+        "--json",
+    ]);
+    assert_eq!(code, 0, "{err}");
+    let a: Value = serde_json::from_str(&out).unwrap();
+    assert_eq!(a["mode"], "composed");
+    assert_eq!(a["model"], "mock-model", "{err}");
+    assert_eq!(a["citations"], serde_json::json!(["ex.3"]));
+    let seen = server.join().unwrap();
+    assert!(seen[0].starts_with("/v1/models"));
+    assert!(seen[1].contains("\"json_schema\"") && seen[1].contains("\"expansion\""));
+    assert!(seen[2].contains("\"selection\""));
+    assert!(seen[3].contains("answer_segments"));
+    // Only the selected section was offered to compose.
+    assert!(
+        seen[3].contains("competent person must inspect") && !seen[3].contains("Tracked machines")
+    );
+
+    let (code, out, err) = harvest(&["audit", db.to_str().unwrap(), "--json"]);
+    assert_eq!(code, 0, "{err}");
+    let r: Value = serde_json::from_str(&out).unwrap();
+    assert_eq!(r["ok"], true);
+    assert_eq!(r["entries"], 1);
+    assert_eq!(r["modes"]["composed"], 1);
+
+    let (code, _, _) = harvest(&["audit", tmp.path().join("missing.db").to_str().unwrap()]);
+    assert_eq!(code, 1);
+}

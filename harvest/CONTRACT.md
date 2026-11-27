@@ -177,14 +177,14 @@ claim segment that has no supporting quote or cite in the same paragraph.
 ```
 harvest verify  <pack-dir>                      # signature + hashes + schema
 harvest search  <pack> "<query>" [--k 10] [--json]
-harvest ask     <pack> "<question>" [--role operator] [--equip <id>] [--llm <endpoint|off>] [--json]
+harvest ask     <pack> "<question>" [--role operator] [--equip <id>] [--llm <endpoint|off>] [--audit <records-db>] [--json]
 harvest audit   <records-db> [--json]
 ```
 
 `ask --json` prints:
 
 ```json
-{ "mode": "baked|composed|declined",
+{ "mode": "baked|composed|declined|clarify",   // clarify: model on only; body = one question
   "answer_id": "…|null",
   "body": [ /* answer segments */ ],
   "citations": ["29cfr1926.1408(a)(2)"],
