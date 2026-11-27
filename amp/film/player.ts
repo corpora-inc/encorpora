@@ -32,6 +32,10 @@ export type PlayerOptions = {
   onPlayingChange?: (playing: boolean) => void;
   /** Called when the film plays to its end. */
   onEnded?: () => void;
+  /** "Report this film" (the learner route): a flag in the controls that
+   * pauses the film and hands over the moment it was pressed. Absent: no
+   * flag. */
+  report?: (moment: { seconds: number; layout: Layout["name"] }) => void;
 };
 export const filmClock = (s: number) =>
   `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
@@ -136,6 +140,38 @@ export function mountFilmPlayer(
         event.preventDefault();
         options.onBack();
       }
+    };
+  }
+  if (options.report) {
+    const report = options.report;
+    // An icon, never a label that could wrap; its name says what it does.
+    const flag = el("button", "live-flag", controls);
+    flag.type = "button";
+    flag.setAttribute("aria-label", "Report this film");
+    flag.title = "Report this film";
+    const mark = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    mark.setAttribute("viewBox", "0 0 24 24");
+    mark.setAttribute("aria-hidden", "true");
+    for (const d of ["M6 21V3.5", "M6 4.5h11l-2.6 4 2.6 4H6"]) {
+      const line = document.createElementNS(mark.namespaceURI, "path");
+      line.setAttribute("d", d);
+      mark.appendChild(line);
+    }
+    flag.appendChild(mark);
+    flag.onclick = () => {
+      // The moment is where the film stands now: paused there, so closing
+      // the report returns to the same frame.
+      audio.pause();
+      const seconds =
+        Number.isFinite(audio.currentTime) && audio.currentTime > 0
+          ? audio.currentTime
+          : t;
+      report({
+        seconds: Math.max(0, Math.min(duration, seconds)),
+        layout:
+          layout?.name ??
+          (frame.clientHeight > frame.clientWidth ? "tall" : "wide"),
+      });
     };
   }
   if (options.close) {

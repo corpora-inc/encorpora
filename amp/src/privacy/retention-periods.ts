@@ -23,10 +23,12 @@ export const RETENTION = {
    * from their last event. A converted visitor's events leave only monthly
    * aggregate counts with no visitor ID. */
   funnelEventDays: 90,
-  /** Notes on "Report a problem" reports, from when they were sent. */
+  /** Notes on "Report a problem" and "Report this film" reports, from when
+   * they were sent. */
   problemFlagNoteDays: 90,
-  /** "Report a problem" reports, from when they were sent. Deleting a
-   * learner's learning data unlinks their reports and erases the notes. */
+  /** "Report a problem" and "Report this film" reports, from when they were
+   * sent. Deleting a learner's learning data (or an adult's account, for
+   * their film reports) unlinks their reports and erases the notes. */
   problemFlagDays: 365,
   /** Approval links for another family's child that nobody approved, with
    * the parent's address, the child's nickname and any legacy name: days after

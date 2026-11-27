@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams, useRouter } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { z } from "zod";
@@ -9,7 +9,19 @@ import {
 import { request } from "../../lib/api";
 import { qk } from "../../lib/keys";
 import { skillCatalogOptions } from "../../lib/learning-view";
-import { mountFilmPlayer } from "../../../../film/player";
+import { filmClock, mountFilmPlayer } from "../../../../film/player";
+import { FocusDialog } from "../../FocusDialog";
+import { ReportForm } from "../../ReportForm";
+import { useSessionOrNull } from "../../lib/session";
+import { useFamilyCache } from "../../lib/family-cache";
+import { useCurrentLearner } from "../../learner-store";
+import { nativeRuntime } from "../../native-runtime";
+import {
+  filmFlagBody,
+  filmNoteAllowed,
+  filmReportReasons,
+  type FilmMoment,
+} from "./film-flag";
 import { Loading } from "../../ui/Loading";
 import { noteHelp } from "../../lib/help-events";
 import { attendWhilePlaying, useHelpSurface } from "../../lib/use-help";
@@ -75,6 +87,17 @@ export function FilmScreen() {
   const ready = !!film && (!!opener || !!film.skill || !catalog.isPending);
   const back = filmReturn(opener, skill);
   const problemId = problem;
+  // "Report this film": the moment the flag was pressed, while its sheet is
+  // open over the paused film.
+  const [reporting, setReporting] = useState<FilmMoment | null>(null);
+  const session = useSessionOrNull();
+  const family = useFamilyCache(session?.accountId ?? null);
+  const chosen = useCurrentLearner();
+  // A learner's session is for one learner: the one chosen, else its only one.
+  const learners = family?.learners.filter((entry) => !entry.deletedAt) ?? [];
+  const learner =
+    learners.find((entry) => entry.id === chosen) ??
+    (learners.length === 1 ? learners[0]! : null);
   // A film is help: opening it is recorded, and its time is video time,
   // counted while it plays even without a touch.
   useHelpSurface(!!film, "video", problemId);
@@ -115,6 +138,8 @@ export function FilmScreen() {
         completed = true;
         playback("video_complete");
       },
+      // The native bridge has no report route; never offer one there.
+      ...(nativeRuntime ? {} : { report: setReporting }),
     });
     return () => {
       attending?.();
@@ -123,32 +148,66 @@ export function FilmScreen() {
     };
   }, [film, ready, back, router, templateId, problemId]);
   return (
-    <main className="film-route" ref={host}>
-      {metadata.isPending || film ? (
-        <Loading>Opening lesson film…</Loading>
-      ) : (
-        <div className="film-unavailable">
-          <h1>Film unavailable</h1>
-          <p>
-            {metadata.isError
-              ? "The lesson could not load. Check your connection and retry."
-              : "You can read this problem type’s written lesson."}
-          </p>
-          {metadata.isError && (
-            <button onClick={() => void metadata.refetch()}>Retry</button>
-          )}
-          <a
-            href={back}
-            onClick={(event) => {
-              if (event.metaKey || event.ctrlKey || event.shiftKey) return;
-              event.preventDefault();
-              closeTo(router, back);
-            }}
-          >
-            Close
-          </a>
-        </div>
+    <>
+      <main className="film-route" ref={host}>
+        {metadata.isPending || film ? (
+          <Loading>Opening lesson film…</Loading>
+        ) : (
+          <div className="film-unavailable">
+            <h1>Film unavailable</h1>
+            <p>
+              {metadata.isError
+                ? "The lesson could not load. Check your connection and retry."
+                : "You can read this problem type’s written lesson."}
+            </p>
+            {metadata.isError && (
+              <button onClick={() => void metadata.refetch()}>Retry</button>
+            )}
+            <a
+              href={back}
+              onClick={(event) => {
+                if (event.metaKey || event.ctrlKey || event.shiftKey) return;
+                event.preventDefault();
+                closeTo(router, back);
+              }}
+            >
+              Close
+            </a>
+          </div>
+        )}
+      </main>
+      {reporting && film && (
+        <FocusDialog
+          className="report-dialog"
+          title="Report this film"
+          // Closing returns to the paused film; it never navigates.
+          close={() => setReporting(null)}
+        >
+          <ReportForm
+            label={`What’s wrong at ${filmClock(reporting.seconds)}?`}
+            reasons={filmReportReasons}
+            allowNote={filmNoteAllowed(session, learner)}
+            send={async (report, requestId) =>
+              request(
+                "/film-flags",
+                z.object({ id: z.string(), recorded: z.literal(true) }),
+                {
+                  token: session?.token ?? null,
+                  body: await filmFlagBody(
+                    { templateId, version: film.version, problemId },
+                    reporting,
+                    requestId,
+                    report,
+                  ),
+                },
+              )
+            }
+            thanks="Thank you. Your report was sent."
+            done={() => setReporting(null)}
+            what="film"
+          />
+        </FocusDialog>
       )}
-    </main>
+    </>
   );
 }

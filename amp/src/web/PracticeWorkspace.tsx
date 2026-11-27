@@ -80,7 +80,6 @@ import {
 } from "../math/structured-work";
 import {
   useEffect,
-  useId,
   useLayoutEffect,
   useMemo,
   useRef,
@@ -108,67 +107,12 @@ import { prefetchMoneyArt } from "./scene/money-art";
 import { RadioControl } from "./ui/RadioControl";
 import { AnswerInput } from "./ui/AnswerInput";
 import { Form } from "./ui/Form";
+import { FocusDialog } from "./FocusDialog";
 type ReportSheet = typeof import("./ReportProblemSheet");
 /** The report sheet uses the UI kit's stylesheets, so it loads in the
  * browser on demand (this module also loads under Node). */
 const loadReportSheet = () => import("./ReportProblemSheet");
-
-export function FocusDialog({
-  title,
-  children,
-  close,
-  returnFocus,
-  className = "",
-}: {
-  title: string;
-  children: ReactNode;
-  close: () => void;
-  returnFocus?: HTMLElement | null;
-  className?: string;
-}) {
-  const titleId = useId();
-  const dialog = useRef<HTMLDialogElement>(null);
-  const heading = useRef<HTMLHeadingElement>(null);
-  useLayoutEffect(() => {
-    const previous =
-      returnFocus ??
-      (document.activeElement instanceof HTMLElement
-        ? document.activeElement
-        : null);
-    dialog.current?.showModal();
-    heading.current?.focus({ preventScroll: true });
-    return () => {
-      dialog.current?.close();
-      if (previous?.isConnected) previous.focus({ preventScroll: true });
-    };
-  }, []);
-  return (
-    <dialog
-      ref={dialog}
-      className={`practice-dialog ${className}`}
-      aria-labelledby={titleId}
-      onCancel={(event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        close();
-      }}
-    >
-      <div className="dialog-heading">
-        <h2 id={titleId} ref={heading} tabIndex={-1}>
-          {title}
-        </h2>
-        <button
-          className="dialog-close"
-          onClick={close}
-          aria-label="Close panel"
-        >
-          ×
-        </button>
-      </div>
-      <div className="dialog-content">{children}</div>
-    </dialog>
-  );
-}
+export { FocusDialog };
 
 export function usePracticeViewport(active: boolean) {
   useLayoutEffect(() => {

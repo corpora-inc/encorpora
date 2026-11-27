@@ -89,9 +89,9 @@ export function TrustScreen() {
               backups as they expire. The school can direct deletion sooner.
             </p>
             <p>
-              A “Report a problem” note goes after{" "}
-              {RETENTION.problemFlagNoteDays} days, and the report itself after{" "}
-              {RETENTION.problemFlagDays} days.
+              A note on a “Report a problem” or “Report this film” report goes
+              after {RETENTION.problemFlagNoteDays} days, and the report itself
+              after {RETENTION.problemFlagDays} days.
             </p>
             <p>
               A record of each lesson, hint, video or worked example a student
