@@ -214,6 +214,39 @@ impl Pack {
         self.section_rows("", &[])
     }
 
+    /// The sentences that introduce the lists a list-item section sits in,
+    /// outermost first, at most two levels: "(v) The load is over a
+    /// cofferdam" means nothing without "...in any of the following
+    /// circumstances:". A parent qualifies when its first line ends with
+    /// ':', '—' or "following" and `shown` does not already contain it.
+    pub fn list_lead_ins(&self, section_id: &str, shown: &str) -> Result<Vec<(String, String)>> {
+        let mut out = Vec::new();
+        let Some(mut child) = self.section(section_id)? else {
+            return Ok(out);
+        };
+        for _ in 0..2 {
+            if !child.text.trim_start().starts_with('(') {
+                break;
+            }
+            let Some(pid) = child.parent_id.clone() else {
+                break;
+            };
+            let Some(parent) = self.section(&pid)? else {
+                break;
+            };
+            let first = crate::normalize::normalize_ws(parent.text.lines().next().unwrap_or(""));
+            let intro =
+                first.ends_with(':') || first.ends_with('\u{2014}') || first.ends_with("following");
+            if !intro || first.is_empty() || crate::normalize::normalize_ws(shown).contains(&first)
+            {
+                break;
+            }
+            out.insert(0, (pid, first));
+            child = parent;
+        }
+        Ok(out)
+    }
+
     /// The direct children of a section, in document order.
     pub fn children(&self, section_id: &str) -> Result<Vec<Section>> {
         self.section_rows("WHERE parent_id = ?1", &[&section_id])

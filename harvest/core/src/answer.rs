@@ -921,13 +921,29 @@ impl Engine {
             (Some(_), None) => true,
             _ => false,
         };
+        // A list item ("(v) The load is over a cofferdam…") means nothing
+        // without the sentence that introduces the list: quote that lead-in
+        // from each ancestor too, so the answer (and anyone checking it)
+        // sees the whole rule.
+        let lead_ins = self.pack.list_lead_ins(&sec.section_id, &shown)?;
+        let context: String = std::iter::once(sec.heading.clone().unwrap_or_default())
+            .chain(lead_ins.iter().map(|(_, t)| t.clone()))
+            .chain(std::iter::once(passage.clone()))
+            .collect::<Vec<_>>()
+            .join(" ");
+        // A lead must say only what the shown text says: every number in it,
+        // and nearly every content word, is in the quoted text.
         let lead = leads
             .into_iter()
             .next()
-            .filter(|l| clear && l.0 >= MIN_LEAD_COVERAGE);
+            .filter(|l| clear && l.0 >= MIN_LEAD_COVERAGE && supported_by(&l.2, &context));
         let mut out = Vec::new();
         if let Some((_, _, text)) = &lead {
             out.push(Segment::text(text.clone()));
+        }
+        for (id, text) in &lead_ins {
+            out.push(Segment::quote(id.clone(), text.clone()));
+            out.push(Segment::cite(id.clone()));
         }
         out.push(Segment::quote(section_id, passage.clone()));
         // Verbatim mode: limits and the like are quoted, never left out of a
@@ -948,11 +964,51 @@ impl Engine {
         // is one sentence; the rest still matters).
         if let Some(e) = explanation {
             out.push(Segment::cite(section_id));
+            // The explanation names the paragraphs it draws on in brackets;
+            // cite them, so its sentences stand on the text they restate.
+            let refs = bracketed_ids(&e);
             out.push(Segment::text(e));
+            for id in refs {
+                if id != section_id && self.pack.section_exists(&id)? {
+                    out.push(Segment::cite(id));
+                }
+            }
         }
         out.push(Segment::cite(section_id));
         Ok(out)
     }
+}
+
+/// True when a lead `line` says only what the shown `source` says: every
+/// number in it is in the source, and at least 70% of its content words are
+/// (a paraphrase rewords a little; an added condition brings new words and
+/// usually a number). Leads are the pack's own verified facts and
+/// explanations, so a positive restatement of a negated rule ("keep at
+/// least 10 feet" for "no part may come closer than 10 feet") stands.
+fn supported_by(line: &str, source: &str) -> bool {
+    let src_tokens: BTreeSet<String> = normalize::tokens(source).into_iter().collect();
+    let numbers_ok = normalize::tokens(line)
+        .iter()
+        .filter(|t| t.chars().next().is_some_and(|c| c.is_ascii_digit()))
+        .all(|n| src_tokens.contains(n));
+    let src = normalize::stem_set(source);
+    let stems = normalize::content_stems(line);
+    let hit = stems.iter().filter(|s| src.contains(*s)).count();
+    numbers_ok && (stems.is_empty() || hit as f64 / stems.len() as f64 >= 0.7)
+}
+
+/// Section ids written in brackets in a text (`[29cfr1926.1412(a)(1)]`).
+fn bracketed_ids(text: &str) -> Vec<String> {
+    let mut out: Vec<String> = Vec::new();
+    for part in text.split('[').skip(1) {
+        if let Some((id, _)) = part.split_once(']') {
+            let id = id.trim();
+            if !id.is_empty() && !id.contains(' ') && !out.iter().any(|o| o == id) {
+                out.push(id.to_string());
+            }
+        }
+    }
+    out
 }
 
 /// Least share of the question a lead line must cover to open an answer;

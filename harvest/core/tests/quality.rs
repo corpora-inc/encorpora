@@ -202,3 +202,45 @@ fn a_near_threshold_cache_hit_must_be_the_same_question() {
         Mode::Baked
     );
 }
+
+#[test]
+fn a_list_item_answer_quotes_the_sentence_that_introduces_the_list() {
+    let tmp = tempfile::tempdir().unwrap();
+    let dir = tmp.path().join("p");
+    harvest_core::fixture::build_with(&dir, "2026.1.1-1", |c| {
+        c.execute_batch(
+            "INSERT INTO section VALUES ('ex.9', 'ex-rules', NULL, 90, 1, 'section', '§9', 'Stopping',
+               'The operator must stop the lift in any of the following circumstances:\n(a) The load is over a cofferdam.', 'x', 'en');
+             INSERT INTO section VALUES ('ex.9(a)', 'ex-rules', 'ex.9', 91, 2, 'paragraph', '§9(a)', NULL,
+               '(a) The load is over a cofferdam.', 'y', 'en');
+             INSERT INTO chunk VALUES ('c-ex.9(a)', 'section', 'ex.9(a)', '(a) The load is over a cofferdam.', 'en');",
+        )?;
+        Ok(())
+    })
+    .unwrap();
+    let pack = std::sync::Arc::new(
+        harvest_core::Pack::open(&dir, &[harvest_core::fixture::trusted_key()]).unwrap(),
+    );
+    let e = harvest_core::Engine::new(pack.clone());
+    let r = e
+        .ask(
+            "must the operator stop when the load is over a cofferdam",
+            &harvest_core::AskOptions::for_pack(&pack),
+        )
+        .unwrap();
+    let quotes: Vec<String> = r
+        .body
+        .iter()
+        .filter_map(|s| match s {
+            harvest_core::Segment::Quote { text, .. } => Some(text.clone()),
+            _ => None,
+        })
+        .collect();
+    assert!(
+        quotes
+            .iter()
+            .any(|q| q == "The operator must stop the lift in any of the following circumstances:"),
+        "{:?}",
+        r.body
+    );
+}

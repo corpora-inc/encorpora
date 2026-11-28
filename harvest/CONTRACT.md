@@ -467,7 +467,7 @@ names what the app needs to reserve its height:
 | `film` | `film_id`, `node_id` | a lesson film; the app fills aspect, duration and poster from its media catalog |
 | `diagram` | `diagram_id` | a diagram |
 | `question` | `q_id`, `chosen?` | inline practice (recorded in practice state); with `chosen`, the learner's answer under review with the rationales |
-| `focus` | `items [{node_id, title, domain, weight, mastery\|null}]` | study priorities: domain weight × (1 − mastery) |
+| `focus` | `items [{node_id, title, domain, weight, mastery\|null}]` | study priorities: domain weight × (1 − mastery), an unpractised skill at 0.5 |
 | `tool` | `tool` (`clearance`\|`load-chart`\|`signals`), `input?` | the app's tool; `clearance` with `input {kv, traveling}` is followed by the table row as text, quote and cite |
 | `search` | `query` | the grouped rule results for a query (the rules index the app shows) |
 
@@ -475,16 +475,24 @@ What the model may write: the model chooses the intent, the node and which
 of its texts, the linked blocks, the rule sentences (by handle, never by
 text) and a tool, and writes one short `say`. The engine shows `say` as the
 turn's first `text` block, sentence by sentence. A sentence that states a
-requirement (must, shall, required, prohibited, never, cannot, at least,
-minimum, only … may; have to / should beside a duty word), or measures with
+requirement (must, shall, required, prohibited, at least, minimum, only …
+may, assume / presumed / responsible for; never, cannot, have to, should
+beside a duty word; an order about the work such as "keep the boom clear of
+the line"), or measures with
 a rule's unit (feet, kV, pounds, degrees, days…), stands only when the rule
 sentences quoted in this turn support it on their own: every number in
 them, its content words in them, the same negation. A number in any other
 sentence must come from the exam blueprint, the course counts or the node
 text shown in the turn. Anything else is dropped and listed in
 `trace.dropped`. Named rule sentences are quoted in `rule`, `tool` and
-`review` turns (at most four runs); in other turns only when they back a
-claim the line makes. A table's rows are its sentences. When sentences are
+`review` turns (at most four named runs, each with its list's lead-in); in other turns only when they back a
+claim the line makes. A table's rows are its sentences. A quoted list item
+("(v) The load is over a cofferdam.") is preceded by the quoted sentence
+that introduces its list, and its parent list's, when not already shown. A
+sentence that points at a block the turn does not show ("the rule quoted
+below" with no quote) is dropped. The model is offered only the intents the
+turn can serve (`review` only with an answer to review); study talk with
+nothing to review shows the `focus` block. When sentences are
 dropped, the model sees them once with the reason and writes the line
 again; the rewrite is kept unless it loses more. A `rule` turn with no rule
 sentence shown states no rule and shows a `search` block for the question.
