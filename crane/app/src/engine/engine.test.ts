@@ -70,7 +70,11 @@ test("typos, hyphens and run-together words still find the right sections", asyn
     assert.ok(top.includes("29cfr1926.1408") || top.includes("29cfr1926.1407"), `${q}: ${top}`);
   }
   assert.ok((await roots("powerline", 5)).some((r) => /^29cfr1926\.14(0[7-9]|1[01])$/.test(r)), "powerline reads as power line");
-  assert.equal((await e.find("tyre pressure")).readings[0]?.as[0], "tires");
+  assert.equal((await e.find("tyre pressure")).readings[0]?.as[0], "tire");
+  // A rare word the pack holds splits only into two words the pack writes side by side.
+  for (const w of ["nothing", "inclined", "offering", "passage", "appreciable"]) assert.deepEqual((await e.find(w)).terms, [stem(w)], w);
+  const pl = (await e.find("powerline")).terms;
+  assert.ok(pl.includes("power") && pl.includes("line"), `powerline: ${pl}`);
 });
 
 test("each group shows a paragraph with text and opens a real section", async () => {
