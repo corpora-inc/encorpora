@@ -33,13 +33,17 @@ export function plan({ own, builtAt, seedLedger, seedFiles }) {
     : seedFiles.length
       ? [{ builtAt, files: seedFiles }]
       : [];
+  // The seed's own release (the first entry) is the one this image replaces:
+  // it is kept whatever its age, or a deploy after a quiet spell would strand
+  // every page it served. The window only ages out the releases before it.
   const previous = releases
     .filter(
-      (release) =>
+      (release, index) =>
         release &&
         Array.isArray(release.files) &&
-        Number.isFinite(Date.parse(release.builtAt)) &&
-        now - Date.parse(release.builtAt) < KEEP_MS,
+        (index === 0 ||
+          (Number.isFinite(Date.parse(release.builtAt)) &&
+            now - Date.parse(release.builtAt) < KEEP_MS)),
     )
     .slice(0, KEEP_RELEASES - 1);
   const available = new Set(seedFiles);
