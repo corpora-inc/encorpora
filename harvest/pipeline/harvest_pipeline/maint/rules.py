@@ -323,7 +323,47 @@ def derive(unit_pages: list[int], pages: dict[int, PageModel], options: dict | N
     for p in out["procedures"]:
         p.pop("_for", None)
     _equipment_parent(out, pages, unit_pages, questions)
+    asks = set((options or {}).get("ask") or [])
+    if asks:
+        _ask_all(out, pages, questions, asks)
     return out, questions
+
+
+def _ask_all(out: dict, pages: dict[int, PageModel], questions: list[Question], asks: set[str]) -> None:
+    """Measurement mode: pose every guard placement and facet box as a closed question (the rules'
+    choice is only the default), so a resolver's accuracy on closed questions can be scored."""
+    page_of = lambda rid: int(rid.split(".")[0][1:])  # noqa: E731
+    if "guards" in asks:
+        for p in out["procedures"]:
+            holders = [("the whole procedure: " + p["title"]["text"], p["guards"], None)]
+            holders += [(f"step {k}: {st['text']['text'][:70]}", st["guards"], st) for k, st in enumerate(p["steps"], 1)]
+            for _, lst, _ in list(holders):
+                for g in list(lst):
+                    pg = page_of(g["text"]["region"])
+                    opts = [h for h in holders if h[2] is None or page_of(h[2]["text"]["region"]) == pg]
+                    if len(opts) < 2:
+                        continue
+                    default = next(i for i, h in enumerate(opts) if h[1] is lst)
+                    gtext = g["text"]["text"][:80]
+                    questions.append(Question(f"ask-guard-{g['text']['region']}",
+                                              f"Which does the {g['kind'].upper()} block ({g['text']['region']}: "
+                                              f"\"{gtext}\") guard?", [h[0] for h in opts], default, "guard",
+                                              {"guard": g, "owners": [h[1] for h in opts]}))
+    if "facets" in asks:
+        for t in out["trees"]:
+            regions = {}
+            for n in t["nodes"]:
+                for f in n["facets"]:
+                    regions.setdefault(f["text"]["region"], (f["facet"], n["id"]))
+            for rid, (facet, owner) in regions.items():
+                pg = page_of(rid)
+                cands = [n for n in t["nodes"] if n["kind"] == "check" and page_of(n["text"]["region"]) == pg]
+                if len(cands) < 2:
+                    continue
+                default = next((i for i, n in enumerate(cands) if n["id"] == owner), 0)
+                questions.append(Question(f"ask-facet-{rid}", f"Which question does the {facet} box {rid} belong to?",
+                                          [c["text"]["text"][:90] for c in cands], default, "facet",
+                                          {"region": rid, "cands": [c["id"] for c in cands]}))
 
 
 def _sub(m) -> bool:

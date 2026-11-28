@@ -327,3 +327,69 @@ def build(corpus: Corpus, arm_name: str | None, out_dir: Path | None, harvest: s
                "stage": str(work(corpus) / f"stage-{a.name}.sqlite")}
     (work(corpus) / f"build-{a.name}.json").write_text(json.dumps(summary, indent=2, default=str))
     return summary
+
+
+# ---- troubleshooting-table corpora (message | cause | solution) ---------------------------------
+def table_sources(corpus: Corpus) -> list[tuple[dict, bytes, dict]]:
+    lock = load_lock(corpus)["sources"]
+    out = []
+    for spec in corpus.sources:
+        if spec.parser != "maint-table-html":
+            continue
+        if spec.optional and spec.id not in lock:
+            continue
+        rec, data = read_raw(corpus, spec.id)
+        out.append((rec, data, dict(spec.parser_options)))
+    return out
+
+
+def synonyms(corpus: Corpus, offline: bool, log=sys.stderr) -> tuple[dict, dict]:
+    from .tables import run_synonyms
+    m = cfg(corpus)
+    by, reps = {}, {}
+    for rec, data, opts in table_sources(corpus):
+        cols = opts.get("columns") or {"message": 0, "cause": 1, "solution": 2}
+        cdir = (corpus.dir / m.get("cache_dir", "cache") / "synonyms").resolve()
+        by[rec["source_id"]], reps[rec["source_id"]] = run_synonyms(
+            data, cols, (m.get("synonyms") or {}).get("author"), cdir, offline, ledger(corpus), log)
+    return by, reps
+
+
+def build_table(corpus: Corpus, out_dir: Path | None, harvest: str, pubkey: str | None = None,
+                embedder_cfg: dict | None = None, log=sys.stderr) -> dict:
+    """A table corpus -> stage -> signed pack -> `harvest verify`. No model call (synonyms from the cache)."""
+    from .tables import build_table_pack
+    m = cfg(corpus)
+    syn, syn_rep = synonyms(corpus, offline=True, log=log)
+    out_dir = out_dir or harvest_home() / "packs" / corpus.pack_id / "table"
+    stage = Stage(work(corpus) / "stage-table.sqlite")
+    reports = {}
+    for rec, data, opts in table_sources(corpus):
+        stage.add_source(rec)
+        reports[rec["source_id"]] = build_table_pack(stage, rec, data, opts, syn.get(rec["source_id"]))
+    stage.add_equipment(corpus.equipment)
+    stage.commit()
+    meta = {"facets": json.dumps([{"id": "possible", "label": m.get("cause_label", "Cause")}]),
+            "levels": json.dumps(m.get("levels") or DEFAULT_LEVELS), "open_facet": "possible"}
+    if m.get("signal_kinds"):
+        meta["signal_kinds"] = json.dumps(m["signal_kinds"])
+    for k in ("attribution", "license", "license_url"):
+        if m.get(k):
+            meta[k] = str(m[k])
+    emb = make_embedder(embedder_cfg if embedder_cfg is not None else corpus.raw.get("embedder") or {"kind": "hash"})
+    try:
+        res = write_pack(stage, out_dir, corpus.pack_id, corpus.version, corpus.corpus_id, emb, release=True,
+                         bake_backends={"author": "rules", "synonyms": (m.get("synonyms") or {}).get("author")},
+                         lang=corpus.lang, extra_meta=meta)
+    finally:
+        emb.close()
+    rep = verify_graph(harvest, out_dir, pubkey)
+    shipped = {r[0] for r in __import__("sqlite3").connect(res["path"]).execute("SELECT tree_id FROM fault_tree")}
+    rows = sum(r["rows"] for r in reports.values())
+    summary = {"pack": res, "tables": reports, "synonyms": syn_rep, "graph": rep.get("graph"), "ok": rep.get("ok"),
+               "coverage": {"rows_in_source": rows, "trees_shipped": len(shipped),
+                            "rows_unfit": sum(len(r["unfit"]) for r in reports.values()),
+                            "rate": round(len(shipped) / rows, 4) if rows else 1.0},
+               "verdicts": dict(stage.conn.execute("SELECT verdict, COUNT(*) FROM provenance GROUP BY verdict").fetchall())}
+    (work(corpus) / "build-table.json").write_text(json.dumps(summary, indent=2, default=str))
+    return summary

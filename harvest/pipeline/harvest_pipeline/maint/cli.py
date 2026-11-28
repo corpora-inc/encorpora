@@ -7,6 +7,8 @@
   harvest-bake maint coverage CORPUS.yaml [--arm A] [--pack DIR] warnings, cautions, notes and question boxes attached
   harvest-bake maint score    CORPUS.yaml --expected FILE [--arm A] [--pack DIR]   precision / recall vs a known pack
   harvest-bake maint ab       CORPUS.yaml --a A --b B [--expected FILE] [--out FILE]  two arms, item by item
+  harvest-bake maint synonyms CORPUS.yaml                       table corpora: symptom phrasings (Sonnet, cached)
+  harvest-bake maint table-build CORPUS.yaml [--out DIR] [--harvest BIN]   table corpora: no model call
   harvest-bake maint cost     CORPUS.yaml [--arm A] [--tokens-per-page N]  ledger totals; projection for the corpus
 """
 
@@ -64,6 +66,14 @@ def main(argv: list[str]) -> int:
     s.add_argument("--expected")
     s.add_argument("--out")
     s.add_argument("--harvest")
+    s = sub.add_parser("synonyms", help="table corpora: plain-language symptom phrasings (the one model task)")
+    s.add_argument("corpus")
+    s = sub.add_parser("table-build", help="table corpora: message | cause | solution -> pack, no model call")
+    s.add_argument("corpus")
+    s.add_argument("--out")
+    s.add_argument("--harvest")
+    s.add_argument("--pubkey")
+    s.add_argument("--embedder")
     s = sub.add_parser("cost")
     s.add_argument("corpus")
     s.add_argument("--arm")
@@ -118,6 +128,17 @@ def main(argv: list[str]) -> int:
         r = ab(c, a.a, a.b, _harvest(a), Path(a.expected) if a.expected else None, Path(a.out) if a.out else None)
         print(r["summary_text"])
         return 0
+    if a.cmd == "synonyms":
+        from .build import synonyms
+        _, reps = synonyms(c, offline=False)
+        print(json.dumps(reps, indent=1))
+        return 0
+    if a.cmd == "table-build":
+        from .build import build_table
+        res = build_table(c, Path(a.out) if a.out else None, _harvest(a), a.pubkey,
+                          {"kind": a.embedder} if a.embedder else None)
+        print(json.dumps(res, indent=1, default=str))
+        return 0 if res.get("ok") else 1
     if a.cmd == "cost":
         from .build import ledger
         rows = [r for r in ledger(c).rows() if not a.arm or r.get("arm") == a.arm]

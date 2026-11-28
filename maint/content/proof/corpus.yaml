@@ -45,9 +45,19 @@ maint:
                        extra: {chat_template_kwargs: {enable_thinking: false}}}}, images: false}
     rules+gpt-oss-120b: {author: {backend: rules, resolver: {backend: openai-compatible, model: gpt-oss-120b,
                          base_url: "http://127.0.0.1:8093/v1", mode: json_schema, timeout: 3600, temperature: 1.0,
-                         extra: {chat_template_kwargs: {reasoning_effort: high}}}}, images: false}
+                         extra: {chat_template_kwargs: {reasoning_effort: medium}}}}, images: false}
     rules+sonnet: {author: {backend: rules, resolver: {backend: claude-cli, model: sonnet, max_week_pct: 60}},
                    images: false}
+    # measurement: every guard placement and facet box asked as a closed question (rules' answer = default)
+    ask: {author: {backend: rules, rules: {ask: [guards, facets]}}, images: false}
+    ask+gemma4-26b: {author: {backend: rules, rules: {ask: [guards, facets]}, resolver: {backend: openai-compatible,
+                     model: gemma-4-26b-a4b, base_url: "http://127.0.0.1:8093/v1", mode: json_schema, timeout: 3600,
+                     temperature: 0, extra: {chat_template_kwargs: {enable_thinking: false}}}}, images: false}
+    ask+gpt-oss-120b: {author: {backend: rules, rules: {ask: [guards, facets]}, resolver: {backend: openai-compatible,
+                       model: gpt-oss-120b, base_url: "http://127.0.0.1:8093/v1", mode: json_schema, timeout: 3600,
+                       temperature: 1.0, extra: {chat_template_kwargs: {reasoning_effort: medium}}}}, images: false}
+    ask+sonnet: {author: {backend: rules, rules: {ask: [guards, facets]}, resolver: {backend: claude-cli, model: sonnet,
+                 max_week_pct: 60}}, images: false}
   roles: [apprentice, technician, expert]
   signal_kinds:
     - {kind: j1939.dm1, label: "Engine fault code (SPN/FMI)", example: "spn:110/fmi:0"}
