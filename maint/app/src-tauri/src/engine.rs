@@ -9,7 +9,7 @@
 //! optional embedding helper (`helper`), and hand the core a `HostConfig`.
 //! Without a hub address and without a helper, the engine opens no socket.
 
-use crate::{config::Config, helper::EmbedHelper, pack_keys, secrets};
+use crate::{config::Config, helper::EmbedHelper, pack_keys, secrets, storage};
 use harvest_core::api::{self, Host};
 use harvest_core::shell::{self, HostConfig, HostReport, KeyStore};
 use harvest_core::{TrustedKey, packs};
@@ -24,18 +24,32 @@ pub struct Paths {
     pub data: PathBuf,
     /// The signed packs the build ships (one folder per pack).
     pub bundled: Option<PathBuf>,
+    /// Keys as files in `<data>/secrets` instead of the platform keychain (a development
+    /// check of a built app against a scratch folder; see `for_app`).
+    pub file_secrets: bool,
 }
 
 impl Paths {
     pub fn for_app(app: &tauri::AppHandle) -> Result<Self, String> {
         use tauri::Manager;
-        let data = app.path().app_data_dir().map_err(|e| e.to_string())?;
+        // MAINT_DATA_DIR: run a built app on a scratch folder, keys as files there, never touching
+        // the installed app's records or keychain items (a developer's check of a fresh build).
+        let scratch = std::env::var_os("MAINT_DATA_DIR").map(PathBuf::from);
+        let data = match &scratch {
+            Some(d) => d.clone(),
+            None => app.path().app_data_dir().map_err(|e| e.to_string())?,
+        };
+        // The bundle's resource folder on every platform (Contents/Resources on macOS, the app's
+        // assets folder on iOS).
         let bundled = app
             .path()
-            .resource_dir()
-            .ok()
-            .map(|r| r.join("resources").join("packs"));
-        Ok(Self { data, bundled })
+            .resolve("resources/packs", tauri::path::BaseDirectory::Resource)
+            .ok();
+        Ok(Self {
+            data,
+            bundled,
+            file_secrets: scratch.is_some(),
+        })
     }
 }
 
@@ -44,25 +58,32 @@ pub struct Engine {
     host: Host,
     report: HostReport,
     helper: Mutex<Option<EmbedHelper>>,
+    records: storage::RecordsGuard,
 }
 
 impl Engine {
     /// Open everything the app needs, from `paths` and `config.json` there.
     pub fn open(paths: &Paths) -> Result<Self, String> {
         let config = Config::load(&paths.data)?;
-        let store = secrets::Store::platform(&paths.data);
+        let store = if paths.file_secrets {
+            secrets::Store::Files(paths.data.join("secrets"))
+        } else {
+            secrets::Store::platform(&paths.data)
+        };
         Self::open_with(paths, &config, &store)
     }
 
     /// Open with explicit settings and key store (tests use a file store).
     pub fn open_with(paths: &Paths, config: &Config, store: &dyn KeyStore) -> Result<Self, String> {
-        std::fs::create_dir_all(&paths.data).map_err(|e| e.to_string())?;
+        // The records folder takes a write, or the person is told which folder and what to do.
+        storage::check_writable(&paths.data)?;
         let keys = parse_keys(&pack_keys::packs())?;
         let root = paths.data.join("packs");
         std::fs::create_dir_all(&root).map_err(|e| e.to_string())?;
         if let Some(src) = &paths.bundled {
             install_bundled(&root, src, &keys)?;
         }
+        storage::seal_packs(&root);
 
         // Search by meaning, through the managed helper when it is configured.
         let mut helper = None;
@@ -82,9 +103,10 @@ impl Engine {
             }
             None => None,
         };
+        let records_path = paths.data.join("records.db");
         let cfg = HostConfig {
             packs_root: root.clone(),
-            records_path: paths.data.join("records.db"),
+            records_path: records_path.clone(),
             pack_keys: keys,
             field_keys: parse_keys(&pack_keys::field())?,
             encrypt_records: true,
@@ -108,12 +130,25 @@ impl Engine {
             host,
             report,
             helper: Mutex::new(helper),
+            records: storage::RecordsGuard::new(records_path),
         })
     }
 
-    /// One API call: the envelope `{ok, result | error}`.
+    /// One API call: the envelope `{ok, result | error}`. When the records file is no longer the
+    /// one this engine opened, no call reaches the engine: the answer asks for a restart.
     pub fn call(&self, method: &str, params: Value) -> Value {
-        api::envelope(api::call(&self.host, method, params))
+        if !self.records.intact() {
+            eprintln!(
+                "maint: {method}: the records file was moved or replaced under the running app"
+            );
+            return json!({ "ok": false, "error": { "code": storage::RESTART, "message": storage::RESTART_MESSAGE } });
+        }
+        let out = api::envelope(api::call(&self.host, method, params));
+        // Detail for the log; the frontend shows its own plain words for an internal failure.
+        if out["ok"] == false && out["error"]["code"] == "internal" {
+            eprintln!("maint: {method}: {}", out["error"]["message"]);
+        }
+        out
     }
 
     /// A pack's figure or page image, re-hashed by the core: (media type, bytes).

@@ -88,6 +88,7 @@ export function TreeStudyPage() {
   const { packId = "", treeId = "" } = useParams();
   const [tree, setTree] = useState<Tree | null>(null);
   const [missing, setMissing] = useState(false);
+  const packs = usePack((s) => s.packs);
   useEffect(() => {
     call("tree.get", { pack_id: packId, tree_id: treeId })
       .then(setTree)
@@ -99,7 +100,7 @@ export function TreeStudyPage() {
   if (!tree) return missing ? <NotFound /> : null;
   return (
     <ManualPack.Provider value={packId}>
-      <TreeStudy tree={tree} />
+      <TreeStudy tree={tree} packId={packId} titles={treeTitles(packs)} />
     </ManualPack.Provider>
   );
 }

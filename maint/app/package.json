@@ -19,7 +19,8 @@
     "test:flow": "node scripts/verify-flow.mjs",
     "dev:c": "MAINT_PORT=4345 MAINT_ENGINE=http://127.0.0.1:4323 vite --host 127.0.0.1 --bypass-lock",
     "tauri": "tauri",
-    "build:mac": "scripts/build-mac.sh"
+    "build:mac": "scripts/build-mac.sh",
+    "test:packs": "node scripts/verify-packs.mjs"
   },
   "dependencies": {
     "@fontsource/atkinson-hyperlegible-mono": "^5.3.0",

@@ -4,7 +4,7 @@ import { reportError } from "@appkit/toast.ts";
 import { jsonStorage } from "@appkit/storage.ts";
 import { shownAsk, type ShownAsk } from "../engine/shown.ts";
 import { modelOn, useModel } from "./model.ts";
-import { call, EngineError } from "../engine/client.ts";
+import { call, EngineError, plainError } from "../engine/client.ts";
 import { photoHash, savePhoto, shrinkImage } from "@appkit/photos.ts";
 import type { JobClosed, JobStartParams, JobView, LessonInput, PhotoRef, ResolutionKind } from "../engine/types.ts";
 import { useFleet } from "./fleet.ts";
@@ -43,7 +43,7 @@ interface JobsState {
 export const nodeKey = (jobId: string, nodeId: string) => `${jobId}:${nodeId}`;
 
 /** What went wrong, for the technician: the engine's own message, or a plain one. */
-const say = (e: unknown, fallback: string) => (e instanceof EngineError && e.code !== "internal" ? e.message : fallback);
+const say = plainError;
 
 export const useJobs = create<JobsState>()(
   persist(

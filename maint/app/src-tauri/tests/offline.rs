@@ -141,6 +141,7 @@ fn no_socket_at_all_without_hub_or_helper() {
     let paths = Paths {
         data: dir.join("data"),
         bundled: Some(fixture_bundle(&dir)),
+        file_secrets: true,
     };
     let watch = Watch::start();
     let engine = Engine::open_with(
@@ -183,6 +184,7 @@ fn with_the_helper_only_loopback() {
     let paths = Paths {
         data: dir.join("data"),
         bundled: Some(bundled),
+        file_secrets: true,
     };
     let config = Config {
         embedder: Some(EmbedderConfig { model, server }),

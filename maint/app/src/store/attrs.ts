@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { reportError } from "@appkit/toast.ts";
-import { call, EngineError } from "../engine/client.ts";
+import { call, EngineError, plainError } from "../engine/client.ts";
 import type { AssetAttrs, PlateInput, ValueSource } from "../engine/types.ts";
 
 /**
@@ -22,7 +22,7 @@ interface AttrsState {
   fromPlate(assetId: string, plate: PlateInput, packId?: string | null): Promise<void>;
 }
 
-const say = (e: unknown, fallback: string) => (e instanceof EngineError ? e.message : fallback);
+const say = plainError;
 
 export const useAttrs = create<AttrsState>()((set, get) => {
   const put = (id: string, a: AssetAttrs) => set({ byAsset: { ...get().byAsset, [id]: a }, rev: { ...get().rev, [id]: (get().rev[id] ?? 0) + 1 } });

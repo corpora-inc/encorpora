@@ -60,6 +60,7 @@ import { rebuild, reportOf, toBank } from "../learn/state.ts";
 import type { Applicability, AssetAttrs, LessonPrefill, LlmStatus, StepAsk, SymptomSuggest, PracticeAttempt, PracticeItems, RowHit, TableSummary, TableView } from "../engine/types.ts";
 import { ReferenceHome, ReferenceRow, ReferenceTable } from "../screens/Reference.tsx";
 import { Undetermined } from "../ui/applicability.tsx";
+import { bySystem } from "../learn/order.ts";
 import { shownAsk, shownProposal, shownSuggest } from "../engine/shown.ts";
 import { RefTables } from "../ui/reference.tsx";
 
@@ -126,7 +127,7 @@ const unit = D.history.asset;
 const variant = (unit.equip_id && variants[unit.equip_id]) || "";
 const shellUnit: ShellUnit = { asset_id: unit.asset_id, name: unitName(unit), variant };
 const openJobs = D.jobs.filter((j) => j.status === "open");
-const index: IndexGroup[] = D.pack.systems.map((system) => ({ system, trees: D.trees.filter((t) => t.system === system) }));
+const index: IndexGroup[] = bySystem(D.pack.systems, D.trees);
 
 interface Entry {
   state: string;
@@ -582,7 +583,7 @@ Object.assign(GALLERY, {
         unit: shellUnit,
         render: () => <LearnHome groups={[{ packId: D.pack.pack_id, title: D.pack.sources[0]?.title ?? "", trees: D.trees }]} lessons={D.lessons} titles={titles} />,
       },
-      { state: "tree", label: "A whole table", unit: shellUnit, render: () => <TreeStudy tree={D.tree} /> },
+      { state: "tree", label: "A whole table", unit: shellUnit, render: () => <TreeStudy tree={D.tree} packId={D.pack.pack_id} titles={titles} /> },
       {
         state: "practice-summary",
         label: "Practice, mastery by skill",

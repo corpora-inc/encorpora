@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
+import { bySystem } from "../learn/order.ts";
 import { Navigate, useLocation, useNavigate, useParams } from "react-router";
 import { reportError } from "@appkit/toast.ts";
 import { useVoiceInput } from "@appkit/voice/useVoiceInput.ts";
-import { call, EngineError } from "../engine/client.ts";
+import { call, EngineError, plainError } from "../engine/client.ts";
 import type { Decoded, EntryPoint, Format, PackInfoView, TaskView } from "../engine/types.ts";
 import { closeOutPath, connectPath, describePath, jobPath } from "../routes.ts";
 import { applyProposal, CloseOut, NOT_STATED, type LessonDraft } from "../screens/CloseOut.tsx";
@@ -56,10 +57,11 @@ export function DescribePage() {
     const id = await useJobs.getState().start({ pack_id: info.pack_id, asset_id: unit.asset_id, level: pickLevel(info, level), query: query || null, ...p });
     if (id) navigate(jobPath(id));
   };
-  // The pack's trees for this variant, by system, as the manual groups them.
-  const index: IndexGroup[] = info.systems
-    .map((system) => ({ system, trees: trees.filter((t) => t.system === system && (t.applies_to.length === 0 || (unit.equip_id && t.applies_to.includes(unit.equip_id)))) }))
-    .filter((g) => g.trees.length > 0);
+  // The pack's trees for this variant, by system as the manual groups them (all of them, whatever the pack lists).
+  const index: IndexGroup[] = bySystem(
+    info.systems,
+    trees.filter((t) => t.applies_to.length === 0 || (unit.equip_id && t.applies_to.includes(unit.equip_id))),
+  );
   return (
     <Describe
       unitName={unitName(unit)}
@@ -278,7 +280,7 @@ export function CloseOutPage() {
                 const r = await call("lesson.prefill", { job_id: jobId, text: draft.note.trim() });
                 co.setDraft(jobId, applyProposal(useCloseOut.getState().drafts[jobId] ?? draft, shownProposal(r.proposal)));
               } catch (e) {
-                reportError("closeout.prefill", e, e instanceof EngineError ? e.message : "The note could not be read into the form.");
+                reportError("closeout.prefill", e, plainError(e, "The note could not be read into the form."));
               } finally {
                 setPrefilling(false);
                 void useModelStore.getState().refresh();
@@ -357,7 +359,7 @@ export function ConnectPage() {
       if (fmt !== "display") setDecoded(r.decoded);
       return r.decoded;
     } catch (e) {
-      reportError("connect.decode", e, e instanceof EngineError ? e.message : "The log could not be read.");
+      reportError("connect.decode", e, plainError(e, "The log could not be read."));
       return null;
     } finally {
       setBusy(false);

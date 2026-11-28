@@ -9,6 +9,8 @@ import { brandCss } from "./brands/index.ts";
 import { BRAND, PRODUCT } from "./config.ts";
 import { App, BootFailed } from "./App.tsx";
 import { useModel } from "./store/model.ts";
+import { useRestart } from "./store/restart.ts";
+import { onRestartNeeded } from "./engine/client.ts";
 import { useDevice } from "./store/device.ts";
 import { useFleet } from "./store/fleet.ts";
 import { usePack } from "./store/pack.ts";
@@ -39,6 +41,7 @@ async function boot() {
     document.head.append(style);
   }
   applyTheme(useSettings.getState().theme);
+  onRestartNeeded((message) => useRestart.setState({ message }));
   const root = createRoot(document.getElementById("root")!);
   // The pack and the fleet are read before the first screen, so no screen renders twice.
   // The design gallery needs neither.

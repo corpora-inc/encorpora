@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { reportError } from "@appkit/toast.ts";
-import { call, EngineError } from "../engine/client.ts";
+import { call, EngineError, plainError } from "../engine/client.ts";
 import type { PackInfoView, RowHit, TableView } from "../engine/types.ts";
 import { jobPath } from "../routes.ts";
 import { NotFound } from "../screens/NotFound.tsx";
@@ -24,7 +24,7 @@ function useUnitIn(packId: string) {
   return unit && packOf(packs, unit.equip_id)?.info.pack_id === packId ? unit : null;
 }
 
-const say = (e: unknown, fallback: string) => (e instanceof EngineError ? e.message : fallback);
+const say = plainError;
 
 export function ReferenceHomePage() {
   const { packId = "", q } = useParams();

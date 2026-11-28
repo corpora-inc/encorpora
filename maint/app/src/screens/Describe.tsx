@@ -81,8 +81,8 @@ export function Describe(p: DescribeProps) {
           </h2>
           <div className="overflow-hidden rounded-panel border border-line bg-surface">
             {p.index.map((g) => (
-              <div key={g.system} className="border-b border-line last:border-b-0">
-                <h3 className="px-4 pt-3 text-meta font-bold text-ink-3">{g.system}</h3>
+              <div key={g.system || "-"} className="border-b border-line last:border-b-0">
+                {g.system && <h3 className="px-4 pt-3 text-meta font-bold text-ink-3">{g.system}</h3>}
                 <ul className="m-0 list-none p-0">
                   {g.trees.map((t) => (
                     <li key={t.tree_id}>

@@ -32,8 +32,12 @@ harvest-core = { path = "../../../harvest/core", default-features = false, featu
 tauri-plugin-tts = { path = "../../../corpan/plugins/tauri-plugin-tts" }
 tauri-plugin-stt = { path = "../../../corpan/plugins/tauri-plugin-stt" }
 
-# The records key and the device key live in the macOS keychain.
-[target.'cfg(target_os = "macos")'.dependencies]
+# One copy of the app at a time on a desktop (a second launch focuses the first).
+[target.'cfg(not(any(target_os = "android", target_os = "ios")))'.dependencies]
+tauri-plugin-single-instance = "2"
+
+# The records key and the device key live in the keychain (macOS and iOS).
+[target.'cfg(any(target_os = "macos", target_os = "ios"))'.dependencies]
 security-framework = "3"
 
 [profile.release]

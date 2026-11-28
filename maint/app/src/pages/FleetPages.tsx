@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { reportError } from "@appkit/toast.ts";
-import { call, EngineError } from "../engine/client.ts";
+import { call, EngineError, plainError } from "../engine/client.ts";
 import type { EquipResolveParams, Resolved } from "../engine/types.ts";
 import { referencePath, unitPath, type IdentifyMode } from "../routes.ts";
 import { Home } from "../screens/Home.tsx";
@@ -67,7 +67,7 @@ export function IdentifyPage() {
           setPhase("done");
         } catch (e) {
           setPhase("entry");
-          reportError("identify.resolve", e, e instanceof EngineError ? e.message : "The plate could not be checked against the manual.");
+          reportError("identify.resolve", e, plainError(e, "The plate could not be checked against the manual."));
         }
       }}
       onPick={setPicked}
@@ -86,7 +86,7 @@ export function IdentifyPage() {
           await useAttrs.getState().fromPlate(a.asset_id, plate, pack.info.pack_id);
           navigate(unitPath(a.asset_id), { replace: true });
         } catch (e) {
-          reportError("identify.save", e, e instanceof EngineError ? e.message : "The unit could not be saved.");
+          reportError("identify.save", e, plainError(e, "The unit could not be saved."));
         } finally {
           setSaving(false);
         }

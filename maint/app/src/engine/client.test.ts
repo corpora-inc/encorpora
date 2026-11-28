@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { call, EngineError, httpTransport, setTransport, type Transport } from "./client.ts";
+import { call, EngineError, httpTransport, onRestartNeeded, plainError, setTransport, type Transport } from "./client.ts";
 
 test("a result comes back as the method's result", async () => {
   const seen: [string, unknown][] = [];
@@ -38,4 +38,24 @@ test("HTTP: POST /api/<method> with JSON, and an unreachable engine is an error,
   } finally {
     globalThis.fetch = realFetch;
   }
+});
+
+test("no database or system error text ever reaches a person", () => {
+  const fallback = "The search did not run. Try again.";
+  assert.equal(plainError(new EngineError("symptom.search", "internal", "sqlite: attempt to write a readonly database"), fallback), fallback);
+  assert.equal(plainError(new EngineError("job.start", "invalid", "sqlite: database is locked"), fallback), fallback);
+  assert.equal(plainError(new EngineError("x", "unreachable", "The engine did not answer (fetch failed)"), fallback), fallback);
+  assert.equal(plainError(new Error("boom"), fallback), fallback);
+  assert.equal(plainError(new EngineError("asset.get", "invalid", 'invalid input: no asset "u-9"'), fallback), 'no asset "u-9"');
+  const open = "Maintenance Associate cannot save its records in /x: the disk is full. Make sure ...";
+  assert.equal(plainError(new EngineError("pack.list", "open_failed", open), fallback), open);
+});
+
+test("a restart request is announced once per failing call, in the shell's words", async () => {
+  const heard: string[] = [];
+  onRestartNeeded((m) => heard.push(m));
+  setTransport({ call: async () => ({ ok: false, error: { code: "restart_needed", message: "Quit Maintenance Associate and open it again." } }) });
+  await assert.rejects(call("asset.list", {}), (e: unknown) => e instanceof EngineError && e.code === "restart_needed");
+  assert.deepEqual(heard, ["Quit Maintenance Associate and open it again."]);
+  assert.equal(plainError(new EngineError("asset.list", "restart_needed", heard[0]!), "x"), heard[0]);
 });

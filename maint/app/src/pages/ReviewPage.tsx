@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { reportError, useToast } from "@appkit/toast.ts";
-import { EngineError, hubCall, setHubToken } from "../engine/client.ts";
+import { EngineError, hubCall, setHubToken, plainError } from "../engine/client.ts";
 import type { EnrolledDevice, HubStatus, Principal, ReviewItem } from "../engine/types.ts";
 import { reviewPath } from "../routes.ts";
 import { HubSignIn, Review, type ReviewDraft } from "../screens/Review.tsx";
 import { allEquipment, treeTitles, usePack } from "../store/pack.ts";
 import { useSettings } from "../store/settings.ts";
 
-const say = (e: unknown, fallback: string) => (e instanceof EngineError ? e.message : fallback);
+const say = plainError;
 
 export function ReviewPage() {
   const { lessonId } = useParams();

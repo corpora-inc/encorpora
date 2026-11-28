@@ -1,4 +1,5 @@
 import { lazy, Suspense, useEffect } from "react";
+import { plainError } from "./engine/client.ts";
 import { createBrowserRouter, Outlet, RouterProvider, useLocation } from "react-router";
 import { PRODUCT } from "./config.ts";
 import { Frame } from "./pages/Frame.tsx";
@@ -96,8 +97,8 @@ export function BootFailed({ error }: { error: unknown }) {
   return (
     <main className="mx-auto max-w-[640px] px-6 py-16">
       <h1 className="mb-3 text-h2">{PRODUCT.name} could not open its manual pack</h1>
-      <p className="text-body text-ink-2">The engine on this device did not answer. Restart the app. If this repeats, reinstall the pack.</p>
-      <p className="mt-4 text-meta text-ink-3">{error instanceof Error ? error.message : String(error)}</p>
+      {/* The engine's own words only when they are written for a person; the detail is in the log. */}
+      <p className="text-body text-ink-2">{plainError(error, "The engine on this device did not answer. Quit the app and open it again. If this repeats, reinstall the app.")}</p>
     </main>
   );
 }

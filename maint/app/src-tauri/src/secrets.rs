@@ -10,11 +10,11 @@ use base64::Engine as _;
 use harvest_core::shell::KeyStore;
 use std::path::{Path, PathBuf};
 
-#[cfg(target_os = "macos")]
+#[cfg(any(target_os = "macos", target_os = "ios"))]
 const SERVICE: &str = "inc.corpora.maint";
 
 pub enum Store {
-    #[cfg(target_os = "macos")]
+    #[cfg(any(target_os = "macos", target_os = "ios"))]
     Keychain,
     /// Files under a folder (tests; platforms without a keychain store yet).
     Files(PathBuf),
@@ -23,12 +23,12 @@ pub enum Store {
 impl Store {
     /// The platform's store: the keychain on macOS, files in `data/secrets` elsewhere.
     pub fn platform(data: &Path) -> Self {
-        #[cfg(target_os = "macos")]
+        #[cfg(any(target_os = "macos", target_os = "ios"))]
         {
             let _ = data;
             Self::Keychain
         }
-        #[cfg(not(target_os = "macos"))]
+        #[cfg(not(any(target_os = "macos", target_os = "ios")))]
         {
             Self::Files(data.join("secrets"))
         }
@@ -42,7 +42,7 @@ fn err(msg: String) -> harvest_core::Error {
 impl KeyStore for Store {
     fn load(&self, name: &str) -> harvest_core::Result<Option<Vec<u8>>> {
         let text = match self {
-            #[cfg(target_os = "macos")]
+            #[cfg(any(target_os = "macos", target_os = "ios"))]
             Self::Keychain => {
                 match security_framework::passwords::get_generic_password(SERVICE, name) {
                     Ok(bytes) => String::from_utf8(bytes)
@@ -66,7 +66,7 @@ impl KeyStore for Store {
     fn store(&self, name: &str, secret: &[u8]) -> harvest_core::Result<()> {
         let text = base64::engine::general_purpose::STANDARD.encode(secret);
         match self {
-            #[cfg(target_os = "macos")]
+            #[cfg(any(target_os = "macos", target_os = "ios"))]
             Self::Keychain => {
                 security_framework::passwords::set_generic_password(SERVICE, name, text.as_bytes())
                     .map_err(|e| err(format!("keychain {name}: {e}")))

@@ -21,6 +21,7 @@ pub mod engine;
 pub mod helper;
 pub mod pack_keys;
 pub mod secrets;
+pub mod storage;
 
 use std::sync::Arc;
 use tauri::Manager;
@@ -39,7 +40,7 @@ async fn engine_call(
         Ok(e) => e.clone(),
         Err(why) => {
             return Ok(
-                serde_json::json!({ "ok": false, "error": { "code": "pack", "message": why } }),
+                serde_json::json!({ "ok": false, "error": { "code": storage::OPEN_FAILED, "message": why } }),
             );
         }
     };
@@ -48,7 +49,11 @@ async fn engine_call(
     tauri::async_runtime::spawn_blocking(move || {
         let out = engine.call(&method, params);
         if trace {
-            eprintln!("maint: {method} ok={}", out["ok"]);
+            eprintln!(
+                "maint: {method} ok={} {}",
+                out["ok"],
+                out["error"]["code"].as_str().unwrap_or("")
+            );
         }
         out
     })
@@ -74,7 +79,18 @@ fn voice_model() -> serde_json::Value {
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
-    tauri::Builder::default()
+    let builder = tauri::Builder::default();
+    // One copy at a time on a desktop: a second launch focuses the first and exits, so two
+    // engines never share (or move) the same records.
+    #[cfg(desktop)]
+    let builder = builder.plugin(tauri_plugin_single_instance::init(|app, _args, _cwd| {
+        if let Some(w) = app.webview_windows().values().next() {
+            let _ = w.unminimize();
+            let _ = w.show();
+            let _ = w.set_focus();
+        }
+    }));
+    builder
         .plugin(tauri_plugin_tts::init())
         .plugin(tauri_plugin_stt::init())
         .register_uri_scheme_protocol(assets::SCHEME, |ctx, request| {
@@ -86,10 +102,11 @@ pub fn run() {
         })
         .setup(|app| {
             let paths = engine::Paths::for_app(app.handle()).map_err(|e| e.to_string())?;
-            let opened = engine::Engine::open(&paths).map(Arc::new);
-            if let Err(e) = &opened {
+            // What the person sees is plain words with what to do; the detail goes to the log.
+            let opened = engine::Engine::open(&paths).map(Arc::new).map_err(|e| {
                 eprintln!("maint: the engine did not open: {e}");
-            }
+                storage::opening_message(&e)
+            });
             app.manage(EngineState(opened));
             Ok(())
         })

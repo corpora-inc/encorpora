@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { reportError } from "@appkit/toast.ts";
 import { jsonStorage } from "@appkit/storage.ts";
-import { call, EngineError } from "../engine/client.ts";
+import { call, EngineError, plainError } from "../engine/client.ts";
 import type { Guidance, Outcome, Run, RunReport } from "../engine/types.ts";
 import { useFleet } from "./fleet.ts";
 
@@ -18,7 +18,7 @@ interface RunsState {
   end(key: string, how: "finish" | "abandon"): Promise<void>;
 }
 
-const say = (e: unknown, fallback: string) => (e instanceof EngineError ? e.message : fallback);
+const say = plainError;
 
 export const useRuns = create<RunsState>()(
   persist(

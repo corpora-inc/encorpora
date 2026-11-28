@@ -66,9 +66,31 @@ export function setTransport(t: Transport): void {
   transport = t;
 }
 
+/** The engine's codes whose messages are written for a person; any other failure is said in the app's own words. */
+const SPOKEN = new Set(["invalid", "unauthenticated", "forbidden", "restart_needed", "open_failed"]);
+
+/**
+ * What to tell a person about a failed call: the engine's own words only where they are written
+ * for people, never a database or system error (those go to the log with `reportError`).
+ */
+export function plainError(e: unknown, fallback: string): string {
+  if (e instanceof EngineError && SPOKEN.has(e.code) && !/sqlite|database|os error|panicked/i.test(e.message)) return e.message.replace(/^invalid input: /, "");
+  return fallback;
+}
+
+/** The records changed under the running app: the app asks once for a restart (see `onRestartNeeded`). */
+export const RESTART_NEEDED = "restart_needed";
+let restartListener: ((message: string) => void) | null = null;
+export function onRestartNeeded(fn: (message: string) => void): void {
+  restartListener = fn;
+}
+
 export async function call<M extends Method>(method: M, params: Params<M>): Promise<Result<M>> {
   const r = await transport.call(method, params);
-  if (!r.ok) throw new EngineError(method, r.error.code, r.error.message);
+  if (!r.ok) {
+    if (r.error.code === RESTART_NEEDED) restartListener?.(r.error.message);
+    throw new EngineError(method, r.error.code, r.error.message);
+  }
   return r.result as Result<M>;
 }
 

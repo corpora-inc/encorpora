@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { reportError, useToast } from "@appkit/toast.ts";
-import { call, EngineError, shellReport } from "../engine/client.ts";
+import { call, EngineError, shellReport, plainError } from "../engine/client.ts";
 import type { AssetRegistry, AuditRecord, ChainReport, DeviceInfo, FieldNote } from "../engine/types.ts";
 import { Records } from "../screens/Records.tsx";
 import { LINK_LABEL, linkState, refusalText } from "../ui/link.ts";
@@ -23,7 +23,7 @@ async function sendAttachments() {
   }
 }
 
-const message = (e: unknown, fallback: string) => (e instanceof EngineError ? e.message : fallback);
+const message = plainError;
 
 export function RecordsPage() {
   const sync = useFleet((s) => s.sync);
@@ -130,7 +130,7 @@ export function RecordsPage() {
           useToast.getState().show("info", `Added ${created} and updated ${updated} units.`);
           await useFleet.getState().refresh();
         } catch (e) {
-          reportError("records.import", e, e instanceof Error && e.message.startsWith("No manual") ? e.message : message(e, "That file is not a fleet registry this app can read."));
+          reportError("records.import", e, e instanceof Error && !(e instanceof EngineError) && e.message.startsWith("No manual") ? e.message : message(e, "That file is not a fleet registry this app can read."));
         } finally {
           setBusy(null);
         }
