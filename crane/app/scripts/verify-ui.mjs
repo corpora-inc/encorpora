@@ -77,6 +77,7 @@ async function waitUp() {
 }
 
 /** Seed settings so a route renders past first run. */
+// Seeds the v1 settings shape (with the retired role) on purpose: every page then runs the v2 migration.
 const seeded = (role = "operator") => `localStorage.setItem("crane.settings", JSON.stringify({ state: { role: "${role}", equipment: null, theme: "system", lang: "en", assistant: false }, version: 1 }));`;
 
 /**
@@ -256,30 +257,57 @@ try {
     }
   }
 
-  // 2. First run: one question, then a cited answer on screen.
+  // 2. First run lands in Practice: what it is for, one step into the first question, a cited answer.
   {
     const { context, page, errors } = await newPage(browser, 390, "light", { seed: false });
     await page.goto(base + "/");
-    await page.waitForURL("**/ask");
-    await page.getByRole("radio", { name: /Operator/ }).click();
-    await page.waitForURL("**/ask/a/a.powerline-clearance");
-    await page.locator("blockquote").first().waitFor();
-    assert.ok(await page.locator(".plate").count() >= 2, "answer has citation plates");
+    await page.waitForURL("**/practice");
+    await page.getByRole("heading", { name: "Pass the Core exam on your first try" }).waitFor();
+    assert.equal(await page.getByRole("radio").count(), 0, "no role question");
+    assert.equal(await page.locator("nav:visible").first().getByRole("link").first().innerText(), "Practice", "Practice is the first tab");
+    await page.screenshot({ path: path.join(out, "flow-first-run-practice.png"), fullPage: true });
+    await page.getByRole("link", { name: "Start with your first question" }).click();
+    await page.waitForURL("**/practice/session");
+    const choices = page.getByRole("group", { name: "Answer choices" }).getByRole("button");
+    await choices.first().click();
+    await page.locator(".practice-feedback").waitFor();
     await page.screenshot({ path: path.join(out, "flow-first-run-answer.png"), fullPage: true });
-    // Citation opens the exact paragraph.
-    await page.locator(".plate", { hasText: "§1926.1408(a)(2)" }).first().click();
-    await page.waitForURL(/\/read\/29cfr1926\.1408\(a\)\(2\)$/);
+    // The source opens the exact paragraph.
+    await page.locator(".practice-feedback a[href^='/read/'], .practice-feedback .plate").first().click();
+    await page.waitForURL(/\/read\//);
     await page.locator('[aria-current="true"]').first().waitFor();
     assert.equal(await page.locator('[aria-current="true"]').count(), 1, "the cited paragraph is marked");
-    assert.match(await page.locator('[aria-current="true"]').innerText(), /closer than 20 feet/);
-    // Refresh restores the screen.
+    // Refresh restores the screen; back and forward.
     await page.reload();
     await page.locator('[aria-current="true"]').waitFor();
-    // Back and forward.
     await page.goBack();
-    await page.waitForURL("**/ask/a/a.powerline-clearance");
+    await page.waitForURL("**/practice/session");
     await page.goForward();
     await page.waitForURL(/\/read\//);
+    // Home now shows progress, not the welcome.
+    await page.goto(base + "/practice");
+    await page.getByRole("link", { name: "Continue practice" }).waitFor();
+    assert.equal(await page.getByRole("heading", { name: "Pass the Core exam on your first try" }).count(), 0);
+    // No role setting anywhere.
+    await page.goto(base + "/settings");
+    await page.getByRole("heading", { name: "Settings" }).waitFor();
+    assert.equal(await page.getByText("Your work").count(), 0);
+    assert.deepEqual(errors, []);
+    await context.close();
+    checks++;
+  }
+
+  // 2a. A starter answer cites the rule, and the citation opens the exact paragraph.
+  {
+    const { context, page, errors } = await newPage(browser, 390, "light");
+    await page.goto(base + "/ask/a/a.powerline-clearance");
+    await page.locator("blockquote").first().waitFor();
+    assert.ok(await page.locator(".plate").count() >= 2, "answer has citation plates");
+    await page.locator(".plate", { hasText: "§1926.1408(a)(2)" }).first().click();
+    await page.waitForURL(/\/read\/29cfr1926\.1408\(a\)\(2\)$/);
+    assert.match(await page.locator('[aria-current="true"]').innerText(), /closer than 20 feet/);
+    await page.goBack();
+    await page.waitForURL("**/ask/a/a.powerline-clearance");
     assert.deepEqual(errors, []);
     await context.close();
     checks++;
@@ -429,31 +457,43 @@ try {
     await page.getByRole("button", { name: "Next question" }).click();
     await choices.first().waitFor();
     assert.equal(await choices.first().isDisabled(), false);
-    // Feedback is real reasons, never filler: a wrong answer says why it is wrong and why the key is right;
-    // a right answer says why, once. Alternate wrong and right over several items.
+    // One feedback card, never filler: "Correct." or "Not quite. The answer is C.", why (and, when wrong,
+    // why not the choice made), one line past the answer, "Source: 29 CFR …. Read the source", and one Next button.
     for (let n = 0; n < 8; n++) {
       await choices.first().waitFor();
+      const domain = await page.locator("h2").first().locator("xpath=preceding-sibling::p[1]").innerText();
+      assert.match(domain, /^(SITE|OPERATIONS|TECHNICAL KNOWLEDGE|LOAD CHARTS|[A-Z ]+)/, "domain label above the stem");
       const pick = n % 2 === 0 ? 0 : (await choices.count()) - 1;
       await choices.nth(pick).click();
       const panel = page.locator(".practice-feedback");
       await panel.waitFor();
       const verdict = await panel.locator("h3").innerText();
-      const reasons = await panel.locator(".feedback-why p:last-child").allInnerTexts();
+      const reasons = await panel.locator(".feedback-why").allInnerTexts();
       for (const r of reasons) {
         assert.ok(r.trim().split(/\s+/).length >= 5, `feedback reason too short: "${r}"`);
         assert.doesNotMatch(r, /^(correct|incorrect)\b/i, `feedback reason restates the verdict: "${r}"`);
       }
-      if (verdict === "Correct") {
+      if (verdict === "Correct.") {
         assert.equal(reasons.length, 1, "a right answer gets one reason");
-        assert.equal(await panel.getByText(/^Why( not)? “/).count(), 0);
       } else {
-        assert.equal(verdict, "Not this one");
-        assert.equal(reasons.length, 2, "a wrong answer gets why-not and why");
-        assert.equal(await panel.getByText(/^Why not “/).count(), 1);
-        assert.equal(await panel.getByText(/^Why “/).count(), 1);
-        assert.notEqual(reasons[0], reasons[1]);
+        assert.match(verdict, /^Not quite\. The answer is [A-F]\.$/);
+        assert.equal(reasons.length, 2, "a wrong answer gets why, then why not the choice made");
+        assert.match(reasons[1], /^Why not [A-F]: /);
       }
+      assert.equal(await panel.getByText(/^Correct\.?$/).count(), verdict === "Correct." ? 1 : 0, "no duplicated Correct");
+      const note = await panel.locator(".feedback-note").innerText();
+      assert.ok(note.split(/\s+/).length >= 5 && !reasons.includes(note), `one line past the answer: "${note}"`);
+      assert.match(await panel.locator(".feedback-source").innerText(), /^Source: (29 CFR 19\d\d\.\d+|Appendix)[^]*Read the source$/);
+      assert.equal(await panel.getByRole("button").count(), 1, "a single Next button");
       if (n === 0) await page.screenshot({ path: path.join(out, "flow-practice-feedback-reasons.png"), fullPage: true });
+      if (verdict !== "Correct." && !(await page.locator(".practice-feedback-shot").count())) await page.screenshot({ path: path.join(out, "flow-practice-feedback-wrong.png"), fullPage: true });
+      if (n === 7) {
+        await panel.getByRole("link", { name: "Read the source" }).click();
+        await page.waitForURL(/\/read\//);
+        await page.locator('[aria-current="true"]').first().waitFor();
+        await page.goBack();
+        await page.locator(".practice-feedback").waitFor();
+      }
       await page.getByRole("button", { name: "Next question" }).click();
       checks++;
     }
