@@ -9,6 +9,10 @@ fleet:
   window_days: 30
   technicians: [J. Ruiz, A. Patel, M. Chen, K. Osei, D. Novak]
 truth: truth.json
+# The scans are handwriting under blur, made hard on purpose; OCR engines differ on them (Tesseract 5.5 rejects
+# 3 of 7 for an unreadable date, 5.3 rejects 4). The stop rule is for a source the reader misreads; the typed
+# sources keep their rejections far below it.
+max_reject_share: 0.75
 sources:
   - {id: shop-a, path: logs/shop-a.csv, kind: csv,
      columns: {unit: Unit, date: Date, hours: Hours, symptom: Complaint, action: Action, part: Part, tech: Tech}}
