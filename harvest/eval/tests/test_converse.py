@@ -50,10 +50,11 @@ def test_render_and_judge(tmp_path):
     def fake(system, schema, prompt, model, binary):
         assert "GOAL: Gives the clearance." in prompt
         g = {"key": "K0", "fluency": 5, "correctness": 4, "citations": 5, "honesty": 5, "teaching": 4,
-             "goal_met": True, "unsupported": 0, "why": "ok"}
+             "goal_met": True, "unsupported": 0, "goal_fit": "fair", "why": "ok"}
         return {"grades": [g]}, ["claude-opus"], 0.01
 
     grades = converse.judge(rows, Judge(tmp_path / "cache", call=fake))
     s = converse.summarize(rows, grades)
     assert s["n"] == 1 and s["score"] == 4.6 and s["goal_met"] == 1.0 and s["turn_ms_p50"] == 900
     assert s["by_category"]["rule"]["n"] == 1
+    assert s["goal_fit"]["fair"] == 1 and s["goal_met_fair"] == 1.0

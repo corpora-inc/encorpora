@@ -462,7 +462,7 @@ names what the app needs to reserve its height:
 | `text` | `text` | prose; no markdown tables |
 | `quote` | `section_id`, `text` | rule text, copied from the pack by the engine and checked verbatim; never model output |
 | `cite` | `section_id` | the citation for the quotes before it |
-| `node` | `node_id`, `level`, `title`, `path [{node_id, level, title}]`, `texts [{field, text}]` | course-tree text, shown as written: the named fields, else `summary` and `hard` (follow-ups offer the rest); a text the conversation already showed is not shown again; with at most three of the node's quotes, unshown first |
+| `node` | `node_id`, `level`, `title`, `path [{node_id, level, title}]`, `texts [{field, text}]` | course-tree text: the named fields, else `summary` and `hard` (follow-ups offer the rest); a text the conversation already showed is not shown again; with at most three of the node's quotes, unshown first. A sentence whose number states a requirement (a distance, a percent of capacity, a deadline, an interval) stands only with a quote in the turn that states it: the engine adds that quote from the node's quotes or its rule sections, or leaves the sentence out. Exam-format numbers come only from the exam blueprints. Arithmetic, unit conversions and physics need no quote. `mistakes` are misconceptions (wrong ideas on purpose, then what is right): the app shows them labelled as such |
 | `exam` | `exam_id` | the exam's domains, weights and counts, from the blueprint |
 | `lesson` | `lesson_id` | a lesson card |
 | `film` | `film_id`, `node_id` | a lesson film; the app fills aspect, duration and poster from its media catalog |
