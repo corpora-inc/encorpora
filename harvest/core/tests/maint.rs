@@ -1369,6 +1369,22 @@ fn guard_classes_are_the_packs_own() {
         [GuardTone::Warning, GuardTone::Caution, GuardTone::Note],
         "CAUTION at rank 2 still looks like a caution"
     );
+    let mixed = pump_with(exec(
+        r#"UPDATE pack_meta SET value = '[{"id":"Danger","label":"DANGER","rank":1,"must_show":true},{"id":"NOTICE","label":"NOTICE","rank":2,"must_show":true}]' WHERE key = 'guard_classes';"#,
+    ));
+    let tones: Vec<GuardTone> = mixed
+        .pack
+        .guard_classes()
+        .unwrap()
+        .iter()
+        .map(|c| c.tone())
+        .collect();
+    assert_eq!(tones, [GuardTone::Danger, GuardTone::Notice]);
+    // A must-show class with its own word needs a declared tone.
+    let hazard = pump_with(exec(
+        r#"UPDATE pack_meta SET value = '[{"id":"hazard","label":"HAZARD","rank":1,"must_show":true},{"id":"warning","label":"WARNING","rank":2,"must_show":true},{"id":"caution","label":"CAUTION","rank":3,"must_show":true},{"id":"note","label":"NOTE","rank":4,"must_show":true}]' WHERE key = 'guard_classes';"#,
+    ));
+    assert!(rules(&graph::validate(&hazard.pack).unwrap()).contains(&"guard.tone".to_string()));
     let bad = pump_with(exec(
         r#"UPDATE pack_meta SET value = '[{"id":"warning","label":"WARNING","rank":1,"must_show":true,"tone":"scary"}]' WHERE key = 'guard_classes';"#,
     ));

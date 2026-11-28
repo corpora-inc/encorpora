@@ -614,7 +614,8 @@ CREATE TABLE failure_mode (mode_id TEXT PRIMARY KEY, equip_id TEXT NOT NULL, sys
   definition: `danger` imminent death or serious injury, `warning`
   possible injury, `caution` equipment damage, `notice` important
   non-hazard information, `note` an ordinary note or tip; absent, it
-  follows the id for those five words, else `note`).
+  follows the id for those five words, else `note`; a `must_show` class
+  with another id must declare its tone, `guard.tone`).
   Without it a pack has `warning`, `caution`, `note`, all `must_show`. A
   guard view carries `kind` (the id), `label`, `rank`, `must_show`,
   `tone` and `applicability`, in manual order; every guard is returned at every
