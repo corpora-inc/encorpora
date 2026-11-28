@@ -9,6 +9,7 @@ endorsement by OSHA or any certification body.
 | Path | What |
 |---|---|
 | `blueprint.yaml` | Topic tree, skills (the practice engine's units), exam blueprint verified against the current candidate handbook, equipment variants. |
+| `exam-coverage.json` | Every item of the core exam's content outline, with the outline ids and skills that cover it. |
 | `procedures/*.yaml` | Field procedures: role-tiered steps, check kind, citations, deficiency guidance with verbatim quotes. |
 | `tools/powerline/` | Table A / Table T clearance data (verbatim, cited) and `clearance.ts`. |
 | `tools/loadcharts/` | Original fictional load charts and exact practice-problem generators. |
