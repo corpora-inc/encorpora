@@ -148,6 +148,20 @@ CREATE TABLE IF NOT EXISTS attachment_data (
   data   BLOB NOT NULL,
   PRIMARY KEY (sha256, offset)
 );
+CREATE TABLE IF NOT EXISTS practice (
+  seq          INTEGER PRIMARY KEY AUTOINCREMENT,
+  item_id      TEXT NOT NULL UNIQUE,
+  device_id    TEXT NOT NULL,
+  attempt_id   TEXT NOT NULL,
+  pack_id      TEXT NOT NULL,
+  pack_version TEXT NOT NULL,
+  q_id         TEXT NOT NULL,
+  skill_id     TEXT NOT NULL,
+  correct      INTEGER NOT NULL,
+  ms           INTEGER NOT NULL,
+  at           TEXT NOT NULL,
+  received_at  TEXT NOT NULL
+);
 CREATE TABLE IF NOT EXISTS conflict (
   seq       INTEGER PRIMARY KEY,
   lesson_id TEXT NOT NULL,
@@ -265,6 +279,39 @@ pub struct ReviewItem {
     /// where it shows (the app shows these; it does not word its own).
     pub suggested_note: String,
     pub suggested_scope: NoteScope,
+}
+
+/// A page of practice statements.
+#[derive(Debug, Clone, Serialize, Deserialize, JsonSchema, PartialEq)]
+pub struct PracticeExport {
+    /// xAPI-style statements (actor, verb, object, result, context,
+    /// timestamp, stored).
+    pub statements: Vec<Value>,
+    /// Pass as `since` for the next page.
+    pub next_since: i64,
+}
+
+/// A stable UUID (version 5 layout) from an item id, for a statement id.
+fn uuid_from(item_id: &str) -> String {
+    let h = Sha256::digest(item_id.as_bytes());
+    let mut b = [0u8; 16];
+    b.copy_from_slice(&h[..16]);
+    b[6] = (b[6] & 0x0F) | 0x50;
+    b[8] = (b[8] & 0x3F) | 0x80;
+    let x = hex_encode(&b);
+    format!(
+        "{}-{}-{}-{}-{}",
+        &x[..8],
+        &x[8..12],
+        &x[12..16],
+        &x[16..20],
+        &x[20..]
+    )
+}
+
+/// Milliseconds as an ISO 8601 duration (`PT1.234S`).
+fn iso_duration(ms: i64) -> String {
+    format!("PT{}.{:03}S", ms.max(0) / 1000, ms.max(0) % 1000)
 }
 
 /// The note an unedited approval publishes.
@@ -909,6 +956,34 @@ impl Hub {
             Err(_) => return Ok(()), // kept as received; nothing to index
         };
         match u.kind.as_str() {
+            "practice"
+                if v.get("format").and_then(Value::as_str)
+                    == Some(crate::records::practice::PRACTICE_FORMAT) =>
+            {
+                let a: crate::records::PracticeAttempt =
+                    match serde_json::from_value(strip_format(v)) {
+                        Ok(a) => a,
+                        Err(_) => return Ok(()), // kept as received
+                    };
+                tx.execute(
+                    "INSERT OR IGNORE INTO practice (item_id, device_id, attempt_id, pack_id, pack_version,
+                        q_id, skill_id, correct, ms, at, received_at)
+                     VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11)",
+                    params![
+                        u.item_id,
+                        device_id,
+                        a.attempt_id,
+                        a.pack_id,
+                        a.pack_version,
+                        a.q_id,
+                        a.skill_id,
+                        a.correct,
+                        a.ms as i64,
+                        a.at,
+                        now
+                    ],
+                )?;
+            }
             "job" if v.get("format").and_then(Value::as_str) == Some(JOB_REPORT_FORMAT) => {
                 let s = |k: &str| v.get(k).and_then(Value::as_str).map(str::to_string);
                 tx.execute(
@@ -1436,6 +1511,69 @@ impl Hub {
             .query_map(params![since as i64, limit], |r| r.get(0))?
             .collect::<rusqlite::Result<_>>()?;
         rows.iter().map(|b| Ok(serde_json::from_str(b)?)).collect()
+    }
+
+    /// Practice attempts after `since` (the hub's own sequence) as
+    /// xAPI-style statements: actor the device's pseudonymous id, verb
+    /// answered, object the question (with its skill), result success and
+    /// duration, context the pack and its version. At most `limit`.
+    pub fn practice_statements(&self, since: i64, limit: usize) -> Result<PracticeExport> {
+        type Row = (
+            i64,
+            String,
+            String,
+            String,
+            String,
+            String,
+            String,
+            bool,
+            i64,
+            String,
+            String,
+        );
+        let rows: Vec<Row> = self
+            .conn
+            .prepare(
+                "SELECT seq, item_id, device_id, pack_id, pack_version, q_id, skill_id, correct, ms, at, received_at
+                 FROM practice WHERE seq > ?1 ORDER BY seq LIMIT ?2",
+            )?
+            .query_map(params![since, i64::try_from(limit).unwrap_or(i64::MAX)], |r| {
+                Ok((
+                    r.get(0)?, r.get(1)?, r.get(2)?, r.get(3)?, r.get(4)?, r.get(5)?, r.get(6)?, r.get(7)?,
+                    r.get(8)?, r.get(9)?, r.get(10)?,
+                ))
+            })?
+            .collect::<rusqlite::Result<_>>()?;
+        let next = rows.last().map_or(since, |r| r.0);
+        let statements = rows
+            .into_iter()
+            .map(|(_, item, device, pack, version, q, skill, correct, ms, at, stored)| {
+                json!({
+                    "id": uuid_from(&item),
+                    "actor": {"objectType": "Agent", "account": {"homePage": "urn:harvest:device", "name": device}},
+                    "verb": {"id": "http://adlnet.gov/expapi/verbs/answered", "display": {"en-US": "answered"}},
+                    "object": {
+                        "objectType": "Activity",
+                        "id": format!("urn:harvest:question:{pack}:{q}"),
+                        "definition": {
+                            "type": "http://adlnet.gov/expapi/activities/cmi.interaction",
+                            "extensions": {"urn:harvest:skill": skill}
+                        }
+                    },
+                    "result": {"success": correct, "duration": iso_duration(ms)},
+                    "context": {
+                        "contextActivities": {"parent": [{"id": format!("urn:harvest:skill:{pack}:{skill}")}]},
+                        "extensions": {"urn:harvest:pack": pack, "urn:harvest:pack-version": version}
+                    },
+                    "timestamp": at,
+                    "stored": stored
+                })
+            })
+            .collect();
+        Ok(PracticeExport {
+            statements,
+            next_since: next,
+        })
     }
 
     /// Every conflict and how it resolved.

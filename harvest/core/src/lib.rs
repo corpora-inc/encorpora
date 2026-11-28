@@ -29,6 +29,7 @@ pub mod normalize;
 pub mod notes;
 pub mod pack;
 pub mod packs;
+pub mod practice;
 pub mod records;
 pub mod retrieval;
 pub mod segments;

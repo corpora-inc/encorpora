@@ -795,6 +795,32 @@ for the shapes; this section states the rules.
   told to allow and takes calls only as `application/json`. A Tauri host
   calls the same `call`; no transport holds logic.
 
+### Practice
+
+- `practice.items {pack_id, equip_id?}` → `{topics: [{topic_id, title}],
+  skills: [{skill_id, title, topic_id, prereqs}], questions: [{q_id,
+  skill_id, kind, stem, choices, answer, difficulty, variant_of, note,
+  rationales, rationale_citations, citations}]}`. Pass-only; a question
+  applies to a variant by its own `applies_to` rows, else its first
+  section's. `rationale_citations[i]` is a full citation (the step view's
+  shape: path, page label and index, page asset, boxes) for choice `i`:
+  the answer's is the question's own section; a wrong choice's is the
+  most specific section holding the passage its rationale quotes (`“…”`),
+  else the choice's own text; `null` when none does.
+- `practice.record {pack_id, q_id, chosen, correct, ms, at?}` appends an
+  attempt to the device records (sealed, audited as `practice.record`) and
+  queues it for the hub as kind `practice` (`harvest-practice/1`);
+  `practice.history {pack_id}` returns them oldest first, for the app's
+  practice engine to rebuild mastery. The mastery model is the app's
+  (`harvest/practice`).
+- `hub.practice {since?, limit?}` → `{statements, next_since}`: the
+  attempts the hub holds as xAPI-style statements (`actor.account.name` =
+  the device id, verb `answered`, object
+  `urn:harvest:question:<pack>:<q_id>` with the skill as an extension and
+  parent activity, result `success` and ISO 8601 `duration`, context
+  extensions pack id and version, `timestamp`, `stored`; `id` a UUID
+  derived from the item id), for a training records system to ingest.
+
 ## Hub
 
 `harvest_core::hub::Hub` (store: one SQLite file) receives what devices

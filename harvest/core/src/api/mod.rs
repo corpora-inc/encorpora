@@ -183,6 +183,11 @@ impl Host {
             .insert(pack.pack_id().to_string(), pack);
     }
 
+    /// Run `f` on the device records (a host's own sync loop, tests).
+    pub fn with_records<T>(&self, f: impl FnOnce(&Records) -> T) -> T {
+        f(&self.records())
+    }
+
     fn records(&self) -> MutexGuard<'_, Records> {
         // A panic while writing rolls the transaction back; the store stays valid.
         self.records.lock().unwrap_or_else(|p| p.into_inner())
@@ -372,6 +377,10 @@ methods! {
     "fleet.summary" => fleet_summary(NoParams) -> Option<crate::records::FleetSummary>,
     "audit.list" => audit_list(AuditListParams) -> Vec<AuditRecord>,
     "audit.verify" => audit_verify(NoParams) -> ChainReport,
+    "practice.items" => practice_items(PracticeItemsParams) -> crate::practice::PracticeItems,
+    "practice.record" => practice_record(PracticeRecordParams) -> crate::records::PracticeAttempt,
+    "practice.history" => practice_history(PackParams) -> Vec<crate::records::PracticeAttempt>,
+    "hub.practice" => hub_practice(HubPracticeParams) -> crate::hub::PracticeExport,
     "hub.status" => hub_status(NoParams) -> crate::hub::HubStatus,
     "hub.queue" => hub_queue(HubQueueParams) -> Vec<crate::hub::ReviewItem>,
     "hub.approve" => hub_approve(HubApproveParams) -> crate::records::FieldNoteIn,
@@ -800,6 +809,44 @@ pub struct HubQueueParams {
     #[serde(default)]
     pub offset: usize,
     /// At most this many (default 100, at most 500).
+    #[serde(default)]
+    pub limit: Option<usize>,
+}
+
+#[derive(Debug, Clone, Default, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct PracticeItemsParams {
+    #[serde(default)]
+    pub pack_id: Option<String>,
+    /// The variant (questions that do not apply to it are left out).
+    #[serde(default)]
+    pub equip_id: Option<String>,
+}
+
+#[derive(Debug, Clone, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct PracticeRecordParams {
+    #[serde(default)]
+    pub pack_id: Option<String>,
+    pub q_id: String,
+    /// The choice index as text (mc), the value (numeric) or the text
+    /// written (free_text).
+    pub chosen: String,
+    pub correct: bool,
+    /// Milliseconds from showing the question to the answer.
+    pub ms: u64,
+    /// When it was answered (RFC 3339); now when absent.
+    #[serde(default)]
+    pub at: Option<String>,
+}
+
+#[derive(Debug, Clone, Default, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct HubPracticeParams {
+    /// Statements after this hub sequence (`next_since` of the last page).
+    #[serde(default)]
+    pub since: i64,
+    /// At most this many (default 500, at most 5000).
     #[serde(default)]
     pub limit: Option<usize>,
 }
@@ -1827,6 +1874,50 @@ fn need(who: Option<&Principal>, role: Option<HubRole>) -> R<&Principal> {
 fn hub_status(h: &Host, who: Option<&Principal>, _: NoParams) -> R<crate::hub::HubStatus> {
     need(who, None)?;
     Ok(h.hub_store()?.status()?)
+}
+
+fn practice_items(
+    h: &Host,
+    _who: Option<&Principal>,
+    p: PracticeItemsParams,
+) -> R<crate::practice::PracticeItems> {
+    let pack = h.pack(nz(&p.pack_id))?;
+    Ok(crate::practice::items(&pack, nz(&p.equip_id))?)
+}
+
+fn practice_record(
+    h: &Host,
+    _who: Option<&Principal>,
+    p: PracticeRecordParams,
+) -> R<crate::records::PracticeAttempt> {
+    let pack = h.pack(nz(&p.pack_id))?;
+    let input = crate::records::PracticeInput {
+        q_id: p.q_id,
+        chosen: p.chosen,
+        correct: p.correct,
+        ms: p.ms,
+        at: p.at,
+    };
+    Ok(h.records().record_practice(&pack, &input)?)
+}
+
+fn practice_history(
+    h: &Host,
+    _who: Option<&Principal>,
+    p: PackParams,
+) -> R<Vec<crate::records::PracticeAttempt>> {
+    let pack = h.pack(nz(&p.pack_id))?;
+    Ok(h.records().practice_history(pack.pack_id())?)
+}
+
+fn hub_practice(
+    h: &Host,
+    who: Option<&Principal>,
+    p: HubPracticeParams,
+) -> R<crate::hub::PracticeExport> {
+    need(who, None)?;
+    Ok(h.hub_store()?
+        .practice_statements(p.since, p.limit.unwrap_or(500).clamp(1, 5000))?)
 }
 
 fn hub_queue(

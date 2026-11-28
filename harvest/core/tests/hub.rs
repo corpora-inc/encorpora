@@ -1324,3 +1324,94 @@ fn a_device_acts_only_on_replies_the_hub_signed() {
     );
     assert!(other.is_err());
 }
+
+#[test]
+fn practice_attempts_are_recorded_queued_and_exported_as_statements() {
+    use harvest_core::api::{self, Host};
+    let tmp = tempfile::tempdir().unwrap();
+    fixture::build(&tmp.path().join("crane"), "2026.1.0-1").unwrap();
+    let crane = Arc::new(Pack::open(&tmp.path().join("crane"), &[fixture::trusted_key()]).unwrap());
+    let f = fleet();
+    let (rec, link) = device(&f);
+    let keys = hk(&link);
+    let host = Host::new(vec![crane.clone()], rec);
+    let items = api::call(&host, "practice.items", json!({})).unwrap();
+    let q = &items["questions"][0];
+    assert_eq!(q["q_id"], "q-clear-1");
+    assert_eq!(
+        items["skills"][0]["topic_id"],
+        items["topics"][0]["topic_id"]
+    );
+    let rc = q["rationale_citations"].as_array().unwrap();
+    assert_eq!(rc.len(), 4);
+    assert_eq!(
+        rc[1]["section_id"], "ex.2",
+        "the answer cites its own section"
+    );
+    assert!(rc[1]["citation"].is_string());
+    let a = api::call(
+        &host,
+        "practice.record",
+        json!({"q_id": "q-clear-1", "chosen": "1", "correct": true, "ms": 4200, "at": "2026-03-01T10:00:00Z"}),
+    )
+    .unwrap();
+    assert_eq!(a["skill_id"], "skill-clearance");
+    assert!(
+        api::call(
+            &host,
+            "practice.record",
+            json!({"q_id": "nope", "chosen": "1", "correct": true, "ms": 1})
+        )
+        .is_err()
+    );
+    let h = api::call(&host, "practice.history", json!({})).unwrap();
+    assert_eq!(h.as_array().unwrap().len(), 1);
+    assert_eq!(h[0]["chosen"], "1");
+    // Queued as its own kind, delivered, exported as a statement.
+    let hub_host = Host::new(vec![crane], Records::in_memory().unwrap()).with_hub(f.hub.clone());
+    let pending = api::call(&host, "sync.status", json!({})).unwrap();
+    assert_eq!(pending["pending_by_kind"]["practice"], 1, "{pending}");
+    let r = host_records_flush(&host, &link, &keys);
+    assert_eq!(r, 1);
+    let who = harvest_core::hub::auth::Principal::local("records office", &[]);
+    let out = api::call_as(&hub_host, Some(&who), "hub.practice", json!({})).unwrap();
+    let st = &out["statements"][0];
+    assert_eq!(st["verb"]["id"], "http://adlnet.gov/expapi/verbs/answered");
+    assert_eq!(st["actor"]["account"]["name"], link.device_id());
+    assert_eq!(
+        st["object"]["id"],
+        format!("urn:harvest:question:{}:q-clear-1", fixture::PACK_ID)
+    );
+    assert_eq!(
+        st["result"],
+        json!({"success": true, "duration": "PT4.200S"})
+    );
+    assert_eq!(
+        st["context"]["extensions"]["urn:harvest:pack-version"],
+        "2026.1.0-1"
+    );
+    assert_eq!(st["id"].as_str().unwrap().len(), 36);
+    let again = api::call_as(
+        &hub_host,
+        Some(&who),
+        "hub.practice",
+        json!({"since": out["next_since"]}),
+    )
+    .unwrap();
+    assert!(again["statements"].as_array().unwrap().is_empty());
+}
+
+/// Flush a host's records through `link`; the items acknowledged.
+fn host_records_flush(
+    host: &harvest_core::api::Host,
+    link: &LocalLink,
+    keys: &[harvest_core::TrustedKey],
+) -> usize {
+    host.with_records(|rec| {
+        rec.flush_to_hub(link, keys, 50, false)
+            .unwrap()
+            .flush
+            .unwrap()
+            .acked
+    })
+}
