@@ -1,0 +1,105 @@
+"""Coverage, with no model: of the WARNING, CAUTION and NOTE blocks and the question boxes printed on
+the ingested pages, how many reached the pack intact and attached.
+
+Counted from the page model alone:
+  * a guard block is a region whose first line is WARNING, CAUTION, NOTE or DANGER (a ruled box
+    or a text block), or a text block that opens with one of those words and a colon;
+  * a question box is a ruled box that two or more drawn arrows leave, or whose text is a
+    numbered question ("3. Is more than 10 V present ...?").
+In the pack:
+  * a guard block is attached when its region's section is a warning, caution or note whose text
+    is the block's words (heading aside) and a shipped `guards` xref leads from it to a section;
+  * a question box is attached when a shipped fault node cites its region's section.
+Reads the pack's SQLite file directly (an evaluation tool).
+"""
+
+from __future__ import annotations
+
+import json
+import re
+from pathlib import Path
+
+from ..corpus import Corpus
+from ..textutil import norm_ws
+from .build import sources
+from .score import _db
+
+GUARD = re.compile(r"^(WARNING|CAUTION|NOTE|DANGER)S?\b\s*:?", re.I)
+QUESTION = re.compile(r"^\s*(?:STEP\s+)?\d+[.)]\s+.*\?\s*$", re.S)
+
+
+def coverage(corpus: Corpus, pack_dir: Path) -> dict:
+    srcs = sources(corpus, log=None)
+    regions_file = pack_dir.parent / f"{pack_dir.name}.regions.json"
+    sec_of: dict[tuple, str] = {}
+    if regions_file.exists():
+        for sid, r in json.loads(regions_file.read_text()).items():
+            sec_of[(r["source"], r["region"])] = sid
+    c = _db(pack_dir)
+    has = lambda t: c.execute("SELECT 1 FROM sqlite_master WHERE name=?", (t,)).fetchone() is not None  # noqa: E731
+    secs = {r[0]: (r[1], r[2]) for r in c.execute("SELECT section_id, kind, text FROM section")}
+    guards_from = {r[0] for r in c.execute("SELECT from_id, to_id FROM xref WHERE kind='guards'") if r[1] in secs}
+    node_secs = {r[0]: r[1] for r in c.execute("SELECT section_id, kind FROM fault_node")} if has("fault_node") else {}
+    out = {"guards": {}, "questions": {"present": 0, "attached": 0, "missing": []}, "pages": 0}
+    for rec, models, _ in srcs:
+        sid_ = rec["source_id"]
+        for pm in models:
+            out["pages"] += 1
+            tails: dict[str, int] = {}
+            for cn in pm.connectors:
+                if cn.tail:
+                    tails[cn.tail] = tails.get(cn.tail, 0) + 1
+            for r in pm.regions:
+                if not r.words or r.kind in ("header", "footer"):
+                    continue
+                lines = [" ".join(pm.words[i].text for i in ln) for ln in r.lines]
+                first = lines[0].strip() if lines else ""
+                m = GUARD.match(first)
+                is_block = m and (first.upper().rstrip(":") in ("WARNING", "CAUTION", "NOTE", "DANGER", "WARNINGS",
+                                                                 "CAUTIONS", "NOTES") or first[m.end() - 1:m.end()] == ":")
+                where = f"{pm.label or pm.index} {r.id}"
+                sec = sec_of.get((sid_, r.id))
+                if is_block:
+                    kind = m.group(1).lower()
+                    g = out["guards"].setdefault(kind, {"present": 0, "attached": 0, "missing": []})
+                    g["present"] += 1
+                    body = norm_ws(" ".join(lines[1:]) if first.upper().rstrip(":S") in ("WARNING", "CAUTION", "NOTE",
+                                                                                         "DANGER") else " ".join(lines))
+                    ok = bool(sec and sec in secs and secs[sec][0] in ("warning", "caution", "note")
+                              and norm_ws(secs[sec][1]) == body and sec in guards_from)
+                    if ok:
+                        g["attached"] += 1
+                    else:
+                        g["missing"].append(f"{where}: {first} {body[:60]}")
+                text = " ".join(lines)
+                if r.kind == "box" and (tails.get(r.id, 0) >= 2 or QUESTION.match(text)):
+                    q = out["questions"]
+                    q["present"] += 1
+                    if sec and sec in node_secs:
+                        q["attached"] += 1
+                    else:
+                        q["missing"].append(f"{where}: {text[:70]}")
+    wc = [v for k, v in out["guards"].items() if k in ("warning", "caution", "danger")]
+    present = sum(v["present"] for v in wc)
+    attached = sum(v["attached"] for v in wc)
+    out["warnings_cautions"] = {"present": present, "attached": attached,
+                                "rate": round(attached / present, 4) if present else 1.0}
+    allg = list(out["guards"].values())
+    out["all_guards"] = {"present": sum(v["present"] for v in allg), "attached": sum(v["attached"] for v in allg)}
+    q = out["questions"]
+    q["rate"] = round(q["attached"] / q["present"], 4) if q["present"] else 1.0
+    return out
+
+
+def format_coverage(r: dict) -> str:
+    wc = r["warnings_cautions"]
+    lines = [f"pages {r['pages']}",
+             f"warnings + cautions attached: {wc['attached']}/{wc['present']} = {wc['rate']:.1%} (target 98%)"]
+    for k, v in sorted(r["guards"].items()):
+        lines.append(f"  {k:8} {v['attached']}/{v['present']}")
+    q = r["questions"]
+    lines.append(f"question boxes attached to a node: {q['attached']}/{q['present']} = {q['rate']:.1%}")
+    for k, v in sorted(r["guards"].items()):
+        lines += [f"  missing {k}: {m}" for m in v["missing"][:10]]
+    lines += [f"  missing question: {m}" for m in q["missing"][:10]]
+    return "\n".join(lines)

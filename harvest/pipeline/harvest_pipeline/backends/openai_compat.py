@@ -8,6 +8,7 @@ No data leaves the host the URL names.
 
 from __future__ import annotations
 
+import base64
 import json
 import os
 import urllib.error
@@ -22,8 +23,9 @@ class OpenAICompatBackend(Backend):
     def __init__(self, model: str = "gpt-oss-120b", base_url: str = "http://127.0.0.1:8080/v1",
                  mode: str = "json_schema", api_key_env: str | None = None, timeout: int = 1800,
                  temperature: float | None = None, reasoning_effort: str | None = None, extra: dict | None = None,
-                 max_tokens: int | None = None, **options):
+                 max_tokens: int | None = None, vision: bool = False, **options):
         super().__init__(model, **options)
+        self.supports_images = vision
         self.base_url = base_url.rstrip("/")
         self.mode = mode
         self.api_key = os.environ.get(api_key_env) if api_key_env else None
@@ -34,9 +36,13 @@ class OpenAICompatBackend(Backend):
         self.max_tokens = max_tokens
 
     def body(self, req: Request) -> dict:
+        user = req.prompt
+        if req.images:   # llama-server with a vision projector, vLLM, any OpenAI-style vision server
+            user = [{"type": "image_url", "image_url": {"url": f"data:{mt};base64,{base64.b64encode(b).decode()}"}}
+                    for mt, b in req.images] + [{"type": "text", "text": req.prompt}]
         body = {
             "model": self.model,
-            "messages": [{"role": "system", "content": req.system}, {"role": "user", "content": req.prompt}],
+            "messages": [{"role": "system", "content": req.system}, {"role": "user", "content": user}],
             "max_tokens": self.max_tokens or req.max_tokens,
         }
         if self.temperature is not None:

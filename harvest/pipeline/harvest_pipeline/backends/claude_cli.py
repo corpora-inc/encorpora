@@ -7,6 +7,7 @@ usage percentage the statusline writes and stops the run above a threshold.
 
 from __future__ import annotations
 
+import base64
 import json
 import os
 import subprocess
@@ -40,27 +41,41 @@ class ClaudeCliBackend(Backend):
         if pct is not None and float(pct) > self.max_week_pct:
             raise UsageLimitReached(f"seven-day usage {pct}% > {self.max_week_pct}%; stopping bulk generation")
 
+    supports_images = True
+
     def command(self, req: Request) -> list[str]:
+        # page images go in as content blocks, which needs the stream-json input (and output) format
+        fmt = ["--input-format", "stream-json", "--output-format", "stream-json", "--verbose"] if req.images \
+            else ["--output-format", "json"]
         cmd = [self.binary, "-p", "--setting-sources", "", "--strict-mcp-config", "--disable-slash-commands",
                "--tools", "", "--no-session-persistence", "--model", self.model,
-               "--system-prompt", req.system, "--json-schema", json.dumps(req.schema),
-               "--output-format", "json"]
+               "--system-prompt", req.system, "--json-schema", json.dumps(req.schema), *fmt]
         if self.effort:
             cmd += ["--effort", self.effort]
         return cmd
 
     def complete(self, req: Request) -> Response:
         self.workdir.mkdir(parents=True, exist_ok=True)
+        stdin = req.prompt
+        if req.images:
+            content = [{"type": "image", "source": {"type": "base64", "media_type": mt,
+                                                    "data": base64.b64encode(b).decode()}} for mt, b in req.images]
+            content.append({"type": "text", "text": req.prompt})
+            stdin = json.dumps({"type": "user", "message": {"role": "user", "content": content}}) + "\n"
         try:
-            proc = subprocess.run(self.command(req), input=req.prompt, capture_output=True, text=True,
+            proc = subprocess.run(self.command(req), input=stdin, capture_output=True, text=True,
                                   cwd=self.workdir, timeout=self.timeout)
         except subprocess.TimeoutExpired:
             raise BackendError(f"claude timed out after {self.timeout}s")
         except FileNotFoundError:
             raise BackendError(f"{self.binary} not found", retryable=False)
         try:
-            data = json.loads(proc.stdout)
-        except json.JSONDecodeError:
+            if req.images:   # stream-json: the last `result` event carries what --output-format json would
+                events = [json.loads(x) for x in proc.stdout.splitlines() if x.strip().startswith("{")]
+                data = next(e for e in reversed(events) if e.get("type") == "result")
+            else:
+                data = json.loads(proc.stdout)
+        except (json.JSONDecodeError, StopIteration):
             raise BackendError(f"claude exit {proc.returncode}: {proc.stderr.strip()[:400] or proc.stdout[:400]}")
         if data.get("is_error"):
             raise BackendError(f"claude error: {str(data.get('result'))[:400]}")

@@ -32,6 +32,16 @@ class AnthropicBackend(Backend):
             self._client = anthropic.Anthropic()
         return self._client
 
+    supports_images = True
+
+    @staticmethod
+    def content(req: Request):
+        if not req.images:
+            return req.prompt
+        import base64
+        return [{"type": "image", "source": {"type": "base64", "media_type": mt, "data": base64.b64encode(b).decode()}}
+                for mt, b in req.images] + [{"type": "text", "text": req.prompt}]
+
     def complete(self, req: Request) -> Response:
         output_config = {"format": {"type": "json_schema", "schema": req.schema}}
         if self.effort:
@@ -39,7 +49,7 @@ class AnthropicBackend(Backend):
         try:
             msg = self.client().messages.create(
                 model=self.model, max_tokens=req.max_tokens, system=req.system,
-                messages=[{"role": "user", "content": req.prompt}], output_config=output_config,
+                messages=[{"role": "user", "content": self.content(req)}], output_config=output_config,
             )
         except BackendError:
             raise

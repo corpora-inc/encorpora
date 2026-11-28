@@ -1,0 +1,43 @@
+# The download-independent proof: a short maintenance manual we wrote ourselves (the fictional
+# Model 40 utility pump of harvest/core/src/fixture_maint.rs), drawn with the hard layout of real
+# manuals by make_pump40.py. Because we wrote it, the right pack is known exactly
+# (pump40-expected.json) and `harvest-bake maint score` reports precision and recall against it.
+corpus_id: maint-proof-pump40
+pack_id: pump40-proof
+lang: en
+version: 2026.11.28-1
+
+sources:
+  - id: m40
+    title: Model 40 Utility Pump Field Maintenance Manual (fictional, harvest proof)
+    publisher: Harvest proof (fictional content)
+    url: https://example.invalid/model-40
+    license: fictional-test-content
+    distribution: none printed (fictional proof document)
+    edition: Revision C, Change 1
+    parser: maint-pdf
+    parser_options: {id_prefix: m40, citation_prefix: ""}
+    fetch: {kind: file, path: pump40-manual.pdf}
+
+maint:
+  release_arm: sonnet-img
+  cache_dir: cache
+  ledger: cache/ledger.jsonl
+  image_px: 1400
+  concurrency: 2
+  arms:
+    # frontier, reading the page images as well as the page model
+    sonnet-img: {author: {backend: claude-cli, model: sonnet, max_week_pct: 60, timeout: 1800}, images: true}
+    # frontier, page model text and geometry only (separates "which model" from "with the image")
+    sonnet-text: {author: {backend: claude-cli, model: sonnet, max_week_pct: 60, timeout: 1800}, images: false}
+    # open weight on our own hardware (no image: the lab has no vision projector for these files)
+    gemma4-26b: {author: {backend: openai-compatible, model: gemma-4-26b-a4b, base_url: "http://127.0.0.1:8093/v1",
+                          mode: json_schema, timeout: 3600, temperature: 0}, images: false}
+    gpt-oss-120b: {author: {backend: openai-compatible, model: gpt-oss-120b, base_url: "http://127.0.0.1:8093/v1",
+                            mode: json_schema, timeout: 3600, reasoning_effort: high}, images: false}
+  roles: [apprentice, technician, expert]
+  signal_kinds:
+    - {kind: j1939.dm1, label: "Engine fault code (SPN/FMI)", example: "spn:110/fmi:0"}
+    - {kind: display, label: "Displayed code", example: "E21"}
+
+embedder: {kind: hash}

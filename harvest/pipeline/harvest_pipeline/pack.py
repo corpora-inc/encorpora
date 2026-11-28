@@ -69,6 +69,13 @@ def _chunks(stage: Stage, dst: sqlite3.Connection) -> list[tuple[str, str, str, 
         out.append((f"e:{r[0]}:{r[1]}", "explanation", f"{r[0]}:{r[1]}", r[2], sec_title(r[0])))
     for r in dst.execute("SELECT answer_id, question FROM answer ORDER BY answer_id"):
         out.append((f"a:{r[0]}", "answer", r[0], r[1], None))
+    if schema.has_table(dst, "symptom"):
+        for r in dst.execute("SELECT symptom_id, title, synonyms FROM symptom ORDER BY symptom_id"):
+            try:
+                syn = [x for x in json.loads(r[2] or "[]") if isinstance(x, str)]
+            except ValueError:
+                syn = []
+            out.append((f"y:{r[0]}", "symptom", r[0], ". ".join([r[1], *syn]), r[1]))
     for r in dst.execute("SELECT s.proc_id, s.ord, s.text, s.detail, p.title FROM proc_step s "
                          "JOIN procedure p USING (proc_id) ORDER BY s.proc_id, s.ord"):
         try:
@@ -88,21 +95,74 @@ def _node_texts(dst: sqlite3.Connection) -> list[tuple[str, str, str]]:
     return [(r[0], r[1], "\n".join(x for x in r[1:] if x)) for r in rows]
 
 
+def has_maint_rows(src: sqlite3.Connection) -> bool:
+    """A stage carries maintenance content when any maintenance table has a row."""
+    return any(schema.has_table(src, t) and src.execute(f"SELECT 1 FROM {t} LIMIT 1").fetchone()
+               for t in schema.maint_tables())
+
+
+# Release filters for the maintenance tables (CONTRACT "Maintenance tables"). Generated rows need a
+# passing provenance; rows without a provenance column ship with their parent. A tree ships whole.
+_PASS = "prov_id IN (SELECT prov_id FROM temp._pass)"   # the stage's passing ids, copied in first
+MAINT_ORDER = ("section_loc", "asset", "section_asset", "fault_tree", "fault_node", "fault_edge", "fault_facet",
+               "requirement", "symptom", "signal_map", "equip_attr", "equip_ident", "history", "failure_mode")
+
+
+def _maint_filter(table: str, release: bool) -> str | None:
+    if table in ("section_loc", "section_asset"):
+        return "section_id IN (SELECT section_id FROM section)"
+    if not release:
+        return None
+    return {
+        "fault_tree": _PASS,
+        "fault_node": f"{_PASS} AND tree_id IN (SELECT tree_id FROM fault_tree)",
+        "fault_edge": "from_node IN (SELECT node_id FROM fault_node) AND to_node IN (SELECT node_id FROM fault_node)",
+        "fault_facet": "node_id IN (SELECT node_id FROM fault_node)",
+        "requirement": f"{_PASS} AND ((ref_kind='procedure' AND ref_id IN (SELECT proc_id FROM procedure))"
+                       " OR (ref_kind='fault_tree' AND ref_id IN (SELECT tree_id FROM fault_tree))"
+                       " OR (ref_kind='fault_node' AND ref_id IN (SELECT node_id FROM fault_node)))",
+        "symptom": f"{_PASS} AND tree_id IN (SELECT tree_id FROM fault_tree)",
+        "signal_map": f"{_PASS} AND tree_id IN (SELECT tree_id FROM fault_tree)"
+                      " AND (node_id IS NULL OR node_id IN (SELECT node_id FROM fault_node))",
+    }.get(table)
+
+
+def _copy_filtered(src: sqlite3.Connection, dst: sqlite3.Connection, table: str, where: str | None) -> int:
+    """Copy rows of `table` whose `where` holds in the destination (it may name tables copied before)."""
+    cols = schema.table_columns(src, table)
+    rows = src.execute(f"SELECT {','.join(cols)} FROM {table} ORDER BY {','.join(cols[:3])}").fetchall()
+    dst.execute(f"CREATE TEMP TABLE _in AS SELECT * FROM main.{table} WHERE 0")
+    dst.executemany(f"INSERT INTO _in ({','.join(cols)}) VALUES ({','.join('?' * len(cols))})", [tuple(r) for r in rows])
+    n = dst.execute(f"INSERT INTO main.{table} ({','.join(cols)}) SELECT {','.join(cols)} FROM _in"
+                    + (f" WHERE {where}" if where else "")).rowcount
+    dst.execute("DROP TABLE _in")
+    return n
+
+
 def write_pack(stage: Stage, out_dir: Path, pack_id: str, version: str, corpus_id: str,
                embedder: Embedder | None, release: bool = True, bake_backends: dict | None = None,
-               built_at: str | None = None, lang: str = "en", extra_meta: dict[str, str] | None = None) -> dict:
+               built_at: str | None = None, lang: str = "en", extra_meta: dict[str, str] | None = None,
+               files: list[tuple[str, Path]] | None = None) -> dict:
     """`extra_meta`: more pack_meta keys (app data, CONTRACT "Content read API"); they may not
-    replace a key the pack itself sets."""
+    replace a key the pack itself sets. `files`: (path in the pack, file on disk) to ship beside
+    the database and list in the signed manifest (page images, figures)."""
     out_dir.mkdir(parents=True, exist_ok=True)
     name = f"{pack_id}-{version}.sqlite"
     path = out_dir / name
     if path.exists():
         path.unlink()
-    dst = sqlite3.connect(str(path))
-    schema.create(dst)
     src = stage.conn
+    maint = has_maint_rows(src)
+    dst = sqlite3.connect(str(path))
+    schema.create(dst, maint=maint)
     counts: dict[str, int] = {}
     for t in PLAIN:
+        if t == "xref" and maint and release:
+            # a guard (warning, caution, note -> what it guards) is a finding: it ships when it passed
+            counts[t] = _copy(src, dst, t, where="kind <> 'guards' OR EXISTS (SELECT 1 FROM _row_prov rp "
+                              "JOIN provenance p ON p.prov_id = rp.prov_id WHERE rp.tbl='xref' AND p.verdict='pass' "
+                              "AND rp.row_key = json_array(xref.from_id, xref.to_id, xref.kind))")
+            continue
         counts[t] = _copy(src, dst, t, order="ord" if t == "section" else None)
 
     ok = "prov_id IN (SELECT prov_id FROM provenance WHERE verdict='pass')" if release else None
@@ -119,14 +179,20 @@ def write_pack(stage: Stage, out_dir: Path, pack_id: str, version: str, corpus_i
     else:
         where = None
     counts["applies_to"] = _copy(src, dst, "applies_to", where=where)
+    if maint:
+        dst.execute("CREATE TEMP TABLE _pass (prov_id TEXT PRIMARY KEY)")
+        dst.executemany("INSERT INTO temp._pass VALUES (?)",
+                        src.execute("SELECT prov_id FROM provenance WHERE verdict='pass'").fetchall())
+        for t in MAINT_ORDER:
+            counts[t] = _copy_filtered(src, dst, t, _maint_filter(t, release))
     # provenance of what ships
     used = set()
-    for t in schema.GENERATED:
+    for t in schema.GENERATED + (("fault_tree", "fault_node", "requirement", "symptom", "signal_map") if maint else ()):
         used.update(r[0] for r in dst.execute(f"SELECT prov_id FROM {t}"))
     if release:
         used.update(r[0] for r in src.execute(
             "SELECT rp.prov_id FROM _row_prov rp JOIN provenance p ON p.prov_id=rp.prov_id "
-            "WHERE rp.tbl='applies_to' AND p.verdict='pass'"))
+            "WHERE rp.tbl IN ('applies_to', 'xref') AND p.verdict='pass'"))
         prov_rows = [tuple(r) for r in src.execute("SELECT * FROM provenance ORDER BY prov_id") if r[0] in used]
     else:
         prov_rows = [tuple(r) for r in src.execute("SELECT * FROM provenance ORDER BY prov_id")]
@@ -175,8 +241,14 @@ def write_pack(stage: Stage, out_dir: Path, pack_id: str, version: str, corpus_i
     dst.close()
 
     data = path.read_bytes()
-    manifest = {"pack_id": pack_id, "version": version, "schema_version": SCHEMA_VERSION,
-                "files": [{"path": name, "sha256": sha256_bytes(data), "bytes": len(data)}]}
+    entries = [{"path": name, "sha256": sha256_bytes(data), "bytes": len(data)}]
+    for rel, src_file in files or []:
+        target = out_dir / rel
+        target.parent.mkdir(parents=True, exist_ok=True)
+        blob = Path(src_file).read_bytes()
+        target.write_bytes(blob)
+        entries.append({"path": rel, "sha256": sha256_bytes(blob), "bytes": len(blob)})
+    manifest = {"pack_id": pack_id, "version": version, "schema_version": SCHEMA_VERSION, "files": entries}
     key = load_private_key()
     if key is not None:
         manifest = sign_manifest(manifest, key)
