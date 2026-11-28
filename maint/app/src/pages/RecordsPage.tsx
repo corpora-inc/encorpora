@@ -5,7 +5,7 @@ import type { AssetRegistry, AuditRecord, ChainReport, DeviceInfo, FieldNote } f
 import { Records } from "../screens/Records.tsx";
 import { LINK_LABEL, linkState, refusalText } from "../ui/link.ts";
 import { useFleet } from "../store/fleet.ts";
-import { useModel } from "../store/model.ts";
+import { useModel, useModelOn } from "../store/model.ts";
 import { packOf, usePack } from "../store/pack.ts";
 import { applyTheme, useSettings } from "../store/settings.ts";
 
@@ -29,7 +29,8 @@ export function RecordsPage() {
   const sync = useFleet((s) => s.sync);
   const packs = usePack((s) => s.packs);
   const llm = useModel((s) => s.status);
-  const { model: modelOn, theme, setModel, setTheme } = useSettings();
+  const { theme, setModel, setTheme } = useSettings();
+  const modelOn = useModelOn();
   const [notes, setNotes] = useState<FieldNote[] | null>(null);
   const [audit, setAudit] = useState<AuditRecord[] | null>(null);
   const [chain, setChain] = useState<ChainReport | null>(null);

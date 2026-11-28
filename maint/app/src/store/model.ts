@@ -22,12 +22,16 @@ export const useModel = create<{ status: LlmStatus | null; refresh(): Promise<vo
   },
 }));
 
-/** The three model-assisted calls are made only when a model is configured and the switch is on. */
+/**
+ * The three model-assisted calls are made only when the host configuration names a model and
+ * nobody on this device has turned it off: the switch starts On wherever a model is set up.
+ */
+export const isOn = (choice: boolean | null, configured: boolean) => configured && (choice ?? true);
 export function modelOn(): boolean {
-  return useSettings.getState().model && !!useModel.getState().status?.configured;
+  return isOn(useSettings.getState().model, !!useModel.getState().status?.configured);
 }
 export const useModelOn = () => {
-  const on = useSettings((s) => s.model);
+  const choice = useSettings((s) => s.model);
   const configured = useModel((s) => !!s.status?.configured);
-  return on && configured;
+  return isOn(choice, configured);
 };

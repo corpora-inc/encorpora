@@ -10,8 +10,11 @@ interface Settings {
   level: string | null;
   /** The unit everything is filtered to, until another is opened. */
   activeUnit: string | null;
-  /** On-device model as an interface only; off by default and never required. */
-  model: boolean;
+  /**
+   * A person's choice about using the model on this device; null: none made, so the
+   * deployment decides (a model named in the host configuration is used). Never required.
+   */
+  model: boolean | null;
   /**
    * The hub sign-in on this screen (development tokens; a deployment signs in
    * through its gateway instead). The one place the app keeps who reviews.
@@ -30,7 +33,7 @@ export const useSettings = create<Settings>()(
       theme: "system",
       level: null,
       activeUnit: null,
-      model: false,
+      model: null,
       hubToken: null,
       setHubToken: (hubToken) => set({ hubToken }),
       setTheme: (theme) => set({ theme }),
@@ -38,7 +41,13 @@ export const useSettings = create<Settings>()(
       setActiveUnit: (activeUnit) => set({ activeUnit }),
       setModel: (model) => set({ model }),
     }),
-    { name: "maint.settings", storage: jsonStorage, version: 2, migrate: (p) => p as Settings },
+    {
+      name: "maint.settings",
+      storage: jsonStorage,
+      version: 3,
+      // Before version 3 "off" was only the default, never a person's choice: the deployment decides now.
+      migrate: (p, v) => (v < 3 ? { ...(p as Settings), model: null } : p) as Settings,
+    },
   ),
 );
 

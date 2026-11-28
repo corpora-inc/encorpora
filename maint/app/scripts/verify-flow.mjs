@@ -119,8 +119,14 @@ try {
   await page.goto(`${base}/records`);
   await page.locator("input[type=file]").nth(1).setInputFiles(path.join(samples, "assets.json"));
   await page.getByText(/Added 3 and updated 0 units/).waitFor();
-  // The model (the scripted endpoint in tests) is set up on this device; the switch turns its use on.
-  await page.getByRole("radiogroup", { name: "Use the model" }).getByRole("radio", { name: "On" }).click();
+  // The model (the scripted endpoint in tests) is set up for this device, so its use starts on;
+  // a person can turn it off, and the choice is remembered across a reload.
+  const useModel = page.getByRole("radiogroup", { name: "Use the model" });
+  assert.equal(await useModel.getByRole("radio", { name: "On" }).getAttribute("aria-checked"), "true");
+  await useModel.getByRole("radio", { name: "Off" }).click();
+  await page.reload();
+  assert.equal(await useModel.getByRole("radio", { name: "Off" }).getAttribute("aria-checked"), "true");
+  await useModel.getByRole("radio", { name: "On" }).click();
   await page.locator('[data-reachable="unknown"]').waitFor();
 
   // Identify a new unit from its plate.
