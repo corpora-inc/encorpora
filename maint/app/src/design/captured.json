@@ -3,6 +3,15 @@
   "api_version": "harvest-api/1",
   "built_at": "2026-03-01T00:00:00Z",
   "corpus_id": "model-40-manual",
+  "dense": {
+   "active": true,
+   "host_embed_dim": 256,
+   "host_embedder_id": "hashing-v1-256",
+   "pack_embed_dim": 256,
+   "pack_embedder_id": "hashing-v1-256",
+   "pack_vectors": 40,
+   "reason": null
+  },
   "equipment": [
    {
     "aliases": [
@@ -217,37 +226,37 @@
    "attrs": {
     "location": "North yard"
    },
-   "created_at": "2026-11-28T09:15:39.955Z",
+   "created_at": "2026-11-28T09:32:51.150Z",
    "equip_id": "pump40-diesel",
    "hours": 1840.5,
    "miles": null,
    "name": "Pump 101",
    "serial": "P40D-2310",
-   "updated_at": "2026-11-28T09:15:39.955Z"
+   "updated_at": "2026-11-28T09:32:51.150Z"
   },
   {
    "asset_id": "unit-102",
    "attrs": {},
-   "created_at": "2026-11-28T09:15:39.955Z",
+   "created_at": "2026-11-28T09:32:51.150Z",
    "equip_id": "pump40-diesel",
    "hours": 920,
    "miles": null,
    "name": "Pump 102",
    "serial": "P40D-3115",
-   "updated_at": "2026-11-28T09:15:39.955Z"
+   "updated_at": "2026-11-28T09:32:51.150Z"
   },
   {
    "asset_id": "unit-201",
    "attrs": {
     "location": "Pump station 2"
    },
-   "created_at": "2026-11-28T09:15:39.955Z",
+   "created_at": "2026-11-28T09:32:51.150Z",
    "equip_id": "pump40-electric",
    "hours": 4410,
    "miles": null,
    "name": "Pump 201",
    "serial": "P40E-1450",
-   "updated_at": "2026-11-28T09:15:39.955Z"
+   "updated_at": "2026-11-28T09:32:51.150Z"
   }
  ],
  "resolve": {
@@ -316,8 +325,12 @@
    "hits": [
     {
      "confidence": "confident",
+     "cosine": 0.581541,
      "coverage": 1,
+     "lexical": 1,
      "score": 0.832617,
+     "strong_hits": 3,
+     "strong_query_words": 3,
      "symptom": {
       "applies_to": [],
       "lang": "en",
@@ -349,14 +362,24 @@
      ]
     }
    ],
-   "signals": null
+   "signals": null,
+   "thresholds": {
+    "coverage": 0.5,
+    "dense": 0.85,
+    "dense_alone": 0.5
+   }
   },
   "none": {
    "confidence": "none",
    "dense": true,
    "equip_id": "pump40-diesel",
    "hits": [],
-   "signals": null
+   "signals": null,
+   "thresholds": {
+    "coverage": 0.5,
+    "dense": 0.85,
+    "dense_alone": 0.5
+   }
   },
   "closest": {
    "confidence": "closest",
@@ -365,8 +388,12 @@
    "hits": [
     {
      "confidence": "closest",
+     "cosine": 0.185344,
      "coverage": 0.5,
+     "lexical": 0.5,
      "score": 0.374138,
+     "strong_hits": 1,
+     "strong_query_words": 2,
      "symptom": {
       "applies_to": [],
       "lang": "en",
@@ -397,8 +424,12 @@
     },
     {
      "confidence": "closest",
+     "cosine": 0.263184,
      "coverage": 0.5,
+     "lexical": 0.4,
      "score": 0.345274,
+     "strong_hits": 1,
+     "strong_query_words": 2,
      "symptom": {
       "applies_to": [],
       "lang": "en",
@@ -428,7 +459,12 @@
      ]
     }
    ],
-   "signals": null
+   "signals": null,
+   "thresholds": {
+    "coverage": 0.5,
+    "dense": 0.85,
+    "dense_alone": 0.5
+   }
   },
   "codes": {
    "confidence": "confident",
@@ -437,8 +473,12 @@
    "hits": [
     {
      "confidence": "confident",
+     "cosine": null,
      "coverage": 0,
+     "lexical": 0,
      "score": 1,
+     "strong_hits": 0,
+     "strong_query_words": 0,
      "symptom": {
       "applies_to": [],
       "lang": "en",
@@ -498,6 +538,11 @@
      "tree_id": "t-nocrank"
     },
     "unmatched": []
+   },
+   "thresholds": {
+    "coverage": 0.5,
+    "dense": 0.85,
+    "dense_alone": 0.5
    }
   }
  },
@@ -510,9 +555,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-ab598b8fcf623126b2231db68b2219ab",
+    "job_id": "job-b1088214c9324c1e6486592f95470eb6",
     "level": "apprentice",
-    "opened_at": "2026-11-28T09:15:39.981Z",
+    "opened_at": "2026-11-28T09:32:51.176Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -731,9 +776,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-ab598b8fcf623126b2231db68b2219ab",
+    "job_id": "job-b1088214c9324c1e6486592f95470eb6",
     "level": "apprentice",
-    "opened_at": "2026-11-28T09:15:39.981Z",
+    "opened_at": "2026-11-28T09:32:51.176Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -742,7 +787,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T09:15:39.989Z",
+      "at": "2026-11-28T09:32:51.183Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -942,7 +987,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T09:15:39.989Z",
+      "at": "2026-11-28T09:32:51.183Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -1061,9 +1106,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-ab598b8fcf623126b2231db68b2219ab",
+    "job_id": "job-b1088214c9324c1e6486592f95470eb6",
     "level": "apprentice",
-    "opened_at": "2026-11-28T09:15:39.981Z",
+    "opened_at": "2026-11-28T09:32:51.176Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -1072,7 +1117,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T09:15:39.989Z",
+      "at": "2026-11-28T09:32:51.183Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -1275,7 +1320,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T09:15:39.989Z",
+      "at": "2026-11-28T09:32:51.183Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -1394,9 +1439,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-ab598b8fcf623126b2231db68b2219ab",
+    "job_id": "job-b1088214c9324c1e6486592f95470eb6",
     "level": "apprentice",
-    "opened_at": "2026-11-28T09:15:39.981Z",
+    "opened_at": "2026-11-28T09:32:51.176Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -1405,7 +1450,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T09:15:39.989Z",
+      "at": "2026-11-28T09:32:51.183Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -1419,7 +1464,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T09:15:40.002Z",
+      "at": "2026-11-28T09:32:51.195Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -1627,7 +1672,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T09:15:39.989Z",
+      "at": "2026-11-28T09:32:51.183Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -1638,7 +1683,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T09:15:40.002Z",
+      "at": "2026-11-28T09:32:51.195Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -2040,9 +2085,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-ab598b8fcf623126b2231db68b2219ab",
+    "job_id": "job-b1088214c9324c1e6486592f95470eb6",
     "level": "apprentice",
-    "opened_at": "2026-11-28T09:15:39.981Z",
+    "opened_at": "2026-11-28T09:32:51.176Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -2051,7 +2096,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T09:15:39.989Z",
+      "at": "2026-11-28T09:32:51.183Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -2065,7 +2110,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T09:15:40.002Z",
+      "at": "2026-11-28T09:32:51.195Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -2079,7 +2124,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T09:15:40.012Z",
+      "at": "2026-11-28T09:32:51.204Z",
       "label": "Below 11.5 V",
       "next_node": "nc.2a",
       "node_id": "nc.2",
@@ -2228,7 +2273,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T09:15:39.989Z",
+      "at": "2026-11-28T09:32:51.183Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -2239,7 +2284,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T09:15:40.002Z",
+      "at": "2026-11-28T09:32:51.195Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -2250,7 +2295,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T09:15:40.012Z",
+      "at": "2026-11-28T09:32:51.204Z",
       "label": "Below 11.5 V",
       "next_node": "nc.2a",
       "node_id": "nc.2",
@@ -2357,9 +2402,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-ab598b8fcf623126b2231db68b2219ab",
+    "job_id": "job-b1088214c9324c1e6486592f95470eb6",
     "level": "apprentice",
-    "opened_at": "2026-11-28T09:15:39.981Z",
+    "opened_at": "2026-11-28T09:32:51.176Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -2368,7 +2413,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T09:15:39.989Z",
+      "at": "2026-11-28T09:32:51.183Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -2382,7 +2427,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T09:15:40.002Z",
+      "at": "2026-11-28T09:32:51.195Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -2396,7 +2441,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T09:15:40.012Z",
+      "at": "2026-11-28T09:32:51.204Z",
       "label": "Below 11.5 V",
       "next_node": "nc.2a",
       "node_id": "nc.2",
@@ -2404,7 +2449,7 @@
       "outcome": null,
       "photos": [],
       "seq": 3,
-      "superseded_at": "2026-11-28T09:15:40.020Z",
+      "superseded_at": "2026-11-28T09:32:51.211Z",
       "tree_id": "t-nocrank",
       "unit": "V",
       "value": 10.8
@@ -2604,7 +2649,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T09:15:39.989Z",
+      "at": "2026-11-28T09:32:51.183Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -2615,7 +2660,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T09:15:40.002Z",
+      "at": "2026-11-28T09:32:51.195Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -3017,9 +3062,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-ab598b8fcf623126b2231db68b2219ab",
+    "job_id": "job-b1088214c9324c1e6486592f95470eb6",
     "level": "apprentice",
-    "opened_at": "2026-11-28T09:15:39.981Z",
+    "opened_at": "2026-11-28T09:32:51.176Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -3028,7 +3073,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T09:15:39.989Z",
+      "at": "2026-11-28T09:32:51.183Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -3042,7 +3087,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T09:15:40.002Z",
+      "at": "2026-11-28T09:32:51.195Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -3056,7 +3101,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T09:15:40.012Z",
+      "at": "2026-11-28T09:32:51.204Z",
       "label": "Below 11.5 V",
       "next_node": "nc.2a",
       "node_id": "nc.2",
@@ -3064,13 +3109,13 @@
       "outcome": null,
       "photos": [],
       "seq": 3,
-      "superseded_at": "2026-11-28T09:15:40.020Z",
+      "superseded_at": "2026-11-28T09:32:51.211Z",
       "tree_id": "t-nocrank",
       "unit": "V",
       "value": 10.8
      },
      {
-      "at": "2026-11-28T09:15:40.030Z",
+      "at": "2026-11-28T09:32:51.221Z",
       "label": "12.5 V or more",
       "next_node": "nc.3",
       "node_id": "nc.2",
@@ -3084,7 +3129,7 @@
       "value": 12.7
      },
      {
-      "at": "2026-11-28T09:15:40.037Z",
+      "at": "2026-11-28T09:32:51.227Z",
       "label": "Yes",
       "next_node": "nc.4",
       "node_id": "nc.3",
@@ -3203,7 +3248,7 @@
       },
       "note_id": "fn-relay-bracket",
       "pack_id": "pump40",
-      "received_at": "2026-11-28T09:15:39.961Z",
+      "received_at": "2026-11-28T09:32:51.155Z",
       "scope": {
        "equip_id": "pump40-diesel",
        "node_id": "nc.4",
@@ -3321,7 +3366,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T09:15:39.989Z",
+      "at": "2026-11-28T09:32:51.183Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -3332,7 +3377,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T09:15:40.002Z",
+      "at": "2026-11-28T09:32:51.195Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -3343,7 +3388,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T09:15:40.030Z",
+      "at": "2026-11-28T09:32:51.221Z",
       "label": "12.5 V or more",
       "next_node": "nc.3",
       "node_id": "nc.2",
@@ -3354,7 +3399,7 @@
       "value": 12.7
      },
      {
-      "at": "2026-11-28T09:15:40.037Z",
+      "at": "2026-11-28T09:32:51.227Z",
       "label": "Yes",
       "next_node": "nc.4",
       "node_id": "nc.3",
@@ -3483,9 +3528,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-ab598b8fcf623126b2231db68b2219ab",
+    "job_id": "job-b1088214c9324c1e6486592f95470eb6",
     "level": "apprentice",
-    "opened_at": "2026-11-28T09:15:39.981Z",
+    "opened_at": "2026-11-28T09:32:51.176Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -3494,7 +3539,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T09:15:39.989Z",
+      "at": "2026-11-28T09:32:51.183Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -3508,7 +3553,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T09:15:40.002Z",
+      "at": "2026-11-28T09:32:51.195Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -3522,7 +3567,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T09:15:40.012Z",
+      "at": "2026-11-28T09:32:51.204Z",
       "label": "Below 11.5 V",
       "next_node": "nc.2a",
       "node_id": "nc.2",
@@ -3530,13 +3575,13 @@
       "outcome": null,
       "photos": [],
       "seq": 3,
-      "superseded_at": "2026-11-28T09:15:40.020Z",
+      "superseded_at": "2026-11-28T09:32:51.211Z",
       "tree_id": "t-nocrank",
       "unit": "V",
       "value": 10.8
      },
      {
-      "at": "2026-11-28T09:15:40.030Z",
+      "at": "2026-11-28T09:32:51.221Z",
       "label": "12.5 V or more",
       "next_node": "nc.3",
       "node_id": "nc.2",
@@ -3550,7 +3595,7 @@
       "value": 12.7
      },
      {
-      "at": "2026-11-28T09:15:40.037Z",
+      "at": "2026-11-28T09:32:51.227Z",
       "label": "Yes",
       "next_node": "nc.4",
       "node_id": "nc.3",
@@ -3564,7 +3609,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T09:15:40.044Z",
+      "at": "2026-11-28T09:32:51.235Z",
       "label": "Pass",
       "next_node": "nc.4p",
       "node_id": "nc.4",
@@ -3737,7 +3782,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T09:15:39.989Z",
+      "at": "2026-11-28T09:32:51.183Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -3748,7 +3793,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T09:15:40.002Z",
+      "at": "2026-11-28T09:32:51.195Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -3759,7 +3804,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T09:15:40.030Z",
+      "at": "2026-11-28T09:32:51.221Z",
       "label": "12.5 V or more",
       "next_node": "nc.3",
       "node_id": "nc.2",
@@ -3770,7 +3815,7 @@
       "value": 12.7
      },
      {
-      "at": "2026-11-28T09:15:40.037Z",
+      "at": "2026-11-28T09:32:51.227Z",
       "label": "Yes",
       "next_node": "nc.4",
       "node_id": "nc.3",
@@ -3781,7 +3826,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T09:15:40.044Z",
+      "at": "2026-11-28T09:32:51.235Z",
       "label": "Pass",
       "next_node": "nc.4p",
       "node_id": "nc.4",
@@ -3881,9 +3926,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-8e0eb36c20b2d70a33f39107960f5219",
+    "job_id": "job-fd3bf324c7d0c9dc1a1df9841c1a95f3",
     "level": "apprentice",
-    "opened_at": "2026-11-28T09:15:40.051Z",
+    "opened_at": "2026-11-28T09:32:51.242Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -3892,7 +3937,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T09:15:40.058Z",
+      "at": "2026-11-28T09:32:51.249Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -3906,7 +3951,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T09:15:40.065Z",
+      "at": "2026-11-28T09:32:51.255Z",
       "label": "No",
       "next_node": "nc.1a",
       "node_id": "nc.1",
@@ -3929,9 +3974,9 @@
     "flag": true,
     "matches": [
      {
-      "date": "2026-11-28T09:15:39.981Z",
+      "date": "2026-11-28T09:32:51.176Z",
       "days_before": 0,
-      "job_id": "job-ab598b8fcf623126b2231db68b2219ab",
+      "job_id": "job-b1088214c9324c1e6486592f95470eb6",
       "kind": "job",
       "reason": "same_symptom",
       "symptom_id": "s-nocrank",
@@ -4064,7 +4109,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T09:15:40.058Z",
+      "at": "2026-11-28T09:32:51.249Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -4075,7 +4120,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T09:15:40.065Z",
+      "at": "2026-11-28T09:32:51.255Z",
       "label": "No",
       "next_node": "nc.1a",
       "node_id": "nc.1",
@@ -4206,9 +4251,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-8e0eb36c20b2d70a33f39107960f5219",
+    "job_id": "job-fd3bf324c7d0c9dc1a1df9841c1a95f3",
     "level": "apprentice",
-    "opened_at": "2026-11-28T09:15:40.051Z",
+    "opened_at": "2026-11-28T09:32:51.242Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -4217,7 +4262,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T09:15:40.058Z",
+      "at": "2026-11-28T09:32:51.249Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -4231,7 +4276,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T09:15:40.065Z",
+      "at": "2026-11-28T09:32:51.255Z",
       "label": "No",
       "next_node": "nc.1a",
       "node_id": "nc.1",
@@ -4245,7 +4290,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T09:15:40.072Z",
+      "at": "2026-11-28T09:32:51.262Z",
       "label": "Cranks",
       "next_node": "nc.end",
       "node_id": "nc.1a",
@@ -4268,9 +4313,9 @@
     "flag": true,
     "matches": [
      {
-      "date": "2026-11-28T09:15:39.981Z",
+      "date": "2026-11-28T09:32:51.176Z",
       "days_before": 0,
-      "job_id": "job-ab598b8fcf623126b2231db68b2219ab",
+      "job_id": "job-b1088214c9324c1e6486592f95470eb6",
       "kind": "job",
       "reason": "same_symptom",
       "symptom_id": "s-nocrank",
@@ -4383,7 +4428,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T09:15:40.058Z",
+      "at": "2026-11-28T09:32:51.249Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -4394,7 +4439,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T09:15:40.065Z",
+      "at": "2026-11-28T09:32:51.255Z",
       "label": "No",
       "next_node": "nc.1a",
       "node_id": "nc.1",
@@ -4405,7 +4450,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T09:15:40.072Z",
+      "at": "2026-11-28T09:32:51.262Z",
       "label": "Cranks",
       "next_node": "nc.end",
       "node_id": "nc.1a",
@@ -4507,9 +4552,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-19d766e5ba77107f8006934840f1f565",
+    "job_id": "job-988a19782014e3747a0693007f87e2a0",
     "level": "apprentice",
-    "opened_at": "2026-11-28T09:15:40.079Z",
+    "opened_at": "2026-11-28T09:32:51.269Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -4518,7 +4563,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T09:15:40.086Z",
+      "at": "2026-11-28T09:32:51.277Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -4532,7 +4577,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T09:15:40.092Z",
+      "at": "2026-11-28T09:32:51.283Z",
       "label": "No",
       "next_node": "nc.1a",
       "node_id": "nc.1",
@@ -4546,7 +4591,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T09:15:40.110Z",
+      "at": "2026-11-28T09:32:51.290Z",
       "label": "Temperature lamp on",
       "next_node": "nc.1g",
       "node_id": "nc.1a",
@@ -4569,18 +4614,18 @@
     "flag": true,
     "matches": [
      {
-      "date": "2026-11-28T09:15:40.051Z",
+      "date": "2026-11-28T09:32:51.242Z",
       "days_before": 0,
-      "job_id": "job-8e0eb36c20b2d70a33f39107960f5219",
+      "job_id": "job-fd3bf324c7d0c9dc1a1df9841c1a95f3",
       "kind": "job",
       "reason": "same_symptom",
       "symptom_id": "s-nocrank",
       "system": "starting"
      },
      {
-      "date": "2026-11-28T09:15:39.981Z",
+      "date": "2026-11-28T09:32:51.176Z",
       "days_before": 0,
-      "job_id": "job-ab598b8fcf623126b2231db68b2219ab",
+      "job_id": "job-b1088214c9324c1e6486592f95470eb6",
       "kind": "job",
       "reason": "same_symptom",
       "symptom_id": "s-nocrank",
@@ -4710,7 +4755,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T09:15:40.086Z",
+      "at": "2026-11-28T09:32:51.277Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -4721,7 +4766,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T09:15:40.092Z",
+      "at": "2026-11-28T09:32:51.283Z",
       "label": "No",
       "next_node": "nc.1a",
       "node_id": "nc.1",
@@ -4732,7 +4777,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T09:15:40.110Z",
+      "at": "2026-11-28T09:32:51.290Z",
       "label": "Temperature lamp on",
       "next_node": "nc.1g",
       "node_id": "nc.1a",
@@ -4841,9 +4886,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-19d766e5ba77107f8006934840f1f565",
+    "job_id": "job-988a19782014e3747a0693007f87e2a0",
     "level": "apprentice",
-    "opened_at": "2026-11-28T09:15:40.079Z",
+    "opened_at": "2026-11-28T09:32:51.269Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -4852,7 +4897,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T09:15:40.086Z",
+      "at": "2026-11-28T09:32:51.277Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -4866,7 +4911,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T09:15:40.092Z",
+      "at": "2026-11-28T09:32:51.283Z",
       "label": "No",
       "next_node": "nc.1a",
       "node_id": "nc.1",
@@ -4880,7 +4925,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T09:15:40.110Z",
+      "at": "2026-11-28T09:32:51.290Z",
       "label": "Temperature lamp on",
       "next_node": "nc.1g",
       "node_id": "nc.1a",
@@ -4894,7 +4939,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T09:15:40.118Z",
+      "at": "2026-11-28T09:32:51.298Z",
       "label": "Go to Pump overheats",
       "next_node": "oh.1",
       "node_id": "nc.1g",
@@ -4917,18 +4962,18 @@
     "flag": true,
     "matches": [
      {
-      "date": "2026-11-28T09:15:40.051Z",
+      "date": "2026-11-28T09:32:51.242Z",
       "days_before": 0,
-      "job_id": "job-8e0eb36c20b2d70a33f39107960f5219",
+      "job_id": "job-fd3bf324c7d0c9dc1a1df9841c1a95f3",
       "kind": "job",
       "reason": "same_symptom",
       "symptom_id": "s-nocrank",
       "system": "starting"
      },
      {
-      "date": "2026-11-28T09:15:39.981Z",
+      "date": "2026-11-28T09:32:51.176Z",
       "days_before": 0,
-      "job_id": "job-ab598b8fcf623126b2231db68b2219ab",
+      "job_id": "job-b1088214c9324c1e6486592f95470eb6",
       "kind": "job",
       "reason": "same_symptom",
       "symptom_id": "s-nocrank",
@@ -5014,7 +5059,7 @@
       },
       "note_id": "fn-strainer-silt",
       "pack_id": "pump40",
-      "received_at": "2026-11-28T09:15:39.961Z",
+      "received_at": "2026-11-28T09:32:51.155Z",
       "scope": {
        "equip_id": null,
        "node_id": null,
@@ -5127,7 +5172,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T09:15:40.086Z",
+      "at": "2026-11-28T09:32:51.277Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -5138,7 +5183,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T09:15:40.092Z",
+      "at": "2026-11-28T09:32:51.283Z",
       "label": "No",
       "next_node": "nc.1a",
       "node_id": "nc.1",
@@ -5149,7 +5194,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T09:15:40.110Z",
+      "at": "2026-11-28T09:32:51.290Z",
       "label": "Temperature lamp on",
       "next_node": "nc.1g",
       "node_id": "nc.1a",
@@ -5160,7 +5205,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T09:15:40.118Z",
+      "at": "2026-11-28T09:32:51.298Z",
       "label": "Go to Pump overheats",
       "next_node": "oh.1",
       "node_id": "nc.1g",
@@ -5220,9 +5265,9 @@
     "entered_by": "symptom",
     "entry_node": "oh.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-f85d5019f9465a1bb7ffa7f5d99e089d",
+    "job_id": "job-9fe6ed1aac120d3b2d6f18182de7bf74",
     "level": "apprentice",
-    "opened_at": "2026-11-28T09:15:40.125Z",
+    "opened_at": "2026-11-28T09:32:51.304Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -5231,7 +5276,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T09:15:40.129Z",
+      "at": "2026-11-28T09:32:51.309Z",
       "label": "Continue",
       "next_node": "oh.1",
       "node_id": "oh.0",
@@ -5245,7 +5290,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T09:15:40.134Z",
+      "at": "2026-11-28T09:32:51.313Z",
       "label": "Yes",
       "next_node": "oh.2",
       "node_id": "oh.1",
@@ -5331,7 +5376,7 @@
       },
       "note_id": "fn-strainer-silt",
       "pack_id": "pump40",
-      "received_at": "2026-11-28T09:15:39.961Z",
+      "received_at": "2026-11-28T09:32:51.155Z",
       "scope": {
        "equip_id": null,
        "node_id": null,
@@ -5449,7 +5494,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T09:15:40.129Z",
+      "at": "2026-11-28T09:32:51.309Z",
       "label": "Continue",
       "next_node": "oh.1",
       "node_id": "oh.0",
@@ -5460,7 +5505,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T09:15:40.134Z",
+      "at": "2026-11-28T09:32:51.313Z",
       "label": "Yes",
       "next_node": "oh.2",
       "node_id": "oh.1",
@@ -5646,8 +5691,12 @@
     "symptoms": [
      {
       "confidence": "closest",
+      "cosine": null,
       "coverage": 0.5,
+      "lexical": 0.8,
       "score": 0.8,
+      "strong_hits": 1,
+      "strong_query_words": 2,
       "symptom": {
        "applies_to": [],
        "lang": "en",
@@ -5675,8 +5724,12 @@
      },
      {
       "confidence": "closest",
+      "cosine": null,
       "coverage": 0.5,
+      "lexical": 0.333333,
       "score": 0.333333,
+      "strong_hits": 1,
+      "strong_query_words": 2,
       "symptom": {
        "applies_to": [],
        "lang": "en",
@@ -6097,8 +6150,8 @@
   "pack_version": "2026.1.1-1",
   "proc_id": "proc-battery",
   "role": "apprentice",
-  "run_id": "run-6768849cd6eadb821dac51d20dca1162",
-  "started_at": "2026-11-28T09:15:40.144Z",
+  "run_id": "run-ba195660a7cc8512f72f2484a6575337",
+  "started_at": "2026-11-28T09:32:51.323Z",
   "status": "open",
   "steps": [
    {
@@ -6107,7 +6160,7 @@
     "ord": 1,
     "outcome": "pass",
     "photos": [],
-    "recorded_at": "2026-11-28T09:15:40.145Z",
+    "recorded_at": "2026-11-28T09:32:51.324Z",
     "structured": null,
     "value": null
    },
@@ -6117,7 +6170,7 @@
     "ord": 2,
     "outcome": "pass",
     "photos": [],
-    "recorded_at": "2026-11-28T09:15:40.146Z",
+    "recorded_at": "2026-11-28T09:32:51.325Z",
     "structured": null,
     "value": null
    }
@@ -6144,7 +6197,7 @@
   "citations": [
    "m40.3-1.q1"
   ],
-  "elapsed_ms": 11,
+  "elapsed_ms": 12,
   "mode": "composed",
   "model": null,
   "nearest": [],
@@ -6331,7 +6384,7 @@
    "quotes_ok": true
   },
   "citations": [],
-  "elapsed_ms": 6,
+  "elapsed_ms": 7,
   "mode": "declined",
   "model": null,
   "nearest": [
@@ -6505,14 +6558,14 @@
  "closed": {
   "job": {
    "asset_id": "unit-101",
-   "closed_at": "2026-11-28T09:15:40.172Z",
+   "closed_at": "2026-11-28T09:32:51.352Z",
    "current_node": "nc.end",
    "entered_by": "symptom",
    "entry_node": "nc.0",
    "equip_id": "pump40-diesel",
-   "job_id": "job-8e0eb36c20b2d70a33f39107960f5219",
+   "job_id": "job-fd3bf324c7d0c9dc1a1df9841c1a95f3",
    "level": "apprentice",
-   "opened_at": "2026-11-28T09:15:40.051Z",
+   "opened_at": "2026-11-28T09:32:51.242Z",
    "pack_id": "pump40",
    "pack_version": "2026.1.1-1",
    "query": null,
@@ -6525,7 +6578,7 @@
    "status": "closed",
    "steps": [
     {
-     "at": "2026-11-28T09:15:40.058Z",
+     "at": "2026-11-28T09:32:51.249Z",
      "label": "Continue",
      "next_node": "nc.1",
      "node_id": "nc.0",
@@ -6539,7 +6592,7 @@
      "value": null
     },
     {
-     "at": "2026-11-28T09:15:40.065Z",
+     "at": "2026-11-28T09:32:51.255Z",
      "label": "No",
      "next_node": "nc.1a",
      "node_id": "nc.1",
@@ -6553,7 +6606,7 @@
      "value": null
     },
     {
-     "at": "2026-11-28T09:15:40.072Z",
+     "at": "2026-11-28T09:32:51.262Z",
      "label": "Cranks",
      "next_node": "nc.end",
      "node_id": "nc.1a",
@@ -6575,10 +6628,10 @@
    "action": "Replaced fuse F2",
    "asset_id": "unit-101",
    "cause": "Start fuse F2 blown",
-   "created_at": "2026-11-28T09:15:40.173Z",
+   "created_at": "2026-11-28T09:32:51.352Z",
    "equip_id": "pump40-diesel",
-   "job_id": "job-8e0eb36c20b2d70a33f39107960f5219",
-   "lesson_id": "lesson-9de25884a56cfeaa283969d4e7ad5ff3",
+   "job_id": "job-fd3bf324c7d0c9dc1a1df9841c1a95f3",
+   "lesson_id": "lesson-a384e115353c8e2145f4e49d470f7406",
    "level": "apprentice",
    "minutes": 20,
    "node_id": "nc.end",
@@ -6597,22 +6650,22 @@
    "status": "queued",
    "symptom_id": "s-nocrank",
    "tree_id": "t-nocrank",
-   "updated_at": "2026-11-28T09:15:40.173Z"
+   "updated_at": "2026-11-28T09:32:51.352Z"
   }
  },
  "jobReport": {
   "asset_id": "unit-101",
-  "closed_at": "2026-11-28T09:15:40.172Z",
+  "closed_at": "2026-11-28T09:32:51.352Z",
   "entered_by": "symptom",
   "entry_node": "nc.0",
   "equip_id": "pump40-diesel",
   "format": "harvest-job/1",
-  "job_id": "job-8e0eb36c20b2d70a33f39107960f5219",
+  "job_id": "job-fd3bf324c7d0c9dc1a1df9841c1a95f3",
   "lesson_ids": [
-   "lesson-9de25884a56cfeaa283969d4e7ad5ff3"
+   "lesson-a384e115353c8e2145f4e49d470f7406"
   ],
   "level": "apprentice",
-  "opened_at": "2026-11-28T09:15:40.051Z",
+  "opened_at": "2026-11-28T09:32:51.242Z",
   "pack_id": "pump40",
   "pack_version": "2026.1.1-1",
   "query": null,
@@ -6626,7 +6679,7 @@
   "status": "closed",
   "steps": [
    {
-    "at": "2026-11-28T09:15:40.058Z",
+    "at": "2026-11-28T09:32:51.249Z",
     "label": "Continue",
     "next_node": "nc.1",
     "node_id": "nc.0",
@@ -6641,7 +6694,7 @@
     "value": null
    },
    {
-    "at": "2026-11-28T09:15:40.065Z",
+    "at": "2026-11-28T09:32:51.255Z",
     "label": "No",
     "next_node": "nc.1a",
     "node_id": "nc.1",
@@ -6656,7 +6709,7 @@
     "value": null
    },
    {
-    "at": "2026-11-28T09:15:40.072Z",
+    "at": "2026-11-28T09:32:51.262Z",
     "label": "Cranks",
     "next_node": "nc.end",
     "node_id": "nc.1a",
@@ -6683,8 +6736,8 @@
    "closed_at": null,
    "current_node": "oh.2",
    "equip_id": "pump40-diesel",
-   "job_id": "job-f85d5019f9465a1bb7ffa7f5d99e089d",
-   "opened_at": "2026-11-28T09:15:40.125Z",
+   "job_id": "job-9fe6ed1aac120d3b2d6f18182de7bf74",
+   "opened_at": "2026-11-28T09:32:51.304Z",
    "pack_id": "pump40",
    "resolution": null,
    "status": "open",
@@ -6698,8 +6751,8 @@
    "closed_at": null,
    "current_node": "oh.1",
    "equip_id": "pump40-diesel",
-   "job_id": "job-19d766e5ba77107f8006934840f1f565",
-   "opened_at": "2026-11-28T09:15:40.079Z",
+   "job_id": "job-988a19782014e3747a0693007f87e2a0",
+   "opened_at": "2026-11-28T09:32:51.269Z",
    "pack_id": "pump40",
    "resolution": null,
    "status": "open",
@@ -6710,11 +6763,11 @@
   },
   {
    "asset_id": "unit-101",
-   "closed_at": "2026-11-28T09:15:40.172Z",
+   "closed_at": "2026-11-28T09:32:51.352Z",
    "current_node": "nc.end",
    "equip_id": "pump40-diesel",
-   "job_id": "job-8e0eb36c20b2d70a33f39107960f5219",
-   "opened_at": "2026-11-28T09:15:40.051Z",
+   "job_id": "job-fd3bf324c7d0c9dc1a1df9841c1a95f3",
+   "opened_at": "2026-11-28T09:32:51.242Z",
    "pack_id": "pump40",
    "resolution": "fixed",
    "status": "closed",
@@ -6728,8 +6781,8 @@
    "closed_at": null,
    "current_node": "nc.4p",
    "equip_id": "pump40-diesel",
-   "job_id": "job-ab598b8fcf623126b2231db68b2219ab",
-   "opened_at": "2026-11-28T09:15:39.981Z",
+   "job_id": "job-b1088214c9324c1e6486592f95470eb6",
+   "opened_at": "2026-11-28T09:32:51.176Z",
    "pack_id": "pump40",
    "resolution": null,
    "status": "open",
@@ -7635,7 +7688,7 @@
    },
    "note_id": "fn-relay-bracket",
    "pack_id": "pump40",
-   "received_at": "2026-11-28T09:15:39.961Z",
+   "received_at": "2026-11-28T09:32:51.155Z",
    "scope": {
     "equip_id": "pump40-diesel",
     "node_id": "nc.4",
@@ -7658,7 +7711,7 @@
    },
    "note_id": "fn-strainer-silt",
    "pack_id": "pump40",
-   "received_at": "2026-11-28T09:15:39.961Z",
+   "received_at": "2026-11-28T09:32:51.155Z",
    "scope": {
     "equip_id": null,
     "node_id": null,
@@ -7680,7 +7733,7 @@
    "ord": 1,
    "outcome": "fail",
    "photos": [],
-   "recorded_at": "2026-11-28T09:15:40.192Z",
+   "recorded_at": "2026-11-28T09:32:51.370Z",
    "structured": null,
    "value": null
   }
@@ -7691,13 +7744,13 @@
    "attrs": {
     "location": "North yard"
    },
-   "created_at": "2026-11-28T09:15:39.955Z",
+   "created_at": "2026-11-28T09:32:51.150Z",
    "equip_id": "pump40-diesel",
    "hours": 1840.5,
    "miles": null,
    "name": "Pump 101",
    "serial": "P40D-2310",
-   "updated_at": "2026-11-28T09:15:39.955Z"
+   "updated_at": "2026-11-28T09:32:51.150Z"
   },
   "events": [
    {
@@ -7763,8 +7816,8 @@
     "closed_at": null,
     "current_node": "oh.2",
     "equip_id": "pump40-diesel",
-    "job_id": "job-f85d5019f9465a1bb7ffa7f5d99e089d",
-    "opened_at": "2026-11-28T09:15:40.125Z",
+    "job_id": "job-9fe6ed1aac120d3b2d6f18182de7bf74",
+    "opened_at": "2026-11-28T09:32:51.304Z",
     "pack_id": "pump40",
     "repeat": {
      "flag": false,
@@ -7783,25 +7836,25 @@
     "closed_at": null,
     "current_node": "oh.1",
     "equip_id": "pump40-diesel",
-    "job_id": "job-19d766e5ba77107f8006934840f1f565",
-    "opened_at": "2026-11-28T09:15:40.079Z",
+    "job_id": "job-988a19782014e3747a0693007f87e2a0",
+    "opened_at": "2026-11-28T09:32:51.269Z",
     "pack_id": "pump40",
     "repeat": {
      "flag": true,
      "matches": [
       {
-       "date": "2026-11-28T09:15:40.051Z",
+       "date": "2026-11-28T09:32:51.242Z",
        "days_before": 0,
-       "job_id": "job-8e0eb36c20b2d70a33f39107960f5219",
+       "job_id": "job-fd3bf324c7d0c9dc1a1df9841c1a95f3",
        "kind": "job",
        "reason": "same_symptom",
        "symptom_id": "s-nocrank",
        "system": "starting"
       },
       {
-       "date": "2026-11-28T09:15:39.981Z",
+       "date": "2026-11-28T09:32:51.176Z",
        "days_before": 0,
-       "job_id": "job-ab598b8fcf623126b2231db68b2219ab",
+       "job_id": "job-b1088214c9324c1e6486592f95470eb6",
        "kind": "job",
        "reason": "same_symptom",
        "symptom_id": "s-nocrank",
@@ -7819,19 +7872,19 @@
    },
    {
     "asset_id": "unit-101",
-    "closed_at": "2026-11-28T09:15:40.172Z",
+    "closed_at": "2026-11-28T09:32:51.352Z",
     "current_node": "nc.end",
     "equip_id": "pump40-diesel",
-    "job_id": "job-8e0eb36c20b2d70a33f39107960f5219",
-    "opened_at": "2026-11-28T09:15:40.051Z",
+    "job_id": "job-fd3bf324c7d0c9dc1a1df9841c1a95f3",
+    "opened_at": "2026-11-28T09:32:51.242Z",
     "pack_id": "pump40",
     "repeat": {
      "flag": true,
      "matches": [
       {
-       "date": "2026-11-28T09:15:39.981Z",
+       "date": "2026-11-28T09:32:51.176Z",
        "days_before": 0,
-       "job_id": "job-ab598b8fcf623126b2231db68b2219ab",
+       "job_id": "job-b1088214c9324c1e6486592f95470eb6",
        "kind": "job",
        "reason": "same_symptom",
        "symptom_id": "s-nocrank",
@@ -7852,8 +7905,8 @@
     "closed_at": null,
     "current_node": "nc.4p",
     "equip_id": "pump40-diesel",
-    "job_id": "job-ab598b8fcf623126b2231db68b2219ab",
-    "opened_at": "2026-11-28T09:15:39.981Z",
+    "job_id": "job-b1088214c9324c1e6486592f95470eb6",
+    "opened_at": "2026-11-28T09:32:51.176Z",
     "pack_id": "pump40",
     "repeat": {
      "flag": false,
@@ -7875,10 +7928,10 @@
    "action": "Replaced fuse F2",
    "asset_id": "unit-101",
    "cause": "Start fuse F2 blown",
-   "created_at": "2026-11-28T09:15:40.173Z",
+   "created_at": "2026-11-28T09:32:51.352Z",
    "equip_id": "pump40-diesel",
-   "job_id": "job-8e0eb36c20b2d70a33f39107960f5219",
-   "lesson_id": "lesson-9de25884a56cfeaa283969d4e7ad5ff3",
+   "job_id": "job-fd3bf324c7d0c9dc1a1df9841c1a95f3",
+   "lesson_id": "lesson-a384e115353c8e2145f4e49d470f7406",
    "level": "apprentice",
    "minutes": 20,
    "node_id": "nc.end",
@@ -7897,7 +7950,7 @@
    "status": "queued",
    "symptom_id": "s-nocrank",
    "tree_id": "t-nocrank",
-   "updated_at": "2026-11-28T09:15:40.173Z"
+   "updated_at": "2026-11-28T09:32:51.352Z"
   }
  ],
  "outbox": {
@@ -7939,7 +7992,7 @@
     "pack_version": null,
     "result": null,
     "subject": "harvest-assets/1",
-    "ts": "2026-11-28T09:15:39.956Z"
+    "ts": "2026-11-28T09:32:51.150Z"
    },
    "seq": 1,
    "type": "event"
@@ -7962,7 +8015,7 @@
     "pack_version": null,
     "result": null,
     "subject": "pump40-fleet",
-    "ts": "2026-11-28T09:15:39.962Z"
+    "ts": "2026-11-28T09:32:51.156Z"
    },
    "seq": 2,
    "type": "event"
@@ -7984,8 +8037,8 @@
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "result": null,
-    "subject": "job-ab598b8fcf623126b2231db68b2219ab",
-    "ts": "2026-11-28T09:15:39.982Z"
+    "subject": "job-b1088214c9324c1e6486592f95470eb6",
+    "ts": "2026-11-28T09:32:51.176Z"
    },
    "seq": 3,
    "type": "event"
@@ -8008,8 +8061,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-ab598b8fcf623126b2231db68b2219ab",
-    "ts": "2026-11-28T09:15:39.989Z"
+    "subject": "job-b1088214c9324c1e6486592f95470eb6",
+    "ts": "2026-11-28T09:32:51.184Z"
    },
    "seq": 4,
    "type": "event"
@@ -8032,8 +8085,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-ab598b8fcf623126b2231db68b2219ab",
-    "ts": "2026-11-28T09:15:40.002Z"
+    "subject": "job-b1088214c9324c1e6486592f95470eb6",
+    "ts": "2026-11-28T09:32:51.195Z"
    },
    "seq": 5,
    "type": "event"
@@ -8056,8 +8109,8 @@
      "unit": "V",
      "value": 10.8
     },
-    "subject": "job-ab598b8fcf623126b2231db68b2219ab",
-    "ts": "2026-11-28T09:15:40.013Z"
+    "subject": "job-b1088214c9324c1e6486592f95470eb6",
+    "ts": "2026-11-28T09:32:51.205Z"
    },
    "seq": 6,
    "type": "event"
@@ -8078,8 +8131,8 @@
      "unit": "V",
      "value": 10.8
     },
-    "subject": "job-ab598b8fcf623126b2231db68b2219ab",
-    "ts": "2026-11-28T09:15:40.020Z"
+    "subject": "job-b1088214c9324c1e6486592f95470eb6",
+    "ts": "2026-11-28T09:32:51.211Z"
    },
    "seq": 7,
    "type": "event"
@@ -8102,8 +8155,8 @@
      "unit": "V",
      "value": 12.7
     },
-    "subject": "job-ab598b8fcf623126b2231db68b2219ab",
-    "ts": "2026-11-28T09:15:40.030Z"
+    "subject": "job-b1088214c9324c1e6486592f95470eb6",
+    "ts": "2026-11-28T09:32:51.221Z"
    },
    "seq": 8,
    "type": "event"
@@ -8126,8 +8179,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-ab598b8fcf623126b2231db68b2219ab",
-    "ts": "2026-11-28T09:15:40.037Z"
+    "subject": "job-b1088214c9324c1e6486592f95470eb6",
+    "ts": "2026-11-28T09:32:51.228Z"
    },
    "seq": 9,
    "type": "event"
@@ -8150,8 +8203,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-ab598b8fcf623126b2231db68b2219ab",
-    "ts": "2026-11-28T09:15:40.045Z"
+    "subject": "job-b1088214c9324c1e6486592f95470eb6",
+    "ts": "2026-11-28T09:32:51.235Z"
    },
    "seq": 10,
    "type": "event"
@@ -8173,8 +8226,8 @@
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "result": null,
-    "subject": "job-8e0eb36c20b2d70a33f39107960f5219",
-    "ts": "2026-11-28T09:15:40.052Z"
+    "subject": "job-fd3bf324c7d0c9dc1a1df9841c1a95f3",
+    "ts": "2026-11-28T09:32:51.242Z"
    },
    "seq": 11,
    "type": "event"
@@ -8197,8 +8250,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-8e0eb36c20b2d70a33f39107960f5219",
-    "ts": "2026-11-28T09:15:40.059Z"
+    "subject": "job-fd3bf324c7d0c9dc1a1df9841c1a95f3",
+    "ts": "2026-11-28T09:32:51.249Z"
    },
    "seq": 12,
    "type": "event"
@@ -8221,8 +8274,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-8e0eb36c20b2d70a33f39107960f5219",
-    "ts": "2026-11-28T09:15:40.066Z"
+    "subject": "job-fd3bf324c7d0c9dc1a1df9841c1a95f3",
+    "ts": "2026-11-28T09:32:51.255Z"
    },
    "seq": 13,
    "type": "event"
@@ -8245,8 +8298,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-8e0eb36c20b2d70a33f39107960f5219",
-    "ts": "2026-11-28T09:15:40.073Z"
+    "subject": "job-fd3bf324c7d0c9dc1a1df9841c1a95f3",
+    "ts": "2026-11-28T09:32:51.262Z"
    },
    "seq": 14,
    "type": "event"
@@ -8268,8 +8321,8 @@
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "result": null,
-    "subject": "job-19d766e5ba77107f8006934840f1f565",
-    "ts": "2026-11-28T09:15:40.079Z"
+    "subject": "job-988a19782014e3747a0693007f87e2a0",
+    "ts": "2026-11-28T09:32:51.270Z"
    },
    "seq": 15,
    "type": "event"
@@ -8292,8 +8345,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-19d766e5ba77107f8006934840f1f565",
-    "ts": "2026-11-28T09:15:40.086Z"
+    "subject": "job-988a19782014e3747a0693007f87e2a0",
+    "ts": "2026-11-28T09:32:51.277Z"
    },
    "seq": 16,
    "type": "event"
@@ -8316,8 +8369,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-19d766e5ba77107f8006934840f1f565",
-    "ts": "2026-11-28T09:15:40.093Z"
+    "subject": "job-988a19782014e3747a0693007f87e2a0",
+    "ts": "2026-11-28T09:32:51.284Z"
    },
    "seq": 17,
    "type": "event"
@@ -8340,8 +8393,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-19d766e5ba77107f8006934840f1f565",
-    "ts": "2026-11-28T09:15:40.111Z"
+    "subject": "job-988a19782014e3747a0693007f87e2a0",
+    "ts": "2026-11-28T09:32:51.290Z"
    },
    "seq": 18,
    "type": "event"
@@ -8360,8 +8413,8 @@
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "result": null,
-    "subject": "job-19d766e5ba77107f8006934840f1f565",
-    "ts": "2026-11-28T09:15:40.119Z"
+    "subject": "job-988a19782014e3747a0693007f87e2a0",
+    "ts": "2026-11-28T09:32:51.298Z"
    },
    "seq": 19,
    "type": "event"
@@ -8383,8 +8436,8 @@
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "result": null,
-    "subject": "job-f85d5019f9465a1bb7ffa7f5d99e089d",
-    "ts": "2026-11-28T09:15:40.125Z"
+    "subject": "job-9fe6ed1aac120d3b2d6f18182de7bf74",
+    "ts": "2026-11-28T09:32:51.305Z"
    },
    "seq": 20,
    "type": "event"
@@ -8407,8 +8460,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-f85d5019f9465a1bb7ffa7f5d99e089d",
-    "ts": "2026-11-28T09:15:40.129Z"
+    "subject": "job-9fe6ed1aac120d3b2d6f18182de7bf74",
+    "ts": "2026-11-28T09:32:51.309Z"
    },
    "seq": 21,
    "type": "event"
@@ -8431,8 +8484,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-f85d5019f9465a1bb7ffa7f5d99e089d",
-    "ts": "2026-11-28T09:15:40.134Z"
+    "subject": "job-9fe6ed1aac120d3b2d6f18182de7bf74",
+    "ts": "2026-11-28T09:32:51.313Z"
    },
    "seq": 22,
    "type": "event"
@@ -8506,7 +8559,7 @@
      "m40.3-1.q1"
     ],
     "dropped": 0,
-    "elapsed_ms": 11,
+    "elapsed_ms": 12,
     "expansions": [],
     "mode": "composed",
     "model": null,
@@ -8514,7 +8567,7 @@
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": "How do I check fuse F2?",
-    "ts": "2026-11-28T09:15:40.160Z",
+    "ts": "2026-11-28T09:32:51.340Z",
     "verdict": "supported"
    },
    "seq": 23,
@@ -8587,7 +8640,7 @@
     ],
     "citations": [],
     "dropped": 0,
-    "elapsed_ms": 6,
+    "elapsed_ms": 7,
     "expansions": [],
     "mode": "declined",
     "model": null,
@@ -8595,7 +8648,7 @@
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": "What colour is the paint?",
-    "ts": "2026-11-28T09:15:40.170Z",
+    "ts": "2026-11-28T09:32:51.350Z",
     "verdict": "declined"
    },
    "seq": 24,
@@ -8605,7 +8658,7 @@
    "event": {
     "asked": null,
     "detail": {
-     "job_id": "job-8e0eb36c20b2d70a33f39107960f5219",
+     "job_id": "job-fd3bf324c7d0c9dc1a1df9841c1a95f3",
      "submit": true
     },
     "event": "lesson.create",
@@ -8614,8 +8667,8 @@
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "result": null,
-    "subject": "lesson-9de25884a56cfeaa283969d4e7ad5ff3",
-    "ts": "2026-11-28T09:15:40.173Z"
+    "subject": "lesson-a384e115353c8e2145f4e49d470f7406",
+    "ts": "2026-11-28T09:32:51.352Z"
    },
    "seq": 25,
    "type": "event"
@@ -8624,7 +8677,7 @@
    "event": {
     "asked": null,
     "detail": {
-     "lesson_id": "lesson-9de25884a56cfeaa283969d4e7ad5ff3"
+     "lesson_id": "lesson-a384e115353c8e2145f4e49d470f7406"
     },
     "event": "job.close",
     "next_node": null,
@@ -8636,8 +8689,8 @@
      "node_id": "nc.end",
      "note": null
     },
-    "subject": "job-8e0eb36c20b2d70a33f39107960f5219",
-    "ts": "2026-11-28T09:15:40.176Z"
+    "subject": "job-fd3bf324c7d0c9dc1a1df9841c1a95f3",
+    "ts": "2026-11-28T09:32:51.354Z"
    },
    "seq": 26,
    "type": "event"
@@ -8657,7 +8710,7 @@
    "lesson.create": 1
   },
   "first_bad": null,
-  "head_hash": "8980880bf946a51264f8002fced2f1fb14963499d1d1e10327ebc1cdbf8d9279",
+  "head_hash": "8c4ce5e275282825f32d91534def0f95c7ff9c16a26fa16f67cb4b4d3abb5a2f",
   "modes": {
    "composed": 1,
    "declined": 1

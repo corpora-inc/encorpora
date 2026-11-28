@@ -28,6 +28,16 @@ export interface RecordsProps {
   onTheme(t: Theme): void;
 }
 
+const DENSE_OFF: Record<string, string> = {
+  no_embedder_loaded: "no embedding model is running on this device",
+  pack_has_no_vectors: "this pack has no meaning index",
+  dimension_mismatch: "the embedding model does not fit this pack",
+  id_mismatch: "the embedding model is not the one this pack was built with",
+};
+
+/** Whether search by meaning runs for this pack, or why not, in plain words. */
+const denseText = (pk: PackInfoView) => (pk.dense.active ? "Meaning search: on" : `Meaning search: off, ${DENSE_OFF[pk.dense.reason ?? ""] ?? "not available"}`);
+
 const KIND: Record<string, string> = { job: "Jobs", lesson: "Lessons", run: "Task runs", miss: "Unanswered questions", answer: "Answers" };
 
 /** What waits to sync, what came in, the audit trail and its check, the pack and its sources, and the model switch. */
@@ -179,9 +189,10 @@ export function Records(p: RecordsProps) {
             </h2>
             {p.packs.map((pk) => (
               <Panel key={pk.pack_id}>
-                <p className="mb-2 text-meta text-ink-3">
+                <p className="text-meta text-ink-3">
                   Pack <span className="code">{pk.pack_id}</span> <span className="code">{pk.version}</span>, built {formatDate(pk.built_at)}
                 </p>
+                <p className="mb-2 text-small">{denseText(pk)}</p>
                 {pk.sources.map((src) => (
                   <dl key={src.source_id} className="m-0 grid grid-cols-[7rem_minmax(0,1fr)] gap-x-4 gap-y-1 border-t border-line pt-2 text-small first-of-type:border-t-0 first-of-type:pt-0">
                     <dt className="text-ink-3">Title</dt>

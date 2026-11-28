@@ -1,0 +1,46 @@
+[package]
+name = "maint"
+version = "0.1.0"
+description = "Offline maintenance assistant: the manual's troubleshooting, exactly, faster"
+authors = ["Corpora Inc"]
+edition = "2024"
+license = "Apache-2.0"
+publish = false
+
+[lib]
+# The `_lib` suffix keeps the lib name distinct from the bin name, which
+# otherwise collides on Windows (rust-lang/cargo#8519).
+name = "maint_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["wry"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+base64 = "0.22"
+getrandom = { version = "0.2", features = ["std"] }
+# The engine, in process: the same API dispatcher `harvest serve` uses (`api::call`),
+# packs, records and the hub link. `hub` brings the device's HTTP link to a hub
+# (used only when a hub address is configured); no server is ever started here.
+harvest-core = { path = "../../../harvest/core", default-features = false, features = ["hub"] }
+
+# Shared native plugins, as path dependencies on Corpán's crates (never copies).
+# Their identifiers are public API: the frontend invokes `plugin:tts|…` and
+# `plugin:stt|…`, and capabilities/default.json grants by those names.
+tauri-plugin-tts = { path = "../../../corpan/plugins/tauri-plugin-tts" }
+tauri-plugin-stt = { path = "../../../corpan/plugins/tauri-plugin-stt" }
+
+# The records key and the device key live in the macOS keychain.
+[target.'cfg(target_os = "macos")'.dependencies]
+security-framework = "3"
+
+[profile.release]
+opt-level = "s"
+lto = true
+codegen-units = 1
+debug = 1
+strip = false
+panic = "abort"

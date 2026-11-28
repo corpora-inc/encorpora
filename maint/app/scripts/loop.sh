@@ -11,11 +11,20 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 if [ "${MAINT_REAL:-}" = 1 ]; then
   export MAINT_PACKS="$HOME/.cache/harvest/packs/maint-dev/root" MAINT_PACKS_PUBKEY="$HOME/.cache/harvest/packs/maint-dev/pack.pub"
+  # Search by meaning: one embedding server on 8095, shared by the three devices.
+  MODEL="$HOME/.cache/harvest/models/embeddinggemma-2-Q8_0.gguf"
+  if [ -f "$MODEL" ] && command -v llama-server >/dev/null; then
+    if ! curl -s -o /dev/null http://127.0.0.1:8095/health; then
+      nohup nice -n 20 llama-server -m "$MODEL" --embedding --host 127.0.0.1 --port 8095 -c 8192 -b 8192 -ub 8192 -np 1 > .engine/llama-server.log 2>&1 &
+      for _ in $(seq 1 120); do curl -s http://127.0.0.1:8095/health | grep -q ok && break; sleep 0.5; done
+    fi
+    export MAINT_EMBEDDER=http://127.0.0.1:8095
+  fi
 fi
 OFF="${MAINT_OFFSET:-0}"
 HUBP=$((4319 + OFF))
 for port in $HUBP $((4317 + OFF)) $((4320 + OFF)) $((4323 + OFF)); do pkill -f "bind 127.0.0.1:$port" || true; done
-up() { for _ in $(seq 1 40); do curl -s -o /dev/null "http://127.0.0.1:$1/" && return 0; sleep 0.25; done; echo "engine on $1 did not start" >&2; return 1; }
+up() { for _ in $(seq 1 240); do curl -s -o /dev/null "http://127.0.0.1:$1/" && return 0; sleep 0.25; done; echo "engine on $1 did not start" >&2; return 1; }
 port_of() { case "$1" in A) echo $((4317 + OFF)) ;; B) echo $((4320 + OFF)) ;; C) echo $((4323 + OFF)) ;; esac; }
 # The fixture's public test key, read once (devices verify the pack and the hub's bundles with it).
 BIN="${HARVEST_BIN:-.engine/harvest}"

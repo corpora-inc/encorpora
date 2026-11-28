@@ -84,5 +84,14 @@ export async function hubCall<M extends Method>(method: M, params: Params<M>): P
   return r.result as Result<M>;
 }
 
-/** A figure or page image of the signed pack. */
-export const assetUrl = (packId: string, assetId: string) => `/asset/${encodeURIComponent(packId)}/${encodeURIComponent(assetId)}`;
+/**
+ * A figure or page image of the signed pack: from `harvest serve` over HTTP,
+ * or in the installed app from the shell's `maint-asset` scheme (which the
+ * Windows WebView reaches as http://maint-asset.localhost).
+ */
+export function assetUrl(packId: string, assetId: string): string {
+  const path = `${encodeURIComponent(packId)}/${encodeURIComponent(assetId)}`;
+  if (!isNative()) return `/asset/${path}`;
+  const windows = typeof navigator !== "undefined" && /Windows/i.test(navigator.userAgent);
+  return windows ? `http://maint-asset.localhost/${path}` : `maint-asset://localhost/${path}`;
+}

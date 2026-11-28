@@ -41,8 +41,11 @@ JSON
     PACKS=.engine/pump40
     # The fixture's test key also signs the hub's field-note bundles (hub --dev-key).
     if [ -n "${MAINT_PACKS:-}" ]; then PACKS="$MAINT_PACKS"; KEY="$MAINT_PACKS_PUBKEY"; fi
+    # MAINT_EMBEDDER: an embedding server's URL (search by meaning); lexical only without it.
+    EMB=()
+    if [ -n "${MAINT_EMBEDDER:-}" ]; then EMB=(--embedder "$MAINT_EMBEDDER"); fi
     exec "$BIN" serve "$PACKS" --field-pubkey "$FIELD_KEY" --records ".engine/records-$NAME-$STAMP.db" --pubkey "$KEY" \
-      --bind "127.0.0.1:$PORT" --hub "$HUB" "${ORIGINS[@]}"
+      --bind "127.0.0.1:$PORT" --hub "$HUB" ${EMB[@]+"${EMB[@]}"} "${ORIGINS[@]}"
     ;;
   *) echo "usage: engine.sh hub | device A|B|C" >&2; exit 2 ;;
 esac
