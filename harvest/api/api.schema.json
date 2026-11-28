@@ -5442,7 +5442,7 @@
             }
           ],
           "default": null,
-          "description": "The fields the model may fill (else the host's policy)."
+          "description": "The fields the model may fill: narrows the host's policy (by device\nclass), never widens it."
         },
         "text": {
           "description": "The technician's close-out note.",

@@ -1181,13 +1181,15 @@ fn serve(args: &Args) -> Result<(), CliError> {
         }
     }
     if let Some(fields) = args.get("prefill") {
-        host = host.with_prefill_policy(harvest_core::assist::PrefillPolicy {
+        let policy = harvest_core::assist::PrefillPolicy {
             fields: fields
                 .split(',')
                 .map(|f| f.trim().to_string())
                 .filter(|f| !f.is_empty())
                 .collect(),
-        });
+        };
+        policy.check()?;
+        host = host.with_prefill_policy(policy);
     }
     // One embedder serves every pack baked with it. A pack baked with
     // another is served lexical only, and says so.

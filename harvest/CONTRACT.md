@@ -985,8 +985,11 @@ configured and, as of the last call (no probe), whether it answered.
   from the job; a label the context does not have, or an `other` with no
   text, is unknown. `policy.fields` (from `cause`, `action`, `parts`,
   `minutes`, `note`; the host's by device class, default `minutes` and
-  `parts`) says which fields the model may fill; the others come back
-  unknown. Unknown is always a valid result.
+  `parts`; a call may narrow it, never widen it) says which fields the
+  model may fill; the others come back unknown. Free text appears only
+  beside `other` (cause and action up to 100 characters, at most 3 part
+  names of 60) and in `note` when the policy allows it; all of it is a
+  proposal the technician confirms. Unknown is always a valid result.
 - **`step.ask {job_id, question}`** (`t3-2026-11-28.1/tmpl`): the current
   step's passages (node text, guards, facets with their headings, the test
   procedure's guards and steps, requirements and setup, the printed
@@ -995,7 +998,8 @@ configured and, as of the last call (no probe), whether it answered.
   headings prompt and schema (1 to 4 handles and one of ten fixed
   headings, or decline), 400 tokens. `answer` shows the chosen sentences,
   the pack's own text each with its citation, under the heading (only a
-  fixed heading is ever shown); a handle that does not exist is dropped;
+  fixed heading is ever shown; a passage with no citation, or a
+  requirement not verbatim in its section, is never offered); a handle that does not exist is dropped;
   no sentence left is `decline` with the nearest passages. The model writes
   no text that is shown.
 

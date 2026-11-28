@@ -762,6 +762,13 @@ fn search_leaves_out_what_does_not_apply_and_values_must_parse() {
 // ------------------------------------------------------- the model interface
 
 fn model_host(outputs: &[&str]) -> (tempfile::TempDir, Host, Arc<harvest_core::llm::ScriptedLlm>) {
+    model_host_with(outputs, harvest_core::assist::PrefillPolicy::default())
+}
+
+fn model_host_with(
+    outputs: &[&str],
+    policy: harvest_core::assist::PrefillPolicy,
+) -> (tempfile::TempDir, Host, Arc<harvest_core::llm::ScriptedLlm>) {
     let Env { _tmp, pack, rec } = env();
     let llm = Arc::new(harvest_core::llm::ScriptedLlm::new(
         outputs.iter().map(|s| s.to_string()),
@@ -772,7 +779,8 @@ fn model_host(outputs: &[&str]) -> (tempfile::TempDir, Host, Arc<harvest_core::l
             "pump40",
             Arc::new(harvest_core::HashingEmbedder::new(fixture::EMBED_DIM)),
         )
-        .with_llm(llm.clone());
+        .with_llm(llm.clone())
+        .with_prefill_policy(policy);
     (_tmp, h, llm)
 }
 
@@ -902,18 +910,48 @@ fn symptom_suggest_routes_suggests_clarifies_or_lists() {
 #[test]
 fn lesson_prefill_proposes_only_what_the_policy_allows() {
     let out = r#"{"cause":"C1","cause_text":"","action":"A1","action_text":"","parts":["other"],"parts_other":["spare fuse"],"minutes":45,"note":"done"}"#;
-    let (_t, h, llm) = model_host(&[
-        out,
-        out,
-        r#"{"cause":"C99","cause_text":"","action":"other","action_text":"cleaned the terminals","parts":["P42"],"parts_other":[],"minutes":null,"note":""}"#,
-        "not json at all",
-    ]);
+    let all = harvest_core::assist::PrefillPolicy {
+        fields: ["cause", "action", "parts", "minutes", "note"]
+            .map(String::from)
+            .to_vec(),
+    };
+    let (_t, h, llm) = model_host_with(
+        &[
+            out,
+            out,
+            r#"{"cause":"C99","cause_text":"","action":"other","action_text":"cleaned the terminals","parts":["P42"],"parts_other":[],"minutes":null,"note":""}"#,
+            "not json at all",
+        ],
+        all,
+    );
     let job = walked_job(&h);
+    // A call cannot widen the device class's policy (default minutes and parts).
+    let (_t2, narrow, _) = model_host(&[out]);
+    let job2 = walked_job(&narrow);
+    let r = ok(
+        &narrow,
+        "lesson.prefill",
+        json!({"job_id": job2, "text": "relay", "policy": {"fields": ["cause", "minutes"]}}),
+    );
+    assert_eq!(r["proposal"]["cause"]["source"], "unknown");
+    assert_eq!(r["proposal"]["minutes"]["source"], "model");
+    assert_eq!(
+        r["proposal"]["parts"]["source"], "unknown",
+        "narrowed to minutes"
+    );
+    assert!(
+        api::call(
+            &narrow,
+            "lesson.prefill",
+            json!({"job_id": job2, "text": "x", "policy": {"fields": ["colour"]}})
+        )
+        .is_err()
+    );
     // Default policy: minutes and parts; cause and action stay unknown.
     let r = ok(
         &h,
         "lesson.prefill",
-        json!({"job_id": job, "text": "swapped the relay and a fuse, 45 min"}),
+        json!({"job_id": job, "text": "swapped the relay and a fuse, 45 min", "policy": {"fields": ["minutes", "parts"]}}),
     );
     let p = &r["proposal"];
     assert_eq!(p["job_id"]["source"], "job");

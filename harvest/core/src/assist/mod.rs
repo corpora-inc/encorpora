@@ -624,9 +624,38 @@ impl Default for PrefillPolicy {
     }
 }
 
+/// The fields a policy may name.
+pub const PREFILL_FIELDS: [&str; 5] = ["cause", "action", "parts", "minutes", "note"];
+
 impl PrefillPolicy {
     fn allows(&self, f: &str) -> bool {
         self.fields.iter().any(|x| x == f)
+    }
+
+    /// Refuse a field that is not one of [`PREFILL_FIELDS`].
+    pub fn check(&self) -> Result<()> {
+        for f in &self.fields {
+            if !PREFILL_FIELDS.contains(&f.as_str()) {
+                return Err(crate::error::Error::Invalid(format!(
+                    "prefill field {f:?}: one of {}",
+                    PREFILL_FIELDS.join(", ")
+                )));
+            }
+        }
+        Ok(())
+    }
+
+    /// The fields both policies allow (a call may narrow the host's, never
+    /// widen it).
+    pub fn narrowed(&self, by: &PrefillPolicy) -> PrefillPolicy {
+        PrefillPolicy {
+            fields: self
+                .fields
+                .iter()
+                .filter(|f| by.allows(f))
+                .cloned()
+                .collect(),
+        }
     }
 }
 
@@ -745,6 +774,7 @@ pub fn lesson_prefill(
                             .map(str::trim)
                             .filter(|t| !t.is_empty())
                             .map(|t| t.chars().take(60).collect())
+                            .take(3)
                             .collect()
                     })
                     .unwrap_or_default();
@@ -780,15 +810,6 @@ pub fn lesson_prefill(
                         },
                         None => ok = false,
                     }
-                }
-                // Names beyond the "other" labels are parts too.
-                for name in others.iter().skip(used) {
-                    p.parts.value.push(PartUsed {
-                        text: name.clone(),
-                        ident: None,
-                        qty: None,
-                    });
-                    p.parts.labels.push("other".into());
                 }
                 if ok {
                     p.parts.source = Source::Model;
@@ -898,7 +919,14 @@ pub fn step_blocks(pack: &Pack, v: &view::NodeView) -> Result<Vec<Block>> {
             out.extend(s.guards.iter().map(guard));
         }
     }
-    for r in v.requirements.iter().chain(v.setup.iter()) {
+    // A requirement is offered only when its text is verbatim in a section
+    // that cites it.
+    for r in v
+        .requirements
+        .iter()
+        .chain(v.setup.iter())
+        .filter(|r| r.verbatim && r.section_id.is_some())
+    {
         out.push(Block {
             label: format!("Needs ({})", r.kind),
             text: format!(
@@ -928,6 +956,14 @@ pub fn build_pool(blocks: &[Block]) -> Vec<Handle> {
     let mut pool = Vec::new();
     let mut seen = std::collections::HashSet::new();
     for b in blocks {
+        // Nothing is shown without its citation.
+        if b.citation.is_none() {
+            eprintln!(
+                "harvest: step.ask: passage {:?} has no citation; not offered",
+                b.label
+            );
+            continue;
+        }
         for s in text::sentences(&b.text) {
             let n = text::norm_sentence(&s);
             if n.is_empty() || !seen.insert(n) {

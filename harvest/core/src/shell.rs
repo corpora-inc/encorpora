@@ -199,6 +199,7 @@ pub fn open_host(cfg: &HostConfig, keys: &dyn KeyStore) -> Result<(Host, HostRep
     host = with_hub(host, cfg, dk)?;
     host = with_llm(host, cfg, &mut report)?;
     if let Some(p) = &cfg.prefill_policy {
+        p.check()?;
         host = host.with_prefill_policy(p.clone());
     }
     Ok((host, report))

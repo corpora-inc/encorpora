@@ -921,7 +921,8 @@ pub struct LessonPrefillParams {
     pub job_id: String,
     /// The technician's close-out note.
     pub text: String,
-    /// The fields the model may fill (else the host's policy).
+    /// The fields the model may fill: narrows the host's policy (by device
+    /// class), never widens it.
     #[serde(default)]
     pub policy: Option<crate::assist::PrefillPolicy>,
 }
@@ -2249,7 +2250,14 @@ fn job_views(
 fn lesson_prefill(h: &Host, _who: Option<&Principal>, p: LessonPrefillParams) -> R<LessonPrefill> {
     let (pack, report, views) = job_views(h, &p.job_id)?;
     let ctx = crate::assist::prefill_context(&pack, &report, &views)?;
-    let policy = p.policy.unwrap_or_else(|| h.prefill_policy.clone());
+    // A call may narrow the device class's policy, never widen it.
+    let policy = match &p.policy {
+        Some(call) => {
+            call.check()?;
+            h.prefill_policy.narrowed(call)
+        }
+        None => h.prefill_policy.clone(),
+    };
     let r =
         crate::assist::lesson_prefill(&pack, &report, &ctx, &p.text, &policy, h.llm.as_deref())?;
     h.model_done(&r.exchange)?;

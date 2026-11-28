@@ -1442,7 +1442,10 @@ export interface LessonPrefill {
 
 export interface LessonPrefillParams {
   job_id: string;
-  /** The fields the model may fill (else the host's policy). */
+  /**
+   * The fields the model may fill: narrows the host's policy (by device
+   * class), never widens it.
+   */
   policy?: PrefillPolicy | null;
   /** The technician's close-out note. */
   text: string;
