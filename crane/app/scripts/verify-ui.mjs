@@ -77,6 +77,7 @@ async function waitUp() {
 }
 
 /** Seed settings so a route renders past first run. */
+// Seeds the v1 settings shape (with the retired role) on purpose: every page then runs the v2 migration.
 const seeded = (role = "operator") => `localStorage.setItem("crane.settings", JSON.stringify({ state: { role: "${role}", equipment: null, theme: "system", lang: "en", assistant: false }, version: 1 }));`;
 
 /**
@@ -256,30 +257,57 @@ try {
     }
   }
 
-  // 2. First run: one question, then a cited answer on screen.
+  // 2. First run lands in Practice: what it is for, one step into the first question, a cited answer.
   {
     const { context, page, errors } = await newPage(browser, 390, "light", { seed: false });
     await page.goto(base + "/");
-    await page.waitForURL("**/ask");
-    await page.getByRole("radio", { name: /Operator/ }).click();
-    await page.waitForURL("**/ask/a/a.powerline-clearance");
-    await page.locator("blockquote").first().waitFor();
-    assert.ok(await page.locator(".plate").count() >= 2, "answer has citation plates");
+    await page.waitForURL("**/practice");
+    await page.getByRole("heading", { name: "Pass the Core exam on your first try" }).waitFor();
+    assert.equal(await page.getByRole("radio").count(), 0, "no role question");
+    assert.equal(await page.locator("nav:visible").first().getByRole("link").first().innerText(), "Practice", "Practice is the first tab");
+    await page.screenshot({ path: path.join(out, "flow-first-run-practice.png"), fullPage: true });
+    await page.getByRole("link", { name: "Start with your first question" }).click();
+    await page.waitForURL("**/practice/session");
+    const choices = page.getByRole("group", { name: "Answer choices" }).getByRole("button");
+    await choices.first().click();
+    await page.locator(".practice-feedback").waitFor();
     await page.screenshot({ path: path.join(out, "flow-first-run-answer.png"), fullPage: true });
-    // Citation opens the exact paragraph.
-    await page.locator(".plate", { hasText: "§1926.1408(a)(2)" }).first().click();
-    await page.waitForURL(/\/read\/29cfr1926\.1408\(a\)\(2\)$/);
+    // The source opens the exact paragraph.
+    await page.locator(".practice-feedback a[href^='/read/'], .practice-feedback .plate").first().click();
+    await page.waitForURL(/\/read\//);
     await page.locator('[aria-current="true"]').first().waitFor();
     assert.equal(await page.locator('[aria-current="true"]').count(), 1, "the cited paragraph is marked");
-    assert.match(await page.locator('[aria-current="true"]').innerText(), /closer than 20 feet/);
-    // Refresh restores the screen.
+    // Refresh restores the screen; back and forward.
     await page.reload();
     await page.locator('[aria-current="true"]').waitFor();
-    // Back and forward.
     await page.goBack();
-    await page.waitForURL("**/ask/a/a.powerline-clearance");
+    await page.waitForURL("**/practice/session");
     await page.goForward();
     await page.waitForURL(/\/read\//);
+    // Home now shows progress, not the welcome.
+    await page.goto(base + "/practice");
+    await page.getByRole("link", { name: "Continue practice" }).waitFor();
+    assert.equal(await page.getByRole("heading", { name: "Pass the Core exam on your first try" }).count(), 0);
+    // No role setting anywhere.
+    await page.goto(base + "/settings");
+    await page.getByRole("heading", { name: "Settings" }).waitFor();
+    assert.equal(await page.getByText("Your work").count(), 0);
+    assert.deepEqual(errors, []);
+    await context.close();
+    checks++;
+  }
+
+  // 2a. A starter answer cites the rule, and the citation opens the exact paragraph.
+  {
+    const { context, page, errors } = await newPage(browser, 390, "light");
+    await page.goto(base + "/ask/a/a.powerline-clearance");
+    await page.locator("blockquote").first().waitFor();
+    assert.ok(await page.locator(".plate").count() >= 2, "answer has citation plates");
+    await page.locator(".plate", { hasText: "§1926.1408(a)(2)" }).first().click();
+    await page.waitForURL(/\/read\/29cfr1926\.1408\(a\)\(2\)$/);
+    assert.match(await page.locator('[aria-current="true"]').innerText(), /closer than 20 feet/);
+    await page.goBack();
+    await page.waitForURL("**/ask/a/a.powerline-clearance");
     assert.deepEqual(errors, []);
     await context.close();
     checks++;

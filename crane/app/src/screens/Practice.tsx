@@ -26,6 +26,17 @@ export function PracticeHome() {
   const mastered = report.filter((r) => r.status === "mastered").length;
   return (
     <Page title={t("practice.title")}>
+      {state.step === 0 && history.length === 0 ? (
+        // First run: what this is for, the exam, and one step into the first question.
+        <Panel className="practice-welcome">
+          <h2 className="mb-2 text-h2">{t("practice.welcome.title")}</h2>
+          <p className="m-0 mb-3 text-body">{t("practice.welcome.body")}</p>
+          <p className="m-0 mb-5 text-small text-ink-2">{t("practice.welcome.exam")}</p>
+          <ButtonLink to="/practice/session" variant="primary">
+            {t("practice.welcome.start")}
+          </ButtonLink>
+        </Panel>
+      ) : (
       <Panel>
         <h2 className="mb-1 text-h3">{t("practice.adaptive")}</h2>
         <p className="m-0 mb-4 text-ink-2">{state.step === 0 ? t("practice.adaptive.new") : t("practice.adaptive.progress", { mastered, total: report.length })}</p>
@@ -33,6 +44,7 @@ export function PracticeHome() {
           {state.step === 0 ? t("practice.start") : t("practice.continue")}
         </ButtonLink>
       </Panel>
+      )}
       <List label={t("practice.exams")}>
         {e.exams.map((bp) => {
           const rec = exams[bp.id];
