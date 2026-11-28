@@ -7,12 +7,12 @@ export interface VoiceOption {
   id: string;
   language: string;
   name?: string | null;
-  /** tauri-plugin-tts buckets: enhanced (iOS Enhanced/Premium), very_high, high, normal, default, low, very_low. */
+  /** tauri-plugin-tts buckets: premium and enhanced (iOS), very_high, high, normal, default, low, very_low (Android). */
   quality?: string | null;
   networkRequired?: boolean | null;
 }
 
-const RANK: Record<string, number> = { enhanced: 6, very_high: 5, high: 4, normal: 3, default: 2, low: 1, very_low: 0 };
+const RANK: Record<string, number> = { premium: 7, enhanced: 6, very_high: 5, high: 4, normal: 3, default: 2, low: 1, very_low: 0 };
 
 export function pickVoice(voices: readonly VoiceOption[], lang: string): VoiceOption | null {
   const base = lang.toLowerCase().split("-")[0]!;

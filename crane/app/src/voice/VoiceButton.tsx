@@ -1,4 +1,4 @@
-import { Loader2, Mic } from "lucide-react";
+import { Loader2, Mic, Settings } from "lucide-react";
 import { cx } from "../ui/kit.tsx";
 import { useT } from "../ui/useT.ts";
 import type { VoicePhase } from "./useVoiceInput.ts";
@@ -6,14 +6,24 @@ import type { VoicePhase } from "./useVoiceInput.ts";
 /**
  * The push-to-talk control: one large target (glove-sized, full width) whose
  * label and colour say the state, a live level meter while listening, and a
- * reserved status line below. Every state has the same size, so nothing moves
- * when it changes.
+ * status area below reserved for three lines (large system text included).
+ * Every state has the same size, so nothing moves when it changes. After the
+ * microphone is refused the control opens Settings instead of failing again.
  */
 export function VoiceButton({ phase, level, onPress }: { phase: VoicePhase; level: number; onPress: () => void }) {
   const t = useT();
   const listening = phase === "listening";
   const working = phase === "starting" || phase === "transcribing";
-  const label = listening ? t("voice.listening") : phase === "starting" ? t("voice.starting") : phase === "transcribing" ? t("voice.transcribing") : t("voice.tap");
+  const denied = phase === "denied";
+  const label = listening
+    ? t("voice.listening")
+    : phase === "starting"
+      ? t("voice.starting")
+      : phase === "transcribing"
+        ? t("voice.transcribing")
+        : denied
+          ? t("voice.openSettings")
+          : t("voice.tap");
   const status =
     phase === "done" ? t("voice.done") : phase === "nothing" ? t("voice.nothing") : phase === "denied" ? t("voice.denied") : phase === "failed" ? t("voice.failed") : listening ? t("voice.listeningHint") : "";
   const statusTone = phase === "denied" || phase === "failed" || phase === "nothing" ? "text-fail" : "text-ink-2";
@@ -31,12 +41,12 @@ export function VoiceButton({ phase, level, onPress }: { phase: VoicePhase; leve
         )}
       >
         <span className="inline-flex size-8 items-center justify-center" aria-hidden>
-          {working ? <Loader2 size={28} className="animate-spin" /> : <Mic size={28} />}
+          {working ? <Loader2 size={28} className="animate-spin" /> : denied ? <Settings size={28} /> : <Mic size={28} />}
         </span>
         <span>{label}</span>
         <LevelMeter level={listening ? level : 0} active={listening} />
       </button>
-      <p id="voice-status" aria-live="polite" className={cx("m-0 min-h-[2.9em] text-small leading-[1.45]", statusTone)}>
+      <p id="voice-status" aria-live="polite" className={cx("m-0 min-h-[4.35em] text-small leading-[1.45]", statusTone)}>
         {status}
       </p>
     </div>

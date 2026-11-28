@@ -11,9 +11,16 @@ import { cleanTranscript } from "./transcript.ts";
  *
  * plus `denied` (microphone permission refused) and `failed`. The first tap
  * is where iOS and Android ask for the microphone, in context; nothing asks
- * earlier. Listening ends on its own after a pause (see endpoint.ts), on a
- * second tap, or at the time cap. The transcript is handed to `onText` for the
+ * earlier. Listening ends on its own after a pause (endpoint.ts), on a second
+ * tap, or at the time cap. The transcript is handed to `onText` for the
  * person to check and edit; it is never asked automatically.
+ *
+ * In `denied`, the tap opens the app's settings (a tap that would only fail
+ * again is never offered); coming back to the app resets to `idle`.
+ *
+ * Every await is followed by a check that this screen is still open and the
+ * session is still the current one, so leaving the screen mid-start or a
+ * late timer never leaves the microphone on or stops someone else's session.
  */
 export type VoicePhase = "idle" | "starting" | "listening" | "transcribing" | "done" | "nothing" | "denied" | "failed";
 
@@ -24,7 +31,6 @@ export function useVoiceInput(lang: string, onText: (text: string) => void) {
   const busy = useRef(false);
   const unsubscribe = useRef<(() => void) | null>(null);
   const capTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const heard = useRef(false);
   const mounted = useRef(true);
   const onTextRef = useRef(onText);
   onTextRef.current = onText;
@@ -34,26 +40,26 @@ export function useVoiceInput(lang: string, onText: (text: string) => void) {
     unsubscribe.current = null;
     if (capTimer.current) clearTimeout(capTimer.current);
     capTimer.current = null;
-    setLevel(0);
+    if (mounted.current) setLevel(0);
   };
 
   const set = (p: VoicePhase) => {
     if (mounted.current) setPhase(p);
   };
 
-  const finish = useCallback(async (outcome: "done" | "nothing-heard") => {
-    const id = session.current;
-    if (!id) return;
+  /** Stop and transcribe `id`, if it is still this screen's session. */
+  const finish = useCallback(async (id: string) => {
+    if (session.current !== id) return;
     session.current = null;
     release();
-    if (outcome === "nothing-heard") {
+    if (!mounted.current) {
       await voice.cancel(id);
-      set("nothing");
       return;
     }
     set("transcribing");
     try {
       const text = cleanTranscript(await voice.stop(id));
+      if (!mounted.current) return;
       if (!text) return set("nothing");
       onTextRef.current(text);
       set("done");
@@ -66,20 +72,27 @@ export function useVoiceInput(lang: string, onText: (text: string) => void) {
   const start = useCallback(async () => {
     await speech.stop(); // never record our own read-aloud
     set("starting");
-    heard.current = false;
     const ep = new Endpointer();
     try {
-      unsubscribe.current = await voice.onLevel((rms, t) => {
-        if (!session.current) return;
+      const unsub = await voice.onLevel((rms, t) => {
+        const id = session.current;
+        if (!id) return;
         setLevel(rms);
-        const r = ep.push(t, rms);
-        heard.current = ep.speechHeard;
-        if (r !== "listening") void finish(r);
+        if (ep.push(t, rms) === "done") void finish(id);
       });
-      session.current = await voice.start(lang);
+      if (!mounted.current) return unsub();
+      unsubscribe.current = unsub;
+      const id = await voice.start(lang);
+      if (!mounted.current) {
+        // The screen closed while the microphone was starting: stop it now.
+        release();
+        await voice.cancel(id);
+        return;
+      }
+      session.current = id;
       set("listening");
       // The cap holds even if the platform sends no level readings.
-      capTimer.current = setTimeout(() => void finish("done"), ENDPOINT.maxMs + 500);
+      capTimer.current = setTimeout(() => void finish(id), ENDPOINT.maxMs + 500);
     } catch (e) {
       release();
       session.current = null;
@@ -88,17 +101,28 @@ export function useVoiceInput(lang: string, onText: (text: string) => void) {
     }
   }, [lang, finish]);
 
-  /** The one control: starts, or ends listening early. Ignored while starting or transcribing. */
+  /** The one control. Ignored while starting or transcribing. */
   const toggle = useCallback(async () => {
     if (busy.current) return;
     busy.current = true;
     try {
-      if (phase === "listening") await finish("done");
+      if (phase === "listening" && session.current) await finish(session.current);
+      else if (phase === "denied") await voice.openSettings();
       else if (phase !== "starting" && phase !== "transcribing") await start();
     } finally {
       busy.current = false;
     }
   }, [phase, finish, start]);
+
+  // Back from Settings: try again from a clean state.
+  useEffect(() => {
+    if (phase !== "denied") return;
+    const onVisible = () => {
+      if (document.visibilityState === "visible") set("idle");
+    };
+    document.addEventListener("visibilitychange", onVisible);
+    return () => document.removeEventListener("visibilitychange", onVisible);
+  }, [phase]);
 
   useEffect(() => {
     mounted.current = true;

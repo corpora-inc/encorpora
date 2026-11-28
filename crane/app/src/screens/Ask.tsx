@@ -60,7 +60,7 @@ export function AskBox({ initial = "", autoFocus = false }: { initial?: string; 
             setInputError(false);
           }}
           onKeyDown={(e) => {
-            if (e.key === "Enter" && !e.shiftKey) {
+            if (e.key === "Enter" && !e.shiftKey && !e.nativeEvent.isComposing) {
               e.preventDefault();
               ask();
             }

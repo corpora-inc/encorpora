@@ -4,3 +4,6 @@ artifacts/
 src-tauri/target/
 src-tauri/gen/
 src-tauri/voice/
+voice-eval/models/
+voice-eval/audio/
+voice-eval/work*/

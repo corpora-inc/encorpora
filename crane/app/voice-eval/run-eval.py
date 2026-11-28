@@ -79,8 +79,8 @@ def run_batch(cli: str, model: Path, clips: list[Path], workdir: Path, prompt: s
     return {l.stem: (workdir / f"{l.name}.txt").read_text().strip() for l in links}
 
 
-def latency(cli: str, model: Path, clip: Path, prompt: str | None) -> float:
-    cmd = [cli, "-m", str(model), "-l", "en", "-t", "4", "-bo", "1", "-bs", "1", "-nt", "-f", str(clip)]
+def latency(cli: str, model: Path, clip: Path, prompt: str | None, cpus: str | None = None) -> float:
+    cmd = (["taskset", "-c", cpus] if cpus else []) + [cli, "-m", str(model), "-l", "en", "-t", "4", "-bo", "1", "-bs", "1", "-nt", "-f", str(clip)]
     if prompt:
         cmd += ["--prompt", prompt]
     p = subprocess.run(cmd, check=True, capture_output=True, text=True)
@@ -98,12 +98,26 @@ def main() -> None:
     ap.add_argument("--model", action="append")
     ap.add_argument("--conditions", nargs="+", default=["clean", "snr10", "snr5"])
     ap.add_argument("--latency-clips", type=int, default=24)
+    ap.add_argument("--cpus", help="pin latency runs to these CPUs (taskset list), e.g. mid-range-phone-class cores")
+    ap.add_argument("--latency-only", action="store_true", help="only time the models (prompted, snr10), no accuracy batches")
     a = ap.parse_args()
 
     items = {i["id"]: i for i in json.loads((HERE / "items.json").read_text())["items"]}
     results = json.loads(a.out.read_text()) if a.out.exists() else {"prompt": PROMPT, "runs": []}
     done = {(r["model"], r["prompt"], r["condition"]) for r in results["runs"]}
     models = a.model or sorted(p.name for p in a.models.glob("ggml-*.bin"))
+    if a.latency_only:
+        clips = sorted((a.audio / "snr10").glob("*.wav"))
+        subset = clips[:: max(1, len(clips) // a.latency_clips)][: a.latency_clips]
+        lat_runs = results.setdefault("latency", [])
+        for model in models:
+            if any(r["model"] == model and r["cpus"] == a.cpus for r in lat_runs):
+                continue
+            lat = sorted(latency(a.cli, a.models / model, c, PROMPT, a.cpus) for c in subset)
+            lat_runs.append({"model": model, "cpus": a.cpus, "n": len(lat), "median": round(statistics.median(lat)), "p90": round(lat[int(0.9 * (len(lat) - 1))])})
+            a.out.write_text(json.dumps(results, indent=1))
+            print(model, lat_runs[-1], flush=True)
+        return
     for model in models:
         for use_prompt in (False, True):
             for cond in a.conditions:

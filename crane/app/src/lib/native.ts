@@ -8,6 +8,7 @@ import { addPluginListener } from "@tauri-apps/api/core";
 import VOICE_MODEL from "../../src-tauri/voice-model.json";
 import { VOCAB_PROMPT } from "../voice/prompt.ts";
 import { pickVoice, type VoiceOption } from "../voice/voices.ts";
+import { PRODUCT } from "../config.ts";
 import { logError } from "./log.ts";
 
 type Invoke = (cmd: string, args?: Record<string, unknown> | Uint8Array, options?: { headers?: Record<string, string> }) => Promise<unknown>;
@@ -99,14 +100,13 @@ export const speech = {
  * the plugin source. Audio never leaves the device: the plugin records and
  * transcribes locally, and the app has no network access (CSP).
  */
-export type VoiceErrorKind = "permission" | "busy" | "failed";
+export type VoiceErrorKind = "permission" | "failed";
 
 /** What went wrong, from the plugin's rejection (iOS: "CODE: message"; Android: a code field). */
 export function voiceErrorKind(raw: unknown): VoiceErrorKind {
   const code = typeof raw === "object" && raw !== null && "code" in raw ? String((raw as { code: unknown }).code) : "";
   const text = raw instanceof Error ? raw.message : typeof raw === "string" ? raw : JSON.stringify(raw ?? "");
   if (code === "MIC_PERMISSION_DENIED" || /MIC_PERMISSION_DENIED|microphone access/i.test(text)) return "permission";
-  if (code === "BUSY" || /^BUSY\b/.test(text)) return "busy";
   return "failed";
 }
 
@@ -134,9 +134,12 @@ export const voice = {
     const invoke = tauriInvoke();
     if (!invoke) return false;
     try {
-      const bundled = (await invoke("voice_model")) as { status: string; file: string };
-      if (bundled.status !== "ready") return false;
+      // Answers at once: on a first launch the model may still be copying
+      // ("installing"), which counts; the first tap waits for it.
+      const bundled = (await invoke("voice_model", { wait: false })) as { status: string; file: string };
+      if (bundled.status !== "ready" && bundled.status !== "installing") return false;
       if ((await invoke("plugin:stt|is_available")) !== true) return false;
+      if (bundled.status === "installing") return true;
       const model = (await invoke("plugin:stt|validate_model", { model: bundled.file })) as { valid?: boolean };
       return model.valid === true;
     } catch (e) {
@@ -148,6 +151,8 @@ export const voice = {
   async start(lang: string): Promise<string> {
     const invoke = tauriInvoke();
     if (!invoke) throw new VoiceError("Voice input needs the app");
+    const bundled = (await asVoiceError(invoke("voice_model", { wait: true }))) as { status: string };
+    if (bundled.status !== "ready") throw new VoiceError(`The speech model is ${bundled.status}`);
     const ready = (await asVoiceError(invoke("plugin:stt|prepare", { args: { model: VOICE_MODEL.file } }))) as { ready: boolean; message?: string | null };
     if (!ready.ready) throw new VoiceError(ready.message ?? "The speech model could not load");
     const sessionId = crypto.randomUUID();
@@ -170,6 +175,20 @@ export const voice = {
       await invoke("plugin:stt|cancel_session", { args: { sessionId } });
     } catch (e) {
       logError("voice.cancel", e);
+    }
+  },
+  /**
+   * Open the place the person can turn the microphone back on: the app's
+   * page in Settings (iOS), or the app's details screen (Android).
+   */
+  async openSettings(): Promise<void> {
+    const invoke = tauriInvoke();
+    if (!invoke) return;
+    try {
+      if (/Android/i.test(navigator.userAgent)) await invoke("plugin:tts|open_app_details", { packageName: PRODUCT.bundleId });
+      else await invoke("plugin:tts|open_tts_settings");
+    } catch (e) {
+      logError("voice.openSettings", e);
     }
   },
   /** Microphone level while recording (about 8 per second): RMS 0..1, and ms since recording began. */

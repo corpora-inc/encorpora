@@ -428,6 +428,11 @@ jobs:
       # The speech model ships inside the app (voice input works offline from
       # the first launch, no download): fetch the one voice-model.json pins and
       # verify its SHA-256 before the build bundles src-tauri/voice/.
+      - name: Cache the bundled speech model
+        uses: actions/cache@v4
+        with:
+          path: crane/app/src-tauri/voice
+          key: crane-voice-model-${{ hashFiles('crane/app/src-tauri/voice-model.json') }}
       - name: Fetch the bundled speech model
         working-directory: crane/app
         run: scripts/fetch-voice-model.sh
@@ -949,6 +954,11 @@ jobs:
       # The speech model ships inside the app (voice input works offline from
       # the first launch, no download): fetch the one voice-model.json pins and
       # verify its SHA-256 before the build bundles src-tauri/voice/.
+      - name: Cache the bundled speech model
+        uses: actions/cache@v4
+        with:
+          path: crane/app/src-tauri/voice
+          key: crane-voice-model-${{ hashFiles('crane/app/src-tauri/voice-model.json') }}
       - name: Fetch the bundled speech model
         working-directory: crane/app
         run: scripts/fetch-voice-model.sh

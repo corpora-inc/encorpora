@@ -252,7 +252,12 @@ Triggers: a `crane-v<version>` tag (it must equal `version` in
 2. **Checks the profile** (`application-identifier`, `Name`) and asks App Store
    Connect and Play whether the app records exist and are reachable, before
    building (signed runs only).
-3. **Generates both native projects** (`gen/` is not committed) with
+3. **Bundles the speech model.** `scripts/fetch-voice-model.sh` downloads the
+   whisper.cpp model pinned in `src-tauri/voice-model.json` and checks its size
+   and SHA-256 before the build. The inspection step then checks that the same
+   bytes are inside the IPA (`assets/voice/`) and the AAB (`base/assets/voice/`).
+   There is no founder action and no secret: the model is public.
+4. **Generates both native projects** (`gen/` is not committed) with
    `tauri ios init` / `tauri android init`, then edits the generated files and
    asserts each edit landed:
    - iOS `gen/apple/project.yml`: `ITSAppUsesNonExemptEncryption = false`
@@ -267,14 +272,14 @@ Triggers: a `crane-v<version>` tag (it must equal `version` in
    - The microphone string is not added by the workflow: the Tauri CLI merges
      `src-tauri/Info.ios.plist` into the generated `Info.plist` at build time.
      `RECORD_AUDIO` comes from `tauri-plugin-stt`'s manifest.
-4. **Builds** with Rust from `src-tauri/rust-toolchain.toml` set as the runner's
+5. **Builds** with Rust from `src-tauri/rust-toolchain.toml` set as the runner's
    default toolchain, and with `CMAKE_DISABLE_FIND_PACKAGE_OpenSSL=ON` (and, on
    Android, the pinned NDK and `ANDROID_PLATFORM=android-26` for llama.cpp)
    written to the runner's `$CARGO_HOME/config.toml`. The Tauri CLI runs cargo
    from `crane/app` with a filtered environment, so neither job environment
    variables nor `src-tauri/rust-toolchain.toml` reach it otherwise. Android
    builds arm64-v8a only.
-5. **Reads the finished artifacts back** and fails on any mismatch:
+6. **Reads the finished artifacts back** and fails on any mismatch:
    - IPA / archive: bundle id, `CFBundleShortVersionString`, `CFBundleVersion`
      ending in this run's build number, `ITSAppUsesNonExemptEncryption = false`,
      iOS 26 SDK or later, `MinimumOSVersion` 16.0,
@@ -286,7 +291,7 @@ Triggers: a `crane-v<version>` tag (it must equal `version` in
      absent, arm64-v8a only including `libcrane_lib.so`, every native library's
      LOAD segments 16 KiB aligned and 16 KiB APK packaging requested (Play's
      16 KB page size requirement), and arm64-v8a native debug symbols.
-6. **Uploads** to TestFlight and the Play internal track, then **verifies this
+7. **Uploads** to TestFlight and the Play internal track, then **verifies this
    run put the build there**: TestFlight requires the build's `uploadedDate` to
    be at or after the run started; Play snapshots the track before the upload
    and requires the versionCode to have been added. Presence alone would pass

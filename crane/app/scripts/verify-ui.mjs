@@ -103,7 +103,7 @@ const fakeNative = (opts) => {
     invoke: async (cmd, args) => {
       window.__stt.push(cmd);
       switch (cmd) {
-        case "voice_model": return { status: "ready", file: "ggml-test.bin" };
+        case "voice_model": return { status: args?.wait ? "ready" : "installing", file: "ggml-test.bin" };
         case "plugin:stt|is_available": return true;
         case "plugin:stt|validate_model": return { model: args.model, valid: true, problems: [] };
         case "plugin:stt|prepare": return { ready: true, model: args.args.model };
@@ -137,6 +137,7 @@ const fakeNative = (opts) => {
           ];
         case "plugin:tts|speak": window.__tts.push(args.args); await new Promise((r) => setTimeout(r, 300)); return null;
         case "plugin:tts|stop": return null;
+        case "plugin:tts|open_tts_settings": return null;
         case "plugin:corpan-llm|llm_status": return { loaded: false, modelId: null };
         default: throw `unexpected command ${cmd}`;
       }
@@ -437,8 +438,11 @@ try {
     const starters = page.getByText("Common questions");
     const y0 = (await starters.boundingBox()).y;
     await talk.click();
-    await page.getByText("The microphone is off for this app. Turn it on in Settings, or type.").waitFor();
+    await page.getByText("The microphone is off for this app. Allow it in Settings, or type the question.").waitFor();
     assert.equal((await starters.boundingBox()).y, y0, "the refusal message does not move the page");
+    // A tap that would only fail again is never offered: the control now opens Settings.
+    await page.getByRole("button", { name: "Open Settings" }).click();
+    await page.waitForFunction(() => window.__stt.includes("plugin:tts|open_tts_settings"));
     assert.deepEqual(errors.filter((e) => !/voice\.start|MIC_PERMISSION/.test(e)), []);
     await context.close();
     checks++;
