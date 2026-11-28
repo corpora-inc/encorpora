@@ -22,8 +22,10 @@ use std::sync::atomic::{AtomicU64, Ordering};
 
 pub mod attach;
 pub mod maint;
+pub mod practice;
 pub use attach::*;
 pub use maint::*;
+pub use practice::*;
 
 const DDL: &str = "
 CREATE TABLE IF NOT EXISTS records_meta (key TEXT PRIMARY KEY, value TEXT NOT NULL);
@@ -379,6 +381,7 @@ impl Records {
         conn.execute_batch(DDL)?;
         conn.execute_batch(maint::DDL)?;
         conn.execute_batch(attach::DDL)?;
+        conn.execute_batch(practice::DDL)?;
         maint::migrate(&conn)?;
         crate::audit::init(&conn)?;
         sync::init(&conn)?;

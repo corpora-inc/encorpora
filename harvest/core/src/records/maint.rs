@@ -2745,9 +2745,13 @@ impl Records {
     /// nothing but the hello, backing off (5 minutes, doubling, at most a
     /// day); `force` (an operator retrying after enrollment) tries now and
     /// restarts the back-off.
+    /// `hub_keys` are the hub's keys (the ones its bundles are signed
+    /// with): a hello reply or receipts that do not verify count for
+    /// nothing.
     pub fn flush_to_hub(
         &self,
         link: &dyn crate::sync::HubLink,
+        hub_keys: &[TrustedKey],
         batch_size: usize,
         force: bool,
     ) -> Result<HubFlush> {
@@ -2783,7 +2787,7 @@ impl Records {
             )?;
             Ok(())
         };
-        let reply = match link.hello() {
+        let reply = match crate::sync::checked_hello(link, hub_keys) {
             Ok(r) => r,
             Err(e) => {
                 note(false, false, Some(e.to_string()))?;
@@ -2831,7 +2835,13 @@ impl Records {
         gate.backoff_s = 0;
         gate.next_try_at = None;
         gate.save(&self.conn)?;
-        let flush = self.flush(&crate::sync::LinkTransport(link), batch_size)?;
+        let flush = self.flush(
+            &crate::sync::LinkTransport {
+                link,
+                keys: hub_keys,
+            },
+            batch_size,
+        )?;
         Ok(HubFlush {
             hello: Some(reply),
             flush: Some(flush),

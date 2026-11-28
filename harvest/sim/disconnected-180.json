@@ -36,6 +36,7 @@
   "sync_every_minutes": 60.0,
   "conflicts": [],
   "tamper_prob": 0.0,
+  "forge_prob": 0.0,
   "fleet_every_hours": 168.0,
   "skew_bound_minutes": 30,
   "rogue_device": false,

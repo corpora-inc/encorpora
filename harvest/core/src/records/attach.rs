@@ -16,6 +16,7 @@ use super::Records;
 use crate::audit::now_rfc3339;
 use crate::crypt;
 use crate::error::{Error, Result};
+use crate::packs::TrustedKey;
 use crate::packs::hex_encode;
 use crate::records::PhotoRef;
 use crate::sync::{AttachmentMode, HubLink};
@@ -218,9 +219,10 @@ impl Records {
     pub fn send_attachments(
         &self,
         link: &dyn HubLink,
+        hub_keys: &[TrustedKey],
         stop: &dyn Fn() -> bool,
     ) -> Result<AttachReport> {
-        let r = self.attachment_pass(link, stop)?;
+        let r = self.attachment_pass(link, hub_keys, stop)?;
         if r.mode.is_some() || r.error.is_some() {
             let mut gate = super::maint::HubGate::load(&self.conn)?;
             gate.attachments_at = Some(now_rfc3339());
@@ -230,7 +232,12 @@ impl Records {
         Ok(r)
     }
 
-    fn attachment_pass(&self, link: &dyn HubLink, stop: &dyn Fn() -> bool) -> Result<AttachReport> {
+    fn attachment_pass(
+        &self,
+        link: &dyn HubLink,
+        hub_keys: &[TrustedKey],
+        stop: &dyn Fn() -> bool,
+    ) -> Result<AttachReport> {
         let mut report = AttachReport::default();
         if self.attachment_backlog(AttachmentMode::Full)? == 0 {
             return Ok(report);
@@ -246,7 +253,7 @@ impl Records {
             report.error = Some("the hub refuses this device".into());
             return Ok(report);
         }
-        let reply = match link.hello() {
+        let reply = match crate::sync::checked_hello(link, hub_keys) {
             Ok(r) => r,
             Err(e) => {
                 report.error = Some(e.to_string());
@@ -274,7 +281,10 @@ impl Records {
                 break;
             }
             let mut offset = loop {
-                match link.attachment_offset(&vsha, total) {
+                match link
+                    .attachment_offset(&vsha, total)
+                    .and_then(|h| crate::sync::checked_held(&h, link, &vsha, total, hub_keys))
+                {
                     Ok(o) => break o.min(total),
                     Err(e) => {
                         if tries.give_up(&mut report, e) {
@@ -318,7 +328,10 @@ impl Records {
                     }
                     let end = (offset + chunk).min(total);
                     let piece = &data[offset as usize..end as usize];
-                    match link.put_chunk(&vsha, variant, total, offset, piece) {
+                    match link
+                        .put_chunk(&vsha, variant, total, offset, piece)
+                        .and_then(|h| crate::sync::checked_held(&h, link, &vsha, total, hub_keys))
+                    {
                         Ok(held) => {
                             report.chunks += 1;
                             report.bytes += piece.len() as u64;
@@ -347,7 +360,9 @@ impl Records {
                                 break 'items;
                             }
                             // The chunk may have landed: ask where the hub is.
-                            match link.attachment_offset(&vsha, total) {
+                            match link.attachment_offset(&vsha, total).and_then(|h| {
+                                crate::sync::checked_held(&h, link, &vsha, total, hub_keys)
+                            }) {
                                 Ok(o) => offset = o.min(total),
                                 Err(e) => {
                                     if tries.give_up(&mut report, e) {

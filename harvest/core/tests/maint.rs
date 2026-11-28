@@ -1015,7 +1015,7 @@ fn a_pack_sets_its_ranking_in_pack_meta() {
             d.strong_hits,
             d.dense_alone
         ),
-        (0.10, 0.02, 0.50, 1, 0.85)
+        (0.10, 0.05, 0.30, 1, 0.80)
     );
     assert_eq!(
         (d.margin_lexical, d.coverage_lexical, d.strong_hits_lexical),
@@ -1057,13 +1057,13 @@ fn the_confidence_rule_is_pinned_on_constructed_inputs() {
     // A signal: always confident, whatever else.
     assert_eq!(r.rate(true, true, 0.0, 0, Some(0.1), Some(-1.0)), Confident);
     assert_eq!(r.rate(false, true, 0.0, 0, None, Some(-1.0)), Confident);
-    // Dense active, words branch: margin 0.02, coverage 0.50, one strong hit.
+    // Dense active, words branch: margin 0.05, coverage 0.30, one strong hit.
     assert_eq!(
-        r.rate(true, false, 0.50, 1, Some(0.2), Some(0.02)),
+        r.rate(true, false, 0.30, 1, Some(0.2), Some(0.05)),
         Confident
     );
     assert_eq!(
-        r.rate(true, false, 0.49, 1, Some(0.2), Some(0.5)),
+        r.rate(true, false, 0.29, 1, Some(0.2), Some(0.5)),
         Closest,
         "coverage"
     );
@@ -1073,18 +1073,18 @@ fn the_confidence_rule_is_pinned_on_constructed_inputs() {
         "strong hits"
     );
     assert_eq!(
-        r.rate(true, false, 1.0, 3, Some(0.9), Some(0.019)),
+        r.rate(true, false, 1.0, 3, Some(0.9), Some(0.049)),
         Closest,
         "margin"
     );
-    // Dense active, meaning branch: cosine 0.85 with no word at all.
+    // Dense active, meaning branch: cosine 0.80 with no word at all.
     assert_eq!(
-        r.rate(true, false, 0.0, 0, Some(0.85), Some(0.02)),
+        r.rate(true, false, 0.0, 0, Some(0.80), Some(0.05)),
         Confident
     );
-    assert_eq!(r.rate(true, false, 0.0, 0, Some(0.849), Some(0.5)), Closest);
+    assert_eq!(r.rate(true, false, 0.0, 0, Some(0.799), Some(0.5)), Closest);
     // A single hit satisfies the margin.
-    assert_eq!(r.rate(true, false, 0.0, 0, Some(0.86), None), Confident);
+    assert_eq!(r.rate(true, false, 0.0, 0, Some(0.81), None), Confident);
     assert_eq!(r.rate(false, false, 0.3, 1, None, None), Confident);
     // Dense off: coverage 0.30, one strong hit, margin 0.15; cosine ignored.
     assert_eq!(r.rate(false, false, 0.30, 1, None, Some(0.15)), Confident);

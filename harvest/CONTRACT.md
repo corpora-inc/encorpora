@@ -675,9 +675,9 @@ CREATE TABLE failure_mode (mode_id TEXT PRIMARY KEY, equip_id TEXT NOT NULL, sys
   - **Confidence.** A hit's `margin` is its score minus the best other
     hit's; a single hit satisfies any margin. `confident` when a signal
     matched; else, dense active: `margin ≥ symptom_confident_margin`
-    (0.02) and either `coverage ≥ symptom_confident_coverage` (0.50) with
+    (0.05) and either `coverage ≥ symptom_confident_coverage` (0.30) with
     `strong_hits ≥ symptom_confident_strong_hits` (1), or `cosine ≥
-    symptom_confident_dense_alone` (0.85); dense off: `margin ≥
+    symptom_confident_dense_alone` (0.80); dense off: `margin ≥
     symptom_confident_margin_lexical` (0.15), `coverage ≥
     symptom_confident_coverage_lexical` (0.30) and `strong_hits ≥
     symptom_confident_strong_hits_lexical` (1). Otherwise `closest`;
@@ -795,6 +795,32 @@ for the shapes; this section states the rules.
   told to allow and takes calls only as `application/json`. A Tauri host
   calls the same `call`; no transport holds logic.
 
+### Practice
+
+- `practice.items {pack_id, equip_id?}` → `{topics: [{topic_id, title}],
+  skills: [{skill_id, title, topic_id, prereqs}], questions: [{q_id,
+  skill_id, kind, stem, choices, answer, difficulty, variant_of, note,
+  rationales, rationale_citations, citations}]}`. Pass-only; a question
+  applies to a variant by its own `applies_to` rows, else its first
+  section's. `rationale_citations[i]` is a full citation (the step view's
+  shape: path, page label and index, page asset, boxes) for choice `i`:
+  the answer's is the question's own section; a wrong choice's is the
+  most specific section holding the passage its rationale quotes (`“…”`),
+  else the choice's own text; `null` when none does.
+- `practice.record {pack_id, q_id, chosen, correct, ms, at?}` appends an
+  attempt to the device records (sealed, audited as `practice.record`) and
+  queues it for the hub as kind `practice` (`harvest-practice/1`);
+  `practice.history {pack_id}` returns them oldest first, for the app's
+  practice engine to rebuild mastery. The mastery model is the app's
+  (`harvest/practice`).
+- `hub.practice {since?, limit?}` → `{statements, next_since}`: the
+  attempts the hub holds as xAPI-style statements (`actor.account.name` =
+  the device id, verb `answered`, object
+  `urn:harvest:question:<pack>:<q_id>` with the skill as an extension and
+  parent activity, result `success` and ISO 8601 `duration`, context
+  extensions pack id and version, `timestamp`, `stored`; `id` a UUID
+  derived from the item id), for a training records system to ingest.
+
 ## Hub
 
 `harvest_core::hub::Hub` (store: one SQLite file) receives what devices
@@ -852,6 +878,28 @@ for a reviewer's screen).
   runs one pass (it holds the records store; call it in short passes);
   `sync.status.attachments` gives `mode`, `pending`, `pending_bytes`,
   `sent`, `sent_downscaled`, `damaged`, `last_attempt_at`, `failing`.
+- **Signed replies.** The hub signs every hello reply
+  (`harvest-hello-reply/1`), every receipt set (`harvest-receipts/1`,
+  `ReceiveReport.signed`) and every attachment `held`
+  (`harvest-held/1`) with its bundle key, over the canonical JSON of the
+  reply (floats as their shortest text) with a `signature` member like a
+  manifest's; each names the device it answers. A device acts on none
+  that is unsigned, signed by another key, of another format, or for
+  another device: no item is marked sent, no attachment resumed or
+  marked sent, no policy learned. The device trusts the hub keys it
+  verifies bundles with.
+- **Transport.** A device reaches the hub over `https://` (rustls, never
+  OpenSSL) trusting Mozilla's roots, the platform's store (feature
+  `platform-roots`), or only the PEM it is given (`--hub-ca`,
+  `HostConfig.hub_ca_pem`: a pin). Plain `http://` is refused except to
+  this machine, unless explicitly allowed for development
+  (`--hub-insecure-http`). `GET /hub/bundles?since=&limit=` pages
+  (default 50, at most 200; the device reads page by page); `hub.queue`,
+  `hub.conflicts` and `hub.devices` take `offset` and `limit` (default
+  100, at most 500), `hub.bundles` `limit`, `hub.audit` `after_seq` and
+  `limit`. Error bodies leaving `harvest serve` or `harvest hub` carry a
+  code and a plain message with file paths replaced by `<path>`; the full
+  message goes to the log.
 - **Receive.** `POST /hub/receive` takes a delivery
   `{device_id, signed_at, items: [Upload], signature}` signed by the
   device over the canonical JSON of `{format: "harvest-delivery/1",
@@ -954,7 +1002,11 @@ bundle counts (tampered bundles all refused); pack updates; records-store
 size per device over time; and the invariants: nothing lost (no item
 acknowledged that the hub does not hold), nothing applied twice, no
 bundle installed that is not the hub's own, every audit chain intact.
-With `photos`, lessons carry photos (Poisson count, log-normal size,
+With `forge_prob`, someone on the link forges replies (receipts for
+items the hub never got, accepting hello replies, `held` of the whole
+file), unsigned or signed with another key; the invariants `nothing_lost`
+and `no_attachment_marked_sent_without_hub` show none was acted on
+(`link.forged_replies` counts them). With `photos`, lessons carry photos (Poisson count, log-normal size,
 a downscaled copy) and the attachment lane runs after each sync; the
 same fleet is run twice, the lane off and on, with record traffic and
 attachment traffic on separate random streams, and the invariant
