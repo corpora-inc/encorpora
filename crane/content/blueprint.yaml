@@ -149,9 +149,9 @@ exam_source:
 # when they apply only to some machines; no `equipment` means all.
 equipment:
   - {equip_id: mobile, name: Mobile crane, aliases: [crane, mobile crane]}
-  - {equip_id: tele-swing, parent_id: mobile, name: Telescopic boom crane, swing cab, aliases: [hydraulic truck crane, all-terrain, AT, truck crane, hydro, TLL]}
+  - {equip_id: tele-swing, parent_id: mobile, name: "Telescopic boom crane, swing cab", aliases: [hydraulic truck crane, all-terrain, AT, truck crane, hydro, TLL]}
   - {equip_id: rough-terrain, parent_id: tele-swing, name: Rough-terrain crane, aliases: [RT, cherry picker, rough terrain]}
-  - {equip_id: tele-fixed, parent_id: mobile, name: Telescopic boom crane, fixed cab, aliases: [boom truck, fixed cab, TSS, stinger]}
+  - {equip_id: tele-fixed, parent_id: mobile, name: "Telescopic boom crane, fixed cab", aliases: [boom truck, fixed cab, TSS, stinger]}
   - {equip_id: lattice, parent_id: mobile, name: Lattice boom crane, aliases: [stick crane, conventional, friction crane, LAT]}
   - {equip_id: crawler, parent_id: lattice, name: Lattice boom crawler crane, aliases: [crawler, tracked crane]}
   - {equip_id: lattice-truck, parent_id: lattice, name: Lattice boom truck crane, aliases: [truck-mounted lattice]}

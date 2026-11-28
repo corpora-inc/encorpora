@@ -194,9 +194,12 @@ imports:
     file_columns: {svg: file}
     prov: {backend: human, model: human, prompt_id: crane-diagrams, prompt_version: "1",
            verifier: crane-content/verify v1, verdict: pass}
+  # the course knowledge tree (harvest/CONTRACT.md "course_node"); import it after what it links to
+  - {table: course_node, files: ["course/*.jsonl"]}
 
 # App data in pack_meta (harvest/CONTRACT.md, "Content read API"); every id is checked at build.
 pack_meta:
   exam_blueprints: {file: exams.json}
   skill_prereqs: {file: app.yaml, key: skill_prereqs}
   starter_answers: {file: app.yaml, key: starter_answers}
+  instructor_welcome: {file: course/welcome.json}
