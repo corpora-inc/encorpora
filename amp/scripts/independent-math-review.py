@@ -805,7 +805,7 @@ def check_generated_case(problem, check):
         raise ValueError(f"{public['templateId']}/{public['seed']}: {error}") from error
 
 
-def review(stream):
+def review(stream, publications=True):
     first_line = next(stream, None)
     require(first_line is not None, 'Missing manifest')
     manifest = json.loads(first_line)
@@ -1148,29 +1148,47 @@ def review(stream):
     print('Independent absolute-value content: '+json.dumps(review_absolute_value_content()),file=sys.stderr)
     print('Independent right-triangle teaching geometry: ' + json.dumps(review_right_triangle_figures()), file=sys.stderr)
     print('Independent print notation review: ' + json.dumps(review_print_math()), file=sys.stderr)
-    # `npm run review:math` rebuilds artifacts/publications first, so the print
-    # review sees current output. Unit tests point this at an absent directory
-    # so their result never depends on whatever happens to be on disk.
-    amp_root = Path(__file__).resolve().parent.parent
-    publications = Path(os.environ.get('AMP_PUBLICATIONS_DIR') or amp_root / 'artifacts/publications')
-    if publications.exists():
-        reader = subprocess.run(
-            ['node', '--import', 'tsx', 'scripts/verify-reader-typesetting.ts'],
-            cwd=amp_root,
-            env={**os.environ, 'READER_REVIEW_OUT': str(amp_root / 'artifacts/reader-typesetting-review')},
-            capture_output=True, text=True, timeout=120)
-        require(reader.returncode == 0, f'Reader typesetting review failed: {reader.stderr}')
-        print('Independent reader typesetting review: ' + reader.stdout.strip(), file=sys.stderr)
-        print('Independent PDF bounds review: ' + json.dumps(review_print_pdfs(publications)), file=sys.stderr)
-    else:
-        print(f'Reader typesetting and print layout/PDF review not run: no publication export directory at {publications}; npm run review:math builds it.', file=sys.stderr)
+    if publications:
+        review_publications()
     return {'cases': sum(counts.values()), 'families': len(counts), 'seedsPerFamily': count,
             'seedStart': start, 'mismatches': 0}
 
 
+def review_publications(required=False):
+    """Reader typesetting and the print layout/PDF review of the exported
+    publications. `npm run review:math` rebuilds artifacts/publications first,
+    so the print review sees current output. Unit tests point
+    AMP_PUBLICATIONS_DIR at an absent directory so their result never depends
+    on whatever happens to be on disk; `--publications-only` (the deep checks'
+    publications lane, beside a cases-only lane) requires the export."""
+    amp_root = Path(__file__).resolve().parent.parent
+    publications = Path(os.environ.get('AMP_PUBLICATIONS_DIR') or amp_root / 'artifacts/publications')
+    if not publications.exists():
+        require(not required, f'No publication export directory at {publications}; run npm run publications first')
+        print(f'Reader typesetting and print layout/PDF review not run: no publication export directory at {publications}; npm run review:math builds it.', file=sys.stderr)
+        return None
+    reader = subprocess.run(
+        ['node', '--import', 'tsx', 'scripts/verify-reader-typesetting.ts'],
+        cwd=amp_root,
+        env={**os.environ, 'READER_REVIEW_OUT': str(amp_root / 'artifacts/reader-typesetting-review')},
+        capture_output=True, text=True, timeout=120)
+    require(reader.returncode == 0, f'Reader typesetting review failed: {reader.stderr}')
+    print('Independent reader typesetting review: ' + reader.stdout.strip(), file=sys.stderr)
+    pdfs = review_print_pdfs(publications)
+    print('Independent PDF bounds review: ' + json.dumps(pdfs), file=sys.stderr)
+    return pdfs
+
+
 if __name__ == '__main__':
     try:
-        print(json.dumps(review(iter(sys.stdin))))
+        # The deep checks run the two halves in parallel lanes: the cases
+        # (`--cases-only`) and the export's print review (`--publications-only`).
+        if sys.argv[1:] == ['--publications-only']:
+            print(json.dumps(review_publications(required=True)))
+        else:
+            require(sys.argv[1:] in ([], ['--cases-only']),
+                    'Usage: independent-math-review.py [--cases-only | --publications-only] < cases.jsonl')
+            print(json.dumps(review(iter(sys.stdin), publications=sys.argv[1:] != ['--cases-only'])))
     except (ValueError, KeyError, TypeError, ZeroDivisionError, OverflowError) as error:
         print(f'Independent math review failed: {error}', file=sys.stderr)
         sys.exit(1)
