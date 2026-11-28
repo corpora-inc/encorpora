@@ -34,11 +34,12 @@ pull or any HTTP-level daemon error fails immediately: an HTTP answer, including
 that evidence. Only failures with no verdict are retried, such as DNS errors,
 resets and timeouts. A host gets three attempts of up to 20 seconds, 5 and then
 15 seconds apart, and all hosts share six retries. The valid control gets three
-attempts of up to 30 seconds. It passes on a pull or on any HTTP-level answer,
-the inverse of the incident rule: a 429 quota response or a 5xx also needs a
-finished, trusted handshake, so a public registry's anonymous rate limit
-(registry.k8s.io's shared quota, 2026-11-28) cannot fail every job. Transport
-and certificate failures are never accepted. Each failed attempt logs one sanitized line of at
+attempts of up to 30 seconds. It passes on a pull or on an HTTP status answer from
+the registry (an error code from a response body, or a 4xx/5xx status): a 429
+quota response also needs a finished, trusted handshake, so a public
+registry's anonymous rate limit (registry.k8s.io's shared quota, 2026-11-28)
+cannot fail every job. Transport, certificate and local daemon failures are
+never accepted. Each failed attempt logs one sanitized line of at
 most 200 characters. Registry response bodies can appear in it, so it never
 carries workflow commands.
 

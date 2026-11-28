@@ -45,6 +45,21 @@ INCIDENT_RETRY_BUDGET = 6
 CONTROL_PULL_TIMEOUT = 30
 # Go's form for a request that failed before any HTTP response: Get "url": cause
 TRANSPORT_FAILURE = re.compile(r'\b(?:get|head) "https://[^"]+": ')
+# Positive evidence that a registry answered over HTTP (lowercased daemon
+# text): an error code from a response body, or an HTTP status. Only these
+# prove a finished, trusted handshake for the valid control; a local failure
+# (context canceled, no space, containerd socket) never does.
+HTTP_ANSWER = re.compile(
+    r'^error response from daemon: (?:'
+    r'(?:toomanyrequests|unauthorized|denied|unknown|manifest unknown|name unknown|unsupported):'
+    r'|received unexpected http status: [45]\d\d\b'
+    r'|pull access denied for '
+    r'|manifest for \S+ not found'
+    r'|no matching manifest for '
+    r'|unsupported manifest media type'
+    r'|(?:get|head) "https://[^"]+": (?:toomanyrequests|unauthorized|denied):'
+    r'|.*\bunexpected status (?:from (?:head|get) request to|code) https://\S+: [45]\d\d\b'
+    r')')
 
 
 def require(condition, message):
@@ -276,18 +291,19 @@ def require_incident_rejections(args):
 
 
 def pull_valid_control(args):
-    """Require a trusted TLS session with a public registry: a pull, or any
-    HTTP-level answer. An answer (429 quota, 5xx, unauthorized) needs a
-    finished handshake, the inverse of the incident rule, so a registry's
-    anonymous rate limit cannot fail the job. Transport and certificate
-    failures are retried within the bound, then fatal."""
+    """Require a trusted TLS session with a public registry: a pull, or an
+    HTTP status answer from it (HTTP_ANSWER). A 429 quota, 5xx or
+    unauthorized response needs a finished handshake with a trusted chain, so
+    a registry's anonymous rate limit cannot fail the job. Anything else
+    (transport, certificate, or local daemon failures) is retried within the
+    bound, then fatal."""
     for attempt, delay in enumerate((*PULL_BACKOFF_SECONDS, None), 1):
         try:
             run(args + ['pull', VALID_CONTROL], timeout=CONTROL_PULL_TIMEOUT)
             return 'pulled'
         except subprocess.CalledProcessError as error:
             diagnostic = (error.stderr or '').strip().lower()
-            if ('error response from daemon:' in diagnostic and not TRANSPORT_FAILURE.search(diagnostic)
+            if (HTTP_ANSWER.search(diagnostic)
                     and not any(word in diagnostic for word in ('x509', 'certificate', 'tls:'))):
                 report_pull_failure(VALID_CONTROL, attempt, error)
                 return 'http answer'

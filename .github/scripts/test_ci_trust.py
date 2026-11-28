@@ -350,10 +350,34 @@ class DockerRetryTests(unittest.TestCase):
                 self.assertEqual((self.pulls.count(trust.VALID_CONTROL), self.sleeps), (1, []))
         self.assertEqual(self.refresh()['valid_control_result'], 'pulled')
 
-    def test_valid_control_never_accepts_a_certificate_failure(self):
+    def test_valid_control_accepts_wrapped_and_containerd_status_answers(self):
+        for answer in ('Error response from daemon: Head "https://registry.k8s.io/v2/pause/manifests/3.10": '
+                       'toomanyrequests: quota exceeded',
+                       'Error response from daemon: failed to resolve reference "registry.k8s.io/pause:3.10": '
+                       'failed to authorize: failed to fetch anonymous token: unexpected status from GET request '
+                       'to https://registry.k8s.io/v2/token: 429 Too Many Requests'):
+            with self.subTest(answer=answer[:50]):
+                self.assertEqual(self.refresh({trust.VALID_CONTROL: [answer]})['valid_control_result'],
+                                 'http answer')
+
+    def test_valid_control_never_accepts_a_certificate_or_local_failure(self):
+        # Local daemon failures reach no registry, so they prove no handshake.
         for failure in (self.REJECTED.strip(),
                         'Error response from daemon: failed to do request: x509: certificate has expired',
-                        'Error response from daemon: remote error: tls: bad certificate'):
+                        'Error response from daemon: remote error: tls: bad certificate',
+                        'Error response from daemon: context canceled',
+                        'Error response from daemon: failed to resolve reference "registry.k8s.io/pause:3.10": '
+                        'context deadline exceeded',
+                        'Error response from daemon: failed to create lease: write /var/lib/docker/meta.db: '
+                        'no space left on device',
+                        'Error response from daemon: rpc error: code = Unavailable desc = connection error: '
+                        'desc = "transport: Error while dialing: dial unix /run/containerd/containerd.sock: '
+                        'connect: connection refused"',
+                        'Error response from daemon: Get "http://registry.k8s.io/v2/": dial tcp 1.2.3.4:80: '
+                        'i/o timeout',
+                        'Error response from daemon: failed to resolve reference "registry.k8s.io/pause:3.10": '
+                        'failed to do request: Head "https://registry.k8s.io/v2/pause/manifests/3.10": '
+                        'tls: failed to verify certificate: x509: certificate signed by unknown authority'):
             with self.subTest(failure=failure[:40]):
                 with self.assertRaises(subprocess.CalledProcessError):
                     self.refresh({trust.VALID_CONTROL: [failure] * 3})
