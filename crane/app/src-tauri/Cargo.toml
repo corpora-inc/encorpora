@@ -45,6 +45,9 @@ tauri-plugin-fs = "2"
 base64 = "0.23"
 # SHA-256 of the bundled speech model as it is installed (src/voice.rs).
 sha2 = "0.10"
+# The knowledge pack (src/pack.rs): signed-pack install and verification and the
+# read API, in process. The library only: no CLI, no HTTP client, no model.
+harvest-core = { path = "../../../harvest/core", default-features = false }
 
 # iOS has no save dialog: export opens the share sheet instead. Same crate AHA uses.
 [target.'cfg(target_os = "ios")'.dependencies]

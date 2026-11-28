@@ -29,6 +29,7 @@ const base = `http://127.0.0.1:${port}`;
 const WIDTHS = [320, 390, 768, 1280];
 const THEMES = ["light", "dark"];
 const ROUTES = [
+  "/instructor",
   "/ask",
   "/ask/q/rules%20for%20barge%20mounted%20cranes",
   "/ask/q/signaling",
@@ -57,7 +58,7 @@ const ROUTES = [
   "/settings",
   "/settings/about",
 ];
-const SCREENSHOT = new Set(["/learn/topic/site", "/learn/lesson/l.assembly.05", "/ask", "/ask/q/signaling", "/ask/q/outrigers", "/ask/q/xyzzy", "/read/29cfr1926.1408(b)(3)", "/do", "/do/shift-inspection", "/learn", "/practice", "/tools/clearance", "/tools/load-chart", "/tools/signals", "/settings"]);
+const SCREENSHOT = new Set(["/instructor", "/learn/topic/site", "/learn/lesson/l.assembly.05", "/ask", "/ask/q/signaling", "/ask/q/outrigers", "/ask/q/xyzzy", "/read/29cfr1926.1408(b)(3)", "/do", "/do/shift-inspection", "/learn", "/practice", "/tools/clearance", "/tools/load-chart", "/tools/signals", "/settings"]);
 // Serve every page under the shipped app's Content-Security-Policy, so anything the
 // native WebView would block (inline script, a stray fetch, a blob image) fails here too.
 const CSP = JSON.parse(await readFile(path.join(root, "src-tauri", "tauri.conf.json"), "utf8")).app.security.csp;
@@ -110,6 +111,8 @@ const fakeNative = (opts) => {
       window.__stt.push(cmd);
       window.__calls.push([cmd, args]);
       switch (cmd) {
+        // harvest-core's harvest-show/1 text, as src-tauri/src/pack.rs returns it (here: the served copy).
+        case "pack_show": return (await fetch("/pack/crane-us.browser.json")).text();
         case "voice_model": return { status: args?.wait ? "ready" : "installing", file: "ggml-test.bin" };
         case "plugin:stt|is_available": return true;
         case "plugin:stt|validate_model": return { model: args.model, valid: true, problems: [] };
@@ -273,8 +276,14 @@ try {
     await choices.first().click();
     await page.locator(".practice-feedback").waitFor();
     await page.screenshot({ path: path.join(out, "flow-first-run-answer.png"), fullPage: true });
-    // The source opens the exact paragraph.
-    await page.locator(".practice-feedback a[href^='/read/'], .practice-feedback .plate").first().click();
+    // The source opens the exact paragraph (a good-practice item has none: go on to one that cites a rule).
+    const ruleLink = page.locator(".practice-feedback a[href^='/read/']");
+    for (let n = 0; n < 10 && !(await ruleLink.count()); n++) {
+      await page.getByRole("button", { name: "Next question" }).click();
+      await choices.first().click();
+      await page.locator(".practice-feedback").waitFor();
+    }
+    await ruleLink.first().click();
     await page.waitForURL(/\/read\//);
     await page.locator('[aria-current="true"]').first().waitFor();
     assert.equal(await page.locator('[aria-current="true"]').count(), 1, "the cited paragraph is marked");
@@ -344,6 +353,42 @@ try {
     await page.screenshot({ path: path.join(out, `flow-reader-deep-link-${width}.png`) });
     assert.deepEqual(errors, []);
     await context.close();
+  }
+
+  // 2c. The Instructor: the welcome from the pack, a tapped move answered from the course tree, free text
+  // answered with the course and the rules (no model in the browser), conversations at their own routes.
+  for (const width of [320, 390, 1280]) {
+    const { context, page, errors } = await newPage(browser, width, "light");
+    await page.goto(base + "/instructor");
+    const chips = page.getByRole("group", { name: "Next" }).getByRole("button");
+    await chips.first().waitFor();
+    assert.ok(await page.locator(".instructor-turn").count() >= 1, "the welcome turn");
+    assert.ok((await page.locator(".node-block, .exam-block").count()) >= 1, "the welcome shows the course or the exam");
+    if (width === 390) await page.screenshot({ path: path.join(out, "flow-instructor-welcome.png"), fullPage: true });
+    const label = (await chips.first().innerText()).trim();
+    await chips.first().click();
+    await page.waitForURL(/\/instructor\/c\/c-/);
+    await page.locator(".learner-turn", { hasText: label }).waitFor();
+    await page.locator("li:nth-child(3) .instructor-turn").waitFor();
+    assert.ok(await page.getByRole("group", { name: "Next" }).getByRole("button").count() >= 1, "every turn ends with follow-ups");
+    // Free text: the course node its words match, then the rules that match them.
+    await page.getByLabel("Ask the instructor").fill("hand signals");
+    await page.getByLabel("Ask the instructor").press("Enter");
+    await page.locator(".learner-turn", { hasText: "hand signals" }).waitFor();
+    const rule = page.locator(".search-block .rule-hit").first();
+    await rule.waitFor();
+    assert.equal(await rule.getAttribute("data-root"), "29cfr1926.1419", "free text reaches the signal rules");
+    if (width === 390) await page.screenshot({ path: path.join(out, "flow-instructor-conversation.png"), fullPage: true });
+    // A real route: refresh restores the conversation; Back leaves it.
+    const url = page.url();
+    await page.reload();
+    await page.locator(".learner-turn", { hasText: "hand signals" }).waitFor();
+    assert.equal(page.url(), url);
+    await page.goto(base + "/instructor");
+    await page.getByRole("link", { name: label }).first().waitFor();
+    assert.deepEqual(errors, []);
+    await context.close();
+    checks++;
   }
 
   // 3. Ask is a search over the rules: results grouped by section, course-map matches first, never a cached answer.
@@ -475,6 +520,7 @@ try {
     assert.equal(await choices.first().isDisabled(), false);
     // One feedback card, never filler: "Correct." or "Not quite. The answer is C.", why (and, when wrong,
     // why not the choice made), one line past the answer, "Source: 29 CFR …. Read the source", and one Next button.
+    let readSource = false;
     for (let n = 0; n < 8; n++) {
       await choices.first().waitFor();
       const domain = await page.locator("h2").first().locator("xpath=preceding-sibling::p[1]").innerText();
@@ -500,20 +546,24 @@ try {
       // The line past the answer shows when the item has one (the current bank has none yet), never empty.
       for (const note of await panel.locator(".feedback-note").allInnerTexts())
         assert.ok(note.split(/\s+/).length >= 5 && !reasons.includes(note), `one line past the answer: "${note}"`);
-      assert.match(await panel.locator(".feedback-source").innerText(), /^Source: (29 CFR 19\d\d\.\d+|Appendix)[^]*Read the source$/);
+      // A rule item names its source and links it; a good-practice item says no rule states it.
+      assert.match(await panel.locator(".feedback-source").innerText(), /^(Source: (29 CFR 19\d\d\.\d+|Appendix)[^]*Read the source|Good practice\. No rule states this one\.)$/);
       assert.equal(await panel.getByRole("button").count(), 1, "a single Next button");
       if (n === 0) await page.screenshot({ path: path.join(out, "flow-practice-feedback-reasons.png"), fullPage: true });
       if (verdict !== "Correct." && !(await page.locator(".practice-feedback-shot").count())) await page.screenshot({ path: path.join(out, "flow-practice-feedback-wrong.png"), fullPage: true });
-      if (n === 7) {
-        await panel.getByRole("link", { name: "Read the source" }).click();
+      const source = panel.getByRole("link", { name: "Read the source" });
+      if (!readSource && (await source.count())) {
+        await source.click();
         await page.waitForURL(/\/read\//);
         await page.locator('[aria-current="true"]').first().waitFor();
         await page.goBack();
         await page.locator(".practice-feedback").waitFor();
+        readSource = true;
       }
       await page.getByRole("button", { name: "Next question" }).click();
       checks++;
     }
+    assert.ok(readSource, "Read the source opened the Reader at least once");
     await context.close();
     checks++;
   }
@@ -556,6 +606,7 @@ try {
   for (const width of [320, 390]) {
     const { context, page, errors } = await newPage(browser, width, "light", { native: {} });
     await page.goto(base + "/ask");
+    assert.ok((await page.evaluate(() => window.__calls.map((c) => c[0]))).includes("pack_show"), "the native app opens the pack through harvest-core");
     const talk = page.getByRole("button", { name: "Tap and ask" });
     await talk.waitFor();
     const box = page.getByLabel("Ask about a rule, a limit or a step");

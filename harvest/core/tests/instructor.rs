@@ -656,3 +656,96 @@ fn orders_and_presumptions_are_claims_and_pointers_need_their_block() {
         t.trace.dropped
     );
 }
+
+#[test]
+fn a_node_opens_on_its_overview_and_never_repeats_itself() {
+    use harvest_core::instructor::{Message, NodeText};
+    let tmp = tempfile::tempdir().unwrap();
+    let dir = tmp.path().join("p");
+    fixture::build_with(&dir, "2026.1.1-1", |c| {
+        c.execute_batch(
+            r#"INSERT INTO course_node VALUES ('course', NULL, 0, 'course', 'Machine course', 'All of it.', '', '', '', '{}', '[]', '[]', 'en', 'prov-fixture');
+               INSERT INTO course_node VALUES ('topic:lines', 'course', 1, 'topic', 'Energized lines',
+                 'How close a machine may work to an energized power line, by voltage.', 'Picking the right voltage band when a value sits on a boundary.',
+                 'Measuring from the cab instead of the closest part of the load.', 'Expect a table lookup.', '{}', '["ex.2"]', '[]', 'en', 'prov-fixture');"#,
+        )?;
+        Ok(())
+    })
+    .unwrap();
+    let pack = Arc::new(Pack::open(&dir, &[fixture::trusted_key()]).unwrap());
+    let i = instructor(&pack, None);
+    let open = Input::Open {
+        node_id: "topic:lines".into(),
+        fields: vec![],
+    };
+    let t = i
+        .turn(&TurnRequest {
+            input: Some(open.clone()),
+            ask: None,
+            ..ask("")
+        })
+        .unwrap();
+    let Block::Node { texts, .. } = &t.blocks[0] else {
+        panic!("{:?}", t.blocks)
+    };
+    let fields: Vec<&str> = texts.iter().map(|x| x.field.as_str()).collect();
+    assert_eq!(fields, ["summary", "hard"]);
+    assert!(
+        t.follow_ups
+            .iter()
+            .any(|f| f.label == "What do people get wrong?")
+    );
+    // The same node again: what was shown is not shown again.
+    let history = vec![Message {
+        who: "instructor".into(),
+        text: t.plain(),
+    }];
+    let t2 = i
+        .turn(&TurnRequest {
+            input: Some(open),
+            ask: None,
+            history,
+            ..ask("")
+        })
+        .unwrap();
+    let Block::Node { texts, .. } = &t2.blocks[0] else {
+        panic!()
+    };
+    assert_eq!(
+        texts,
+        &[NodeText {
+            field: "mistakes".into(),
+            text: "Measuring from the cab instead of the closest part of the load.".into()
+        }]
+    );
+}
+
+#[test]
+fn a_skill_two_domains_test_counts_in_both() {
+    let b = common::pack();
+    let ex = json!([{"id": "core", "title": "Core", "domains": [
+        {"id": "a", "title": "A", "weight": 0.5, "skillIds": ["skill-clearance"]},
+        {"id": "b", "title": "B", "weight": 0.5, "skillIds": ["skill-clearance"]}]}]);
+    let e = Engine::new(b.pack.clone());
+    let i = Instructor::new(
+        Arc::new(e),
+        None,
+        CourseTree::from_pack(&b.pack, Some(ex)).unwrap(),
+    );
+    let learner = Learner {
+        mastery: [("skill-clearance".to_string(), 0.2)].into(),
+        ..Learner::default()
+    };
+    let t = i
+        .turn(&TurnRequest {
+            learner,
+            input: Some(Input::Focus),
+            ask: None,
+            ..ask("")
+        })
+        .unwrap();
+    let Block::Focus { items } = &t.blocks[0] else {
+        panic!()
+    };
+    assert_eq!(items.len(), 1, "listed once: {items:?}");
+}

@@ -29,6 +29,11 @@ env:
   npm_config_fetch_retry_mintimeout: '20000'
   npm_config_fetch_retry_maxtimeout: '120000'
   NODE_OPTIONS: --use-openssl-ca
+  # onnxruntime-node's postinstall downloads the CUDA execution provider from
+  # NuGet on every linux/x64 `npm ci` (search runs on the CPU runtime it
+  # bundles; the production image installs with --ignore-scripts). That
+  # download timed out and failed `npm ci` 7 times in two weeks.
+  ONNXRUNTIME_NODE_INSTALL: skip
 
 jobs:
   changes:
@@ -167,11 +172,23 @@ jobs:
         working-directory: ${{ runner.temp }}
         run: |
           set -euo pipefail
+          # The same image by digest from Docker Hub or its ECR Public mirror,
+          # so one registry's anonymous rate limit or outage does not fail the job.
+          image=""
+          for attempt in 1 2 3; do
+            for ref in postgres:17-alpine@sha256:b0f9560a2de083e2cc7382e75f808c7381a32852a7ec49117deedb300e552b24 \
+                public.ecr.aws/docker/library/postgres@sha256:b0f9560a2de083e2cc7382e75f808c7381a32852a7ec49117deedb300e552b24; do
+              if docker pull --quiet "$ref" > /dev/null; then image=$ref; break 2; fi
+              echo "PostgreSQL image pull from ${ref%%/*} failed (attempt $attempt)" >&2
+            done
+            sleep $((attempt * 5))
+          done
+          [ -n "$image" ] || { echo 'PostgreSQL image unavailable from Docker Hub and ECR Public' >&2; exit 1; }
           container_id=$(docker run --detach \
             --publish 127.0.0.1:5432:5432 \
             --env POSTGRES_USER=amp --env POSTGRES_PASSWORD=amp --env POSTGRES_DB=amp_test \
             --health-cmd 'pg_isready -U amp' --health-interval 5s --health-timeout 5s --health-retries 10 \
-            postgres:17-alpine@sha256:b0f9560a2de083e2cc7382e75f808c7381a32852a7ec49117deedb300e552b24)
+            "$image")
           [[ "$container_id" =~ ^[0-9a-f]{64}$ ]]
           printf 'container_id=%s\n' "$container_id" >> "$GITHUB_OUTPUT"
           for attempt in {1..20}; do
@@ -331,11 +348,23 @@ jobs:
         working-directory: ${{ runner.temp }}
         run: |
           set -euo pipefail
+          # The same image by digest from Docker Hub or its ECR Public mirror,
+          # so one registry's anonymous rate limit or outage does not fail the job.
+          image=""
+          for attempt in 1 2 3; do
+            for ref in postgres:17-alpine@sha256:b0f9560a2de083e2cc7382e75f808c7381a32852a7ec49117deedb300e552b24 \
+                public.ecr.aws/docker/library/postgres@sha256:b0f9560a2de083e2cc7382e75f808c7381a32852a7ec49117deedb300e552b24; do
+              if docker pull --quiet "$ref" > /dev/null; then image=$ref; break 2; fi
+              echo "PostgreSQL image pull from ${ref%%/*} failed (attempt $attempt)" >&2
+            done
+            sleep $((attempt * 5))
+          done
+          [ -n "$image" ] || { echo 'PostgreSQL image unavailable from Docker Hub and ECR Public' >&2; exit 1; }
           container_id=$(docker run --detach \
             --publish 127.0.0.1:5432:5432 \
             --env POSTGRES_USER=amp --env POSTGRES_PASSWORD=amp --env POSTGRES_DB=amp_test \
             --health-cmd 'pg_isready -U amp' --health-interval 5s --health-timeout 5s --health-retries 10 \
-            postgres:17-alpine@sha256:b0f9560a2de083e2cc7382e75f808c7381a32852a7ec49117deedb300e552b24)
+            "$image")
           [[ "$container_id" =~ ^[0-9a-f]{64}$ ]]
           printf 'container_id=%s\n' "$container_id" >> "$GITHUB_OUTPUT"
           for attempt in {1..20}; do
@@ -427,11 +456,23 @@ jobs:
         working-directory: ${{ runner.temp }}
         run: |
           set -euo pipefail
+          # The same image by digest from Docker Hub or its ECR Public mirror,
+          # so one registry's anonymous rate limit or outage does not fail the job.
+          image=""
+          for attempt in 1 2 3; do
+            for ref in postgres:17-alpine@sha256:b0f9560a2de083e2cc7382e75f808c7381a32852a7ec49117deedb300e552b24 \
+                public.ecr.aws/docker/library/postgres@sha256:b0f9560a2de083e2cc7382e75f808c7381a32852a7ec49117deedb300e552b24; do
+              if docker pull --quiet "$ref" > /dev/null; then image=$ref; break 2; fi
+              echo "PostgreSQL image pull from ${ref%%/*} failed (attempt $attempt)" >&2
+            done
+            sleep $((attempt * 5))
+          done
+          [ -n "$image" ] || { echo 'PostgreSQL image unavailable from Docker Hub and ECR Public' >&2; exit 1; }
           container_id=$(docker run --detach \
             --publish 127.0.0.1:5432:5432 \
             --env POSTGRES_USER=amp --env POSTGRES_PASSWORD=amp --env POSTGRES_DB=amp_test \
             --health-cmd 'pg_isready -U amp' --health-interval 5s --health-timeout 5s --health-retries 10 \
-            postgres:17-alpine@sha256:b0f9560a2de083e2cc7382e75f808c7381a32852a7ec49117deedb300e552b24)
+            "$image")
           [[ "$container_id" =~ ^[0-9a-f]{64}$ ]]
           printf 'container_id=%s\n' "$container_id" >> "$GITHUB_OUTPUT"
           for attempt in {1..20}; do

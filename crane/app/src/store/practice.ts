@@ -33,6 +33,8 @@ interface PracticeStore {
   history: { examId: string; at: number; percent: number; passed: boolean }[];
   next(engine: Engine, now: number, focus: string | null): void;
   choose(engine: Engine, choice: number, now: number): void;
+  /** An item answered inline (an Instructor question block): it counts like any practice answer. */
+  answerItem(engine: Engine, itemId: string, choice: number, now: number): boolean | null;
   startExam(engine: Engine, bp: ExamBlueprintRow, now: number): void;
   answerExam(examId: string, itemId: string, choice: number | null, now: number): void;
   flagExam(examId: string, itemId: string, now: number): void;
@@ -75,6 +77,14 @@ export const usePractice = create<PracticeStore>()(
           state: foldAnswer(ix, state, { item, reason: current.reason }, correct, now),
           current: { ...current, chosen: choice, correct },
         });
+      },
+      answerItem(engine, itemId, choice, now) {
+        const ix = bankFor(engine);
+        const item = ix.itemById.get(itemId);
+        if (!item) return null;
+        const correct = grade(item, choice).correct;
+        set({ state: foldAnswer(ix, get().state, { item, reason: "frontier" }, correct, now) });
+        return correct;
       },
       startExam(engine, bp, now) {
         const items = bankFor(engine).bank.items;

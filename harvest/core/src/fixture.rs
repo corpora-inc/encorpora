@@ -302,7 +302,8 @@ fn populate(conn: &Connection, version: &str) -> Result<()> {
           '[{"t":"text","text":"Clearance depends on voltage."},{"t":"cite","section_id":"ex.2"}]', 'en', 'prov-fixture');
         INSERT INTO diagram VALUES ('dia-clearance', '<svg xmlns="http://www.w3.org/2000/svg"/>', 'Clearance zone', 'A circle around a line', '["ex.2"]', 'en', 'prov-fixture');
         INSERT INTO question VALUES ('q-clear-1', 'skill-clearance', NULL, 'mc', 'Minimum clearance from a 40 kV line?',
-          '["5 feet","10 feet","15 feet","20 feet"]', '1', '["Too close","Stated in §2","More than required","More than required"]', '["ex.2"]', 0.3, 'en', 'prov-fixture');
+          '["5 feet","10 feet","15 feet","20 feet"]', '1', '["Too close","Stated in §2","More than required","More than required"]', '["ex.2"]', 0.3, 'en', 'prov-fixture',
+          'Above 50 kV the distance grows with voltage.');
         INSERT INTO procedure VALUES ('proc-shift', 'Shift inspection', 'inspection', 'Before each shift.', '["operator","inspector"]', 'en', 'prov-fixture');
         INSERT INTO proc_step VALUES ('proc-shift', 1, 'Check the load line for damage.', '{"trainee":"Look along the whole line.","operator":"Inspect the line.","inspector":"Record findings."}',
           'pass_fail', '["ex.3"]', '{"guidance":"Remove from service until repaired.","action":"tag out","section_id":"ex.3","quote":"A competent person must inspect the machine each shift before use."}', 'en', 'prov-fixture');

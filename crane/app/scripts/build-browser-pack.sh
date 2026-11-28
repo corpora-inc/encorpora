@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Build the crane pack from this checkout and put its browser copy where the app reads it:
+# Build the crane pack from this checkout and put its browser copy, and the Instructor's
+# precomputed tree turns, where the app reads them:
 #
 #   crane/app/scripts/build-browser-pack.sh            # -> crane/app/public/pack/crane-us.browser.json
 #
@@ -49,4 +50,7 @@ nice -n 20 "$repo/crane/content/build-pack.sh" "$out" >&2
 
 mkdir -p "$app/public/pack"
 cp "$out/crane-us.browser.json" "$app/public/pack/crane-us.browser.json"
+# The Instructor's tree turns, answered by the real engine (scripts/instructor-turns.py).
+"$venv/bin/python" -I "$app/scripts/instructor-turns.py" "$HARVEST_BIN" "$out/pack" "$out/pack.pub" \
+  "$app/public/pack/crane-us.instructor.json" >&2
 echo "$app/public/pack/crane-us.browser.json"

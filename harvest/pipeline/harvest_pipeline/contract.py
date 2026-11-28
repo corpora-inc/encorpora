@@ -98,6 +98,8 @@ def question_problems(q: dict) -> list[str]:
             out.append(f"question has no {key}")
     if not _text_list(q.get("section_ids")):
         out.append("section_ids is not a list of section ids")
+    if q.get("note") is not None and not isinstance(q["note"], str):
+        out.append("note is not text")
     choices = q.get("choices") or []
     rationales = q.get("rationales") or []
     for key, v in (("choices", choices), ("rationales", rationales)):

@@ -119,6 +119,9 @@ pub struct Question {
     pub section_ids: Vec<String>,
     pub difficulty: f64,
     pub lang: String,
+    /// One line past the answer (why it matters, the edge case, the related
+    /// rule); optional.
+    pub note: Option<String>,
 }
 
 /// A procedure with its steps, for the Do screens.
@@ -447,11 +450,18 @@ impl Pack {
             String,
             f64,
             String,
+            Option<String>,
         );
+        // `note` is optional (CONTRACT): a pack baked before it has no such column.
+        let note = if self.has_column("question", "note")? {
+            "note"
+        } else {
+            "NULL"
+        };
         let rows: Vec<Q> = self.rows(
             &format!(
                 "SELECT q_id, skill_id, variant_of, kind, stem, choices, answer, rationales,
-                        section_ids, difficulty, lang
+                        section_ids, difficulty, lang, {note}
                  FROM question WHERE {PASSED} {filter} ORDER BY skill_id, q_id"
             ),
             args,
@@ -468,6 +478,7 @@ impl Pack {
                     r.get(8)?,
                     r.get(9)?,
                     r.get(10)?,
+                    r.get(11)?,
                 ))
             },
         )?;
@@ -485,6 +496,7 @@ impl Pack {
                     ids,
                     difficulty,
                     lang,
+                    note,
                 )| {
                     let choices = json_list(&q_id, "choices", choices)?;
                     let rationales = json_list(&q_id, "rationales", rationales)?;
@@ -534,10 +546,21 @@ impl Pack {
                         answer,
                         difficulty,
                         lang,
+                        note: note.filter(|n| !n.trim().is_empty()),
                     })
                 },
             )
             .collect()
+    }
+
+    /// Whether `table` has `column` (optional columns added after schema v1 shipped).
+    fn has_column(&self, table: &str, column: &str) -> Result<bool> {
+        let n: i64 = self.conn().query_row(
+            "SELECT count(*) FROM pragma_table_info(?1) WHERE name = ?2",
+            [table, column],
+            |r| r.get(0),
+        )?;
+        Ok(n > 0)
     }
 
     /// The question bank.
