@@ -284,6 +284,7 @@ function TestProcedure({ step, collapsible, renderAnswer }: { step: StepView; co
           {open ? <ChevronUp aria-hidden size={20} /> : <ChevronDown aria-hidden size={20} />}
         </button>
       </div>
+      {tp.applicability?.status === "unknown" && <div className="border-t border-line px-4 py-4 sm:px-5">{(renderAnswer ?? markOnly)(tp.applicability)}</div>}
       {!open && pinned.length > 0 && (
         <div className="border-t border-line px-4 py-4 sm:px-5">
           <Guards guards={pinned} answer={renderAnswer} />

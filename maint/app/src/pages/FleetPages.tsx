@@ -8,7 +8,7 @@ import { Home } from "../screens/Home.tsx";
 import { Identify, type IdentifyPhase } from "../screens/Identify.tsx";
 import { NotFound } from "../screens/NotFound.tsx";
 import { UnitPage } from "../screens/UnitPage.tsx";
-import { useAttrs } from "../store/attrs.ts";
+import { useAttrs, useRefused } from "../store/attrs.ts";
 import { useDescribe } from "../store/describe.ts";
 import { useFleet } from "../store/fleet.ts";
 import { allEquipment, isGeneral, packOf, usePack, variantName } from "../store/pack.ts";
@@ -105,6 +105,7 @@ export function UnitRoute() {
   const codes = useDescribe((s) => s.entries[unitId]?.codes);
   const attrs = useAttrs((s) => s.byAsset[unitId] ?? null);
   const attrsSaving = useAttrs((s) => !!s.saving[unitId]);
+  const attrsRefused = useRefused(unitId);
   const unitPack = packOf(packs, unit?.equip_id);
   const match = useDescribe((s) => s.matches[unitId]);
   useActiveUnit(unit?.asset_id);
@@ -130,6 +131,7 @@ export function UnitRoute() {
       codes={titled}
       attrs={attrs}
       attrsSaving={attrsSaving}
+      attrsRefused={attrsRefused}
       onAttr={(attr, value) => void useAttrs.getState().set(unit.asset_id, { [attr]: value }, unitPack?.info.pack_id)}
       referenceTo={unitPack && unitPack.tables.length > 0 ? referencePath(unitPack.info.pack_id) : null}
     />

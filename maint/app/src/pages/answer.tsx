@@ -1,6 +1,6 @@
 import { useEffect, type ReactNode } from "react";
 import type { Applicability } from "../engine/types.ts";
-import { useAttrs } from "../store/attrs.ts";
+import { useAttrs, useRefused } from "../store/attrs.ts";
 import { Undetermined } from "../ui/applicability.tsx";
 
 /**
@@ -12,6 +12,7 @@ import { Undetermined } from "../ui/applicability.tsx";
 export function useAnswerer(assetId: string | null | undefined, packId: string | null | undefined, after?: () => void): (a: Applicability) => ReactNode {
   const attrs = useAttrs((s) => (assetId ? s.byAsset[assetId] : undefined));
   const saving = useAttrs((s) => (assetId ? !!s.saving[assetId] : false));
+  const refused = useRefused(assetId);
   useEffect(() => {
     if (assetId) void useAttrs.getState().load(assetId, packId);
   }, [assetId, packId]);
@@ -20,6 +21,7 @@ export function useAnswerer(assetId: string | null | undefined, packId: string |
       a={a}
       declared={assetId ? (attrs?.declared ?? []) : undefined}
       saving={saving}
+      refused={refused}
       onAnswer={(attr, value) => {
         if (!assetId) return;
         void useAttrs

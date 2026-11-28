@@ -5,7 +5,9 @@ import { call } from "../engine/client.ts";
 import type { ManualHit, SectionRef, SectionView } from "../engine/types.ts";
 import { ManualHome, ManualResults, SectionReader } from "../screens/Manual.tsx";
 import { NotFound } from "../screens/NotFound.tsx";
+import { useAttrsRev } from "../store/attrs.ts";
 import { useFleet } from "../store/fleet.ts";
+import { useAnswerer } from "./answer.tsx";
 import { packOf, packTitle, usePack } from "../store/pack.ts";
 import { useSettings } from "../store/settings.ts";
 import { ManualPack, pageFor, useAssetSrc } from "../ui/manual.tsx";
@@ -53,16 +55,18 @@ export function ManualSearchPage() {
   const { packId = "", q = "" } = useParams();
   const equip = useEquip(packId);
   const asset = useUnitIn(packId)?.asset_id ?? null;
+  const rev = useAttrsRev(asset);
+  const renderAnswer = useAnswerer(asset, packId);
   const [hits, setHits] = useState<ManualHit[] | null>(null);
   useEffect(() => {
     setHits(null);
     call("manual.search", { pack_id: packId, query: q, equip_id: equip, asset_id: asset, k: 20 })
       .then((r) => setHits(r.hits))
       .catch((e: unknown) => reportError("manual.search", e, "The search did not run."));
-  }, [packId, q, equip, asset]);
+  }, [packId, q, equip, asset, rev]);
   return (
     <ManualPack.Provider value={packId}>
-      <ManualResults key={q} packId={packId} query={q} hits={hits} />
+      <ManualResults key={q} packId={packId} query={q} hits={hits} renderAnswer={renderAnswer} />
     </ManualPack.Provider>
   );
 }

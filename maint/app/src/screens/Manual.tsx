@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { ChevronRight, Search, Table2 } from "lucide-react";
 import { Link, useNavigate } from "react-router";
-import type { ManualHit, PackAsset, SectionRef, SectionView } from "../engine/types.ts";
+import type { Applicability, ManualHit, PackAsset, SectionRef, SectionView } from "../engine/types.ts";
 import { manualPackPath, manualPagePath, manualPath, manualSearchPath, referencePath } from "../routes.ts";
 import { RowCard, useTable } from "../ui/reference.tsx";
 import { Button, cx, inputClass, Page, Skeleton } from "../ui/kit.tsx";
-import { Guards, ManualSheet, sectionTitle } from "../ui/manual.tsx";
+import { Guards, ManualSheet, markOnly, sectionTitle } from "../ui/manual.tsx";
 import { PageViewer } from "../ui/PageViewer.tsx";
 
 function SearchBox({ packId, initial = "" }: { packId: string; initial?: string }) {
@@ -87,12 +87,12 @@ export function ManualHome({ manuals }: { manuals: ManualEntry[] }) {
 }
 
 /** A search hit that is a reference-table row: the row as printed, under its column labels. */
-function RowHitCard({ packId, hit }: { packId: string; hit: ManualHit }) {
+function RowHitCard({ packId, hit, renderAnswer }: { packId: string; hit: ManualHit; renderAnswer?: (a: Applicability) => ReactNode }) {
   const table = useTable(hit.row!.table_id);
-  return <RowCard packId={packId} row={hit.row!} columns={table?.columns ?? []} title={table?.title ?? hit.heading ?? ""} />;
+  return <RowCard packId={packId} row={hit.row!} columns={table?.columns ?? []} title={table?.title ?? hit.heading ?? ""} renderAnswer={renderAnswer} />;
 }
 
-export function ManualResults({ packId, query, hits }: { packId: string; query: string; hits: ManualHit[] | null }) {
+export function ManualResults({ packId, query, hits, renderAnswer }: { packId: string; query: string; hits: ManualHit[] | null; renderAnswer?: (a: Applicability) => ReactNode }) {
   return (
     <Page title="Manual">
       <SearchBox packId={packId} initial={query} />
@@ -104,10 +104,11 @@ export function ManualResults({ packId, query, hits }: { packId: string; query: 
         <ol className="m-0 flex list-none flex-col gap-2 p-0">
           {hits.map((h) => (
             <li key={h.chunk_id}>
-              {h.row ? <RowHitCard packId={packId} hit={h} /> : <Link to={h.section_id ? manualPath(packId, h.section_id) : manualPackPath(packId)} className="sheet block p-4 text-ink no-underline">
+              {h.row ? <RowHitCard packId={packId} hit={h} renderAnswer={renderAnswer} /> : <Link to={h.section_id ? manualPath(packId, h.section_id) : manualPackPath(packId)} className="sheet block p-4 text-ink no-underline">
                 <span className="block font-sans text-meta font-semibold text-ink-2">{[h.citation, h.heading].filter(Boolean).join(" ")}</span>
                 <span className="mt-1 line-clamp-3 block text-body">{h.text}</span>
               </Link>}
+              {!h.row && h.applicability?.status === "unknown" && <div className="mt-2">{(renderAnswer ?? markOnly)(h.applicability)}</div>}
             </li>
           ))}
         </ol>

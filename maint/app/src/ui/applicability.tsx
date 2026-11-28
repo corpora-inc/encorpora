@@ -1,5 +1,5 @@
 import { CircleHelp } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { Applicability, AttrDef, AttrValue, ValueSource } from "../engine/types.ts";
 import { Button, cx, inputClass } from "./kit.tsx";
 
@@ -7,6 +7,14 @@ import { Button, cx, inputClass } from "./kit.tsx";
 export const SOURCE_LABEL: Record<ValueSource, string> = { typed: "Typed", plate: "Data plate", vehicle: "Vehicle" };
 
 const INPUT_MODE: Record<AttrDef["type"], "text" | "decimal"> = { number: "decimal", version: "decimal", text: "text", serial: "text" };
+/** Why a typed value was refused, in plain words for its type. */
+export const REFUSED: Record<AttrDef["type"], string> = {
+  number: "That is not a number. Type the number only.",
+  version: "That does not read as a version. Type it as shown on the unit, numbers and dots, for example 2.4.",
+  text: "That could not be kept. Type it as recorded.",
+  serial: "That does not read as a serial number. Type it as stamped, letters then digits.",
+};
+
 const HINT: Record<AttrDef["type"], string> = { number: "Number", version: "For example 2.4", text: "As recorded", serial: "As stamped" };
 
 /** The manual's printed statements, quoted in manual type. */
@@ -20,6 +28,8 @@ export interface UndeterminedProps {
   /** The unit's declared attributes; absent when no unit is in hand (the marker only). */
   declared?: AttrDef[];
   saving?: boolean;
+  /** Attributes whose last value the engine refused. */
+  refused?: Record<string, true>;
   onAnswer?(attr: string, value: string): void;
 }
 
@@ -28,7 +38,7 @@ export interface UndeterminedProps {
  * shown as plain content. A calm marker quotes the manual's statement and
  * asks, in place, for the attribute it needs.
  */
-export function Undetermined({ a, declared, saving = false, onAnswer }: UndeterminedProps) {
+export function Undetermined({ a, declared, saving = false, refused = {}, onAnswer }: UndeterminedProps) {
   const asks = (declared && onAnswer ? a.missing.map((id) => declared.find((d) => d.id === id)).filter((d): d is AttrDef => !!d) : []);
   return (
     <div className="flex flex-col gap-2 rounded-control border-2 border-dashed border-line-strong bg-surface px-4 py-3 font-sans" data-applicability="unknown">
@@ -41,13 +51,13 @@ export function Undetermined({ a, declared, saving = false, onAnswer }: Undeterm
         </div>
       </div>
       {asks.map((d) => (
-        <AttrAnswer key={d.id} def={d} saving={saving} onAnswer={(v) => onAnswer!(d.id, v)} />
+        <AttrAnswer key={d.id} def={d} saving={saving} refused={!!refused[d.id]} onAnswer={(v) => onAnswer!(d.id, v)} />
       ))}
     </div>
   );
 }
 
-function AttrAnswer({ def, saving, onAnswer, initial = "", action = "Save" }: { def: AttrDef; saving: boolean; onAnswer(v: string): void; initial?: string; action?: string }) {
+function AttrAnswer({ def, saving, onAnswer, initial = "", action = "Save", refused = false }: { def: AttrDef; saving: boolean; onAnswer(v: string): void; initial?: string; action?: string; refused?: boolean }) {
   const [v, setV] = useState(initial);
   const ok = v.trim().length > 0;
   return (
@@ -60,11 +70,16 @@ function AttrAnswer({ def, saving, onAnswer, initial = "", action = "Save" }: { 
     >
       <label className="min-w-0 flex-[1_1_12rem]">
         <span className="mb-1 block text-meta font-semibold text-ink-2">{def.label}</span>
-        <input className={cx(inputClass, "font-code placeholder:font-sans")} value={v} inputMode={INPUT_MODE[def.type]} autoComplete="off" spellCheck={false} placeholder={HINT[def.type]} onChange={(e) => setV(e.target.value)} />
+        <input aria-invalid={refused || undefined} className={cx(inputClass, "font-code placeholder:font-sans", refused && "border-error")} value={v} inputMode={INPUT_MODE[def.type]} autoComplete="off" spellCheck={false} placeholder={HINT[def.type]} onChange={(e) => setV(e.target.value)} />
       </label>
       <Button type="submit" disabled={!ok || saving}>
         {action}
       </Button>
+      {refused && (
+        <p role="alert" className="basis-full text-meta font-semibold text-error">
+          {REFUSED[def.type]}
+        </p>
+      )}
     </form>
   );
 }
@@ -84,13 +99,16 @@ export interface AttrListProps {
   declared: AttrDef[];
   values: AttrValue[];
   saving?: boolean;
+  refused?: Record<string, true>;
   /** Absent: read only (identify before the unit is saved). */
   onChange?(attr: string, value: string | null): void;
 }
 
 /** The unit's attribute values and where each came from; each one can be changed or cleared. */
-export function AttrList({ declared, values, saving = false, onChange }: AttrListProps) {
+export function AttrList({ declared, values, saving = false, refused = {}, onChange }: AttrListProps) {
   const [editing, setEditing] = useState<string | null>(null);
+  // A saved value closes its field; a refused one keeps it open with what was typed.
+  useEffect(() => setEditing(null), [values]);
   if (declared.length === 0) return null;
   return (
     <dl className="m-0 flex flex-col divide-y divide-line" aria-label="Attributes">
@@ -116,10 +134,8 @@ export function AttrList({ declared, values, saving = false, onChange }: AttrLis
                   def={d}
                   saving={saving}
                   initial={v?.value ?? ""}
-                  onAnswer={(x) => {
-                    onChange(d.id, x);
-                    setEditing(null);
-                  }}
+                  refused={!!refused[d.id]}
+                  onAnswer={(x) => onChange(d.id, x)}
                 />
                 <div className="flex flex-wrap gap-2">
                   {v && (

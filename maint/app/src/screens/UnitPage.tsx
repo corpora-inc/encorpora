@@ -18,6 +18,8 @@ export interface UnitPageProps {
   /** What the unit's pack declares about it and the values it has, each with its source (null while read). */
   attrs: AssetAttrs | null;
   attrsSaving: boolean;
+  /** Attributes whose last typed value the engine refused (said next to the field). */
+  attrsRefused?: Record<string, true>;
   onAttr(attr: string, value: string | null): void;
   /** The unit's manual's reference tables, when it has any. */
   referenceTo: string | null;
@@ -26,7 +28,7 @@ export interface UnitPageProps {
 export const RESOLUTION: Record<string, string> = { fixed: "Fixed", escalated: "Referred", abandoned: "Abandoned", redirected: "Redirected", unresolved: "Not resolved" };
 
 /** One unit: what it is, what it has been through, and the two ways to start work. */
-export function UnitPage({ unit, variant, history, openJob, codes, attrs, attrsSaving, onAttr, referenceTo }: UnitPageProps) {
+export function UnitPage({ unit, variant, history, openJob, codes, attrs, attrsSaving, attrsRefused, onAttr, referenceTo }: UnitPageProps) {
   const location = typeof unit.attrs.location === "string" ? unit.attrs.location : null;
   return (
     <Page title={<span className="code">{unitName(unit)}</span>} kicker={variant} wide>
@@ -90,7 +92,7 @@ export function UnitPage({ unit, variant, history, openJob, codes, attrs, attrsS
           <h2 id="attrs" className="text-small font-bold text-ink-2">
             What the manual asks about this unit
           </h2>
-          {attrs === null ? <Skeleton className="my-3 h-[120px]" /> : <AttrList declared={attrs.declared} values={attrs.values} saving={attrsSaving} onChange={onAttr} />}
+          {attrs === null ? <Skeleton className="my-3 h-[120px]" /> : <AttrList declared={attrs.declared} values={attrs.values} saving={attrsSaving} refused={attrsRefused} onChange={onAttr} />}
         </section>
       )}
 

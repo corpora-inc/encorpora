@@ -13,6 +13,8 @@ interface AttrsState {
   byAsset: Record<string, AssetAttrs>;
   rev: Record<string, number>;
   saving: Record<string, boolean>;
+  /** A value the engine refused (it does not parse as the attribute's type), by unit then attribute. */
+  refused: Record<string, Record<string, true>>;
   load(assetId: string, packId?: string | null): Promise<AssetAttrs | null>;
   /** Set (or with `null`, clear) values the technician typed. */
   set(assetId: string, values: Record<string, string | null>, packId?: string | null, source?: ValueSource): Promise<boolean>;
@@ -28,6 +30,7 @@ export const useAttrs = create<AttrsState>()((set, get) => {
     byAsset: {},
     rev: {},
     saving: {},
+    refused: {},
     async load(assetId, packId) {
       try {
         const a = await call("asset.attrs", { asset_id: assetId, pack_id: packId ?? null });
@@ -40,11 +43,18 @@ export const useAttrs = create<AttrsState>()((set, get) => {
     },
     async set(assetId, values, packId, source = "typed") {
       set({ saving: { ...get().saving, [assetId]: true } });
+      const clear = Object.fromEntries(Object.entries(get().refused[assetId] ?? {}).filter(([k]) => !(k in values)));
       try {
         put(assetId, await call("asset.set_attrs", { asset_id: assetId, pack_id: packId ?? null, source, values }));
+        set({ refused: { ...get().refused, [assetId]: clear } });
         return true;
       } catch (e) {
-        reportError("attrs.set", e, say(e, "The answer could not be saved."));
+        // A value that does not read as its type is said next to its field, not in a toast
+        // (a refused input, not a fault: noted in the console, never as an error).
+        if (e instanceof EngineError && e.code === "invalid") {
+          console.info(`attrs.set refused: ${e.message}`);
+          set({ refused: { ...get().refused, [assetId]: { ...clear, ...Object.fromEntries(Object.keys(values).map((k) => [k, true as const])) } } });
+        } else reportError("attrs.set", e, say(e, "The answer could not be saved."));
         return false;
       } finally {
         set({ saving: { ...get().saving, [assetId]: false } });
@@ -59,6 +69,10 @@ export const useAttrs = create<AttrsState>()((set, get) => {
     },
   };
 });
+
+const NONE: Record<string, true> = {};
+/** The attributes whose last typed value the engine refused, for one unit. */
+export const useRefused = (assetId: string | null | undefined) => useAttrs((s) => (assetId ? (s.refused[assetId] ?? NONE) : NONE));
 
 /** The change counter for one unit (0 before any answer). */
 export const useAttrsRev = (assetId: string | null | undefined) => useAttrs((s) => (assetId ? (s.rev[assetId] ?? 0) : 0));

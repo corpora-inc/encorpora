@@ -332,6 +332,46 @@ try {
   await page.getByText(/^Step \d+, check/).waitFor();
   assert.match(await page.locator("article").first().innerText(), /battery voltage/i);
 
+  // A code that is a reference-table row, scoped by a statement the unit cannot answer yet: the row
+  // shows with the manual's statement and asks for the attribute in place; a value that is not a
+  // version is refused next to the field; a good one is kept and the row re-reads as applying.
+  await page.goto(`${base}/units/unit-101/connect`);
+  await page.getByRole("button", { name: "Clear all" }).click();
+  await page.getByRole("radio", { name: "Typed" }).click();
+  await page.getByLabel("Code or message").fill("E52");
+  await page.getByRole("button", { name: "Add", exact: true }).click();
+  const e52 = page.locator('[data-hit-row="tab-3-3#3"]');
+  await e52.waitFor();
+  assert.match(await e52.innerText(), /Inverter fault/);
+  assert.match(await e52.innerText(), /switch the supply off for 30 seconds/);
+  const marker = e52.locator('[data-applicability="unknown"]');
+  assert.match(await marker.innerText(), /firmware 2\.4 and later/);
+  await marker.getByLabel("Controller firmware").fill("two point six");
+  await marker.getByRole("button", { name: "Save" }).click();
+  await marker.getByRole("alert").filter({ hasText: "does not read as a version" }).waitFor();
+  await shot("applicability-refused");
+  await marker.getByLabel("Controller firmware").fill("2.6");
+  await marker.getByRole("button", { name: "Save" }).click();
+  await e52.getByText("Applies to this unit:").waitFor();
+  assert.equal(await e52.locator('[data-applicability="unknown"]').count(), 0);
+  await shot("applicability-answered");
+  // The answer is kept on the unit, marked as typed, and can be changed there.
+  await page.goto(`${base}/units/unit-101`);
+  const fw = page.locator('[data-attr="firmware"]');
+  await fw.getByText("2.6", { exact: true }).waitFor();
+  await fw.getByText("Typed", { exact: true }).waitFor();
+  // A code the manual troubleshoots resolves to its row, with the tree to start.
+  await page.getByRole("link", { name: "Reference tables" }).click();
+  await page.getByLabel("Look up a code, item or term").fill("E21");
+  await page.getByRole("button", { name: "Look up" }).click();
+  await page.getByRole("region", { name: "Controller display codes E21" }).getByRole("link", { name: "Controller display codes" }).click();
+  await page.getByText("Motor winding temperature high").waitFor();
+  await page.getByRole("button", { name: "Start here" }).click();
+  await page.getByText(/^Step \d+, /).first().waitFor();
+  await shot("row-started");
+  await page.goto(`${base}/units/unit-101/connect`);
+  await page.getByRole("button", { name: "Clear all" }).click();
+
   // Voice, on a device with the speech model: the words land in the box to be checked before they are used.
   const native = await browser.newContext({ viewport: { width: 1280, height: 800 } });
   await native.addInitScript(fakeNative, " Engine does not crank. ");

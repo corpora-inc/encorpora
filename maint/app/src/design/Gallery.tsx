@@ -336,6 +336,7 @@ const sectionPage = D.section.assets.find((a) => a.role === "page") ?? null;
 
 // The in-place answer, as the app renders it for a unit with nothing answered yet.
 const answer = (a: Applicability) => <Undetermined a={a} declared={D.attrsEmpty.declared} onAnswer={none} />;
+const answerRefused = (a: Applicability) => <Undetermined a={a} declared={D.attrsEmpty.declared} refused={{ firmware: true }} onAnswer={none} />;
 const unitAttrs = { attrs: D.attrsAll, attrsSaving: false, onAttr: none, referenceTo: `/manual/${D.pack.pack_id}/reference` };
 // The engine's own undetermined applicability (row E52, "firmware 2.4 and later"), set on a step's
 // block and on the step itself: the fixture scopes rows, not tree nodes, with statements.
@@ -516,7 +517,7 @@ Object.assign(GALLERY, {
         render: () => <SectionReader packId={D.pack.pack_id} view={D.section} page={sectionPage} pageOpen src={(a) => imageFor(D.pack.pack_id, a)} />,
       },
       { state: "search", label: "Search results", unit: shellUnit, render: () => <ManualResults packId={D.pack.pack_id} query="battery voltage" hits={D.manualSearch.hits} /> },
-      { state: "search-rows", label: "Search, table rows among the hits", unit: shellUnit, render: () => <ManualResults packId={D.pack.pack_id} query="E52 inverter" hits={D.ref.search.hits} /> },
+      { state: "search-rows", label: "Search, table rows among the hits", unit: shellUnit, render: () => <ManualResults packId={D.pack.pack_id} query="E52 inverter" hits={D.ref.search.hits} renderAnswer={answer} /> },
     ],
   },
   reference: {
@@ -531,6 +532,7 @@ Object.assign(GALLERY, {
       { state: "specs", label: "Specifications, a cell not yet known", unit: shellUnit, render: () => <ReferenceTable packId={D.pack.pack_id} table={D.ref.specs} unitName={unitName(unit)} renderAnswer={answer} /> },
       { state: "specs-known", label: "Specifications, bulletin answered", unit: shellUnit, render: () => <ReferenceTable packId={D.pack.pack_id} table={D.ref.specsKnown} unitName={unitName(unit)} /> },
       { state: "row", label: "A row, not yet known", unit: shellUnit, render: () => <ReferenceRow packId={D.pack.pack_id} table={D.ref.codes} row={rowOf(D.ref.codes, 3)} unitName={unitName(unit)} start={null} renderAnswer={answer} /> },
+      { state: "row-refused", label: "A row, the typed value refused", unit: shellUnit, render: () => <ReferenceRow packId={D.pack.pack_id} table={D.ref.codes} row={rowOf(D.ref.codes, 3)} unitName={unitName(unit)} start={null} renderAnswer={answerRefused} /> },
       { state: "row-start", label: "A row the manual troubleshoots", unit: shellUnit, render: () => <ReferenceRow packId={D.pack.pack_id} table={D.ref.codes} row={rowOf(D.ref.codes, 1)} unitName={unitName(unit)} start={{ title: D.trees.find((t) => t.tree_id === D.ref.matchTree.hits[0]?.rule.tree_id)?.title ?? "", onStart: none }} /> },
       { state: "row-spec", label: "A specification row, printed limits", unit: shellUnit, render: () => <ReferenceRow packId={D.pack.pack_id} table={D.ref.specsKnown} row={rowOf(D.ref.specsKnown, 3)} unitName={unitName(unit)} start={null} /> },
     ],
