@@ -219,7 +219,7 @@ fn validation_reports_dead_ends_bad_targets_and_dangling_edges() {
     let b = pump_with(exec(
         "DELETE FROM fault_edge WHERE from_node = 'nc.3';
          UPDATE fault_node SET expect = NULL WHERE node_id = 'nc.3';
-         INSERT INTO fault_node VALUES ('nc.x', 't-nocrank', 'goto', 'The fault is corrected.', 'm40.3-1.end', NULL, NULL, NULL, 'en', 'prov-pump40');
+         INSERT INTO fault_node VALUES ('nc.x', 't-nocrank', 'goto', 'The fault is corrected.', 'm40.3-1.end', NULL, NULL, NULL, 'en', 'prov-pump40', NULL);
          INSERT INTO fault_edge VALUES ('nc.4', 3, 'Maybe', NULL, 'nc.nowhere', 0);
          UPDATE fault_node SET target = 'tree:t-missing' WHERE node_id = 'nc.2a';
          UPDATE fault_node SET proc_id = 'proc-missing' WHERE node_id = 'nc.4';",
@@ -396,6 +396,7 @@ fn guards_show_at_every_level_and_levels_only_fold_facets_and_steps() {
         let v = view::node_view(p, &t, "nc.2", l, Some("pump40-diesel"), &[]).unwrap();
         let tp = v.test_procedure.as_ref().unwrap();
         let mut g: Vec<String> = v.guards.iter().map(|g| g.section_id.clone()).collect();
+        g.extend(tp.guards.iter().map(|g| g.section_id.clone()));
         for s in &tp.steps {
             g.extend(s.guards.iter().map(|g| g.section_id.clone()));
         }
@@ -428,18 +429,20 @@ fn guards_show_at_every_level_and_levels_only_fold_facets_and_steps() {
         guard_sets.windows(2).all(|w| w[0] == w[1]),
         "{guard_sets:?}"
     );
-    // The battery test: the task warning on every step, the caution and note on theirs.
+    // The battery test: the task's warning once at its head, the caution
+    // and the note before their own steps only.
     assert_eq!(
         guard_sets[0],
-        [
-            "m40.3.w1",
-            "m40.4-2.w1",
-            "m40.4-2.w1",
-            "m40.4-2.c1",
-            "m40.4-2.w1",
-            "m40.4-2.n1"
-        ]
+        ["m40.3.w1", "m40.4-2.w1", "m40.4-2.c1", "m40.4-2.n1"]
     );
+    let tp = view::node_view(p, &t, "nc.2", &levels[0], None, &[])
+        .unwrap()
+        .test_procedure
+        .unwrap();
+    assert_eq!(tp.guards.len(), 1);
+    assert!(tp.steps[0].guards.is_empty());
+    assert_eq!(tp.steps[1].guards[0].kind, "caution");
+    assert_eq!(tp.steps[2].guards[0].kind, "note");
     // A level that tries to name a guard as a facet still cannot hide it.
     let b2 = pump_with(exec(
         r#"UPDATE pack_meta SET value = '[{"id":"x","label":"X","facets":["warning","caution","note"],"test_steps":"collapsed"}]' WHERE key = 'levels';"#,
@@ -809,10 +812,10 @@ fn symptom_matches_say_how_sure_they_are() {
     let (hits, _) =
         search::symptom_search(&b.pack, None, &[obs("pump40.code", "E21")], None, None, 5).unwrap();
     assert_eq!(hits[0].confidence, search::Confidence::Confident);
-    // One word of three: closest.
+    // One meaningful word of four (below 0.30): closest.
     let (hits, _) = search::symptom_search(
         &b.pack,
-        Some("engine smoke and knocking"),
+        Some("engine smoke, knocking and rattling"),
         &[],
         None,
         None,
@@ -822,7 +825,7 @@ fn symptom_matches_say_how_sure_they_are() {
     assert_eq!(hits[0].confidence, search::Confidence::Closest);
     // A pack can raise the bar.
     let strict = pump_with(exec(
-        "INSERT INTO pack_meta VALUES ('symptom_confident_coverage', '1.01');",
+        "INSERT INTO pack_meta VALUES ('symptom_confident_coverage_lexical', '1.01');",
     ));
     let (hits, _) = search::symptom_search(
         &strict.pack,
@@ -834,4 +837,259 @@ fn symptom_matches_say_how_sure_they_are() {
     )
     .unwrap();
     assert_eq!(hits[0].confidence, search::Confidence::Closest);
+}
+
+#[test]
+fn a_goto_can_enter_another_tree_at_a_named_node() {
+    let b = pump();
+    let t = tree(&b, "t-nocrank");
+    let g = t.node("nc.1g").unwrap();
+    assert_eq!(
+        g.target,
+        Some(harvest_core::maint::Target::Tree {
+            id: "t-hot".into(),
+            node_id: Some("oh.1".into())
+        })
+    );
+    let lvl = b.pack.level("expert").unwrap();
+    let v = view::node_view(&b.pack, &t, "nc.1g", &lvl, None, &[]).unwrap();
+    assert_eq!(v.target.unwrap().title.as_deref(), Some("Pump overheats"));
+    // The node must exist in that tree.
+    let bad = pump_with(exec(
+        "UPDATE fault_node SET target = 'tree:t-hot#nc.2' WHERE node_id = 'nc.1g';",
+    ));
+    let r = graph::validate(&bad.pack).unwrap();
+    assert!(
+        r.violations
+            .iter()
+            .any(|v| v.rule == "node.target" && v.detail.contains("not in tree")),
+        "{:#?}",
+        r.violations
+    );
+    let malformed = pump_with(exec(
+        "UPDATE fault_node SET target = 'tree:t-hot#' WHERE node_id = 'nc.1g';",
+    ));
+    assert!(rules(&graph::validate(&malformed.pack).unwrap()).contains(&"node.target".to_string()));
+}
+
+#[test]
+fn a_printed_reference_with_no_target_is_kept_and_marked() {
+    let b = pump();
+    let t = tree(&b, "t-nocrank");
+    let lvl = b.pack.level("expert").unwrap();
+    let v = view::node_view(&b.pack, &t, "nc.3n", &lvl, None, &[]).unwrap();
+    assert!(v.target.is_none());
+    assert_eq!(
+        v.reference.as_deref(),
+        Some("Refer to field maintenance for wiring repair.")
+    );
+    let resolved = view::node_view(&b.pack, &t, "nc.2a", &lvl, None, &[]).unwrap();
+    assert!(resolved.target.is_some() && resolved.reference.is_some());
+    let bad = pump_with(exec(
+        "UPDATE fault_node SET reference = 'See the depot manual.' WHERE node_id = 'nc.3n';",
+    ));
+    assert!(rules(&graph::validate(&bad.pack).unwrap()).contains(&"node.reference".to_string()));
+    // A pack baked before the column reads as before.
+    let old = pump_with(exec("ALTER TABLE fault_node DROP COLUMN reference;"));
+    assert!(
+        old.pack
+            .fault_tree("t-nocrank")
+            .unwrap()
+            .unwrap()
+            .node("nc.3n")
+            .unwrap()
+            .reference
+            .is_none()
+    );
+}
+
+#[test]
+fn page_index_is_the_physical_page() {
+    let b = pump();
+    assert_eq!(b.pack.section_loc("m40.1").unwrap().page_index, Some(1));
+    assert_eq!(
+        b.pack.section_loc("m40.3-1.q2").unwrap().page_index,
+        Some(3)
+    );
+    assert_eq!(
+        b.pack.section_loc("m40.4-3.s5").unwrap().page_index,
+        Some(10)
+    );
+}
+
+#[test]
+fn a_signal_can_lead_to_a_section_with_no_tree() {
+    let b = pump();
+    let m = search::signal_match(&b.pack, &[obs("pump40.code", "E40")], None).unwrap();
+    assert_eq!(m.hits.len(), 1);
+    let h = &m.hits[0];
+    assert!(!h.has_tree && h.rule.tree_id.is_none());
+    let sec = h.section.as_ref().unwrap();
+    assert_eq!(sec.section_id, "m40.3-2.codes");
+    assert!(
+        sec.text
+            .contains("Code E40: suction pressure below the warning limit.")
+    );
+    assert!(m.suggested.is_none(), "no tree to enter");
+    assert!(graph::validate(&b.pack).unwrap().ok);
+    // With a tree-hit alongside, the tree is suggested.
+    let both = search::signal_match(
+        &b.pack,
+        &[obs("pump40.code", "E40"), obs("pump40.code", "E21")],
+        None,
+    )
+    .unwrap();
+    assert_eq!(both.suggested.unwrap().node_id, "oh.1");
+    assert!(!both.ambiguous);
+    let bad = pump_with(exec(
+        "UPDATE signal_map SET section_id = NULL WHERE pattern = 'E40';",
+    ));
+    assert!(rules(&graph::validate(&bad.pack).unwrap()).contains(&"signal.target".to_string()));
+}
+
+#[test]
+fn an_unmatched_status_text_gets_closest_entries_never_a_match() {
+    // The vehicle adds a tag and an instance number the table does not print.
+    let b = pump_with(exec(
+        "INSERT INTO signal_map VALUES ('mavlink.statustext', 'Battery below minimum arming voltage', 'Battery below minimum arming voltage', NULL, NULL, 'm40.3-2.codes', NULL, 'prov-pump40');
+         INSERT INTO symptom VALUES ('s-arm', 't-nocrank', 'Battery below minimum arming voltage', 'starting', '[]', 'en', 'prov-pump40');",
+    ));
+    assert_eq!(
+        search::closest_query("PreArm: Battery 1 below minimum arming voltage").as_deref(),
+        Some("Battery below minimum arming voltage")
+    );
+    assert_eq!(search::closest_query("E40"), None, "a code is not text");
+    assert_eq!(search::closest_query("12.5 V"), None);
+    let o = obs(
+        "mavlink.statustext",
+        "PreArm: Battery 1 below minimum arming voltage",
+    );
+    let m = search::signal_match(&b.pack, std::slice::from_ref(&o), None).unwrap();
+    assert!(
+        m.hits.is_empty() && m.suggested.is_none(),
+        "never a match or a start"
+    );
+    assert_eq!(m.unmatched, vec![o.clone()]);
+    let c = &m.closest[0];
+    assert_eq!(c.symptoms[0].symptom.symptom_id, "s-arm");
+    assert_eq!(c.symptoms[0].confidence, search::Confidence::Confident);
+    assert_eq!(
+        c.signals[0].rule.pattern,
+        "Battery below minimum arming voltage"
+    );
+    assert_eq!(c.signals[0].confidence, search::Confidence::Confident);
+    assert!(!c.signals[0].has_tree);
+    assert_eq!(
+        c.signals[0].section.as_ref().unwrap().section_id,
+        "m40.3-2.codes"
+    );
+    // Deterministic.
+    assert_eq!(search::signal_match(&b.pack, &[o], None).unwrap(), m);
+    // One shared word is only "closest".
+    let weak = search::signal_match(
+        &b.pack,
+        &[obs(
+            "mavlink.statustext",
+            "PreArm: Compass2 voltage odd reading",
+        )],
+        None,
+    )
+    .unwrap();
+    assert!(
+        weak.closest[0]
+            .signals
+            .iter()
+            .all(|s| s.confidence == search::Confidence::Closest)
+    );
+}
+
+#[test]
+fn a_pack_sets_its_ranking_in_pack_meta() {
+    let d = search::Ranking::for_pack(&pump().pack).unwrap();
+    assert_eq!(d, search::Ranking::default());
+    assert_eq!(
+        (
+            d.lexical_weight,
+            d.margin,
+            d.coverage,
+            d.strong_hits,
+            d.dense_alone
+        ),
+        (0.10, 0.02, 0.50, 1, 0.85)
+    );
+    assert_eq!(
+        (d.margin_lexical, d.coverage_lexical, d.strong_hits_lexical),
+        (0.15, 0.30, 1)
+    );
+    let b = pump_with(exec(
+        "INSERT INTO pack_meta VALUES ('symptom_fusion', 'rrf');
+         INSERT INTO pack_meta VALUES ('symptom_fusion_lexical_weight', '0.7');
+         INSERT INTO pack_meta VALUES ('symptom_confident_margin', '0.05');
+         INSERT INTO pack_meta VALUES ('symptom_confident_strong_hits', '2');
+         INSERT INTO pack_meta VALUES ('symptom_confident_margin_lexical', '0.2');
+         INSERT INTO pack_meta VALUES ('symptom_weak_words_add', '[\"pump\"]');",
+    ));
+    let r = search::Ranking::for_pack(&b.pack).unwrap();
+    assert_eq!(r.fusion, search::Fusion::Rrf);
+    assert_eq!(
+        (r.lexical_weight, r.margin, r.strong_hits, r.margin_lexical),
+        (0.7, 0.05, 2, 0.2)
+    );
+    assert_eq!(r.coverage, search::CONFIDENT_COVERAGE);
+    assert!(
+        r.weak_words.contains(&"run".to_string()) && r.weak_words.contains(&"pump".to_string())
+    );
+    let bad = pump_with(exec(
+        "INSERT INTO pack_meta VALUES ('symptom_fusion', 'max');",
+    ));
+    assert!(search::Ranking::for_pack(&bad.pack).is_err());
+    let w = pump_with(exec(
+        "INSERT INTO pack_meta VALUES ('symptom_fusion_lexical_weight', '1.5');",
+    ));
+    assert!(search::Ranking::for_pack(&w.pack).is_err());
+}
+
+#[test]
+fn the_confidence_rule_is_pinned_on_constructed_inputs() {
+    use search::Confidence::{Closest, Confident};
+    let r = search::Ranking::default();
+    // rate(dense_active, signal, coverage, strong_hits, cosine, margin)
+    // A signal: always confident, whatever else.
+    assert_eq!(r.rate(true, true, 0.0, 0, Some(0.1), Some(-1.0)), Confident);
+    assert_eq!(r.rate(false, true, 0.0, 0, None, Some(-1.0)), Confident);
+    // Dense active, words branch: margin 0.02, coverage 0.50, one strong hit.
+    assert_eq!(
+        r.rate(true, false, 0.50, 1, Some(0.2), Some(0.02)),
+        Confident
+    );
+    assert_eq!(
+        r.rate(true, false, 0.49, 1, Some(0.2), Some(0.5)),
+        Closest,
+        "coverage"
+    );
+    assert_eq!(
+        r.rate(true, false, 0.50, 0, Some(0.2), Some(0.5)),
+        Closest,
+        "strong hits"
+    );
+    assert_eq!(
+        r.rate(true, false, 1.0, 3, Some(0.9), Some(0.019)),
+        Closest,
+        "margin"
+    );
+    // Dense active, meaning branch: cosine 0.85 with no word at all.
+    assert_eq!(
+        r.rate(true, false, 0.0, 0, Some(0.85), Some(0.02)),
+        Confident
+    );
+    assert_eq!(r.rate(true, false, 0.0, 0, Some(0.849), Some(0.5)), Closest);
+    // A single hit satisfies the margin.
+    assert_eq!(r.rate(true, false, 0.0, 0, Some(0.86), None), Confident);
+    assert_eq!(r.rate(false, false, 0.3, 1, None, None), Confident);
+    // Dense off: coverage 0.30, one strong hit, margin 0.15; cosine ignored.
+    assert_eq!(r.rate(false, false, 0.30, 1, None, Some(0.15)), Confident);
+    assert_eq!(r.rate(false, false, 0.29, 1, None, Some(0.9)), Closest);
+    assert_eq!(r.rate(false, false, 0.9, 1, None, Some(0.149)), Closest);
+    assert_eq!(r.rate(false, false, 0.9, 0, None, Some(0.9)), Closest);
+    assert_eq!(r.rate(false, false, 0.0, 0, Some(0.99), None), Closest);
 }

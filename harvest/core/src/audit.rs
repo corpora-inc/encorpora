@@ -387,8 +387,38 @@ pub fn records_with(conn: &Connection, key: Option<&RecordKey>) -> Result<Vec<Au
         .collect()
 }
 
-/// UTC now as `YYYY-MM-DDTHH:MM:SS.mmmZ`.
+thread_local! {
+    /// A virtual clock for this thread (milliseconds since 1970), set by a
+    /// simulation that runs real record stores on simulated time.
+    static CLOCK: std::cell::Cell<Option<i64>> = const { std::cell::Cell::new(None) };
+}
+
+/// Run this thread on a virtual clock (`Some(ms since 1970)`), or the real
+/// one (`None`). Only a simulation sets it.
+pub fn set_clock(ms: Option<i64>) {
+    CLOCK.with(|c| c.set(ms));
+}
+
+/// The virtual clock, when one is set.
+pub fn virtual_now_ms() -> Option<i64> {
+    CLOCK.with(|c| c.get())
+}
+
+/// Milliseconds since 1970 (the virtual clock when set).
+pub fn now_ms() -> i64 {
+    virtual_now_ms().unwrap_or_else(|| {
+        std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH)
+            .map(|d| d.as_millis() as i64)
+            .unwrap_or_default()
+    })
+}
+
+/// UTC now as `YYYY-MM-DDTHH:MM:SS.mmmZ` (the virtual clock when set).
 pub fn now_rfc3339() -> String {
+    if let Some(ms) = virtual_now_ms() {
+        return rfc3339(ms.div_euclid(1000), ms.rem_euclid(1000) as u32);
+    }
     let d = std::time::SystemTime::now()
         .duration_since(std::time::UNIX_EPOCH)
         .unwrap_or_default();

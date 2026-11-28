@@ -67,7 +67,7 @@ impl Upload {
 }
 
 /// The server's acknowledgement of one item.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, schemars::JsonSchema)]
 pub struct Receipt {
     pub item_id: String,
     /// Must equal the item's `payload_sha256`.
@@ -427,4 +427,414 @@ fn sync_dir(dir: &Path) -> Result<()> {
     #[cfg(not(unix))]
     let _ = dir;
     Ok(())
+}
+
+/// A device's link to its hub: uploads, field-note bundles and pack
+/// updates. The app implements it over HTTPS; a simulation over a
+/// simulated link; tests over an in-process hub.
+pub trait HubLink {
+    /// The device's id as the hub knows it.
+    fn device_id(&self) -> String;
+    /// Store `batch`; receipts as for [`Transport::send`].
+    fn send(&self, batch: &[Upload]) -> Result<Vec<Receipt>>;
+    /// Signed field-note bundles with `seq` above `since`, in order.
+    fn bundles_since(&self, since: u64) -> Result<Vec<serde_json::Value>>;
+    /// The pack the hub offers for `pack_id` to a device holding `have`.
+    fn pack_offer(&self, pack_id: &str, have: Option<&str>) -> Result<Option<PackOffer>>;
+    /// One file of an offer (`manifest.json` or a listed path).
+    fn fetch(&self, offer: &PackOffer, path: &str) -> Result<Vec<u8>>;
+    /// The hub's signed fleet summary (`harvest-fleet/1`), when it has one.
+    fn fleet(&self) -> Result<Option<serde_json::Value>>;
+    /// The small signed hello that opens every upload: the hub answers
+    /// whether it accepts this device before any payload is sent.
+    fn hello(&self) -> Result<HelloReply>;
+    /// The link the device is on now (the hub's attachment policy depends
+    /// on it); `normal` unless the host knows better.
+    fn link_class(&self) -> LinkClass {
+        LinkClass::Normal
+    }
+    /// The device's public key (base64), for an administrator to enroll.
+    fn public_key(&self) -> String;
+    /// How much of an attachment variant the hub already holds (resume
+    /// point; `total` when it holds it all, from any device).
+    fn attachment_offset(&self, sha256: &str, total: u64) -> Result<u64>;
+    /// Sign and send one chunk of an attachment variant; returns how much
+    /// of it the hub now holds.
+    fn put_chunk(
+        &self,
+        sha256: &str,
+        variant: &str,
+        total: u64,
+        offset: u64,
+        data: &[u8],
+    ) -> Result<u64>;
+}
+
+/// Why the hub refuses a device.
+#[derive(Debug, Clone, Copy, Serialize, Deserialize, JsonSchema, PartialEq, Eq)]
+#[serde(rename_all = "snake_case")]
+pub enum Refusal {
+    /// The hub does not know this device's key.
+    Unenrolled,
+    /// An administrator revoked it.
+    Revoked,
+    /// The signature does not verify against the enrolled key.
+    Signature,
+}
+
+impl Refusal {
+    pub fn as_str(self) -> &'static str {
+        match self {
+            Self::Unenrolled => "unenrolled",
+            Self::Revoked => "revoked",
+            Self::Signature => "signature",
+        }
+    }
+}
+
+/// A device's hello (`harvest-hello/1`), signed like a delivery.
+#[derive(Debug, Clone, Serialize, Deserialize, JsonSchema, PartialEq)]
+#[serde(deny_unknown_fields)]
+pub struct Hello {
+    pub device_id: String,
+    pub signed_at: String,
+    /// The link the device is on now, as the host knows it.
+    #[serde(default)]
+    pub link: LinkClass,
+    pub signature: String,
+}
+
+/// How good the device's current link is (the host decides: a satellite
+/// or radio link is `low`).
+#[derive(
+    Debug, Clone, Copy, Default, Serialize, Deserialize, JsonSchema, PartialEq, Eq, PartialOrd, Ord,
+)]
+#[serde(rename_all = "snake_case")]
+pub enum LinkClass {
+    Low,
+    #[default]
+    Normal,
+}
+
+/// What attachments travel on a link (the hub's policy per link class).
+#[derive(
+    Debug, Clone, Copy, Serialize, Deserialize, JsonSchema, PartialEq, Eq, PartialOrd, Ord,
+)]
+#[serde(rename_all = "snake_case")]
+pub enum AttachmentMode {
+    /// Only the references (they travel with the records); the files wait.
+    Refs,
+    /// The downscaled copy when the host made one, else the file.
+    Downscaled,
+    Full,
+}
+
+/// One chunk of an attachment upload, signed by the device over the
+/// content's hash, the variant, the offset and the chunk's hash.
+#[derive(Debug, Clone, Serialize, Deserialize, JsonSchema, PartialEq)]
+#[serde(deny_unknown_fields)]
+pub struct AttachmentChunk {
+    pub device_id: String,
+    /// The SHA-256 of the file this variant is (content addressed).
+    pub sha256: String,
+    /// `full` or `small`.
+    pub variant: String,
+    /// The size of the whole variant.
+    pub total: u64,
+    pub offset: u64,
+    /// The chunk, base64.
+    pub data: String,
+    pub signed_at: String,
+    pub signature: String,
+}
+
+impl AttachmentChunk {
+    fn message(&self) -> Result<Vec<u8>> {
+        use base64::Engine as _;
+        let raw = base64::engine::general_purpose::STANDARD
+            .decode(self.data.as_bytes())
+            .map_err(|_| Error::Invalid("attachment chunk is not base64".into()))?;
+        crate::canon::to_vec(&serde_json::json!({
+            "format": "harvest-attachment/1",
+            "device_id": self.device_id,
+            "sha256": self.sha256,
+            "variant": self.variant,
+            "total": self.total,
+            "offset": self.offset,
+            "chunk_sha256": hex_encode(&Sha256::digest(&raw)),
+            "signed_at": self.signed_at,
+        }))
+    }
+
+    /// Check the signature against the device's public key.
+    pub fn verify(&self, public: &[u8; 32]) -> Result<()> {
+        verify_sig(public, &self.device_id, &self.signature, &self.message()?)
+    }
+}
+
+impl Hello {
+    fn message(&self) -> Result<Vec<u8>> {
+        crate::canon::to_vec(&serde_json::json!({
+            "format": "harvest-hello/1",
+            "device_id": self.device_id,
+            "signed_at": self.signed_at,
+            "link": self.link,
+        }))
+    }
+
+    /// Check the signature against the device's public key.
+    pub fn verify(&self, public: &[u8; 32]) -> Result<()> {
+        verify_sig(public, &self.device_id, &self.signature, &self.message()?)
+    }
+}
+
+/// The hub's answer to a hello.
+#[derive(Debug, Clone, Serialize, Deserialize, JsonSchema, PartialEq)]
+pub struct HelloReply {
+    pub accepted: bool,
+    pub refused: Option<Refusal>,
+    /// How often a device fetches a changed fleet summary (a hub setting
+    /// the device learns here).
+    pub fleet_every_hours: f64,
+    pub hub_time: String,
+    /// What attachments may travel on the link the device named.
+    #[serde(default = "default_mode")]
+    pub attachments: AttachmentMode,
+    /// The attachment chunk size, bytes.
+    #[serde(default = "default_chunk")]
+    pub chunk_bytes: u64,
+    /// The hub's bundle stream: a device pulls by this stream's seq.
+    #[serde(default)]
+    pub stream: Option<String>,
+}
+
+fn default_mode() -> AttachmentMode {
+    AttachmentMode::Full
+}
+fn default_chunk() -> u64 {
+    DEFAULT_CHUNK_BYTES
+}
+
+/// Default attachment chunk size.
+pub const DEFAULT_CHUNK_BYTES: u64 = 64 * 1024;
+
+fn verify_sig(public: &[u8; 32], device_id: &str, signature: &str, message: &[u8]) -> Result<()> {
+    use base64::Engine as _;
+    use ed25519_dalek::Verifier;
+    if device_id_for(public) != device_id {
+        return Err(Error::Signature("the message names another device".into()));
+    }
+    let key = ed25519_dalek::VerifyingKey::from_bytes(public)
+        .map_err(|e| Error::Signature(format!("device key: {e}")))?;
+    let raw = base64::engine::general_purpose::STANDARD
+        .decode(signature.trim())
+        .map_err(|_| Error::Signature("signature is not base64".into()))?;
+    let arr: [u8; 64] = raw
+        .try_into()
+        .map_err(|_| Error::Signature("signature must be 64 bytes".into()))?;
+    key.verify(message, &ed25519_dalek::Signature::from_bytes(&arr))
+        .map_err(|_| Error::Signature("signature does not verify".into()))
+}
+
+/// A device's signing key: generated on the device, its private half kept
+/// where the host keeps the records key (the platform keystore). The hub
+/// knows the device by the public half (enrollment).
+pub struct DeviceKey(ed25519_dalek::SigningKey);
+
+impl DeviceKey {
+    /// A new key from the OS random source.
+    pub fn generate() -> Result<Self> {
+        let mut seed = [0u8; 32];
+        getrandom::getrandom(&mut seed).map_err(|e| Error::Crypto(format!("random: {e}")))?;
+        Ok(Self(ed25519_dalek::SigningKey::from_bytes(&seed)))
+    }
+    /// From the 32-byte seed the keystore holds.
+    pub fn from_seed(seed: &[u8; 32]) -> Self {
+        Self(ed25519_dalek::SigningKey::from_bytes(seed))
+    }
+    pub fn seed(&self) -> [u8; 32] {
+        self.0.to_bytes()
+    }
+    /// The public key as base64 (what an administrator enrolls).
+    pub fn public_base64(&self) -> String {
+        use base64::Engine as _;
+        base64::engine::general_purpose::STANDARD.encode(self.0.verifying_key().as_bytes())
+    }
+    /// `dev-<key id>`: the device id the hub records on every item.
+    pub fn device_id(&self) -> String {
+        device_id_for(self.0.verifying_key().as_bytes())
+    }
+    /// Sign a hello.
+    pub fn hello(&self, link: LinkClass) -> Result<Hello> {
+        let mut h = Hello {
+            device_id: self.device_id(),
+            signed_at: now_rfc3339(),
+            link,
+            signature: String::new(),
+        };
+        use base64::Engine as _;
+        use ed25519_dalek::Signer;
+        h.signature =
+            base64::engine::general_purpose::STANDARD.encode(self.0.sign(&h.message()?).to_bytes());
+        Ok(h)
+    }
+
+    /// Sign one chunk of an attachment upload.
+    pub fn chunk(
+        &self,
+        sha256: &str,
+        variant: &str,
+        total: u64,
+        offset: u64,
+        data: &[u8],
+    ) -> Result<AttachmentChunk> {
+        use base64::Engine as _;
+        use ed25519_dalek::Signer;
+        let mut c = AttachmentChunk {
+            device_id: self.device_id(),
+            sha256: sha256.to_string(),
+            variant: variant.to_string(),
+            total,
+            offset,
+            data: base64::engine::general_purpose::STANDARD.encode(data),
+            signed_at: now_rfc3339(),
+            signature: String::new(),
+        };
+        c.signature =
+            base64::engine::general_purpose::STANDARD.encode(self.0.sign(&c.message()?).to_bytes());
+        Ok(c)
+    }
+
+    /// Sign a delivery of `items`.
+    pub fn deliver(&self, items: &[Upload]) -> Result<Delivery> {
+        let mut d = Delivery {
+            device_id: self.device_id(),
+            signed_at: now_rfc3339(),
+            items: items.to_vec(),
+            signature: String::new(),
+        };
+        use ed25519_dalek::Signer;
+        let sig = self.0.sign(&d.message()?);
+        use base64::Engine as _;
+        d.signature = base64::engine::general_purpose::STANDARD.encode(sig.to_bytes());
+        Ok(d)
+    }
+}
+
+/// The device id for a public key.
+pub fn device_id_for(public: &[u8; 32]) -> String {
+    format!("dev-{}", crate::packs::key_id_for(public))
+}
+
+/// One upload batch as a device sends it: signed by the device's key over
+/// its id, the time and every item's id, kind and payload hash.
+#[derive(Debug, Clone, Serialize, Deserialize, JsonSchema, PartialEq)]
+#[serde(deny_unknown_fields)]
+pub struct Delivery {
+    pub device_id: String,
+    pub signed_at: String,
+    pub items: Vec<Upload>,
+    /// base64 ed25519 signature over [`Delivery::message`].
+    pub signature: String,
+}
+
+impl Delivery {
+    /// The signed bytes: canonical JSON of the id, the time and each
+    /// item's id, kind and payload hash (the hub checks every payload
+    /// against its hash).
+    pub fn message(&self) -> Result<Vec<u8>> {
+        let items: Vec<serde_json::Value> = self
+            .items
+            .iter()
+            .map(|u| serde_json::json!({"item_id": u.item_id, "kind": u.kind, "payload_sha256": u.payload_sha256}))
+            .collect();
+        crate::canon::to_vec(&serde_json::json!({
+            "format": "harvest-delivery/1",
+            "device_id": self.device_id,
+            "signed_at": self.signed_at,
+            "items": items,
+        }))
+    }
+
+    /// Check the signature against the device's public key.
+    pub fn verify(&self, public: &[u8; 32]) -> Result<()> {
+        verify_sig(public, &self.device_id, &self.signature, &self.message()?)
+    }
+}
+
+/// A pack the hub offers: the full pack, or a delta from the device's
+/// version.
+#[derive(Debug, Clone, Serialize, Deserialize, schemars::JsonSchema, PartialEq)]
+pub struct PackOffer {
+    pub pack_id: String,
+    pub version: String,
+    /// `full` | `delta`.
+    pub kind: String,
+    pub base_version: Option<String>,
+    /// The hub's name for the offered directory.
+    pub dir: String,
+    /// The files to fetch besides `manifest.json`.
+    pub files: Vec<crate::packs::FileEntry>,
+    pub bytes: u64,
+}
+
+/// [`HubLink`] as an upload [`Transport`].
+pub struct LinkTransport<'a>(pub &'a dyn HubLink);
+
+impl Transport for LinkTransport<'_> {
+    fn send(&self, batch: &[Upload]) -> Result<Vec<Receipt>> {
+        self.0.send(batch)
+    }
+}
+
+/// Download an offer through `link` into a staging directory under
+/// `root`, check every file against the offer, and install it (full or
+/// delta; verified, atomic, no downgrade).
+pub fn install_offer(
+    root: &Path,
+    link: &dyn HubLink,
+    offer: &PackOffer,
+    keys: &[crate::packs::TrustedKey],
+) -> Result<crate::packs::Installed> {
+    if !crate::packs::valid_id(&offer.pack_id) || !crate::packs::valid_version(&offer.version) {
+        return Err(Error::Sync(format!(
+            "bad offer {} {}",
+            offer.pack_id, offer.version
+        )));
+    }
+    let staging = root
+        .join(&offer.pack_id)
+        .join(format!(".download-{}", offer.version));
+    if staging.exists() {
+        std::fs::remove_dir_all(&staging)?;
+    }
+    std::fs::create_dir_all(&staging)?;
+    let result = (|| {
+        let manifest = link.fetch(offer, crate::packs::MANIFEST)?;
+        std::fs::write(staging.join(crate::packs::MANIFEST), manifest)?;
+        for f in &offer.files {
+            let rel = crate::packs::safe_relative(&f.path)?;
+            let bytes = link.fetch(offer, &f.path)?;
+            if bytes.len() as u64 != f.bytes
+                || !hex_encode(&Sha256::digest(&bytes)).eq_ignore_ascii_case(&f.sha256)
+            {
+                return Err(Error::Integrity(format!(
+                    "{}: not what the offer lists",
+                    f.path
+                )));
+            }
+            let to = staging.join(rel);
+            if let Some(p) = to.parent() {
+                std::fs::create_dir_all(p)?;
+            }
+            std::fs::write(to, bytes)?;
+        }
+        if offer.kind == "delta" {
+            crate::delta::install_delta(root, &staging, keys)
+        } else {
+            crate::packs::install_dir(root, &staging, keys)
+        }
+    })();
+    let _ = std::fs::remove_dir_all(&staging);
+    result
 }

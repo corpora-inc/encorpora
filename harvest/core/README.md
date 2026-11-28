@@ -71,6 +71,51 @@ let report = records.flush(&my_https_transport, 50)?;
 let n = notes::structure_note(note_text, &notes::NoteVocab::from_pack(&pack)?, Some(llm))?;
 ```
 
+### A native shell (the maintenance API in process)
+
+A Tauri (or any native) shell builds the same host `harvest serve` uses and
+calls the dispatcher directly. Link the library with
+`default-features = false`, plus `features = ["net"]` for an embedding
+server URL or a hub address (the plain-HTTP client; without it those two
+settings are refused at start).
+
+```rust
+use harvest_core::shell::{self, HostConfig, KeyStore};
+use harvest_core::api;
+
+struct Keychain; // the shell's OS-keychain bridge
+impl KeyStore for Keychain {
+    fn load(&self, name: &str) -> harvest_core::Result<Option<Vec<u8>>> { /* keychain get */ }
+    fn store(&self, name: &str, secret: &[u8]) -> harvest_core::Result<()> { /* keychain set */ }
+}
+
+let cfg = HostConfig {
+    packs_root: "<app data>/packs".into(),          // <root>/<pack_id>/current
+    records_path: "<app data>/records.db".into(),
+    pack_keys: vec![TrustedKey::parse(PACK_PUBKEY)?],
+    encrypt_records: true,                          // key: shell::RECORDS_KEY in the key store
+    embedder_url: Some("http://127.0.0.1:8095".into()), // the GGUF it serves is found and hashed
+    hub_url: Some("https://hub.example".into()),    // device key: shell::DEVICE_KEY
+    ..Default::default()
+};
+let (host, report) = shell::open_host(&cfg, &Keychain)?;
+// report: packs, per-pack dense status, device id and public key, warnings.
+
+let out: serde_json::Value = api::call(&host, "pack.list", serde_json::json!({}))?;
+let text: String = api::call_json(&host, "symptom.search", r#"{"text":"won't crank"}"#); // {"ok":…}
+let asset: Option<(String, Vec<u8>)> = host.asset("pump40", "fig-3-1")?;   // (media type, bytes), re-hashed
+```
+
+The key store is asked for two secrets by name and stores each once,
+the first time, when the engine generates it: `shell::RECORDS_KEY`
+(32 bytes, records at rest) and `shell::DEVICE_KEY` (the 32-byte ed25519
+seed that is the device's identity at the hub). `shell::FileKeyStore` keeps
+them in a directory (development), `MemoryKeyStore` in memory (tests).
+`api::call` takes `serde_json::Value` params and returns the typed
+result as a value or an `ApiError {code, message}`; `api::call_json`
+takes and returns JSON text in the transport envelope. The methods and
+their shapes are in `harvest/api/types.ts`.
+
 ### The model
 
 The engine asks a model only for small jobs with a JSON schema, and checks
@@ -132,6 +177,7 @@ pub trait Llm: Send + Sync {
 | `llama` | (feature `llama`) in-process GGUF embedder on the same `llama-cpp-2 =0.1.146` pin as the app's LLM plugin. |
 | `maint` | Maintenance manuals (CONTRACT "Maintenance tables"): fault trees read whole and verbatim-checked, deterministic branching (`branch::choose`), graph validation (`graph::validate`, run by `harvest verify`), the step and task views (citations to the page and box, guards in manual order at every level, facets, requirements, assets), variant identification, symptom search with confidence, signal matching. |
 | `records::maint` | Assets and registry import, troubleshooting jobs with audited corrections, lessons, signed field-note bundles, the repeat flag; job and lesson uploads through the outbox. |
+| `api` | The one JSON API (`call(host, method, params)`), its generated schema and TypeScript (`harvest/api/`), and `serve` (feature `serve`, `harvest serve`): the local HTTP transport. |
 | `fixture` | Fictional signed pack for tests (`harvest fixture <dir>`). Its key is public. Never trust it outside tests. |
 | `fixture_maint` | A fictional pump manual with trees, tasks and levels (`harvest fixture <dir> --maint [--samples DIR]`). Same public key. |
 
@@ -154,6 +200,15 @@ bake's own embedder over HTTP: `--embedder http://host:port --embedder-gguf
 from that file's hash. Prefer `--embedder-gguf`: a declared hash is trusted as
 given. On Linux, bindgen may need
 `BINDGEN_EXTRA_CLANG_ARGS=-I/usr/lib/gcc/<triple>/<ver>/include`.
+
+`harvest serve` takes the same embedder options as `search`, and with a
+URL alone (`--embedder http://127.0.0.1:8095`) it asks the server which file
+it loaded (`/props` `model_path`, else `/v1/models`), hashes that file and
+builds the id from it, so a server running other weights is caught.
+`serve` logs, per pack, whether dense search is on and, if not, why;
+`pack.info` and `pack.list` report the same (`dense`). One embedder serves
+every pack baked with it; with several packs, a pack baked with another is
+served lexical only and says so.
 
 Dense retrieval runs only when `Embedder::id()` equals `pack_meta.embedder_id`
 and `Embedder::dim()` equals `pack_meta.embed_dim`. On any mismatch it is
@@ -208,6 +263,19 @@ harvest show    <pack-dir> tree [--id NODE] [--exams FILE]    # the course knowl
 harvest search  <pack-dir> "<query>" --in tree                # search the tree, not the rules
 harvest converse <pack-dir> <script.json> [--llm URL] [--exams FILE]   # scripted Instructor conversations (CONTRACT)
 harvest fixture <dir> [--maint [--samples DIR]]
+harvest serve   <packs-root|pack> --records <records-db> [--bind 127.0.0.1:4317] [--static DIR] [--allow-origin URL]
+                [--records-key FILE] [--outbox-dir DIR] [--field-pubkey KEY]
+                [--embedder auto|none|hashing|<file.gguf>|<url> [--embedder-gguf FILE|--embedder-sha256 HEX]]
+harvest api-schema <dir> [--check]
+```
+
+Run the API on the fictional pump manual (the key is the public test key):
+
+```sh
+harvest fixture /tmp/pump40 --maint --samples /tmp/pump40-samples
+harvest serve /tmp/pump40 --records /tmp/pump40-records.db \
+  --pubkey dGsHNF6D4rF1Y46jRV7t8Y37KJMb7aJPrhHUrtCv0tc= --outbox-dir /tmp/pump40-outbox
+curl -s -X POST -H 'Content-Type: application/json' localhost:4317/api/pack.info -d '{}'
 ```
 
 `KEY` is a base64 or hex public key, or a file holding one; it defaults to

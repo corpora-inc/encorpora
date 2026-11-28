@@ -15,6 +15,8 @@ the conversation layer, and every product feature works with it off.
 |---|---|---|
 | `harvest/pipeline/` | Python 3.12+ | Ingest: source registry, fetch, parse, enrich (pluggable model backends), verify, write pack, edition diff. CLI `harvest-bake`. |
 | `harvest/core/` | Rust crate `harvest-core` + bin `harvest` | Pack open and signature check, hybrid retrieval, answer engine, support checker, decline, audit log, record store, sync queue. |
+| `harvest/sim/` | JSON | The named fleet-simulation scenarios (`harvest simulate`). |
+| `harvest/api/` | generated JSON Schema + TypeScript | The app's API contract (`api.schema.json`, `types.ts`), generated from `harvest-core`; never edited by hand. |
 | `harvest/practice/` | TypeScript, no runtime deps | Practice and assessment: item selection, spaced review, evidence model per skill, exam simulator scoring. |
 | `crane/content/` | YAML/Markdown + Python tasks | Crane corpus registry, topic and skill blueprint, procedure specs, task prompts. |
 | `crane/app/` | Tauri 2 + React | The crane app (iOS, Android, macOS, Windows). |
@@ -233,6 +235,10 @@ harvest ask     <pack> "<question>" [--role operator] [--equip <id>] [--llm <end
 harvest audit   <records-db> [--json]
 harvest outbox  <records-db> [--to <dir>] [--json]
 harvest show    <pack> info|sections|topics|skills|lessons|terms|diagrams|questions|procedures|answers|exams|prereqs|starters [--id ID] [--role R]
+harvest serve   <packs-root|pack> --records <records-db> [--bind 127.0.0.1:4317] [--static DIR] [--allow-origin URL]
+harvest api-schema <dir> [--check]               # writes harvest/api from the Rust types
+harvest hub     <hub-db> --stream NAME [--packs ROOT] [--bind 127.0.0.1:4318]   # signs with $HARVEST_HUB_KEY
+harvest simulate <scenario.json> [--out metrics.json]   # exits 1 when an invariant breaks
 harvest fixture <dir> --maint [--samples DIR]     # the fictional pump manual, a field bundle, an asset registry
 ```
 
@@ -531,7 +537,9 @@ own. Generated rows carry `prov_id` and ship only when it passed.
 ```sql
 -- Maintenance tables (optional; CONTRACT "Maintenance tables"). A pack without
 -- them reads as before; the core detects each table on its own.
-CREATE TABLE section_loc (section_id TEXT PRIMARY KEY, page_label TEXT, page_index INTEGER,
+CREATE TABLE section_loc (section_id TEXT PRIMARY KEY,
+                          page_label TEXT,               -- the printed page ('3-2')
+                          page_index INTEGER,            -- the 1-based physical page of the source file
                           figure_label TEXT,
                           boxes TEXT);                   -- json [{x0,y0,x1,y1}], 0..1 on the page image
 CREATE TABLE asset (asset_id TEXT PRIMARY KEY, path TEXT NOT NULL, sha256 TEXT NOT NULL,
@@ -551,9 +559,10 @@ CREATE TABLE fault_node (node_id TEXT PRIMARY KEY, tree_id TEXT NOT NULL,
   text TEXT NOT NULL,                                    -- verbatim: a substring of the section's text
   section_id TEXT NOT NULL,
   expect TEXT,                                           -- json: how a result is recorded
-  target TEXT,                                           -- tree:<id> | procedure:<id> (goto; optional on action)
+  target TEXT,                                           -- tree:<id>[#<node_id>] | procedure:<id> (goto; optional on action)
   proc_id TEXT,                                          -- the test procedure that answers the question
-  lang TEXT NOT NULL, prov_id TEXT NOT NULL);
+  lang TEXT NOT NULL, prov_id TEXT NOT NULL,
+  reference TEXT);                                       -- the printed cross-reference, verbatim
 CREATE TABLE fault_edge (from_node TEXT NOT NULL, ord INTEGER NOT NULL, label TEXT NOT NULL,
   cond TEXT,                                             -- json numeric predicate; null: label equality
   to_node TEXT NOT NULL, retry INTEGER NOT NULL DEFAULT 0, PRIMARY KEY (from_node, ord));
@@ -562,7 +571,8 @@ CREATE TABLE fault_facet (node_id TEXT NOT NULL, facet TEXT NOT NULL, ord INTEGE
 CREATE TABLE symptom (symptom_id TEXT PRIMARY KEY, tree_id TEXT NOT NULL, title TEXT NOT NULL,
   system TEXT, synonyms TEXT NOT NULL, lang TEXT NOT NULL, prov_id TEXT NOT NULL);
 CREATE TABLE signal_map (signal_kind TEXT NOT NULL, pattern TEXT NOT NULL, title TEXT NOT NULL,
-  tree_id TEXT NOT NULL, node_id TEXT, section_id TEXT, quote TEXT, prov_id TEXT NOT NULL,
+  tree_id TEXT,                                          -- null: a cause with no tree; section_id says it
+  node_id TEXT, section_id TEXT, quote TEXT, prov_id TEXT NOT NULL,
   PRIMARY KEY (signal_kind, pattern, tree_id));
 CREATE TABLE equip_attr (equip_id TEXT NOT NULL, key TEXT NOT NULL, value TEXT NOT NULL,
                          PRIMARY KEY (equip_id, key));
@@ -595,9 +605,20 @@ CREATE TABLE failure_mode (mode_id TEXT PRIMARY KEY, equip_id TEXT NOT NULL, sys
   `{"op":"between","min":a,"max":b}` (`a <= v < b`). No unit conversion:
   a value in another unit is refused. `retry = 1` marks a loop the manual
   makes on purpose (re-test after an adjustment).
-- **`target`**: `tree:<id>` or `procedure:<id>`; a `goto` must have one, an
-  `action` may (the task to do). **`proc_id`**: the procedure whose steps
-  answer the node's question (its steps carry their own guards).
+- **`target`**: `tree:<id>`, `tree:<id>#<node_id>` (enter that tree at
+  that node: "go to Table 3-2, step 4"; the node must be in that tree) or
+  `procedure:<id>`; a `goto` must have one, an `action` may (the task to
+  do). **`reference`** (optional column) is the node's printed
+  cross-reference, verbatim in its section. An `action` whose reference
+  resolves to nothing in the pack is legal: it keeps its text and has no
+  target, and the view returns `target: null` with `reference` so the app
+  says "see … in the manual" instead of offering a link. **`proc_id`**: the
+  procedure whose steps answer the node's question; guards on the
+  procedure (its section or above) are returned once at its head, guards
+  on a step only before that step.
+- **Provenance.** `fault_edge` and `fault_facet` rows carry no `prov_id`
+  of their own: they ship or fail with their node's provenance (a tree
+  with one node that did not pass is refused whole).
 - **Facets** (`fault_facet.facet`) are the pack's names (`reason`, `known`,
   `possible`, `test_option`, …); the core returns them grouped, in the
   order and with the headings of `pack_meta.facets`
@@ -628,19 +649,53 @@ CREATE TABLE failure_mode (mode_id TEXT PRIMARY KEY, equip_id TEXT NOT NULL, sys
   prefix, regex, then observation order; the first suggests the entry
   (its `node_id`, else the tree's entry). An observation with no kind
   matches every kind. `pack_meta.signal_kinds` (`[{"kind","label","example"}]`)
-  labels them for the app.
+  labels them for the app. A row with no `tree_id` (a status the manual explains
+  with a cause and no troubleshooting) cites a `section_id` and no node:
+  its hit carries the section's verbatim text and citation, `has_tree:
+  false`, and never suggests an entry.
+- **Closest entries.** An observation no rule matches stays in
+  `unmatched`. When its value is text (at least two words once a leading
+  tag such as `PreArm:` is dropped, words starting with a digit dropped and
+  digits inside words dropped), `closest` gives, for it, the top three of
+  the symptom index (as `symptom.search` ranks and rates them, without the
+  embedder) and the top three plain-text rules of its kind (rated by the
+  same coverage rule over the rule's pattern and title). Never a hit,
+  never a suggested entry; the app says "no exact entry; closest entries
+  in this manual".
 - **Symptom search** is lexical over the title and synonyms (Dice over
   content stems, pack synonyms applied), plus cosine over the symptom's
   `chunk` (`ref_kind = 'symptom'`) when the host's embedder matches the
-  pack's, plus 1 for a matched signal. Words in
-  `pack_meta.symptom_weak_words` (default: run, work, keep, …) never make
-  a match alone. A hit is `confident` when a signal matched, or its best
-  phrase covers at least `symptom_confident_coverage` (default 0.5) of
-  the query's other words and at least two of them (or all, when fewer),
-  or the cosine reaches `symptom_confident_dense` (default 0.85) beside a
-  lexical match; else `closest`. Each hit says why it matched.
-- **Locations and assets.** `section_loc.boxes` is optional (older packs
-  have no such column). A citation carries the source, edition, the
+  pack's, plus 1 for a matched signal. Words in the weak-word list (core
+  default: run, work, keep, …) never make a lexical match alone. A
+  dense-only hit is listed from cosine `symptom_dense_floor` (0.5).
+  - **Score.** Dense active: `w·lexical + (1−w)·cosine`,
+    `w = symptom_fusion_lexical_weight` (0.10); dense off: `lexical`
+    (`symptom_fusion: rrf` switches to reciprocal-rank fusion,
+    `symptom_rrf_k` 60, for comparison).
+  - **Confidence.** A hit's `margin` is its score minus the best other
+    hit's; a single hit satisfies any margin. `confident` when a signal
+    matched; else, dense active: `margin ≥ symptom_confident_margin`
+    (0.02) and either `coverage ≥ symptom_confident_coverage` (0.50) with
+    `strong_hits ≥ symptom_confident_strong_hits` (1), or `cosine ≥
+    symptom_confident_dense_alone` (0.85); dense off: `margin ≥
+    symptom_confident_margin_lexical` (0.15), `coverage ≥
+    symptom_confident_coverage_lexical` (0.30) and `strong_hits ≥
+    symptom_confident_strong_hits_lexical` (1). Otherwise `closest`;
+    `none` with no hit. The closest signal rules of `signal.match` are
+    rated by the dense-off rule.
+  - Every value is a `pack_meta` key with the default shown (weak words:
+    `symptom_weak_words` replaces the core list, `symptom_weak_words_add`
+    adds to it); `symptom.search {ranking: {...}}` overrides any for one
+    call. Each hit carries the rule's inputs (`lexical`, `coverage`,
+    `strong_hits`, `strong_query_words`, `cosine` whenever dense ran,
+    `margin`) and the result `thresholds`: every value applied and
+    `dense_active`, so a result can be replayed.
+  - `pack.info` and `pack.list` say per pack whether dense search runs on
+    this host and why not (`pack_has_no_vectors`, `no_embedder_loaded`,
+    `id_mismatch`, `dimension_mismatch`).
+- **Locations and assets.** `section_loc.page_label` is the printed page
+  ("3-2"); `page_index` is the 1-based physical page of the source file.
+  `section_loc.boxes` is optional (older packs have no such column). A citation carries the source, edition, the
   section path from the root, page label and index (inherited from the
   nearest ancestor when the section has none), figure label, the page
   image's asset id and the boxes. An asset is served only when the signed
@@ -677,10 +732,14 @@ upgrades in place):
   The next node is chosen by code from the recorded result; an answer
   names the node it answers and is refused unless that is the job's
   current node. Going back marks the last step superseded (kept) and
-  returns to its node. A job is recorded against its tree as it was when
-  it began (SHA-256 of tree, nodes and edges): a pack that changed it
-  refuses further answers.
-- Every job event (`job.start`, `job.answer`, `job.back`, `job.close`) and
+  returns to its node. At a `goto` into another tree, `job.follow`
+  continues the job there (at the named node, else the tree's entry): the
+  jump is a step of its own (outcome `goto`, `tree_id` of the tree it left),
+  so the path is kept across trees and going back returns to the goto
+  node. Each step records its `tree_id`. A job is recorded against each
+  tree as it was when the job entered it (SHA-256 of tree, nodes and
+  edges): a pack that changed it refuses further answers.
+- Every job event (`job.start`, `job.answer`, `job.back`, `job.goto`, `job.close`) and
   `lesson.create`, `asset.import`, `field.install` appends to the audit
   chain in the same transaction: an event entry `{ts, event, pack_id,
   pack_version, subject, node_id, asked (the node's text), result,
@@ -705,3 +764,201 @@ upgrades in place):
 - People's entries (job query and signals, step notes and photos,
   resolutions, lesson texts) are sealed at rest like run records.
 
+## API
+
+The app calls one JSON API, `harvest_core::api::call(host, method, params)`.
+The methods, their params and results are defined by Rust types and
+**generated** into [`api/api.schema.json`](api/api.schema.json) and
+[`api/types.ts`](api/types.ts); a test fails when those files are stale
+(`harvest api-schema harvest/api` rewrites them). Params are described as
+read (fields with defaults optional), results as written. Read those files
+for the shapes; this section states the rules.
+
+- Every transport returns `{"ok":true,"result":…}` or
+  `{"ok":false,"error":{"code","message"}}`. Unknown params fields are
+  refused (`bad_params`).
+- Methods that read a pack take an optional `pack_id` (the only pack when
+  one is loaded); job and run methods find theirs from the record. `pack.list` names every installed pack: id, title
+  (`pack_meta.title`, else the first source's title), version, equipment
+  roots, licenses, whether it has trees.
+- `job.start`, `job.get`, `job.answer` and `job.back` return a job view:
+  the job, the step view of its current node (verbatim text, full
+  citation, guards in manual order, setup and requirements, facets with
+  headings and level folding, open causes, test procedure, assets, how to
+  record the result with every branch, per-level detail, the path so far,
+  field notes apart), the repeat flag and lesson ids.
+- `harvest serve` carries the API over HTTP for development: `POST
+  /api/<method>` (params as body) or `POST /api` (`{method, params}`),
+  `GET /api`, `GET /api/schema`, `GET /asset/<pack_id>/<asset_id>` (the
+  file re-hashed before it goes out), static files. Bound to loopback it
+  answers only its own loopback `Host`, refuses an `Origin` it was not
+  told to allow and takes calls only as `application/json`. A Tauri host
+  calls the same `call`; no transport holds logic.
+
+## Hub
+
+`harvest_core::hub::Hub` (store: one SQLite file) receives what devices
+upload, holds lessons for review, publishes field notes and offers packs.
+`harvest hub` serves it over HTTP together with the API (`hub.*` methods,
+for a reviewer's screen).
+
+- **Devices.** Each device has its own ed25519 key, made on the device; the
+  private half lives where the host keeps the records key (the platform
+  keystore; `harvest serve` keeps it in `<records-db>.device-key`). Its id
+  is `dev-<key id>`. An administrator enrolls a device by its public key
+  (`hub.enroll`) and can revoke it (`hub.revoke`); a revoked key is never
+  enrolled again. Both are audited with who did them.
+- **Hello.** Every upload opens with `POST /hub/hello`, a small signed
+  `{device_id, signed_at, link, signature}` (over the canonical JSON of
+  `{format: "harvest-hello/1", device_id, signed_at, link}`; `link` is
+  `low` or `normal`, as the host knows its link). The hub answers
+  `{accepted, refused: "unenrolled" | "revoked" | "signature" | null,
+  fleet_every_hours, hub_time, attachments, chunk_bytes, stream}` before
+  any payload moves (a device pulls bundles by `stream`'s own seq), and audits a
+  refusal (once per device, reason and detail an hour, at most 600 an
+  hour, and never for an id that is not `dev-<hex>`). A queue item
+  carries `suggested_note` and `suggested_scope`: what an unedited
+  approval publishes. A refused device sends nothing but the hello, backing off (5
+  minutes, doubling, at most a day; restarted when the refusal reason
+  changes or an operator forces a try with `sync.flush {force: true}`). A
+  device with nothing queued sends no hello. `sync.status.hub` carries
+  `reachable` (the hub answered at all: a refusal is an answer),
+  `refused`, and `backoff_until`; `device.info` returns the device's id
+  and public key for an administrator to enroll.
+- **Attachments.** A record carries a photo or file by reference
+  (`{path: "attachment:<sha256>", sha256}`); the bytes live in the records
+  store (`attachment`, `attachment_chunk`, chunks sealed at rest like other
+  records), with the host's downscaled copy when it made one. They move
+  on their own lane, after records, lessons and bundles: the lane starts
+  only with the outbox empty, says its own hello (the policy follows the
+  link the device is on now: `attachments` is `refs` (nothing moves),
+  `downscaled` (the small copy, or the file when there is none) or `full`;
+  hub settings per link class, default `refs` on `low` and `full` on
+  `normal`), and stops between chunks whenever the host asks (records
+  queued, the window closing). Content addressed: `GET
+  /hub/attachment?sha256=&total=` → `{held}` says how much of that variant
+  the hub holds (all of it when any device sent it), and `POST
+  /hub/attachment` takes one chunk at that offset, signed over the
+  canonical JSON of `{format: "harvest-attachment/1", device_id, sha256,
+  variant, total, offset, chunk_sha256, signed_at}`, and answers
+  `{held}`. A chunk from an unenrolled or revoked device, or with a bad
+  signature, is refused (403, audited); one at the wrong offset is
+  answered with where to resume; a whole that does not hash to its name
+  is dropped and starts over; a complete one is audited
+  (`hub.attachment`). A device retries a cut request (three in a row end
+  the pass) and resumes from `held`. A file sent downscaled is sent in
+  full when a later hello allows it. A copy damaged on the device is set
+  aside (`damaged`) and the lane goes on. `sync.attachments {max_seconds}`
+  runs one pass (it holds the records store; call it in short passes);
+  `sync.status.attachments` gives `mode`, `pending`, `pending_bytes`,
+  `sent`, `sent_downscaled`, `damaged`, `last_attempt_at`, `failing`.
+- **Receive.** `POST /hub/receive` takes a delivery
+  `{device_id, signed_at, items: [Upload], signature}` signed by the
+  device over the canonical JSON of `{format: "harvest-delivery/1",
+  device_id, signed_at, items: [{item_id, kind, payload_sha256}]}`. The
+  hub refuses the whole delivery (403, audited as `hub.refuse`) from an
+  unknown or revoked device, or when the signature does not verify; the
+  device keeps everything queued. It answers
+  `{receipts, stored, duplicates, refused}` and records the device id on
+  every item. Items are stored by `item_id`:
+  the same id with the same hash gets the same receipt again (a duplicate,
+  never applied twice); a payload that does not match its hash, or an id
+  already stored with other content, gets none. `job` items
+  (`harvest-job/1`) and `lesson` items (`harvest-lesson/1`) are indexed;
+  every kind is kept as received.
+- **Lessons and conflicts.** Every upload of a lesson is a version. The
+  current version is the greatest by (`updated_at`, device id, item id);
+  arrival order never matters. When two units' versions are closer in
+  time than the hub's clock-skew bound (`Hub::with_skew_bound_minutes`,
+  default 30), their clocks cannot order them: the conflict is class
+  `needs_reviewer` (else `auto`), the lesson shows `needs_reviewer: true`,
+  and approving it needs the reviewer to name the version (`version`, an
+  item id); the conflict records who chose. A newer version from another unit, or one
+  arriving after review, reopens the lesson (`reopened: true`). The queue
+  shows every version as `current`, `superseded` (an earlier one from the
+  winning unit) or `lost` (another unit's), and `hub.conflicts` lists each
+  conflict with the rule that decided it.
+- **Review.** `approve` (as is, or with `edit: {text?, scope?}`), `reject`,
+  each with the reviewer's name and time, recorded per lesson and appended
+  to the hub's own hash-chained audit log (`hub.receive`, `hub.approve`,
+  `hub.edit_approve`, `hub.reject`, `hub.publish`). An approved lesson
+  becomes field note `fn-<lesson_id>` (scope: its variant, tree and
+  symptom unless edited; text: its verified cause and corrective action
+  unless edited).
+- **Bundles.** `publish` signs the next `harvest-field/1` bundle (seq + 1)
+  with the hub's ed25519 key: new or re-approved notes with their counts
+  (units the action was recorded on, resolved of attempts), notes to
+  revoke, review outcomes, and `fleet_sha256`, the hash of the fleet
+  summary (jobs per tree, symptom and variant; resolved of attempts per
+  corrective action; repeat discrepancies per asset; the top causes per
+  symptom). The summary itself is its own signed document
+  (`harvest-fleet/1`: `{format, stream, sha256, issued_at, summary,
+  signature}`, the hash over the canonical summary with `generated_at`
+  blank), served at `GET /hub/fleet`. `GET /hub/bundles?since=<seq>`
+  returns bundles in order. A device's `Records::pull` installs them in
+  order and stops at the first it refuses (the next pull asks for it
+  again); last, and only when the newest bundle announces a hash it does
+  not hold and its last fetch is older than the hub's `fleet_every_hours`
+  (a hub setting the device learns at every hello; default 24), it fetches
+  the summary and keeps it once its signature and hash check.
+- **Packs.** The hub's packs root holds `<pack_id>/<version>/` (full) and
+  `<pack_id>/delta-<base>-<target>/` (delta) directories, checked against
+  the publisher's keys. `GET /hub/pack-offer?pack_id=&have=` returns the
+  newest version as a delta from `have` when one exists, else full (`null`
+  when the device is current); `GET /hub/pack-file/<pack>/<dir>/<path>`
+  serves only files the offer's manifest lists. The device checks every
+  file against the offer, then installs it like any pack (signature, every
+  hash, no downgrade) and swaps the loaded pack (`sync.pull`).
+- **Device link.** `sync::HubLink` is what a device needs from a hub
+  (send, bundles since, pack offer, fetch); `HttpHubLink` is the HTTP one,
+  `LocalLink` an in-process one. `harvest serve --hub URL [--packs-root
+  ROOT]` makes `sync.flush` send through it and `sync.pull` fetch bundles
+  and packs.
+- **People.** `harvest hub` identifies reviewers, publishers and
+  administrators through one interface with two implementations:
+  `--reviewers FILE` (development: `[{name, token | token_sha256, roles}]`,
+  sent as `Authorization: Bearer <token>`), or `--trusted-proxy IP[,IP]
+  --identity-header NAME --roles FILE` (behind an authenticating reverse
+  proxy, such as a smart-card or single-sign-on gateway: the header is
+  believed only on requests from the proxy's addresses and refused from
+  anywhere else; roles come from the file by user name). Roles: `reviewer`
+  (approve, edit, reject), `publisher` (publish), `admin` (enroll, revoke).
+  Every `hub.*` method needs an identified person (`unauthenticated`
+  otherwise) holding the role (`forbidden` otherwise), and records their
+  name. In process, `api::call_as` passes the person.
+- Reads of bundles, the fleet summary and packs are not authenticated:
+  each is signed, and a device checks the signature before using it.
+
+## Fleet simulation
+
+`harvest simulate <scenario.json>` (`harvest_core::sim`) runs N real device
+record stores and one real hub in one process on a virtual clock (the
+audit clock is thread-local; ids are deterministic under it). Only the wire
+and the clock are simulated: a link per device alternates up and down
+windows drawn from distributions (`fixed`, `exp`, `uniform`, `log_normal`,
+in hours, plus `initial_down_days`), with a bandwidth cap, latency,
+per-request overhead, drops at a random point of a transfer (before the
+hub stored the upload, or after, losing only the receipts), duplicate
+deliveries, bundles corrupted in transit (`tamper_prob`), clock skew per
+device, scripted conflicts (two units editing one lesson), an optional
+pack update (delta) and a final sync window. Technicians walk real jobs
+with random results, correct answers, capture and edit lessons; a reviewer
+approves, edits or rejects on a schedule and publishes.
+
+The report: delivery (captured, delivered, pending, lost, rate); hours from
+capture to hub and from approval to each device (median, p90, max); bytes
+up, down, per job, per lesson, per day, for bundles and packs; requests,
+failures, lost replies, duplicates sent and suppressed; every conflict and
+how it resolved (and that the losing version stays visible); lesson and
+bundle counts (tampered bundles all refused); pack updates; records-store
+size per device over time; and the invariants: nothing lost (no item
+acknowledged that the hub does not hold), nothing applied twice, no
+bundle installed that is not the hub's own, every audit chain intact.
+With `photos`, lessons carry photos (Poisson count, log-normal size,
+a downscaled copy) and the attachment lane runs after each sync; the
+same fleet is run twice, the lane off and on, with record traffic and
+attachment traffic on separate random streams, and the invariant
+`attachments_never_delay_records` holds when every record and lesson
+reaches the hub at the same moment in both runs. The same seed gives the same report. `harvest/sim/` holds the named
+scenarios: `pier-daily`, `underway-two-weeks`, `disconnected-180`,
+`flapping`.

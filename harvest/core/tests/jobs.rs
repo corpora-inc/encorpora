@@ -695,6 +695,85 @@ fn job_records_are_sealed_at_rest() {
 }
 
 #[test]
+fn a_job_follows_a_goto_into_another_tree_and_back() {
+    let e = env();
+    let job = symptom_job(&e, "unit-101");
+    let id = &job.job_id;
+    for a in [
+        ans("nc.0", "done"),
+        ans("nc.1", "no"),
+        ans("nc.1a", "Temperature lamp on"),
+    ] {
+        e.rec.answer_job(&e.pack, id, &a).unwrap();
+    }
+    assert_eq!(e.rec.job(id).unwrap().unwrap().current_node, "nc.1g");
+    // Answering a goto is refused; following it continues in the other tree.
+    assert!(
+        e.rec
+            .answer_job(&e.pack, id, &ans("nc.1g", "done"))
+            .is_err()
+    );
+    let j = e.rec.follow_job(&e.pack, id).unwrap();
+    assert_eq!(
+        (j.tree_id.as_str(), j.current_node.as_str()),
+        ("t-hot", "oh.1")
+    );
+    let j = e.rec.answer_job(&e.pack, id, &ans("oh.1", "no")).unwrap();
+    assert_eq!(j.current_node, "oh.1n");
+    let v = e.rec.job_view(&e.pack, id, None).unwrap();
+    let step = v.step.unwrap();
+    assert_eq!(step.node.tree.tree_id, "t-hot");
+    let path: Vec<(String, Option<String>)> = step
+        .path
+        .iter()
+        .map(|p| (p.node_id.clone(), p.text.clone()))
+        .collect();
+    assert_eq!(path.len(), 5, "{path:?}");
+    assert_eq!(
+        path[1].1.as_deref(),
+        Some("Is the battery switch ON and is the 15 A start fuse F2 good?")
+    );
+    assert_eq!(path[3].1.as_deref(), Some("go to Table 3-2, question 1."));
+    assert_eq!(
+        path[4].1.as_deref(),
+        Some("Is the intake strainer clear of debris?")
+    );
+    // Back twice: over the answer in the new tree, then over the jump itself.
+    e.rec.back_job(&e.pack, id).unwrap();
+    let j = e.rec.back_job(&e.pack, id).unwrap();
+    assert_eq!(
+        (j.tree_id.as_str(), j.current_node.as_str()),
+        ("t-nocrank", "nc.1g")
+    );
+    let events: Vec<String> = harvest_core::audit::records_with(e.rec.conn(), None)
+        .unwrap()
+        .into_iter()
+        .filter_map(|r| match r {
+            harvest_core::audit::AuditRecord::Event { event, .. } => Some(event.event),
+            _ => None,
+        })
+        .collect();
+    assert!(events.contains(&"job.goto".to_string()));
+    // The report carries each step's own tree text.
+    e.rec.follow_job(&e.pack, id).unwrap();
+    let (closed, _) = e
+        .rec
+        .close_job(
+            &e.pack,
+            id,
+            &JobClose {
+                resolution: ResolutionKind::Redirected,
+                note: None,
+                lesson: None,
+            },
+        )
+        .unwrap();
+    assert_eq!(closed.tree_id, "t-hot");
+    let r = e.rec.job_report(&e.pack, id).unwrap();
+    assert!(r.steps.iter().all(|s| s.text.is_some()));
+}
+
+#[test]
 fn sealed_job_records_detect_edited_results() {
     let tmp = tempfile::tempdir().unwrap();
     let dir = tmp.path().join("pump40");

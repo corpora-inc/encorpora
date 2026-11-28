@@ -39,7 +39,7 @@ pub const SUPPORTED_SCHEMA: &[u32] = &[1];
 const MAX_MANIFEST_BYTES: u64 = 4 << 20;
 
 /// One file a manifest lists.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, schemars::JsonSchema)]
 pub struct FileEntry {
     pub path: String,
     pub sha256: String,
@@ -736,3 +736,50 @@ pub(crate) fn hex_decode(s: &str) -> Result<Vec<u8>> {
 
 #[cfg(test)]
 mod tests;
+
+/// Open every installed pack under `root` (`<root>/<pack_id>/current`, or
+/// plain pack directories), or `root` itself when it is a pack. Install
+/// stamps are trusted (a pack is fully verified at install).
+pub fn load_root(
+    root: &Path,
+    keys: &[TrustedKey],
+) -> Result<Vec<std::sync::Arc<crate::pack::Pack>>> {
+    let open = |dir: &Path| -> Result<std::sync::Arc<crate::pack::Pack>> {
+        Ok(std::sync::Arc::new(crate::pack::Pack::open_with(
+            dir,
+            keys,
+            crate::pack::Verify::InstallStamp,
+        )?))
+    };
+    if root.join(MANIFEST).is_file() {
+        return Ok(vec![open(root)?]);
+    }
+    let mut entries: Vec<std::path::PathBuf> = std::fs::read_dir(root)
+        .map_err(|e| Error::Invalid(format!("{}: {e}", root.display())))?
+        .filter_map(|e| e.ok().map(|e| e.path()))
+        .filter(|p| p.is_dir())
+        .collect();
+    entries.sort();
+    let mut out = Vec::new();
+    for sub in entries {
+        let name = sub
+            .file_name()
+            .and_then(|n| n.to_str())
+            .unwrap_or("")
+            .to_string();
+        if sub.join("current").is_file() {
+            if let Some(dir) = current(root, &name)? {
+                out.push(open(&dir)?);
+            }
+        } else if sub.join(MANIFEST).is_file() {
+            out.push(open(&sub)?);
+        }
+    }
+    if out.is_empty() {
+        return Err(Error::Invalid(format!(
+            "no pack under {} (a pack directory, or a root of packs)",
+            root.display()
+        )));
+    }
+    Ok(out)
+}

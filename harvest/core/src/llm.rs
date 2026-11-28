@@ -8,7 +8,7 @@
 use crate::error::{Error, Result};
 use serde::de::DeserializeOwned;
 use serde_json::Value;
-#[cfg(feature = "cli")]
+#[cfg(feature = "net")]
 use std::path::Path;
 
 /// One constrained completion.
@@ -170,14 +170,14 @@ fn strip_reasoning(raw: &str) -> Result<String> {
 
 /// An OpenAI-compatible chat-completions client (llama.cpp server, vLLM,
 /// and similar). Plain HTTP for a local or lab server.
-#[cfg(feature = "cli")]
+#[cfg(feature = "net")]
 pub struct OpenAiCompatible {
     base: String,
     model: String,
     agent: ureq::Agent,
 }
 
-#[cfg(feature = "cli")]
+#[cfg(feature = "net")]
 impl OpenAiCompatible {
     /// `base` is the `/v1` root. With no `model`, the server's first listed
     /// model is used.
@@ -207,7 +207,7 @@ impl OpenAiCompatible {
     }
 }
 
-#[cfg(feature = "cli")]
+#[cfg(feature = "net")]
 impl Llm for OpenAiCompatible {
     fn id(&self) -> String {
         self.model.clone()
@@ -281,7 +281,7 @@ impl Llm for OpenAiCompatible {
 /// Append one request/response pair as a JSON line (`HARVEST_LLM_LOG`), for
 /// reviewing what a model actually wrote. A failed write is reported, never
 /// fatal.
-#[cfg(feature = "cli")]
+#[cfg(feature = "net")]
 fn log_exchange(path: &Path, request: &Value, response: &Value) {
     use std::io::Write;
     let line = serde_json::json!({"request": request, "response": response}).to_string();

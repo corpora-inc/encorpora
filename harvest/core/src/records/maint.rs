@@ -131,6 +131,24 @@ CREATE TABLE IF NOT EXISTS field_note (
 );
 ";
 
+/// Columns added after the first stores were made.
+pub(crate) fn migrate(conn: &Connection) -> Result<()> {
+    for (table, column, ty) in [
+        ("job", "tree_shas", "TEXT"),
+        ("job_step", "tree_id", "TEXT"),
+    ] {
+        let n: i64 = conn.query_row(
+            "SELECT count(*) FROM pragma_table_info(?1) WHERE name = ?2",
+            [table, column],
+            |r| r.get(0),
+        )?;
+        if n == 0 {
+            conn.execute_batch(&format!("ALTER TABLE {table} ADD COLUMN {column} {ty}"))?;
+        }
+    }
+    Ok(())
+}
+
 /// What a sealed job-step column is bound to: its row and every clear
 /// column beside it (outcome, value, unit, branch, next node, time), so a
 /// result edited in place, or a sealed value moved to another row, fails
@@ -164,6 +182,109 @@ pub const ASSET_REGISTRY_FORMAT: &str = "harvest-assets/1";
 pub const JOB_REPORT_FORMAT: &str = "harvest-job/1";
 /// The lesson upload format.
 pub const LESSON_FORMAT: &str = "harvest-lesson/1";
+/// The device's standing with its hub: the last refusal and the back-off.
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
+pub struct HubGate {
+    pub refused: Option<crate::sync::Refusal>,
+    /// The current back-off, in seconds.
+    pub backoff_s: u64,
+    pub next_try_at: Option<String>,
+    pub fleet_every_hours: Option<f64>,
+    /// The attachment policy and chunk size learned at the last hello.
+    #[serde(default)]
+    pub attachments: Option<crate::sync::AttachmentMode>,
+    #[serde(default)]
+    pub chunk_bytes: Option<u64>,
+    /// The hub's bundle stream (learned at a hello or from a bundle).
+    #[serde(default)]
+    pub stream: Option<String>,
+    /// The attachment lane's last pass: when, and its error if it failed.
+    #[serde(default)]
+    pub attachments_at: Option<String>,
+    #[serde(default)]
+    pub attachments_error: Option<String>,
+}
+
+/// First back-off after a refusal, and its cap.
+pub const BACKOFF_FIRST_S: u64 = 300;
+pub const BACKOFF_CAP_S: u64 = 86_400;
+
+impl HubGate {
+    /// Learn what a hello says (the policy, a refusal) without the upload
+    /// back-off bookkeeping.
+    pub(crate) fn learn(&mut self, reply: &crate::sync::HelloReply) {
+        self.fleet_every_hours = Some(reply.fleet_every_hours);
+        self.attachments = Some(reply.attachments);
+        self.chunk_bytes = Some(reply.chunk_bytes);
+        if reply.stream.is_some() {
+            self.stream = reply.stream.clone();
+        }
+        if reply.accepted {
+            self.refused = None;
+        }
+    }
+
+    pub(crate) fn load(conn: &Connection) -> Result<Self> {
+        let raw: Option<String> = conn
+            .query_row(
+                "SELECT value FROM records_meta WHERE key = 'hub_gate'",
+                [],
+                |r| r.get(0),
+            )
+            .optional()?;
+        Ok(raw
+            .and_then(|r| serde_json::from_str(&r).ok())
+            .unwrap_or_default())
+    }
+    pub(crate) fn save(&self, conn: &Connection) -> Result<()> {
+        conn.execute(
+            "INSERT INTO records_meta (key, value) VALUES ('hub_gate', ?1)
+             ON CONFLICT (key) DO UPDATE SET value = excluded.value",
+            [serde_json::to_string(self)?],
+        )?;
+        Ok(())
+    }
+}
+
+/// What one upload attempt through a hub did.
+#[derive(Debug, Clone, Serialize, Deserialize, JsonSchema, PartialEq)]
+pub struct HubFlush {
+    /// The hub's answer to the hello; `None` when the attempt was skipped
+    /// (backing off) or the link failed before an answer.
+    pub hello: Option<crate::sync::HelloReply>,
+    /// What was sent; `None` unless the hub accepted the device.
+    pub flush: Option<crate::sync::FlushReport>,
+    /// Skipped: backing off after a refusal until this time.
+    pub skipped_until: Option<String>,
+    pub error: Option<String>,
+}
+
+/// Default least interval between fleet-summary fetches.
+pub const DEFAULT_FLEET_EVERY_HOURS: f64 = 24.0;
+
+/// Milliseconds since 1970 of an RFC 3339 time as this crate writes it.
+pub(crate) fn parse_rfc3339_ms(t: &str) -> Option<i64> {
+    let day = day_number(t)?;
+    let h: i64 = t.get(11..13)?.parse().ok()?;
+    let mi: i64 = t.get(14..16)?.parse().ok()?;
+    let se: i64 = t.get(17..19)?.parse().ok()?;
+    let ms: i64 = t.get(20..23).and_then(|m| m.parse().ok()).unwrap_or(0);
+    Some(day * 86_400_000 + h * 3_600_000 + mi * 60_000 + se * 1000 + ms)
+}
+
+/// The signed fleet summary document format.
+pub const FLEET_FORMAT: &str = "harvest-fleet/1";
+
+/// The SHA-256 a bundle announces for a fleet summary: canonical JSON of
+/// the summary with `generated_at` blank (the numbers, not the time).
+pub fn fleet_sha256(f: &FleetSummary) -> Result<String> {
+    let mut f = f.clone();
+    f.generated_at = String::new();
+    let bytes = crate::canon::to_vec(&serde_json::to_value(&f)?)?;
+    use sha2::Digest;
+    Ok(crate::packs::hex_encode(&sha2::Sha256::digest(&bytes)))
+}
+
 /// The field-note bundle format.
 pub const FIELD_FORMAT: &str = "harvest-field/1";
 
@@ -342,6 +463,8 @@ pub struct JobStep {
     pub at: String,
     /// When the technician went back over it (the step is kept, audited).
     pub superseded_at: Option<String>,
+    /// The tree the node belongs to (a job can follow a goto into another).
+    pub tree_id: String,
 }
 
 /// How a job ended.
@@ -603,6 +726,10 @@ pub struct PartUsed {
 #[derive(Debug, Clone, Default, Serialize, Deserialize, JsonSchema, PartialEq)]
 #[serde(deny_unknown_fields)]
 pub struct LessonInput {
+    /// The lesson's id when it continues one begun on another unit (its
+    /// edits then meet at the hub); new when absent.
+    #[serde(default)]
+    pub lesson_id: Option<String>,
     /// Fills asset, equipment, tree, symptom and node when they are absent.
     #[serde(default)]
     pub job_id: Option<String>,
@@ -778,7 +905,93 @@ pub struct FieldBundle {
     pub revoke: Vec<String>,
     #[serde(default)]
     pub reviews: Vec<LessonReview>,
+    /// The SHA-256 of the hub's fleet summary as of this bundle; the device
+    /// fetches the signed summary (`harvest-fleet/1`) when it holds another.
+    #[serde(default)]
+    pub fleet_sha256: Option<String>,
     pub signature: Value,
+}
+
+/// What the fleet shows, aggregated by the hub across every unit.
+#[derive(Debug, Clone, Default, Serialize, Deserialize, JsonSchema, PartialEq)]
+#[serde(deny_unknown_fields)]
+pub struct FleetSummary {
+    pub generated_at: String,
+    /// Units that reported.
+    pub units: u64,
+    /// Jobs per symptom (or tree, when entered without one) and variant.
+    pub jobs: Vec<FleetJobs>,
+    /// Corrective actions: how often each resolved the fault it was tried on.
+    pub actions: Vec<FleetAction>,
+    /// The same asset with the same symptom or system again within the window.
+    pub repeats: Vec<FleetRepeat>,
+    /// The most frequent verified causes per symptom.
+    pub top_causes: Vec<FleetCauses>,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize, JsonSchema, PartialEq)]
+#[serde(deny_unknown_fields)]
+pub struct FleetJobs {
+    pub tree_id: String,
+    pub symptom_id: Option<String>,
+    pub equip_id: Option<String>,
+    pub jobs: u64,
+    pub fixed: u64,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize, JsonSchema, PartialEq)]
+#[serde(deny_unknown_fields)]
+pub struct FleetAction {
+    pub tree_id: Option<String>,
+    pub action: String,
+    pub attempts: u64,
+    pub resolved: u64,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize, JsonSchema, PartialEq)]
+#[serde(deny_unknown_fields)]
+pub struct FleetRepeat {
+    pub asset_id: String,
+    pub symptom_id: Option<String>,
+    pub system: Option<String>,
+    pub jobs: u64,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize, JsonSchema, PartialEq)]
+#[serde(deny_unknown_fields)]
+pub struct FleetCauses {
+    pub symptom_id: String,
+    pub causes: Vec<FleetCause>,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize, JsonSchema, PartialEq)]
+#[serde(deny_unknown_fields)]
+pub struct FleetCause {
+    pub cause: String,
+    pub count: u64,
+}
+
+/// What one pull from the hub did.
+#[derive(Debug, Clone, Default, Serialize, Deserialize, JsonSchema, PartialEq)]
+pub struct PullReport {
+    /// Bundles installed, in order.
+    pub installed: Vec<u64>,
+    /// The bundle that was refused (and why); the pull stops there and the
+    /// next one asks for it again.
+    pub refused: Option<RefusedBundle>,
+    pub notes: u64,
+    pub fleet_updated: bool,
+    /// Bytes of bundles received.
+    pub bytes: u64,
+    /// Bytes of the fleet summary received (fetched only when it changed).
+    pub fleet_bytes: u64,
+    pub error: Option<String>,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize, JsonSchema, PartialEq)]
+pub struct RefusedBundle {
+    pub seq: Option<u64>,
+    pub error: String,
 }
 
 /// A field note as stored and shown: field knowledge, never manual text.
@@ -1112,12 +1325,14 @@ impl Records {
         if !req.signals.is_empty() {
             let m = search::signal_match(pack, &req.signals, equip.as_deref())?;
             let hit = match &tree_id {
-                Some(t) => m.hits.iter().find(|h| &h.rule.tree_id == t).map(|h| {
-                    crate::maint::search::EntryPoint {
-                        tree_id: h.rule.tree_id.clone(),
+                Some(t) => m
+                    .hits
+                    .iter()
+                    .find(|h| h.rule.tree_id.as_ref() == Some(t))
+                    .map(|h| crate::maint::search::EntryPoint {
+                        tree_id: h.rule.tree_id.clone().unwrap_or_default(),
                         node_id: h.rule.node_id.clone().unwrap_or_default(),
-                    }
-                }),
+                    }),
                 None => m.suggested.clone(),
             };
             match hit {
@@ -1212,11 +1427,16 @@ impl Records {
                 pack.pack_id()
             )));
         }
-        let began: String = self.conn.query_row(
-            "SELECT tree_sha256 FROM job WHERE job_id = ?1",
+        let (first, shas): (String, Option<String>) = self.conn.query_row(
+            "SELECT tree_sha256, tree_shas FROM job WHERE job_id = ?1",
             [&job.job_id],
-            |r| r.get(0),
+            |r| Ok((r.get(0)?, r.get(1)?)),
         )?;
+        let shas: BTreeMap<String, String> = shas
+            .map(|s| serde_json::from_str(&s))
+            .transpose()?
+            .unwrap_or_default();
+        let began = shas.get(&job.tree_id).cloned().unwrap_or(first);
         let tree = pack.fault_tree(&job.tree_id)?;
         match tree {
             Some(t) if t.sha256()? == began => Ok(t),
@@ -1284,8 +1504,8 @@ impl Records {
         };
         tx.execute(
             "INSERT INTO job_step (job_id, seq, node_id, outcome, value, unit, label, note, photos,
-                                   next_node, at)
-             VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11)",
+                                   next_node, at, tree_id)
+             VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12)",
             params![
                 job_id,
                 seq,
@@ -1297,7 +1517,8 @@ impl Records {
                 self.seal(&aad("note"), opt(ans.note.clone()).as_deref())?,
                 self.seal(&aad("photos"), Some(&serde_json::to_string(&ans.photos)?))?,
                 edge.to_node,
-                at
+                at,
+                job.tree_id
             ],
         )?;
         tx.execute(
@@ -1314,6 +1535,112 @@ impl Records {
         }));
         ev.next_node = Some(edge.to_node.clone());
         ev.detail = serde_json::json!({"seq": seq, "retry": edge.retry});
+        self.audit_event(&tx, &ev)?;
+        tx.commit()?;
+        self.job(job_id)?
+            .ok_or_else(|| Error::Invalid(format!("job {job_id} vanished")))
+    }
+
+    /// At a `goto` into another tree: continue there (its entry, or the
+    /// node the manual names), keeping the path. The jump is a step of its
+    /// own (outcome `goto`), so going back returns to the goto node. The new
+    /// tree is held to its state at the jump, like the first.
+    pub fn follow_job(&self, pack: &Pack, job_id: &str) -> Result<Job> {
+        let tx = self.write_tx()?;
+        let job = self.open_job(job_id)?;
+        let tree = self.tree_for(&job, pack)?;
+        let node = tree
+            .node(&job.current_node)
+            .ok_or_else(|| Error::Pack(format!("node {} vanished", job.current_node)))?;
+        let Some(crate::maint::Target::Tree {
+            id: to_tree,
+            node_id,
+        }) = &node.target
+        else {
+            return Err(Error::Invalid(format!(
+                "node {} does not lead into another tree",
+                node.node_id
+            )));
+        };
+        if !pack
+            .fault_trees(job.equip_id.as_deref())?
+            .iter()
+            .any(|t| &t.tree_id == to_tree)
+        {
+            return Err(Error::Invalid(format!(
+                "tree {to_tree} does not apply to {}",
+                job.equip_id.as_deref().unwrap_or("this equipment")
+            )));
+        }
+        let next = pack
+            .fault_tree(to_tree)?
+            .ok_or_else(|| Error::Invalid(format!("no tree {to_tree:?}")))?;
+        let entry = node_id
+            .clone()
+            .unwrap_or_else(|| next.tree.entry_node.clone());
+        if next.node(&entry).is_none() {
+            return Err(Error::Pack(format!(
+                "node {entry} is not in tree {to_tree}"
+            )));
+        }
+        let seq: i64 = tx.query_row(
+            "SELECT COALESCE(MAX(seq), 0) + 1 FROM job_step WHERE job_id = ?1",
+            [job_id],
+            |r| r.get(0),
+        )?;
+        let at = now_rfc3339();
+        let label = format!("Go to {}", next.tree.title);
+        let aad = |col: &str| {
+            job_step_aad(
+                col,
+                job_id,
+                seq,
+                &node.node_id,
+                &at,
+                Some("goto"),
+                None,
+                None,
+                &label,
+                &entry,
+            )
+        };
+        tx.execute(
+            "INSERT INTO job_step (job_id, seq, node_id, outcome, value, unit, label, note, photos,
+                                   next_node, at, tree_id)
+             VALUES (?1, ?2, ?3, 'goto', NULL, NULL, ?4, NULL, ?5, ?6, ?7, ?8)",
+            params![
+                job_id,
+                seq,
+                node.node_id,
+                label,
+                self.seal(&aad("photos"), Some("[]"))?,
+                entry,
+                at,
+                job.tree_id
+            ],
+        )?;
+        let shas: Option<String> = tx.query_row(
+            "SELECT tree_shas FROM job WHERE job_id = ?1",
+            [job_id],
+            |r| r.get(0),
+        )?;
+        let mut shas: BTreeMap<String, String> = shas
+            .map(|s| serde_json::from_str(&s))
+            .transpose()?
+            .unwrap_or_default();
+        shas.entry(job.tree_id.clone()).or_insert(tree.sha256()?);
+        shas.entry(to_tree.clone()).or_insert(next.sha256()?);
+        tx.execute(
+            "UPDATE job SET tree_id = ?2, current_node = ?3, tree_shas = ?4 WHERE job_id = ?1",
+            params![job_id, to_tree, entry, serde_json::to_string(&shas)?],
+        )?;
+        let mut ev = AuditEvent::new("job.goto", job_id);
+        ev.pack_id = Some(job.pack_id.clone());
+        ev.pack_version = Some(pack.version().into());
+        ev.node_id = Some(node.node_id.clone());
+        ev.asked = Some(node.text.clone());
+        ev.next_node = Some(entry.clone());
+        ev.detail = serde_json::json!({"from_tree": job.tree_id, "to_tree": to_tree, "seq": seq});
         self.audit_event(&tx, &ev)?;
         tx.commit()?;
         self.job(job_id)?
@@ -1337,9 +1664,15 @@ impl Records {
             params![job_id, last.seq, at],
         )?;
         tx.execute(
-            "UPDATE job SET current_node = ?2 WHERE job_id = ?1",
-            params![job_id, last.node_id],
+            "UPDATE job SET current_node = ?2, tree_id = ?3 WHERE job_id = ?1",
+            params![job_id, last.node_id, last.tree_id],
         )?;
+        let tree = if last.tree_id == tree.tree.tree_id {
+            tree
+        } else {
+            pack.fault_tree(&last.tree_id)?
+                .ok_or_else(|| Error::Invalid(format!("tree {} vanished", last.tree_id)))?
+        };
         let mut ev = AuditEvent::new("job.back", job_id);
         ev.pack_id = Some(job.pack_id.clone());
         ev.pack_version = Some(pack.version().into());
@@ -1513,11 +1846,13 @@ impl Records {
             String,
             String,
             Option<String>,
+            Option<String>,
         );
         let rows: Vec<S> = self
             .conn
             .prepare_cached(
-                "SELECT seq, node_id, outcome, value, unit, label, note, photos, next_node, at, superseded_at
+                "SELECT seq, node_id, outcome, value, unit, label, note, photos, next_node, at, superseded_at,
+                        tree_id
                  FROM job_step WHERE job_id = ?1 ORDER BY seq",
             )?
             .query_map([&job_id], |r| {
@@ -1533,6 +1868,7 @@ impl Records {
                     r.get(8)?,
                     r.get(9)?,
                     r.get(10)?,
+                    r.get(11)?,
                 ))
             })?
             .collect::<rusqlite::Result<_>>()?;
@@ -1549,6 +1885,7 @@ impl Records {
             next_node,
             at,
             superseded_at,
+            step_tree,
         ) in rows
         {
             let aad = |col: &str| {
@@ -1581,6 +1918,8 @@ impl Records {
                 next_node,
                 at,
                 superseded_at,
+                // Steps recorded before trees could change are the job's tree's.
+                tree_id: step_tree.unwrap_or_else(|| tree_id.clone()),
             });
         }
         Ok(Some(Job {
@@ -1669,13 +2008,14 @@ impl Records {
             job.equip_id.as_deref(),
             &path_ids,
         )?;
+        let texts = step_texts(pack, &tree, &job.steps);
         let path = job
             .path()
             .iter()
             .map(|s| PathEntry {
                 seq: s.seq,
                 node_id: s.node_id.clone(),
-                text: tree.node(&s.node_id).map(|n| n.text.clone()),
+                text: texts.get(&s.seq).cloned(),
                 outcome: s.outcome.clone(),
                 value: s.value,
                 unit: s.unit.clone(),
@@ -1754,17 +2094,19 @@ impl Records {
             closed_at: job.closed_at.clone(),
             resolution: job.resolution.clone(),
             tree_known: tree.is_some(),
-            steps: job
-                .steps
-                .iter()
-                .map(|s| ReportJobStep {
-                    text: tree
-                        .as_ref()
-                        .and_then(|t| t.node(&s.node_id))
-                        .map(|n| n.text.clone()),
-                    step: s.clone(),
-                })
-                .collect(),
+            steps: {
+                let texts = match (pack, &tree) {
+                    (Some(p), Some(t)) => step_texts(p, t, &job.steps),
+                    _ => BTreeMap::new(),
+                };
+                job.steps
+                    .iter()
+                    .map(|s| ReportJobStep {
+                        text: texts.get(&s.seq).cloned(),
+                        step: s.clone(),
+                    })
+                    .collect()
+            },
             lesson_ids,
         })
     }
@@ -1923,7 +2265,21 @@ impl Records {
         let equip = opt(input.equip_id).or_else(|| job.as_ref().and_then(|j| j.equip_id.clone()));
         Self::check_equip(pack, equip.as_deref())?;
         let now = now_rfc3339();
-        let lesson_id = new_id("lesson", &[&cause, &action]);
+        let lesson_id = match opt(input.lesson_id.clone()) {
+            Some(id) if valid_id(&id) && id.starts_with("lesson-") => id,
+            Some(id) => return Err(Error::Invalid(format!("lesson id {id:?}"))),
+            None => new_id("lesson", &[&cause, &action]),
+        };
+        let exists: bool = tx.query_row(
+            "SELECT EXISTS (SELECT 1 FROM lesson WHERE lesson_id = ?1)",
+            [&lesson_id],
+            |r| r.get(0),
+        )?;
+        if exists {
+            return Err(Error::Invalid(format!(
+                "lesson {lesson_id} exists; update it"
+            )));
+        }
         let l = Lesson {
             lesson_id: lesson_id.clone(),
             pack_id: pack
@@ -2244,6 +2600,13 @@ impl Records {
                 params![r.lesson_id, status, r.note, now],
             )? as u64;
         }
+        if let Some(f) = &b.fleet_sha256 {
+            tx.execute(
+                "INSERT INTO records_meta (key, value) VALUES ('fleet_announced', ?1)
+                 ON CONFLICT (key) DO UPDATE SET value = excluded.value",
+                [f],
+            )?;
+        }
         tx.execute(
             "INSERT INTO field_stream (stream, seq, key_id, installed_at) VALUES (?1, ?2, ?3, ?4)
              ON CONFLICT (stream) DO UPDATE SET seq = excluded.seq, key_id = excluded.key_id,
@@ -2360,6 +2723,368 @@ impl Records {
             })
             .collect()
     }
+}
+
+impl Records {
+    /// The newest fleet summary this device verified.
+    pub fn fleet_summary(&self) -> Result<Option<FleetSummary>> {
+        let raw: Option<String> = self
+            .conn
+            .query_row(
+                "SELECT value FROM records_meta WHERE key = 'fleet_summary'",
+                [],
+                |r| r.get(0),
+            )
+            .optional()?;
+        raw.map(|r| serde_json::from_str(&r).map_err(Error::from))
+            .transpose()
+    }
+
+    /// Upload through a hub: a signed hello first, and the outbox only when
+    /// the hub accepts this device. After a refusal the device sends
+    /// nothing but the hello, backing off (5 minutes, doubling, at most a
+    /// day); `force` (an operator retrying after enrollment) tries now and
+    /// restarts the back-off.
+    pub fn flush_to_hub(
+        &self,
+        link: &dyn crate::sync::HubLink,
+        batch_size: usize,
+        force: bool,
+    ) -> Result<HubFlush> {
+        let mut gate = HubGate::load(&self.conn)?;
+        let now = now_rfc3339();
+        let now_ms = crate::sim_clock_ms();
+        if !force
+            && let Some(t) = gate.next_try_at.as_deref().and_then(parse_rfc3339_ms)
+            && t > now_ms
+        {
+            return Ok(HubFlush {
+                hello: None,
+                flush: None,
+                skipped_until: gate.next_try_at.clone(),
+                error: None,
+            });
+        }
+        // Nothing queued: nothing to ask the hub for (the attachment lane
+        // says its own hello).
+        if !force && self.outbox_status()?.pending == 0 {
+            return Ok(HubFlush {
+                hello: None,
+                flush: Some(crate::sync::FlushReport::default()),
+                skipped_until: None,
+                error: None,
+            });
+        }
+        let note = |ok: bool, reachable: bool, error: Option<String>| -> Result<()> {
+            self.conn.execute(
+                "INSERT INTO records_meta (key, value) VALUES ('sync_last_attempt', ?1)
+                 ON CONFLICT (key) DO UPDATE SET value = excluded.value",
+                [serde_json::json!({"at": now, "ok": ok, "reachable": reachable, "error": error}).to_string()],
+            )?;
+            Ok(())
+        };
+        let reply = match link.hello() {
+            Ok(r) => r,
+            Err(e) => {
+                note(false, false, Some(e.to_string()))?;
+                return Ok(HubFlush {
+                    hello: None,
+                    flush: None,
+                    skipped_until: None,
+                    error: Some(e.to_string()),
+                });
+            }
+        };
+        gate.fleet_every_hours = Some(reply.fleet_every_hours);
+        gate.attachments = Some(reply.attachments);
+        gate.chunk_bytes = Some(reply.chunk_bytes);
+        if reply.stream.is_some() {
+            gate.stream = reply.stream.clone();
+        }
+        if !reply.accepted {
+            gate.backoff_s = if force || gate.refused != reply.refused {
+                BACKOFF_FIRST_S
+            } else {
+                (gate.backoff_s * 2).clamp(BACKOFF_FIRST_S, BACKOFF_CAP_S)
+            };
+            gate.refused = reply.refused;
+            let until = now_ms + gate.backoff_s as i64 * 1000;
+            gate.next_try_at = Some(crate::audit::rfc3339(
+                until.div_euclid(1000),
+                until.rem_euclid(1000) as u32,
+            ));
+            gate.save(&self.conn)?;
+            let why = reply.refused.map(|r| r.as_str()).unwrap_or("refused");
+            note(
+                false,
+                true,
+                Some(format!("the hub refused this device: {why}")),
+            )?;
+            return Ok(HubFlush {
+                hello: Some(reply),
+                flush: None,
+                skipped_until: gate.next_try_at,
+                error: None,
+            });
+        }
+        gate.refused = None;
+        gate.backoff_s = 0;
+        gate.next_try_at = None;
+        gate.save(&self.conn)?;
+        let flush = self.flush(&crate::sync::LinkTransport(link), batch_size)?;
+        Ok(HubFlush {
+            hello: Some(reply),
+            flush: Some(flush),
+            skipped_until: None,
+            error: None,
+        })
+    }
+
+    /// Verify and keep a signed fleet summary (`harvest-fleet/1`): a
+    /// trusted signature, and the summary hashing to the stated SHA-256.
+    pub fn install_fleet(&self, doc: &Value, keys: &[TrustedKey]) -> Result<()> {
+        crate::packs::verify_signature(doc, keys)?;
+        if doc.get("format").and_then(Value::as_str) != Some(FLEET_FORMAT) {
+            return Err(Error::Invalid("not a harvest-fleet/1 document".into()));
+        }
+        let summary: FleetSummary =
+            serde_json::from_value(doc.get("summary").cloned().unwrap_or(Value::Null))
+                .map_err(|e| Error::Invalid(format!("fleet summary: {e}")))?;
+        let sha = fleet_sha256(&summary)?;
+        if doc.get("sha256").and_then(Value::as_str) != Some(sha.as_str()) {
+            return Err(Error::Integrity(
+                "the fleet summary does not match its hash".into(),
+            ));
+        }
+        let tx = self.write_tx()?;
+        for (k, v) in [
+            ("fleet_summary", serde_json::to_string(&summary)?),
+            ("fleet_sha256", sha),
+            ("fleet_fetched_at", now_rfc3339()),
+        ] {
+            tx.execute(
+                "INSERT INTO records_meta (key, value) VALUES (?1, ?2)
+                 ON CONFLICT (key) DO UPDATE SET value = excluded.value",
+                params![k, v],
+            )?;
+        }
+        tx.commit()?;
+        Ok(())
+    }
+
+    /// The highest bundle seq installed (across streams).
+    /// The newest bundle seq installed from `stream`.
+    pub fn stream_seq(&self, stream: &str) -> Result<u64> {
+        let n: Option<i64> = self
+            .conn
+            .query_row(
+                "SELECT seq FROM field_stream WHERE stream = ?1",
+                [stream],
+                |r| r.get(0),
+            )
+            .optional()?;
+        Ok(n.unwrap_or(0).max(0) as u64)
+    }
+
+    pub fn installed_bundle_seq(&self) -> Result<u64> {
+        let n: Option<i64> = self
+            .conn
+            .query_row("SELECT MAX(seq) FROM field_stream", [], |r| r.get(0))?;
+        Ok(n.unwrap_or(0).max(0) as u64)
+    }
+
+    /// Fetch the bundles the hub published since the newest installed one
+    /// and install them in order. The first refused bundle stops the pull
+    /// (the next pull asks for it again); a link error is reported, never
+    /// a partial install.
+    ///
+    /// A changed fleet summary is fetched at most every
+    /// `fleet_every_hours`, the hub's setting learned at the last hello
+    /// (24 until then): it is the least urgent thing on the link.
+    pub fn pull(&self, link: &dyn crate::sync::HubLink, keys: &[TrustedKey]) -> Result<PullReport> {
+        let mut gate = HubGate::load(&self.conn)?;
+        let fleet_every_hours = gate.fleet_every_hours.unwrap_or(DEFAULT_FLEET_EVERY_HOURS);
+        let mut report = PullReport::default();
+        // The hub's own stream's seq: a bundle from another stream (a USB
+        // install) says nothing about where this hub is.
+        let since = match &gate.stream {
+            Some(s) => self.stream_seq(s)?,
+            None => 0,
+        };
+        let bundles = match link.bundles_since(since) {
+            Ok(b) => b,
+            Err(e) => {
+                report.error = Some(e.to_string());
+                return Ok(report);
+            }
+        };
+        for b in bundles {
+            report.bytes += serde_json::to_vec(&b)?.len() as u64;
+            let seq = b.get("seq").and_then(Value::as_u64);
+            let stream = b.get("stream").and_then(Value::as_str).map(str::to_string);
+            let have = match &stream {
+                Some(s) => self.stream_seq(s)?,
+                None => 0,
+            };
+            if seq.is_some_and(|s| s <= have) {
+                continue; // a duplicate delivery: already installed
+            }
+            match self.install_field_bundle(&b, keys) {
+                Ok(r) => {
+                    if stream.is_some() && gate.stream != stream {
+                        gate.stream = stream.clone();
+                        gate.save(&self.conn)?;
+                    }
+                    report.installed.push(r.seq);
+                    report.notes += r.installed;
+                }
+                Err(e) => {
+                    report.refused = Some(RefusedBundle {
+                        seq,
+                        error: e.to_string(),
+                    });
+                    break;
+                }
+            }
+        }
+        // Last and least: the fleet summary, only when the hub announced
+        // one this device does not hold.
+        let meta = |k: &str| -> Result<Option<String>> {
+            Ok(self
+                .conn
+                .query_row("SELECT value FROM records_meta WHERE key = ?1", [k], |r| {
+                    r.get(0)
+                })
+                .optional()?)
+        };
+        let announced = meta("fleet_announced")?;
+        let due = match meta("fleet_fetched_at")? {
+            None => true,
+            Some(at) => {
+                let now = crate::sim_clock_ms();
+                parse_rfc3339_ms(&at)
+                    .is_none_or(|t| (now - t) as f64 >= fleet_every_hours * 3_600_000.0)
+            }
+        };
+        if report.refused.is_none()
+            && due
+            && announced.is_some()
+            && announced != meta("fleet_sha256")?
+        {
+            match link.fleet() {
+                Ok(Some(doc)) => {
+                    report.fleet_bytes = serde_json::to_vec(&doc)?.len() as u64;
+                    match self.install_fleet(&doc, keys) {
+                        Ok(()) => report.fleet_updated = true,
+                        Err(e) => report.error = Some(format!("fleet summary: {e}")),
+                    }
+                }
+                Ok(None) => {}
+                Err(e) => report.error = Some(e.to_string()),
+            }
+        }
+        Ok(report)
+    }
+
+    /// Change a lesson that is still on the device or already sent: its
+    /// content is replaced, a pending upload is withdrawn and the new
+    /// version queued (the hub keeps every version).
+    pub fn update_lesson(
+        &self,
+        pack: Option<&Pack>,
+        lesson_id: &str,
+        input: LessonInput,
+    ) -> Result<Lesson> {
+        let current = self
+            .lessons(&LessonFilter::default())?
+            .into_iter()
+            .find(|l| l.lesson_id == lesson_id)
+            .ok_or_else(|| Error::Invalid(format!("no lesson {lesson_id:?}")))?;
+        let cause = input.cause.trim().to_string();
+        let action = input.action.trim().to_string();
+        if cause.is_empty() || action.is_empty() {
+            return Err(Error::Invalid(
+                "a lesson needs the verified cause and the corrective action".into(),
+            ));
+        }
+        for p in &input.photos {
+            super::check_photo(p)?;
+        }
+        let tx = self.write_tx()?;
+        let now = now_rfc3339();
+        let l = Lesson {
+            cause,
+            action,
+            parts: input.parts,
+            minutes: input.minutes.or(current.minutes),
+            note: opt(input.note).or(current.note),
+            photos: if input.photos.is_empty() {
+                current.photos
+            } else {
+                input.photos
+            },
+            node_id: opt(input.node_id).or(current.node_id),
+            status: if input.submit {
+                LessonStatus::Queued
+            } else {
+                LessonStatus::Local
+            },
+            review_note: None,
+            updated_at: now.clone(),
+            pack_version: pack
+                .map(|p| p.version().to_string())
+                .or(current.pack_version),
+            ..current
+        };
+        let aad = |col: &str| format!("lesson.{col}:{lesson_id}");
+        tx.execute(
+            "UPDATE lesson SET cause = ?2, action = ?3, parts = ?4, minutes = ?5, note = ?6, photos = ?7,
+                    node_id = ?8, status = ?9, review_note = NULL, updated_at = ?10, pack_version = ?11
+             WHERE lesson_id = ?1",
+            params![
+                lesson_id,
+                self.seal(&aad("cause"), Some(&l.cause))?,
+                self.seal(&aad("action"), Some(&l.action))?,
+                self.seal(&aad("parts"), Some(&serde_json::to_string(&l.parts)?))?,
+                l.minutes,
+                self.seal(&aad("note"), l.note.as_deref())?,
+                self.seal(&aad("photos"), Some(&serde_json::to_string(&l.photos)?))?,
+                l.node_id,
+                if input.submit { "queued" } else { "local" },
+                now,
+                l.pack_version
+            ],
+        )?;
+        sync::supersede(&tx, "lesson", lesson_id)?;
+        if input.submit {
+            let mut payload = serde_json::to_value(&l)?;
+            payload["format"] = Value::String(LESSON_FORMAT.into());
+            sync::enqueue_ref(&tx, self.key(), "lesson", Some(lesson_id), &payload)?;
+        }
+        let mut ev = AuditEvent::new("lesson.update", lesson_id);
+        ev.pack_id = l.pack_id.clone();
+        ev.pack_version = l.pack_version.clone();
+        ev.detail = serde_json::json!({"submit": input.submit});
+        self.audit_event(&tx, &ev)?;
+        tx.commit()?;
+        Ok(l)
+    }
+}
+
+/// Each step's node text, from the tree it was recorded in.
+fn step_texts(pack: &Pack, current: &Tree, steps: &[JobStep]) -> BTreeMap<i64, String> {
+    let mut trees: BTreeMap<String, Option<Tree>> = BTreeMap::new();
+    trees.insert(current.tree.tree_id.clone(), Some(current.clone()));
+    let mut out = BTreeMap::new();
+    for s in steps {
+        let t = trees
+            .entry(s.tree_id.clone())
+            .or_insert_with(|| pack.fault_tree(&s.tree_id).ok().flatten());
+        if let Some(n) = t.as_ref().and_then(|t| t.node(&s.node_id)) {
+            out.insert(s.seq, n.text.clone());
+        }
+    }
+    out
 }
 
 fn job_or_none(job: &Job) -> Option<Job> {

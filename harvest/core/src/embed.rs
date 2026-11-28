@@ -99,7 +99,7 @@ pub fn quantize_i8(v: &[f32]) -> (Vec<i8>, f32) {
 /// GGUF's SHA-256>[/mrl<dim>]`, with the name and MRL taken from the pack and
 /// the hash from the GGUF the server loaded. A different file therefore gets
 /// a different id and the dense half is refused.
-#[cfg(feature = "cli")]
+#[cfg(feature = "net")]
 pub struct ServerEmbedder {
     url: String,
     id: String,
@@ -110,7 +110,40 @@ pub struct ServerEmbedder {
     agent: ureq::Agent,
 }
 
-#[cfg(feature = "cli")]
+/// The SHA-256 of the GGUF a local llama-server loaded: its `/props`
+/// (`model_path`) or `/v1/models` (the first model's id) names the file,
+/// which must be on this machine; it is hashed here.
+#[cfg(feature = "net")]
+pub fn served_model_sha256(base: &str) -> Result<String> {
+    use crate::error::Error;
+    let root = base.trim_end_matches('/');
+    let root = root.strip_suffix("/v1").unwrap_or(root);
+    let agent: ureq::Agent = ureq::Agent::config_builder()
+        .timeout_global(Some(std::time::Duration::from_secs(10)))
+        .build()
+        .into();
+    let get = |path: &str| -> Option<serde_json::Value> {
+        agent
+            .get(&format!("{root}{path}"))
+            .call()
+            .ok()?
+            .body_mut()
+            .read_json::<serde_json::Value>()
+            .ok()
+    };
+    let path = get("/props")
+        .and_then(|v| v["model_path"].as_str().map(str::to_string))
+        .or_else(|| get("/v1/models").and_then(|v| v["data"][0]["id"].as_str().map(str::to_string)))
+        .filter(|p| std::path::Path::new(p).is_file())
+        .ok_or_else(|| {
+            Error::Embed(format!(
+                "{base} does not say which GGUF it loaded, or the file is not on this machine: give its SHA-256"
+            ))
+        })?;
+    crate::packs::sha256_file(std::path::Path::new(&path))
+}
+
+#[cfg(feature = "net")]
 impl ServerEmbedder {
     /// `base` is the server root (`http://host:port`, with or without
     /// `/v1`); `gguf_sha256` is the full hex SHA-256 of the file it serves.
@@ -207,7 +240,7 @@ impl ServerEmbedder {
     }
 }
 
-#[cfg(feature = "cli")]
+#[cfg(feature = "net")]
 impl Embedder for ServerEmbedder {
     fn id(&self) -> &str {
         &self.id

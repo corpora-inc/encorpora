@@ -29,6 +29,18 @@ const USAGE: &str = "usage:
   harvest fixture <dir> [--version V] [--maint [--samples DIR]]
                   # writes a test-only fixture pack; --maint: the fictional pump manual
                   # (fault trees, tasks, levels); --samples: its field-note bundle and asset registry
+  harvest serve   <packs-root|pack-dir> --records <records-db> [--bind 127.0.0.1:4317] [--static DIR]
+                  [--allow-origin URL]... [--records-key FILE] [--outbox-dir DIR] [--field-pubkey KEY]
+                  [--embedder auto|none|hashing|<file.gguf>|<url> [--embedder-gguf FILE|--embedder-sha256 HEX]] [--pubkey KEY]   # the JSON API over HTTP (CONTRACT \"API\")
+                  [--hub URL [--packs-root ROOT] [--device-key FILE]]   # sync.flush / sync.pull through a hub
+  harvest api-schema <dir> [--check]      # writes (or checks) api.schema.json and types.ts
+  harvest hub     <hub-db> --stream NAME [--packs ROOT] [--bind 127.0.0.1:4318] [--allow-origin URL]...
+                  (--reviewers FILE | --trusted-proxy IP[,IP] --identity-header NAME --roles FILE)
+                  [--pubkey KEY] [--dev-key]   # the hub (CONTRACT \"Hub\"); signs with $HARVEST_HUB_KEY
+                  # (base64 ed25519 seed); --dev-key: the public test key, for development only
+  harvest decode  <j1939_candump|j1939_frames|j1587|display> <file|-> [--kind KIND]   # observations as JSON
+  harvest mavlink <file.tlog|file.bin|udp://HOST:PORT|tcp://HOST:PORT> [--seconds 10]   # MAVLink observations as JSON
+  harvest simulate <scenario.json> [--out metrics.json] [--pack DIR]   # devices and a hub on a simulated link
 
 KEY: base64 or hex ed25519 public key, or a file holding one; repeatable or
 comma-separated. Defaults to $HARVEST_PUBKEY.";
@@ -45,7 +57,12 @@ impl Args {
         let mut it = raw.into_iter();
         while let Some(a) = it.next() {
             if let Some(name) = a.strip_prefix("--") {
-                if name == "json" || name == "help" || name == "maint" {
+                if name == "json"
+                    || name == "help"
+                    || name == "maint"
+                    || name == "check"
+                    || name == "dev-key"
+                {
                     flags.push((name.to_string(), None));
                 } else if let Some((k, v)) = name.split_once('=') {
                     flags.push((k.to_string(), Some(v.to_string())));
@@ -111,6 +128,12 @@ fn main() -> ExitCode {
         "fixture" => fixture(&args),
         "show" => show(&args),
         "converse" => converse(&args),
+        "serve" => serve(&args),
+        "api-schema" => api_schema(&args),
+        "hub" => hub(&args),
+        "simulate" => simulate(&args),
+        "decode" => decode_cmd(&args),
+        "mavlink" => mavlink_cmd(&args),
         "help" | "--help" | "-h" => {
             println!("{USAGE}");
             return ExitCode::SUCCESS;
@@ -228,11 +251,8 @@ fn embedder(args: &Args, pack: &Pack) -> Result<Option<Arc<dyn Embedder>>, CliEr
                 }
                 (Some(path), None) => harvest_core::packs::sha256_file(Path::new(path))?,
                 (None, Some(sha)) => sha.to_string(),
-                (None, None) => {
-                    return Err(CliError::Usage(
-                        "--embedder <url> needs --embedder-gguf FILE or --embedder-sha256 HEX (the GGUF the server loaded)".into(),
-                    ));
-                }
+                // Ask the server which file it loaded and hash it here.
+                (None, None) => server_model_sha(url)?,
             };
             let e = harvest_core::embed::ServerEmbedder::for_pack(
                 url,
@@ -244,6 +264,49 @@ fn embedder(args: &Args, pack: &Pack) -> Result<Option<Arc<dyn Embedder>>, CliEr
         }
         other => Err(CliError::Usage(format!("unknown embedder {other:?}"))),
     }
+}
+
+/// The SHA-256 of the GGUF a local llama-server loaded (once per process).
+fn server_model_sha(url: &str) -> Result<String, CliError> {
+    static CACHE: std::sync::Mutex<std::collections::BTreeMap<String, String>> =
+        std::sync::Mutex::new(std::collections::BTreeMap::new());
+    if let Some(s) = CACHE.lock().unwrap_or_else(|p| p.into_inner()).get(url) {
+        return Ok(s.clone());
+    }
+    let sha = harvest_core::embed::served_model_sha256(url).map_err(|e| {
+        CliError::Usage(format!(
+            "{e} (--embedder-gguf FILE or --embedder-sha256 HEX)"
+        ))
+    })?;
+    eprintln!("harvest: {url} serves a GGUF with sha256 {}", &sha[..16]);
+    CACHE
+        .lock()
+        .unwrap_or_else(|p| p.into_inner())
+        .insert(url.to_string(), sha.clone());
+    Ok(sha)
+}
+
+/// Log, per pack, whether dense search runs and why not.
+fn log_dense(cmd: &str, pack: &Pack, e: Option<&dyn Embedder>) -> Result<(), CliError> {
+    let st = pack.dense_status(e)?;
+    match st.reason {
+        None => eprintln!(
+            "harvest {cmd}: {} dense search on ({}, {} vectors)",
+            pack.pack_id(),
+            st.host_embedder_id.unwrap_or_default(),
+            st.pack_vectors
+        ),
+        Some(r) => eprintln!(
+            "harvest {cmd}: {} dense search OFF: {} (pack {:?} dim {:?}; host {:?} dim {:?}); symptom search is lexical only",
+            pack.pack_id(),
+            r.as_str(),
+            st.pack_embedder_id,
+            st.pack_embed_dim,
+            st.host_embedder_id,
+            st.host_embed_dim
+        ),
+    }
+    Ok(())
 }
 
 #[cfg(feature = "llama")]
@@ -1027,4 +1090,458 @@ fn truncate(s: &str, n: usize) -> String {
     } else {
         format!("{}…", s.chars().take(n).collect::<String>())
     }
+}
+
+/// The packs under `root`: a pack directory itself, or a root holding pack
+/// directories or installed packs (`<pack_id>/current`).
+fn load_packs(root: &Path, keys: &[TrustedKey]) -> Result<Vec<Arc<Pack>>, CliError> {
+    Ok(harvest_core::packs::load_root(root, keys)?)
+}
+
+#[cfg(feature = "serve")]
+fn serve(args: &Args) -> Result<(), CliError> {
+    use harvest_core::api::{Host, serve};
+    args.reject_unknown(&[
+        "records",
+        "bind",
+        "static",
+        "allow-origin",
+        "records-key",
+        "outbox-dir",
+        "field-pubkey",
+        "embedder",
+        "embedder-gguf",
+        "embedder-sha256",
+        "pubkey",
+        "hub",
+        "packs-root",
+        "device-key",
+    ])?;
+    let root = pack_dir(args)?;
+    let keys = keys(args)?;
+    let packs = load_packs(&root, &keys)?;
+    let records_path = args
+        .get("records")
+        .ok_or_else(|| CliError::Usage("serve needs --records <records-db>".into()))?;
+    let key = records_key(args)?;
+    let records =
+        harvest_core::records::Records::open_with_key(Path::new(records_path), key.as_ref())?;
+    let device_key = device_key(args, Path::new(records_path))?;
+    let field_specs: Vec<String> = args
+        .all("field-pubkey")
+        .iter()
+        .map(|s| s.to_string())
+        .collect();
+    let field_keys = if field_specs.is_empty() {
+        keys.clone()
+    } else {
+        keys_from(&field_specs)?
+    };
+    let mut host = Host::new(packs.clone(), records).with_field_keys(field_keys);
+    // One embedder serves every pack baked with it. A pack baked with
+    // another is served lexical only, and says so.
+    for p in &packs {
+        let e = match embedder(args, p) {
+            Ok(e) => e,
+            Err(CliError::Engine(err)) if packs.len() > 1 => {
+                eprintln!("harvest serve: {}: {err}", p.pack_id());
+                None
+            }
+            Err(e) => return Err(e),
+        };
+        log_dense("serve", p, e.as_deref())?;
+        if let Some(e) = e {
+            host = host.with_embedder(p.pack_id(), e);
+        }
+    }
+    if let Some(d) = args.get("outbox-dir") {
+        host = host.with_outbox_dir(PathBuf::from(d));
+    }
+    if let Some(url) = args.get("hub") {
+        #[cfg(feature = "hub")]
+        {
+            eprintln!(
+                "harvest serve: device {} (public key {}); an administrator enrolls it at the hub",
+                device_key.device_id(),
+                device_key.public_base64()
+            );
+            let link = harvest_core::hub::http::HttpHubLink::new(
+                url,
+                device_key,
+                std::time::Duration::from_secs(60),
+            );
+            host = host.with_hub_link(
+                Arc::new(link),
+                args.get("packs-root").map(PathBuf::from),
+                keys.clone(),
+            );
+        }
+        #[cfg(not(feature = "hub"))]
+        {
+            let _ = url;
+            return Err(CliError::Usage(
+                "--hub needs a build with the `hub` feature".into(),
+            ));
+        }
+    }
+    let bind: std::net::SocketAddr = args
+        .get("bind")
+        .unwrap_or("127.0.0.1:4317")
+        .parse()
+        .map_err(|e| CliError::Usage(format!("--bind: {e}")))?;
+    if !bind.ip().is_loopback() {
+        eprintln!(
+            "harvest serve: bound to {bind}, reachable from the network; every Host is accepted"
+        );
+    }
+    let cfg = serve::ServeConfig {
+        bind,
+        static_dir: args.get("static").map(PathBuf::from),
+        allow_origins: args
+            .all("allow-origin")
+            .iter()
+            .map(|s| s.to_string())
+            .collect(),
+    };
+    let running = serve::start(Arc::new(host), cfg)?;
+    println!(
+        "harvest serve: http://{} ({} pack(s): {})",
+        running.addr(),
+        packs.len(),
+        packs
+            .iter()
+            .map(|p| format!("{} {}", p.pack_id(), p.version()))
+            .collect::<Vec<_>>()
+            .join(", ")
+    );
+    running.wait();
+    Ok(())
+}
+
+#[cfg(not(feature = "serve"))]
+fn serve(_: &Args) -> Result<(), CliError> {
+    Err(CliError::Usage(
+        "serve needs a build with the `serve` feature".into(),
+    ))
+}
+
+fn api_schema(args: &Args) -> Result<(), CliError> {
+    use harvest_core::api::schema;
+    args.reject_unknown(&["check"])?;
+    let dir = PathBuf::from(
+        args.positional
+            .first()
+            .ok_or_else(|| CliError::Usage("missing <dir>".into()))?,
+    );
+    let files = [
+        (schema::SCHEMA_FILE, schema::schema_text()),
+        (schema::TS_FILE, schema::typescript()),
+    ];
+    if args.has("check") {
+        let mut stale = Vec::new();
+        for (name, text) in &files {
+            if std::fs::read_to_string(dir.join(name)).ok().as_deref() != Some(text.as_str()) {
+                stale.push(*name);
+            }
+        }
+        if !stale.is_empty() {
+            eprintln!(
+                "harvest: stale {:?} in {}; run `harvest api-schema {}`",
+                stale,
+                dir.display(),
+                dir.display()
+            );
+            return Err(CliError::Exit(1));
+        }
+        println!("api schema up to date in {}", dir.display());
+        return Ok(());
+    }
+    std::fs::create_dir_all(&dir).map_err(Error::from)?;
+    for (name, text) in &files {
+        std::fs::write(dir.join(name), text).map_err(Error::from)?;
+    }
+    println!(
+        "wrote {} and {} in {}",
+        files[0].0,
+        files[1].0,
+        dir.display()
+    );
+    Ok(())
+}
+
+fn hub_key(args: &Args) -> Result<ed25519_dalek::SigningKey, CliError> {
+    if args.has("dev-key") {
+        eprintln!("harvest hub: signing with the public test key (development only)");
+        return Ok(harvest_core::fixture::signing_key());
+    }
+    let b64 = std::env::var("HARVEST_HUB_KEY").map_err(|_| {
+        CliError::Usage("set HARVEST_HUB_KEY (base64 ed25519 seed) or pass --dev-key".into())
+    })?;
+    use base64::Engine as _;
+    let raw = base64::engine::general_purpose::STANDARD
+        .decode(b64.trim())
+        .map_err(|_| CliError::Usage("HARVEST_HUB_KEY is not base64".into()))?;
+    let seed: [u8; 32] = raw
+        .try_into()
+        .map_err(|_| CliError::Usage("HARVEST_HUB_KEY must be a 32-byte ed25519 seed".into()))?;
+    Ok(ed25519_dalek::SigningKey::from_bytes(&seed))
+}
+
+#[cfg(feature = "hub")]
+fn hub(args: &Args) -> Result<(), CliError> {
+    use harvest_core::api::{Host, serve};
+    args.reject_unknown(&[
+        "stream",
+        "packs",
+        "bind",
+        "allow-origin",
+        "pubkey",
+        "dev-key",
+        "reviewers",
+        "trusted-proxy",
+        "identity-header",
+        "roles",
+    ])?;
+    let identity: Arc<dyn harvest_core::hub::auth::Identify> = match (
+        args.get("reviewers"),
+        args.get("trusted-proxy"),
+    ) {
+        (Some(f), None) => Arc::new(harvest_core::hub::auth::TokenFile::load(Path::new(f))?),
+        (None, Some(addrs)) => {
+            let proxies = addrs
+                .split(',')
+                .map(|a| a.trim().parse::<std::net::IpAddr>())
+                .collect::<Result<Vec<_>, _>>()
+                .map_err(|e| CliError::Usage(format!("--trusted-proxy: {e}")))?;
+            let header = args
+                .get("identity-header")
+                .ok_or_else(|| CliError::Usage("--trusted-proxy needs --identity-header".into()))?;
+            let roles = args
+                .get("roles")
+                .ok_or_else(|| CliError::Usage("--trusted-proxy needs --roles FILE".into()))?;
+            Arc::new(harvest_core::hub::auth::TrustedProxy::load(
+                proxies,
+                header,
+                Path::new(roles),
+            )?)
+        }
+        _ => {
+            return Err(CliError::Usage(
+                    "the hub identifies people: give --reviewers FILE, or --trusted-proxy with --identity-header and --roles".into(),
+                ));
+        }
+    };
+    let db = PathBuf::from(
+        args.positional
+            .first()
+            .ok_or_else(|| CliError::Usage("missing <hub-db>".into()))?,
+    );
+    let stream = args
+        .get("stream")
+        .ok_or_else(|| CliError::Usage("hub needs --stream NAME".into()))?;
+    let key = hub_key(args)?;
+    let mut hub = harvest_core::hub::Hub::open(&db, key, stream)?;
+    let mut packs = Vec::new();
+    if let Some(root) = args.get("packs") {
+        let keys = keys(args)?;
+        hub = hub.with_packs(PathBuf::from(root), keys.clone());
+        // Load the newest of each for titles and validation.
+        for entry in std::fs::read_dir(root).map_err(Error::from)? {
+            let dir = entry.map_err(Error::from)?.path();
+            let Some(id) = dir.file_name().and_then(|n| n.to_str()) else {
+                continue;
+            };
+            if let Ok(Some(offer)) = hub.pack_offer(id, None)
+                && let Ok(p) = Pack::open(&dir.join(&offer.dir), &keys)
+            {
+                packs.push(Arc::new(p));
+            }
+        }
+    }
+    let public = {
+        use base64::Engine as _;
+        base64::engine::general_purpose::STANDARD.encode(hub.trusted_key().key.as_bytes())
+    };
+    let hub = Arc::new(std::sync::Mutex::new(hub));
+    let host = Host::new(packs, harvest_core::records::Records::in_memory()?)
+        .with_hub(hub)
+        .with_identity(identity);
+    let bind: std::net::SocketAddr = args
+        .get("bind")
+        .unwrap_or("127.0.0.1:4318")
+        .parse()
+        .map_err(|e| CliError::Usage(format!("--bind: {e}")))?;
+    let cfg = serve::ServeConfig {
+        bind,
+        static_dir: None,
+        allow_origins: args
+            .all("allow-origin")
+            .iter()
+            .map(|s| s.to_string())
+            .collect(),
+    };
+    let running = serve::start(Arc::new(host), cfg)?;
+    println!(
+        "harvest hub: http://{} stream {stream}; devices trust {public}",
+        running.addr()
+    );
+    running.wait();
+    Ok(())
+}
+
+#[cfg(not(feature = "hub"))]
+fn hub(_: &Args) -> Result<(), CliError> {
+    Err(CliError::Usage(
+        "hub needs a build with the `hub` feature".into(),
+    ))
+}
+
+fn simulate(args: &Args) -> Result<(), CliError> {
+    args.reject_unknown(&["out", "pack", "json"])?;
+    let path = args
+        .positional
+        .first()
+        .ok_or_else(|| CliError::Usage("missing <scenario.json>".into()))?;
+    let text =
+        std::fs::read_to_string(path).map_err(|e| CliError::Usage(format!("{path}: {e}")))?;
+    let scenario: harvest_core::sim::Scenario =
+        serde_json::from_str(&text).map_err(|e| CliError::Usage(format!("{path}: {e}")))?;
+    let metrics = harvest_core::sim::run(&scenario, args.get("pack").map(Path::new))?;
+    let out = serde_json::to_string_pretty(&metrics).map_err(Error::from)?;
+    match args.get("out") {
+        Some(o) => std::fs::write(o, format!("{out}\n")).map_err(Error::from)?,
+        None => println!("{out}"),
+    }
+    eprintln!(
+        "harvest simulate: {} — invariants {}",
+        scenario.name,
+        if metrics.invariants.ok {
+            "hold"
+        } else {
+            "BROKEN"
+        }
+    );
+    if !metrics.invariants.ok {
+        return Err(CliError::Exit(1));
+    }
+    Ok(())
+}
+
+/// The device's signing key: `--device-key FILE`, else `<records-db>.device-key`
+/// (made on first use, base64 seed, readable by the owner only). In the
+/// app the platform keystore holds it.
+fn device_key(args: &Args, records: &Path) -> Result<harvest_core::sync::DeviceKey, CliError> {
+    use base64::Engine as _;
+    let path = match args.get("device-key") {
+        Some(p) => PathBuf::from(p),
+        None => {
+            let mut p = records.as_os_str().to_owned();
+            p.push(".device-key");
+            PathBuf::from(p)
+        }
+    };
+    if let Ok(text) = std::fs::read_to_string(&path) {
+        let raw = base64::engine::general_purpose::STANDARD
+            .decode(text.trim())
+            .map_err(|_| CliError::Usage(format!("{}: not base64", path.display())))?;
+        let seed: [u8; 32] = raw
+            .try_into()
+            .map_err(|_| CliError::Usage(format!("{}: not a 32-byte seed", path.display())))?;
+        return Ok(harvest_core::sync::DeviceKey::from_seed(&seed));
+    }
+    let key = harvest_core::sync::DeviceKey::generate()?;
+    let text = base64::engine::general_purpose::STANDARD.encode(key.seed());
+    #[cfg(unix)]
+    {
+        use std::io::Write;
+        use std::os::unix::fs::OpenOptionsExt;
+        let mut f = std::fs::OpenOptions::new()
+            .write(true)
+            .create_new(true)
+            .mode(0o600)
+            .open(&path)
+            .map_err(Error::from)?;
+        f.write_all(text.as_bytes()).map_err(Error::from)?;
+    }
+    #[cfg(not(unix))]
+    std::fs::write(&path, text).map_err(Error::from)?;
+    Ok(key)
+}
+
+fn decode_cmd(args: &Args) -> Result<(), CliError> {
+    args.reject_unknown(&["kind", "json"])?;
+    let fmt = args
+        .positional
+        .first()
+        .ok_or_else(|| CliError::Usage("missing <format>".into()))?;
+    let format: harvest_core::decode::Format = serde_json::from_value(json!(fmt))
+        .map_err(|_| CliError::Usage(format!("unknown format {fmt:?}")))?;
+    let src = args
+        .positional
+        .get(1)
+        .ok_or_else(|| CliError::Usage("missing <file|->".into()))?;
+    let input = if src == "-" {
+        let mut s = String::new();
+        std::io::Read::read_to_string(&mut std::io::stdin(), &mut s).map_err(Error::from)?;
+        s
+    } else {
+        std::fs::read_to_string(src).map_err(|e| CliError::Usage(format!("{src}: {e}")))?
+    };
+    let d = harvest_core::decode::decode(format, &input, args.get("kind"));
+    println!("{}", serde_json::to_string_pretty(&d).map_err(Error::from)?);
+    Ok(())
+}
+
+/// Read MAVLink bytes from a file, or from a UDP or TCP address for
+/// `--seconds`, and print what they decode to. The reading is here; the
+/// decoding is the core's pure `decode::mavlink`.
+fn mavlink_cmd(args: &Args) -> Result<(), CliError> {
+    use std::io::Read;
+    args.reject_unknown(&["seconds", "json"])?;
+    let src = args
+        .positional
+        .first()
+        .ok_or_else(|| CliError::Usage("missing <file|udp://…|tcp://…>".into()))?;
+    let secs: u64 = args
+        .get("seconds")
+        .unwrap_or("10")
+        .parse()
+        .map_err(|_| CliError::Usage("--seconds N".into()))?;
+    let until = Instant::now() + std::time::Duration::from_secs(secs);
+    let mut bytes = Vec::new();
+    let tlog;
+    if let Some(addr) = src.strip_prefix("udp://") {
+        tlog = false;
+        let sock = std::net::UdpSocket::bind(addr).map_err(Error::from)?;
+        sock.set_read_timeout(Some(std::time::Duration::from_millis(200)))
+            .map_err(Error::from)?;
+        let mut buf = [0u8; 2048];
+        while Instant::now() < until {
+            if let Ok((n, _)) = sock.recv_from(&mut buf) {
+                bytes.extend_from_slice(&buf[..n]);
+            }
+        }
+    } else if let Some(addr) = src.strip_prefix("tcp://") {
+        tlog = false;
+        let mut s = std::net::TcpStream::connect(addr).map_err(Error::from)?;
+        s.set_read_timeout(Some(std::time::Duration::from_millis(200)))
+            .map_err(Error::from)?;
+        let mut buf = [0u8; 4096];
+        while Instant::now() < until {
+            match s.read(&mut buf) {
+                Ok(0) => break,
+                Ok(n) => bytes.extend_from_slice(&buf[..n]),
+                Err(e)
+                    if e.kind() == std::io::ErrorKind::WouldBlock
+                        || e.kind() == std::io::ErrorKind::TimedOut => {}
+                Err(e) => return Err(Error::from(e).into()),
+            }
+        }
+    } else {
+        tlog = src.ends_with(".tlog");
+        bytes = std::fs::read(src).map_err(|e| CliError::Usage(format!("{src}: {e}")))?;
+    }
+    let d = harvest_core::decode::mavlink::decode(&bytes, tlog);
+    println!("{}", serde_json::to_string_pretty(&d).map_err(Error::from)?);
+    Ok(())
 }

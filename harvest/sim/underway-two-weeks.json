@@ -1,0 +1,64 @@
+{
+  "name": "underway-two-weeks",
+  "seed": 11,
+  "days": 42.0,
+  "devices": 6,
+  "link": {
+    "up": {
+      "dist": "exp",
+      "mean_hours": 1.0
+    },
+    "down": {
+      "dist": "exp",
+      "mean_hours": 30.0
+    },
+    "initial_down_days": 3.0,
+    "bandwidth_bps": 2400.0,
+    "latency_ms": 1200.0,
+    "drop_prob": 0.15,
+    "dup_prob": 0.05,
+    "overhead_bytes": 600
+  },
+  "workload": {
+    "jobs_per_device_per_day": 1.5,
+    "lesson_prob": 0.6,
+    "back_prob": 0.05,
+    "edit_prob": 0.0,
+    "assets_per_device": 3
+  },
+  "hub": {
+    "review_every_hours": 24.0,
+    "review_delay_hours": 0.0,
+    "approve_prob": 0.8,
+    "edit_prob": 0.1
+  },
+  "clock_skew_minutes": 20.0,
+  "sync_every_minutes": 30.0,
+  "conflicts": [
+    {
+      "day": 5.0,
+      "device": 2,
+      "other": 3,
+      "gap_minutes": 10.0
+    }
+  ],
+  "tamper_prob": 0.02,
+  "fleet_every_hours": 168.0,
+  "skew_bound_minutes": 30,
+  "rogue_device": false,
+  "revoke": [],
+  "final_bandwidth_bps": 2000000.0,
+  "photos": {
+    "per_lesson": 1.2,
+    "median_kb": 1500.0,
+    "sigma": 0.5,
+    "small_ratio": 0.08,
+    "byte_scale": 100
+  },
+  "attachments_low": "downscaled",
+  "attachments_normal": "full",
+  "chunk_kb": 64,
+  "pack_update_day": null,
+  "final_sync": true,
+  "sample_every_days": 3.0
+}
