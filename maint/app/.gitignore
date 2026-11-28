@@ -1,0 +1,7 @@
+node_modules/
+dist/
+artifacts/
+.screens/
+src-tauri/target/
+src-tauri/gen/
+.engine/

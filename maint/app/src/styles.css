@@ -1,0 +1,449 @@
+@import "tailwindcss";
+@import "@fontsource/atkinson-hyperlegible-next/latin-400.css";
+@import "@fontsource/atkinson-hyperlegible-next/latin-600.css";
+@import "@fontsource/atkinson-hyperlegible-next/latin-700.css";
+@import "@fontsource/source-serif-4/latin-400.css";
+@import "@fontsource/source-serif-4/latin-600.css";
+@import "@fontsource/atkinson-hyperlegible-mono/latin-500.css";
+
+/*
+ * Three voices, never confused:
+ *   the app     Atkinson Hyperlegible Next, on steel-grey surfaces;
+ *   the manual  Source Serif 4, on a white sheet with an ink rule and its page
+ *               number in the corner, as on the printed page;
+ *   the field   approved technician notes, on a teal panel, sans, always labelled.
+ * WARNING, CAUTION and NOTE keep the manual's own convention. Yes and No are
+ * outcomes, not judgements: they are never coloured good or bad.
+ *
+ * Light is for sunlight (body ink 17:1 on white); dark is for a dark bay.
+ * Brand files may override these tokens (src/brands).
+ */
+:root {
+  --page: #e3e7ea;
+  --surface: #ffffff;
+  --surface-2: #eef1f3;
+  --surface-3: #d9dfe4;
+  --line: #c2cad1;
+  --line-strong: #6c7984;
+  --ink: #0b1724;
+  --ink-2: #303e4b;
+  --ink-3: #4d5a66;
+  --sheet: #ffffff;
+  --sheet-line: #0b1724;
+  --plate: #0b1724;
+  --plate-ink: #ffffff;
+  --warn: #b01e0c;
+  --warn-ink: #ffffff;
+  --warn-wash: #fdf0ed;
+  --caution: #f2b705;
+  --caution-ink: #1a1300;
+  --caution-wash: #fff8e0;
+  --field: #0d5f7a;
+  --field-wash: #e2f0f5;
+  --field-ink: #06384a;
+  --ok: #156b3a;
+  --ok-wash: #e2f2e8;
+  --error: #a3122a;
+  --error-wash: #fbe9ec;
+  --focus: #0a5bd6;
+  --overlay: rgba(11, 23, 36, 0.94);
+  --overlay-ink: #ffffff;
+  --scrim: rgba(11, 23, 36, 0.45);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --page: #060b10;
+    --surface: #0e1720;
+    --surface-2: #15212b;
+    --surface-3: #1f2d39;
+    --line: #283946;
+    --line-strong: #5c7080;
+    --ink: #eef3f6;
+    --ink-2: #bfcad3;
+    --ink-3: #9aa9b4;
+    --sheet: #121e28;
+    --sheet-line: #9fb2c1;
+    --plate: #eef3f6;
+    --plate-ink: #0b1724;
+    --warn: #d2381f;
+    --warn-ink: #ffffff;
+    --warn-wash: #2a110c;
+    --caution: #ffc21a;
+    --caution-ink: #1a1300;
+    --caution-wash: #282006;
+    --field: #5cc3e0;
+    --field-wash: #0b2530;
+    --field-ink: #d2eef7;
+    --ok: #63d394;
+    --ok-wash: #0f2a1b;
+    --error: #ff7186;
+    --error-wash: #33121a;
+    --focus: #72b4ff;
+    --overlay: rgba(238, 243, 246, 0.96);
+    --overlay-ink: #0b1724;
+    --scrim: rgba(0, 0, 0, 0.6);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --page: #060b10;
+  --surface: #0e1720;
+  --surface-2: #15212b;
+  --surface-3: #1f2d39;
+  --line: #283946;
+  --line-strong: #5c7080;
+  --ink: #eef3f6;
+  --ink-2: #bfcad3;
+  --ink-3: #9aa9b4;
+  --sheet: #121e28;
+  --sheet-line: #9fb2c1;
+  --plate: #eef3f6;
+  --plate-ink: #0b1724;
+  --warn: #d2381f;
+  --warn-ink: #ffffff;
+  --warn-wash: #2a110c;
+  --caution: #ffc21a;
+  --caution-ink: #1a1300;
+  --caution-wash: #282006;
+  --field: #5cc3e0;
+  --field-wash: #0b2530;
+  --field-ink: #d2eef7;
+  --ok: #63d394;
+  --ok-wash: #0f2a1b;
+  --error: #ff7186;
+  --error-wash: #33121a;
+  --focus: #72b4ff;
+  --overlay: rgba(238, 243, 246, 0.96);
+  --overlay-ink: #0b1724;
+  --scrim: rgba(0, 0, 0, 0.6);
+  color-scheme: dark;
+}
+
+/* Paper: the printed copy keeps the light tokens whatever the screen theme. */
+.paper {
+  --page: #e3e7ea;
+  --surface: #ffffff;
+  --surface-2: #eef1f3;
+  --surface-3: #d9dfe4;
+  --line: #c2cad1;
+  --line-strong: #6c7984;
+  --ink: #0b1724;
+  --ink-2: #303e4b;
+  --ink-3: #4d5a66;
+  --sheet: #ffffff;
+  --sheet-line: #0b1724;
+  --plate: #0b1724;
+  --plate-ink: #ffffff;
+  --warn: #b01e0c;
+  --warn-ink: #ffffff;
+  --warn-wash: #fdf0ed;
+  --caution: #f2b705;
+  --caution-ink: #1a1300;
+  --caution-wash: #fff8e0;
+  --field: #0d5f7a;
+  --field-wash: #e2f0f5;
+  --field-ink: #06384a;
+  --ok: #156b3a;
+  --ok-wash: #e2f2e8;
+  --error: #a3122a;
+  --error-wash: #fbe9ec;
+  --focus: #0a5bd6;
+  --overlay: rgba(11, 23, 36, 0.94);
+  --overlay-ink: #ffffff;
+  --scrim: rgba(11, 23, 36, 0.45);
+  color-scheme: light;
+  background: var(--surface);
+  color: var(--ink);
+}
+
+@theme inline {
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-sheet: var(--sheet);
+  --color-sheet-line: var(--sheet-line);
+  --color-plate: var(--plate);
+  --color-plate-ink: var(--plate-ink);
+  --color-warn: var(--warn);
+  --color-warn-ink: var(--warn-ink);
+  --color-warn-wash: var(--warn-wash);
+  --color-caution: var(--caution);
+  --color-caution-ink: var(--caution-ink);
+  --color-caution-wash: var(--caution-wash);
+  --color-field: var(--field);
+  --color-field-wash: var(--field-wash);
+  --color-field-ink: var(--field-ink);
+  --color-ok: var(--ok);
+  --color-ok-wash: var(--ok-wash);
+  --color-error: var(--error);
+  --color-error-wash: var(--error-wash);
+  --color-focus: var(--focus);
+  --color-overlay: var(--overlay);
+  --color-overlay-ink: var(--overlay-ink);
+  --font-sans: "Atkinson Hyperlegible Next", ui-sans-serif, system-ui, sans-serif;
+  --font-manual: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-code: "Atkinson Hyperlegible Mono", ui-monospace, monospace;
+  /* Type scale: 15 meta, 17 small, 19 body, 21 lead, 24 h3, 29 h2, 35 h1. */
+  --text-meta: 0.9375rem;
+  --text-meta--line-height: 1.35;
+  --text-small: 1.0625rem;
+  --text-small--line-height: 1.45;
+  --text-body: 1.1875rem;
+  --text-body--line-height: 1.5;
+  --text-lead: 1.3125rem;
+  --text-lead--line-height: 1.45;
+  --text-h3: 1.5rem;
+  --text-h3--line-height: 1.25;
+  --text-h2: 1.8125rem;
+  --text-h2--line-height: 1.15;
+  --text-h1: 2.1875rem;
+  --text-h1--line-height: 1.1;
+  --radius-sheet: 3px;
+  --radius-plate: 6px;
+  --radius-control: 10px;
+  --radius-panel: 14px;
+  --spacing-tap: 3.5rem; /* 56 px: gloved hands */
+  --spacing-result: 4.75rem; /* 76 px: the result controls */
+  --spacing-strip: 3.5rem; /* 56 px: the status strip */
+  --spacing-tabbar: 4.5rem; /* 72 px: the phone tab bar */
+  --spacing-rail: 6rem; /* 96 px: the side rail */
+}
+
+@layer base {
+  html {
+    background: var(--page);
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  body {
+    margin: 0;
+    background: var(--page);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-wrap: break-word;
+    -webkit-tap-highlight-color: transparent;
+  }
+  #root {
+    min-height: 100dvh;
+  }
+  h1,
+  h2,
+  h3 {
+    font-weight: 700;
+    letter-spacing: -0.005em;
+    margin: 0;
+    hyphens: none;
+    word-break: normal;
+  }
+  p {
+    margin: 0;
+  }
+  button,
+  input,
+  textarea {
+    font: inherit;
+    color: inherit;
+  }
+  button {
+    cursor: pointer;
+  }
+  :focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /*
+   * The manual's words: a cut of the printed page. White sheet, a full ink
+   * rule, serif text, and the page number in the corner where the page has it.
+   */
+  .sheet {
+    position: relative;
+    background: var(--sheet);
+    border: 1.5px solid var(--sheet-line);
+    border-radius: var(--radius-sheet);
+    color: var(--ink);
+    font-family: var(--font-manual);
+    font-optical-sizing: auto;
+  }
+  .sheet-folio {
+    position: absolute;
+    right: -1.5px;
+    bottom: -1.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 44px;
+    padding: 0 12px 0 14px;
+    border: 1.5px solid var(--sheet-line);
+    border-radius: var(--radius-sheet) 0 var(--radius-sheet) 0;
+    background: var(--sheet-line);
+    color: var(--sheet);
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: var(--text-small);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+  .manual-text {
+    font-family: var(--font-manual);
+    font-optical-sizing: auto;
+  }
+
+  /* WARNING, CAUTION, NOTE: the manual's convention, a heading band over the text. */
+  .guard {
+    border-radius: var(--radius-sheet);
+    overflow: hidden;
+    font-family: var(--font-manual);
+  }
+  .guard-band {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 40px;
+    padding: 4px 12px;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: var(--text-small);
+    letter-spacing: 0.14em;
+  }
+  /* The danger tone: the heaviest frame, a solid ink edge inside it and a taller band. */
+  .guard-danger {
+    border: 5px solid var(--warn);
+    background: var(--warn-wash);
+    box-shadow: inset 0 0 0 2px var(--warn-ink), 0 0 0 1px var(--warn);
+  }
+  .guard-danger .guard-band {
+    background: var(--warn);
+    color: var(--warn-ink);
+    min-height: 48px;
+    font-size: var(--text-body);
+    letter-spacing: 0.18em;
+  }
+  .guard-warning {
+    border: 3px solid var(--warn);
+    background: var(--warn-wash);
+  }
+  .guard-warning .guard-band {
+    background: var(--warn);
+    color: var(--warn-ink);
+  }
+  .guard-caution {
+    border: 3px solid var(--caution);
+    background: var(--caution-wash);
+  }
+  .guard-caution .guard-band {
+    background: var(--caution);
+    color: var(--caution-ink);
+  }
+  /* The notice tone: calm but set apart, a heavy ink rule on the left and a tinted band; no hazard colour. */
+  .guard-notice {
+    border: 1.5px solid var(--sheet-line);
+    border-left-width: 8px;
+    background: var(--sheet);
+  }
+  .guard-notice .guard-band {
+    justify-content: flex-start;
+    min-height: 38px;
+    background: var(--surface-2);
+    border-bottom: 1.5px solid var(--sheet-line);
+    color: var(--ink);
+  }
+  .guard-note {
+    border: 1.5px solid var(--sheet-line);
+    background: var(--sheet);
+  }
+  .guard-note .guard-band {
+    justify-content: flex-start;
+    min-height: 34px;
+    border-bottom: 1.5px solid var(--sheet-line);
+    color: var(--ink);
+  }
+
+  /* The data plate: the variant this unit resolved to, stamped. */
+  .plate {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 40px;
+    min-width: 0;
+    padding: 0 12px;
+    border-radius: var(--radius-plate);
+    background: var(--plate);
+    color: var(--plate-ink);
+    font-weight: 700;
+    font-size: var(--text-small);
+    white-space: nowrap;
+  }
+  .plate-rivet {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.55;
+    flex-shrink: 0;
+  }
+  .code {
+    font-family: var(--font-code);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    font-variant-numeric: tabular-nums slashed-zero;
+  }
+
+  /* Approved field knowledge. Never manual text, never mistaken for it. */
+  .field {
+    border-radius: var(--radius-panel);
+    border: 2px dashed var(--field);
+    background: var(--field-wash);
+    color: var(--field-ink);
+  }
+
+  .skeleton {
+    border-radius: var(--radius-control);
+    background: var(--surface-3);
+    animation: pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    50% {
+      opacity: 0.55;
+    }
+  }
+
+  @media print {
+    .no-print {
+      display: none !important;
+    }
+  }
+}
+
+@media print {
+  html,
+  body {
+    background: #ffffff;
+  }
+}

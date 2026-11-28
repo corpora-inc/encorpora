@@ -1,0 +1,6 @@
+{
+  "format": "harvest-assets/1",
+  "assets": [
+    { "asset_id": "boat-7", "name": "Survey boat 7", "equip_id": "ardupilot-rover", "hours": 212, "attrs": { "location": "Pier 2" } }
+  ]
+}
