@@ -225,7 +225,7 @@ function Deficiency({ step }: { step: ProcStep }) {
       </h2>
       <p className="m-0 mb-2">{d.guidance}</p>
       <p className="m-0 mb-3 font-semibold">{d.action}</p>
-      <Quote sectionId={d.section_id} text={d.quote} showCite />
+      {d.section_id && d.quote && <Quote sectionId={d.section_id} text={d.quote} showCite />}
     </Panel>
   );
 }
