@@ -6,6 +6,7 @@
 
 pub mod answer;
 pub mod api;
+pub mod assist;
 pub mod audit;
 pub mod canon;
 pub mod check;
