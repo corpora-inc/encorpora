@@ -8,7 +8,7 @@ import { useVoiceInput } from "@appkit/voice/useVoiceInput.ts";
 import { Keypad } from "../ui/Keypad.tsx";
 import { VoiceControl, voiceStatus } from "../ui/VoiceControl.tsx";
 import { PageViewer } from "../ui/PageViewer.tsx";
-import { citationText, FieldNotes, pageFor, isGrave, Guards, markOnly, ManualSheet, Requirements, sectionTitle, useAssetSrc } from "../ui/manual.tsx";
+import { citationText, FieldNotes, pageFor, gravest, Guards, markOnly, ManualSheet, Requirements, sectionTitle, useAssetSrc } from "../ui/manual.tsx";
 
 export type StepOverlay = { kind: "page"; asset: PackAsset } | { kind: "ask"; query: string; answer: AskResponse | null } | null;
 
@@ -69,7 +69,7 @@ export function Step(p: StepProps) {
   const detailed = p.levels[0]?.id === step.level.id;
   // At the most experienced level, blocks the pack does not mark must_show may fold.
   const experienced = p.levels.length > 1 && p.levels[p.levels.length - 1]?.id === step.level.id;
-  const grave = step.guards.find(isGrave) ?? null;
+  const grave = gravest(step.guards);
   const [noteOpen, setNoteOpen] = useState(false);
   return (
     <div className="mx-auto w-full max-w-[1280px] px-4 pt-4 pb-10 sm:px-6 lg:px-8">

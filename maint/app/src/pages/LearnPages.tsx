@@ -8,15 +8,34 @@ import { TreeStudy } from "../screens/Learn.tsx";
 import { NotFound } from "../screens/NotFound.tsx";
 import { PracticeItem, PracticeSummary } from "../screens/Practice.tsx";
 import { reportOf, usePractice } from "../store/practice.ts";
-import { packTitle, treeTitles, usePack } from "../store/pack.ts";
+import { useFleet } from "../store/fleet.ts";
+import { packOf, packTitle, treeTitles, usePack } from "../store/pack.ts";
+import { useSettings } from "../store/settings.ts";
 import { ManualPack } from "../ui/manual.tsx";
+
+/** The active unit when it belongs to this pack: practice leaves out what does not apply to it. */
+function useUnitFor() {
+  const active = useSettings((s) => s.activeUnit);
+  const assets = useFleet((s) => s.assets);
+  const packs = usePack((s) => s.packs);
+  const unit = assets.find((a) => a.asset_id === active) ?? null;
+  return (packId: string) => (unit && packOf(packs, unit.equip_id)?.info.pack_id === packId ? unit.asset_id : null);
+}
+
+/** Read a pack's practice once, and again when the active unit it is read for changes. */
+function useEnsurePractice(packIds: string[]) {
+  const unitFor = useUnitFor();
+  const want = packIds.map((id) => `${id}=${unitFor(id) ?? ""}`).join("|");
+  useEffect(() => {
+    const st = usePractice.getState();
+    for (const id of packIds) if (st.packs[id] === undefined || (st.forAsset[id] ?? null) !== unitFor(id)) void st.load(id, unitFor(id));
+  }, [want]); // eslint-disable-line react-hooks/exhaustive-deps
+}
 
 export function LearnPage() {
   const { packs, ids } = usePack();
   const practice = usePractice((s) => s.packs);
-  useEffect(() => {
-    for (const id of ids) if (practice[id] === undefined) void usePractice.getState().load(id);
-  }, [ids.join("|")]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEnsurePractice(ids);
   const [lessons, setLessons] = useState<Lesson[] | null>(null);
   useEffect(() => {
     call("lesson.list", {})
@@ -42,9 +61,7 @@ export function PracticePage() {
   const { packId = "" } = useParams();
   const p = usePractice((s) => s.packs[packId]);
   const busy = usePractice((s) => s.busy);
-  useEffect(() => {
-    if (p === undefined) void usePractice.getState().load(packId);
-  }, [packId, p]);
+  useEnsurePractice([packId]);
   if (p === undefined || p === null) return null;
   if (p === false) return <NotFound />;
   const q = p.pick ? (p.byId[p.pick.item.id] ?? null) : null;

@@ -332,13 +332,13 @@
     font-size: var(--text-small);
     letter-spacing: 0.14em;
   }
-  /* Rank 1, the gravest class the manual declares: a heavier frame and a solid ink band edge. */
-  .guard-gravest {
+  /* The danger tone: the heaviest frame, a solid ink edge inside it and a taller band. */
+  .guard-danger {
     border: 5px solid var(--warn);
     background: var(--warn-wash);
     box-shadow: inset 0 0 0 2px var(--warn-ink), 0 0 0 1px var(--warn);
   }
-  .guard-gravest .guard-band {
+  .guard-danger .guard-band {
     background: var(--warn);
     color: var(--warn-ink);
     min-height: 48px;
@@ -360,6 +360,19 @@
   .guard-caution .guard-band {
     background: var(--caution);
     color: var(--caution-ink);
+  }
+  /* The notice tone: calm but set apart, a heavy ink rule on the left and a tinted band; no hazard colour. */
+  .guard-notice {
+    border: 1.5px solid var(--sheet-line);
+    border-left-width: 8px;
+    background: var(--sheet);
+  }
+  .guard-notice .guard-band {
+    justify-content: flex-start;
+    min-height: 38px;
+    background: var(--surface-2);
+    border-bottom: 1.5px solid var(--sheet-line);
+    color: var(--ink);
   }
   .guard-note {
     border: 1.5px solid var(--sheet-line);

@@ -345,6 +345,19 @@ const withUnknown = (v: JobView): JobView => ({ ...v, step: { ...v.step!, applic
 // The fixture marks every block must_show; one class left foldable shows the experienced level's fold.
 const expert = D.pack.levels[D.pack.levels.length - 1]!;
 const foldable = (v: JobView): JobView => ({ ...v, step: { ...v.step!, level: expert, guards: v.step!.guards.map((g) => (g.rank > 1 ? { ...g, must_show: false } : g)) } });
+// The fixture's classes have the warning, caution and note tones; the sample adds danger and notice
+// (label and tone set here) so all five tones show side by side, in rank order.
+const fiveTones = (v: JobView): JobView => {
+  const g = v.step!.guards[0]!;
+  const tones = [
+    ["DANGER", "danger"],
+    ["WARNING", "warning"],
+    ["CAUTION", "caution"],
+    ["NOTICE", "notice"],
+    ["NOTE", "note"],
+  ] as const;
+  return { ...v, step: { ...v.step!, guards: tones.map(([label, tone], i) => ({ ...g, label, tone, rank: i + 1 })) } };
+};
 const rowOf = (t: TableView, ord: number) => t.rows.find((r) => r.ord === ord)!;
 
 export const GALLERY: Record<string, { title: string; states: Entry[] }> = {
@@ -460,7 +473,8 @@ export const GALLERY: Record<string, { title: string; states: Entry[] }> = {
       { state: "action", label: "Corrective action reached", unit: shellUnit, render: () => <Step {...step(D.steps.action)} /> },
       { state: "escalate", label: "Refer", unit: shellUnit, render: () => <Step {...step(D.steps.escalate)} /> },
       { state: "end", label: "Fault corrected", unit: shellUnit, render: () => <Step {...step(D.steps.end)} /> },
-      { state: "ranked", label: "Two safety classes, by rank", unit: shellUnit, render: () => <Step {...step(D.steps.passfail)} /> },
+      { state: "ranked", label: "Two safety classes, by tone", unit: shellUnit, render: () => <Step {...step(D.steps.passfail)} /> },
+      { state: "tones", label: "All five tones", unit: shellUnit, render: () => <Step {...step(fiveTones(D.steps.check))} /> },
       { state: "ranked-folded", label: "Experienced level, foldable class", unit: shellUnit, render: () => <Step {...step(foldable(D.steps.passfail))} /> },
       { state: "undetermined", label: "Applicability not determined", unit: shellUnit, render: () => <Step {...step(withUnknown(D.steps.check), { renderAnswer: answer })} /> },
     ],

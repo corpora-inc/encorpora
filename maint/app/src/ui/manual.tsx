@@ -1,7 +1,7 @@
 import { Undetermined } from "./applicability.tsx";
 import { createContext, useContext, useState, type ReactNode } from "react";
 import { Link } from "react-router";
-import { FileText, OctagonAlert, TriangleAlert, Users } from "lucide-react";
+import { FileText, Info, OctagonAlert, TriangleAlert, Users } from "lucide-react";
 import { assetUrl } from "../engine/client.ts";
 import type { Applicability, Citation, FieldNote, Guard, PackAsset, Requirement } from "../engine/types.ts";
 import { manualPath } from "../routes.ts";
@@ -74,26 +74,25 @@ function Folio({ citation, to }: { citation: Citation; to?: string }) {
 }
 
 /**
- * How a safety block is set, from the rank the pack declares for its class
- * (1 = gravest), never from the class's name: rank 1 the gravest treatment,
- * rank 2 the warning treatment, rank 3 the caution treatment, the rest quiet.
- * The band always prints the manual's own label.
+ * A safety block is set by the tone the pack gives its class (from the
+ * manual's own definition of the class), never by the class's name. The
+ * band always prints the manual's own label. Rank orders classes only.
  */
-export type GuardTone = "gravest" | "warning" | "caution" | "note";
-export const guardTone = (rank: number): GuardTone => (rank <= 1 ? "gravest" : rank === 2 ? "warning" : rank === 3 ? "caution" : "note");
-/** Rank 1 and 2 keep a marker pinned when scrolled away. */
-export const isGrave = (g: Guard) => g.rank <= 2;
+/** Danger and warning tones keep a marker pinned when scrolled away. */
+export const isGrave = (g: Guard) => g.tone === "danger" || g.tone === "warning";
+/** The block the pinned marker names: the gravest by rank, the first of equals. */
+export const gravest = (guards: Guard[]): Guard | null => guards.filter(isGrave).reduce<Guard | null>((best, g) => (!best || g.rank < best.rank ? g : best), null);
 
 /** One safety block, as the manual sets it. A `must_show` block is never collapsible. */
 export function GuardBlock({ guard, id, collapsible = false, applicability = null }: { guard: Guard; id?: string; collapsible?: boolean; applicability?: ReactNode }) {
-  const tone = guardTone(guard.rank);
+  const tone = guard.tone;
   const [open, setOpen] = useState(false);
-  const Icon = tone === "gravest" || tone === "warning" ? OctagonAlert : tone === "caution" ? TriangleAlert : null;
+  const Icon = tone === "danger" || tone === "warning" ? OctagonAlert : tone === "caution" ? TriangleAlert : tone === "notice" ? Info : null;
   const folded = collapsible && !guard.must_show && !open;
   return (
     <section id={id} className={cx("guard scroll-mt-28", `guard-${tone}`)} aria-label={guard.label}>
       <div className="guard-band">
-        {Icon && <Icon aria-hidden size={tone === "gravest" ? 24 : 20} strokeWidth={2.5} />}
+        {Icon && <Icon aria-hidden size={tone === "danger" ? 24 : 20} strokeWidth={2.5} />}
         <span>{guard.label}</span>
         {collapsible && !guard.must_show && (
           <button type="button" onClick={() => setOpen(!open)} aria-expanded={!folded} className="ml-auto inline-flex min-h-11 items-center px-2 text-meta font-semibold tracking-normal underline underline-offset-4">
@@ -104,7 +103,7 @@ export function GuardBlock({ guard, id, collapsible = false, applicability = nul
       {!folded && (
         <>
           {applicability}
-          <p className={cx("px-4 py-3 sm:px-5", tone === "note" ? "text-body" : "text-lead font-semibold")}>{guard.text}</p>
+          <p className={cx("px-4 py-3 sm:px-5", tone === "note" || tone === "notice" ? "text-body" : "text-lead font-semibold")}>{guard.text}</p>
           <p className="px-4 pb-2.5 font-sans text-meta text-ink-3 sm:px-5">
             {guard.citation.citation}
             {guard.citation.page_label && `, page ${guard.citation.page_label}`}
@@ -125,7 +124,7 @@ export const markOnly = (a: Applicability) => <Undetermined a={a} />;
  */
 export function Guards({ guards, firstWarningId, collapsible = false, answer }: { guards: Guard[]; firstWarningId?: string; collapsible?: boolean; answer?: (a: NonNullable<Guard["applicability"]>) => ReactNode }) {
   if (guards.length === 0) return null;
-  const first = guards.findIndex(isGrave);
+  const first = guards.indexOf(gravest(guards) as Guard);
   return (
     <div className="flex flex-col gap-3">
       {guards.map((g, i) => (

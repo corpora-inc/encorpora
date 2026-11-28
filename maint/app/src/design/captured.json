@@ -226,37 +226,37 @@
    "attrs": {
     "location": "North yard"
    },
-   "created_at": "2026-11-28T12:34:59.123Z",
+   "created_at": "2026-11-28T13:32:14.620Z",
    "equip_id": "pump40-diesel",
    "hours": 1840.5,
    "miles": null,
    "name": "Pump 101",
    "serial": "P40D-2310",
-   "updated_at": "2026-11-28T12:34:59.123Z"
+   "updated_at": "2026-11-28T13:32:14.620Z"
   },
   {
    "asset_id": "unit-102",
    "attrs": {},
-   "created_at": "2026-11-28T12:34:59.123Z",
+   "created_at": "2026-11-28T13:32:14.620Z",
    "equip_id": "pump40-diesel",
    "hours": 920,
    "miles": null,
    "name": "Pump 102",
    "serial": "P40D-3115",
-   "updated_at": "2026-11-28T12:34:59.123Z"
+   "updated_at": "2026-11-28T13:32:14.620Z"
   },
   {
    "asset_id": "unit-201",
    "attrs": {
     "location": "Pump station 2"
    },
-   "created_at": "2026-11-28T12:34:59.123Z",
+   "created_at": "2026-11-28T13:32:14.620Z",
    "equip_id": "pump40-electric",
    "hours": 4410,
    "miles": null,
    "name": "Pump 201",
    "serial": "P40E-1450",
-   "updated_at": "2026-11-28T12:34:59.123Z"
+   "updated_at": "2026-11-28T13:32:14.620Z"
   }
  ],
  "resolve": {
@@ -733,9 +733,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-3ee3b1201c928c01596b76adc55beed9",
+    "job_id": "job-276db0142e7aff1cfcf4cf4f7150a887",
     "level": "apprentice",
-    "opened_at": "2026-11-28T12:34:59.150Z",
+    "opened_at": "2026-11-28T13:32:14.650Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -837,7 +837,8 @@
       "must_show": true,
       "rank": 1,
       "section_id": "m40.3.w1",
-      "text": "Stop the pump and remove the start key or lock out the supply before you open any cover. Rotating parts can cause serious injury."
+      "text": "Stop the pump and remove the start key or lock out the supply before you open any cover. Rotating parts can cause serious injury.",
+      "tone": "warning"
      }
     ],
     "level": {
@@ -960,9 +961,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-3ee3b1201c928c01596b76adc55beed9",
+    "job_id": "job-276db0142e7aff1cfcf4cf4f7150a887",
     "level": "apprentice",
-    "opened_at": "2026-11-28T12:34:59.150Z",
+    "opened_at": "2026-11-28T13:32:14.650Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -971,7 +972,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T12:34:59.159Z",
+      "at": "2026-11-28T13:32:14.658Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -1061,6 +1062,7 @@
       "label": "Test options",
       "texts": [
        {
+        "applicability": null,
         "section_id": "m40.3-1.q1",
         "text": "Look at the switch. Pull F2 and check it with the multimeter."
        }
@@ -1072,6 +1074,7 @@
       "label": "Reason for question",
       "texts": [
        {
+        "applicability": null,
         "section_id": "m40.3-1.q1",
         "text": "A switch left OFF or a blown fuse stops all cranking current."
        }
@@ -1083,6 +1086,7 @@
       "label": "Known info",
       "texts": [
        {
+        "applicability": null,
         "section_id": "m40.3-1.q1",
         "text": "The engine does not crank."
        }
@@ -1094,18 +1098,22 @@
       "label": "Possible problems",
       "texts": [
        {
+        "applicability": null,
         "section_id": "m40.3-1.q1",
         "text": "Battery switch off."
        },
        {
+        "applicability": null,
         "section_id": "m40.3-1.q1",
         "text": "Start fuse F2 blown."
        },
        {
+        "applicability": null,
         "section_id": "m40.3-1.q1",
         "text": "Battery discharged."
        },
        {
+        "applicability": null,
         "section_id": "m40.3-1.q1",
         "text": "Starter relay K1 failed."
        }
@@ -1149,7 +1157,8 @@
       "must_show": true,
       "rank": 1,
       "section_id": "m40.3.w1",
-      "text": "Stop the pump and remove the start key or lock out the supply before you open any cover. Rotating parts can cause serious injury."
+      "text": "Stop the pump and remove the start key or lock out the supply before you open any cover. Rotating parts can cause serious injury.",
+      "tone": "warning"
      }
     ],
     "level": {
@@ -1176,7 +1185,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T12:34:59.159Z",
+      "at": "2026-11-28T13:32:14.658Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -1296,9 +1305,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-3ee3b1201c928c01596b76adc55beed9",
+    "job_id": "job-276db0142e7aff1cfcf4cf4f7150a887",
     "level": "apprentice",
-    "opened_at": "2026-11-28T12:34:59.150Z",
+    "opened_at": "2026-11-28T13:32:14.650Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -1307,7 +1316,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T12:34:59.159Z",
+      "at": "2026-11-28T13:32:14.658Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -1397,6 +1406,7 @@
       "label": "Test options",
       "texts": [
        {
+        "applicability": null,
         "section_id": "m40.3-1.q1",
         "text": "Look at the switch. Pull F2 and check it with the multimeter."
        }
@@ -1408,6 +1418,7 @@
       "label": "Reason for question",
       "texts": [
        {
+        "applicability": null,
         "section_id": "m40.3-1.q1",
         "text": "A switch left OFF or a blown fuse stops all cranking current."
        }
@@ -1419,6 +1430,7 @@
       "label": "Known info",
       "texts": [
        {
+        "applicability": null,
         "section_id": "m40.3-1.q1",
         "text": "The engine does not crank."
        }
@@ -1430,18 +1442,22 @@
       "label": "Possible problems",
       "texts": [
        {
+        "applicability": null,
         "section_id": "m40.3-1.q1",
         "text": "Battery switch off."
        },
        {
+        "applicability": null,
         "section_id": "m40.3-1.q1",
         "text": "Start fuse F2 blown."
        },
        {
+        "applicability": null,
         "section_id": "m40.3-1.q1",
         "text": "Battery discharged."
        },
        {
+        "applicability": null,
         "section_id": "m40.3-1.q1",
         "text": "Starter relay K1 failed."
        }
@@ -1485,7 +1501,8 @@
       "must_show": true,
       "rank": 1,
       "section_id": "m40.3.w1",
-      "text": "Stop the pump and remove the start key or lock out the supply before you open any cover. Rotating parts can cause serious injury."
+      "text": "Stop the pump and remove the start key or lock out the supply before you open any cover. Rotating parts can cause serious injury.",
+      "tone": "warning"
      }
     ],
     "level": {
@@ -1515,7 +1532,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T12:34:59.159Z",
+      "at": "2026-11-28T13:32:14.658Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -1635,9 +1652,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-3ee3b1201c928c01596b76adc55beed9",
+    "job_id": "job-276db0142e7aff1cfcf4cf4f7150a887",
     "level": "apprentice",
-    "opened_at": "2026-11-28T12:34:59.150Z",
+    "opened_at": "2026-11-28T13:32:14.650Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -1646,7 +1663,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T12:34:59.159Z",
+      "at": "2026-11-28T13:32:14.658Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -1660,7 +1677,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T12:34:59.172Z",
+      "at": "2026-11-28T13:32:14.673Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -1755,6 +1772,7 @@
       "label": "Test options",
       "texts": [
        {
+        "applicability": null,
         "section_id": "m40.3-1.q2",
         "text": "Measure at the battery terminals with the multimeter on DC volts."
        }
@@ -1766,6 +1784,7 @@
       "label": "Reason for question",
       "texts": [
        {
+        "applicability": null,
         "section_id": "m40.3-1.q2",
         "text": "Cranking needs a charged battery; below 11.5 V the starter cannot turn the engine."
        }
@@ -1777,10 +1796,12 @@
       "label": "Known info",
       "texts": [
        {
+        "applicability": null,
         "section_id": "m40.3-1.q2",
         "text": "Battery switch ON."
        },
        {
+        "applicability": null,
         "section_id": "m40.3-1.q2",
         "text": "Fuse F2 good."
        }
@@ -1792,14 +1813,17 @@
       "label": "Possible problems",
       "texts": [
        {
+        "applicability": null,
         "section_id": "m40.3-1.q2",
         "text": "Battery discharged."
        },
        {
+        "applicability": null,
         "section_id": "m40.3-1.q2",
         "text": "Starter relay K1 failed."
        },
        {
+        "applicability": null,
         "section_id": "m40.3-1.q2",
         "text": "Starter motor failed."
        }
@@ -1843,7 +1867,8 @@
       "must_show": true,
       "rank": 1,
       "section_id": "m40.3.w1",
-      "text": "Stop the pump and remove the start key or lock out the supply before you open any cover. Rotating parts can cause serious injury."
+      "text": "Stop the pump and remove the start key or lock out the supply before you open any cover. Rotating parts can cause serious injury.",
+      "tone": "warning"
      }
     ],
     "level": {
@@ -1873,7 +1898,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T12:34:59.159Z",
+      "at": "2026-11-28T13:32:14.658Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -1884,7 +1909,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T12:34:59.172Z",
+      "at": "2026-11-28T13:32:14.673Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -2051,7 +2076,8 @@
        "must_show": true,
        "rank": 1,
        "section_id": "m40.4-2.w1",
-       "text": "Batteries give off explosive gas. Keep sparks and flames away from the battery."
+       "text": "Batteries give off explosive gas. Keep sparks and flames away from the battery.",
+       "tone": "warning"
       }
      ],
      "proc_id": "proc-battv",
@@ -2181,7 +2207,8 @@
          "must_show": true,
          "rank": 2,
          "section_id": "m40.4-2.c1",
-         "text": "Do not let the meter leads touch each other or the frame while they are on the battery terminals."
+         "text": "Do not let the meter leads touch each other or the frame while they are on the battery terminals.",
+         "tone": "caution"
         }
        ],
        "ord": 2,
@@ -2271,7 +2298,8 @@
          "must_show": true,
          "rank": 3,
          "section_id": "m40.4-2.n1",
-         "text": "A battery that was just charged reads high for about an hour. Wait before you test it."
+         "text": "A battery that was just charged reads high for about an hour. Wait before you test it.",
+         "tone": "note"
         }
        ],
        "ord": 3,
@@ -2303,9 +2331,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-3ee3b1201c928c01596b76adc55beed9",
+    "job_id": "job-276db0142e7aff1cfcf4cf4f7150a887",
     "level": "apprentice",
-    "opened_at": "2026-11-28T12:34:59.150Z",
+    "opened_at": "2026-11-28T13:32:14.650Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -2314,7 +2342,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T12:34:59.159Z",
+      "at": "2026-11-28T13:32:14.658Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -2328,7 +2356,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T12:34:59.172Z",
+      "at": "2026-11-28T13:32:14.673Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -2342,7 +2370,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T12:34:59.184Z",
+      "at": "2026-11-28T13:32:14.686Z",
       "label": "Below 11.5 V",
       "next_node": "nc.2a",
       "node_id": "nc.2",
@@ -2468,7 +2496,8 @@
       "must_show": true,
       "rank": 1,
       "section_id": "m40.3.w1",
-      "text": "Stop the pump and remove the start key or lock out the supply before you open any cover. Rotating parts can cause serious injury."
+      "text": "Stop the pump and remove the start key or lock out the supply before you open any cover. Rotating parts can cause serious injury.",
+      "tone": "warning"
      }
     ],
     "level": {
@@ -2496,7 +2525,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T12:34:59.159Z",
+      "at": "2026-11-28T13:32:14.658Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -2507,7 +2536,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T12:34:59.172Z",
+      "at": "2026-11-28T13:32:14.673Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -2518,7 +2547,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T12:34:59.184Z",
+      "at": "2026-11-28T13:32:14.686Z",
       "label": "Below 11.5 V",
       "next_node": "nc.2a",
       "node_id": "nc.2",
@@ -2626,9 +2655,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-3ee3b1201c928c01596b76adc55beed9",
+    "job_id": "job-276db0142e7aff1cfcf4cf4f7150a887",
     "level": "apprentice",
-    "opened_at": "2026-11-28T12:34:59.150Z",
+    "opened_at": "2026-11-28T13:32:14.650Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -2637,7 +2666,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T12:34:59.159Z",
+      "at": "2026-11-28T13:32:14.658Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -2651,7 +2680,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T12:34:59.172Z",
+      "at": "2026-11-28T13:32:14.673Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -2665,7 +2694,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T12:34:59.184Z",
+      "at": "2026-11-28T13:32:14.686Z",
       "label": "Below 11.5 V",
       "next_node": "nc.2a",
       "node_id": "nc.2",
@@ -2673,7 +2702,7 @@
       "outcome": null,
       "photos": [],
       "seq": 3,
-      "superseded_at": "2026-11-28T12:34:59.192Z",
+      "superseded_at": "2026-11-28T13:32:14.694Z",
       "tree_id": "t-nocrank",
       "unit": "V",
       "value": 10.8
@@ -2760,6 +2789,7 @@
       "label": "Test options",
       "texts": [
        {
+        "applicability": null,
         "section_id": "m40.3-1.q2",
         "text": "Measure at the battery terminals with the multimeter on DC volts."
        }
@@ -2771,6 +2801,7 @@
       "label": "Reason for question",
       "texts": [
        {
+        "applicability": null,
         "section_id": "m40.3-1.q2",
         "text": "Cranking needs a charged battery; below 11.5 V the starter cannot turn the engine."
        }
@@ -2782,10 +2813,12 @@
       "label": "Known info",
       "texts": [
        {
+        "applicability": null,
         "section_id": "m40.3-1.q2",
         "text": "Battery switch ON."
        },
        {
+        "applicability": null,
         "section_id": "m40.3-1.q2",
         "text": "Fuse F2 good."
        }
@@ -2797,14 +2830,17 @@
       "label": "Possible problems",
       "texts": [
        {
+        "applicability": null,
         "section_id": "m40.3-1.q2",
         "text": "Battery discharged."
        },
        {
+        "applicability": null,
         "section_id": "m40.3-1.q2",
         "text": "Starter relay K1 failed."
        },
        {
+        "applicability": null,
         "section_id": "m40.3-1.q2",
         "text": "Starter motor failed."
        }
@@ -2848,7 +2884,8 @@
       "must_show": true,
       "rank": 1,
       "section_id": "m40.3.w1",
-      "text": "Stop the pump and remove the start key or lock out the supply before you open any cover. Rotating parts can cause serious injury."
+      "text": "Stop the pump and remove the start key or lock out the supply before you open any cover. Rotating parts can cause serious injury.",
+      "tone": "warning"
      }
     ],
     "level": {
@@ -2878,7 +2915,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T12:34:59.159Z",
+      "at": "2026-11-28T13:32:14.658Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -2889,7 +2926,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T12:34:59.172Z",
+      "at": "2026-11-28T13:32:14.673Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -3056,7 +3093,8 @@
        "must_show": true,
        "rank": 1,
        "section_id": "m40.4-2.w1",
-       "text": "Batteries give off explosive gas. Keep sparks and flames away from the battery."
+       "text": "Batteries give off explosive gas. Keep sparks and flames away from the battery.",
+       "tone": "warning"
       }
      ],
      "proc_id": "proc-battv",
@@ -3186,7 +3224,8 @@
          "must_show": true,
          "rank": 2,
          "section_id": "m40.4-2.c1",
-         "text": "Do not let the meter leads touch each other or the frame while they are on the battery terminals."
+         "text": "Do not let the meter leads touch each other or the frame while they are on the battery terminals.",
+         "tone": "caution"
         }
        ],
        "ord": 2,
@@ -3276,7 +3315,8 @@
          "must_show": true,
          "rank": 3,
          "section_id": "m40.4-2.n1",
-         "text": "A battery that was just charged reads high for about an hour. Wait before you test it."
+         "text": "A battery that was just charged reads high for about an hour. Wait before you test it.",
+         "tone": "note"
         }
        ],
        "ord": 3,
@@ -3308,9 +3348,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-3ee3b1201c928c01596b76adc55beed9",
+    "job_id": "job-276db0142e7aff1cfcf4cf4f7150a887",
     "level": "apprentice",
-    "opened_at": "2026-11-28T12:34:59.150Z",
+    "opened_at": "2026-11-28T13:32:14.650Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -3319,7 +3359,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T12:34:59.159Z",
+      "at": "2026-11-28T13:32:14.658Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -3333,7 +3373,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T12:34:59.172Z",
+      "at": "2026-11-28T13:32:14.673Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -3347,7 +3387,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T12:34:59.184Z",
+      "at": "2026-11-28T13:32:14.686Z",
       "label": "Below 11.5 V",
       "next_node": "nc.2a",
       "node_id": "nc.2",
@@ -3355,13 +3395,13 @@
       "outcome": null,
       "photos": [],
       "seq": 3,
-      "superseded_at": "2026-11-28T12:34:59.192Z",
+      "superseded_at": "2026-11-28T13:32:14.694Z",
       "tree_id": "t-nocrank",
       "unit": "V",
       "value": 10.8
      },
      {
-      "at": "2026-11-28T12:34:59.204Z",
+      "at": "2026-11-28T13:32:14.708Z",
       "label": "12.5 V or more",
       "next_node": "nc.3",
       "node_id": "nc.2",
@@ -3375,7 +3415,7 @@
       "value": 12.7
      },
      {
-      "at": "2026-11-28T12:34:59.212Z",
+      "at": "2026-11-28T13:32:14.718Z",
       "label": "Yes",
       "next_node": "nc.4",
       "node_id": "nc.3",
@@ -3452,6 +3492,7 @@
       "label": "Reason for question",
       "texts": [
        {
+        "applicability": null,
         "section_id": "m40.3-1.q4",
         "text": "A relay that passes the test points to the starter motor."
        }
@@ -3463,6 +3504,7 @@
       "label": "Known info",
       "texts": [
        {
+        "applicability": null,
         "section_id": "m40.3-1.q4",
         "text": "Start signal present at K1."
        }
@@ -3474,10 +3516,12 @@
       "label": "Possible problems",
       "texts": [
        {
+        "applicability": null,
         "section_id": "m40.3-1.q4",
         "text": "Starter relay K1 failed."
        },
        {
+        "applicability": null,
         "section_id": "m40.3-1.q4",
         "text": "Starter motor failed."
        }
@@ -3495,7 +3539,7 @@
       },
       "note_id": "fn-relay-bracket",
       "pack_id": "pump40",
-      "received_at": "2026-11-28T12:34:59.129Z",
+      "received_at": "2026-11-28T13:32:14.625Z",
       "scope": {
        "equip_id": "pump40-diesel",
        "node_id": "nc.4",
@@ -3545,7 +3589,8 @@
       "must_show": true,
       "rank": 1,
       "section_id": "m40.3.w1",
-      "text": "Stop the pump and remove the start key or lock out the supply before you open any cover. Rotating parts can cause serious injury."
+      "text": "Stop the pump and remove the start key or lock out the supply before you open any cover. Rotating parts can cause serious injury.",
+      "tone": "warning"
      },
      {
       "applicability": null,
@@ -3594,7 +3639,8 @@
       "must_show": true,
       "rank": 2,
       "section_id": "m40.3-1.c1",
-      "text": "Do not bridge relay terminals with a bare wire. Use the relay tester only."
+      "text": "Do not bridge relay terminals with a bare wire. Use the relay tester only.",
+      "tone": "caution"
      }
     ],
     "level": {
@@ -3621,7 +3667,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T12:34:59.159Z",
+      "at": "2026-11-28T13:32:14.658Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -3632,7 +3678,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T12:34:59.172Z",
+      "at": "2026-11-28T13:32:14.673Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -3643,7 +3689,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T12:34:59.204Z",
+      "at": "2026-11-28T13:32:14.708Z",
       "label": "12.5 V or more",
       "next_node": "nc.3",
       "node_id": "nc.2",
@@ -3654,7 +3700,7 @@
       "value": 12.7
      },
      {
-      "at": "2026-11-28T12:34:59.212Z",
+      "at": "2026-11-28T13:32:14.718Z",
       "label": "Yes",
       "next_node": "nc.4",
       "node_id": "nc.3",
@@ -3784,9 +3830,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-3ee3b1201c928c01596b76adc55beed9",
+    "job_id": "job-276db0142e7aff1cfcf4cf4f7150a887",
     "level": "apprentice",
-    "opened_at": "2026-11-28T12:34:59.150Z",
+    "opened_at": "2026-11-28T13:32:14.650Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -3795,7 +3841,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T12:34:59.159Z",
+      "at": "2026-11-28T13:32:14.658Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -3809,7 +3855,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T12:34:59.172Z",
+      "at": "2026-11-28T13:32:14.673Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -3823,7 +3869,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T12:34:59.184Z",
+      "at": "2026-11-28T13:32:14.686Z",
       "label": "Below 11.5 V",
       "next_node": "nc.2a",
       "node_id": "nc.2",
@@ -3831,13 +3877,13 @@
       "outcome": null,
       "photos": [],
       "seq": 3,
-      "superseded_at": "2026-11-28T12:34:59.192Z",
+      "superseded_at": "2026-11-28T13:32:14.694Z",
       "tree_id": "t-nocrank",
       "unit": "V",
       "value": 10.8
      },
      {
-      "at": "2026-11-28T12:34:59.204Z",
+      "at": "2026-11-28T13:32:14.708Z",
       "label": "12.5 V or more",
       "next_node": "nc.3",
       "node_id": "nc.2",
@@ -3851,7 +3897,7 @@
       "value": 12.7
      },
      {
-      "at": "2026-11-28T12:34:59.212Z",
+      "at": "2026-11-28T13:32:14.718Z",
       "label": "Yes",
       "next_node": "nc.4",
       "node_id": "nc.3",
@@ -3865,7 +3911,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T12:34:59.220Z",
+      "at": "2026-11-28T13:32:14.728Z",
       "label": "Pass",
       "next_node": "nc.4p",
       "node_id": "nc.4",
@@ -3973,7 +4019,8 @@
       "must_show": true,
       "rank": 1,
       "section_id": "m40.3.w1",
-      "text": "Stop the pump and remove the start key or lock out the supply before you open any cover. Rotating parts can cause serious injury."
+      "text": "Stop the pump and remove the start key or lock out the supply before you open any cover. Rotating parts can cause serious injury.",
+      "tone": "warning"
      },
      {
       "applicability": null,
@@ -4022,7 +4069,8 @@
       "must_show": true,
       "rank": 2,
       "section_id": "m40.3-1.c1",
-      "text": "Do not bridge relay terminals with a bare wire. Use the relay tester only."
+      "text": "Do not bridge relay terminals with a bare wire. Use the relay tester only.",
+      "tone": "caution"
      }
     ],
     "level": {
@@ -4047,7 +4095,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T12:34:59.159Z",
+      "at": "2026-11-28T13:32:14.658Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -4058,7 +4106,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T12:34:59.172Z",
+      "at": "2026-11-28T13:32:14.673Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -4069,7 +4117,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T12:34:59.204Z",
+      "at": "2026-11-28T13:32:14.708Z",
       "label": "12.5 V or more",
       "next_node": "nc.3",
       "node_id": "nc.2",
@@ -4080,7 +4128,7 @@
       "value": 12.7
      },
      {
-      "at": "2026-11-28T12:34:59.212Z",
+      "at": "2026-11-28T13:32:14.718Z",
       "label": "Yes",
       "next_node": "nc.4",
       "node_id": "nc.3",
@@ -4091,7 +4139,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T12:34:59.220Z",
+      "at": "2026-11-28T13:32:14.728Z",
       "label": "Pass",
       "next_node": "nc.4p",
       "node_id": "nc.4",
@@ -4192,9 +4240,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-f5f5c42ab8729d6f25d53f7ad9c0cddb",
+    "job_id": "job-b74fe47028458783cdab33a6a4af6387",
     "level": "apprentice",
-    "opened_at": "2026-11-28T12:34:59.229Z",
+    "opened_at": "2026-11-28T13:32:14.737Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -4203,7 +4251,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T12:34:59.236Z",
+      "at": "2026-11-28T13:32:14.745Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -4217,7 +4265,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T12:34:59.243Z",
+      "at": "2026-11-28T13:32:14.754Z",
       "label": "No",
       "next_node": "nc.1a",
       "node_id": "nc.1",
@@ -4240,9 +4288,9 @@
     "flag": true,
     "matches": [
      {
-      "date": "2026-11-28T12:34:59.150Z",
+      "date": "2026-11-28T13:32:14.650Z",
       "days_before": 0,
-      "job_id": "job-3ee3b1201c928c01596b76adc55beed9",
+      "job_id": "job-276db0142e7aff1cfcf4cf4f7150a887",
       "kind": "job",
       "reason": "same_symptom",
       "symptom_id": "s-nocrank",
@@ -4348,7 +4396,8 @@
       "must_show": true,
       "rank": 1,
       "section_id": "m40.3.w1",
-      "text": "Stop the pump and remove the start key or lock out the supply before you open any cover. Rotating parts can cause serious injury."
+      "text": "Stop the pump and remove the start key or lock out the supply before you open any cover. Rotating parts can cause serious injury.",
+      "tone": "warning"
      }
     ],
     "level": {
@@ -4380,7 +4429,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T12:34:59.236Z",
+      "at": "2026-11-28T13:32:14.745Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -4391,7 +4440,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T12:34:59.243Z",
+      "at": "2026-11-28T13:32:14.754Z",
       "label": "No",
       "next_node": "nc.1a",
       "node_id": "nc.1",
@@ -4523,9 +4572,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-f5f5c42ab8729d6f25d53f7ad9c0cddb",
+    "job_id": "job-b74fe47028458783cdab33a6a4af6387",
     "level": "apprentice",
-    "opened_at": "2026-11-28T12:34:59.229Z",
+    "opened_at": "2026-11-28T13:32:14.737Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -4534,7 +4583,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T12:34:59.236Z",
+      "at": "2026-11-28T13:32:14.745Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -4548,7 +4597,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T12:34:59.243Z",
+      "at": "2026-11-28T13:32:14.754Z",
       "label": "No",
       "next_node": "nc.1a",
       "node_id": "nc.1",
@@ -4562,7 +4611,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T12:34:59.251Z",
+      "at": "2026-11-28T13:32:14.762Z",
       "label": "Cranks",
       "next_node": "nc.end",
       "node_id": "nc.1a",
@@ -4585,9 +4634,9 @@
     "flag": true,
     "matches": [
      {
-      "date": "2026-11-28T12:34:59.150Z",
+      "date": "2026-11-28T13:32:14.650Z",
       "days_before": 0,
-      "job_id": "job-3ee3b1201c928c01596b76adc55beed9",
+      "job_id": "job-276db0142e7aff1cfcf4cf4f7150a887",
       "kind": "job",
       "reason": "same_symptom",
       "symptom_id": "s-nocrank",
@@ -4680,7 +4729,8 @@
       "must_show": true,
       "rank": 1,
       "section_id": "m40.3.w1",
-      "text": "Stop the pump and remove the start key or lock out the supply before you open any cover. Rotating parts can cause serious injury."
+      "text": "Stop the pump and remove the start key or lock out the supply before you open any cover. Rotating parts can cause serious injury.",
+      "tone": "warning"
      }
     ],
     "level": {
@@ -4705,7 +4755,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T12:34:59.236Z",
+      "at": "2026-11-28T13:32:14.745Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -4716,7 +4766,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T12:34:59.243Z",
+      "at": "2026-11-28T13:32:14.754Z",
       "label": "No",
       "next_node": "nc.1a",
       "node_id": "nc.1",
@@ -4727,7 +4777,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T12:34:59.251Z",
+      "at": "2026-11-28T13:32:14.762Z",
       "label": "Cranks",
       "next_node": "nc.end",
       "node_id": "nc.1a",
@@ -4830,9 +4880,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-b70ec92cba74e60f9ebfe605b72eed6e",
+    "job_id": "job-b8de323ce9dd47307e5b042b8be68cf1",
     "level": "apprentice",
-    "opened_at": "2026-11-28T12:34:59.258Z",
+    "opened_at": "2026-11-28T13:32:14.771Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -4841,7 +4891,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T12:34:59.265Z",
+      "at": "2026-11-28T13:32:14.779Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -4855,7 +4905,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T12:34:59.272Z",
+      "at": "2026-11-28T13:32:14.789Z",
       "label": "No",
       "next_node": "nc.1a",
       "node_id": "nc.1",
@@ -4869,7 +4919,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T12:34:59.279Z",
+      "at": "2026-11-28T13:32:14.797Z",
       "label": "Temperature lamp on",
       "next_node": "nc.1g",
       "node_id": "nc.1a",
@@ -4892,18 +4942,18 @@
     "flag": true,
     "matches": [
      {
-      "date": "2026-11-28T12:34:59.229Z",
+      "date": "2026-11-28T13:32:14.737Z",
       "days_before": 0,
-      "job_id": "job-f5f5c42ab8729d6f25d53f7ad9c0cddb",
+      "job_id": "job-b74fe47028458783cdab33a6a4af6387",
       "kind": "job",
       "reason": "same_symptom",
       "symptom_id": "s-nocrank",
       "system": "starting"
      },
      {
-      "date": "2026-11-28T12:34:59.150Z",
+      "date": "2026-11-28T13:32:14.650Z",
       "days_before": 0,
-      "job_id": "job-3ee3b1201c928c01596b76adc55beed9",
+      "job_id": "job-276db0142e7aff1cfcf4cf4f7150a887",
       "kind": "job",
       "reason": "same_symptom",
       "symptom_id": "s-nocrank",
@@ -5009,7 +5059,8 @@
       "must_show": true,
       "rank": 1,
       "section_id": "m40.3.w1",
-      "text": "Stop the pump and remove the start key or lock out the supply before you open any cover. Rotating parts can cause serious injury."
+      "text": "Stop the pump and remove the start key or lock out the supply before you open any cover. Rotating parts can cause serious injury.",
+      "tone": "warning"
      }
     ],
     "level": {
@@ -5038,7 +5089,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T12:34:59.265Z",
+      "at": "2026-11-28T13:32:14.779Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -5049,7 +5100,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T12:34:59.272Z",
+      "at": "2026-11-28T13:32:14.789Z",
       "label": "No",
       "next_node": "nc.1a",
       "node_id": "nc.1",
@@ -5060,7 +5111,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T12:34:59.279Z",
+      "at": "2026-11-28T13:32:14.797Z",
       "label": "Temperature lamp on",
       "next_node": "nc.1g",
       "node_id": "nc.1a",
@@ -5170,9 +5221,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-b70ec92cba74e60f9ebfe605b72eed6e",
+    "job_id": "job-b8de323ce9dd47307e5b042b8be68cf1",
     "level": "apprentice",
-    "opened_at": "2026-11-28T12:34:59.258Z",
+    "opened_at": "2026-11-28T13:32:14.771Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -5181,7 +5232,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T12:34:59.265Z",
+      "at": "2026-11-28T13:32:14.779Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -5195,7 +5246,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T12:34:59.272Z",
+      "at": "2026-11-28T13:32:14.789Z",
       "label": "No",
       "next_node": "nc.1a",
       "node_id": "nc.1",
@@ -5209,7 +5260,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T12:34:59.279Z",
+      "at": "2026-11-28T13:32:14.797Z",
       "label": "Temperature lamp on",
       "next_node": "nc.1g",
       "node_id": "nc.1a",
@@ -5223,7 +5274,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T12:34:59.287Z",
+      "at": "2026-11-28T13:32:14.806Z",
       "label": "Go to Pump overheats",
       "next_node": "oh.1",
       "node_id": "nc.1g",
@@ -5246,18 +5297,18 @@
     "flag": true,
     "matches": [
      {
-      "date": "2026-11-28T12:34:59.229Z",
+      "date": "2026-11-28T13:32:14.737Z",
       "days_before": 0,
-      "job_id": "job-f5f5c42ab8729d6f25d53f7ad9c0cddb",
+      "job_id": "job-b74fe47028458783cdab33a6a4af6387",
       "kind": "job",
       "reason": "same_symptom",
       "symptom_id": "s-nocrank",
       "system": "starting"
      },
      {
-      "date": "2026-11-28T12:34:59.150Z",
+      "date": "2026-11-28T13:32:14.650Z",
       "days_before": 0,
-      "job_id": "job-3ee3b1201c928c01596b76adc55beed9",
+      "job_id": "job-276db0142e7aff1cfcf4cf4f7150a887",
       "kind": "job",
       "reason": "same_symptom",
       "symptom_id": "s-nocrank",
@@ -5308,6 +5359,7 @@
       "label": "Reason for question",
       "texts": [
        {
+        "applicability": null,
         "section_id": "m40.3-2.q1",
         "text": "A blocked strainer starves the pump and it heats up."
        }
@@ -5319,14 +5371,17 @@
       "label": "Possible problems",
       "texts": [
        {
+        "applicability": null,
         "section_id": "m40.3-2.q1",
         "text": "Intake strainer blocked."
        },
        {
+        "applicability": null,
         "section_id": "m40.3-2.q1",
         "text": "Cooling fan belt loose or broken."
        },
        {
+        "applicability": null,
         "section_id": "m40.3-2.q1",
         "text": "Internal cooling fault."
        }
@@ -5344,7 +5399,7 @@
       },
       "note_id": "fn-strainer-silt",
       "pack_id": "pump40",
-      "received_at": "2026-11-28T12:34:59.129Z",
+      "received_at": "2026-11-28T13:32:14.625Z",
       "scope": {
        "equip_id": null,
        "node_id": null,
@@ -5394,7 +5449,8 @@
       "must_show": true,
       "rank": 1,
       "section_id": "m40.3.w1",
-      "text": "Stop the pump and remove the start key or lock out the supply before you open any cover. Rotating parts can cause serious injury."
+      "text": "Stop the pump and remove the start key or lock out the supply before you open any cover. Rotating parts can cause serious injury.",
+      "tone": "warning"
      },
      {
       "applicability": null,
@@ -5438,7 +5494,8 @@
       "must_show": true,
       "rank": 1,
       "section_id": "m40.3-2.w1",
-      "text": "Do not open the radiator cap while the engine is hot. Hot coolant can cause burns."
+      "text": "Do not open the radiator cap while the engine is hot. Hot coolant can cause burns.",
+      "tone": "warning"
      }
     ],
     "level": {
@@ -5465,7 +5522,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T12:34:59.265Z",
+      "at": "2026-11-28T13:32:14.779Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -5476,7 +5533,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T12:34:59.272Z",
+      "at": "2026-11-28T13:32:14.789Z",
       "label": "No",
       "next_node": "nc.1a",
       "node_id": "nc.1",
@@ -5487,7 +5544,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T12:34:59.279Z",
+      "at": "2026-11-28T13:32:14.797Z",
       "label": "Temperature lamp on",
       "next_node": "nc.1g",
       "node_id": "nc.1a",
@@ -5498,7 +5555,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T12:34:59.287Z",
+      "at": "2026-11-28T13:32:14.806Z",
       "label": "Go to Pump overheats",
       "next_node": "oh.1",
       "node_id": "nc.1g",
@@ -5559,9 +5616,9 @@
     "entered_by": "symptom",
     "entry_node": "oh.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-098b406784e874bb3a9c951e6751bf0a",
+    "job_id": "job-d8dea2bb609c317a3f9d1ff897ed05df",
     "level": "apprentice",
-    "opened_at": "2026-11-28T12:34:59.294Z",
+    "opened_at": "2026-11-28T13:32:14.816Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -5570,7 +5627,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T12:34:59.300Z",
+      "at": "2026-11-28T13:32:14.821Z",
       "label": "Continue",
       "next_node": "oh.1",
       "node_id": "oh.0",
@@ -5584,7 +5641,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T12:34:59.305Z",
+      "at": "2026-11-28T13:32:14.828Z",
       "label": "Yes",
       "next_node": "oh.2",
       "node_id": "oh.1",
@@ -5650,10 +5707,12 @@
       "label": "Possible problems",
       "texts": [
        {
+        "applicability": null,
         "section_id": "m40.3-2.q2",
         "text": "Cooling fan belt loose or broken."
        },
        {
+        "applicability": null,
         "section_id": "m40.3-2.q2",
         "text": "Internal cooling fault."
        }
@@ -5671,7 +5730,7 @@
       },
       "note_id": "fn-strainer-silt",
       "pack_id": "pump40",
-      "received_at": "2026-11-28T12:34:59.129Z",
+      "received_at": "2026-11-28T13:32:14.625Z",
       "scope": {
        "equip_id": null,
        "node_id": null,
@@ -5721,7 +5780,8 @@
       "must_show": true,
       "rank": 1,
       "section_id": "m40.3.w1",
-      "text": "Stop the pump and remove the start key or lock out the supply before you open any cover. Rotating parts can cause serious injury."
+      "text": "Stop the pump and remove the start key or lock out the supply before you open any cover. Rotating parts can cause serious injury.",
+      "tone": "warning"
      },
      {
       "applicability": null,
@@ -5765,7 +5825,8 @@
       "must_show": true,
       "rank": 1,
       "section_id": "m40.3-2.w1",
-      "text": "Do not open the radiator cap while the engine is hot. Hot coolant can cause burns."
+      "text": "Do not open the radiator cap while the engine is hot. Hot coolant can cause burns.",
+      "tone": "warning"
      }
     ],
     "level": {
@@ -5797,7 +5858,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T12:34:59.300Z",
+      "at": "2026-11-28T13:32:14.821Z",
       "label": "Continue",
       "next_node": "oh.1",
       "node_id": "oh.0",
@@ -5808,7 +5869,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T12:34:59.305Z",
+      "at": "2026-11-28T13:32:14.828Z",
       "label": "Yes",
       "next_node": "oh.2",
       "node_id": "oh.1",
@@ -6274,7 +6335,8 @@
       "must_show": true,
       "rank": 2,
       "section_id": "m40.4-3.c1",
-      "text": "Disconnect the negative cable first to prevent a short circuit."
+      "text": "Disconnect the negative cable first to prevent a short circuit.",
+      "tone": "caution"
      }
     ],
     "ord": 2,
@@ -6364,7 +6426,8 @@
       "must_show": true,
       "rank": 1,
       "section_id": "m40.4-3.w1",
-      "text": "The battery weighs 28 kg. Use two people and the lifting strap to lift it."
+      "text": "The battery weighs 28 kg. Use two people and the lifting strap to lift it.",
+      "tone": "warning"
      }
     ],
     "ord": 3,
@@ -6475,8 +6538,8 @@
   "pack_version": "2026.1.1-1",
   "proc_id": "proc-battery",
   "role": "apprentice",
-  "run_id": "run-bf1e0594c2e509ee89bbdff5e7449c4b",
-  "started_at": "2026-11-28T12:34:59.318Z",
+  "run_id": "run-badbf2c04449e263416489702bf588ff",
+  "started_at": "2026-11-28T13:32:14.845Z",
   "status": "open",
   "steps": [
    {
@@ -6485,7 +6548,7 @@
     "ord": 1,
     "outcome": "pass",
     "photos": [],
-    "recorded_at": "2026-11-28T12:34:59.319Z",
+    "recorded_at": "2026-11-28T13:32:14.846Z",
     "structured": null,
     "value": null
    },
@@ -6495,7 +6558,7 @@
     "ord": 2,
     "outcome": "pass",
     "photos": [],
-    "recorded_at": "2026-11-28T12:34:59.320Z",
+    "recorded_at": "2026-11-28T13:32:14.847Z",
     "structured": null,
     "value": null
    }
@@ -6883,14 +6946,14 @@
  "closed": {
   "job": {
    "asset_id": "unit-101",
-   "closed_at": "2026-11-28T12:34:59.349Z",
+   "closed_at": "2026-11-28T13:32:14.877Z",
    "current_node": "nc.end",
    "entered_by": "symptom",
    "entry_node": "nc.0",
    "equip_id": "pump40-diesel",
-   "job_id": "job-f5f5c42ab8729d6f25d53f7ad9c0cddb",
+   "job_id": "job-b74fe47028458783cdab33a6a4af6387",
    "level": "apprentice",
-   "opened_at": "2026-11-28T12:34:59.229Z",
+   "opened_at": "2026-11-28T13:32:14.737Z",
    "pack_id": "pump40",
    "pack_version": "2026.1.1-1",
    "query": null,
@@ -6903,7 +6966,7 @@
    "status": "closed",
    "steps": [
     {
-     "at": "2026-11-28T12:34:59.236Z",
+     "at": "2026-11-28T13:32:14.745Z",
      "label": "Continue",
      "next_node": "nc.1",
      "node_id": "nc.0",
@@ -6917,7 +6980,7 @@
      "value": null
     },
     {
-     "at": "2026-11-28T12:34:59.243Z",
+     "at": "2026-11-28T13:32:14.754Z",
      "label": "No",
      "next_node": "nc.1a",
      "node_id": "nc.1",
@@ -6931,7 +6994,7 @@
      "value": null
     },
     {
-     "at": "2026-11-28T12:34:59.251Z",
+     "at": "2026-11-28T13:32:14.762Z",
      "label": "Cranks",
      "next_node": "nc.end",
      "node_id": "nc.1a",
@@ -6953,10 +7016,10 @@
    "action": "Replaced fuse F2",
    "asset_id": "unit-101",
    "cause": "Start fuse F2 blown",
-   "created_at": "2026-11-28T12:34:59.350Z",
+   "created_at": "2026-11-28T13:32:14.877Z",
    "equip_id": "pump40-diesel",
-   "job_id": "job-f5f5c42ab8729d6f25d53f7ad9c0cddb",
-   "lesson_id": "lesson-0438f687f1df212799d15d29b8e7f6f0",
+   "job_id": "job-b74fe47028458783cdab33a6a4af6387",
+   "lesson_id": "lesson-df2ab7431aa3adc89ad78f5ef46b75c5",
    "level": "apprentice",
    "minutes": 20,
    "node_id": "nc.end",
@@ -6975,22 +7038,22 @@
    "status": "queued",
    "symptom_id": "s-nocrank",
    "tree_id": "t-nocrank",
-   "updated_at": "2026-11-28T12:34:59.350Z"
+   "updated_at": "2026-11-28T13:32:14.877Z"
   }
  },
  "jobReport": {
   "asset_id": "unit-101",
-  "closed_at": "2026-11-28T12:34:59.349Z",
+  "closed_at": "2026-11-28T13:32:14.877Z",
   "entered_by": "symptom",
   "entry_node": "nc.0",
   "equip_id": "pump40-diesel",
   "format": "harvest-job/1",
-  "job_id": "job-f5f5c42ab8729d6f25d53f7ad9c0cddb",
+  "job_id": "job-b74fe47028458783cdab33a6a4af6387",
   "lesson_ids": [
-   "lesson-0438f687f1df212799d15d29b8e7f6f0"
+   "lesson-df2ab7431aa3adc89ad78f5ef46b75c5"
   ],
   "level": "apprentice",
-  "opened_at": "2026-11-28T12:34:59.229Z",
+  "opened_at": "2026-11-28T13:32:14.737Z",
   "pack_id": "pump40",
   "pack_version": "2026.1.1-1",
   "query": null,
@@ -7004,7 +7067,7 @@
   "status": "closed",
   "steps": [
    {
-    "at": "2026-11-28T12:34:59.236Z",
+    "at": "2026-11-28T13:32:14.745Z",
     "label": "Continue",
     "next_node": "nc.1",
     "node_id": "nc.0",
@@ -7019,7 +7082,7 @@
     "value": null
    },
    {
-    "at": "2026-11-28T12:34:59.243Z",
+    "at": "2026-11-28T13:32:14.754Z",
     "label": "No",
     "next_node": "nc.1a",
     "node_id": "nc.1",
@@ -7034,7 +7097,7 @@
     "value": null
    },
    {
-    "at": "2026-11-28T12:34:59.251Z",
+    "at": "2026-11-28T13:32:14.762Z",
     "label": "Cranks",
     "next_node": "nc.end",
     "node_id": "nc.1a",
@@ -7061,8 +7124,8 @@
    "closed_at": null,
    "current_node": "oh.2",
    "equip_id": "pump40-diesel",
-   "job_id": "job-098b406784e874bb3a9c951e6751bf0a",
-   "opened_at": "2026-11-28T12:34:59.294Z",
+   "job_id": "job-d8dea2bb609c317a3f9d1ff897ed05df",
+   "opened_at": "2026-11-28T13:32:14.816Z",
    "pack_id": "pump40",
    "resolution": null,
    "status": "open",
@@ -7076,8 +7139,8 @@
    "closed_at": null,
    "current_node": "oh.1",
    "equip_id": "pump40-diesel",
-   "job_id": "job-b70ec92cba74e60f9ebfe605b72eed6e",
-   "opened_at": "2026-11-28T12:34:59.258Z",
+   "job_id": "job-b8de323ce9dd47307e5b042b8be68cf1",
+   "opened_at": "2026-11-28T13:32:14.771Z",
    "pack_id": "pump40",
    "resolution": null,
    "status": "open",
@@ -7088,11 +7151,11 @@
   },
   {
    "asset_id": "unit-101",
-   "closed_at": "2026-11-28T12:34:59.349Z",
+   "closed_at": "2026-11-28T13:32:14.877Z",
    "current_node": "nc.end",
    "equip_id": "pump40-diesel",
-   "job_id": "job-f5f5c42ab8729d6f25d53f7ad9c0cddb",
-   "opened_at": "2026-11-28T12:34:59.229Z",
+   "job_id": "job-b74fe47028458783cdab33a6a4af6387",
+   "opened_at": "2026-11-28T13:32:14.737Z",
    "pack_id": "pump40",
    "resolution": "fixed",
    "status": "closed",
@@ -7106,8 +7169,8 @@
    "closed_at": null,
    "current_node": "nc.4p",
    "equip_id": "pump40-diesel",
-   "job_id": "job-3ee3b1201c928c01596b76adc55beed9",
-   "opened_at": "2026-11-28T12:34:59.150Z",
+   "job_id": "job-276db0142e7aff1cfcf4cf4f7150a887",
+   "opened_at": "2026-11-28T13:32:14.650Z",
    "pack_id": "pump40",
    "resolution": null,
    "status": "open",
@@ -7319,7 +7382,8 @@
     "must_show": true,
     "rank": 1,
     "section_id": "m40.3.w1",
-    "text": "Stop the pump and remove the start key or lock out the supply before you open any cover. Rotating parts can cause serious injury."
+    "text": "Stop the pump and remove the start key or lock out the supply before you open any cover. Rotating parts can cause serious injury.",
+    "tone": "warning"
    }
   ],
   "loc": {
@@ -8041,7 +8105,7 @@
    },
    "note_id": "fn-relay-bracket",
    "pack_id": "pump40",
-   "received_at": "2026-11-28T12:34:59.129Z",
+   "received_at": "2026-11-28T13:32:14.625Z",
    "scope": {
     "equip_id": "pump40-diesel",
     "node_id": "nc.4",
@@ -8064,7 +8128,7 @@
    },
    "note_id": "fn-strainer-silt",
    "pack_id": "pump40",
-   "received_at": "2026-11-28T12:34:59.129Z",
+   "received_at": "2026-11-28T13:32:14.625Z",
    "scope": {
     "equip_id": null,
     "node_id": null,
@@ -9568,7 +9632,7 @@
   "values": [
    {
     "attr": "firmware",
-    "set_at": "2026-11-28T12:34:59.402Z",
+    "set_at": "2026-11-28T13:32:14.930Z",
     "source": "typed",
     "value": "2.6"
    }
@@ -9598,13 +9662,13 @@
   "values": [
    {
     "attr": "firmware",
-    "set_at": "2026-11-28T12:34:59.402Z",
+    "set_at": "2026-11-28T13:32:14.930Z",
     "source": "typed",
     "value": "2.6"
    },
    {
     "attr": "serial",
-    "set_at": "2026-11-28T12:34:59.408Z",
+    "set_at": "2026-11-28T13:32:14.936Z",
     "source": "plate",
     "value": "P40D-2310"
    }
@@ -9634,19 +9698,19 @@
   "values": [
    {
     "attr": "firmware",
-    "set_at": "2026-11-28T12:34:59.402Z",
+    "set_at": "2026-11-28T13:32:14.930Z",
     "source": "typed",
     "value": "2.6"
    },
    {
     "attr": "sb_40_07",
-    "set_at": "2026-11-28T12:34:59.409Z",
+    "set_at": "2026-11-28T13:32:14.937Z",
     "source": "typed",
     "value": "incorporated"
    },
    {
     "attr": "serial",
-    "set_at": "2026-11-28T12:34:59.408Z",
+    "set_at": "2026-11-28T13:32:14.936Z",
     "source": "plate",
     "value": "P40D-2310"
    }
@@ -9660,7 +9724,7 @@
    "ord": 1,
    "outcome": "fail",
    "photos": [],
-   "recorded_at": "2026-11-28T12:34:59.415Z",
+   "recorded_at": "2026-11-28T13:32:14.944Z",
    "structured": null,
    "value": null
   }
@@ -9671,13 +9735,13 @@
    "attrs": {
     "location": "North yard"
    },
-   "created_at": "2026-11-28T12:34:59.123Z",
+   "created_at": "2026-11-28T13:32:14.620Z",
    "equip_id": "pump40-diesel",
    "hours": 1840.5,
    "miles": null,
    "name": "Pump 101",
    "serial": "P40D-2310",
-   "updated_at": "2026-11-28T12:34:59.123Z"
+   "updated_at": "2026-11-28T13:32:14.620Z"
   },
   "events": [
    {
@@ -9743,8 +9807,8 @@
     "closed_at": null,
     "current_node": "oh.2",
     "equip_id": "pump40-diesel",
-    "job_id": "job-098b406784e874bb3a9c951e6751bf0a",
-    "opened_at": "2026-11-28T12:34:59.294Z",
+    "job_id": "job-d8dea2bb609c317a3f9d1ff897ed05df",
+    "opened_at": "2026-11-28T13:32:14.816Z",
     "pack_id": "pump40",
     "repeat": {
      "flag": false,
@@ -9763,25 +9827,25 @@
     "closed_at": null,
     "current_node": "oh.1",
     "equip_id": "pump40-diesel",
-    "job_id": "job-b70ec92cba74e60f9ebfe605b72eed6e",
-    "opened_at": "2026-11-28T12:34:59.258Z",
+    "job_id": "job-b8de323ce9dd47307e5b042b8be68cf1",
+    "opened_at": "2026-11-28T13:32:14.771Z",
     "pack_id": "pump40",
     "repeat": {
      "flag": true,
      "matches": [
       {
-       "date": "2026-11-28T12:34:59.229Z",
+       "date": "2026-11-28T13:32:14.737Z",
        "days_before": 0,
-       "job_id": "job-f5f5c42ab8729d6f25d53f7ad9c0cddb",
+       "job_id": "job-b74fe47028458783cdab33a6a4af6387",
        "kind": "job",
        "reason": "same_symptom",
        "symptom_id": "s-nocrank",
        "system": "starting"
       },
       {
-       "date": "2026-11-28T12:34:59.150Z",
+       "date": "2026-11-28T13:32:14.650Z",
        "days_before": 0,
-       "job_id": "job-3ee3b1201c928c01596b76adc55beed9",
+       "job_id": "job-276db0142e7aff1cfcf4cf4f7150a887",
        "kind": "job",
        "reason": "same_symptom",
        "symptom_id": "s-nocrank",
@@ -9799,19 +9863,19 @@
    },
    {
     "asset_id": "unit-101",
-    "closed_at": "2026-11-28T12:34:59.349Z",
+    "closed_at": "2026-11-28T13:32:14.877Z",
     "current_node": "nc.end",
     "equip_id": "pump40-diesel",
-    "job_id": "job-f5f5c42ab8729d6f25d53f7ad9c0cddb",
-    "opened_at": "2026-11-28T12:34:59.229Z",
+    "job_id": "job-b74fe47028458783cdab33a6a4af6387",
+    "opened_at": "2026-11-28T13:32:14.737Z",
     "pack_id": "pump40",
     "repeat": {
      "flag": true,
      "matches": [
       {
-       "date": "2026-11-28T12:34:59.150Z",
+       "date": "2026-11-28T13:32:14.650Z",
        "days_before": 0,
-       "job_id": "job-3ee3b1201c928c01596b76adc55beed9",
+       "job_id": "job-276db0142e7aff1cfcf4cf4f7150a887",
        "kind": "job",
        "reason": "same_symptom",
        "symptom_id": "s-nocrank",
@@ -9832,8 +9896,8 @@
     "closed_at": null,
     "current_node": "nc.4p",
     "equip_id": "pump40-diesel",
-    "job_id": "job-3ee3b1201c928c01596b76adc55beed9",
-    "opened_at": "2026-11-28T12:34:59.150Z",
+    "job_id": "job-276db0142e7aff1cfcf4cf4f7150a887",
+    "opened_at": "2026-11-28T13:32:14.650Z",
     "pack_id": "pump40",
     "repeat": {
      "flag": false,
@@ -9855,10 +9919,10 @@
    "action": "Replaced fuse F2",
    "asset_id": "unit-101",
    "cause": "Start fuse F2 blown",
-   "created_at": "2026-11-28T12:34:59.350Z",
+   "created_at": "2026-11-28T13:32:14.877Z",
    "equip_id": "pump40-diesel",
-   "job_id": "job-f5f5c42ab8729d6f25d53f7ad9c0cddb",
-   "lesson_id": "lesson-0438f687f1df212799d15d29b8e7f6f0",
+   "job_id": "job-b74fe47028458783cdab33a6a4af6387",
+   "lesson_id": "lesson-df2ab7431aa3adc89ad78f5ef46b75c5",
    "level": "apprentice",
    "minutes": 20,
    "node_id": "nc.end",
@@ -9877,7 +9941,7 @@
    "status": "queued",
    "symptom_id": "s-nocrank",
    "tree_id": "t-nocrank",
-   "updated_at": "2026-11-28T12:34:59.350Z"
+   "updated_at": "2026-11-28T13:32:14.877Z"
   }
  ],
  "outbox": {
@@ -9929,7 +9993,7 @@
     "pack_version": null,
     "result": null,
     "subject": "harvest-assets/1",
-    "ts": "2026-11-28T12:34:59.124Z"
+    "ts": "2026-11-28T13:32:14.620Z"
    },
    "seq": 1,
    "type": "event"
@@ -9952,7 +10016,7 @@
     "pack_version": null,
     "result": null,
     "subject": "pump40-fleet",
-    "ts": "2026-11-28T12:34:59.130Z"
+    "ts": "2026-11-28T13:32:14.625Z"
    },
    "seq": 2,
    "type": "event"
@@ -9974,8 +10038,8 @@
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "result": null,
-    "subject": "job-3ee3b1201c928c01596b76adc55beed9",
-    "ts": "2026-11-28T12:34:59.151Z"
+    "subject": "job-276db0142e7aff1cfcf4cf4f7150a887",
+    "ts": "2026-11-28T13:32:14.651Z"
    },
    "seq": 3,
    "type": "event"
@@ -9998,8 +10062,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-3ee3b1201c928c01596b76adc55beed9",
-    "ts": "2026-11-28T12:34:59.159Z"
+    "subject": "job-276db0142e7aff1cfcf4cf4f7150a887",
+    "ts": "2026-11-28T13:32:14.658Z"
    },
    "seq": 4,
    "type": "event"
@@ -10022,8 +10086,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-3ee3b1201c928c01596b76adc55beed9",
-    "ts": "2026-11-28T12:34:59.172Z"
+    "subject": "job-276db0142e7aff1cfcf4cf4f7150a887",
+    "ts": "2026-11-28T13:32:14.673Z"
    },
    "seq": 5,
    "type": "event"
@@ -10046,8 +10110,8 @@
      "unit": "V",
      "value": 10.8
     },
-    "subject": "job-3ee3b1201c928c01596b76adc55beed9",
-    "ts": "2026-11-28T12:34:59.184Z"
+    "subject": "job-276db0142e7aff1cfcf4cf4f7150a887",
+    "ts": "2026-11-28T13:32:14.687Z"
    },
    "seq": 6,
    "type": "event"
@@ -10068,8 +10132,8 @@
      "unit": "V",
      "value": 10.8
     },
-    "subject": "job-3ee3b1201c928c01596b76adc55beed9",
-    "ts": "2026-11-28T12:34:59.192Z"
+    "subject": "job-276db0142e7aff1cfcf4cf4f7150a887",
+    "ts": "2026-11-28T13:32:14.694Z"
    },
    "seq": 7,
    "type": "event"
@@ -10092,8 +10156,8 @@
      "unit": "V",
      "value": 12.7
     },
-    "subject": "job-3ee3b1201c928c01596b76adc55beed9",
-    "ts": "2026-11-28T12:34:59.204Z"
+    "subject": "job-276db0142e7aff1cfcf4cf4f7150a887",
+    "ts": "2026-11-28T13:32:14.708Z"
    },
    "seq": 8,
    "type": "event"
@@ -10116,8 +10180,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-3ee3b1201c928c01596b76adc55beed9",
-    "ts": "2026-11-28T12:34:59.212Z"
+    "subject": "job-276db0142e7aff1cfcf4cf4f7150a887",
+    "ts": "2026-11-28T13:32:14.718Z"
    },
    "seq": 9,
    "type": "event"
@@ -10140,8 +10204,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-3ee3b1201c928c01596b76adc55beed9",
-    "ts": "2026-11-28T12:34:59.221Z"
+    "subject": "job-276db0142e7aff1cfcf4cf4f7150a887",
+    "ts": "2026-11-28T13:32:14.728Z"
    },
    "seq": 10,
    "type": "event"
@@ -10163,8 +10227,8 @@
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "result": null,
-    "subject": "job-f5f5c42ab8729d6f25d53f7ad9c0cddb",
-    "ts": "2026-11-28T12:34:59.229Z"
+    "subject": "job-b74fe47028458783cdab33a6a4af6387",
+    "ts": "2026-11-28T13:32:14.738Z"
    },
    "seq": 11,
    "type": "event"
@@ -10187,8 +10251,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-f5f5c42ab8729d6f25d53f7ad9c0cddb",
-    "ts": "2026-11-28T12:34:59.236Z"
+    "subject": "job-b74fe47028458783cdab33a6a4af6387",
+    "ts": "2026-11-28T13:32:14.745Z"
    },
    "seq": 12,
    "type": "event"
@@ -10211,8 +10275,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-f5f5c42ab8729d6f25d53f7ad9c0cddb",
-    "ts": "2026-11-28T12:34:59.243Z"
+    "subject": "job-b74fe47028458783cdab33a6a4af6387",
+    "ts": "2026-11-28T13:32:14.754Z"
    },
    "seq": 13,
    "type": "event"
@@ -10235,8 +10299,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-f5f5c42ab8729d6f25d53f7ad9c0cddb",
-    "ts": "2026-11-28T12:34:59.251Z"
+    "subject": "job-b74fe47028458783cdab33a6a4af6387",
+    "ts": "2026-11-28T13:32:14.762Z"
    },
    "seq": 14,
    "type": "event"
@@ -10258,8 +10322,8 @@
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "result": null,
-    "subject": "job-b70ec92cba74e60f9ebfe605b72eed6e",
-    "ts": "2026-11-28T12:34:59.258Z"
+    "subject": "job-b8de323ce9dd47307e5b042b8be68cf1",
+    "ts": "2026-11-28T13:32:14.772Z"
    },
    "seq": 15,
    "type": "event"
@@ -10282,8 +10346,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-b70ec92cba74e60f9ebfe605b72eed6e",
-    "ts": "2026-11-28T12:34:59.265Z"
+    "subject": "job-b8de323ce9dd47307e5b042b8be68cf1",
+    "ts": "2026-11-28T13:32:14.779Z"
    },
    "seq": 16,
    "type": "event"
@@ -10306,8 +10370,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-b70ec92cba74e60f9ebfe605b72eed6e",
-    "ts": "2026-11-28T12:34:59.272Z"
+    "subject": "job-b8de323ce9dd47307e5b042b8be68cf1",
+    "ts": "2026-11-28T13:32:14.789Z"
    },
    "seq": 17,
    "type": "event"
@@ -10330,8 +10394,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-b70ec92cba74e60f9ebfe605b72eed6e",
-    "ts": "2026-11-28T12:34:59.279Z"
+    "subject": "job-b8de323ce9dd47307e5b042b8be68cf1",
+    "ts": "2026-11-28T13:32:14.797Z"
    },
    "seq": 18,
    "type": "event"
@@ -10350,8 +10414,8 @@
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "result": null,
-    "subject": "job-b70ec92cba74e60f9ebfe605b72eed6e",
-    "ts": "2026-11-28T12:34:59.288Z"
+    "subject": "job-b8de323ce9dd47307e5b042b8be68cf1",
+    "ts": "2026-11-28T13:32:14.807Z"
    },
    "seq": 19,
    "type": "event"
@@ -10373,8 +10437,8 @@
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "result": null,
-    "subject": "job-098b406784e874bb3a9c951e6751bf0a",
-    "ts": "2026-11-28T12:34:59.295Z"
+    "subject": "job-d8dea2bb609c317a3f9d1ff897ed05df",
+    "ts": "2026-11-28T13:32:14.816Z"
    },
    "seq": 20,
    "type": "event"
@@ -10397,8 +10461,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-098b406784e874bb3a9c951e6751bf0a",
-    "ts": "2026-11-28T12:34:59.300Z"
+    "subject": "job-d8dea2bb609c317a3f9d1ff897ed05df",
+    "ts": "2026-11-28T13:32:14.822Z"
    },
    "seq": 21,
    "type": "event"
@@ -10421,8 +10485,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-098b406784e874bb3a9c951e6751bf0a",
-    "ts": "2026-11-28T12:34:59.305Z"
+    "subject": "job-d8dea2bb609c317a3f9d1ff897ed05df",
+    "ts": "2026-11-28T13:32:14.828Z"
    },
    "seq": 22,
    "type": "event"
@@ -10504,7 +10568,7 @@
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": "How do I check fuse F2?",
-    "ts": "2026-11-28T12:34:59.337Z",
+    "ts": "2026-11-28T13:32:14.864Z",
     "verdict": "supported"
    },
    "seq": 23,
@@ -10585,7 +10649,7 @@
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": "What colour is the paint?",
-    "ts": "2026-11-28T12:34:59.348Z",
+    "ts": "2026-11-28T13:32:14.875Z",
     "verdict": "declined"
    },
    "seq": 24,
@@ -10595,7 +10659,7 @@
    "event": {
     "asked": null,
     "detail": {
-     "job_id": "job-f5f5c42ab8729d6f25d53f7ad9c0cddb",
+     "job_id": "job-b74fe47028458783cdab33a6a4af6387",
      "submit": true
     },
     "event": "lesson.create",
@@ -10604,8 +10668,8 @@
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "result": null,
-    "subject": "lesson-0438f687f1df212799d15d29b8e7f6f0",
-    "ts": "2026-11-28T12:34:59.350Z"
+    "subject": "lesson-df2ab7431aa3adc89ad78f5ef46b75c5",
+    "ts": "2026-11-28T13:32:14.877Z"
    },
    "seq": 25,
    "type": "event"
@@ -10614,7 +10678,7 @@
    "event": {
     "asked": null,
     "detail": {
-     "lesson_id": "lesson-0438f687f1df212799d15d29b8e7f6f0"
+     "lesson_id": "lesson-df2ab7431aa3adc89ad78f5ef46b75c5"
     },
     "event": "job.close",
     "next_node": null,
@@ -10626,8 +10690,8 @@
      "node_id": "nc.end",
      "note": null
     },
-    "subject": "job-f5f5c42ab8729d6f25d53f7ad9c0cddb",
-    "ts": "2026-11-28T12:34:59.352Z"
+    "subject": "job-b74fe47028458783cdab33a6a4af6387",
+    "ts": "2026-11-28T13:32:14.879Z"
    },
    "seq": 26,
    "type": "event"
@@ -10648,7 +10712,7 @@
     "pack_version": null,
     "result": null,
     "subject": "unit-101",
-    "ts": "2026-11-28T12:34:59.403Z"
+    "ts": "2026-11-28T13:32:14.930Z"
    },
    "seq": 27,
    "type": "event"
@@ -10669,7 +10733,7 @@
     "pack_version": null,
     "result": null,
     "subject": "unit-101",
-    "ts": "2026-11-28T12:34:59.409Z"
+    "ts": "2026-11-28T13:32:14.936Z"
    },
    "seq": 28,
    "type": "event"
@@ -10690,7 +10754,7 @@
     "pack_version": null,
     "result": null,
     "subject": "unit-101",
-    "ts": "2026-11-28T12:34:59.410Z"
+    "ts": "2026-11-28T13:32:14.937Z"
    },
    "seq": 29,
    "type": "event"
@@ -10712,7 +10776,7 @@
     "pack_version": null,
     "result": null,
     "subject": "unit-101",
-    "ts": "2026-11-28T12:34:59.413Z"
+    "ts": "2026-11-28T13:32:14.941Z"
    },
    "seq": 30,
    "type": "event"
@@ -10733,7 +10797,7 @@
    "lesson.create": 1
   },
   "first_bad": null,
-  "head_hash": "5a02a0935845ba00d451c2c50c92d23e3db1f574e1cb32a6fd2987dd7810a646",
+  "head_hash": "fa4916e5f927b85c07426b0fc903ab17545fd42f2cb869d8c8c5a617a85319d4",
   "modes": {
    "composed": 1,
    "declined": 1

@@ -28,8 +28,10 @@ export interface PackPractice {
 interface PracticeStore {
   /** null: not loaded; false: this engine offers no practice for the pack. */
   packs: Record<string, PackPractice | false | null>;
+  /** The unit each pack's items were read for (what does not apply to it is left out); null: the whole pack. */
+  forAsset: Record<string, string | null>;
   busy: boolean;
-  load(packId: string): Promise<void>;
+  load(packId: string, assetId?: string | null): Promise<void>;
   choose(packId: string, index: number): Promise<void>;
   next(packId: string): void;
 }
@@ -38,10 +40,12 @@ export const usePractice = create<PracticeStore>()((set, get) => {
   const put = (id: string, v: PackPractice | false) => set({ packs: { ...get().packs, [id]: v } });
   return {
     packs: {},
+    forAsset: {},
     busy: false,
-    async load(packId) {
+    async load(packId, assetId = null) {
+      set({ forAsset: { ...get().forAsset, [packId]: assetId } });
       try {
-        const [items, history] = await Promise.all([call("practice.items", { pack_id: packId }), call("practice.history", { pack_id: packId })]);
+        const [items, history] = await Promise.all([call("practice.items", { pack_id: packId, asset_id: assetId }), call("practice.history", { pack_id: packId })]);
         if (items.questions.length === 0) return put(packId, false);
         const ix = toBank(items);
         const state = rebuild(ix, history);
