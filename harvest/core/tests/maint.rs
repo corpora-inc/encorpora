@@ -276,9 +276,13 @@ fn validation_reports_unresolved_guards_and_unsigned_assets() {
     let guard: Vec<_> = r
         .violations
         .iter()
-        .filter(|v| v.rule == "guard.resolve")
+        .filter(|v| v.rule == "guard.resolve" || v.rule == "guard.class")
         .collect();
     assert_eq!(guard.len(), 2, "{:#?}", r.violations);
+    assert!(
+        rules(&r).contains(&"guard.class".to_string()),
+        "a paragraph is no guard class"
+    );
     assert!(rules(&r).contains(&"asset.signed".to_string()));
 }
 
@@ -339,12 +343,20 @@ fn reads_are_filtered_to_the_variant() {
     let hot = tree(&b, "t-hot");
     let level = p.level("expert").unwrap();
     let guards = |e: Option<&str>| -> Vec<String> {
-        view::node_view(p, &hot, "oh.1", &level, e, &[])
-            .unwrap()
-            .guards
-            .into_iter()
-            .map(|g| g.section_id)
-            .collect()
+        view::node_view(
+            p,
+            &hot,
+            "oh.1",
+            &level,
+            e,
+            &harvest_core::maint::applic::AttrValues::new(),
+            &[],
+        )
+        .unwrap()
+        .guards
+        .into_iter()
+        .map(|g| g.section_id)
+        .collect()
     };
     assert_eq!(guards(Some("pump40-diesel")), ["m40.3.w1", "m40.3-2.w1"]);
     assert_eq!(guards(Some("pump40-electric")), ["m40.3.w1", "m40.3-2.w2"]);
@@ -370,9 +382,14 @@ fn reads_are_filtered_to_the_variant() {
     assert_eq!(modes, ["fm-strainer"]);
     // Tasks: the battery task is diesel only.
     assert!(
-        view::task_view(p, "proc-battery", Some("pump40-diesel"))
-            .unwrap()
-            .is_some()
+        view::task_view(
+            p,
+            "proc-battery",
+            Some("pump40-diesel"),
+            &harvest_core::maint::applic::AttrValues::new()
+        )
+        .unwrap()
+        .is_some()
     );
     assert!(!p.applies(
         &p.applies_to("procedure", "proc-battery").unwrap(),
@@ -393,7 +410,16 @@ fn guards_show_at_every_level_and_levels_only_fold_facets_and_steps() {
     assert_eq!(levels.len(), 3);
     let mut guard_sets = Vec::new();
     for l in &levels {
-        let v = view::node_view(p, &t, "nc.2", l, Some("pump40-diesel"), &[]).unwrap();
+        let v = view::node_view(
+            p,
+            &t,
+            "nc.2",
+            l,
+            Some("pump40-diesel"),
+            &harvest_core::maint::applic::AttrValues::new(),
+            &[],
+        )
+        .unwrap();
         let tp = v.test_procedure.as_ref().unwrap();
         let mut g: Vec<String> = v.guards.iter().map(|g| g.section_id.clone()).collect();
         g.extend(tp.guards.iter().map(|g| g.section_id.clone()));
@@ -435,10 +461,18 @@ fn guards_show_at_every_level_and_levels_only_fold_facets_and_steps() {
         guard_sets[0],
         ["m40.3.w1", "m40.4-2.w1", "m40.4-2.c1", "m40.4-2.n1"]
     );
-    let tp = view::node_view(p, &t, "nc.2", &levels[0], None, &[])
-        .unwrap()
-        .test_procedure
-        .unwrap();
+    let tp = view::node_view(
+        p,
+        &t,
+        "nc.2",
+        &levels[0],
+        None,
+        &harvest_core::maint::applic::AttrValues::new(),
+        &[],
+    )
+    .unwrap()
+    .test_procedure
+    .unwrap();
     assert_eq!(tp.guards.len(), 1);
     assert!(tp.steps[0].guards.is_empty());
     assert_eq!(tp.steps[1].guards[0].kind, "caution");
@@ -454,6 +488,7 @@ fn guards_show_at_every_level_and_levels_only_fold_facets_and_steps() {
         "nc.4",
         &b2.pack.level("x").unwrap(),
         None,
+        &harvest_core::maint::applic::AttrValues::new(),
         &[],
     )
     .unwrap();
@@ -473,6 +508,7 @@ fn a_step_view_carries_the_citation_requirements_assets_and_open_causes() {
         "nc.2",
         &lvl,
         Some("pump40-diesel"),
+        &harvest_core::maint::applic::AttrValues::new(),
         &["nc.0".into(), "nc.1".into()],
     )
     .unwrap();
@@ -514,6 +550,7 @@ fn a_step_view_carries_the_citation_requirements_assets_and_open_causes() {
         "nc.4f",
         &lvl,
         None,
+        &harvest_core::maint::applic::AttrValues::new(),
         &[
             "nc.0".into(),
             "nc.1".into(),
@@ -529,7 +566,16 @@ fn a_step_view_carries_the_citation_requirements_assets_and_open_causes() {
         end.possible_open,
         ["Starter relay K1 failed.", "Starter motor failed."]
     );
-    let goto = view::node_view(p, &t, "nc.2a", &lvl, None, &[]).unwrap();
+    let goto = view::node_view(
+        p,
+        &t,
+        "nc.2a",
+        &lvl,
+        None,
+        &harvest_core::maint::applic::AttrValues::new(),
+        &[],
+    )
+    .unwrap();
     assert_eq!(
         goto.target.unwrap().title.as_deref(),
         Some("Battery replacement (task 4-3)")
@@ -545,9 +591,14 @@ fn a_step_view_carries_the_citation_requirements_assets_and_open_causes() {
 #[test]
 fn a_task_lists_tools_and_parts() {
     let b = pump();
-    let t = view::task_view(&b.pack, "proc-battery", Some("pump40-diesel"))
-        .unwrap()
-        .unwrap();
+    let t = view::task_view(
+        &b.pack,
+        "proc-battery",
+        Some("pump40-diesel"),
+        &harvest_core::maint::applic::AttrValues::new(),
+    )
+    .unwrap()
+    .unwrap();
     let kinds: Vec<&str> = t.requirements.iter().map(|r| r.kind.as_str()).collect();
     assert_eq!(kinds, ["tool", "tool", "part", "consumable", "personnel"]);
     let part = &t.requirements[2];
@@ -757,6 +808,7 @@ fn facets_carry_the_manuals_headings_in_its_order() {
         "nc.1",
         &b.pack.level("apprentice").unwrap(),
         None,
+        &harvest_core::maint::applic::AttrValues::new(),
         &[],
     )
     .unwrap();
@@ -852,7 +904,16 @@ fn a_goto_can_enter_another_tree_at_a_named_node() {
         })
     );
     let lvl = b.pack.level("expert").unwrap();
-    let v = view::node_view(&b.pack, &t, "nc.1g", &lvl, None, &[]).unwrap();
+    let v = view::node_view(
+        &b.pack,
+        &t,
+        "nc.1g",
+        &lvl,
+        None,
+        &harvest_core::maint::applic::AttrValues::new(),
+        &[],
+    )
+    .unwrap();
     assert_eq!(v.target.unwrap().title.as_deref(), Some("Pump overheats"));
     // The node must exist in that tree.
     let bad = pump_with(exec(
@@ -877,13 +938,31 @@ fn a_printed_reference_with_no_target_is_kept_and_marked() {
     let b = pump();
     let t = tree(&b, "t-nocrank");
     let lvl = b.pack.level("expert").unwrap();
-    let v = view::node_view(&b.pack, &t, "nc.3n", &lvl, None, &[]).unwrap();
+    let v = view::node_view(
+        &b.pack,
+        &t,
+        "nc.3n",
+        &lvl,
+        None,
+        &harvest_core::maint::applic::AttrValues::new(),
+        &[],
+    )
+    .unwrap();
     assert!(v.target.is_none());
     assert_eq!(
         v.reference.as_deref(),
         Some("Refer to field maintenance for wiring repair.")
     );
-    let resolved = view::node_view(&b.pack, &t, "nc.2a", &lvl, None, &[]).unwrap();
+    let resolved = view::node_view(
+        &b.pack,
+        &t,
+        "nc.2a",
+        &lvl,
+        None,
+        &harvest_core::maint::applic::AttrValues::new(),
+        &[],
+    )
+    .unwrap();
     assert!(resolved.target.is_some() && resolved.reference.is_some());
     let bad = pump_with(exec(
         "UPDATE fault_node SET reference = 'See the depot manual.' WHERE node_id = 'nc.3n';",
@@ -951,7 +1030,7 @@ fn a_signal_can_lead_to_a_section_with_no_tree() {
 fn an_unmatched_status_text_gets_closest_entries_never_a_match() {
     // The vehicle adds a tag and an instance number the table does not print.
     let b = pump_with(exec(
-        "INSERT INTO signal_map VALUES ('mavlink.statustext', 'Battery below minimum arming voltage', 'Battery below minimum arming voltage', NULL, NULL, 'm40.3-2.codes', NULL, 'prov-pump40');
+        "INSERT INTO signal_map VALUES ('mavlink.statustext', 'Battery below minimum arming voltage', 'Battery below minimum arming voltage', NULL, NULL, 'm40.3-2.codes', NULL, 'prov-pump40', NULL);
          INSERT INTO symptom VALUES ('s-arm', 't-nocrank', 'Battery below minimum arming voltage', 'starting', '[]', 'en', 'prov-pump40');",
     ));
     assert_eq!(
@@ -1120,7 +1199,16 @@ fn a_value_node_takes_closed_ranges_and_named_readings() {
     assert!(choose(&t, "nc.2", outcome("flat")).is_err());
     // The view lists the keypad's ranges and the named reading together.
     let level = b.pack.levels().unwrap()[0].clone();
-    let v = view::node_view(&b.pack, &t, "nc.2", &level, None, &[]).unwrap();
+    let v = view::node_view(
+        &b.pack,
+        &t,
+        "nc.2",
+        &level,
+        None,
+        &harvest_core::maint::applic::AttrValues::new(),
+        &[],
+    )
+    .unwrap();
     let outcomes: Vec<_> = v
         .record
         .branches
@@ -1179,4 +1267,287 @@ fn a_value_node_takes_closed_ranges_and_named_readings() {
         "INSERT INTO fault_edge VALUES ('nc.2', 4, 'Flat', NULL, 'nc.3n', 0);",
     ));
     assert!(rules(&graph::validate(&stray.pack).unwrap()).contains(&"edge.coverage".to_string()));
+}
+
+// ------------------------------------------- generalized manual structure
+
+fn vals(pairs: &[(&str, &str)]) -> harvest_core::maint::applic::AttrValues {
+    pairs
+        .iter()
+        .map(|(k, v)| (k.to_string(), v.to_string()))
+        .collect()
+}
+
+#[test]
+fn guard_classes_are_the_packs_own() {
+    let b = pump();
+    assert!(
+        graph::validate(&b.pack).unwrap().ok,
+        "{:?}",
+        graph::validate(&b.pack).unwrap().violations
+    );
+    let t = tree(&b, "t-hot");
+    let level = b.pack.level("expert").unwrap();
+    let novals = harvest_core::maint::applic::AttrValues::new();
+    let g = view::node_view(
+        &b.pack,
+        &t,
+        "oh.1",
+        &level,
+        Some("pump40-diesel"),
+        &novals,
+        &[],
+    )
+    .unwrap()
+    .guards;
+    assert_eq!(
+        (
+            g[0].kind.as_str(),
+            g[0].label.as_str(),
+            g[0].rank,
+            g[0].must_show
+        ),
+        ("warning", "WARNING", 1, true),
+        "the default three"
+    );
+    // A manual that prints DANGER … TIP.
+    let six = pump_with(exec(
+        r#"INSERT INTO pack_meta VALUES ('guard_classes', '[{"id":"danger","label":"DANGER","rank":1,"must_show":true},{"id":"warning","label":"WARNING","rank":2,"must_show":true},{"id":"caution","label":"CAUTION","rank":3,"must_show":true},{"id":"notice","label":"NOTICE","rank":4,"must_show":true},{"id":"note","label":"NOTE","rank":5,"must_show":false},{"id":"tip","label":"TIP","rank":6,"must_show":false}]');
+           UPDATE section SET kind = 'danger' WHERE section_id = 'm40.3.w1';"#,
+    ));
+    let r = graph::validate(&six.pack).unwrap();
+    assert!(
+        !rules(&r).contains(&"guard.class".to_string()),
+        "{:?}",
+        r.violations
+    );
+    let t = tree(&six, "t-hot");
+    let g = view::node_view(
+        &six.pack,
+        &t,
+        "oh.1",
+        &level,
+        Some("pump40-diesel"),
+        &novals,
+        &[],
+    )
+    .unwrap()
+    .guards;
+    assert_eq!(
+        (g[0].kind.as_str(), g[0].label.as_str(), g[0].rank),
+        ("danger", "DANGER", 1)
+    );
+    assert_eq!(g[1].rank, 2, "manual order kept, each with its rank");
+    // A class the pack does not declare fails validation.
+    let bad = pump_with(exec(
+        "UPDATE section SET kind = 'danger' WHERE section_id = 'm40.3.w1';",
+    ));
+    assert!(rules(&graph::validate(&bad.pack).unwrap()).contains(&"guard.class".to_string()));
+    // Classes must run most severe first.
+    let order = pump_with(exec(
+        r#"INSERT INTO pack_meta VALUES ('guard_classes', '[{"id":"note","label":"NOTE","rank":3,"must_show":false},{"id":"warning","label":"WARNING","rank":1,"must_show":true}]');"#,
+    ));
+    assert!(order.pack.guard_classes().is_err());
+}
+
+#[test]
+fn reference_tables_hold_codes_and_printed_limits() {
+    use harvest_core::maint::table::{self, Cell};
+    let b = pump();
+    let r = graph::validate(&b.pack).unwrap();
+    assert!(r.ok, "{:?}", r.violations);
+    assert_eq!((r.counts.tables, r.counts.rows), (2, 6));
+    let none = vals(&[]);
+    // A code, exactly.
+    let hits = table::lookup(&b.pack, None, Some("e40"), None, None, &none, 5).unwrap();
+    assert_eq!(hits.len(), 1);
+    let row = &hits[0].row;
+    assert_eq!(
+        row.cells["meaning"],
+        Cell::Text("Suction pressure low".into())
+    );
+    assert_eq!(
+        row.cells["remedy"],
+        Cell::List(vec![
+            "clean the strainer".into(),
+            "tighten the hose clamps".into()
+        ])
+    );
+    assert_eq!(row.citation.section_id, "m40.3-3");
+    // Words.
+    let hits = table::lookup(
+        &b.pack,
+        None,
+        None,
+        Some("wear ring clearance"),
+        None,
+        &none,
+        5,
+    )
+    .unwrap();
+    assert_eq!(hits[0].row.row_id, "tab-6-1#1");
+    let Cell::Value(v) = &hits[0].row.cells["std"] else {
+        panic!()
+    };
+    assert_eq!(
+        (v.text.as_str(), v.unit.as_deref(), v.min, v.max),
+        ("0.15 to 0.25 mm", Some("mm"), Some(0.15), Some(0.25))
+    );
+    assert!(table::lookup(&b.pack, None, None, None, None, &none, 5).is_err());
+    // Every cell verbatim; roles known; cells name columns.
+    for (sql, rule) in [
+        (
+            "UPDATE ref_row SET cells = '{\"code\":\"E99\"}' WHERE table_id = 'tab-3-3' AND ord = 1;",
+            "table.verbatim",
+        ),
+        (
+            "UPDATE ref_row SET cells = '{\"colour\":\"E21\"}' WHERE table_id = 'tab-3-3' AND ord = 1;",
+            "table.cells",
+        ),
+        (
+            "UPDATE ref_table SET columns = '[{\"id\":\"code\",\"label\":\"Code\",\"role\":\"mystery\"}]' WHERE table_id = 'tab-3-3';",
+            "table.columns",
+        ),
+    ] {
+        let bad = pump_with(exec(sql));
+        assert!(
+            rules(&graph::validate(&bad.pack).unwrap()).contains(&rule.to_string()),
+            "{rule}"
+        );
+    }
+}
+
+#[test]
+fn a_displayed_code_resolves_to_its_row_and_its_tree() {
+    let b = pump();
+    // E21: a tree and a row.
+    let m = search::signal_match(&b.pack, &[obs("pump40.code", "E21")], None).unwrap();
+    let h = &m.hits[0];
+    assert!(h.has_tree);
+    assert_eq!(h.row.as_ref().unwrap().row_id, "tab-3-3#1");
+    // E52: a row only, shown by firmware 2.4 and later.
+    let e52 = |v: &[(&str, &str)]| {
+        search::signal_match_with(&b.pack, &[obs("pump40.code", "E52")], None, &vals(v))
+            .unwrap()
+            .hits
+            .remove(0)
+    };
+    let h = e52(&[]);
+    assert!(!h.has_tree && m.suggested.is_some());
+    let a = h.row.unwrap().applicability.unwrap();
+    assert_eq!(a.status, harvest_core::maint::applic::Tri::Unknown);
+    assert_eq!(a.missing, vec!["firmware".to_string()]);
+    assert_eq!(
+        a.message.as_deref(),
+        Some("applicability not determined: firmware 2.4 and later")
+    );
+    let h = e52(&[("firmware", "2.10")]);
+    assert_eq!(
+        h.row.unwrap().applicability.unwrap().status,
+        harvest_core::maint::applic::Tri::Applies
+    );
+    assert!(
+        e52(&[("firmware", "2.3.1")]).row.is_none(),
+        "the row does not apply"
+    );
+    let bad = pump_with(exec(
+        "UPDATE signal_map SET row_id = 'tab-3-3#9' WHERE pattern = 'E52';",
+    ));
+    assert!(rules(&graph::validate(&bad.pack).unwrap()).contains(&"signal.row".to_string()));
+}
+
+#[test]
+fn applicability_is_three_valued_and_never_silent() {
+    use harvest_core::maint::table::{self, Cell};
+    let b = pump();
+    let torque = |v: &[(&str, &str)]| {
+        table::table_view(&b.pack, "tab-6-1", None, &vals(v))
+            .unwrap()
+            .unwrap()
+            .rows
+            .remove(2)
+    };
+    // Unknown modification state: both printed values, both flagged.
+    let r = torque(&[]);
+    assert!(r.cells.contains_key("std") && r.cells.contains_key("std_sb"));
+    assert_eq!(
+        r.cell_applicability["std_sb"].message.as_deref(),
+        Some("applicability not determined: POST SB 40-07")
+    );
+    assert_eq!(
+        r.cell_applicability["std"].missing,
+        vec!["sb_40_07".to_string()]
+    );
+    // Settled: only the value that applies.
+    let r = torque(&[("sb_40_07", "Incorporated")]);
+    assert_eq!(
+        r.cells.get("std_sb"),
+        Some(&Cell::Value(
+            serde_json::from_str(r#"{"text":"55 N·m","unit":"N·m","value":55.0}"#).unwrap()
+        ))
+    );
+    assert!(!r.cells.contains_key("std"));
+    let r = torque(&[("sb_40_07", "not incorporated")]);
+    assert!(r.cells.contains_key("std") && !r.cells.contains_key("std_sb"));
+    // A step: not determined is flagged and still shown; not applying is marked.
+    let s = pump_with(exec(
+        r#"INSERT INTO applic VALUES ('proc_step', 'proc-battv#2', 1, '{"attr":"firmware","op":"ge","value":"2.4"}', 'firmware 2.4 and later', 'm40.3-3', 'prov-pump40');"#,
+    ));
+    let step = |v: &[(&str, &str)]| {
+        view::task_view(&s.pack, "proc-battv", None, &vals(v))
+            .unwrap()
+            .unwrap()
+            .steps
+            .remove(1)
+    };
+    let st = step(&[]);
+    assert!(
+        st.applies
+            && st.applicability.as_ref().unwrap().status
+                == harvest_core::maint::applic::Tri::Unknown
+    );
+    assert!(!step(&[("firmware", "1.0")]).applies);
+    assert!(step(&[("firmware", "2.4.0")]).applies);
+    // Validation: declared attributes, typed values, verbatim statements.
+    for (sql, rule) in [
+        (
+            r#"INSERT INTO applic VALUES ('section', 'm40.4-2', 1, '{"attr":"colour","op":"eq","value":"red"}', 'firmware 2.4 and later', 'm40.3-3', 'prov-pump40');"#,
+            "applic.cond",
+        ),
+        (
+            r#"INSERT INTO applic VALUES ('section', 'm40.4-2', 1, '{"attr":"firmware","op":"ge","value":"2.4"}', 'firmware 9 and later', 'm40.3-3', 'prov-pump40');"#,
+            "applic.verbatim",
+        ),
+        (
+            r#"INSERT INTO applic VALUES ('ref_row', 'tab-9#1', 1, '{"attr":"firmware","op":"ge","value":"2.4"}', 'firmware 2.4 and later', 'm40.3-3', 'prov-pump40');"#,
+            "applic.ref",
+        ),
+    ] {
+        let bad = pump_with(exec(sql));
+        assert!(
+            rules(&graph::validate(&bad.pack).unwrap()).contains(&rule.to_string()),
+            "{rule}"
+        );
+    }
+}
+
+#[test]
+fn a_pack_that_needs_a_newer_reader_says_so() {
+    let tmp = tempfile::tempdir().unwrap();
+    let dir = tmp.path().join("pump40");
+    fixture_maint::build_with(
+        &dir,
+        "2026.3.1-1",
+        exec("UPDATE pack_meta SET value = '3' WHERE key = 'min_reader';"),
+    )
+    .unwrap();
+    let e = Pack::open(&dir, &[fixture::trusted_key()]).err().unwrap();
+    assert!(
+        e.to_string()
+            .contains("needs a newer reader (level 3; this one reads up to 2)"),
+        "{e}"
+    );
+    // Using level-2 features without declaring it fails validation.
+    let quiet = pump_with(exec("DELETE FROM pack_meta WHERE key = 'min_reader';"));
+    assert!(rules(&graph::validate(&quiet.pack).unwrap()).contains(&"pack.min_reader".to_string()));
 }

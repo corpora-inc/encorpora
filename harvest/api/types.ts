@@ -13,6 +13,19 @@ export interface ApiError {
   message: string;
 }
 
+/**
+ * How an item's applicability came out (present only when it has
+ * statements).
+ */
+export interface Applicability {
+  /** For `unknown`: "applicability not determined: <statements>". */
+  message: string | null;
+  /** Attributes the asset lacks (ask for these, then read again). */
+  missing: string[];
+  statements: Statement[];
+  status: Tri;
+}
+
 export interface AskParams {
   equip_id?: string | null;
   /** A level of the pack; the first when absent. */
@@ -54,6 +67,17 @@ export interface Asset {
   name: string | null;
   serial: string | null;
   updated_at: string;
+}
+
+/** An asset's attributes: what the pack declares and what the asset has. */
+export interface AssetAttrs {
+  declared: AttrDef[];
+  values: AttrValue[];
+}
+
+export interface AssetAttrsParams {
+  asset_id: string;
+  pack_id?: string | null;
 }
 
 export interface AssetCreateParams {
@@ -129,6 +153,20 @@ export interface AssetRegistry {
   format: string;
 }
 
+export interface AssetSetAttrsParams {
+  asset_id: string;
+  pack_id?: string | null;
+  /**
+   * A data plate or a vehicle's version message: the attributes the pack
+   * declares with that source are taken from it.
+   */
+  plate?: PlateInput | null;
+  /** `typed` (default), `plate` or `vehicle`. */
+  source?: ValueSource | null;
+  /** Attribute id → value (`null` clears it). */
+  values?: Record<string, string | null>;
+}
+
 export interface AssetUpdateParams {
   asset_id: string;
   /** Fields given replace the stored ones; `attrs` merge. */
@@ -182,6 +220,29 @@ export interface AttachmentStatus {
   /** Files the hub holds in full, and those it holds only downscaled. */
   sent: number;
   sent_downscaled: number;
+}
+
+/** A declared attribute (`pack_meta.attributes`). */
+export interface AttrDef {
+  id: string;
+  /** As the manual prints it. */
+  label: string;
+  source: AttrSource;
+  type: AttrType;
+}
+
+/** Where an attribute's value comes from. */
+export type AttrSource = "plate" | "vehicle" | "manual";
+
+/** How an attribute's values compare. */
+export type AttrType = "number" | "text" | "version" | "serial";
+
+/** One attribute value of an asset. */
+export interface AttrValue {
+  attr: string;
+  set_at: string;
+  source: ValueSource;
+  value: string;
 }
 
 /** One retrieved chunk as the log keeps it. */
@@ -312,6 +373,12 @@ export interface Candidate {
   name: string;
 }
 
+/**
+ * A cell: verbatim text, an ordered list of verbatim items, or a printed
+ * value.
+ */
+export type Cell = string | string[] | ValueCell;
+
 /** The result of [`verify_chain`]. */
 export interface ChainReport {
   /** `baked / (all answers)`; `None` with no answers. */
@@ -405,6 +472,13 @@ export interface ClosestSignal {
   score: number;
   section: SignalSection | null;
   strong_hits: number;
+}
+
+export interface Column {
+  id: string;
+  /** As printed in the header. */
+  label: string;
+  role: string;
 }
 
 /**
@@ -836,14 +910,17 @@ export type Fusion = "weighted" | "rrf";
 
 /** What was checked. */
 export interface GraphCounts {
+  applic: number;
   assets: number;
   edges: number;
   facets: number;
   guards: number;
   nodes: number;
   requirements: number;
+  rows: number;
   signals: number;
   symptoms: number;
+  tables: number;
   trees: number;
 }
 
@@ -854,13 +931,27 @@ export interface GraphReport {
   violations: Violation[];
 }
 
-/** A warning, caution or note, verbatim. */
+/** A safety or advisory block (a class the pack declares), verbatim. */
 export interface Guard {
+  /**
+   * When its applicability has statements (`unknown` is flagged, never
+   * dropped).
+   */
+  applicability: Applicability | null;
   applies_to: string[];
   citation: Citation;
   heading: string | null;
-  /** `warning` | `caution` | `note`. */
+  /**
+   * The class id (`warning`, `caution`, `note` by default; the pack's
+   * own, `danger` … `tip`, when it declares them).
+   */
   kind: string;
+  /** As printed. */
+  label: string;
+  /** Never hidden or collapsed at any level. */
+  must_show: boolean;
+  /** 1 is the most severe. */
+  rank: number;
   section_id: string;
   text: string;
 }
@@ -1374,6 +1465,11 @@ export interface ManualHit {
   heading: string | null;
   ref_id: string;
   ref_kind: string;
+  /**
+   * For a reference-table row (`ref_kind` `ref_row`): the row, as it
+   * applies.
+   */
+  row: RowView | null;
   score: number;
   section_id: string | null;
   text: string;
@@ -1387,6 +1483,11 @@ export interface ManualSearch {
 }
 
 export interface ManualSearchParams {
+  /**
+   * The asset (its variant when `equip_id` is absent; its attributes
+   * for the rows that apply).
+   */
+  asset_id?: string | null;
   equip_id?: string | null;
   k?: number | null;
   pack_id?: string | null;
@@ -1597,6 +1698,16 @@ export interface Plate {
   serial: string | null;
   /** Free text (a data plate read aloud or by a camera). */
   text: string | null;
+}
+
+/** What the technician or the machine reports. */
+export interface PlateInput {
+  firmware?: string | null;
+  model?: string | null;
+  params?: Record<string, string>;
+  serial?: string | null;
+  /** Free text (a data plate read aloud or by a camera). */
+  text?: string | null;
 }
 
 /** One recorded attempt. */
@@ -1959,6 +2070,35 @@ export interface ReviewRecord {
 /** What a person may do at the hub. */
 export type Role = "reviewer" | "publisher" | "admin";
 
+/** A row found by `table.lookup`. */
+export interface RowHit {
+  kind: string;
+  /**
+   * `exact` (a key, code or pattern cell equals the key, case and
+   * spacing folded) or `words` (the query's words found in the row).
+   */
+  matched: string;
+  row: RowView;
+  score: number;
+  table_id: string;
+  title: string;
+}
+
+/**
+ * A row as a screen shows it: cells that do not apply are left out,
+ * cells whose applicability is not determined are flagged.
+ */
+export interface RowView {
+  applicability: Applicability | null;
+  /** Per cell (column id), when it has statements of its own. */
+  cell_applicability: Record<string, Applicability>;
+  cells: Record<string, Cell>;
+  citation: Citation;
+  ord: number;
+  row_id: string;
+  table_id: string;
+}
+
 /** One procedure run. */
 export interface Run {
   /** The specific machine (unit number, serial), as the user entered it. */
@@ -2032,6 +2172,13 @@ export interface Scope {
   /** Every tree of this system. */
   system?: string | null;
   tree_id?: string | null;
+}
+
+/** A pack read for a variant or an asset (its variant and attributes). */
+export interface ScopeParams {
+  asset_id?: string | null;
+  equip_id?: string | null;
+  pack_id?: string | null;
 }
 
 /** A search result. */
@@ -2146,6 +2293,8 @@ export interface SignalHit {
   has_tree: boolean;
   matched: MatchKind;
   observed: Observation;
+  /** The reference-table row the rule resolves to, as it applies. */
+  row: RowView | null;
   rule: SignalRule;
   /**
    * The cited section's verbatim text. For a rule with no tree this is
@@ -2203,6 +2352,11 @@ export interface SignalRule {
   quote: string | null;
   /** True when `quote` is verbatim in `section_id`. */
   quote_verified: boolean;
+  /**
+   * The reference-table row it resolves to (`<table_id>#<ord>`): a code
+   * or message with its meaning, causes and resolutions.
+   */
+  row_id: string | null;
   section_id: string | null;
   signal_kind: string;
   title: string;
@@ -2231,6 +2385,14 @@ export interface Source {
   source_id: string;
   title: string;
   url: string;
+}
+
+/** One printed statement and how it evaluated. */
+export interface Statement {
+  section_id: string;
+  status: Tri;
+  /** Verbatim, as printed. */
+  text: string;
 }
 
 /** What reading the bytes found. */
@@ -2284,6 +2446,8 @@ export interface StepRecord {
  * far, and field knowledge kept apart from the manual.
  */
 export interface StepView {
+  /** The node's statements (and its section's), when it has any. */
+  applicability: Applicability | null;
   assets: PackAsset[];
   citation: Citation;
   detail: LevelText[];
@@ -2446,8 +2610,8 @@ export interface SymptomSearchParams {
 export interface SyncAttachmentsParams {
   /**
    * Stop starting chunks after this long (default 10, at most 300). The
-   * pass holds the records store, so a host calls it in short passes
-   * while the link is up.
+   * records store is held only for each read or write, never while a
+   * chunk is on the wire.
    */
   max_seconds?: number | null;
 }
@@ -2502,6 +2666,57 @@ export interface SysStatus {
   unhealthy: string[];
 }
 
+export interface TableGetParams {
+  asset_id?: string | null;
+  equip_id?: string | null;
+  pack_id?: string | null;
+  table_id: string;
+}
+
+export interface TableLookupParams {
+  asset_id?: string | null;
+  equip_id?: string | null;
+  /** Results (default 10). */
+  k?: number | null;
+  /** Exact: a key, code, pattern or item cell equal to it (folded). */
+  key?: string | null;
+  pack_id?: string | null;
+  /** Words: rows holding the query's meaningful words. */
+  query?: string | null;
+  /** Only this table. */
+  table_id?: string | null;
+}
+
+/** A table in a listing. */
+export interface TableSummary {
+  columns: Column[];
+  /**
+   * `spec` | `indicator` | `message` | `schedule` | `command` |
+   * `parameter` | `abbreviation` | … (open).
+   */
+  kind: string;
+  lang: string;
+  rows: number;
+  section_id: string;
+  table_id: string;
+  title: string;
+}
+
+export interface TableView {
+  citation: Citation;
+  columns: Column[];
+  /**
+   * `spec` | `indicator` | `message` | `schedule` | `command` |
+   * `parameter` | `abbreviation` | … (open).
+   */
+  kind: string;
+  lang: string;
+  rows: RowView[];
+  section_id: string;
+  table_id: string;
+  title: string;
+}
+
 /** Where a `goto` (or an `action` that is a task) leads. */
 export type Target = {
   id: string;
@@ -2519,6 +2734,11 @@ export interface TargetView {
 }
 
 export interface TaskGetParams {
+  /**
+   * The asset: its variant (when `equip_id` is absent) and its attribute
+   * values for applicability.
+   */
+  asset_id?: string | null;
   equip_id?: string | null;
   pack_id?: string | null;
   proc_id: string;
@@ -2531,10 +2751,16 @@ export interface TaskListParams {
 
 /** One step of a task or test procedure. */
 export interface TaskStep {
+  /**
+   * The step's statements (and its section's), when it has any; an
+   * `unknown` one is flagged for the technician to settle.
+   */
+  applicability: Applicability | null;
   applies: boolean;
   /**
    * Equipment the step is limited to (empty: all), and whether it
-   * applies to the equipment asked about.
+   * applies to the equipment asked about (and to the asset, by its
+   * statements: `false` only when it does not apply).
    */
   applies_to: string[];
   assets: PackAsset[];
@@ -2561,6 +2787,8 @@ export interface TaskSummary {
 
 /** A task (procedure) ready to show. */
 export interface TaskView {
+  /** The procedure's statements, when it has any. */
+  applicability: Applicability | null;
   applies_to: string[];
   /**
    * Guards on the task (its section or above), shown once at its head;
@@ -2609,11 +2837,33 @@ export interface TreeListParams {
 
 /** The tree a node belongs to. */
 export interface TreeSummary {
+  /** The tree's statements, when it has any. */
+  applicability: Applicability | null;
   applies_to: string[];
   system: string | null;
   title: string;
   tree_id: string;
 }
+
+/** The three outcomes. */
+export type Tri = "applies" | "does_not_apply" | "unknown";
+
+/**
+ * A printed value: `text` is what the manual prints (shown as is); the
+ * numbers serve exact lookup only.
+ */
+export interface ValueCell {
+  max?: number | null;
+  max_inclusive?: boolean | null;
+  min?: number | null;
+  min_inclusive?: boolean | null;
+  text: string;
+  unit?: string | null;
+  value?: number | null;
+}
+
+/** Where a value came from. */
+export type ValueSource = "typed" | "plate" | "vehicle";
 
 /** One broken rule. */
 export interface Violation {
@@ -2689,6 +2939,11 @@ export interface Methods {
   "fleet.summary": { params: NoParams; result: FleetSummary | null };
   "audit.list": { params: AuditListParams; result: AuditRecord[] };
   "audit.verify": { params: NoParams; result: ChainReport };
+  "table.list": { params: ScopeParams; result: TableSummary[] };
+  "table.get": { params: TableGetParams; result: TableView };
+  "table.lookup": { params: TableLookupParams; result: RowHit[] };
+  "asset.attrs": { params: AssetAttrsParams; result: AssetAttrs };
+  "asset.set_attrs": { params: AssetSetAttrsParams; result: AssetAttrs };
   "practice.items": { params: PracticeItemsParams; result: PracticeItems };
   "practice.record": { params: PracticeRecordParams; result: PracticeAttempt };
   "practice.history": { params: PackParams; result: PracticeAttempt[] };
@@ -2763,6 +3018,11 @@ export const METHODS = [
   "fleet.summary",
   "audit.list",
   "audit.verify",
+  "table.list",
+  "table.get",
+  "table.lookup",
+  "asset.attrs",
+  "asset.set_attrs",
   "practice.items",
   "practice.record",
   "practice.history",

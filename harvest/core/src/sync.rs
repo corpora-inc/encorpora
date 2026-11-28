@@ -503,6 +503,10 @@ pub struct Hello {
     /// The link the device is on now, as the host knows it.
     #[serde(default)]
     pub link: LinkClass,
+    /// Fresh for every hello, so two hellos never look alike (a reply names
+    /// the one it answers).
+    #[serde(default)]
+    pub nonce: String,
     pub signature: String,
 }
 
@@ -581,6 +585,7 @@ impl Hello {
             "device_id": self.device_id,
             "signed_at": self.signed_at,
             "link": self.link,
+            "nonce": self.nonce,
         }))
     }
 
@@ -627,6 +632,19 @@ pub struct HelloReply {
     #[serde(skip)]
     #[schemars(skip)]
     pub raw: Option<serde_json::Value>,
+}
+
+/// A hello's nonce: random, or a counter under a simulation's virtual
+/// clock (so a simulation repeats itself).
+fn hello_nonce() -> Result<String> {
+    static COUNTER: std::sync::atomic::AtomicU64 = std::sync::atomic::AtomicU64::new(0);
+    if crate::audit::virtual_now_ms().is_some() {
+        let n = COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed);
+        return Ok(format!("sim-{n:016x}"));
+    }
+    let mut b = [0u8; 16];
+    getrandom::getrandom(&mut b).map_err(|e| Error::Crypto(format!("random: {e}")))?;
+    Ok(hex_encode(&b))
 }
 
 /// Format ids of the hub's signed replies.
@@ -878,6 +896,7 @@ impl DeviceKey {
             device_id: self.device_id(),
             signed_at: now_rfc3339(),
             link,
+            nonce: hello_nonce()?,
             signature: String::new(),
         };
         use base64::Engine as _;

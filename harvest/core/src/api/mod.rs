@@ -377,6 +377,11 @@ methods! {
     "fleet.summary" => fleet_summary(NoParams) -> Option<crate::records::FleetSummary>,
     "audit.list" => audit_list(AuditListParams) -> Vec<AuditRecord>,
     "audit.verify" => audit_verify(NoParams) -> ChainReport,
+    "table.list" => table_list(ScopeParams) -> Vec<crate::maint::table::TableSummary>,
+    "table.get" => table_get(TableGetParams) -> crate::maint::table::TableView,
+    "table.lookup" => table_lookup(TableLookupParams) -> Vec<crate::maint::table::RowHit>,
+    "asset.attrs" => asset_attrs(AssetAttrsParams) -> AssetAttrs,
+    "asset.set_attrs" => asset_set_attrs(AssetSetAttrsParams) -> AssetAttrs,
     "practice.items" => practice_items(PracticeItemsParams) -> crate::practice::PracticeItems,
     "practice.record" => practice_record(PracticeRecordParams) -> crate::records::PracticeAttempt,
     "practice.history" => practice_history(PackParams) -> Vec<crate::records::PracticeAttempt>,
@@ -409,8 +414,8 @@ pub struct NoParams {}
 #[serde(deny_unknown_fields)]
 pub struct SyncAttachmentsParams {
     /// Stop starting chunks after this long (default 10, at most 300). The
-    /// pass holds the records store, so a host calls it in short passes
-    /// while the link is up.
+    /// records store is held only for each read or write, never while a
+    /// chunk is on the wire.
     #[serde(default)]
     pub max_seconds: Option<u64>,
 }
@@ -650,6 +655,10 @@ pub struct TaskGetParams {
     pub proc_id: String,
     #[serde(default)]
     pub equip_id: Option<String>,
+    /// The asset: its variant (when `equip_id` is absent) and its attribute
+    /// values for applicability.
+    #[serde(default)]
+    pub asset_id: Option<String>,
 }
 
 #[derive(Debug, Clone, Deserialize, JsonSchema)]
@@ -737,6 +746,10 @@ pub struct ManualSearchParams {
     pub k: Option<usize>,
     #[serde(default)]
     pub equip_id: Option<String>,
+    /// The asset (its variant when `equip_id` is absent; its attributes
+    /// for the rows that apply).
+    #[serde(default)]
+    pub asset_id: Option<String>,
     #[serde(default)]
     pub scope: Option<Scope>,
 }
@@ -811,6 +824,86 @@ pub struct HubQueueParams {
     /// At most this many (default 100, at most 500).
     #[serde(default)]
     pub limit: Option<usize>,
+}
+
+/// A pack read for a variant or an asset (its variant and attributes).
+#[derive(Debug, Clone, Default, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct ScopeParams {
+    #[serde(default)]
+    pub pack_id: Option<String>,
+    #[serde(default)]
+    pub equip_id: Option<String>,
+    #[serde(default)]
+    pub asset_id: Option<String>,
+}
+
+#[derive(Debug, Clone, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct TableGetParams {
+    #[serde(default)]
+    pub pack_id: Option<String>,
+    pub table_id: String,
+    #[serde(default)]
+    pub equip_id: Option<String>,
+    #[serde(default)]
+    pub asset_id: Option<String>,
+}
+
+#[derive(Debug, Clone, Default, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct TableLookupParams {
+    #[serde(default)]
+    pub pack_id: Option<String>,
+    #[serde(default)]
+    pub equip_id: Option<String>,
+    #[serde(default)]
+    pub asset_id: Option<String>,
+    /// Only this table.
+    #[serde(default)]
+    pub table_id: Option<String>,
+    /// Exact: a key, code, pattern or item cell equal to it (folded).
+    #[serde(default)]
+    pub key: Option<String>,
+    /// Words: rows holding the query's meaningful words.
+    #[serde(default)]
+    pub query: Option<String>,
+    /// Results (default 10).
+    #[serde(default)]
+    pub k: Option<usize>,
+}
+
+#[derive(Debug, Clone, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct AssetAttrsParams {
+    #[serde(default)]
+    pub pack_id: Option<String>,
+    pub asset_id: String,
+}
+
+#[derive(Debug, Clone, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct AssetSetAttrsParams {
+    #[serde(default)]
+    pub pack_id: Option<String>,
+    pub asset_id: String,
+    /// Attribute id → value (`null` clears it).
+    #[serde(default)]
+    pub values: BTreeMap<String, Option<String>>,
+    /// `typed` (default), `plate` or `vehicle`.
+    #[serde(default)]
+    pub source: Option<crate::records::ValueSource>,
+    /// A data plate or a vehicle's version message: the attributes the pack
+    /// declares with that source are taken from it.
+    #[serde(default)]
+    pub plate: Option<crate::maint::resolve::Plate>,
+}
+
+/// An asset's attributes: what the pack declares and what the asset has.
+#[derive(Debug, Clone, Serialize, JsonSchema)]
+pub struct AssetAttrs {
+    pub declared: Vec<crate::maint::applic::AttrDef>,
+    pub values: Vec<crate::records::AttrValue>,
 }
 
 #[derive(Debug, Clone, Default, Deserialize, JsonSchema)]
@@ -1112,6 +1205,9 @@ pub struct ManualHit {
     pub heading: Option<String>,
     pub text: String,
     pub score: f64,
+    /// For a reference-table row (`ref_kind` `ref_row`): the row, as it
+    /// applies.
+    pub row: Option<crate::maint::table::RowView>,
 }
 
 #[derive(Debug, Clone, Serialize, JsonSchema)]
@@ -1308,10 +1404,12 @@ fn symptom_search(h: &Host, _who: Option<&Principal>, p: SymptomSearchParams) ->
 fn signal_match(h: &Host, _who: Option<&Principal>, p: SignalMatchParams) -> R<SignalMatch> {
     let pack = &h.pack(nz(&p.pack_id))?;
     let equip = equip_for(h, &p.equip_id, &p.asset_id)?;
-    Ok(search::signal_match(
+    let values = h.records().attr_values(nz(&p.asset_id))?;
+    Ok(search::signal_match_with(
         pack,
         &p.observations,
         equip.as_deref(),
+        &values,
     )?)
 }
 
@@ -1460,8 +1558,12 @@ fn task_list(h: &Host, _who: Option<&Principal>, p: TaskListParams) -> R<Vec<Tas
 
 fn task_get(h: &Host, _who: Option<&Principal>, p: TaskGetParams) -> R<TaskView> {
     let pack = &h.pack(nz(&p.pack_id))?;
-    Ok(view::task_view(pack, &p.proc_id, nz(&p.equip_id))?
-        .ok_or_else(|| Error::Invalid(format!("no task {:?}", p.proc_id)))?)
+    let equip = equip_for(h, &p.equip_id, &p.asset_id)?;
+    let values = h.records().attr_values(nz(&p.asset_id))?;
+    Ok(
+        view::task_view(pack, &p.proc_id, equip.as_deref(), &values)?
+            .ok_or_else(|| Error::Invalid(format!("no task {:?}", p.proc_id)))?,
+    )
 }
 
 fn run_pack(h: &Host, rec: &Records, run_id: &str) -> R<Arc<Pack>> {
@@ -1638,13 +1740,29 @@ fn manual_search(h: &Host, _who: Option<&Principal>, p: ManualSearchParams) -> R
             ..SearchOptions::default()
         },
     )?;
+    let values = h.records().attr_values(nz(&p.asset_id))?;
+    let equip = equip_for(h, &p.equip_id, &p.asset_id)?;
     let mut hits = Vec::new();
     for hit in &result.hits {
         let sec = match &hit.section_id {
             Some(s) => pack.section(s)?,
             None => None,
         };
+        let row = if hit.ref_kind == "ref_row" {
+            match pack.ref_row(&hit.ref_id)? {
+                Some(r) => {
+                    match crate::maint::table::row_view(pack, &r, equip.as_deref(), &values)? {
+                        Some(v) => Some(v),
+                        None => continue, // the row does not apply
+                    }
+                }
+                None => None,
+            }
+        } else {
+            None
+        };
         hits.push(ManualHit {
+            row,
             chunk_id: hit.chunk_id.clone(),
             ref_kind: hit.ref_kind.clone(),
             ref_id: hit.ref_id.clone(),
@@ -1754,10 +1872,13 @@ fn sync_attachments(
         .ok_or_else(|| Error::Invalid("no hub is configured".into()))?;
     let secs = p.max_seconds.unwrap_or(10).clamp(1, 300);
     let until = std::time::Instant::now() + std::time::Duration::from_secs(secs);
-    Ok(h.records()
-        .send_attachments(link.as_ref(), &h.field_keys, &|| {
-            std::time::Instant::now() >= until
-        })?)
+    // The store is locked per read or write, not for the whole pass.
+    Ok(crate::records::send_attachments_shared(
+        &|f| f(&h.records()),
+        link.as_ref(),
+        &h.field_keys,
+        &|| std::time::Instant::now() >= until,
+    )?)
 }
 
 fn sync_flush(
@@ -1874,6 +1995,97 @@ fn need(who: Option<&Principal>, role: Option<HubRole>) -> R<&Principal> {
 fn hub_status(h: &Host, who: Option<&Principal>, _: NoParams) -> R<crate::hub::HubStatus> {
     need(who, None)?;
     Ok(h.hub_store()?.status()?)
+}
+
+fn scope(
+    h: &Host,
+    equip: &Option<String>,
+    asset: &Option<String>,
+) -> R<(Option<String>, crate::maint::applic::AttrValues)> {
+    let e = equip_for(h, equip, asset)?;
+    let v = h.records().attr_values(nz(asset))?;
+    Ok((e, v))
+}
+
+fn table_list(
+    h: &Host,
+    _who: Option<&Principal>,
+    p: ScopeParams,
+) -> R<Vec<crate::maint::table::TableSummary>> {
+    let pack = h.pack(nz(&p.pack_id))?;
+    let (equip, values) = scope(h, &p.equip_id, &p.asset_id)?;
+    let mut out = Vec::new();
+    for t in pack.ref_tables()? {
+        let v = crate::maint::table::table_view(&pack, &t.table_id, equip.as_deref(), &values)?;
+        out.push(crate::maint::table::TableSummary {
+            rows: v.map_or(0, |v| v.rows.len()),
+            table: t,
+        });
+    }
+    Ok(out)
+}
+
+fn table_get(
+    h: &Host,
+    _who: Option<&Principal>,
+    p: TableGetParams,
+) -> R<crate::maint::table::TableView> {
+    let pack = h.pack(nz(&p.pack_id))?;
+    let (equip, values) = scope(h, &p.equip_id, &p.asset_id)?;
+    Ok(
+        crate::maint::table::table_view(&pack, &p.table_id, equip.as_deref(), &values)?
+            .ok_or_else(|| Error::Invalid(format!("no table {:?}", p.table_id)))?,
+    )
+}
+
+fn table_lookup(
+    h: &Host,
+    _who: Option<&Principal>,
+    p: TableLookupParams,
+) -> R<Vec<crate::maint::table::RowHit>> {
+    let pack = h.pack(nz(&p.pack_id))?;
+    let (equip, values) = scope(h, &p.equip_id, &p.asset_id)?;
+    Ok(crate::maint::table::lookup(
+        &pack,
+        nz(&p.table_id),
+        nz(&p.key),
+        nz(&p.query),
+        equip.as_deref(),
+        &values,
+        p.k.unwrap_or(10),
+    )?)
+}
+
+fn asset_attrs(h: &Host, _who: Option<&Principal>, p: AssetAttrsParams) -> R<AssetAttrs> {
+    let pack = h.pack(nz(&p.pack_id))?;
+    Ok(AssetAttrs {
+        declared: pack.attribute_defs()?,
+        values: h.records().asset_attrs(&p.asset_id)?,
+    })
+}
+
+fn asset_set_attrs(h: &Host, _who: Option<&Principal>, p: AssetSetAttrsParams) -> R<AssetAttrs> {
+    use crate::maint::applic::AttrSource;
+    use crate::records::ValueSource;
+    let pack = h.pack(nz(&p.pack_id))?;
+    let defs = pack.attribute_defs()?;
+    let source = p.source.unwrap_or(ValueSource::Typed);
+    let mut values = p.values.clone();
+    if let Some(plate) = &p.plate {
+        let from = match source {
+            ValueSource::Vehicle => AttrSource::Vehicle,
+            _ => AttrSource::Plate,
+        };
+        for (k, v) in crate::records::plate_values(&defs, plate, from) {
+            values.entry(k).or_insert(Some(v));
+        }
+    }
+    let rec = h.records();
+    rec.set_asset_attrs(&p.asset_id, &values, source, Some(&defs))?;
+    Ok(AssetAttrs {
+        declared: defs,
+        values: rec.asset_attrs(&p.asset_id)?,
+    })
 }
 
 fn practice_items(

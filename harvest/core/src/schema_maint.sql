@@ -36,7 +36,24 @@ CREATE TABLE symptom (symptom_id TEXT PRIMARY KEY, tree_id TEXT NOT NULL, title 
 CREATE TABLE signal_map (signal_kind TEXT NOT NULL, pattern TEXT NOT NULL, title TEXT NOT NULL,
   tree_id TEXT,                                          -- null: a cause with no tree; section_id says it
   node_id TEXT, section_id TEXT, quote TEXT, prov_id TEXT NOT NULL,
+  row_id TEXT,                                           -- optional: the ref_row it resolves to (<table_id>#<ord>)
   PRIMARY KEY (signal_kind, pattern, tree_id));
+CREATE TABLE ref_table (table_id TEXT PRIMARY KEY, title TEXT NOT NULL,
+  kind TEXT NOT NULL,                                    -- open: spec|indicator|message|schedule|command|parameter|abbreviation|other
+  section_id TEXT NOT NULL,                              -- where the table is printed
+  columns TEXT NOT NULL,                                 -- json [{id,label,role}], printed order
+  lang TEXT NOT NULL, prov_id TEXT NOT NULL);
+CREATE TABLE ref_row (table_id TEXT NOT NULL, ord INTEGER NOT NULL,
+  cells TEXT NOT NULL,                                   -- json {column_id: "text" | ["item", …] | {text,unit,value|min,max,…}}
+  section_id TEXT NOT NULL,                              -- the row's own citation and location
+  lang TEXT NOT NULL, prov_id TEXT NOT NULL, PRIMARY KEY (table_id, ord));
+CREATE TABLE applic (ref_kind TEXT NOT NULL,             -- section|proc_step|procedure|fault_tree|fault_node|ref_row|ref_cell|question
+  ref_id TEXT NOT NULL,                                  -- proc_step <proc>#<ord>; ref_row <table>#<ord>; ref_cell <table>#<ord>/<column>
+  ord INTEGER NOT NULL,                                  -- several statements for one item: all must apply
+  cond TEXT NOT NULL,                                    -- json: all|any|not over {attr,op,value|values|min,max}
+  statement TEXT NOT NULL,                               -- the printed applicability, verbatim in source_section_id
+  source_section_id TEXT NOT NULL, prov_id TEXT NOT NULL,
+  PRIMARY KEY (ref_kind, ref_id, ord));
 CREATE TABLE equip_attr (equip_id TEXT NOT NULL, key TEXT NOT NULL, value TEXT NOT NULL,
                          PRIMARY KEY (equip_id, key));
 CREATE TABLE equip_ident (equip_id TEXT NOT NULL,
