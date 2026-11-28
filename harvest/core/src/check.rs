@@ -321,11 +321,8 @@ pub fn holds(text: &str, source: &str, min_overlap: f64) -> bool {
     if text.trim().is_empty() {
         return false;
     }
-    let source_numbers: BTreeSet<String> = normalize::tokens(source)
-        .into_iter()
-        .filter(|t| is_number(t))
-        .collect();
-    let numbers = text_numbers(&text);
+    let source_numbers: BTreeSet<String> = figures(source).into_iter().collect();
+    let numbers = figures(&text);
     if numbers.iter().any(|n| !source_numbers.contains(n)) {
         return false;
     }
@@ -339,9 +336,10 @@ pub fn holds(text: &str, source: &str, min_overlap: f64) -> bool {
             .copied()
             .filter(|w| text_toks.iter().any(|t| t == w))
             .collect();
-        let one = sentences(source).iter().any(|s| {
+        let one = claim_units(source).iter().any(|s| {
+            let figs = figures(s);
             let toks = normalize::tokens(s);
-            numbers.iter().all(|n| toks.contains(n))
+            numbers.iter().all(|n| figs.contains(n))
                 && ranges.iter().all(|w| toks.iter().any(|t| t == w))
         });
         if !one {
@@ -359,6 +357,67 @@ pub fn holds(text: &str, source: &str, min_overlap: f64) -> bool {
     let hit = stems.iter().filter(|s| source_stems.contains(*s)).count();
     let need = if stems.len() < 3 { 1.0 } else { min_overlap };
     (hit as f64) / (stems.len() as f64) >= need && polarity_ok(&sentences(source), &stems, &text)
+}
+
+/// The figures in `text`, one spelling each: "0.75" and ".75" alike,
+/// "1,000" as 1000, number words as digits.
+fn figures(text: &str) -> Vec<String> {
+    let mut out = Vec::new();
+    // ".75" before tokenizing (the tokenizer drops a leading point).
+    let spaced: String = {
+        let mut s = String::with_capacity(text.len());
+        let chars: Vec<char> = text.chars().collect();
+        for (i, c) in chars.iter().enumerate() {
+            let lead = *c == '.'
+                && chars.get(i + 1).is_some_and(|d| d.is_ascii_digit())
+                && !chars.get(i.wrapping_sub(1)).is_some_and(|d| d.is_ascii_digit());
+            if lead {
+                s.push_str(" 0.");
+            } else if *c == ',' && i > 0 && chars[i - 1].is_ascii_digit()
+                && chars.get(i + 1).is_some_and(|d| d.is_ascii_digit())
+            {
+                // a thousands comma
+            } else {
+                s.push(*c);
+            }
+        }
+        s
+    };
+    for t in normalize::tokens(&spaced) {
+        if is_number(&t)
+            && let Ok(v) = t.trim_end_matches('.').parse::<f64>()
+        {
+            out.push(format!("{v}"));
+        }
+    }
+    out
+}
+
+/// A source split into the units one claim may draw its numbers from:
+/// lines (table rows), then sentences ending in ". " or ";" (a decimal point
+/// never splits).
+fn claim_units(source: &str) -> Vec<String> {
+    let mut out = Vec::new();
+    for line in source.lines() {
+        let mut cur = String::new();
+        let chars: Vec<char> = line.chars().collect();
+        for (i, c) in chars.iter().enumerate() {
+            cur.push(*c);
+            let end = (*c == '.' || *c == '?' || *c == '!')
+                && chars.get(i + 1).is_none_or(|n| n.is_whitespace())
+                || *c == ';';
+            if end {
+                if !cur.trim().is_empty() {
+                    out.push(cur.trim().to_string());
+                }
+                cur.clear();
+            }
+        }
+        if !cur.trim().is_empty() {
+            out.push(cur.trim().to_string());
+        }
+    }
+    out
 }
 
 /// Words that say which side of a number a value falls.

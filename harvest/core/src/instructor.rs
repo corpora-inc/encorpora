@@ -578,6 +578,46 @@ const DUTY_STEMS: &[&str] = &[
     "exceed", "closer", "approach", "travel", "leav", "unattend",
 ];
 
+/// Content words a node sentence must share with the quote that backs its
+/// number (node text is the content lane's verified prose, so it may
+/// reword more than the model's line).
+const NODE_OVERLAP: f64 = 0.5;
+
+/// Arithmetic, unit conversion or physics: "144 square inches in a square
+/// foot", "doubling both sides quarters the pressure", "divide by the area".
+fn is_arithmetic(sentence: &str) -> bool {
+    const WORDS: &[&str] = &[
+        "divide", "divided", "multiply", "multiplied", "times", "equals", "square inch",
+        "square foot", "square feet", "per square", "halve", "quarter", "double", "convert",
+        "conversion", "sum", "subtract", "minus", "plus", "ratio", "pressure is", "area is",
+        "e.g", "for example", "say ",
+    ];
+    let l = sentence.to_lowercase();
+    WORDS.iter().any(|w| l.contains(w)) && !is_rule_claim(sentence)
+}
+
+/// A sentence about the exam's format (its share, items, minutes).
+fn is_exam_format(sentence: &str) -> bool {
+    let l = sentence.to_lowercase();
+    (l.contains("exam") || l.contains("domain"))
+        && ["percent", "%", "question", "minute", "item"]
+            .iter()
+            .any(|w| l.contains(w))
+}
+
+/// A number that states a requirement: a clearance, a distance, a limit, a
+/// capacity, an interval or deadline, a voltage band.
+fn is_requirement_number(sentence: &str) -> bool {
+    const WORDS: &[&str] = &[
+        "clearance", "distance", "limit", "capacity", "rated", "deadline", "working day",
+        "interval", "every", "each shift", "monthly", "annual", "level", "within", "no more than",
+        "no less than", "kv", "volt", "feet", "foot", "percent", "degree", "proof test",
+        "design factor", "safety factor", "minutes", "hours", "days", "months", "years",
+    ];
+    let l = format!(" {} ", sentence.to_lowercase());
+    WORDS.iter().any(|w| l.contains(w))
+}
+
 /// True when the learner's words are about traveling (driving the crane,
 /// moving it with no load), which has its own clearance table.
 fn traveling(text: &str) -> bool {
@@ -776,13 +816,7 @@ impl Instructor {
     /// sentence check as the model's (it has no rule sentences named).
     fn checked(&self, blocks: Vec<Block>, trace: &mut Trace) -> Vec<Block> {
         let pack = &self.engine.pack;
-        let mut context = self.tree.exams.to_string();
-        for n in &self.tree.nodes {
-            if matches!(n.level.as_str(), "course" | "exam" | "domain") {
-                context.push(' ');
-                context.push_str(&n.text());
-            }
-        }
+        let context = self.exam_numbers();
         let mut out: Vec<Block> = Vec::new();
         for b in blocks {
             let kept = match b {
@@ -941,21 +975,116 @@ impl Instructor {
     /// The node's rule quotes, each with its cite.
     /// At most [`NODE_QUOTES`] of the node's rule quotes, the ones the
     /// conversation has not shown yet first.
-    fn node_quotes_after(&self, n: &CourseNode, history: &[Message]) -> Vec<Block> {
+    /// The numbers the exam blueprints state, as people say them: the JSON
+    /// (counts, minutes, ids) and each weight as a percentage, plus the
+    /// number of domains, exams and topics.
+    fn exam_numbers(&self) -> String {
+        let mut out = self.tree.exams.to_string();
+        for e in self.tree.exams.as_array().into_iter().flatten() {
+            let domains = e["domains"].as_array().map_or(0, Vec::len);
+            out.push_str(&format!(" {domains}"));
+            for d in e["domains"].as_array().into_iter().flatten() {
+                if let Some(w) = d["weight"].as_f64() {
+                    out.push_str(&format!(" {}", (w * 100.0).round()));
+                }
+            }
+        }
+        let exams = self.tree.exams.as_array().map_or(0, Vec::len);
+        let topics = self.tree.nodes.iter().filter(|n| n.level == "topic").count();
+        out.push_str(&format!(" {exams} {topics}"));
+        out
+    }
+
+    /// A node's texts and rule quotes for one turn, held to the founder's
+    /// rule: a number that states a requirement (a distance, a percent of
+    /// capacity, a deadline, an interval) stands only with a quote in the
+    /// turn that states it; the quote is pulled from the node's quotes or
+    /// its rule sections when it is not among the ones shown, else the
+    /// sentence is left out. Exam-format numbers come only from the exam
+    /// blueprint. Arithmetic, unit conversions and physics need no quote,
+    /// and `mistakes` (misconceptions, wrong numbers on purpose) is exempt.
+    fn node_turn(
+        &self,
+        n: &CourseNode,
+        fields: &[String],
+        history: &[Message],
+        trace: &mut Trace,
+    ) -> (Block, Vec<Block>) {
+        let mut nb = self.node_block_after(n, fields, history);
         let shown = |q: &str| {
             history
                 .iter()
                 .any(|m| m.who == "instructor" && m.text.contains(q))
         };
-        let mut runs: Vec<(String, String)> = n
+        let mut pool: Vec<(String, String)> = n
             .quotes
             .iter()
             .filter(|q| self.quote_cite(&q.section_id, &q.quote).is_some())
             .map(|q| (q.section_id.clone(), q.quote.clone()))
             .collect();
-        runs.sort_by_key(|(_, q)| shown(q));
-        runs.truncate(NODE_QUOTES);
-        Self::run_blocks(&self.with_lead_ins(runs))
+        pool.sort_by_key(|(_, q)| shown(q));
+        let mut runs: Vec<(String, String)> = pool.iter().take(NODE_QUOTES).cloned().collect();
+        // Rule sentences of the node's sections, for a requirement no node
+        // quote states.
+        for sid in n.section_ids.iter().take(6) {
+            if let Ok(Some(sec)) = self.engine.pack.section(sid) {
+                let lines: Vec<String> = if sec.kind == "table" {
+                    sec.text.lines().map(normalize_ws).filter(|l| !l.is_empty()).collect()
+                } else {
+                    sentences(&normalize_ws(&sec.text))
+                };
+                pool.extend(lines.into_iter().take(40).map(|l| (sid.clone(), l)));
+            }
+        }
+        let exam = self.exam_numbers();
+        let exam_nums: BTreeSet<String> = numbers(&exam).into_iter().collect();
+        if let Block::Node { texts, .. } = &mut nb {
+            for t in texts.iter_mut() {
+                if t.field == "mistakes" {
+                    continue;
+                }
+                let mut kept = Vec::new();
+                for sent in sentences(&normalize_ws(&t.text)) {
+                    // Only figures written as digits: "one skill at a time" and
+                    // "two-block" state no requirement.
+                    let nums = numbers(&sent);
+                    if !sent.chars().any(|c| c.is_ascii_digit()) || is_arithmetic(&sent) {
+                        kept.push(sent);
+                        continue;
+                    }
+                    if is_exam_format(&sent) {
+                        if nums.iter().all(|x| exam_nums.contains(x)) {
+                            kept.push(sent);
+                        } else {
+                            trace.dropped.push(format!("node {}: exam number not in the blueprint: {sent}", n.node_id));
+                        }
+                        continue;
+                    }
+                    if !(is_rule_claim(&sent) || is_requirement_number(&sent)) {
+                        kept.push(sent);
+                        continue;
+                    }
+                    let holds = |rs: &[(String, String)]| {
+                        check::holds(&sent, &self.support_text(rs), NODE_OVERLAP)
+                    };
+                    if holds(&runs) {
+                        kept.push(sent);
+                        continue;
+                    }
+                    let found = pool.iter().find(|c| !runs.contains(c) && holds(std::slice::from_ref(c)));
+                    match found {
+                        Some(c) if runs.len() < NODE_QUOTES + 3 => {
+                            runs.push(c.clone());
+                            kept.push(sent);
+                        }
+                        _ => trace.dropped.push(format!("node {}: no quote states: {sent}", n.node_id)),
+                    }
+                }
+                t.text = kept.join(" ");
+            }
+            texts.retain(|t| !t.text.trim().is_empty());
+        }
+        (nb, Self::run_blocks(&self.with_lead_ins(runs)))
     }
 
     /// A practice question on a skill: the first the learner has not just answered.
@@ -1090,21 +1219,24 @@ impl Instructor {
         let Some(n) = self.tree.node(node_id) else {
             return self.lost(node_id);
         };
-        let nb = self.node_block_after(n, fields, history);
+        let mut trace = Trace::default();
+        let (nb, quotes) = self.node_turn(n, fields, history, &mut trace);
         let shown: Vec<String> = match &nb {
             Block::Node { texts, .. } => texts.iter().map(|t| t.field.clone()).collect(),
             _ => Vec::new(),
         };
         let mut blocks = vec![nb];
-        blocks.extend(self.node_quotes_after(n, history));
+        blocks.extend(quotes);
         if fields.is_empty() {
             blocks.extend(self.linked(n, None, learner));
         }
-        Turn::new(
+        let mut t = Turn::new(
             blocks,
             self.next_steps(n, &shown),
             Some(node_id.to_string()),
-        )
+        );
+        t.trace = trace;
+        t
     }
 
     fn lost(&self, node_id: &str) -> Turn {
@@ -1656,14 +1788,14 @@ impl Instructor {
                     .filter(|f| FIELDS.contains(&f.as_str()))
                     .cloned()
                     .collect();
-                let nb = self.node_block_after(n, &fields, &req.history);
+                let (nb, node_quotes) = self.node_turn(n, &fields, &req.history, &mut trace);
                 let shown: Vec<String> = match &nb {
                     Block::Node { texts, .. } => texts.iter().map(|t| t.field.clone()).collect(),
                     _ => Vec::new(),
                 };
                 context.push_str(&n.text());
                 blocks.push(nb);
-                blocks.extend(self.node_quotes_after(n, &req.history));
+                blocks.extend(node_quotes);
                 let mut only = plan.show.clone();
                 if plan.intent == "practice" && !only.iter().any(|s| s == "practice") {
                     only.push("practice".into());

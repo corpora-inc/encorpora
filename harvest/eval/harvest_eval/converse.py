@@ -16,7 +16,7 @@ import statistics
 import subprocess
 from pathlib import Path
 
-RUBRIC = "instructor-2026-11-28.1"
+RUBRIC = "instructor-2026-11-28.2"
 
 SYSTEM = """You grade conversations between a learner and the Instructor of an offline course that prepares crane operators for a written mobile crane operator exam. The course's sources are US federal crane rules (29 CFR 1926 Subpart CC and 29 CFR 1910.179, .180, .184). Text in quotation marks followed by a citation is verbatim rule text from those sources; everything else the Instructor wrote or chose. Bracketed lines describe what the app showed (a lesson card, a practice question, a rules search). You also get the conversation's GOAL: what a good instructor does here.
 
@@ -26,7 +26,9 @@ Score each 1 to 5 (5 = an excellent human instructor would do no better; 3 = acc
 - citations: every statement of what a rule requires is backed by the quoted rule text shown, and the quotes fit the question. 5 when no rule claim was needed and none was made.
 - honesty: says plainly when something is not covered or unsure and shows what it found; never invents rules, numbers, fees, passing scores or other countries' rules.
 - teaching: helps the learner understand and moves them forward (examples, next steps, practice) at the right level.
+Not claims that need a citation: arithmetic, unit conversions and physics ("144 square inches in a square foot", "doubling both sides quarters the pressure"), and text the app labels as common misconceptions (it states wrong ideas on purpose, then what is right).
 goal_met: true when the GOAL was achieved.
+goal_fit: was the GOAL a fair test of a course tutor? "fair"; "too_fact_specific" (demands an exact detail, wording or number beyond what a good instructor would be expected to state here); "outside_course" (needs something the course and its federal sources do not teach, such as a manufacturer's chart, a private standard's text, or a skill not in the course).
 unsupported: the number of statements about what a rule requires, permits or prohibits (or a rule's number) that are NOT backed by quoted rule text in the same turn, or that are wrong.
 why: one or two short lines on the main strength and the main failure."""
 
@@ -40,9 +42,10 @@ SCHEMA = {"type": "object", "properties": {"grades": {"type": "array", "items": 
         "teaching": {"type": "integer", "minimum": 1, "maximum": 5},
         "goal_met": {"type": "boolean"},
         "unsupported": {"type": "integer", "minimum": 0},
+        "goal_fit": {"type": "string", "enum": ["fair", "too_fact_specific", "outside_course"]},
         "why": {"type": "string"}},
     "required": ["key", "fluency", "correctness", "citations", "honesty", "teaching", "goal_met",
-                 "unsupported", "why"]}}}, "required": ["grades"]}
+                 "unsupported", "goal_fit", "why"]}}}, "required": ["grades"]}
 
 DIMENSIONS = ("fluency", "correctness", "citations", "honesty", "teaching")
 
@@ -91,8 +94,10 @@ def render_turn(turn: dict, pack: Pack) -> list[str]:
         if t == "text":
             lines.append(b["text"])
         elif t == "node":
+            labels = {"hard": "What's hard: ", "mistakes": "Common misconceptions (people think..., actually...): ",
+                      "exam": "What the exam asks: "}
             for x in b.get("texts", []):
-                lines.append(x["text"])
+                lines.append(labels.get(x.get("field"), "") + x["text"])
             if not b.get("texts"):
                 lines.append(f"[course card: {b['title']}]")
         elif t == "quote":
@@ -190,6 +195,10 @@ def summarize(rendered: list[dict], grades: list[dict | None]) -> dict:
         "score": round(statistics.mean(statistics.mean(g[d] for d in DIMENSIONS) for _, g in ok), 2),
         **{d: round(statistics.mean(g[d] for _, g in ok), 2) for d in DIMENSIONS},
         "goal_met": round(sum(g["goal_met"] for _, g in ok) / len(ok), 3),
+        "goal_fit": {f: sum(1 for _, g in ok if g.get("goal_fit") == f)
+                     for f in ("fair", "too_fact_specific", "outside_course")},
+        "goal_met_fair": (lambda fair: round(sum(g["goal_met"] for g in fair) / len(fair), 3) if fair else None)(
+            [g for _, g in ok if g.get("goal_fit", "fair") == "fair"]),
         "unsupported_per_conv": round(sum(g["unsupported"] for _, g in ok) / len(ok), 2),
         "convs_with_unsupported": sum(1 for _, g in ok if g["unsupported"] > 0),
         "turn_ms_p50": lat[len(lat) // 2] if lat else None,
