@@ -193,7 +193,7 @@ fn the_api_reads_the_manual_tasks_and_variants() {
         "harvest-run/1"
     );
     let top = ok(&h, "manual.children", json!({}));
-    assert_eq!(top.as_array().unwrap().len(), 3);
+    assert_eq!(top.as_array().unwrap().len(), 4);
     let sec = ok(&h, "manual.section", json!({"section_id": "m40.3-1.q2"}));
     assert_eq!(sec["citation"]["page_asset_id"], "page-3-2");
     assert_eq!(sec["detail"].as_array().unwrap().len(), 2);
@@ -636,4 +636,81 @@ fn a_native_shell_opens_the_host_with_its_own_key_store() {
     let empty = MemoryKeyStore::default();
     empty.store(shell::DEVICE_KEY, &dk).unwrap();
     assert!(shell::open_host(&cfg, &empty).is_err());
+}
+
+#[test]
+fn tables_and_asset_attributes_through_the_api() {
+    let (_t, h) = host(env());
+    let list = ok(&h, "table.list", json!({}));
+    assert_eq!(list.as_array().unwrap().len(), 2);
+    assert_eq!(list[0]["columns"][0]["role"], "code");
+    let hit = ok(&h, "table.lookup", json!({"key": "E21"}));
+    assert_eq!(
+        hit[0]["row"]["cells"]["cause"][0],
+        "blocked motor fan cover"
+    );
+    // The asset's attributes: declared by the pack, set by hand and from
+    // the vehicle's version message.
+    let a = ok(&h, "asset.attrs", json!({"asset_id": "unit-201"}));
+    assert_eq!(a["declared"].as_array().unwrap().len(), 3);
+    assert!(a["values"].as_array().unwrap().is_empty());
+    let a = ok(
+        &h,
+        "asset.set_attrs",
+        json!({"asset_id": "unit-201", "source": "vehicle", "plate": {"firmware": "2.6.1", "params": {}}}),
+    );
+    assert_eq!(
+        a["values"][0],
+        json!({"attr": "firmware", "value": "2.6.1", "source": "vehicle", "set_at": a["values"][0]["set_at"]})
+    );
+    assert!(
+        api::call(
+            &h,
+            "asset.set_attrs",
+            json!({"asset_id": "unit-201", "values": {"colour": "red"}})
+        )
+        .is_err()
+    );
+    ok(
+        &h,
+        "asset.set_attrs",
+        json!({"asset_id": "unit-201", "values": {"sb_40_07": "incorporated"}}),
+    );
+    // Reads follow the asset: the E52 row applies (firmware 2.6.1), the
+    // post-bulletin torque is the one shown.
+    let m = ok(
+        &h,
+        "signal.match",
+        json!({"observations": [{"signal_kind": "pump40.code", "value": "E52"}], "asset_id": "unit-201"}),
+    );
+    assert_eq!(m["hits"][0]["row"]["applicability"]["status"], "applies");
+    let t = ok(
+        &h,
+        "table.get",
+        json!({"table_id": "tab-6-1", "asset_id": "unit-201"}),
+    );
+    assert_eq!(t["rows"][2]["cells"]["std_sb"]["text"], "55 N·m");
+    assert!(t["rows"][2]["cells"]["std"].is_null());
+    let t = ok(
+        &h,
+        "table.get",
+        json!({"table_id": "tab-6-1", "asset_id": "unit-101"}),
+    );
+    assert_eq!(
+        t["rows"][2]["cell_applicability"]["std"]["message"],
+        "applicability not determined: POST SB 40-07"
+    );
+    // Rows are searchable.
+    let s = ok(
+        &h,
+        "manual.search",
+        json!({"query": "inverter overcurrent", "asset_id": "unit-201"}),
+    );
+    let row = s["hits"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .find(|x| x["ref_kind"] == "ref_row")
+        .unwrap();
+    assert_eq!(row["row"]["row_id"], "tab-3-3#3");
 }

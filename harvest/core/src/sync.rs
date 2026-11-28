@@ -448,7 +448,8 @@ pub trait HubLink {
     fn fleet(&self) -> Result<Option<serde_json::Value>>;
     /// The small signed hello that opens every upload: the hub answers
     /// whether it accepts this device before any payload is sent.
-    fn hello(&self) -> Result<HelloReply>;
+    /// Say a signed hello; the hello sent and the hub's reply.
+    fn hello(&self) -> Result<(Hello, HelloReply)>;
     /// The link the device is on now (the hub's attachment policy depends
     /// on it); `normal` unless the host knows better.
     fn link_class(&self) -> LinkClass {
@@ -502,6 +503,10 @@ pub struct Hello {
     /// The link the device is on now, as the host knows it.
     #[serde(default)]
     pub link: LinkClass,
+    /// Fresh for every hello, so two hellos never look alike (a reply names
+    /// the one it answers).
+    #[serde(default)]
+    pub nonce: String,
     pub signature: String,
 }
 
@@ -580,6 +585,7 @@ impl Hello {
             "device_id": self.device_id,
             "signed_at": self.signed_at,
             "link": self.link,
+            "nonce": self.nonce,
         }))
     }
 
@@ -596,6 +602,11 @@ pub struct HelloReply {
     pub format: String,
     /// The device the hub answered (signed with the rest).
     pub device_id: String,
+    /// The SHA-256 of the signed hello this answers (its canonical JSON,
+    /// signature included) and the link class it named: a reply to any
+    /// other hello counts for nothing.
+    pub hello_sha256: String,
+    pub link: LinkClass,
     pub accepted: bool,
     pub refused: Option<Refusal>,
     /// How often a device fetches a changed fleet summary (a hub setting
@@ -615,6 +626,25 @@ pub struct HelloReply {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[schemars(with = "Option<serde_json::Value>")]
     pub signature: Option<serde_json::Value>,
+    /// The reply as received, when it came over a wire: the signature is
+    /// checked on these bytes, so fields this version does not know still
+    /// count.
+    #[serde(skip)]
+    #[schemars(skip)]
+    pub raw: Option<serde_json::Value>,
+}
+
+/// A hello's nonce: random, or a counter under a simulation's virtual
+/// clock (so a simulation repeats itself).
+fn hello_nonce() -> Result<String> {
+    static COUNTER: std::sync::atomic::AtomicU64 = std::sync::atomic::AtomicU64::new(0);
+    if crate::audit::virtual_now_ms().is_some() {
+        let n = COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed);
+        return Ok(format!("sim-{n:016x}"));
+    }
+    let mut b = [0u8; 16];
+    getrandom::getrandom(&mut b).map_err(|e| Error::Crypto(format!("random: {e}")))?;
+    Ok(hex_encode(&b))
 }
 
 /// Format ids of the hub's signed replies.
@@ -634,6 +664,10 @@ pub struct ReceiptSet {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[schemars(with = "Option<serde_json::Value>")]
     pub signature: Option<serde_json::Value>,
+    /// The reply as received (see [`HelloReply::raw`]).
+    #[serde(skip)]
+    #[schemars(skip)]
+    pub raw: Option<serde_json::Value>,
 }
 
 /// How much of an attachment variant the hub holds, signed: a device
@@ -650,6 +684,10 @@ pub struct Held {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[schemars(with = "Option<serde_json::Value>")]
     pub signature: Option<serde_json::Value>,
+    /// The reply as received (see [`HelloReply::raw`]).
+    #[serde(skip)]
+    #[schemars(skip)]
+    pub raw: Option<serde_json::Value>,
 }
 
 /// Canonical JSON has no floating-point numbers: a signed reply signs a
@@ -680,10 +718,76 @@ pub fn hub_sign<T: Serialize>(
     Ok(v["signature"].clone())
 }
 
-/// Say hello through `link` and check the reply against the hub's keys.
+/// A signed hub reply that may carry the JSON it arrived as.
+pub trait HubReply {
+    fn raw(&self) -> Option<&serde_json::Value>;
+}
+impl HubReply for HelloReply {
+    fn raw(&self) -> Option<&serde_json::Value> {
+        self.raw.as_ref()
+    }
+}
+impl HubReply for ReceiptSet {
+    fn raw(&self) -> Option<&serde_json::Value> {
+        self.raw.as_ref()
+    }
+}
+impl HubReply for Held {
+    fn raw(&self) -> Option<&serde_json::Value> {
+        self.raw.as_ref()
+    }
+}
+
+/// Parse a signed reply off the wire, keeping the JSON it came as.
+pub fn reply_from_json<T: serde::de::DeserializeOwned + HubReplyRaw>(
+    v: serde_json::Value,
+) -> Result<T> {
+    let mut t: T =
+        serde_json::from_value(v.clone()).map_err(|e| Error::Sync(format!("hub reply: {e}")))?;
+    t.set_raw(v);
+    Ok(t)
+}
+
+/// Setting the received JSON on a reply.
+pub trait HubReplyRaw {
+    fn set_raw(&mut self, v: serde_json::Value);
+}
+impl HubReplyRaw for HelloReply {
+    fn set_raw(&mut self, v: serde_json::Value) {
+        self.raw = Some(v);
+    }
+}
+impl HubReplyRaw for ReceiptSet {
+    fn set_raw(&mut self, v: serde_json::Value) {
+        self.raw = Some(v);
+    }
+}
+impl HubReplyRaw for Held {
+    fn set_raw(&mut self, v: serde_json::Value) {
+        self.raw = Some(v);
+    }
+}
+
+impl Hello {
+    /// The SHA-256 of this hello's canonical JSON, signature included (what
+    /// a reply names).
+    pub fn sha256(&self) -> Result<String> {
+        Ok(hex_encode(&Sha256::digest(crate::canon::to_vec(
+            &serde_json::to_value(self)?,
+        )?)))
+    }
+}
+
+/// Say hello through `link` and check the reply: the hub's signature, this
+/// device, and this very hello (so an old reply cannot be replayed).
 pub fn checked_hello(link: &dyn HubLink, keys: &[crate::packs::TrustedKey]) -> Result<HelloReply> {
-    let r = link.hello()?;
+    let (hello, r) = link.hello()?;
     verify_hub_reply(&r, HELLO_REPLY_FORMAT, &link.device_id(), keys)?;
+    if r.hello_sha256 != hello.sha256()? || r.link != hello.link {
+        return Err(Error::Signature(
+            "the hub's reply answers another hello".into(),
+        ));
+    }
     Ok(r)
 }
 
@@ -706,13 +810,16 @@ pub fn checked_held(
 
 /// Check a hub reply: its format, that it answers this device, and its
 /// signature against the trusted hub keys.
-pub fn verify_hub_reply<T: Serialize>(
+pub fn verify_hub_reply<T: Serialize + HubReply>(
     reply: &T,
     format: &str,
     device_id: &str,
     keys: &[crate::packs::TrustedKey],
 ) -> Result<()> {
-    let mut v = serde_json::to_value(reply)?;
+    let mut v = match reply.raw() {
+        Some(r) => r.clone(),
+        None => serde_json::to_value(reply)?,
+    };
     floats_as_text(&mut v);
     if v.get("format").and_then(|f| f.as_str()) != Some(format) {
         return Err(Error::Signature(format!("hub reply is not {format}")));
@@ -789,6 +896,7 @@ impl DeviceKey {
             device_id: self.device_id(),
             signed_at: now_rfc3339(),
             link,
+            nonce: hello_nonce()?,
             signature: String::new(),
         };
         use base64::Engine as _;

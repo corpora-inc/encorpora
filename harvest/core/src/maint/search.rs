@@ -112,6 +112,9 @@ pub struct SignalHit {
     pub section: Option<SignalSection>,
     /// False when the rule leads to no troubleshooting tree.
     pub has_tree: bool,
+    /// The reference-table row the rule resolves to, as it applies.
+    #[serde(default, skip_deserializing)]
+    pub row: Option<super::table::RowView>,
 }
 
 /// The manual text a signal rule cites.
@@ -330,6 +333,17 @@ pub fn signal_match(
     observations: &[Observation],
     equip: Option<&str>,
 ) -> Result<SignalMatch> {
+    signal_match_with(pack, observations, equip, &super::applic::AttrValues::new())
+}
+
+/// [`signal_match`] for an asset's attribute `values` (a row hit carries
+/// the row as it applies to the asset).
+pub fn signal_match_with(
+    pack: &Pack,
+    observations: &[Observation],
+    equip: Option<&str>,
+    values: &super::applic::AttrValues,
+) -> Result<SignalMatch> {
     let rules = pack.signal_rules()?;
     let trees: Vec<super::FaultTree> = pack.fault_trees(equip)?;
     let applies = |r: &SignalRule| -> Result<bool> {
@@ -376,6 +390,13 @@ pub fn signal_match(
                                 text: s.text,
                             }),
                             has_tree: r.tree_id.is_some(),
+                            row: match &r.row_id {
+                                Some(id) => match pack.ref_row(id)? {
+                                    Some(row) => super::table::row_view(pack, &row, equip, values)?,
+                                    None => None,
+                                },
+                                None => None,
+                            },
                         },
                     ));
                 }

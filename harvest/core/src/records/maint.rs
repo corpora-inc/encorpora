@@ -2000,12 +2000,14 @@ impl Records {
             })?,
         };
         let path_ids: Vec<String> = job.path().iter().map(|s| s.node_id.clone()).collect();
+        let values = self.attr_values(job.asset_id.as_deref())?;
         let node = view::node_view(
             pack,
             &tree,
             &job.current_node,
             &lvl,
             job.equip_id.as_deref(),
+            &values,
             &path_ids,
         )?;
         let texts = step_texts(pack, &tree, &job.steps);

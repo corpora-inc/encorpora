@@ -1188,6 +1188,8 @@ struct Forger {
     inner: LocalLink,
     /// Sign with this key instead of passing the hub's signature through.
     key: Option<ed25519_dalek::SigningKey>,
+    /// Answer every hello with this (an old, genuine reply) instead.
+    replay: Option<harvest_core::sync::HelloReply>,
 }
 
 impl Forger {
@@ -1227,10 +1229,15 @@ impl HubLink for Forger {
     fn fleet(&self) -> harvest_core::Result<Option<serde_json::Value>> {
         self.inner.fleet()
     }
-    fn hello(&self) -> harvest_core::Result<harvest_core::sync::HelloReply> {
-        let mut r = self.inner.hello()?;
+    fn hello(
+        &self,
+    ) -> harvest_core::Result<(harvest_core::sync::Hello, harvest_core::sync::HelloReply)> {
+        let (h, mut r) = self.inner.hello()?;
+        if let Some(old) = &self.replay {
+            return Ok((h, old.clone()));
+        }
         r.signature = self.resign(&r);
-        Ok(r)
+        Ok((h, r))
     }
     fn public_key(&self) -> String {
         self.inner.public_key()
@@ -1278,6 +1285,7 @@ fn a_device_acts_only_on_replies_the_hub_signed() {
                 link: Default::default(),
             },
             key,
+            replay: None,
         };
         // The hub stores the items, but the receipts do not verify: the
         // device keeps them queued (they go again, as duplicates).
@@ -1307,10 +1315,28 @@ fn a_device_acts_only_on_replies_the_hub_signed() {
             link: Default::default(),
         },
         key: Some(ed25519_dalek::SigningKey::from_bytes(&[0x66; 32])),
+        replay: None,
     };
     let rep = rec.send_attachments(&forger, &keys, &|| false).unwrap();
     assert_eq!(rep.completed, 0, "{rep:?}");
     assert_eq!(rec.attachments().unwrap()[0].sent, "none");
+    // A genuine reply replayed for a later hello does not count.
+    let (_, old) = link.hello().unwrap();
+    rec.add_attachment(&photo(500, 8), "image/jpeg", None)
+        .unwrap();
+    let replayer = Forger {
+        inner: LocalLink {
+            hub: f.hub.clone(),
+            key: DeviceKey::from_seed(&link.key.seed()),
+            link: Default::default(),
+        },
+        key: None,
+        replay: Some(old),
+    };
+    let e = harvest_core::sync::checked_hello(&replayer, &keys).unwrap_err();
+    assert!(e.to_string().contains("another hello"), "{e}");
+    let rep = rec.send_attachments(&replayer, &keys, &|| false).unwrap();
+    assert!(rep.mode.is_none() && rep.chunks == 0, "{rep:?}");
     // A reply for another device does not count either.
     let other = harvest_core::sync::verify_hub_reply(
         &f.hub
