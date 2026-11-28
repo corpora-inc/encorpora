@@ -11,6 +11,7 @@ imports:
   - {table: procedure, files: ["procedures/*.yaml"]}          # row "steps" -> proc_step
   - {table: diagram,   files: ["diagrams/*.json"]}
   - {table: topic,     files: [blueprint.yaml]}               # topics + nested skills
+  - {table: course_node, files: ["course/*.jsonl"]}           # the course tree; import it last
 ```
 
 Files are JSONL, a JSON array, or YAML (a list or one document). Each row has the contract
@@ -34,6 +35,7 @@ from pathlib import Path
 import yaml
 
 from . import schema
+from .course import cut_keys
 from .stage import Stage
 from .textutil import canonical_json, locate, sha256_text
 
@@ -120,6 +122,11 @@ def import_topics(stage: Stage, path: Path, rep: "ImportReport") -> None:
         rep.verdicts["pass"] += 1
         rep.problems += [f"{t['topic_id']}: unknown section_id {s}" for s in t.get("section_ids") or []
                          if not stage.exists(s)]
+        for item in [t, *(t.get("skills") or [])]:
+            cut = cut_keys(item)
+            if cut:  # `{title: A, B}` parses as title "A" plus a key "B"
+                iid = item.get("skill_id") or item.get("topic_id")
+                rep.problems.append(f"{iid}: title cut at a comma (quote it): {item.get('title')!r} + {cut}")
         for sk in t.get("skills") or []:
             stage.insert("skill", {"skill_id": sk["skill_id"], "topic_id": t["topic_id"], "title": sk["title"],
                                    "lang": lang})
@@ -148,6 +155,8 @@ def import_rows(stage: Stage, corpus_dir: Path, specs: list[dict]) -> list[Impor
                 prov = dict(raw.get("prov") or {})
                 body = {k: v for k, v in raw.items() if k != "prov"}
                 problems = verify_refs(body, stage)
+                if table == "course_node":
+                    problems += node_link_problems(body, stage)
                 own = prov.get("verdict", "needs_review")
                 verdict = "fail" if problems else (own if own in ("pass", "fail", "needs_review") else "needs_review")
                 rep.verdicts[verdict] += 1
@@ -189,6 +198,46 @@ def import_rows(stage: Stage, corpus_dir: Path, specs: list[dict]) -> list[Impor
                             stage.insert("proc_step", _row(stage, "proc_step", s, prov_id))
                         except sqlite3.Error as e:
                             rep.problems.append(f"{path.name}#{n} step {k}: {e}")
+        if table == "course_node":
+            rep.problems += dangling_nodes(stage)
         stage.commit()
         reports.append(rep)
     return reports
+
+
+NODE_LEVELS = ("course", "exam", "domain", "topic", "skill")
+# links key -> (table, id column) the linked id must exist in. `film_ids` name films the app
+# resolves from its own media catalog, so they are not checked here.
+NODE_LINKS = {"lesson_ids": ("lesson", "lesson_id"), "q_ids": ("question", "q_id"),
+              "diagram_ids": ("diagram", "diagram_id")}
+
+
+def node_link_problems(body: dict, stage: Stage) -> list[str]:
+    """A course-tree node: a known level, and every linked lesson, question and diagram exists in the
+    stage (import `course_node` after the tables it links to)."""
+    problems = []
+    if body.get("level") not in NODE_LEVELS:
+        problems.append(f"level {body.get('level')!r} is not one of {', '.join(NODE_LEVELS)}")
+    links = body.get("links") or {}
+    if not isinstance(links, dict):
+        return problems + ["links is not an object"]
+    for key, (table, col) in NODE_LINKS.items():
+        for i in links.get(key) or []:
+            if stage.conn.execute(f"SELECT 1 FROM {table} WHERE {col} = ?", (i,)).fetchone() is None:
+                problems.append(f"unknown {key[:-1]} {i}")
+    return problems
+
+
+def dangling_nodes(stage: Stage) -> list[str]:
+    """Parents and `links.node_ids` that name no node (reported once the whole tree is in)."""
+    ids = {r[0] for r in stage.conn.execute("SELECT node_id FROM course_node")}
+    out = []
+    for nid, parent, links in stage.conn.execute("SELECT node_id, parent_id, links FROM course_node ORDER BY node_id"):
+        if parent and parent not in ids:
+            out.append(f"{nid}: unknown parent_id {parent}")
+        try:
+            named = (json.loads(links or "{}") or {}).get("node_ids") or []
+        except ValueError:
+            named = []
+        out += [f"{nid}: unknown node {n}" for n in named if n not in ids]
+    return out

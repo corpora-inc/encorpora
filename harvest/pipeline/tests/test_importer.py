@@ -80,3 +80,49 @@ def test_imports_reverify_and_ship_only_pass(corpus_dir):
     assert conn.execute("SELECT skill_id, topic_id FROM skill").fetchall() == [("power.clearance", "power")]
     topic_rep = {t["task"]: t for t in report["tasks"]}["import:topic"]
     assert topic_rep["errors"] == ["power: unknown section_id 99cfr1999.99"]
+
+
+def test_course_tree_imports_checks_links_and_indexes_apart(corpus_dir):
+    data = corpus_dir / "data"
+    data.mkdir()
+    p = {**prov(), "prov_id": "n"}
+    nodes = [
+        {"node_id": "course", "level": "course", "ord": 1, "title": "Crane course",
+         "summary": "Everything you need for the written exam.", "hard": "", "mistakes": "", "exam": "",
+         "links": {"node_ids": ["topic:power"]}, "section_ids": [], "quotes": [], "prov": {**p, "prov_id": "n1"}},
+        {"node_id": "topic:power", "parent_id": "course", "level": "topic", "ord": 1, "title": "Power lines",
+         "summary": "How close a crane may get to an energized line.",
+         "hard": "Reading the clearance table by voltage band.", "mistakes": "Measuring from the wrong point.",
+         "exam": "Table lookups.", "links": {"node_ids": ["skill:power.clearance"], "lesson_ids": []},
+         "section_ids": ["99cfr1999.12(a)(1)"],
+         "quotes": [{"section_id": "99cfr1999.12(a)(1)", "quote": "at least 20 feet from an energized line"}],
+         "prov": {**p, "prov_id": "n2"}},
+        {"node_id": "skill:power.clearance", "parent_id": "topic:power", "level": "skill", "ord": 1,
+         "title": "Know the clearance", "summary": "s", "hard": "", "mistakes": "", "exam": "",
+         "links": {"lesson_ids": ["no-such-lesson"]}, "section_ids": [], "quotes": [], "prov": {**p, "prov_id": "n3"}},
+        {"node_id": "topic:wind", "parent_id": "nowhere", "level": "chapter", "ord": 2, "title": "Wind",
+         "summary": "w", "hard": "", "mistakes": "", "exam": "", "links": {}, "section_ids": [], "quotes": [],
+         "prov": {**p, "prov_id": "n4"}},
+    ]
+    (data / "tree.jsonl").write_text("\n".join(json.dumps(r) for r in nodes) + "\n")
+    y = corpus_dir / "corpus.yaml"
+    y.write_text(y.read_text().replace("tasks: [terms, facts]", "tasks: []\nimports:\n"
+                                       "  - {table: course_node, files: [data/tree.jsonl]}"))
+    c = load_corpus(y)
+    fetch(c)
+    res = build(c, c.profile(), log=None)
+    import sqlite3
+    conn = sqlite3.connect(res["path"])
+    # a bad lesson link and a bad level fail their rows; the rest ship
+    assert [r[0] for r in conn.execute("SELECT node_id FROM course_node ORDER BY node_id")] == [
+        "course", "topic:power"]
+    q = json.loads(conn.execute("SELECT quotes FROM course_node WHERE node_id='topic:power'").fetchone()[0])
+    assert q[0]["quote"] == "at least 20 feet from an energized line"
+    report = json.loads(open(res["report"]).read())
+    imp = {t["task"]: t for t in report["tasks"]}["import:course_node"]
+    assert imp["verdicts"] == {"pass": 2, "fail": 2, "needs_review": 0}
+    assert any("unknown lesson_id no-such-lesson" in e for e in imp["errors"])
+    assert any("unknown parent_id nowhere" in e for e in imp["errors"])
+    # nodes are their own index, never mixed into the rule chunks
+    assert conn.execute("SELECT count(*) FROM chunk WHERE ref_kind LIKE '%node%'").fetchone()[0] == 0
+    assert conn.execute("SELECT count(*) FROM course_node_vec").fetchone()[0] == 2

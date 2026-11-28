@@ -32,6 +32,9 @@ const ROUTES = [
   "/ask",
   "/ask/a/a.powerline-clearance",
   "/ask/q/rules%20for%20barge%20mounted%20cranes",
+  "/ask/q/signaling",
+  "/ask/q/outrigers",
+  "/ask/q/xyzzy",
   "/read/29cfr1926.1408(b)(3)",
   "/do",
   "/do/shift-inspection",
@@ -53,7 +56,7 @@ const ROUTES = [
   "/settings",
   "/settings/about",
 ];
-const SCREENSHOT = new Set(["/learn/topic/ground", "/ask", "/ask/a/a.powerline-clearance", "/read/29cfr1926.1408(b)(3)", "/do/shift-inspection", "/learn", "/practice", "/tools/clearance", "/tools/load-chart", "/tools/signals", "/settings"]);
+const SCREENSHOT = new Set(["/learn/topic/ground", "/ask", "/ask/q/signaling", "/ask/q/outrigers", "/ask/q/xyzzy", "/ask/a/a.powerline-clearance", "/read/29cfr1926.1408(b)(3)", "/do/shift-inspection", "/learn", "/practice", "/tools/clearance", "/tools/load-chart", "/tools/signals", "/settings"]);
 // Serve every page under the shipped app's Content-Security-Policy, so anything the
 // native WebView would block (inline script, a stray fetch, a blob image) fails here too.
 const CSP = JSON.parse(await readFile(path.join(root, "src-tauri", "tauri.conf.json"), "utf8")).app.security.csp;
@@ -306,9 +309,9 @@ try {
     await context.close();
   }
 
-  // 3. Ask: a paraphrase is answered from the pack; an uncovered question declines with nearest sections.
+  // 3. Ask is a search over the rules: results grouped by section, course-map matches first, never a cached answer.
   {
-    const { context, page } = await newPage(browser, 390, "light");
+    const { context, page, errors } = await newPage(browser, 390, "light");
     await page.goto(base + "/ask");
     const input = page.getByLabel("Ask about a rule, a limit or a step");
     // Empty submit: inline error in the reserved line, nothing moves.
@@ -317,10 +320,45 @@ try {
     await input.fill("when do I need a signal person");
     await input.press("Enter");
     await page.waitForURL(/\/ask\/q\//);
-    await page.getByText("The point of operation").first().waitFor();
+    await page.getByRole("heading", { level: 1, name: "Here’s what I found about “when do I need a signal person”" }).waitFor();
+    await page.locator(".rule-hit").first().waitFor();
+    assert.equal(await page.getByText(/answer that directly/).count(), 0, "no decline text over results");
+    // The signal words, however asked, put §1926.1419 in the first group of rules, with the Signals topic and chart above.
+    for (const q of ["signaling", "signalling", "hand signals", "who can give signals"]) {
+      await page.goto(base + "/ask/q/" + encodeURIComponent(q));
+      await page.locator(".rule-hit").first().waitFor();
+      assert.equal(await page.locator(".rule-hit").first().getAttribute("data-root"), "29cfr1926.1419", `${q}: first group`);
+      assert.match(await page.locator(".rule-hit").first().innerText(), /§1926\.1419/, `${q}: first group shows its citation`);
+      const learn = page.getByRole("heading", { name: "Learn", exact: true });
+      const rules = page.getByRole("heading", { name: "In the rules", exact: true });
+      assert.ok((await learn.boundingBox()).y < (await rules.boundingBox()).y, `${q}: course-map matches come first`);
+      assert.ok(await page.locator("a[href='/learn/topic/signals']").count() === 1, `${q}: the Signals topic`);
+      assert.ok(await page.locator("a[href='/tools/signals']").count() === 1, `${q}: the hand signal chart`);
+      assert.ok(await page.locator(".rule-hit mark.hit").count() >= 1, `${q}: matched words highlighted`);
+      checks++;
+    }
+    // A result opens the exact paragraph in the Reader; back returns to the results.
+    const best = page.locator(".rule-hit").first().locator("a").first();
+    const href = await best.getAttribute("href");
+    await best.click();
+    await page.waitForURL((u) => u.pathname === decodeURIComponent(href) || u.pathname === href);
+    await page.locator('[aria-current="true"]').first().waitFor();
+    await page.goBack();
+    await page.locator(".rule-hit").first().waitFor();
+    // A typo is read as the indexed word and says so.
+    await page.goto(base + "/ask/q/outrigers");
+    await page.getByText("Read “outrigers” as “outriggers”.").waitFor();
+    assert.ok(await page.locator(".rule-hit").count() >= 1, "a typo still reaches the rules");
+    await page.goto(base + "/ask/q/" + encodeURIComponent("de-energized"));
+    await page.locator(".rule-hit[data-root='29cfr1926.1408'], .rule-hit[data-root='29cfr1926.1407']").first().waitFor();
+    // Truly off-topic: one plain line and the course map.
+    await page.goto(base + "/ask/q/xyzzy");
+    await page.getByText("Nothing in the crane rules matches that.", { exact: false }).waitFor();
+    assert.equal(await page.locator(".rule-hit").count(), 0);
+    assert.ok(await page.locator("a[href^='/learn/topic/']").count() >= 3, "topics offered");
     await page.goto(base + "/ask/q/" + encodeURIComponent("barge cranes floating on water"));
-    await page.getByText("Closest sections").waitFor();
-    assert.ok(await page.locator("a[href^='/read/']").count() >= 1);
+    await page.locator(".rule-hit[data-root='29cfr1926.1437']").first().waitFor();
+    assert.deepEqual(errors, []);
     await context.close();
     checks++;
   }
@@ -391,6 +429,34 @@ try {
     await page.getByRole("button", { name: "Next question" }).click();
     await choices.first().waitFor();
     assert.equal(await choices.first().isDisabled(), false);
+    // Feedback is real reasons, never filler: a wrong answer says why it is wrong and why the key is right;
+    // a right answer says why, once. Alternate wrong and right over several items.
+    for (let n = 0; n < 8; n++) {
+      await choices.first().waitFor();
+      const pick = n % 2 === 0 ? 0 : (await choices.count()) - 1;
+      await choices.nth(pick).click();
+      const panel = page.locator(".practice-feedback");
+      await panel.waitFor();
+      const verdict = await panel.locator("h3").innerText();
+      const reasons = await panel.locator(".feedback-why p:last-child").allInnerTexts();
+      for (const r of reasons) {
+        assert.ok(r.trim().split(/\s+/).length >= 5, `feedback reason too short: "${r}"`);
+        assert.doesNotMatch(r, /^(correct|incorrect)\b/i, `feedback reason restates the verdict: "${r}"`);
+      }
+      if (verdict === "Correct") {
+        assert.equal(reasons.length, 1, "a right answer gets one reason");
+        assert.equal(await panel.getByText(/^Why( not)? “/).count(), 0);
+      } else {
+        assert.equal(verdict, "Not this one");
+        assert.equal(reasons.length, 2, "a wrong answer gets why-not and why");
+        assert.equal(await panel.getByText(/^Why not “/).count(), 1);
+        assert.equal(await panel.getByText(/^Why “/).count(), 1);
+        assert.notEqual(reasons[0], reasons[1]);
+      }
+      if (n === 0) await page.screenshot({ path: path.join(out, "flow-practice-feedback-reasons.png"), fullPage: true });
+      await page.getByRole("button", { name: "Next question" }).click();
+      checks++;
+    }
     await context.close();
     checks++;
   }

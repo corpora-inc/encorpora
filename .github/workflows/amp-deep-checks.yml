@@ -67,6 +67,9 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          # History for the diff without old file contents: commits and trees
+          # only (about 10 MB instead of 600), and git fetches a blob it reads.
+          filter: blob:none
       - id: paths
         env:
           BASE: ${{ github.event.before }}
@@ -85,7 +88,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        lane: ${{ fromJSON(needs.changes.outputs.amp_plan).browser && fromJSON('["ui-1a", "ui-1b", "ui-2a", "ui-2b", "family-a", "family-b1", "family-b2", "family-b3", "family-b4", "family-b5", "family-b6", "family-b7", "no-flash-family-390", "no-flash-family-1280", "no-flash-second-parent-390", "no-flash-second-parent-1280", "no-flash-adult-390", "no-flash-adult-1280", "no-flash-tutor-390", "no-flash-tutor-1280", "no-flash-teacher-390", "no-flash-teacher-1280", "no-flash-school-390", "no-flash-school-1280", "no-flash-student-390", "no-flash-student-1280", "contrast-light-390", "contrast-light-1280", "contrast-dark-390", "contrast-dark-1280"]') || fromJSON('["selected"]') }}
+        lane: ${{ fromJSON(needs.changes.outputs.amp_plan).browser && fromJSON('["ui-1a", "ui-1b", "ui-1c", "ui-2a", "ui-2b", "ui-2c", "ui-2d", "family-a", "family-b1", "family-b2", "family-b3", "family-b4", "family-b5", "family-b6", "family-b7", "no-flash-family-390", "no-flash-family-1280", "no-flash-second-parent-390", "no-flash-second-parent-1280", "no-flash-adult-390", "no-flash-adult-1280", "no-flash-tutor-390", "no-flash-tutor-1280", "no-flash-teacher-390", "no-flash-teacher-1280", "no-flash-school-390", "no-flash-school-1280", "no-flash-student-390", "no-flash-student-1280", "contrast-light-390", "contrast-light-1280", "contrast-dark-390", "contrast-dark-1280"]') || fromJSON('["selected"]') }}
     # A lane is one matrix entry of this job, so it reports through the same
     # aggregate (`report`) as every other; never a status of its own. Each
     # lane's checks are planned at 45 minutes or less after setup (the
@@ -198,12 +201,22 @@ jobs:
         run: node scripts/run-ci-tests.mjs browser
       - if: matrix.lane == 'ui-1a'
         run: npm run test:ui:1a
+      # The UI chain in seven lanes of about 30 minutes of checks each
+      # (measured on runners 2026-11-25, in minutes: 1a 24, 1b 30, 1c 29, 2a
+      # 30 with app-shell's 27 alone, 2b 29, 2c 29, 2d 29). As four lanes, 2a
+      # and 2b ran 62 and 53 and reached 69 and 63 against the 75 limit.
       - if: matrix.lane == 'ui-1b'
         run: npm run test:ui:1b
+      - if: matrix.lane == 'ui-1c'
+        run: npm run test:ui:1c
       - if: matrix.lane == 'ui-2a'
         run: npm run test:ui:2a
       - if: matrix.lane == 'ui-2b'
         run: npm run test:ui:2b
+      - if: matrix.lane == 'ui-2c'
+        run: npm run test:ui:2c
+      - if: matrix.lane == 'ui-2d'
+        run: npm run test:ui:2d
       - if: matrix.lane == 'family-a'
         run: npm run test:family-ui:a
       - if: matrix.lane == 'family-b1'
@@ -518,8 +531,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        lane: [publications, inventory]
-    timeout-minutes: 120
+        lane: [publications, math-review, inventory]
+    # publications renders every PDF (17 to 23 minutes) and reviews the
+    # export's print layout (11); math-review checks 354,304 generated cases
+    # against the independent oracles (24) and the placement simulation (5).
+    # As one lane they ran 67 minutes, 104 at p95, against 120.
+    timeout-minutes: 90
     needs: changes
     if: needs.changes.outputs.content == 'true'
     runs-on: ubuntu-24.04
@@ -607,23 +624,28 @@ jobs:
       # Liberation Sans has the same advance widths, so the print review measures
       # the figures in the font they were laid out for rather than DejaVu Sans.
       - name: Install PDF inspection tools and the Arial-metric font
-        if: matrix.lane == 'publications' && steps.reuse.outputs.verified != 'true'
+        if: matrix.lane != 'inventory' && steps.reuse.outputs.verified != 'true'
         run: sudo apt-get update && sudo apt-get install -y poppler-utils fonts-liberation && fc-match Arial
       - if: steps.reuse.outputs.verified != 'true'
         run: npm ci
       - if: matrix.lane == 'publications' && steps.reuse.outputs.verified != 'true'
         run: npm run audit
-      # publications renders PDFs with Playwright's Chromium.
-      - if: matrix.lane == 'publications' && steps.reuse.outputs.verified != 'true'
+      # publications renders PDFs with Playwright's Chromium; the math
+      # review's figure checks may use it too.
+      - if: matrix.lane != 'inventory' && steps.reuse.outputs.verified != 'true'
         run: npx playwright install-deps chromium && node scripts/install-browser.mjs --configure-linux-sandbox
       - if: matrix.lane == 'publications' && steps.reuse.outputs.verified != 'true'
         run: npm run publications
       - if: matrix.lane == 'publications' && steps.reuse.outputs.verified != 'true'
         run: npm run production:queue
+      # `npm run review:math` in two lanes: the export's print review here,
+      # beside the PDFs it reads, and every generated case in math-review.
       - if: matrix.lane == 'publications' && steps.reuse.outputs.verified != 'true'
-        run: npm run review:math
-      # The paired 900-learner placement simulation (about a minute).
-      - if: matrix.lane == 'publications' && steps.reuse.outputs.verified != 'true'
+        run: npm run review:math:publications
+      - if: matrix.lane == 'math-review' && steps.reuse.outputs.verified != 'true'
+        run: npm run review:math:cases
+      # The paired 900-learner placement simulation (about five minutes).
+      - if: matrix.lane == 'math-review' && steps.reuse.outputs.verified != 'true'
         run: npm run test:placement-sim
       - name: Complete-catalog regression sweeps
         if: matrix.lane == 'publications' && steps.reuse.outputs.verified != 'true'

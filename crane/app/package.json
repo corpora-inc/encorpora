@@ -13,7 +13,7 @@
     "tsc": "tsc --noEmit",
     "test": "node --experimental-strip-types --no-warnings=ExperimentalWarning --test \"src/**/*.test.ts\"",
     "test:ui": "node scripts/verify-ui.mjs",
-    "fixture": "node scripts/build-fixture.mjs",
+    "fixture": "node --experimental-strip-types --no-warnings=ExperimentalWarning scripts/build-fixture.mjs",
     "tauri": "tauri"
   },
   "dependencies": {
@@ -22,6 +22,7 @@
     "@tauri-apps/api": "^2.11.1",
     "fflate": "^0.8.3",
     "lucide-react": "^0.468.0",
+    "porter2": "2.0.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-router": "^8.3.0",

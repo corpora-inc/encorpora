@@ -168,6 +168,39 @@ export interface SearchHit {
   score: number;
 }
 
+/** The matching paragraphs of one top-level section (or appendix), best first. */
+export interface RuleGroup {
+  root_id: string;
+  /** The paragraph to show and open: the best match that has text of its own. */
+  best_id: string;
+  hits: SearchHit[];
+  score: number;
+  /** The query named this section by citation; cited groups come first and `best_id` is the cited paragraph. */
+  cited?: boolean;
+}
+
+/** A query word the index did not hold as typed, and the indexed words it was read as. */
+export interface Reading {
+  word: string;
+  as: string[];
+  via: "spelling" | "split" | "typo";
+}
+
+/** Ask is a search over the rules: what the index holds for the words asked, grouped by section. */
+export interface FindResult {
+  query: string;
+  /**
+   * Index terms the query resolved to, for highlighting and for matching
+   * topics, lessons and terms. The UI compares them with its own tokens(),
+   * so every engine emits them as Porter2 (Snowball English) stems.
+   */
+  terms: string[];
+  readings: Reading[];
+  groups: RuleGroup[];
+  pack_version: string;
+  elapsed_ms: number;
+}
+
 export interface PackInfo {
   pack_id: string;
   version: string;
@@ -176,12 +209,6 @@ export interface PackInfo {
   ecfr_date: string | null;
   sources: Source[];
   row_counts: Record<string, number>;
-}
-
-export interface AskOptions {
-  role: Role;
-  equip?: string | null;
-  lang: string;
 }
 
 /** Everything static is available synchronously once the pack is open. */
@@ -209,6 +236,10 @@ export interface Engine {
   starters(role: Role): { answer_id: string; question: string }[];
   /** Baked answer by id, picking the variant for the role. */
   answer(answerId: string, role: Role): AskResult | null;
-  ask(question: string, opts: AskOptions): Promise<AskResult>;
-  search(query: string, k?: number): Promise<SearchHit[]>;
+  /**
+   * Look the words up in the rules. No answer is ever chosen by phrasing:
+   * the result is what the index holds, grouped by section. A native engine
+   * implements this over harvest-core's hybrid search.
+   */
+  find(query: string, groups?: number): Promise<FindResult>;
 }

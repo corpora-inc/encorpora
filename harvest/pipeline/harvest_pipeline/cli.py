@@ -170,6 +170,28 @@ def cmd_tasks(a):
     print("\n".join(task_names()))
 
 
+def cmd_course_skeleton(a):
+    from .course import problems, skeleton
+    bp = Path(a.blueprint)
+    existing = None
+    if a.existing and Path(a.existing).exists():
+        existing = [json.loads(x) for x in Path(a.existing).read_text().splitlines() if x.strip()]
+    rows = skeleton(bp, Path(a.content) if a.content else bp.parent, a.title, existing)
+    text = "".join(json.dumps(r, ensure_ascii=False, sort_keys=True) + "\n" for r in rows)
+    if a.out:
+        Path(a.out).parent.mkdir(parents=True, exist_ok=True)
+        Path(a.out).write_text(text)
+    else:
+        sys.stdout.write(text)
+    for p in problems(bp):
+        print(f"course-skeleton: {p}", file=sys.stderr)
+    levels = {}
+    for r in rows:
+        levels[r["level"]] = levels.get(r["level"], 0) + 1
+    written = sum(1 for r in rows if any(r[k] for k in ("hard", "mistakes", "exam")))
+    print(f"course-skeleton: {len(rows)} nodes {levels}; {written} with text beyond a summary", file=sys.stderr)
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(prog="harvest-bake", description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -226,6 +248,13 @@ def main(argv=None) -> int:
     s = sub.add_parser("keygen")
     s.add_argument("path")
     s.set_defaults(fn=cmd_keygen)
+    s = sub.add_parser("course-skeleton", help="course-tree nodes from the blueprint and content files (JSONL)")
+    s.add_argument("blueprint")
+    s.add_argument("--content", help="content dir (default: the blueprint's dir)")
+    s.add_argument("--title", default="Course")
+    s.add_argument("--existing", help="a tree JSONL whose node text, quotes and films are kept")
+    s.add_argument("--out")
+    s.set_defaults(fn=cmd_course_skeleton)
     s = sub.add_parser("tasks")
     s.add_argument("corpus", nargs="?")
     s.set_defaults(fn=cmd_tasks)
