@@ -51,6 +51,39 @@ pub struct GuardClass {
     /// Shown at every level, never collapsed (the bake sets it for every
     /// class at or above caution).
     pub must_show: bool,
+    /// How the app draws it, from the manual's own definition of the class
+    /// (absent: by the id for the five standard words, else `note`).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub tone: Option<GuardTone>,
+}
+
+/// What a guard class means, for how it looks.
+#[derive(Debug, Clone, Copy, Serialize, Deserialize, JsonSchema, PartialEq, Eq)]
+#[serde(rename_all = "snake_case")]
+pub enum GuardTone {
+    /// Imminent death or serious injury.
+    Danger,
+    /// Possible injury.
+    Warning,
+    /// Equipment damage.
+    Caution,
+    /// Important information, no hazard.
+    Notice,
+    /// An ordinary note or tip.
+    Note,
+}
+
+impl GuardClass {
+    /// The tone: as declared, else by the id for the standard words.
+    pub fn tone(&self) -> GuardTone {
+        self.tone.unwrap_or(match self.id.to_lowercase().as_str() {
+            "danger" => GuardTone::Danger,
+            "warning" => GuardTone::Warning,
+            "caution" => GuardTone::Caution,
+            "notice" => GuardTone::Notice,
+            _ => GuardTone::Note,
+        })
+    }
 }
 
 /// The features a pack uses that a base (level 1) reader does not know:
@@ -108,6 +141,7 @@ pub fn default_guard_classes() -> Vec<GuardClass> {
             label: l.to_string(),
             rank: i as u32 + 1,
             must_show: true,
+            tone: None,
         })
         .collect()
 }
@@ -214,6 +248,11 @@ pub struct FaultTree {
     pub lang: String,
     /// Equipment the tree is limited to (empty: all).
     pub applies_to: Vec<String>,
+    /// The tree's statements (and its first section's) for the asset, when
+    /// it has any; an `unknown` tree is offered flagged, one that does not
+    /// apply is never offered.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub applicability: Option<applic::Applicability>,
 }
 
 /// One node of a tree. `text` is the manual's own words.
@@ -380,6 +419,9 @@ pub struct Symptom {
     pub synonyms: Vec<String>,
     pub lang: String,
     pub applies_to: Vec<String>,
+    /// Its tree's applicability for the asset, when the tree has statements.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub applicability: Option<applic::Applicability>,
 }
 
 /// A machine signal pattern and the entry point it leads to.
@@ -868,6 +910,17 @@ impl Pack {
 
     /// Trees whose provenance passed, filtered to `equip`, by title.
     pub fn fault_trees(&self, equip: Option<&str>) -> Result<Vec<FaultTree>> {
+        self.fault_trees_for(equip, &applic::AttrValues::new())
+    }
+
+    /// The trees for `equip` and an asset's attribute `values`: a tree
+    /// whose statements do not apply is left out, one not determined is
+    /// kept with its `applicability`.
+    pub fn fault_trees_for(
+        &self,
+        equip: Option<&str>,
+        values: &applic::AttrValues,
+    ) -> Result<Vec<FaultTree>> {
         if !self.has_fault_trees()? {
             return Ok(Vec::new());
         }
@@ -878,10 +931,18 @@ impl Pack {
         )?;
         let mut out = Vec::new();
         for id in ids {
-            if let Some(t) = self.fault_tree_row(&id, true)?
+            if let Some(mut t) = self.fault_tree_row(&id, true)?
                 && self.applies(&t.applies_to, equip)
             {
-                out.push(t);
+                t.applicability = self.applicability_with_section(
+                    "fault_tree",
+                    &t.tree_id,
+                    t.section_ids.first().map(String::as_str),
+                    values,
+                )?;
+                if applic::Applicability::shown(&t.applicability) {
+                    out.push(t);
+                }
             }
         }
         Ok(out)
@@ -916,6 +977,7 @@ impl Pack {
             Ok(FaultTree {
                 section_ids: json_col(&tree_id, "section_ids", Some(ids))?,
                 applies_to: self.applies_to("fault_tree", &tree_id)?,
+                applicability: None,
                 tree_id,
                 title,
                 system,
@@ -1126,6 +1188,16 @@ impl Pack {
 
     /// Symptoms whose provenance passed and whose tree applies to `equip`.
     pub fn symptoms(&self, equip: Option<&str>) -> Result<Vec<Symptom>> {
+        self.symptoms_for(equip, &applic::AttrValues::new())
+    }
+
+    /// The symptoms whose trees apply to `equip` and the asset's `values`
+    /// (each with its tree's applicability).
+    pub fn symptoms_for(
+        &self,
+        equip: Option<&str>,
+        values: &applic::AttrValues,
+    ) -> Result<Vec<Symptom>> {
         if !self.has_table("symptom")? {
             return Ok(Vec::new());
         }
@@ -1148,15 +1220,16 @@ impl Pack {
             },
         )?;
         let trees: BTreeMap<String, FaultTree> = self
-            .fault_trees(equip)?
+            .fault_trees_for(equip, values)?
             .into_iter()
             .map(|t| (t.tree_id.clone(), t))
             .collect();
         let mut out = Vec::new();
         for (symptom_id, tree_id, title, system, synonyms, lang) in rows {
-            if !trees.contains_key(&tree_id) {
+            let Some(tree) = trees.get(&tree_id) else {
                 continue;
-            }
+            };
+            let applicability = tree.applicability.clone();
             let applies_to = self.applies_to("symptom", &symptom_id)?;
             if !self.applies(&applies_to, equip) {
                 continue;
@@ -1169,6 +1242,7 @@ impl Pack {
                 system,
                 lang,
                 applies_to,
+                applicability,
             });
         }
         Ok(out)

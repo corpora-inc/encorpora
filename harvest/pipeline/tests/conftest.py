@@ -76,6 +76,7 @@ def harvest_home(tmp_path, monkeypatch) -> Path:
     home = tmp_path / "harvest-home"
     monkeypatch.setenv("HARVEST_HOME", str(home))
     monkeypatch.setenv("HARVEST_BUILT_AT", "2026-01-01T00:00:00+00:00")
+    monkeypatch.setenv("HARVEST_TEST_EMBEDDER", "1")   # the hash-test embedder may write vectors in tests only
     monkeypatch.delenv("HARVEST_SIGNING_KEY", raising=False)
     monkeypatch.delenv("HARVEST_SIGNING_KEY_FILE", raising=False)
     return home
@@ -111,6 +112,6 @@ def corpus_dir(tmp_path, ecfr_bytes) -> Path:
             judge: {backend: scripted, model: judge}
             cache_dir: cache/test
         default_profile: test
-        embedder: {kind: hash, dim: 64}
+        embedder: {kind: hash-test, dim: 64}
     """))
     return d

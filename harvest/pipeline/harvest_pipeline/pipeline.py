@@ -119,7 +119,8 @@ def build(corpus: Corpus, profile: Profile, out_dir: Path | None = None, release
                          bake_backends={"author": spec_of(profile.author), "judge": spec_of(profile.judge)},
                          lang=corpus.lang, extra_meta=extra_meta)
     finally:
-        embedder.close()
+        if embedder is not None:
+            embedder.close()
     res["cache_misses"] = missing
     res["report"] = str(save_report(corpus, profile, reports, {"parse": info, "pack": res}))
     return res

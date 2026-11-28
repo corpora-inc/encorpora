@@ -608,11 +608,17 @@ CREATE TABLE failure_mode (mode_id TEXT PRIMARY KEY, equip_id TEXT NOT NULL, sys
   everything under it. Block text is verbatim.
 - **Guard classes are the pack's.** `pack_meta.guard_classes` lists the
   safety and advisory classes the manual defines in its front matter,
-  most severe first: `[{"id","label","rank","must_show"}]` (`id` is the
-  section kind, `label` as printed, `rank` 1 the most severe, rising).
+  most severe first: `[{"id","label","rank","must_show","tone"}]` (`id`
+  is the section kind, `label` as printed, `rank` 1 the most severe,
+  rising; `tone` how it looks, set by the bake from the manual's own
+  definition: `danger` imminent death or serious injury, `warning`
+  possible injury, `caution` equipment damage, `notice` important
+  non-hazard information, `note` an ordinary note or tip; absent, it
+  follows the id for those five words, else `note`; a `must_show` class
+  with another id must declare its tone, `guard.tone`).
   Without it a pack has `warning`, `caution`, `note`, all `must_show`. A
-  guard view carries `kind` (the id), `label`, `rank`, `must_show` and
-  `applicability`, in manual order; every guard is returned at every
+  guard view carries `kind` (the id), `label`, `rank`, `must_show`,
+  `tone` and `applicability`, in manual order; every guard is returned at every
   level, and a class with `must_show` is never hidden or collapsed (the
   bake sets it for every class at or above caution; a note or tip may
   collapse).
@@ -786,11 +792,14 @@ CREATE TABLE failure_mode (mode_id TEXT PRIMARY KEY, equip_id TEXT NOT NULL, sys
   `AUTOPILOT_VERSION` firmware); `asset.attrs` lists what the pack
   declares and what the asset has. Values belong to the asset, not to a
   pack: two packs that declare one attribute id read the same value.
-  Statements are evaluated in task, step, test-procedure, node, tree
-  summary, guard, table, row, cell, `signal.match`, `manual.search` and
-  `practice.items` reads (a `manual.search` hit carries its
-  `applicability`); tree listings and `symptom.search` filter by variant
-  only for now.
+  Statements are evaluated in every read that takes an asset: tasks,
+  steps, test procedures, nodes and their facet texts and open causes,
+  guards, tables, rows and cells, `tree.list`, `symptom.search`,
+  `signal.match` and its suggested entry, `signal.decode`, `job.start`
+  and gotos, `manual.search` and `practice.items`. A tree that does not
+  apply is never listed, searched, suggested or entered; one not
+  determined is offered with its `applicability` (also on its symptoms and
+  on the suggested entry).
   *S1000D.* This is S1000D applicability: a declared attribute is an ACT
   product attribute (`productAttribute`, source `plate`/`manual`) or a
   CCT condition (`cond`, modification state or service bulletin, source

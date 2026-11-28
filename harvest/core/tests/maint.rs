@@ -677,7 +677,8 @@ fn signals_lead_to_an_entry_point() {
         g.suggested.unwrap(),
         search::EntryPoint {
             tree_id: "t-hot".into(),
-            node_id: "oh.0".into()
+            node_id: "oh.0".into(),
+            applicability: None,
         }
     );
     let none = search::signal_match(&b.pack, &[obs("obd2.dtc", "P0300")], None).unwrap();
@@ -1312,7 +1313,8 @@ fn guard_classes_are_the_packs_own() {
     );
     // A manual that prints DANGER … TIP.
     let six = pump_with(exec(
-        r#"INSERT INTO pack_meta VALUES ('guard_classes', '[{"id":"danger","label":"DANGER","rank":1,"must_show":true},{"id":"warning","label":"WARNING","rank":2,"must_show":true},{"id":"caution","label":"CAUTION","rank":3,"must_show":true},{"id":"notice","label":"NOTICE","rank":4,"must_show":true},{"id":"note","label":"NOTE","rank":5,"must_show":false},{"id":"tip","label":"TIP","rank":6,"must_show":false}]');
+        r#"DELETE FROM pack_meta WHERE key = 'guard_classes';
+           INSERT INTO pack_meta VALUES ('guard_classes', '[{"id":"danger","label":"DANGER","rank":1,"must_show":true},{"id":"warning","label":"WARNING","rank":2,"must_show":true},{"id":"caution","label":"CAUTION","rank":3,"must_show":true},{"id":"notice","label":"NOTICE","rank":4,"must_show":true},{"id":"note","label":"NOTE","rank":5,"must_show":false},{"id":"tip","label":"TIP","rank":6,"must_show":false}]');
            UPDATE section SET kind = 'danger' WHERE section_id = 'm40.3.w1';"#,
     ));
     let r = graph::validate(&six.pack).unwrap();
@@ -1345,9 +1347,51 @@ fn guard_classes_are_the_packs_own() {
     assert!(rules(&graph::validate(&bad.pack).unwrap()).contains(&"guard.class".to_string()));
     // Classes must run most severe first.
     let order = pump_with(exec(
-        r#"INSERT INTO pack_meta VALUES ('guard_classes', '[{"id":"note","label":"NOTE","rank":3,"must_show":false},{"id":"warning","label":"WARNING","rank":1,"must_show":true}]');"#,
+        r#"DELETE FROM pack_meta WHERE key = 'guard_classes';
+           INSERT INTO pack_meta VALUES ('guard_classes', '[{"id":"note","label":"NOTE","rank":3,"must_show":false},{"id":"warning","label":"WARNING","rank":1,"must_show":true}]');"#,
     ));
     assert!(order.pack.guard_classes().is_err());
+    // Tone: declared, else by the standard word, else note; an unknown tone
+    // is refused.
+    use harvest_core::maint::GuardTone;
+    let three = pump_with(exec(
+        r#"UPDATE pack_meta SET value = '[{"id":"warning","label":"WARNING","rank":1,"must_show":true},{"id":"caution","label":"CAUTION","rank":2,"must_show":true},{"id":"hint","label":"HINT","rank":3,"must_show":false}]' WHERE key = 'guard_classes';"#,
+    ));
+    let tones: Vec<GuardTone> = three
+        .pack
+        .guard_classes()
+        .unwrap()
+        .iter()
+        .map(|c| c.tone())
+        .collect();
+    assert_eq!(
+        tones,
+        [GuardTone::Warning, GuardTone::Caution, GuardTone::Note],
+        "CAUTION at rank 2 still looks like a caution"
+    );
+    let mixed = pump_with(exec(
+        r#"UPDATE pack_meta SET value = '[{"id":"Danger","label":"DANGER","rank":1,"must_show":true},{"id":"NOTICE","label":"NOTICE","rank":2,"must_show":true}]' WHERE key = 'guard_classes';"#,
+    ));
+    let tones: Vec<GuardTone> = mixed
+        .pack
+        .guard_classes()
+        .unwrap()
+        .iter()
+        .map(|c| c.tone())
+        .collect();
+    assert_eq!(tones, [GuardTone::Danger, GuardTone::Notice]);
+    // A must-show class with its own word needs a declared tone.
+    let hazard = pump_with(exec(
+        r#"UPDATE pack_meta SET value = '[{"id":"hazard","label":"HAZARD","rank":1,"must_show":true},{"id":"warning","label":"WARNING","rank":2,"must_show":true},{"id":"caution","label":"CAUTION","rank":3,"must_show":true},{"id":"note","label":"NOTE","rank":4,"must_show":true}]' WHERE key = 'guard_classes';"#,
+    ));
+    assert!(rules(&graph::validate(&hazard.pack).unwrap()).contains(&"guard.tone".to_string()));
+    let bad = pump_with(exec(
+        r#"UPDATE pack_meta SET value = '[{"id":"warning","label":"WARNING","rank":1,"must_show":true,"tone":"scary"}]' WHERE key = 'guard_classes';"#,
+    ));
+    assert!(bad.pack.guard_classes().is_err());
+    assert!(
+        rules(&graph::validate(&bad.pack).unwrap()).contains(&"pack.guard_classes".to_string())
+    );
 }
 
 #[test]
@@ -1590,5 +1634,108 @@ fn a_procedures_statements_reach_its_steps_and_the_test_procedure() {
     assert_eq!(a.status, Tri::Unknown);
     assert!(
         rules(&graph::validate(&failed.pack).unwrap()).contains(&"applic.provenance".to_string())
+    );
+}
+
+#[test]
+fn a_tree_that_does_not_apply_is_never_offered() {
+    use harvest_core::maint::applic::Tri;
+    // The overheating tree is for controller firmware before 2.4 only; one
+    // cause of the no-crank tree is post-bulletin only.
+    let b = pump_with(exec(
+        r#"INSERT INTO applic VALUES ('fault_tree', 't-hot', 1, '{"attr":"firmware","op":"lt","value":"2.4"}', 'firmware 2.4 and later', 'm40.3-3', 'prov-pump40');
+           INSERT INTO applic VALUES ('section', 'm40.3-1.q2', 1, '{"attr":"sb_40_07","op":"eq","value":"incorporated"}', 'POST SB 40-07', 'm40.6-1', 'prov-pump40');"#,
+    ));
+    let ids = |v: &[(&str, &str)]| -> Vec<String> {
+        b.pack
+            .fault_trees_for(None, &vals(v))
+            .unwrap()
+            .into_iter()
+            .map(|t| t.tree_id)
+            .collect()
+    };
+    assert!(
+        !ids(&[("firmware", "3.0")]).contains(&"t-hot".to_string()),
+        "does not apply: never offered"
+    );
+    assert!(ids(&[("firmware", "2.0")]).contains(&"t-hot".to_string()));
+    let flagged = b.pack.fault_trees_for(None, &vals(&[])).unwrap();
+    let hot = flagged.iter().find(|t| t.tree_id == "t-hot").unwrap();
+    assert_eq!(
+        hot.applicability.as_ref().unwrap().status,
+        Tri::Unknown,
+        "not determined: offered, flagged"
+    );
+    // Symptom search and signal suggestions follow.
+    let rank = search::Ranking::for_pack(&b.pack).unwrap();
+    let (hits, _) = search::symptom_search_with(
+        &b.pack,
+        Some("running hot"),
+        &[],
+        None,
+        &vals(&[("firmware", "3.0")]),
+        None,
+        5,
+        &rank,
+    )
+    .unwrap();
+    assert!(hits.iter().all(|h| h.symptom.tree_id != "t-hot"));
+    let (hits, _) = search::symptom_search_with(
+        &b.pack,
+        Some("running hot"),
+        &[],
+        None,
+        &vals(&[]),
+        None,
+        5,
+        &rank,
+    )
+    .unwrap();
+    assert_eq!(
+        hits[0].symptom.applicability.as_ref().unwrap().status,
+        Tri::Unknown
+    );
+    let m = search::signal_match_with(
+        &b.pack,
+        &[obs("pump40.code", "E21")],
+        None,
+        &vals(&[("firmware", "3.0")]),
+    )
+    .unwrap();
+    assert!(
+        m.suggested.is_none(),
+        "no suggestion into a tree that does not apply"
+    );
+    let m =
+        search::signal_match_with(&b.pack, &[obs("pump40.code", "E21")], None, &vals(&[])).unwrap();
+    assert_eq!(
+        m.suggested.unwrap().applicability.unwrap().status,
+        Tri::Unknown
+    );
+    // Facet texts follow their sections' statements.
+    let t = tree(&b, "t-nocrank");
+    let level = b.pack.level("expert").unwrap();
+    let texts = |v: &[(&str, &str)]| -> usize {
+        view::node_view(&b.pack, &t, "nc.2", &level, None, &vals(v), &[])
+            .unwrap()
+            .facets
+            .iter()
+            .map(|g| g.texts.len())
+            .sum()
+    };
+    assert_eq!(
+        texts(&[("sb_40_07", "not incorporated")]),
+        0,
+        "every nc.2 facet cites m40.3-1.q2"
+    );
+    assert!(texts(&[("sb_40_07", "incorporated")]) > 0);
+    let unknown = view::node_view(&b.pack, &t, "nc.2", &level, None, &vals(&[]), &[]).unwrap();
+    assert!(
+        unknown.facets.iter().flat_map(|g| &g.texts).all(|x| x
+            .applicability
+            .as_ref()
+            .unwrap()
+            .status
+            == Tri::Unknown)
     );
 }

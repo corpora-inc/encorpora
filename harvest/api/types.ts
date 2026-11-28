@@ -646,6 +646,11 @@ export type EntryKind = "symptom" | "signals" | "chosen";
 
 /** Where the signals suggest starting. */
 export interface EntryPoint {
+  /**
+   * The tree's applicability, when it has statements (`unknown`: ask
+   * before starting).
+   */
+  applicability?: Applicability | null;
   /** The node to start at (the tree's entry when the rule names none). */
   node_id: string;
   tree_id: string;
@@ -733,6 +738,11 @@ export interface FacetGroup {
 
 /** One verbatim facet text. */
 export interface FacetText {
+  /**
+   * Its section's statements for the asset, when it has any (a text
+   * that does not apply is left out).
+   */
+  applicability: Applicability | null;
   section_id: string;
   text: string;
 }
@@ -782,6 +792,12 @@ export interface FaultNode {
 
 /** A troubleshooting tree. */
 export interface FaultTree {
+  /**
+   * The tree's statements (and its first section's) for the asset, when
+   * it has any; an `unknown` tree is offered flagged, one that does not
+   * apply is never offered.
+   */
+  applicability?: Applicability | null;
   /** Equipment the tree is limited to (empty: all). */
   applies_to: string[];
   entry_node: string;
@@ -954,7 +970,12 @@ export interface Guard {
   rank: number;
   section_id: string;
   text: string;
+  /** How it looks: `danger` | `warning` | `caution` | `notice` | `note`. */
+  tone: GuardTone;
 }
+
+/** What a guard class means, for how it looks. */
+export type GuardTone = "danger" | "warning" | "caution" | "notice" | "note";
 
 /** What to do when a step fails, and the rule behind it when there is one. */
 export interface Guidance {
@@ -2545,6 +2566,8 @@ export interface SupportCandidate {
 
 /** A symptom a technician reports, the way into a tree. */
 export interface Symptom {
+  /** Its tree's applicability for the asset, when the tree has statements. */
+  applicability?: Applicability | null;
   applies_to: string[];
   lang: string;
   symptom_id: string;
@@ -2841,6 +2864,11 @@ export interface TreeGetParams {
 }
 
 export interface TreeListParams {
+  /**
+   * The asset: its variant (when `equip_id` is absent) and attributes (a
+   * tree that does not apply is left out; one not determined is flagged).
+   */
+  asset_id?: string | null;
   equip_id?: string | null;
   pack_id?: string | null;
   system?: string | null;

@@ -837,7 +837,27 @@ fn validate_guards(pack: &Pack, out: &mut Out, counts: &mut GraphCounts) -> Resu
             .collect::<rusqlite::Result<_>>()?
     };
     let class_ids: BTreeSet<String> = match pack.guard_classes() {
-        Ok(cs) => cs.into_iter().map(|c| c.id).collect(),
+        Ok(cs) => {
+            // A class that must always show needs a tone the bake chose
+            // when its id is not one of the five standard words (else it
+            // would look like a note).
+            for c in &cs {
+                let standard = ["danger", "warning", "caution", "notice", "note"]
+                    .contains(&c.id.to_lowercase().as_str());
+                if c.must_show && c.tone.is_none() && !standard {
+                    out.add(
+                        "guard.tone",
+                        None,
+                        None,
+                        format!(
+                            "guard class {:?} ({}) must always show but has no tone: set one from the manual's definition",
+                            c.id, c.label
+                        ),
+                    );
+                }
+            }
+            cs.into_iter().map(|c| c.id).collect()
+        }
         Err(e) => {
             out.add("pack.guard_classes", None, None, e.to_string());
             super::GUARD_KINDS.iter().map(|s| s.to_string()).collect()

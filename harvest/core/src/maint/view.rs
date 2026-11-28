@@ -60,6 +60,8 @@ pub struct Guard {
     pub rank: u32,
     /// Never hidden or collapsed at any level.
     pub must_show: bool,
+    /// How it looks: `danger` | `warning` | `caution` | `notice` | `note`.
+    pub tone: super::GuardTone,
     /// When its applicability has statements (`unknown` is flagged, never
     /// dropped).
     pub applicability: Option<super::applic::Applicability>,
@@ -74,6 +76,9 @@ pub struct Guard {
 pub struct FacetText {
     pub text: String,
     pub section_id: String,
+    /// Its section's statements for the asset, when it has any (a text
+    /// that does not apply is left out).
+    pub applicability: Option<Applicability>,
 }
 
 /// A node's facet (`reason`, `known`, `possible`, `test_option`, …), in
@@ -342,6 +347,7 @@ fn guards_on_with(
                     label: class.label.clone(),
                     rank: class.rank,
                     must_show: class.must_show,
+                    tone: class.tone(),
                     applicability,
                     section_id: sec.section_id,
                     kind: sec.kind,
@@ -498,10 +504,15 @@ pub fn node_view(
     let defs = pack.facet_defs()?;
     let mut groups: Vec<FacetGroup> = Vec::new();
     for f in tree.facets_of(node_id) {
+        let applicability = pack.applicability("section", &f.section_id, values)?;
+        if !Applicability::shown(&applicability) {
+            continue;
+        }
         match groups.iter_mut().find(|g| g.facet == f.facet) {
             Some(g) => g.texts.push(FacetText {
                 text: f.text.clone(),
                 section_id: f.section_id.clone(),
+                applicability,
             }),
             None => groups.push(FacetGroup {
                 facet: f.facet.clone(),
@@ -513,6 +524,7 @@ pub fn node_view(
                 texts: vec![FacetText {
                     text: f.text.clone(),
                     section_id: f.section_id.clone(),
+                    applicability,
                 }],
             }),
         }
@@ -528,10 +540,16 @@ pub fn node_view(
     let possible_open = std::iter::once(node_id.to_string())
         .chain(path.iter().rev().cloned())
         .find_map(|id| {
+            // Only causes whose sections apply to the asset stay open.
             let texts: Vec<String> = tree
                 .facets_of(&id)
                 .into_iter()
                 .filter(|f| f.facet == open)
+                .filter(|f| {
+                    pack.applicability("section", &f.section_id, values)
+                        .map(|a| Applicability::shown(&a))
+                        .unwrap_or(true)
+                })
                 .map(|f| f.text.clone())
                 .collect();
             (!texts.is_empty()).then_some(texts)
