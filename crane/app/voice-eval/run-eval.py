@@ -62,7 +62,7 @@ def term_hits(item: dict, hyp: str) -> list[bool]:
     return [any(re.search(p, t) for p in alts) for alts in item["terms"]]
 
 
-def run_batch(cli: str, model: Path, clips: list[Path], workdir: Path, prompt: str | None) -> dict[str, str]:
+def run_batch(cli: str, model: Path, clips: list[Path], workdir: Path, prompt: str | None, threads: int = 4) -> dict[str, str]:
     workdir.mkdir(parents=True, exist_ok=True)
     links = []
     for c in clips:
@@ -70,7 +70,7 @@ def run_batch(cli: str, model: Path, clips: list[Path], workdir: Path, prompt: s
         if not link.exists():
             link.symlink_to(c.resolve())
         links.append(link)
-    cmd = [cli, "-m", str(model), "-l", "en", "-t", "4", "-bo", "1", "-bs", "1", "-nt", "-np", "-otxt"]
+    cmd = [cli, "-m", str(model), "-l", "en", "-t", str(threads), "-bo", "1", "-bs", "1", "-nt", "-np", "-otxt"]
     if prompt:
         cmd += ["--prompt", prompt]
     for link in links:
@@ -98,6 +98,7 @@ def main() -> None:
     ap.add_argument("--model", action="append")
     ap.add_argument("--conditions", nargs="+", default=["clean", "snr10", "snr5"])
     ap.add_argument("--latency-clips", type=int, default=24)
+    ap.add_argument("--batch-threads", type=int, default=4, help="threads for accuracy batches (results do not depend on it; latency runs always use 4)")
     ap.add_argument("--cpus", help="pin latency runs to these CPUs (taskset list), e.g. mid-range-phone-class cores")
     ap.add_argument("--latency-only", action="store_true", help="only time the models (prompted, snr10), no accuracy batches")
     a = ap.parse_args()
@@ -126,7 +127,7 @@ def main() -> None:
                     continue
                 clips = sorted((a.audio / cond).glob("*.wav"))
                 started = time.time()
-                hyps = run_batch(a.cli, a.models / model, clips, a.work / model / ("prompt" if use_prompt else "plain") / cond, PROMPT if use_prompt else None)
+                hyps = run_batch(a.cli, a.models / model, clips, a.work / model / ("prompt" if use_prompt else "plain") / cond, PROMPT if use_prompt else None, a.batch_threads)
                 errs = words = hits = terms = cmd_ok = cmd_n = 0
                 per_item = []
                 for clip in clips:

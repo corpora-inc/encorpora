@@ -1,0 +1,11573 @@
+{
+ "prompt": "Crane operator questions about 29 CFR 1926 Subpart CC: power line clearance in kV, Table A, outriggers, cribbing, rated capacity, load chart, LMI (load moment indicator), anti-two-block, boom angle indicator, wire rope, broken wires per lay, birdcaging, kinking, core protrusion, rotation-resistant rope, signal person, qualified rigger, swing radius, jib, hook block, deenergized, dedicated spotter, sections 1408, 1412, 1413.",
+ "runs": [
+  {
+   "model": "ggml-tiny.en.bin",
+   "prompt": false,
+   "condition": "snr10",
+   "clips": 240,
+   "key_term_accuracy": 0.7954,
+   "wer": 0.1062,
+   "commands": [
+    22,
+    24
+   ],
+   "batch_seconds": 98.8,
+   "latency_ms": null,
+   "items": [
+    {
+     "clip": "q01-aman",
+     "hyp": "How close can I get to a power line?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q01-ava",
+     "hyp": "How close can I get to a power line?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q01-daniel",
+     "hyp": "How close can I get to a power line?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q01-evan",
+     "hyp": "How close can I get to Powerline?",
+     "terms": [
+      false
+     ],
+     "wer": [
+      3,
+      9
+     ]
+    },
+    {
+     "clip": "q01-fiona",
+     "hyp": "High close can I get to a power line?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      1,
+      9
+     ]
+    },
+    {
+     "clip": "q01-karen",
+     "hyp": "How close can I get to a power line?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q02-aman",
+     "hyp": "What's the minimum clearance for a 345 KV line?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q02-ava",
+     "hyp": "What's the minimum clearance for a 345 KV line?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q02-daniel",
+     "hyp": "What's the minimum clearance for a 345kV line?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      9
+     ]
+    },
+    {
+     "clip": "q02-evan",
+     "hyp": "What's the minimum clearance for a 345K V-line?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      9
+     ]
+    },
+    {
+     "clip": "q02-fiona",
+     "hyp": "What's the minimum clearance for a 345 KV line?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q02-karen",
+     "hyp": "What's the minimum clearance for a 345K V line?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      9
+     ]
+    },
+    {
+     "clip": "q03-aman",
+     "hyp": "The line is 500 KV is the trigger 20 feet or 50 feet.",
+     "terms": [
+      true,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      13
+     ]
+    },
+    {
+     "clip": "q03-ava",
+     "hyp": "The line is 500kV as the trigger 20 feet or 50 feet.",
+     "terms": [
+      false,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      3,
+      13
+     ]
+    },
+    {
+     "clip": "q03-daniel",
+     "hyp": "The Liners 500kV is the trigger 20 feet or 50 feet.",
+     "terms": [
+      false,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      4,
+      13
+     ]
+    },
+    {
+     "clip": "q03-evan",
+     "hyp": "The line is 500kV as the trigger 20 feet or 50 feet.",
+     "terms": [
+      false,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      3,
+      13
+     ]
+    },
+    {
+     "clip": "q03-fiona",
+     "hyp": "The line is 500kV is the trigger 20 feet or 50 feet.",
+     "terms": [
+      false,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      2,
+      13
+     ]
+    },
+    {
+     "clip": "q03-karen",
+     "hyp": "The line is 500kV is the trigger 20 feet or 50 feet.",
+     "terms": [
+      false,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      2,
+      13
+     ]
+    },
+    {
+     "clip": "q04-aman",
+     "hyp": "What does section 1408 say about power lines?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q04-ava",
+     "hyp": "What does section 1408 say about power lines?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q04-daniel",
+     "hyp": "What does section 1408 say about power lines?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q04-evan",
+     "hyp": "What does Section 1408 say about power lines?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q04-fiona",
+     "hyp": "What does section 1408 say about power lines?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q04-karen",
+     "hyp": "What does Section 1408 say about power lines?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q05-aman",
+     "hyp": "What does 1926.1412 require for shift inspections?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q05-ava",
+     "hyp": "What is 1926.1412 require for shift inspections?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      7
+     ]
+    },
+    {
+     "clip": "q05-daniel",
+     "hyp": "What does 1926.1412 require full shift inspections?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      7
+     ]
+    },
+    {
+     "clip": "q05-evan",
+     "hyp": "With does 1926.1412 require for shift inspections.",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      7
+     ]
+    },
+    {
+     "clip": "q05-fiona",
+     "hyp": "What does 19, 26.14, 12-wheel-of-the-wire-4 shift inspections?",
+     "terms": [
+      false,
+      true,
+      true
+     ],
+     "wer": [
+      8,
+      7
+     ]
+    },
+    {
+     "clip": "q05-karen",
+     "hyp": "What does 1926.14.12 require for shift inspections?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      7
+     ]
+    },
+    {
+     "clip": "q06-aman",
+     "hyp": "The LMI isn't walking. Can I still make the lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      1,
+      10
+     ]
+    },
+    {
+     "clip": "q06-ava",
+     "hyp": "The LMI is working. Can I still make the lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      1,
+      10
+     ]
+    },
+    {
+     "clip": "q06-daniel",
+     "hyp": "The LMI isn't working, can I still make the lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q06-evan",
+     "hyp": "The LMI isn't working. Can I still make the lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q06-fiona",
+     "hyp": "The LMI isn't working. Can I still make the lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q06-karen",
+     "hyp": "The LMI isn't working, can I still make the lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q07-aman",
+     "hyp": "Do I need the load moment indicator for every lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q07-ava",
+     "hyp": "Do I need the lunk moment indicator for every lift?",
+     "terms": [
+      false
+     ],
+     "wer": [
+      1,
+      10
+     ]
+    },
+    {
+     "clip": "q07-daniel",
+     "hyp": "Do I need the load moment indicator for every lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q07-evan",
+     "hyp": "Do I need the load moment indicator for every lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q07-fiona",
+     "hyp": "Do I need the load moment indicator for every lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q07-karen",
+     "hyp": "Do I need the load moment to indicator for every lift?",
+     "terms": [
+      false
+     ],
+     "wer": [
+      1,
+      10
+     ]
+    },
+    {
+     "clip": "q08-aman",
+     "hyp": "What happens if the anti-2 block device fails?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      1,
+      9
+     ]
+    },
+    {
+     "clip": "q08-ava",
+     "hyp": "What happens if the anti-tubelock device fails?",
+     "terms": [
+      false
+     ],
+     "wer": [
+      2,
+      9
+     ]
+    },
+    {
+     "clip": "q08-daniel",
+     "hyp": "What happens if the anti-2 block device fails?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      1,
+      9
+     ]
+    },
+    {
+     "clip": "q08-evan",
+     "hyp": "What happens if the anti-2 block device fails?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      1,
+      9
+     ]
+    },
+    {
+     "clip": "q08-fiona",
+     "hyp": "What happens if the anti-tube block device fails?",
+     "terms": [
+      false
+     ],
+     "wer": [
+      1,
+      9
+     ]
+    },
+    {
+     "clip": "q08-karen",
+     "hyp": "What happens if the anti-tube lock device fails?",
+     "terms": [
+      false
+     ],
+     "wer": [
+      2,
+      9
+     ]
+    },
+    {
+     "clip": "q09-aman",
+     "hyp": "Can I exceed the rated capacity if the outriggers are fully extended?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q09-ava",
+     "hyp": "Can I exceed the rated capacity if the outriggers are fully extended?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q09-daniel",
+     "hyp": "Can I exceed the rated capacity if the atriggers are fully extended?",
+     "terms": [
+      true,
+      false
+     ],
+     "wer": [
+      1,
+      12
+     ]
+    },
+    {
+     "clip": "q09-evan",
+     "hyp": "Can I exceed the rated capacity if the outriggers are fully extended?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q09-fiona",
+     "hyp": "Can I exceed the rate of capacity if the outriggers are fully extended?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      12
+     ]
+    },
+    {
+     "clip": "q09-karen",
+     "hyp": "Can I exceed the rated capacity if the outriggers are fully extended?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q10-aman",
+     "hyp": "My outriggers are only at made extension. Which chart do I use?",
+     "terms": [
+      true,
+      false
+     ],
+     "wer": [
+      1,
+      12
+     ]
+    },
+    {
+     "clip": "q10-ava",
+     "hyp": "My outvickers are only at mid extension, which chart do I use?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      1,
+      12
+     ]
+    },
+    {
+     "clip": "q10-daniel",
+     "hyp": "My outriggers are only at mid extension, which chart do I use?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q10-evan",
+     "hyp": "My Outrovers are only at mid extension, which chart do I use.",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      1,
+      12
+     ]
+    },
+    {
+     "clip": "q10-fiona",
+     "hyp": "My outriggers are only at mid extension, which chart do I use?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q10-karen",
+     "hyp": "My outriggers are only at the mid extension, which chart do I use.",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      12
+     ]
+    },
+    {
+     "clip": "q11-aman",
+     "hyp": "Do outrigger pads need cribbing on soft ground.",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q11-ava",
+     "hyp": "Do well rigor pads knee creeping on soft ground?",
+     "terms": [
+      false,
+      false
+     ],
+     "wer": [
+      4,
+      8
+     ]
+    },
+    {
+     "clip": "q11-daniel",
+     "hyp": "Do our trigger pads need cribbing on soft ground?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      8
+     ]
+    },
+    {
+     "clip": "q11-evan",
+     "hyp": "Do outrigger painted neat cribbing on soft ground?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      8
+     ]
+    },
+    {
+     "clip": "q11-fiona",
+     "hyp": "Do actually grip pads, need crib and gone soft ground.",
+     "terms": [
+      false,
+      false
+     ],
+     "wer": [
+      5,
+      8
+     ]
+    },
+    {
+     "clip": "q11-karen",
+     "hyp": "Do outrigger pads need cribbing on soft ground.",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q12-aman",
+     "hyp": "How many broken wires in one leg before I take the rope out of service?",
+     "terms": [
+      true,
+      false,
+      true
+     ],
+     "wer": [
+      1,
+      15
+     ]
+    },
+    {
+     "clip": "q12-ava",
+     "hyp": "How many broken wires in one lay before I take the rope out of service?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      15
+     ]
+    },
+    {
+     "clip": "q12-daniel",
+     "hyp": "How many broken wires in one leg before I take the rope out of service?",
+     "terms": [
+      true,
+      false,
+      true
+     ],
+     "wer": [
+      1,
+      15
+     ]
+    },
+    {
+     "clip": "q12-evan",
+     "hyp": "How many broken wires in one leg before I take the rope out of service?",
+     "terms": [
+      true,
+      false,
+      true
+     ],
+     "wer": [
+      1,
+      15
+     ]
+    },
+    {
+     "clip": "q12-fiona",
+     "hyp": "How many broken wires and one lead before I teet in the rope-eyed of service?",
+     "terms": [
+      true,
+      false,
+      false
+     ],
+     "wer": [
+      5,
+      15
+     ]
+    },
+    {
+     "clip": "q12-karen",
+     "hyp": "How many broken wires in one lay before I take the rope out of service?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      15
+     ]
+    },
+    {
+     "clip": "q13-aman",
+     "hyp": "Is butcaging a reason to remove wire rope.",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      1,
+      8
+     ]
+    },
+    {
+     "clip": "q13-ava",
+     "hyp": "is bird-caching a reason to remove lyre rope.",
+     "terms": [
+      false,
+      false
+     ],
+     "wer": [
+      3,
+      8
+     ]
+    },
+    {
+     "clip": "q13-daniel",
+     "hyp": "Is Bird Guging a reason to remove wire road?",
+     "terms": [
+      false,
+      false
+     ],
+     "wer": [
+      3,
+      8
+     ]
+    },
+    {
+     "clip": "q13-evan",
+     "hyp": "Is Bird could you be reason to remove Y rope?",
+     "terms": [
+      false,
+      false
+     ],
+     "wer": [
+      5,
+      8
+     ]
+    },
+    {
+     "clip": "q13-fiona",
+     "hyp": "Is bird-kitching a reason to remove wire rope?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      8
+     ]
+    },
+    {
+     "clip": "q13-karen",
+     "hyp": "His bird cajing a reason to remove why rod.",
+     "terms": [
+      false,
+      false
+     ],
+     "wer": [
+      5,
+      8
+     ]
+    },
+    {
+     "clip": "q14-aman",
+     "hyp": "What counts as kinking or crushing on running rope?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q14-ava",
+     "hyp": "What counts as kinking or crushing on running rope?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q14-daniel",
+     "hyp": "What town says kinking or crushing on running road?",
+     "terms": [
+      true,
+      true,
+      false
+     ],
+     "wer": [
+      3,
+      9
+     ]
+    },
+    {
+     "clip": "q14-evan",
+     "hyp": "What counts as kinking or crushing on running rope?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q14-fiona",
+     "hyp": "All kinds is kinking or crushing on running rope.",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      3,
+      9
+     ]
+    },
+    {
+     "clip": "q14-karen",
+     "hyp": "What counts as kinking or crashing on running road?",
+     "terms": [
+      true,
+      false,
+      false
+     ],
+     "wer": [
+      2,
+      9
+     ]
+    },
+    {
+     "clip": "q15-aman",
+     "hyp": "is core protrusion of category 1 deficiency.",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      7
+     ]
+    },
+    {
+     "clip": "q15-ava",
+     "hyp": "Is poor pro-truge in a category one deficiency?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      5,
+      7
+     ]
+    },
+    {
+     "clip": "q15-daniel",
+     "hyp": "Is core protrusion a category 1 deficiency?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q15-evan",
+     "hyp": "Is corporate intrusion a category one deficiency?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      3,
+      7
+     ]
+    },
+    {
+     "clip": "q15-fiona",
+     "hyp": "Is core protrusion of category 1 deficiency?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      7
+     ]
+    },
+    {
+     "clip": "q15-karen",
+     "hyp": "is called protrusion a category one deficiency.",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      7
+     ]
+    },
+    {
+     "clip": "q16-aman",
+     "hyp": "Can I use rotation resistant rope for this lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q16-ava",
+     "hyp": "Can I use rotation resistant rope for this lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q16-daniel",
+     "hyp": "Can I use rotation resistant rope for this lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q16-evan",
+     "hyp": "Can I use rotation-resistant rope for this lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q16-fiona",
+     "hyp": "Can I use rotation resistor rope for this lift?",
+     "terms": [
+      false
+     ],
+     "wer": [
+      1,
+      9
+     ]
+    },
+    {
+     "clip": "q16-karen",
+     "hyp": "Can I use rotation resistance right for the lift?",
+     "terms": [
+      false
+     ],
+     "wer": [
+      3,
+      9
+     ]
+    },
+    {
+     "clip": "q17-aman",
+     "hyp": "When do I need a signal person?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q17-ava",
+     "hyp": "When do I need a signal person?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q17-daniel",
+     "hyp": "When do I need a signal person?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q17-evan",
+     "hyp": "When do I need a signal person?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q17-fiona",
+     "hyp": "When do I need a signal person?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q17-karen",
+     "hyp": "When do I need a signal person?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q18-aman",
+     "hyp": "Who can give the emergency stop signal?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q18-ava",
+     "hyp": "Who can give the emergency stop signal?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q18-daniel",
+     "hyp": "Who can give the emergency stop signal?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q18-evan",
+     "hyp": "Who can give the emergency stop signal?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q18-fiona",
+     "hyp": "who can give the emergency stop signal.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q18-karen",
+     "hyp": "Who can give the emergency stop signal?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q19-aman",
+     "hyp": "Does the rigor have to be a qualified rigor for assembly?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      11
+     ]
+    },
+    {
+     "clip": "q19-ava",
+     "hyp": "Does the rigor have to be a qualified rigor for assembly?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      11
+     ]
+    },
+    {
+     "clip": "q19-daniel",
+     "hyp": "Does the rigor have to be a qualified rigor for assembly?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      11
+     ]
+    },
+    {
+     "clip": "q19-evan",
+     "hyp": "Does the rigor have to be a qualified rigor for assembly?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      11
+     ]
+    },
+    {
+     "clip": "q19-fiona",
+     "hyp": "Does the rigor have to be a qualified rigor for assembly?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      11
+     ]
+    },
+    {
+     "clip": "q19-karen",
+     "hyp": "Does the rigor have to be a qualified rigor for assembly?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      11
+     ]
+    },
+    {
+     "clip": "q20-aman",
+     "hyp": "What is the swing radius hazard and how do I barricade it?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q20-ava",
+     "hyp": "What is the swing radius hazard and how do I barricade it?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q20-daniel",
+     "hyp": "What is the swing radius hazard and how do I barricade it?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q20-evan",
+     "hyp": "What is the swing radius hazard and how do I barricade it?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q20-fiona",
+     "hyp": "What is the swing radius hazard and how do I bar-keyed it?",
+     "terms": [
+      true,
+      false
+     ],
+     "wer": [
+      2,
+      12
+     ]
+    },
+    {
+     "clip": "q20-karen",
+     "hyp": "What is the swing radius hesitant? How do I barricade it?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      2,
+      12
+     ]
+    },
+    {
+     "clip": "q21-aman",
+     "hyp": "Can I extend the jib in 30 mile an hour wind?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q21-ava",
+     "hyp": "Can I extend the gibbon 30 mile an hour wind?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      11
+     ]
+    },
+    {
+     "clip": "q21-daniel",
+     "hyp": "Can I extend the jib in 30 mile an hour wind?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q21-evan",
+     "hyp": "Can I extend the jibbon 30 mile an hour wind?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      11
+     ]
+    },
+    {
+     "clip": "q21-fiona",
+     "hyp": "Can I extend the gibbon 30 mile on our wind?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      4,
+      11
+     ]
+    },
+    {
+     "clip": "q21-karen",
+     "hyp": "Can I extend the jibbing 30 mile an hour wind?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      11
+     ]
+    },
+    {
+     "clip": "q22-aman",
+     "hyp": "What's the rated capacity at a 40-foot radius with lower cases 60-foot boom?",
+     "terms": [
+      true,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      2,
+      14
+     ]
+    },
+    {
+     "clip": "q22-ava",
+     "hyp": "What's the rated capacity at a 40 foot radius with a 60 foot boom?",
+     "terms": [
+      true,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      14
+     ]
+    },
+    {
+     "clip": "q22-daniel",
+     "hyp": "Wops the rated capacity at a 40-foot radius with a 60-foot boom.",
+     "terms": [
+      true,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      14
+     ]
+    },
+    {
+     "clip": "q22-evan",
+     "hyp": "What's the rated capacity at a 40-foot radius with a 60-foot boom?",
+     "terms": [
+      true,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      14
+     ]
+    },
+    {
+     "clip": "q22-fiona",
+     "hyp": "What's the rated capacity at the 40 foot radius with a 60 foot boom?",
+     "terms": [
+      true,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      14
+     ]
+    },
+    {
+     "clip": "q22-karen",
+     "hyp": "What's the rated capacity at a 40 foot radius with a 60 foot boom?",
+     "terms": [
+      true,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      14
+     ]
+    },
+    {
+     "clip": "q23-aman",
+     "hyp": "How do I deduct the hook block and rigging from the load chart?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      13
+     ]
+    },
+    {
+     "clip": "q23-ava",
+     "hyp": "How do I deduct the whole block and rigging from the low chart?",
+     "terms": [
+      false,
+      true,
+      false
+     ],
+     "wer": [
+      2,
+      13
+     ]
+    },
+    {
+     "clip": "q23-daniel",
+     "hyp": "How do I deduct the hook block and rigging from the load chart?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      13
+     ]
+    },
+    {
+     "clip": "q23-evan",
+     "hyp": "How do I deduct the hook block and rigon from the low at shard?",
+     "terms": [
+      true,
+      false,
+      false
+     ],
+     "wer": [
+      4,
+      13
+     ]
+    },
+    {
+     "clip": "q23-fiona",
+     "hyp": "How do I deduct the hook block and rigging from the load chart?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      13
+     ]
+    },
+    {
+     "clip": "q23-karen",
+     "hyp": "How do I deduct the hook block and rigging from the load chart?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      13
+     ]
+    },
+    {
+     "clip": "q24-aman",
+     "hyp": "Is the power line energized and grounded if the utility says so?",
+     "terms": [
+      false,
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      12
+     ]
+    },
+    {
+     "clip": "q24-ava",
+     "hyp": "Is the power line deenergized and grounded if the utility's so?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      2,
+      12
+     ]
+    },
+    {
+     "clip": "q24-daniel",
+     "hyp": "Is the power line denogized and grounded if the utility says so?",
+     "terms": [
+      false,
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      12
+     ]
+    },
+    {
+     "clip": "q24-evan",
+     "hyp": "Is the power-linedy energized and grounded if the utility says so?",
+     "terms": [
+      false,
+      true,
+      true
+     ],
+     "wer": [
+      2,
+      12
+     ]
+    },
+    {
+     "clip": "q24-fiona",
+     "hyp": "Is the pout lying dinner joust in ground and if the utility says so?",
+     "terms": [
+      false,
+      false,
+      true
+     ],
+     "wer": [
+      7,
+      12
+     ]
+    },
+    {
+     "clip": "q24-karen",
+     "hyp": "Is the power line energized and grounded if the utility says so?",
+     "terms": [
+      false,
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      12
+     ]
+    },
+    {
+     "clip": "q25-aman",
+     "hyp": "What does table are safe for lines over 750 KV?",
+     "terms": [
+      false,
+      true,
+      true
+     ],
+     "wer": [
+      2,
+      10
+     ]
+    },
+    {
+     "clip": "q25-ava",
+     "hyp": "What does Table A say for lines over 750 K5?",
+     "terms": [
+      true,
+      true,
+      false
+     ],
+     "wer": [
+      1,
+      10
+     ]
+    },
+    {
+     "clip": "q25-daniel",
+     "hyp": "What does Table A say for lines over 750 KV?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q25-evan",
+     "hyp": "With this table, A-SAFE reliance over 750 KV.",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      5,
+      10
+     ]
+    },
+    {
+     "clip": "q25-fiona",
+     "hyp": "What does Table A say for lines over 750 KV?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q25-karen",
+     "hyp": "What does Table A say for lines over 750k5?",
+     "terms": [
+      true,
+      false,
+      false
+     ],
+     "wer": [
+      2,
+      10
+     ]
+    },
+    {
+     "clip": "q26-aman",
+     "hyp": "Do I need a dedicated spotter when travelling under a line?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      11
+     ]
+    },
+    {
+     "clip": "q26-ava",
+     "hyp": "Do I need a dedicated spot or when traveling under a line?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      11
+     ]
+    },
+    {
+     "clip": "q26-daniel",
+     "hyp": "Do I need a dedicated spot or when travelling under a line?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      3,
+      11
+     ]
+    },
+    {
+     "clip": "q26-evan",
+     "hyp": "Do I need a dedicated spot when traveling under a line?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      1,
+      11
+     ]
+    },
+    {
+     "clip": "q26-fiona",
+     "hyp": "Do I need a dedicated spotter when travelling under online?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      3,
+      11
+     ]
+    },
+    {
+     "clip": "q26-karen",
+     "hyp": "Do I need a dedicated spot or win travelling under a line?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      4,
+      11
+     ]
+    },
+    {
+     "clip": "q27-aman",
+     "hyp": "Who is responsible for ground conditions the controlling entity or the operator?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q27-ava",
+     "hyp": "Who is responsible for ground conditions, the controlling entity or the operator?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q27-daniel",
+     "hyp": "Who is responsible for ground conditions, the controlling entity or the operator?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q27-evan",
+     "hyp": "Who is responsible for ground conditions, the controlling entity or the operator?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q27-fiona",
+     "hyp": "who is responsible for grain conditions for controlling entity on the operator.",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      3,
+      12
+     ]
+    },
+    {
+     "clip": "q27-karen",
+     "hyp": "who is responsible for ground conditions, for controlling entity or the operator.",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      12
+     ]
+    },
+    {
+     "clip": "q28-aman",
+     "hyp": "Can a roller crane travel with a suspended load?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      1,
+      9
+     ]
+    },
+    {
+     "clip": "q28-ava",
+     "hyp": "Can a crawler crane travel with a suspended load?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q28-daniel",
+     "hyp": "Can a crawler crane travel with a suspended load?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q28-evan",
+     "hyp": "Can a crawler crane travel with a suspended load?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q28-fiona",
+     "hyp": "Can a crawler crane travel with a suspended load?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q28-karen",
+     "hyp": "Can a call a crane travel with a suspended load?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      9
+     ]
+    },
+    {
+     "clip": "q29-aman",
+     "hyp": "When is a critical lift plan required for a tandem thick?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      11
+     ]
+    },
+    {
+     "clip": "q29-ava",
+     "hyp": "When is a critical lift plan required for a tandem pick?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q29-daniel",
+     "hyp": "When is a critical lift plan required for a tandem pick?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q29-evan",
+     "hyp": "When is a critical lift plan required for a tandem pick?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q29-fiona",
+     "hyp": "When is a critical lift plan required for a tandem pick?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q29-karen",
+     "hyp": "When is a critical lift plan required for a tandem pick?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q30-aman",
+     "hyp": "Can I host personnel in a man basket with this screen?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      11
+     ]
+    },
+    {
+     "clip": "q30-ava",
+     "hyp": "Can I hoist personnel in a man basket with this crane?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q30-daniel",
+     "hyp": "Can I hoist personnel in a man basket with this crane?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q30-evan",
+     "hyp": "Can I hoist personnel in a man basket with a screen?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      2,
+      11
+     ]
+    },
+    {
+     "clip": "q30-fiona",
+     "hyp": "Can I hoist personnel in a man basket with this cream?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      11
+     ]
+    },
+    {
+     "clip": "q30-karen",
+     "hyp": "Can I always personnel in a man basket with this crane?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      1,
+      11
+     ]
+    },
+    {
+     "clip": "q31-aman",
+     "hyp": "What is the boom angle indicator for?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q31-ava",
+     "hyp": "What is the blue mango indicator for?",
+     "terms": [
+      false
+     ],
+     "wer": [
+      2,
+      7
+     ]
+    },
+    {
+     "clip": "q31-daniel",
+     "hyp": "What is the boom angle indicator for?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q31-evan",
+     "hyp": "What is the boom angle indicator for?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q31-fiona",
+     "hyp": "What is the boom angle indicator for?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q31-karen",
+     "hyp": "What is the boom angle indicator for?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q32-aman",
+     "hyp": "Do I need a level indicator check before every sift?",
+     "terms": [
+      true,
+      false
+     ],
+     "wer": [
+      1,
+      10
+     ]
+    },
+    {
+     "clip": "q32-ava",
+     "hyp": "Do I need a level indicator check before every shift?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q32-daniel",
+     "hyp": "Do I need a level indicator check before every shift?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q32-evan",
+     "hyp": "Do I need a level indicator check before every shift?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q32-fiona",
+     "hyp": "Do I need a level indicator check before every shift?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q32-karen",
+     "hyp": "Do I need a level indicator check before every shift?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q33-aman",
+     "hyp": "What are the hand signals for voice and lower?",
+     "terms": [
+      true,
+      false,
+      true
+     ],
+     "wer": [
+      1,
+      9
+     ]
+    },
+    {
+     "clip": "q33-ava",
+     "hyp": "What on the hand signals for hoist and lower?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      9
+     ]
+    },
+    {
+     "clip": "q33-daniel",
+     "hyp": "What are the hand signals for hoist and lower?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q33-evan",
+     "hyp": "What are the hand signals for hoist and lower?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q33-fiona",
+     "hyp": "What are the hand signals for hoist and lure her?",
+     "terms": [
+      true,
+      true,
+      false
+     ],
+     "wer": [
+      2,
+      9
+     ]
+    },
+    {
+     "clip": "q33-karen",
+     "hyp": "Water the hands signals for hoist and lower.",
+     "terms": [
+      false,
+      true,
+      true
+     ],
+     "wer": [
+      3,
+      9
+     ]
+    },
+    {
+     "clip": "q34-aman",
+     "hyp": "who has to certify the operator for a 50 ton crane?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q34-ava",
+     "hyp": "who has disertified the operator for a 50 ton crane.",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      11
+     ]
+    },
+    {
+     "clip": "q34-daniel",
+     "hyp": "Who has to certify the operator for a 50 ton crane?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q34-evan",
+     "hyp": "who has to certify the operator for a 50 ton crane.",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q34-fiona",
+     "hyp": "who has to certify the operator for a 50 ton crane.",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q34-karen",
+     "hyp": "Who has to certify the operator for a 50 ton crane?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q35-aman",
+     "hyp": "is a monthly inspection documented and for how long.",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q35-ava",
+     "hyp": "Is a monthly inspection documented and for how long?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q35-daniel",
+     "hyp": "is a monthly inspection documented and for how long.",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q35-evan",
+     "hyp": "is a monthly inspection documented and for how long?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q35-fiona",
+     "hyp": "is a monthly inspection documented and for how long?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q35-karen",
+     "hyp": "is a monthly inspection document said and for how long.",
+     "terms": [
+      true,
+      false
+     ],
+     "wer": [
+      2,
+      9
+     ]
+    },
+    {
+     "clip": "q36-aman",
+     "hyp": "What does 1413 say about why rope inspection?",
+     "terms": [
+      true,
+      false
+     ],
+     "wer": [
+      1,
+      8
+     ]
+    },
+    {
+     "clip": "q36-ava",
+     "hyp": "What does 1413 say about wire rope inspection?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q36-daniel",
+     "hyp": "What does 1413 say about why rope inspection?",
+     "terms": [
+      true,
+      false
+     ],
+     "wer": [
+      1,
+      8
+     ]
+    },
+    {
+     "clip": "q36-evan",
+     "hyp": "with does 1413 say about why a rope inspection.",
+     "terms": [
+      true,
+      false
+     ],
+     "wer": [
+      3,
+      8
+     ]
+    },
+    {
+     "clip": "q36-fiona",
+     "hyp": "What does 1413 say about why a route inspection?",
+     "terms": [
+      true,
+      false
+     ],
+     "wer": [
+      3,
+      8
+     ]
+    },
+    {
+     "clip": "q36-karen",
+     "hyp": "What does 1413 say about Y-Rope inspection?",
+     "terms": [
+      true,
+      false
+     ],
+     "wer": [
+      1,
+      8
+     ]
+    },
+    {
+     "clip": "q37-aman",
+     "hyp": "next",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q37-ava",
+     "hyp": "Next.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q37-daniel",
+     "hyp": "next",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q37-evan",
+     "hyp": "Next.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q37-fiona",
+     "hyp": "Next.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q37-karen",
+     "hyp": "Next.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q38-aman",
+     "hyp": "Fuzz.",
+     "terms": [
+      false
+     ],
+     "wer": [
+      1,
+      1
+     ]
+    },
+    {
+     "clip": "q38-ava",
+     "hyp": "Pass!",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q38-daniel",
+     "hyp": "Pause.",
+     "terms": [
+      false
+     ],
+     "wer": [
+      1,
+      1
+     ]
+    },
+    {
+     "clip": "q38-evan",
+     "hyp": "Pass.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q38-fiona",
+     "hyp": "Pass.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q38-karen",
+     "hyp": "Pass.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q39-aman",
+     "hyp": "deficiency.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q39-ava",
+     "hyp": "Deficiency.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q39-daniel",
+     "hyp": "deficiency.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q39-evan",
+     "hyp": "Deficiency.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q39-fiona",
+     "hyp": "Deficiency.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q39-karen",
+     "hyp": "Deficiency.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q40-aman",
+     "hyp": "Repeat.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q40-ava",
+     "hyp": "Repeat.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q40-daniel",
+     "hyp": "Repeat.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q40-evan",
+     "hyp": "Repeat.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q40-fiona",
+     "hyp": "Repeat.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q40-karen",
+     "hyp": "Repeat.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "model": "ggml-tiny.en.bin",
+   "prompt": true,
+   "condition": "snr10",
+   "clips": 240,
+   "key_term_accuracy": 0.9008,
+   "wer": 0.0705,
+   "commands": [
+    23,
+    24
+   ],
+   "batch_seconds": 128.5,
+   "latency_ms": {
+    "n": 24,
+    "median": 500,
+    "p90": 511
+   },
+   "items": [
+    {
+     "clip": "q01-aman",
+     "hyp": "How close can I get to a power line?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q01-ava",
+     "hyp": "How close can I get to a power line?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q01-daniel",
+     "hyp": "How close can I get to a power line?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q01-evan",
+     "hyp": "How close can I get to power line?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      1,
+      9
+     ]
+    },
+    {
+     "clip": "q01-fiona",
+     "hyp": "High close can I get to a power line?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      1,
+      9
+     ]
+    },
+    {
+     "clip": "q01-karen",
+     "hyp": "How close can I get to a power line?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q02-aman",
+     "hyp": "What's the minimum clearance for a 345 KV line?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q02-ava",
+     "hyp": "What's the minimum clearance for a 345kV line?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      9
+     ]
+    },
+    {
+     "clip": "q02-daniel",
+     "hyp": "Wops the minimum clearance for a 345kV line.",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      3,
+      9
+     ]
+    },
+    {
+     "clip": "q02-evan",
+     "hyp": "What's the minimum clearance for a 345K V line?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      9
+     ]
+    },
+    {
+     "clip": "q02-fiona",
+     "hyp": "What's the minimum clearance for a 345 KV line?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q02-karen",
+     "hyp": "What's the minimum clearance for a 345K V line?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      9
+     ]
+    },
+    {
+     "clip": "q03-aman",
+     "hyp": "The line is 500 KV is the trigger 20 feet or 50 feet.",
+     "terms": [
+      true,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      13
+     ]
+    },
+    {
+     "clip": "q03-ava",
+     "hyp": "The line is 500kV as the trigger 20 feet or 50 feet.",
+     "terms": [
+      false,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      3,
+      13
+     ]
+    },
+    {
+     "clip": "q03-daniel",
+     "hyp": "The Liners 500kV is the trigger 20 feet or 50 feet.",
+     "terms": [
+      false,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      4,
+      13
+     ]
+    },
+    {
+     "clip": "q03-evan",
+     "hyp": "The line is 500kV as the trigger 20 feet or 50 feet.",
+     "terms": [
+      false,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      3,
+      13
+     ]
+    },
+    {
+     "clip": "q03-fiona",
+     "hyp": "The line is 500kV, is the trigger 20 feet or 50 feet.",
+     "terms": [
+      false,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      2,
+      13
+     ]
+    },
+    {
+     "clip": "q03-karen",
+     "hyp": "The line is 500kV is the trigger 20 feet or 50 feet.",
+     "terms": [
+      false,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      2,
+      13
+     ]
+    },
+    {
+     "clip": "q04-aman",
+     "hyp": "What does section 40-0-8 say about power lines?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      3,
+      8
+     ]
+    },
+    {
+     "clip": "q04-ava",
+     "hyp": "What does section 1408 say about power lines?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q04-daniel",
+     "hyp": "What does section 1408 say about power lines?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q04-evan",
+     "hyp": "What does section 1408 say about power lines?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q04-fiona",
+     "hyp": "What does section 40 new weeks say about power lines?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      3,
+      8
+     ]
+    },
+    {
+     "clip": "q04-karen",
+     "hyp": "What does section 1408 say about power lines?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q05-aman",
+     "hyp": "What does 1926.1412 require for shift inspections?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q05-ava",
+     "hyp": "What is 1926.1412 require for shift inspections?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      7
+     ]
+    },
+    {
+     "clip": "q05-daniel",
+     "hyp": "What does 1926.1412 require full shift inspections?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      7
+     ]
+    },
+    {
+     "clip": "q05-evan",
+     "hyp": "With does 1926.1412 require for shift inspections.",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      7
+     ]
+    },
+    {
+     "clip": "q05-fiona",
+     "hyp": "What does 19, 26.1412 require for shift inspections?",
+     "terms": [
+      false,
+      true,
+      true
+     ],
+     "wer": [
+      2,
+      7
+     ]
+    },
+    {
+     "clip": "q05-karen",
+     "hyp": "What does 1926.1412 require for shift inspections?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q06-aman",
+     "hyp": "The LMI isn't walking, can I still make the lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      1,
+      10
+     ]
+    },
+    {
+     "clip": "q06-ava",
+     "hyp": "The LMI is working. Can I still make the lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      1,
+      10
+     ]
+    },
+    {
+     "clip": "q06-daniel",
+     "hyp": "The LMI isn't working, can I still make the lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q06-evan",
+     "hyp": "The LMI isn't working, can I still make the lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q06-fiona",
+     "hyp": "The LMI isn't working, can I still make the lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q06-karen",
+     "hyp": "The LMIs aren't working, can I still make the lift?",
+     "terms": [
+      false
+     ],
+     "wer": [
+      2,
+      10
+     ]
+    },
+    {
+     "clip": "q07-aman",
+     "hyp": "Do I need the load moment indicator for every lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q07-ava",
+     "hyp": "Do I need the lunk moment indicator for every lift?",
+     "terms": [
+      false
+     ],
+     "wer": [
+      1,
+      10
+     ]
+    },
+    {
+     "clip": "q07-daniel",
+     "hyp": "Do I need the load moment indicator for every lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q07-evan",
+     "hyp": "Do I need the load moment indicator for every lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q07-fiona",
+     "hyp": "Do I need the load moment indicator for every lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q07-karen",
+     "hyp": "Do I need the load moment indicator for every lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q08-aman",
+     "hyp": "What happens if the anti-two-block device fails?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q08-ava",
+     "hyp": "What happens if the anti-two-block device fails?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q08-daniel",
+     "hyp": "What happens if the anti-two-block device fails?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q08-evan",
+     "hyp": "What happens if the anti-two-block device fails?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q08-fiona",
+     "hyp": "What happens if the anti-two-block device fails?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q08-karen",
+     "hyp": "What happens if the anti-two-block device fails?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q09-aman",
+     "hyp": "Can I exceed the rated capacity if the outriggers are fully extended?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q09-ava",
+     "hyp": "Can I exceed the rated capacity if the outriggers are fully extended?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q09-daniel",
+     "hyp": "Can I exceed the rated capacity if the outriggers are fully extended?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q09-evan",
+     "hyp": "Can I exceed the rated capacity if the outriggers are fully extended?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q09-fiona",
+     "hyp": "Can I exceed the rate of capacity if the outriggers are fully extended?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      12
+     ]
+    },
+    {
+     "clip": "q09-karen",
+     "hyp": "Kiniacseed the rated capacity if the outriggers are fully extended.",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      3,
+      12
+     ]
+    },
+    {
+     "clip": "q10-aman",
+     "hyp": "My outriggers are only at mid-extension, which chart do I use?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q10-ava",
+     "hyp": "My outriggers are only admit extension, which chart do I use?",
+     "terms": [
+      true,
+      false
+     ],
+     "wer": [
+      2,
+      12
+     ]
+    },
+    {
+     "clip": "q10-daniel",
+     "hyp": "My outriggers are only at mid extension, which chart do I use?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q10-evan",
+     "hyp": "My outriggers are only at mid extension, which chart do I use.",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q10-fiona",
+     "hyp": "My outriggers are only at mid-extension, which chart do I use?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q10-karen",
+     "hyp": "My outriggers are only at the mid extension, which chart do I use.",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      12
+     ]
+    },
+    {
+     "clip": "q11-aman",
+     "hyp": "Do outrigger pads need cribbing on soft ground,",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q11-ava",
+     "hyp": "Do well rigger pads knee cribbing on soft ground.",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      3,
+      8
+     ]
+    },
+    {
+     "clip": "q11-daniel",
+     "hyp": "Do outrigger pads need cribbing on soft ground.",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q11-evan",
+     "hyp": "Do outrigger painted neat cribbing on soft ground?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      8
+     ]
+    },
+    {
+     "clip": "q11-fiona",
+     "hyp": "Do actually grip pads, neat cribbing on soft ground.",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      3,
+      8
+     ]
+    },
+    {
+     "clip": "q11-karen",
+     "hyp": "Do outrigger pads need cribbing on soft ground.",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q12-aman",
+     "hyp": "How many broken wires in one lay before I take the rope out of service?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      15
+     ]
+    },
+    {
+     "clip": "q12-ava",
+     "hyp": "How many broken wires in one lay before I take the rope out of service?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      15
+     ]
+    },
+    {
+     "clip": "q12-daniel",
+     "hyp": "How many broken wires in one lay before I take the rope out of service?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      15
+     ]
+    },
+    {
+     "clip": "q12-evan",
+     "hyp": "How many broken wires in one lay before I take the rope out of service?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      15
+     ]
+    },
+    {
+     "clip": "q12-fiona",
+     "hyp": "How many broken wires and one lead before I teet in the rope-page of service?",
+     "terms": [
+      true,
+      false,
+      false
+     ],
+     "wer": [
+      5,
+      15
+     ]
+    },
+    {
+     "clip": "q12-karen",
+     "hyp": "How many broken wires in one lay before I take the rope out of service?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      15
+     ]
+    },
+    {
+     "clip": "q13-aman",
+     "hyp": "Is birdcaging a reason to remove wire rope?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q13-ava",
+     "hyp": "Is birdcaaching a reason to remove wire rope?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      1,
+      8
+     ]
+    },
+    {
+     "clip": "q13-daniel",
+     "hyp": "Is birdcaching a reason to remove wire rope?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      1,
+      8
+     ]
+    },
+    {
+     "clip": "q13-evan",
+     "hyp": "Is birdcaching a reason to remove wire rope?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      1,
+      8
+     ]
+    },
+    {
+     "clip": "q13-fiona",
+     "hyp": "Is birdcaaching a reason to remove wire rope?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      1,
+      8
+     ]
+    },
+    {
+     "clip": "q13-karen",
+     "hyp": "His birdcaching a reason to remove wire rope.",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      8
+     ]
+    },
+    {
+     "clip": "q14-aman",
+     "hyp": "What counts as kinking or crushing on running rope?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q14-ava",
+     "hyp": "What counts as kinking or crushing on running rope?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q14-daniel",
+     "hyp": "What town says kinking or crushing on running rope?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      2,
+      9
+     ]
+    },
+    {
+     "clip": "q14-evan",
+     "hyp": "Wood counts as kinking or crushing on running rope.",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      9
+     ]
+    },
+    {
+     "clip": "q14-fiona",
+     "hyp": "All counts as kinking or crushing on running rope.",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      9
+     ]
+    },
+    {
+     "clip": "q14-karen",
+     "hyp": "What counts as kinking or crashing on running rope?",
+     "terms": [
+      true,
+      false,
+      true
+     ],
+     "wer": [
+      1,
+      9
+     ]
+    },
+    {
+     "clip": "q15-aman",
+     "hyp": "Core protrusion of category 1 deficiency.",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      2,
+      7
+     ]
+    },
+    {
+     "clip": "q15-ava",
+     "hyp": "Is poor protrusion a category 1 deficiency?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      1,
+      7
+     ]
+    },
+    {
+     "clip": "q15-daniel",
+     "hyp": "Is core protrusion a category 1 deficiency?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q15-evan",
+     "hyp": "Is core protrusion a category 1 deficiency?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q15-fiona",
+     "hyp": "Is core protrusion of category 1 deficiency?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      7
+     ]
+    },
+    {
+     "clip": "q15-karen",
+     "hyp": "is core protrusion a category 1 deficiency",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q16-aman",
+     "hyp": "Can I use rotation-resistant rope for this lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q16-ava",
+     "hyp": "Can I use rotation-resistant rope for this lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q16-daniel",
+     "hyp": "Can I use rotation-resistant rope for this lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q16-evan",
+     "hyp": "Can I use rotation-resistant rope for this lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q16-fiona",
+     "hyp": "Can I use rotation-resistant rope for this lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q16-karen",
+     "hyp": "Can I use rotation-resistant rope for the lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      1,
+      9
+     ]
+    },
+    {
+     "clip": "q17-aman",
+     "hyp": "When do I need a signal person?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q17-ava",
+     "hyp": "When do I need a signal person?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q17-daniel",
+     "hyp": "When do I need a signal person?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q17-evan",
+     "hyp": "When do I need a signal person?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q17-fiona",
+     "hyp": "1. Do I need a signal person?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      1,
+      7
+     ]
+    },
+    {
+     "clip": "q17-karen",
+     "hyp": "When do I need a signal person?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q18-aman",
+     "hyp": "Who can give the emergency stop signal?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q18-ava",
+     "hyp": "Who can give the emergency stop signal?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q18-daniel",
+     "hyp": "Who can give the emergency stop signal?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q18-evan",
+     "hyp": "Who can give the emergency stop signal?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q18-fiona",
+     "hyp": "Who can give me emergency stop signal?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      1,
+      7
+     ]
+    },
+    {
+     "clip": "q18-karen",
+     "hyp": "Who can give the emergency stop signal?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q19-aman",
+     "hyp": "Does the rigger have to be a qualified rigger for assembly?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q19-ava",
+     "hyp": "Does the rigger have to be a qualified rigger for assembly?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q19-daniel",
+     "hyp": "Does the rigger have to be a qualified rigger for assembly?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q19-evan",
+     "hyp": "Does the rigger have to be a qualified rigger for assembly?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q19-fiona",
+     "hyp": "Does the rigger have to be a qualified rigger for assembly?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q19-karen",
+     "hyp": "Does the rigger have to be a qualified rigger for assembly?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q20-aman",
+     "hyp": "What is the swing radius hazard and how do I barricade it?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q20-ava",
+     "hyp": "What is the swing radius hazard and how do I barricade it?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q20-daniel",
+     "hyp": "What is the swing radius hazard and how do I barricade it?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q20-evan",
+     "hyp": "What is the swing radius hazard and how do I barricade it?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q20-fiona",
+     "hyp": "What is the swing radius hazard and how do I bar-keyed it?",
+     "terms": [
+      true,
+      false
+     ],
+     "wer": [
+      2,
+      12
+     ]
+    },
+    {
+     "clip": "q20-karen",
+     "hyp": "What is the swing radius hesitant? How do I barricade it?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      2,
+      12
+     ]
+    },
+    {
+     "clip": "q21-aman",
+     "hyp": "Can I extend the jib in 30 mile an hour wind?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q21-ava",
+     "hyp": "Can I extend the jib in 30 mile an hour wind?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q21-daniel",
+     "hyp": "Can I extend the jib in 30 mile an hour wind?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q21-evan",
+     "hyp": "Can I extend the jib in 30 mile an hour wind?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q21-fiona",
+     "hyp": "Can I extend the jib and 13 mile on our wind?",
+     "terms": [
+      true,
+      false
+     ],
+     "wer": [
+      4,
+      11
+     ]
+    },
+    {
+     "clip": "q21-karen",
+     "hyp": "Can I extend the jib in 30 mile an hour wind?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q22-aman",
+     "hyp": "What's the rated capacity at a 40-foot radius with lowercase a 60-foot boom?",
+     "terms": [
+      true,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      14
+     ]
+    },
+    {
+     "clip": "q22-ava",
+     "hyp": "What's the rated capacity at 40 foot radius with a 60 foot boom?",
+     "terms": [
+      true,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      14
+     ]
+    },
+    {
+     "clip": "q22-daniel",
+     "hyp": "Wops the rated capacity at a 40-foot radius with a 60-foot boom.",
+     "terms": [
+      true,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      14
+     ]
+    },
+    {
+     "clip": "q22-evan",
+     "hyp": "What's the rated capacity at a 40-foot radius with a 60-foot boom?",
+     "terms": [
+      true,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      14
+     ]
+    },
+    {
+     "clip": "q22-fiona",
+     "hyp": "What's the rated capacity at the 40 foot radius with a 60 foot boom?",
+     "terms": [
+      true,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      14
+     ]
+    },
+    {
+     "clip": "q22-karen",
+     "hyp": "What's the rated capacity at a 40 foot radius with a 60 foot boom?",
+     "terms": [
+      true,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      14
+     ]
+    },
+    {
+     "clip": "q23-aman",
+     "hyp": "How do I deduct the hook block and rigging from the load chart?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      13
+     ]
+    },
+    {
+     "clip": "q23-ava",
+     "hyp": "How do I deduct the hook block and rigging from the load chart?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      13
+     ]
+    },
+    {
+     "clip": "q23-daniel",
+     "hyp": "How do I deduct the hook block and rigging from the load chart?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      13
+     ]
+    },
+    {
+     "clip": "q23-evan",
+     "hyp": "How do I deduct the hook block and rigon from the load chart?",
+     "terms": [
+      true,
+      false,
+      true
+     ],
+     "wer": [
+      1,
+      13
+     ]
+    },
+    {
+     "clip": "q23-fiona",
+     "hyp": "How do I deduct the hook block and rigging from the load chart?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      13
+     ]
+    },
+    {
+     "clip": "q23-karen",
+     "hyp": "How do I deduct the hook block and rigging from the load chart?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      13
+     ]
+    },
+    {
+     "clip": "q24-aman",
+     "hyp": "Is the power line deenergized and grounded if the utility says so?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q24-ava",
+     "hyp": "Is the power line deenergized and grounded if the utility's so?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      2,
+      12
+     ]
+    },
+    {
+     "clip": "q24-daniel",
+     "hyp": "Is the power line deenergized and grounded if the utility says so?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q24-evan",
+     "hyp": "\"Is the power line deenergized and grounded if the utility says so?\"",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q24-fiona",
+     "hyp": "\"Is the power line deenergized and grounded if the utility says so?\"",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q24-karen",
+     "hyp": "Is the power line deenergized and grounded if the utility says so?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q25-aman",
+     "hyp": "What does Table A say for lines over 750 KV?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q25-ava",
+     "hyp": "What does Table A save for lines over 750k5?",
+     "terms": [
+      true,
+      false,
+      false
+     ],
+     "wer": [
+      3,
+      10
+     ]
+    },
+    {
+     "clip": "q25-daniel",
+     "hyp": "What does Table A sayful lines over 750kV?",
+     "terms": [
+      true,
+      false,
+      true
+     ],
+     "wer": [
+      4,
+      10
+     ]
+    },
+    {
+     "clip": "q25-evan",
+     "hyp": "With this Table A safe reliance over 750 KV.",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      5,
+      10
+     ]
+    },
+    {
+     "clip": "q25-fiona",
+     "hyp": "What does Table A say for lines over 750 kV?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q25-karen",
+     "hyp": "What does Table A save for lines over 750k5?",
+     "terms": [
+      true,
+      false,
+      false
+     ],
+     "wer": [
+      3,
+      10
+     ]
+    },
+    {
+     "clip": "q26-aman",
+     "hyp": "Do I need a dedicated spotter when travelling under a line?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      11
+     ]
+    },
+    {
+     "clip": "q26-ava",
+     "hyp": "Do I need a dedicated spotter when traveling under a line?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q26-daniel",
+     "hyp": "Do I need a dedicated spotter when traveling under a line?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q26-evan",
+     "hyp": "Do I need a dedicated spotter when traveling under a line?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q26-fiona",
+     "hyp": "Do I need a dedicated spotter when travelling under a line?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      11
+     ]
+    },
+    {
+     "clip": "q26-karen",
+     "hyp": "Do I need a dedicated spotter when travelling under a line?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      11
+     ]
+    },
+    {
+     "clip": "q27-aman",
+     "hyp": "Who is responsible for ground conditions the controlling entity or the operator?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q27-ava",
+     "hyp": "Who is responsible for ground conditions, the controlling entity or the operator?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q27-daniel",
+     "hyp": "Who is responsible for ground conditions, the controlling entity or the operator?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q27-evan",
+     "hyp": "Who is responsible for ground conditions, the controlling entity or the operator?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q27-fiona",
+     "hyp": "Who is responsible for grain conditions for controlling entity on the operator?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      3,
+      12
+     ]
+    },
+    {
+     "clip": "q27-karen",
+     "hyp": "Who is responsible for ground conditions, for controlling entity or the operator?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      12
+     ]
+    },
+    {
+     "clip": "q28-aman",
+     "hyp": "Channel crawler crane travel with a suspended load.",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      2,
+      9
+     ]
+    },
+    {
+     "clip": "q28-ava",
+     "hyp": "Can a crawler crane travel with a suspended load?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q28-daniel",
+     "hyp": "Can a crawler crane travel with a suspended load?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q28-evan",
+     "hyp": "Can a crawler crane travel with a suspended load?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q28-fiona",
+     "hyp": "Kinda crawler cream, travel with a suspended load.",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      3,
+      9
+     ]
+    },
+    {
+     "clip": "q28-karen",
+     "hyp": "Can a crawl a crane travel with a suspended load?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      9
+     ]
+    },
+    {
+     "clip": "q29-aman",
+     "hyp": "When is a critical lift plan required for a tandem thick?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      11
+     ]
+    },
+    {
+     "clip": "q29-ava",
+     "hyp": "When is a critical lift plan required for a tandem pick?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q29-daniel",
+     "hyp": "When is a critical lift plan required for a tandem pick?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q29-evan",
+     "hyp": "When is a critical lift plan required for a tandem pick?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q29-fiona",
+     "hyp": "When is a critical lift plan required for a tandem pick?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q29-karen",
+     "hyp": "When is a critical lift plan required for a tandem pick?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q30-aman",
+     "hyp": "Chennai hoist personnel in a man basket with this cream.",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      3,
+      11
+     ]
+    },
+    {
+     "clip": "q30-ava",
+     "hyp": "Can I hoist personnel in a man basket with this crane?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q30-daniel",
+     "hyp": "Can I hoist personnel in a man basket with this crane?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q30-evan",
+     "hyp": "Can I hoist personnel in a man basket with a screen?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      2,
+      11
+     ]
+    },
+    {
+     "clip": "q30-fiona",
+     "hyp": "Can I hoist personnel in a man basket with this cream?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      11
+     ]
+    },
+    {
+     "clip": "q30-karen",
+     "hyp": "Can I always personnel in a man-basket with this crane?",
+     "terms": [
+      false,
+      false
+     ],
+     "wer": [
+      1,
+      11
+     ]
+    },
+    {
+     "clip": "q31-aman",
+     "hyp": "What is the boom angle indicator for?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q31-ava",
+     "hyp": "What is the blue-mangle indicator for?",
+     "terms": [
+      false
+     ],
+     "wer": [
+      2,
+      7
+     ]
+    },
+    {
+     "clip": "q31-daniel",
+     "hyp": "What is the boom angle indicator for?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q31-evan",
+     "hyp": "What is the boom angle indicator for?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q31-fiona",
+     "hyp": "What is the boom angle indicator for?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q31-karen",
+     "hyp": "What is the boom angle indicator for?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q32-aman",
+     "hyp": "Do I need a level indicator check before every sift?",
+     "terms": [
+      true,
+      false
+     ],
+     "wer": [
+      1,
+      10
+     ]
+    },
+    {
+     "clip": "q32-ava",
+     "hyp": "Do I need a level indicator check before every shift?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q32-daniel",
+     "hyp": "Do I need a level indicator check before every shift?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q32-evan",
+     "hyp": "Do I need a level indicator check before every shift?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q32-fiona",
+     "hyp": "Do I need a level indicator check before every shift?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q32-karen",
+     "hyp": "Do I need a level indicator check before every shift?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q33-aman",
+     "hyp": "What are you the hand signals for, hoist and lower?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      9
+     ]
+    },
+    {
+     "clip": "q33-ava",
+     "hyp": "Water the hand signals for hoist and lower.",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      2,
+      9
+     ]
+    },
+    {
+     "clip": "q33-daniel",
+     "hyp": "What are the hand signals for hoist and lower?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q33-evan",
+     "hyp": "What are the hand signals for hoist and lower?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q33-fiona",
+     "hyp": "What are the hand signals for hoist and lure her?",
+     "terms": [
+      true,
+      true,
+      false
+     ],
+     "wer": [
+      2,
+      9
+     ]
+    },
+    {
+     "clip": "q33-karen",
+     "hyp": "Water the hands signals for hoist and lower.",
+     "terms": [
+      false,
+      true,
+      true
+     ],
+     "wer": [
+      3,
+      9
+     ]
+    },
+    {
+     "clip": "q34-aman",
+     "hyp": "Who has to certify the operator for a 50 ton crane?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q34-ava",
+     "hyp": "Who has disertified the operator for a 50 ton crane?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      11
+     ]
+    },
+    {
+     "clip": "q34-daniel",
+     "hyp": "Who has to certify the operator for a 50 ton crane?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q34-evan",
+     "hyp": "Who has to certify the operator for a 50 ton crane?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q34-fiona",
+     "hyp": "Who has to certify the operator for a 50 ton crane?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q34-karen",
+     "hyp": "Who has to certify the operator for a 50 ton crane?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q35-aman",
+     "hyp": "is a monthly inspection documented and for how long?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q35-ava",
+     "hyp": "Is a monthly inspection documented and for how long?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q35-daniel",
+     "hyp": "is a monthly inspection documented and for how long.",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q35-evan",
+     "hyp": "is a monthly inspection documented and for how long.",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q35-fiona",
+     "hyp": "is a monthly inspection documented and for how long?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q35-karen",
+     "hyp": "is a monthly inspection document set and for how long.",
+     "terms": [
+      true,
+      false
+     ],
+     "wer": [
+      2,
+      9
+     ]
+    },
+    {
+     "clip": "q36-aman",
+     "hyp": "What does 1413 say about wire rope inspection?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q36-ava",
+     "hyp": "With those 14-13 say about wire rope inspection.",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      4,
+      8
+     ]
+    },
+    {
+     "clip": "q36-daniel",
+     "hyp": "What does 1413 say about wire rope inspection?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q36-evan",
+     "hyp": "With dust 1413 say about wire rope inspection.",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      2,
+      8
+     ]
+    },
+    {
+     "clip": "q36-fiona",
+     "hyp": "What does 1413 say about wire rope inspection?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q36-karen",
+     "hyp": "What does 1413 say about wire rope inspection?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q37-aman",
+     "hyp": "Next.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q37-ava",
+     "hyp": "Next.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q37-daniel",
+     "hyp": "Next.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q37-evan",
+     "hyp": "Next.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q37-fiona",
+     "hyp": "Next.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q37-karen",
+     "hyp": "Next.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q38-aman",
+     "hyp": "FAS",
+     "terms": [
+      false
+     ],
+     "wer": [
+      1,
+      1
+     ]
+    },
+    {
+     "clip": "q38-ava",
+     "hyp": "Pass!",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q38-daniel",
+     "hyp": "Pass.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q38-evan",
+     "hyp": "Pass.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q38-fiona",
+     "hyp": "Pass.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q38-karen",
+     "hyp": "Pass.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q39-aman",
+     "hyp": "Deficiency.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q39-ava",
+     "hyp": "Deficiency.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q39-daniel",
+     "hyp": "Deficiency.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q39-evan",
+     "hyp": "Deficiency.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q39-fiona",
+     "hyp": "Deficiency.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q39-karen",
+     "hyp": "Deficiency.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q40-aman",
+     "hyp": "Repeat.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q40-ava",
+     "hyp": "Repeat.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q40-daniel",
+     "hyp": "Repeat.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q40-evan",
+     "hyp": "Repeat.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q40-fiona",
+     "hyp": "Repeat.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q40-karen",
+     "hyp": "Repeat.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "model": "ggml-base.en-q5_1.bin",
+   "prompt": false,
+   "condition": "snr10",
+   "clips": 240,
+   "key_term_accuracy": 0.8523,
+   "wer": 0.0774,
+   "commands": [
+    23,
+    24
+   ],
+   "batch_seconds": 177.9,
+   "latency_ms": null,
+   "items": [
+    {
+     "clip": "q01-aman",
+     "hyp": "How close can I get to a power line?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q01-ava",
+     "hyp": "How close can I get to a power line?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q01-daniel",
+     "hyp": "How close can I get to a power line?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q01-evan",
+     "hyp": "How close can I get to power line?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      1,
+      9
+     ]
+    },
+    {
+     "clip": "q01-fiona",
+     "hyp": "How close can I get to a power line?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q01-karen",
+     "hyp": "How close can I get to a power line?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q02-aman",
+     "hyp": "Watch the minimum clearance for a 345kV line.",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      3,
+      9
+     ]
+    },
+    {
+     "clip": "q02-ava",
+     "hyp": "What's the minimum clearance for a 345 KV line?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q02-daniel",
+     "hyp": "What's the minimum clearance for a 345kV line?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      9
+     ]
+    },
+    {
+     "clip": "q02-evan",
+     "hyp": "What's the minimum clearance for a 345K V-line?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      9
+     ]
+    },
+    {
+     "clip": "q02-fiona",
+     "hyp": "What's the minimum clearance for a 345KV line?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      9
+     ]
+    },
+    {
+     "clip": "q02-karen",
+     "hyp": "What's the minimum clearance for a 345KV line?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      9
+     ]
+    },
+    {
+     "clip": "q03-aman",
+     "hyp": "The line is 500 KV is the trigger 20 feet or 50 feet.",
+     "terms": [
+      true,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      13
+     ]
+    },
+    {
+     "clip": "q03-ava",
+     "hyp": "The line is 500 KV is the trigger 20 feet or 50 feet.",
+     "terms": [
+      true,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      13
+     ]
+    },
+    {
+     "clip": "q03-daniel",
+     "hyp": "The line is 500 A/V is the trigger 20 feet or 50 feet.",
+     "terms": [
+      true,
+      false,
+      true,
+      true
+     ],
+     "wer": [
+      2,
+      13
+     ]
+    },
+    {
+     "clip": "q03-evan",
+     "hyp": "The line is 500 KV is the trigger 20 feet or 50 feet.",
+     "terms": [
+      true,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      13
+     ]
+    },
+    {
+     "clip": "q03-fiona",
+     "hyp": "The line is 500 kV is the trigger 20 feet or 50 feet.",
+     "terms": [
+      true,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      13
+     ]
+    },
+    {
+     "clip": "q03-karen",
+     "hyp": "The line is 500 KV is the trigger 20 feet or 50 feet.",
+     "terms": [
+      true,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      13
+     ]
+    },
+    {
+     "clip": "q04-aman",
+     "hyp": "What does section 1408 say about power lines?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q04-ava",
+     "hyp": "What does section 1408 say about power lines?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q04-daniel",
+     "hyp": "What does section 1408 say about power lines?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q04-evan",
+     "hyp": "What does section 1408 say about power lines?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q04-fiona",
+     "hyp": "What does section 14 or 8 say about power lines?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      3,
+      8
+     ]
+    },
+    {
+     "clip": "q04-karen",
+     "hyp": "What does section 1408 say about power lines?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q05-aman",
+     "hyp": "What does 1926.1412 require for shift inspections?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q05-ava",
+     "hyp": "What does 1926.1412 require for shift inspections?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q05-daniel",
+     "hyp": "What does 1926.1412 require for shift inspections?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q05-evan",
+     "hyp": "With does 1926.1412 require for shift inspections.",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      7
+     ]
+    },
+    {
+     "clip": "q05-fiona",
+     "hyp": "What does 19 26.14 12 require for shift inspections?",
+     "terms": [
+      false,
+      true,
+      true
+     ],
+     "wer": [
+      3,
+      7
+     ]
+    },
+    {
+     "clip": "q05-karen",
+     "hyp": "What does 1926.1412 require for shift inspections?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q06-aman",
+     "hyp": "The LMI isn't working, can I still make the lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q06-ava",
+     "hyp": "The LMI isn't working, can I still make the lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q06-daniel",
+     "hyp": "The LMI isn't working, can I still make the lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q06-evan",
+     "hyp": "The LMI isn't working. Can I still make the lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q06-fiona",
+     "hyp": "The LMI isn't working, can I still make the lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q06-karen",
+     "hyp": "The LMI isn't working, can I still make the lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q07-aman",
+     "hyp": "Do I need the load moment indicator for every lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q07-ava",
+     "hyp": "Do I need the load moment indicator for every lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q07-daniel",
+     "hyp": "Do I need the load moment indicator for every lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q07-evan",
+     "hyp": "Do I need the load moment indicator for every lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q07-fiona",
+     "hyp": "Do I need the load moment indicator for every lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q07-karen",
+     "hyp": "Do I need the load moment indicator for every lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q08-aman",
+     "hyp": "What happens if the anti-tublop device fails?",
+     "terms": [
+      false
+     ],
+     "wer": [
+      2,
+      9
+     ]
+    },
+    {
+     "clip": "q08-ava",
+     "hyp": "What happens if the anti-tube lock device fails?",
+     "terms": [
+      false
+     ],
+     "wer": [
+      2,
+      9
+     ]
+    },
+    {
+     "clip": "q08-daniel",
+     "hyp": "What happens if the anti-2 block device fails?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      1,
+      9
+     ]
+    },
+    {
+     "clip": "q08-evan",
+     "hyp": "What happens if the anti-tube lock device fails?",
+     "terms": [
+      false
+     ],
+     "wer": [
+      2,
+      9
+     ]
+    },
+    {
+     "clip": "q08-fiona",
+     "hyp": "What happens if the anti-tube block device fails?",
+     "terms": [
+      false
+     ],
+     "wer": [
+      1,
+      9
+     ]
+    },
+    {
+     "clip": "q08-karen",
+     "hyp": "What happens if the anti-tube lock device fails?",
+     "terms": [
+      false
+     ],
+     "wer": [
+      2,
+      9
+     ]
+    },
+    {
+     "clip": "q09-aman",
+     "hyp": "Can I exceed the rated capacity if the outriggers are fully extended?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q09-ava",
+     "hyp": "Can I exceed the rated capacity if the outriggers are fully extended?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q09-daniel",
+     "hyp": "Can I exceed the rated capacity if the outriggers are fully extended?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q09-evan",
+     "hyp": "Can I exceed the rated capacity if the outriggers are fully extended?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q09-fiona",
+     "hyp": "Can I exceed the rate of capacity if the outriggers are fully extended?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      12
+     ]
+    },
+    {
+     "clip": "q09-karen",
+     "hyp": "Can I exceed the rated capacity if the outriggers are fully extended?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q10-aman",
+     "hyp": "My Outriggers are only at mid-extension. Which chart do I use?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q10-ava",
+     "hyp": "My Outvickers are only at mid extension, which chart do I use?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      1,
+      12
+     ]
+    },
+    {
+     "clip": "q10-daniel",
+     "hyp": "My outriggers are only at mid extension, which chart do I use?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q10-evan",
+     "hyp": "My Outriggers are only at mid-extension, which chart do I use?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q10-fiona",
+     "hyp": "My own triggers are only at mid-extension, which chart do I use?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      12
+     ]
+    },
+    {
+     "clip": "q10-karen",
+     "hyp": "My outriggers are only at mid-extension, which chart do I use?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q11-aman",
+     "hyp": "Do outrigger pads need cribbing on soft ground?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q11-ava",
+     "hyp": "Do outrigger pads need creeping on soft ground?",
+     "terms": [
+      true,
+      false
+     ],
+     "wer": [
+      1,
+      8
+     ]
+    },
+    {
+     "clip": "q11-daniel",
+     "hyp": "Do our trigger pads need prepping on soft ground?",
+     "terms": [
+      false,
+      false
+     ],
+     "wer": [
+      3,
+      8
+     ]
+    },
+    {
+     "clip": "q11-evan",
+     "hyp": "Do outrigger paints need cribbing on soft ground?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      1,
+      8
+     ]
+    },
+    {
+     "clip": "q11-fiona",
+     "hyp": "Do I trigger pads neat cribbing on soft ground?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      3,
+      8
+     ]
+    },
+    {
+     "clip": "q11-karen",
+     "hyp": "Do outrigger pads need cribbing on soft ground?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q12-aman",
+     "hyp": "How many broken wires in one way before I take the rope out of service?",
+     "terms": [
+      true,
+      false,
+      true
+     ],
+     "wer": [
+      1,
+      15
+     ]
+    },
+    {
+     "clip": "q12-ava",
+     "hyp": "How many broken wires in one lay before I take the rope out of service?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      15
+     ]
+    },
+    {
+     "clip": "q12-daniel",
+     "hyp": "How many broken wires in one lay before I take the rope out of service?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      15
+     ]
+    },
+    {
+     "clip": "q12-evan",
+     "hyp": "How many broken wires in one lay before I take the rope out of service?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      15
+     ]
+    },
+    {
+     "clip": "q12-fiona",
+     "hyp": "How many broken wires and one lee before I take the raw pot of service?",
+     "terms": [
+      true,
+      false,
+      false
+     ],
+     "wer": [
+      4,
+      15
+     ]
+    },
+    {
+     "clip": "q12-karen",
+     "hyp": "How many broken was in one lay before I take the rope out of service?",
+     "terms": [
+      false,
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      15
+     ]
+    },
+    {
+     "clip": "q13-aman",
+     "hyp": "is but caging a reason to remove wire rope.",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      8
+     ]
+    },
+    {
+     "clip": "q13-ava",
+     "hyp": "Is birdcaging a reason to remove Y or Ope?",
+     "terms": [
+      true,
+      false
+     ],
+     "wer": [
+      3,
+      8
+     ]
+    },
+    {
+     "clip": "q13-daniel",
+     "hyp": "Is birdcajing a reason to remove wire rope?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      1,
+      8
+     ]
+    },
+    {
+     "clip": "q13-evan",
+     "hyp": "Is bird catching a reason to remove wire rope?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      8
+     ]
+    },
+    {
+     "clip": "q13-fiona",
+     "hyp": "is but catching a reason to remove wire rope.",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      8
+     ]
+    },
+    {
+     "clip": "q13-karen",
+     "hyp": "He's both cajing a reason to remove wire rod.",
+     "terms": [
+      false,
+      false
+     ],
+     "wer": [
+      4,
+      8
+     ]
+    },
+    {
+     "clip": "q14-aman",
+     "hyp": "What counts as kinking or crushing on running rope?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q14-ava",
+     "hyp": "What counts as kinking or crushing on running rope?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q14-daniel",
+     "hyp": "What counts as kinking or crushing on running road?",
+     "terms": [
+      true,
+      true,
+      false
+     ],
+     "wer": [
+      1,
+      9
+     ]
+    },
+    {
+     "clip": "q14-evan",
+     "hyp": "wood counts as kinking or crushing on running rope.",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      9
+     ]
+    },
+    {
+     "clip": "q14-fiona",
+     "hyp": "White K aintz is kinking or crushing on running rope.",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      4,
+      9
+     ]
+    },
+    {
+     "clip": "q14-karen",
+     "hyp": "What counts as kinking or crashing on running rope?",
+     "terms": [
+      true,
+      false,
+      true
+     ],
+     "wer": [
+      1,
+      9
+     ]
+    },
+    {
+     "clip": "q15-aman",
+     "hyp": "is called Pratruchana category 1 deficiency.",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      3,
+      7
+     ]
+    },
+    {
+     "clip": "q15-ava",
+     "hyp": "Is poor pro-truish in a category 1 deficiency?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      4,
+      7
+     ]
+    },
+    {
+     "clip": "q15-daniel",
+     "hyp": "Is core protrusion a category 1 deficiency?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q15-evan",
+     "hyp": "Is core protrusion a Category 1 deficiency?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q15-fiona",
+     "hyp": "Is Corpetrosia a category one deficiency?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      3,
+      7
+     ]
+    },
+    {
+     "clip": "q15-karen",
+     "hyp": "Is called protrusion a category 1 deficiency?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      1,
+      7
+     ]
+    },
+    {
+     "clip": "q16-aman",
+     "hyp": "Can I use rotation resistant rope for this lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q16-ava",
+     "hyp": "Can I use rotation resistant rope for this lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q16-daniel",
+     "hyp": "Can I use rotation resistant rope for this lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q16-evan",
+     "hyp": "Can I use rotation resistant rope for this lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q16-fiona",
+     "hyp": "Can I use rotation resistant rope for this lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q16-karen",
+     "hyp": "Can I use rotation resistant rope for this lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q17-aman",
+     "hyp": "When do I need a signal person?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q17-ava",
+     "hyp": "When do I need a signal person?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q17-daniel",
+     "hyp": "When do I need a signal person?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q17-evan",
+     "hyp": "When do I need a signal person?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q17-fiona",
+     "hyp": "When do I need a signal person?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q17-karen",
+     "hyp": "When do I need a signal person?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q18-aman",
+     "hyp": "Who can give the emergency stop signal?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q18-ava",
+     "hyp": "Who can give the emergency stop signal?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q18-daniel",
+     "hyp": "Who can give the emergency stop signal?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q18-evan",
+     "hyp": "Who can give the emergency stop signal?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q18-fiona",
+     "hyp": "Who can't give the emergency stop signal?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      1,
+      7
+     ]
+    },
+    {
+     "clip": "q18-karen",
+     "hyp": "Who can give the emergency stop signal?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q19-aman",
+     "hyp": "Does the rigor have to be a qualified rigor for assembly?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      11
+     ]
+    },
+    {
+     "clip": "q19-ava",
+     "hyp": "Does the rigor have to be a qualified rigor for assembly?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      11
+     ]
+    },
+    {
+     "clip": "q19-daniel",
+     "hyp": "Does the rigor have to be a qualified rigor for assembly?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      11
+     ]
+    },
+    {
+     "clip": "q19-evan",
+     "hyp": "Does the rigor have to be a qualified rigor for assembly?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      11
+     ]
+    },
+    {
+     "clip": "q19-fiona",
+     "hyp": "Does the rigor have to be a qualified rigor for assembly?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      11
+     ]
+    },
+    {
+     "clip": "q19-karen",
+     "hyp": "Does the rigor have to be a qualified rigor for assembly?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      11
+     ]
+    },
+    {
+     "clip": "q20-aman",
+     "hyp": "What is the swing radius hazard and how do I barricade it?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q20-ava",
+     "hyp": "What is the swing radius hazard and how do I barricade it?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q20-daniel",
+     "hyp": "What is the swing radius hazard and how do I barricade it?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q20-evan",
+     "hyp": "What is this swing radius hazard and how do I barricade it?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      12
+     ]
+    },
+    {
+     "clip": "q20-fiona",
+     "hyp": "What is the swing radius hazard and how do I barkeat it?",
+     "terms": [
+      true,
+      false
+     ],
+     "wer": [
+      1,
+      12
+     ]
+    },
+    {
+     "clip": "q20-karen",
+     "hyp": "What is the swing radius hesitant? How do I barricade it?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      2,
+      12
+     ]
+    },
+    {
+     "clip": "q21-aman",
+     "hyp": "Can I extend the jib in 30 mile an hour wind?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q21-ava",
+     "hyp": "Can I extend a jib in 30 mile an hour wind?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      11
+     ]
+    },
+    {
+     "clip": "q21-daniel",
+     "hyp": "Can I extend the jib in 30 mile an hour wind?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q21-evan",
+     "hyp": "Can I extend the jib in 30 mile an hour wind?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q21-fiona",
+     "hyp": "Can't I extend the jib and 30 mile an hour wind?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      2,
+      11
+     ]
+    },
+    {
+     "clip": "q21-karen",
+     "hyp": "Can I extend the jib in 30 mile an hour wind?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q22-aman",
+     "hyp": "What's the rated capacity at a 40 foot radius with lower case A 60 foot boom?",
+     "terms": [
+      true,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      2,
+      14
+     ]
+    },
+    {
+     "clip": "q22-ava",
+     "hyp": "Once the rated capacity at a 40 foot radius with a 60 foot boom",
+     "terms": [
+      true,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      14
+     ]
+    },
+    {
+     "clip": "q22-daniel",
+     "hyp": "What's the rated capacity at a 40 foot radius with a 60 foot boom?",
+     "terms": [
+      true,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      14
+     ]
+    },
+    {
+     "clip": "q22-evan",
+     "hyp": "What's the rated capacity at a 40-foot radius with a 60-foot boom?",
+     "terms": [
+      true,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      14
+     ]
+    },
+    {
+     "clip": "q22-fiona",
+     "hyp": "What's the rated capacity at the 40 foot radius with a 60 foot bloom?",
+     "terms": [
+      true,
+      true,
+      true,
+      false
+     ],
+     "wer": [
+      2,
+      14
+     ]
+    },
+    {
+     "clip": "q22-karen",
+     "hyp": "What's the rated capacity at a 40 foot radius with a 60 foot boom?",
+     "terms": [
+      true,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      14
+     ]
+    },
+    {
+     "clip": "q23-aman",
+     "hyp": "How do I deduct the hook block and rigging from the load chart?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      13
+     ]
+    },
+    {
+     "clip": "q23-ava",
+     "hyp": "How do I deduct the hook block and rigging from the load chart?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      13
+     ]
+    },
+    {
+     "clip": "q23-daniel",
+     "hyp": "How do I deduct the hook block and rigging from the load chart?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      13
+     ]
+    },
+    {
+     "clip": "q23-evan",
+     "hyp": "How do I deduct the hook block and rigging from the load shard?",
+     "terms": [
+      true,
+      true,
+      false
+     ],
+     "wer": [
+      1,
+      13
+     ]
+    },
+    {
+     "clip": "q23-fiona",
+     "hyp": "How do I deduct the hookblock and rigging from the lewd chart?",
+     "terms": [
+      false,
+      true,
+      false
+     ],
+     "wer": [
+      3,
+      13
+     ]
+    },
+    {
+     "clip": "q23-karen",
+     "hyp": "How do I deduct the hookblock and rigging from the load chart?",
+     "terms": [
+      false,
+      true,
+      true
+     ],
+     "wer": [
+      2,
+      13
+     ]
+    },
+    {
+     "clip": "q24-aman",
+     "hyp": "Is the power line deenergized and grounded if the utility says so?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q24-ava",
+     "hyp": "Is the power line deenergized and grounded if the utility says so?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q24-daniel",
+     "hyp": "Is the power line denagized and grounded if the utility says so?",
+     "terms": [
+      false,
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      12
+     ]
+    },
+    {
+     "clip": "q24-evan",
+     "hyp": "Is the power line de-energized and grounded if the utility says so?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      2,
+      12
+     ]
+    },
+    {
+     "clip": "q24-fiona",
+     "hyp": "Is the power line denargeout and grounded if the utility says so?",
+     "terms": [
+      false,
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      12
+     ]
+    },
+    {
+     "clip": "q24-karen",
+     "hyp": "Is the power line denagized and grounded if the utility says so?",
+     "terms": [
+      false,
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      12
+     ]
+    },
+    {
+     "clip": "q25-aman",
+     "hyp": "What does table are safe for lines over 750kV?",
+     "terms": [
+      false,
+      false,
+      true
+     ],
+     "wer": [
+      4,
+      10
+     ]
+    },
+    {
+     "clip": "q25-ava",
+     "hyp": "Wuppa's table A safer lines over 750K5",
+     "terms": [
+      true,
+      false,
+      false
+     ],
+     "wer": [
+      6,
+      10
+     ]
+    },
+    {
+     "clip": "q25-daniel",
+     "hyp": "What does table A say for lines over 750kV?",
+     "terms": [
+      true,
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      10
+     ]
+    },
+    {
+     "clip": "q25-evan",
+     "hyp": "With this table A-safe, it aligns over 750KV.",
+     "terms": [
+      true,
+      false,
+      true
+     ],
+     "wer": [
+      7,
+      10
+     ]
+    },
+    {
+     "clip": "q25-fiona",
+     "hyp": "What does table A say for lines over 750KV?",
+     "terms": [
+      true,
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      10
+     ]
+    },
+    {
+     "clip": "q25-karen",
+     "hyp": "What does table A save for lines over 750K5?",
+     "terms": [
+      true,
+      false,
+      false
+     ],
+     "wer": [
+      3,
+      10
+     ]
+    },
+    {
+     "clip": "q26-aman",
+     "hyp": "Do I need a dedicated spotter when traveling under a line?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q26-ava",
+     "hyp": "Do I need a dedicated spotter when traveling under a line?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q26-daniel",
+     "hyp": "Do I need a dedicated spotter when traveling under a line?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q26-evan",
+     "hyp": "Do I need a dedicated spotter when traveling under a line?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q26-fiona",
+     "hyp": "Do I need a dedicated spotter when travelling under online?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      3,
+      11
+     ]
+    },
+    {
+     "clip": "q26-karen",
+     "hyp": "Do I need a dedicated spotter when traveling under a line?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q27-aman",
+     "hyp": "Who is responsible for ground conditions the controlling entity or the operator?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q27-ava",
+     "hyp": "Who is responsible for ground conditions, the controlling entity or the operator?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q27-daniel",
+     "hyp": "Who is responsible for ground conditions, the controlling entity or the operator?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q27-evan",
+     "hyp": "Who is responsible for ground conditions, the controlling entity or the operator?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q27-fiona",
+     "hyp": "who is responsible for ground conditions for controlling entity or the operator.",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      12
+     ]
+    },
+    {
+     "clip": "q27-karen",
+     "hyp": "who is responsible for ground conditions, the controlling entity or the operator.",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q28-aman",
+     "hyp": "Can a crawler crane travel with a suspended load?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q28-ava",
+     "hyp": "Can a crawler crane travel with a suspended load?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q28-daniel",
+     "hyp": "Can a crawler crane travel with a suspended load?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q28-evan",
+     "hyp": "Can a crawler crane travel with a suspended load?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q28-fiona",
+     "hyp": "Can a crawler crane travel with a suspended load?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q28-karen",
+     "hyp": "Can the crawl a crane travel with a suspended load?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      3,
+      9
+     ]
+    },
+    {
+     "clip": "q29-aman",
+     "hyp": "When is a critical lift plan required for a tandem fix?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      11
+     ]
+    },
+    {
+     "clip": "q29-ava",
+     "hyp": "When is a critical lift plan required for a tandem pick?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q29-daniel",
+     "hyp": "When is a critical lift plan required for a tandem pick?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q29-evan",
+     "hyp": "When is a critical lift plan required for a tandem pick?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q29-fiona",
+     "hyp": "When is a critical lift plan required for a tandem pick?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q29-karen",
+     "hyp": "When is a critical lift plan required for a tandem pick?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q30-aman",
+     "hyp": "Can I host personnel in a man basket with this screen?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      11
+     ]
+    },
+    {
+     "clip": "q30-ava",
+     "hyp": "Can I waste personnel in a man basket with this crane?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      1,
+      11
+     ]
+    },
+    {
+     "clip": "q30-daniel",
+     "hyp": "Can I hoist personnel in a man basket with this crane?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q30-evan",
+     "hyp": "Can I hoist personnel in a man basket with his crane?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      11
+     ]
+    },
+    {
+     "clip": "q30-fiona",
+     "hyp": "Can I hoist personnel in a man basket with this cream?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      11
+     ]
+    },
+    {
+     "clip": "q30-karen",
+     "hyp": "Can I hoist personnel in a man basket with this crane?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q31-aman",
+     "hyp": "What is the boom angle indicator for?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q31-ava",
+     "hyp": "What is the blue mangle indicator for?",
+     "terms": [
+      false
+     ],
+     "wer": [
+      2,
+      7
+     ]
+    },
+    {
+     "clip": "q31-daniel",
+     "hyp": "What is the boom angle indicator for?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q31-evan",
+     "hyp": "What is the boom angle indicator for?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q31-fiona",
+     "hyp": "What is the boom angle indicator for?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q31-karen",
+     "hyp": "What is the boom angle indicator for?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q32-aman",
+     "hyp": "Do I need a level indicator check before every shift?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q32-ava",
+     "hyp": "Do I need a level indicator check before every shift?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q32-daniel",
+     "hyp": "Do I need a level indicator check before every shift?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q32-evan",
+     "hyp": "Do I need a level indicator check before every shift?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q32-fiona",
+     "hyp": "Do I need a level indicator check before every shift?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q32-karen",
+     "hyp": "Do I need a level indicator check before every shift?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q33-aman",
+     "hyp": "What are the hand signals for hoist and lower?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q33-ava",
+     "hyp": "What are the hand signals for hoist and lower?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q33-daniel",
+     "hyp": "What are the hand signals for hoist and lower?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q33-evan",
+     "hyp": "What are the hand signals for hoist and lower?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q33-fiona",
+     "hyp": "Watch the hand signals for hoist and lure her",
+     "terms": [
+      true,
+      true,
+      false
+     ],
+     "wer": [
+      4,
+      9
+     ]
+    },
+    {
+     "clip": "q33-karen",
+     "hyp": "Water the hand signals for hoist and lower.",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      2,
+      9
+     ]
+    },
+    {
+     "clip": "q34-aman",
+     "hyp": "who has to certify the operator for a 50 ton crane.",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q34-ava",
+     "hyp": "Who has to certify the operator for a 50 ton crane?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q34-daniel",
+     "hyp": "Who has to certify the operator for a 50 ton crane?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q34-evan",
+     "hyp": "Who has to certify the operator for a 50-ton crane?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q34-fiona",
+     "hyp": "who has to certify the operator for a 50-tonne cream.",
+     "terms": [
+      true,
+      false
+     ],
+     "wer": [
+      2,
+      11
+     ]
+    },
+    {
+     "clip": "q34-karen",
+     "hyp": "Who has to certify the operator for a 50-ton crane?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q35-aman",
+     "hyp": "is a monthly inspection documented and for how long.",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q35-ava",
+     "hyp": "Is a monthly inspection documented and for how long?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q35-daniel",
+     "hyp": "is a monthly inspection documented and for how long.",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q35-evan",
+     "hyp": "Is a monthly inspection documented and for how long?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q35-fiona",
+     "hyp": "is a monthly inspection documented and for how long?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q35-karen",
+     "hyp": "is a monthly inspection documented and for how long.",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q36-aman",
+     "hyp": "What does 1413 say about wire rope inspection?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q36-ava",
+     "hyp": "What does 1413 say about wire rope inspection?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q36-daniel",
+     "hyp": "What does 1413 say about wire rope inspection?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q36-evan",
+     "hyp": "With the 1413 say about wire rope inspection.",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      2,
+      8
+     ]
+    },
+    {
+     "clip": "q36-fiona",
+     "hyp": "What does 1413 say about wire rope inspection?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q36-karen",
+     "hyp": "What does 1413 say about wire open inspection?",
+     "terms": [
+      true,
+      false
+     ],
+     "wer": [
+      1,
+      8
+     ]
+    },
+    {
+     "clip": "q37-aman",
+     "hyp": "Next",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q37-ava",
+     "hyp": "Next",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q37-daniel",
+     "hyp": "Next",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q37-evan",
+     "hyp": "Next.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q37-fiona",
+     "hyp": "Next.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q37-karen",
+     "hyp": "Next.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q38-aman",
+     "hyp": "Fuzz",
+     "terms": [
+      false
+     ],
+     "wer": [
+      1,
+      1
+     ]
+    },
+    {
+     "clip": "q38-ava",
+     "hyp": "Pass",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q38-daniel",
+     "hyp": "Pass.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q38-evan",
+     "hyp": "Pass.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q38-fiona",
+     "hyp": "Pass.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q38-karen",
+     "hyp": "Pass.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q39-aman",
+     "hyp": "deficiency.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q39-ava",
+     "hyp": "deficiency",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q39-daniel",
+     "hyp": "deficiency",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q39-evan",
+     "hyp": "Deficiency",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q39-fiona",
+     "hyp": "deficiency",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q39-karen",
+     "hyp": "deficiency",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q40-aman",
+     "hyp": "Repeat.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q40-ava",
+     "hyp": "Repeat.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q40-daniel",
+     "hyp": "Repeat.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q40-evan",
+     "hyp": "Repeat.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q40-fiona",
+     "hyp": "Repeat.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q40-karen",
+     "hyp": "Repeat.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "model": "ggml-base.en-q5_1.bin",
+   "prompt": true,
+   "condition": "snr10",
+   "clips": 240,
+   "key_term_accuracy": 0.9388,
+   "wer": 0.0403,
+   "commands": [
+    22,
+    24
+   ],
+   "batch_seconds": 223.1,
+   "latency_ms": {
+    "n": 24,
+    "median": 876,
+    "p90": 886
+   },
+   "items": [
+    {
+     "clip": "q01-aman",
+     "hyp": "How close can I get to a power line?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q01-ava",
+     "hyp": "How close can I get to a power line?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q01-daniel",
+     "hyp": "How close can I get to a power line?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q01-evan",
+     "hyp": "How close can I get to power line?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      1,
+      9
+     ]
+    },
+    {
+     "clip": "q01-fiona",
+     "hyp": "How close can I get to a power line?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q01-karen",
+     "hyp": "How close can I get to a power line?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q02-aman",
+     "hyp": "What's the minimum clearance for a 345 kV line?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q02-ava",
+     "hyp": "What's the minimum clearance for a 345 kV line?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q02-daniel",
+     "hyp": "What's the minimum clearance for a 345 kV line?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q02-evan",
+     "hyp": "What's the minimum clearance for a 345k V-line?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      9
+     ]
+    },
+    {
+     "clip": "q02-fiona",
+     "hyp": "What's the minimum clearance for a 345 kV line?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q02-karen",
+     "hyp": "What's the minimum clearance for a 345kV line?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      9
+     ]
+    },
+    {
+     "clip": "q03-aman",
+     "hyp": "The line is 500 kV is the trigger 20 feet or 50 feet.",
+     "terms": [
+      true,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      13
+     ]
+    },
+    {
+     "clip": "q03-ava",
+     "hyp": "The line is 500 kV is the trigger 20 feet or 50 feet.",
+     "terms": [
+      true,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      13
+     ]
+    },
+    {
+     "clip": "q03-daniel",
+     "hyp": "The line is 500 kV is the trigger 20 feet or 50 feet.",
+     "terms": [
+      true,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      13
+     ]
+    },
+    {
+     "clip": "q03-evan",
+     "hyp": "The line is 500 kV as the trigger 20 feet or 50 feet.",
+     "terms": [
+      true,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      13
+     ]
+    },
+    {
+     "clip": "q03-fiona",
+     "hyp": "The line is 500 kV is the trigger 20 feet or 50 feet.",
+     "terms": [
+      true,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      13
+     ]
+    },
+    {
+     "clip": "q03-karen",
+     "hyp": "The line is 500 kV is the trigger 20 feet or 50 feet.",
+     "terms": [
+      true,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      13
+     ]
+    },
+    {
+     "clip": "q04-aman",
+     "hyp": "What does section 1408 say about power lines?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q04-ava",
+     "hyp": "What does section 1408 say about power lines?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q04-daniel",
+     "hyp": "What does section 1408 say about power lines?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q04-evan",
+     "hyp": "What does section 1408 say about power lines?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q04-fiona",
+     "hyp": "What does section 1408 say about power lines?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q04-karen",
+     "hyp": "What does section 1408 say about power lines?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q05-aman",
+     "hyp": "What does 1926.1412 require for shift inspections?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q05-ava",
+     "hyp": "What does 1926.1412 require for shift inspections?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q05-daniel",
+     "hyp": "What does 1926.1412 require for shift inspections?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q05-evan",
+     "hyp": "With does 1926.1412 require for shift inspections?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      7
+     ]
+    },
+    {
+     "clip": "q05-fiona",
+     "hyp": "What does 19-26.1412 require for shift inspections?",
+     "terms": [
+      false,
+      true,
+      true
+     ],
+     "wer": [
+      2,
+      7
+     ]
+    },
+    {
+     "clip": "q05-karen",
+     "hyp": "What does 1926.1412 require for shift inspections?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q06-aman",
+     "hyp": "The LMI isn't working, can I still make the lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q06-ava",
+     "hyp": "The LMI isn't working, can I still make the lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q06-daniel",
+     "hyp": "The LMI isn't working, can I still make the lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q06-evan",
+     "hyp": "The LMI isn't working, can I still make the lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q06-fiona",
+     "hyp": "The LMI isn't working, can I still make the lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q06-karen",
+     "hyp": "The LMI isn't working, can I still make the lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q07-aman",
+     "hyp": "Do I need the load moment indicator for every lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q07-ava",
+     "hyp": "Do I need the load moment indicator for every lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q07-daniel",
+     "hyp": "Do I need the load moment indicator for every lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q07-evan",
+     "hyp": "Do I need the load moment indicator for every lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q07-fiona",
+     "hyp": "Do I need the load moment indicator for every lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q07-karen",
+     "hyp": "Do I need the load moment indicator for every lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q08-aman",
+     "hyp": "What happens if the anti-two-block device fails?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q08-ava",
+     "hyp": "What happens if the anti-two-block device fails?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q08-daniel",
+     "hyp": "What happens if the anti-two-block device fails?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q08-evan",
+     "hyp": "What happens if the anti-two-block device fails?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q08-fiona",
+     "hyp": "What happens if the anti-two-block device fails?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q08-karen",
+     "hyp": "What happens if the anti-two-block device fails?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q09-aman",
+     "hyp": "Can I exceed the rated capacity if the outriggers are fully extended?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q09-ava",
+     "hyp": "Can I exceed the rated capacity if the outriggers are fully extended?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q09-daniel",
+     "hyp": "Can I exceed the rated capacity if the outriggers are fully extended?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q09-evan",
+     "hyp": "Can I exceed the rated capacity if the outriggers are fully extended?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q09-fiona",
+     "hyp": "Can I exceed the rated capacity if the load triggers are fully extended?",
+     "terms": [
+      true,
+      false
+     ],
+     "wer": [
+      2,
+      12
+     ]
+    },
+    {
+     "clip": "q09-karen",
+     "hyp": "Can I exceed the rated capacity if the outriggers are fully extended?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q10-aman",
+     "hyp": "My outriggers are only at mid-extension. Which chart do I use?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q10-ava",
+     "hyp": "My outriggers are only at mid-extension, which chart do I use?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q10-daniel",
+     "hyp": "My outriggers are only at mid-extension, which chart do I use?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q10-evan",
+     "hyp": "My outriggers are only at mid-extension, which chart do I use?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q10-fiona",
+     "hyp": "Myo triggers are only at mid-extension, which chart do I use?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      12
+     ]
+    },
+    {
+     "clip": "q10-karen",
+     "hyp": "My outriggers are only at mid-extension, which chart do I use?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q11-aman",
+     "hyp": "Do outrigger pads need cribbing on soft ground?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q11-ava",
+     "hyp": "Do outrigger pads need cribbing on soft ground?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q11-daniel",
+     "hyp": "Do outrigger pads need cribbing on soft ground?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q11-evan",
+     "hyp": "Do outrigger paints need cribbing on soft ground?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      1,
+      8
+     ]
+    },
+    {
+     "clip": "q11-fiona",
+     "hyp": "Do I trigger pads neat cribbing on soft ground?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      3,
+      8
+     ]
+    },
+    {
+     "clip": "q11-karen",
+     "hyp": "Do outrigger pads need cribbing on soft ground?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q12-aman",
+     "hyp": "How many broken wires in one lay before I take the rope out of service?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      15
+     ]
+    },
+    {
+     "clip": "q12-ava",
+     "hyp": "How many broken wires in one lay before I take the rope out of service?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      15
+     ]
+    },
+    {
+     "clip": "q12-daniel",
+     "hyp": "How many broken wires in one lay before I take the rope out of service?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      15
+     ]
+    },
+    {
+     "clip": "q12-evan",
+     "hyp": "How many broken wires in one lay before I take the rope out of service?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      15
+     ]
+    },
+    {
+     "clip": "q12-fiona",
+     "hyp": "How many broken wires and one lee before I take the rope out of service?",
+     "terms": [
+      true,
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      15
+     ]
+    },
+    {
+     "clip": "q12-karen",
+     "hyp": "How many broken wires in one lay before I take the rope out of service?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      15
+     ]
+    },
+    {
+     "clip": "q13-aman",
+     "hyp": "It's birdcaging a reason to remove wire rope.",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      8
+     ]
+    },
+    {
+     "clip": "q13-ava",
+     "hyp": "Is birdcaging a reason to remove wire rope?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q13-daniel",
+     "hyp": "Is birdcaging a reason to remove wire rope?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q13-evan",
+     "hyp": "Is birdcaging a reason to remove wire rope?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q13-fiona",
+     "hyp": "Isbird catching a reason to remove wire rope?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      8
+     ]
+    },
+    {
+     "clip": "q13-karen",
+     "hyp": "His birdcaging a reason to remove wire rope.",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      8
+     ]
+    },
+    {
+     "clip": "q14-aman",
+     "hyp": "What counts as kinking or crushing on running rope?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q14-ava",
+     "hyp": "What counts as kinking or crushing on running rope?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q14-daniel",
+     "hyp": "What counts as kinking or crushing on running rope?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q14-evan",
+     "hyp": "Wood counts as kinking or crushing on running rope.",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      9
+     ]
+    },
+    {
+     "clip": "q14-fiona",
+     "hyp": "Boycounts is kinking or crushing on running rope.",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      3,
+      9
+     ]
+    },
+    {
+     "clip": "q14-karen",
+     "hyp": "What counts as kinking or crashing on running rope?",
+     "terms": [
+      true,
+      false,
+      true
+     ],
+     "wer": [
+      1,
+      9
+     ]
+    },
+    {
+     "clip": "q15-aman",
+     "hyp": "Is core protrusion of category 1 deficiency?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      7
+     ]
+    },
+    {
+     "clip": "q15-ava",
+     "hyp": "Is poor protrusion a category 1 deficiency?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      1,
+      7
+     ]
+    },
+    {
+     "clip": "q15-daniel",
+     "hyp": "Is core protrusion a Category 1 deficiency?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q15-evan",
+     "hyp": "Is core protrusion a Category 1 deficiency?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q15-fiona",
+     "hyp": "Is core protrusion a category one deficiency?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      7
+     ]
+    },
+    {
+     "clip": "q15-karen",
+     "hyp": "Is core protrusion a category 1 deficiency?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q16-aman",
+     "hyp": "Can I use rotation-resistant rope for this lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q16-ava",
+     "hyp": "Can I use rotation-resistant rope for this lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q16-daniel",
+     "hyp": "Can I use rotation-resistant rope for this lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q16-evan",
+     "hyp": "Can I use rotation-resistant rope for this lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q16-fiona",
+     "hyp": "Can I use rotation-resistant rope for this lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q16-karen",
+     "hyp": "Can I use rotation-resistant rope for this lift?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q17-aman",
+     "hyp": "When do I need a signal person?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q17-ava",
+     "hyp": "When do I need a signal person?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q17-daniel",
+     "hyp": "When do I need a signal person?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q17-evan",
+     "hyp": "When do I need a signal person?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q17-fiona",
+     "hyp": "When do I need a signal person?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q17-karen",
+     "hyp": "When do I need a signal person?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q18-aman",
+     "hyp": "Who can give the emergency stop signal?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q18-ava",
+     "hyp": "Who can give the emergency stop signal?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q18-daniel",
+     "hyp": "Who can give the emergency stop signal?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q18-evan",
+     "hyp": "Who can give the emergency stop signal?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q18-fiona",
+     "hyp": "Who can't give the emergency stop signal?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      1,
+      7
+     ]
+    },
+    {
+     "clip": "q18-karen",
+     "hyp": "Who can give the emergency stop signal?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q19-aman",
+     "hyp": "Does the rigger have to be a qualified rigger for assembly?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q19-ava",
+     "hyp": "Does the rigger have to be a qualified rigger for assembly?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q19-daniel",
+     "hyp": "Does the rigger have to be a qualified rigger for assembly?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q19-evan",
+     "hyp": "Does the rigger have to be a qualified rigger for assembly?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q19-fiona",
+     "hyp": "Does the rigger have to be a qualified rigger for assembly?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q19-karen",
+     "hyp": "Does the rigger have to be a qualified rigger for assembly?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q20-aman",
+     "hyp": "What is the swing radius hazard and how do I barricade it?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q20-ava",
+     "hyp": "What is the swing radius hazard and how do I barricade it?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q20-daniel",
+     "hyp": "What is the swing radius hazard and how do I barricade it?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q20-evan",
+     "hyp": "What is this swing radius hazard and how do I barricade it?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      12
+     ]
+    },
+    {
+     "clip": "q20-fiona",
+     "hyp": "What is the swing radius hazard and how do I barkeate it?",
+     "terms": [
+      true,
+      false
+     ],
+     "wer": [
+      1,
+      12
+     ]
+    },
+    {
+     "clip": "q20-karen",
+     "hyp": "What is the swing radius hesitant? How do I barricade it?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      2,
+      12
+     ]
+    },
+    {
+     "clip": "q21-aman",
+     "hyp": "Can I extend the jib in 30 mile an hour wind?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q21-ava",
+     "hyp": "Can I extend a jib in 30 mile an hour wind?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      11
+     ]
+    },
+    {
+     "clip": "q21-daniel",
+     "hyp": "Can I extend the jib in 30 mile an hour wind?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q21-evan",
+     "hyp": "Can I extend the jib in 30 mile an hour wind?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q21-fiona",
+     "hyp": "Can't I extend the jib in 30 mile an hour wind?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      11
+     ]
+    },
+    {
+     "clip": "q21-karen",
+     "hyp": "Can I extend the jib in 30 mile an hour wind?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q22-aman",
+     "hyp": "What's the rated capacity at a 40 foot radius with lower case A 60 foot boom?",
+     "terms": [
+      true,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      2,
+      14
+     ]
+    },
+    {
+     "clip": "q22-ava",
+     "hyp": "Once the rated capacity at a 40 foot radius with a 60 foot boom",
+     "terms": [
+      true,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      14
+     ]
+    },
+    {
+     "clip": "q22-daniel",
+     "hyp": "What's the rated capacity at a 40-foot radius with a 60-foot boom?",
+     "terms": [
+      true,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      14
+     ]
+    },
+    {
+     "clip": "q22-evan",
+     "hyp": "What's the rated capacity at a 40-foot radius with a 60-foot boom?",
+     "terms": [
+      true,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      14
+     ]
+    },
+    {
+     "clip": "q22-fiona",
+     "hyp": "What's the rated capacity at the 40-foot radius with a 60-foot boom?",
+     "terms": [
+      true,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      14
+     ]
+    },
+    {
+     "clip": "q22-karen",
+     "hyp": "What's the rated capacity at a 40-foot radius with a 60-foot boom?",
+     "terms": [
+      true,
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      14
+     ]
+    },
+    {
+     "clip": "q23-aman",
+     "hyp": "How do I deduct the hook block and rigging from the load chart?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      13
+     ]
+    },
+    {
+     "clip": "q23-ava",
+     "hyp": "How do I deduct the hook block and rigging from the load chart?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      13
+     ]
+    },
+    {
+     "clip": "q23-daniel",
+     "hyp": "How do I deduct the hook block and rigging from the load chart?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      13
+     ]
+    },
+    {
+     "clip": "q23-evan",
+     "hyp": "How do I deduct the hook block and riggin from the load chart?",
+     "terms": [
+      true,
+      false,
+      true
+     ],
+     "wer": [
+      1,
+      13
+     ]
+    },
+    {
+     "clip": "q23-fiona",
+     "hyp": "How do I deduct the hook block and rigging from the load chart?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      13
+     ]
+    },
+    {
+     "clip": "q23-karen",
+     "hyp": "How do I deduct the hook block and rigging from the load chart?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      13
+     ]
+    },
+    {
+     "clip": "q24-aman",
+     "hyp": "Is the power line deenergized and grounded if the utility says so?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q24-ava",
+     "hyp": "Is the power line deenergized and grounded if the utility says so?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q24-daniel",
+     "hyp": "Is the power line denagized and grounded if the utility says so?",
+     "terms": [
+      false,
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      12
+     ]
+    },
+    {
+     "clip": "q24-evan",
+     "hyp": "Is the power line deenergized and grounded if the utility says so?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q24-fiona",
+     "hyp": "Is the power line denergized and grounded if the utility says so?",
+     "terms": [
+      false,
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      12
+     ]
+    },
+    {
+     "clip": "q24-karen",
+     "hyp": "Is the power line denagized and grounded if the utility says so?",
+     "terms": [
+      false,
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      12
+     ]
+    },
+    {
+     "clip": "q25-aman",
+     "hyp": "What does table are safe for lines over 750 kV?",
+     "terms": [
+      false,
+      true,
+      true
+     ],
+     "wer": [
+      2,
+      10
+     ]
+    },
+    {
+     "clip": "q25-ava",
+     "hyp": "Wuppa's Table A safer lines over 750k5.",
+     "terms": [
+      true,
+      false,
+      false
+     ],
+     "wer": [
+      6,
+      10
+     ]
+    },
+    {
+     "clip": "q25-daniel",
+     "hyp": "What does Table A say for lines over 750 kV?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q25-evan",
+     "hyp": "With this table A-safe for lines over 750 kV.",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      3,
+      10
+     ]
+    },
+    {
+     "clip": "q25-fiona",
+     "hyp": "What does Table A say for lines over 750 kV?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q25-karen",
+     "hyp": "What does Table A say for lines over 750K5?",
+     "terms": [
+      true,
+      false,
+      false
+     ],
+     "wer": [
+      2,
+      10
+     ]
+    },
+    {
+     "clip": "q26-aman",
+     "hyp": "Do I need a dedicated spotter when traveling under a line?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q26-ava",
+     "hyp": "Do I need a dedicated spotter when traveling under a line?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q26-daniel",
+     "hyp": "Do I need a dedicated spotter when traveling under a line?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q26-evan",
+     "hyp": "Do I need a dedicated spotter when traveling under a line?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q26-fiona",
+     "hyp": "Do I need a dedicated spotter when travelling under online?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      3,
+      11
+     ]
+    },
+    {
+     "clip": "q26-karen",
+     "hyp": "Do I need a dedicated spotter when traveling under a line?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q27-aman",
+     "hyp": "Who is responsible for ground conditions the controlling entity or the operator?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q27-ava",
+     "hyp": "Who is responsible for ground conditions, the controlling entity or the operator?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q27-daniel",
+     "hyp": "Who is responsible for ground conditions, the controlling entity or the operator?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q27-evan",
+     "hyp": "Who is responsible for ground conditions, the controlling entity or the operator?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q27-fiona",
+     "hyp": "Who is responsible for GROUND conditions for controlling entity or the operator?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      12
+     ]
+    },
+    {
+     "clip": "q27-karen",
+     "hyp": "Who is responsible for ground conditions, the controlling entity or the operator?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      12
+     ]
+    },
+    {
+     "clip": "q28-aman",
+     "hyp": "Shana crawler crane travel with a suspended load.",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      2,
+      9
+     ]
+    },
+    {
+     "clip": "q28-ava",
+     "hyp": "Can a crawler crane travel with a suspended load?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q28-daniel",
+     "hyp": "Can a crawler crane travel with a suspended load?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q28-evan",
+     "hyp": "Can a crawler crane travel with a suspended load?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q28-fiona",
+     "hyp": "Can a crawler crane travel with a suspended load?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q28-karen",
+     "hyp": "Can the crawl a crane travel with a suspended load?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      3,
+      9
+     ]
+    },
+    {
+     "clip": "q29-aman",
+     "hyp": "When is a critical lift plan required for a tandem fix?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      11
+     ]
+    },
+    {
+     "clip": "q29-ava",
+     "hyp": "When is a critical lift plan required for a tandem pick?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q29-daniel",
+     "hyp": "When is a critical lift plan required for a tandem pick?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q29-evan",
+     "hyp": "When is a critical lift plan required for a tandem pick?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q29-fiona",
+     "hyp": "When is a critical lift plan required for a tandem pick?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q29-karen",
+     "hyp": "When is a critical lift plan required for a tandem pick?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q30-aman",
+     "hyp": "Can I host personnel in a man basket with this screen?",
+     "terms": [
+      false,
+      true
+     ],
+     "wer": [
+      2,
+      11
+     ]
+    },
+    {
+     "clip": "q30-ava",
+     "hyp": "Can I waste personnel in a manned basket with this crane?",
+     "terms": [
+      false,
+      false
+     ],
+     "wer": [
+      2,
+      11
+     ]
+    },
+    {
+     "clip": "q30-daniel",
+     "hyp": "Can I hoist personnel in a man basket with this crane?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q30-evan",
+     "hyp": "Can I hoist personnel in a man basket with his crane?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      11
+     ]
+    },
+    {
+     "clip": "q30-fiona",
+     "hyp": "Can I hoist personnel in a man basket with this cream?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      11
+     ]
+    },
+    {
+     "clip": "q30-karen",
+     "hyp": "Can I hoist personnel in a man basket with this crane?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q31-aman",
+     "hyp": "What is the boom angle indicator for?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q31-ava",
+     "hyp": "What is the boom angle indicator for?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q31-daniel",
+     "hyp": "What is the boom angle indicator for?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q31-evan",
+     "hyp": "What is the boom angle indicator for?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q31-fiona",
+     "hyp": "What is the boom angle indicator for?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q31-karen",
+     "hyp": "What is the boom angle indicator for?",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      7
+     ]
+    },
+    {
+     "clip": "q32-aman",
+     "hyp": "Do I need a level indicator check before every shift?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q32-ava",
+     "hyp": "Do I need a level indicator check before every shift?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q32-daniel",
+     "hyp": "Do I need a level indicator check before every shift?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q32-evan",
+     "hyp": "Do I need a level indicator check before every shift?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q32-fiona",
+     "hyp": "Do I need a level indicator check before every shift?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q32-karen",
+     "hyp": "Do I need a level indicator check before every shift?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      10
+     ]
+    },
+    {
+     "clip": "q33-aman",
+     "hyp": "What are the hand signals for hoist and lower?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q33-ava",
+     "hyp": "What are the hand signals for hoist and lower?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q33-daniel",
+     "hyp": "What are the hand signals for hoist and lower?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q33-evan",
+     "hyp": "What are the hand signals for hoist and lower?",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q33-fiona",
+     "hyp": "Watch the hand signals for hoist and lure her.",
+     "terms": [
+      true,
+      true,
+      false
+     ],
+     "wer": [
+      4,
+      9
+     ]
+    },
+    {
+     "clip": "q33-karen",
+     "hyp": "Water the hand signals for hoist and lower.",
+     "terms": [
+      true,
+      true,
+      true
+     ],
+     "wer": [
+      2,
+      9
+     ]
+    },
+    {
+     "clip": "q34-aman",
+     "hyp": "Who has to certify the operator for a 50 ton crane?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q34-ava",
+     "hyp": "Who has decertified the operator for a 50 ton crane?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      2,
+      11
+     ]
+    },
+    {
+     "clip": "q34-daniel",
+     "hyp": "Who has to certify the operator for a 50-ton crane?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q34-evan",
+     "hyp": "Who has to certify the operator for a 50-ton crane?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q34-fiona",
+     "hyp": "Who has to certify the operator for a 50-tonne crane?",
+     "terms": [
+      true,
+      false
+     ],
+     "wer": [
+      1,
+      11
+     ]
+    },
+    {
+     "clip": "q34-karen",
+     "hyp": "Who has to certify the operator for a 50-ton crane?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      11
+     ]
+    },
+    {
+     "clip": "q35-aman",
+     "hyp": "Is a monthly inspection documented and for how long?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q35-ava",
+     "hyp": "Is a monthly inspection documented and for how long?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q35-daniel",
+     "hyp": "Is a monthly inspection documented, and for how long?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q35-evan",
+     "hyp": "Is a monthly inspection documented and for how long?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q35-fiona",
+     "hyp": "Is a monthly inspection documented and for how long?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q35-karen",
+     "hyp": "Is a monthly inspection documented and for how long?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      9
+     ]
+    },
+    {
+     "clip": "q36-aman",
+     "hyp": "What does 1413 say about wire rope inspection?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q36-ava",
+     "hyp": "What does 1413 say about wire rope inspection?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q36-daniel",
+     "hyp": "What does 1413 say about wire rope inspection?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q36-evan",
+     "hyp": "With does 1413 say about wire rope inspection?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      1,
+      8
+     ]
+    },
+    {
+     "clip": "q36-fiona",
+     "hyp": "What does 1413 say about wire rope inspection?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q36-karen",
+     "hyp": "What does 1413 say about wire rope inspection?",
+     "terms": [
+      true,
+      true
+     ],
+     "wer": [
+      0,
+      8
+     ]
+    },
+    {
+     "clip": "q37-aman",
+     "hyp": "Next",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q37-ava",
+     "hyp": "Next.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q37-daniel",
+     "hyp": "Next.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q37-evan",
+     "hyp": "Next.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q37-fiona",
+     "hyp": "Next.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q37-karen",
+     "hyp": "Next.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q38-aman",
+     "hyp": "FOD",
+     "terms": [
+      false
+     ],
+     "wer": [
+      1,
+      1
+     ]
+    },
+    {
+     "clip": "q38-ava",
+     "hyp": "Pass.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q38-daniel",
+     "hyp": "Pass.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q38-evan",
+     "hyp": "Pass.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q38-fiona",
+     "hyp": "Pass.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q38-karen",
+     "hyp": "Pass.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q39-aman",
+     "hyp": "Deficiency",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q39-ava",
+     "hyp": "Division C",
+     "terms": [
+      false
+     ],
+     "wer": [
+      2,
+      1
+     ]
+    },
+    {
+     "clip": "q39-daniel",
+     "hyp": "Deficiency",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q39-evan",
+     "hyp": "Deficiency",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q39-fiona",
+     "hyp": "Deficiency",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q39-karen",
+     "hyp": "Deficiency",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q40-aman",
+     "hyp": "Repeat.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q40-ava",
+     "hyp": "Repeat.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q40-daniel",
+     "hyp": "Repeat.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q40-evan",
+     "hyp": "Repeat.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q40-fiona",
+     "hyp": "Repeat.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    },
+    {
+     "clip": "q40-karen",
+     "hyp": "Repeat.",
+     "terms": [
+      true
+     ],
+     "wer": [
+      0,
+      1
+     ]
+    }
+   ]
+  }
+ ]
+}
