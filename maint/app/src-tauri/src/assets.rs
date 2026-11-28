@@ -1,6 +1,6 @@
-//! `maint-asset://localhost/<pack>/<asset>`: a pack's figures and page images,
-//! read from the installed pack and re-hashed before they go out, the way
-//! `harvest serve` answers `GET /asset/<pack>/<asset>`.
+//! `maint-asset://localhost/<pack>/<asset>`: a pack's figures and page images
+//! through the core's `Host::asset` (re-hashed before they go out), the same
+//! read `harvest serve` answers `GET /asset/<pack>/<asset>` with.
 //!
 //! On Windows the WebView reaches custom schemes as
 //! `http://maint-asset.localhost/…`; the frontend picks the form (engine/client.ts).
@@ -40,22 +40,11 @@ pub fn not_found() -> Response<Vec<u8>> {
         .expect("a bare 404 builds")
 }
 
-/// The asset's media type and bytes, when its hash still matches the signed manifest's.
+/// The asset's media type and bytes, re-hashed against the signed manifest by the core.
 fn read(
     engine: &Engine,
     pack_id: &str,
     asset_id: &str,
 ) -> Result<Option<(String, Vec<u8>)>, String> {
-    let Ok(pack) = engine.host().pack(Some(pack_id)) else {
-        return Ok(None);
-    };
-    let Some((asset, path)) = pack.asset_file(asset_id).map_err(|e| e.to_string())? else {
-        return Ok(None);
-    };
-    let bytes = std::fs::read(&path).map_err(|e| e.to_string())?;
-    let sha = harvest_core::packs::sha256_file(&path).map_err(|e| e.to_string())?;
-    if !sha.eq_ignore_ascii_case(&asset.sha256) {
-        return Err("sha256 mismatch".into());
-    }
-    Ok(Some((asset.media_type, bytes)))
+    engine.asset(pack_id, asset_id)
 }

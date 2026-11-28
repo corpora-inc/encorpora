@@ -1,17 +1,17 @@
-//! The two secrets a device holds: the records key (encrypts records at rest)
-//! and the device key (signs every upload to the hub). Each is 32 random bytes,
-//! made on first use and never leaves the device.
+//! The engine's key store: the records key (records at rest) and the device
+//! key (the device's identity at the hub). The engine makes each once, the
+//! first time, and asks for it by name (`shell::RECORDS_KEY`, `shell::DEVICE_KEY`).
 //!
 //! On macOS they live in the login keychain (generic passwords, service
-//! `inc.corpora.maint`). Elsewhere, and in tests, a file store under a folder.
+//! `inc.corpora.maint`). Elsewhere, and in tests, files under a folder.
 //! Windows will use the Credential Manager; that store is not written yet.
 
 use base64::Engine as _;
+use harvest_core::shell::KeyStore;
 use std::path::{Path, PathBuf};
 
+#[cfg(target_os = "macos")]
 const SERVICE: &str = "inc.corpora.maint";
-const RECORDS: &str = "records-key";
-const DEVICE: &str = "device-key";
 
 pub enum Store {
     #[cfg(target_os = "macos")]
@@ -33,62 +33,47 @@ impl Store {
             Self::Files(data.join("secrets"))
         }
     }
+}
 
-    pub fn records_key(&self) -> Result<[u8; 32], String> {
-        self.get_or_make(RECORDS)
-    }
+fn err(msg: String) -> harvest_core::Error {
+    harvest_core::Error::Invalid(msg)
+}
 
-    pub fn device_seed(&self) -> Result<[u8; 32], String> {
-        self.get_or_make(DEVICE)
-    }
-
-    fn get_or_make(&self, account: &str) -> Result<[u8; 32], String> {
-        if let Some(v) = self.get(account)? {
-            return Ok(v);
-        }
-        let mut fresh = [0u8; 32];
-        getrandom::getrandom(&mut fresh).map_err(|e| format!("random: {e}"))?;
-        self.set(account, &fresh)?;
-        Ok(fresh)
-    }
-
-    fn get(&self, account: &str) -> Result<Option<[u8; 32]>, String> {
+impl KeyStore for Store {
+    fn load(&self, name: &str) -> harvest_core::Result<Option<Vec<u8>>> {
         let text = match self {
             #[cfg(target_os = "macos")]
             Self::Keychain => {
-                match security_framework::passwords::get_generic_password(SERVICE, account) {
-                    Ok(bytes) => String::from_utf8(bytes).map_err(|e| e.to_string())?,
+                match security_framework::passwords::get_generic_password(SERVICE, name) {
+                    Ok(bytes) => String::from_utf8(bytes)
+                        .map_err(|e| err(format!("keychain {name}: {e}")))?,
                     Err(e) if e.code() == -25300 => return Ok(None), // errSecItemNotFound
-                    Err(e) => return Err(format!("keychain {account}: {e}")),
+                    Err(e) => return Err(err(format!("keychain {name}: {e}"))),
                 }
             }
-            Self::Files(dir) => match std::fs::read_to_string(dir.join(account)) {
+            Self::Files(dir) => match std::fs::read_to_string(dir.join(name)) {
                 Ok(t) => t,
                 Err(e) if e.kind() == std::io::ErrorKind::NotFound => return Ok(None),
-                Err(e) => return Err(format!("{account}: {e}")),
+                Err(e) => return Err(err(format!("{name}: {e}"))),
             },
         };
-        let raw = base64::engine::general_purpose::STANDARD
+        base64::engine::general_purpose::STANDARD
             .decode(text.trim())
-            .map_err(|_| format!("{account}: not base64"))?;
-        raw.try_into()
             .map(Some)
-            .map_err(|_| format!("{account}: not 32 bytes"))
+            .map_err(|_| err(format!("{name}: not base64")))
     }
 
-    fn set(&self, account: &str, value: &[u8; 32]) -> Result<(), String> {
-        let text = base64::engine::general_purpose::STANDARD.encode(value);
+    fn store(&self, name: &str, secret: &[u8]) -> harvest_core::Result<()> {
+        let text = base64::engine::general_purpose::STANDARD.encode(secret);
         match self {
             #[cfg(target_os = "macos")]
-            Self::Keychain => security_framework::passwords::set_generic_password(
-                SERVICE,
-                account,
-                text.as_bytes(),
-            )
-            .map_err(|e| format!("keychain {account}: {e}")),
+            Self::Keychain => {
+                security_framework::passwords::set_generic_password(SERVICE, name, text.as_bytes())
+                    .map_err(|e| err(format!("keychain {name}: {e}")))
+            }
             Self::Files(dir) => {
-                std::fs::create_dir_all(dir).map_err(|e| e.to_string())?;
-                std::fs::write(dir.join(account), text).map_err(|e| e.to_string())
+                std::fs::create_dir_all(dir).map_err(|e| err(e.to_string()))?;
+                std::fs::write(dir.join(name), text).map_err(|e| err(e.to_string()))
             }
         }
     }

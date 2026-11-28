@@ -49,7 +49,7 @@ import { PrintJob, PrintProcedure } from "../screens/Print.tsx";
 import { ManualHome, ManualResults, SectionReader } from "../screens/Manual.tsx";
 import { LearnHome, TreeStudy } from "../screens/Learn.tsx";
 import { Records, type RecordsProps } from "../screens/Records.tsx";
-import { HubSignIn, Review, suggestedNote, type ReviewProps } from "../screens/Review.tsx";
+import { HubSignIn, Review, type ReviewProps } from "../screens/Review.tsx";
 import { designPath } from "../routes.ts";
 import { unitName } from "../ui/format.ts";
 import { AssetSource, ManualPack } from "../ui/manual.tsx";
@@ -240,6 +240,7 @@ const records: RecordsProps = {
   sync: D.outbox,
   device: { device_id: "dev-15db3c55739b5c4c", public_key: "5MdZk4KLMfL+gvk5FUsE4EmxidH7WojwxR4xVwCE2Qs=" },
   packs: [D.pack],
+  warnings: [],
   notes: D.fieldNotes,
   audit: D.audit,
   chain: null,
@@ -257,7 +258,9 @@ const records: RecordsProps = {
 
 const titles = Object.fromEntries(D.trees.map((t) => [t.tree_id, t.title]));
 const variantsById = Object.fromEntries(D.equipment.map((e) => [e.equip_id, e.name]));
-const reviewItem = (l: Lesson): ReviewItem => ({ current: l, first_received_at: l.created_at, lesson_id: l.lesson_id, needs_reviewer: false, reopened: false, reviews: [], status: "pending", versions: [] });
+// Wording as the hub returns it in suggested_note (captured from the hub in the flow test).
+const hubNote = (l: Lesson) => `Verified cause: ${l.cause}. Corrective action: ${l.action}.`;
+const reviewItem = (l: Lesson): ReviewItem => ({ current: l, first_received_at: l.created_at, lesson_id: l.lesson_id, needs_reviewer: false, reopened: false, reviews: [], status: "pending", versions: [], suggested_note: hubNote(l), suggested_scope: { equip_id: l.equip_id, node_id: null, symptom_id: l.symptom_id, tree_id: l.tree_id } });
 const reviewQueue = D.lessons.map(reviewItem);
 const first = reviewQueue[0] ?? null;
 const hubStatus: HubStatus = {
@@ -280,8 +283,8 @@ const review: ReviewProps = {
   selected: first,
   titles,
   variants: variantsById,
-  draft: first ? { text: suggestedNote(first.current), note: "", version: null } : null,
-  suggested: first ? suggestedNote(first.current) : "",
+  draft: first ? { text: hubNote(first.current), note: "", version: null } : null,
+  suggested: first ? hubNote(first.current) : "",
   me: { name: "Shop supervisor", roles: ["reviewer", "publisher", "admin"], via: "token" },
   devices: [],
   busy: false,
@@ -503,7 +506,7 @@ Object.assign(GALLERY, {
               { device_id: "dev-8e21f07a9c4b3d11", item_id: "item-b", lesson: other, received_at: l.created_at, state: "lost", updated_at: l.updated_at },
             ],
           };
-          return <Review {...review} queue={[item]} selected={item} draft={{ text: suggestedNote(l), note: "", version: "item-a" }} />;
+          return <Review {...review} queue={[item]} selected={item} draft={{ text: hubNote(l), note: "", version: "item-a" }} />;
         },
       },
       { state: "reviewer-only", label: "Signed in as a reviewer only", unit: null, render: () => <Review {...review} me={{ name: "Line reviewer", roles: ["reviewer"], via: "token" }} devices={null} /> },

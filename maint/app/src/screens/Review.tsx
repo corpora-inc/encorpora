@@ -1,13 +1,10 @@
 import { useState } from "react";
 import { Check, LogOut, Send, X } from "lucide-react";
 import { Link } from "react-router";
-import type { EnrolledDevice, HubStatus, Lesson, Principal, ReviewItem } from "../engine/types.ts";
+import type { EnrolledDevice, HubStatus, Principal, ReviewItem } from "../engine/types.ts";
 import { reviewLessonPath } from "../routes.ts";
 import { formatDate, formatTime } from "../ui/format.ts";
 import { Button, cx, Field, inputClass, Page, Panel, Skeleton } from "../ui/kit.tsx";
-
-/** The note the hub writes from a lesson when the reviewer does not edit it (harvest hub `approve`). */
-export const suggestedNote = (l: Lesson) => `Verified cause: ${l.cause.replace(/\.+$/, "")}. Corrective action: ${l.action.replace(/\.+$/, "")}.`;
 
 export interface ReviewDraft {
   /** The field note other technicians will see. */
@@ -124,7 +121,7 @@ export function Review(p: ReviewProps) {
                           type="button"
                           role="radio"
                           aria-checked={on}
-                          onClick={() => p.onDraft({ ...d, version: v.item_id, text: suggestedNote(v.lesson) })}
+                          onClick={() => p.onDraft({ ...d, version: v.item_id })}
                           className={cx("flex flex-col gap-1 rounded-panel border-2 p-4 text-left", on ? "border-ink bg-surface-3" : "border-line-strong bg-surface")}
                         >
                           <span className="code text-meta text-ink-3">

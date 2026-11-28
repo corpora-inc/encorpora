@@ -1,25 +1,21 @@
-//! Opening the engine in process: the same parts `harvest serve` assembles,
-//! from the app's own folders and keys, with no server.
+//! Opening the engine in process through `harvest_core::shell::open_host`:
+//! the same host `harvest serve` builds, from the app's own folders and keys,
+//! with no server.
 //!
-//! - **Packs**: the signed packs this build ships (`resources/packs/<pack>/`)
-//!   are installed into `<data>/packs` with `harvest_core::packs::install_dir`
-//!   (signature against the compiled-in keys, every file hashed), then each
-//!   current version is opened with `Verify::InstallStamp`.
-//! - **Records**: `<data>/records.db`, encrypted with the records key from the
-//!   keychain (`secrets`).
-//! - **Search by meaning** (optional): when `config.json` names an embedding
-//!   model and a `llama-server` binary, a managed helper serves it on a
-//!   loopback port (`helper`) and each pack gets the engine's server embedder.
-//!   Without it, search is lexical and no socket is ever opened.
-//! - **Hub** (optional): when `config.json` names a hub, the device's HTTP link,
-//!   signed with the device key from the keychain. Without it, no network.
+//! The shell's part is small: install the signed packs this build ships
+//! (`resources/packs/<pack>/`) into `<data>/packs` with
+//! `harvest_core::packs::install_dir` (signature against the compiled-in keys,
+//! every file hashed), keep the secrets in the keychain (`secrets`), start the
+//! optional embedding helper (`helper`), and hand the core a `HostConfig`.
+//! Without a hub address and without a helper, the engine opens no socket.
 
 use crate::{config::Config, helper::EmbedHelper, pack_keys, secrets};
 use harvest_core::api::{self, Host};
-use harvest_core::{Pack, TrustedKey, Verify, packs};
-use serde_json::Value;
+use harvest_core::shell::{self, HostConfig, HostReport, KeyStore};
+use harvest_core::{TrustedKey, packs};
+use serde_json::{Value, json};
 use std::path::{Path, PathBuf};
-use std::sync::{Arc, Mutex};
+use std::sync::Mutex;
 
 /// Where the app keeps things.
 #[derive(Debug, Clone)]
@@ -43,9 +39,10 @@ impl Paths {
     }
 }
 
-/// The open engine: the API host, and the helper process when one runs.
+/// The open engine: the API host, what opening it found, and the helper process when one runs.
 pub struct Engine {
     host: Host,
+    report: HostReport,
     helper: Mutex<Option<EmbedHelper>>,
 }
 
@@ -53,15 +50,12 @@ impl Engine {
     /// Open everything the app needs, from `paths` and `config.json` there.
     pub fn open(paths: &Paths) -> Result<Self, String> {
         let config = Config::load(&paths.data)?;
-        Self::open_with(paths, &config, &secrets::Store::platform(&paths.data))
+        let store = secrets::Store::platform(&paths.data);
+        Self::open_with(paths, &config, &store)
     }
 
     /// Open with explicit settings and key store (tests use a file store).
-    pub fn open_with(
-        paths: &Paths,
-        config: &Config,
-        store: &secrets::Store,
-    ) -> Result<Self, String> {
+    pub fn open_with(paths: &Paths, config: &Config, store: &dyn KeyStore) -> Result<Self, String> {
         std::fs::create_dir_all(&paths.data).map_err(|e| e.to_string())?;
         let keys = parse_keys(&pack_keys::packs())?;
         let root = paths.data.join("packs");
@@ -69,59 +63,39 @@ impl Engine {
         if let Some(src) = &paths.bundled {
             install_bundled(&root, src, &keys)?;
         }
-        let opened = open_installed(&root, &keys)?;
-        if opened.is_empty() {
-            return Err("this build carries no manual pack".into());
-        }
-
-        let records_key = store.records_key()?;
-        let records = harvest_core::records::Records::open_with_key(
-            &paths.data.join("records.db"),
-            Some(&records_key),
-        )
-        .map_err(|e| format!("records: {e}"))?;
-        let mut host =
-            Host::new(opened.clone(), records).with_field_keys(parse_keys(&pack_keys::field())?);
 
         // Search by meaning, through the managed helper when it is configured.
         let mut helper = None;
+        let mut warnings = Vec::new();
         if let Some(emb) = &config.embedder {
             match EmbedHelper::start(emb, &paths.data.join("helper.pid")) {
-                Ok(h) => {
-                    for p in &opened {
-                        match harvest_core::embed::ServerEmbedder::for_pack(
-                            h.url(),
-                            p,
-                            h.model_sha256(),
-                            std::time::Duration::from_secs(60),
-                        ) {
-                            Ok(e) => host = host.with_embedder(p.pack_id(), Arc::new(e)),
-                            Err(e) => eprintln!(
-                                "maint: {}: search by meaning stays off: {e}",
-                                p.pack_id()
-                            ),
-                        }
-                    }
-                    helper = Some(h);
-                }
-                Err(e) => eprintln!(
-                    "maint: the embedding helper did not start, search stays lexical: {e}"
-                ),
+                Ok(h) => helper = Some(h),
+                Err(e) => warnings.push(format!(
+                    "Search by meaning is off: the embedding helper did not start ({e})."
+                )),
             }
         }
 
-        // The hub link, only when a hub is configured: otherwise nothing ever leaves the device.
-        if let Some(url) = &config.hub {
-            let device = harvest_core::sync::DeviceKey::from_seed(&store.device_seed()?);
-            let link = harvest_core::hub::http::HttpHubLink::new(
-                url,
-                device,
-                std::time::Duration::from_secs(60),
-            );
-            host = host.with_hub_link(Arc::new(link), Some(root.clone()), keys.clone());
+        let cfg = HostConfig {
+            packs_root: root.clone(),
+            records_path: paths.data.join("records.db"),
+            pack_keys: keys,
+            field_keys: parse_keys(&pack_keys::field())?,
+            encrypt_records: true,
+            embedder_url: helper.as_ref().map(|h| h.url().to_string()),
+            embedder_sha256: helper.as_ref().map(|h| h.model_sha256().to_string()),
+            hub_url: config.hub.clone(),
+            install_root: Some(root),
+            ..Default::default()
+        };
+        let (host, mut report) = shell::open_host(&cfg, store).map_err(|e| e.to_string())?;
+        if report.packs.is_empty() {
+            return Err("this build carries no manual pack".into());
         }
+        report.warnings.extend(warnings);
         Ok(Self {
             host,
+            report,
             helper: Mutex::new(helper),
         })
     }
@@ -131,9 +105,20 @@ impl Engine {
         api::envelope(api::call(&self.host, method, params))
     }
 
-    /// The host, for the asset protocol.
-    pub fn host(&self) -> &Host {
-        &self.host
+    /// A pack's figure or page image, re-hashed by the core: (media type, bytes).
+    pub fn asset(
+        &self,
+        pack_id: &str,
+        asset_id: &str,
+    ) -> Result<Option<(String, Vec<u8>)>, String> {
+        self.host
+            .asset(pack_id, asset_id)
+            .map_err(|e| e.to_string())
+    }
+
+    /// What opening found, for Records: warnings in plain words.
+    pub fn report(&self) -> Value {
+        json!({ "warnings": self.report.warnings, "device_id": self.report.device_id })
     }
 
     /// Stop the helper process, if one runs.
@@ -193,25 +178,4 @@ fn install_bundled(root: &Path, bundled: &Path, keys: &[TrustedKey]) -> Result<(
             .map_err(|e| format!("pack install {}: {e}", src.display()))?;
     }
     Ok(())
-}
-
-/// Every installed pack's current version, verified.
-fn open_installed(root: &Path, keys: &[TrustedKey]) -> Result<Vec<Arc<Pack>>, String> {
-    let mut names: Vec<String> = std::fs::read_dir(root)
-        .map_err(|e| e.to_string())?
-        .flatten()
-        .filter(|e| e.path().is_dir())
-        .filter_map(|e| e.file_name().to_str().map(str::to_string))
-        .collect();
-    names.sort();
-    let mut out = Vec::new();
-    for name in names {
-        if let Some(dir) = packs::current(root, &name).map_err(|e| e.to_string())? {
-            out.push(Arc::new(
-                Pack::open_with(&dir, keys, Verify::InstallStamp)
-                    .map_err(|e| format!("pack {name}: {e}"))?,
-            ));
-        }
-    }
-    Ok(out)
 }

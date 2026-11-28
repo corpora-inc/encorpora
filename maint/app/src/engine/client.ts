@@ -54,6 +54,13 @@ export function tauriTransport(): Transport {
 
 let transport: Transport = isNative() ? tauriTransport() : httpTransport();
 
+/** What the installed app found when it opened the engine (warnings); null in a browser. */
+export async function shellReport(): Promise<{ warnings: string[]; device_id: string | null } | null> {
+  const invoke = tauriInvoke();
+  if (!invoke) return null;
+  return (await invoke("shell_report")) as { warnings: string[]; device_id: string | null };
+}
+
 /** Tests and the design build swap the transport. */
 export function setTransport(t: Transport): void {
   transport = t;

@@ -21,11 +21,10 @@ tauri = { version = "2", features = ["wry"] }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 base64 = "0.22"
-getrandom = { version = "0.2", features = ["std"] }
-# The engine, in process: the same API dispatcher `harvest serve` uses (`api::call`),
-# packs, records and the hub link. `hub` brings the device's HTTP link to a hub
-# (used only when a hub address is configured); no server is ever started here.
-harvest-core = { path = "../../../harvest/core", default-features = false, features = ["hub"] }
+# The engine, in process (`shell::open_host`, `api::call`): the host `harvest serve`
+# builds, with no server. `net` is the HTTP client for the embedding helper's
+# loopback URL and a hub address; it is used only when one is configured.
+harvest-core = { path = "../../../harvest/core", default-features = false, features = ["net"] }
 
 # Shared native plugins, as path dependencies on Corpán's crates (never copies).
 # Their identifiers are public API: the frontend invokes `plugin:tts|…` and

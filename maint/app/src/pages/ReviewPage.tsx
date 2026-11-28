@@ -4,7 +4,7 @@ import { reportError, useToast } from "@appkit/toast.ts";
 import { EngineError, hubCall, setHubToken } from "../engine/client.ts";
 import type { EnrolledDevice, HubStatus, Principal, ReviewItem } from "../engine/types.ts";
 import { reviewPath } from "../routes.ts";
-import { HubSignIn, Review, suggestedNote, type ReviewDraft } from "../screens/Review.tsx";
+import { HubSignIn, Review, type ReviewDraft } from "../screens/Review.tsx";
 import { allEquipment, treeTitles, usePack } from "../store/pack.ts";
 import { useSettings } from "../store/settings.ts";
 
@@ -62,10 +62,9 @@ export function ReviewPage() {
   if (!me) return checking ? null : <HubSignIn error={signInError} busy={checking} onSignIn={(t) => void signIn(t)} />;
 
   const selected = queue?.find((q) => q.lesson_id === lessonId) ?? null;
-  const draft = selected ? (drafts[selected.lesson_id] ?? { text: suggestedNote(selected.current), note: "", version: null }) : null;
-  // The hub writes the note from the chosen version's lesson when the text is left as it suggests.
-  const chosen = selected?.versions.find((v) => v.item_id === draft?.version)?.lesson ?? selected?.current ?? null;
-  const suggested = chosen ? suggestedNote(chosen) : "";
+  // The hub's own note for this lesson: the prefill, and what an edit is measured against.
+  const suggested = selected?.suggested_note ?? "";
+  const draft = selected ? (drafts[selected.lesson_id] ?? { text: suggested, note: "", version: null }) : null;
   const act = async (fn: () => Promise<unknown>, done: string, leave = true) => {
     setBusy(true);
     try {

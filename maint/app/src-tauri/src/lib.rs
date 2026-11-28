@@ -56,6 +56,15 @@ async fn engine_call(
     .map_err(|e| e.to_string())
 }
 
+/// What opening the engine found (warnings in plain words), for Records.
+#[tauri::command]
+fn shell_report(state: tauri::State<'_, EngineState>) -> serde_json::Value {
+    match &state.0 {
+        Ok(e) => e.report(),
+        Err(why) => serde_json::json!({ "warnings": [why], "device_id": null }),
+    }
+}
+
 /// The bundled speech model. Desktop builds carry none and tauri-plugin-stt
 /// has no desktop speech yet, so the answer is `missing` and the app shows no microphone.
 #[tauri::command]
@@ -84,7 +93,11 @@ pub fn run() {
             app.manage(EngineState(opened));
             Ok(())
         })
-        .invoke_handler(tauri::generate_handler![engine_call, voice_model])
+        .invoke_handler(tauri::generate_handler![
+            engine_call,
+            shell_report,
+            voice_model
+        ])
         .build(tauri::generate_context!())
         .expect("error while building the maintenance app")
         .run(|app, event| {

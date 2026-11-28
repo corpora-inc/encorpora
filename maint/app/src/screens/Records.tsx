@@ -12,6 +12,8 @@ export interface RecordsProps {
   device: DeviceInfo | null;
   /** Every pack on the device, with its sources, editions and licenses as the pack gives them. */
   packs: PackInfoView[];
+  /** What opening the engine found that did not stop it (installed app only). */
+  warnings: string[];
   notes: FieldNote[] | null;
   audit: AuditRecord[] | null;
   chain: ChainReport | null;
@@ -93,6 +95,20 @@ export function Records(p: RecordsProps) {
               </div>
             )}
           </Panel>
+
+          {p.warnings.length > 0 && (
+            <Panel label="Needs attention">
+              <ul className="m-0 flex list-none flex-col gap-2 p-0">
+                {p.warnings.map((w, i) => (
+                  <li key={i} className="text-body">
+                    {w}
+                  </li>
+                ))}
+              </ul>
+            </Panel>
+          )}
+
+          {p.sync && <Attachments sync={p.sync} />}
 
           {p.device?.device_id && (
             <Panel label="This device">
@@ -289,5 +305,39 @@ function SourceRow({ label, value }: { label: string; value: ReactNode }) {
       <dt className="text-ink-3">{label}</dt>
       <dd className="m-0">{value}</dd>
     </>
+  );
+}
+
+const MODE: Record<string, string> = { full: "Photos go in full", downscaled: "Photos go downscaled first, in full later", refs: "Only references to photos go; the files stay on this device" };
+
+const mb = (n: number) => (n >= 1_000_000 ? `${(n / 1_000_000).toFixed(1)} MB` : `${Math.max(1, Math.round(n / 1000))} kB`);
+
+/** Photos travel on their own lane after records: their backlog, kept apart from records waiting to sync. */
+function Attachments({ sync }: { sync: SyncStatus }) {
+  const a = sync.attachments;
+  if (!a) return null;
+  return (
+    <Panel label="Photos">
+      <dl className="m-0 grid grid-cols-[minmax(0,1fr)_auto] gap-x-4 gap-y-1 text-small">
+        <dt className="text-ink-2">Waiting to send</dt>
+        <dd className="m-0 text-right tabular">
+          {a.pending}
+          {a.pending > 0 && `, ${mb(a.pending_bytes)}`}
+        </dd>
+        <dt className="text-ink-2">At the hub</dt>
+        <dd className="m-0 text-right tabular">
+          {a.sent}
+          {a.sent_downscaled > 0 && ` (+${a.sent_downscaled} downscaled)`}
+        </dd>
+        {a.damaged > 0 && (
+          <>
+            <dt className="text-ink-2">Damaged on this device, set aside</dt>
+            <dd className="m-0 text-right tabular">{a.damaged}</dd>
+          </>
+        )}
+      </dl>
+      {a.mode && <p className="mt-2 text-meta text-ink-3">{MODE[a.mode] ?? a.mode} on this link.</p>}
+      {a.failing && <p className="mt-1 text-meta text-ink-3">Last try stopped: {a.failing}</p>}
+    </Panel>
   );
 }
