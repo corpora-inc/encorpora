@@ -24,6 +24,8 @@ const USAGE: &str = "usage:
                   # signs with $HARVEST_SIGNING_KEY (base64 ed25519 seed) when set, else writes it unsigned
   harvest show    <pack-dir> info|sections|topics|skills|lessons|terms|diagrams|questions|procedures|answers|exams|prereqs|starters|tree
                   [--id ID] [--role operator] [--exams FILE] [--pubkey KEY]   # verified content as JSON (what the app reads)
+  harvest converse <pack-dir> <script.json|-> [--exams FILE] [--llm off|URL [--llm-model NAME]] [--embedder …] [--pubkey KEY]
+                  # scripted Instructor conversations (CONTRACT \"Instructor turns\"), one JSON line each
   harvest fixture <dir> [--version V]     # writes the test-only fixture pack
 
 KEY: base64 or hex ed25519 public key, or a file holding one; repeatable or
@@ -106,6 +108,7 @@ fn main() -> ExitCode {
         "outbox" => outbox(&args),
         "fixture" => fixture(&args),
         "show" => show(&args),
+        "converse" => converse(&args),
         "help" | "--help" | "-h" => {
             println!("{USAGE}");
             return ExitCode::SUCCESS;
@@ -793,6 +796,129 @@ fn show(args: &Args) -> Result<(), CliError> {
         (other, _) => return Err(CliError::Usage(format!("cannot show {other:?}"))),
     };
     println!("{}", serde_json::to_string(&out).map_err(Error::from)?);
+    Ok(())
+}
+
+/// Run scripted conversations: `[{id, learner?, welcome?, turns: [{say} | {tap: k} | {input}]}]`.
+/// `tap: k` takes the previous turn's k-th follow-up. Prints one line per conversation.
+fn converse(args: &Args) -> Result<(), CliError> {
+    use harvest_core::instructor::{Input, Instructor, Learner, Message, TurnRequest};
+    args.reject_unknown(&[
+        "pubkey",
+        "json",
+        "exams",
+        "llm",
+        "llm-model",
+        "llm-timeout",
+        "embedder",
+        "embedder-gguf",
+        "embedder-sha256",
+    ])?;
+    let dir = pack_dir(args)?;
+    let script_path = args
+        .positional
+        .get(1)
+        .ok_or_else(|| CliError::Usage("missing <script.json>".into()))?;
+    let text = if script_path == "-" {
+        let mut s = String::new();
+        std::io::Read::read_to_string(&mut std::io::stdin(), &mut s)
+            .map_err(|e| CliError::Usage(format!("stdin: {e}")))?;
+        s
+    } else {
+        std::fs::read_to_string(script_path)
+            .map_err(|e| CliError::Usage(format!("{script_path}: {e}")))?
+    };
+    let scripts: Vec<serde_json::Value> =
+        serde_json::from_str(&text).map_err(|e| CliError::Usage(format!("{script_path}: {e}")))?;
+    let pack = Arc::new(Pack::open(&dir, &keys(args)?)?);
+    let mut engine = Engine::new(pack.clone());
+    if let Some(e) = embedder(args, &pack)? {
+        engine = engine.with_embedder(e);
+    }
+    let llm: Option<Arc<dyn harvest_core::Llm>> = match args.get("llm").unwrap_or("off") {
+        "off" => None,
+        url if url.starts_with("http://") || url.starts_with("https://") => {
+            let secs: u64 = args
+                .get("llm-timeout")
+                .map(|t| t.parse())
+                .transpose()
+                .map_err(|_| CliError::Usage("--llm-timeout must be seconds".into()))?
+                .unwrap_or(180);
+            Some(Arc::new(harvest_core::llm::OpenAiCompatible::new(
+                url,
+                args.get("llm-model"),
+                std::time::Duration::from_secs(secs),
+            )?))
+        }
+        other => {
+            return Err(CliError::Usage(format!(
+                "--llm {other}: expected off or an http(s)://…/v1 endpoint"
+            )));
+        }
+    };
+    let tree = harvest_core::course::CourseTree::from_pack(&pack, exams_arg(args)?)?;
+    let inst = Instructor::new(Arc::new(engine), llm, tree);
+    for sc in scripts {
+        let learner: Learner = serde_json::from_value(sc["learner"].clone()).unwrap_or_default();
+        let mut history: Vec<Message> = Vec::new();
+        let mut at: Option<String> = None;
+        let mut out = Vec::new();
+        let mut last: Option<harvest_core::instructor::Turn> = None;
+        if sc["welcome"].as_bool().unwrap_or(true) {
+            let t = inst.welcome(&learner)?;
+            history.push(Message {
+                who: "instructor".into(),
+                text: t.plain(),
+            });
+            at = t.at.clone();
+            out.push(json!({"said": null, "turn": t}));
+            last = Some(t);
+        }
+        for step in sc["turns"].as_array().into_iter().flatten() {
+            let (ask, input, said) = if let Some(s) = step["say"].as_str() {
+                (Some(s.to_string()), None, s.to_string())
+            } else if let Some(k) = step["tap"].as_u64() {
+                match last.as_ref().and_then(|t| t.follow_ups.get(k as usize)) {
+                    Some(f) if f.input.is_some() || f.ask.is_some() => {
+                        (f.ask.clone(), f.input.clone(), f.label.clone())
+                    }
+                    _ => {
+                        out.push(json!({"tap": k, "error": "no such follow-up"}));
+                        continue;
+                    }
+                }
+            } else {
+                let i: Input = serde_json::from_value(step["input"].clone())
+                    .map_err(|e| CliError::Usage(format!("turn {step}: {e}")))?;
+                (None, Some(i), step["input"].to_string())
+            };
+            let req = TurnRequest {
+                history: history.clone(),
+                learner: learner.clone(),
+                at: at.clone(),
+                ask,
+                input,
+            };
+            let t = inst.turn(&req)?;
+            history.push(Message {
+                who: "learner".into(),
+                text: said.clone(),
+            });
+            history.push(Message {
+                who: "instructor".into(),
+                text: t.plain(),
+            });
+            if t.at.is_some() {
+                at = t.at.clone();
+            }
+            out.push(json!({"said": said, "turn": t}));
+            last = Some(t);
+        }
+        println!(
+            "{}",
+            json!({"id": sc["id"], "learner": sc["learner"], "turns": out})
+        );
+    }
     Ok(())
 }
 

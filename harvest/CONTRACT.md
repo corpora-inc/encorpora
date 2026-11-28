@@ -366,9 +366,10 @@ verifies: `summary` (what this part is), `hard` (what is hard here),
 `quotes` (`[{section_id, quote}]`, verbatim, checked at import and again on
 read). `links` points down to `node_ids` (beyond its children), `lesson_ids`,
 `q_ids`, `diagram_ids` and `film_ids` (films the host resolves from its media
-catalog). Lesson, question and diagram links must exist at import, so
-`course_node` is imported after them, and a link to a row that did not ship
-is dropped on read. A row's provenance covers its text: the skeleton passes
+catalog). Lesson, question and diagram links to rows the stage does not
+have are dropped at import and reported (import `course_node` after the
+tables it links to), and a link to a row that did not ship is dropped on
+read. A row's provenance covers its text: the skeleton passes
 structure alone, and text without provenance of its own waits for review.
 
 `harvest-bake course-skeleton <blueprint.yaml> [--existing tree.jsonl] --out
@@ -388,6 +389,70 @@ questions, diagrams and the exam blueprints, with empty node text
 `harvest show <pack> tree [--id NODE] [--exams exams.json]` prints the tree,
 or one node with its path and children; `harvest search <pack> "<q>" --in
 tree` searches it.
+
+## Instructor turns
+
+The Instructor is a conversation over the course tree
+(`harvest_core::instructor`, `harvest converse` for scripted runs). The app
+owns the conversation and renders it; the core answers one turn at a time and
+keeps no state.
+
+```
+Conversation {conv_id, title, created_at, pack_version, turns: Turn[]}     -- the app's, on the device
+Turn {turn_id, who: "learner"|"instructor", status: "streaming"|"done"|"error",
+      blocks: Block[], follow_ups: FollowUp[], model: string|null,
+      at?: node_id, trace?: Trace}
+FollowUp {label, ask?: string, to?: route, input?: Input}                  -- exactly one of ask / to / input
+Input {kind:"open", node_id, fields?: ["summary"|"hard"|"mistakes"|"exam"]}
+    | {kind:"rules", node_id} | {kind:"practice", skill_id} | {kind:"focus"}
+```
+
+A request is `{history: [{who, text}], learner, at?, ask? | input?}`: the
+conversation so far as plain text, the learner (`role`, `mastery`
+`{skill_id: 0..1}` from the practice engine, `exam_id`, `exam_date`, `recent`
+`[{q_id, chosen}]`, newest last), the node the conversation is at (the last
+turn's `at`), and either the learner's words (`ask`) or a tapped tree move
+(`input`). An `input` is answered from the tree with no model call; `ask`
+goes through the model when one is loaded and through tree search when not.
+The core emits whole turns (`status: "done"`); `turn_id` and `created_at` are
+the app's.
+
+Blocks (`t`); a block is immutable once emitted, and every non-text block
+names what the app needs to reserve its height:
+
+| `t` | Fields | What it is |
+|---|---|---|
+| `text` | `text` | prose; no markdown tables |
+| `quote` | `section_id`, `text` | rule text, copied from the pack by the engine and checked verbatim; never model output |
+| `cite` | `section_id` | the citation for the quotes before it |
+| `node` | `node_id`, `level`, `title`, `path [{node_id, level, title}]`, `texts [{field, text}]` | course-tree text, shown as written |
+| `exam` | `exam_id` | the exam's domains, weights and counts, from the blueprint |
+| `lesson` | `lesson_id` | a lesson card |
+| `film` | `film_id`, `node_id` | a lesson film; the app fills aspect, duration and poster from its media catalog |
+| `diagram` | `diagram_id` | a diagram |
+| `question` | `q_id`, `chosen?` | inline practice (recorded in practice state); with `chosen`, the learner's answer under review with the rationales |
+| `focus` | `items [{node_id, title, domain, weight, mastery\|null}]` | study priorities: domain weight × (1 − mastery) |
+| `tool` | `tool` (`clearance`\|`load-chart`\|`signals`), `input?` | the app's tool; `clearance` with `input {kv, traveling}` is followed by the table row as text, quote and cite |
+| `search` | `query` | the grouped rule results for a query (the rules index the app shows) |
+
+What the model may write: the model chooses the intent, the node and which
+of its texts, the linked blocks, the rule sentences (by handle, never by
+text) and a tool, and writes one short `say`. The engine shows `say` as the
+turn's first `text` block, sentence by sentence: a sentence that states a
+requirement (must, shall, required, prohibited, at least, minimum…) or a
+number stands only when the rule sentences the model named support it under
+the strict checker; a number in a sentence with no rule word may also come
+from the exam blueprint or the node text shown in the turn. Anything else is
+dropped and listed in `trace.dropped`. A `rule` turn with no supported rule
+sentence states nothing and shows a `search` block for the question.
+`trace` (`intent`, `node_hits`, `rule_hits`, `dropped`, `model_error`,
+`elapsed_ms`) is for the audit log, never rendered.
+
+The welcome is `pack_meta.instructor_welcome`: one instructor Turn (what the
+course and exam are, the hard parts, follow-ups), checked on read like any
+turn (a quote that is not verbatim, or a link to a row that did not ship, is
+dropped). A pack without one opens on the course node's text, the `exam`
+block and follow-ups to the exam's domains.
 
 ## Bake hit rate
 

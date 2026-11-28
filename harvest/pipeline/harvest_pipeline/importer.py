@@ -156,7 +156,9 @@ def import_rows(stage: Stage, corpus_dir: Path, specs: list[dict]) -> list[Impor
                 body = {k: v for k, v in raw.items() if k != "prov"}
                 problems = verify_refs(body, stage)
                 if table == "course_node":
-                    problems += node_link_problems(body, stage)
+                    problems += node_level_problems(body)
+                    for dropped in prune_node_links(body, stage):
+                        rep.problems.append(f"{path.name}#{n}: link dropped: {dropped}")
                 own = prov.get("verdict", "needs_review")
                 verdict = "fail" if problems else (own if own in ("pass", "fail", "needs_review") else "needs_review")
                 rep.verdicts[verdict] += 1
@@ -212,20 +214,34 @@ NODE_LINKS = {"lesson_ids": ("lesson", "lesson_id"), "q_ids": ("question", "q_id
               "diagram_ids": ("diagram", "diagram_id")}
 
 
-def node_link_problems(body: dict, stage: Stage) -> list[str]:
-    """A course-tree node: a known level, and every linked lesson, question and diagram exists in the
-    stage (import `course_node` after the tables it links to)."""
+def node_level_problems(body: dict) -> list[str]:
+    """A course-tree node has a known level and a links object."""
     problems = []
     if body.get("level") not in NODE_LEVELS:
         problems.append(f"level {body.get('level')!r} is not one of {', '.join(NODE_LEVELS)}")
-    links = body.get("links") or {}
+    if not isinstance(body.get("links") or {}, dict):
+        problems.append("links is not an object")
+    return problems
+
+
+def prune_node_links(body: dict, stage: Stage) -> list[str]:
+    """Drop linked lessons, questions and diagrams the stage does not have (import `course_node`
+    after the tables it links to); a dead link states nothing, so the node still ships. Returns
+    what was dropped, for the report."""
+    links = body.get("links")
     if not isinstance(links, dict):
-        return problems + ["links is not an object"]
+        return []
+    dropped = []
     for key, (table, col) in NODE_LINKS.items():
+        keep = []
         for i in links.get(key) or []:
             if stage.conn.execute(f"SELECT 1 FROM {table} WHERE {col} = ?", (i,)).fetchone() is None:
-                problems.append(f"unknown {key[:-1]} {i}")
-    return problems
+                dropped.append(f"unknown {key[:-1]} {i}")
+            else:
+                keep.append(i)
+        if key in links:
+            links[key] = keep
+    return dropped
 
 
 def dangling_nodes(stage: Stage) -> list[str]:

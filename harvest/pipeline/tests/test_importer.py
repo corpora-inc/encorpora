@@ -113,16 +113,18 @@ def test_course_tree_imports_checks_links_and_indexes_apart(corpus_dir):
     res = build(c, c.profile(), log=None)
     import sqlite3
     conn = sqlite3.connect(res["path"])
-    # a bad lesson link and a bad level fail their rows; the rest ship
+    # a bad level fails its row; a dead lesson link is dropped and the node ships
     assert [r[0] for r in conn.execute("SELECT node_id FROM course_node ORDER BY node_id")] == [
-        "course", "topic:power"]
+        "course", "skill:power.clearance", "topic:power"]
+    links = json.loads(conn.execute("SELECT links FROM course_node WHERE node_id='skill:power.clearance'").fetchone()[0])
+    assert links["lesson_ids"] == []
     q = json.loads(conn.execute("SELECT quotes FROM course_node WHERE node_id='topic:power'").fetchone()[0])
     assert q[0]["quote"] == "at least 20 feet from an energized line"
     report = json.loads(open(res["report"]).read())
     imp = {t["task"]: t for t in report["tasks"]}["import:course_node"]
-    assert imp["verdicts"] == {"pass": 2, "fail": 2, "needs_review": 0}
-    assert any("unknown lesson_id no-such-lesson" in e for e in imp["errors"])
+    assert imp["verdicts"] == {"pass": 3, "fail": 1, "needs_review": 0}
+    assert any("link dropped: unknown lesson_id no-such-lesson" in e for e in imp["errors"])
     assert any("unknown parent_id nowhere" in e for e in imp["errors"])
     # nodes are their own index, never mixed into the rule chunks
     assert conn.execute("SELECT count(*) FROM chunk WHERE ref_kind LIKE '%node%'").fetchone()[0] == 0
-    assert conn.execute("SELECT count(*) FROM course_node_vec").fetchone()[0] == 2
+    assert conn.execute("SELECT count(*) FROM course_node_vec").fetchone()[0] == 3

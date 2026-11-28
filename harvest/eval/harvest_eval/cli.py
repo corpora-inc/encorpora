@@ -94,7 +94,43 @@ def main(argv: list[str] | None = None) -> int:
     k = sub.add_parser("check-ids", help="gold section ids and key quotes present in a pack or sections file")
     k.add_argument("--set", required=True)
     k.add_argument("--pack", required=True)
+    cr = sub.add_parser("converse-render", help="Instructor transcripts (harvest converse) as reader text")
+    cr.add_argument("transcripts")
+    cr.add_argument("--conversations", required=True)
+    cr.add_argument("--pack", required=True)
+    cr.add_argument("--pubkey", required=True)
+    cr.add_argument("--exams")
+    cr.add_argument("--harvest", default="harvest")
+    cr.add_argument("--out", required=True)
+    cj = sub.add_parser("converse-judge", help="judge rendered Instructor conversations; summary per tier")
+    cj.add_argument("rendered", nargs="+", help="LABEL=rendered.jsonl")
+    cj.add_argument("--cache", required=True)
+    cj.add_argument("--model", default="opus")
+    cj.add_argument("--out", required=True)
     a = ap.parse_args(argv)
+    if a.cmd == "converse-render":
+        from . import converse
+        rows = converse.render(Path(a.transcripts), Path(a.conversations),
+                               converse.Pack(a.harvest, a.pack, a.pubkey, a.exams))
+        Path(a.out).write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows))
+        return 0
+    if a.cmd == "converse-judge":
+        from . import converse
+        from .judge import Judge
+        j = Judge(Path(a.cache), model=a.model, per_call=3)
+        report = {}
+        for spec in a.rendered:
+            label, path = spec.split("=", 1)
+            rows = [json.loads(x) for x in Path(path).read_text().splitlines() if x.strip()]
+            grades = converse.judge(rows, j)
+            report[label] = {"summary": converse.summarize(rows, grades),
+                             "items": [{"id": r["id"], "category": r["category"], **(g or {})}
+                                       for r, g in zip(rows, grades)]}
+            print(label, json.dumps(report[label]["summary"]), flush=True)
+        report["_judge"] = {"model": a.model, "models": sorted(j.models), "calls": j.calls,
+                            "cost_usd": round(j.cost_usd, 2), "rubric": converse.RUBRIC}
+        Path(a.out).write_text(json.dumps(report, indent=1, ensure_ascii=False))
+        return 0
     if a.cmd == "run":
         return run(a)
     if a.cmd == "compare":
