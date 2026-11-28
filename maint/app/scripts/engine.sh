@@ -9,6 +9,7 @@
 #   HARVEST_BIN=<path to harvest> (default .engine/harvest)
 #   MAINT_PACKS=<packs root> and MAINT_PACKS_PUBKEY=<key file>: serve real packs instead of the
 #   fixture (the preview; tests stay on the fixture).
+#   MAINT_OFFSET=<n>: shift every port by n (a test run beside the running preview uses 100).
 set -euo pipefail
 cd "$(dirname "$0")/.."
 BIN="${HARVEST_BIN:-.engine/harvest}"
@@ -17,9 +18,10 @@ if [ ! -f .engine/pump40/manifest.json ]; then
   "$BIN" fixture .engine/pump40 --maint --samples .engine/pump40-samples >/dev/null
 fi
 STAMP="$(date +%s)"
+OFF="${MAINT_OFFSET:-0}"
 ORIGINS=()
-for p in 4340 4341 4342 4343 4344 4345 4346; do ORIGINS+=(--allow-origin "http://127.0.0.1:$p"); done
-HUB="${MAINT_HUB:-http://127.0.0.1:4319}"
+for p in 4340 4341 4342 4343 4344 4345 4346; do ORIGINS+=(--allow-origin "http://127.0.0.1:$((p + OFF))"); done
+HUB="${MAINT_HUB:-http://127.0.0.1:$((4319 + OFF))}"
 case "${1:-device}" in
   hub)
     # Development sign-in only: named people with bearer tokens and their roles.
@@ -29,11 +31,11 @@ case "${1:-device}" in
   { "name": "Line reviewer", "token": "dev-reviewer-only-token", "roles": ["reviewer"] }
 ]
 JSON
-    exec "$BIN" hub ".engine/hub-$STAMP.db" --stream pump40-fleet --dev-key --reviewers .engine/reviewers.json --bind 127.0.0.1:4319 "${ORIGINS[@]}"
+    exec "$BIN" hub ".engine/hub-$STAMP.db" --stream pump40-fleet --dev-key --reviewers .engine/reviewers.json --bind "127.0.0.1:$((4319 + OFF))" "${ORIGINS[@]}"
     ;;
   device)
     NAME="${2:-A}"
-    case "$NAME" in A) PORT=4317 ;; B) PORT=4320 ;; C) PORT=4323 ;; *) echo "device A, B or C" >&2; exit 2 ;; esac
+    case "$NAME" in A) PORT=$((4317 + OFF)) ;; B) PORT=$((4320 + OFF)) ;; C) PORT=$((4323 + OFF)) ;; *) echo "device A, B or C" >&2; exit 2 ;; esac
     KEY="${HARVEST_PUBKEY:-$("$BIN" fixture .engine/fx --json | python3 -c 'import json,sys;print(json.load(sys.stdin)["pubkey"])')}"
     FIELD_KEY="$KEY"
     PACKS=.engine/pump40
