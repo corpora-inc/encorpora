@@ -446,8 +446,14 @@ sentences quoted in this turn support it on their own: every number in
 them, its content words in them, the same negation. A number in any other
 sentence must come from the exam blueprint, the course counts or the node
 text shown in the turn. Anything else is dropped and listed in
-`trace.dropped`. A `rule` turn with no rule sentence shown states no rule
-and shows a `search` block for the question. Tool numbers come from the
+`trace.dropped`. Named rule sentences are quoted in `rule`, `tool` and
+`review` turns (at most four runs); in other turns only when they back a
+claim the line makes. A table's rows are its sentences. When sentences are
+dropped, the model sees them once with the reason and writes the line
+again; the rewrite is kept unless it loses more. A `rule` turn with no rule
+sentence shown states no rule and shows a `search` block for the question.
+When the turn shows a table row for the learner's value, the engine's line
+for that row leads and the model's line follows. Tool numbers come from the
 learner's words, never the model's: `clearance` carries the voltage the
 learner said, and a value in a range table's unit leads with that row.
 `trace` (`intent`, `node_hits`, `rule_hits`, `dropped`, `model_error`,

@@ -803,6 +803,24 @@ impl Instructor {
     /// Follow-ups after showing node `n` with `shown` texts.
     fn next_steps(&self, n: &CourseNode, shown: &[String]) -> Vec<FollowUp> {
         let mut out = Vec::new();
+        // At the top, the next steps are the exam's domains.
+        if n.level == "course"
+            && let Some(e) = self.exam(&Learner::default())
+        {
+            let eid = format!("exam:{}", e["id"].as_str().unwrap_or_default());
+            for d in self.tree.children(&eid) {
+                out.push(FollowUp::input(
+                    d.title.clone(),
+                    Input::Open {
+                        node_id: d.node_id.clone(),
+                        fields: Vec::new(),
+                    },
+                ));
+            }
+            if !out.is_empty() {
+                return out;
+            }
+        }
         let labels = [
             ("hard", "What's hard here?"),
             ("mistakes", "What do people get wrong?"),
@@ -1082,7 +1100,50 @@ impl Instructor {
             }
         }
         trace.intent = Some(plan.intent.clone());
-        let mut t = self.build(req, text, plan, &passages, review, trace);
+        let mut t = self.build(req, text, plan, &passages, review.clone(), trace.clone());
+        // One repair: the model sees what was removed and why, and rewrites
+        // its line (dropped sentences leave the rest dangling).
+        if !t.trace.dropped.is_empty() {
+            let mut user: Value = serde_json::from_str(&self.prompt(
+                req,
+                text,
+                at,
+                &node_hits,
+                &passages,
+                review.as_ref().map(|r| &r.2),
+            ))?;
+            user["previous_reply"] = trace.plans.last().cloned().unwrap_or(Value::Null);
+            user["removed"] = json!(t.trace.dropped);
+            user["note"] = json!(
+                "The app removed these sentences: no rule sentence in `rules` states them. \
+                 Write the reply again so it reads well without them: drop them or say them \
+                 without a rule or number, or name the rule sentences that state them in evidence."
+            );
+            let req_llm = LlmRequest {
+                system: self.system(),
+                user: user.to_string(),
+                schema: ("instructor_turn".into(), plan_schema()),
+                max_tokens: 500,
+                temperature: 0.2,
+            };
+            if let Ok((p, raw)) = complete_json::<Value>(llm.as_ref(), &req_llm)
+                .and_then(|v| Ok((serde_json::from_value::<Plan>(v.clone())?, v)))
+            {
+                let mut tr = trace.clone();
+                tr.plans.push(raw);
+                tr.intent = Some(p.intent.clone());
+                let first = t.trace.dropped.clone();
+                let t2 = self.build(req, text, p, &passages, review, tr);
+                if t2.trace.dropped.len() <= first.len() {
+                    t = t2;
+                    let repaired: Vec<String> = first
+                        .into_iter()
+                        .map(|d| format!("repaired: {d}"))
+                        .collect();
+                    t.trace.dropped.splice(0..0, repaired);
+                }
+            }
+        }
         t.model = Some(llm.id());
         Ok(t)
     }
@@ -1435,8 +1496,17 @@ impl Instructor {
         let support = self.support_text(&table_runs);
         let said = self.check_say(&plan.say, &support, &context, &mut trace);
         let has_rules = !rule_blocks.is_empty();
+        // The engine's own answer (a table row) leads; the model's line
+        // follows it, then the rule text.
+        let lead = match rule_blocks.first() {
+            Some(Block::Text { .. }) => Some(rule_blocks.remove(0)),
+            _ => None,
+        };
         if let Some(s) = said {
             blocks.insert(0, Block::Text { text: s });
+        }
+        if let Some(l) = lead {
+            blocks.insert(0, l);
         }
         blocks.extend(rule_blocks);
         if plan.intent == "rule" && !has_rules {

@@ -41,6 +41,15 @@ fn handle(user: &Value, cite: &str, needle: &str) -> String {
     panic!("no {needle:?} in {cite}: {user}");
 }
 
+/// Sentences the turn finally dropped (not the first pass a repair replaced).
+fn final_drops(t: &harvest_core::instructor::Turn) -> usize {
+    t.trace
+        .dropped
+        .iter()
+        .filter(|d| !d.starts_with("repaired:"))
+        .count()
+}
+
 fn plan(intent: &str, node: Option<&str>, evidence: Vec<String>, say: &str) -> Value {
     json!({"intent": intent, "node_id": node, "fields": [], "show": [], "evidence": evidence, "say": say,
            "tool": null, "kv": null, "traveling": null, "search": null})
@@ -144,7 +153,7 @@ fn rule_quotes_come_from_the_pack_and_unsupported_prose_is_dropped() {
                 .into()
         }
     );
-    assert_eq!(t.trace.dropped.len(), 1, "{:?}", t.trace.dropped);
+    assert_eq!(final_drops(&t), 1, "{:?}", t.trace.dropped);
     let quotes: Vec<&Block> = t
         .blocks
         .iter()
@@ -196,7 +205,7 @@ fn support_is_only_the_rule_sentences_shown() {
         "{:?}",
         t.blocks
     );
-    assert_eq!(t.trace.dropped.len(), 1);
+    assert_eq!(final_drops(&t), 1);
 }
 
 #[test]
@@ -356,13 +365,13 @@ fn a_value_in_a_range_table_leads_with_its_row() {
     assert_eq!(
         t.blocks[0],
         Block::Text {
-            text: "Here is the table row for that voltage.".into()
+            text: "For 200 kV, Table A—Minimum Clearance Distances: 15 feet.".into()
         }
     );
     assert_eq!(
         t.blocks[1],
         Block::Text {
-            text: "For 200 kV, Table A—Minimum Clearance Distances: 15 feet.".into()
+            text: "Here is the table row for that voltage.".into()
         }
     );
     assert!(t.blocks.contains(&Block::Quote {
@@ -471,4 +480,41 @@ fn outside_rule_turns_a_quote_must_back_a_claim() {
         "{:?}",
         t.blocks
     );
+}
+
+#[test]
+fn a_reply_that_loses_sentences_is_written_again_once() {
+    let b = common::pack();
+    let llm = Dyn(Box::new(|u| {
+        if u.get("removed").is_some() {
+            assert!(
+                u["removed"][0].as_str().unwrap().contains("hard hat"),
+                "{u}"
+            );
+            plan(
+                "chat",
+                None,
+                vec![],
+                "Glad to help. Want to try a practice question next?",
+            )
+        } else {
+            plan(
+                "chat",
+                None,
+                vec![],
+                "Glad to help. You must always wear a hard hat near lines.",
+            )
+        }
+    }));
+    let i = instructor(&b.pack, Some(Arc::new(llm)));
+    let t = i.turn(&ask("thanks")).unwrap();
+    assert_eq!(
+        t.blocks[0],
+        Block::Text {
+            text: "Glad to help. Want to try a practice question next?".into()
+        }
+    );
+    assert_eq!(final_drops(&t), 0);
+    assert!(t.trace.dropped[0].starts_with("repaired: "));
+    assert_eq!(t.trace.plans.len(), 2);
 }
