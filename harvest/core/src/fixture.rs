@@ -132,6 +132,31 @@ pub fn seal(conn: &Connection) -> Result<()> {
             params![id, blob, scale as f64],
         )?;
     }
+    // Course-tree nodes, when the pack has the table (a test may drop it to
+    // stand in for an older pack).
+    let has_nodes = conn
+        .prepare("SELECT 1 FROM sqlite_master WHERE name = 'course_node_vec'")?
+        .exists([])?;
+    if has_nodes {
+        conn.execute("DELETE FROM course_node_vec", [])?;
+        let nodes: Vec<(String, String)> = {
+            let mut stmt = conn.prepare(
+                "SELECT node_id, title || char(10) || summary || char(10) || hard || char(10) ||
+                        mistakes || char(10) || exam FROM course_node ORDER BY node_id",
+            )?;
+            stmt.query_map([], |r| Ok((r.get(0)?, r.get(1)?)))?
+                .collect::<rusqlite::Result<Vec<_>>>()?
+        };
+        for (id, text) in nodes {
+            let v = embedder.embed_document(&text)?;
+            let (q, scale) = quantize_i8(&v);
+            let blob: Vec<u8> = q.iter().map(|&b| b as u8).collect();
+            conn.execute(
+                "INSERT INTO course_node_vec (node_id, vec, scale) VALUES (?1, ?2, ?3)",
+                params![id, blob, scale as f64],
+            )?;
+        }
+    }
     Ok(())
 }
 

@@ -454,6 +454,39 @@ fn show_prints_verified_content() {
     let a = show(&["answers", "--id", "a-periodic-op", "--role", "trainee"]);
     assert_eq!(a["answer"]["answer_id"], "a-periodic-tr");
     assert_eq!(harvest(&["show", d, "everything", "--pubkey", &key]).0, 2);
+    // The course tree: derived here (the fixture has none), with a blueprint.
+    let exams = tmp.path().join("exams.json");
+    std::fs::write(
+        &exams,
+        r#"[{"id":"core","title":"Core","domains":[{"id":"core.site","title":"Site","skillIds":["skill-clearance"]}]}]"#,
+    )
+    .unwrap();
+    let e = exams.to_str().unwrap();
+    let tree = show(&["tree", "--exams", e]);
+    assert_eq!(tree["derived"], true);
+    assert!(
+        tree["nodes"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .any(|n| n["node_id"] == "domain:core.site")
+    );
+    let node = show(&["tree", "--id", "domain:core.site", "--exams", e]);
+    assert_eq!(node["children"][0]["node_id"], "skill:skill-clearance");
+    assert_eq!(node["path"][0]["node_id"], "course");
+    let (code, out, err) = harvest(&[
+        "search",
+        d,
+        "energized lines",
+        "--in",
+        "tree",
+        "--json",
+        "--pubkey",
+        &key,
+    ]);
+    assert_eq!(code, 0, "{err}");
+    let hits: Value = serde_json::from_str(&out).unwrap();
+    assert_eq!(hits["hits"][0]["node_id"], "topic:topic-lines");
     // Unverified packs are not shown.
     assert_ne!(harvest(&["show", d, "info"]).0, 0);
 }
