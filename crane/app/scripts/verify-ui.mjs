@@ -38,6 +38,7 @@ const ROUTES = [
   "/read/29cfr1926.1408(b)(3)",
   "/do",
   "/do/shift-inspection",
+  "/do/critical-lift-plan",
   "/learn",
   "/learn/topic/power-lines",
   "/learn/topic/ground",
@@ -56,7 +57,7 @@ const ROUTES = [
   "/settings",
   "/settings/about",
 ];
-const SCREENSHOT = new Set(["/learn/topic/ground", "/ask", "/ask/q/signaling", "/ask/q/outrigers", "/ask/q/xyzzy", "/ask/a/a.powerline-clearance", "/read/29cfr1926.1408(b)(3)", "/do/shift-inspection", "/learn", "/practice", "/tools/clearance", "/tools/load-chart", "/tools/signals", "/settings"]);
+const SCREENSHOT = new Set(["/learn/topic/ground", "/ask", "/ask/q/signaling", "/ask/q/outrigers", "/ask/q/xyzzy", "/ask/a/a.powerline-clearance", "/read/29cfr1926.1408(b)(3)", "/do", "/do/shift-inspection", "/learn", "/practice", "/tools/clearance", "/tools/load-chart", "/tools/signals", "/settings"]);
 // Serve every page under the shipped app's Content-Security-Policy, so anything the
 // native WebView would block (inline script, a stray fetch, a blob image) fails here too.
 const CSP = JSON.parse(await readFile(path.join(root, "src-tauri", "tauri.conf.json"), "utf8")).app.security.csp;
@@ -349,7 +350,12 @@ try {
     await page.getByRole("button", { name: "Next" }).click();
     await page.waitForURL(/\/2$/);
     // Navigations commit in a transition: the URL changes before the DOM, so wait for step 2 itself.
-    await page.getByText("Step 2 of 14").waitFor();
+    await page.getByText("Step 2 of 33").waitFor();
+    // Step 2 is a note: record who inspects and when.
+    await page.getByLabel("Note", { exact: true }).fill("J. Rivera, day shift, crane 14.");
+    await page.getByRole("button", { name: "Next" }).click();
+    await page.waitForURL(/\/3$/);
+    await page.getByText("Step 3 of 33").waitFor();
     const prev = page.getByRole("button", { name: "Previous" });
     await steady(page, [prev, page.getByLabel("Note (optional)")], () => page.getByRole("radio", { name: "Deficiency" }).click(), "deficiency");
     await page.getByRole("heading", { name: "Deficiency" }).waitFor();
@@ -362,10 +368,10 @@ try {
     await page.screenshot({ path: path.join(out, "flow-deficiency.png"), fullPage: true });
     await page.reload();
     assert.equal(await page.getByLabel("Note (optional)").inputValue(), "Drive chain shows wear at the sprocket.", "run survives refresh");
-    await page.goto(page.url().replace(/\/2$/, "/14"));
+    await page.goto(page.url().replace(/\/3$/, "/33"));
     await page.getByRole("button", { name: "Finish" }).click();
     await page.waitForURL(/\/do\/runs\//);
-    await page.getByText("Deficiencies").waitFor();
+    await page.getByText("Deficiencies", { exact: true }).first().waitFor();
     assert.equal((await page.locator(".text-display").nth(1).innerText()).trim(), "1");
     await page.screenshot({ path: path.join(out, "flow-run-report.png"), fullPage: true });
     // Export: one zip, run.json in harvest-run/1, the photo inside with its hash.
@@ -375,14 +381,16 @@ try {
     const report = JSON.parse(new TextDecoder().decode(zip["run.json"]));
     assert.equal(report.format, "harvest-run/1");
     assert.equal(report.status, "complete");
-    assert.equal(report.steps.length, 14);
-    assert.deepEqual(report.steps.map((x) => x.ord), Array.from({ length: 14 }, (_, i) => i + 1), "the pack's 1-based ords");
+    assert.equal(report.steps.length, 33);
+    assert.deepEqual(report.steps.map((x) => x.ord), Array.from({ length: 33 }, (_, i) => i + 1), "the pack's 1-based ords");
     assert.equal(report.steps_known, true);
-    assert.deepEqual(report.steps.slice(0, 2).map((x) => x.outcome), ["pass", "fail"]);
-    assert.equal(report.steps[1].deficiency, true);
-    assert.equal(report.steps[1].note, "Drive chain shows wear at the sprocket.");
-    assert.equal(report.steps[1].photos.length, 1);
-    const photo = report.steps[1].photos[0];
+    assert.equal(report.steps[0].outcome, "pass");
+    assert.equal(report.steps[1].note, "J. Rivera, day shift, crane 14.");
+    assert.equal(report.steps[2].outcome, "fail");
+    assert.equal(report.steps[2].deficiency, true);
+    assert.equal(report.steps[2].note, "Drive chain shows wear at the sprocket.");
+    assert.equal(report.steps[2].photos.length, 1);
+    const photo = report.steps[2].photos[0];
     assert.equal(photo.sha256, createHash("sha256").update(zip[photo.path]).digest("hex"), "photo hash matches the bytes");
     await page.getByText("Run report saved.").waitFor();
     assert.deepEqual(errors, []);
@@ -545,7 +553,7 @@ try {
     await page.waitForFunction(() => window.__tts.length > 0);
     const spoken = await page.evaluate(() => window.__tts[0]);
     assert.equal(spoken.voiceId, "ava-premium", "the enhanced offline voice, never the network one");
-    assert.match(spoken.text, /Control mechanisms/);
+    assert.match(spoken.text, /competent person/);
     await page.goto(base + "/ask/a/a.powerline-clearance");
     await page.getByRole("button", { name: "Read aloud" }).click();
     await page.waitForFunction(() => window.__tts.length > 0);

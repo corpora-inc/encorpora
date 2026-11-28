@@ -380,78 +380,7 @@ export const starters = {
   inspector: ["a.shift-inspection", "a.deficiency", "a.ground", "a.powerline-clearance"],
 };
 
-const step = (text, check_kind, section_ids, detail, deficiency = null) => ({ text, check_kind, section_ids, detail, deficiency });
-const def = (guidance, action, section_id, quote) => ({ guidance, action, section_id, quote });
-const OOS = def(
-  "The competent person decides now whether this is a safety hazard.",
-  "If it is a safety hazard, take the crane out of service until it is corrected.",
-  "29cfr1926.1412(d)(2)",
-  "If the deficiency is determined to constitute a safety hazard, the equipment must be taken out of service until it has been corrected.",
-);
-const sameDetail = (operator, trainee = operator, inspector = operator) => ({ trainee, operator, inspector });
-
-export const procedures = [
-  {
-    proc_id: "shift-inspection", kind: "inspection", title: "Shift inspection",
-    summary: "The visual inspection a competent person begins before each shift. Record each item; a deficiency gets the next step and its rule.",
-    roles: ["trainee", "operator", "inspector"],
-    steps: [
-      step("Control mechanisms: check for maladjustments interfering with proper operation.", "pass_fail", ["29cfr1926.1412(d)(1)(i)"], sameDetail("Operate each control through its range with the engine running. Watch for sticking, lag or travel that does not match the function.", "Work each lever and pedal. Anything sticky or slow to respond is a finding."), OOS),
-      step("Control and drive mechanisms: excessive wear, and contamination by lubricants, water or other foreign matter.", "pass_fail", ["29cfr1926.1412(d)(1)(ii)"], sameDetail("Look at linkages, clutches and brakes you can see without disassembly."), OOS),
-      step("Air, hydraulic and other pressurized lines: deterioration or leakage, especially lines that flex.", "pass_fail", ["29cfr1926.1412(d)(1)(iii)"], sameDetail("Follow the hoses that move with the boom and outriggers. Wet spots, cracking and chafing are findings.", "Look along the hoses that bend when the boom or outriggers move. Wet or cracked hose is a finding."), OOS),
-      step("Hydraulic system: proper fluid level.", "pass_fail", ["29cfr1926.1412(d)(1)(iv)"], sameDetail("Check the sight glass or dipstick in the manufacturer's stated boom position."), OOS),
-      step("Hooks and latches: deformation, cracks, excessive wear, or damage from chemicals or heat.", "pass_fail", ["29cfr1926.1412(d)(1)(v)"], sameDetail("Check throat opening, twist and the latch closing fully. Compare against the manufacturer's criteria.", "Look for a bent or twisted hook and a latch that does not snap shut."), OOS),
-      step("Wire rope reeving: matches the manufacturer's specifications.", "pass_fail", ["29cfr1926.1412(d)(1)(vi)"], sameDetail("Confirm parts of line and reeving pattern against the chart for today's configuration."), OOS),
-      step("Wire rope: inspect in accordance with 1926.1413(a).", "pass_fail", ["29cfr1926.1412(d)(1)(vii)", "29cfr1926.1413(a)(1)"], sameDetail("Running and standing ropes likely to be used this shift. Look for broken wires, kinks, crushing and corrosion."), def(
-        "Wire rope findings follow the removal-from-service rules in 1926.1413(a)(4). The competent person decides at once whether it is a safety hazard.",
-        "If it is, do not use that rope until the conditions in 1926.1413(a)(4) are met.",
-        "29cfr1926.1413(a)(4)(i)",
-        "an immediate determination must be made by the competent person as to whether the deficiency constitutes a safety hazard",
-      )),
-      step("Electrical apparatus: malfunction, excessive deterioration, dirt or moisture.", "pass_fail", ["29cfr1926.1412(d)(1)(viii)"], sameDetail("Lights, horn, gauges and switches work; no moisture in panels."), OOS),
-      step("Tires (when in use): proper inflation and condition.", "value", ["29cfr1926.1412(d)(1)(ix)"], sameDetail("Record the lowest tire pressure you measured, in psi. Compare with the manufacturer's value.", "Write down the lowest tire pressure you read, in psi."), OOS),
-      step("Ground conditions around the equipment: proper support, settling under outriggers, standing water.", "pass_fail", ["29cfr1926.1412(d)(1)(x)", "29cfr1926.1402(b)"], sameDetail("Walk each outrigger and pad. Look for settling, soft spots and water."), def(
-        "Ground must support the equipment to the manufacturer's specifications.",
-        "Stop and fix the support before use: mats, blocking or cribbing as needed.",
-        "29cfr1926.1402(b)",
-        "The equipment must not be assembled or used unless ground conditions are firm, drained, and graded to a sufficient extent",
-      )),
-      step("Level: within the manufacturer's tolerance, before each shift and after each move and setup.", "pass_fail", ["29cfr1926.1412(d)(1)(xi)"], sameDetail("Read the level indicator after setup; relevel after any move."), OOS),
-      step("Operator cab windows: no significant cracks or breaks that hamper the view.", "pass_fail", ["29cfr1926.1412(d)(1)(xii)"], sameDetail("Check every window the operator looks through for the lift."), OOS),
-      step("Safety devices and operational aids: proper operation.", "pass_fail", ["29cfr1926.1412(d)(1)(xiv)"], sameDetail("Test anti-two-block, boom angle indicator and load moment indicator per the manufacturer.", "Ask a competent person to show you how each device is tested."), def(
-        "Safety device and operational aid deficiencies follow 1926.1415 and 1926.1416.",
-        "Take the action in 1926.1415 and 1926.1416 before using the equipment.",
-        "29cfr1926.1412(d)(3)",
-        "the action specified in §§ 1926.1415 and 1926.1416 must be taken prior to using the equipment.",
-      )),
-      step("Notes and photos for the record.", "note", ["29cfr1926.1412(d)"], sameDetail("Anything else you saw, with photos of any finding.")),
-    ],
-  },
-  {
-    proc_id: "power-line-check", kind: "planning", title: "Power line check before operations",
-    summary: "Identify the work zone, get the voltage, apply the 20-foot test (50 feet over 350 kV), choose an option and put the precautions in place.",
-    roles: ["operator", "inspector", "trainee"],
-    steps: [
-      step("Identify the work zone: marked boundaries, or 360 degrees out to maximum working radius.", "pass_fail", ["29cfr1926.1408(a)(1)"], sameDetail("Write down which method you used."), def("The work zone must be identified before operations.", "Mark boundaries or use the full 360-degree zone.", "29cfr1926.1408(a)(1)(ii)", "Defining the work zone as the area 360 degrees around the equipment, up to the equipment's maximum working radius.")),
-      step("Line voltage, confirmed with the utility (kV).", "value", ["29cfr1926.1408(a)(2)(iii)"], sameDetail("Get it from the utility before anything else. The trigger distance and the Table A clearance both depend on it; the Tools tab looks them up.")),
-      step("Could any part of the equipment, load line or load get closer than 20 feet to the line (50 feet if it is over 350 kV)?", "pass_fail", ["29cfr1926.1408(a)(2)", S1409A], sameDetail("Pass means no line within 20 feet of the work zone, or 50 feet for a line over 350 kV up to 1,000 kV. A finding means one of Option 1, 2 or 3 applies. Over 1,000 kV the utility or a registered professional engineer sets the distance."), def("Inside the trigger distance (20 feet, or 50 feet over 350 kV) requires Option 1, 2 or 3.", "Deenergize and ground, keep 20 feet (50 feet over 350 kV), or keep the Table A distance with the paragraph (b) precautions.", "29cfr1926.1408(a)(2)", "could get closer than 20 feet to a power line. If so, the employer must meet the requirements in Option (1), Option (2), or Option (3) of this section")),
-      step("Planning meeting held with the operator and workers in the area.", "pass_fail", ["29cfr1926.1408(b)(1)"], sameDetail("Review the line's location and the steps to prevent encroachment."), def("A planning meeting is required for Option 2 or 3.", "Hold the meeting before operations.", "29cfr1926.1408(b)(1)", "Conduct a planning meeting with the operator and the other workers who will be in the area of the equipment or load")),
-      step("Tag lines, if used, are non-conductive.", "pass_fail", ["29cfr1926.1408(b)(2)"], sameDetail("Check the tag line material."), def("Conductive tag lines are not allowed here.", "Replace with non-conductive tag lines.", "29cfr1926.1408(b)(2)", "If tag lines are used, they must be non-conductive.")),
-      step("Elevated warning line, barricade or line of signs in view of the operator.", "photo", ["29cfr1926.1408(b)(3)"], sameDetail("Photograph it from the operator's seat if you can.")),
-    ],
-  },
-  {
-    proc_id: "ground-check", kind: "setup", title: "Ground conditions check",
-    summary: "Before assembly or use: firm, drained and graded ground, supporting materials, and known hazards below.",
-    roles: ["operator", "inspector", "trainee"],
-    steps: [
-      step("Ground is firm, drained and graded for the manufacturer's support and leveling specifications.", "pass_fail", ["29cfr1926.1402(b)"], sameDetail("Check each outrigger location."), def("Do not assemble or use the equipment on inadequate ground.", "Prepare the ground or add supporting materials, then recheck.", "29cfr1926.1402(b)", "The equipment must not be assembled or used unless ground conditions are firm, drained, and graded to a sufficient extent")),
-      step("Supporting materials in place where needed (mats, blocking, cribbing).", "photo", ["29cfr1926.1402(a)(2)"], sameDetail("Photograph each pad.")),
-      step("Hazards beneath the set-up area (voids, tanks, utilities) reviewed with the controlling entity.", "pass_fail", ["29cfr1926.1402(c)(2)"], sameDetail("Ask for site drawings and soil analyses."), def("The controlling entity must share known hazards below the set-up area.", "Get the information before setup.", "29cfr1926.1402(c)(2)", "Inform the user of the equipment and the operator of the location of hazards beneath the equipment set-up area (such as voids, tanks, utilities)")),
-      step("Notes.", "note", ["29cfr1926.1402"], sameDetail("Anything else about the site.")),
-    ],
-  },
-];
+// Procedures come from crane/content/procedures (see build-fixture.mjs).
 
 /** Exam blueprint for the simulator (fixture-sized). */
 export const exams = [

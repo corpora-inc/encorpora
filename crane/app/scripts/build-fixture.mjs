@@ -12,7 +12,8 @@
  * harvest/CONTRACT.md schema.
  */
 import { createHash } from "node:crypto";
-import { readFileSync, writeFileSync } from "node:fs";
+import { readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { parse as parseYaml } from "yaml";
 import { fileURLToPath } from "node:url";
 import * as A from "./fixture/authored.mjs";
 import { rationaleProblems } from "../src/engine/rationale.ts";
@@ -70,6 +71,20 @@ function checkQuote(where, id, quote) {
   const s = byId.get(id);
   if (s && !s.text.includes(norm(quote))) fail(`${where}: quote is not verbatim in ${id}: "${quote.slice(0, 80)}"`);
 }
+/**
+ * A content-lane quote, placed exactly: table cells ("a | b") read as the
+ * section text writes them, and a quote from a sub-paragraph of the cited
+ * section is cited to that sub-paragraph.
+ */
+function citeQuote(where, id, quote) {
+  checkSection(where, id);
+  const q = norm(quote.replace(/\s*\|\s*/g, " "));
+  if (byId.get(id)?.text.includes(q)) return { section_id: id, quote: q };
+  const inside = sections.filter((s) => s.section_id.startsWith(`${id}(`) && s.text.includes(q)).sort((a, b) => b.depth - a.depth);
+  if (inside[0]) return { section_id: inside[0].section_id, quote: q };
+  fail(`${where}: quote is not verbatim in ${id} or its paragraphs: "${quote.slice(0, 80)}"`);
+  return null;
+}
 function checkBody(where, body) {
   for (const seg of body) {
     if (seg.t === "quote") checkQuote(where, seg.section_id, seg.text);
@@ -112,16 +127,29 @@ for (const a of A.answers) {
   answers.push({ answer_id: a.answer_id, question: a.question, body: JSON.stringify(a.body), section_ids: JSON.stringify(cites), level: a.level, ...L });
   for (const alias of [a.question, ...a.aliases]) answer_alias.push({ alias: alias.toLowerCase(), answer_id: a.answer_id, lang: "en" });
 }
+// Procedures: every file in crane/content/procedures, the content lane's source of truth.
+const procDir = fileURLToPath(new URL("../../content/procedures/", import.meta.url));
+const procedures = readdirSync(procDir)
+  .filter((f) => f.endsWith(".yaml"))
+  .sort()
+  .map((f) => parseYaml(readFileSync(procDir + f, "utf8")));
 const procedure = [];
 const proc_step = [];
-for (const p of A.procedures) {
+for (const p of procedures) {
+  if (p.steps.some((s, i) => s.ord !== i + 1)) fail(`procedure ${p.proc_id}: step ords are not 1..n`);
   procedure.push({ proc_id: p.proc_id, title: p.title, kind: p.kind, summary: p.summary, roles: JSON.stringify(p.roles), ...L });
   // Step ords are 1-based, as in packs from the pipeline (CONTRACT proc_step).
   p.steps.forEach((s, i) => {
     const ord = i + 1;
     s.section_ids.forEach((id) => checkSection(`step ${p.proc_id}#${ord}`, id));
-    if (s.deficiency) checkQuote(`step ${p.proc_id}#${ord} deficiency`, s.deficiency.section_id, s.deficiency.quote);
-    proc_step.push({ proc_id: p.proc_id, ord, text: s.text, detail: JSON.stringify(s.detail), check_kind: s.check_kind, section_ids: JSON.stringify(s.section_ids), deficiency: s.deficiency ? JSON.stringify(s.deficiency) : null, ...L });
+    if (!["pass_fail", "value", "note", "photo"].includes(s.check_kind)) fail(`step ${p.proc_id}#${ord}: check_kind ${s.check_kind}`);
+    for (const r of ["trainee", "operator", "inspector"]) if (!s.detail?.[r]) fail(`step ${p.proc_id}#${ord}: no ${r} detail`);
+    const d = s.deficiency;
+    // A deficiency cites a rule with its exact words, or (good practice, no rule) cites nothing; never half.
+    if (d && (d.section_id == null) !== (d.quote == null)) fail(`step ${p.proc_id}#${ord} deficiency: section_id and quote go together`);
+    const cited = d?.section_id ? citeQuote(`step ${p.proc_id}#${ord} deficiency`, d.section_id, d.quote) : null;
+    const deficiency = d ? { guidance: d.guidance, action: d.action, section_id: cited?.section_id ?? null, quote: cited?.quote ?? null } : null;
+    proc_step.push({ proc_id: p.proc_id, ord, text: s.text, detail: JSON.stringify(s.detail), check_kind: s.check_kind, section_ids: JSON.stringify(s.section_ids), deficiency: deficiency ? JSON.stringify(deficiency) : null, ...L });
   });
 }
 for (const [id, list] of Object.entries(A.prereqs)) for (const p of [id, ...list]) if (!skillIds.has(p)) fail(`prereq ${p}: unknown skill`);

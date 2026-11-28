@@ -99,8 +99,9 @@ export interface Question {
 export interface Deficiency {
   guidance: string;
   action: string;
-  section_id: string;
-  quote: string;
+  /** The rule and its exact words; both null for a good-practice deficiency that no rule states. */
+  section_id: string | null;
+  quote: string | null;
 }
 
 export type CheckKind = "pass_fail" | "value" | "note" | "photo";
