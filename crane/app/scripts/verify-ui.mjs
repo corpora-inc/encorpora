@@ -282,6 +282,30 @@ try {
     checks++;
   }
 
+  // 2b. A deep link lands its paragraph fully in view, below a header's height of room, above the tab bar.
+  for (const width of WIDTHS) {
+    const { context, page, errors } = await newPage(browser, width, "light");
+    for (const id of ["29cfr1926.1412(d)(1)", "29cfr1926.1408(b)(3)", "29cfr1926.1431(k)(9)"]) {
+      await page.goto(base + "/read/" + encodeURIComponent(id));
+      const target = page.locator('[aria-current="true"]');
+      await target.waitFor();
+      await page.waitForTimeout(80);
+      const m = await target.evaluate((el) => {
+        const r = el.getBoundingClientRect();
+        const header = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--spacing-header")) * 16;
+        const bar = [...document.querySelectorAll("nav")].find((n) => getComputedStyle(n).position === "fixed" && n.getBoundingClientRect().top > 0 && n.getBoundingClientRect().width > n.getBoundingClientRect().height);
+        const floor = bar ? bar.getBoundingClientRect().top : innerHeight;
+        return { top: r.top, bottom: r.bottom, h: r.height, header, floor };
+      });
+      assert.ok(m.top >= m.header - 1, `${id} @${width}: paragraph top ${m.top} under the header room ${m.header}`);
+      if (m.h <= m.floor - m.header) assert.ok(m.bottom <= m.floor + 0.5, `${id} @${width}: paragraph bottom ${m.bottom} below ${m.floor}`);
+      checks++;
+    }
+    await page.screenshot({ path: path.join(out, `flow-reader-deep-link-${width}.png`) });
+    assert.deepEqual(errors, []);
+    await context.close();
+  }
+
   // 3. Ask: a paraphrase is answered from the pack; an uncovered question declines with nearest sections.
   {
     const { context, page } = await newPage(browser, 390, "light");

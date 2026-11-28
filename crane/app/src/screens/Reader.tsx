@@ -19,7 +19,7 @@ function Node({ s, target, path }: { s: Section; target: string; path: Set<strin
   return (
     <div id={`s-${s.section_id}`} className={s.depth > 0 ? "pl-3 sm:pl-5" : ""}>
       {(s.text || heading) && (
-        <div className={`-mx-2 rounded-control px-2 py-2 ${isTarget ? "target-flash" : ""}`} aria-current={isTarget ? "true" : undefined}>
+        <div id={isTarget ? "reader-target" : undefined} className={`reader-target -mx-2 rounded-control px-2 py-2 ${isTarget ? "target-flash" : ""}`} aria-current={isTarget ? "true" : undefined}>
           <p className="m-0 text-body">
             {label(s) && (
               <Link to={readerPath(s.section_id)} className="mr-2 font-display font-semibold text-ink no-underline tabular">
@@ -52,7 +52,9 @@ export function Reader() {
       window.scrollTo(0, 0);
       return;
     }
-    document.getElementById(`s-${id}`)?.scrollIntoView({ block: "center" });
+    // The paragraph itself, not its subtree: a long list of sub-paragraphs must not push its top off screen.
+    // Its top lands a header's height below the top (scroll-margin in .reader-target).
+    (document.getElementById("reader-target") ?? document.getElementById(`s-${id}`))?.scrollIntoView({ block: "start" });
   }, [id, section]);
 
   if (!section || !root)
