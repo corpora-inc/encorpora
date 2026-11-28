@@ -161,6 +161,7 @@ pub struct Pack {
     equipment: Vec<Equipment>,
     synonyms: Vec<(String, String)>,
     vectors: OnceLock<Option<VecIndex>>,
+    lexicon: OnceLock<crate::lexicon::Lexicon>,
 }
 
 impl std::fmt::Debug for Pack {
@@ -255,6 +256,7 @@ impl Pack {
             equipment,
             synonyms,
             vectors: OnceLock::new(),
+            lexicon: OnceLock::new(),
         })
     }
 
@@ -602,6 +604,22 @@ impl Pack {
     }
 
     /// Dense vectors, when the pack has them for `embedder_id` at `dim`.
+    /// The vocabulary of the retrieval units, built on first use, for reading
+    /// query words the index does not hold as typed.
+    pub fn lexicon(&self) -> Result<&crate::lexicon::Lexicon> {
+        if let Some(l) = self.lexicon.get() {
+            return Ok(l);
+        }
+        let texts: Vec<String> = {
+            let conn = self.conn();
+            let mut stmt = conn.prepare("SELECT text FROM chunk")?;
+            stmt.query_map([], |r| r.get(0))?
+                .collect::<rusqlite::Result<_>>()?
+        };
+        let built = crate::lexicon::Lexicon::build(texts.iter().map(String::as_str));
+        Ok(self.lexicon.get_or_init(|| built))
+    }
+
     pub(crate) fn vectors(&self, embedder_id: &str, dim: usize) -> Result<Option<&VecIndex>> {
         if self.meta("embedder_id") != Some(embedder_id)
             || self.meta("embed_dim").and_then(|d| d.parse::<usize>().ok()) != Some(dim)

@@ -15,6 +15,7 @@ pub mod delta;
 pub mod embed;
 pub mod error;
 pub mod grade;
+pub mod lexicon;
 #[cfg(feature = "llama")]
 pub mod llama;
 pub mod llm;
