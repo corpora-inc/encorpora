@@ -17,7 +17,9 @@
     "dev:b": "MAINT_PORT=4343 MAINT_ENGINE=http://127.0.0.1:4320 vite --host 127.0.0.1 --bypass-lock",
     "engines": "scripts/loop.sh",
     "test:flow": "node scripts/verify-flow.mjs",
-    "dev:c": "MAINT_PORT=4345 MAINT_ENGINE=http://127.0.0.1:4323 vite --host 127.0.0.1 --bypass-lock"
+    "dev:c": "MAINT_PORT=4345 MAINT_ENGINE=http://127.0.0.1:4323 vite --host 127.0.0.1 --bypass-lock",
+    "tauri": "tauri",
+    "build:mac": "scripts/build-mac.sh"
   },
   "dependencies": {
     "@fontsource/atkinson-hyperlegible-mono": "^5.3.0",
