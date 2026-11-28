@@ -99,8 +99,8 @@ def test_deep_checks_are_separate_from_release_gate():
         'changes', 'amp-browser', 'amp-native-session', 'amp-ui-sweep',
         'amp-ui-coverage', 'amp-content'}
     content = str(deep['jobs']['amp-content-checks']['steps'])
-    for command in ('npm run audit', 'npm run review:math', 'npm run test:inventory',
-                    'npm run test:placement-sim'):
+    for command in ('npm run audit', 'npm run review:math:publications', 'npm run review:math:cases',
+                    'npm run test:inventory', 'npm run test:placement-sim'):
         assert command in content
     # Scheduled/manual runs must not silently reuse an old successful result.
     restore = next(s for s in deep['jobs']['amp-content-checks']['steps']
@@ -120,6 +120,7 @@ def test_every_background_content_test_triggers_content_workflow():
 
 
 def test_parallel_content_lanes_preserve_all_checks_and_fail_closed(tmp_path):
+    import json
     import os
     from pathlib import Path
     import subprocess
@@ -128,15 +129,26 @@ def test_parallel_content_lanes_preserve_all_checks_and_fail_closed(tmp_path):
     jobs = yaml.safe_load(workflow.read_text())['jobs']
     matrix = jobs['amp-content-checks']
     assert matrix['strategy'] == {
-        'fail-fast': False, 'matrix': {'lane': ['publications', 'inventory']}}
-    assert matrix['timeout-minutes'] == 120
+        'fail-fast': False, 'matrix': {'lane': ['publications', 'math-review', 'inventory']}}
+    assert matrix['timeout-minutes'] == 90
     assert matrix['if'] == "needs.changes.outputs.content == 'true'"
     assert matrix['env']['CONTENT_LANE'] == '${{ matrix.lane }}'
     steps = matrix['steps']
     commands = {step['run']: step for step in steps if 'run' in step}
     for command in ('npm run audit', 'npm run publications', 'npm run production:queue',
-                    'npm run review:math', 'npm run test:placement-sim', 'npm run test:content'):
+                    'npm run review:math:publications', 'npm run test:content'):
         assert commands[command]['if'] == "matrix.lane == 'publications' && steps.reuse.outputs.verified != 'true'"
+    for command in ('npm run review:math:cases', 'npm run test:placement-sim'):
+        assert commands[command]['if'] == "matrix.lane == 'math-review' && steps.reuse.outputs.verified != 'true'"
+    # The two halves are the whole of `npm run review:math`: the same export
+    # and the same reviewer, split by its --cases-only / --publications-only.
+    scripts = json.loads((Path(__file__).resolve().parents[2] / 'amp/package.json').read_text())['scripts']
+    assert scripts['review:math:cases'].endswith('independent-math-review.py --cases-only < artifacts/math-review.jsonl')
+    assert 'tsx scripts/export-math-cases.ts > artifacts/math-review.jsonl' in scripts['review:math:cases']
+    assert scripts['review:math:publications'] == 'python3 scripts/independent-math-review.py --publications-only'
+    assert commands['npm run review:math:publications'] is not None
+    order = [step.get('run') for step in steps]
+    assert order.index('npm run publications') < order.index('npm run review:math:publications')
     assert commands['npm run test:inventory']['if'] == "matrix.lane == 'inventory' && steps.reuse.outputs.verified != 'true'"
     assert commands['npm ci']['if'] == "steps.reuse.outputs.verified != 'true'"
     assert not any(step.get('continue-on-error') for step in steps)

@@ -1,0 +1,565 @@
+proc_id: post-incident
+title: 'After an Incident: Power-Line Contact, Overload, Two-Block, Dropped Load, or Structural Damage'
+kind: operation
+summary: This procedure covers what to do after an incident. It starts with the immediate response to power-line
+  contact, then covers stopping and tagging out the crane, reporting in writing, a qualified person's inspection
+  of repairs, and operational aid checks before the crane goes back into service. Use it any time a crane contacts
+  a power line, is overloaded, two-blocks, drops a load, or has structural damage, or any time a repair or adjustment
+  affecting safe operation follows an incident.
+roles:
+- operator
+- competent_person
+- qualified_person
+lang: en
+section_ids:
+- 29cfr1926.1408(g)
+- 29cfr1926.1417(f)
+- 29cfr1926.1417(j)
+- 29cfr1926.1412(b)
+- 29cfr1926.1412(c)
+- 29cfr1926.1418
+- 29cfr1926.1416(e)
+steps:
+- ord: 1
+  phase: 'Immediate response: power-line contact'
+  text: If the crane contacts a power line, stay in the cab unless fire, explosion or another emergency forces you
+    out.
+  detail:
+    trainee: The crane and load may be energized. Inside the cab you are usually safest because you are not making
+      a path to ground. Stay seated, keep calm and do not touch anything that leads outside the cab.
+    operator: Stay in the cab. Leave only if there is an imminent danger of fire, explosion or another emergency.
+      If you can, call for help and have the utility contacted.
+    inspector: Verify the operator was trained on remaining in the cab except in an imminent emergency, and record
+      whether the operator stayed in the cab during the event.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1408(g)(1)(i)(B)
+  deficiency:
+    guidance: Leaving the cab of an energized crane without an imminent emergency risks electrocution.
+    action: Stay in the cab until the utility confirms the line is deenergized. Retrain the operator on power-line
+      contact procedures before they operate again.
+    section_id: 29cfr1926.1408(g)(1)(i)(B)
+    quote: The importance to the operator's safety of remaining inside the cab except where there is an imminent
+      danger of fire, explosion, or other emergency that necessitates leaving the cab.
+  practice_only: false
+- ord: 2
+  phase: 'Immediate response: power-line contact'
+  text: Warn everyone to stay away from the crane, the load and the ground around them.
+  detail:
+    trainee: The ground around an energized crane can carry voltage (step potential), and anyone touching the crane,
+      load or tag lines can be killed. Shout and signal people back. Good looks like nobody near the crane or load.
+    operator: Use the horn, radio and hand signals to keep crew back. Nobody touches the crane, load, rigging or
+      tag lines.
+    inspector: Verify crew training covered avoiding the equipment and load and the danger of the energized zone,
+      and record whether anyone approached or touched the crane or load.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1408(g)(1)(i)(D)
+  - 29cfr1926.1408(g)(1)(i)(E)
+  deficiency:
+    guidance: Someone near or touching the crane or load is exposed to electrocution and step potential.
+    action: Order everyone out of the area at once. Retrain the crew on power-line contact procedures.
+    section_id: 29cfr1926.1408(g)(1)(i)(E)
+    quote: The need for crew in the area to avoid approaching or touching the equipment and the load.
+  practice_only: false
+- ord: 3
+  phase: 'Immediate response: power-line contact'
+  text: If you must leave, jump clear and never touch the crane and the ground at the same time.
+  detail:
+    trainee: Touching the crane and the ground at the same moment puts current through your body. Jump clear with
+      your feet together and land without touching the crane. Then shuffle or hop away with your feet close together.
+      The landing and shuffling technique is common field practice; the rule only requires training on the safest
+      way to evacuate.
+    operator: Evacuate only for an imminent emergency. Jump clear, land with your feet together, move away without
+      lifting one foot far from the other, and never go back to the crane.
+    inspector: Verify the operator was trained on the danger of touching the equipment and ground at the same time,
+      and on the safest way to evacuate energized equipment.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1408(g)(1)(i)(A)
+  - 29cfr1926.1408(g)(1)(i)(C)
+  - 29cfr1926.1408(g)(1)(i)(D)
+  deficiency:
+    guidance: Stepping down while holding the crane, or striding away, can complete a circuit through the body.
+    action: Get medical attention for anyone exposed. Retrain on evacuation before they operate again.
+    section_id: 29cfr1926.1408(g)(1)(i)(A)
+    quote: Information regarding the danger of electrocution from the operator simultaneously touching the equipment
+      and the ground.
+  practice_only: false
+- ord: 4
+  phase: 'Immediate response: power-line contact'
+  text: Treat the line as energized until the utility confirms it is deenergized and visibly grounded.
+  detail:
+    trainee: Lines can re-energize automatically, so never assume the power is off. Only the utility owner/operator
+      can confirm it, and the line must also be visibly grounded at the site.
+    operator: Do not approach or move the crane until the utility owner/operator confirms the line has been, and
+      still is, deenergized and visibly grounded at the worksite.
+    inspector: Verify the utility owner/operator gave confirmation of deenergizing and visible grounding before
+      anyone approached the equipment.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1408(g)(1)(ii)
+  deficiency:
+    guidance: Without utility confirmation, the line and the crane must be treated as live.
+    action: Keep everyone clear and wait for confirmation from the utility owner/operator.
+    section_id: 29cfr1926.1408(g)(1)(ii)
+    quote: Power lines are presumed to be energized unless the utility owner/operator confirms that the power line
+      has been and continues to be deenergized and visibly grounded at the worksite.
+  practice_only: false
+- ord: 5
+  phase: 'Immediate response: power-line contact'
+  text: Record who at the utility confirmed deenergizing and grounding, and the time.
+  detail:
+    trainee: Write down the name of the utility contact and when they confirmed the line was dead and grounded.
+      This shows that nobody approached before it was safe.
+    operator: Log the utility contact's name, the time of confirmation and the line or circuit identifier if one
+      was given.
+    inspector: Record the utility confirmation details in the incident file.
+  check_kind: note
+  section_ids:
+  - 29cfr1926.1408(g)(1)(ii)
+  deficiency: null
+  practice_only: false
+- ord: 6
+  phase: 'Immediate response: power-line contact'
+  text: Do not rely on grounding, insulating links or proximity devices to make the crane safe to touch.
+  detail:
+    trainee: Grounding and insulating or warning devices have limits. They do not guarantee the crane is safe to
+      touch during contact, so treat the crane as live anyway.
+    operator: Even if the crane is grounded or has an insulating link, proximity alarm or range control device,
+      keep everyone clear until the utility confirms the line is dead.
+    inspector: Verify crew training covered the limitations of grounding and of insulating link, proximity alarm
+      and range control devices, if used.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1408(g)(1)(iv)
+  - 29cfr1926.1408(g)(1)(v)
+  deficiency:
+    guidance: Workers who assumed a device or ground made the crane safe were exposed to electrocution.
+    action: Clear the area. Retrain on the limits of grounding and protective devices.
+    section_id: 29cfr1926.1408(g)(1)(iv)
+    quote: The limitations of an insulating link/device, proximity alarm, and range control (and similar) device,
+      if used.
+  practice_only: false
+- ord: 7
+  phase: 'Immediate response: power-line contact'
+  text: Before moving the crane away, presume the line is uninsulated and restore safe clearance.
+  detail:
+    trainee: Assume a line is bare unless the utility, or a registered engineer who is a qualified person for power
+      lines, says it is insulated. Move the crane only to get back to a safe clearance distance.
+    operator: Treat the line as uninsulated. Once it is safe to move, move the boom and load slowly away and restore
+      safe clearance distance before doing anything else.
+    inspector: Verify the line was presumed uninsulated unless an authorized party confirmed otherwise, and that
+      crew training covered safe clearance distance.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1408(g)(1)(iii)
+  - 29cfr1926.1408(g)(1)(i)(F)
+  deficiency:
+    guidance: Relying on insulation that nobody confirmed exposes the crew to contact hazards.
+    action: Stop movement. Treat the line as uninsulated and keep safe clearance.
+    section_id: 29cfr1926.1408(g)(1)(iii)
+    quote: Power lines are presumed to be uninsulated unless the utility owner/operator or a registered engineer
+      who is a qualified person with respect to electrical power transmission and distribution confirms that a line
+      is insulated.
+  practice_only: false
+- ord: 8
+  phase: Stop and secure
+  text: Stop operations and refuse further loads until a qualified person determines safety is assured.
+  detail:
+    trainee: After any overload, two-block, dropped load, contact or damage, the operator has the authority to stop.
+      Do not make another lift just to finish the job.
+    operator: Stop all lifting. Do not handle more loads until a qualified person has determined that safety has
+      been assured.
+    inspector: Verify operations stopped after the incident and record who, as a qualified person, determined that
+      safety was assured before work resumed.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1418
+  deficiency:
+    guidance: Continuing to operate after an incident can turn hidden damage into a failure.
+    action: Stop operations now and hold until a qualified person has determined safety.
+    section_id: 29cfr1926.1418
+    quote: the operator must have the authority to stop and refuse to handle loads until a qualified person has
+      determined that safety has been assured.
+  practice_only: false
+- ord: 9
+  phase: Stop and secure
+  text: Land or secure the load only if it can be done safely; otherwise hold and get help.
+  detail:
+    trainee: A load hanging on a crane that may be damaged is a hazard. Land it slowly if the crane can still do
+      so safely. If not, keep everyone out from under it and wait for a qualified person. This is good practice,
+      not a stated rule.
+    operator: With minimal, smooth motion, land the load if it is safe to do so. Clear and barricade the fall zone.
+      After a two-block, do not keep running the hoist without guidance.
+    inspector: Record the load's final condition and position, and how it was secured.
+  check_kind: pass_fail
+  section_ids: []
+  deficiency:
+    guidance: A suspended or unstable load over an area people can enter is an ongoing hazard.
+    action: Barricade the fall zone and get a qualified person to plan how to land the load.
+    section_id: null
+    quote: null
+  practice_only: true
+- ord: 10
+  phase: Stop and secure
+  text: Photograph the scene, damage, load and crane configuration before anything is moved.
+  detail:
+    trainee: Photos show what happened and help find the cause. Take wide shots and close-ups of any damage. This
+      is good practice.
+    operator: Photograph the boom, hook block, rope, outriggers, ground, load, rigging and display or indicator
+      readings, if it is safe to get close.
+    inspector: Attach the photos to the incident file with times.
+  check_kind: photo
+  section_ids: []
+  deficiency: null
+  practice_only: true
+- ord: 11
+  phase: Tag out
+  text: Place a tag in the cab stating the equipment is out of service and not to be used.
+  detail:
+    trainee: The tag tells everyone, including the next shift, not to run the crane. Good looks like a clearly written
+      tag inside the cab where any operator will see it.
+    operator: Hang an out-of-service / do-not-use tag in the cab. Include the date, the reason and your name.
+    inspector: Verify a tag is in the cab stating the equipment is out of service and is not to be used.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1417(f)(1)
+  deficiency:
+    guidance: Without a tag, someone may run a damaged crane.
+    action: Place the tag in the cab before leaving the crane.
+    section_id: 29cfr1926.1417(f)(1)
+    quote: a tag must be placed in the cab stating that the equipment is out of service and is not to be used.
+  practice_only: false
+- ord: 12
+  phase: Tag out
+  text: If only one function is taken out of service, tag it in a conspicuous position.
+  detail:
+    trainee: Sometimes only one function, such as a hoist, is damaged. Its tag must be easy to see so nobody uses
+      that function.
+    operator: Put a tag at the control for the affected function stating that the function is out of service and
+      is not to be used.
+    inspector: Verify each out-of-service function has a conspicuous tag stating it is out of service and not to
+      be used.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1417(f)(1)
+  deficiency:
+    guidance: An untagged damaged function may be used by mistake.
+    action: Tag the function before anyone operates the crane.
+    section_id: 29cfr1926.1417(f)(1)
+    quote: a tag must be placed in a conspicuous position stating that the function is out of service and is not
+      to be used.
+  practice_only: false
+- ord: 13
+  phase: Tag out
+  text: Do not start the crane or use any tagged control until the tag is properly removed.
+  detail:
+    trainee: A tag means stop. Only an authorized person removes it. Otherwise the operator must first confirm that
+      nobody is working on or in danger on the machine and that the repair is done and working.
+    operator: Do not start the engine or activate a tagged control until an authorized person removes the tag, or
+      until you verify that nobody is in a dangerous position and the equipment is repaired and working properly.
+    inspector: Verify that nobody operated tagged equipment or controls before the tag was removed by an authorized
+      person or both conditions were verified.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1417(f)(2)(i)
+  - 29cfr1926.1417(f)(2)(i)(A)
+  - 29cfr1926.1417(f)(2)(i)(B)
+  - 29cfr1926.1417(f)(2)(ii)
+  deficiency:
+    guidance: Starting tagged equipment can injure people working on it or run damaged parts.
+    action: Shut down at once. Leave the equipment tagged until it is properly cleared.
+    section_id: 29cfr1926.1417(f)(2)(i)
+    quote: the operator must not activate the switch or start the equipment until the sign has been removed by a
+      person authorized to remove it
+  practice_only: false
+- ord: 14
+  phase: Report
+  text: Promptly report needed repairs in writing to the designated person and the next-shift operator.
+  detail:
+    trainee: Telling someone out loud is not enough. Write down what happened and what needs fixing, and give it
+      to the person your employer named to receive it. On shift work, the next operator gets it too.
+    operator: Promptly hand over a written report of the incident and the needed adjustments or repairs. Pass it
+      to the next operator if there are successive shifts.
+    inspector: Verify a written report was promptly given to the designated person and, where there are successive
+      shifts, to the next operator.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1417(j)(1)
+  deficiency:
+    guidance: Without a written report, repairs may be missed and the next shift may use the crane.
+    action: Write and deliver the report before leaving the site.
+    section_id: 29cfr1926.1417(j)(1)
+    quote: The operator must, in writing, promptly inform the person designated by the employer to receive such
+      information
+  practice_only: false
+- ord: 15
+  phase: Report
+  text: Record who received the written report and when.
+  detail:
+    trainee: Write down who got the report so there is no doubt it was delivered.
+    operator: Log the designated person's name, the date and time, and the report reference.
+    inspector: Record the report recipient and reference in the incident file.
+  check_kind: note
+  section_ids:
+  - 29cfr1926.1417(j)(1)
+  deficiency: null
+  practice_only: false
+- ord: 16
+  phase: Report
+  text: Confirm affected employees are told each shift about the repairs and alternative measures.
+  detail:
+    trainee: Everyone who works with the crane needs to know what is broken and what workarounds are in place, at
+      the start of every shift until the repair is done.
+    operator: At the start of each shift, confirm the crew has been told about the needed repairs and any alternative
+      measures.
+    inspector: Verify the employer notifies all affected employees at the beginning of each shift.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1417(j)(2)
+  deficiency:
+    guidance: Crew who are not told may use defective equipment or skip the alternative measures.
+    action: Hold a briefing before work starts this shift.
+    section_id: 29cfr1926.1417(j)(2)
+    quote: The employer must notify all affected employees, at the beginning of each shift, of the necessary adjustments
+      or repairs and all alternative measures.
+  practice_only: false
+- ord: 17
+  phase: Repair and inspection
+  text: List each repair or adjustment that relates to safe operation.
+  detail:
+    trainee: Repairs to safety devices, operator aids, controls, the power plant, brakes, load-sustaining structure,
+      the hook or operating mechanisms all require a qualified person's inspection before the crane is used.
+    operator: List every part repaired or adjusted, for example boom sections, rope, hook, brakes, the load moment
+      indicator or controls.
+    inspector: Record which repairs or adjustments relate to safe operation and so require inspection before initial
+      use.
+  check_kind: note
+  section_ids:
+  - 29cfr1926.1412(b)(1)
+  deficiency: null
+  practice_only: false
+- ord: 18
+  phase: Repair and inspection
+  text: 'Qualified person: confirm each repair meets manufacturer equipment criteria.'
+  detail:
+    trainee: The qualified person compares the repair against what the crane's manufacturer specifies.
+    operator: Do not use the crane until the qualified person has confirmed the repair meets the manufacturer criteria,
+      where they exist.
+    inspector: Determine whether each repair/adjustment meets manufacturer equipment criteria, where applicable
+      and available, and record the criteria used.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1412(b)(1)(i)
+  deficiency:
+    guidance: The repair does not meet the manufacturer's criteria.
+    action: Keep the crane tagged out and correct the repair before use.
+    section_id: 29cfr1926.1412(b)(1)(i)
+    quote: The qualified person must determine if the repair/adjustment meets manufacturer equipment criteria (where
+      applicable and available).
+  practice_only: false
+- ord: 19
+  phase: Repair and inspection
+  text: If manufacturer criteria are unavailable, decide whether an RPE is needed, then check against the developed
+    criteria.
+  detail:
+    trainee: When the manufacturer has no criteria, the qualified person decides whether a registered professional
+      engineer (RPE) must write them. The repair is then checked against those criteria.
+    operator: Do not use the crane until the criteria have been developed by the qualified person or an RPE and
+      the repair has been found to meet them.
+    inspector: Document whether an RPE was needed, who developed the criteria, and whether the repair meets them.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1412(b)(1)(ii)
+  - 29cfr1926.1412(b)(1)(ii)(A)
+  - 29cfr1926.1412(b)(1)(ii)(B)
+  deficiency:
+    guidance: The criteria are missing or were not developed by the right person, or the repair does not meet them.
+    action: Keep the crane tagged out. Get criteria developed by an RPE where one is needed, and correct the repair.
+    section_id: 29cfr1926.1412(b)(1)(ii)(A)
+    quote: If an RPE is needed, the employer must ensure that they are developed by an RPE.
+  practice_only: false
+- ord: 20
+  phase: Repair and inspection
+  text: Functionally test the repaired parts and any components the repair may affect.
+  detail:
+    trainee: A visual look is not enough. The repaired parts and anything connected to them must be run and shown
+      to work.
+    operator: Run each repaired function and any related function, first unloaded and then as the qualified person
+      directs, and report anything abnormal.
+    inspector: Witness and document the functional testing of the repaired/adjusted parts and affected components.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1412(b)(1)(iii)
+  deficiency:
+    guidance: The repair or a related component does not work correctly.
+    action: Keep the crane tagged out. Repair and retest.
+    section_id: 29cfr1926.1412(b)(1)(iii)
+    quote: The inspection must include functional testing of the repaired/adjusted parts and other components that
+      may be affected by the repair/adjustment.
+  practice_only: false
+- ord: 21
+  phase: Repair and inspection
+  text: If the crane was disassembled and reassembled, have a qualified person verify the configuration.
+  detail:
+    trainee: Replacing boom sections or other major parts can mean taking the crane apart and putting it back together.
+      The qualified person then checks that it is set up the way the criteria require.
+    operator: Do not use a reassembled crane until the qualified person's post-assembly inspection shows it is configured
+      correctly.
+    inspector: Inspect the configuration against manufacturer criteria, or against criteria developed by the qualified
+      person or an RPE if the manufacturer's are unavailable.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1412(c)(1)
+  - 29cfr1926.1412(c)(2)(i)
+  - 29cfr1926.1412(c)(2)(ii)
+  - 29cfr1926.1412(c)(3)
+  deficiency:
+    guidance: The crane is not configured to the applicable criteria.
+    action: Do not use the crane. Correct the configuration and reinspect.
+    section_id: 29cfr1926.1412(c)(3)
+    quote: Equipment must not be used until an inspection under this paragraph demonstrates that the equipment is
+      configured in accordance with the applicable criteria.
+  practice_only: false
+- ord: 22
+  phase: Operational aids
+  text: Check that Category II operational aids work after the incident.
+  detail:
+    trainee: Overloads, two-blocks and impacts can damage the indicators the operator relies on. These include the
+      boom angle or radius indicator, jib angle indicator, boom length indicator, load weighing device or load moment
+      indicator/limiter, outrigger position sensor and drum rotation indicator.
+    operator: Confirm that each aid fitted to this crane reads correctly from the operator's station, for example
+      by checking the boom angle against a measured angle.
+    inspector: Verify which Category II aids are fitted and working, and record any that are not working properly.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1416(e)(1)
+  - 29cfr1926.1416(e)(2)
+  - 29cfr1926.1416(e)(3)
+  - 29cfr1926.1416(e)(4)(i)
+  - 29cfr1926.1416(e)(4)(ii)
+  - 29cfr1926.1416(e)(5)(i)
+  - 29cfr1926.1416(e)(5)(ii)
+  deficiency:
+    guidance: An aid that does not work properly must be repaired within the time limit, and temporary alternative
+      measures are needed until then.
+    action: Report it in writing, use the temporary alternative measures, and schedule the repair.
+    section_id: 29cfr1926.1416(e)
+    quote: Operational aids listed in this paragraph that are not working properly must be repaired no later than
+      30 calendar days after the deficiency occurs.
+  practice_only: false
+- ord: 23
+  phase: Operational aids
+  text: If an aid is not working, put its temporary alternative measure in place before any lift.
+  detail:
+    trainee: Each aid has a set workaround. Examples are measuring radius or boom angle with a measuring device,
+      marking the boom for length, getting the load weight from a recognized source, checking outrigger position
+      by the manufacturer's procedure, and marking the hoist drum.
+    operator: Use the alternative measure for each failed aid. Do not lift until you have the load weight from a
+      recognized source or calculation.
+    inspector: Verify the correct temporary alternative measure is in use for each failed aid.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1416(e)(1)
+  - 29cfr1926.1416(e)(2)
+  - 29cfr1926.1416(e)(3)(i)
+  - 29cfr1926.1416(e)(3)(ii)
+  - 29cfr1926.1416(e)(3)(iii)
+  - 29cfr1926.1416(e)(4)(i)
+  - 29cfr1926.1416(e)(4)(ii)
+  - 29cfr1926.1416(e)(5)(i)
+  - 29cfr1926.1416(e)(5)(ii)
+  deficiency:
+    guidance: Lifting without a working aid or its alternative measure removes a required protection.
+    action: Do not lift until the alternative measure is in place.
+    section_id: 29cfr1926.1416(e)(4)(i)
+    quote: This information must be provided to the operator prior to the lift.
+  practice_only: false
+- ord: 24
+  phase: Operational aids
+  text: Record the date each aid failed, and the parts order date if parts are needed.
+  detail:
+    trainee: The repair deadline runs from the day the aid failed, so the date matters. If parts are ordered within
+      7 days and arrive late, the repair is due within 7 days after they arrive.
+    operator: Log the failure date. Give the parts order date and receipt date to the designated person.
+    inspector: Record the failure date, the parts order date and receipt date, and confirm the repair is done within
+      30 calendar days, or within 7 calendar days of parts receipt under the documented exception.
+  check_kind: note
+  section_ids:
+  - 29cfr1926.1416(e)
+  deficiency: null
+  practice_only: false
+- ord: 25
+  phase: Return to service
+  text: Do not use the crane until the inspection shows the repair meets the criteria.
+  detail:
+    trainee: The crane stays out of service until the qualified person's inspection shows the repair is acceptable.
+    operator: Confirm the qualified person's inspection is complete and passed before your first lift.
+    inspector: Verify the inspection showed the repair meets manufacturer criteria, or the developed criteria, before
+      initial use.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1412(b)(4)
+  deficiency:
+    guidance: The crane was used, or is about to be used, before passing inspection.
+    action: Stop use, keep the crane tagged out and complete the inspection.
+    section_id: 29cfr1926.1412(b)(4)
+    quote: Equipment must not be used until an inspection under this paragraph demonstrates that the repair/adjustment
+      meets the requirements of paragraph (b)(1)(i) of this section
+  practice_only: false
+- ord: 26
+  phase: Return to service
+  text: Confirm an authorized person removed the out-of-service tags.
+  detail:
+    trainee: Tags come off only when the repair is done and an authorized person removes them.
+    operator: Before starting, check the tags were removed by an authorized person. If they were not, verify nobody
+      is in a dangerous position and the crane is repaired and working properly.
+    inspector: Record who removed each tag and when.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1417(f)(2)(i)
+  - 29cfr1926.1417(f)(2)(ii)
+  deficiency:
+    guidance: The tag was removed improperly, or the crane's status is unclear.
+    action: Do not start the crane. Verify its status with the designated person.
+    section_id: 29cfr1926.1417(f)(2)(i)
+    quote: The equipment has been repaired and is working properly.
+  practice_only: false
+- ord: 27
+  phase: Records
+  text: 'Keep an incident record: event, damage, inspections, criteria used and test results.'
+  detail:
+    trainee: A complete record shows what failed and how it was fixed. This is good practice; the given rules do
+      not require this record.
+    operator: Add your account, the times, the load weight and the radius at the time of the incident.
+    inspector: Put together the reports, photos, qualified person findings, RPE criteria if used, and functional
+      test results.
+  check_kind: note
+  section_ids: []
+  deficiency: null
+  practice_only: true
+- ord: 28
+  phase: Records
+  text: Hold a lessons-learned review and record the corrective actions.
+  detail:
+    trainee: Talk through why it happened and what will stop it from happening again. This is good practice.
+    operator: Share what you saw and suggest changes to lift planning, spotting or setup.
+    inspector: Record the root cause, corrective actions and any retraining needed.
+  check_kind: note
+  section_ids: []
+  deficiency: null
+  practice_only: true
+prov:
+  prov_id: 215ee86475e502bdc91a
+  backend: claude-cli
+  model: claude-opus-5-5
+  prompt_id: procedures
+  prompt_version: '1'
+  prompt_sha256: 739cedd36ddf99f40f81ae9030ade12697499f0414421879c8bf963c86c8454f
+  input_sha256: 4eb1730d92d761c971c981c0b8140880f6a36d1d610bbf8783472a273fc7e33a
+  output_sha256: 6402ef798781ae7a2d441c80416c0e5e631dd2b28ccbe5998cb4986716121413
+  created_at: '2026-11-28T02:26:49+00:00'
+  verifier: crane-content/verify v1 (exact substring of eCFR text, typography repair)
+  verdict: pass
+  notes: null
