@@ -147,6 +147,49 @@ class HarvestBackend:
                         pack_version=out.get("pack_version"), check=out.get("check"), raw=out)
 
 
+class HarvestSearchBackend(HarvestBackend):
+    """`harvest search <pack> "<q>" --json --k K`: the ranked sections a search shows, no answer.
+
+    Scored on retrieval only (run with --no-judge): the ranked list is the distinct sections of the
+    hits in order, so R@k is "the right rule section among the first k results shown"."""
+
+    kind = "harvest-search"
+
+    def __init__(self, cfg: dict, corpus: Corpus | None, normalize: Normalizer):
+        super().__init__(cfg, corpus, normalize)
+        self.k = int(cfg.get("k", 20))
+
+    def ask(self, item: dict) -> Response:
+        cmd = [self.binary, "search", str(self.pack), item["question"], "--json", "--k", str(self.k)] + self.extra
+        t0 = time.perf_counter()
+        try:
+            p = subprocess.run(cmd, capture_output=True, text=True, timeout=self.timeout)
+        except (subprocess.TimeoutExpired, FileNotFoundError, PermissionError) as e:
+            return Response(ok=False, error=f"{type(e).__name__}: {e}")
+        wall = (time.perf_counter() - t0) * 1000
+        if p.returncode != 0:
+            return Response(ok=False, error=f"exit {p.returncode}: {p.stderr.strip()[-500:]}", wall_ms=wall)
+        try:
+            out = json.loads(p.stdout)
+        except json.JSONDecodeError as e:
+            return Response(ok=False, error=f"bad json: {e}: {p.stdout[:300]}", wall_ms=wall)
+        return self.parse(out, wall)
+
+    def parse(self, out: dict, wall: float | None) -> Response:
+        n = self.normalize
+        retrieved: list[str] = []
+        for h in out.get("hits") or []:
+            sid = h.get("section_id")
+            secs = [sid] if sid else (self.corpus.sections_for_ref(h.get("ref_kind"), h.get("ref_id") or "")
+                                      if self.corpus else [h.get("ref_id") or ""])
+            for s in secs:
+                s = n(s)
+                if s and s not in retrieved:
+                    retrieved.append(s)
+        return Response(ok=True, mode="search", text="", retrieved=retrieved, elapsed_ms=out.get("elapsed_ms"),
+                        wall_ms=wall, pack_version=out.get("pack_version"), raw=out)
+
+
 class _TextBaseline:
     def __init__(self, cfg: dict, normalize: Normalizer):
         self.name = cfg["name"]
@@ -240,6 +283,8 @@ def make_backend(cfg: dict, corpus: Corpus | None, normalize: Normalizer):
     kind = cfg["kind"]
     if kind == "harvest":
         return HarvestBackend(cfg, corpus, normalize)
+    if kind == "harvest-search":
+        return HarvestSearchBackend(cfg, corpus, normalize)
     if kind == "openai":
         return OpenAIBackend(cfg, normalize)
     if kind == "claude":

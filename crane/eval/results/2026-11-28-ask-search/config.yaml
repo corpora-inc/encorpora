@@ -1,0 +1,26 @@
+# Ask as search, 2026-11-28: `harvest search` at main e113660ed over the pack built from that commit
+# (../2026-11-27-release-bar/). Scored on retrieval only (--no-judge): R@k = the right rule section
+# among the first k results shown. Clean v1/v2 questions plus typo1, typo10 and misspell variants from
+# ../../tools/perturb.py. harvest runs on the lab machine through
+# ../2026-11-27-baseline/lab/harvest-remote.sh; "@lab/" paths are files there.
+set: ../../heldout-v1.jsonl
+reference_sections: ../../sources/sections-2026-11-24.jsonl
+
+match:
+  aliases:
+    - {pattern: "^29cfr1926\\.cc\\.app", replace: "29cfr1926-subpartCC-app"}
+    - {pattern: "-table-", replace: "-table"}
+
+backends:
+  - name: search-lexical
+    kind: harvest-search
+    binary: harvest
+    pack: pack
+    k: 20
+    extra_args: [--embedder, none]
+  - name: search-dense
+    kind: harvest-search
+    binary: harvest
+    pack: pack
+    k: 20
+    extra_args: [--embedder, "http://127.0.0.1:18096", --embedder-gguf, "@lab/home/models/embeddinggemma-2-Q8_0.gguf"]

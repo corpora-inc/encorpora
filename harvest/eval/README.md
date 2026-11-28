@@ -52,6 +52,7 @@ baseline, and a local HTTP server for the OpenAI-compatible baseline.
 | kind | what it runs |
 |---|---|
 | `harvest` | `<binary> ask <pack> "<q>" --json [--llm X] [--role R] [--equip E]`. `pass_equip: true` sends the item's equipment (mapped through `equip_map`). |
+| `harvest-search` | `<binary> search <pack> "<q>" --json --k K` (`k`, default 20): the ranked sections a search shows, no answer. Run with `--no-judge`; R@k is the right section among the first k results. |
 | `openai` | any OpenAI-compatible `/v1/chat/completions` endpoint (llama.cpp server, vLLM, Ollama), temperature 0, no retrieval. |
 | `claude` | headless `claude -p` with no tools, no settings, no MCP, from an empty directory; no retrieval. |
 
