@@ -91,6 +91,8 @@ export interface Question {
   choices: string[];
   answer: string;
   rationales: string[];
+  /** One line past the answer: why it matters, the edge case or the related rule. */
+  note?: string | null;
   section_ids: string[];
   difficulty: number;
   lang: string;
