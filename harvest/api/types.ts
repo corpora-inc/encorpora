@@ -1196,6 +1196,18 @@ export interface IdentMatch {
   pattern: string;
 }
 
+/** The vehicle's identity, as it reports it. */
+export interface Identity {
+  autopilot: string | null;
+  board_version: number | null;
+  firmware: string | null;
+  firmware_hash: string | null;
+  firmware_type: string | null;
+  product_id: number | null;
+  vehicle_type: string | null;
+  vendor_id: number | null;
+}
+
 /** What an import did. */
 export interface ImportReport {
   created: number;
@@ -1513,6 +1525,9 @@ export interface LevelText {
  * or radio link is `low`).
  */
 export type LinkClass = "low" | "normal";
+
+/** The link's state. */
+export type LinkState = "connecting" | "connected" | "lost" | "finished" | "closed" | "failed";
 
 /** The last model call, as `llm.status` reports it. */
 export interface LlmLast {
@@ -1885,6 +1900,16 @@ export interface PracticeSkill {
 export interface PracticeTopic {
   title: string;
   topic_id: string;
+}
+
+/** An active pre-arm failure. */
+export interface PrearmFailure {
+  /** It drops off at this time unless reported again. */
+  expires_at: string;
+  first_seen: string;
+  last_seen: string;
+  /** As the autopilot sent it. */
+  text: string;
 }
 
 /** The fields the model may prefill (by device class). */
@@ -3008,6 +3033,13 @@ export interface TestProcedure {
   title: string;
 }
 
+/** A status text with when it arrived. */
+export interface TimedText {
+  at: string;
+  severity: string;
+  text: string;
+}
+
 /** A whole tree, checked: every node passed and its text is verbatim. */
 export interface Tree {
   edges: FaultEdge[];
@@ -3061,6 +3093,77 @@ export interface ValueCell {
 
 /** Where a value came from. */
 export type ValueSource = "typed" | "plate" | "vehicle";
+
+/** Open the live vehicle link (replacing one already open). */
+export interface VehicleConnectParams {
+  /**
+   * `tcp:HOST:PORT` (a simulator serves `tcp:127.0.0.1:5760`),
+   * `udp:HOST:PORT` to listen (`udp:0.0.0.0:14550`), or `file:PATH` to
+   * replay a recording (`.tlog` or raw frames) through the same path.
+   */
+  address: string;
+  /**
+   * The asset this vehicle is: its identity is written to the asset's
+   * attributes (source `vehicle`) and its equipment scopes the match.
+   */
+  asset_id?: string | null;
+  /** The pack the vehicle's messages are read against. */
+  pack_id?: string | null;
+}
+
+/** A snapshot of the link. */
+export interface VehicleSnapshot {
+  armed: boolean | null;
+  battery_voltage: number | null;
+  bytes: number;
+  error: string | null;
+  frames: number;
+  identity: Identity;
+  last_heartbeat_at: string | null;
+  /**
+   * What `signal.match` reads: the active pre-arm texts, the other status
+   * texts of the last minute, and the unhealthy sensors.
+   */
+  observations: Observation[];
+  opened_at: string;
+  /** The pre-arm failures being reported now. */
+  prearm: PrearmFailure[];
+  prearm_ttl_ms: number;
+  state: LinkState;
+  system_status: string | null;
+  target: string;
+  /** Newest last. */
+  texts: TimedText[];
+  /** Sensors present and enabled but not healthy. */
+  unhealthy: string[];
+}
+
+/** The live link and what its messages resolve to. */
+export interface VehicleStatus {
+  asset_id: string | null;
+  /** Writing the identity failed (the link and the match are still good). */
+  attrs_error: string | null;
+  /**
+   * Identity fields the vehicle reported that the pack does not declare as
+   * attributes with source `vehicle` (so they were not written).
+   */
+  attrs_undeclared: string[];
+  /** Attributes written from the vehicle's identity on this call. */
+  attrs_written: string[];
+  /** `None`: no link was opened. */
+  link: VehicleSnapshot | null;
+  /**
+   * `signal.match` over `link.observations` (the active pre-arm
+   * failures, recent status texts, unhealthy sensors).
+   */
+  matched: SignalMatch | null;
+  pack_id: string | null;
+}
+
+/** Read the link (the pack set at connect unless one is given). */
+export interface VehicleStatusParams {
+  pack_id?: string | null;
+}
 
 /** One broken rule. */
 export interface Violation {
@@ -3162,6 +3265,9 @@ export interface Methods {
   "hub.enroll": { params: HubEnrollParams; result: EnrolledDevice };
   "hub.revoke": { params: HubRevokeParams; result: EnrolledDevice };
   "hub.whoami": { params: NoParams; result: Principal };
+  "vehicle.connect": { params: VehicleConnectParams; result: VehicleStatus };
+  "vehicle.status": { params: VehicleStatusParams; result: VehicleStatus };
+  "vehicle.disconnect": { params: NoParams; result: VehicleStatus };
 }
 
 export type Method = keyof Methods;
@@ -3245,4 +3351,7 @@ export const METHODS = [
   "hub.enroll",
   "hub.revoke",
   "hub.whoami",
+  "vehicle.connect",
+  "vehicle.status",
+  "vehicle.disconnect",
 ] as const satisfies readonly Method[];

@@ -945,6 +945,60 @@ for the shapes; this section states the rules.
   extensions pack id and version, `timestamp`, `stored`; `id` a UUID
   derived from the item id), for a training records system to ingest.
 
+### Vehicle link
+
+A device reads a vehicle live over MAVLink (`harvest_core::vehicle`). No
+link opens and nothing touches the network until `vehicle.connect`; a hub,
+or any caller the host identifies (a remote principal), is refused
+(`forbidden`): an address or a file path is the device's own business.
+
+- `vehicle.connect {address, pack_id?, asset_id?}`: `address` is
+  `tcp:HOST:PORT` (a simulator serves `tcp:127.0.0.1:5760`),
+  `udp:HOST:PORT` (listen; answer whoever sends, e.g.
+  `udp:0.0.0.0:14550`), or `file:PATH` (a `.tlog`, else raw frames),
+  replayed through the same frame path. A bad address, pack or asset is
+  refused before anything opens. It returns at once: the reader thread
+  opens the address itself, so a link that cannot open shows as `failed`
+  with the error. One link at a time; a second connect replaces the first.
+- The reader runs on its own thread; `vehicle.status` copies a snapshot
+  and never waits on the vehicle. As a ground station it sends a
+  heartbeat (1 Hz), asks for all streams at 2 Hz (every 10 s), asks for
+  `AUTOPILOT_VERSION` until it arrives (every 3 s), and asks the autopilot
+  to run its pre-arm checks (`MAV_CMD_RUN_PREARM_CHECKS`, every 15 s) so
+  failures are reported now rather than at the 30 s repeat.
+- `vehicle.status {pack_id?}` → `{link, pack_id, asset_id, matched,
+  attrs_written, attrs_undeclared, attrs_error}`. `link`: `target`,
+  `state` (`connecting`, `connected`, `lost` after 5 s with no
+  heartbeat, `finished` for a file, `closed`, `failed`), `error`,
+  `opened_at`, `last_heartbeat_at`, frame and byte counts, `identity`
+  (`vehicle_type`, `autopilot`, `firmware`, `firmware_type`,
+  `firmware_hash`, `board_version`, `vendor_id`, `product_id`), `armed`,
+  `system_status`, `unhealthy` sensors, `battery_voltage`, the last 100
+  status `texts` with arrival times, the active `prearm` failures, the
+  `observations`, and `prearm_ttl_ms`.
+- A `PreArm:` text is active from its first report until it has not been
+  reported for **75 s** (`expires_at`; the autopilot repeats them every
+  30 s while disarmed), or at once when `SYS_STATUS` reports the pre-arm
+  check present, enabled and healthy.
+- `observations` (what `signal.match` reads): the active pre-arm texts and
+  the other status texts of the last minute (`mavlink.statustext`), and the
+  unhealthy sensors (`mavlink.sensor_unhealthy`). `matched` is
+  `signal.match` over them, scoped by the asset's equipment and values.
+- The identity is written to the asset's attributes with source
+  `vehicle` when it changes: the attributes the pack declares with source
+  `vehicle`, by id (`firmware`, `firmware_hash`, `firmware_type`,
+  `board_version`, `vendor_id`, `product_id`, `vehicle_type`,
+  `autopilot`). `attrs_written` names what this call wrote;
+  `attrs_undeclared` names what the vehicle reported that the pack does
+  not declare. A failed write is `attrs_error` (logged); the link and the
+  match are still returned.
+- `vehicle.disconnect` stops the reader and returns the last snapshot
+  (`closed`); `link` is `null` when no link was opened.
+- A simulated boat for development (ArduPilot Rover software-in-the-loop,
+  `motorboat` frame, a separate process) is `harvest/sim/boat.py`; a test
+  (`tests/vehicle_sitl.rs`) runs it end to end when the simulator is built
+  and skips otherwise.
+
 ## Model interface
 
 Three methods may ask a model. Each returns a **proposal the engine

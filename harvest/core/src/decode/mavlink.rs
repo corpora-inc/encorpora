@@ -26,6 +26,10 @@ const KNOWN: &[(u32, u8, usize)] = &[
     (0, 50, 9),
     (1, 124, 31),
     (22, 220, 25),
+    (23, 168, 23),
+    (66, 148, 6),
+    (76, 152, 33),
+    (77, 143, 3),
     (147, 154, 36),
     (148, 178, 60),
     (253, 83, 54),
@@ -116,6 +120,37 @@ pub fn frames(bytes: &[u8], tlog: bool) -> (Vec<Frame>, Stats) {
         }
     }
     (out, st)
+}
+
+/// What the start of a buffer holds.
+pub enum Next {
+    /// A frame and the bytes it used.
+    Frame(Frame, usize),
+    /// Bytes to drop (noise, a bad CRC, a message this decoder does not
+    /// know).
+    Skip(usize),
+    /// Not enough bytes yet.
+    Need,
+}
+
+/// The next frame at the start of `buf` (a live stream: no timestamps).
+pub fn next_frame(buf: &[u8]) -> Next {
+    let Some(&start) = buf.first() else {
+        return Next::Need;
+    };
+    if start != 0xFD && start != 0xFE {
+        let n = buf
+            .iter()
+            .take_while(|b| **b != 0xFD && **b != 0xFE)
+            .count();
+        return Next::Skip(n);
+    }
+    match if start == 0xFD { v2(buf) } else { v1(buf) } {
+        Parsed::Frame(f, used) => Next::Frame(f, used),
+        Parsed::Unknown(used) => Next::Skip(used),
+        Parsed::BadCrc => Next::Skip(1),
+        Parsed::Short => Next::Need,
+    }
 }
 
 enum Parsed {
@@ -465,23 +500,38 @@ fn firmware_type(t: u8) -> String {
 /// Decode a stream.
 pub fn decode(bytes: &[u8], tlog: bool) -> Decoded {
     let (frames, stats) = frames(bytes, tlog);
-    let mut d = Decoded {
-        stats,
-        ..Default::default()
-    };
-    // Chunked STATUSTEXT: (sysid, id) → chunks so far.
-    type Chunks = BTreeMap<(u8, u16), (u8, Vec<(u8, String)>)>;
-    let mut chunks: Chunks = BTreeMap::new();
-    let mut heartbeats: BTreeMap<u8, Heartbeat> = BTreeMap::new();
-    let mut sys: BTreeMap<u8, SysStatus> = BTreeMap::new();
-    let mut versions: BTreeMap<u8, AutopilotVersion> = BTreeMap::new();
-    let mut batteries: BTreeMap<(u8, u8), Battery> = BTreeMap::new();
+    let mut dec = Decoder::default();
     for f in &frames {
+        dec.push(f);
+    }
+    let mut d = dec.finish();
+    d.stats = stats;
+    d
+}
+
+/// Chunked STATUSTEXT: (sysid, id) → (severity, chunks so far).
+type Chunks = BTreeMap<(u8, u16), (u8, Vec<(u8, String)>)>;
+
+/// Decodes frames one at a time (a live link) or a whole stream.
+#[derive(Debug, Default)]
+pub struct Decoder {
+    chunks: Chunks,
+    heartbeats: BTreeMap<u8, Heartbeat>,
+    sys: BTreeMap<u8, SysStatus>,
+    versions: BTreeMap<u8, AutopilotVersion>,
+    batteries: BTreeMap<(u8, u8), Battery>,
+    status_texts: Vec<StatusText>,
+    params: BTreeMap<String, f64>,
+}
+
+impl Decoder {
+    /// Take one frame; returns the status text it completed, if any.
+    pub fn push(&mut self, f: &Frame) -> Option<StatusText> {
         let p = &f.payload;
         match f.msgid {
             0 => {
                 let base = p[6];
-                heartbeats.insert(
+                self.heartbeats.insert(
                     f.sysid,
                     Heartbeat {
                         sysid: f.sysid,
@@ -500,7 +550,7 @@ pub fn decode(bytes: &[u8], tlog: bool) -> Decoded {
                 let health = u32le(p, 8);
                 let mv = u16le(p, 14);
                 let ca = i16le(p, 16);
-                sys.insert(
+                self.sys.insert(
                     f.sysid,
                     SysStatus {
                         sysid: f.sysid,
@@ -518,7 +568,7 @@ pub fn decode(bytes: &[u8], tlog: bool) -> Decoded {
                 let v = f32::from_le_bytes([p[0], p[1], p[2], p[3]]) as f64;
                 let name = cstr(&p[8..24]);
                 if !name.is_empty() {
-                    d.params.insert(name, (v * 1e6).round() / 1e6);
+                    self.params.insert(name, (v * 1e6).round() / 1e6);
                 }
             }
             147 => {
@@ -530,7 +580,7 @@ pub fn decode(bytes: &[u8], tlog: bool) -> Decoded {
                 let ca = i16le(p, 30);
                 let t = i16le(p, 8);
                 let consumed = i32le(p, 0);
-                batteries.insert(
+                self.batteries.insert(
                     (f.sysid, p[32]),
                     Battery {
                         sysid: f.sysid,
@@ -548,7 +598,7 @@ pub fn decode(bytes: &[u8], tlog: bool) -> Decoded {
             148 => {
                 let v = u32le(p, 16);
                 let custom = &p[36..44];
-                versions.insert(
+                self.versions.insert(
                     f.sysid,
                     AutopilotVersion {
                         sysid: f.sysid,
@@ -573,57 +623,88 @@ pub fn decode(bytes: &[u8], tlog: bool) -> Decoded {
                 let id = u16le(p, 51);
                 let seq = p[53];
                 if id == 0 {
-                    d.status_texts.push(StatusText {
+                    let t = StatusText {
                         sysid: f.sysid,
                         severity: severity(sev),
                         text: piece.trim_end().to_string(),
-                    });
-                } else {
-                    let full = p[1..51].iter().all(|&b| b != 0);
-                    let e = chunks.entry((f.sysid, id)).or_insert((sev, Vec::new()));
-                    e.1.push((seq, piece));
-                    // The last chunk is the one shorter than 50 characters.
-                    if !full {
-                        let (sev, mut parts) = chunks.remove(&(f.sysid, id)).expect("present");
-                        parts.sort_by_key(|(s, _)| *s);
-                        parts.dedup_by_key(|(s, _)| *s);
-                        d.status_texts.push(StatusText {
-                            sysid: f.sysid,
-                            severity: severity(sev),
-                            text: parts
-                                .into_iter()
-                                .map(|(_, t)| t)
-                                .collect::<String>()
-                                .trim_end()
-                                .to_string(),
-                        });
-                    }
+                    };
+                    self.status_texts.push(t.clone());
+                    return Some(t);
+                }
+                let full = p[1..51].iter().all(|&b| b != 0);
+                let e = self
+                    .chunks
+                    .entry((f.sysid, id))
+                    .or_insert((sev, Vec::new()));
+                e.1.push((seq, piece));
+                // The last chunk is the one shorter than 50 characters.
+                if !full {
+                    let (sev, mut parts) = self.chunks.remove(&(f.sysid, id)).expect("present");
+                    parts.sort_by_key(|(s, _)| *s);
+                    parts.dedup_by_key(|(s, _)| *s);
+                    let t = StatusText {
+                        sysid: f.sysid,
+                        severity: severity(sev),
+                        text: parts
+                            .into_iter()
+                            .map(|(_, t)| t)
+                            .collect::<String>()
+                            .trim_end()
+                            .to_string(),
+                    };
+                    self.status_texts.push(t.clone());
+                    return Some(t);
                 }
             }
             _ => {}
         }
+        None
     }
-    // Chunk runs that never ended: keep what arrived.
-    for ((sysid, _), (sev, mut parts)) in chunks {
-        parts.sort_by_key(|(s, _)| *s);
-        d.status_texts.push(StatusText {
-            sysid,
-            severity: severity(sev),
-            text: parts
-                .into_iter()
-                .map(|(_, t)| t)
-                .collect::<String>()
-                .trim_end()
-                .to_string(),
-        });
+
+    /// The newest heartbeat, system status and version (any system).
+    pub fn heartbeat(&self) -> Option<&Heartbeat> {
+        self.heartbeats.values().next()
     }
-    d.heartbeats = heartbeats.into_values().collect();
-    d.sys_status = sys.into_values().collect();
-    d.autopilot_versions = versions.into_values().collect();
-    d.batteries = batteries.into_values().collect();
-    d.observations = observations(&d);
-    d.plate = plate(&d);
-    d
+    pub fn sys_status(&self) -> Option<&SysStatus> {
+        self.sys.values().next()
+    }
+    pub fn version(&self) -> Option<&AutopilotVersion> {
+        self.versions.values().next()
+    }
+
+    /// Everything so far (unfinished chunk runs kept as they are).
+    pub fn snapshot(&self) -> Decoded {
+        let mut d = Decoded {
+            heartbeats: self.heartbeats.values().cloned().collect(),
+            sys_status: self.sys.values().cloned().collect(),
+            autopilot_versions: self.versions.values().cloned().collect(),
+            batteries: self.batteries.values().cloned().collect(),
+            status_texts: self.status_texts.clone(),
+            params: self.params.clone(),
+            ..Default::default()
+        };
+        d.observations = observations(&d);
+        d.plate = plate(&d);
+        d
+    }
+
+    /// Finish a whole stream: chunk runs that never ended keep what arrived.
+    pub fn finish(mut self) -> Decoded {
+        for ((sysid, _), (sev, mut parts)) in std::mem::take(&mut self.chunks) {
+            parts.sort_by_key(|(s, _)| *s);
+            self.status_texts.push(StatusText {
+                sysid,
+                severity: severity(sev),
+                text: parts
+                    .into_iter()
+                    .map(|(_, t)| t)
+                    .collect::<String>()
+                    .trim_end()
+                    .to_string(),
+            });
+        }
+        self.snapshot()
+    }
 }
 
 fn obs(kind: &str, value: String) -> Observation {

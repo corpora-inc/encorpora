@@ -63,6 +63,17 @@ pub struct Host {
     llm_last: Mutex<Option<LlmLast>>,
     /// The fields `lesson.prefill` may fill by default (the device class).
     prefill_policy: crate::assist::PrefillPolicy,
+    /// The live vehicle link (`vehicle.connect`), one at a time.
+    vehicle: Mutex<Option<VehicleSession>>,
+}
+
+/// A vehicle link and what it is read against.
+struct VehicleSession {
+    link: crate::vehicle::VehicleLink,
+    pack_id: Option<String>,
+    asset_id: Option<String>,
+    /// The identity last written to the asset.
+    written: Option<crate::vehicle::Identity>,
 }
 
 /// The last model call, as `llm.status` reports it.
@@ -111,6 +122,7 @@ impl Host {
             identity: None,
             llm_last: Mutex::new(None),
             prefill_policy: crate::assist::PrefillPolicy::default(),
+            vehicle: Mutex::new(None),
         }
     }
     /// The embedder for one pack (dense retrieval runs only when it matches).
@@ -455,6 +467,9 @@ methods! {
     "hub.enroll" => hub_enroll(HubEnrollParams) -> crate::hub::EnrolledDevice,
     "hub.revoke" => hub_revoke(HubRevokeParams) -> crate::hub::EnrolledDevice,
     "hub.whoami" => hub_whoami(NoParams) -> Principal,
+    "vehicle.connect" => vehicle_connect(VehicleConnectParams) -> VehicleStatus,
+    "vehicle.status" => vehicle_status(VehicleStatusParams) -> VehicleStatus,
+    "vehicle.disconnect" => vehicle_disconnect(NoParams) -> VehicleStatus,
 }
 
 // ------------------------------------------------------------ params
@@ -576,6 +591,50 @@ pub struct SignalMatchParams {
     pub equip_id: Option<String>,
     #[serde(default)]
     pub asset_id: Option<String>,
+}
+
+/// Open the live vehicle link (replacing one already open).
+#[derive(Debug, Clone, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct VehicleConnectParams {
+    /// `tcp:HOST:PORT` (a simulator serves `tcp:127.0.0.1:5760`),
+    /// `udp:HOST:PORT` to listen (`udp:0.0.0.0:14550`), or `file:PATH` to
+    /// replay a recording (`.tlog` or raw frames) through the same path.
+    pub address: String,
+    /// The pack the vehicle's messages are read against.
+    #[serde(default)]
+    pub pack_id: Option<String>,
+    /// The asset this vehicle is: its identity is written to the asset's
+    /// attributes (source `vehicle`) and its equipment scopes the match.
+    #[serde(default)]
+    pub asset_id: Option<String>,
+}
+
+/// Read the link (the pack set at connect unless one is given).
+#[derive(Debug, Clone, Default, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct VehicleStatusParams {
+    #[serde(default)]
+    pub pack_id: Option<String>,
+}
+
+/// The live link and what its messages resolve to.
+#[derive(Debug, Clone, Serialize, JsonSchema)]
+pub struct VehicleStatus {
+    /// `None`: no link was opened.
+    pub link: Option<crate::vehicle::VehicleSnapshot>,
+    pub pack_id: Option<String>,
+    pub asset_id: Option<String>,
+    /// `signal.match` over `link.observations` (the active pre-arm
+    /// failures, recent status texts, unhealthy sensors).
+    pub matched: Option<SignalMatch>,
+    /// Attributes written from the vehicle's identity on this call.
+    pub attrs_written: Vec<String>,
+    /// Identity fields the vehicle reported that the pack does not declare as
+    /// attributes with source `vehicle` (so they were not written).
+    pub attrs_undeclared: Vec<String>,
+    /// Writing the identity failed (the link and the match are still good).
+    pub attrs_error: Option<String>,
 }
 
 /// Raw vehicle data to decode into observations.
@@ -1560,6 +1619,176 @@ fn signal_decode(h: &Host, _who: Option<&Principal>, p: SignalDecodeParams) -> R
     let matched =
         search::signal_match_with(pack, &decoded.observations, equip.as_deref(), &values)?;
     Ok(SignalDecode { decoded, matched })
+}
+
+/// A vehicle link belongs to the device that runs it: never a hub's, never a
+/// remote caller's (an address or a file path is the device's own business).
+fn vehicle_local(h: &Host, who: Option<&Principal>) -> R<()> {
+    if who.is_some() || h.hub.is_some() {
+        return Err(ApiError {
+            code: "forbidden".into(),
+            message: "a vehicle link is local to a device".into(),
+        });
+    }
+    Ok(())
+}
+
+fn vehicle_connect(h: &Host, who: Option<&Principal>, p: VehicleConnectParams) -> R<VehicleStatus> {
+    vehicle_local(h, who)?;
+    let target = crate::vehicle::Target::parse(&p.address)?;
+    // Refuse a pack or an asset that is not there before opening anything.
+    h.pack(nz(&p.pack_id))?;
+    if let Some(a) = nz(&p.asset_id)
+        && h.records().asset(a)?.is_none()
+    {
+        return Err(Error::Invalid(format!("no asset {a:?}")).into());
+    }
+    let link = crate::vehicle::VehicleLink::connect(&target, p.address.trim())?;
+    let old = h
+        .vehicle
+        .lock()
+        .unwrap_or_else(|p| p.into_inner())
+        .replace(VehicleSession {
+            link,
+            pack_id: nz(&p.pack_id).map(str::to_string),
+            asset_id: nz(&p.asset_id).map(str::to_string),
+            written: None,
+        });
+    // The old reader stops off the caller's lock.
+    drop(old);
+    vehicle_read(h, None)
+}
+
+fn vehicle_status(h: &Host, who: Option<&Principal>, p: VehicleStatusParams) -> R<VehicleStatus> {
+    vehicle_local(h, who)?;
+    vehicle_read(h, nz(&p.pack_id))
+}
+
+fn vehicle_disconnect(h: &Host, who: Option<&Principal>, _: NoParams) -> R<VehicleStatus> {
+    vehicle_local(h, who)?;
+    let session = h.vehicle.lock().unwrap_or_else(|p| p.into_inner()).take();
+    let Some(s) = session else {
+        return Ok(VehicleStatus {
+            link: None,
+            pack_id: None,
+            asset_id: None,
+            matched: None,
+            attrs_written: Vec::new(),
+            attrs_undeclared: Vec::new(),
+            attrs_error: None,
+        });
+    };
+    let snap = s.link.close();
+    Ok(VehicleStatus {
+        link: Some(snap),
+        pack_id: s.pack_id,
+        asset_id: s.asset_id,
+        matched: None,
+        attrs_written: Vec::new(),
+        attrs_undeclared: Vec::new(),
+        attrs_error: None,
+    })
+}
+
+/// Snapshot the link, write a new identity to the asset, match the
+/// observations. The vehicle lock is held only to copy the snapshot.
+fn vehicle_read(h: &Host, pack_override: Option<&str>) -> R<VehicleStatus> {
+    use crate::maint::applic::AttrSource;
+    let (snap, pack_id, asset_id, written) = {
+        let g = h.vehicle.lock().unwrap_or_else(|p| p.into_inner());
+        match g.as_ref() {
+            None => {
+                return Ok(VehicleStatus {
+                    link: None,
+                    pack_id: None,
+                    asset_id: None,
+                    matched: None,
+                    attrs_written: Vec::new(),
+                    attrs_undeclared: Vec::new(),
+                    attrs_error: None,
+                });
+            }
+            Some(s) => (
+                s.link.snapshot(),
+                pack_override
+                    .map(str::to_string)
+                    .or_else(|| s.pack_id.clone()),
+                s.asset_id.clone(),
+                s.written.clone(),
+            ),
+        }
+    };
+    let pack = h.pack(pack_id.as_deref())?;
+    let defs = pack.attribute_defs()?;
+    let plate = snap.identity.plate();
+    let declared: std::collections::BTreeSet<&str> = defs
+        .iter()
+        .filter(|d| d.source == AttrSource::Vehicle)
+        .map(|d| d.id.as_str())
+        .collect();
+    let mut fields: Vec<String> = plate.params.keys().cloned().collect();
+    if plate.firmware.is_some() {
+        fields.push("firmware".into());
+    }
+    let mut attrs_undeclared: Vec<String> = fields
+        .into_iter()
+        .filter(|f| !declared.contains(f.as_str()))
+        .collect();
+    attrs_undeclared.sort();
+    let mut attrs_written = Vec::new();
+    let mut attrs_error = None;
+    if let Some(asset) = asset_id.as_deref()
+        && written.as_ref() != Some(&snap.identity)
+    {
+        let values = crate::records::plate_values(&defs, &plate, AttrSource::Vehicle);
+        let rec = h.records();
+        let current: BTreeMap<String, String> = rec
+            .asset_attrs(asset)?
+            .into_iter()
+            .map(|v| (v.attr, v.value))
+            .collect();
+        let changed: BTreeMap<String, Option<String>> = values
+            .into_iter()
+            .filter(|(k, v)| current.get(k) != Some(v))
+            .map(|(k, v)| (k, Some(v)))
+            .collect();
+        let result = if changed.is_empty() {
+            Ok(())
+        } else {
+            rec.set_asset_attrs(
+                asset,
+                &changed,
+                crate::records::ValueSource::Vehicle,
+                Some(&defs),
+            )
+            .map(|_| ())
+        };
+        drop(rec);
+        match result {
+            Ok(()) => {
+                attrs_written = changed.into_keys().collect();
+                if let Some(s) = h.vehicle.lock().unwrap_or_else(|p| p.into_inner()).as_mut() {
+                    s.written = Some(snap.identity.clone());
+                }
+            }
+            Err(e) => {
+                eprintln!("vehicle: writing the identity to {asset}: {e}");
+                attrs_error = Some(e.to_string());
+            }
+        }
+    }
+    let equip = equip_for(h, &None, &asset_id)?;
+    let values = h.records().attr_values(asset_id.as_deref())?;
+    let matched = search::signal_match_with(&pack, &snap.observations, equip.as_deref(), &values)?;
+    Ok(VehicleStatus {
+        link: Some(snap),
+        pack_id,
+        asset_id,
+        matched: Some(matched),
+        attrs_written,
+        attrs_undeclared,
+        attrs_error,
+    })
 }
 
 fn tree_list(h: &Host, _who: Option<&Principal>, p: TreeListParams) -> R<Vec<FaultTree>> {
