@@ -38,6 +38,7 @@ pub mod shell;
 pub mod sim;
 pub mod sync;
 pub mod tools;
+pub mod vehicle;
 
 #[doc(hidden)]
 pub mod fixture;

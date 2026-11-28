@@ -82,3 +82,27 @@ The invariants:
 - **Attachments never delay records:** with `photos`, every record and lesson reaches the hub at the same moment with the attachment lane on as with it off.
 - **No attachment marked sent without the hub:** every photo a device marks sent (full or downscaled), the hub holds.
 - **Refused traffic bounded:** `bytes.refused` stays within (refused devices) × (days + 12) × (one hello and its answer), which is what the back-off allows.
+
+## Simulated boat (`boat.py`)
+
+A development vehicle for the app's live link: ArduPilot Rover
+software-in-the-loop with the `motorboat` frame, headless. The simulator is
+a separate process built from the ArduPilot source (GPLv3); nothing in
+harvest links or ships it. Build it once from a checkout (`./waf configure
+--board sitl && ./waf rover`), then, with a Python that has `pymavlink`:
+
+| Command | What it does |
+|---|---|
+| `boat.py start` | Starts the boat and waits until it runs. The app connects to `tcp:127.0.0.1:5760`. |
+| `boat.py inject compass` | Compass 1 fails (`SIM_MAG1_FAIL 1`). |
+| `boat.py inject rc` | The radio is lost (`SIM_RC_FAIL 1`). |
+| `boat.py inject gps` | GPS 1 off (`SIM_GPS1_ENABLE 0`), with `ARMING_NEED_LOC 1` so the boat checks for a position in Manual. |
+| `boat.py inject battery [VOLTS]` | The battery reads 9 V or `VOLTS` (`SIM_BATT_VOLTAGE`), with `BATT_ARM_VOLT 11` so the arming check has a threshold. |
+| `boat.py clear [NAME]` | Restores what was injected (all of it with no name). |
+| `boat.py status` | Asks for the pre-arm checks and prints the texts that come back. |
+| `boat.py stop` | Stops it. |
+
+The tool talks on the simulator's second port (5762) and leaves 5760 for
+the app. `HARVEST_ARDUPILOT` names the source checkout and
+`HARVEST_BOAT_DIR` the working folder (defaults under
+`~/.cache/harvest/`).

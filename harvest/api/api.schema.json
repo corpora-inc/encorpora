@@ -4350,6 +4350,78 @@
       ],
       "type": "object"
     },
+    "Identity": {
+      "description": "The vehicle's identity, as it reports it.",
+      "properties": {
+        "autopilot": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "board_version": {
+          "format": "uint32",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "firmware": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "firmware_hash": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "firmware_type": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "product_id": {
+          "format": "uint16",
+          "maximum": 65535,
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "vehicle_type": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "vendor_id": {
+          "format": "uint16",
+          "maximum": 65535,
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "vehicle_type",
+        "autopilot",
+        "firmware",
+        "firmware_type",
+        "firmware_hash",
+        "board_version",
+        "vendor_id",
+        "product_id"
+      ],
+      "type": "object"
+    },
     "ImportReport": {
       "description": "What an import did.",
       "properties": {
@@ -5633,6 +5705,41 @@
         "normal"
       ],
       "type": "string"
+    },
+    "LinkState": {
+      "description": "The link's state.",
+      "oneOf": [
+        {
+          "const": "connecting",
+          "description": "Opening, or open with no heartbeat yet.",
+          "type": "string"
+        },
+        {
+          "const": "connected",
+          "description": "Heartbeats arriving.",
+          "type": "string"
+        },
+        {
+          "const": "lost",
+          "description": "No heartbeat for a while (the link stays open and recovers).",
+          "type": "string"
+        },
+        {
+          "const": "finished",
+          "description": "A recorded file played to its end.",
+          "type": "string"
+        },
+        {
+          "const": "closed",
+          "description": "Closed by the host.",
+          "type": "string"
+        },
+        {
+          "const": "failed",
+          "description": "It could not be opened, or it broke.",
+          "type": "string"
+        }
+      ]
     },
     "LlmLast": {
       "description": "The last model call, as `llm.status` reports it.",
@@ -6981,6 +7088,32 @@
       "required": [
         "topic_id",
         "title"
+      ],
+      "type": "object"
+    },
+    "PrearmFailure": {
+      "description": "An active pre-arm failure.",
+      "properties": {
+        "expires_at": {
+          "description": "It drops off at this time unless reported again.",
+          "type": "string"
+        },
+        "first_seen": {
+          "type": "string"
+        },
+        "last_seen": {
+          "type": "string"
+        },
+        "text": {
+          "description": "As the autopilot sent it.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "text",
+        "first_seen",
+        "last_seen",
+        "expires_at"
       ],
       "type": "object"
     },
@@ -10843,6 +10976,26 @@
       ],
       "type": "object"
     },
+    "TimedText": {
+      "description": "A status text with when it arrived.",
+      "properties": {
+        "at": {
+          "type": "string"
+        },
+        "severity": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "at",
+        "severity",
+        "text"
+      ],
+      "type": "object"
+    },
     "Tree": {
       "description": "A whole tree, checked: every node passed and its text is verbatim.",
       "properties": {
@@ -11041,6 +11194,230 @@
         "vehicle"
       ],
       "type": "string"
+    },
+    "VehicleConnectParams": {
+      "additionalProperties": false,
+      "description": "Open the live vehicle link (replacing one already open).",
+      "properties": {
+        "address": {
+          "description": "`tcp:HOST:PORT` (a simulator serves `tcp:127.0.0.1:5760`),\n`udp:HOST:PORT` to listen (`udp:0.0.0.0:14550`), or `file:PATH` to\nreplay a recording (`.tlog` or raw frames) through the same path.",
+          "type": "string"
+        },
+        "asset_id": {
+          "default": null,
+          "description": "The asset this vehicle is: its identity is written to the asset's\nattributes (source `vehicle`) and its equipment scopes the match.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "pack_id": {
+          "default": null,
+          "description": "The pack the vehicle's messages are read against.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "address"
+      ],
+      "type": "object"
+    },
+    "VehicleSnapshot": {
+      "description": "A snapshot of the link.",
+      "properties": {
+        "armed": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "battery_voltage": {
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "bytes": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "error": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "frames": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "identity": {
+          "$ref": "#/$defs/Identity"
+        },
+        "last_heartbeat_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "observations": {
+          "description": "What `signal.match` reads: the active pre-arm texts, the other status\ntexts of the last minute, and the unhealthy sensors.",
+          "items": {
+            "$ref": "#/$defs/Observation"
+          },
+          "type": "array"
+        },
+        "opened_at": {
+          "type": "string"
+        },
+        "prearm": {
+          "description": "The pre-arm failures being reported now.",
+          "items": {
+            "$ref": "#/$defs/PrearmFailure"
+          },
+          "type": "array"
+        },
+        "prearm_ttl_ms": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "state": {
+          "$ref": "#/$defs/LinkState"
+        },
+        "system_status": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "target": {
+          "type": "string"
+        },
+        "texts": {
+          "description": "Newest last.",
+          "items": {
+            "$ref": "#/$defs/TimedText"
+          },
+          "type": "array"
+        },
+        "unhealthy": {
+          "description": "Sensors present and enabled but not healthy.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "target",
+        "state",
+        "error",
+        "opened_at",
+        "last_heartbeat_at",
+        "frames",
+        "bytes",
+        "identity",
+        "armed",
+        "system_status",
+        "unhealthy",
+        "battery_voltage",
+        "texts",
+        "prearm",
+        "observations",
+        "prearm_ttl_ms"
+      ],
+      "type": "object"
+    },
+    "VehicleStatus": {
+      "description": "The live link and what its messages resolve to.",
+      "properties": {
+        "asset_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "attrs_error": {
+          "description": "Writing the identity failed (the link and the match are still good).",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "attrs_undeclared": {
+          "description": "Identity fields the vehicle reported that the pack does not declare as\nattributes with source `vehicle` (so they were not written).",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "attrs_written": {
+          "description": "Attributes written from the vehicle's identity on this call.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "link": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/VehicleSnapshot"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "`None`: no link was opened."
+        },
+        "matched": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SignalMatch"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "`signal.match` over `link.observations` (the active pre-arm\nfailures, recent status texts, unhealthy sensors)."
+        },
+        "pack_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "link",
+        "pack_id",
+        "asset_id",
+        "matched",
+        "attrs_written",
+        "attrs_undeclared",
+        "attrs_error"
+      ],
+      "type": "object"
+    },
+    "VehicleStatusParams": {
+      "additionalProperties": false,
+      "description": "Read the link (the pack set at connect unless one is given).",
+      "properties": {
+        "pack_id": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
     },
     "Violation": {
       "description": "One broken rule.",
@@ -11796,6 +12173,30 @@
           "$ref": "#/$defs/FaultTree"
         },
         "type": "array"
+      }
+    },
+    "vehicle.connect": {
+      "params": {
+        "$ref": "#/$defs/VehicleConnectParams"
+      },
+      "result": {
+        "$ref": "#/$defs/VehicleStatus"
+      }
+    },
+    "vehicle.disconnect": {
+      "params": {
+        "$ref": "#/$defs/NoParams"
+      },
+      "result": {
+        "$ref": "#/$defs/VehicleStatus"
+      }
+    },
+    "vehicle.status": {
+      "params": {
+        "$ref": "#/$defs/VehicleStatusParams"
+      },
+      "result": {
+        "$ref": "#/$defs/VehicleStatus"
       }
     }
   },
