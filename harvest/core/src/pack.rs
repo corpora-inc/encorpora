@@ -603,7 +603,6 @@ impl Pack {
             .optional()?)
     }
 
-    /// Dense vectors, when the pack has them for `embedder_id` at `dim`.
     /// The vocabulary of the retrieval units, built on first use, for reading
     /// query words the index does not hold as typed.
     pub fn lexicon(&self) -> Result<&crate::lexicon::Lexicon> {
@@ -620,6 +619,7 @@ impl Pack {
         Ok(self.lexicon.get_or_init(|| built))
     }
 
+    /// Dense vectors, when the pack has them for `embedder_id` at `dim`.
     pub(crate) fn vectors(&self, embedder_id: &str, dim: usize) -> Result<Option<&VecIndex>> {
         if self.meta("embedder_id") != Some(embedder_id)
             || self.meta("embed_dim").and_then(|d| d.parse::<usize>().ok()) != Some(dim)

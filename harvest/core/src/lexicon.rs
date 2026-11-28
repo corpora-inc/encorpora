@@ -11,7 +11,7 @@
 
 use crate::normalize::{fold, is_stopword, stem, tokens};
 use serde::Serialize;
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 
 /// How a query word the pack does not hold as typed was read.
 #[derive(Debug, Clone, PartialEq, Eq, Serialize)]
@@ -25,45 +25,64 @@ pub struct Reading {
     pub via: &'static str,
 }
 
-/// Stem → (documents holding it, the commonest word that produced it).
+/// Longer words are not read: a pasted blob must not stall a search.
+const MAX_WORD: usize = 32;
+/// Distinct words read from one query.
+const MAX_WORDS: usize = 32;
+
+/// The pack's vocabulary: stems with document frequency and commonest word,
+/// every word as written, and every pair of adjacent words.
 #[derive(Debug, Default)]
 pub struct Lexicon {
+    /// Stem → (documents holding it, the commonest word that produced it).
     terms: HashMap<String, (u32, String)>,
+    /// Every content word as written → its stem.
+    words: HashMap<String, String>,
+    /// "power line": adjacent words, to confirm a run-together reading.
+    pairs: HashSet<String>,
 }
 
 impl Lexicon {
     /// Build from the retrieval texts, one document each.
     pub fn build<'a>(docs: impl IntoIterator<Item = &'a str>) -> Self {
         let mut df: HashMap<String, u32> = HashMap::new();
-        let mut words: HashMap<String, HashMap<String, u32>> = HashMap::new();
+        let mut counts: HashMap<String, HashMap<String, u32>> = HashMap::new();
+        let mut pairs: HashSet<String> = HashSet::new();
         for doc in docs {
-            let mut seen = std::collections::HashSet::new();
-            for t in tokens(doc) {
+            let toks = tokens(doc);
+            for w in toks.windows(2) {
+                pairs.insert(format!("{} {}", w[0], w[1]));
+            }
+            let mut seen = HashSet::new();
+            for t in toks {
                 if is_stopword(&t) || is_number(&t) {
                     continue;
                 }
                 let s = stem(&t);
-                *words.entry(s.clone()).or_default().entry(t).or_insert(0) += 1;
+                *counts.entry(s.clone()).or_default().entry(t).or_insert(0) += 1;
                 if seen.insert(s.clone()) {
                     *df.entry(s).or_insert(0) += 1;
                 }
             }
         }
-        let terms = df
-            .into_iter()
-            .map(|(s, n)| {
-                let surface = words
-                    .get(&s)
-                    .and_then(|m| {
-                        m.iter()
-                            .max_by(|a, b| a.1.cmp(b.1).then_with(|| b.0.cmp(a.0)))
-                            .map(|(w, _)| w.clone())
-                    })
-                    .unwrap_or_else(|| s.clone());
-                (s, (n, surface))
-            })
-            .collect();
-        Self { terms }
+        let mut words = HashMap::new();
+        let mut terms = HashMap::new();
+        for (s, n) in df {
+            let m = counts.remove(&s).unwrap_or_default();
+            let surface = m
+                .iter()
+                .max_by(|a, b| a.1.cmp(b.1).then_with(|| b.0.cmp(a.0)))
+                .map_or_else(|| s.clone(), |(w, _)| w.clone());
+            for w in m.into_keys() {
+                words.insert(w, s.clone());
+            }
+            terms.insert(s, (n, surface));
+        }
+        Self {
+            terms,
+            words,
+            pairs,
+        }
     }
 
     fn df(&self, stem: &str) -> u32 {
@@ -83,28 +102,35 @@ impl Lexicon {
         // Hyphenated words, joined: "de-energized" also searches "deenergized".
         for word in folded.split(|c: char| !(c.is_alphanumeric() || c == '-')) {
             let parts: Vec<&str> = word.split('-').filter(|p| !p.is_empty()).collect();
-            if parts.len() < 2 {
+            if parts.len() < 2 || word.chars().count() > MAX_WORD {
                 continue;
             }
             let joined: String = parts.concat();
-            if self.df(&stem(&joined)) > 0 {
+            let word = word.trim_matches('-').to_string();
+            if self.df(&stem(&joined)) > 0 && !out.iter().any(|r| r.word == word) {
                 out.push(Reading {
-                    word: word.trim_matches('-').to_string(),
+                    word,
                     as_words: vec![self.surface(&stem(&joined))],
                     via: "join",
                 });
             }
         }
-        let mut seen = std::collections::HashSet::new();
+        let mut seen = HashSet::new();
         for w in tokens(query) {
-            if is_stopword(&w) || is_number(&w) || !seen.insert(w.clone()) {
+            if is_stopword(&w) || is_number(&w) || w.chars().count() > MAX_WORD || seen.contains(&w)
+            {
                 continue;
             }
+            if seen.len() >= MAX_WORDS {
+                break;
+            }
+            seen.insert(w.clone());
             let s = stem(&w);
             if self.df(&s) > 0 {
-                // A rare run-together form also searches the usual two words.
+                // A rare run-together form ("powerline") also searches the two
+                // words the pack writes side by side ("power line").
                 if self.df(&s) <= 2
-                    && let Some(halves) = self.split(&w)
+                    && let Some(halves) = self.split(&w, true)
                 {
                     out.push(Reading {
                         word: w,
@@ -114,74 +140,79 @@ impl Lexicon {
                 }
                 continue;
             }
-            if let Some(v) = spelling_variants(&w)
+            let reading = if let Some(v) = spelling_variants(&w)
                 .into_iter()
                 .find(|v| self.df(&stem(v)) > 0)
             {
+                Some((vec![v], "spelling"))
+            } else if let Some(near) = self.nearest(&w) {
+                Some((vec![near], "typo"))
+            } else {
+                self.split(&w, false).map(|h| (h, "split"))
+            };
+            if let Some((as_words, via)) = reading {
                 out.push(Reading {
                     word: w,
-                    as_words: vec![self.surface(&stem(&v))],
-                    via: "spelling",
-                });
-            } else if let Some(halves) = self.split(&w) {
-                out.push(Reading {
-                    word: w,
-                    as_words: halves,
-                    via: "split",
-                });
-            } else if let Some(near) = self.nearest(&s) {
-                out.push(Reading {
-                    word: w,
-                    as_words: vec![self.surface(&near)],
-                    via: "typo",
+                    as_words,
+                    via,
                 });
             }
         }
         out
     }
 
-    /// "powerline" → ["power", "line"] when both halves are indexed.
-    fn split(&self, w: &str) -> Option<Vec<String>> {
+    /// "powerline" → ["power", "line"]: both halves, four letters or more,
+    /// are words the pack holds, the most even cut first. With `adjacent`,
+    /// the pack must also write the two side by side.
+    fn split(&self, w: &str, adjacent: bool) -> Option<Vec<String>> {
         let chars: Vec<char> = w.chars().collect();
-        if chars.len() < 6 {
+        if chars.len() < 8 {
             return None;
         }
-        for i in 3..=chars.len() - 3 {
+        let mid = chars.len() / 2;
+        let mut cuts: Vec<usize> = (4..=chars.len() - 4).collect();
+        cuts.sort_by_key(|i| i.abs_diff(mid));
+        for i in cuts {
             let a: String = chars[..i].iter().collect();
             let b: String = chars[i..].iter().collect();
-            if is_stopword(&a) || is_stopword(&b) {
-                continue;
-            }
-            let (sa, sb) = (stem(&a), stem(&b));
-            if self.df(&sa) > 0 && self.df(&sb) > 0 {
-                return Some(vec![self.surface(&sa), self.surface(&sb)]);
+            if self.words.contains_key(&a)
+                && self.words.contains_key(&b)
+                && (!adjacent || self.pairs.contains(&format!("{a} {b}")))
+            {
+                return Some(vec![a, b]);
             }
         }
         None
     }
 
-    /// The closest indexed stem: one edit for stems of 5 to 7 letters, two
-    /// from 8. Ties go to the commoner stem, then the first alphabetically.
-    fn nearest(&self, s: &str) -> Option<String> {
-        let n = s.chars().count();
-        if n < 5 || !s.chars().all(char::is_alphabetic) {
+    /// The closest word the pack holds, compared as whole words (a stemmer
+    /// cuts a correct word harder than a misspelt one): one edit for words of
+    /// 5 to 7 letters, two from 8. Ties go to the commoner stem, then the
+    /// first alphabetically.
+    fn nearest(&self, w: &str) -> Option<String> {
+        let n = w.chars().count();
+        if n < 5 || !w.chars().all(char::is_alphabetic) {
             return None;
         }
         let max = if n >= 8 { 2 } else { 1 };
         let mut best: Option<(&str, usize, u32)> = None;
-        for (t, (df, _)) in &self.terms {
-            let d = edit_distance(s, t, max);
+        for (cand, s) in &self.words {
+            if cand.chars().count().abs_diff(n) > max {
+                continue;
+            }
+            let d = edit_distance(w, cand, max);
             if d > max {
                 continue;
             }
+            let df = self.df(s);
             let better = match best {
                 None => true,
-                Some((bt, bd, bdf)) => {
-                    d < bd || (d == bd && (*df > bdf || (*df == bdf && t.as_str() < bt)))
+                Some((bw, bd, bdf)) => {
+                    d < bd || (d == bd && (df > bdf || (df == bdf && cand.as_str() < bw)))
                 }
             };
             if better {
-                best = Some((t.as_str(), d, *df));
+                best = Some((cand.as_str(), d, df));
             }
         }
         best.map(|b| b.0.to_string())
@@ -347,13 +378,13 @@ mod tests {
             l.read("outrigers"),
             vec![Reading {
                 word: "outrigers".into(),
-                as_words: vec!["outrigger".into()],
+                as_words: vec!["outriggers".into()],
                 via: "typo"
             }]
         );
         assert_eq!(
             l.read("tyre pressure")[0].as_words,
-            vec!["tires".to_string()]
+            vec!["tire".to_string()]
         );
         assert_eq!(
             l.read("powerline")[0].as_words,
@@ -370,6 +401,37 @@ mod tests {
             "words the pack holds are not re-read"
         );
         assert!(l.read("xyzzy qwerty").is_empty());
+    }
+
+    #[test]
+    fn a_rare_word_the_pack_holds_is_split_only_into_words_it_writes_side_by_side() {
+        let l = Lexicon::build([
+            "Nothing may be hinged. Offering ring buoys.",
+            "Keep the powerline clear. The power line is energized.",
+        ]);
+        assert!(
+            l.read("nothing offering").is_empty(),
+            "{:?}",
+            l.read("nothing offering")
+        );
+        assert_eq!(
+            l.read("powerline"),
+            vec![Reading {
+                word: "powerline".into(),
+                as_words: vec!["power".into(), "line".into()],
+                via: "split"
+            }]
+        );
+    }
+
+    #[test]
+    fn long_input_is_not_read() {
+        let l = lex();
+        let t = std::time::Instant::now();
+        assert!(l.read(&"x".repeat(20_000)).is_empty());
+        let many: Vec<String> = (0..2000).map(|i| format!("zq{i}word")).collect();
+        let _ = l.read(&many.join(" "));
+        assert!(t.elapsed().as_millis() < 500, "{:?}", t.elapsed());
     }
 
     #[test]

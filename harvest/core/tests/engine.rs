@@ -95,6 +95,15 @@ fn lexical_forgives_spelling_typos_and_run_together_words() {
         let top = r.hits.iter().find(|h| h.lexical > 0.0).expect(q);
         assert_eq!(top.section_id.as_deref(), Some(want), "{q}");
     }
+    // The answer gate counts a read word as covered: a typo is answered like the word.
+    let opts = AskOptions::default();
+    let typed = e
+        .ask("how often is a periodic inspecton needed", &opts)
+        .unwrap();
+    let right = e
+        .ask("how often is a periodic inspection needed", &opts)
+        .unwrap();
+    assert_eq!(typed.mode, right.mode, "{:?}", typed.support);
     // A word the pack holds is never re-read.
     let r = e
         .retriever()

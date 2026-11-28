@@ -119,7 +119,31 @@ impl<'a> Retriever<'a> {
             .iter()
             .map(|e| (e.equip_id.clone(), e.name.clone(), e.aliases.clone()))
             .collect();
-        normalize::normalize_query(query, self.pack.synonyms(), &equipment)
+        let mut norm = normalize::normalize_query(query, self.pack.synonyms(), &equipment);
+        // A word read as another (a typo, a British spelling, a run-together
+        // or hyphenated word) is covered wherever its reading is.
+        match self.pack.lexicon() {
+            Ok(lex) => {
+                for r in lex.read(query) {
+                    let alt: Vec<String> = r
+                        .as_words
+                        .iter()
+                        .flat_map(|w| normalize::content_stems(w))
+                        .collect();
+                    for part in normalize::content_stems(&r.word.replace('-', " ")) {
+                        if let Some(c) = norm.concepts.iter_mut().find(|c| c.stem == part)
+                            && !c.alts.contains(&alt)
+                        {
+                            c.alts.push(alt.clone());
+                        }
+                    }
+                }
+            }
+            Err(e) => {
+                eprintln!("harvest-core: lexicon unavailable, query words read as typed: {e}")
+            }
+        }
+        norm
     }
 
     /// Search one query (plus its pack-synonym expansions).
