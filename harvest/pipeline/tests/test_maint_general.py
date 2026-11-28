@@ -232,3 +232,26 @@ def test_printed_statements_as_conditions_over_attributes():
     assert parse_conditions("K6-100001 and up", v)[0] == {"attr": "serial", "op": "range", "min": "K6-100001"}
     assert parse_conditions("Applies to firmware 2.4 and later.", v)[0] == {"attr": "firmware", "op": "ge", "value": "2.4"}
     assert parse_conditions("Hardware revision B only", v)[0] == {"attr": "hardware_revision", "op": "eq", "value": "B"}
+
+
+def test_guard_class_tone_from_the_manuals_definition():
+    from harvest_pipeline.maint.blocks import tone_of
+    # the manual's own definition decides, whatever the word
+    assert tone_of("DANGER", "Indicates a hazardous situation which, if not avoided, will result in death or "
+                   "serious injury.", True) == "danger"
+    assert tone_of("WARNING", "Indicates a hazardous situation which, if not avoided, could result in death or "
+                   "serious injury.", True) == "warning"
+    assert tone_of("CAUTION", "Indicates a hazardous situation which, if not avoided, could result in minor or "
+                   "moderate injury.", True) == "caution"
+    assert tone_of("CAUTION", "Identifies an operating procedure or practice that, if not correctly followed, "
+                   "could result in damage to or destruction of equipment.", True) == "caution"
+    assert tone_of("NOTICE", "Indicates information considered important, but not related to injury.", True) == "notice"
+    assert tone_of("NOTE", "Calls attention to a procedure that makes the job easier.", False) == "notice"
+    assert tone_of("NOTE", "Gives a helpful tip.", False) == "note"
+    # a word the manual defines its own way keeps the definition's tone, never the word's
+    assert tone_of("ALERT", "Indicates a hazard to personnel that may result in injury.", True) == "warning"
+    assert tone_of("ATTENTION", "Means equipment may be damaged.", True) == "caution"
+    # no definition: the standard word, else important when it must always show
+    assert tone_of("WARNING", None, True) == "warning"
+    assert tone_of("TIP", None, False) == "note"
+    assert tone_of("ALERT", None, True) == "notice"

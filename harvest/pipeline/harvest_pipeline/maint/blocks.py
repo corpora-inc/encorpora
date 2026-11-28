@@ -51,6 +51,32 @@ def engine_supports(marker: str) -> bool:
     return False
 
 
+# A class's tone from what the manual says it is for (CONTRACT "Guard classes are the pack's"); the first
+# match wins. An explicit non-hazard reads as notice; minor or moderate injury reads as caution, as the
+# usual severity scheme prints it.
+_TONE_BY_DEFINITION = (
+    ("notice", re.compile(r"(?i)\bnot\s+(related|relating)\s+to\s+(personal\s+)?(injury|hazards?)|\bnon-?hazard")),
+    ("danger", re.compile(r"(?i)\b(will|would)\s+(result in|cause|lead to)\b[^.]{0,40}\b(death|serious injury)|"
+                          r"\bimminent(ly)?\b[^.]{0,30}\bhazard")),
+    ("caution", re.compile(r"(?i)\b(minor|moderate|slight)\b[^.]{0,25}\binjur")),
+    ("warning", re.compile(r"(?i)\b(death|injur|kill|harm to (personnel|persons|people)|loss of life|"
+                           r"personnel hazard)")),
+    ("caution", re.compile(r"(?i)\b(damage|destr|equipment|property|harm)")),
+    ("notice", re.compile(r"(?i)\b(important|essential|emphasi|attention|must be (followed|observed))")),
+)
+_TONE_BY_WORD = {"DANGER": "danger", "WARNING": "warning", "CAUTION": "caution", "NOTICE": "notice",
+                 "IMPORTANT": "notice", "NOTE": "note", "TIP": "note"}
+
+
+def tone_of(word: str, definition: str | None, must_show: bool) -> str:
+    """How a guard class looks: from the manual's own definition of it when it has one, else from the
+    standard class word, else important for a class that must always show and a note otherwise."""
+    for tone, rx in _TONE_BY_DEFINITION if definition else ():
+        if rx.search(definition):
+            return tone
+    return _TONE_BY_WORD.get(word.upper()) or ("notice" if must_show else "note")
+
+
 def manual_classes(models: dict) -> list[dict]:
     """[{id, label, rank, must_show, definition}] most severe first, from the manual's definitions, else
     from the class words its blocks print (usual severity order)."""
@@ -68,9 +94,9 @@ def manual_classes(models: dict) -> list[dict]:
     if found:
         out = []
         for k, (w, d) in enumerate(found.items(), 1):
+            show = bool(_PROTECTS.search(d["definition"])) or w in ("DANGER", "WARNING", "CAUTION", "NOTICE")
             out.append({"id": w.lower(), "label": d["label"].upper() if d["label"].isupper() else d["label"],
-                        "rank": k, "must_show": bool(_PROTECTS.search(d["definition"])) or w in ("DANGER", "WARNING",
-                                                                                                 "CAUTION", "NOTICE"),
+                        "rank": k, "must_show": show, "tone": tone_of(w, d["definition"], show),
                         "definition": d["definition"]})
         return out
     printed = set()
@@ -81,7 +107,8 @@ def manual_classes(models: dict) -> list[dict]:
                 if c:
                     printed.add(c)
     order = [w for w in SIGNAL_WORDS if w in printed] or ["WARNING", "CAUTION", "NOTE"]
-    return [{"id": w.lower(), "label": w, "rank": k, "must_show": w not in ("NOTE", "TIP"), "definition": None}
+    return [{"id": w.lower(), "label": w, "rank": k, "must_show": w not in ("NOTE", "TIP"),
+             "tone": tone_of(w, None, w not in ("NOTE", "TIP")), "definition": None}
             for k, w in enumerate(order, 1)]
 
 

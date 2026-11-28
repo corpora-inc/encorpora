@@ -265,11 +265,14 @@ def pack_meta(corpus: Corpus, assemblies: list[Assembly], stage: Stage) -> dict[
         # every kind a shipped guard uses is declared (a class the manual prints but never defines)
         kinds = [r[0] for r in stage.conn.execute(
             "SELECT DISTINCT s.kind FROM section s JOIN xref x ON x.from_id = s.section_id WHERE x.kind='guards'")]
+        from .blocks import tone_of
         for k in kinds:
             if k not in {c["id"] for c in classes}:
-                classes.append({"id": k, "label": k.upper(), "rank": len(classes) + 1, "must_show": k != "note"})
+                classes.append({"id": k, "label": k.upper(), "rank": len(classes) + 1, "must_show": k != "note",
+                                "tone": tone_of(k, None, k != "note")})
+        keys = ("id", "label", "rank", "must_show") + (("tone",) if engine_supports("guard.tone") else ())
         if classes:
-            out["guard_classes"] = json.dumps([{k: c[k] for k in ("id", "label", "rank", "must_show")} for c in classes])
+            out["guard_classes"] = json.dumps([{k: c[k] for k in keys if k in c} for c in classes])
     from .applic import attribute_decls
     used = set().union(*(getattr(a, "_attrs_used", set()) for a in assemblies)) if assemblies else set()
     from ..schema import has_table
