@@ -15,7 +15,7 @@
 corpus_id: ardupilot-prearm
 pack_id: ardupilot-prearm
 lang: en
-version: 2026.11.28-2
+version: 2026.11.28-4
 
 sources:
   - id: ardupilot-prearm
@@ -40,6 +40,9 @@ equipment:
   - {id: ardupilot-rover, name: "ArduPilot Rover / boat", aliases: [ardupilot rover, ardupilot boat, rover, boat]}
 
 maint:
+  presentations:    # how each symptom shows up, for search from a technician's own words (maint presentations)
+    cache_dir: cache/presentations
+    author: {backend: claude-cli, model: sonnet, max_week_pct: 60}
   learn:            # practice items from the pack's structure; the readers gate them (harvest-bake maint learn)
     cache_dir: cache/learn
     readers:

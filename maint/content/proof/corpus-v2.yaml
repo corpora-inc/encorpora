@@ -4,7 +4,7 @@
 corpus_id: maint-proof-pump40v2
 pack_id: pump40v2-proof
 lang: en
-version: 2026.11.28-2
+version: 2026.11.28-4
 
 sources:
   - id: m40
@@ -19,6 +19,9 @@ sources:
     fetch: {kind: file, path: pump40v2-manual.pdf}
 
 maint:
+  presentations:    # how each symptom shows up, for search from a technician's own words (maint presentations)
+    cache_dir: cache/presentations
+    author: {backend: claude-cli, model: sonnet, max_week_pct: 60}
   learn:            # practice items from the pack's structure; the readers gate them (harvest-bake maint learn)
     cache_dir: cache/learn
     readers:

@@ -70,12 +70,19 @@ def _chunks(stage: Stage, dst: sqlite3.Connection) -> list[tuple[str, str, str, 
     for r in dst.execute("SELECT answer_id, question FROM answer ORDER BY answer_id"):
         out.append((f"a:{r[0]}", "answer", r[0], r[1], None))
     if schema.has_table(dst, "symptom"):
-        for r in dst.execute("SELECT symptom_id, title, synonyms FROM symptom ORDER BY symptom_id"):
+        shows = {}
+        if schema.has_table(stage.conn, "_presentation"):
+            shows = {r[0]: json.loads(r[1]) for r in stage.conn.execute("SELECT symptom_id, shows FROM _presentation")}
+        for r in dst.execute("SELECT symptom_id, title, synonyms, tree_id FROM symptom ORDER BY symptom_id"):
             try:
                 syn = [x for x in json.loads(r[2] or "[]") if isinstance(x, str)]
             except ValueError:
                 syn = []
-            out.append((f"y:{r[0]}", "symptom", r[0], ". ".join([r[1], *syn]), r[1]))
+            # what a technician might say: the title and synonyms, the printed cause, first question and
+            # possible problems (the tree's opening), and how the problem shows up (baked, own key)
+            printed = _tree_opening(dst, r[3])
+            text = ". ".join(x.rstrip(".") for x in [r[1], *syn, *printed, *shows.get(r[0], [])] if x)
+            out.append((f"y:{r[0]}", "symptom", r[0], text, r[1]))
     for r in dst.execute("SELECT s.proc_id, s.ord, s.text, s.detail, p.title FROM proc_step s "
                          "JOIN procedure p USING (proc_id) ORDER BY s.proc_id, s.ord"):
         try:
@@ -84,6 +91,28 @@ def _chunks(stage: Stage, dst: sqlite3.Connection) -> list[tuple[str, str, str, 
             detail = {}
         op = detail.get("operator") if isinstance(detail, dict) else None
         out.append((f"p:{r[0]}#{r[1]}", "proc_step", f"{r[0]}#{r[1]}", "\n".join(x for x in (r[2], op) if x), r[4]))
+    return out
+
+
+def _tree_opening(dst: sqlite3.Connection, tree_id: str) -> list[str]:
+    """A tree's opening as printed: the entry, the first node after it, and their possible-problem and
+    reason facets (a message table's printed cause lives there)."""
+    if not schema.has_table(dst, "fault_tree"):
+        return []
+    t = dst.execute("SELECT entry_node FROM fault_tree WHERE tree_id=?", (tree_id,)).fetchone()
+    out, node = [], t[0] if t else None
+    for _ in range(2):
+        if node is None:
+            break
+        n = dst.execute("SELECT text, kind FROM fault_node WHERE node_id=?", (node,)).fetchone()
+        if n is None:
+            break
+        if n[1] != "symptom":
+            out.append(n[0])
+        out += [f[0] for f in dst.execute("SELECT text FROM fault_facet WHERE node_id=? AND facet IN "
+                                          "('possible','reason') ORDER BY facet, ord", (node,))]
+        e = dst.execute("SELECT to_node FROM fault_edge WHERE from_node=? ORDER BY ord LIMIT 1", (node,)).fetchone()
+        node = e[0] if e else None
     return out
 
 
@@ -238,6 +267,11 @@ def write_pack(stage: Stage, out_dir: Path, pack_id: str, version: str, corpus_i
         "release": "1" if release else "0",
         **{k: v for k, v in meta_embed.items() if k not in ("embedder_id", "embed_dim")},
     }
+    if schema.has_table(src, "_presentation"):
+        pres = {r[0]: json.loads(r[1]) for r in src.execute("SELECT symptom_id, shows FROM _presentation ORDER BY 1")
+                if dst.execute("SELECT 1 FROM symptom WHERE symptom_id=?", (r[0],)).fetchone()}
+        if pres:
+            meta["symptom_presentations"] = json.dumps(pres, ensure_ascii=False, sort_keys=True)
     clash = sorted(set(extra_meta or {}) & set(meta))
     if clash:
         raise SystemExit(f"pack_meta keys {clash} are set by the pack itself")

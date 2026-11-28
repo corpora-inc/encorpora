@@ -96,6 +96,12 @@ def main(argv: list[str]) -> int:
     s.add_argument("corpus")
     s.add_argument("--pack", required=True)
     s.add_argument("--call", action="store_true")
+    s.add_argument("--readers", help="only these readers are called (comma-separated); the rest from the cache")
+    s.add_argument("--regenerate", action="store_true", help="build the items again (else the committed learn/items.jsonl)")
+    s = sub.add_parser("presentations", help="how each symptom shows up (Sonnet, cached, checked by code)")
+    s.add_argument("corpus")
+    s.add_argument("--pack", required=True)
+    s.add_argument("--call", action="store_true")
     s = sub.add_parser("cost")
     s.add_argument("corpus")
     s.add_argument("--arm")
@@ -188,10 +194,18 @@ def main(argv: list[str]) -> int:
         return 0
     if a.cmd == "learn":
         from .learn import run
-        r = run(c, Path(a.pack), a.call)
+        r = run(c, Path(a.pack), a.call, only=set(a.readers.split(",")) if a.readers else None, regenerate=a.regenerate)
         print(json.dumps({"total": r["total"], "pass": r["pass"], "table": r["table"], "usage": r["usage"],
                           "failed": [{"q_id": q, **v} for q, v in r["verdicts"].items() if not v["pass"]][:15]},
                          indent=1, default=str))
+        return 0
+    if a.cmd == "presentations":
+        from .build import cfg as _cfg, ledger as _ledger
+        from .presentations import run as run_pres, sources as pres_sources
+        pc = _cfg(c)["presentations"]
+        pres, rep = run_pres(pres_sources(str(next(Path(a.pack).glob("*.sqlite")))), pc["author"],
+                             (c.dir / pc.get("cache_dir", "cache/presentations")).resolve(), a.call, _ledger(c))
+        print(json.dumps({"report": rep, "examples": dict(list(pres.items())[:4])}, indent=1))
         return 0
     if a.cmd == "cost":
         from .build import ledger

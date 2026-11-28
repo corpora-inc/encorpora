@@ -61,6 +61,7 @@ CHILD_FILTERS = {
 STAGE_DDL = """
 CREATE TABLE _row_prov (tbl TEXT NOT NULL, row_key TEXT NOT NULL, prov_id TEXT NOT NULL,
                         PRIMARY KEY (tbl, row_key, prov_id));
+CREATE TABLE _presentation (symptom_id TEXT PRIMARY KEY, shows TEXT NOT NULL, model TEXT NOT NULL);
 CREATE TABLE _text_loc (ref_kind TEXT NOT NULL, ref_id TEXT NOT NULL, field TEXT NOT NULL,
                         source_id TEXT NOT NULL, page_index INTEGER NOT NULL, page_label TEXT,
                         region_id TEXT NOT NULL, bbox TEXT NOT NULL,

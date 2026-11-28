@@ -333,3 +333,14 @@ def test_practice_items_from_structure(models, tmp_path):
     ans["nos-sonnet"] = ans["opt-sonnet"]
     v, _ = verdicts(items, ans, readers)
     assert not any(x["pass"] for x in v.values())               # both blind readers right: too guessable
+
+
+def test_presentation_checks():
+    from harvest_pipeline.maint.presentations import problem
+    src = "Problem: Engine will not crank | Is the battery switch ON and is the 15 A start fuse F2 good? | Battery discharged."
+    title = "Engine will not crank"
+    assert problem("Nothing turns over when I turn the key", title, src) is None
+    assert problem("The engine just sits there", title, src) == "uses the entry's own key words"
+    assert problem("Reads 9 V on the meter", title, src) == "a number the source does not print"
+    assert problem("Fuse 15 looks burnt", title, src) is None                         # 15 is printed
+    assert problem("Says BATT_MONITOR is off", title, src) == "a parameter or part the source does not print"

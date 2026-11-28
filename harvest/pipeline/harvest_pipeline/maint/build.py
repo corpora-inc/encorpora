@@ -403,7 +403,7 @@ def build(corpus: Corpus, arm_name: str | None, out_dir: Path | None, harvest: s
                 "registry": str(out_dir.parent / f"{out_dir.name}.registry.json"),
                 "field_accuracy": (lr.get("score") or {}).get("field_accuracy")}
     learn = _learn_into(corpus, stage, out_dir, a.spec, meta, files, embedder_cfg, harvest, pubkey, log) \
-        if m.get("learn") else None
+        if (m.get("learn") or m.get("presentations")) else None
     verdicts = dict(stage.conn.execute("SELECT verdict, COUNT(*) FROM provenance GROUP BY verdict").fetchall())
     regions = {r[0]: {"source": r[1], "page": r[2], "region": r[3]} for r in stage.conn.execute(
         "SELECT ref_id, source_id, page_index, region_id FROM _text_loc WHERE ref_kind='section'")}
@@ -479,7 +479,7 @@ def build_table(corpus: Corpus, out_dir: Path | None, harvest: str, pubkey: str 
             emb.close()
     rep = verify_graph(harvest, out_dir, pubkey)
     learn = _learn_into(corpus, stage, out_dir, "rules", meta, [], embedder_cfg, harvest, pubkey, log) \
-        if m.get("learn") else None
+        if (m.get("learn") or m.get("presentations")) else None
     pc = __import__("sqlite3").connect(next(out_dir.glob("*.sqlite")))
     shipped = {r[0] for r in pc.execute("SELECT tree_id FROM fault_tree")}
     treeless = pc.execute("SELECT COUNT(*) FROM signal_map WHERE tree_id IS NULL").fetchone()[0]
@@ -570,8 +570,19 @@ def _learn_into(corpus, stage, out_dir: Path, author_spec, meta, files, embedder
     """Practice items from the pack just built (cached gates, no model call), into the stage, and the pack
     written again with them."""
     from .learn import run, write
-    r = run(corpus, out_dir, call=False, log=log)
-    n = write(stage.conn, r["items"], r["topics"], r["skills"], r["verdicts"], r["readers"])
+    m = cfg(corpus)
+    pres_rep = None
+    if m.get("presentations"):
+        from .presentations import run as run_pres, sources as pres_sources
+        pc = m["presentations"]
+        pres, pres_rep = run_pres(pres_sources(str(next(out_dir.glob("*.sqlite")))), pc["author"],
+                                  (corpus.dir / pc.get("cache_dir", "cache/presentations")).resolve(), call=False,
+                                  log=log)
+        for sid, v in pres.items():
+            stage.conn.execute("INSERT OR REPLACE INTO _presentation VALUES (?,?,?)",
+                               (sid, json.dumps(v["shows"], ensure_ascii=False), v["model_id"]))
+    r = run(corpus, out_dir, call=False, log=log) if m.get("learn") else None
+    n = write(stage.conn, r["items"], r["topics"], r["skills"], r["verdicts"], r["readers"]) if r else {}
     stage.commit()
     emb = make_embedder(embedder_cfg if embedder_cfg is not None else corpus.raw.get("embedder") or {"kind": "hash"})
     try:
@@ -584,5 +595,6 @@ def _learn_into(corpus, stage, out_dir: Path, author_spec, meta, files, embedder
     rep = verify_graph(harvest, out_dir, pubkey)
     if not rep.get("ok"):
         raise SystemExit(f"pack with practice items fails validation: {rep.get('graph')}")
-    return {"items": r["total"], "shipped": n["pass"], "failed": n["fail"], "table": r["table"],
-            "topics": len(r["topics"]), "skills": len(r["skills"])}
+    return {"presentations": pres_rep,
+            **({"items": r["total"], "shipped": n["pass"], "failed": n["fail"], "table": r["table"],
+                "topics": len(r["topics"]), "skills": len(r["skills"])} if r else {})}

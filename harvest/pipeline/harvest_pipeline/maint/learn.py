@@ -294,7 +294,12 @@ def build_items(p: Pack, skills_by_first_word: int = 30) -> tuple[list[dict], li
             a, b = sts[k], sts[k + 1]
             qid = f"q:order:{slug(pid, 40)}:{a['ord']}"
             stem = f"In {_q(p.procs[pid]['title'])}, after {_q(a['text'])}, what is the next step?"
-            cands = [(s["text"], f"That is step {s['ord']} of this task.", 1.0) for s in sts if s is not a and s is not b]
+            # steps already done come first among the distractors, so "pick the earliest-looking step"
+            # does not find the key from the options alone
+            cands = [(s["text"], f"That is step {s['ord']} of this task" + (", already done." if s["ord"] < a["ord"]
+                                                                           else "."),
+                      2.0 if s["ord"] < a["ord"] else 1.5 if s["ord"] == b["ord"] + 1 else 1.0)
+                     for s in sts if s is not a and s is not b]
             for pid2, sts2 in p.steps.items():
                 if pid2 != pid:
                     cands += [(s["text"], f"That is a step of {_q(p.procs[pid2]['title'])}.", 0.5) for s in sts2]
@@ -326,7 +331,7 @@ def build_items(p: Pack, skills_by_first_word: int = 30) -> tuple[list[dict], li
                 if c2:
                     cands.append((c2[0], f"That is the cause the manual gives for {_q(x['quote'] or x['title'])}.",
                                   1.0 - rank / 100))
-            it = _item("signal", qid, tree_skill(s["tree_id"]), stem, (cause[0], f"The manual: {_q(cause[0])} "
+            it = _item("signal-cause", qid, tree_skill(s["tree_id"]), stem, (cause[0], f"The manual: {_q(cause[0])} "
                        f"({p.cite.get(s['section_id'] or '', '')})."), _pick(cause[0], cands),
                        [s["section_id"], entry["section_id"] if entry else None], 0.5)
             if it:
@@ -355,7 +360,7 @@ def build_items(p: Pack, skills_by_first_word: int = 30) -> tuple[list[dict], li
                     if n2["tree_id"] != s["tree_id"] and n2["kind"] == "check":
                         cands.append((n2["text"], f"That is a question of {_q(p.trees[n2['tree_id']]['title'])}.",
                                       0.5 * _sim(p, first["section_id"], n2["section_id"], first["text"], n2["text"])))
-            it = _item("signal", qid, tree_skill(s["tree_id"]), stem, (first["text"], f"The manual: {_q(first['text'])} "
+            it = _item("signal-next", qid, tree_skill(s["tree_id"]), stem, (first["text"], f"The manual: {_q(first['text'])} "
                        f"({p.cite.get(first['section_id'], '')})."), _pick(first["text"], cands),
                        [s["section_id"], first["section_id"]], 0.4)
             if it:
@@ -375,16 +380,19 @@ READERS = {
 
 
 def _prompt(reader: str, batch: list[dict], p: Pack) -> str:
+    """Readers see positional ids (i0, i1, ...) only: an item's own id names its source rows and would
+    leak the key to a blind reader."""
     parts = []
-    for it in batch:
+    for k_, it in enumerate(batch):
+        qid = f"i{k_}"
         opts = "\n".join(f"  {k}: {c}" for k, c in enumerate(it["choices"]))
         if reader == "options_only":
-            parts.append(f"[{it['q_id']}]\n{opts}")
+            parts.append(f"[{qid}]\n{opts}")
         elif reader == "no_source":
-            parts.append(f"[{it['q_id']}] {it['stem']}\n{opts}")
+            parts.append(f"[{qid}] {it['stem']}\n{opts}")
         else:
-            src = "\n".join(f"({p.cite.get(s, s)}) {p.sections[s]['text']}" for s in it["section_ids"] if s in p.sections)
-            parts.append(f"[{it['q_id']}]\nManual:\n{src}\nQuestion: {it['stem']}\n{opts}")
+            src = "\n".join(f"{p.sections[s]['text']}" for s in it["section_ids"] if s in p.sections)
+            parts.append(f"[{qid}]\nManual:\n{src}\nQuestion: {it['stem']}\n{opts}")
     return "\n\n".join(parts)
 
 
@@ -407,17 +415,17 @@ def gate(items: list[dict], p: Pack, readers: dict, cache_dir: Path, call: bool,
         try:
             for i in range(0, len(items), batch):
                 b = items[i:i + batch]
-                props = {it["q_id"]: {"type": "integer", "enum": list(range(len(it["choices"])))} for it in b}
+                props = {f"i{k}": {"type": "integer", "enum": list(range(len(it["choices"])))} for k, it in enumerate(b)}
                 schema = {"type": "object", "additionalProperties": False, "required": ["answers"],
                           "properties": {"answers": {"type": "object", "additionalProperties": False,
                                                      "required": list(props), "properties": props}}}
                 req = Request(system=READERS[reader], prompt=_prompt(reader, b, p), schema=schema, name="answers",
                               max_tokens=2000)
                 isha = sha256_json({"system": req.system, "schema": schema, "prompt": req.prompt})
-                hit = cache.get("maint.learn.gate", "1", isha, spec)
+                hit = cache.get("maint.learn.gate", "2", isha, spec)
                 if hit is not None:
                     u["cached"] += 1
-                    got.update(hit["output"]["answers"])
+                    got.update({b[int(k[1:])]["q_id"]: v for k, v in hit["output"]["answers"].items()})
                     continue
                 if runner is None:
                     u["missing"] += 1
@@ -429,10 +437,10 @@ def gate(items: list[dict], p: Pack, readers: dict, cache_dir: Path, call: bool,
                     print(f"[learn] {rname} batch {i}: {e}", file=log)
                     continue
                 secs = round(time.monotonic() - t0, 2)
-                cache.put({"task": "maint.learn.gate", "prompt_version": "1", "input_sha256": isha, "model": spec,
+                cache.put({"task": "maint.learn.gate", "prompt_version": "2", "input_sha256": isha, "model": spec,
                            "key": f"{reader} {i}", "backend": backend.name, "model_id": resp.model_id,
                            "created_at": _now(), "output": resp.output, "usage": {**resp.usage, "seconds": secs}})
-                got.update(resp.output["answers"])
+                got.update({b[int(k[1:])]["q_id"]: v for k, v in resp.output["answers"].items()})
                 u["calls"] += 1
                 u["input_tokens"] += resp.usage.get("input_tokens", 0)
                 u["output_tokens"] += resp.usage.get("output_tokens", 0)
@@ -514,13 +522,64 @@ def write(stage_conn: sqlite3.Connection, items: list[dict], topics: list[dict],
     return n
 
 
-def run(corpus, pack_dir: Path, call: bool, log=sys.stderr) -> dict:
-    """Items from a built pack, gated by the corpus's readers (`maint.learn.readers`); cache only unless `call`."""
+def frozen(corpus, p: Pack, regenerate: bool = False, log=sys.stderr) -> tuple[list[dict], list[dict], list[dict]]:
+    """The corpus's committed items (`learn/items.jsonl`): generated once, then content. Similarity
+    ties (and GPU embedding noise) must not reshuffle items a gate has already answered. On reuse each
+    item is checked against the pack: every option and its cited sections must still be there."""
+    from .build import cfg
+    d = corpus.dir / (cfg(corpus).get("learn") or {}).get("items_dir", "learn")
+    f = d / "items.jsonl"
+    if f.exists() and not regenerate:
+        rows = [json.loads(x) for x in f.read_text().splitlines() if x.strip()]
+        meta = json.loads((d / "topics-skills.json").read_text())
+        texts = set()
+        for n in p.nodes.values():
+            texts.add(" ".join(n["text"].split()))
+        for v in p.facets.values():
+            texts.update(" ".join(t.split()) for ts in v.values() for t in ts)
+        for sts in p.steps.values():
+            texts.update(" ".join(s["text"].split()) for s in sts)
+        texts.update(" ".join(g["text"].split()) for g, _ in p.guards)
+        for n in p.nodes.values():
+            for e in p.edges.get(n["node_id"], []):
+                texts.add(" ".join(e["label"].split()))
+        items = []
+        for it in rows:
+            gone = [c for c in it["choices"] if c not in texts] + [s for s in it["section_ids"] if s not in p.sections]
+            if gone:
+                print(f"[learn] {it['q_id']}: no longer in the pack ({gone[0][:60]!r}); left out", file=log)
+                continue
+            items.append(it)
+        return items, meta["topics"], meta["skills"]
+    items, topics, skills = build_items(p)
+    d.mkdir(parents=True, exist_ok=True)
+    f.write_text("".join(json.dumps(it, ensure_ascii=False, sort_keys=True) + "\n" for it in items))
+    (d / "topics-skills.json").write_text(json.dumps({"topics": topics, "skills": skills}, indent=1, ensure_ascii=False))
+    return items, topics, skills
+
+
+def run(corpus, pack_dir: Path, call: bool, log=sys.stderr, only: set[str] | None = None,
+        regenerate: bool = False) -> dict:
+    """Items from a built pack, gated by the corpus's readers (`maint.learn.readers`); cache only unless `call`.
+    `only` limits which readers are asked this time (the others answer from the cache)."""
     from .build import cfg, ledger
     lc = cfg(corpus).get("learn") or {}
     readers = {name: (r["reader"], r["author"]) for name, r in (lc.get("readers") or {}).items()}
+    if only:
+        call_readers = {k: v for k, v in readers.items() if k in only}
+        cached = {k: v for k, v in readers.items() if k not in only}
+        p = load(str(next(Path(pack_dir).glob("*.sqlite"))))
+        items, topics, skills = frozen(corpus, p, regenerate, log)
+        cdir = (corpus.dir / lc.get("cache_dir", "cache/learn")).resolve()
+        g1 = gate(items, p, call_readers, cdir, call, ledger(corpus), log=log)
+        g2 = gate(items, p, cached, cdir, False, ledger(corpus), log=log)
+        answers = {**g1["answers"], **g2["answers"]}
+        v, table = verdicts(items, answers, readers)
+        return {"items": items, "topics": topics, "skills": skills, "verdicts": v, "table": table,
+                "usage": {**g1["usage"], **g2["usage"]}, "readers": readers,
+                "pass": sum(1 for x in v.values() if x["pass"]), "total": len(items)}
     p = load(str(next(Path(pack_dir).glob("*.sqlite"))))
-    items, topics, skills = build_items(p)
+    items, topics, skills = frozen(corpus, p, regenerate, log)
     g = gate(items, p, readers, (corpus.dir / lc.get("cache_dir", "cache/learn")).resolve(), call, ledger(corpus), log=log)
     v, table = verdicts(items, g["answers"], readers)
     return {"items": items, "topics": topics, "skills": skills, "verdicts": v, "table": table, "usage": g["usage"],

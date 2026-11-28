@@ -1,0 +1,554 @@
+{
+ "topics": [
+  {
+   "topic_id": "topic:messages",
+   "parent_id": null,
+   "ord": 1,
+   "title": "Messages and their causes",
+   "summary": "What each message means and what to do.",
+   "lang": "en"
+  }
+ ],
+ "skills": [
+  {
+   "skill_id": "skill:msg-3d",
+   "topic_id": "topic:messages",
+   "title": "3D messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-adsb",
+   "topic_id": "topic:messages",
+   "title": "ADSB messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-ahrs",
+   "topic_id": "topic:messages",
+   "title": "AHRS messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-ap-relay",
+   "topic_id": "topic:messages",
+   "title": "AP_Relay messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-accels",
+   "topic_id": "topic:messages",
+   "title": "Accels messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-airspeed",
+   "topic_id": "topic:messages",
+   "title": "Airspeed messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-auxiliary",
+   "topic_id": "topic:messages",
+   "title": "Auxiliary messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-btn-pinx-y",
+   "topic_id": "topic:messages",
+   "title": "BTN_PINx=y messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-baro",
+   "topic_id": "topic:messages",
+   "title": "Baro messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-batch",
+   "topic_id": "topic:messages",
+   "title": "Batch messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-battery",
+   "topic_id": "topic:messages",
+   "title": "Battery messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-bendyruler",
+   "topic_id": "topic:messages",
+   "title": "BendyRuler messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-board",
+   "topic_id": "topic:messages",
+   "title": "Board messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-cant",
+   "topic_id": "topic:messages",
+   "title": "Can’t messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-check",
+   "topic_id": "topic:messages",
+   "title": "Check messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-chute",
+   "topic_id": "topic:messages",
+   "title": "Chute messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-compass",
+   "topic_id": "topic:messages",
+   "title": "Compass messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-compasses",
+   "topic_id": "topic:messages",
+   "title": "Compasses messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-crashdump",
+   "topic_id": "topic:messages",
+   "title": "CrashDump messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-dijkstra",
+   "topic_id": "topic:messages",
+   "title": "Dijkstra messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-disarm",
+   "topic_id": "topic:messages",
+   "title": "Disarm messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-downloading",
+   "topic_id": "topic:messages",
+   "title": "Downloading messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-dronecan",
+   "topic_id": "topic:messages",
+   "title": "DroneCAN messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-duplicate",
+   "topic_id": "topic:messages",
+   "title": "Duplicate messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-ek3",
+   "topic_id": "topic:messages",
+   "title": "EK3 messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-ekf3",
+   "topic_id": "topic:messages",
+   "title": "EKF3 messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-ekf3x",
+   "topic_id": "topic:messages",
+   "title": "EKF3x messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-fence-alt-max",
+   "topic_id": "topic:messages",
+   "title": "FENCE_ALT_MAX messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-fence-margin",
+   "topic_id": "topic:messages",
+   "title": "FENCE_MARGIN messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-fettec",
+   "topic_id": "topic:messages",
+   "title": "FETtec messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-fft",
+   "topic_id": "topic:messages",
+   "title": "FFT messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-failed",
+   "topic_id": "topic:messages",
+   "title": "Failed messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-fence",
+   "topic_id": "topic:messages",
+   "title": "Fence messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-fences",
+   "topic_id": "topic:messages",
+   "title": "Fences messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-gps",
+   "topic_id": "topic:messages",
+   "title": "GPS messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-gpsx",
+   "topic_id": "topic:messages",
+   "title": "GPSx messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-generator",
+   "topic_id": "topic:messages",
+   "title": "Generator messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-gyro",
+   "topic_id": "topic:messages",
+   "title": "Gyro messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-gyros",
+   "topic_id": "topic:messages",
+   "title": "Gyros messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-hardware",
+   "topic_id": "topic:messages",
+   "title": "Hardware messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-in",
+   "topic_id": "topic:messages",
+   "title": "In messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-internal",
+   "topic_id": "topic:messages",
+   "title": "Internal messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-invalid",
+   "topic_id": "topic:messages",
+   "title": "Invalid messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-logging",
+   "topic_id": "topic:messages",
+   "title": "Logging messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-main",
+   "topic_id": "topic:messages",
+   "title": "Main messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-margin",
+   "topic_id": "topic:messages",
+   "title": "Margin messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-missing",
+   "topic_id": "topic:messages",
+   "title": "Missing messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-mode",
+   "topic_id": "topic:messages",
+   "title": "Mode messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-motors",
+   "topic_id": "topic:messages",
+   "title": "Motors messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-mount",
+   "topic_id": "topic:messages",
+   "title": "Mount messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-multiple",
+   "topic_id": "topic:messages",
+   "title": "Multiple messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-no",
+   "topic_id": "topic:messages",
+   "title": "No messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-oa",
+   "topic_id": "topic:messages",
+   "title": "OA messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-osd-type2",
+   "topic_id": "topic:messages",
+   "title": "OSD_TYPE2 messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-opendroneid",
+   "topic_id": "topic:messages",
+   "title": "OpenDroneID messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-prxx",
+   "topic_id": "topic:messages",
+   "title": "PRXx messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-param",
+   "topic_id": "topic:messages",
+   "title": "Param messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-piccolocan",
+   "topic_id": "topic:messages",
+   "title": "PiccoloCAN messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-pin",
+   "topic_id": "topic:messages",
+   "title": "Pin messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-pitch",
+   "topic_id": "topic:messages",
+   "title": "Pitch messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-rcx-max",
+   "topic_id": "topic:messages",
+   "title": "RCx_MAX messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-rcx-min",
+   "topic_id": "topic:messages",
+   "title": "RCx_MIN messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-rc",
+   "topic_id": "topic:messages",
+   "title": "RC messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-relayx-pin-y",
+   "topic_id": "topic:messages",
+   "title": "RELAYx_PIN=y messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-rngfndx-pin-y",
+   "topic_id": "topic:messages",
+   "title": "RNGFNDx_PIN=y messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-rngfndx-pin",
+   "topic_id": "topic:messages",
+   "title": "RNGFNDx_PIN messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-rpmx-pin-y",
+   "topic_id": "topic:messages",
+   "title": "RPMx_PIN=y messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-rpmx-pin",
+   "topic_id": "topic:messages",
+   "title": "RPMx_PIN messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-radio",
+   "topic_id": "topic:messages",
+   "title": "Radio messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-rangefinder",
+   "topic_id": "topic:messages",
+   "title": "Rangefinder messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-roll",
+   "topic_id": "topic:messages",
+   "title": "Roll messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-servox-function-y",
+   "topic_id": "topic:messages",
+   "title": "SERVOx_FUNCTION=y messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-servox-max",
+   "topic_id": "topic:messages",
+   "title": "SERVOx_MAX messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-servox-min",
+   "topic_id": "topic:messages",
+   "title": "SERVOx_MIN messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-same",
+   "topic_id": "topic:messages",
+   "title": "Same messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-scripting",
+   "topic_id": "topic:messages",
+   "title": "Scripting messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-servo",
+   "topic_id": "topic:messages",
+   "title": "Servo messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-system",
+   "topic_id": "topic:messages",
+   "title": "System messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-terrain",
+   "topic_id": "topic:messages",
+   "title": "Terrain messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-throttle",
+   "topic_id": "topic:messages",
+   "title": "Throttle messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-too",
+   "topic_id": "topic:messages",
+   "title": "Too messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-vtol",
+   "topic_id": "topic:messages",
+   "title": "VTOL messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-visodom",
+   "topic_id": "topic:messages",
+   "title": "VisOdom messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-yaw",
+   "topic_id": "topic:messages",
+   "title": "Yaw messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-heater",
+   "topic_id": "topic:messages",
+   "title": "heater messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-memory",
+   "topic_id": "topic:messages",
+   "title": "memory messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-parameter",
+   "topic_id": "topic:messages",
+   "title": "parameter messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-temperature",
+   "topic_id": "topic:messages",
+   "title": "temperature messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-vehicle",
+   "topic_id": "topic:messages",
+   "title": "vehicle messages",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:msg-waiting",
+   "topic_id": "topic:messages",
+   "title": "waiting messages",
+   "lang": "en"
+  }
+ ]
+}
