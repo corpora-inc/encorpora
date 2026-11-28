@@ -3,8 +3,7 @@ import { Link, useNavigate, useParams } from "react-router";
 import { BookMarked, Search } from "lucide-react";
 import { engine } from "../engine/index.ts";
 import { excerpt, highlight, matchWindow } from "../engine/text.ts";
-import type { AskResult, FindResult, Role, RuleGroup } from "../engine/types.ts";
-import { ROLES } from "../engine/types.ts";
+import { LEVEL, type AskResult, type FindResult, type RuleGroup } from "../engine/types.ts";
 import { audit, auditFind } from "../lib/audit.ts";
 import { teachableMatches, type Teachable } from "../lib/match.ts";
 import { answerPath, askQueryPath, lessonPath, readerPath, signalPath, termPath, topicPath } from "../routes.ts";
@@ -12,7 +11,7 @@ import { SIGNALS, displayName } from "../tools/signals.ts";
 import { useDevice } from "../store/device.ts";
 import { useSettings } from "../store/settings.ts";
 import { reportError } from "../store/toast.ts";
-import { Button, List, Page, Panel, Row, Segmented } from "../ui/kit.tsx";
+import { Button, List, Page, Row } from "../ui/kit.tsx";
 import { Segments, spokenText } from "../ui/law.tsx";
 import { ReadAloud } from "../ui/ReadAloud.tsx";
 import { useT } from "../ui/useT.ts";
@@ -86,46 +85,18 @@ export function AskBox({ initial = "", autoFocus = false }: { initial?: string; 
   );
 }
 
-function FirstRun() {
-  const t = useT();
-  const navigate = useNavigate();
-  const setRole = useSettings((s) => s.setRole);
-  const choose = (role: Role) => {
-    setRole(role);
-    const first = engine().starters(role)[0];
-    if (first) navigate(answerPath(first.answer_id));
-  };
-  return (
-    <Panel>
-      <Segmented
-        label={t("firstrun.question")}
-        value={null}
-        onChange={choose}
-        options={ROLES.map((r) => ({ value: r, label: t(`role.${r}`), hint: t(`role.${r}.hint`) }))}
-      />
-    </Panel>
-  );
-}
-
 export function AskHome() {
   const t = useT();
-  const role = useSettings((s) => s.role);
   return (
     <Page title={t("ask.title")}>
-      {role === null ? (
-        <FirstRun />
-      ) : (
-        <>
-          <AskBox autoFocus={false} />
-          <List label={t("ask.starters")}>
-            {engine()
-              .starters(role)
-              .map((s) => (
-                <Row key={s.answer_id} to={answerPath(s.answer_id)} title={s.question} />
-              ))}
-          </List>
-        </>
-      )}
+      <AskBox autoFocus={false} />
+      <List label={t("ask.starters")}>
+        {engine()
+          .starters(LEVEL)
+          .map((s) => (
+            <Row key={s.answer_id} to={answerPath(s.answer_id)} title={s.question} />
+          ))}
+      </List>
     </Page>
   );
 }
@@ -317,12 +288,11 @@ export function AskQuery() {
 
 export function AskAnswer() {
   const { id = "" } = useParams();
-  const role = useSettings((s) => s.role) ?? "operator";
   const t = useT();
-  const result = engine().answer(id, role);
+  const result = engine().answer(id, LEVEL);
   useEffect(() => {
     if (result) audit(result);
-  }, [result?.answer_id, role]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [result?.answer_id]); // eslint-disable-line react-hooks/exhaustive-deps
   if (!result)
     return (
       <Page title={t("notFound.title")} up={{ to: "/ask", label: t("tab.ask") }}>

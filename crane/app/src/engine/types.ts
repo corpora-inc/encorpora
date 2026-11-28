@@ -7,6 +7,12 @@
 
 export type Role = "trainee" | "operator" | "inspector";
 export const ROLES: readonly Role[] = ["trainee", "operator", "inspector"];
+/**
+ * The one explanation level the app shows. Packs carry trainee, operator and
+ * inspector variants; the app reads the operator variant everywhere, with no
+ * role setting.
+ */
+export const LEVEL: Role = "operator";
 
 export type Segment =
   | { t: "text"; text: string }
