@@ -21,6 +21,8 @@ use std::path::Path;
 use std::sync::atomic::{AtomicU64, Ordering};
 
 pub mod attach;
+pub mod attrs;
+pub use attrs::*;
 pub mod maint;
 pub mod practice;
 pub use attach::*;
@@ -381,6 +383,7 @@ impl Records {
         conn.execute_batch(DDL)?;
         conn.execute_batch(maint::DDL)?;
         conn.execute_batch(attach::DDL)?;
+        conn.execute_batch(attrs::DDL)?;
         conn.execute_batch(practice::DDL)?;
         maint::migrate(&conn)?;
         crate::audit::init(&conn)?;

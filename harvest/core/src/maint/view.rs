@@ -8,8 +8,9 @@
 //! whether a guard is shown.
 
 use super::PageBox;
+use super::applic::{Applicability, AttrValues};
 use super::branch::{Cond, Expect};
-use super::{FaultNode, Fold, GUARD_KINDS, Level, PackAsset, Requirement, Target, Tree};
+use super::{FaultNode, Fold, Level, PackAsset, Requirement, Target, Tree};
 use crate::error::{Error, Result};
 use crate::pack::{Pack, ProcStep, Procedure};
 use schemars::JsonSchema;
@@ -46,12 +47,22 @@ pub struct Citation {
     pub boxes: Vec<PageBox>,
 }
 
-/// A warning, caution or note, verbatim.
+/// A safety or advisory block (a class the pack declares), verbatim.
 #[derive(Debug, Clone, Serialize, JsonSchema, PartialEq)]
 pub struct Guard {
     pub section_id: String,
-    /// `warning` | `caution` | `note`.
+    /// The class id (`warning`, `caution`, `note` by default; the pack's
+    /// own, `danger` … `tip`, when it declares them).
     pub kind: String,
+    /// As printed.
+    pub label: String,
+    /// 1 is the most severe.
+    pub rank: u32,
+    /// Never hidden or collapsed at any level.
+    pub must_show: bool,
+    /// When its applicability has statements (`unknown` is flagged, never
+    /// dropped).
+    pub applicability: Option<super::applic::Applicability>,
     pub heading: Option<String>,
     pub text: String,
     pub citation: Citation,
@@ -63,6 +74,9 @@ pub struct Guard {
 pub struct FacetText {
     pub text: String,
     pub section_id: String,
+    /// Its section's statements for the asset, when it has any (a text
+    /// that does not apply is left out).
+    pub applicability: Option<Applicability>,
 }
 
 /// A node's facet (`reason`, `known`, `possible`, `test_option`, …), in
@@ -119,9 +133,13 @@ pub struct TaskStep {
     /// Detail per level, as baked.
     pub detail: BTreeMap<String, String>,
     /// Equipment the step is limited to (empty: all), and whether it
-    /// applies to the equipment asked about.
+    /// applies to the equipment asked about (and to the asset, by its
+    /// statements: `false` only when it does not apply).
     pub applies_to: Vec<String>,
     pub applies: bool,
+    /// The step's statements (and its section's), when it has any; an
+    /// `unknown` one is flagged for the technician to settle.
+    pub applicability: Option<Applicability>,
 }
 
 /// A task (procedure) ready to show.
@@ -135,6 +153,8 @@ pub struct TaskView {
     pub requirements: Vec<Requirement>,
     pub steps: Vec<TaskStep>,
     pub applies_to: Vec<String>,
+    /// The procedure's statements, when it has any.
+    pub applicability: Option<Applicability>,
 }
 
 /// The test procedure that answers a node's question.
@@ -148,6 +168,8 @@ pub struct TestProcedure {
     pub guards: Vec<Guard>,
     pub requirements: Vec<Requirement>,
     pub steps: Vec<TaskStep>,
+    /// The procedure's statements, when it has any.
+    pub applicability: Option<Applicability>,
 }
 
 /// Where a `goto` or task action leads.
@@ -164,6 +186,8 @@ pub struct TreeSummary {
     pub title: String,
     pub system: Option<String>,
     pub applies_to: Vec<String>,
+    /// The tree's statements, when it has any.
+    pub applicability: Option<Applicability>,
 }
 
 /// Everything one troubleshooting screen needs (manual content only; a job
@@ -176,6 +200,8 @@ pub struct NodeView {
     pub node: FaultNode,
     /// True when no branch leaves this node (the path ends here).
     pub terminal: bool,
+    /// The node's statements (and its section's), when it has any.
+    pub applicability: Option<Applicability>,
     pub citation: Citation,
     /// Warnings, cautions and notes guarding this node, manual order.
     pub guards: Vec<Guard>,
@@ -256,15 +282,32 @@ pub fn citation(pack: &Pack, section_id: &str) -> Result<Citation> {
 /// their ancestors), for `equip`, in manual order, each once. No level
 /// takes part: guards are shown at every level.
 pub fn guards(pack: &Pack, section_ids: &[String], equip: Option<&str>) -> Result<Vec<Guard>> {
+    guards_with(pack, section_ids, equip, &AttrValues::new())
+}
+
+/// [`guards`] for an asset's attribute `values` (a guard that does not
+/// apply is dropped; one not determined is kept and flagged).
+pub fn guards_with(
+    pack: &Pack,
+    section_ids: &[String],
+    equip: Option<&str>,
+    values: &AttrValues,
+) -> Result<Vec<Guard>> {
     let mut targets: BTreeSet<String> = BTreeSet::new();
     for s in section_ids {
         targets.extend(pack.section_lineage(s)?);
     }
-    guards_on(pack, &targets, equip)
+    guards_on_with(pack, &targets, equip, values)
 }
 
 /// The guards whose target is one of `targets` exactly.
-fn guards_on(pack: &Pack, targets: &BTreeSet<String>, equip: Option<&str>) -> Result<Vec<Guard>> {
+fn guards_on_with(
+    pack: &Pack,
+    targets: &BTreeSet<String>,
+    equip: Option<&str>,
+    values: &super::applic::AttrValues,
+) -> Result<Vec<Guard>> {
+    let classes = pack.guard_classes()?;
     let mut seen = BTreeSet::new();
     let mut out: Vec<(i64, Guard)> = Vec::new();
     for t in targets {
@@ -275,20 +318,34 @@ fn guards_on(pack: &Pack, targets: &BTreeSet<String>, equip: Option<&str>) -> Re
             let Some(sec) = pack.section(&x.from_id)? else {
                 return Err(Error::Pack(format!("guard {}: no such section", x.from_id)));
             };
-            if !GUARD_KINDS.contains(&sec.kind.as_str()) {
+            let Some(class) = classes.iter().find(|c| c.id == sec.kind) else {
                 return Err(Error::Pack(format!(
-                    "guard {}: a {} section; guards are warning, caution or note",
-                    sec.section_id, sec.kind
+                    "guard {}: a {} section; the pack's guard classes are {}",
+                    sec.section_id,
+                    sec.kind,
+                    classes
+                        .iter()
+                        .map(|c| c.id.as_str())
+                        .collect::<Vec<_>>()
+                        .join(", ")
                 )));
-            }
+            };
             let applies_to = pack.section_applies_to(&sec.section_id)?;
             if !pack.applies(&applies_to, equip) {
+                continue;
+            }
+            let applicability = pack.applicability("section", &sec.section_id, values)?;
+            if !super::applic::Applicability::shown(&applicability) {
                 continue;
             }
             out.push((
                 sec.ord,
                 Guard {
                     citation: citation(pack, &sec.section_id)?,
+                    label: class.label.clone(),
+                    rank: class.rank,
+                    must_show: class.must_show,
+                    applicability,
                     section_id: sec.section_id,
                     kind: sec.kind,
                     heading: sec.heading,
@@ -325,35 +382,64 @@ pub fn assets_for(pack: &Pack, section_id: &str) -> Result<Vec<PackAsset>> {
     Ok(out)
 }
 
-fn task_step(pack: &Pack, s: &ProcStep, equip: Option<&str>) -> Result<TaskStep> {
-    let applies_to = pack.applies_to("proc_step", &format!("{}#{}", s.proc_id, s.ord))?;
+fn task_step(
+    pack: &Pack,
+    s: &ProcStep,
+    equip: Option<&str>,
+    values: &AttrValues,
+) -> Result<TaskStep> {
+    let step_id = format!("{}#{}", s.proc_id, s.ord);
+    let applies_to = pack.applies_to("proc_step", &step_id)?;
     let first = s.section_ids.first();
+    let applicability =
+        pack.applicability_with_section("proc_step", &step_id, first.map(String::as_str), values)?;
     Ok(TaskStep {
         ord: s.ord,
         text: s.text.clone(),
         check_kind: s.check_kind.clone(),
         section_ids: s.section_ids.clone(),
         citation: first.map(|f| citation(pack, f)).transpose()?,
-        guards: guards_on(pack, &s.section_ids.iter().cloned().collect(), equip)?,
+        guards: guards_on_with(
+            pack,
+            &s.section_ids.iter().cloned().collect(),
+            equip,
+            values,
+        )?,
         assets: match first {
             Some(f) => assets_for(pack, f)?,
             None => Vec::new(),
         },
         detail: s.detail.clone(),
-        applies: pack.applies(&applies_to, equip),
+        applies: pack.applies(&applies_to, equip) && Applicability::shown(&applicability),
         applies_to,
+        applicability,
     })
 }
 
-/// A task with its steps, guards and requirements, for `equip`.
-pub fn task_view(pack: &Pack, proc_id: &str, equip: Option<&str>) -> Result<Option<TaskView>> {
+/// A task with its steps, guards and requirements, for `equip` and the
+/// asset's attribute `values`.
+pub fn task_view(
+    pack: &Pack,
+    proc_id: &str,
+    equip: Option<&str>,
+    values: &AttrValues,
+) -> Result<Option<TaskView>> {
     let Some(procedure) = pack.procedure(proc_id)? else {
         return Ok(None);
     };
     let rows = pack.proc_steps(proc_id)?;
+    let applicability = pack.applicability("procedure", proc_id, values)?;
+    // A step carries the procedure's statements with its own.
     let steps = rows
         .iter()
-        .map(|s| task_step(pack, s, equip))
+        .map(|s| {
+            let mut st = task_step(pack, s, equip, values)?;
+            if applicability.is_some() {
+                st.applicability = Applicability::and(applicability.clone(), st.applicability);
+                st.applies = st.applies && Applicability::shown(&st.applicability);
+            }
+            Ok(st)
+        })
         .collect::<Result<Vec<_>>>()?;
     // What guards the task as a whole: everything above its steps.
     let own: BTreeSet<String> = rows.iter().flat_map(|s| s.section_ids.clone()).collect();
@@ -366,7 +452,8 @@ pub fn task_view(pack: &Pack, proc_id: &str, equip: Option<&str>) -> Result<Opti
         );
     }
     Ok(Some(TaskView {
-        guards: guards_on(pack, &above, equip)?,
+        applicability,
+        guards: guards_on_with(pack, &above, equip, values)?,
         requirements: pack.requirements_for("procedure", proc_id, equip)?,
         applies_to: pack.applies_to("procedure", proc_id)?,
         procedure,
@@ -374,14 +461,16 @@ pub fn task_view(pack: &Pack, proc_id: &str, equip: Option<&str>) -> Result<Opti
     }))
 }
 
-/// The view of `node_id` in `tree` at `level`, for `equip`. `path` lists
-/// the nodes already answered, oldest first (for the open candidates).
+/// The view of `node_id` in `tree` at `level`, for `equip` and the asset's
+/// attribute `values`. `path` lists the nodes already answered, oldest
+/// first (for the open candidates).
 pub fn node_view(
     pack: &Pack,
     tree: &Tree,
     node_id: &str,
     level: &Level,
     equip: Option<&str>,
+    values: &AttrValues,
     path: &[String],
 ) -> Result<NodeView> {
     let node = tree
@@ -412,10 +501,15 @@ pub fn node_view(
     let defs = pack.facet_defs()?;
     let mut groups: Vec<FacetGroup> = Vec::new();
     for f in tree.facets_of(node_id) {
+        let applicability = pack.applicability("section", &f.section_id, values)?;
+        if !Applicability::shown(&applicability) {
+            continue;
+        }
         match groups.iter_mut().find(|g| g.facet == f.facet) {
             Some(g) => g.texts.push(FacetText {
                 text: f.text.clone(),
                 section_id: f.section_id.clone(),
+                applicability,
             }),
             None => groups.push(FacetGroup {
                 facet: f.facet.clone(),
@@ -427,6 +521,7 @@ pub fn node_view(
                 texts: vec![FacetText {
                     text: f.text.clone(),
                     section_id: f.section_id.clone(),
+                    applicability,
                 }],
             }),
         }
@@ -442,10 +537,16 @@ pub fn node_view(
     let possible_open = std::iter::once(node_id.to_string())
         .chain(path.iter().rev().cloned())
         .find_map(|id| {
+            // Only causes whose sections apply to the asset stay open.
             let texts: Vec<String> = tree
                 .facets_of(&id)
                 .into_iter()
                 .filter(|f| f.facet == open)
+                .filter(|f| {
+                    pack.applicability("section", &f.section_id, values)
+                        .map(|a| Applicability::shown(&a))
+                        .unwrap_or(true)
+                })
                 .map(|f| f.text.clone())
                 .collect();
             (!texts.is_empty()).then_some(texts)
@@ -453,7 +554,7 @@ pub fn node_view(
         .unwrap_or_default();
     let test_procedure = match &node.proc_id {
         Some(p) => {
-            let task = task_view(pack, p, equip)?.ok_or_else(|| {
+            let task = task_view(pack, p, equip, values)?.ok_or_else(|| {
                 Error::Pack(format!(
                     "node {node_id}: procedure {p} is missing or did not pass"
                 ))
@@ -465,6 +566,7 @@ pub fn node_view(
                 guards: task.guards,
                 requirements: task.requirements,
                 steps: task.steps,
+                applicability: task.applicability,
             })
         }
         None => None,
@@ -502,10 +604,17 @@ pub fn node_view(
             title: tree.tree.title.clone(),
             system: tree.tree.system.clone(),
             applies_to: tree.tree.applies_to.clone(),
+            applicability: pack.applicability("fault_tree", &tree.tree.tree_id, values)?,
         },
         terminal: edges.is_empty(),
+        applicability: pack.applicability_with_section(
+            "fault_node",
+            node_id,
+            Some(&node.section_id),
+            values,
+        )?,
         citation: citation(pack, &node.section_id)?,
-        guards: guards(pack, std::slice::from_ref(&node.section_id), equip)?,
+        guards: guards_with(pack, std::slice::from_ref(&node.section_id), equip, values)?,
         setup: pack.requirements_for("fault_tree", &tree.tree.tree_id, equip)?,
         requirements: pack.requirements_for("fault_node", node_id, equip)?,
         facets: groups,

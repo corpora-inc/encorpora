@@ -49,6 +49,8 @@ pub struct PracticeQuestion {
     pub rationale_citations: Vec<Option<Citation>>,
     /// The question's own citations (its `section_ids`).
     pub citations: Vec<Citation>,
+    /// Its statements, when it has any.
+    pub applicability: Option<crate::maint::applic::Applicability>,
 }
 
 #[derive(Debug, Clone, Serialize, JsonSchema, PartialEq)]
@@ -77,8 +79,13 @@ fn quotes(text: &str) -> Vec<String> {
     out
 }
 
-/// Everything the Learn screen needs for `equip`.
-pub fn items(pack: &Pack, equip: Option<&str>) -> Result<PracticeItems> {
+/// Everything the Learn screen needs for `equip` and an asset's attribute
+/// `values`.
+pub fn items(
+    pack: &Pack,
+    equip: Option<&str>,
+    values: &crate::maint::applic::AttrValues,
+) -> Result<PracticeItems> {
     let prereqs = pack.prereqs()?;
     let topics = pack
         .topics()?
@@ -128,6 +135,15 @@ pub fn items(pack: &Pack, equip: Option<&str>) -> Result<PracticeItems> {
         if !pack.applies(&rows, equip) {
             continue;
         }
+        let applicability = pack.applicability_with_section(
+            "question",
+            &q.q_id,
+            q.section_ids.first().map(String::as_str),
+            values,
+        )?;
+        if !crate::maint::applic::Applicability::shown(&applicability) {
+            continue;
+        }
         let answer_ix: Option<usize> = (q.kind == "mc")
             .then(|| q.answer.trim().parse().ok())
             .flatten();
@@ -165,6 +181,7 @@ pub fn items(pack: &Pack, equip: Option<&str>) -> Result<PracticeItems> {
             rationales: q.rationales,
             rationale_citations,
             citations,
+            applicability,
         });
     }
     Ok(PracticeItems {

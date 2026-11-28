@@ -573,7 +573,24 @@ CREATE TABLE symptom (symptom_id TEXT PRIMARY KEY, tree_id TEXT NOT NULL, title 
 CREATE TABLE signal_map (signal_kind TEXT NOT NULL, pattern TEXT NOT NULL, title TEXT NOT NULL,
   tree_id TEXT,                                          -- null: a cause with no tree; section_id says it
   node_id TEXT, section_id TEXT, quote TEXT, prov_id TEXT NOT NULL,
+  row_id TEXT,                                           -- optional: the ref_row it resolves to (<table_id>#<ord>)
   PRIMARY KEY (signal_kind, pattern, tree_id));
+CREATE TABLE ref_table (table_id TEXT PRIMARY KEY, title TEXT NOT NULL,
+  kind TEXT NOT NULL,                                    -- open: spec|indicator|message|schedule|command|parameter|abbreviation|other
+  section_id TEXT NOT NULL,                              -- where the table is printed
+  columns TEXT NOT NULL,                                 -- json [{id,label,role}], printed order
+  lang TEXT NOT NULL, prov_id TEXT NOT NULL);
+CREATE TABLE ref_row (table_id TEXT NOT NULL, ord INTEGER NOT NULL,
+  cells TEXT NOT NULL,                                   -- json {column_id: "text" | ["item", …] | {text,unit,value|min,max,…}}
+  section_id TEXT NOT NULL,                              -- the row's own citation and location
+  lang TEXT NOT NULL, prov_id TEXT NOT NULL, PRIMARY KEY (table_id, ord));
+CREATE TABLE applic (ref_kind TEXT NOT NULL,             -- section|proc_step|procedure|fault_tree|fault_node|ref_row|ref_cell|question
+  ref_id TEXT NOT NULL,                                  -- proc_step <proc>#<ord>; ref_row <table>#<ord>; ref_cell <table>#<ord>/<column>
+  ord INTEGER NOT NULL,                                  -- several statements for one item: all must apply
+  cond TEXT NOT NULL,                                    -- json: all|any|not over {attr,op,value|values|min,max}
+  statement TEXT NOT NULL,                               -- the printed applicability, verbatim in source_section_id
+  source_section_id TEXT NOT NULL, prov_id TEXT NOT NULL,
+  PRIMARY KEY (ref_kind, ref_id, ord));
 CREATE TABLE equip_attr (equip_id TEXT NOT NULL, key TEXT NOT NULL, value TEXT NOT NULL,
                          PRIMARY KEY (equip_id, key));
 CREATE TABLE equip_ident (equip_id TEXT NOT NULL,
@@ -585,10 +602,20 @@ CREATE TABLE failure_mode (mode_id TEXT PRIMARY KEY, equip_id TEXT NOT NULL, sys
   title TEXT NOT NULL, count INTEGER NOT NULL, share REAL, tree_id TEXT, examples TEXT NOT NULL);
 ```
 
-- **Typed blocks are sections.** `section.kind` also takes `step`,
-  `warning`, `caution` and `note`. A warning, caution or note guards a step
-  with `xref(from=<block>, to=<step or task section>, kind='guards')`; it
-  guards that section and everything under it. Block text is verbatim.
+- **Typed blocks are sections.** `section.kind` also takes `step` and the
+  pack's guard classes. A guard guards a step with `xref(from=<block>,
+  to=<step or task section>, kind='guards')`; it guards that section and
+  everything under it. Block text is verbatim.
+- **Guard classes are the pack's.** `pack_meta.guard_classes` lists the
+  safety and advisory classes the manual defines in its front matter,
+  most severe first: `[{"id","label","rank","must_show"}]` (`id` is the
+  section kind, `label` as printed, `rank` 1 the most severe, rising).
+  Without it a pack has `warning`, `caution`, `note`, all `must_show`. A
+  guard view carries `kind` (the id), `label`, `rank`, `must_show` and
+  `applicability`, in manual order; every guard is returned at every
+  level, and a class with `must_show` is never hidden or collapsed (the
+  bake sets it for every class at or above caution; a note or tip may
+  collapse).
 - **Verbatim on read.** `fault_node.text` and `fault_facet.text` must be
   substrings of their section's text (whitespace-normalized). A tree with
   one node that fails this, or did not pass, is refused whole. A
@@ -637,8 +664,8 @@ CREATE TABLE failure_mode (mode_id TEXT PRIMARY KEY, equip_id TEXT NOT NULL, sys
 - **Levels** come from `pack_meta.levels`, ordered, most guidance first:
   `[{"id","label","facets":[…]|null,"test_steps":"expanded"|"collapsed"}]`.
   `facets` lists the facets shown expanded (`null`: all). Without it a pack
-  has `trainee`, `operator`, `inspector`. **Warnings, cautions and notes
-  are shown at every level**; a level never hides one (tested in the core).
+  has `trainee`, `operator`, `inspector`. **Guards are shown at every
+  level**; a level never hides one (tested in the core).
 - **Variants.** Every read that takes an `equip_id` filters with
   `applies_to` (`ref_kind` `section`, `procedure`, `proc_step`,
   `fault_tree`, `fault_node`, `symptom`, `requirement` with ref id
@@ -711,6 +738,81 @@ CREATE TABLE failure_mode (mode_id TEXT PRIMARY KEY, equip_id TEXT NOT NULL, sys
   manifest lists its `path` with the same SHA-256.
 - **Repeat window**: `pack_meta.repeat_window_days` (default 30).
 
+- **Reference tables** (`ref_table`, `ref_row`) hold what technicians look
+  up that is not a tree: specification values, indicator and blink-code
+  patterns, on-screen messages with causes and resolutions, maintenance
+  schedules, command and parameter references, abbreviations. A table
+  names its columns in printed order, each with a role from `key`,
+  `code`, `pattern`, `meaning`, `cause`, `check`, `remedy`, `value`,
+  `unit`, `limit`, `interval`, `item`, `applicability`, `reference`,
+  `text`. A cell is verbatim text, an ordered list of verbatim items, or a
+  printed value `{text, unit?, value? | min?, max?, min_inclusive?,
+  max_inclusive?}` whose `text` is shown as printed ("0.15 to 0.25 mm");
+  the numbers serve exact lookup only. A row's id is `<table_id>#<ord>`,
+  a cell's `<table_id>#<ord>/<column>`; a row cites its own section. Rows
+  are searchable as chunks (`ref_kind = 'ref_row'`) and appear in
+  `manual.search` with the row; `table.list`, `table.get` and
+  `table.lookup {key | query, table_id?}` read them for a variant and an
+  asset (a `key` matches a key, code, pattern or item cell exactly, case
+  and spacing folded; a `query` matches the row's words). A
+  `signal_map.row_id` resolves a displayed code or message to its row (and
+  to a tree when the rule names one).
+- **Applicability** (`applic`, `pack_meta.attributes`). Beside `equipment`
+  and `applies_to`, an item (`section`, `proc_step`, `procedure`,
+  `fault_tree`, `fault_node`, `ref_row`, `ref_cell`, `question`) may carry
+  printed statements ("POST SB 24-012", "firmware 2.4 and later"), each a
+  condition over the pack's declared attributes (`[{"id","label","type":
+  "text"|"number"|"version"|"serial","source":"plate"|"vehicle"|"manual"}]`):
+  `{"all":[…]}`, `{"any":[…]}`, `{"not":…}` or a test `{"attr","op"}` with
+  `eq`/`ne` `value`, `in`/`not_in` `values`, `lt`/`le`/`gt`/`ge` `value`,
+  or `range` `min`/`max` (`min_inclusive`, `max_inclusive`, default
+  true). A version is dotted numbers with an optional pre-release suffix
+  (`2.4.1`, `v2.4`, `2.4-rc2`, which sorts before `2.4`); a serial is a
+  prefix and digits, separators ignored (`P40D-1234` = `P40D1234`). A
+  value that does not parse as its type counts as missing (unknown), and
+  a comparison that cannot be made (a serial of another prefix) is
+  unknown, never decided; `asset.set_attrs` refuses such values. A
+  statement whose provenance did not pass leaves its item unknown
+  (`applic.provenance`). An item's statements
+  must all apply; a section inherits its nearest ancestor's. Evaluation
+  against the asset's values is three-valued: applies, does not apply
+  (the item is left out, or a step marked `applies: false`), or
+  **unknown** (the asset lacks an attribute): such an item is never hidden
+  and never shown as plain content; it comes back with `applicability:
+  {status: "unknown", statements, missing, message: "applicability not
+  determined: <statement>"}` so the app can ask for the attribute and read
+  again. An asset's values are typed in (`asset.set_attrs`), taken from a
+  data plate, or read from the vehicle (`plate`, e.g. MAVLink's
+  `AUTOPILOT_VERSION` firmware); `asset.attrs` lists what the pack
+  declares and what the asset has. Values belong to the asset, not to a
+  pack: two packs that declare one attribute id read the same value.
+  Statements are evaluated in every read that takes an asset: tasks,
+  steps, test procedures, nodes and their facet texts and open causes,
+  guards, tables, rows and cells, `tree.list`, `symptom.search`,
+  `signal.match` and its suggested entry, `signal.decode`, `job.start`
+  and gotos, `manual.search` and `practice.items`. A tree that does not
+  apply is never listed, searched, suggested or entered; one not
+  determined is offered with its `applicability` (also on its symptoms and
+  on the suggested entry).
+  *S1000D.* This is S1000D applicability: a declared attribute is an ACT
+  product attribute (`productAttribute`, source `plate`/`manual`) or a
+  CCT condition (`cond`, modification state or service bulletin, source
+  `manual`); its type maps `valueDataType` (`string` → `text`, `integer`
+  and `real` → `number`, a version pattern → `version`, a serial-number
+  pattern → `serial`). An `applic` row is an `<applic>`: `statement` is
+  its `<displayText>`, the condition its `<assert applicPropertyIdent=…
+  applicPropertyValues=…>` tests (a value list `a|b` → `in`, a range
+  `a~b` → `range`), `<evaluate andOr="and|or">` → `all`/`any`. A PCT
+  product instance is an asset with its attribute values.
+- **Reader level.** `pack_meta.min_reader` (default 1) is the oldest reader
+  that reads the pack right. Level 2 covers guard classes, reference
+  tables, applicability conditions, value-node readings and inclusive
+  bounds; the bake sets 2 when a pack uses any of them. A reader below a
+  pack's level refuses it: "this pack needs a newer reader (level N; this
+  one reads up to M)". A new optional feature from now on raises the
+  level, so a reader that refuses unknown fields refuses the pack plainly
+  instead of misreading it.
+
 **Validation** (`maint::graph::validate`, `harvest verify`, the bake):
 every tree's entry is a node of it; every node is reachable from it; no
 cycle except through retry edges; a node with no branches is an `action`,
@@ -719,8 +821,15 @@ cycle except through retry edges; a node with no branches is an `action`,
 cover it exactly (each outcome once; numeric conditions that partition the
 accepted range, no overlap, no gap); edges stay in their tree; targets and
 `proc_id` resolve; node and facet text is verbatim; every facet has a
-heading; every guard is a warning, caution or note and its target exists;
-requirements, symptoms, signals, assets and boxes resolve. The report
+heading; every guard's kind is a declared guard class (`guard.class`) and
+its target exists; requirements, symptoms, signals, assets and boxes
+resolve; reference tables have known roles, unique columns and verbatim
+cells that name declared columns (`table.columns`, `table.cells`,
+`table.verbatim`), and a signal's `row_id` exists (`signal.row`);
+applicability conditions name declared attributes with values of their
+type, scope an item that exists, and keep a statement verbatim in its
+source section (`applic.cond`, `applic.ref`, `applic.verbatim`); a pack
+using a level-2 feature declares `min_reader` 2 (`pack.min_reader`). The report
 lists every violation with a stable rule code (`edge.coverage`,
 `tree.cycle`, `node.verbatim`, …) and counts.
 

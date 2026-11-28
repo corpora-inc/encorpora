@@ -325,6 +325,19 @@ impl Pack {
                 "pack_meta.schema_version differs from manifest".into(),
             ));
         }
+        // A pack that needs a newer reader says so (`pack_meta.min_reader`);
+        // refuse it plainly rather than misread it.
+        if let Some(raw) = meta.get("min_reader") {
+            let need: u32 = raw.trim().parse().map_err(|_| {
+                Error::Pack(format!("pack_meta.min_reader {raw:?} is not a number"))
+            })?;
+            if need > crate::maint::READER_LEVEL {
+                return Err(Error::Pack(format!(
+                    "this pack needs a newer reader (level {need}; this one reads up to {}): update the app",
+                    crate::maint::READER_LEVEL
+                )));
+            }
+        }
         let equipment = {
             let mut stmt =
                 conn.prepare("SELECT equip_id, parent_id, name, aliases FROM equipment")?;
@@ -690,6 +703,26 @@ impl Pack {
                     stmt.query_row(params![proc_id, ord], |r| r.get(0))
                         .optional()?,
                 )
+            }
+            // `<table_id>#<ord>`: the row's own section.
+            "ref_row" => {
+                let Some((table_id, ord)) = ref_id.rsplit_once('#') else {
+                    return Ok(None);
+                };
+                let Ok(ord) = ord.parse::<i64>() else {
+                    return Ok(None);
+                };
+                let has: bool = conn
+                    .prepare_cached("SELECT 1 FROM sqlite_master WHERE name = 'ref_row'")?
+                    .exists([])?;
+                if !has {
+                    return Ok(None);
+                }
+                let mut stmt = conn.prepare_cached(
+                    "SELECT section_id FROM ref_row WHERE table_id = ?1 AND ord = ?2",
+                )?;
+                stmt.query_row(params![table_id, ord], |r| r.get(0))
+                    .optional()?
             }
             _ => None,
         })

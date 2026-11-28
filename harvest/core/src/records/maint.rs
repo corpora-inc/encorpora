@@ -1301,6 +1301,9 @@ impl Records {
         let equip =
             opt(req.equip_id.clone()).or_else(|| asset.as_ref().and_then(|a| a.equip_id.clone()));
         Self::check_equip(Some(pack), equip.as_deref())?;
+        // The asset's attribute values: a tree whose statements do not
+        // apply to it is never entered.
+        let values = self.attr_values(asset.as_ref().map(|a| a.asset_id.as_str()))?;
         let level = pack.level(req.level.trim())?;
         let mut tree_id = opt(req.tree_id.clone());
         let mut entry_node = opt(req.node_id.clone());
@@ -1308,7 +1311,7 @@ impl Records {
         let symptom_id = opt(req.symptom_id.clone());
         if let Some(sid) = &symptom_id {
             let s = pack
-                .symptoms(equip.as_deref())?
+                .symptoms_for(equip.as_deref(), &values)?
                 .into_iter()
                 .find(|s| &s.symptom_id == sid)
                 .ok_or_else(|| Error::Invalid(format!("no symptom {sid:?} for this equipment")))?;
@@ -1323,7 +1326,7 @@ impl Records {
             entered_by = EntryKind::Symptom;
         }
         if !req.signals.is_empty() {
-            let m = search::signal_match(pack, &req.signals, equip.as_deref())?;
+            let m = search::signal_match_with(pack, &req.signals, equip.as_deref(), &values)?;
             let hit = match &tree_id {
                 Some(t) => m
                     .hits
@@ -1332,6 +1335,7 @@ impl Records {
                     .map(|h| crate::maint::search::EntryPoint {
                         tree_id: h.rule.tree_id.clone().unwrap_or_default(),
                         node_id: h.rule.node_id.clone().unwrap_or_default(),
+                        applicability: None,
                     }),
                 None => m.suggested.clone(),
             };
@@ -1356,7 +1360,7 @@ impl Records {
         let tree_id = tree_id
             .ok_or_else(|| Error::Invalid("a job needs a symptom, signals or a tree".into()))?;
         if !pack
-            .fault_trees(equip.as_deref())?
+            .fault_trees_for(equip.as_deref(), &values)?
             .iter()
             .any(|t| t.tree_id == tree_id)
         {
@@ -1562,8 +1566,9 @@ impl Records {
                 node.node_id
             )));
         };
+        let values = self.attr_values(job.asset_id.as_deref())?;
         if !pack
-            .fault_trees(job.equip_id.as_deref())?
+            .fault_trees_for(job.equip_id.as_deref(), &values)?
             .iter()
             .any(|t| &t.tree_id == to_tree)
         {
@@ -2000,12 +2005,14 @@ impl Records {
             })?,
         };
         let path_ids: Vec<String> = job.path().iter().map(|s| s.node_id.clone()).collect();
+        let values = self.attr_values(job.asset_id.as_deref())?;
         let node = view::node_view(
             pack,
             &tree,
             &job.current_node,
             &lvl,
             job.equip_id.as_deref(),
+            &values,
             &path_ids,
         )?;
         let texts = step_texts(pack, &tree, &job.steps);

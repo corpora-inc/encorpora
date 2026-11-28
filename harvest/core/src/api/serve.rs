@@ -85,8 +85,24 @@ pub fn redact(msg: &str) -> String {
                     && chars.get(i + 2) == Some(&'\\')));
         if starts {
             let mut j = i;
-            while j < chars.len() && !(delim(chars[j]) && chars[j] != '=') {
-                j += 1;
+            loop {
+                while j < chars.len() && !(delim(chars[j]) && chars[j] != '=') {
+                    j += 1;
+                }
+                // A space inside a path ("John Smith\AppData", "Application
+                // Support/…"): the path goes on when the next word holds a
+                // separator.
+                if j < chars.len() && chars[j] == ' ' {
+                    let mut k = j + 1;
+                    while k < chars.len() && !delim(chars[k]) {
+                        k += 1;
+                    }
+                    if chars[j + 1..k].iter().any(|c| *c == '/' || *c == '\\') {
+                        j = k;
+                        continue;
+                    }
+                }
+                break;
             }
             out.push_str("<path>");
             i = j;

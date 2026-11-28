@@ -222,169 +222,7 @@ impl Records {
         hub_keys: &[TrustedKey],
         stop: &dyn Fn() -> bool,
     ) -> Result<AttachReport> {
-        let r = self.attachment_pass(link, hub_keys, stop)?;
-        if r.mode.is_some() || r.error.is_some() {
-            let mut gate = super::maint::HubGate::load(&self.conn)?;
-            gate.attachments_at = Some(now_rfc3339());
-            gate.attachments_error = r.error.clone();
-            gate.save(&self.conn)?;
-        }
-        Ok(r)
-    }
-
-    fn attachment_pass(
-        &self,
-        link: &dyn HubLink,
-        hub_keys: &[TrustedKey],
-        stop: &dyn Fn() -> bool,
-    ) -> Result<AttachReport> {
-        let mut report = AttachReport::default();
-        if self.attachment_backlog(AttachmentMode::Full)? == 0 {
-            return Ok(report);
-        }
-        if self.outbox_status()?.pending > 0 || stop() {
-            report.yielded = true;
-            return Ok(report);
-        }
-        // Ask first: the policy depends on the link the device is on now.
-        // A device the hub refused sends nothing here (its uploads back off).
-        let mut gate = super::maint::HubGate::load(&self.conn)?;
-        if gate.refused.is_some() {
-            report.error = Some("the hub refuses this device".into());
-            return Ok(report);
-        }
-        let reply = match crate::sync::checked_hello(link, hub_keys) {
-            Ok(r) => r,
-            Err(e) => {
-                report.error = Some(e.to_string());
-                return Ok(report);
-            }
-        };
-        gate.learn(&reply);
-        gate.save(&self.conn)?;
-        let mode = reply.attachments;
-        report.mode = Some(mode);
-        if !reply.accepted {
-            report.error = Some("the hub refuses this device".into());
-            return Ok(report);
-        }
-        let chunk = gate
-            .chunk_bytes
-            .unwrap_or(crate::sync::DEFAULT_CHUNK_BYTES)
-            .max(1);
-        // A dropped request is retried (the hub says where to resume);
-        // `MAX_TRIES` failures in a row, or a refusal, end the pass.
-        let mut tries = Tries::default();
-        'items: for (sha, variant, vsha, total) in self.attachment_work(mode)? {
-            if self.outbox_status()?.pending > 0 || stop() {
-                report.yielded = true;
-                break;
-            }
-            let mut offset = loop {
-                match link
-                    .attachment_offset(&vsha, total)
-                    .and_then(|h| crate::sync::checked_held(&h, link, &vsha, total, hub_keys))
-                {
-                    Ok(o) => break o.min(total),
-                    Err(e) => {
-                        if tries.give_up(&mut report, e) {
-                            break 'items;
-                        }
-                        if stop() {
-                            report.yielded = true;
-                            break 'items;
-                        }
-                    }
-                }
-            };
-            if offset > 0 {
-                report.resumed += 1;
-                report.resumed_bytes += offset;
-            }
-            if offset < total {
-                // A damaged stored copy is set aside and reported; the
-                // lane goes on with the rest.
-                let data = match self.attachment_bytes(&sha, variant) {
-                    Ok(d) if d.len() as u64 == total && sha_hex(&d) == vsha => d,
-                    Ok(_) | Err(_) => {
-                        eprintln!(
-                            "harvest: attachment {sha} ({variant}) is damaged on this device; set aside"
-                        );
-                        self.conn.execute(
-                            "UPDATE attachment SET sent = 'damaged' WHERE sha256 = ?1",
-                            [&sha],
-                        )?;
-                        report.damaged.push(sha.clone());
-                        continue;
-                    }
-                };
-                // The hub dropping the whole (it did not hash to its name)
-                // more than twice for one file ends the pass.
-                let mut restarts = 0u32;
-                while offset < total {
-                    if self.outbox_status()?.pending > 0 || stop() {
-                        report.yielded = true;
-                        break 'items;
-                    }
-                    let end = (offset + chunk).min(total);
-                    let piece = &data[offset as usize..end as usize];
-                    match link
-                        .put_chunk(&vsha, variant, total, offset, piece)
-                        .and_then(|h| crate::sync::checked_held(&h, link, &vsha, total, hub_keys))
-                    {
-                        Ok(held) => {
-                            report.chunks += 1;
-                            report.bytes += piece.len() as u64;
-                            // The hub says what it holds; resume from there.
-                            // Going backwards (the hub found the whole
-                            // damaged and dropped it) counts as a failure.
-                            if held < end {
-                                restarts += 1;
-                                let e = Error::Sync(format!(
-                                    "attachment {vsha}: the hub holds {held} of {end}"
-                                ));
-                                if restarts > 2 || tries.give_up(&mut report, e) {
-                                    report.error = Some(format!(
-                                        "attachment {vsha}: the hub keeps dropping it"
-                                    ));
-                                    break 'items;
-                                }
-                            }
-                            if held >= end {
-                                tries = Tries::default();
-                            }
-                            offset = held.min(total);
-                        }
-                        Err(e) => {
-                            if tries.give_up(&mut report, e) {
-                                break 'items;
-                            }
-                            // The chunk may have landed: ask where the hub is.
-                            match link.attachment_offset(&vsha, total).and_then(|h| {
-                                crate::sync::checked_held(&h, link, &vsha, total, hub_keys)
-                            }) {
-                                Ok(o) => offset = o.min(total),
-                                Err(e) => {
-                                    if tries.give_up(&mut report, e) {
-                                        break 'items;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            tries = Tries::default();
-            report.error = None;
-            report.completed += 1;
-            let sent = if variant == "full" { "full" } else { "small" };
-            self.conn.execute(
-                "UPDATE attachment SET sent = ?2 WHERE sha256 = ?1 AND (sent = 'none' OR ?2 = 'full')",
-                params![sha, sent],
-            )?;
-        }
-        report.backlog_bytes = self.attachment_backlog(mode)?;
-        Ok(report)
+        send_attachments_shared(&|f| f(self), link, hub_keys, stop)
     }
 }
 
@@ -446,4 +284,199 @@ impl Records {
     pub fn attachment(&self, sha256: &str) -> Result<Option<Attachment>> {
         Ok(self.attachments()?.into_iter().find(|a| a.sha256 == sha256))
     }
+}
+
+/// Access to the records store for one operation at a time: the lane
+/// holds the store only for each read or write, never across a request.
+pub type Db<'a> = dyn Fn(&mut dyn FnMut(&Records) -> Result<()>) -> Result<()> + 'a;
+
+fn with<T>(db: &Db<'_>, f: impl FnOnce(&Records) -> Result<T>) -> Result<T> {
+    let mut f = Some(f);
+    let mut out = None;
+    db(&mut |r| {
+        if let Some(f) = f.take() {
+            out = Some(f(r)?);
+        }
+        Ok(())
+    })?;
+    out.ok_or_else(|| Error::Invalid("the records store was not reached".into()))
+}
+
+/// The attachment lane over a store a host shares (behind its own lock):
+/// `db` is called for each read or write, so the store is free between
+/// chunks and while a request is on the wire.
+pub fn send_attachments_shared(
+    db: &Db<'_>,
+    link: &dyn HubLink,
+    hub_keys: &[TrustedKey],
+    stop: &dyn Fn() -> bool,
+) -> Result<AttachReport> {
+    let r = attachment_pass(db, link, hub_keys, stop)?;
+    if r.mode.is_some() || r.error.is_some() {
+        with(db, |rec| {
+            let mut gate = super::maint::HubGate::load(&rec.conn)?;
+            gate.attachments_at = Some(now_rfc3339());
+            gate.attachments_error = r.error.clone();
+            gate.save(&rec.conn)
+        })?;
+    }
+    Ok(r)
+}
+
+fn attachment_pass(
+    db: &Db<'_>,
+    link: &dyn HubLink,
+    hub_keys: &[TrustedKey],
+    stop: &dyn Fn() -> bool,
+) -> Result<AttachReport> {
+    let mut report = AttachReport::default();
+    if with(db, |r| r.attachment_backlog(AttachmentMode::Full))? == 0 {
+        return Ok(report);
+    }
+    if with(db, |r| r.outbox_status())?.pending > 0 || stop() {
+        report.yielded = true;
+        return Ok(report);
+    }
+    // Ask first: the policy depends on the link the device is on now.
+    // A device the hub refused sends nothing here (its uploads back off).
+    let mut gate = with(db, |r| super::maint::HubGate::load(&r.conn))?;
+    if gate.refused.is_some() {
+        report.error = Some("the hub refuses this device".into());
+        return Ok(report);
+    }
+    let reply = match crate::sync::checked_hello(link, hub_keys) {
+        Ok(r) => r,
+        Err(e) => {
+            report.error = Some(e.to_string());
+            return Ok(report);
+        }
+    };
+    gate.learn(&reply);
+    with(db, |r| gate.save(&r.conn))?;
+    let mode = reply.attachments;
+    report.mode = Some(mode);
+    if !reply.accepted {
+        report.error = Some("the hub refuses this device".into());
+        return Ok(report);
+    }
+    let chunk = gate
+        .chunk_bytes
+        .unwrap_or(crate::sync::DEFAULT_CHUNK_BYTES)
+        .max(1);
+    // A dropped request is retried (the hub says where to resume);
+    // `MAX_TRIES` failures in a row, or a refusal, end the pass.
+    let mut tries = Tries::default();
+    'items: for (sha, variant, vsha, total) in with(db, |r| r.attachment_work(mode))? {
+        if with(db, |r| r.outbox_status())?.pending > 0 || stop() {
+            report.yielded = true;
+            break;
+        }
+        let mut offset = loop {
+            match link
+                .attachment_offset(&vsha, total)
+                .and_then(|h| crate::sync::checked_held(&h, link, &vsha, total, hub_keys))
+            {
+                Ok(o) => break o.min(total),
+                Err(e) => {
+                    if tries.give_up(&mut report, e) {
+                        break 'items;
+                    }
+                    if stop() {
+                        report.yielded = true;
+                        break 'items;
+                    }
+                }
+            }
+        };
+        if offset > 0 {
+            report.resumed += 1;
+            report.resumed_bytes += offset;
+        }
+        if offset < total {
+            // A damaged stored copy is set aside and reported; the
+            // lane goes on with the rest.
+            let data = match with(db, |r| r.attachment_bytes(&sha, variant)) {
+                Ok(d) if d.len() as u64 == total && sha_hex(&d) == vsha => d,
+                Ok(_) | Err(_) => {
+                    eprintln!(
+                        "harvest: attachment {sha} ({variant}) is damaged on this device; set aside"
+                    );
+                    with(db, |r| {
+                        Ok(r.conn.execute(
+                            "UPDATE attachment SET sent = 'damaged' WHERE sha256 = ?1",
+                            [&sha],
+                        )?)
+                    })?;
+                    report.damaged.push(sha.clone());
+                    continue;
+                }
+            };
+            // The hub dropping the whole (it did not hash to its name)
+            // more than twice for one file ends the pass.
+            let mut restarts = 0u32;
+            while offset < total {
+                if with(db, |r| r.outbox_status())?.pending > 0 || stop() {
+                    report.yielded = true;
+                    break 'items;
+                }
+                let end = (offset + chunk).min(total);
+                let piece = &data[offset as usize..end as usize];
+                match link
+                    .put_chunk(&vsha, variant, total, offset, piece)
+                    .and_then(|h| crate::sync::checked_held(&h, link, &vsha, total, hub_keys))
+                {
+                    Ok(held) => {
+                        report.chunks += 1;
+                        report.bytes += piece.len() as u64;
+                        // The hub says what it holds; resume from there.
+                        // Going backwards (the hub found the whole
+                        // damaged and dropped it) counts as a failure.
+                        if held < end {
+                            restarts += 1;
+                            let e = Error::Sync(format!(
+                                "attachment {vsha}: the hub holds {held} of {end}"
+                            ));
+                            if restarts > 2 || tries.give_up(&mut report, e) {
+                                report.error =
+                                    Some(format!("attachment {vsha}: the hub keeps dropping it"));
+                                break 'items;
+                            }
+                        }
+                        if held >= end {
+                            tries = Tries::default();
+                        }
+                        offset = held.min(total);
+                    }
+                    Err(e) => {
+                        if tries.give_up(&mut report, e) {
+                            break 'items;
+                        }
+                        // The chunk may have landed: ask where the hub is.
+                        match link.attachment_offset(&vsha, total).and_then(|h| {
+                            crate::sync::checked_held(&h, link, &vsha, total, hub_keys)
+                        }) {
+                            Ok(o) => offset = o.min(total),
+                            Err(e) => {
+                                if tries.give_up(&mut report, e) {
+                                    break 'items;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        tries = Tries::default();
+        report.error = None;
+        report.completed += 1;
+        let sent = if variant == "full" { "full" } else { "small" };
+        with(db, |r| {
+            Ok(r.conn.execute(
+                    "UPDATE attachment SET sent = ?2 WHERE sha256 = ?1 AND (sent = 'none' OR ?2 = 'full')",
+                    params![sha, sent],
+                )?)
+        })?;
+    }
+    report.backlog_bytes = with(db, |r| r.attachment_backlog(mode))?;
+    Ok(report)
 }

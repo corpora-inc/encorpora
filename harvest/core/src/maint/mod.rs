@@ -9,10 +9,12 @@
 //! that fails the check is refused whole, like a procedure with one
 //! unverified step.
 
+pub mod applic;
 pub mod branch;
 pub mod graph;
 pub mod resolve;
 pub mod search;
+pub mod table;
 pub mod view;
 
 use crate::check;
@@ -32,8 +34,87 @@ pub const SCHEMA_MAINT: &str = include_str!("../schema_maint.sql");
 /// Rows whose provenance passed verification.
 const PASSED: &str = "prov_id IN (SELECT prov_id FROM provenance WHERE verdict = 'pass')";
 
-/// Section kinds that are typed blocks guarding a step.
+/// The guard classes a pack gets when it declares none.
 pub const GUARD_KINDS: &[&str] = &["warning", "caution", "note"];
+
+/// A safety or advisory class as the manual defines it
+/// (`pack_meta.guard_classes`, most severe first).
+#[derive(Debug, Clone, Serialize, Deserialize, JsonSchema, PartialEq)]
+#[serde(deny_unknown_fields)]
+pub struct GuardClass {
+    /// The section kind that carries it (`danger`, `warning`, `notice`, …).
+    pub id: String,
+    /// As printed (`DANGER`, `WARNING`).
+    pub label: String,
+    /// 1 is the most severe.
+    pub rank: u32,
+    /// Shown at every level, never collapsed (the bake sets it for every
+    /// class at or above caution).
+    pub must_show: bool,
+}
+
+/// The features a pack uses that a base (level 1) reader does not know:
+/// they need `pack_meta.min_reader` 2.
+pub fn reader_features(pack: &Pack) -> Result<Vec<String>> {
+    let mut out = Vec::new();
+    if pack.meta("guard_classes").is_some() {
+        out.push("guard_classes".to_string());
+    }
+    let rows = |t: &str| -> Result<i64> {
+        if !pack.has_table(t)? {
+            return Ok(0);
+        }
+        Ok(pack
+            .conn()
+            .query_row(&format!("SELECT count(*) FROM {t}"), [], |r| r.get(0))?)
+    };
+    if pack.meta("attributes").is_some() || rows("applic")? > 0 {
+        out.push("applicability conditions".to_string());
+    }
+    if rows("ref_table")? > 0 {
+        out.push("reference tables".to_string());
+    }
+    if pack.has_table("fault_node")? {
+        let edges = pack.has_table("fault_edge")?;
+        let conn = pack.conn();
+        let n: i64 = conn.query_row(
+            "SELECT count(*) FROM fault_node WHERE expect LIKE '%\"labels\"%'",
+            [],
+            |r| r.get(0),
+        )?;
+        let e: i64 = if edges {
+            conn.query_row(
+                "SELECT count(*) FROM fault_edge WHERE cond LIKE '%_inclusive%'",
+                [],
+                |r| r.get(0),
+            )?
+        } else {
+            0
+        };
+        if n > 0 || e > 0 {
+            out.push("value readings or inclusive bounds".to_string());
+        }
+    }
+    Ok(out)
+}
+
+/// warning, caution and note, all shown at every level.
+pub fn default_guard_classes() -> Vec<GuardClass> {
+    ["WARNING", "CAUTION", "NOTE"]
+        .iter()
+        .enumerate()
+        .map(|(i, l)| GuardClass {
+            id: l.to_lowercase(),
+            label: l.to_string(),
+            rank: i as u32 + 1,
+            must_show: true,
+        })
+        .collect()
+}
+
+/// The highest pack feature level this reader understands
+/// (`pack_meta.min_reader`; 1 is the base).
+pub const READER_LEVEL: u32 = 2;
 
 /// Requirement kinds.
 pub const REQUIREMENT_KINDS: &[&str] = &[
@@ -133,6 +214,11 @@ pub struct FaultTree {
     pub lang: String,
     /// Equipment the tree is limited to (empty: all).
     pub applies_to: Vec<String>,
+    /// The tree's statements (and its first section's) for the asset, when
+    /// it has any; an `unknown` tree is offered flagged, one that does not
+    /// apply is never offered.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub applicability: Option<applic::Applicability>,
 }
 
 /// One node of a tree. `text` is the manual's own words.
@@ -299,6 +385,9 @@ pub struct Symptom {
     pub synonyms: Vec<String>,
     pub lang: String,
     pub applies_to: Vec<String>,
+    /// Its tree's applicability for the asset, when the tree has statements.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub applicability: Option<applic::Applicability>,
 }
 
 /// A machine signal pattern and the entry point it leads to.
@@ -317,6 +406,9 @@ pub struct SignalRule {
     pub quote: Option<String>,
     /// True when `quote` is verbatim in `section_id`.
     pub quote_verified: bool,
+    /// The reference-table row it resolves to (`<table_id>#<ord>`): a code
+    /// or message with its meaning, causes and resolutions.
+    pub row_id: Option<String>,
 }
 
 /// A kind of machine signal the pack maps (`pack_meta.signal_kinds`, else
@@ -497,6 +589,33 @@ impl Pack {
             }
         }
         Ok(levels)
+    }
+
+    /// The pack's guard classes (`pack_meta.guard_classes`, else warning,
+    /// caution, note). Ids unique, ranks rising.
+    pub fn guard_classes(&self) -> Result<Vec<GuardClass>> {
+        let Some(raw) = self.meta("guard_classes") else {
+            return Ok(default_guard_classes());
+        };
+        let cs: Vec<GuardClass> = serde_json::from_str(raw)
+            .map_err(|e| Error::Pack(format!("pack_meta.guard_classes: {e}")))?;
+        if cs.is_empty() {
+            return Err(Error::Pack("pack_meta.guard_classes is empty".into()));
+        }
+        for (i, c) in cs.iter().enumerate() {
+            if c.id.trim().is_empty() || cs[..i].iter().any(|o| o.id == c.id) {
+                return Err(Error::Pack(format!(
+                    "pack_meta.guard_classes: empty or repeated id {:?}",
+                    c.id
+                )));
+            }
+            if i > 0 && c.rank < cs[i - 1].rank {
+                return Err(Error::Pack(
+                    "pack_meta.guard_classes: list them most severe first (rank rising)".into(),
+                ));
+            }
+        }
+        Ok(cs)
     }
 
     /// The pack's facet headings, in display order (empty when it names none).
@@ -757,6 +876,17 @@ impl Pack {
 
     /// Trees whose provenance passed, filtered to `equip`, by title.
     pub fn fault_trees(&self, equip: Option<&str>) -> Result<Vec<FaultTree>> {
+        self.fault_trees_for(equip, &applic::AttrValues::new())
+    }
+
+    /// The trees for `equip` and an asset's attribute `values`: a tree
+    /// whose statements do not apply is left out, one not determined is
+    /// kept with its `applicability`.
+    pub fn fault_trees_for(
+        &self,
+        equip: Option<&str>,
+        values: &applic::AttrValues,
+    ) -> Result<Vec<FaultTree>> {
         if !self.has_fault_trees()? {
             return Ok(Vec::new());
         }
@@ -767,10 +897,18 @@ impl Pack {
         )?;
         let mut out = Vec::new();
         for id in ids {
-            if let Some(t) = self.fault_tree_row(&id, true)?
+            if let Some(mut t) = self.fault_tree_row(&id, true)?
                 && self.applies(&t.applies_to, equip)
             {
-                out.push(t);
+                t.applicability = self.applicability_with_section(
+                    "fault_tree",
+                    &t.tree_id,
+                    t.section_ids.first().map(String::as_str),
+                    values,
+                )?;
+                if applic::Applicability::shown(&t.applicability) {
+                    out.push(t);
+                }
             }
         }
         Ok(out)
@@ -805,6 +943,7 @@ impl Pack {
             Ok(FaultTree {
                 section_ids: json_col(&tree_id, "section_ids", Some(ids))?,
                 applies_to: self.applies_to("fault_tree", &tree_id)?,
+                applicability: None,
                 tree_id,
                 title,
                 system,
@@ -1015,6 +1154,16 @@ impl Pack {
 
     /// Symptoms whose provenance passed and whose tree applies to `equip`.
     pub fn symptoms(&self, equip: Option<&str>) -> Result<Vec<Symptom>> {
+        self.symptoms_for(equip, &applic::AttrValues::new())
+    }
+
+    /// The symptoms whose trees apply to `equip` and the asset's `values`
+    /// (each with its tree's applicability).
+    pub fn symptoms_for(
+        &self,
+        equip: Option<&str>,
+        values: &applic::AttrValues,
+    ) -> Result<Vec<Symptom>> {
         if !self.has_table("symptom")? {
             return Ok(Vec::new());
         }
@@ -1037,15 +1186,16 @@ impl Pack {
             },
         )?;
         let trees: BTreeMap<String, FaultTree> = self
-            .fault_trees(equip)?
+            .fault_trees_for(equip, values)?
             .into_iter()
             .map(|t| (t.tree_id.clone(), t))
             .collect();
         let mut out = Vec::new();
         for (symptom_id, tree_id, title, system, synonyms, lang) in rows {
-            if !trees.contains_key(&tree_id) {
+            let Some(tree) = trees.get(&tree_id) else {
                 continue;
-            }
+            };
+            let applicability = tree.applicability.clone();
             let applies_to = self.applies_to("symptom", &symptom_id)?;
             if !self.applies(&applies_to, equip) {
                 continue;
@@ -1058,6 +1208,7 @@ impl Pack {
                 system,
                 lang,
                 applies_to,
+                applicability,
             });
         }
         Ok(out)
@@ -1076,10 +1227,17 @@ impl Pack {
             Option<String>,
             Option<String>,
             Option<String>,
+            Option<String>,
         );
+        // `row_id` is optional (packs before reference tables have none).
+        let row = if self.has_column("signal_map", "row_id")? {
+            "row_id"
+        } else {
+            "NULL"
+        };
         let rows: Vec<S> = self.maint_rows(
             &format!(
-                "SELECT signal_kind, pattern, title, tree_id, node_id, section_id, quote
+                "SELECT signal_kind, pattern, title, tree_id, node_id, section_id, quote, {row}
                  FROM signal_map WHERE {PASSED} ORDER BY signal_kind, pattern, tree_id"
             ),
             &[],
@@ -1092,12 +1250,13 @@ impl Pack {
                     r.get(4)?,
                     r.get(5)?,
                     r.get(6)?,
+                    r.get(7)?,
                 ))
             },
         )?;
         rows.into_iter()
             .map(
-                |(signal_kind, pattern, title, tree_id, node_id, section_id, quote)| {
+                |(signal_kind, pattern, title, tree_id, node_id, section_id, quote, row_id)| {
                     let quote_verified = match (&section_id, &quote) {
                         (Some(s), Some(q)) => self.verbatim(q, s).is_ok(),
                         _ => false,
@@ -1111,6 +1270,7 @@ impl Pack {
                         section_id,
                         quote,
                         quote_verified,
+                        row_id,
                     })
                 },
             )

@@ -4,7 +4,7 @@
 
 use super::branch::{self, Expect, Interval, fold};
 use super::search;
-use super::{Cond, GUARD_KINDS, NodeKind, REQUIREMENT_KINDS, Target};
+use super::{Cond, NodeKind, REQUIREMENT_KINDS, Target};
 use crate::error::Result;
 use crate::pack::Pack;
 use schemars::JsonSchema;
@@ -33,6 +33,12 @@ pub struct GraphCounts {
     pub guards: u64,
     pub requirements: u64,
     pub assets: u64,
+    #[serde(default)]
+    pub tables: u64,
+    #[serde(default)]
+    pub rows: u64,
+    #[serde(default)]
+    pub applic: u64,
 }
 
 /// The validation report.
@@ -154,6 +160,9 @@ pub fn validate(pack: &Pack) -> Result<GraphReport> {
     )?;
     validate_assets(pack, &mut out, &mut counts)?;
     validate_locs(pack, &mut out)?;
+    validate_tables(pack, &mut out, &mut counts)?;
+    validate_applic(pack, &mut out, &mut counts)?;
+    validate_reader(pack, &mut out)?;
     Ok(GraphReport {
         ok: out.v.is_empty(),
         counts,
@@ -591,6 +600,164 @@ fn validate_symptoms(
     Ok(())
 }
 
+fn validate_tables(pack: &Pack, out: &mut Out, counts: &mut GraphCounts) -> Result<()> {
+    for t in pack.ref_tables().unwrap_or_default() {
+        counts.tables += 1;
+        counts.rows += pack.ref_rows(&t.table_id).map_or(0, |r| r.len() as u64);
+    }
+    for (rule, detail) in super::table::problems(pack)? {
+        out.add(&rule, None, None, detail);
+    }
+    for s in pack.signal_rules()? {
+        if let Some(r) = &s.row_id
+            && pack.ref_row(r)?.is_none()
+        {
+            out.add(
+                "signal.row",
+                s.tree_id.as_deref(),
+                None,
+                format!("signal {} {}: no row {r}", s.signal_kind, s.pattern),
+            );
+        }
+    }
+    Ok(())
+}
+
+fn node_exists(pack: &Pack, node_id: &str) -> Result<bool> {
+    if !pack.has_table("fault_node")? {
+        return Ok(false);
+    }
+    Ok(pack
+        .conn()
+        .prepare_cached("SELECT 1 FROM fault_node WHERE node_id = ?1")?
+        .exists([node_id])?)
+}
+
+fn validate_applic(pack: &Pack, out: &mut Out, counts: &mut GraphCounts) -> Result<()> {
+    if pack.has_table("applic")? {
+        let failed: i64 = pack.conn().query_row(
+            &format!("SELECT count(*) FROM applic WHERE NOT ({})", super::PASSED),
+            [],
+            |r| r.get(0),
+        )?;
+        if failed > 0 {
+            out.add(
+                "applic.provenance",
+                None,
+                None,
+                format!("{failed} applicability statements did not pass verification; their items read as not determined"),
+            );
+        }
+    }
+    let defs = match pack.attribute_defs() {
+        Ok(d) => d,
+        Err(e) => {
+            out.add("pack.attributes", None, None, e.to_string());
+            return Ok(());
+        }
+    };
+    for (i, d) in defs.iter().enumerate() {
+        if d.id.trim().is_empty() || defs[..i].iter().any(|o| o.id == d.id) {
+            out.add(
+                "pack.attributes",
+                None,
+                None,
+                format!("empty or repeated attribute {:?}", d.id),
+            );
+        }
+    }
+    let rows = match pack.applic_rows(None) {
+        Ok(r) => r,
+        Err(e) => {
+            out.add("applic.cond", None, None, e.to_string());
+            return Ok(());
+        }
+    };
+    for r in rows {
+        counts.applic += 1;
+        let what = format!("applic {} {} #{}", r.ref_kind, r.ref_id, r.ord);
+        if !super::applic::APPLIC_REF_KINDS.contains(&r.ref_kind.as_str()) {
+            out.add(
+                "applic.ref",
+                None,
+                None,
+                format!("{what}: no such item kind"),
+            );
+        }
+        let exists = match r.ref_kind.as_str() {
+            "section" => pack.section_exists(&r.ref_id)?,
+            "ref_row" => pack.ref_row(&r.ref_id)?.is_some(),
+            "ref_cell" => match r.ref_id.rsplit_once('/') {
+                Some((row, col)) => pack
+                    .ref_row(row)?
+                    .is_some_and(|x| x.cells.contains_key(col)),
+                None => false,
+            },
+            "procedure" => pack.procedure(&r.ref_id)?.is_some(),
+            "proc_step" => match r.ref_id.rsplit_once('#') {
+                Some((p, o)) => o.parse::<i64>().ok().is_some_and(|o| {
+                    pack.proc_steps(p)
+                        .is_ok_and(|s| s.iter().any(|x| x.ord == o))
+                }),
+                None => false,
+            },
+            "fault_tree" => pack
+                .fault_trees(None)?
+                .iter()
+                .any(|t| t.tree_id == r.ref_id),
+            "fault_node" => node_exists(pack, &r.ref_id)?,
+            "question" => pack.question(&r.ref_id)?.is_some(),
+            _ => true,
+        };
+        if !exists {
+            out.add("applic.ref", None, None, format!("{what}: no such item"));
+        }
+        for p in super::applic::problems(&r.cond, &defs) {
+            out.add("applic.cond", None, None, format!("{what}: {p}"));
+        }
+        match pack.section(&r.source_section_id)? {
+            Some(sec) if crate::check::quote_in(&r.statement, &sec.text) => {}
+            Some(_) => out.add(
+                "applic.verbatim",
+                None,
+                None,
+                format!(
+                    "{what}: {:?} is not in {}",
+                    r.statement, r.source_section_id
+                ),
+            ),
+            None => out.add(
+                "applic.verbatim",
+                None,
+                None,
+                format!("{what}: no section {}", r.source_section_id),
+            ),
+        }
+    }
+    Ok(())
+}
+
+/// A pack using a feature newer than the base reader must say so.
+fn validate_reader(pack: &Pack, out: &mut Out) -> Result<()> {
+    let needs = super::reader_features(pack)?;
+    let declared = pack
+        .meta("min_reader")
+        .and_then(|v| v.trim().parse::<u32>().ok())
+        .unwrap_or(1);
+    if !needs.is_empty() && declared < 2 {
+        out.add(
+            "pack.min_reader",
+            None,
+            None,
+            format!(
+                "the pack uses {} (reader level 2): set pack_meta.min_reader to 2",
+                needs.join(", ")
+            ),
+        );
+    }
+    Ok(())
+}
+
 fn validate_signals(
     pack: &Pack,
     node_tree: &HashMap<String, String>,
@@ -669,6 +836,13 @@ fn validate_guards(pack: &Pack, out: &mut Out, counts: &mut GraphCounts) -> Resu
         stmt.query_map([], |r| Ok((r.get(0)?, r.get(1)?)))?
             .collect::<rusqlite::Result<_>>()?
     };
+    let class_ids: BTreeSet<String> = match pack.guard_classes() {
+        Ok(cs) => cs.into_iter().map(|c| c.id).collect(),
+        Err(e) => {
+            out.add("pack.guard_classes", None, None, e.to_string());
+            super::GUARD_KINDS.iter().map(|s| s.to_string()).collect()
+        }
+    };
     for (from, to) in rows {
         counts.guards += 1;
         match pack.section(&from)? {
@@ -678,13 +852,14 @@ fn validate_guards(pack: &Pack, out: &mut Out, counts: &mut GraphCounts) -> Resu
                 None,
                 format!("guard {from}: no such section"),
             ),
-            Some(s) if !GUARD_KINDS.contains(&s.kind.as_str()) => out.add(
-                "guard.resolve",
+            Some(s) if !class_ids.contains(&s.kind) => out.add(
+                "guard.class",
                 None,
                 None,
                 format!(
-                    "guard {from}: a {} section; guards are warning, caution or note",
-                    s.kind
+                    "guard {from}: a {} section; the pack's guard classes are {}",
+                    s.kind,
+                    class_ids.iter().cloned().collect::<Vec<_>>().join(", ")
                 ),
             ),
             _ => {}

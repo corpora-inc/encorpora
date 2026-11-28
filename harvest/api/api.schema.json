@@ -17,6 +17,41 @@
       ],
       "type": "object"
     },
+    "Applicability": {
+      "description": "How an item's applicability came out (present only when it has\nstatements).",
+      "properties": {
+        "message": {
+          "description": "For `unknown`: \"applicability not determined: <statements>\".",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "missing": {
+          "description": "Attributes the asset lacks (ask for these, then read again).",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "statements": {
+          "items": {
+            "$ref": "#/$defs/Statement"
+          },
+          "type": "array"
+        },
+        "status": {
+          "$ref": "#/$defs/Tri"
+        }
+      },
+      "required": [
+        "status",
+        "statements",
+        "missing",
+        "message"
+      ],
+      "type": "object"
+    },
     "AskParams": {
       "additionalProperties": false,
       "properties": {
@@ -213,6 +248,47 @@
         "miles",
         "created_at",
         "updated_at"
+      ],
+      "type": "object"
+    },
+    "AssetAttrs": {
+      "description": "An asset's attributes: what the pack declares and what the asset has.",
+      "properties": {
+        "declared": {
+          "items": {
+            "$ref": "#/$defs/AttrDef"
+          },
+          "type": "array"
+        },
+        "values": {
+          "items": {
+            "$ref": "#/$defs/AttrValue"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "declared",
+        "values"
+      ],
+      "type": "object"
+    },
+    "AssetAttrsParams": {
+      "additionalProperties": false,
+      "properties": {
+        "asset_id": {
+          "type": "string"
+        },
+        "pack_id": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "asset_id"
       ],
       "type": "object"
     },
@@ -495,6 +571,60 @@
       ],
       "type": "object"
     },
+    "AssetSetAttrsParams": {
+      "additionalProperties": false,
+      "properties": {
+        "asset_id": {
+          "type": "string"
+        },
+        "pack_id": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "plate": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PlateInput"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "A data plate or a vehicle's version message: the attributes the pack\ndeclares with that source are taken from it."
+        },
+        "source": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ValueSource"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "`typed` (default), `plate` or `vehicle`."
+        },
+        "values": {
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "default": {},
+          "description": "Attribute id → value (`null` clears it).",
+          "type": "object"
+        }
+      },
+      "required": [
+        "asset_id"
+      ],
+      "type": "object"
+    },
     "AssetUpdateParams": {
       "additionalProperties": false,
       "properties": {
@@ -683,6 +813,102 @@
         "damaged",
         "last_attempt_at",
         "failing"
+      ],
+      "type": "object"
+    },
+    "AttrDef": {
+      "additionalProperties": false,
+      "description": "A declared attribute (`pack_meta.attributes`).",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "description": "As the manual prints it.",
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/$defs/AttrSource"
+        },
+        "type": {
+          "$ref": "#/$defs/AttrType"
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "type",
+        "source"
+      ],
+      "type": "object"
+    },
+    "AttrSource": {
+      "description": "Where an attribute's value comes from.",
+      "oneOf": [
+        {
+          "const": "plate",
+          "description": "The data plate (resolved by `equip_ident`).",
+          "type": "string"
+        },
+        {
+          "const": "vehicle",
+          "description": "Read from the vehicle (a decoder: firmware, board).",
+          "type": "string"
+        },
+        {
+          "const": "manual",
+          "description": "Typed in by the technician (a modification state).",
+          "type": "string"
+        }
+      ]
+    },
+    "AttrType": {
+      "description": "How an attribute's values compare.",
+      "oneOf": [
+        {
+          "enum": [
+            "number"
+          ],
+          "type": "string"
+        },
+        {
+          "const": "text",
+          "description": "Case and spacing folded equality, set membership.",
+          "type": "string"
+        },
+        {
+          "const": "version",
+          "description": "Dotted, numerically by part (`2.10` after `2.9`).",
+          "type": "string"
+        },
+        {
+          "const": "serial",
+          "description": "A prefix and digits (`P40D-1234`): ranges apply within one prefix.",
+          "type": "string"
+        }
+      ]
+    },
+    "AttrValue": {
+      "description": "One attribute value of an asset.",
+      "properties": {
+        "attr": {
+          "type": "string"
+        },
+        "set_at": {
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/$defs/ValueSource"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "attr",
+        "value",
+        "source",
+        "set_at"
       ],
       "type": "object"
     },
@@ -1163,6 +1389,23 @@
       ],
       "type": "object"
     },
+    "Cell": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        {
+          "$ref": "#/$defs/ValueCell"
+        }
+      ],
+      "description": "A cell: verbatim text, an ordered list of verbatim items, or a printed\nvalue."
+    },
     "ChainReport": {
       "description": "The result of [`verify_chain`].",
       "properties": {
@@ -1479,6 +1722,27 @@
         "citation",
         "section",
         "has_tree"
+      ],
+      "type": "object"
+    },
+    "Column": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "description": "As printed in the header.",
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "role"
       ],
       "type": "object"
     },
@@ -2090,6 +2354,17 @@
     "EntryPoint": {
       "description": "Where the signals suggest starting.",
       "properties": {
+        "applicability": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Applicability"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "The tree's applicability, when it has statements (`unknown`: ask\nbefore starting)."
+        },
         "node_id": {
           "description": "The node to start at (the tree's entry when the rule names none).",
           "type": "string"
@@ -2409,6 +2684,17 @@
     "FacetText": {
       "description": "One verbatim facet text.",
       "properties": {
+        "applicability": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Applicability"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Its section's statements for the asset, when it has any (a text\nthat does not apply is left out)."
+        },
         "section_id": {
           "type": "string"
         },
@@ -2418,7 +2704,8 @@
       },
       "required": [
         "text",
-        "section_id"
+        "section_id",
+        "applicability"
       ],
       "type": "object"
     },
@@ -2594,6 +2881,17 @@
     "FaultTree": {
       "description": "A troubleshooting tree.",
       "properties": {
+        "applicability": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Applicability"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "The tree's statements (and its first section's) for the asset, when\nit has any; an `unknown` tree is offered flagged, one that does not\napply is never offered."
+        },
         "applies_to": {
           "description": "Equipment the tree is limited to (empty: all).",
           "items": {
@@ -3104,6 +3402,12 @@
     "GraphCounts": {
       "description": "What was checked.",
       "properties": {
+        "applic": {
+          "default": 0,
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
         "assets": {
           "format": "uint64",
           "minimum": 0,
@@ -3134,12 +3438,24 @@
           "minimum": 0,
           "type": "integer"
         },
+        "rows": {
+          "default": 0,
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
         "signals": {
           "format": "uint64",
           "minimum": 0,
           "type": "integer"
         },
         "symptoms": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "tables": {
+          "default": 0,
           "format": "uint64",
           "minimum": 0,
           "type": "integer"
@@ -3159,7 +3475,10 @@
         "signals",
         "guards",
         "requirements",
-        "assets"
+        "assets",
+        "tables",
+        "rows",
+        "applic"
       ],
       "type": "object"
     },
@@ -3187,8 +3506,19 @@
       "type": "object"
     },
     "Guard": {
-      "description": "A warning, caution or note, verbatim.",
+      "description": "A safety or advisory block (a class the pack declares), verbatim.",
       "properties": {
+        "applicability": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Applicability"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "When its applicability has statements (`unknown` is flagged, never\ndropped)."
+        },
         "applies_to": {
           "items": {
             "type": "string"
@@ -3205,8 +3535,22 @@
           ]
         },
         "kind": {
-          "description": "`warning` | `caution` | `note`.",
+          "description": "The class id (`warning`, `caution`, `note` by default; the pack's\nown, `danger` … `tip`, when it declares them).",
           "type": "string"
+        },
+        "label": {
+          "description": "As printed.",
+          "type": "string"
+        },
+        "must_show": {
+          "description": "Never hidden or collapsed at any level.",
+          "type": "boolean"
+        },
+        "rank": {
+          "description": "1 is the most severe.",
+          "format": "uint32",
+          "minimum": 0,
+          "type": "integer"
         },
         "section_id": {
           "type": "string"
@@ -3218,6 +3562,10 @@
       "required": [
         "section_id",
         "kind",
+        "label",
+        "rank",
+        "must_show",
+        "applicability",
         "heading",
         "text",
         "citation",
@@ -5141,6 +5489,17 @@
     "ManualHit": {
       "description": "One search hit with its text and citation.",
       "properties": {
+        "applicability": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Applicability"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "The hit's statements, when it has any (a hit that does not apply to\nthe asset is left out; one not determined is flagged)."
+        },
         "chunk_id": {
           "type": "string"
         },
@@ -5161,6 +5520,17 @@
         },
         "ref_kind": {
           "type": "string"
+        },
+        "row": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RowView"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "For a reference-table row (`ref_kind` `ref_row`): the row, as it\napplies."
         },
         "score": {
           "format": "double",
@@ -5184,7 +5554,9 @@
         "citation",
         "heading",
         "text",
-        "score"
+        "score",
+        "row",
+        "applicability"
       ],
       "type": "object"
     },
@@ -5214,6 +5586,14 @@
     "ManualSearchParams": {
       "additionalProperties": false,
       "properties": {
+        "asset_id": {
+          "default": null,
+          "description": "The asset (its variant when `equip_id` is absent; its attributes\nfor the rows that apply).",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "equip_id": {
           "default": null,
           "type": [
@@ -6022,6 +6402,49 @@
       ],
       "type": "object"
     },
+    "PlateInput": {
+      "additionalProperties": false,
+      "description": "What the technician or the machine reports.",
+      "properties": {
+        "firmware": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "model": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "params": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "default": {},
+          "type": "object"
+        },
+        "serial": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "text": {
+          "default": null,
+          "description": "Free text (a data plate read aloud or by a camera).",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    },
     "PracticeAttempt": {
       "description": "One recorded attempt.",
       "properties": {
@@ -6119,6 +6542,14 @@
     "PracticeItemsParams": {
       "additionalProperties": false,
       "properties": {
+        "asset_id": {
+          "default": null,
+          "description": "The asset (its variant and attributes).",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "equip_id": {
           "default": null,
           "description": "The variant (questions that do not apply to it are left out).",
@@ -6142,6 +6573,17 @@
         "answer": {
           "description": "mc: the choice index as text; numeric: the value; free_text: rubric JSON.",
           "type": "string"
+        },
+        "applicability": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Applicability"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Its statements, when it has any."
         },
         "choices": {
           "items": {
@@ -6219,7 +6661,8 @@
         "note",
         "rationales",
         "rationale_citations",
-        "citations"
+        "citations",
+        "applicability"
       ],
       "type": "object"
     },
@@ -7278,6 +7721,91 @@
       ],
       "type": "string"
     },
+    "RowHit": {
+      "description": "A row found by `table.lookup`.",
+      "properties": {
+        "kind": {
+          "type": "string"
+        },
+        "matched": {
+          "description": "`exact` (a key, code or pattern cell equals the key, case and\nspacing folded) or `words` (the query's words found in the row).",
+          "type": "string"
+        },
+        "row": {
+          "$ref": "#/$defs/RowView"
+        },
+        "score": {
+          "format": "double",
+          "type": "number"
+        },
+        "table_id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "table_id",
+        "title",
+        "kind",
+        "matched",
+        "score",
+        "row"
+      ],
+      "type": "object"
+    },
+    "RowView": {
+      "description": "A row as a screen shows it: cells that do not apply are left out,\ncells whose applicability is not determined are flagged.",
+      "properties": {
+        "applicability": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Applicability"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "cell_applicability": {
+          "additionalProperties": {
+            "$ref": "#/$defs/Applicability"
+          },
+          "description": "Per cell (column id), when it has statements of its own.",
+          "type": "object"
+        },
+        "cells": {
+          "additionalProperties": {
+            "$ref": "#/$defs/Cell"
+          },
+          "type": "object"
+        },
+        "citation": {
+          "$ref": "#/$defs/Citation"
+        },
+        "ord": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "row_id": {
+          "type": "string"
+        },
+        "table_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "row_id",
+        "table_id",
+        "ord",
+        "cells",
+        "citation",
+        "applicability",
+        "cell_applicability"
+      ],
+      "type": "object"
+    },
     "Run": {
       "description": "One procedure run.",
       "properties": {
@@ -7549,6 +8077,34 @@
           ]
         },
         "tree_id": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "ScopeParams": {
+      "additionalProperties": false,
+      "description": "A pack read for a variant or an asset (its variant and attributes).",
+      "properties": {
+        "asset_id": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "equip_id": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "pack_id": {
           "default": null,
           "type": [
             "string",
@@ -8000,6 +8556,19 @@
         "observed": {
           "$ref": "#/$defs/Observation"
         },
+        "row": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RowView"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The reference-table row the rule resolves to, as it applies.",
+          "readOnly": true
+        },
         "rule": {
           "$ref": "#/$defs/SignalRule"
         },
@@ -8021,7 +8590,8 @@
         "rule",
         "citation",
         "section",
-        "has_tree"
+        "has_tree",
+        "row"
       ],
       "type": "object"
     },
@@ -8158,6 +8728,13 @@
           "description": "True when `quote` is verbatim in `section_id`.",
           "type": "boolean"
         },
+        "row_id": {
+          "description": "The reference-table row it resolves to (`<table_id>#<ord>`): a code\nor message with its meaning, causes and resolutions.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "section_id": {
           "type": [
             "string",
@@ -8186,7 +8763,8 @@
         "node_id",
         "section_id",
         "quote",
-        "quote_verified"
+        "quote_verified",
+        "row_id"
       ],
       "type": "object"
     },
@@ -8257,6 +8835,27 @@
         "sha256",
         "media_type",
         "license"
+      ],
+      "type": "object"
+    },
+    "Statement": {
+      "description": "One printed statement and how it evaluated.",
+      "properties": {
+        "section_id": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/Tri"
+        },
+        "text": {
+          "description": "Verbatim, as printed.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "text",
+        "section_id",
+        "status"
       ],
       "type": "object"
     },
@@ -8405,6 +9004,17 @@
     "StepView": {
       "description": "The step view: the manual's content at the current node, the path so\nfar, and field knowledge kept apart from the manual.",
       "properties": {
+        "applicability": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Applicability"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "The node's statements (and its section's), when it has any."
+        },
         "assets": {
           "items": {
             "$ref": "#/$defs/PackAsset"
@@ -8524,6 +9134,7 @@
         "tree",
         "node",
         "terminal",
+        "applicability",
         "citation",
         "guards",
         "setup",
@@ -8663,6 +9274,17 @@
     "Symptom": {
       "description": "A symptom a technician reports, the way into a tree.",
       "properties": {
+        "applicability": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Applicability"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Its tree's applicability for the asset, when the tree has statements."
+        },
         "applies_to": {
           "items": {
             "type": "string"
@@ -8892,7 +9514,7 @@
       "properties": {
         "max_seconds": {
           "default": null,
-          "description": "Stop starting chunks after this long (default 10, at most 300). The\npass holds the records store, so a host calls it in short passes\nwhile the link is up.",
+          "description": "Stop starting chunks after this long (default 10, at most 300). The\nrecords store is held only for each read or write, never while a\nchunk is on the wire.",
           "format": "uint64",
           "minimum": 0,
           "type": [
@@ -9080,6 +9702,188 @@
       ],
       "type": "object"
     },
+    "TableGetParams": {
+      "additionalProperties": false,
+      "properties": {
+        "asset_id": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "equip_id": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "pack_id": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "table_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "table_id"
+      ],
+      "type": "object"
+    },
+    "TableLookupParams": {
+      "additionalProperties": false,
+      "properties": {
+        "asset_id": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "equip_id": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "k": {
+          "default": null,
+          "description": "Results (default 10).",
+          "format": "uint",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "key": {
+          "default": null,
+          "description": "Exact: a key, code, pattern or item cell equal to it (folded).",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "pack_id": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "query": {
+          "default": null,
+          "description": "Words: rows holding the query's meaningful words.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "table_id": {
+          "default": null,
+          "description": "Only this table.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "TableSummary": {
+      "description": "A table in a listing.",
+      "properties": {
+        "columns": {
+          "items": {
+            "$ref": "#/$defs/Column"
+          },
+          "type": "array"
+        },
+        "kind": {
+          "description": "`spec` | `indicator` | `message` | `schedule` | `command` |\n`parameter` | `abbreviation` | … (open).",
+          "type": "string"
+        },
+        "lang": {
+          "type": "string"
+        },
+        "rows": {
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "section_id": {
+          "type": "string"
+        },
+        "table_id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "table_id",
+        "title",
+        "kind",
+        "section_id",
+        "columns",
+        "lang",
+        "rows"
+      ],
+      "type": "object"
+    },
+    "TableView": {
+      "properties": {
+        "citation": {
+          "$ref": "#/$defs/Citation"
+        },
+        "columns": {
+          "items": {
+            "$ref": "#/$defs/Column"
+          },
+          "type": "array"
+        },
+        "kind": {
+          "description": "`spec` | `indicator` | `message` | `schedule` | `command` |\n`parameter` | `abbreviation` | … (open).",
+          "type": "string"
+        },
+        "lang": {
+          "type": "string"
+        },
+        "rows": {
+          "items": {
+            "$ref": "#/$defs/RowView"
+          },
+          "type": "array"
+        },
+        "section_id": {
+          "type": "string"
+        },
+        "table_id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "table_id",
+        "title",
+        "kind",
+        "section_id",
+        "columns",
+        "lang",
+        "citation",
+        "rows"
+      ],
+      "type": "object"
+    },
     "Target": {
       "description": "Where a `goto` (or an `action` that is a task) leads.",
       "oneOf": [
@@ -9147,6 +9951,14 @@
     "TaskGetParams": {
       "additionalProperties": false,
       "properties": {
+        "asset_id": {
+          "default": null,
+          "description": "The asset: its variant (when `equip_id` is absent) and its attribute\nvalues for applicability.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "equip_id": {
           "default": null,
           "type": [
@@ -9193,11 +10005,22 @@
     "TaskStep": {
       "description": "One step of a task or test procedure.",
       "properties": {
+        "applicability": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Applicability"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "The step's statements (and its section's), when it has any; an\n`unknown` one is flagged for the technician to settle."
+        },
         "applies": {
           "type": "boolean"
         },
         "applies_to": {
-          "description": "Equipment the step is limited to (empty: all), and whether it\napplies to the equipment asked about.",
+          "description": "Equipment the step is limited to (empty: all), and whether it\napplies to the equipment asked about (and to the asset, by its\nstatements: `false` only when it does not apply).",
           "items": {
             "type": "string"
           },
@@ -9261,7 +10084,8 @@
         "assets",
         "detail",
         "applies_to",
-        "applies"
+        "applies",
+        "applicability"
       ],
       "type": "object"
     },
@@ -9299,6 +10123,17 @@
     "TaskView": {
       "description": "A task (procedure) ready to show.",
       "properties": {
+        "applicability": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Applicability"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "The procedure's statements, when it has any."
+        },
         "applies_to": {
           "items": {
             "type": "string"
@@ -9352,13 +10187,25 @@
         "guards",
         "requirements",
         "steps",
-        "applies_to"
+        "applies_to",
+        "applicability"
       ],
       "type": "object"
     },
     "TestProcedure": {
       "description": "The test procedure that answers a node's question.",
       "properties": {
+        "applicability": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Applicability"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "The procedure's statements, when it has any."
+        },
         "expanded": {
           "description": "Whether it opens expanded at this level.",
           "type": "boolean"
@@ -9395,7 +10242,8 @@
         "expanded",
         "guards",
         "requirements",
-        "steps"
+        "steps",
+        "applicability"
       ],
       "type": "object"
     },
@@ -9454,6 +10302,14 @@
     "TreeListParams": {
       "additionalProperties": false,
       "properties": {
+        "asset_id": {
+          "default": null,
+          "description": "The asset: its variant (when `equip_id` is absent) and attributes (a\ntree that does not apply is left out; one not determined is flagged).",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "equip_id": {
           "default": null,
           "type": [
@@ -9481,6 +10337,17 @@
     "TreeSummary": {
       "description": "The tree a node belongs to.",
       "properties": {
+        "applicability": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Applicability"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "The tree's statements, when it has any."
+        },
         "applies_to": {
           "items": {
             "type": "string"
@@ -9504,9 +10371,80 @@
         "tree_id",
         "title",
         "system",
-        "applies_to"
+        "applies_to",
+        "applicability"
       ],
       "type": "object"
+    },
+    "Tri": {
+      "description": "The three outcomes.",
+      "enum": [
+        "applies",
+        "does_not_apply",
+        "unknown"
+      ],
+      "type": "string"
+    },
+    "ValueCell": {
+      "additionalProperties": false,
+      "description": "A printed value: `text` is what the manual prints (shown as is); the\nnumbers serve exact lookup only.",
+      "properties": {
+        "max": {
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "max_inclusive": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "min": {
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "min_inclusive": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "text": {
+          "type": "string"
+        },
+        "unit": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "value": {
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "text"
+      ],
+      "type": "object"
+    },
+    "ValueSource": {
+      "description": "Where a value came from.",
+      "enum": [
+        "typed",
+        "plate",
+        "vehicle"
+      ],
+      "type": "string"
     },
     "Violation": {
       "description": "One broken rule.",
@@ -9623,6 +10561,14 @@
         "$ref": "#/$defs/AskResponse"
       }
     },
+    "asset.attrs": {
+      "params": {
+        "$ref": "#/$defs/AssetAttrsParams"
+      },
+      "result": {
+        "$ref": "#/$defs/AssetAttrs"
+      }
+    },
     "asset.create": {
       "params": {
         "$ref": "#/$defs/AssetCreateParams"
@@ -9664,6 +10610,14 @@
           "$ref": "#/$defs/Asset"
         },
         "type": "array"
+      }
+    },
+    "asset.set_attrs": {
+      "params": {
+        "$ref": "#/$defs/AssetSetAttrsParams"
+      },
+      "result": {
+        "$ref": "#/$defs/AssetAttrs"
       }
     },
     "asset.update": {
@@ -10146,6 +11100,36 @@
       },
       "result": {
         "$ref": "#/$defs/SyncStatus"
+      }
+    },
+    "table.get": {
+      "params": {
+        "$ref": "#/$defs/TableGetParams"
+      },
+      "result": {
+        "$ref": "#/$defs/TableView"
+      }
+    },
+    "table.list": {
+      "params": {
+        "$ref": "#/$defs/ScopeParams"
+      },
+      "result": {
+        "items": {
+          "$ref": "#/$defs/TableSummary"
+        },
+        "type": "array"
+      }
+    },
+    "table.lookup": {
+      "params": {
+        "$ref": "#/$defs/TableLookupParams"
+      },
+      "result": {
+        "items": {
+          "$ref": "#/$defs/RowHit"
+        },
+        "type": "array"
       }
     },
     "task.get": {

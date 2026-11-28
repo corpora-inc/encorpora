@@ -410,6 +410,36 @@ pub const SECTIONS: &[Sec] = &[
         Some("4-4"),
         None,
     ),
+    (
+        "m40.3-3",
+        Some("m40.3"),
+        "table",
+        "Table 3-3",
+        Some("Table 3-3. Controller display codes"),
+        "Table 3-3. Controller display codes. E21 Motor winding temperature high. Cause: blocked motor fan cover; high ambient temperature. Remedy: stop the pump; clean the fan cover; restart after 15 minutes. E40 Suction pressure low. Cause: clogged intake strainer; air leak in the suction hose. Remedy: clean the strainer; tighten the hose clamps. E52 Inverter fault. Cause: inverter overcurrent. Remedy: switch the supply off for 30 seconds; replace the inverter if the code returns. Code E52 is shown by firmware 2.4 and later.",
+        Some("3-6"),
+        None,
+    ),
+    (
+        "m40.6",
+        None,
+        "chapter",
+        "Chapter 6",
+        Some("Specifications"),
+        "Specifications and wear limits for the Model 40.",
+        Some("6-1"),
+        None,
+    ),
+    (
+        "m40.6-1",
+        Some("m40.6"),
+        "table",
+        "Table 6-1",
+        Some("Table 6-1. Wear limits"),
+        "Table 6-1. Wear limits. Item Standard Service limit. Impeller to wear ring clearance 0.15 to 0.25 mm 0.30 mm. Shaft runout 0.02 mm or less 0.05 mm. Impeller nut torque 45 N·m; POST SB 40-07: 55 N·m.",
+        Some("6-1"),
+        None,
+    ),
 ];
 
 /// Passage boxes on the page images: (section, json boxes).
@@ -989,6 +1019,16 @@ fn populate(conn: &Connection, version: &str) -> Result<()> {
             .to_string(),
         ),
         ("repeat_window_days", "30".into()),
+        (
+            "attributes",
+            json!([
+                {"id": "firmware", "label": "Controller firmware", "type": "version", "source": "vehicle"},
+                {"id": "sb_40_07", "label": "SB 40-07", "type": "text", "source": "manual"},
+                {"id": "serial", "label": "Serial No.", "type": "serial", "source": "plate"}
+            ])
+            .to_string(),
+        ),
+        ("min_reader", "2".into()),
         ("row_counts", json!({"section": SECTIONS.len()}).to_string()),
     ];
     for (k, v) in meta {
@@ -1114,11 +1154,29 @@ fn populate(conn: &Connection, version: &str) -> Result<()> {
           '["running hot","high temperature","temperature light on","overheating"]', 'en', 'prov-pump40');
         INSERT INTO chunk VALUES ('c-sym-nocrank', 'symptom', 's-nocrank', 'Engine will not crank. Engine won''t start, no crank, starter does nothing, nothing happens when I turn the key.', 'en');
         INSERT INTO chunk VALUES ('c-sym-hot', 'symptom', 's-hot', 'Pump overheats. Running hot, high temperature, temperature light on, overheating.', 'en');
-        INSERT INTO signal_map VALUES ('j1939.dm1', 'spn:110/fmi:0', 'Engine coolant temperature high', 't-hot', 'oh.0', 'm40.3-2.codes', 'Code SPN 110 FMI 0: engine coolant temperature above the shutdown limit.', 'prov-pump40');
-        INSERT INTO signal_map VALUES ('j1939.dm1', 'glob:spn:110/fmi:*', 'Engine coolant temperature fault', 't-hot', NULL, 'm40.3-2.codes', NULL, 'prov-pump40');
-        INSERT INTO signal_map VALUES ('pump40.code', 'E21', 'Motor winding temperature high', 't-hot', 'oh.1', 'm40.3-2.codes', 'Code E21: motor winding temperature high.', 'prov-pump40');
-        INSERT INTO signal_map VALUES ('j1939.dm1', 'spn:168/fmi:1', 'Battery voltage low', 't-nocrank', 'nc.2', 'm40.3-2.codes', 'Code SPN 168 FMI 1: battery voltage below the cranking limit.', 'prov-pump40');
-        INSERT INTO signal_map VALUES ('pump40.code', 'E40', 'Suction pressure low', NULL, NULL, 'm40.3-2.codes', 'Code E40: suction pressure below the warning limit.', 'prov-pump40');
+        INSERT INTO signal_map VALUES ('j1939.dm1', 'spn:110/fmi:0', 'Engine coolant temperature high', 't-hot', 'oh.0', 'm40.3-2.codes', 'Code SPN 110 FMI 0: engine coolant temperature above the shutdown limit.', 'prov-pump40', NULL);
+        INSERT INTO signal_map VALUES ('j1939.dm1', 'glob:spn:110/fmi:*', 'Engine coolant temperature fault', 't-hot', NULL, 'm40.3-2.codes', NULL, 'prov-pump40', NULL);
+        INSERT INTO signal_map VALUES ('pump40.code', 'E21', 'Motor winding temperature high', 't-hot', 'oh.1', 'm40.3-2.codes', 'Code E21: motor winding temperature high.', 'prov-pump40', 'tab-3-3#1');
+        INSERT INTO signal_map VALUES ('j1939.dm1', 'spn:168/fmi:1', 'Battery voltage low', 't-nocrank', 'nc.2', 'm40.3-2.codes', 'Code SPN 168 FMI 1: battery voltage below the cranking limit.', 'prov-pump40', NULL);
+        INSERT INTO signal_map VALUES ('pump40.code', 'E40', 'Suction pressure low', NULL, NULL, 'm40.3-2.codes', 'Code E40: suction pressure below the warning limit.', 'prov-pump40', NULL);
+        INSERT INTO signal_map VALUES ('pump40.code', 'E52', 'Inverter fault', NULL, NULL, 'm40.3-3', 'E52 Inverter fault.', 'prov-pump40', 'tab-3-3#3');
+        INSERT INTO ref_table VALUES ('tab-3-3', 'Controller display codes', 'message', 'm40.3-3',
+          '[{"id":"code","label":"Code","role":"code"},{"id":"meaning","label":"Meaning","role":"meaning"},{"id":"cause","label":"Cause","role":"cause"},{"id":"remedy","label":"Remedy","role":"remedy"}]', 'en', 'prov-pump40');
+        INSERT INTO ref_row VALUES ('tab-3-3', 1, '{"code":"E21","meaning":"Motor winding temperature high","cause":["blocked motor fan cover","high ambient temperature"],"remedy":["stop the pump","clean the fan cover","restart after 15 minutes"]}', 'm40.3-3', 'en', 'prov-pump40');
+        INSERT INTO ref_row VALUES ('tab-3-3', 2, '{"code":"E40","meaning":"Suction pressure low","cause":["clogged intake strainer","air leak in the suction hose"],"remedy":["clean the strainer","tighten the hose clamps"]}', 'm40.3-3', 'en', 'prov-pump40');
+        INSERT INTO ref_row VALUES ('tab-3-3', 3, '{"code":"E52","meaning":"Inverter fault","cause":["inverter overcurrent"],"remedy":["switch the supply off for 30 seconds","replace the inverter if the code returns"]}', 'm40.3-3', 'en', 'prov-pump40');
+        INSERT INTO ref_table VALUES ('tab-6-1', 'Wear limits', 'spec', 'm40.6-1',
+          '[{"id":"item","label":"Item","role":"item"},{"id":"std","label":"Standard","role":"value"},{"id":"limit","label":"Service limit","role":"limit"},{"id":"std_sb","label":"Standard (POST SB 40-07)","role":"value"}]', 'en', 'prov-pump40');
+        INSERT INTO ref_row VALUES ('tab-6-1', 1, '{"item":"Impeller to wear ring clearance","std":{"text":"0.15 to 0.25 mm","unit":"mm","min":0.15,"max":0.25,"min_inclusive":true,"max_inclusive":true},"limit":{"text":"0.30 mm","unit":"mm","value":0.30}}', 'm40.6-1', 'en', 'prov-pump40');
+        INSERT INTO ref_row VALUES ('tab-6-1', 2, '{"item":"Shaft runout","std":{"text":"0.02 mm or less","unit":"mm","max":0.02},"limit":{"text":"0.05 mm","unit":"mm","value":0.05}}', 'm40.6-1', 'en', 'prov-pump40');
+        INSERT INTO ref_row VALUES ('tab-6-1', 3, '{"item":"Impeller nut torque","std":{"text":"45 N·m","unit":"N·m","value":45},"std_sb":{"text":"55 N·m","unit":"N·m","value":55}}', 'm40.6-1', 'en', 'prov-pump40');
+        INSERT INTO applic VALUES ('ref_row', 'tab-3-3#3', 1, '{"attr":"firmware","op":"ge","value":"2.4"}', 'firmware 2.4 and later', 'm40.3-3', 'prov-pump40');
+        INSERT INTO applic VALUES ('ref_cell', 'tab-6-1#3/std', 1, '{"not":{"attr":"sb_40_07","op":"eq","value":"incorporated"}}', 'POST SB 40-07', 'm40.6-1', 'prov-pump40');
+        INSERT INTO applic VALUES ('ref_cell', 'tab-6-1#3/std_sb', 1, '{"attr":"sb_40_07","op":"eq","value":"incorporated"}', 'POST SB 40-07', 'm40.6-1', 'prov-pump40');
+        INSERT INTO chunk VALUES ('c-row-3-3-1', 'ref_row', 'tab-3-3#1', 'E21 Motor winding temperature high. blocked motor fan cover; high ambient temperature.', 'en');
+        INSERT INTO chunk VALUES ('c-row-3-3-2', 'ref_row', 'tab-3-3#2', 'E40 Suction pressure low. clogged intake strainer; air leak in the suction hose.', 'en');
+        INSERT INTO chunk VALUES ('c-row-3-3-3', 'ref_row', 'tab-3-3#3', 'E52 Inverter fault. inverter overcurrent.', 'en');
+        INSERT INTO chunk VALUES ('c-row-6-1-1', 'ref_row', 'tab-6-1#1', 'Impeller to wear ring clearance 0.15 to 0.25 mm, service limit 0.30 mm.', 'en');
         INSERT INTO history VALUES ('h-relay-2026', 'pump40-diesel', 'starting', '2026-02-10', 'Starter relay K1 replaced on three units after no-crank reports.', NULL, '{"units":3}');
         INSERT INTO history VALUES ('h-strainer-2025', 'pump40', 'cooling', '2025-11-03', 'Intake strainers found clogged after a flood response; cleaning interval shortened.', NULL, '{}');
         INSERT INTO history VALUES ('h-winding-2025', 'pump40-electric', 'cooling', '2025-08-21', 'Motor winding temperature code E21 cleared after the motor fan cover was cleaned.', NULL, '{}');
@@ -1166,7 +1224,7 @@ fn populate(conn: &Connection, version: &str) -> Result<()> {
 /// The fictional manual's physical pages, in file order: the printed
 /// label of each (CONTRACT: `page_index` is 1-based in the source file).
 const PAGES: &[&str] = &[
-    "1-1", "3-1", "3-2", "3-3", "3-4", "3-5", "4-1", "4-2", "4-3", "4-4",
+    "1-1", "3-1", "3-2", "3-3", "3-4", "3-5", "4-1", "4-2", "4-3", "4-4", "3-6", "6-1",
 ];
 
 /// The 1-based physical page of a printed label.
