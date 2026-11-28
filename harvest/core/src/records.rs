@@ -368,6 +368,7 @@ impl Records {
         conn.busy_timeout(std::time::Duration::from_secs(5))?;
         conn.execute_batch(DDL)?;
         conn.execute_batch(maint::DDL)?;
+        maint::migrate(&conn)?;
         crate::audit::init(&conn)?;
         sync::init(&conn)?;
         let mode: Option<String> = conn

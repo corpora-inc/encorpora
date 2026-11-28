@@ -131,12 +131,56 @@ CREATE TABLE IF NOT EXISTS field_note (
 );
 ";
 
+/// Columns added after the first stores were made.
+pub(crate) fn migrate(conn: &Connection) -> Result<()> {
+    for (table, column, ty) in [
+        ("job", "tree_shas", "TEXT"),
+        ("job_step", "tree_id", "TEXT"),
+    ] {
+        let n: i64 = conn.query_row(
+            "SELECT count(*) FROM pragma_table_info(?1) WHERE name = ?2",
+            [table, column],
+            |r| r.get(0),
+        )?;
+        if n == 0 {
+            conn.execute_batch(&format!("ALTER TABLE {table} ADD COLUMN {column} {ty}"))?;
+        }
+    }
+    Ok(())
+}
+
 /// The asset registry file format.
 pub const ASSET_REGISTRY_FORMAT: &str = "harvest-assets/1";
 /// The job report format (the queued `job` upload).
 pub const JOB_REPORT_FORMAT: &str = "harvest-job/1";
 /// The lesson upload format.
 pub const LESSON_FORMAT: &str = "harvest-lesson/1";
+/// Default least interval between fleet-summary fetches.
+pub const DEFAULT_FLEET_EVERY_HOURS: f64 = 24.0;
+
+/// Milliseconds since 1970 of an RFC 3339 time as this crate writes it.
+pub(crate) fn parse_rfc3339_ms(t: &str) -> Option<i64> {
+    let day = day_number(t)?;
+    let h: i64 = t.get(11..13)?.parse().ok()?;
+    let mi: i64 = t.get(14..16)?.parse().ok()?;
+    let se: i64 = t.get(17..19)?.parse().ok()?;
+    let ms: i64 = t.get(20..23).and_then(|m| m.parse().ok()).unwrap_or(0);
+    Some(day * 86_400_000 + h * 3_600_000 + mi * 60_000 + se * 1000 + ms)
+}
+
+/// The signed fleet summary document format.
+pub const FLEET_FORMAT: &str = "harvest-fleet/1";
+
+/// The SHA-256 a bundle announces for a fleet summary: canonical JSON of
+/// the summary with `generated_at` blank (the numbers, not the time).
+pub fn fleet_sha256(f: &FleetSummary) -> Result<String> {
+    let mut f = f.clone();
+    f.generated_at = String::new();
+    let bytes = crate::canon::to_vec(&serde_json::to_value(&f)?)?;
+    use sha2::Digest;
+    Ok(crate::packs::hex_encode(&sha2::Sha256::digest(&bytes)))
+}
+
 /// The field-note bundle format.
 pub const FIELD_FORMAT: &str = "harvest-field/1";
 
@@ -315,6 +359,8 @@ pub struct JobStep {
     pub at: String,
     /// When the technician went back over it (the step is kept, audited).
     pub superseded_at: Option<String>,
+    /// The tree the node belongs to (a job can follow a goto into another).
+    pub tree_id: String,
 }
 
 /// How a job ended.
@@ -755,9 +801,10 @@ pub struct FieldBundle {
     pub revoke: Vec<String>,
     #[serde(default)]
     pub reviews: Vec<LessonReview>,
-    /// The hub's fleet summary as of this bundle.
+    /// The SHA-256 of the hub's fleet summary as of this bundle; the device
+    /// fetches the signed summary (`harvest-fleet/1`) when it holds another.
     #[serde(default)]
-    pub fleet: Option<FleetSummary>,
+    pub fleet_sha256: Option<String>,
     pub signature: Value,
 }
 
@@ -832,6 +879,8 @@ pub struct PullReport {
     pub fleet_updated: bool,
     /// Bytes of bundles received.
     pub bytes: u64,
+    /// Bytes of the fleet summary received (fetched only when it changed).
+    pub fleet_bytes: u64,
     pub error: Option<String>,
 }
 
@@ -1254,11 +1303,16 @@ impl Records {
                 pack.pack_id()
             )));
         }
-        let began: String = self.conn.query_row(
-            "SELECT tree_sha256 FROM job WHERE job_id = ?1",
+        let (first, shas): (String, Option<String>) = self.conn.query_row(
+            "SELECT tree_sha256, tree_shas FROM job WHERE job_id = ?1",
             [&job.job_id],
-            |r| r.get(0),
+            |r| Ok((r.get(0)?, r.get(1)?)),
         )?;
+        let shas: BTreeMap<String, String> = shas
+            .map(|s| serde_json::from_str(&s))
+            .transpose()?
+            .unwrap_or_default();
+        let began = shas.get(&job.tree_id).cloned().unwrap_or(first);
         let tree = pack.fault_tree(&job.tree_id)?;
         match tree {
             Some(t) if t.sha256()? == began => Ok(t),
@@ -1313,8 +1367,8 @@ impl Records {
         let aad = |col: &str| format!("job_step.{col}:{job_id}#{seq}|{}|{at}", node.node_id);
         tx.execute(
             "INSERT INTO job_step (job_id, seq, node_id, outcome, value, unit, label, note, photos,
-                                   next_node, at)
-             VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11)",
+                                   next_node, at, tree_id)
+             VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12)",
             params![
                 job_id,
                 seq,
@@ -1326,7 +1380,8 @@ impl Records {
                 self.seal(&aad("note"), opt(ans.note.clone()).as_deref())?,
                 self.seal(&aad("photos"), Some(&serde_json::to_string(&ans.photos)?))?,
                 edge.to_node,
-                at
+                at,
+                job.tree_id
             ],
         )?;
         tx.execute(
@@ -1343,6 +1398,99 @@ impl Records {
         }));
         ev.next_node = Some(edge.to_node.clone());
         ev.detail = serde_json::json!({"seq": seq, "retry": edge.retry});
+        self.audit_event(&tx, &ev)?;
+        tx.commit()?;
+        self.job(job_id)?
+            .ok_or_else(|| Error::Invalid(format!("job {job_id} vanished")))
+    }
+
+    /// At a `goto` into another tree: continue there (its entry, or the
+    /// node the manual names), keeping the path. The jump is a step of its
+    /// own (outcome `goto`), so going back returns to the goto node. The new
+    /// tree is held to its state at the jump, like the first.
+    pub fn follow_job(&self, pack: &Pack, job_id: &str) -> Result<Job> {
+        let tx = self.write_tx()?;
+        let job = self.open_job(job_id)?;
+        let tree = self.tree_for(&job, pack)?;
+        let node = tree
+            .node(&job.current_node)
+            .ok_or_else(|| Error::Pack(format!("node {} vanished", job.current_node)))?;
+        let Some(crate::maint::Target::Tree {
+            id: to_tree,
+            node_id,
+        }) = &node.target
+        else {
+            return Err(Error::Invalid(format!(
+                "node {} does not lead into another tree",
+                node.node_id
+            )));
+        };
+        if !pack
+            .fault_trees(job.equip_id.as_deref())?
+            .iter()
+            .any(|t| &t.tree_id == to_tree)
+        {
+            return Err(Error::Invalid(format!(
+                "tree {to_tree} does not apply to {}",
+                job.equip_id.as_deref().unwrap_or("this equipment")
+            )));
+        }
+        let next = pack
+            .fault_tree(to_tree)?
+            .ok_or_else(|| Error::Invalid(format!("no tree {to_tree:?}")))?;
+        let entry = node_id
+            .clone()
+            .unwrap_or_else(|| next.tree.entry_node.clone());
+        if next.node(&entry).is_none() {
+            return Err(Error::Pack(format!(
+                "node {entry} is not in tree {to_tree}"
+            )));
+        }
+        let seq: i64 = tx.query_row(
+            "SELECT COALESCE(MAX(seq), 0) + 1 FROM job_step WHERE job_id = ?1",
+            [job_id],
+            |r| r.get(0),
+        )?;
+        let at = now_rfc3339();
+        let aad = |col: &str| format!("job_step.{col}:{job_id}#{seq}|{}|{at}", node.node_id);
+        let label = format!("Go to {}", next.tree.title);
+        tx.execute(
+            "INSERT INTO job_step (job_id, seq, node_id, outcome, value, unit, label, note, photos,
+                                   next_node, at, tree_id)
+             VALUES (?1, ?2, ?3, 'goto', NULL, NULL, ?4, NULL, ?5, ?6, ?7, ?8)",
+            params![
+                job_id,
+                seq,
+                node.node_id,
+                label,
+                self.seal(&aad("photos"), Some("[]"))?,
+                entry,
+                at,
+                job.tree_id
+            ],
+        )?;
+        let shas: Option<String> = tx.query_row(
+            "SELECT tree_shas FROM job WHERE job_id = ?1",
+            [job_id],
+            |r| r.get(0),
+        )?;
+        let mut shas: BTreeMap<String, String> = shas
+            .map(|s| serde_json::from_str(&s))
+            .transpose()?
+            .unwrap_or_default();
+        shas.entry(job.tree_id.clone()).or_insert(tree.sha256()?);
+        shas.entry(to_tree.clone()).or_insert(next.sha256()?);
+        tx.execute(
+            "UPDATE job SET tree_id = ?2, current_node = ?3, tree_shas = ?4 WHERE job_id = ?1",
+            params![job_id, to_tree, entry, serde_json::to_string(&shas)?],
+        )?;
+        let mut ev = AuditEvent::new("job.goto", job_id);
+        ev.pack_id = Some(job.pack_id.clone());
+        ev.pack_version = Some(pack.version().into());
+        ev.node_id = Some(node.node_id.clone());
+        ev.asked = Some(node.text.clone());
+        ev.next_node = Some(entry.clone());
+        ev.detail = serde_json::json!({"from_tree": job.tree_id, "to_tree": to_tree, "seq": seq});
         self.audit_event(&tx, &ev)?;
         tx.commit()?;
         self.job(job_id)?
@@ -1366,9 +1514,15 @@ impl Records {
             params![job_id, last.seq, at],
         )?;
         tx.execute(
-            "UPDATE job SET current_node = ?2 WHERE job_id = ?1",
-            params![job_id, last.node_id],
+            "UPDATE job SET current_node = ?2, tree_id = ?3 WHERE job_id = ?1",
+            params![job_id, last.node_id, last.tree_id],
         )?;
+        let tree = if last.tree_id == tree.tree.tree_id {
+            tree
+        } else {
+            pack.fault_tree(&last.tree_id)?
+                .ok_or_else(|| Error::Invalid(format!("tree {} vanished", last.tree_id)))?
+        };
         let mut ev = AuditEvent::new("job.back", job_id);
         ev.pack_id = Some(job.pack_id.clone());
         ev.pack_version = Some(pack.version().into());
@@ -1536,11 +1690,13 @@ impl Records {
             String,
             String,
             Option<String>,
+            Option<String>,
         );
         let rows: Vec<S> = self
             .conn
             .prepare_cached(
-                "SELECT seq, node_id, outcome, value, unit, label, note, photos, next_node, at, superseded_at
+                "SELECT seq, node_id, outcome, value, unit, label, note, photos, next_node, at, superseded_at,
+                        tree_id
                  FROM job_step WHERE job_id = ?1 ORDER BY seq",
             )?
             .query_map([&job_id], |r| {
@@ -1556,6 +1712,7 @@ impl Records {
                     r.get(8)?,
                     r.get(9)?,
                     r.get(10)?,
+                    r.get(11)?,
                 ))
             })?
             .collect::<rusqlite::Result<_>>()?;
@@ -1572,6 +1729,7 @@ impl Records {
             next_node,
             at,
             superseded_at,
+            step_tree,
         ) in rows
         {
             let aad = |col: &str| format!("job_step.{col}:{job_id}#{seq}|{node_id}|{at}");
@@ -1591,6 +1749,8 @@ impl Records {
                 next_node,
                 at,
                 superseded_at,
+                // Steps recorded before trees could change are the job's tree's.
+                tree_id: step_tree.unwrap_or_else(|| tree_id.clone()),
             });
         }
         Ok(Some(Job {
@@ -1679,13 +1839,14 @@ impl Records {
             job.equip_id.as_deref(),
             &path_ids,
         )?;
+        let texts = step_texts(pack, &tree, &job.steps);
         let path = job
             .path()
             .iter()
             .map(|s| PathEntry {
                 seq: s.seq,
                 node_id: s.node_id.clone(),
-                text: tree.node(&s.node_id).map(|n| n.text.clone()),
+                text: texts.get(&s.seq).cloned(),
                 outcome: s.outcome.clone(),
                 value: s.value,
                 unit: s.unit.clone(),
@@ -1764,17 +1925,19 @@ impl Records {
             closed_at: job.closed_at.clone(),
             resolution: job.resolution.clone(),
             tree_known: tree.is_some(),
-            steps: job
-                .steps
-                .iter()
-                .map(|s| ReportJobStep {
-                    text: tree
-                        .as_ref()
-                        .and_then(|t| t.node(&s.node_id))
-                        .map(|n| n.text.clone()),
-                    step: s.clone(),
-                })
-                .collect(),
+            steps: {
+                let texts = match (pack, &tree) {
+                    (Some(p), Some(t)) => step_texts(p, t, &job.steps),
+                    _ => BTreeMap::new(),
+                };
+                job.steps
+                    .iter()
+                    .map(|s| ReportJobStep {
+                        text: texts.get(&s.seq).cloned(),
+                        step: s.clone(),
+                    })
+                    .collect()
+            },
             lesson_ids,
         })
     }
@@ -2265,11 +2428,11 @@ impl Records {
                 params![r.lesson_id, status, r.note, now],
             )? as u64;
         }
-        if let Some(f) = &b.fleet {
+        if let Some(f) = &b.fleet_sha256 {
             tx.execute(
-                "INSERT INTO records_meta (key, value) VALUES ('fleet_summary', ?1)
+                "INSERT INTO records_meta (key, value) VALUES ('fleet_announced', ?1)
                  ON CONFLICT (key) DO UPDATE SET value = excluded.value",
-                [serde_json::to_string(f)?],
+                [f],
             )?;
         }
         tx.execute(
@@ -2386,28 +2549,7 @@ impl Records {
 }
 
 impl Records {
-    /// This store's device id: made once, kept in `records_meta`.
-    pub fn device_id(&self) -> Result<String> {
-        let id: Option<String> = self
-            .conn
-            .query_row(
-                "SELECT value FROM records_meta WHERE key = 'device_id'",
-                [],
-                |r| r.get(0),
-            )
-            .optional()?;
-        if let Some(id) = id {
-            return Ok(id);
-        }
-        let id = new_id("dev", &["device"]);
-        self.conn.execute(
-            "INSERT INTO records_meta (key, value) VALUES ('device_id', ?1)",
-            [&id],
-        )?;
-        Ok(id)
-    }
-
-    /// The fleet summary from the newest installed bundle that carried one.
+    /// The newest fleet summary this device verified.
     pub fn fleet_summary(&self) -> Result<Option<FleetSummary>> {
         let raw: Option<String> = self
             .conn
@@ -2419,6 +2561,38 @@ impl Records {
             .optional()?;
         raw.map(|r| serde_json::from_str(&r).map_err(Error::from))
             .transpose()
+    }
+
+    /// Verify and keep a signed fleet summary (`harvest-fleet/1`): a
+    /// trusted signature, and the summary hashing to the stated SHA-256.
+    pub fn install_fleet(&self, doc: &Value, keys: &[TrustedKey]) -> Result<()> {
+        crate::packs::verify_signature(doc, keys)?;
+        if doc.get("format").and_then(Value::as_str) != Some(FLEET_FORMAT) {
+            return Err(Error::Invalid("not a harvest-fleet/1 document".into()));
+        }
+        let summary: FleetSummary =
+            serde_json::from_value(doc.get("summary").cloned().unwrap_or(Value::Null))
+                .map_err(|e| Error::Invalid(format!("fleet summary: {e}")))?;
+        let sha = fleet_sha256(&summary)?;
+        if doc.get("sha256").and_then(Value::as_str) != Some(sha.as_str()) {
+            return Err(Error::Integrity(
+                "the fleet summary does not match its hash".into(),
+            ));
+        }
+        let tx = self.write_tx()?;
+        for (k, v) in [
+            ("fleet_summary", serde_json::to_string(&summary)?),
+            ("fleet_sha256", sha),
+            ("fleet_fetched_at", now_rfc3339()),
+        ] {
+            tx.execute(
+                "INSERT INTO records_meta (key, value) VALUES (?1, ?2)
+                 ON CONFLICT (key) DO UPDATE SET value = excluded.value",
+                params![k, v],
+            )?;
+        }
+        tx.commit()?;
+        Ok(())
     }
 
     /// The highest bundle seq installed (across streams).
@@ -2434,6 +2608,17 @@ impl Records {
     /// (the next pull asks for it again); a link error is reported, never
     /// a partial install.
     pub fn pull(&self, link: &dyn crate::sync::HubLink, keys: &[TrustedKey]) -> Result<PullReport> {
+        self.pull_with(link, keys, DEFAULT_FLEET_EVERY_HOURS)
+    }
+
+    /// [`Records::pull`], fetching a changed fleet summary at most every
+    /// `fleet_every_hours` (it is the least urgent thing on the link).
+    pub fn pull_with(
+        &self,
+        link: &dyn crate::sync::HubLink,
+        keys: &[TrustedKey],
+        fleet_every_hours: f64,
+    ) -> Result<PullReport> {
         let mut report = PullReport::default();
         let since = self.installed_bundle_seq()?;
         let bundles = match link.bundles_since(since) {
@@ -2453,7 +2638,6 @@ impl Records {
                 Ok(r) => {
                     report.installed.push(r.seq);
                     report.notes += r.installed;
-                    report.fleet_updated |= b.get("fleet").is_some_and(|f| !f.is_null());
                 }
                 Err(e) => {
                     report.refused = Some(RefusedBundle {
@@ -2462,6 +2646,42 @@ impl Records {
                     });
                     break;
                 }
+            }
+        }
+        // Last and least: the fleet summary, only when the hub announced
+        // one this device does not hold.
+        let meta = |k: &str| -> Result<Option<String>> {
+            Ok(self
+                .conn
+                .query_row("SELECT value FROM records_meta WHERE key = ?1", [k], |r| {
+                    r.get(0)
+                })
+                .optional()?)
+        };
+        let announced = meta("fleet_announced")?;
+        let due = match meta("fleet_fetched_at")? {
+            None => true,
+            Some(at) => {
+                let now = crate::sim_clock_ms();
+                parse_rfc3339_ms(&at)
+                    .is_none_or(|t| (now - t) as f64 >= fleet_every_hours * 3_600_000.0)
+            }
+        };
+        if report.refused.is_none()
+            && due
+            && announced.is_some()
+            && announced != meta("fleet_sha256")?
+        {
+            match link.fleet() {
+                Ok(Some(doc)) => {
+                    report.fleet_bytes = serde_json::to_vec(&doc)?.len() as u64;
+                    match self.install_fleet(&doc, keys) {
+                        Ok(()) => report.fleet_updated = true,
+                        Err(e) => report.error = Some(format!("fleet summary: {e}")),
+                    }
+                }
+                Ok(None) => {}
+                Err(e) => report.error = Some(e.to_string()),
             }
         }
         Ok(report)
@@ -2550,6 +2770,22 @@ impl Records {
         tx.commit()?;
         Ok(l)
     }
+}
+
+/// Each step's node text, from the tree it was recorded in.
+fn step_texts(pack: &Pack, current: &Tree, steps: &[JobStep]) -> BTreeMap<i64, String> {
+    let mut trees: BTreeMap<String, Option<Tree>> = BTreeMap::new();
+    trees.insert(current.tree.tree_id.clone(), Some(current.clone()));
+    let mut out = BTreeMap::new();
+    for s in steps {
+        let t = trees
+            .entry(s.tree_id.clone())
+            .or_insert_with(|| pack.fault_tree(&s.tree_id).ok().flatten());
+        if let Some(n) = t.as_ref().and_then(|t| t.node(&s.node_id)) {
+            out.insert(s.seq, n.text.clone());
+        }
+    }
+    out
 }
 
 fn job_or_none(job: &Job) -> Option<Job> {

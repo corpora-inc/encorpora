@@ -1230,6 +1230,72 @@
         }
       ]
     },
+    "EnrolledDevice": {
+      "description": "A device the hub accepts uploads from (or no longer does).",
+      "properties": {
+        "device_id": {
+          "type": "string"
+        },
+        "enrolled_at": {
+          "type": "string"
+        },
+        "enrolled_by": {
+          "type": "string"
+        },
+        "items": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "last_seen": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "public_key": {
+          "description": "base64 ed25519 public key.",
+          "type": "string"
+        },
+        "reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "revoked_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "revoked_by": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "device_id",
+        "public_key",
+        "name",
+        "enrolled_at",
+        "enrolled_by",
+        "revoked_at",
+        "revoked_by",
+        "reason",
+        "last_seen",
+        "items"
+      ],
+      "type": "object"
+    },
     "EntryKind": {
       "description": "How a job was entered.",
       "oneOf": [
@@ -1707,6 +1773,13 @@
             "null"
           ]
         },
+        "reference": {
+          "description": "The manual's printed cross-reference (\"Refer to field maintenance\"),\nverbatim; kept also when it resolves to no target in the pack.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "section_id": {
           "type": "string"
         },
@@ -1736,6 +1809,7 @@
         "expect",
         "target",
         "proc_id",
+        "reference",
         "applies_to"
       ],
       "type": "object"
@@ -2571,15 +2645,10 @@
             "string",
             "null"
           ]
-        },
-        "reviewer": {
-          "description": "Who approves (recorded and audited).",
-          "type": "string"
         }
       },
       "required": [
-        "lesson_id",
-        "reviewer"
+        "lesson_id"
       ],
       "type": "object"
     },
@@ -2593,6 +2662,26 @@
           "type": "integer"
         }
       },
+      "type": "object"
+    },
+    "HubEnrollParams": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "public_key": {
+          "description": "The device's ed25519 public key, base64.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "public_key"
+      ],
       "type": "object"
     },
     "HubPublishParams": {
@@ -2632,14 +2721,29 @@
             "string",
             "null"
           ]
-        },
-        "reviewer": {
-          "type": "string"
         }
       },
       "required": [
-        "lesson_id",
-        "reviewer"
+        "lesson_id"
+      ],
+      "type": "object"
+    },
+    "HubRevokeParams": {
+      "additionalProperties": false,
+      "properties": {
+        "device_id": {
+          "type": "string"
+        },
+        "reason": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "device_id"
       ],
       "type": "object"
     },
@@ -3337,6 +3441,10 @@
             "null"
           ]
         },
+        "tree_id": {
+          "description": "The tree the node belongs to (a job can follow a goto into another).",
+          "type": "string"
+        },
         "unit": {
           "type": [
             "string",
@@ -3362,7 +3470,8 @@
         "photos",
         "next_node",
         "at",
-        "superseded_at"
+        "superseded_at",
+        "tree_id"
       ],
       "type": "object"
     },
@@ -4668,6 +4777,30 @@
       ],
       "type": "object"
     },
+    "Principal": {
+      "description": "An identified person.",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "roles": {
+          "items": {
+            "$ref": "#/$defs/Role"
+          },
+          "type": "array"
+        },
+        "via": {
+          "description": "How they were identified: `token`, `proxy` or `local` (in process).",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "roles",
+        "via"
+      ],
+      "type": "object"
+    },
     "PullReport": {
       "description": "What one pull from the hub did.",
       "properties": {
@@ -4682,6 +4815,12 @@
             "string",
             "null"
           ]
+        },
+        "fleet_bytes": {
+          "description": "Bytes of the fleet summary received (fetched only when it changed).",
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
         },
         "fleet_updated": {
           "type": "boolean"
@@ -4718,6 +4857,7 @@
         "notes",
         "fleet_updated",
         "bytes",
+        "fleet_bytes",
         "error"
       ],
       "type": "object"
@@ -4979,6 +5119,10 @@
             "null"
           ]
         },
+        "tree_id": {
+          "description": "The tree the node belongs to (a job can follow a goto into another).",
+          "type": "string"
+        },
         "unit": {
           "type": [
             "string",
@@ -5005,6 +5149,7 @@
         "next_node",
         "at",
         "superseded_at",
+        "tree_id",
         "text"
       ],
       "type": "object"
@@ -5357,6 +5502,15 @@
         "item_id"
       ],
       "type": "object"
+    },
+    "Role": {
+      "description": "What a person may do at the hub.",
+      "enum": [
+        "reviewer",
+        "publisher",
+        "admin"
+      ],
+      "type": "string"
     },
     "Run": {
       "description": "One procedure run.",
@@ -6365,6 +6519,13 @@
         "record": {
           "$ref": "#/$defs/RecordHow"
         },
+        "reference": {
+          "description": "The printed cross-reference, verbatim, when the node has one.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "requirements": {
           "description": "What this node itself needs.",
           "items": {
@@ -6387,7 +6548,8 @@
             {
               "type": "null"
             }
-          ]
+          ],
+          "description": "Where this node leads in the pack; `None` when it names nothing the\npack holds (then `reference` is the manual's printed reference, to\nshow as \"see … in the manual\")."
         },
         "terminal": {
           "description": "True when no branch leaves this node (the path ends here).",
@@ -6425,6 +6587,7 @@
         "detail",
         "level",
         "target",
+        "reference",
         "path",
         "field_notes"
       ],
@@ -6819,6 +6982,7 @@
       "description": "Where a `goto` (or an `action` that is a task) leads.",
       "oneOf": [
         {
+          "description": "Another tree, at its entry or at `node_id` (\"go to Table 3-2,\nstep 4\").",
           "properties": {
             "id": {
               "type": "string"
@@ -6826,11 +6990,18 @@
             "kind": {
               "const": "tree",
               "type": "string"
+            },
+            "node_id": {
+              "type": [
+                "string",
+                "null"
+              ]
             }
           },
           "required": [
             "kind",
-            "id"
+            "id",
+            "node_id"
           ],
           "type": "object"
         },
@@ -7512,6 +7683,25 @@
         "type": "array"
       }
     },
+    "hub.devices": {
+      "params": {
+        "$ref": "#/$defs/NoParams"
+      },
+      "result": {
+        "items": {
+          "$ref": "#/$defs/EnrolledDevice"
+        },
+        "type": "array"
+      }
+    },
+    "hub.enroll": {
+      "params": {
+        "$ref": "#/$defs/HubEnrollParams"
+      },
+      "result": {
+        "$ref": "#/$defs/EnrolledDevice"
+      }
+    },
     "hub.fleet": {
       "params": {
         "$ref": "#/$defs/NoParams"
@@ -7545,12 +7735,28 @@
         "$ref": "#/$defs/HubStatus"
       }
     },
+    "hub.revoke": {
+      "params": {
+        "$ref": "#/$defs/HubRevokeParams"
+      },
+      "result": {
+        "$ref": "#/$defs/EnrolledDevice"
+      }
+    },
     "hub.status": {
       "params": {
         "$ref": "#/$defs/NoParams"
       },
       "result": {
         "$ref": "#/$defs/HubStatus"
+      }
+    },
+    "hub.whoami": {
+      "params": {
+        "$ref": "#/$defs/NoParams"
+      },
+      "result": {
+        "$ref": "#/$defs/Principal"
       }
     },
     "job.answer": {
@@ -7575,6 +7781,14 @@
       },
       "result": {
         "$ref": "#/$defs/JobClosed"
+      }
+    },
+    "job.follow": {
+      "params": {
+        "$ref": "#/$defs/JobIdParams"
+      },
+      "result": {
+        "$ref": "#/$defs/JobView"
       }
     },
     "job.get": {

@@ -32,9 +32,10 @@ const USAGE: &str = "usage:
   harvest serve   <packs-root|pack-dir> --records <records-db> [--bind 127.0.0.1:4317] [--static DIR]
                   [--allow-origin URL]... [--records-key FILE] [--outbox-dir DIR] [--field-pubkey KEY]
                   [--embedder auto|none|hashing] [--pubkey KEY]   # the JSON API over HTTP (CONTRACT \"API\")
-                  [--hub URL [--packs-root ROOT]]   # sync.flush / sync.pull through a hub
+                  [--hub URL [--packs-root ROOT] [--device-key FILE]]   # sync.flush / sync.pull through a hub
   harvest api-schema <dir> [--check]      # writes (or checks) api.schema.json and types.ts
   harvest hub     <hub-db> --stream NAME [--packs ROOT] [--bind 127.0.0.1:4318] [--allow-origin URL]...
+                  (--reviewers FILE | --trusted-proxy IP[,IP] --identity-header NAME --roles FILE)
                   [--pubkey KEY] [--dev-key]   # the hub (CONTRACT \"Hub\"); signs with $HARVEST_HUB_KEY
                   # (base64 ed25519 seed); --dev-key: the public test key, for development only
   harvest simulate <scenario.json> [--out metrics.json] [--pack DIR]   # devices and a hub on a simulated link
@@ -1105,6 +1106,7 @@ fn serve(args: &Args) -> Result<(), CliError> {
         "pubkey",
         "hub",
         "packs-root",
+        "device-key",
     ])?;
     let root = pack_dir(args)?;
     let keys = keys(args)?;
@@ -1115,7 +1117,7 @@ fn serve(args: &Args) -> Result<(), CliError> {
     let key = records_key(args)?;
     let records =
         harvest_core::records::Records::open_with_key(Path::new(records_path), key.as_ref())?;
-    let device_id = records.device_id()?;
+    let device_key = device_key(args, Path::new(records_path))?;
     let field_specs: Vec<String> = args
         .all("field-pubkey")
         .iter()
@@ -1138,9 +1140,14 @@ fn serve(args: &Args) -> Result<(), CliError> {
     if let Some(url) = args.get("hub") {
         #[cfg(feature = "hub")]
         {
+            eprintln!(
+                "harvest serve: device {} (public key {}); an administrator enrolls it at the hub",
+                device_key.device_id(),
+                device_key.public_base64()
+            );
             let link = harvest_core::hub::http::HttpHubLink::new(
                 url,
-                &device_id,
+                device_key,
                 std::time::Duration::from_secs(60),
             );
             host = host.with_hub_link(
@@ -1270,7 +1277,40 @@ fn hub(args: &Args) -> Result<(), CliError> {
         "allow-origin",
         "pubkey",
         "dev-key",
+        "reviewers",
+        "trusted-proxy",
+        "identity-header",
+        "roles",
     ])?;
+    let identity: Arc<dyn harvest_core::hub::auth::Identify> = match (
+        args.get("reviewers"),
+        args.get("trusted-proxy"),
+    ) {
+        (Some(f), None) => Arc::new(harvest_core::hub::auth::TokenFile::load(Path::new(f))?),
+        (None, Some(addrs)) => {
+            let proxies = addrs
+                .split(',')
+                .map(|a| a.trim().parse::<std::net::IpAddr>())
+                .collect::<Result<Vec<_>, _>>()
+                .map_err(|e| CliError::Usage(format!("--trusted-proxy: {e}")))?;
+            let header = args
+                .get("identity-header")
+                .ok_or_else(|| CliError::Usage("--trusted-proxy needs --identity-header".into()))?;
+            let roles = args
+                .get("roles")
+                .ok_or_else(|| CliError::Usage("--trusted-proxy needs --roles FILE".into()))?;
+            Arc::new(harvest_core::hub::auth::TrustedProxy::load(
+                proxies,
+                header,
+                Path::new(roles),
+            )?)
+        }
+        _ => {
+            return Err(CliError::Usage(
+                    "the hub identifies people: give --reviewers FILE, or --trusted-proxy with --identity-header and --roles".into(),
+                ));
+        }
+    };
     let db = PathBuf::from(
         args.positional
             .first()
@@ -1303,7 +1343,9 @@ fn hub(args: &Args) -> Result<(), CliError> {
         base64::engine::general_purpose::STANDARD.encode(hub.trusted_key().key.as_bytes())
     };
     let hub = Arc::new(std::sync::Mutex::new(hub));
-    let host = Host::new(packs, harvest_core::records::Records::in_memory()?).with_hub(hub);
+    let host = Host::new(packs, harvest_core::records::Records::in_memory()?)
+        .with_hub(hub)
+        .with_identity(identity);
     let bind: std::net::SocketAddr = args
         .get("bind")
         .unwrap_or("127.0.0.1:4318")
@@ -1363,4 +1405,45 @@ fn simulate(args: &Args) -> Result<(), CliError> {
         return Err(CliError::Exit(1));
     }
     Ok(())
+}
+
+/// The device's signing key: `--device-key FILE`, else `<records-db>.device-key`
+/// (made on first use, base64 seed, readable by the owner only). In the
+/// app the platform keystore holds it.
+fn device_key(args: &Args, records: &Path) -> Result<harvest_core::sync::DeviceKey, CliError> {
+    use base64::Engine as _;
+    let path = match args.get("device-key") {
+        Some(p) => PathBuf::from(p),
+        None => {
+            let mut p = records.as_os_str().to_owned();
+            p.push(".device-key");
+            PathBuf::from(p)
+        }
+    };
+    if let Ok(text) = std::fs::read_to_string(&path) {
+        let raw = base64::engine::general_purpose::STANDARD
+            .decode(text.trim())
+            .map_err(|_| CliError::Usage(format!("{}: not base64", path.display())))?;
+        let seed: [u8; 32] = raw
+            .try_into()
+            .map_err(|_| CliError::Usage(format!("{}: not a 32-byte seed", path.display())))?;
+        return Ok(harvest_core::sync::DeviceKey::from_seed(&seed));
+    }
+    let key = harvest_core::sync::DeviceKey::generate()?;
+    let text = base64::engine::general_purpose::STANDARD.encode(key.seed());
+    #[cfg(unix)]
+    {
+        use std::io::Write;
+        use std::os::unix::fs::OpenOptionsExt;
+        let mut f = std::fs::OpenOptions::new()
+            .write(true)
+            .create_new(true)
+            .mode(0o600)
+            .open(&path)
+            .map_err(Error::from)?;
+        f.write_all(text.as_bytes()).map_err(Error::from)?;
+    }
+    #[cfg(not(unix))]
+    std::fs::write(&path, text).map_err(Error::from)?;
+    Ok(key)
 }

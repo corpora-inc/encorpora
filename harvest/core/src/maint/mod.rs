@@ -83,14 +83,21 @@ impl NodeKind {
 
 /// Where a `goto` (or an `action` that is a task) leads.
 #[derive(Debug, Clone, Serialize, Deserialize, JsonSchema, PartialEq, Eq)]
-#[serde(tag = "kind", content = "id", rename_all = "snake_case")]
+#[serde(tag = "kind", rename_all = "snake_case")]
 pub enum Target {
-    Tree(String),
-    Procedure(String),
+    /// Another tree, at its entry or at `node_id` ("go to Table 3-2,
+    /// step 4").
+    Tree {
+        id: String,
+        node_id: Option<String>,
+    },
+    Procedure {
+        id: String,
+    },
 }
 
 impl Target {
-    /// `tree:<id>` or `procedure:<id>`.
+    /// `tree:<id>`, `tree:<id>#<node_id>` or `procedure:<id>`.
     pub fn parse(s: &str) -> Option<Self> {
         let (k, id) = s.split_once(':')?;
         let id = id.trim();
@@ -98,8 +105,18 @@ impl Target {
             return None;
         }
         match k.trim() {
-            "tree" => Some(Self::Tree(id.to_string())),
-            "procedure" => Some(Self::Procedure(id.to_string())),
+            "tree" => match id.split_once('#') {
+                Some((t, n)) if !t.trim().is_empty() && !n.trim().is_empty() => Some(Self::Tree {
+                    id: t.trim().to_string(),
+                    node_id: Some(n.trim().to_string()),
+                }),
+                Some(_) => None,
+                None => Some(Self::Tree {
+                    id: id.to_string(),
+                    node_id: None,
+                }),
+            },
+            "procedure" => Some(Self::Procedure { id: id.to_string() }),
             _ => None,
         }
     }
@@ -130,6 +147,9 @@ pub struct FaultNode {
     pub target: Option<Target>,
     /// The procedure whose steps tell how to answer this node's question.
     pub proc_id: Option<String>,
+    /// The manual's printed cross-reference ("Refer to field maintenance"),
+    /// verbatim; kept also when it resolves to no target in the pack.
+    pub reference: Option<String>,
     pub applies_to: Vec<String>,
 }
 
@@ -805,10 +825,17 @@ impl Pack {
             Option<String>,
             Option<String>,
             bool,
+            Option<String>,
         );
+        // `reference` is optional: packs baked before it have no such column.
+        let reference = if self.has_column("fault_node", "reference")? {
+            "reference"
+        } else {
+            "NULL"
+        };
         let nodes: Vec<N> = self.maint_rows(
             &format!(
-                "SELECT node_id, kind, text, section_id, expect, target, proc_id, {PASSED}
+                "SELECT node_id, kind, text, section_id, expect, target, proc_id, {PASSED}, {reference}
                  FROM fault_node WHERE tree_id = ?1 ORDER BY node_id"
             ),
             &[&tree_id],
@@ -822,12 +849,14 @@ impl Pack {
                     r.get(5)?,
                     r.get(6)?,
                     r.get(7)?,
+                    r.get(8)?,
                 ))
             },
         )?;
         let mut raw = RawTree::default();
-        for (node_id, kind, text, section_id, expect, target, proc_id, passed) in nodes {
+        for (node_id, kind, text, section_id, expect, target, proc_id, passed, reference) in nodes {
             raw.nodes.push(RawNode {
+                reference: reference.filter(|r| !r.trim().is_empty()),
                 applies_to: self.applies_to("fault_node", &node_id)?,
                 node_id,
                 kind,
@@ -932,6 +961,7 @@ impl Pack {
                 expect,
                 target,
                 proc_id: n.proc_id.filter(|p| !p.trim().is_empty()),
+                reference: n.reference,
                 applies_to: n.applies_to,
             });
         }
@@ -1271,6 +1301,7 @@ pub(crate) struct RawNode {
     pub proc_id: Option<String>,
     pub passed: bool,
     pub applies_to: Vec<String>,
+    pub reference: Option<String>,
 }
 
 #[derive(Debug)]

@@ -49,3 +49,13 @@ pub use pack::{Pack, Verify};
 pub use packs::TrustedKey;
 pub use retrieval::{Hit, Reranker, Retriever, SearchOptions, SearchResult};
 pub use segments::Segment;
+
+/// Now in milliseconds since 1970 (the virtual clock when one is set).
+pub(crate) fn sim_clock_ms() -> i64 {
+    audit::virtual_now_ms().unwrap_or_else(|| {
+        std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH)
+            .map(|d| d.as_millis() as i64)
+            .unwrap_or(0)
+    })
+}

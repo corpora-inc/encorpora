@@ -219,7 +219,7 @@ fn validation_reports_dead_ends_bad_targets_and_dangling_edges() {
     let b = pump_with(exec(
         "DELETE FROM fault_edge WHERE from_node = 'nc.3';
          UPDATE fault_node SET expect = NULL WHERE node_id = 'nc.3';
-         INSERT INTO fault_node VALUES ('nc.x', 't-nocrank', 'goto', 'The fault is corrected.', 'm40.3-1.end', NULL, NULL, NULL, 'en', 'prov-pump40');
+         INSERT INTO fault_node VALUES ('nc.x', 't-nocrank', 'goto', 'The fault is corrected.', 'm40.3-1.end', NULL, NULL, NULL, 'en', 'prov-pump40', NULL);
          INSERT INTO fault_edge VALUES ('nc.4', 3, 'Maybe', NULL, 'nc.nowhere', 0);
          UPDATE fault_node SET target = 'tree:t-missing' WHERE node_id = 'nc.2a';
          UPDATE fault_node SET proc_id = 'proc-missing' WHERE node_id = 'nc.4';",
@@ -837,4 +837,82 @@ fn symptom_matches_say_how_sure_they_are() {
     )
     .unwrap();
     assert_eq!(hits[0].confidence, search::Confidence::Closest);
+}
+
+#[test]
+fn a_goto_can_enter_another_tree_at_a_named_node() {
+    let b = pump();
+    let t = tree(&b, "t-nocrank");
+    let g = t.node("nc.1g").unwrap();
+    assert_eq!(
+        g.target,
+        Some(harvest_core::maint::Target::Tree {
+            id: "t-hot".into(),
+            node_id: Some("oh.1".into())
+        })
+    );
+    let lvl = b.pack.level("expert").unwrap();
+    let v = view::node_view(&b.pack, &t, "nc.1g", &lvl, None, &[]).unwrap();
+    assert_eq!(v.target.unwrap().title.as_deref(), Some("Pump overheats"));
+    // The node must exist in that tree.
+    let bad = pump_with(exec(
+        "UPDATE fault_node SET target = 'tree:t-hot#nc.2' WHERE node_id = 'nc.1g';",
+    ));
+    let r = graph::validate(&bad.pack).unwrap();
+    assert!(
+        r.violations
+            .iter()
+            .any(|v| v.rule == "node.target" && v.detail.contains("not in tree")),
+        "{:#?}",
+        r.violations
+    );
+    let malformed = pump_with(exec(
+        "UPDATE fault_node SET target = 'tree:t-hot#' WHERE node_id = 'nc.1g';",
+    ));
+    assert!(rules(&graph::validate(&malformed.pack).unwrap()).contains(&"node.target".to_string()));
+}
+
+#[test]
+fn a_printed_reference_with_no_target_is_kept_and_marked() {
+    let b = pump();
+    let t = tree(&b, "t-nocrank");
+    let lvl = b.pack.level("expert").unwrap();
+    let v = view::node_view(&b.pack, &t, "nc.3n", &lvl, None, &[]).unwrap();
+    assert!(v.target.is_none());
+    assert_eq!(
+        v.reference.as_deref(),
+        Some("Refer to field maintenance for wiring repair.")
+    );
+    let resolved = view::node_view(&b.pack, &t, "nc.2a", &lvl, None, &[]).unwrap();
+    assert!(resolved.target.is_some() && resolved.reference.is_some());
+    let bad = pump_with(exec(
+        "UPDATE fault_node SET reference = 'See the depot manual.' WHERE node_id = 'nc.3n';",
+    ));
+    assert!(rules(&graph::validate(&bad.pack).unwrap()).contains(&"node.reference".to_string()));
+    // A pack baked before the column reads as before.
+    let old = pump_with(exec("ALTER TABLE fault_node DROP COLUMN reference;"));
+    assert!(
+        old.pack
+            .fault_tree("t-nocrank")
+            .unwrap()
+            .unwrap()
+            .node("nc.3n")
+            .unwrap()
+            .reference
+            .is_none()
+    );
+}
+
+#[test]
+fn page_index_is_the_physical_page() {
+    let b = pump();
+    assert_eq!(b.pack.section_loc("m40.1").unwrap().page_index, Some(1));
+    assert_eq!(
+        b.pack.section_loc("m40.3-1.q2").unwrap().page_index,
+        Some(3)
+    );
+    assert_eq!(
+        b.pack.section_loc("m40.4-3.s5").unwrap().page_index,
+        Some(10)
+    );
 }

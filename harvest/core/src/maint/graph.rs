@@ -99,6 +99,8 @@ pub fn validate(pack: &Pack) -> Result<GraphReport> {
         .collect();
     let all_trees: BTreeSet<String> = tree_ids.iter().cloned().collect();
     let mut node_tree: HashMap<String, String> = HashMap::new();
+    // (tree, goto node, target tree, target node): checked once every tree is read.
+    let mut goto_nodes: Vec<(String, String, String, String)> = Vec::new();
     for tree_id in &tree_ids {
         counts.trees += 1;
         validate_tree(
@@ -109,7 +111,18 @@ pub fn validate(pack: &Pack) -> Result<GraphReport> {
             &mut out,
             &mut counts,
             &mut node_tree,
+            &mut goto_nodes,
         )?;
+    }
+    for (tree, node, to_tree, to_node) in &goto_nodes {
+        if all_trees.contains(to_tree) && node_tree.get(to_node) != Some(to_tree) {
+            out.add(
+                "node.target",
+                Some(tree),
+                Some(node),
+                format!("node {to_node:?} is not in tree {to_tree:?}"),
+            );
+        }
     }
     if pack.has_fault_trees()? {
         let passed: BTreeSet<String> = pack
@@ -157,6 +170,7 @@ fn validate_tree(
     out: &mut Out,
     counts: &mut GraphCounts,
     node_tree: &mut HashMap<String, String>,
+    goto_nodes: &mut Vec<(String, String, String, String)>,
 ) -> Result<()> {
     let t = Some(tree_id);
     let entry: String = pack.conn().query_row(
@@ -234,23 +248,37 @@ fn validate_tree(
                         "node.target",
                         t,
                         node,
-                        format!("target {s:?}: tree:<id> or procedure:<id>"),
+                        format!("target {s:?}: tree:<id>, tree:<id>#<node_id> or procedure:<id>"),
                     );
                     None
                 }
             },
         };
         match &target {
-            Some(Target::Tree(id)) if !all_trees.contains(id) => {
+            Some(Target::Tree { id, .. }) if !all_trees.contains(id) => {
                 out.add("node.target", t, node, format!("no tree {id:?}"))
             }
-            Some(Target::Procedure(id)) if !procedures.contains(id) => out.add(
+            Some(Target::Tree {
+                id,
+                node_id: Some(to),
+            }) => goto_nodes.push((
+                tree_id.to_string(),
+                n.node_id.clone(),
+                id.clone(),
+                to.clone(),
+            )),
+            Some(Target::Procedure { id }) if !procedures.contains(id) => out.add(
                 "node.target",
                 t,
                 node,
                 format!("no procedure {id:?} (or it did not pass)"),
             ),
             _ => {}
+        }
+        if let Some(r) = &n.reference
+            && let Err(m) = pack.verbatim(r, &n.section_id)
+        {
+            out.add("node.reference", t, node, m);
         }
         if kind == NodeKind::Goto && target.is_none() {
             out.add("node.target", t, node, "a goto names its target");

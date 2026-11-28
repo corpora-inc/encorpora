@@ -45,6 +45,9 @@
     }
   ],
   "tamper_prob": 0.0,
+  "fleet_every_hours": 24.0,
+  "rogue_device": false,
+  "revoke": [],
   "pack_update_day": 20.0,
   "final_sync": true,
   "sample_every_days": 30.0
