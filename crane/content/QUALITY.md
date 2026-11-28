@@ -3,6 +3,15 @@
 Short record of what each generation pass looked like on review, what changed,
 and the verification rates. Newest first.
 
+## 2026-11-27 question bank, all 213 skills (Codex, prompt v4)
+
+- Written by Codex gpt-6-astra under prompt v4 for every skill, including the 43 skills that had Sonnet v3 rows; those rows are replaced. Same prompt and the same writer checks as the other models.
+- 1,708 facts, 3,434 MC and 426 free-text items. 3,823 of 3,860 pass (99.0%).
+- The 37 failures stay in the files marked fail: 23 refer to their prompt, 10 have a sample answer that fails its own rubric, 3 have a quote not verbatim in 1926.1405, 1 has duplicate choices.
+- Key length: the correct choice is the uniquely longest in 12.6% of passing MC (430 of 3,408). That is below the 25% of picking at random; Sonnet v3 was at 31%.
+- The 60-skill sample had the same pass rate as Sonnet v3 (297/298 against 998/1004). I read 8 random items: correct, quote-backed and well distracted.
+- Cost: 213 Codex calls, 1.20M output tokens including reasoning; no dollar cost on the Claude ledger.
+
 ## 2026-11-27 lessons and glossary (full run)
 
 - Lessons: Opus, prompt v1, all 18 topics, 136 lessons, 715 quotes exact, 4 repaired (typography). 135 pass. 1 fails: it quotes the 1910.180(j) heading as "overhead electric lines", but the source says "overhead lines". It stays in the file marked fail; `verify.py` now skips rows their writer failed. 52 diagram slots, all valid ids.
