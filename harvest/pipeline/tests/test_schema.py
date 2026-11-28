@@ -6,6 +6,8 @@ import re
 import sqlite3
 from pathlib import Path
 
+import pytest
+
 from harvest_pipeline import schema
 from harvest_pipeline.stage import Stage
 
@@ -54,3 +56,26 @@ def test_stage_and_pack_tables_are_the_core_tables():
     v1 = sqlite3.connect(":memory:")
     schema.create(v1)
     assert not schema.has_table(v1, "fault_tree"), "a pack without maintenance rows gets no maintenance tables"
+
+
+def test_schema_found_from_the_checkout_when_installed_elsewhere(tmp_path, monkeypatch):
+    """A regular (non-editable) install lives outside the checkout; run from inside the repository it
+    still reads the core's DDL there."""
+    import importlib.util
+    import shutil
+    pkg = tmp_path / "site" / "harvest_pipeline"
+    pkg.mkdir(parents=True)
+    shutil.copy(Path(schema.__file__), pkg / "schema.py")
+    spec = importlib.util.spec_from_file_location("installed_schema", pkg / "schema.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    monkeypatch.delenv("HARVEST_CORE_SRC", raising=False)
+    monkeypatch.delenv("HARVEST_BIN", raising=False)
+    monkeypatch.chdir(HARVEST / "pipeline")
+    assert mod.core_src() == (HARVEST / "core" / "src").resolve()
+    monkeypatch.chdir(tmp_path)                    # outside the checkout: the binary's core
+    monkeypatch.setenv("HARVEST_BIN", str(HARVEST / "core" / "target" / "release" / "harvest"))
+    assert mod.core_src() == (HARVEST / "core" / "src").resolve()
+    monkeypatch.delenv("HARVEST_BIN")
+    with pytest.raises(SystemExit, match="pack schema not found"):
+        mod.core_src()

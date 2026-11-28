@@ -17,11 +17,20 @@ from pathlib import Path
 
 
 def core_src() -> Path:
+    """Where the core's DDL is: HARVEST_CORE_SRC; else beside this source checkout (an editable
+    install); else the core whose binary HARVEST_BIN names (`harvest/core/target/<profile>/harvest`,
+    which the build scripts set); else the `harvest/core/src` of the repository the command runs in."""
     env = os.environ.get("HARVEST_CORE_SRC")
-    d = Path(env) if env else Path(__file__).resolve().parents[2] / "core" / "src"
-    if not (d / "schema_v1.sql").is_file():
-        raise SystemExit(f"pack schema not found: {d / 'schema_v1.sql'} (set HARVEST_CORE_SRC to harvest/core/src)")
-    return d
+    cands = [Path(env)] if env else [Path(__file__).resolve().parents[2] / "core" / "src"]
+    if not env:
+        if os.environ.get("HARVEST_BIN"):
+            cands.append(Path(os.environ["HARVEST_BIN"]).resolve().parents[2] / "src")
+        here = Path.cwd().resolve()
+        cands += [p / "harvest" / "core" / "src" for p in (here, *here.parents)]
+    for d in cands:
+        if (d / "schema_v1.sql").is_file():
+            return d
+    raise SystemExit(f"pack schema not found: {cands[0] / 'schema_v1.sql'} (set HARVEST_CORE_SRC to harvest/core/src)")
 
 
 @lru_cache(maxsize=None)
