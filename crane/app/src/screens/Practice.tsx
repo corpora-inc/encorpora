@@ -125,6 +125,7 @@ export function PracticeSession() {
               <span className="font-semibold">{t("practice.whyNot", { letter: LETTERS[current.chosen] ?? "" })}</span> {q.rationales[current.chosen]}
             </p>
           )}
+          {q.note && <p className="feedback-note m-0 mt-2">{q.note}</p>}
           {sources.length > 0 && (
             <p className="feedback-source m-0 mt-3 text-small text-ink-2">
               {t("practice.source", { cites: sources.map((id) => cfrCite(e.sections.get(id)!.citation)).join("; ") })}{" "}

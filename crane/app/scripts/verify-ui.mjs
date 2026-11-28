@@ -406,7 +406,7 @@ try {
     await choices.first().waitFor();
     assert.equal(await choices.first().isDisabled(), false);
     // One feedback card, never filler: "Correct." or "Not quite. The answer is C.", why (and, when wrong,
-    // why not the choice made), "Source: 29 CFR …. Read the source", and one Next button.
+    // why not the choice made), one line past the answer, "Source: 29 CFR …. Read the source", and one Next button.
     for (let n = 0; n < 8; n++) {
       await choices.first().waitFor();
       const domain = await page.locator("h2").first().locator("xpath=preceding-sibling::p[1]").innerText();
@@ -429,6 +429,8 @@ try {
         assert.match(reasons[1], /^Why not [A-F]: /);
       }
       assert.equal(await panel.getByText(/^Correct\.?$/).count(), verdict === "Correct." ? 1 : 0, "no duplicated Correct");
+      const note = await panel.locator(".feedback-note").innerText();
+      assert.ok(note.split(/\s+/).length >= 5 && !reasons.includes(note), `one line past the answer: "${note}"`);
       assert.match(await panel.locator(".feedback-source").innerText(), /^Source: (29 CFR 19\d\d\.\d+|Appendix)[^]*Read the source$/);
       assert.equal(await panel.getByRole("button").count(), 1, "a single Next button");
       if (n === 0) await page.screenshot({ path: path.join(out, "flow-practice-feedback-reasons.png"), fullPage: true });
