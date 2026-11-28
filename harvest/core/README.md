@@ -130,7 +130,11 @@ pub trait Llm: Send + Sync {
 | `crypt` | Encryption at rest for `records.db` (XChaCha20-Poly1305, key from the platform keystore via `Records::open_with_key`): step values, notes, photo refs, structured notes, outbox payloads and audit entries are sealed and bound to their row; ids, statuses and times stay clear. Wrong or missing key is an error; the audit chain verifies without the key. |
 | `sync` | Outbox: ordered, idempotent uploads marked done only on a receipt that echoes the payload hash; `Transport` trait (the app's HTTPS), `DirTransport` for a removable drive or shared folder. |
 | `llama` | (feature `llama`) in-process GGUF embedder on the same `llama-cpp-2 =0.1.146` pin as the app's LLM plugin. |
+| `maint` | Maintenance manuals (CONTRACT "Maintenance tables"): fault trees read whole and verbatim-checked, deterministic branching (`branch::choose`), graph validation (`graph::validate`, run by `harvest verify`), the step and task views (citations to the page and box, guards in manual order at every level, facets, requirements, assets), variant identification, symptom search with confidence, signal matching. |
+| `records::maint` | Assets and registry import, troubleshooting jobs with audited corrections, lessons, signed field-note bundles, the repeat flag; job and lesson uploads through the outbox. |
+| `api` | The one JSON API (`call(host, method, params)`), its generated schema and TypeScript (`harvest/api/`), and `serve` (feature `serve`, `harvest serve`): the local HTTP transport. |
 | `fixture` | Fictional signed pack for tests (`harvest fixture <dir>`). Its key is public. Never trust it outside tests. |
+| `fixture_maint` | A fictional pump manual with trees, tasks and levels (`harvest fixture <dir> --maint [--samples DIR]`). Same public key. |
 
 ### Embedder ids
 
@@ -204,7 +208,19 @@ harvest show    <pack-dir> <what> [--id ID] [--role R]        # verified content
 harvest show    <pack-dir> tree [--id NODE] [--exams FILE]    # the course knowledge tree (CONTRACT)
 harvest search  <pack-dir> "<query>" --in tree                # search the tree, not the rules
 harvest converse <pack-dir> <script.json> [--llm URL] [--exams FILE]   # scripted Instructor conversations (CONTRACT)
-harvest fixture <dir>
+harvest fixture <dir> [--maint [--samples DIR]]
+harvest serve   <packs-root|pack> --records <records-db> [--bind 127.0.0.1:4317] [--static DIR] [--allow-origin URL]
+                [--records-key FILE] [--outbox-dir DIR] [--field-pubkey KEY] [--embedder auto|none|hashing]
+harvest api-schema <dir> [--check]
+```
+
+Run the API on the fictional pump manual (the key is the public test key):
+
+```sh
+harvest fixture /tmp/pump40 --maint --samples /tmp/pump40-samples
+harvest serve /tmp/pump40 --records /tmp/pump40-records.db \
+  --pubkey dGsHNF6D4rF1Y46jRV7t8Y37KJMb7aJPrhHUrtCv0tc= --outbox-dir /tmp/pump40-outbox
+curl -s -X POST -H 'Content-Type: application/json' localhost:4317/api/pack.info -d '{}'
 ```
 
 `KEY` is a base64 or hex public key, or a file holding one; it defaults to

@@ -15,6 +15,7 @@ the conversation layer, and every product feature works with it off.
 |---|---|---|
 | `harvest/pipeline/` | Python 3.12+ | Ingest: source registry, fetch, parse, enrich (pluggable model backends), verify, write pack, edition diff. CLI `harvest-bake`. |
 | `harvest/core/` | Rust crate `harvest-core` + bin `harvest` | Pack open and signature check, hybrid retrieval, answer engine, support checker, decline, audit log, record store, sync queue. |
+| `harvest/api/` | generated JSON Schema + TypeScript | The app's API contract (`api.schema.json`, `types.ts`), generated from `harvest-core`; never edited by hand. |
 | `harvest/practice/` | TypeScript, no runtime deps | Practice and assessment: item selection, spaced review, evidence model per skill, exam simulator scoring. |
 | `crane/content/` | YAML/Markdown + Python tasks | Crane corpus registry, topic and skill blueprint, procedure specs, task prompts. |
 | `crane/app/` | Tauri 2 + React | The crane app (iOS, Android, macOS, Windows). |
@@ -233,7 +234,13 @@ harvest ask     <pack> "<question>" [--role operator] [--equip <id>] [--llm <end
 harvest audit   <records-db> [--json]
 harvest outbox  <records-db> [--to <dir>] [--json]
 harvest show    <pack> info|sections|topics|skills|lessons|terms|diagrams|questions|procedures|answers|exams|prereqs|starters [--id ID] [--role R]
+harvest serve   <packs-root|pack> --records <records-db> [--bind 127.0.0.1:4317] [--static DIR] [--allow-origin URL]
+harvest api-schema <dir> [--check]               # writes harvest/api from the Rust types
+harvest fixture <dir> --maint [--samples DIR]     # the fictional pump manual, a field bundle, an asset registry
 ```
+
+`harvest verify` also validates the fault trees of a pack that has them
+(below) and exits 1 on any violation, listing each.
 
 `ask --json` prints:
 
@@ -517,3 +524,215 @@ block and follow-ups to the exam's domains.
 `mode = baked` answers, plus every screen that renders only pack rows (lessons,
 questions, procedures, tools), count as baked. The app records the mode of every
 answer in the audit log; the evaluation report states the rate.
+
+## Maintenance tables
+
+Optional tables for maintenance manuals. A pack without them (crane) reads
+as before; the core detects each table, and each optional column, on its
+own. Generated rows carry `prov_id` and ship only when it passed.
+
+```sql
+-- Maintenance tables (optional; CONTRACT "Maintenance tables"). A pack without
+-- them reads as before; the core detects each table on its own.
+CREATE TABLE section_loc (section_id TEXT PRIMARY KEY, page_label TEXT, page_index INTEGER,
+                          figure_label TEXT,
+                          boxes TEXT);                   -- json [{x0,y0,x1,y1}], 0..1 on the page image
+CREATE TABLE asset (asset_id TEXT PRIMARY KEY, path TEXT NOT NULL, sha256 TEXT NOT NULL,
+                    media_type TEXT NOT NULL, bytes INTEGER NOT NULL, width INTEGER, height INTEGER);
+CREATE TABLE section_asset (section_id TEXT NOT NULL, asset_id TEXT NOT NULL,
+                            role TEXT NOT NULL,          -- figure|page
+                            PRIMARY KEY (section_id, asset_id, role));
+CREATE TABLE requirement (ref_kind TEXT NOT NULL,        -- procedure|fault_tree|fault_node
+  ref_id TEXT NOT NULL, ord INTEGER NOT NULL,
+  kind TEXT NOT NULL,                                    -- tool|part|consumable|personnel|condition|reference
+  text TEXT NOT NULL, ident TEXT, qty TEXT, section_id TEXT, prov_id TEXT NOT NULL,
+  PRIMARY KEY (ref_kind, ref_id, ord));
+CREATE TABLE fault_tree (tree_id TEXT PRIMARY KEY, title TEXT NOT NULL, system TEXT,
+  entry_node TEXT NOT NULL, section_ids TEXT NOT NULL, lang TEXT NOT NULL, prov_id TEXT NOT NULL);
+CREATE TABLE fault_node (node_id TEXT PRIMARY KEY, tree_id TEXT NOT NULL,
+  kind TEXT NOT NULL,                                    -- symptom|check|action|goto|escalate|end
+  text TEXT NOT NULL,                                    -- verbatim: a substring of the section's text
+  section_id TEXT NOT NULL,
+  expect TEXT,                                           -- json: how a result is recorded
+  target TEXT,                                           -- tree:<id> | procedure:<id> (goto; optional on action)
+  proc_id TEXT,                                          -- the test procedure that answers the question
+  lang TEXT NOT NULL, prov_id TEXT NOT NULL);
+CREATE TABLE fault_edge (from_node TEXT NOT NULL, ord INTEGER NOT NULL, label TEXT NOT NULL,
+  cond TEXT,                                             -- json numeric predicate; null: label equality
+  to_node TEXT NOT NULL, retry INTEGER NOT NULL DEFAULT 0, PRIMARY KEY (from_node, ord));
+CREATE TABLE fault_facet (node_id TEXT NOT NULL, facet TEXT NOT NULL, ord INTEGER NOT NULL,
+  text TEXT NOT NULL, section_id TEXT NOT NULL, PRIMARY KEY (node_id, facet, ord));
+CREATE TABLE symptom (symptom_id TEXT PRIMARY KEY, tree_id TEXT NOT NULL, title TEXT NOT NULL,
+  system TEXT, synonyms TEXT NOT NULL, lang TEXT NOT NULL, prov_id TEXT NOT NULL);
+CREATE TABLE signal_map (signal_kind TEXT NOT NULL, pattern TEXT NOT NULL, title TEXT NOT NULL,
+  tree_id TEXT NOT NULL, node_id TEXT, section_id TEXT, quote TEXT, prov_id TEXT NOT NULL,
+  PRIMARY KEY (signal_kind, pattern, tree_id));
+CREATE TABLE equip_attr (equip_id TEXT NOT NULL, key TEXT NOT NULL, value TEXT NOT NULL,
+                         PRIMARY KEY (equip_id, key));
+CREATE TABLE equip_ident (equip_id TEXT NOT NULL,
+                          kind TEXT NOT NULL,            -- serial_range|model|firmware|param|text
+                          pattern TEXT NOT NULL, PRIMARY KEY (equip_id, kind, pattern));
+CREATE TABLE history (event_id TEXT PRIMARY KEY, equip_id TEXT NOT NULL, system TEXT,
+  date TEXT NOT NULL, text TEXT NOT NULL, source_id TEXT, attrs TEXT NOT NULL);
+CREATE TABLE failure_mode (mode_id TEXT PRIMARY KEY, equip_id TEXT NOT NULL, system TEXT,
+  title TEXT NOT NULL, count INTEGER NOT NULL, share REAL, tree_id TEXT, examples TEXT NOT NULL);
+```
+
+- **Typed blocks are sections.** `section.kind` also takes `step`,
+  `warning`, `caution` and `note`. A warning, caution or note guards a step
+  with `xref(from=<block>, to=<step or task section>, kind='guards')`; it
+  guards that section and everything under it. Block text is verbatim.
+- **Verbatim on read.** `fault_node.text` and `fault_facet.text` must be
+  substrings of their section's text (whitespace-normalized). A tree with
+  one node that fails this, or did not pass, is refused whole. A
+  requirement or signal quote that is not verbatim is flagged
+  (`verbatim: false`, `quote_verified: false`) and fails validation.
+- **`expect`** (how a result is recorded): `{"kind":"yes_no"}`,
+  `{"kind":"pass_fail"}`, `{"kind":"choice","options":[…]}`,
+  `{"kind":"value","unit":"V","min":0,"max":30}` (`min`/`max` optional: the
+  range the node accepts), `{"kind":"ack"}` (outcome `done`, one branch).
+  A node with no branches has none.
+- **`cond`** on an edge: null matches by label (case and spacing folded:
+  `Yes` takes `yes`); a value node's edges carry
+  `{"op":"<"|"<="|">"|">="|"==","value":x}` or
+  `{"op":"between","min":a,"max":b}` (`a <= v < b`). No unit conversion:
+  a value in another unit is refused. `retry = 1` marks a loop the manual
+  makes on purpose (re-test after an adjustment).
+- **`target`**: `tree:<id>` or `procedure:<id>`; a `goto` must have one, an
+  `action` may (the task to do). **`proc_id`**: the procedure whose steps
+  answer the node's question (its steps carry their own guards).
+- **Facets** (`fault_facet.facet`) are the pack's names (`reason`, `known`,
+  `possible`, `test_option`, …); the core returns them grouped, in the
+  order and with the headings of `pack_meta.facets`
+  (`[{"id","label"}]`). `pack_meta.open_facet` (default `possible`) names
+  the facet whose texts are the candidate causes still open: the node's
+  own, else the nearest earlier node's on the path.
+- **Levels** come from `pack_meta.levels`, ordered, most guidance first:
+  `[{"id","label","facets":[…]|null,"test_steps":"expanded"|"collapsed"}]`.
+  `facets` lists the facets shown expanded (`null`: all). Without it a pack
+  has `trainee`, `operator`, `inspector`. **Warnings, cautions and notes
+  are shown at every level**; a level never hides one (tested in the core).
+- **Variants.** Every read that takes an `equip_id` filters with
+  `applies_to` (`ref_kind` `section`, `procedure`, `proc_step`,
+  `fault_tree`, `fault_node`, `symptom`, `requirement` with ref id
+  `<ref_kind>:<ref_id>#<ord>`): a row with none applies to all; a row for
+  an ancestor applies to its variants; a row for a more specific variant
+  than the one known is kept and labelled. A section inherits its nearest
+  ancestor's. `equip_ident` resolves an observed plate: `model` (case,
+  spaces and dashes ignored), `serial_range` (`P40D-1000..P40D-4999`: same
+  prefix, number in range), `firmware` (glob), `param` (`key=glob`),
+  `text` (substring). The most specific variant whose own rules the
+  observation meets wins; a variant with a rule of a kind the observation
+  gives and none of that kind matching is rejected. Two unrelated
+  candidates give the deepest common ancestor and `ambiguous: true`.
+  `equip_attr` inherits, nearest wins.
+- **Signals.** `signal_map.pattern` is exact (case and spacing folded),
+  `prefix:…`, `glob:…` (`*`, `?`) or `re:…`. Hits rank exact, glob,
+  prefix, regex, then observation order; the first suggests the entry
+  (its `node_id`, else the tree's entry). An observation with no kind
+  matches every kind. `pack_meta.signal_kinds` (`[{"kind","label","example"}]`)
+  labels them for the app.
+- **Symptom search** is lexical over the title and synonyms (Dice over
+  content stems, pack synonyms applied), plus cosine over the symptom's
+  `chunk` (`ref_kind = 'symptom'`) when the host's embedder matches the
+  pack's, plus 1 for a matched signal. Words in
+  `pack_meta.symptom_weak_words` (default: run, work, keep, …) never make
+  a match alone. A hit is `confident` when a signal matched, or its best
+  phrase covers at least `symptom_confident_coverage` (default 0.5) of
+  the query's other words and at least two of them (or all, when fewer),
+  or the cosine reaches `symptom_confident_dense` (default 0.85) beside a
+  lexical match; else `closest`. Each hit says why it matched.
+- **Locations and assets.** `section_loc.boxes` is optional (older packs
+  have no such column). A citation carries the source, edition, the
+  section path from the root, page label and index (inherited from the
+  nearest ancestor when the section has none), figure label, the page
+  image's asset id and the boxes. An asset is served only when the signed
+  manifest lists its `path` with the same SHA-256.
+- **Repeat window**: `pack_meta.repeat_window_days` (default 30).
+
+**Validation** (`maint::graph::validate`, `harvest verify`, the bake):
+every tree's entry is a node of it; every node is reachable from it; no
+cycle except through retry edges; a node with no branches is an `action`,
+`goto`, `escalate` or `end` and records nothing; `goto`, `escalate` and
+`end` have no branches; a node with branches has `expect` and branches that
+cover it exactly (each outcome once; numeric conditions that partition the
+accepted range, no overlap, no gap); edges stay in their tree; targets and
+`proc_id` resolve; node and facet text is verbatim; every facet has a
+heading; every guard is a warning, caution or note and its target exists;
+requirements, symptoms, signals, assets and boxes resolve. The report
+lists every violation with a stable rule code (`edge.coverage`,
+`tree.cycle`, `node.verbatim`, …) and counts.
+
+## Maintenance records
+
+`records.db` adds (all `CREATE TABLE IF NOT EXISTS`, so an older store
+upgrades in place):
+
+- `asset`: a physical unit (`asset_id`, `equip_id`, `serial`, `name`,
+  `attrs`, `hours`, `miles`); `asset_event`: its registry history. A fleet
+  is preloaded from a registry file `{"format":"harvest-assets/1","assets":[{asset_id, equip_id, serial, name, attrs, hours, miles, events:[{date, system, symptom_id, tree_id, text}]}]}`
+  (upsert by id; an asset's registry events are replaced).
+- `job`: one troubleshooting session (tree, entry node, entered by
+  `symptom` | `signals` | `chosen`, level, status `open` | `closed`,
+  resolution `fixed` | `escalated` | `redirected` | `unresolved` |
+  `abandoned`) and `job_step` (seq, node, outcome or value and unit, the
+  branch label taken, note, photos, next node, time, `superseded_at`).
+  The next node is chosen by code from the recorded result; an answer
+  names the node it answers and is refused unless that is the job's
+  current node. Going back marks the last step superseded (kept) and
+  returns to its node. A job is recorded against its tree as it was when
+  it began (SHA-256 of tree, nodes and edges): a pack that changed it
+  refuses further answers.
+- Every job event (`job.start`, `job.answer`, `job.back`, `job.close`) and
+  `lesson.create`, `asset.import`, `field.install` appends to the audit
+  chain in the same transaction: an event entry `{ts, event, pack_id,
+  pack_version, subject, node_id, asked (the node's text), result,
+  next_node, detail}`. `verify_chain` counts them under `events`; the
+  bake hit rate counts answers only.
+- `lesson`: the close-out (cause, corrective action, parts, minutes, note,
+  photos, level, status `local` | `queued` | `uploaded` (its upload was
+  acknowledged) | `approved` | `edited` | `rejected`).
+- Outbox kinds `job` (payload `harvest-job/1`: the job, every step
+  including superseded ones, node texts when the tree is unchanged) and
+  `lesson` (`harvest-lesson/1`: the lesson).
+- **Repeat discrepancy**: an earlier job or registry event on the same
+  asset with the same symptom, or else the same system, within the pack's
+  window.
+- **Field notes** arrive as a signed bundle
+  `{"format":"harvest-field/1","stream","pack_id","seq","issued_at","notes":[{note_id, scope:{equip_id?,tree_id?,node_id?,symptom_id?}, text, counts:{units,resolved,attempts}, approver, approved_at, supersedes?}],"revoke":[note_id],"reviews":[{lesson_id,status,note}],"signature":{…}}`,
+  signed like a manifest (ed25519 over the canonical JSON without
+  `signature`, a trusted key). The device refuses a bad or untrusted
+  signature and a `seq` not above the stream's installed one. A note shows
+  where every scope field it gives matches; the API returns notes apart
+  from manual text (`field_notes`, `source: "field"`).
+- People's entries (job query and signals, step notes and photos,
+  resolutions, lesson texts) are sealed at rest like run records.
+
+## API
+
+The app calls one JSON API, `harvest_core::api::call(host, method, params)`.
+The methods, their params and results are defined by Rust types and
+**generated** into [`api/api.schema.json`](api/api.schema.json) and
+[`api/types.ts`](api/types.ts); a test fails when those files are stale
+(`harvest api-schema harvest/api` rewrites them). Params are described as
+read (fields with defaults optional), results as written. Read those files
+for the shapes; this section states the rules.
+
+- Every transport returns `{"ok":true,"result":…}` or
+  `{"ok":false,"error":{"code","message"}}`. Unknown params fields are
+  refused (`bad_params`).
+- Methods that read a pack take an optional `pack_id` (the only pack when
+  one is loaded); job and run methods find theirs from the record.
+- `job.start`, `job.get`, `job.answer` and `job.back` return a job view:
+  the job, the step view of its current node (verbatim text, full
+  citation, guards in manual order, setup and requirements, facets with
+  headings and level folding, open causes, test procedure, assets, how to
+  record the result with every branch, per-level detail, the path so far,
+  field notes apart), the repeat flag and lesson ids.
+- `harvest serve` carries the API over HTTP for development: `POST
+  /api/<method>` (params as body) or `POST /api` (`{method, params}`),
+  `GET /api`, `GET /api/schema`, `GET /asset/<pack_id>/<asset_id>` (the
+  file re-hashed before it goes out), static files. Bound to loopback it
+  answers only its own loopback `Host`, refuses an `Origin` it was not
+  told to allow and takes calls only as `application/json`. A Tauri host
+  calls the same `call`; no transport holds logic.

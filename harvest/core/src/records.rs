@@ -174,6 +174,17 @@ impl Run {
     }
 }
 
+/// The outbox's last contact with the other side.
+#[derive(Debug, Clone, Default, Serialize, Deserialize, JsonSchema, PartialEq)]
+pub struct SyncState {
+    /// When an item was last acknowledged.
+    pub last_synced_at: Option<String>,
+    /// When the last upload was attempted, and whether it got through.
+    pub last_attempt_at: Option<String>,
+    pub last_attempt_ok: Option<bool>,
+    pub last_error: Option<String>,
+}
+
 /// The run report format id.
 pub const RUN_REPORT_FORMAT: &str = "harvest-run/1";
 
@@ -418,7 +429,44 @@ impl Records {
         transport: &dyn sync::Transport,
         batch_size: usize,
     ) -> Result<sync::FlushReport> {
-        sync::flush_with(&self.conn, self.key(), transport, batch_size)
+        let out = sync::flush_with(&self.conn, self.key(), transport, batch_size);
+        // Remember how the last attempt went (never a live probe).
+        let state = match &out {
+            Ok(r) => {
+                serde_json::json!({"at": now_rfc3339(), "ok": r.error.is_none(), "error": r.error})
+            }
+            Err(e) => serde_json::json!({"at": now_rfc3339(), "ok": false, "error": e.to_string()}),
+        };
+        self.conn.execute(
+            "INSERT INTO records_meta (key, value) VALUES ('sync_last_attempt', ?1)
+             ON CONFLICT (key) DO UPDATE SET value = excluded.value",
+            [state.to_string()],
+        )?;
+        out
+    }
+
+    /// When the outbox last reached the other side, and how the last
+    /// attempt went.
+    pub fn sync_state(&self) -> Result<SyncState> {
+        let last_synced_at: Option<String> =
+            self.conn
+                .query_row("SELECT MAX(acked_at) FROM outbox", [], |r| r.get(0))?;
+        let last: Option<String> = self
+            .conn
+            .query_row(
+                "SELECT value FROM records_meta WHERE key = 'sync_last_attempt'",
+                [],
+                |r| r.get(0),
+            )
+            .optional()?;
+        let last: Option<serde_json::Value> = last.and_then(|l| serde_json::from_str(&l).ok());
+        let get = |k: &str| last.as_ref().and_then(|v| v.get(k)).cloned();
+        Ok(SyncState {
+            last_synced_at,
+            last_attempt_at: get("at").and_then(|v| v.as_str().map(str::to_string)),
+            last_attempt_ok: get("ok").and_then(|v| v.as_bool()),
+            last_error: get("error").and_then(|v| v.as_str().map(str::to_string)),
+        })
     }
 
     /// Queue counts.
