@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { SOURCE_LABEL } from "../ui/applicability.tsx";
 import { Cable, Check, Keyboard, ScanLine, X } from "lucide-react";
 import { useNavigate } from "react-router";
 import type { Candidate, EquipResolveParams, IdentMatch, Resolved } from "../engine/types.ts";
@@ -137,6 +138,34 @@ function ResultPanel(p: IdentifyProps) {
   );
 }
 
+const PLATE_FIELDS = [
+  ["serial", "Serial"],
+  ["model", "Model"],
+  ["firmware", "Firmware"],
+] as const;
+
+/** What the plate gave, kept on the unit when it is saved and marked as from the data plate. */
+function PlateValues({ observed }: { observed: IdentifyProps["observed"] }) {
+  const rows = PLATE_FIELDS.filter(([k]) => observed[k]?.trim());
+  if (rows.length === 0) return null;
+  return (
+    <section aria-label="Kept on the unit" className="flex flex-col gap-1">
+      <h3 className="text-meta font-semibold text-ink-2">Kept on the unit</h3>
+      <dl className="m-0 flex flex-col divide-y divide-line">
+        {rows.map(([k, label]) => (
+          <div key={k} className="flex flex-wrap items-center gap-x-3 gap-y-1 py-2">
+            <dt className="min-w-0 flex-[1_1_7rem] text-meta font-semibold text-ink-2">{label}</dt>
+            <dd className="m-0 flex min-w-0 flex-[2_1_10rem] flex-wrap items-center gap-x-3 gap-y-1">
+              <span className="code text-body break-all">{observed[k]}</span>
+              <span className="rounded-full border border-line px-2 py-0.5 text-meta text-ink-2">{SOURCE_LABEL.plate}</span>
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+  );
+}
+
 function Outcome(p: IdentifyProps & { result: Resolved }) {
   const { result } = p;
   if (!result.equip_id)
@@ -174,6 +203,7 @@ function Outcome(p: IdentifyProps & { result: Resolved }) {
         </div>
       )}
       {result.rejected.length > 0 && <Rejected list={result.rejected} />}
+      {chosen && <PlateValues observed={p.observed} />}
       <div className="flex-1" />
       {chosen && (
         <form

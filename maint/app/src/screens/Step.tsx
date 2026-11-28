@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { ArrowUpRight, Camera, CornerDownRight, ChevronDown, ChevronUp, MessageCircleQuestion, NotebookPen, OctagonAlert, Printer, Undo2, X } from "lucide-react";
 import { Link } from "react-router";
-import type { AskResponse, Citation, FacetGroup, Job, Level, PackAsset, PathEntry, StepView } from "../engine/types.ts";
+import type { Applicability, AskResponse, Citation, FacetGroup, Job, Level, PackAsset, PathEntry, StepView } from "../engine/types.ts";
 import { closeOutPath, jobAskPath, jobPagePath, jobPath, manualPath, printJobPath, procedurePath } from "../routes.ts";
 import { Button, cx, Segmented, Skeleton } from "../ui/kit.tsx";
 import { useVoiceInput } from "@appkit/voice/useVoiceInput.ts";
 import { Keypad } from "../ui/Keypad.tsx";
 import { VoiceControl, voiceStatus } from "../ui/VoiceControl.tsx";
 import { PageViewer } from "../ui/PageViewer.tsx";
-import { citationText, FieldNotes, pageFor, guardKind, Guards, ManualSheet, Requirements, sectionTitle, useAssetSrc } from "../ui/manual.tsx";
+import { citationText, FieldNotes, pageFor, isGrave, Guards, markOnly, ManualSheet, Requirements, sectionTitle, useAssetSrc } from "../ui/manual.tsx";
 
 export type StepOverlay = { kind: "page"; asset: PackAsset } | { kind: "ask"; query: string; answer: AskResponse | null } | null;
 
@@ -46,6 +46,8 @@ export interface StepProps {
   onPhoto(): void;
   onNote(text: string): void;
   onAskQuery(q: string): void;
+  /** The in-place answer for an undetermined applicability (the unit's attribute the manual's statement needs). */
+  renderAnswer?: (a: Applicability) => ReactNode;
 }
 
 const KIND: Record<string, string> = { symptom: "Symptom", check: "Check", action: "Action", goto: "Continue", escalate: "Refer", end: "End" };
@@ -65,11 +67,13 @@ export function Step(p: StepProps) {
   const pageOpen = p.overlay?.kind === "page" ? p.overlay.asset : null;
   const stepNo = step.path.length + 1;
   const detailed = p.levels[0]?.id === step.level.id;
-  const hasWarning = step.guards.some((g) => guardKind(g.kind) === "warning");
+  // At the most experienced level, blocks the pack does not mark must_show may fold.
+  const experienced = p.levels.length > 1 && p.levels[p.levels.length - 1]?.id === step.level.id;
+  const grave = step.guards.find(isGrave) ?? null;
   const [noteOpen, setNoteOpen] = useState(false);
   return (
     <div className="mx-auto w-full max-w-[1280px] px-4 pt-4 pb-10 sm:px-6 lg:px-8">
-      {hasWarning && <WarningMarker text={step.guards.find((g) => guardKind(g.kind) === "warning")!.text} />}
+      {grave && <WarningMarker label={grave.label} text={grave.text} />}
       <header className="mb-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
         <div className="min-w-0">
           <h1 className="text-h3 sm:text-h2">{step.tree.title}</h1>
@@ -91,7 +95,9 @@ export function Step(p: StepProps) {
       <div className={cx("grid items-start gap-6", pageOpen ? "lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]" : "lg:grid-cols-[minmax(0,1fr)_380px]")}>
         <article aria-busy={busy} className="flex min-w-0 flex-col gap-4">
           <div className={cx("flex flex-col gap-4", busy && "opacity-60")}>
-            <Guards guards={step.guards} firstWarningId={WARNING_ID} />
+            <Guards guards={step.guards} firstWarningId={WARNING_ID} collapsible={experienced} answer={p.renderAnswer} />
+            {step.tree.applicability?.status === "unknown" && (p.renderAnswer ?? markOnly)(step.tree.applicability)}
+            {step.applicability?.status === "unknown" && (p.renderAnswer ?? markOnly)(step.applicability)}
 
             <ManualSheet citation={step.citation} onPage={page ? jobPagePath(job.job_id, page.asset_id) : undefined}>
               {step.node.text}
@@ -107,7 +113,7 @@ export function Step(p: StepProps) {
 
             {detailed && step.detail.length > 0 && <Explanation texts={step.detail.map((d) => d.text)} />}
 
-            {step.test_procedure && step.test_procedure.steps.length > 0 && <TestProcedure step={step} />}
+            {step.test_procedure && step.test_procedure.steps.length > 0 && <TestProcedure step={step} collapsible={experienced} renderAnswer={p.renderAnswer} />}
 
             {figure && !pageOpen && <FigureCard figure={figure} src={assetSrc(step.pack_id, figure)} to={jobPagePath(job.job_id, figure.asset_id)} className="lg:hidden" />}
             {needs.length > 0 && (
@@ -189,7 +195,7 @@ export function Step(p: StepProps) {
  * When the step's WARNING has scrolled out above, a one-line marker stays
  * under the status strip and jumps back to it. It overlays; nothing moves.
  */
-function WarningMarker({ text }: { text: string }) {
+function WarningMarker({ label, text }: { label: string; text: string }) {
   const [gone, setGone] = useState(false);
   useEffect(() => {
     const el = document.getElementById(WARNING_ID);
@@ -207,7 +213,7 @@ function WarningMarker({ text }: { text: string }) {
       className="no-print fixed inset-x-0 top-[calc(var(--spacing-strip)+env(safe-area-inset-top))] z-30 flex h-11 items-center gap-2 bg-warn px-4 text-left text-warn-ink md:left-rail"
     >
       <OctagonAlert aria-hidden size={20} strokeWidth={2.5} className="shrink-0" />
-      <span className="shrink-0 text-small font-bold tracking-[0.14em]">WARNING</span>
+      <span className="shrink-0 text-small font-bold tracking-[0.14em]">{label}</span>
       <span className="manual-text min-w-0 truncate text-small">{text}</span>
     </button>
   );
@@ -263,8 +269,10 @@ function Explanation({ texts }: { texts: string[] }) {
   );
 }
 
-function TestProcedure({ step }: { step: StepView }) {
+function TestProcedure({ step, collapsible, renderAnswer }: { step: StepView; collapsible: boolean; renderAnswer?: (a: Applicability) => ReactNode }) {
   const tp = step.test_procedure!;
+  // Blocks the pack marks must_show are never folded away with the procedure.
+  const pinned = [...tp.guards, ...tp.steps.flatMap((t) => t.guards)].filter((g) => g.must_show);
   const [open, setOpen] = useState(tp.expanded);
   useEffect(() => setOpen(tp.expanded), [tp.expanded, step.node.node_id]);
   return (
@@ -276,21 +284,27 @@ function TestProcedure({ step }: { step: StepView }) {
           {open ? <ChevronUp aria-hidden size={20} /> : <ChevronDown aria-hidden size={20} />}
         </button>
       </div>
+      {!open && pinned.length > 0 && (
+        <div className="border-t border-line px-4 py-4 sm:px-5">
+          <Guards guards={pinned} answer={renderAnswer} />
+        </div>
+      )}
       {open && (
         <ol className="m-0 flex list-none flex-col gap-3 border-t border-line px-4 py-4 sm:px-5">
           {tp.guards.length > 0 && (
             <li>
-              <Guards guards={tp.guards} />
+              <Guards guards={tp.guards} collapsible={collapsible} answer={renderAnswer} />
             </li>
           )}
           {tp.steps.map((t) => (
-            <li key={t.ord} className={cx("flex flex-col gap-2", !t.applies && "opacity-60")}>
-              <Guards guards={t.guards} />
+            <li key={t.ord} className={cx("flex flex-col gap-2", !t.applies && t.applicability?.status !== "unknown" && "opacity-60")}>
+              <Guards guards={t.guards} collapsible={collapsible} answer={renderAnswer} />
+              {t.applicability?.status === "unknown" && (renderAnswer ?? markOnly)(t.applicability)}
               <div className="flex gap-3">
                 <span className="w-6 shrink-0 font-sans text-body font-bold tabular">{t.ord}.</span>
                 <span className="text-body">
                   {t.text}
-                  {!t.applies && <span className="ml-2 font-sans text-meta text-ink-3">Not for this variant</span>}
+                  {!t.applies && t.applicability?.status !== "unknown" && <span className="ml-2 font-sans text-meta text-ink-3">Not for this variant</span>}
                 </span>
               </div>
             </li>

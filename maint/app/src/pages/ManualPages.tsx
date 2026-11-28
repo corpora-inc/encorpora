@@ -12,10 +12,15 @@ import { ManualPack, pageFor, useAssetSrc } from "../ui/manual.tsx";
 
 /** The active unit's variant, when it belongs to this pack: the engine marks what applies to it. */
 function useEquip(packId: string) {
+  return useUnitIn(packId)?.equip_id ?? null;
+}
+
+/** The active unit, when it belongs to this pack: rows and statements are read for its attributes. */
+function useUnitIn(packId: string) {
   const active = useSettings((s) => s.activeUnit);
-  const equip = useFleet((s) => s.assets.find((a) => a.asset_id === active)?.equip_id ?? null);
+  const unit = useFleet((s) => s.assets.find((a) => a.asset_id === active) ?? null);
   const packs = usePack((s) => s.packs);
-  return packOf(packs, equip)?.info.pack_id === packId ? equip : null;
+  return unit && packOf(packs, unit.equip_id)?.info.pack_id === packId ? unit : null;
 }
 
 /** Every manual on the device, the active unit's first; or one, at /manual/<pack>. */
@@ -38,7 +43,7 @@ export function ManualHomePage() {
     <ManualHome
       manuals={shown.map((id) => {
         const p = packs[id]!;
-        return { packId: id, title: packTitle(p), edition: p.info.sources[0]?.edition ?? p.info.version, contents: contents[id] ?? null };
+        return { packId: id, title: packTitle(p), edition: p.info.sources[0]?.edition ?? p.info.version, contents: contents[id] ?? null, tables: p.tables.length };
       })}
     />
   );
@@ -47,14 +52,19 @@ export function ManualHomePage() {
 export function ManualSearchPage() {
   const { packId = "", q = "" } = useParams();
   const equip = useEquip(packId);
+  const asset = useUnitIn(packId)?.asset_id ?? null;
   const [hits, setHits] = useState<ManualHit[] | null>(null);
   useEffect(() => {
     setHits(null);
-    call("manual.search", { pack_id: packId, query: q, equip_id: equip, k: 20 })
+    call("manual.search", { pack_id: packId, query: q, equip_id: equip, asset_id: asset, k: 20 })
       .then((r) => setHits(r.hits))
       .catch((e: unknown) => reportError("manual.search", e, "The search did not run."));
-  }, [packId, q, equip]);
-  return <ManualResults key={q} packId={packId} query={q} hits={hits} />;
+  }, [packId, q, equip, asset]);
+  return (
+    <ManualPack.Provider value={packId}>
+      <ManualResults key={q} packId={packId} query={q} hits={hits} />
+    </ManualPack.Provider>
+  );
 }
 
 export function SectionPage() {

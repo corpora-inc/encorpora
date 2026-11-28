@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { ChevronRight, Search } from "lucide-react";
+import { ChevronRight, Search, Table2 } from "lucide-react";
 import { Link, useNavigate } from "react-router";
 import type { ManualHit, PackAsset, SectionRef, SectionView } from "../engine/types.ts";
-import { manualPackPath, manualPagePath, manualPath, manualSearchPath } from "../routes.ts";
+import { manualPackPath, manualPagePath, manualPath, manualSearchPath, referencePath } from "../routes.ts";
+import { RowCard, useTable } from "../ui/reference.tsx";
 import { Button, cx, inputClass, Page, Skeleton } from "../ui/kit.tsx";
 import { Guards, ManualSheet, sectionTitle } from "../ui/manual.tsx";
 import { PageViewer } from "../ui/PageViewer.tsx";
@@ -53,6 +54,8 @@ export interface ManualEntry {
   title: string;
   edition: string;
   contents: SectionRef[] | null;
+  /** How many reference tables it has (codes, specifications, schedules). */
+  tables: number;
 }
 
 /** The manuals on this device: each one's contents and its search. */
@@ -67,12 +70,26 @@ export function ManualHome({ manuals }: { manuals: ManualEntry[] }) {
               <p className="text-small text-ink-2">{m.edition}</p>
             </div>
             <SearchBox packId={m.packId} />
+            {m.tables > 0 && (
+              <Link to={referencePath(m.packId)} className="flex min-h-tap items-center gap-3 rounded-panel border border-line bg-surface px-4 py-2.5 text-ink no-underline">
+                <Table2 aria-hidden size={22} className="shrink-0 text-ink-2" />
+                <span className="min-w-0 flex-1 text-body font-semibold">Reference tables</span>
+                <span className="shrink-0 text-meta text-ink-3 tabular">{m.tables}</span>
+                <ChevronRight aria-hidden size={20} className="shrink-0 text-ink-3" />
+              </Link>
+            )}
             {m.contents === null ? <Skeleton className="h-[200px]" /> : <SectionList packId={m.packId} items={m.contents} />}
           </section>
         ))}
       </div>
     </Page>
   );
+}
+
+/** A search hit that is a reference-table row: the row as printed, under its column labels. */
+function RowHitCard({ packId, hit }: { packId: string; hit: ManualHit }) {
+  const table = useTable(hit.row!.table_id);
+  return <RowCard packId={packId} row={hit.row!} columns={table?.columns ?? []} title={table?.title ?? hit.heading ?? ""} />;
 }
 
 export function ManualResults({ packId, query, hits }: { packId: string; query: string; hits: ManualHit[] | null }) {
@@ -87,10 +104,10 @@ export function ManualResults({ packId, query, hits }: { packId: string; query: 
         <ol className="m-0 flex list-none flex-col gap-2 p-0">
           {hits.map((h) => (
             <li key={h.chunk_id}>
-              <Link to={h.section_id ? manualPath(packId, h.section_id) : manualPackPath(packId)} className="sheet block p-4 text-ink no-underline">
+              {h.row ? <RowHitCard packId={packId} hit={h} /> : <Link to={h.section_id ? manualPath(packId, h.section_id) : manualPackPath(packId)} className="sheet block p-4 text-ink no-underline">
                 <span className="block font-sans text-meta font-semibold text-ink-2">{[h.citation, h.heading].filter(Boolean).join(" ")}</span>
                 <span className="mt-1 line-clamp-3 block text-body">{h.text}</span>
-              </Link>
+              </Link>}
             </li>
           ))}
         </ol>

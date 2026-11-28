@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { call } from "../engine/client.ts";
-import type { EquipView, FaultTree, PackInfoView, TaskSummary } from "../engine/types.ts";
+import { logError } from "@appkit/log.ts";
+import type { EquipView, FaultTree, PackInfoView, TableSummary, TaskSummary } from "../engine/types.ts";
 
 /** One loaded pack: its manual, its equipment family, its tables and tasks. */
 export interface PackData {
@@ -8,6 +9,8 @@ export interface PackData {
   equipment: EquipView[];
   trees: FaultTree[];
   tasks: TaskSummary[];
+  /** The manual's reference tables (codes, specifications, schedules, …). */
+  tables: TableSummary[];
 }
 
 /**
@@ -29,8 +32,18 @@ export const usePack = create<PackState>()((set) => ({
     const ids = (await call("pack.list", {})).map((p) => p.pack_id);
     const loaded = await Promise.all(
       ids.map(async (pack_id) => {
-        const [info, equipment, trees, tasks] = await Promise.all([call("pack.info", { pack_id }), call("equip.list", { pack_id }), call("tree.list", { pack_id }), call("task.list", { pack_id })]);
-        return [pack_id, { info, equipment, trees, tasks }] as const;
+        const [info, equipment, trees, tasks, tables] = await Promise.all([
+          call("pack.info", { pack_id }),
+          call("equip.list", { pack_id }),
+          call("tree.list", { pack_id }),
+          call("task.list", { pack_id }),
+          // A pack built before reference tables has none; the rest of it still reads.
+          call("table.list", { pack_id }).catch((e: unknown) => {
+            logError("pack.tables", e);
+            return [] as TableSummary[];
+          }),
+        ]);
+        return [pack_id, { info, equipment, trees, tasks, tables }] as const;
       }),
     );
     set({ ids, packs: Object.fromEntries(loaded) });

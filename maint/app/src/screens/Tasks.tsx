@@ -1,6 +1,7 @@
 import { Play, Printer } from "lucide-react";
+import type { ReactNode } from "react";
 import { Link } from "react-router";
-import type { Guidance, Run, RunReport, TaskSummary, TaskView } from "../engine/types.ts";
+import type { Applicability, Guidance, Run, RunReport, TaskSummary, TaskView } from "../engine/types.ts";
 import { printProcedurePath, procedurePath } from "../routes.ts";
 import { formatTime } from "../ui/format.ts";
 import { Button, List, Page, Row, Skeleton } from "../ui/kit.tsx";
@@ -68,6 +69,8 @@ export interface TaskPageProps {
   onRecord(ord: number, outcome: "pass" | "fail" | "note" | "value", value?: string): void;
   onFinish(): void;
   onAbandon(): void;
+  /** The in-place answer for a step whose applicability is not determined. */
+  renderAnswer?: (a: Applicability) => ReactNode;
 }
 
 /** One task: requirements, then its steps with their guards; started, it records each step. */
@@ -90,7 +93,7 @@ export function TaskPage(p: TaskPageProps) {
       <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
         <div className="flex min-w-0 flex-col gap-4">
           <section className="sheet" aria-label="Steps">
-            <TaskSteps task={t} records={p.run ? p.run.steps : null} busy={p.busy} onRecord={p.onRecord} />
+            <TaskSteps task={t} records={p.run ? p.run.steps : null} busy={p.busy} onRecord={p.onRecord} renderAnswer={p.renderAnswer} />
           </section>
           {p.guidance && (
             <section className="rounded-panel border-2 border-ink bg-surface p-4" aria-label="After a failed step">

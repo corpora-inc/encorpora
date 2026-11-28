@@ -1,8 +1,9 @@
-import { createContext, useContext, type ReactNode } from "react";
+import { Undetermined } from "./applicability.tsx";
+import { createContext, useContext, useState, type ReactNode } from "react";
 import { Link } from "react-router";
 import { FileText, OctagonAlert, TriangleAlert, Users } from "lucide-react";
 import { assetUrl } from "../engine/client.ts";
-import type { Citation, FieldNote, Guard, PackAsset, Requirement } from "../engine/types.ts";
+import type { Applicability, Citation, FieldNote, Guard, PackAsset, Requirement } from "../engine/types.ts";
 import { manualPath } from "../routes.ts";
 import { formatDate } from "./format.ts";
 import { cx } from "./kit.tsx";
@@ -72,38 +73,69 @@ function Folio({ citation, to }: { citation: Citation; to?: string }) {
   );
 }
 
-const GUARD_KINDS = ["warning", "caution", "note"] as const;
-type GuardKind = (typeof GUARD_KINDS)[number];
-/** The engine names the kind; anything it adds later is shown as a note, never dropped. */
-export const guardKind = (k: string): GuardKind => ((GUARD_KINDS as readonly string[]).includes(k) ? (k as GuardKind) : "note");
+/**
+ * How a safety block is set, from the rank the pack declares for its class
+ * (1 = gravest), never from the class's name: rank 1 the gravest treatment,
+ * rank 2 the warning treatment, rank 3 the caution treatment, the rest quiet.
+ * The band always prints the manual's own label.
+ */
+export type GuardTone = "gravest" | "warning" | "caution" | "note";
+export const guardTone = (rank: number): GuardTone => (rank <= 1 ? "gravest" : rank === 2 ? "warning" : rank === 3 ? "caution" : "note");
+/** Rank 1 and 2 keep a marker pinned when scrolled away. */
+export const isGrave = (g: Guard) => g.rank <= 2;
 
-/** One WARNING, CAUTION or NOTE, as the manual sets it. Never collapsible. */
-export function GuardBlock({ guard, id }: { guard: Guard; id?: string }) {
-  const kind = guardKind(guard.kind);
-  const Icon = kind === "warning" ? OctagonAlert : kind === "caution" ? TriangleAlert : null;
-  const label = (guard.heading ?? guard.kind).toUpperCase();
+/** One safety block, as the manual sets it. A `must_show` block is never collapsible. */
+export function GuardBlock({ guard, id, collapsible = false, applicability = null }: { guard: Guard; id?: string; collapsible?: boolean; applicability?: ReactNode }) {
+  const tone = guardTone(guard.rank);
+  const [open, setOpen] = useState(false);
+  const Icon = tone === "gravest" || tone === "warning" ? OctagonAlert : tone === "caution" ? TriangleAlert : null;
+  const folded = collapsible && !guard.must_show && !open;
   return (
-    <section id={id} className={cx("guard scroll-mt-28", `guard-${kind}`)} aria-label={label}>
+    <section id={id} className={cx("guard scroll-mt-28", `guard-${tone}`)} aria-label={guard.label}>
       <div className="guard-band">
-        {Icon && <Icon aria-hidden size={20} strokeWidth={2.5} />}
-        <span>{label}</span>
+        {Icon && <Icon aria-hidden size={tone === "gravest" ? 24 : 20} strokeWidth={2.5} />}
+        <span>{guard.label}</span>
+        {collapsible && !guard.must_show && (
+          <button type="button" onClick={() => setOpen(!open)} aria-expanded={!folded} className="ml-auto inline-flex min-h-11 items-center px-2 text-meta font-semibold tracking-normal underline underline-offset-4">
+            {folded ? "Show" : "Hide"}
+          </button>
+        )}
       </div>
-      <p className={cx("px-4 py-3 sm:px-5", kind === "note" ? "text-body" : "text-lead font-semibold")}>{guard.text}</p>
-      <p className="px-4 pb-2.5 font-sans text-meta text-ink-3 sm:px-5">
-        {guard.citation.citation}
-        {guard.citation.page_label && `, page ${guard.citation.page_label}`}
-      </p>
+      {!folded && (
+        <>
+          {applicability}
+          <p className={cx("px-4 py-3 sm:px-5", tone === "note" ? "text-body" : "text-lead font-semibold")}>{guard.text}</p>
+          <p className="px-4 pb-2.5 font-sans text-meta text-ink-3 sm:px-5">
+            {guard.citation.citation}
+            {guard.citation.page_label && `, page ${guard.citation.page_label}`}
+          </p>
+        </>
+      )}
     </section>
   );
 }
 
-export function Guards({ guards, firstWarningId }: { guards: Guard[]; firstWarningId?: string }) {
+/** With nobody to answer (print, no unit): the marker and the printed statement, never silence. */
+export const markOnly = (a: Applicability) => <Undetermined a={a} />;
+
+/**
+ * Safety blocks in manual order. `collapsible`: the experienced levels may
+ * fold blocks the pack does not mark `must_show`. `answer`: renders the
+ * marker for a block whose applicability is not determined (never hidden).
+ */
+export function Guards({ guards, firstWarningId, collapsible = false, answer }: { guards: Guard[]; firstWarningId?: string; collapsible?: boolean; answer?: (a: NonNullable<Guard["applicability"]>) => ReactNode }) {
   if (guards.length === 0) return null;
-  const first = guards.findIndex((g) => guardKind(g.kind) === "warning");
+  const first = guards.findIndex(isGrave);
   return (
     <div className="flex flex-col gap-3">
       {guards.map((g, i) => (
-        <GuardBlock key={`${g.section_id}-${i}`} guard={g} id={i === first ? firstWarningId : undefined} />
+        <GuardBlock
+          key={`${g.section_id}-${i}`}
+          guard={g}
+          id={i === first ? firstWarningId : undefined}
+          collapsible={collapsible}
+          applicability={g.applicability && g.applicability.status === "unknown" ? <div className="px-4 pt-3 sm:px-5">{(answer ?? markOnly)(g.applicability)}</div> : null}
+        />
       ))}
     </div>
   );

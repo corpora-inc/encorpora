@@ -20,6 +20,7 @@ import { ManualPack, pageFor } from "../ui/manual.tsx";
 import { useSettings } from "../store/settings.ts";
 import { unitName } from "../ui/format.ts";
 import { Button, Page } from "../ui/kit.tsx";
+import { useAnswerer } from "./answer.tsx";
 import { useActiveUnit } from "./Frame.tsx";
 
 export function DescribePage() {
@@ -97,6 +98,8 @@ export function JobPage() {
   const file = useRef<HTMLInputElement>(null);
   const voiceOn = useDevice((s) => s.voice);
   useActiveUnit(view?.job.asset_id);
+  // An attribute answered in place re-reads the step, which re-filters.
+  const renderAnswer = useAnswerer(view?.job.asset_id, view?.job.pack_id, () => void useJobs.getState().load(jobId));
   useEffect(() => {
     void useJobs.getState().load(jobId).then((v) => setMissing(!v));
   }, [jobId]);
@@ -131,6 +134,7 @@ export function JobPage() {
         keypadOpen={keypad}
         overlay={overlay}
         voice={voiceOn}
+        renderAnswer={renderAnswer}
         onDraft={(v) => useJobs.getState().setDraft(key, v)}
         onKeypad={setKeypad}
         onAnswer={(input) => {
@@ -295,6 +299,8 @@ export function ConnectPage() {
   const formats = info ? formatsFor(info) : [];
   const [format, setFormat] = useState<Format | null>(null);
   useActiveUnit(unit?.asset_id);
+  // A row whose applicability needs one of the unit's attributes: answered here, the codes re-read.
+  const renderAnswer = useAnswerer(unit?.asset_id, info?.pack_id, () => info && void useDescribe.getState().matchCodes(unitId, info.pack_id));
   useEffect(() => {
     if (!unit || !info) return;
     setBusy(true);
@@ -355,6 +361,7 @@ export function ConnectPage() {
       }}
       onStart={(e) => void start({ tree_id: e.tree_id, node_id: e.node_id || null })}
       onStartSymptom={(symptom_id) => void start({ symptom_id })}
+      renderAnswer={renderAnswer}
     />
   );
 }

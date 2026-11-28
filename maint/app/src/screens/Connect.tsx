@@ -1,7 +1,8 @@
-import { useRef, useState } from "react";
+import { useRef, useState, type ReactNode } from "react";
 import { Cable, FileUp, Plus, Search, X } from "lucide-react";
-import type { Decoded, EntryPoint, Format, ObservationInput, SignalHit, SignalKind, SignalMatch, SignalSection, SymptomHit } from "../engine/types.ts";
+import type { Applicability, Decoded, EntryPoint, Format, ObservationInput, SignalHit, SignalKind, SignalMatch, SignalSection, SymptomHit } from "../engine/types.ts";
 import { Button, ButtonLink, cx, inputClass, Page, Panel, Segmented, Skeleton } from "../ui/kit.tsx";
+import { EntryCard, HitCard } from "../ui/SignalCard.tsx";
 
 export type CodeSource = "live" | "recorded" | "typed";
 
@@ -31,6 +32,8 @@ export interface ConnectProps {
   onClear(): void;
   onStart(e: EntryPoint): void;
   onStartSymptom(symptomId: string): void;
+  /** The in-place answer for a row whose applicability to the unit is not determined. */
+  renderAnswer?: (a: Applicability) => ReactNode;
 }
 
 const SOURCES = [
@@ -245,7 +248,7 @@ function Matches(p: ConnectProps) {
       )}
       {p.busy && !m && <Skeleton className="h-[120px]" />}
       {m && m.hits.length > 1 && <p className="text-small text-ink-2">{m.hits.length} entries in the manual match. Start with the one that fits.</p>}
-      {m?.hits.map((h, i) => <HitCard key={i} hit={h} onStart={p.onStart} />)}
+      {m?.hits.map((h, i) => <HitCard key={i} hit={h} onStart={p.onStart} renderAnswer={p.renderAnswer} />)}
       {m?.closest.map((c, i) => (
         <section key={`c${i}`} className="flex flex-col gap-2 rounded-panel border-2 border-dashed border-line-strong p-4" aria-label={`Closest entries for ${c.observed.value}`}>
           <p className="text-body">
@@ -274,46 +277,3 @@ function Matches(p: ConnectProps) {
   );
 }
 
-function HitCard({ hit, onStart }: { hit: SignalHit; onStart(e: EntryPoint): void }) {
-  return (
-    <EntryCard
-      code={hit.observed.value}
-      title={hit.rule.title}
-      quote={hit.rule.quote_verified ? hit.rule.quote : null}
-      section={hit.has_tree ? null : hit.section}
-      citation={hit.citation}
-      start={hit.has_tree && hit.rule.tree_id ? () => onStart({ tree_id: hit.rule.tree_id!, node_id: hit.rule.node_id ?? "" }) : null}
-    />
-  );
-}
-
-/**
- * One entry of the manual. With a tree it starts troubleshooting there; with
- * none it shows all the manual says and says plainly that it gives no
- * corrective action.
- */
-function EntryCard({ code, title, quote, section, citation, start }: { code?: string; title: string; quote: string | null; section: SignalSection | null; citation: string | null; start: (() => void) | null }) {
-  return (
-    <section className="sheet flex flex-col gap-3 p-4 sm:flex-row sm:items-center" aria-label={title}>
-      <div className="min-w-0 flex-1">
-        <div className="flex flex-wrap items-center gap-2 font-sans">
-          {code && (
-            <span className="inline-flex min-h-10 max-w-full items-center rounded-plate border-2 border-ink px-2.5">
-              <span className="code truncate text-small">{code}</span>
-            </span>
-          )}
-          <span className="text-small font-semibold">{title}</span>
-        </div>
-        {quote && <p className="mt-2 text-body">{quote}</p>}
-        {section && <p className="mt-2 text-body">{section.text}</p>}
-        {citation && <p className="mt-1 font-sans text-meta text-ink-3">{section?.citation ?? citation}</p>}
-        {!start && <p className="mt-2 font-sans text-small text-ink-2">The manual gives no corrective action for this.</p>}
-      </div>
-      {start && (
-        <Button variant="primary" onClick={start} className="shrink-0 font-sans">
-          Start here
-        </Button>
-      )}
-    </section>
-  );
-}

@@ -1,7 +1,8 @@
 import type { ReactNode } from "react";
-import { Cable, ChevronRight, ClipboardList, Repeat2, Search } from "lucide-react";
+import { Cable, ChevronRight, ClipboardList, Repeat2, Search, Table2 } from "lucide-react";
 import { Link } from "react-router";
-import type { Asset, AssetHistory, JobSummary } from "../engine/types.ts";
+import type { Asset, AssetAttrs, AssetHistory, JobSummary } from "../engine/types.ts";
+import { AttrList } from "../ui/applicability.tsx";
 import { connectPath, describePath, jobPath, proceduresPath } from "../routes.ts";
 import { formatDate, formatNumber, formatTime, unitName } from "../ui/format.ts";
 import { ButtonLink, Page, Panel, Skeleton } from "../ui/kit.tsx";
@@ -14,12 +15,18 @@ export interface UnitPageProps {
   openJob: JobSummary | null;
   /** The unit's active codes, with what the manual calls each (null: not in this manual). */
   codes: { value: string; title: string | null }[];
+  /** What the unit's pack declares about it and the values it has, each with its source (null while read). */
+  attrs: AssetAttrs | null;
+  attrsSaving: boolean;
+  onAttr(attr: string, value: string | null): void;
+  /** The unit's manual's reference tables, when it has any. */
+  referenceTo: string | null;
 }
 
 export const RESOLUTION: Record<string, string> = { fixed: "Fixed", escalated: "Referred", abandoned: "Abandoned", redirected: "Redirected", unresolved: "Not resolved" };
 
 /** One unit: what it is, what it has been through, and the two ways to start work. */
-export function UnitPage({ unit, variant, history, openJob, codes }: UnitPageProps) {
+export function UnitPage({ unit, variant, history, openJob, codes, attrs, attrsSaving, onAttr, referenceTo }: UnitPageProps) {
   const location = typeof unit.attrs.location === "string" ? unit.attrs.location : null;
   return (
     <Page title={<span className="code">{unitName(unit)}</span>} kicker={variant} wide>
@@ -77,6 +84,23 @@ export function UnitPage({ unit, variant, history, openJob, codes }: UnitPagePro
           Connect to vehicle
         </ButtonLink>
       </section>
+
+      {(attrs === null || attrs.declared.length > 0) && (
+        <section className="rounded-panel border border-line bg-surface px-4 pt-3 pb-1 sm:px-5" aria-labelledby="attrs">
+          <h2 id="attrs" className="text-small font-bold text-ink-2">
+            What the manual asks about this unit
+          </h2>
+          {attrs === null ? <Skeleton className="my-3 h-[120px]" /> : <AttrList declared={attrs.declared} values={attrs.values} saving={attrsSaving} onChange={onAttr} />}
+        </section>
+      )}
+
+      {referenceTo && (
+        <Link to={referenceTo} className="flex min-h-tap items-center gap-3 rounded-panel border border-line bg-surface px-4 py-2.5 text-ink no-underline">
+          <Table2 aria-hidden size={22} className="shrink-0 text-ink-2" />
+          <span className="min-w-0 flex-1 text-body font-semibold">Reference tables</span>
+          <ChevronRight aria-hidden size={20} className="shrink-0 text-ink-3" />
+        </Link>
+      )}
 
       {history === null ? <HistorySkeleton /> : <HistoryBlocks history={history} variant={variant} />}
     </Page>

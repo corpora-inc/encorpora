@@ -5,6 +5,7 @@ import { Frame } from "./pages/Frame.tsx";
 import { HomePage, IdentifyPage, UnitRoute } from "./pages/FleetPages.tsx";
 import { CloseOutPage, ConnectPage, DescribePage, JobPage } from "./pages/JobPages.tsx";
 import { LearnPage, PracticePage, TreeStudyPage } from "./pages/LearnPages.tsx";
+import { ReferenceHomePage, ReferenceRowPage, ReferenceTablePage } from "./pages/ReferencePages.tsx";
 import { ManualHomePage, ManualSearchPage, SectionPage } from "./pages/ManualPages.tsx";
 import { RecordsPage } from "./pages/RecordsPage.tsx";
 import { ReviewPage } from "./pages/ReviewPage.tsx";
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
           { path: "/manual", element: <ManualHomePage /> },
           { path: "/manual/:packId", element: <ManualHomePage /> },
           { path: "/manual/:packId/search/:q", element: <ManualSearchPage /> },
+          { path: "/manual/:packId/reference", element: <ReferenceHomePage /> },
+          { path: "/manual/:packId/reference/lookup/:q", element: <ReferenceHomePage /> },
+          { path: "/manual/:packId/reference/:tableId", element: <ReferenceTablePage /> },
+          { path: "/manual/:packId/reference/:tableId/:ord", element: <ReferenceRowPage /> },
           { path: "/manual/:packId/section/:sectionId", element: <SectionPage /> },
           { path: "/manual/:packId/section/:sectionId/page/:assetId", element: <SectionPage /> },
           { path: "/review", element: <ReviewPage /> },

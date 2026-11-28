@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { Check } from "lucide-react";
-import type { Outcome, StepRecord, TaskView } from "../engine/types.ts";
+import type { Applicability, Outcome, StepRecord, TaskView } from "../engine/types.ts";
 import { Button, cx, inputClass } from "./kit.tsx";
-import { Guards } from "./manual.tsx";
+import { Guards, markOnly } from "./manual.tsx";
 
 export interface TaskStepsProps {
   task: TaskView;
@@ -10,34 +10,41 @@ export interface TaskStepsProps {
   records: StepRecord[] | null;
   busy?: boolean;
   onRecord?(ord: number, outcome: Outcome, value?: string): void;
+  /** Experienced levels may fold blocks the pack does not mark must_show. */
+  collapsible?: boolean;
+  /** The in-place answer for a step or block whose applicability is not determined. */
+  renderAnswer?: (a: Applicability) => ReactNode;
 }
 
 /**
  * A task's steps in the manual's words, each with its guards before it, and
  * the control its check calls for: pass or fail, or a recorded value.
  */
-export function TaskSteps({ task, records, busy = false, onRecord }: TaskStepsProps) {
+export function TaskSteps({ task, records, busy = false, onRecord, collapsible = false, renderAnswer }: TaskStepsProps) {
   return (
     <>
+      {task.applicability?.status === "unknown" && <div className="border-t border-line px-4 py-4 sm:px-5">{(renderAnswer ?? markOnly)(task.applicability)}</div>}
       {task.guards.length > 0 && (
         <div className="border-t border-line px-4 py-4 sm:px-5">
-          <Guards guards={task.guards} />
+          <Guards guards={task.guards} collapsible={collapsible} answer={renderAnswer} />
         </div>
       )}
       <ol className="m-0 list-none border-t border-line p-0">
         {task.steps.map((s) => {
           const rec = records?.find((r) => r.ord === s.ord) ?? null;
+          const unknown = s.applicability?.status === "unknown";
           return (
-            <li key={s.ord} className={cx("flex flex-col gap-3 border-b border-line px-4 py-4 last:border-b-0 sm:px-5", !s.applies && "opacity-60")}>
-              <Guards guards={s.guards} />
+            <li key={s.ord} className={cx("flex flex-col gap-3 border-b border-line px-4 py-4 last:border-b-0 sm:px-5", !s.applies && !unknown && "opacity-60")}>
+              <Guards guards={s.guards} collapsible={collapsible} answer={renderAnswer} />
+              {unknown && (renderAnswer ?? markOnly)(s.applicability!)}
               <div className="flex items-start gap-3">
                 <span className="w-7 shrink-0 pt-0.5 font-sans text-body font-bold tabular">{s.ord}.</span>
                 <p className="min-w-0 flex-1 text-body">
                   {s.text}
-                  {!s.applies && <span className="ml-2 font-sans text-meta text-ink-3">Not for this variant</span>}
+                  {!s.applies && !unknown && <span className="ml-2 font-sans text-meta text-ink-3">Not for this variant</span>}
                 </p>
               </div>
-              {records && onRecord && s.applies && <StepControl kind={s.check_kind} rec={rec} busy={busy} onRecord={(o, v) => onRecord(s.ord, o, v)} />}
+              {records && onRecord && (s.applies || unknown) && <StepControl kind={s.check_kind} rec={rec} busy={busy} onRecord={(o, v) => onRecord(s.ord, o, v)} />}
             </li>
           );
         })}

@@ -127,6 +127,27 @@ out.section = await call("manual.section", { section_id: "m40.3-1", equip_id: un
 out.manualSearch = await call("manual.search", { query: "battery voltage", equip_id: unit.equip_id, k: 8 });
 out.tree = await call("tree.get", { tree_id: "t-nocrank" });
 out.fieldNotes = await call("field.list");
+
+// Reference tables, read for the unit before and after its firmware is known, and the codes that resolve to rows.
+out.tables = await call("table.list");
+out.attrsEmpty = await call("asset.attrs", { asset_id: unit.asset_id });
+out.ref = {
+  codes: await call("table.get", { table_id: "tab-3-3", asset_id: unit.asset_id }),
+  specs: await call("table.get", { table_id: "tab-6-1", asset_id: unit.asset_id }),
+  lookup: await call("table.lookup", { query: "E52", asset_id: unit.asset_id }),
+  lookupNone: await call("table.lookup", { query: "E99", asset_id: unit.asset_id }),
+  search: await call("manual.search", { query: "E52 inverter", asset_id: unit.asset_id, k: 6 }),
+  matchTree: await call("signal.match", { asset_id: unit.asset_id, observations: [{ signal_kind: null, value: "E21" }] }),
+  matchUnknown: await call("signal.match", { asset_id: unit.asset_id, observations: [{ signal_kind: null, value: "E52" }] }),
+};
+out.attrsTyped = await call("asset.set_attrs", { asset_id: unit.asset_id, source: "typed", values: { firmware: "2.6" } });
+out.ref.codesKnown = await call("table.get", { table_id: "tab-3-3", asset_id: unit.asset_id });
+out.ref.matchKnown = await call("signal.match", { asset_id: unit.asset_id, observations: [{ signal_kind: null, value: "E52" }] });
+out.attrsPlate = await call("asset.set_attrs", { asset_id: unit.asset_id, source: "plate", plate: { serial: unit.serial } });
+out.attrsAll = await call("asset.set_attrs", { asset_id: unit.asset_id, source: "typed", values: { sb_40_07: "incorporated" } });
+out.ref.specsKnown = await call("table.get", { table_id: "tab-6-1", asset_id: unit.asset_id });
+// Back to unknown, so later captures read as a unit with nothing answered.
+await call("asset.set_attrs", { asset_id: unit.asset_id, source: "typed", values: { firmware: null, sb_40_07: null } });
 const failed = await call("run.start", { proc_id: "proc-battery", asset: unit.asset_id, equip_id: unit.equip_id, role: level });
 out.failedStep = await call("run.record", { run_id: failed.run_id, ord: 1, outcome: "fail" });
 out.history = await call("asset.history", { asset_id: unit.asset_id });

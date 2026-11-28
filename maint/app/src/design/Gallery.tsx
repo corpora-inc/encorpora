@@ -58,7 +58,10 @@ import raw from "./captured.json";
 import practiceRaw from "./practice.json";
 import { PracticeItem, PracticeSummary } from "../screens/Practice.tsx";
 import { rebuild, reportOf, toBank } from "../learn/state.ts";
-import type { PracticeAttempt, PracticeItems } from "../engine/types.ts";
+import type { Applicability, AssetAttrs, PracticeAttempt, PracticeItems, RowHit, TableSummary, TableView } from "../engine/types.ts";
+import { ReferenceHome, ReferenceRow, ReferenceTable } from "../screens/Reference.tsx";
+import { Undetermined } from "../ui/applicability.tsx";
+import { RefTables } from "../ui/reference.tsx";
 
 interface Captured {
   pack: PackInfoView;
@@ -89,6 +92,23 @@ interface Captured {
   failedStep: StepOutcome;
   decode: { decoded: Decoded; match: SignalMatch };
   closestMatch: SignalMatch;
+  tables: TableSummary[];
+  attrsEmpty: AssetAttrs;
+  attrsTyped: AssetAttrs;
+  attrsPlate: AssetAttrs;
+  attrsAll: AssetAttrs;
+  ref: {
+    codes: TableView;
+    codesKnown: TableView;
+    specs: TableView;
+    specsKnown: TableView;
+    lookup: RowHit[];
+    lookupNone: RowHit[];
+    search: ManualSearch;
+    matchTree: SignalMatch;
+    matchUnknown: SignalMatch;
+    matchKnown: SignalMatch;
+  };
 }
 const D = raw as unknown as Captured;
 
@@ -314,6 +334,18 @@ const practiceItem = { packId: "pump40v2-proof", question: pq, skillTitle: pskil
 
 const sectionPage = D.section.assets.find((a) => a.role === "page") ?? null;
 
+// The in-place answer, as the app renders it for a unit with nothing answered yet.
+const answer = (a: Applicability) => <Undetermined a={a} declared={D.attrsEmpty.declared} onAnswer={none} />;
+const unitAttrs = { attrs: D.attrsAll, attrsSaving: false, onAttr: none, referenceTo: `/manual/${D.pack.pack_id}/reference` };
+// The engine's own undetermined applicability (row E52, "firmware 2.4 and later"), set on a step's
+// block and on the step itself: the fixture scopes rows, not tree nodes, with statements.
+const unknownA = D.ref.codes.rows.find((r) => r.applicability?.status === "unknown")!.applicability!;
+const withUnknown = (v: JobView): JobView => ({ ...v, step: { ...v.step!, applicability: unknownA, guards: v.step!.guards.map((g, i) => (i === v.step!.guards.length - 1 ? { ...g, applicability: unknownA } : g)) } });
+// The fixture marks every block must_show; one class left foldable shows the experienced level's fold.
+const expert = D.pack.levels[D.pack.levels.length - 1]!;
+const foldable = (v: JobView): JobView => ({ ...v, step: { ...v.step!, level: expert, guards: v.step!.guards.map((g) => (g.rank > 1 ? { ...g, must_show: false } : g)) } });
+const rowOf = (t: TableView, ord: number) => t.rows.find((r) => r.ord === ord)!;
+
 export const GALLERY: Record<string, { title: string; states: Entry[] }> = {
   home: {
     title: "1. Fleet",
@@ -334,6 +366,7 @@ export const GALLERY: Record<string, { title: string; states: Entry[] }> = {
       { state: "entry", label: "Typing the plate", unit: null, render: () => <Identify {...identify} mode="type" phase="entry" result={null} /> },
       { state: "resolving", label: "Identifying", unit: null, render: () => <Identify {...identify} mode="type" phase="resolving" result={null} /> },
       { state: "resolved", label: "Resolved, with the rule", unit: null, render: () => <Identify {...identify} mode="type" phase="done" result={D.resolve.resolved} name="Pump 104" hours="12" /> },
+      { state: "resolved-plate", label: "Resolved, plate values kept", unit: null, render: () => <Identify {...identify} mode="type" phase="done" observed={{ serial: D.assets[0]?.serial ?? "", firmware: "2.6" }} result={D.resolve.resolved} name="Pump 104" hours="12" /> },
       { state: "general", label: "Model only, no variant", unit: null, render: () => <Identify {...identify} mode="type" phase="done" observed={{ model: "Model 40" }} result={D.resolve.ambiguous} general /> },
       { state: "none", label: "No match", unit: null, render: () => <Identify {...identify} mode="type" phase="done" observed={{ serial: "ZZ-0001" }} result={D.resolve.none} /> },
       { state: "connect", label: "Connect, no link", unit: null, render: () => <Identify {...identify} mode="connect" phase="entry" result={null} /> },
@@ -343,7 +376,8 @@ export const GALLERY: Record<string, { title: string; states: Entry[] }> = {
   unit: {
     title: "3. Unit",
     states: [
-      { state: "history", label: "History, repeats, fleet", unit: shellUnit, render: () => <UnitPage unit={unit} variant={variant} history={D.history} openJob={openJobs[0] ?? null} codes={[]} /> },
+      { state: "history", label: "History, repeats, fleet", unit: shellUnit, render: () => <UnitPage unit={unit} variant={variant} history={D.history} openJob={openJobs[0] ?? null} codes={[]} {...unitAttrs} /> },
+      { state: "attributes-unknown", label: "Attributes not yet known", unit: shellUnit, render: () => <UnitPage unit={unit} variant={variant} history={D.history} openJob={null} codes={[]} {...unitAttrs} attrs={D.attrsEmpty} /> },
       {
         state: "codes",
         label: "With active codes",
@@ -358,10 +392,14 @@ export const GALLERY: Record<string, { title: string; states: Entry[] }> = {
               { value: "spn:168/fmi:1", title: "Battery voltage low" },
               { value: "X99", title: null },
             ]}
+            {...unitAttrs}
           />
         ),
       },
       { state: "connect", label: "Connect to vehicle, empty", unit: shellUnit, render: () => <Connect {...connect} /> },
+      { state: "connect-row", label: "Connect, a code that is a table row, with a tree", unit: shellUnit, render: () => <Connect {...connect} codes={[{ signal_kind: null, value: "E21" }]} match={D.ref.matchTree} /> },
+      { state: "connect-row-unknown", label: "Connect, a row not yet known to apply", unit: shellUnit, render: () => <Connect {...connect} codes={[{ signal_kind: null, value: "E52" }]} match={D.ref.matchUnknown} renderAnswer={answer} /> },
+      { state: "connect-row-known", label: "Connect, the row after the answer", unit: shellUnit, render: () => <Connect {...connect} codes={[{ signal_kind: null, value: "E52" }]} match={D.ref.matchKnown} /> },
       {
         state: "connect-codes",
         label: "Connect, codes read",
@@ -381,9 +419,9 @@ export const GALLERY: Record<string, { title: string; states: Entry[] }> = {
         state: "new",
         label: "New unit",
         unit: shellUnit,
-        render: () => <UnitPage unit={unit} variant={variant} history={{ ...D.history, events: [], jobs: [], fleet_history: [], failure_modes: [] }} openJob={null} codes={[]} />,
+        render: () => <UnitPage unit={unit} variant={variant} history={{ ...D.history, events: [], jobs: [], fleet_history: [], failure_modes: [] }} openJob={null} codes={[]} {...unitAttrs} attrs={D.attrsPlate} />,
       },
-      { state: "loading", label: "Loading history", unit: shellUnit, render: () => <UnitPage unit={unit} variant={variant} history={null} openJob={null} codes={[]} /> },
+      { state: "loading", label: "Loading history", unit: shellUnit, render: () => <UnitPage unit={unit} variant={variant} history={null} openJob={null} codes={[]} {...unitAttrs} attrs={null} /> },
     ],
   },
   describe: {
@@ -421,6 +459,9 @@ export const GALLERY: Record<string, { title: string; states: Entry[] }> = {
       { state: "action", label: "Corrective action reached", unit: shellUnit, render: () => <Step {...step(D.steps.action)} /> },
       { state: "escalate", label: "Refer", unit: shellUnit, render: () => <Step {...step(D.steps.escalate)} /> },
       { state: "end", label: "Fault corrected", unit: shellUnit, render: () => <Step {...step(D.steps.end)} /> },
+      { state: "ranked", label: "Two safety classes, by rank", unit: shellUnit, render: () => <Step {...step(D.steps.passfail)} /> },
+      { state: "ranked-folded", label: "Experienced level, foldable class", unit: shellUnit, render: () => <Step {...step(foldable(D.steps.passfail))} /> },
+      { state: "undetermined", label: "Applicability not determined", unit: shellUnit, render: () => <Step {...step(withUnknown(D.steps.check), { renderAnswer: answer })} /> },
     ],
   },
   close: {
@@ -465,7 +506,7 @@ Object.assign(GALLERY, {
         state: "contents",
         label: "Contents and search",
         unit: shellUnit,
-        render: () => <ManualHome manuals={[{ packId: D.pack.pack_id, title: D.pack.sources[0]?.title ?? "", edition: D.pack.sources[0]?.edition ?? "", contents: D.manualTop }]} />,
+        render: () => <ManualHome manuals={[{ packId: D.pack.pack_id, title: D.pack.sources[0]?.title ?? "", edition: D.pack.sources[0]?.edition ?? "", contents: D.manualTop, tables: D.tables.length }]} />,
       },
       { state: "section", label: "A section", unit: shellUnit, render: () => <SectionReader packId={D.pack.pack_id} view={D.section} page={sectionPage} pageOpen={false} src={(a) => imageFor(D.pack.pack_id, a)} /> },
       {
@@ -475,6 +516,23 @@ Object.assign(GALLERY, {
         render: () => <SectionReader packId={D.pack.pack_id} view={D.section} page={sectionPage} pageOpen src={(a) => imageFor(D.pack.pack_id, a)} />,
       },
       { state: "search", label: "Search results", unit: shellUnit, render: () => <ManualResults packId={D.pack.pack_id} query="battery voltage" hits={D.manualSearch.hits} /> },
+      { state: "search-rows", label: "Search, table rows among the hits", unit: shellUnit, render: () => <ManualResults packId={D.pack.pack_id} query="E52 inverter" hits={D.ref.search.hits} /> },
+    ],
+  },
+  reference: {
+    title: "8b. Reference",
+    states: [
+      { state: "home", label: "Tables by kind", unit: shellUnit, render: () => <ReferenceHome packId={D.pack.pack_id} manual={D.pack.sources[0]?.title ?? ""} tables={D.tables} lookup={null} unitName={unitName(unit)} renderAnswer={answer} /> },
+      { state: "lookup", label: "Lookup, a row not yet known to apply", unit: shellUnit, render: () => <ReferenceHome packId={D.pack.pack_id} manual="" tables={D.tables} lookup={{ query: "E52", hits: D.ref.lookup }} unitName={unitName(unit)} renderAnswer={answer} /> },
+      { state: "lookup-none", label: "Lookup, nothing", unit: shellUnit, render: () => <ReferenceHome packId={D.pack.pack_id} manual="" tables={D.tables} lookup={{ query: "E99", hits: D.ref.lookupNone }} unitName={null} /> },
+      { state: "lookup-loading", label: "Lookup, running", unit: shellUnit, render: () => <ReferenceHome packId={D.pack.pack_id} manual="" tables={D.tables} lookup={{ query: "E52", hits: null }} unitName={null} /> },
+      { state: "codes", label: "Messages and codes", unit: shellUnit, render: () => <ReferenceTable packId={D.pack.pack_id} table={D.ref.codes} unitName={unitName(unit)} renderAnswer={answer} /> },
+      { state: "codes-known", label: "Codes, firmware answered", unit: shellUnit, render: () => <ReferenceTable packId={D.pack.pack_id} table={D.ref.codesKnown} unitName={unitName(unit)} /> },
+      { state: "specs", label: "Specifications, a cell not yet known", unit: shellUnit, render: () => <ReferenceTable packId={D.pack.pack_id} table={D.ref.specs} unitName={unitName(unit)} renderAnswer={answer} /> },
+      { state: "specs-known", label: "Specifications, bulletin answered", unit: shellUnit, render: () => <ReferenceTable packId={D.pack.pack_id} table={D.ref.specsKnown} unitName={unitName(unit)} /> },
+      { state: "row", label: "A row, not yet known", unit: shellUnit, render: () => <ReferenceRow packId={D.pack.pack_id} table={D.ref.codes} row={rowOf(D.ref.codes, 3)} unitName={unitName(unit)} start={null} renderAnswer={answer} /> },
+      { state: "row-start", label: "A row the manual troubleshoots", unit: shellUnit, render: () => <ReferenceRow packId={D.pack.pack_id} table={D.ref.codes} row={rowOf(D.ref.codes, 1)} unitName={unitName(unit)} start={{ title: D.trees.find((t) => t.tree_id === D.ref.matchTree.hits[0]?.rule.tree_id)?.title ?? "", onStart: none }} /> },
+      { state: "row-spec", label: "A specification row, printed limits", unit: shellUnit, render: () => <ReferenceRow packId={D.pack.pack_id} table={D.ref.specsKnown} row={rowOf(D.ref.specsKnown, 3)} unitName={unitName(unit)} start={null} /> },
     ],
   },
   learn: {
@@ -594,6 +652,7 @@ export function GalleryState() {
   return (
     <AssetSource.Provider value={imageFor}>
       <ManualPack.Provider value={D.pack.pack_id}>
+        <RefTables.Provider value={{ [D.pack.pack_id]: D.tables }}>
         {entry.bare ? (
           entry.render()
         ) : (
@@ -601,6 +660,7 @@ export function GalleryState() {
             {entry.render()}
           </Shell>
         )}
+        </RefTables.Provider>
       </ManualPack.Provider>
     </AssetSource.Provider>
   );

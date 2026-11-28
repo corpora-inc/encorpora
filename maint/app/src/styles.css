@@ -332,6 +332,19 @@
     font-size: var(--text-small);
     letter-spacing: 0.14em;
   }
+  /* Rank 1, the gravest class the manual declares: a heavier frame and a solid ink band edge. */
+  .guard-gravest {
+    border: 5px solid var(--warn);
+    background: var(--warn-wash);
+    box-shadow: inset 0 0 0 2px var(--warn-ink), 0 0 0 1px var(--warn);
+  }
+  .guard-gravest .guard-band {
+    background: var(--warn);
+    color: var(--warn-ink);
+    min-height: 48px;
+    font-size: var(--text-body);
+    letter-spacing: 0.18em;
+  }
   .guard-warning {
     border: 3px solid var(--warn);
     background: var(--warn-wash);

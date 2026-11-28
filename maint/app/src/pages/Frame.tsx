@@ -1,9 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { Outlet } from "react-router";
 import { useDevice } from "../store/device.ts";
 import { useFleet } from "../store/fleet.ts";
 import { allEquipment, packOf, usePack, variantName } from "../store/pack.ts";
 import { ManualPack } from "../ui/manual.tsx";
+import { RefTables } from "../ui/reference.tsx";
 import { useSettings } from "../store/settings.ts";
 import { unitName } from "../ui/format.ts";
 import { linkState } from "../ui/link.ts";
@@ -18,6 +19,7 @@ export function Frame() {
   const equipment = allEquipment(packs);
   const hub = useDevice((s) => s.hub);
   const asset = assets.find((a) => a.asset_id === active) ?? null;
+  const tables = useMemo(() => Object.fromEntries(Object.entries(packs).map(([id, p]) => [id, p.tables])), [packs]);
   // Keep the outbox count current while the app is open.
   useEffect(() => {
     const t = setInterval(() => void useFleet.getState().refreshSync(), 30_000);
@@ -27,7 +29,9 @@ export function Frame() {
     <Shell unit={asset ? { asset_id: asset.asset_id, name: unitName(asset), variant: variantName(equipment, asset.equip_id) } : null} link={linkState(sync)} queued={sync?.pending ?? 0} hub={hub}>
       {/* Citations open in the active unit's manual unless a screen names another (a job's own pack). */}
       <ManualPack.Provider value={packOf(packs, asset?.equip_id)?.info.pack_id ?? usePack.getState().ids[0] ?? ""}>
-        <Outlet />
+        <RefTables.Provider value={tables}>
+          <Outlet />
+        </RefTables.Provider>
       </ManualPack.Provider>
     </Shell>
   );

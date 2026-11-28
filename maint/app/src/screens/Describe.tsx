@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Cable, ChevronRight, Plus, Search, X } from "lucide-react";
 import type { EntryPoint, FaultTree, ObservationInput, SignalKind, SignalMatch, SymptomHit, SymptomSearch, Why } from "../engine/types.ts";
 import { Button, ButtonLink, cx, inputClass, Page, Skeleton } from "../ui/kit.tsx";
+import { HitCard } from "../ui/SignalCard.tsx";
 import { VoiceControl, voiceStatus, type VoicePhase } from "../ui/VoiceControl.tsx";
 
 export interface IndexGroup {
@@ -143,25 +144,7 @@ function Signals({ match, onStart }: { match: SignalMatch; onStart(e: EntryPoint
   return (
     <div className="flex flex-col gap-2">
       {match.hits.map((h, i) => (
-        <section key={i} className="sheet flex flex-col gap-3 p-4 sm:flex-row sm:items-center" aria-label={`Code ${h.observed.value}`}>
-          <div className="min-w-0 flex-1">
-            <div className="flex flex-wrap items-center gap-2 font-sans">
-              <span className="inline-flex min-h-10 items-center rounded-plate border-2 border-ink px-2.5">
-                <span className="code text-small">{h.observed.value}</span>
-              </span>
-              <span className="text-small font-semibold">{h.rule.title}</span>
-            </div>
-            {h.rule.quote && h.rule.quote_verified && <p className="mt-2 text-body">{h.rule.quote}</p>}
-            {h.citation && <p className="mt-1 font-sans text-meta text-ink-3">{h.citation}</p>}
-          </div>
-          {h.has_tree && h.rule.tree_id ? (
-            <Button variant="primary" onClick={() => onStart({ tree_id: h.rule.tree_id!, node_id: h.rule.node_id ?? "" })} className="shrink-0 font-sans">
-              Start here
-            </Button>
-          ) : (
-            <p className="font-sans text-small text-ink-2">The manual gives no corrective action for this.</p>
-          )}
-        </section>
+        <HitCard key={i} hit={h} onStart={onStart} />
       ))}
     </div>
   );

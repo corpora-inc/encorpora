@@ -6,11 +6,13 @@ import type { JobReport, Lesson, TaskView } from "../engine/types.ts";
 import { NotFound } from "../screens/NotFound.tsx";
 import { PrintJob, PrintProcedure } from "../screens/Print.tsx";
 import { TaskList, TaskPage, type TaskGroup } from "../screens/Tasks.tsx";
+import { useAttrsRev } from "../store/attrs.ts";
 import { useFleet } from "../store/fleet.ts";
 import { allEquipment, packOf, packTitle, usePack, variantName } from "../store/pack.ts";
 import { runKey, useRuns } from "../store/runs.ts";
 import { useSettings } from "../store/settings.ts";
 import { unitName } from "../ui/format.ts";
+import { useAnswerer } from "./answer.tsx";
 
 /** The active unit and its variant: tasks are filtered to it by the engine. */
 function useActive() {
@@ -35,17 +37,19 @@ export function TaskListPage() {
   return <TaskList variant={variant} groups={groups} />;
 }
 
-function useTask(packId: string, procId: string, equipId: string | null) {
+/** A task as it applies; with a unit, to its attributes too (re-read when one is answered). */
+function useTask(packId: string, procId: string, equipId: string | null, assetId: string | null = null) {
   const [task, setTask] = useState<TaskView | null>(null);
   const [missing, setMissing] = useState(false);
+  const rev = useAttrsRev(assetId);
   useEffect(() => {
-    call("task.get", { pack_id: packId, proc_id: procId, equip_id: equipId })
+    call("task.get", { pack_id: packId, proc_id: procId, equip_id: equipId, asset_id: assetId })
       .then(setTask)
       .catch((e: unknown) => {
         setMissing(true);
         reportError("tasks.get", e, "This task could not be read from the manual.");
       });
-  }, [packId, procId, equipId]);
+  }, [packId, procId, equipId, assetId, rev]);
   return { task, missing };
 }
 
@@ -56,7 +60,8 @@ export function TaskRoute() {
   const info = usePack((s) => s.packs[packId]?.info);
   // A unit from another equipment family does not narrow this manual's task.
   const equip = unit && packOf(usePack.getState().packs, unit.equip_id)?.info.pack_id === packId ? unit.equip_id : null;
-  const { task, missing } = useTask(packId, taskId, equip);
+  const { task, missing } = useTask(packId, taskId, equip, equip && unit ? unit.asset_id : null);
+  const renderAnswer = useAnswerer(equip && unit ? unit.asset_id : null, packId);
   const runs = useRuns();
   const key = runKey(packId, taskId);
   if (!task || !info) return missing ? <NotFound /> : null;
@@ -73,6 +78,7 @@ export function TaskRoute() {
       onRecord={(ord, outcome, value) => void runs.record(key, ord, outcome, value)}
       onFinish={() => void runs.end(key, "finish")}
       onAbandon={() => void runs.end(key, "abandon")}
+      renderAnswer={renderAnswer}
     />
   );
 }
@@ -81,7 +87,7 @@ export function PrintProcedurePage() {
   const { packId = "", taskId = "" } = useParams();
   const { unit } = useActive();
   const info = usePack((s) => s.packs[packId]?.info);
-  const { task, missing } = useTask(packId, taskId, unit?.equip_id ?? null);
+  const { task, missing } = useTask(packId, taskId, unit?.equip_id ?? null, unit?.asset_id ?? null);
   if (!task || !info) return missing ? <NotFound /> : null;
   return <PrintProcedure task={task} pack={info} unit={unit ? unitName(unit) : null} />;
 }
