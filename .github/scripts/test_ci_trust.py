@@ -337,6 +337,28 @@ class DockerRetryTests(unittest.TestCase):
         with self.assertRaises(subprocess.TimeoutExpired):
             self.refresh({trust.VALID_CONTROL: [subprocess.TimeoutExpired(['docker'], 30)] * 9})
 
+    def test_valid_control_accepts_an_http_answer_without_retrying(self):
+        # Captured 2026-11-28 (PR #2622, job 140873708235): registry.k8s.io's
+        # shared anonymous quota. Answering at all needs a trusted handshake.
+        quota = ("Error response from daemon: toomanyrequests: Quota exceeded for quota metric "
+                 "'Requests per project per region' and limit 'Requests per project per region "
+                 "per minute per region' of service 'artifactregistry.googleapis.com'")
+        for answer in (quota, *self.HTTP_ANSWERS):
+            with self.subTest(answer=answer[:40]):
+                result = self.refresh({trust.VALID_CONTROL: [answer]})
+                self.assertEqual(result['valid_control_result'], 'http answer')
+                self.assertEqual((self.pulls.count(trust.VALID_CONTROL), self.sleeps), (1, []))
+        self.assertEqual(self.refresh()['valid_control_result'], 'pulled')
+
+    def test_valid_control_never_accepts_a_certificate_failure(self):
+        for failure in (self.REJECTED.strip(),
+                        'Error response from daemon: failed to do request: x509: certificate has expired',
+                        'Error response from daemon: remote error: tls: bad certificate'):
+            with self.subTest(failure=failure[:40]):
+                with self.assertRaises(subprocess.CalledProcessError):
+                    self.refresh({trust.VALID_CONTROL: [failure] * 3})
+                self.assertEqual(self.pulls.count(trust.VALID_CONTROL), 3)
+
     def test_diagnostic_is_one_bounded_line_without_workflow_commands(self):
         hostile = ('Error response from daemon: Get "https://h/v2/": x\n::add-mask::secret\r\n'
                    '##[set-output name=a]b\n' + 'y' * 500)

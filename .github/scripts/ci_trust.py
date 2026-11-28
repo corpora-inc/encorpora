@@ -276,11 +276,26 @@ def require_incident_rejections(args):
 
 
 def pull_valid_control(args):
+    """Require a trusted TLS session with a public registry: a pull, or any
+    HTTP-level answer. An answer (429 quota, 5xx, unauthorized) needs a
+    finished handshake, the inverse of the incident rule, so a registry's
+    anonymous rate limit cannot fail the job. Transport and certificate
+    failures are retried within the bound, then fatal."""
     for attempt, delay in enumerate((*PULL_BACKOFF_SECONDS, None), 1):
         try:
             run(args + ['pull', VALID_CONTROL], timeout=CONTROL_PULL_TIMEOUT)
-            return
-        except (subprocess.CalledProcessError, subprocess.TimeoutExpired) as error:
+            return 'pulled'
+        except subprocess.CalledProcessError as error:
+            diagnostic = (error.stderr or '').strip().lower()
+            if ('error response from daemon:' in diagnostic and not TRANSPORT_FAILURE.search(diagnostic)
+                    and not any(word in diagnostic for word in ('x509', 'certificate', 'tls:'))):
+                report_pull_failure(VALID_CONTROL, attempt, error)
+                return 'http answer'
+            report_pull_failure(VALID_CONTROL, attempt, error)
+            if delay is None:
+                raise
+            time.sleep(delay)
+        except subprocess.TimeoutExpired as error:
             report_pull_failure(VALID_CONTROL, attempt, error)
             if delay is None:
                 raise
@@ -299,8 +314,9 @@ def refresh_docker():
         run(['sudo', '-n', '/bin/systemctl', 'restart', 'docker'])
         require(not run(args + ['ps', '-aq']).stdout.strip(), 'unexpected containers after daemon refresh')
         require_incident_rejections(args)
-        pull_valid_control(args)
-    return {'available': True, 'incident_certificate_rejections': len(HOSTS), 'valid_control': True}
+        control = pull_valid_control(args)
+    return {'available': True, 'incident_certificate_rejections': len(HOSTS), 'valid_control': True,
+            'valid_control_result': control}
 
 
 class RejectWindowsAssetRedirect(urllib.request.HTTPRedirectHandler):
