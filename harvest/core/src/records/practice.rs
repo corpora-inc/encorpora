@@ -60,8 +60,8 @@ pub struct PracticeAttempt {
     pub at: String,
 }
 
-fn aad(id: &str, pack: &str, q: &str, at: &str) -> String {
-    format!("practice_attempt:{id}|{pack}|{q}|{at}")
+fn aad(id: &str, pack: &str, version: &str, q: &str, skill: &str, at: &str) -> String {
+    format!("practice_attempt:{id}|{pack}|{version}|{q}|{skill}|{at}")
 }
 
 impl Records {
@@ -107,7 +107,14 @@ impl Records {
                 attempt.at,
                 crypt::seal_opt(
                     self.key(),
-                    &aad(&attempt.attempt_id, &attempt.pack_id, &attempt.q_id, &attempt.at),
+                    &aad(
+                        &attempt.attempt_id,
+                        &attempt.pack_id,
+                        &attempt.pack_version,
+                        &attempt.q_id,
+                        &attempt.skill_id,
+                        &attempt.at
+                    ),
                     &body
                 )?,
             ],
@@ -143,7 +150,11 @@ impl Records {
             .collect::<rusqlite::Result<_>>()?;
         rows.into_iter()
             .map(|(id, pack, version, q, skill, at, body)| {
-                let clear = crypt::open_opt(self.key(), &aad(&id, &pack, &q, &at), &body)?;
+                let clear = crypt::open_opt(
+                    self.key(),
+                    &aad(&id, &pack, &version, &q, &skill, &at),
+                    &body,
+                )?;
                 let b: serde_json::Value = serde_json::from_str(&clear)?;
                 Ok(PracticeAttempt {
                     chosen: b["chosen"].as_str().unwrap_or_default().to_string(),

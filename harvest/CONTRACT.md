@@ -882,8 +882,11 @@ for a reviewer's screen).
   (`harvest-hello-reply/1`), every receipt set (`harvest-receipts/1`,
   `ReceiveReport.signed`) and every attachment `held`
   (`harvest-held/1`) with its bundle key, over the canonical JSON of the
-  reply (floats as their shortest text) with a `signature` member like a
-  manifest's; each names the device it answers. A device acts on none
+  reply as received (floats as their shortest text; fields a version
+  does not know still count) with a `signature` member like a manifest's;
+  each names the device it answers, and a hello reply also the SHA-256 of
+  the exact signed hello it answers and that hello's link class, so an
+  old reply cannot be replayed. A device acts on none
   that is unsigned, signed by another key, of another format, or for
   another device: no item is marked sent, no attachment resumed or
   marked sent, no policy learned. The device trusts the hub keys it
@@ -893,7 +896,8 @@ for a reviewer's screen).
   `platform-roots`), or only the PEM it is given (`--hub-ca`,
   `HostConfig.hub_ca_pem`: a pin). Plain `http://` is refused except to
   this machine, unless explicitly allowed for development
-  (`--hub-insecure-http`). `GET /hub/bundles?since=&limit=` pages
+  (`--hub-insecure-http`); redirects are not followed. `GET
+  /hub/bundles?since=&limit=` pages
   (default 50, at most 200; the device reads page by page); `hub.queue`,
   `hub.conflicts` and `hub.devices` take `offset` and `limit` (default
   100, at most 500), `hub.bundles` `limit`, `hub.audit` `after_seq` and

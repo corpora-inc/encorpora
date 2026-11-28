@@ -5,9 +5,9 @@
 //! the app (`harvest/practice`); attempts are device records
 //! ([`crate::records::Records::record_practice`]).
 
-use crate::check::quote_in;
 use crate::error::Result;
 use crate::maint::view::{Citation, citation};
+use crate::normalize::normalize_ws;
 use crate::pack::Pack;
 use schemars::JsonSchema;
 use serde::Serialize;
@@ -100,16 +100,21 @@ pub fn items(pack: &Pack, equip: Option<&str>) -> Result<PracticeItems> {
         .collect();
     // Sections once, shortest first: a quote is cited to the most specific
     // section that holds it.
+    // Normalized once (a phone opens this screen often).
     let mut sections: Vec<(String, String)> = pack
         .sections()?
         .into_iter()
-        .map(|s| (s.section_id, s.text))
+        .map(|s| (s.section_id, normalize_ws(&s.text)))
         .collect();
     sections.sort_by(|a, b| a.1.len().cmp(&b.1.len()).then_with(|| a.0.cmp(&b.0)));
     let find = |needle: &str| -> Option<String> {
+        let n = normalize_ws(needle);
+        if n.is_empty() {
+            return None;
+        }
         sections
             .iter()
-            .find(|(_, text)| quote_in(needle, text))
+            .find(|(_, text)| text.contains(&n))
             .map(|(id, _)| id.clone())
     };
     let mut questions = Vec::new();

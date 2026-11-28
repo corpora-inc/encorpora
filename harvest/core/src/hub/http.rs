@@ -12,7 +12,6 @@
 //! GET  /hub/pack-file/<pack>/<dir>/<path> → the file
 //! ```
 
-use super::ReceiveReport;
 use crate::error::{Error, Result};
 use crate::sync::{DeviceKey, HelloReply, HubLink, LinkClass, PackOffer, Upload};
 use serde_json::Value;
@@ -130,6 +129,8 @@ impl HttpHubLink {
             link: LinkClass::Normal,
             agent: ureq::Agent::config_builder()
                 .timeout_global(Some(timeout))
+                // A redirect could lead off the checked URL (to plain HTTP).
+                .max_redirects(0)
                 .tls_config(TlsConfig::builder().root_certs(roots).build())
                 .build()
                 .into(),
@@ -171,7 +172,7 @@ impl HubLink for HttpHubLink {
     }
 
     fn send(&self, batch: &[Upload]) -> Result<crate::sync::ReceiptSet> {
-        let r: ReceiveReport = self
+        let mut v: Value = self
             .agent
             .post(&format!("{}/hub/receive", self.base))
             .send_json(self.key.deliver(batch)?)
@@ -179,8 +180,10 @@ impl HubLink for HttpHubLink {
             .body_mut()
             .read_json()
             .map_err(|e| Error::Sync(format!("hub receive: {e}")))?;
-        r.signed
-            .ok_or_else(|| Error::Signature("the hub's receipts are unsigned".into()))
+        match v.get_mut("signed").map(Value::take) {
+            Some(s) if !s.is_null() => crate::sync::reply_from_json(s),
+            _ => Err(Error::Signature("the hub's receipts are unsigned".into())),
+        }
     }
 
     fn bundles_since(&self, since: u64) -> Result<Vec<Value>> {
@@ -239,14 +242,17 @@ impl HubLink for HttpHubLink {
         Ok((!v.is_null()).then_some(v))
     }
 
-    fn hello(&self) -> Result<HelloReply> {
-        self.agent
+    fn hello(&self) -> Result<(crate::sync::Hello, HelloReply)> {
+        let h = self.key.hello(self.link)?;
+        let v: Value = self
+            .agent
             .post(&format!("{}/hub/hello", self.base))
-            .send_json(self.key.hello(self.link)?)
+            .send_json(&h)
             .map_err(|e| Error::Sync(format!("hub hello: {e}")))?
             .body_mut()
             .read_json()
-            .map_err(|e| Error::Sync(format!("hub hello: {e}")))
+            .map_err(|e| Error::Sync(format!("hub hello: {e}")))?;
+        Ok((h, crate::sync::reply_from_json(v)?))
     }
 
     fn public_key(&self) -> String {
@@ -263,7 +269,7 @@ impl HubLink for HttpHubLink {
             q(sha256),
             q(&self.key.device_id())
         ))?;
-        serde_json::from_value(v).map_err(|e| Error::Sync(format!("hub attachment: {e}")))
+        crate::sync::reply_from_json(v)
     }
 
     fn put_chunk(
@@ -274,13 +280,15 @@ impl HubLink for HttpHubLink {
         offset: u64,
         data: &[u8],
     ) -> Result<crate::sync::Held> {
-        self.agent
+        let v: Value = self
+            .agent
             .post(&format!("{}/hub/attachment", self.base))
             .send_json(self.key.chunk(sha256, variant, total, offset, data)?)
             .map_err(|e| Error::Sync(format!("hub attachment: {e}")))?
             .body_mut()
             .read_json()
-            .map_err(|e| Error::Sync(format!("hub attachment: {e}")))
+            .map_err(|e| Error::Sync(format!("hub attachment: {e}")))?;
+        crate::sync::reply_from_json(v)
     }
 }
 

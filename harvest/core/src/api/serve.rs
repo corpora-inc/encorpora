@@ -65,8 +65,18 @@ pub fn redact(msg: &str) -> String {
     while i < chars.len() {
         let boundary = i == 0 || delim(chars[i - 1]);
         let rest: String = chars[i..chars.len().min(i + 3)].iter().collect();
+        let tail: String = chars[i..].iter().take(8).collect();
+        let route = ["/hub/", "/api/", "/asset/"]
+            .iter()
+            .any(|r| tail.starts_with(r));
         let starts = boundary
+            && !route
             && (chars[i] == '/'
+                || chars[i] == '\\'
+                || tail.starts_with("file:")
+                || (chars[i].is_ascii_alphabetic()
+                    && chars.get(i + 1) == Some(&':')
+                    && chars.get(i + 2) == Some(&'/'))
                 || rest.starts_with("~/")
                 || rest.starts_with("./")
                 || rest.starts_with("../")
@@ -477,7 +487,8 @@ fn hub_route(
             let total = query_get(query, "total")
                 .and_then(|t| t.parse::<u64>().ok())
                 .ok_or((400, "total".to_string()))?;
-            let device = query_get(query, "device_id").ok_or((400, "device_id".to_string()))?;
+            // Older devices do not name themselves; the answer still has `held`.
+            let device = query_get(query, "device_id").unwrap_or_default();
             let held = hub.held_for(&device, &sha, total).map_err(err)?;
             Ok(HubReply::Json(
                 serde_json::to_value(held).map_err(|e| (500, e.to_string()))?,
@@ -599,6 +610,14 @@ mod redact_tests {
         assert_eq!(redact("pack \"/tmp/p/m.json\" bad"), "pack \"<path>\" bad");
         assert_eq!(
             redact("at ~/keys/k and ./a/b and C:\\x\\y"),
+            "at <path> and <path> and <path>"
+        );
+        assert_eq!(
+            redact("hub /hub/bundles?since=0: 503"),
+            "hub /hub/bundles?since=0: 503"
+        );
+        assert_eq!(
+            redact("at C:/Users/x and \\\\srv\\share and file:///Users/x"),
             "at <path> and <path> and <path>"
         );
         assert_eq!(

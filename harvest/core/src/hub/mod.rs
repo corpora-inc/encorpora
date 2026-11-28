@@ -625,6 +625,7 @@ impl Hub {
             receipts: report.receipts.clone(),
             signed_at: now,
             signature: None,
+            raw: None,
         };
         set.signature = Some(crate::sync::hub_sign(&set, &self.key)?);
         report.signed = Some(set);
@@ -702,6 +703,8 @@ impl Hub {
         let mut reply = HelloReply {
             format: crate::sync::HELLO_REPLY_FORMAT.into(),
             device_id: h.device_id.clone(),
+            hello_sha256: h.sha256()?,
+            link: h.link,
             accepted: refused.is_none(),
             refused,
             fleet_every_hours: self.fleet_every_hours,
@@ -713,6 +716,7 @@ impl Hub {
             chunk_bytes: self.chunk_bytes,
             stream: Some(self.stream.clone()),
             signature: None,
+            raw: None,
         };
         reply.signature = Some(crate::sync::hub_sign(&reply, &self.key)?);
         Ok(reply)
@@ -745,6 +749,7 @@ impl Hub {
             held,
             signed_at: now_rfc3339(),
             signature: None,
+            raw: None,
         };
         h.signature = Some(crate::sync::hub_sign(&h, &self.key)?);
         Ok(h)
@@ -965,6 +970,24 @@ impl Hub {
                         Ok(a) => a,
                         Err(_) => return Ok(()), // kept as received
                     };
+                // Only what makes a valid statement is indexed (the item is
+                // kept as received either way).
+                let plain = |s: &str| {
+                    !s.is_empty() && s.len() <= 200 && s.chars().all(|c| c.is_ascii_graphic())
+                };
+                if crate::records::maint::parse_rfc3339_ms(&a.at).is_none()
+                    || ![
+                        &a.pack_id,
+                        &a.pack_version,
+                        &a.q_id,
+                        &a.skill_id,
+                        &a.attempt_id,
+                    ]
+                    .iter()
+                    .all(|s| plain(s))
+                {
+                    return Ok(());
+                }
                 tx.execute(
                     "INSERT OR IGNORE INTO practice (item_id, device_id, attempt_id, pack_id, pack_version,
                         q_id, skill_id, correct, ms, at, received_at)
@@ -1946,9 +1969,10 @@ impl HubLink for LocalLink {
     fn fleet(&self) -> Result<Option<Value>> {
         self.hub().fleet_document()
     }
-    fn hello(&self) -> Result<HelloReply> {
+    fn hello(&self) -> Result<(crate::sync::Hello, HelloReply)> {
         let h = self.key.hello(self.link_class())?;
-        self.hub().hello(&h)
+        let r = self.hub().hello(&h)?;
+        Ok((h, r))
     }
     fn link_class(&self) -> crate::sync::LinkClass {
         self.link

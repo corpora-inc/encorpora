@@ -3340,8 +3340,15 @@
           "description": "`harvest-hello-reply/1`.",
           "type": "string"
         },
+        "hello_sha256": {
+          "description": "The SHA-256 of the signed hello this answers (its canonical JSON,\nsignature included) and the link class it named: a reply to any\nother hello counts for nothing.",
+          "type": "string"
+        },
         "hub_time": {
           "type": "string"
+        },
+        "link": {
+          "$ref": "#/$defs/LinkClass"
         },
         "refused": {
           "anyOf": [
@@ -3368,6 +3375,8 @@
       "required": [
         "format",
         "device_id",
+        "hello_sha256",
+        "link",
         "accepted",
         "refused",
         "fleet_every_hours",
@@ -5100,6 +5109,14 @@
         "text"
       ],
       "type": "object"
+    },
+    "LinkClass": {
+      "description": "How good the device's current link is (the host decides: a satellite\nor radio link is `low`).",
+      "enum": [
+        "low",
+        "normal"
+      ],
+      "type": "string"
     },
     "ManualHit": {
       "description": "One search hit with its text and citation.",

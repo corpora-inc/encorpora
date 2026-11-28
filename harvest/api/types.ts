@@ -902,7 +902,14 @@ export interface HelloReply {
   fleet_every_hours: number;
   /** `harvest-hello-reply/1`. */
   format: string;
+  /**
+   * The SHA-256 of the signed hello this answers (its canonical JSON,
+   * signature included) and the link class it named: a reply to any
+   * other hello counts for nothing.
+   */
+  hello_sha256: string;
   hub_time: string;
+  link: LinkClass;
   refused: Refusal | null;
   /** The hub's signature over the rest (its bundle key). */
   signature?: unknown;
@@ -1348,6 +1355,12 @@ export interface LevelText {
   level: string;
   text: string;
 }
+
+/**
+ * How good the device's current link is (the host decides: a satellite
+ * or radio link is `low`).
+ */
+export type LinkClass = "low" | "normal";
 
 /** One search hit with its text and citation. */
 export interface ManualHit {

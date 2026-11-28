@@ -716,6 +716,7 @@ impl Wire<'_> {
             held: total,
             signed_at: crate::audit::now_rfc3339(),
             signature: None,
+            raw: None,
         };
         h.signature = self.forge(&h, signed)?;
         Ok(h)
@@ -758,6 +759,7 @@ impl HubLink for Wire<'_> {
                     .collect(),
                 signed_at: crate::audit::now_rfc3339(),
                 signature: None,
+                raw: None,
             };
             set.signature = self.forge(&set, signed)?;
             return Ok(set);
@@ -855,7 +857,7 @@ impl HubLink for Wire<'_> {
         Ok(doc)
     }
 
-    fn hello(&self) -> Result<HelloReply> {
+    fn hello(&self) -> Result<(crate::sync::Hello, HelloReply)> {
         let h = self.key.hello(self.link_class())?;
         let size = serde_json::to_vec(&h)?.len() as u64;
         let (asked, replied) = self.transfer(size, 160);
@@ -869,7 +871,7 @@ impl HubLink for Wire<'_> {
             r.refused = None;
             r.attachments = crate::sync::AttachmentMode::Full;
             r.signature = self.forge(&r, signed)?;
-            return Ok(r);
+            return Ok((h, r));
         }
         let r = self.at_hub(|hub| hub.hello(&h))?;
         if !r.accepted {
@@ -883,7 +885,7 @@ impl HubLink for Wire<'_> {
                 "link dropped before the hub answered the hello".into(),
             ));
         }
-        Ok(r)
+        Ok((h, r))
     }
 
     fn public_key(&self) -> String {
