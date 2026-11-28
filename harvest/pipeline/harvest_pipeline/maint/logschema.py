@@ -235,3 +235,26 @@ def date_in(text: str) -> str | None:
         if parse_date(m.group(0)):
             return m.group(0)
     return None
+
+
+def typo_candidates(raw: str, index: dict[str, str]) -> list[str]:
+    """Fleet units one slip away from a label no unit has: O for 0, I or l for 1, or two neighbouring
+    digits swapped. Returns the distinct units that fit (the caller uses it only when there is one)."""
+    t = norm_label(raw)
+    if not t:
+        return []
+    forms = {t, re.sub(r"(?<=\d)o|o(?=\d)", "0", t), re.sub(r"(?<=\d)[il]|[il](?=\d)", "1", t)}
+    forms.add(re.sub(r"(?<=\d)[il]|[il](?=\d)", "1", re.sub(r"(?<=\d)o|o(?=\d)", "0", t)))
+    if re.match(r"^[a-z]", t):              # a letter prefix written with look-alike digits ("G5" for "GS")
+        for k in range(1, len(t)):
+            pre = t[:k].replace("5", "s").replace("8", "b").replace("0", "o").replace("1", "i")
+            forms.add(pre + t[k:])
+    more = set()
+    for f in forms:
+        for k in range(len(f) - 1):
+            if f[k].isdigit() and f[k + 1].isdigit() and f[k] != f[k + 1]:
+                more.add(f[:k] + f[k + 1] + f[k] + f[k + 2:])
+            if f[k].isdigit() and f[k] == f[k + 1]:
+                more.add(f[:k] + f[k + 1:])          # a digit written twice
+    hits = {index[f] for f in forms | more if f in index and f != t}
+    return sorted(hits)

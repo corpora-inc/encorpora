@@ -42,7 +42,7 @@ from .assets import DEFAULT_PX, file_row, render_pages
 from .extract import FACETS, PROMPT_VERSION, SCHEMA, SYSTEM, Arm, Ledger, run, units
 from .layout import PageModel, load_models, page_models, save_models
 
-LAYOUT_VERSION = "3"
+LAYOUT_VERSION = "4"
 DEFAULT_FACET_LABELS = {"test_option": "Test options", "reason": "Reason for question", "known": "Known info",
                         "possible": "Possible problems"}
 DEFAULT_LEVELS = [

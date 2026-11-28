@@ -100,3 +100,93 @@ def test_log_entries_dates_and_units_from_free_text():
     shift = "== 10JUL24 NIGHT ==\n1810  GS-107 cranks no start. 5718 hrs. - JC\n2200  GS-112 oil leak\n"
     assert [x[3] for x in entries(shift, idx)] == ["10JUL24", "10JUL24"]
     assert units_in("UNIT ¢S-112 HRS 1050", idx) == [("¢S-112", "GS-112")]   # damaged prefix; 1050 is hours
+
+
+
+def test_fragment_guard_is_rejected_whole_block_passes():
+    from harvest_pipeline.maint.assemble import Assembly
+    from harvest_pipeline.maint.spans import locate
+    pm = _page([("p0.r1", "WARNING Keep hands clear of the platform when the liftgate is operating. The platform",
+                 (96, 554, 516, 566)),
+                ("p0.r2", "can crush or pinch. Death or serious injury may result.", (96, 568, 516, 580))])
+    first, _ = locate({0: pm}, 0, "p0.r1", "Keep hands clear of the platform when the liftgate is operating. The platform")
+    assert "stops mid-sentence" in Assembly._fragment(pm, pm.region("p0.r1"), first)
+    second, _ = locate({0: pm}, 0, "p0.r2", "can crush or pinch. Death or serious injury may result.")
+    assert "starts mid-sentence" in Assembly._fragment(pm, pm.region("p0.r2"), second)
+    whole = _page([("p0.r1", "WARNING Batteries give off a flammable gas. Do not smoke near them.", (72, 100, 558, 112))])
+    loc, _ = locate({0: whole}, 0, "p0.r1", "Batteries give off a flammable gas. Do not smoke near them.")
+    assert Assembly._fragment(whole, whole.region("p0.r1"), loc) is None
+
+
+def test_ocr_paragraphs_regrouped_by_geometry():
+    from harvest_pipeline.maint.layout import regroup_paragraphs
+    pm = _page([("p0.r1", "WARNING", (290, 370, 330, 380)),
+                ("p0.r2", "Support the raised platform with safety blocks before working under it. Do not rely on the",
+                 (96, 384, 516, 394)),
+                ("p0.r3", "hydraulic system to hold the platform.", (96, 396, 248, 406)),
+                ("p0.r4", "Step 2. Check flow control valve for blockage.", (90, 424, 439, 434))], ocr=True)
+    regroup_paragraphs(pm)
+    texts = [pm.region_text(r) for r in pm.regions if r.words]
+    assert texts[0].startswith("WARNING Support") and texts[0].endswith("hold the platform.")
+    assert texts[1].startswith("Step 2.")
+
+
+def test_sub_procedures_under_printed_headings_and_their_guards():
+    from harvest_pipeline.maint.subproc import is_heading, split_by_heading
+    assert is_heading("FILTER REPLACEMENT", False) and is_heading("Installation and adjustment", True)
+    assert not is_heading("1. Remove the filter.", False) and not is_heading("WARNING", False)
+    pm = _page([("p0.r1", "4-3. ENGINE OIL AND FILTER SERVICE", (54, 100, 300, 110)),
+                ("p0.r2", "DRAINING", (54, 130, 110, 140)),
+                ("p0.r3", "CAUTION Hot oil burns.", (72, 145, 300, 155)),
+                ("p0.r4", "1. Remove drain plug.", (72, 160, 300, 170)),
+                ("p0.r5", "2. Install drain plug.", (72, 175, 300, 185)),
+                ("p0.r6", "FILTER REPLACEMENT", (54, 195, 200, 205)),
+                ("p0.r7", "1. Remove oil filter.", (72, 210, 300, 220))])
+    sp = lambda rid, t: {"region": rid, "text": t}  # noqa: E731
+    pr = {"key": "4-3", "ref": "4-3", "kind": "maintenance", "title": sp("p0.r1", "ENGINE OIL AND FILTER SERVICE"),
+          "applies": [{"region": "x", "text": "y"}], "setup": [], "guards": [],
+          "steps": [{"text": sp("p0.r4", "Remove drain plug."), "guards": [{"kind": "caution", "text": sp("p0.r3", "Hot oil burns.")}]},
+                    {"text": sp("p0.r5", "Install drain plug."), "guards": []},
+                    {"text": sp("p0.r7", "Remove oil filter."), "guards": []}]}
+    out = split_by_heading([pr], {0: pm})
+    assert [o["title"]["text"] for o in out] == ["ENGINE OIL AND FILTER SERVICE", "DRAINING", "FILTER REPLACEMENT"]
+    assert [len(o["steps"]) for o in out] == [0, 2, 1]
+    assert [g["text"]["text"] for g in out[1]["guards"]] == ["Hot oil burns."]     # guards the sub-procedure
+    assert out[1]["steps"][0]["guards"] == [] and out[1]["applies"] == []
+
+
+def test_applicability_statements_variants_and_serials():
+    from harvest_pipeline.maint.applic import Variants, prefix_statement, statement
+    v = Variants([{"equip_id": "a", "name": "DGT-30"}, {"equip_id": "b", "name": "DGT-30A1"},
+                  {"equip_id": "c", "name": "DGT-30A2"}])
+    v.effectivity(["DGT-30 serial numbers 1001 through 1400, DGT-30A1 serial numbers 2001 through 2999, "
+                   "DGT-30A2 serial numbers 3001 and subsequent."])
+    assert statement("DGT-30 ONLY", v)["named"] == ["a"]                       # not every name starting so
+    assert statement("A1, A2", v)["named"] == ["b", "c"]
+    assert statement("On DGT-30A2 the indication is on the display", v) is None   # a mention is not a statement
+    st = statement("SERIAL NUMBERS 1250 AND SUBSEQUENT", v)
+    assert dict(v.by_serial(st["serial"])) == {"a": (1250, 1400), "b": None, "c": None}
+    assert prefix_statement("2. DGT-30A1 and DGT-30A2: check the hose clamp.", v)[0]["named"] == ["b", "c"]
+
+
+def test_one_tree_per_printed_symptom():
+    from harvest_pipeline.maint.assemble import split_by_symptom
+    t = {"ref": "Table 3-2", "title": {"region": "r", "text": "Troubleshooting"}, "nodes": [
+        {"id": "m3", "kind": "symptom", "text": {"text": "RAISES SLOWLY"}, "branches": [{"to": "s1"}]},
+        {"id": "s1", "kind": "check", "text": {"text": "Check battery."}, "branches": [{"to": "a1"}]},
+        {"id": "a1", "kind": "action", "text": {"text": "charge it"}, "branches": []},
+        {"id": "m4", "kind": "symptom", "text": {"text": "WILL NOT LOWER"}, "branches": [{"to": "s2"}]},
+        {"id": "s2", "kind": "check", "text": {"text": "Press DOWN."}, "branches": []}]}
+    out = split_by_symptom([t])
+    assert [o["title"]["text"] for o in out] == ["RAISES SLOWLY", "WILL NOT LOWER"]
+    assert [[n["id"] for n in o["nodes"]] for o in out] == [["m3", "s1", "a1"], ["m4", "s2"]]
+    assert out[0]["ref"] != out[1]["ref"]
+
+
+def test_unit_typos_need_exactly_one_unit():
+    from harvest_pipeline.maint.logschema import typo_candidates, unit_index
+    idx = unit_index({"GS-107": {}, "GS-115": {}, "GS-130": {}, "GS-113": {}})
+    assert typo_candidates("GS-1O7", idx) == ["GS-107"]          # O for 0
+    assert typo_candidates("G5-115", idx) == ["GS-115"]          # 5 for S
+    assert typo_candidates("GS 1300", idx) == ["GS-130"]         # a digit written twice
+    assert typo_candidates("GS-208", idx) == []                  # not one slip from any unit

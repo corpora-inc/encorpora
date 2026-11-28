@@ -525,6 +525,59 @@ def ocr_page(source_id: str, index: int, img, width_pt: float, height_pt: float,
     return pm
 
 
+def edge_label(pm: PageModel, options: dict | None = None) -> None:
+    """The printed page label when the footer band missed it: a label-shaped text block alone at the
+    page's bottom (else top) edge, with no other text between it and the edge. Marked as the footer."""
+    if pm.label is not None:
+        return
+    rx = re.compile((options or {}).get("page_label_regex", LABEL_RX))
+    texts = [r for r in pm.regions if r.words and r.kind in ("text", "footer", "header")]
+    for bottom in (True, False):
+        zone = [r for r in texts if (r.bbox[1] >= 0.88 * pm.height if bottom else r.bbox[3] <= 0.1 * pm.height)]
+        for r in sorted(zone, key=lambda r: -r.bbox[3] if bottom else r.bbox[1]):
+            t = pm.region_text(r).strip()
+            if rx.match(t):
+                beyond = [x for x in texts if x is not r and (x.bbox[1] > r.bbox[3] if bottom else x.bbox[3] < r.bbox[1])
+                          and x.kind == "text"]
+                if not beyond:
+                    pm.label, r.kind = t, ("footer" if bottom else "header")
+                    return
+            break                          # only the block nearest the edge can be the label
+
+
+def regroup_paragraphs(pm: PageModel) -> None:
+    """OCR paragraphs split where the recogniser lost a line (skew, noise): consecutive text blocks
+    close below each other in the same column are one printed block, unless the lower one opens a new
+    item, step or heading. A WARNING / CAUTION / NOTE heading joins the body under it."""
+    marker = re.compile(r"^(?:\(?\w{1,3}[.)]|Step\b|STEP\b)")
+    regs = sorted((r for r in pm.regions if r.kind == "text" and r.words), key=lambda r: (r.bbox[1], r.bbox[0]))
+    merged: list[Region] = []
+    for r in regs:
+        first = pm.region_text(r).strip()
+        lh = max((pm.words[i].bottom - pm.words[i].top for i in r.words), default=10) or 10
+        host = None
+        for a in reversed(merged[-4:]):
+            gap = r.bbox[1] - a.bbox[3]
+            over = min(a.bbox[2], r.bbox[2]) - max(a.bbox[0], r.bbox[0])
+            a_text = pm.region_text(a).strip()
+            heading_a = a_text.rstrip(":").upper() in ("WARNING", "CAUTION", "NOTE", "DANGER", "WARNINGS", "CAUTIONS",
+                                                       "NOTES")
+            if -2 <= gap <= 1.0 * lh and over > 0.4 * min(a.bbox[2] - a.bbox[0], r.bbox[2] - r.bbox[0]) \
+                    and not marker.match(first) and (heading_a or not first.isupper()) \
+                    and (heading_a or not re.search(r"[.!?:]$", a_text) or first[:1].islower()):
+                host = a
+                break
+        if host is None:
+            merged.append(r)
+            continue
+        host.lines = host.lines + r.lines
+        host.words = host.words + r.words
+        host.bbox = (min(host.bbox[0], r.bbox[0]), min(host.bbox[1], r.bbox[1]), max(host.bbox[2], r.bbox[2]),
+                     max(host.bbox[3], r.bbox[3]))
+        r.words, r.lines = [], []
+    pm.regions = [r for r in pm.regions if r.words or r.kind not in ("text",)]
+
+
 # ---- whole documents --------------------------------------------------------------------------
 def render_page(data: bytes, index: int, width_px: int):
     import pypdfium2 as pdfium
@@ -552,6 +605,9 @@ def page_models(data: bytes, source_id: str, options: dict | None = None,
             else:
                 img = render_page(data, i, int(o.get("ocr_px", 2550)))
                 pm = ocr_page(source_id, i, img, float(page.width), float(page.height), o.get("ocr_lang", "eng"))
+            edge_label(pm, o)
+            if pm.ocr:
+                regroup_paragraphs(pm)
             out.append(pm)
     return out
 

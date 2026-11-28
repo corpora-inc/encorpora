@@ -42,6 +42,40 @@ def ref_key(s: str | None) -> str:
     return fold(re.sub(r"[.,:;]+$", "", s or ""))
 
 
+def _bx(j: str) -> tuple:
+    """A stored normalized box (json {x0, y0, x1, y1}) as (x0, y0, x1, y1)."""
+    d = json.loads(j) if isinstance(j, str) else j
+    return (d["x0"], d["y0"], d["x1"], d["y1"]) if isinstance(d, dict) else tuple(d)
+
+
+def split_by_symptom(trees: list[dict]) -> list[dict]:
+    """A tree has one symptom. A reading that put several printed malfunctions in one tree (several
+    symptom nodes) becomes one tree per symptom, holding the nodes reachable from it, titled by the
+    symptom's own printed words; the shared setup, guards and applicability go with each."""
+    out = []
+    for t in trees:
+        nodes = t.get("nodes") or []
+        syms = [n for n in nodes if n.get("kind") == "symptom"]
+        if len(syms) < 2:
+            out.append(t)
+            continue
+        by_id = {n.get("id"): n for n in nodes}
+        for k, sym in enumerate(syms):
+            seen, stack = [], [sym.get("id")]
+            while stack:
+                nid = stack.pop()
+                if nid in seen or nid not in by_id or (nid != sym.get("id") and by_id[nid].get("kind") == "symptom"):
+                    continue
+                seen.append(nid)
+                stack += [b.get("to") for b in by_id[nid].get("branches") or [] if b.get("to")]
+            # the ref names the malfunction by its printed words, so continuation sheets of the same
+            # malfunction still join and different malfunctions never do
+            stext = " ".join(((sym.get("text") or {}).get("text") or f"symptom {k + 1}").split())[:80]
+            out.append({**t, "ref": f"{t.get('ref') or 'tree'}: {stext}", "title": sym.get("text") or t.get("title"),
+                        "nodes": [by_id[i] for i in seen], "_split_from": t.get("ref")})
+    return out
+
+
 @dataclass
 class Prov:
     """What one generated row rests on."""
@@ -343,11 +377,15 @@ class Assembly:
                 self.guard(ctx, g, sec, f"heading{hk}.g{gk}", loc.region)
             _ = m
         proc_by_key: dict[str, dict] = {}
-        for pk, pr in enumerate(out.get("procedures") or []):
+        from .applic import Variants, statement
+        from .subproc import split_by_heading
+        _v = Variants([e for e in self.equipment.values() if e["parent"] and not e.get("_serial_child")])
+        for pk, pr in enumerate(split_by_heading(out.get("procedures") or [], self.models,
+                                                 lambda t: bool(_v.leaves) and statement(t, _v) is not None)):
             rec = self.procedure(ctx, pr, pk)
             if rec:
                 proc_by_key[pr.get("key") or f"proc{pk}"] = rec
-        for tk, t in enumerate(out.get("trees") or []):
+        for tk, t in enumerate(split_by_symptom(out.get("trees") or [])):
             self.tree(ctx, t, tk, proc_by_key)
         self._pending_symptoms = getattr(self, "_pending_symptoms", []) + [(ctx, s) for s in out.get("symptoms") or []]
         self._pending_codes = getattr(self, "_pending_codes", []) + [(ctx, c) for c in out.get("codes") or []]
@@ -378,9 +416,15 @@ class Assembly:
                 p.problems.append(f"guard {key}: region {loc.region} is not printed as a WARNING, CAUTION or NOTE block")
             elif printed != kind:
                 p.problems.append(f"guard {key}: the block is printed {head}, not {kind}")
-            sec = self.claim(loc.region, kind or "note", f"{target['sid']}/{kind}", f"{target['citation']}, {kind.title()}",
-                             parent_rid=container_rid, strip_heading=True)
-            if sec["kind"] not in GUARD_WORDS.values():
+            frag = self._fragment(pm, reg, loc)
+            if frag:
+                # a partial warning misleads; a missing one fails coverage loudly
+                p.problems.append(f"guard {key}: {frag}")
+            sec = self.claim(loc.region, "paragraph" if frag else (kind or "note"), f"{target['sid']}/{kind}",
+                             f"{target['citation']}, {kind.title()}", parent_rid=container_rid, strip_heading=True)
+            if frag:
+                pass               # its words stay as plain text; never as a warning, caution or note
+            elif sec["kind"] not in GUARD_WORDS.values():
                 p.problems.append(f"guard {key}: its region is already a {sec['kind']}")
         row = {"from_id": None, "to_id": target["sid"], "kind": "guards"}
         gkey = f"guard:{self.sections[loc.region]['sid']}->{target['sid']}" if loc else f"{key}:{target['sid']}"
@@ -484,7 +528,7 @@ class Assembly:
             for ak, a in enumerate(pr.get("applies") or []):
                 self.applies(ctx, a, "procedure", proc_id, f"{proc_id}.applies{ak}")
                 self.applies(ctx, a, "section", title_sec["sid"], f"{proc_id}.sapplies{ak}")
-        if not pr.get("steps"):
+        if not pr.get("steps") and not pr.get("_has_groups"):
             p.problems.append("procedure has no steps")
         bad = [self.provs[s] for s in step_ids if self.provs[s]["verdict"] == "fail"]
         held = [self.provs[s] for s in step_ids if self.provs[s]["verdict"] == "needs_review"]
@@ -629,12 +673,23 @@ class Assembly:
                 if tgt is None:
                     p.problems.append(f"branch {bk}: target {to!r} is not a node of this tree")
                     continue
-                lab_loc = self.span(b.get("label"), p, f"branch {bk} label") if b.get("label") else None
+                tmp = Prov()
+                lab_loc = self.span(b.get("label"), tmp, f"branch {bk} label") if b.get("label") else None
+                if lab_loc is None and nodes[tgt].get("loc") and (nodes[tgt]["raw"].get("kind") or "") != "check":
+                    # a decision list prints "If <condition>, <action>": the condition just before the
+                    # action's printed words, on its line, is the branch's printed label
+                    cond_loc = self._condition_before(nodes[tgt]["loc"])
+                    if cond_loc:
+                        lab_loc = cond_loc
+                        p.notes.append(f"branch {bk}: label is the printed condition {cond_loc.text!r} before its action")
+                        tmp.problems.clear()
+                p.problems += tmp.problems
+                p.notes += tmp.notes
                 if lab_loc:
                     self.consumed_labels.add(lab_loc.region)
                 outcome = fold(b.get("outcome") or "")
                 cond = self._cond(b.get("cond"), lab_loc, p, bk, expect)
-                label = self._label(expect, outcome, lab_loc, p, bk)
+                label = self._label(expect, outcome, lab_loc, p, bk, bool(b.get("retry")))
                 # the drawing, when it shows this arrow, must agree
                 tgt_rec = nodes[tgt]
                 if drawn and rec.get("loc") and tgt_rec.get("loc"):
@@ -643,7 +698,7 @@ class Assembly:
                                   "retry": bool(b.get("retry"))})
             if n.get("kind") == "goto" and ("as_text", nid) in self.forced:
                 p.notes.append("go-to kept as its printed instruction: " + self.forced[("as_text", nid)])
-            if expect and expect.get("kind") in ("yes_no", "pass_fail") and self._conditions:
+            if expect and expect.get("kind") in ("yes_no", "pass_fail", "choice") and self._conditions:
                 mine = [e for e in edges_out if e["from"] == gk]
                 expect = {"kind": "choice", "options": [e["label"] for e in mine]}
                 p.notes.append("branches printed as conditions: kept as a choice of the printed conditions")
@@ -738,6 +793,61 @@ class Assembly:
         if title_loc:
             self.loc("fault_tree", tree_id, "title", title_loc)
         self.tally("fault_tree", pid)
+
+    def _condition_before(self, loc: Located) -> Located | None:
+        """The printed 'If ...,' / 'When ...,' clause immediately before an action's words in its region."""
+        pm = self.models[loc.page]
+        reg = pm.region(loc.region)
+        if reg is None or not loc.words or loc.words[0] not in reg.words:
+            return None
+        k = reg.words.index(loc.words[0])
+        if k == 0 or not pm.words[reg.words[k - 1]].text.endswith(","):
+            return None
+        for j in range(k - 1, max(-1, k - 30), -1):
+            w = pm.words[reg.words[j]].text
+            if re.fullmatch(r"(?i)if|when|where|after|unless", w):
+                idxs = reg.words[j:k]
+                text = " ".join(pm.words[i].text for i in idxs)
+                ws = [pm.words[i] for i in idxs]
+                return Located(text.rstrip(","), loc.page, reg.id, idxs,
+                               (min(x.x0 for x in ws), min(x.top for x in ws), max(x.x1 for x in ws),
+                                max(x.bottom for x in ws)))
+            if j < k - 1 and (w.endswith(".") or re.fullmatch(r"[a-z0-9]{1,3}[.)]", w)):
+                return None          # crossed into the previous sentence or item: no condition here
+        return None
+
+    @staticmethod
+    def _fragment(pm: PageModel, reg: Region, loc: Located) -> str | None:
+        """Why a guard's text is only part of its printed block, or None. It starts mid-sentence (a
+        lowercase start, or the block directly above in the same column runs on into it), or it stops
+        mid-sentence while the block directly below continues it."""
+        text = loc.text.strip()
+        body = re.sub(r"^(?:WARNINGS?|CAUTIONS?|NOTES?|DANGER)\b:?\s*", "", text)
+        if body[:1].islower():
+            return f"starts mid-sentence ({body[:30]!r}): only part of a printed block"
+        lh = max((pm.words[i].bottom - pm.words[i].top for i in reg.words), default=10) or 10
+
+        def near(r, above: bool) -> bool:
+            if r is reg or not r.words or r.kind in ("header", "footer"):
+                return False
+            gap = reg.bbox[1] - r.bbox[3] if above else r.bbox[1] - reg.bbox[3]
+            return -2 <= gap <= 1.6 * lh and min(r.bbox[2], reg.bbox[2]) - max(r.bbox[0], reg.bbox[0]) > 0.3 * (
+                reg.bbox[2] - reg.bbox[0])
+        first_word = reg.words.index(loc.words[0]) == 0 if loc.words and loc.words[0] in reg.words else False
+        last_word = reg.words.index(loc.words[-1]) == len(reg.words) - 1 if loc.words and loc.words[-1] in reg.words else False
+        if first_word:
+            for r in pm.regions:
+                if near(r, True):
+                    t = pm.region_text(r).strip()
+                    if t and t.rstrip(":").upper() not in GUARD_WORDS and t.upper() != t and not re.search(r"[.!?:]$", t):
+                        return f"the block above runs on into it ({t[-30:]!r}): only part of a printed block"
+        if last_word and not re.search(r"[.!?]$", text):
+            for r in pm.regions:
+                if near(r, False):
+                    t = pm.region_text(r).strip()
+                    if t[:1].islower() or not re.match(r"^(?:\(?\w{1,3}[.)]|[A-Z]{3,}\b)", t):
+                        return f"stops mid-sentence and the block below continues it ({t[:30]!r}): only part of a printed block"
+        return None
 
     @staticmethod
     def _heading_above(pm: PageModel, reg: Region) -> str | None:
@@ -861,9 +971,17 @@ class Assembly:
             p.notes.append(f"branch {bk}: label does not repeat the unit {expect['unit']!r}")
         return out
 
-    def _label(self, expect: dict | None, outcome: str, lab: Located | None, p: Prov, bk: int) -> str:
+    def _label(self, expect: dict | None, outcome: str, lab: Located | None, p: Prov, bk: int,
+               retry: bool = False) -> str:
+        """The branch's label: always a verified printed span. Nothing unprinted ships: a branch the
+        manual labels, whose label the reading did not point at on the page, holds its node. The one
+        exception is an arrow the manual draws with no label at all (an acknowledged step's single
+        onward arrow, or a retry loop): it carries no text of its own, and the app shows it as such."""
         k = (expect or {}).get("kind")
         printed = lab.text if lab else None
+        if printed is None and not (k == "ack" or retry):
+            p.problems.append(f"branch {bk}: its label {outcome!r} is not a printed span on the page; held")
+            return outcome or "?"
         if k in ("yes_no", "pass_fail") and printed and fold(printed) not in {"yes_no": ("yes", "no"),
                                                                              "pass_fail": ("pass", "fail")}[k]:
             # the manual prints the branch as a condition ("If there is no continuity"): the question is a
@@ -879,18 +997,18 @@ class Assembly:
                 return outcome or "?"
             if printed and fold(printed) != o:
                 p.problems.append(f"branch {bk}: printed label {printed!r} says otherwise than outcome {o!r}")
-            return printed if printed and fold(printed) == o else o.title()
+            return printed
         if k == "choice":
             opts = [fold(x) for x in (expect.get("options") or [])]
-            if printed and fold(printed) in opts:
-                return printed
-            if outcome in opts:
-                return outcome.title()
-            p.problems.append(f"branch {bk}: {outcome!r} is not an option {opts}")
-            return outcome
+            if fold(printed) not in opts:
+                # the reading named the option in its own words; the printed label is what ships, and the
+                # question's options become its printed labels
+                p.notes.append(f"branch {bk}: printed label {printed!r} ships, not the reading's option {outcome!r}")
+                self._conditions = True
+            return printed
         if k == "ack":
             return printed or "Continue"
-        return printed or outcome or "?"
+        return printed if printed is not None else ""
 
     def _drawn(self, rec: dict) -> list:
         loc = rec.get("loc")
@@ -989,6 +1107,8 @@ class Assembly:
                    "section_id": sec["sid"] if sec else None, "quote": cl.text if cl else None}
             pid = self.prov(ctx, "signal_map", f"{kind}:{pattern}", c, p)
             self.rows.append(("signal_map", row, pid))
+            if cl:
+                self.loc("signal_map", f"{kind}:{pattern}", "code", cl)
             self.tally("signal_map", pid)
 
     # ---- equipment ------------------------------------------------------------------------------
@@ -1029,8 +1149,36 @@ class Assembly:
                 rec["attrs"].append((slug(a["key"], 30).replace("-", "_"), al.text))
 
     def resolve_applies(self) -> None:
-        """Applicability statements -> applies_to rows, by the variants' distinctive name words."""
-        leaves = [e for e in self.equipment.values() if e["parent"]]
+        """Applicability as printed (applic.py): a statement names variants by their distinguishing words
+        or serial range, and applies to what it is printed on. A model's applicability span counts only
+        when it is a statement; statements the reading did not attach are scoped by position."""
+        from .applic import Variants, prefix_statement, statement
+        leaves = [e for e in self.equipment.values() if e["parent"] and not e.get("_serial_child")]
+        v = Variants(leaves)
+        v.effectivity([pm.region_text(r) for pm in self.models.values() for r in pm.regions if r.words])
+        used: set = set()
+
+        def targets(st: dict) -> list[str]:
+            if st["serial"] and v.serial:
+                parts = dict(v.by_serial(st["serial"]))
+                pick = st["named"] or list(parts)
+                out = []
+                for eid in pick:
+                    if eid not in parts:
+                        continue
+                    out.append(self._serial_child(eid, parts[eid]) if parts[eid] else eid)
+                return out
+            return list(st["named"])
+
+        def emit(ctx, sp, ref_kind, ref_id, key, hits, p):
+            for eid in hits:
+                row = {"ref_kind": ref_kind, "ref_id": ref_id, "equip_id": eid}
+                pid = self.prov(ctx, "applies_to", f"{ref_kind}:{ref_id}:{eid}", sp, p)
+                self.rows.append(("applies_to", row, pid))
+                self.tally("applies_to", pid)
+
+        # position first: every printed statement scoped by where it is printed
+        self._printed_applies(v, targets, emit, used)
         for ctx, sp, ref_kind, ref_id, key, pages in getattr(self, "_pending_applies", []):
             self._unit_pages = pages
             p = Prov()
@@ -1040,20 +1188,177 @@ class Assembly:
                 hits = [e for e in sp["_equip"] if e in self.equipment]
                 p.notes.extend(sp.get("_ev") or [])
             elif loc:
-                words = set(re.findall(r"[a-z0-9]+", loc.text.lower()))
-                if not ({"all", "every"} & words):
-                    for e in leaves:
-                        par = self.equipment.get(e["parent"], {}).get("name", "")
-                        own = set(re.findall(r"[a-z0-9]+", e["name"].lower())) - set(re.findall(r"[a-z0-9]+", par.lower()))
-                        if own and own & words:
-                            hits.append(e["equip_id"])
-                    if not hits:
-                        p.notes.append(f"applicability {loc.text!r} names no known variant")
-            for eid in hits:
-                row = {"ref_kind": ref_kind, "ref_id": ref_id, "equip_id": eid}
-                pid = self.prov(ctx, "applies_to", f"{ref_kind}:{ref_id}:{eid}", sp, p)
-                self.rows.append(("applies_to", row, pid))
-                self.tally("applies_to", pid)
+                pm = self.models[loc.page]
+                reg = pm.region(loc.region)
+                line = next((ln for ln in (reg.lines or [reg.words]) if set(ln) & set(loc.words)), loc.words)
+                ltext = " ".join(pm.words[i].text for i in line)
+                m = re.search(r"\(([^()]{2,80})\)\s*$", ltext)
+                st = statement(ltext, v) or (prefix_statement(ltext, v) or (None,))[0] or \
+                    (statement(m.group(1), v) if m else None)
+                if st is None:
+                    p.notes.append(f"{ltext[:60]!r} is not an applicability statement: nothing scoped")
+                elif (loc.page, line[0]) in used:
+                    p.notes.append("scoped by where it is printed")
+                else:
+                    hits = targets(st)
+            emit(ctx, sp, ref_kind, ref_id, key, hits, p)
+
+    def _serial_child(self, eid: str, rng: tuple[int, int]) -> str:
+        """A variant restricted to part of its serial range, as a child the engine resolves by plate."""
+        par = self.equipment[eid]
+        lo, hi = rng
+        open_end = hi == 10 ** len(str(hi)) - 1
+        cid = f"{eid}.sn{lo}-{'up' if open_end else hi}"
+        if cid not in self.equipment:
+            span = f"{lo} and subsequent" if open_end else f"{lo} through {hi}"
+            self.equipment[cid] = {"equip_id": cid, "name": f"{par['name']}, serial numbers {span}", "parent": eid,
+                                   "idents": [("serial_range", f"{lo}..{hi}")], "attrs": [], "ctx": par.get("ctx"),
+                                   "prov": par.get("prov"), "_serial_child": True}
+        return cid
+
+    def _printed_applies(self, v, targets, emit, used: set) -> None:
+        """Statements printed on the pages that no reading attached, scoped by where they are printed:
+        inside a question box -> that question; leading a step or inside it -> that step; a line of its
+        own under a procedure, sub-procedure or tree title (before its first step) -> that procedure or
+        tree; inside a WARNING / CAUTION / NOTE -> what that block guards."""
+        from .applic import prefix_statement, statement
+        if not v.leaves:
+            return
+        locs: dict[tuple, list] = {}
+        for t in self.text_locs:
+            locs.setdefault((t["page_index"], t["region_id"]), []).append(t)
+        sec_of_step = {}
+        for kind, row, pid in self.rows:
+            if kind == "proc_step":
+                for sid in json.loads(row["section_ids"] or "[]"):
+                    sec_of_step[f"{row['proc_id']}#{row['ord']}"] = sid
+        node_sec = {row["node_id"]: row["section_id"] for kind, row, pid in self.rows if kind == "fault_node"}
+        ok_pids = {pid for _, _, pid in self.rows if self.provs.get(pid, {}).get("verdict") != "fail"}
+        ok = {(k, (r.get("node_id") or r.get("proc_id") or r.get("tree_id"))) for k, r, pid in self.rows
+              if pid in ok_pids and k in ("fault_node", "procedure", "fault_tree")}
+        proc_node = {row["proc_id"]: row["node_id"] for kind, row, pid in self.rows
+                      if kind == "fault_node" and row.get("proc_id")}
+        guard_targets: dict[str, list] = {}
+        for kind, row, pid in self.rows:
+            if kind == "xref" and row.get("kind") == "guards" and pid in ok_pids:
+                guard_targets.setdefault(row["from_id"], []).append(row["to_id"])
+        titles = [t for t in self.text_locs if t["field"] == "title" and t["ref_kind"] in ("procedure", "fault_tree")]
+        firsts = {}
+        for t in self.text_locs:
+            if t["ref_kind"] == "proc_step":
+                pid_, _ = t["ref_id"].split("#")
+                b = _bx(t["bbox"])
+                cur = firsts.get(pid_)
+                if cur is None or (t["page_index"], b[1]) < cur:
+                    firsts[pid_] = (t["page_index"], b[1])
+        ctx = next((c for c, *_ in getattr(self, "_pending_applies", [])), None) or getattr(self, "_last_ctx", None)
+        if ctx is None:
+            return
+        for idx, pm in self.models.items():
+            for r in pm.regions:
+                if not r.words or r.kind in ("header", "footer"):
+                    continue
+                for ln in r.lines or [r.words]:
+                    text = " ".join(pm.words[i].text for i in ln)
+                    st = statement(text, v)
+                    if st and len(r.lines or []) > 1:
+                        # a line of its own only in a block without prose: a wrapped sentence that happens
+                        # to end in a model name is not a statement
+                        from .subproc import is_heading
+                        others = [" ".join(pm.words[i].text for i in x) for x in r.lines if x is not ln]
+                        if any(not (statement(o, v) or is_heading(o, False)) for o in others):
+                            st = None
+                    pre = None if st else prefix_statement(text, v)
+                    paren = None
+                    if not st and not pre:
+                        m = re.search(r"\(([^()]{2,80})\)\s*$", text)
+                        paren = statement(m.group(1), v) if m else None
+                        if not paren:
+                            continue
+                        st = paren
+                    st = st or pre[0]
+                    ws = [pm.words[i] for i in ln]
+                    box = _bx(json.dumps(pm.norm_box((min(w.x0 for w in ws), min(w.top for w in ws),
+                                                      max(w.x1 for w in ws), max(w.bottom for w in ws)))))
+                    scope = self._applies_scope(idx, r, box, bool(pre), locs, titles, firsts, guard_targets,
+                                                bool(paren), proc_node)
+                    if not scope:
+                        continue
+                    used.add((idx, ln[0]))
+                    hits = targets(st)
+                    sp = {"region": r.id, "text": text}
+                    p = Prov(notes=[f"printed statement {text[:60]!r} scoped by position to {scope[0]}"])
+                    for ref_kind, ref_id in scope[1]:
+                        if ref_kind in ("fault_node", "procedure", "fault_tree") and (ref_kind, ref_id) not in ok:
+                            continue
+                        if ref_kind != "proc_step":
+                            emit(ctx, sp, ref_kind, ref_id, f"printed:{r.id}", hits, p)
+                        if ref_kind == "fault_node" and node_sec.get(ref_id):
+                            emit(ctx, sp, "section", node_sec[ref_id], f"printed:{r.id}", hits, p)
+                        if ref_kind == "proc_step" and sec_of_step.get(ref_id):
+                            emit(ctx, sp, "section", sec_of_step[ref_id], f"printed:{r.id}", hits, p)
+
+    def _applies_scope(self, idx, r, box, prefix, locs, titles, firsts, guard_targets, paren=False, proc_node=None):
+        here = locs.get((idx, r.id), [])
+        if paren:
+            # "(DGT-30 ONLY)" closing a printed title: that procedure or tree, and the question a test
+            # procedure answers
+            for t in here:
+                if t["field"] == "title" and t["ref_kind"] in ("procedure", "fault_tree"):
+                    out = [(t["ref_kind"], t["ref_id"])]
+                    if t["ref_kind"] == "procedure" and (proc_node or {}).get(t["ref_id"]):
+                        out.append(("fault_node", proc_node[t["ref_id"]]))
+                    return ("title", out)
+            return None
+        # a table row: a statement in a column, on the printed line of a row's code
+        for (pg, _), ts in locs.items():
+            if pg != idx:
+                continue
+            for t in ts:
+                if t["ref_kind"] == "signal_map":
+                    b = _bx(t["bbox"])
+                    if abs((b[1] + b[3]) / 2 - (box[1] + box[3]) / 2) < 0.4 * max(b[3] - b[1], 0.004) \
+                            and (pg, r.id) != (pg, t["region_id"]):
+                        return ("table row", [("signal_map", t["ref_id"])])
+
+        def inside(t):
+            b = _bx(t["bbox"])
+            return b[1] - 0.002 <= box[1] and box[3] <= b[3] + 0.002 or (b[1] <= box[3] and box[1] <= b[3])
+        for kind in ("fault_node", "proc_step"):
+            cands = [t for t in here if t["ref_kind"] == kind and t["field"] == "text"]
+            if prefix:
+                # the step or box whose printed text starts on this line
+                cands = [t for t in cands if abs(_bx(t["bbox"])[1] - box[1]) < 0.006]
+            else:
+                cands = [t for t in cands if inside(t)]
+            if cands:
+                def ov(t):
+                    b = _bx(t["bbox"])
+                    return min(b[3], box[3]) - max(b[1], box[1])
+                t = max(cands, key=ov)
+                if kind == "proc_step":
+                    return ("step", [("proc_step", t["ref_id"])])
+                return ("question", [("fault_node", t["ref_id"])])
+        sec = self.sections.get(r.id)
+        if sec and sec.get("kind") in ("warning", "caution", "note"):
+            tg = guard_targets.get(sec["sid"])
+            if tg:
+                return ("guarded", [("section", x) for x in tg])
+        # a line of its own: the nearest title above it on its page, before that procedure's first step
+        above = []
+        for t in titles:
+            if t["page_index"] != idx:
+                continue
+            b = _bx(t["bbox"])
+            if b[1] <= box[1] + 0.002:
+                first = firsts.get(t["ref_id"])
+                if t["ref_kind"] == "procedure" and first and (first[0], first[1]) < (idx, box[1]):
+                    continue
+                above.append((b[1], t))
+        if above:
+            t = max(above, key=lambda x: x[0])[1]
+            return ("title", [(t["ref_kind"], t["ref_id"])])
+        return None
 
     # ---- leftovers and writing ------------------------------------------------------------------
     def leftovers(self) -> None:

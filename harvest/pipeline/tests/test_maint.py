@@ -344,3 +344,14 @@ def test_presentation_checks():
     assert problem("Reads 9 V on the meter", title, src) == "a number the source does not print"
     assert problem("Fuse 15 looks burnt", title, src) is None                         # 15 is printed
     assert problem("Says BATT_MONITOR is off", title, src) == "a parameter or part the source does not print"
+
+
+def test_nothing_unprinted_ships_as_a_branch_label(models, tmp_path):
+    """A branch whose label the reading did not point at on the page holds its node, and so its tree:
+    the outcome word the model chose never ships as if the manual printed it."""
+    out = _output(models[0])
+    out["trees"][0]["nodes"][0]["branches"][1]["label"] = None          # "NO" given as an outcome only
+    stage = _assemble(models, out, tmp_path)
+    rows = {json.loads(n)["row"]: v for n, v in stage.conn.execute("SELECT notes, verdict FROM provenance")}
+    assert rows["fault_node:t-table-2-1.q1"] == "fail"
+    assert rows["fault_tree:t-table-2-1"] == "fail"

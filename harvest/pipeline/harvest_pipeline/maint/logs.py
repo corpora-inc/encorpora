@@ -372,10 +372,32 @@ def ingest(records: list[Record], fleet: Fleet, manual: Manual, cfg: dict, resol
             if u:
                 r.corrections["unit"] = {"from": r.unit_raw or None, "to": u,
                                          "why": f"unit from the record's other unit column ({r.unit_alt!r})"}
+        elif u and r.unit_alt:
+            alt = fleet.by_label.get(_norm_unit(r.unit_alt)) or fleet._uidx.get(norm_label(r.unit_alt))
+            if alt != u:
+                r.corrections["unit"] = {"from": r.unit_alt, "to": u, "why": f"the record's other unit column says "
+                                         f"{r.unit_alt!r}, which names {'no fleet unit' if alt is None else alt}; "
+                                         f"{r.unit_raw!r} names {u}"}
+        if not u and r.unit_raw:
+            from .logschema import typo_candidates
+            cands = typo_candidates(r.unit_raw, fleet._uidx)
+            if len(cands) == 1:
+                u = cands[0]
+                r.flags.add("unit_typo")       # tentative: kept only if its hours lie on that unit's line
+                r.corrections["unit"] = {"from": r.unit_raw, "to": u, "why": "the only fleet unit one slip away "
+                                         "(O for 0, I or l for 1, or two digits swapped), and its hours lie on "
+                                         "that unit's line"}
         r.out["asset_id"] = u
         r.ev["asset_id"] = f"registry label {r.unit_raw!r}" if u else f"no fleet unit is labelled {r.unit_raw!r}"
         # date
         d = _parse_date(r.date_raw) or _any_date(r.date_raw, r.date_fmt)
+        if d and r.date_fmt:
+            try:
+                dt.datetime.strptime(" ".join(str(r.date_raw).split()), r.date_fmt)
+            except ValueError:
+                r.corrections["date"] = {"from": r.date_raw, "to": d.isoformat(),
+                                         "why": f"not in the column's own format ({r.date_fmt}); read the only way "
+                                                "it is a date"}
         r.out["date"] = d
         if d and not (fleet.period[0] <= d <= fleet.period[1]):
             r.flags.add("date_out_of_period")
@@ -417,7 +439,37 @@ def ingest(records: list[Record], fleet: Fleet, manual: Manual, cfg: dict, resol
         resolver(records, manual, abbrev)
     for r in records:
         _decide(r, fleet, manual)
+    _duplicates(records)
     return records
+
+
+def _duplicates(records: list[Record]) -> None:
+    """The same event written in two places: same unit, dates at most a day apart, and the same task
+    (pack symptom) or nearly the same words. The fuller record stays; the other is rejected as its
+    duplicate. A repeat (same task again weeks later) is not a duplicate."""
+    keep = [r for r in records if r.decision != "reject" and r.out.get("asset_id") and r.out.get("date")]
+    keep.sort(key=lambda r: (r.out["asset_id"], r.out["date"]))
+    fullness = lambda r: sum(1 for k in ("hours", "part", "symptom_id", "action", "tech") if r.out.get(k))  # noqa: E731
+    for i, a in enumerate(keep):
+        if a.decision == "reject":
+            continue
+        wa = _words(a.text)
+        for b in keep[i + 1:]:
+            if b.out["asset_id"] != a.out["asset_id"] or (b.out["date"] - a.out["date"]).days > 1:
+                break
+            if b.decision == "reject" or b.source == a.source and b.rec_id == a.rec_id:
+                continue
+            wb = _words(b.text)
+            same_task = a.out.get("symptom_id") and a.out.get("symptom_id") == b.out.get("symptom_id")
+            near = len(wa & wb) / (len(wa | wb) or 1) >= 0.6
+            if same_task or near:
+                lose, win = (b, a) if fullness(a) >= fullness(b) else (a, b)
+                lose.decision = "reject"
+                lose.reasons.append(f"a duplicate of {win.rec_id} (same unit, "
+                                    f"{'same task' if same_task else 'same words'}, within a day)")
+                lose.flags.add("duplicate")
+                if lose is a:
+                    break
 
 
 def _classify(r: Record, manual: Manual, abbrev: dict) -> None:
@@ -477,7 +529,8 @@ def _timeline(records: list[Record], fleet: Fleet) -> None:
     lines = {}
     for aid in fleet.assets:
         pts = [(x(r.out["date"]), r.out["hours"]) for r in records if r.out.get("asset_id") == aid and r.out.get("date")
-               and r.out.get("hours") and r.out["hours"] > 0 and "date_out_of_period" not in r.flags]
+               and r.out.get("hours") and r.out["hours"] > 0 and "date_out_of_period" not in r.flags
+               and "unit_typo" not in r.flags]
         lines[aid] = _theil_sen(pts)
     tol = lambda pred: 40.0 + 0.01 * pred  # noqa: E731
 
@@ -495,9 +548,51 @@ def _timeline(records: list[Record], fleet: Fleet) -> None:
         return r_ <= tol(ln[0] * x(d) + ln[1])
 
     for r in records:
+        if "unit_typo" in r.flags:
+            aid, d, h = r.out.get("asset_id"), r.out.get("date"), r.out.get("hours")
+            if not (h and d and fits(aid, d, h)):
+                r.reasons.append(f"unit {r.unit_raw!r} is one slip from {aid}, but no hours on its line confirm it")
+                r.corrections.pop("unit", None)
+                r.out["asset_id"] = None
+            r.flags.discard("unit_typo")
+    for r in records:
         aid, d, h = r.out.get("asset_id"), r.out.get("date"), r.out.get("hours")
         if h is not None and h > 0 and aid and d and "date_out_of_period" not in r.flags:
             own = fits(aid, d, h)
+            if own is True and d.day <= 12 and d.day != d.month and "date" not in r.corrections:
+                try:
+                    sw = dt.date(d.year, d.day, d.month)
+                except ValueError:
+                    sw = None
+                if sw and fleet.period[0] <= sw <= fleet.period[1] and fits(aid, sw, h):
+                    r0, r1 = resid(aid, d, h), resid(aid, sw, h)
+                    if r1 is not None and r0 is not None and r1 <= r0 / 3 and r0 > 15:
+                        r.corrections["date"] = {"from": d.isoformat(), "to": sw.isoformat(),
+                                                 "why": f"{h:g} h sits on {aid}'s line on {sw} ({r1:.0f} h off) and "
+                                                        f"not on {d} ({r0:.0f} h off): day and month swapped"}
+                        r.out["date"] = d = sw
+            if own is False:
+                # a day/month swap or a wrong year that puts the hours on the unit's own line is the
+                # writer's slip, not another unit: fix the date when exactly one such date fits
+                alts = []
+                if d.day <= 12 and d.day != d.month:
+                    try:
+                        alts.append(dt.date(d.year, d.day, d.month))
+                    except ValueError:
+                        pass
+                for y in range(fleet.period[0].year, fleet.period[1].year + 1):
+                    if y != d.year:
+                        try:
+                            alts.append(dt.date(y, d.month, d.day))
+                        except ValueError:
+                            pass
+                good = [c for c in dict.fromkeys(alts) if fleet.period[0] <= c <= fleet.period[1] and fits(aid, c, h)]
+                if len(good) == 1:
+                    r.corrections["date"] = {"from": d.isoformat(), "to": good[0].isoformat(),
+                                             "why": f"{h:g} h is off {aid}'s hours line on {d}; on {good[0]} it lies "
+                                                    "on it (day and month or year written wrongly)"}
+                    r.out["date"] = d = good[0]
+                    own = True
             if own is False:
                 # another unit's line, and clearly the nearest one (half the distance of the runner-up)
                 rs = sorted((resid(a, d, h), a) for a in fleet.assets if a != aid and resid(a, d, h) is not None)
