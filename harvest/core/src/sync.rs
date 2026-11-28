@@ -580,13 +580,17 @@ impl AttachmentChunk {
 
 impl Hello {
     fn message(&self) -> Result<Vec<u8>> {
-        crate::canon::to_vec(&serde_json::json!({
+        let mut m = serde_json::json!({
             "format": "harvest-hello/1",
             "device_id": self.device_id,
             "signed_at": self.signed_at,
             "link": self.link,
-            "nonce": self.nonce,
-        }))
+        });
+        // Signed when present, so a hello from before nonces still verifies.
+        if !self.nonce.is_empty() {
+            m["nonce"] = self.nonce.clone().into();
+        }
+        crate::canon::to_vec(&m)
     }
 
     /// Check the signature against the device's public key.

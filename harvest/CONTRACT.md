@@ -766,8 +766,14 @@ CREATE TABLE failure_mode (mode_id TEXT PRIMARY KEY, equip_id TEXT NOT NULL, sys
   `{"all":[…]}`, `{"any":[…]}`, `{"not":…}` or a test `{"attr","op"}` with
   `eq`/`ne` `value`, `in`/`not_in` `values`, `lt`/`le`/`gt`/`ge` `value`,
   or `range` `min`/`max` (`min_inclusive`, `max_inclusive`, default
-  true). Versions compare numerically by dotted part; serials compare
-  within one prefix (another prefix does not apply). An item's statements
+  true). A version is dotted numbers with an optional pre-release suffix
+  (`2.4.1`, `v2.4`, `2.4-rc2`, which sorts before `2.4`); a serial is a
+  prefix and digits, separators ignored (`P40D-1234` = `P40D1234`). A
+  value that does not parse as its type counts as missing (unknown), and
+  a comparison that cannot be made (a serial of another prefix) is
+  unknown, never decided; `asset.set_attrs` refuses such values. A
+  statement whose provenance did not pass leaves its item unknown
+  (`applic.provenance`). An item's statements
   must all apply; a section inherits its nearest ancestor's. Evaluation
   against the asset's values is three-valued: applies, does not apply
   (the item is left out, or a step marked `applies: false`), or
@@ -778,7 +784,13 @@ CREATE TABLE failure_mode (mode_id TEXT PRIMARY KEY, equip_id TEXT NOT NULL, sys
   again. An asset's values are typed in (`asset.set_attrs`), taken from a
   data plate, or read from the vehicle (`plate`, e.g. MAVLink's
   `AUTOPILOT_VERSION` firmware); `asset.attrs` lists what the pack
-  declares and what the asset has.
+  declares and what the asset has. Values belong to the asset, not to a
+  pack: two packs that declare one attribute id read the same value.
+  Statements are evaluated in task, step, test-procedure, node, tree
+  summary, guard, table, row, cell, `signal.match`, `manual.search` and
+  `practice.items` reads (a `manual.search` hit carries its
+  `applicability`); tree listings and `symptom.search` filter by variant
+  only for now.
   *S1000D.* This is S1000D applicability: a declared attribute is an ACT
   product attribute (`productAttribute`, source `plate`/`manual`) or a
   CCT condition (`cond`, modification state or service bulletin, source

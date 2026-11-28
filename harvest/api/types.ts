@@ -1460,6 +1460,11 @@ export type LinkClass = "low" | "normal";
 
 /** One search hit with its text and citation. */
 export interface ManualHit {
+  /**
+   * The hit's statements, when it has any (a hit that does not apply to
+   * the asset is left out; one not determined is flagged).
+   */
+  applicability: Applicability | null;
   chunk_id: string;
   citation: string | null;
   heading: string | null;
@@ -1741,6 +1746,8 @@ export interface PracticeItems {
 }
 
 export interface PracticeItemsParams {
+  /** The asset (its variant and attributes). */
+  asset_id?: string | null;
   /** The variant (questions that do not apply to it are left out). */
   equip_id?: string | null;
   pack_id?: string | null;
@@ -1749,6 +1756,8 @@ export interface PracticeItemsParams {
 export interface PracticeQuestion {
   /** mc: the choice index as text; numeric: the value; free_text: rubric JSON. */
   answer: string;
+  /** Its statements, when it has any. */
+  applicability: Applicability | null;
   choices: string[];
   /** The question's own citations (its `section_ids`). */
   citations: Citation[];
@@ -2806,6 +2815,8 @@ export interface TaskView {
 
 /** The test procedure that answers a node's question. */
 export interface TestProcedure {
+  /** The procedure's statements, when it has any. */
+  applicability: Applicability | null;
   /** Whether it opens expanded at this level. */
   expanded: boolean;
   /** Guards on the whole procedure, shown once before its steps. */

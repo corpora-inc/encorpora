@@ -217,19 +217,17 @@ fn as_text(v: &serde_json::Value) -> Option<String> {
     }
 }
 
-/// A comparable form of a value of `kind`; `None` when it does not parse.
+/// A comparable form of a value of `kind`; `None` when it does not parse
+/// (then the attribute counts as missing: unknown, never a guess).
 #[derive(Debug, Clone, PartialEq)]
 enum Key {
     Text(String),
     Num(f64),
-    Version(Vec<VPart>),
+    /// Dotted numbers and an optional pre-release suffix (`2.4.1-rc2`).
+    Version(Vec<u64>, Option<String>),
+    /// The prefix's letters and digits (separators dropped) and the
+    /// trailing number.
     Serial(String, u128),
-}
-
-#[derive(Debug, Clone, PartialEq, PartialOrd)]
-enum VPart {
-    N(u64),
-    S(String),
 }
 
 fn key(kind: AttrType, raw: &str) -> Option<Key> {
@@ -245,53 +243,109 @@ fn key(kind: AttrType, raw: &str) -> Option<Key> {
             .filter(|v| v.is_finite())
             .map(Key::Num),
         AttrType::Version => {
-            let t = t.trim_start_matches(['v', 'V']);
-            let parts: Vec<VPart> = t
-                .split(['.', '-', '_'])
-                .map(|p| match p.parse::<u64>() {
-                    Ok(n) => VPart::N(n),
-                    Err(_) => VPart::S(p.to_lowercase()),
-                })
-                .collect();
-            (!parts.is_empty()).then_some(Key::Version(parts))
+            let t = t.strip_prefix(['v', 'V']).unwrap_or(t);
+            let (core, suffix) = match t.find(['-', '+']) {
+                Some(i) => (&t[..i], Some(&t[i + 1..])),
+                None => (t, None),
+            };
+            let parts: Option<Vec<u64>> = core.split('.').map(|p| p.parse::<u64>().ok()).collect();
+            let parts = parts.filter(|p| !p.is_empty())?;
+            let suffix = match suffix {
+                Some(s)
+                    if !s.is_empty()
+                        && s.chars().all(|c| c.is_ascii_alphanumeric() || c == '.') =>
+                {
+                    Some(s.to_lowercase())
+                }
+                Some(_) => return None,
+                None => None,
+            };
+            Some(Key::Version(parts, suffix))
         }
         AttrType::Serial => {
+            if !t
+                .chars()
+                .all(|c| c.is_ascii_alphanumeric() || "-_/. ".contains(c))
+            {
+                return None;
+            }
             let digits: String = t.chars().rev().take_while(|c| c.is_ascii_digit()).collect();
-            if digits.is_empty() {
+            if digits.is_empty() || digits.len() > 30 {
                 return None;
             }
             let n: String = digits.chars().rev().collect();
-            let prefix = t[..t.len() - n.len()].to_uppercase();
+            let prefix: String = t[..t.len() - n.len()]
+                .chars()
+                .filter(|c| c.is_ascii_alphanumeric())
+                .collect::<String>()
+                .to_uppercase();
             n.parse::<u128>().ok().map(|n| Key::Serial(prefix, n))
         }
     }
 }
 
+/// Does `raw` parse as a value of `kind`?
+pub fn parses(kind: AttrType, raw: &str) -> bool {
+    key(kind, raw).is_some()
+}
+
+/// Natural order of pre-release suffixes (`rc9` before `rc10`).
+fn natural(a: &str, b: &str) -> std::cmp::Ordering {
+    let split = |s: &str| -> Vec<(bool, String)> {
+        let mut out: Vec<(bool, String)> = Vec::new();
+        for c in s.chars() {
+            let d = c.is_ascii_digit();
+            match out.last_mut() {
+                Some((ld, buf)) if *ld == d => buf.push(c),
+                _ => out.push((d, c.to_string())),
+            }
+        }
+        out
+    };
+    let (x, y) = (split(a), split(b));
+    for (p, q) in x.iter().zip(y.iter()) {
+        let o = match (p.0, q.0) {
+            (true, true) => {
+                p.1.parse::<u128>()
+                    .unwrap_or(0)
+                    .cmp(&q.1.parse::<u128>().unwrap_or(0))
+            }
+            _ => p.1.cmp(&q.1),
+        };
+        if o != std::cmp::Ordering::Equal {
+            return o;
+        }
+    }
+    x.len().cmp(&y.len())
+}
+
 /// Order two keys of one kind; `None` when they do not compare (serials of
-/// different prefixes, texts).
+/// different prefixes, texts): such a test is unknown, never decided.
 fn cmp(a: &Key, b: &Key) -> Option<std::cmp::Ordering> {
+    use std::cmp::Ordering::*;
     match (a, b) {
         (Key::Num(x), Key::Num(y)) => x.partial_cmp(y),
-        (Key::Version(x), Key::Version(y)) => {
-            let n = x.len().max(y.len());
-            for i in 0..n {
-                let p = x.get(i).cloned().unwrap_or(VPart::N(0));
-                let q = y.get(i).cloned().unwrap_or(VPart::N(0));
-                let o = match (&p, &q) {
-                    (VPart::N(a), VPart::N(b)) => a.cmp(b),
-                    (VPart::S(a), VPart::S(b)) => a.cmp(b),
-                    // A number part sorts after a text part (2.4 > 2.4-rc).
-                    (VPart::N(_), VPart::S(_)) => std::cmp::Ordering::Greater,
-                    (VPart::S(_), VPart::N(_)) => std::cmp::Ordering::Less,
-                };
-                if o != std::cmp::Ordering::Equal {
+        (Key::Version(x, xs), Key::Version(y, ys)) => {
+            for i in 0..x.len().max(y.len()) {
+                let o = x
+                    .get(i)
+                    .copied()
+                    .unwrap_or(0)
+                    .cmp(&y.get(i).copied().unwrap_or(0));
+                if o != Equal {
                     return Some(o);
                 }
             }
-            Some(std::cmp::Ordering::Equal)
+            // A release sorts after its pre-releases (2.4 > 2.4-rc1).
+            Some(match (xs, ys) {
+                (None, None) => Equal,
+                (None, Some(_)) => Greater,
+                (Some(_), None) => Less,
+                (Some(p), Some(q)) => natural(p, q),
+            })
         }
         (Key::Serial(p, x), Key::Serial(q, y)) => (p == q).then(|| x.cmp(y)),
-        (Key::Text(x), Key::Text(y)) => (x == y).then_some(std::cmp::Ordering::Equal),
+        (Key::Text(x), Key::Text(y)) => (x == y).then_some(Equal),
         _ => None,
     }
 }
@@ -319,7 +373,13 @@ fn test(
             let Some(want) = k(&t.value) else {
                 return Tri::Unknown;
             };
-            let eq = cmp(&have, &want) == Some(Equal);
+            let eq = match cmp(&have, &want) {
+                Some(o) => o == Equal,
+                // Texts that differ are simply not equal; anything else
+                // that does not compare is undecided.
+                None if def.kind == AttrType::Text => false,
+                None => return Tri::Unknown,
+            };
             yes(if t.op == AttrOp::Eq { eq } else { !eq })
         }
         AttrOp::In | AttrOp::NotIn => {
@@ -337,7 +397,7 @@ fn test(
                 return Tri::Unknown;
             };
             match cmp(&have, &want) {
-                None => Tri::DoesNotApply, // another serial prefix
+                None => Tri::Unknown, // another serial prefix: not decided here
                 Some(o) => yes(match t.op {
                     AttrOp::Lt => o == Less,
                     AttrOp::Le => o != Greater,
@@ -351,7 +411,7 @@ fn test(
                 None if t.min.is_some() => return Tri::Unknown,
                 None => true,
                 Some(m) => match cmp(&have, &m) {
-                    None => return Tri::DoesNotApply,
+                    None => return Tri::Unknown,
                     Some(o) => o == Greater || (o == Equal && t.min_inclusive.unwrap_or(true)),
                 },
             };
@@ -359,7 +419,7 @@ fn test(
                 None if t.max.is_some() => return Tri::Unknown,
                 None => true,
                 Some(m) => match cmp(&have, &m) {
-                    None => return Tri::DoesNotApply,
+                    None => return Tri::Unknown,
                     Some(o) => o == Less || (o == Equal && t.max_inclusive.unwrap_or(true)),
                 },
             };
@@ -532,6 +592,32 @@ impl Pack {
             .collect()
     }
 
+    /// Statements for an item whose provenance did not pass (sections:
+    /// along the lineage).
+    fn applic_failed(&self, ref_kind: &str, ref_id: &str) -> Result<i64> {
+        if !self.has_table("applic")? {
+            return Ok(0);
+        }
+        let ids: Vec<String> = if ref_kind == "section" {
+            self.section_lineage(ref_id)?
+        } else {
+            vec![ref_id.to_string()]
+        };
+        let conn = self.conn();
+        let mut n = 0;
+        for id in ids {
+            n += conn.query_row(
+                &format!(
+                    "SELECT count(*) FROM applic WHERE ref_kind = ?1 AND ref_id = ?2 AND NOT ({})",
+                    super::PASSED
+                ),
+                rusqlite::params![ref_kind, id],
+                |r| r.get::<_, i64>(0),
+            )?;
+        }
+        Ok(n)
+    }
+
     /// How one item's statements evaluate for `values`; `None` when it has
     /// none. A section with none inherits its nearest ancestor's.
     pub fn applicability(
@@ -553,7 +639,10 @@ impl Pack {
         } else {
             self.applic_rows(Some((ref_kind, ref_id)))?
         };
-        if rows.is_empty() {
+        // A statement that failed verification is not read, but the item
+        // it scoped is not shown as if it had none: it is undecided.
+        let failed = self.applic_failed(ref_kind, ref_id)?;
+        if rows.is_empty() && failed == 0 {
             return Ok(None);
         }
         let defs = self.attribute_defs()?;
@@ -567,6 +656,14 @@ impl Pack {
                 text: r.statement,
                 section_id: r.source_section_id,
                 status: s,
+            });
+        }
+        if failed > 0 {
+            status = status.and(Tri::Unknown);
+            statements.push(Statement {
+                text: "(a printed applicability statement that did not pass verification)".into(),
+                section_id: String::new(),
+                status: Tri::Unknown,
             });
         }
         Ok(Some(Applicability {
@@ -635,8 +732,33 @@ mod tests {
         assert_eq!(ev(&sn, &[("serial", "P40D-5000")]).0, Tri::DoesNotApply);
         assert_eq!(
             ev(&sn, &[("serial", "P40E-2000")]).0,
+            Tri::Unknown,
+            "another prefix: not decided"
+        );
+        assert_eq!(
+            ev(&sn, &[("serial", "P40D1234")]).0,
+            Tri::Applies,
+            "separators do not matter"
+        );
+        // A value that is not a version is missing, never a guess.
+        for bad in ["unknown", "?", "2.4a", "2.4.1 (build 77)"] {
+            assert_eq!(
+                ev(&fw, &[("firmware", bad)]),
+                (Tri::Unknown, vec!["firmware".to_string()]),
+                "{bad}"
+            );
+        }
+        assert_eq!(
+            ev(&fw, &[("firmware", "2.4-rc1")]).0,
             Tri::DoesNotApply,
-            "another prefix"
+            "a pre-release is before its release"
+        );
+        assert_eq!(ev(&fw, &[("firmware", "v2.4.0")]).0, Tri::Applies);
+        let rc = c(json!({"attr": "firmware", "op": "ge", "value": "2.4-rc10"}));
+        assert_eq!(
+            ev(&rc, &[("firmware", "2.4-rc9")]).0,
+            Tri::DoesNotApply,
+            "natural order"
         );
         let open = c(
             json!({"attr": "year", "op": "range", "min": 2020, "max": 2024, "max_inclusive": false}),

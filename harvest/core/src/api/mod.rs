@@ -914,6 +914,9 @@ pub struct PracticeItemsParams {
     /// The variant (questions that do not apply to it are left out).
     #[serde(default)]
     pub equip_id: Option<String>,
+    /// The asset (its variant and attributes).
+    #[serde(default)]
+    pub asset_id: Option<String>,
 }
 
 #[derive(Debug, Clone, Deserialize, JsonSchema)]
@@ -1208,6 +1211,9 @@ pub struct ManualHit {
     /// For a reference-table row (`ref_kind` `ref_row`): the row, as it
     /// applies.
     pub row: Option<crate::maint::table::RowView>,
+    /// The hit's statements, when it has any (a hit that does not apply to
+    /// the asset is left out; one not determined is flagged).
+    pub applicability: Option<crate::maint::applic::Applicability>,
 }
 
 #[derive(Debug, Clone, Serialize, JsonSchema)]
@@ -1729,40 +1735,59 @@ fn scope_sections(pack: &Pack, scope: &Option<Scope>) -> Result<Vec<String>> {
 
 fn manual_search(h: &Host, _who: Option<&Principal>, p: ManualSearchParams) -> R<ManualSearch> {
     let pack = &h.pack(nz(&p.pack_id))?;
+    let values = h.records().attr_values(nz(&p.asset_id))?;
+    let equip = equip_for(h, &p.equip_id, &p.asset_id)?;
     let mut r = crate::retrieval::Retriever::new(pack);
     r.embedder = h.embedder(pack);
     let result = r.search(
         &p.query,
         &SearchOptions {
             k: p.k.unwrap_or(10),
-            equip: nz(&p.equip_id).map(str::to_string),
+            equip: equip.clone(),
             within: scope_sections(pack, &p.scope)?,
             ..SearchOptions::default()
         },
     )?;
-    let values = h.records().attr_values(nz(&p.asset_id))?;
-    let equip = equip_for(h, &p.equip_id, &p.asset_id)?;
     let mut hits = Vec::new();
     for hit in &result.hits {
         let sec = match &hit.section_id {
             Some(s) => pack.section(s)?,
             None => None,
         };
-        let row = if hit.ref_kind == "ref_row" {
-            match pack.ref_row(&hit.ref_id)? {
+        let mut row = None;
+        let applicability = match hit.ref_kind.as_str() {
+            "ref_row" => match pack.ref_row(&hit.ref_id)? {
                 Some(r) => {
                     match crate::maint::table::row_view(pack, &r, equip.as_deref(), &values)? {
-                        Some(v) => Some(v),
+                        Some(v) => {
+                            let a = v.applicability.clone();
+                            row = Some(v);
+                            a
+                        }
                         None => continue, // the row does not apply
                     }
                 }
+                None => continue, // a row that did not pass is not shown
+            },
+            // Steps, questions and the rest: their own statements and their
+            // section's.
+            kind @ ("proc_step" | "question" | "procedure") => pack.applicability_with_section(
+                kind,
+                &hit.ref_id,
+                hit.section_id.as_deref(),
+                &values,
+            )?,
+            _ => match &hit.section_id {
+                Some(s) => pack.applicability("section", s, &values)?,
                 None => None,
-            }
-        } else {
-            None
+            },
         };
+        if !crate::maint::applic::Applicability::shown(&applicability) {
+            continue;
+        }
         hits.push(ManualHit {
             row,
+            applicability,
             chunk_id: hit.chunk_id.clone(),
             ref_kind: hit.ref_kind.clone(),
             ref_id: hit.ref_id.clone(),
@@ -2069,7 +2094,13 @@ fn asset_set_attrs(h: &Host, _who: Option<&Principal>, p: AssetSetAttrsParams) -
     use crate::records::ValueSource;
     let pack = h.pack(nz(&p.pack_id))?;
     let defs = pack.attribute_defs()?;
-    let source = p.source.unwrap_or(ValueSource::Typed);
+    // Values taken from a plate are the plate's unless the host says the
+    // vehicle sent them.
+    let source = p.source.unwrap_or(if p.plate.is_some() {
+        ValueSource::Plate
+    } else {
+        ValueSource::Typed
+    });
     let mut values = p.values.clone();
     if let Some(plate) = &p.plate {
         let from = match source {
@@ -2094,7 +2125,8 @@ fn practice_items(
     p: PracticeItemsParams,
 ) -> R<crate::practice::PracticeItems> {
     let pack = h.pack(nz(&p.pack_id))?;
-    Ok(crate::practice::items(&pack, nz(&p.equip_id))?)
+    let (equip, values) = scope(h, &p.equip_id, &p.asset_id)?;
+    Ok(crate::practice::items(&pack, equip.as_deref(), &values)?)
 }
 
 fn practice_record(

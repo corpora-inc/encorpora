@@ -1551,3 +1551,44 @@ fn a_pack_that_needs_a_newer_reader_says_so() {
     let quiet = pump_with(exec("DELETE FROM pack_meta WHERE key = 'min_reader';"));
     assert!(rules(&graph::validate(&quiet.pack).unwrap()).contains(&"pack.min_reader".to_string()));
 }
+
+#[test]
+fn a_procedures_statements_reach_its_steps_and_the_test_procedure() {
+    use harvest_core::maint::applic::Tri;
+    let b = pump_with(exec(
+        r#"INSERT INTO applic VALUES ('procedure', 'proc-battv', 1, '{"attr":"firmware","op":"ge","value":"2.4"}', 'firmware 2.4 and later', 'm40.3-3', 'prov-pump40');"#,
+    ));
+    let t = tree(&b, "t-nocrank");
+    let level = b.pack.level("expert").unwrap();
+    let old = vals(&[("firmware", "2.0")]);
+    let v = view::node_view(&b.pack, &t, "nc.2", &level, None, &old, &[]).unwrap();
+    let tp = v.test_procedure.unwrap();
+    assert_eq!(tp.applicability.unwrap().status, Tri::DoesNotApply);
+    assert!(
+        tp.steps.iter().all(|s| !s.applies),
+        "no step applies when the procedure does not"
+    );
+    let v = view::node_view(&b.pack, &t, "nc.2", &level, None, &vals(&[]), &[]).unwrap();
+    let tp = v.test_procedure.unwrap();
+    assert!(
+        tp.steps
+            .iter()
+            .all(|s| s.applies && s.applicability.as_ref().unwrap().status == Tri::Unknown)
+    );
+    // A statement that failed verification leaves its item undecided.
+    let failed = pump_with(exec(
+        r#"CREATE TEMP TABLE p AS SELECT * FROM provenance WHERE prov_id = 'prov-pump40';
+           UPDATE p SET prov_id = 'prov-bad', verdict = 'fail';
+           INSERT INTO provenance SELECT * FROM p;
+           INSERT INTO applic VALUES ('procedure', 'proc-battv', 1, '{"attr":"firmware","op":"ge","value":"2.4"}', 'firmware 2.4 and later', 'm40.3-3', 'prov-bad');"#,
+    ));
+    let a = failed
+        .pack
+        .applicability("procedure", "proc-battv", &vals(&[("firmware", "9.0")]))
+        .unwrap()
+        .unwrap();
+    assert_eq!(a.status, Tri::Unknown);
+    assert!(
+        rules(&graph::validate(&failed.pack).unwrap()).contains(&"applic.provenance".to_string())
+    );
+}
