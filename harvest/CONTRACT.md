@@ -772,6 +772,18 @@ for a reviewer's screen).
   is `dev-<key id>`. An administrator enrolls a device by its public key
   (`hub.enroll`) and can revoke it (`hub.revoke`); a revoked key is never
   enrolled again. Both are audited with who did them.
+- **Hello.** Every upload opens with `POST /hub/hello`, a small signed
+  `{device_id, signed_at, signature}` (over the canonical JSON of
+  `{format: "harvest-hello/1", device_id, signed_at}`). The hub answers
+  `{accepted, refused: "unenrolled" | "revoked" | "signature" | null,
+  fleet_every_hours, hub_time}` before any payload moves, and audits a
+  refusal. A refused device sends nothing but the hello, backing off (5
+  minutes, doubling, at most a day; restarted when the refusal reason
+  changes or an operator forces a try with `sync.flush {force: true}`). A
+  device with nothing queued sends no hello. `sync.status.hub` carries
+  `reachable` (the hub answered at all: a refusal is an answer),
+  `refused`, and `backoff_until`; `device.info` returns the device's id
+  and public key for an administrator to enroll.
 - **Receive.** `POST /hub/receive` takes a delivery
   `{device_id, signed_at, items: [Upload], signature}` signed by the
   device over the canonical JSON of `{format: "harvest-delivery/1",
@@ -788,7 +800,12 @@ for a reviewer's screen).
   every kind is kept as received.
 - **Lessons and conflicts.** Every upload of a lesson is a version. The
   current version is the greatest by (`updated_at`, device id, item id);
-  arrival order never matters. A newer version from another unit, or one
+  arrival order never matters. When two units' versions are closer in
+  time than the hub's clock-skew bound (`Hub::with_skew_bound_minutes`,
+  default 30), their clocks cannot order them: the conflict is class
+  `needs_reviewer` (else `auto`), the lesson shows `needs_reviewer: true`,
+  and approving it needs the reviewer to name the version (`version`, an
+  item id); the conflict records who chose. A newer version from another unit, or one
   arriving after review, reopens the lesson (`reopened: true`). The queue
   shows every version as `current`, `superseded` (an earlier one from the
   winning unit) or `lost` (another unit's), and `hub.conflicts` lists each
@@ -813,8 +830,9 @@ for a reviewer's screen).
   returns bundles in order. A device's `Records::pull` installs them in
   order and stops at the first it refuses (the next pull asks for it
   again); last, and only when the newest bundle announces a hash it does
-  not hold, it fetches the summary and keeps it once its signature and
-  hash check.
+  not hold and its last fetch is older than the hub's `fleet_every_hours`
+  (a hub setting the device learns at every hello; default 24), it fetches
+  the summary and keeps it once its signature and hash check.
 - **Packs.** The hub's packs root holds `<pack_id>/<version>/` (full) and
   `<pack_id>/delta-<base>-<target>/` (delta) directories, checked against
   the publisher's keys. `GET /hub/pack-offer?pack_id=&have=` returns the

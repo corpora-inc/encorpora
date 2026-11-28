@@ -46,6 +46,7 @@
   ],
   "tamper_prob": 0.0,
   "fleet_every_hours": 24.0,
+  "skew_bound_minutes": 30,
   "rogue_device": false,
   "revoke": [],
   "pack_update_day": 20.0,

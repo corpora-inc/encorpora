@@ -40,7 +40,8 @@ Durations are in hours unless the name says otherwise.
 | `hub.review_every_hours`, `hub.review_delay_hours`, `hub.approve_prob`, `hub.edit_prob` | The reviewer's rhythm. Each pending lesson is approved (some of those edited first) or rejected, then a bundle is published. |
 | `clock_skew_minutes` | Each device's clock is off by up to this much, either way. |
 | `sync_every_minutes` | How often a device syncs while its link is up (default 60). |
-| `fleet_every_hours` | A changed fleet summary is fetched at most this often (default 24). It moves last, after uploads and bundles. |
+| `fleet_every_hours` | The hub's setting, learned by devices at every hello: a changed fleet summary is fetched at most this often (default 24; 168 in the low-bandwidth scenarios). It moves last, after uploads and bundles. |
+| `skew_bound_minutes` | The hub's clock-skew bound for lesson conflicts (default 30). |
 | `conflicts` | `[{day, device, other, gap_minutes}]`: `other` edits the lesson `device` started, `gap_minutes` later. |
 | `tamper_prob` | Chance a bundle is corrupted in transit. The device must refuse it, and asks for it again on the next pull. |
 | `rogue_device` | One extra device that was never enrolled; it works and tries to upload. |
@@ -54,12 +55,13 @@ Durations are in hours unless the name says otherwise.
 | Field | Meaning |
 |---|---|
 | `jobs` | Jobs worked across the fleet. |
-| `delivery` | `captured` (items queued for upload), `delivered` (at the hub), `pending` (still queued), `blocked` (of `pending`: held on a refused device), `lost`, and `rate` (delivered over what accepted devices captured). |
+| `delivery` | `captured` (items queued for upload), `delivered` (at the hub), `pending` (still queued), `blocked` (of `pending`: held on a device the hub refuses), `lost`, `delivered_of_captured` (delivered / captured), and `delivered_of_deliverable` (delivered / (captured − blocked)). |
 | `capture_to_hub_hours` | From capture to the hub storing the item: `n`, `median`, `p90`, `max`. |
 | `approval_to_device_hours` | From a reviewer's approval to each device installing the note. |
-| `bytes` | `up`, `down`, `total`, `per_job`, `per_lesson`, `per_day`, and the shares for `bundles`, `fleet` and `packs`. |
-| `link` | `requests`, `failed_requests`, `lost_replies` (stored at the hub, receipts lost), `duplicates_sent`, `duplicates_suppressed`, `flush_attempts`, and `refused_deliveries` (unenrolled or revoked devices). |
-| `conflicts` | Each lesson two units edited: the winning and losing devices, the rule that decided it, and whether the losing version stays visible to the reviewer. |
+| `bytes` | `up`, `down`, `total`, `per_job`, `per_lesson`, `per_day`; the shares for `bundles`, `fleet` and `packs`; and `refused`, the bytes spent by devices the hub refuses (their hellos, and any delivery refused after a revocation). |
+| `link` | `requests`, `failed_requests`, `lost_replies` (stored at the hub, receipts lost), `duplicates_sent`, `duplicates_suppressed`, `flush_attempts`, `refused_hellos`, `refused_deliveries` (a delivery from a device revoked after its hello), and `backoff_skips` (sync attempts a refused device skipped). |
+| `conflicts` | Each lesson two units edited: the winning and losing devices, the rule, the class (`auto`, or `needs_reviewer` when the edits are within the hub's clock-skew bound and the reviewer chose), who chose, and whether both versions stay visible. |
+| `conflict_classes` | Conflicts per class. |
 | `lessons` | `created`, `edited_on_device`, `approved`, `approved_edited`, `rejected`, `pending_at_end`. |
 | `bundles` | `published`, `installed` (summed over devices), `tampered_in_transit`, `refused`. |
 | `packs` | Whether an update was published, installs per kind (`delta` or `full`), and errors. |
@@ -72,3 +74,4 @@ The invariants:
 - **No bad bundle installed:** every bundle a device installed is byte-identical to the hub's own.
 - **Audit chains intact:** the chain verifies on every device and on the hub.
 - **No upload from an unenrolled or revoked device:** the hub holds nothing from the never-enrolled device, and nothing from a revoked device received after its revocation.
+- **Refused traffic bounded:** `bytes.refused` stays within (refused devices) × (days + 12) × (one hello and its answer), which is what the back-off allows.

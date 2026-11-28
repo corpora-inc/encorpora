@@ -149,12 +149,89 @@ pub(crate) fn migrate(conn: &Connection) -> Result<()> {
     Ok(())
 }
 
+/// What a sealed job-step column is bound to: its row and every clear
+/// column beside it (outcome, value, unit, branch, next node, time), so a
+/// result edited in place, or a sealed value moved to another row, fails
+/// to open.
+#[allow(clippy::too_many_arguments)]
+fn job_step_aad(
+    col: &str,
+    job_id: &str,
+    seq: i64,
+    node: &str,
+    at: &str,
+    outcome: Option<&str>,
+    value: Option<f64>,
+    unit: Option<&str>,
+    label: &str,
+    next: &str,
+) -> String {
+    format!(
+        "job_step.{col}:{job_id}#{seq}|{node}|{at}|{}|{}|{}|{label}|{next}",
+        outcome.unwrap_or(""),
+        value
+            .map(|v| format!("{:016x}", v.to_bits()))
+            .unwrap_or_default(),
+        unit.unwrap_or("")
+    )
+}
+
 /// The asset registry file format.
 pub const ASSET_REGISTRY_FORMAT: &str = "harvest-assets/1";
 /// The job report format (the queued `job` upload).
 pub const JOB_REPORT_FORMAT: &str = "harvest-job/1";
 /// The lesson upload format.
 pub const LESSON_FORMAT: &str = "harvest-lesson/1";
+/// The device's standing with its hub: the last refusal and the back-off.
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
+pub struct HubGate {
+    pub refused: Option<crate::sync::Refusal>,
+    /// The current back-off, in seconds.
+    pub backoff_s: u64,
+    pub next_try_at: Option<String>,
+    pub fleet_every_hours: Option<f64>,
+}
+
+/// First back-off after a refusal, and its cap.
+pub const BACKOFF_FIRST_S: u64 = 300;
+pub const BACKOFF_CAP_S: u64 = 86_400;
+
+impl HubGate {
+    pub(crate) fn load(conn: &Connection) -> Result<Self> {
+        let raw: Option<String> = conn
+            .query_row(
+                "SELECT value FROM records_meta WHERE key = 'hub_gate'",
+                [],
+                |r| r.get(0),
+            )
+            .optional()?;
+        Ok(raw
+            .and_then(|r| serde_json::from_str(&r).ok())
+            .unwrap_or_default())
+    }
+    fn save(&self, conn: &Connection) -> Result<()> {
+        conn.execute(
+            "INSERT INTO records_meta (key, value) VALUES ('hub_gate', ?1)
+             ON CONFLICT (key) DO UPDATE SET value = excluded.value",
+            [serde_json::to_string(self)?],
+        )?;
+        Ok(())
+    }
+}
+
+/// What one upload attempt through a hub did.
+#[derive(Debug, Clone, Serialize, Deserialize, JsonSchema, PartialEq)]
+pub struct HubFlush {
+    /// The hub's answer to the hello; `None` when the attempt was skipped
+    /// (backing off) or the link failed before an answer.
+    pub hello: Option<crate::sync::HelloReply>,
+    /// What was sent; `None` unless the hub accepted the device.
+    pub flush: Option<crate::sync::FlushReport>,
+    /// Skipped: backing off after a refusal until this time.
+    pub skipped_until: Option<String>,
+    pub error: Option<String>,
+}
+
 /// Default least interval between fleet-summary fetches.
 pub const DEFAULT_FLEET_EVERY_HOURS: f64 = 24.0;
 
@@ -897,6 +974,9 @@ pub struct FieldNote {
     /// Always `field`: the host shows it apart from the manual.
     pub source: String,
     pub stream: String,
+    /// The pack the note was issued for (its tree and node ids are that
+    /// pack's); any pack when `None`.
+    pub pack_id: Option<String>,
     pub seq: u64,
     pub scope: NoteScope,
     pub text: String,
@@ -931,7 +1011,22 @@ pub fn day_number(date: &str) -> Option<i64> {
     let y: i64 = it.next()?.parse().ok()?;
     let m: i64 = it.next()?.parse().ok()?;
     let dd: i64 = it.next()?.parse().ok()?;
-    if !(1..=12).contains(&m) || !(1..=31).contains(&dd) {
+    let leap = (y % 4 == 0 && y % 100 != 0) || y % 400 == 0;
+    let days = [
+        31,
+        if leap { 29 } else { 28 },
+        31,
+        30,
+        31,
+        30,
+        31,
+        31,
+        30,
+        31,
+        30,
+        31,
+    ];
+    if !(1..=12).contains(&m) || dd < 1 || dd > days[(m - 1) as usize] {
         return None;
     }
     // Days from civil (Howard Hinnant).
@@ -1364,7 +1459,20 @@ impl Records {
         )?;
         let outcome = result.outcome.as_deref().map(branch::fold);
         let at = now_rfc3339();
-        let aad = |col: &str| format!("job_step.{col}:{job_id}#{seq}|{}|{at}", node.node_id);
+        let aad = |col: &str| {
+            job_step_aad(
+                col,
+                job_id,
+                seq,
+                &node.node_id,
+                &at,
+                outcome.as_deref(),
+                result.value,
+                result.unit.as_deref(),
+                &edge.label,
+                &edge.to_node,
+            )
+        };
         tx.execute(
             "INSERT INTO job_step (job_id, seq, node_id, outcome, value, unit, label, note, photos,
                                    next_node, at, tree_id)
@@ -1452,8 +1560,21 @@ impl Records {
             |r| r.get(0),
         )?;
         let at = now_rfc3339();
-        let aad = |col: &str| format!("job_step.{col}:{job_id}#{seq}|{}|{at}", node.node_id);
         let label = format!("Go to {}", next.tree.title);
+        let aad = |col: &str| {
+            job_step_aad(
+                col,
+                job_id,
+                seq,
+                &node.node_id,
+                &at,
+                Some("goto"),
+                None,
+                None,
+                &label,
+                &entry,
+            )
+        };
         tx.execute(
             "INSERT INTO job_step (job_id, seq, node_id, outcome, value, unit, label, note, photos,
                                    next_node, at, tree_id)
@@ -1561,7 +1682,7 @@ impl Records {
                 job_id,
                 closed_at,
                 self.seal(
-                    &format!("job.resolution:{job_id}"),
+                    &format!("job.resolution:{job_id}|closed|{closed_at}"),
                     Some(&serde_json::to_string(&resolution)?)
                 )?
             ],
@@ -1675,7 +1796,13 @@ impl Records {
             None => Value::Null,
         };
         let resolution: Option<Resolution> = self
-            .unseal(&format!("job.resolution:{job_id}"), resolution)?
+            .unseal(
+                &format!(
+                    "job.resolution:{job_id}|{status}|{}",
+                    closed_at.as_deref().unwrap_or("")
+                ),
+                resolution,
+            )?
             .map(|r| serde_json::from_str(&r))
             .transpose()?;
         type S = (
@@ -1732,7 +1859,20 @@ impl Records {
             step_tree,
         ) in rows
         {
-            let aad = |col: &str| format!("job_step.{col}:{job_id}#{seq}|{node_id}|{at}");
+            let aad = |col: &str| {
+                job_step_aad(
+                    col,
+                    &job_id,
+                    seq,
+                    &node_id,
+                    &at,
+                    outcome.as_deref(),
+                    value,
+                    unit.as_deref(),
+                    &label,
+                    &next_node,
+                )
+            };
             steps.push(JobStep {
                 note: self.unseal(&aad("note"), note)?,
                 photos: serde_json::from_str(
@@ -2345,6 +2485,8 @@ impl Records {
                 )));
             }
         }
+        let seq = i64::try_from(b.seq)
+            .map_err(|_| Error::Invalid(format!("field bundle seq {} is out of range", b.seq)))?;
         let tx = self.write_tx()?;
         let installed: Option<i64> = tx
             .query_row(
@@ -2354,7 +2496,7 @@ impl Records {
             )
             .optional()?;
         if let Some(prev) = installed
-            && (b.seq as i64) <= prev
+            && seq <= prev
         {
             return Err(Error::Invalid(format!(
                 "field bundle {} seq {} is not newer than the installed seq {prev}",
@@ -2384,7 +2526,7 @@ impl Records {
                 params![
                     n.note_id,
                     b.stream,
-                    b.seq as i64,
+                    seq,
                     b.pack_id,
                     n.scope.equip_id,
                     n.scope.tree_id,
@@ -2424,7 +2566,8 @@ impl Records {
                 }
             };
             out.reviews += tx.execute(
-                "UPDATE lesson SET status = ?2, review_note = ?3, updated_at = ?4 WHERE lesson_id = ?1",
+                "UPDATE lesson SET status = ?2, review_note = ?3, updated_at = ?4
+                 WHERE lesson_id = ?1 AND status != 'local'",
                 params![r.lesson_id, status, r.note, now],
             )? as u64;
         }
@@ -2439,7 +2582,7 @@ impl Records {
             "INSERT INTO field_stream (stream, seq, key_id, installed_at) VALUES (?1, ?2, ?3, ?4)
              ON CONFLICT (stream) DO UPDATE SET seq = excluded.seq, key_id = excluded.key_id,
                installed_at = excluded.installed_at",
-            params![b.stream, b.seq as i64, key_id, now],
+            params![b.stream, seq, key_id, now],
         )?;
         let mut ev = AuditEvent::new("field.install", &b.stream);
         ev.pack_id = b.pack_id.clone();
@@ -2464,6 +2607,8 @@ impl Records {
         let all = self.field_notes()?;
         Ok(all
             .into_iter()
+            // Tree and node ids are a pack's own: a note for another pack never shows.
+            .filter(|n| n.pack_id.as_deref().is_none_or(|p| p == pack.pack_id()))
             .filter(|n| {
                 let s = &n.scope;
                 let equip_ok = s
@@ -2497,12 +2642,13 @@ impl Records {
             String,
             Option<String>,
             String,
+            Option<String>,
         );
         let rows: Vec<F> = self
             .conn
             .prepare(
                 "SELECT note_id, stream, seq, equip_id, tree_id, node_id, symptom_id, text, counts, approver,
-                        approved_at, supersedes, received_at
+                        approved_at, supersedes, received_at, pack_id
                  FROM field_note WHERE active = 1 ORDER BY approved_at DESC, note_id",
             )?
             .query_map([], |r| {
@@ -2520,6 +2666,7 @@ impl Records {
                     r.get(10)?,
                     r.get(11)?,
                     r.get(12)?,
+                    r.get(13)?,
                 ))
             })?
             .collect::<rusqlite::Result<_>>()?;
@@ -2529,6 +2676,7 @@ impl Records {
                     note_id: r.0,
                     source: "field".into(),
                     stream: r.1,
+                    pack_id: r.13,
                     seq: r.2 as u64,
                     scope: NoteScope {
                         equip_id: r.3,
@@ -2561,6 +2709,100 @@ impl Records {
             .optional()?;
         raw.map(|r| serde_json::from_str(&r).map_err(Error::from))
             .transpose()
+    }
+
+    /// Upload through a hub: a signed hello first, and the outbox only when
+    /// the hub accepts this device. After a refusal the device sends
+    /// nothing but the hello, backing off (5 minutes, doubling, at most a
+    /// day); `force` (an operator retrying after enrollment) tries now and
+    /// restarts the back-off.
+    pub fn flush_to_hub(
+        &self,
+        link: &dyn crate::sync::HubLink,
+        batch_size: usize,
+        force: bool,
+    ) -> Result<HubFlush> {
+        let mut gate = HubGate::load(&self.conn)?;
+        let now = now_rfc3339();
+        let now_ms = crate::sim_clock_ms();
+        if !force
+            && let Some(t) = gate.next_try_at.as_deref().and_then(parse_rfc3339_ms)
+            && t > now_ms
+        {
+            return Ok(HubFlush {
+                hello: None,
+                flush: None,
+                skipped_until: gate.next_try_at.clone(),
+                error: None,
+            });
+        }
+        // Nothing queued: nothing to ask the hub for.
+        if !force && self.outbox_status()?.pending == 0 {
+            return Ok(HubFlush {
+                hello: None,
+                flush: Some(crate::sync::FlushReport::default()),
+                skipped_until: None,
+                error: None,
+            });
+        }
+        let note = |ok: bool, reachable: bool, error: Option<String>| -> Result<()> {
+            self.conn.execute(
+                "INSERT INTO records_meta (key, value) VALUES ('sync_last_attempt', ?1)
+                 ON CONFLICT (key) DO UPDATE SET value = excluded.value",
+                [serde_json::json!({"at": now, "ok": ok, "reachable": reachable, "error": error}).to_string()],
+            )?;
+            Ok(())
+        };
+        let reply = match link.hello() {
+            Ok(r) => r,
+            Err(e) => {
+                note(false, false, Some(e.to_string()))?;
+                return Ok(HubFlush {
+                    hello: None,
+                    flush: None,
+                    skipped_until: None,
+                    error: Some(e.to_string()),
+                });
+            }
+        };
+        gate.fleet_every_hours = Some(reply.fleet_every_hours);
+        if !reply.accepted {
+            gate.backoff_s = if force || gate.refused != reply.refused {
+                BACKOFF_FIRST_S
+            } else {
+                (gate.backoff_s * 2).clamp(BACKOFF_FIRST_S, BACKOFF_CAP_S)
+            };
+            gate.refused = reply.refused;
+            let until = now_ms + gate.backoff_s as i64 * 1000;
+            gate.next_try_at = Some(crate::audit::rfc3339(
+                until.div_euclid(1000),
+                until.rem_euclid(1000) as u32,
+            ));
+            gate.save(&self.conn)?;
+            let why = reply.refused.map(|r| r.as_str()).unwrap_or("refused");
+            note(
+                false,
+                true,
+                Some(format!("the hub refused this device: {why}")),
+            )?;
+            return Ok(HubFlush {
+                hello: Some(reply),
+                flush: None,
+                skipped_until: gate.next_try_at,
+                error: None,
+            });
+        }
+        gate.refused = None;
+        gate.backoff_s = 0;
+        gate.next_try_at = None;
+        gate.save(&self.conn)?;
+        let flush = self.flush(&crate::sync::LinkTransport(link), batch_size)?;
+        Ok(HubFlush {
+            hello: Some(reply),
+            flush: Some(flush),
+            skipped_until: None,
+            error: None,
+        })
     }
 
     /// Verify and keep a signed fleet summary (`harvest-fleet/1`): a
@@ -2607,18 +2849,14 @@ impl Records {
     /// and install them in order. The first refused bundle stops the pull
     /// (the next pull asks for it again); a link error is reported, never
     /// a partial install.
+    ///
+    /// A changed fleet summary is fetched at most every
+    /// `fleet_every_hours`, the hub's setting learned at the last hello
+    /// (24 until then): it is the least urgent thing on the link.
     pub fn pull(&self, link: &dyn crate::sync::HubLink, keys: &[TrustedKey]) -> Result<PullReport> {
-        self.pull_with(link, keys, DEFAULT_FLEET_EVERY_HOURS)
-    }
-
-    /// [`Records::pull`], fetching a changed fleet summary at most every
-    /// `fleet_every_hours` (it is the least urgent thing on the link).
-    pub fn pull_with(
-        &self,
-        link: &dyn crate::sync::HubLink,
-        keys: &[TrustedKey],
-        fleet_every_hours: f64,
-    ) -> Result<PullReport> {
+        let fleet_every_hours = HubGate::load(&self.conn)?
+            .fleet_every_hours
+            .unwrap_or(DEFAULT_FLEET_EVERY_HOURS);
         let mut report = PullReport::default();
         let since = self.installed_bundle_seq()?;
         let bundles = match link.bundles_since(since) {

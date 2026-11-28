@@ -327,8 +327,15 @@ export type Confidence = "confident" | "closest" | "none";
 /** A conflict between two units' versions of a lesson and how it resolved. */
 export interface Conflict {
   at: string;
+  /**
+   * `auto` (the rule decided) or `needs_reviewer` (the edits were within
+   * the clock-skew bound; a reviewer chooses the version).
+   */
+  class: string;
   lesson_id: string;
   loser: string;
+  /** The reviewer who chose, for a `needs_reviewer` conflict. */
+  resolved_by: string | null;
   rule: string;
   winner: string;
 }
@@ -340,6 +347,14 @@ export type DenseStatus = "used" | "no_embedder" | {
     pack: string | null;
   };
 } | "no_vectors";
+
+/** This device as the hub knows it. */
+export interface DeviceInfo {
+  /** `dev-<key id>`; `None` when no hub link (and so no device key) is set. */
+  device_id: string | null;
+  /** The base64 ed25519 public key an administrator enrolls. */
+  public_key: string | null;
+}
 
 /** A device the hub accepts uploads from (or no longer does). */
 export interface EnrolledDevice {
@@ -527,6 +542,11 @@ export interface FieldNote {
   approver: string;
   counts: NoteCounts;
   note_id: string;
+  /**
+   * The pack the note was issued for (its tree and node ids are that
+   * pack's); any pack when `None`.
+   */
+  pack_id: string | null;
   received_at: string;
   scope: NoteScope;
   seq: number;
@@ -657,6 +677,18 @@ export interface Guidance {
   section_id: string | null;
 }
 
+/** The hub's answer to a hello. */
+export interface HelloReply {
+  accepted: boolean;
+  /**
+   * How often a device fetches a changed fleet summary (a hub setting
+   * the device learns here).
+   */
+  fleet_every_hours: number;
+  hub_time: string;
+  refused: Refusal | null;
+}
+
 /** A fleet history event baked in the pack. */
 export interface HistoryEvent {
   attrs: unknown;
@@ -707,6 +739,11 @@ export interface HubApproveParams {
   edit?: NoteEdit | null;
   lesson_id: string;
   note?: string | null;
+  /**
+   * The version to approve (an item id from the queue); required when
+   * the lesson `needs_reviewer`.
+   */
+  version?: string | null;
 }
 
 export interface HubBundlesParams {
@@ -717,6 +754,20 @@ export interface HubEnrollParams {
   name?: string | null;
   /** The device's ed25519 public key, base64. */
   public_key: string;
+}
+
+/** What one upload attempt through a hub did. */
+export interface HubFlush {
+  error: string | null;
+  /** What was sent; `None` unless the hub accepted the device. */
+  flush: FlushReport | null;
+  /**
+   * The hub's answer to the hello; `None` when the attempt was skipped
+   * (backing off) or the link failed before an answer.
+   */
+  hello: HelloReply | null;
+  /** Skipped: backing off after a refusal until this time. */
+  skipped_until: string | null;
 }
 
 export interface HubPublishParams {
@@ -744,13 +795,23 @@ export interface HubRevokeParams {
  * the last attempt (never probed live).
  */
 export interface HubState {
+  /** No upload is tried before this time (backing off after a refusal). */
+  backoff_until: string | null;
   configured: boolean;
   /** `folder` (a removable drive or shared folder) or `hub`. */
   destination: string | null;
   last_attempt_at: string | null;
   last_error: string | null;
-  /** As of the last attempt; `None` before any. */
+  /**
+   * Whether the hub answered on the last attempt (a refusal is an
+   * answer); `None` before any. Never probed live.
+   */
   reachable: boolean | null;
+  /**
+   * Why the hub refused this device: `unenrolled`, `revoked` or
+   * `signature`; `None` when accepted or not yet asked.
+   */
+  refused: Refusal | null;
 }
 
 /** How the hub stands. */
@@ -1282,6 +1343,9 @@ export interface RecordHow {
   expect: Expect | null;
 }
 
+/** Why the hub refuses a device. */
+export type Refusal = "unenrolled" | "revoked" | "signature";
+
 export interface RefusedBundle {
   error: string;
   seq: number | null;
@@ -1419,6 +1483,11 @@ export interface ReviewItem {
   current: Lesson;
   first_received_at: string;
   lesson_id: string;
+  /**
+   * Two units edited it within the clock-skew bound: approving it needs
+   * the reviewer to choose a version.
+   */
+  needs_reviewer: boolean;
   /** True when a newer version arrived after a review. */
   reopened: boolean;
   reviews: ReviewRecord[];
@@ -1828,6 +1897,14 @@ export interface SymptomSearchParams {
   text?: string | null;
 }
 
+export interface SyncFlushParams {
+  /**
+   * Try now even while backing off after a refusal (an operator retrying
+   * after the device was enrolled).
+   */
+  force?: boolean;
+}
+
 /** What `sync.pull` did. */
 export interface SyncPull {
   bundles: PullReport;
@@ -2029,7 +2106,8 @@ export interface Methods {
   "field.install": { params: FieldInstallParams; result: FieldInstall };
   "field.list": { params: NoParams; result: FieldNote[] };
   "sync.status": { params: NoParams; result: SyncStatus };
-  "sync.flush": { params: NoParams; result: FlushReport };
+  "sync.flush": { params: SyncFlushParams; result: HubFlush };
+  "device.info": { params: NoParams; result: DeviceInfo };
   "sync.pull": { params: NoParams; result: SyncPull };
   "lesson.update": { params: LessonUpdateParams; result: Lesson };
   "fleet.summary": { params: NoParams; result: FleetSummary | null };
@@ -2096,6 +2174,7 @@ export const METHODS = [
   "field.list",
   "sync.status",
   "sync.flush",
+  "device.info",
   "sync.pull",
   "lesson.update",
   "fleet.summary",

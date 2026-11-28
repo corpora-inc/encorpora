@@ -457,7 +457,7 @@ fn the_api_reports_signal_kinds_sync_state_and_tree_titles() {
         "Pump overheats"
     );
     let f = ok(&h, "sync.flush", json!({}));
-    assert_eq!(f["acked"], 1);
+    assert_eq!(f["flush"]["acked"], 1);
     let s = ok(&h, "sync.status", json!({}));
     assert_eq!(s["hub"]["reachable"], true);
     assert!(s["last_synced_at"].is_string());

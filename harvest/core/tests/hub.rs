@@ -207,10 +207,14 @@ fn two_units_editing_one_lesson_resolve_the_same_way_in_any_order() {
     );
     let (ka, kb) = (key(1), key(2));
     // a then b, and b then a (each from its own unit).
-    let h1 = Hub::in_memory(hub_key(), "s").unwrap();
+    let h1 = Hub::in_memory(hub_key(), "s")
+        .unwrap()
+        .with_skew_bound_minutes(10);
     recv(&h1, &ka, &ua);
     recv(&h1, &kb, &ub);
-    let h2 = Hub::in_memory(hub_key(), "s").unwrap();
+    let h2 = Hub::in_memory(hub_key(), "s")
+        .unwrap()
+        .with_skew_bound_minutes(10);
     recv(&h2, &kb, &ub);
     recv(&h2, &ka, &ua);
     for h in [&h1, &h2] {
@@ -236,7 +240,7 @@ fn two_units_editing_one_lesson_resolve_the_same_way_in_any_order() {
         assert_eq!(h.conflicts().unwrap()[0].rule, "newest updated_at");
     }
     // A version arriving after review reopens the lesson.
-    h1.approve(&id, "Reviewer A", None, None).unwrap();
+    h1.approve(&id, "Reviewer A", None, None, None).unwrap();
     let kc = key(3);
     let (_c, uc) = lesson_upload(&f, Some(&id), "Strainer screen torn", "2026-03-02T08:00");
     recv(&h1, &kc, &uc);
@@ -253,7 +257,9 @@ fn two_units_editing_one_lesson_resolve_the_same_way_in_any_order() {
         "Same minute, unit e"
     };
     for order in [[(&kd, &ud), (&ke, &ue)], [(&ke, &ue), (&kd, &ud)]] {
-        let h = Hub::in_memory(hub_key(), "s").unwrap();
+        let h = Hub::in_memory(hub_key(), "s")
+            .unwrap()
+            .with_skew_bound_minutes(0);
         for (k, u) in order {
             recv(&h, k, u);
         }
@@ -276,10 +282,13 @@ fn reviews_become_signed_bundles_that_devices_install() {
     {
         let hub = f.hub.lock().unwrap();
         assert!(
-            matches!(hub.approve(&l1, " ", None, None), Err(Error::Invalid(_))),
+            matches!(
+                hub.approve(&l1, " ", None, None, None),
+                Err(Error::Invalid(_))
+            ),
             "a reviewer is named"
         );
-        hub.approve(&l1, "Reviewer A", None, None).unwrap();
+        hub.approve(&l1, "Reviewer A", None, None, None).unwrap();
         hub.approve(
             &l2,
             "Reviewer B",
@@ -288,11 +297,12 @@ fn reviews_become_signed_bundles_that_devices_install() {
                 scope: None,
             }),
             Some("worded for the fleet"),
+            None,
         )
         .unwrap();
         hub.reject(&l3, "Reviewer A", Some("Not a repair")).unwrap();
         assert!(matches!(
-            hub.approve(&l3, "Reviewer A", None, None),
+            hub.approve(&l3, "Reviewer A", None, None, None),
             Err(Error::Invalid(_))
         ));
         let b = hub.publish(false, "Publisher A").unwrap().unwrap();
@@ -635,7 +645,7 @@ fn the_fleet_summary_moves_only_when_it_changes() {
     let keys = [f.hub.lock().unwrap().trusted_key()];
     {
         let hub = f.hub.lock().unwrap();
-        hub.approve(&l, "Reviewer A", None, None).unwrap();
+        hub.approve(&l, "Reviewer A", None, None, None).unwrap();
         let b = hub.publish(false, "Publisher A").unwrap().unwrap();
         assert!(b.get("fleet").is_none(), "bundles carry only the hash");
         assert!(b["fleet_sha256"].is_string());
@@ -674,7 +684,11 @@ fn the_simulation_keeps_its_invariants_and_repeats_itself() {
     let m = harvest_core::sim::run(&s, None).unwrap();
     assert!(m.invariants.ok, "{:#?}", m.invariants);
     assert_eq!(m.delivery.lost, 0);
-    assert!(m.delivery.rate > 0.99, "{:?}", m.delivery);
+    assert!(
+        m.delivery.delivered_of_deliverable > 0.99,
+        "{:?}",
+        m.delivery
+    );
     assert!(m.link.failed_requests > 0 && m.link.duplicates_suppressed > 0);
     assert!(m.bundles.tampered_in_transit > 0);
     assert_eq!(
@@ -683,7 +697,13 @@ fn the_simulation_keeps_its_invariants_and_repeats_itself() {
     );
     assert_eq!(m.conflicts.len(), 1);
     assert!(m.invariants.no_upload_from_unenrolled_or_revoked);
-    assert!(m.link.refused_deliveries > 0, "the rogue device tried");
+    assert!(m.link.refused_hellos > 0, "the rogue device tried");
+    assert!(m.invariants.refused_traffic_bounded);
+    assert!(
+        m.bytes.refused > 0 && m.bytes.refused < 100_000,
+        "{}",
+        m.bytes.refused
+    );
     assert!(m.conflicts[0].losing_version_visible);
     let again = harvest_core::sim::run(&s, None).unwrap();
     assert_eq!(
@@ -700,7 +720,7 @@ fn a_long_outage_then_one_sync_delivers_everything_and_a_pack_update() {
     s.pack_update_day = Some(5.0);
     let m = harvest_core::sim::run(&s, None).unwrap();
     assert!(m.invariants.ok, "{:#?}", m.invariants);
-    assert_eq!(m.delivery.rate, 1.0);
+    assert_eq!(m.delivery.delivered_of_captured, 1.0);
     assert!(m.capture_to_hub_hours.max.unwrap() > 24.0 * 14.0);
     assert_eq!(m.packs.installed, s.devices as u64);
     assert_eq!(m.packs.kinds.get("delta"), Some(&(s.devices as u64)));
@@ -725,4 +745,112 @@ fn the_checked_in_scenarios_are_the_named_ones() {
             serde_json::from_str(&std::fs::read_to_string(&path).unwrap()).unwrap();
         assert_eq!(got, want, "{name}");
     }
+}
+
+#[test]
+fn edits_within_the_clock_skew_bound_wait_for_a_reviewer() {
+    let f = fleet();
+    let (_a, ua) = lesson_upload(&f, None, "Weed in the strainer", "2026-03-01T10:00");
+    let id = serde_json::from_str::<serde_json::Value>(&ua[0].payload).unwrap()["lesson_id"]
+        .as_str()
+        .unwrap()
+        .to_string();
+    let (_b, ub) = lesson_upload(&f, Some(&id), "Silt in the strainer", "2026-03-01T10:12");
+    let h = Hub::in_memory(hub_key(), "s")
+        .unwrap()
+        .with_skew_bound_minutes(20);
+    let (ka, kb) = (key(1), key(2));
+    recv(&h, &ka, &ua);
+    recv(&h, &kb, &ub);
+    let q = h.queue(Some("pending")).unwrap();
+    assert!(q[0].needs_reviewer);
+    let c = &h.conflicts().unwrap()[0];
+    assert_eq!(c.class, "needs_reviewer");
+    // The clocks cannot order them: approving needs a chosen version.
+    assert!(matches!(
+        h.approve(&id, "Reviewer A", None, None, None),
+        Err(Error::Invalid(_))
+    ));
+    let pick = q[0]
+        .versions
+        .iter()
+        .find(|v| v.lesson.cause == "Weed in the strainer")
+        .unwrap()
+        .item_id
+        .clone();
+    let n = h
+        .approve(&id, "Reviewer A", None, None, Some(&pick))
+        .unwrap();
+    assert!(n.text.contains("Weed in the strainer"));
+    let c = &h.conflicts().unwrap()[0];
+    assert_eq!(c.resolved_by.as_deref(), Some("Reviewer A"));
+    assert_eq!(
+        h.queue(None).unwrap()[0].current.cause,
+        "Weed in the strainer"
+    );
+    // Outside the bound the rule decides.
+    let h2 = Hub::in_memory(hub_key(), "s")
+        .unwrap()
+        .with_skew_bound_minutes(5);
+    recv(&h2, &ka, &ua);
+    recv(&h2, &kb, &ub);
+    assert_eq!(h2.conflicts().unwrap()[0].class, "auto");
+    assert!(!h2.queue(None).unwrap()[0].needs_reviewer);
+}
+
+#[test]
+fn a_refused_device_sends_only_hellos_and_backs_off() {
+    let f = fleet();
+    let rec = Records::in_memory().unwrap();
+    let reg: AssetRegistry = serde_json::from_value(fixture_maint::asset_registry()).unwrap();
+    rec.import_assets(Some(&f.pack), &reg).unwrap();
+    let k = key(60);
+    let pk = k.public_base64();
+    let link = LocalLink {
+        hub: f.hub.clone(),
+        key: k,
+    };
+    fixed_job(&f, &rec, "unit-101", "Replaced relay K1");
+    harvest_core::audit::set_clock(Some(ms("2026-03-01T10:00")));
+    let r = rec.flush_to_hub(&link, 50, false).unwrap();
+    assert_eq!(
+        r.hello.as_ref().unwrap().refused,
+        Some(harvest_core::sync::Refusal::Unenrolled)
+    );
+    assert!(r.flush.is_none(), "no payload after a refusal");
+    let st = rec.sync_state().unwrap();
+    assert_eq!(
+        (st.reachable, st.refused),
+        (Some(true), Some(harvest_core::sync::Refusal::Unenrolled))
+    );
+    // Within the back-off nothing at all is sent.
+    harvest_core::audit::set_clock(Some(ms("2026-03-01T10:02")));
+    assert!(
+        rec.flush_to_hub(&link, 50, false)
+            .unwrap()
+            .skipped_until
+            .is_some()
+    );
+    // The back-off doubles.
+    harvest_core::audit::set_clock(Some(ms("2026-03-01T10:06")));
+    let r2 = rec.flush_to_hub(&link, 50, false).unwrap();
+    assert!(r2.hello.is_some());
+    let until = r2.skipped_until.unwrap();
+    assert!(until.starts_with("2026-03-01T10:16"), "{until}");
+    // Once enrolled, a forced try goes through at once.
+    f.hub.lock().unwrap().enroll(&pk, None, "Admin").unwrap();
+    let r3 = rec.flush_to_hub(&link, 50, true).unwrap();
+    assert_eq!(r3.flush.unwrap().acked, 2);
+    assert_eq!(rec.sync_state().unwrap().refused, None);
+    harvest_core::audit::set_clock(None);
+    let refusals = f
+        .hub
+        .lock()
+        .unwrap()
+        .audit_records()
+        .unwrap()
+        .into_iter()
+        .filter(|r| matches!(r, harvest_core::audit::AuditRecord::Event { event, .. } if event.event == "hub.refuse"))
+        .count();
+    assert_eq!(refusals, 2, "two hellos refused, no deliveries");
 }

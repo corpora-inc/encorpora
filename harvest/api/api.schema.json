@@ -1160,11 +1160,22 @@
         "at": {
           "type": "string"
         },
+        "class": {
+          "description": "`auto` (the rule decided) or `needs_reviewer` (the edits were within\nthe clock-skew bound; a reviewer chooses the version).",
+          "type": "string"
+        },
         "lesson_id": {
           "type": "string"
         },
         "loser": {
           "type": "string"
+        },
+        "resolved_by": {
+          "description": "The reviewer who chose, for a `needs_reviewer` conflict.",
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "rule": {
           "type": "string"
@@ -1178,7 +1189,9 @@
         "winner",
         "loser",
         "rule",
-        "at"
+        "at",
+        "class",
+        "resolved_by"
       ],
       "type": "object"
     },
@@ -1229,6 +1242,30 @@
           "type": "string"
         }
       ]
+    },
+    "DeviceInfo": {
+      "description": "This device as the hub knows it.",
+      "properties": {
+        "device_id": {
+          "description": "`dev-<key id>`; `None` when no hub link (and so no device key) is set.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "public_key": {
+          "description": "The base64 ed25519 public key an administrator enrolls.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "device_id",
+        "public_key"
+      ],
+      "type": "object"
     },
     "EnrolledDevice": {
       "description": "A device the hub accepts uploads from (or no longer does).",
@@ -1929,6 +1966,13 @@
         "note_id": {
           "type": "string"
         },
+        "pack_id": {
+          "description": "The pack the note was issued for (its tree and node ids are that\npack's); any pack when `None`.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "received_at": {
           "type": "string"
         },
@@ -1961,6 +2005,7 @@
         "note_id",
         "source",
         "stream",
+        "pack_id",
         "seq",
         "scope",
         "text",
@@ -2450,6 +2495,39 @@
       ],
       "type": "object"
     },
+    "HelloReply": {
+      "description": "The hub's answer to a hello.",
+      "properties": {
+        "accepted": {
+          "type": "boolean"
+        },
+        "fleet_every_hours": {
+          "description": "How often a device fetches a changed fleet summary (a hub setting\nthe device learns here).",
+          "format": "double",
+          "type": "number"
+        },
+        "hub_time": {
+          "type": "string"
+        },
+        "refused": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Refusal"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "accepted",
+        "refused",
+        "fleet_every_hours",
+        "hub_time"
+      ],
+      "type": "object"
+    },
     "HistoryEvent": {
       "description": "A fleet history event baked in the pack.",
       "properties": {
@@ -2645,6 +2723,14 @@
             "string",
             "null"
           ]
+        },
+        "version": {
+          "default": null,
+          "description": "The version to approve (an item id from the queue); required when\nthe lesson `needs_reviewer`.",
+          "type": [
+            "string",
+            "null"
+          ]
         }
       },
       "required": [
@@ -2681,6 +2767,53 @@
       },
       "required": [
         "public_key"
+      ],
+      "type": "object"
+    },
+    "HubFlush": {
+      "description": "What one upload attempt through a hub did.",
+      "properties": {
+        "error": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "flush": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/FlushReport"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "What was sent; `None` unless the hub accepted the device."
+        },
+        "hello": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/HelloReply"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "The hub's answer to the hello; `None` when the attempt was skipped\n(backing off) or the link failed before an answer."
+        },
+        "skipped_until": {
+          "description": "Skipped: backing off after a refusal until this time.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "hello",
+        "flush",
+        "skipped_until",
+        "error"
       ],
       "type": "object"
     },
@@ -2750,6 +2883,13 @@
     "HubState": {
       "description": "Where the upload destination stands: configured, and reachable as of\nthe last attempt (never probed live).",
       "properties": {
+        "backoff_until": {
+          "description": "No upload is tried before this time (backing off after a refusal).",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "configured": {
           "type": "boolean"
         },
@@ -2773,17 +2913,30 @@
           ]
         },
         "reachable": {
-          "description": "As of the last attempt; `None` before any.",
+          "description": "Whether the hub answered on the last attempt (a refusal is an\nanswer); `None` before any. Never probed live.",
           "type": [
             "boolean",
             "null"
           ]
+        },
+        "refused": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Refusal"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Why the hub refused this device: `unenrolled`, `revoked` or\n`signature`; `None` when accepted or not yet asked."
         }
       },
       "required": [
         "configured",
         "destination",
         "reachable",
+        "refused",
+        "backoff_until",
         "last_attempt_at",
         "last_error"
       ],
@@ -4914,6 +5067,26 @@
       ],
       "type": "object"
     },
+    "Refusal": {
+      "description": "Why the hub refuses a device.",
+      "oneOf": [
+        {
+          "const": "unenrolled",
+          "description": "The hub does not know this device's key.",
+          "type": "string"
+        },
+        {
+          "const": "revoked",
+          "description": "An administrator revoked it.",
+          "type": "string"
+        },
+        {
+          "const": "signature",
+          "description": "The signature does not verify against the enrolled key.",
+          "type": "string"
+        }
+      ]
+    },
     "RefusedBundle": {
       "properties": {
         "error": {
@@ -5440,6 +5613,10 @@
         "lesson_id": {
           "type": "string"
         },
+        "needs_reviewer": {
+          "description": "Two units edited it within the clock-skew bound: approving it needs\nthe reviewer to choose a version.",
+          "type": "boolean"
+        },
         "reopened": {
           "description": "True when a newer version arrived after a review.",
           "type": "boolean"
@@ -5468,7 +5645,8 @@
         "current",
         "versions",
         "reviews",
-        "first_received_at"
+        "first_received_at",
+        "needs_reviewer"
       ],
       "type": "object"
     },
@@ -6888,6 +7066,17 @@
       },
       "type": "object"
     },
+    "SyncFlushParams": {
+      "additionalProperties": false,
+      "properties": {
+        "force": {
+          "default": false,
+          "description": "Try now even while backing off after a refusal (an operator retrying\nafter the device was enrolled).",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
     "SyncPull": {
       "description": "What `sync.pull` did.",
       "properties": {
@@ -7591,6 +7780,14 @@
         "$ref": "#/$defs/ChainReport"
       }
     },
+    "device.info": {
+      "params": {
+        "$ref": "#/$defs/NoParams"
+      },
+      "result": {
+        "$ref": "#/$defs/DeviceInfo"
+      }
+    },
     "equip.list": {
       "params": {
         "$ref": "#/$defs/PackParams"
@@ -7954,10 +8151,10 @@
     },
     "sync.flush": {
       "params": {
-        "$ref": "#/$defs/NoParams"
+        "$ref": "#/$defs/SyncFlushParams"
       },
       "result": {
-        "$ref": "#/$defs/FlushReport"
+        "$ref": "#/$defs/HubFlush"
       }
     },
     "sync.pull": {

@@ -52,6 +52,7 @@
   ],
   "tamper_prob": 0.05,
   "fleet_every_hours": 24.0,
+  "skew_bound_minutes": 30,
   "rogue_device": true,
   "revoke": [
     {
