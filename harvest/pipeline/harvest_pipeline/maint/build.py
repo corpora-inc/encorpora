@@ -24,6 +24,11 @@ maint:
     use: sonnet               # `maint targets` asks; a build reads the cache (`--targets none`: off)
     cache_dir: cache/targets  # <cache_dir>/<resolver>/maint.targets.jsonl
     resolvers: {sonnet: {backend: claude-cli, model: sonnet}, sonnet-img: {backend: claude-cli, model: sonnet, images: true}}
+  gates:                      # keyless holds on every build (gates.py); these are the defaults
+    numbering: true           # a step whose printed number disagrees with its place
+    orphans: true             # orphan test procedures, repeats, free-standing steps on troubleshooting pages
+    question_boxes: {min_present: 3, min_rate: 0.5}   # a unit is held below this share attached
+    warnings: {min_present: 3, min_rate: 0.5}
 ```
 """
 
@@ -248,6 +253,9 @@ def assemble(corpus: Corpus, a: Arm, outs: dict, srcs: list, stage_path: Path,
             _, t_author, t_dir = targets_cfg(corpus, targets)
             answer(asm, t_author, t_dir, call=call, ledger=ledger(corpus) if call else None, log=log)
         asm.plausibility()
+        if asm.plausibility_on:           # the gates read the page geometry too
+            from .gates import run as gates
+            gates(asm)
         page_assets = {}
         for pm in models:
             if pm.image:
@@ -552,6 +560,7 @@ def build(corpus: Corpus, arm_name: str | None, out_dir: Path | None, harvest: s
                "references": [a.report.get("references") for a in asms],
                "plausibility": [a.report.get("plausibility") for a in asms],
                "targets": [a.report.get("targets") for a in asms],
+               "gates": [a.report.get("gates") for a in asms],
                "stage": str(work(corpus) / f"stage-{a.name}.sqlite")}
     summary["density"] = _density(out_dir, srcs, m)
     (work(corpus) / f"build-{a.name}.json").write_text(json.dumps(summary, indent=2, default=str))

@@ -37,6 +37,49 @@ def _only_word(pm, r) -> bool:
 QUESTION = re.compile(r"^\s*(?:STEP\s+)?\d+[.)]\s+.*\?\s*$", re.S)
 
 
+def guard_blocks(pm) -> list[tuple[str, object, int | None, str]]:
+    """The WARNING, CAUTION, NOTE ... blocks printed on a page, from the page model alone:
+    (class, region, k, text) where k is the k-th block opened inside a longer region (None: the
+    region is the block)."""
+    out = []
+    heading_only = {r.id for r in pm.regions if r.words and pm.region_text(r).strip().rstrip(":").upper() in
+                    ("WARNING", "CAUTION", "NOTE", "DANGER", "WARNINGS", "CAUTIONS", "NOTES")}
+    for r in pm.regions:
+        if not r.words or r.kind in ("header", "footer") or r.id in heading_only:
+            continue
+        lines = [" ".join(pm.words[i].text for i in ln) for ln in r.lines]
+        first = lines[0].strip() if lines else ""
+        # blocks opened by a class word inside a longer region ("... NOTE: A battery ..."), one per line
+        inner = [ln for ln in r.lines[1:] if ln and canon(pm.words[ln[0]].text)
+                 and pm.words[ln[0]].text.rstrip().endswith((":", ".")) and len(ln) > 2]
+        for k, ln in enumerate(inner):
+            out.append((canon(pm.words[ln[0]].text).lower(), r, k, " ".join(pm.words[i].text for i in ln)))
+        cw = None if (_only_word(pm, r) or _DEFINES.match(first)) else class_of_block(pm, r)
+        if cw and len(pm.region_text(r).split()) >= 3:
+            out.append((cw["word"].lower(), r, None, f"{cw['printed']} {pm.region_text(r)}"))
+    return out
+
+
+def question_boxes(pm) -> list:
+    """The question boxes printed on a page: a ruled box two or more drawn arrows touch, or whose text
+    is a question."""
+    ends: dict[str, int] = {}
+    for cn in pm.connectors:
+        for end in {cn.tail, cn.head} - {None}:
+            ends[end] = ends.get(end, 0) + 1
+    out = []
+    for r in pm.regions:
+        if not r.words or r.kind != "box":
+            continue
+        text = " ".join(" ".join(pm.words[i].text for i in ln) for ln in r.lines)
+        if ends.get(r.id, 0) >= 2 or QUESTION.match(text) or text.rstrip().endswith("?"):
+            out.append(r)
+    return out
+
+
+WARNING_CLASSES = ("warning", "caution", "danger", "notice")
+
+
 def coverage(corpus: Corpus, pack_dir: Path) -> dict:
     srcs = sources(corpus, log=None)
     regions_file = pack_dir.parent / f"{pack_dir.name}.regions.json"
@@ -53,64 +96,35 @@ def coverage(corpus: Corpus, pack_dir: Path) -> dict:
     guards_from = {r[0] for r in c.execute("SELECT from_id, to_id FROM xref WHERE kind='guards'") if r[1] in secs}
     node_secs = {r[0]: r[1] for r in c.execute("SELECT section_id, kind FROM fault_node")} if has("fault_node") else {}
     out = {"guards": {}, "questions": {"present": 0, "attached": 0, "missing": []}, "pages": 0}
+    nonguard = ("paragraph", "step", "section", "chapter", "table", "figure")
     for rec, models, _ in srcs:
         sid_ = rec["source_id"]
         for pm in models:
             out["pages"] += 1
-            tails: dict[str, int] = {}
-            for cn in pm.connectors:
-                for end in {cn.tail, cn.head} - {None}:
-                    tails[end] = tails.get(end, 0) + 1
             out["arrow_pages"] = out.get("arrow_pages", 0) + bool(pm.connectors)
-            heading_only = {}
-            for r in pm.regions:
-                if r.words and pm.region_text(r).strip().rstrip(":").upper() in ("WARNING", "CAUTION", "NOTE", "DANGER",
-                                                                               "WARNINGS", "CAUTIONS", "NOTES"):
-                    heading_only[r.id] = r
-            for r in pm.regions:
-                if not r.words or r.kind in ("header", "footer"):
-                    continue
-                if r.id in heading_only:
-                    continue
-                lines = [" ".join(pm.words[i].text for i in ln) for ln in r.lines]
-                first = lines[0].strip() if lines else ""
+            for kind, r, k, text in guard_blocks(pm):
                 where = f"{pm.label or pm.index} {r.id}"
-                sec = sec_of.get((sid_, r.id))
-                # a block by the extractor's own definition: a class word printed with it (blocks.py)
-                # blocks opened by a class word inside a longer region ("... NOTE: A battery ..."), one per line
-                inner = [ln for ln in r.lines[1:] if ln and canon(pm.words[ln[0]].text)
-                         and pm.words[ln[0]].text.rstrip().endswith((":", ".")) and len(ln) > 2]
-                if inner:
+                g = out["guards"].setdefault(kind, {"present": 0, "attached": 0, "missing": []})
+                g["present"] += 1
+                if k is not None:
                     spans = [x for x in spans_of.get((sid_, r.id), []) if x in secs and x in guards_from]
-                    for k, ln in enumerate(inner):
-                        kind = canon(pm.words[ln[0]].text).lower()
-                        g = out["guards"].setdefault(kind, {"present": 0, "attached": 0, "missing": []})
-                        g["present"] += 1
-                        if k < len(spans):
-                            g["attached"] += 1
-                        else:
-                            g["missing"].append(f"{where}: " + " ".join(pm.words[i].text for i in ln)[:60])
-                cw = None if (_only_word(pm, r) or _DEFINES.match(first)) else class_of_block(pm, r)
-                if cw and len(pm.region_text(r).split()) >= 3:
-                    kind = cw["word"].lower()
-                    g = out["guards"].setdefault(kind, {"present": 0, "attached": 0, "missing": []})
-                    g["present"] += 1
-                    nonguard = ("paragraph", "step", "section", "chapter", "table", "figure")
-                    cands = [sec] + spans_of.get((sid_, r.id), [])
+                    ok = k < len(spans)
+                else:
+                    cands = [sec_of.get((sid_, r.id))] + spans_of.get((sid_, r.id), [])
                     ok = any(x and x in secs and secs[x][0] not in nonguard and x in guards_from for x in cands)
-                    if ok:
-                        g["attached"] += 1
-                    else:
-                        g["missing"].append(f"{where}: {cw['printed']} {pm.region_text(r)[:60]}")
-                text = " ".join(lines)
-                if r.kind == "box" and (tails.get(r.id, 0) >= 2 or QUESTION.match(text) or text.rstrip().endswith("?")):
-                    q = out["questions"]
-                    q["present"] += 1
-                    if sec and sec in node_secs:
-                        q["attached"] += 1
-                    else:
-                        q["missing"].append(f"{where}: {text[:70]}")
-    wc = [v for k, v in out["guards"].items() if k in ("warning", "caution", "danger", "notice")]
+                if ok:
+                    g["attached"] += 1
+                else:
+                    g["missing"].append(f"{where}: {text[:60]}")
+            for r in question_boxes(pm):
+                q = out["questions"]
+                q["present"] += 1
+                sec = sec_of.get((sid_, r.id))
+                if sec and sec in node_secs:
+                    q["attached"] += 1
+                else:
+                    q["missing"].append(f"{pm.label or pm.index} {r.id}: {pm.region_text(r)[:70]}")
+    wc = [v for k, v in out["guards"].items() if k in WARNING_CLASSES]
     present = sum(v["present"] for v in wc)
     attached = sum(v["attached"] for v in wc)
     out["warnings_cautions"] = {"present": present, "attached": attached,
