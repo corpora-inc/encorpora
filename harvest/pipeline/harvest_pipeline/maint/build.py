@@ -439,15 +439,19 @@ def build_table(corpus: Corpus, out_dir: Path | None, harvest: str, pubkey: str 
     finally:
         emb.close()
     rep = verify_graph(harvest, out_dir, pubkey)
-    shipped = {r[0] for r in __import__("sqlite3").connect(res["path"]).execute("SELECT tree_id FROM fault_tree")}
+    pc = __import__("sqlite3").connect(res["path"])
+    shipped = {r[0] for r in pc.execute("SELECT tree_id FROM fault_tree")}
+    treeless = pc.execute("SELECT COUNT(*) FROM signal_map WHERE tree_id IS NULL").fetchone()[0]
     rows = sum(r["rows"] for r in reports.values())
     summary = {"pack": res, "tables": reports, "synonyms": syn_rep, "graph": rep.get("graph"), "ok": rep.get("ok"),
                "signal_patterns": [{"examples": r.get("pattern_examples"), "misses": len(r["pattern_misses"]),
                                     "collisions": len(r["pattern_collisions"]), **(r.get("pattern_basis") or {})}
                                    for r in reports.values()],
                "coverage": {"rows_in_source": rows, "trees_shipped": len(shipped),
+                            "rows_signal_only": treeless,
+                            "rows_in_pack": len(shipped) + treeless,
                             "rows_unfit": sum(len(r["unfit"]) for r in reports.values()),
-                            "rate": round(len(shipped) / rows, 4) if rows else 1.0},
+                            "rate": round((len(shipped) + treeless) / rows, 4) if rows else 1.0},
                "verdicts": dict(stage.conn.execute("SELECT verdict, COUNT(*) FROM provenance GROUP BY verdict").fetchall())}
     (work(corpus) / "build-table.json").write_text(json.dumps(summary, indent=2, default=str))
     return summary

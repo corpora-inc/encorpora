@@ -661,6 +661,9 @@ class Assembly:
                    "section_id": rec["sec"]["sid"] if rec.get("sec") else "",
                    "expect": canonical_json(rec["expect"]) if rec["expect"] else None,
                    "target": None, "proc_id": rec["proc_id"], "lang": "en"}
+            ref = self._reference(rec)
+            if ref and "reference" in self._node_cols():
+                row["reference"] = ref        # the printed cross-reference, verbatim from the node's text
             rec["row"] = row
             pid = self.prov(rec["ctx"], "fault_node", rec["node_id"], n, rec["prov"])
             rec["pid"] = pid
@@ -696,6 +699,22 @@ class Assembly:
         if title_loc:
             self.loc("fault_tree", tree_id, "title", title_loc)
         self.tally("fault_tree", pid)
+
+    def _node_cols(self) -> list[str]:
+        if not hasattr(self, "_ncols"):
+            from ..schema import table_columns
+            self._ncols = table_columns(self.stage.conn, "fault_node")
+        return self._ncols
+
+    @staticmethod
+    def _reference(rec: dict) -> str | None:
+        t = rec["raw"].get("target") or {}
+        loc = rec.get("loc")
+        if not t.get("ref") or not loc:
+            return None
+        words = t["ref"].split()
+        m = re.search(r"\s+".join(re.escape(w) for w in words), loc.text, re.I)
+        return m.group(0) if m else None
 
     def resolve_targets(self) -> None:
         """Action targets name a task or table by its printed reference; resolve across units."""

@@ -122,8 +122,9 @@ def _maint_filter(table: str, release: bool) -> str | None:
                        " OR (ref_kind='fault_tree' AND ref_id IN (SELECT tree_id FROM fault_tree))"
                        " OR (ref_kind='fault_node' AND ref_id IN (SELECT node_id FROM fault_node)))",
         "symptom": f"{_PASS} AND tree_id IN (SELECT tree_id FROM fault_tree)",
-        "signal_map": f"{_PASS} AND tree_id IN (SELECT tree_id FROM fault_tree)"
-                      " AND (node_id IS NULL OR node_id IN (SELECT node_id FROM fault_node))",
+        "signal_map": f"{_PASS} AND ((tree_id IN (SELECT tree_id FROM fault_tree)"
+                      " AND (node_id IS NULL OR node_id IN (SELECT node_id FROM fault_node)))"
+                      " OR (tree_id IS NULL AND node_id IS NULL AND section_id IN (SELECT section_id FROM section)))",
     }.get(table)
 
 

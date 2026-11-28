@@ -391,8 +391,19 @@ def _trees(tb: TableBuild, by_msg: dict, synonyms: dict[int, dict]) -> None:
             tid += "x"
         tids.add(tid)
         if not any(r[4] for r in rows):
-            tb.report["unfit"].append({"row": rows[0][2], "message": msg, "why": "no solution is printed: a symptom "
-                                       "with nothing to do cannot be a tree (a path must end in an action)"})
+            # no corrective action is printed: no tree (a path must end in an action), but the message still
+            # resolves to its printed cause through a signal rule that cites the row's section
+            tb.report["unfit"].append({"row": rows[0][2], "message": msg, "why": "no solution is printed: a signal "
+                                       "to the cause's section, no tree"})
+            pat = pattern_for(msg, tb.signal_prefix, tb.instance_nouns)
+            if schema_allows_treeless_signal(st):
+                gpid = _prov(tb, "signal_map", f"{tb.signal_kind}:{pat}", {"pattern": pat, "message": msg}, [],
+                             "deterministic", "rules", ["no solution printed: section-only signal"])
+                st.conn.execute("INSERT INTO signal_map (signal_kind, pattern, title, tree_id, node_id, section_id, quote, "
+                                "prov_id) VALUES (?,?,?,?,?,?,?,?)",
+                                (tb.signal_kind, pat, msg, None, None, row_node.section_id, msg, gpid))
+                tb.report["signals"] += 1
+                tb.report["section_only_signals"] = tb.report.get("section_only_signals", 0) + 1
             continue
         problems: list[str] = []
         nodes, edges, facets = [], [], []
@@ -444,16 +455,20 @@ def _trees(tb: TableBuild, by_msg: dict, synonyms: dict[int, dict]) -> None:
                 problems.append(f"facet of {f[0]} is not verbatim in {f[4]}")
         pid = _prov(tb, "fault_tree", tid, {"message": msg, "rows": [r[2] for r in rows]}, problems, "deterministic",
                     "rules", [f"table rows {', '.join(str(r[2]) for r in rows)}"])
-        st.conn.execute("INSERT INTO fault_tree VALUES (?,?,?,?,?,?,?)",
+        st.conn.execute("INSERT INTO fault_tree (tree_id, title, system, entry_node, section_ids, lang, prov_id) "
+                        "VALUES (?,?,?,?,?,?,?)",
                         (tid, msg, None, sym, json.dumps([row_node.section_id]), "en", pid))
         for nid, kind, text, sec, expect in nodes:
             npid = _prov(tb, "fault_node", nid, {"text": text, "kind": kind}, problems, "deterministic", "rules", [])
-            st.conn.execute("INSERT INTO fault_node VALUES (?,?,?,?,?,?,?,?,?,?)",
+            st.conn.execute("INSERT INTO fault_node (node_id, tree_id, kind, text, section_id, expect, target, proc_id, "
+                            "lang, prov_id) VALUES (?,?,?,?,?,?,?,?,?,?)",
                             (nid, tid, kind, text, sec, canonical_json(expect) if expect else None, None, None, "en", npid))
         for frm, ordn, label, to, retry in edges:
-            st.conn.execute("INSERT INTO fault_edge VALUES (?,?,?,?,?,?)", (frm, ordn, label, None, to, retry))
+            st.conn.execute("INSERT INTO fault_edge (from_node, ord, label, cond, to_node, retry) VALUES (?,?,?,?,?,?)",
+                            (frm, ordn, label, None, to, retry))
         for node, facet, ordn, text, sec in facets:
-            st.conn.execute("INSERT INTO fault_facet VALUES (?,?,?,?,?)", (node, facet, ordn, text, sec))
+            st.conn.execute("INSERT INTO fault_facet (node_id, facet, ord, text, section_id) VALUES (?,?,?,?,?)",
+                            (node, facet, ordn, text, sec))
         tb.report["trees"] += 1
         # symptom, with the cached plain-language synonyms when they passed their checks
         k = rows[0][2]
@@ -464,15 +479,21 @@ def _trees(tb: TableBuild, by_msg: dict, synonyms: dict[int, dict]) -> None:
                      syn.get("backend", "deterministic"), syn.get("model_id", "rules"),
                      ([f"synonyms from {syn.get('model_id')}, row text only"] if syn else [])
                      + [f"synonym dropped: {d!r}" for d in dropped], syn.get("created_at", ""))
-        st.conn.execute("INSERT INTO symptom VALUES (?,?,?,?,?,?,?)",
+        st.conn.execute("INSERT INTO symptom (symptom_id, tree_id, title, system, synonyms, lang, prov_id) "
+                        "VALUES (?,?,?,?,?,?,?)",
                         (f"s-{tid[2:]}", tid, msg, None, json.dumps(syn_ok, ensure_ascii=False), "en", spid))
         tb.report["symptoms"] += 1
         pat = pattern_for(msg, tb.signal_prefix, tb.instance_nouns)
         gpid = _prov(tb, "signal_map", f"{tb.signal_kind}:{pat}", {"pattern": pat, "message": msg}, problems,
                      "deterministic", "rules", [f"example: {example_for(msg, tb.signal_prefix)!r}"])
-        st.conn.execute("INSERT INTO signal_map VALUES (?,?,?,?,?,?,?,?)",
+        st.conn.execute("INSERT INTO signal_map (signal_kind, pattern, title, tree_id, node_id, section_id, quote, "
+                        "prov_id) VALUES (?,?,?,?,?,?,?,?)",
                         (tb.signal_kind, pat, msg, tid, sym, row_node.section_id, msg, gpid))
         tb.report["signals"] += 1
+
+
+def schema_allows_treeless_signal(st: Stage) -> bool:
+    return any(r[1] == "tree_id" and not r[3] for r in st.conn.execute("PRAGMA table_info(signal_map)"))
 
 
 def _chain(nodes, edges, chain, ss) -> None:
