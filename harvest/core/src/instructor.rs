@@ -294,6 +294,8 @@ impl Turn {
 }
 
 const FIELDS: &[&str] = &["summary", "hard", "mistakes", "exam"];
+/// The mastery an unpractised skill counts as in the focus list.
+const UNPRACTISED: f64 = 0.5;
 const INTENTS: &[&str] = &[
     "node",
     "rule",
@@ -1119,7 +1121,8 @@ impl Instructor {
     }
 
     /// The skills worth the most exam points the learner has not mastered:
-    /// domain weight × (1 − mastery), unpractised skills at mastery 0.3.
+    /// domain weight × (1 − mastery). An unpractised skill counts as 0.5, so
+    /// a skill the learner has shown to be weak comes before an unknown one.
     fn focus_items(&self, learner: &Learner, k: usize) -> Vec<FocusItem> {
         let Some(e) = self.exam(learner) else {
             return Vec::new();
@@ -1136,7 +1139,7 @@ impl Instructor {
                     continue;
                 }
                 let m = learner.mastery.get(skill_id(s)).copied();
-                let score = weight / n_skills.sqrt() * (1.0 - m.unwrap_or(0.3));
+                let score = weight / n_skills.sqrt() * (1.0 - m.unwrap_or(UNPRACTISED));
                 items.push((
                     score,
                     FocusItem {

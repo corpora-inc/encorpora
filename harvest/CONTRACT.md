@@ -467,7 +467,7 @@ names what the app needs to reserve its height:
 | `film` | `film_id`, `node_id` | a lesson film; the app fills aspect, duration and poster from its media catalog |
 | `diagram` | `diagram_id` | a diagram |
 | `question` | `q_id`, `chosen?` | inline practice (recorded in practice state); with `chosen`, the learner's answer under review with the rationales |
-| `focus` | `items [{node_id, title, domain, weight, mastery\|null}]` | study priorities: domain weight × (1 − mastery) |
+| `focus` | `items [{node_id, title, domain, weight, mastery\|null}]` | study priorities: domain weight × (1 − mastery), an unpractised skill at 0.5 |
 | `tool` | `tool` (`clearance`\|`load-chart`\|`signals`), `input?` | the app's tool; `clearance` with `input {kv, traveling}` is followed by the table row as text, quote and cite |
 | `search` | `query` | the grouped rule results for a query (the rules index the app shows) |
 
