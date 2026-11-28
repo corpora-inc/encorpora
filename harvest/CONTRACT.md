@@ -596,13 +596,22 @@ CREATE TABLE failure_mode (mode_id TEXT PRIMARY KEY, equip_id TEXT NOT NULL, sys
   (`verbatim: false`, `quote_verified: false`) and fails validation.
 - **`expect`** (how a result is recorded): `{"kind":"yes_no"}`,
   `{"kind":"pass_fail"}`, `{"kind":"choice","options":[…]}`,
-  `{"kind":"value","unit":"V","min":0,"max":30}` (`min`/`max` optional: the
-  range the node accepts), `{"kind":"ack"}` (outcome `done`, one branch).
+  `{"kind":"value","unit":"V","min":0,"max":30,"labels":["No indication"]}`
+  (`min`/`max` optional: the range the node accepts; `labels` optional:
+  readings the manual names instead of a number, each taken by one plain
+  branch with that label and recorded as an outcome, apart from the
+  numeric partition; the view lists both, numeric branches with their
+  `cond`, named ones with their `outcome`), `{"kind":"ack"}` (outcome
+  `done`, one branch).
   A node with no branches has none.
 - **`cond`** on an edge: null matches by label (case and spacing folded:
   `Yes` takes `yes`); a value node's edges carry
   `{"op":"<"|"<="|">"|">="|"==","value":x}` or
-  `{"op":"between","min":a,"max":b}` (`a <= v < b`). No unit conversion:
+  `{"op":"between","min":a,"max":b}` (`a <= v < b`; `"min_inclusive"` and
+  `"max_inclusive"` set each end: a printed "0.6 TO 1.2" beside "LESS THAN
+  0.6" and "MORE THAN 1.2" is both inclusive). The numeric branches must
+  cover the range exactly once: adjacent ranges that meet at an
+  inclusive/exclusive boundary pass, gaps and overlaps fail. No unit conversion:
   a value in another unit is refused. `retry = 1` marks a loop the manual
   makes on purpose (re-test after an adjustment).
 - **`target`**: `tree:<id>`, `tree:<id>#<node_id>` (enter that tree at

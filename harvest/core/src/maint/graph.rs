@@ -456,20 +456,54 @@ fn coverage(
         conds.push((e.label.clone(), c));
     }
     match expect {
-        Expect::Value { min, max, .. } => {
+        Expect::Value {
+            min, max, labels, ..
+        } => {
+            let named: Vec<String> = labels.iter().map(|l| fold(l)).collect();
+            if named.iter().collect::<BTreeSet<_>>().len() != named.len() {
+                out.add("node.expect", t, node, "repeated reading labels");
+            }
+            if named.iter().any(|l| l.is_empty()) {
+                out.add("node.expect", t, node, "a reading label is blank");
+            }
             let mut ivs: Vec<(String, Interval)> = Vec::new();
+            let mut got: BTreeMap<String, usize> = BTreeMap::new();
             for (label, c) in &conds {
                 match c.as_ref().map(Cond::interval) {
                     Some(Ok(i)) => ivs.push((label.clone(), i)),
                     Some(Err(m)) => out.add("edge.cond", t, node, format!("edge {label:?}: {m}")),
+                    // A plain branch is a named reading.
+                    None if named.contains(&fold(label)) => {
+                        *got.entry(fold(label)).or_insert(0) += 1
+                    }
                     None => out.add(
                         "edge.coverage",
                         t,
                         node,
-                        format!("edge {label:?} of a measured value has no numeric condition"),
+                        format!(
+                            "edge {label:?} of a measured value has no numeric condition and is not one of its reading labels"
+                        ),
                     ),
                 }
             }
+            for w in &named {
+                match got.get(w) {
+                    None => out.add(
+                        "edge.coverage",
+                        t,
+                        node,
+                        format!("no branch for reading {w:?}"),
+                    ),
+                    Some(n) if *n > 1 => out.add(
+                        "edge.coverage",
+                        t,
+                        node,
+                        format!("{n} branches for reading {w:?}"),
+                    ),
+                    _ => {}
+                }
+            }
+            // The numeric branches partition the range; labels are apart.
             for p in branch::partition_problems(&ivs, branch::domain(*min, *max)) {
                 out.add("edge.coverage", t, node, p);
             }
