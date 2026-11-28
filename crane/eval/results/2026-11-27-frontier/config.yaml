@@ -1,0 +1,40 @@
+# Frontier models alone (no retrieval, no tools) on the fresh sets, for the release bar's
+# "beats the frontier" criterion. Same system prompt as ../2026-11-27-baseline/config.yaml.
+# Run with --set ../../heldout-v2.jsonl (or v3). Paths are relative to this file.
+set: ../../heldout-v2.jsonl
+reference_sections: ../../sources/sections-2026-11-24.jsonl
+
+match:
+  aliases: []
+
+backends:
+  - name: frontier-alone
+    kind: claude
+    model: sonnet
+    timeout_s: 300
+    system_prompt: &baseline >-
+      You are a safety assistant for US crane operators, riggers, signal persons and inspectors.
+      Answer from the US OSHA crane regulations: 29 CFR 1926 Subpart CC (cranes and derricks in
+      construction, with appendices) and 29 CFR 1910.179, 1910.180 and 1910.184. Answer concisely and
+      exactly, with the numbers and conditions that apply, and cite the section and paragraph you rely
+      on, like §1926.1408(a)(2). If the question is outside these regulations or needs information you
+      do not have, such as a manufacturer's procedure, a specific crane's load chart, another
+      standard's text or legal advice, say that you cannot answer it from these regulations instead of
+      guessing.
+
+  - name: opus-alone
+    kind: claude
+    model: opus
+    timeout_s: 600
+    system_prompt: *baseline
+
+compare:
+  - [frontier-alone, opus-alone]
+
+judge:
+  model: opus
+  agreement_model: sonnet
+  agreement_sample: 0.15
+  cache: ../2026-11-27-baseline/.judge-cache
+  per_call: 6
+  jobs: 3

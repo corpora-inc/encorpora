@@ -1,0 +1,400 @@
+{
+ "meta": {
+  "started_at": "2026-11-28T00:52:05+00:00",
+  "set": {
+   "path": "../../crane/eval/heldout-v2.jsonl",
+   "sha256": "f19bd6fe86d33a8506967dec0fcb04fb73a92c164c9ef5f7a80405bba9ed0211",
+   "items": 73
+  },
+  "reference_sections": {
+   "path": "../../crane/eval/results/2026-11-27-frontier/../../sources/sections-2026-11-24.jsonl",
+   "sha256": "95762f535457192699565a367cf8593e6538e22bb799cdcbad9167ff78db0777"
+  },
+  "harness_commit": "e113660ed408342352bb47291ca656ddb7463ba3",
+  "host": {
+   "machine": "arm64",
+   "system": "Darwin",
+   "release": "27.2.0",
+   "processor": "arm",
+   "python": "3.14.9"
+  },
+  "judge": {
+   "model": "opus",
+   "agreement_model": "sonnet",
+   "agreement_sample": 0.15,
+   "calls": 50,
+   "cost_usd": 8.938,
+   "models_seen": [
+    "claude-opus-5-5",
+    "claude-sonnet-5-5"
+   ]
+  },
+  "backends": {
+   "frontier-alone": {
+    "name": "frontier-alone",
+    "kind": "claude",
+    "model": "sonnet",
+    "timeout_s": 300,
+    "system_prompt_sha256": "8e379ec15e9ea8a94633c6918d514dfd5b838c9e88a6f9916408bd79807caf59",
+    "config_sha256": "c9d61bea4b280b72700b764b0501109fce99c98a1debb2f0aab287c563efacef",
+    "reported_pack_versions": [],
+    "reported_models": [
+     "claude-sonnet-5-5"
+    ]
+   },
+   "opus-alone": {
+    "name": "opus-alone",
+    "kind": "claude",
+    "model": "opus",
+    "timeout_s": 600,
+    "system_prompt_sha256": "8e379ec15e9ea8a94633c6918d514dfd5b838c9e88a6f9916408bd79807caf59",
+    "config_sha256": "b85dab9555614789d28fcfce21215e708e7978203146af9482ef5a3b94609f83",
+    "reported_pack_versions": [],
+    "reported_models": [
+     "claude-opus-5-5"
+    ]
+   }
+  },
+  "finished_at": "2026-11-28T01:10:40+00:00",
+  "incomplete": []
+ },
+ "backends": {
+  "frontier-alone": {
+   "n": 73,
+   "errors": 0,
+   "n_answerable": 59,
+   "n_must_decline": 14,
+   "citation_precision_gold": 0.339572192513369,
+   "citation_precision_supported": 0.7406417112299465,
+   "cites_exist_rate": 0.9598930481283422,
+   "claims": {
+    "supported": 598,
+    "unsupported": 163,
+    "answers_judged": 58
+   },
+   "unsupported_claim_rate": 0.21419185282522996,
+   "answers_with_unsupported_claim": 0.8620689655172413,
+   "quotes": {
+    "total": 0,
+    "verbatim_ok": 0
+   },
+   "quote_verbatim_rate": null,
+   "decline": {
+    "tp": 14,
+    "fp": 1,
+    "fn": 0,
+    "precision": 0.9333333333333333,
+    "recall": 1.0,
+    "false_decline_rate": 0.01694915254237288
+   },
+   "correctness": {
+    "graded": 59,
+    "expected": 59,
+    "mean_score": 0.9067796610169492,
+    "fully_correct": 0.847457627118644,
+    "at_least_partly": 0.9661016949152542,
+    "fully_correct_ci95": [
+     0.7457627118644068,
+     0.9322033898305084
+    ],
+    "must_decline_handled": 1.0
+   },
+   "by_category": {
+    "assembly-disassembly": {
+     "n": 6,
+     "fully_correct": 1.0
+    },
+    "crawler-truck-locomotive": {
+     "n": 3,
+     "fully_correct": 1.0
+    },
+    "derricks": {
+     "n": 2,
+     "fully_correct": 0.5
+    },
+    "fall-protection": {
+     "n": 1,
+     "fully_correct": 1.0
+    },
+    "floating-cranes": {
+     "n": 2,
+     "fully_correct": 0.0
+    },
+    "inspections": {
+     "n": 1,
+     "fully_correct": 1.0
+    },
+    "operational-aids": {
+     "n": 4,
+     "fully_correct": 1.0
+    },
+    "operator-duties": {
+     "n": 4,
+     "fully_correct": 0.75
+    },
+    "operator-qualification": {
+     "n": 4,
+     "fully_correct": 1.0
+    },
+    "overhead-gantry": {
+     "n": 3,
+     "fully_correct": 1.0
+    },
+    "personnel-lifts": {
+     "n": 3,
+     "fully_correct": 0.6666666666666666
+    },
+    "power-lines": {
+     "n": 10,
+     "fully_correct": 0.9
+    },
+    "rigging-slings": {
+     "n": 4,
+     "fully_correct": 1.0
+    },
+    "safety-devices": {
+     "n": 1,
+     "fully_correct": 1.0
+    },
+    "scope-definitions": {
+     "n": 3,
+     "fully_correct": 1.0
+    },
+    "sideboom-pile-small": {
+     "n": 1,
+     "fully_correct": 0.0
+    },
+    "tower-cranes": {
+     "n": 2,
+     "fully_correct": 1.0
+    },
+    "wire-rope": {
+     "n": 4,
+     "fully_correct": 0.5
+    },
+    "work-area-control": {
+     "n": 1,
+     "fully_correct": 1.0
+    }
+   },
+   "equipment_specific": {
+    "n": 28,
+    "fully_correct": 0.7857142857142857
+   },
+   "by_difficulty": {
+    "easy": {
+     "n": 15,
+     "fully_correct": 0.8
+    },
+    "hard": {
+     "n": 9,
+     "fully_correct": 0.8888888888888888
+    },
+    "medium": {
+     "n": 35,
+     "fully_correct": 0.8571428571428571
+    }
+   },
+   "modes": {
+    "text": 73
+   },
+   "bake_hit_rate": null,
+   "bake_hit_rate_of_answered": null,
+   "latency_ms": {
+    "reported_p50": 10550.827958999434,
+    "reported_p95": 17516.161867002662,
+    "wall_p50": 10550.827958999434,
+    "wall_p95": 17516.161867002662
+   },
+   "grades_missing": [],
+   "judge_agreement": {
+    "n": 10,
+    "exact_agreement": 1.0,
+    "cohen_kappa": 1.0,
+    "within_one": 1.0,
+    "fully_correct_agreement": 1.0,
+    "declined_agreement": 1.0,
+    "second_model": "sonnet",
+    "disagreements": []
+   }
+  },
+  "opus-alone": {
+   "n": 73,
+   "errors": 0,
+   "n_answerable": 59,
+   "n_must_decline": 14,
+   "citation_precision_gold": 0.22916666666666666,
+   "citation_precision_supported": 0.5856481481481481,
+   "cites_exist_rate": 0.8958333333333334,
+   "claims": {
+    "supported": 532,
+    "unsupported": 295,
+    "answers_judged": 59
+   },
+   "unsupported_claim_rate": 0.3567110036275695,
+   "answers_with_unsupported_claim": 1.0,
+   "quotes": {
+    "total": 0,
+    "verbatim_ok": 0
+   },
+   "quote_verbatim_rate": null,
+   "decline": {
+    "tp": 14,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "false_decline_rate": 0.0
+   },
+   "correctness": {
+    "graded": 59,
+    "expected": 59,
+    "mean_score": 0.8813559322033898,
+    "fully_correct": 0.7966101694915254,
+    "at_least_partly": 0.9661016949152542,
+    "fully_correct_ci95": [
+     0.6779661016949152,
+     0.8983050847457628
+    ],
+    "must_decline_handled": 1.0
+   },
+   "by_category": {
+    "assembly-disassembly": {
+     "n": 6,
+     "fully_correct": 0.6666666666666666
+    },
+    "crawler-truck-locomotive": {
+     "n": 3,
+     "fully_correct": 0.3333333333333333
+    },
+    "derricks": {
+     "n": 2,
+     "fully_correct": 1.0
+    },
+    "fall-protection": {
+     "n": 1,
+     "fully_correct": 1.0
+    },
+    "floating-cranes": {
+     "n": 2,
+     "fully_correct": 1.0
+    },
+    "inspections": {
+     "n": 1,
+     "fully_correct": 1.0
+    },
+    "operational-aids": {
+     "n": 4,
+     "fully_correct": 0.5
+    },
+    "operator-duties": {
+     "n": 4,
+     "fully_correct": 1.0
+    },
+    "operator-qualification": {
+     "n": 4,
+     "fully_correct": 1.0
+    },
+    "overhead-gantry": {
+     "n": 3,
+     "fully_correct": 1.0
+    },
+    "personnel-lifts": {
+     "n": 3,
+     "fully_correct": 0.6666666666666666
+    },
+    "power-lines": {
+     "n": 10,
+     "fully_correct": 0.8
+    },
+    "rigging-slings": {
+     "n": 4,
+     "fully_correct": 1.0
+    },
+    "safety-devices": {
+     "n": 1,
+     "fully_correct": 1.0
+    },
+    "scope-definitions": {
+     "n": 3,
+     "fully_correct": 1.0
+    },
+    "sideboom-pile-small": {
+     "n": 1,
+     "fully_correct": 0.0
+    },
+    "tower-cranes": {
+     "n": 2,
+     "fully_correct": 0.5
+    },
+    "wire-rope": {
+     "n": 4,
+     "fully_correct": 0.75
+    },
+    "work-area-control": {
+     "n": 1,
+     "fully_correct": 1.0
+    }
+   },
+   "equipment_specific": {
+    "n": 28,
+    "fully_correct": 0.6785714285714286
+   },
+   "by_difficulty": {
+    "easy": {
+     "n": 15,
+     "fully_correct": 0.6666666666666666
+    },
+    "hard": {
+     "n": 9,
+     "fully_correct": 0.7777777777777778
+    },
+    "medium": {
+     "n": 35,
+     "fully_correct": 0.8571428571428571
+    }
+   },
+   "modes": {
+    "text": 73
+   },
+   "bake_hit_rate": null,
+   "bake_hit_rate_of_answered": null,
+   "latency_ms": {
+    "reported_p50": 15419.547416000569,
+    "reported_p95": 26995.310500403863,
+    "wall_p50": 15419.547416000569,
+    "wall_p95": 26995.310500403863
+   },
+   "grades_missing": [],
+   "judge_agreement": {
+    "n": 10,
+    "exact_agreement": 0.9,
+    "cohen_kappa": 0.7058823529411765,
+    "within_one": 1.0,
+    "fully_correct_agreement": 1.0,
+    "declined_agreement": 1.0,
+    "second_model": "sonnet",
+    "disagreements": [
+     {
+      "id": "crane-v2-0053",
+      "primary": 1,
+      "second": 0
+     }
+    ]
+   }
+  }
+ },
+ "comparisons": {
+  "frontier-alone vs opus-alone": {
+   "n": 73,
+   "a_better": 9,
+   "b_better": 5,
+   "ties": 59,
+   "sign_test_p": 0.4239501953125,
+   "both_fully_correct": 56,
+   "only_a_fully_correct": 8,
+   "only_b_fully_correct": 5,
+   "mcnemar_p": 0.5810546875
+  }
+ }
+}

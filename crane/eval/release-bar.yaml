@@ -1,0 +1,33 @@
+# Crane release bar (founder direction, 2026-11-27). Machine-checked by:
+#   cd harvest/eval && python -m harvest_eval gate --bar ../../crane/eval/release-bar.yaml \
+#     --run <run dir> [--run <comparison run dir>] --system <backend> --pack <pack> --set <set file>
+# Every criterion must pass on a registered fresh set; see crane/eval/README.md "Release bar".
+
+# Held-out sets written after the engine was tuned, never shown to the bake (sha256 of the file).
+# heldout-v1 is not here: the core lane tuned its gates on it.
+fresh_sets:
+  heldout-v2: f19bd6fe86d33a8506967dec0fcb04fb73a92c164c9ef5f7a80405bba9ed0211
+  heldout-v3: b31eb13f8f4c79da2a2cd8a50b8e4910a928a37db605f6e748702abb4b5cb6ae   # hidden: lab private store
+
+hidden_sets: [heldout-v3]        # item text never leaves the private store; the gate prints ids only
+
+min_items: 300                # only a set this large certifies a release (v3); smaller sets are interim
+
+thresholds:
+  fully_correct: 0.90         # answerable items the judge scores 2
+  declines: 0.95              # must-decline items the system declines
+  unsupported_claims: 0       # claims in shipped (non-declined) answers that the cited text does not support
+  quote_verbatim: 1.0         # every quote an exact substring of its section
+  cites_exist: 1.0            # every citation a real section of the corpus
+
+# Frontier models alone (no retrieval), run on the same set: the system must score higher on fully
+# correct, and the unsupported-claim criterion above already requires 0 for the system.
+must_beat:
+  - frontier-alone            # Claude Sonnet
+  - opus-alone                # Claude Opus
+
+category_floor: 0.90          # categories below this are flagged in the report (they do not fail the gate on their own)
+
+contamination:                # held-out questions copied into the pack fail the gate
+  leak: 0.9                   # token Jaccard at or above this is a copy
+  near: 0.6                   # look-alikes from here up are listed for review

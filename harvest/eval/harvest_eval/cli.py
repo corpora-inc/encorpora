@@ -84,6 +84,13 @@ def main(argv: list[str] | None = None) -> int:
     c.add_argument("a")
     c.add_argument("b")
     c.add_argument("--out", required=True)
+    g = sub.add_parser("gate", help="check finished runs against a release bar; exit 1 if any criterion fails")
+    g.add_argument("--bar", required=True)
+    g.add_argument("--run", required=True, action="append", help="run output dir; repeat to add comparison runs")
+    g.add_argument("--system", required=True, help="backend name of the system under test")
+    g.add_argument("--pack", help="pack dir or .sqlite: also check that the set is not in the bake")
+    g.add_argument("--set", help="the set file, for the bake check (default: the path the run recorded)")
+    g.add_argument("--out", help="write gate-<system>.md and .json here")
     k = sub.add_parser("check-ids", help="gold section ids and key quotes present in a pack or sections file")
     k.add_argument("--set", required=True)
     k.add_argument("--pack", required=True)
@@ -92,6 +99,9 @@ def main(argv: list[str] | None = None) -> int:
         return run(a)
     if a.cmd == "compare":
         return compare_cmd(a)
+    if a.cmd == "gate":
+        from .gate import gate_cmd
+        return gate_cmd(a)
     return check_ids_cmd(a)
 
 
