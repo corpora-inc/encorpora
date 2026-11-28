@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { PRODUCT } from "../config.ts";
 import { engine } from "../engine/index.ts";
-import { ROLES } from "../engine/types.ts";
 import { auditEntries } from "../lib/audit.ts";
 import { storedBytes } from "../lib/storage.ts";
 import { deletePhotos } from "../lib/photos.ts";
@@ -42,11 +41,6 @@ export function SettingsScreen() {
   };
   return (
     <Page title={t("nav.settings")}>
-      <Panel>
-        <Segmented label={t("settings.role")} value={s.role} onChange={s.setRole}
-          options={ROLES.map((r) => ({ value: r, label: t(`role.${r}`), hint: t(`role.${r}.hint`) }))} />
-        <p className="m-0 mt-3 text-small text-ink-2">{t("settings.role.effect")}</p>
-      </Panel>
       <Panel>
         <Segmented label={t("settings.equipment")} value={s.equipment ?? "any"} columns={2}
           onChange={(v) => s.setEquipment(v === "any" ? null : v)} options={equipmentOptions} />

@@ -17,8 +17,11 @@ export function rationaleProblem(text: string | null | undefined): string | null
   return null;
 }
 
-/** Every problem with a question's reasons: one per choice, each real, none repeated. */
-export function rationaleProblems(q: { q_id: string; choices: readonly string[]; rationales: readonly string[] }): string[] {
+/**
+ * Every problem with a question's feedback: a real reason per choice, none
+ * repeated, and the one-line note past the answer.
+ */
+export function rationaleProblems(q: { q_id: string; choices: readonly string[]; rationales: readonly string[]; note?: string | null }): string[] {
   const out: string[] = [];
   if (q.rationales.length !== q.choices.length) out.push(`${q.q_id}: ${q.rationales.length} reasons for ${q.choices.length} choices`);
   q.rationales.forEach((r, i) => {
@@ -26,5 +29,8 @@ export function rationaleProblems(q: { q_id: string; choices: readonly string[];
     if (p) out.push(`${q.q_id} choice ${i + 1}: ${p}`);
   });
   if (new Set(q.rationales.map((r) => r.trim().toLowerCase())).size !== q.rationales.length) out.push(`${q.q_id}: two choices share a reason`);
+  const note = rationaleProblem(q.note);
+  if (note) out.push(`${q.q_id} note: ${note}`);
+  else if (q.rationales.some((r) => r.trim().toLowerCase() === q.note!.trim().toLowerCase())) out.push(`${q.q_id} note: repeats a reason`);
   return out;
 }

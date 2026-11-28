@@ -233,6 +233,48 @@ export const questions = [
    ["Rated capacity is the maximum working load the manufacturer permits under specified conditions. These typically combine equipment configuration, radii, boom length and other parameters of use.", "Paint and age are not working conditions that set rated capacity.", "The operator's experience does not change the manufacturer's rated capacity.", "Time of day is not a factor in rated capacity."], [D], 0.3),
 ];
 
+/**
+ * One line past the answer for each question: why it matters, the edge case
+ * or the related rule. Shown after the reason, right or wrong.
+ */
+const NOTES = {
+  "q.pl.20ft": "Check the voltage first: over 350 kV the same test uses 50 feet instead of 20.",
+  "q.pl.50ft": "Up to 350 kV the same test uses 20 feet, so the trigger depends on the line's voltage.",
+  "q.pl.20ft.v1": "The test is made with the equipment operated out to its maximum working radius in the work zone, not where it happens to be set up.",
+  "q.pl.zone": "The other way to identify the work zone is to demarcate its boundaries and prohibit the operator from operating past them.",
+  "q.pl.zone.v1": "Without demarcated boundaries, the work zone is the full circle around the equipment out to its maximum working radius.",
+  "q.pl.ta.50": "Table A includes the value after \"to\", so a line of exactly 50 kV still needs 10 feet.",
+  "q.pl.ta.200": "The same reading holds at every band edge: exactly 350 kV still needs 20 feet, not 25.",
+  "q.pl.ta.345": "Option 3 starts by determining the line's voltage; only then does Table A give the minimum approach distance.",
+  "q.pl.ta.765": "Above 1,000 kV Table A gives no number; the utility owner/operator or a qualified registered professional engineer sets it.",
+  "q.pl.ta.1100": "Up to 1,000 kV the distances are fixed in Table A, from 10 feet for lines up to 50 kV to 45 feet for over 750 to 1,000 kV.",
+  "q.pl.tagline": "The same set of precautions starts with a planning meeting and an elevated warning line in view of the operator.",
+  "q.pl.warning": "The warning line sits 20 feet from the power line under Option 2, and at the Table A distance under Option 3.",
+  "q.pl.meeting": "The meeting reviews where the power lines are and the steps that will be taken to prevent encroachment and electrocution.",
+  "q.insp.who": "The annual/comprehensive inspection is different: a qualified person does it at least every 12 months.",
+  "q.insp.when": "What the inspection finds must be reassessed in light of what is observed while the equipment operates.",
+  "q.insp.hooks": "Taking components apart is not part of the shift inspection unless what is seen, or a trial operation, shows it is needed.",
+  "q.insp.level": "The rule sets no angle of its own: level is judged against the manufacturer's tolerances.",
+  "q.insp.hazard": "A deficient safety device or operational aid follows its own rules instead, in 1926.1415 and 1926.1416.",
+  "q.insp.aids": "Any other deficiency the competent person finds to be a safety hazard takes the equipment out of service until it is corrected.",
+  "q.insp.monthly": "The annual inspection also follows paragraph (d), but it is done by a qualified person and has its own corrective-action rules.",
+  "q.insp.annual": "Its corrective action follows paragraphs (f)(4) to (f)(6) instead of the shift inspection's.",
+  "q.ground.reqs": "Ground in marshes and wetlands does not have to be drained; supporting materials such as marsh buggies do that work.",
+  "q.ground.def": "Supporting materials are what let less-than-ideal ground meet the manufacturer's support and level specifications.",
+  "q.ground.who": "If the A/D director or the operator finds the ground falls short, their employer must discuss the needed preparations with the controlling entity.",
+  "q.sig.view": "The operator or the person handling the load can also call for a signal person because of site-specific safety concerns.",
+  "q.sig.travel": "The same applies when the point of operation, the load travel or the area near or at load placement, is not in the operator's full view.",
+  "q.sig.types": "When hand signals are used, they must follow the Standard Method in Appendix A unless that is infeasible or does not cover the operation.",
+  "q.sig.stop": "This covers an emergency stop signal too, so everyone on site should know the stop and emergency stop signals.",
+  "q.sig.standard": "Before non-standard signals are used, the signal person, operator and lift director (if there is one) must contact each other and agree on them.",
+  "q.ops.capacity": "Rated capacity changes with configuration, radius and boom length, so read it for this setup and this lift.",
+  "q.ops.wind": "The adjustment covers both the equipment's stability and its rated capacity.",
+  "q.ops.fallzone": "The listed exceptions are hooking, unhooking or guiding a load, the initial attachment of the load to a structure, and operating a concrete hopper or bucket.",
+  "q.ops.swing": "The boundaries of those hazard areas must also be marked with control lines, warning lines, railings or similar barriers, or with signs and markings where barriers are not feasible.",
+  "q.lc.rated": "Whatever the combination, the equipment must not be operated in excess of the rated capacity it sets."
+};
+for (const q of questions) q.note = NOTES[q.q_id] ?? null;
+
 /** Baked answers. level null = all roles; a level-specific answer wins for that role. */
 export const answers = [
   {

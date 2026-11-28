@@ -11,10 +11,12 @@ test("placeholder reasons fail the content rule", () => {
     assert.ok(rationaleProblem(bad), bad);
   }
   assert.equal(rationaleProblem("Lines up to 50 kV need 10 feet of clearance under Table A."), null);
-  assert.deepEqual(rationaleProblems({ q_id: "x", choices: ["a", "b"], rationales: ["The same reason for both choices here.", "The same reason for both choices here."] }), ["x: two choices share a reason"]);
+  const note = "Over 350 kV the same test uses 50 feet.";
+  assert.deepEqual(rationaleProblems({ q_id: "x", choices: ["a", "b"], rationales: ["The same reason for both choices here.", "The same reason for both choices here."], note }), ["x: two choices share a reason"]);
+  assert.deepEqual(rationaleProblems({ q_id: "y", choices: ["a"], rationales: ["A real reason that is long enough."] }), ["y note: empty"]);
 });
 
-test("every practice question in the pack has a real reason for every choice", () => {
+test("every practice question in the pack has a real reason for every choice and a note", () => {
   assert.ok(e.questions.length > 0);
   for (const q of e.questions) if (q.kind === "mc") assert.deepEqual(rationaleProblems(q), [], q.q_id);
 });

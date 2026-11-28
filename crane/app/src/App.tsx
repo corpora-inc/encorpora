@@ -32,7 +32,8 @@ export const routes = [
   {
     element: <Root />,
     children: [
-      { path: "/", element: <Navigate to="/ask" replace /> },
+      // Practice is home: first run lands in it.
+      { path: "/", element: <Navigate to="/practice" replace /> },
       { path: "/ask", element: <AskHome /> },
       { path: "/ask/q/:q", element: <AskQuery /> },
       { path: "/ask/a/:id", element: <AskAnswer /> },

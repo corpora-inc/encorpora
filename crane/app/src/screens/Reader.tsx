@@ -1,7 +1,7 @@
 import { useLayoutEffect, useMemo } from "react";
 import { Link, useParams } from "react-router";
 import { engine } from "../engine/index.ts";
-import type { Section } from "../engine/types.ts";
+import { LEVEL, type Section } from "../engine/types.ts";
 import { readerPath } from "../routes.ts";
 import { useSettings } from "../store/settings.ts";
 import { Page, Panel } from "../ui/kit.tsx";
@@ -41,7 +41,6 @@ function Node({ s, target, path }: { s: Section; target: string; path: Set<strin
 export function Reader() {
   const { id = "" } = useParams();
   const t = useT();
-  const role = useSettings((s) => s.role) ?? "operator";
   const lang = useSettings((s) => s.lang);
   const e = engine();
   const section = e.sections.get(id);
@@ -62,7 +61,7 @@ export function Reader() {
       </Page>
     );
   const source = e.info.sources.find((s) => s.source_id === root.source_id);
-  const plain = e.explanation(id, role, lang) ?? (id !== root.section_id ? null : e.explanation(root.section_id, role, lang));
+  const plain = e.explanation(id, LEVEL, lang) ?? (id !== root.section_id ? null : e.explanation(root.section_id, LEVEL, lang));
   const out = e.xrefsFrom(id);
   const into = e.xrefsTo(id);
   return (
