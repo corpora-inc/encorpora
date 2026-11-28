@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import type { FaultTree, Lesson, Tree } from "../engine/types.ts";
 import { learnTreePath } from "../routes.ts";
 import { formatDate } from "../ui/format.ts";
@@ -16,9 +17,10 @@ export interface TreeGroup {
   trees: FaultTree[];
 }
 
-export function LearnHome({ groups, lessons, titles }: { groups: TreeGroup[]; lessons: Lesson[] | null; titles: Record<string, string> }) {
+export function LearnHome({ groups, lessons, titles, practice = null }: { groups: TreeGroup[]; lessons: Lesson[] | null; titles: Record<string, string>; practice?: ReactNode }) {
   return (
     <Page title="Learn" wide>
+      {practice}
       <div className="grid items-start gap-6 lg:grid-cols-2">
         <div className="flex min-w-0 flex-col gap-6">
           {groups.map((g) => (

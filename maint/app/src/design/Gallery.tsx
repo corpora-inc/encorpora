@@ -55,6 +55,10 @@ import { unitName } from "../ui/format.ts";
 import { AssetSource, ManualPack } from "../ui/manual.tsx";
 import { Shell, type ShellUnit } from "../ui/Shell.tsx";
 import raw from "./captured.json";
+import practiceRaw from "./practice.json";
+import { PracticeItem, PracticeSummary } from "../screens/Practice.tsx";
+import { rebuild, reportOf, toBank } from "../learn/state.ts";
+import type { PracticeAttempt, PracticeItems } from "../learn/provisional.ts";
 
 interface Captured {
   pack: PackInfoView;
@@ -297,6 +301,17 @@ const review: ReviewProps = {
   onPublish: none,
 };
 
+// Practice: the fictional pump pack's items (harvest show), and a learner part-way through.
+const PI = practiceRaw as unknown as PracticeItems;
+const pix = toBank(PI);
+const T0 = Date.UTC(2026, 10, 28, 9);
+const someAttempts: PracticeAttempt[] = PI.questions.slice(0, 12).map((q, i) => ({ q_id: q.q_id, chosen: Number(q.answer), correct: i % 4 !== 1, ms: 8000, at: T0 + i * 60_000 }));
+const pstate = rebuild(pix, someAttempts);
+const pq = PI.questions[0]!;
+const pskill = PI.skills.find((x) => x.skill_id === pq.skill_id)!;
+const ptopic = PI.topics.find((t) => t.topic_id === pskill.topic_id)!;
+const practiceItem = { packId: "pump40v2-proof", question: pq, skillTitle: pskill.title, topicTitle: ptopic.title, reason: "frontier" as const, chosen: null, busy: false, onChoose: none, onNext: none };
+
 const sectionPage = D.section.assets.find((a) => a.role === "page") ?? null;
 
 export const GALLERY: Record<string, { title: string; states: Entry[] }> = {
@@ -472,6 +487,15 @@ Object.assign(GALLERY, {
         render: () => <LearnHome groups={[{ packId: D.pack.pack_id, title: D.pack.sources[0]?.title ?? "", trees: D.trees }]} lessons={D.lessons} titles={titles} />,
       },
       { state: "tree", label: "A whole table", unit: shellUnit, render: () => <TreeStudy tree={D.tree} /> },
+      {
+        state: "practice-summary",
+        label: "Practice, mastery by skill",
+        unit: shellUnit,
+        render: () => <LearnHome groups={[{ packId: D.pack.pack_id, title: D.pack.sources[0]?.title ?? "", trees: D.trees }]} lessons={D.lessons} titles={titles} practice={<PracticeSummary packId="pump40v2-proof" items={PI} report={reportOf({ ix: pix, state: pstate }, T0 + 3_600_000)} />} />,
+      },
+      { state: "practice-item", label: "Practice, a question", unit: shellUnit, render: () => <PracticeItem {...practiceItem} /> },
+      { state: "practice-answered", label: "Practice, answered wrong", unit: shellUnit, render: () => <PracticeItem {...practiceItem} chosen={(Number(pq.answer) + 1) % pq.choices.length} /> },
+      { state: "practice-review", label: "Practice, a review", unit: shellUnit, render: () => <PracticeItem {...practiceItem} reason="review" chosen={Number(pq.answer)} /> },
     ],
   },
   records: {

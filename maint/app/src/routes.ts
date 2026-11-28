@@ -20,6 +20,7 @@ export const manualPath = (packId: string, sectionId: string) => `/manual/${enc(
 export const manualPagePath = (packId: string, sectionId: string, assetId: string) => `/manual/${enc(packId)}/section/${enc(sectionId)}/page/${enc(assetId)}`;
 export const manualSearchPath = (packId: string, q: string) => `/manual/${enc(packId)}/search/${enc(q)}`;
 export const learnPath = () => "/learn";
+export const learnPracticePath = (packId: string) => `/learn/${enc(packId)}/practice`;
 export const learnTreePath = (packId: string, treeId: string) => `/learn/${enc(packId)}/tree/${enc(treeId)}`;
 export const reviewLessonPath = (lessonId: string) => `/review/${enc(lessonId)}`;
 export const recordsPath = () => "/records";

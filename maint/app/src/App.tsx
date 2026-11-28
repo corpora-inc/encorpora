@@ -4,7 +4,7 @@ import { PRODUCT } from "./config.ts";
 import { Frame } from "./pages/Frame.tsx";
 import { HomePage, IdentifyPage, UnitRoute } from "./pages/FleetPages.tsx";
 import { CloseOutPage, ConnectPage, DescribePage, JobPage } from "./pages/JobPages.tsx";
-import { LearnPage, TreeStudyPage } from "./pages/LearnPages.tsx";
+import { LearnPage, PracticePage, TreeStudyPage } from "./pages/LearnPages.tsx";
 import { ManualHomePage, ManualSearchPage, SectionPage } from "./pages/ManualPages.tsx";
 import { RecordsPage } from "./pages/RecordsPage.tsx";
 import { ReviewPage } from "./pages/ReviewPage.tsx";
@@ -74,6 +74,7 @@ const router = createBrowserRouter([
           { path: "/review/:lessonId", element: <ReviewPage /> },
           { path: "/learn", element: <LearnPage /> },
           { path: "/learn/:packId/tree/:treeId", element: <TreeStudyPage /> },
+          { path: "/learn/:packId/practice", element: <PracticePage /> },
           { path: "*", element: <NotFound /> },
         ],
       },

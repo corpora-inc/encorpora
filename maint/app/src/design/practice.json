@@ -1,0 +1,793 @@
+{
+ "pack_id": "pump40v2-proof",
+ "skills": [
+  {
+   "lang": "en",
+   "skill_id": "skill:p-task-4-3",
+   "title": "Battery replacement",
+   "topic_id": "topic:tasks"
+  },
+  {
+   "lang": "en",
+   "skill_id": "skill:t-table-3-1.q2.test",
+   "title": "Battery voltage test",
+   "topic_id": "topic:tasks"
+  },
+  {
+   "lang": "en",
+   "skill_id": "skill:t-table-3-1.q4.test",
+   "title": "Starter relay test",
+   "topic_id": "topic:tasks"
+  },
+  {
+   "lang": "en",
+   "skill_id": "skill:t-table-3-2.q2.test",
+   "title": "Belt condition check",
+   "topic_id": "topic:tasks"
+  },
+  {
+   "lang": "en",
+   "skill_id": "skill:t-table-3-1",
+   "title": "Troubleshoot: Engine will not crank",
+   "topic_id": "topic:troubleshooting"
+  },
+  {
+   "lang": "en",
+   "skill_id": "skill:t-table-3-2",
+   "title": "Troubleshoot: Pump overheats",
+   "topic_id": "topic:troubleshooting"
+  }
+ ],
+ "questions": [
+  {
+   "answer": "1",
+   "choices": [
+    "Do not let the meter leads touch each other or the frame while they are on the battery terminals.",
+    "Disconnect the negative cable first to prevent a short circuit.",
+    "Do not bridge relay terminals with a bare wire. Use the relay tester only.",
+    "The battery weighs 28 kg. Use two people and the lifting strap to lift it."
+   ],
+   "difficulty": 0.5,
+   "kind": "mc",
+   "lang": "en",
+   "note": null,
+   "q_id": "q:guard:m40-task-4-3-s2-caution",
+   "rationales": [
+    "That guards \u201cPlace the red lead on B+ and the black lead on B-.\u201d in \u201cBattery voltage test\u201d.",
+    "The manual's caution: \u201cDisconnect the negative cable first to prevent a short circuit.\u201d (Task 4-3, Step 2, Caution).",
+    "That guards \u201cInsert K1 in the relay tester and press TEST.\u201d in \u201cStarter relay test\u201d.",
+    "That guards \u201cRemove the hold-down clamp and lift out the battery.\u201d in \u201cBattery replacement\u201d."
+   ],
+   "section_ids": [
+    "m40:task-4-3/s2",
+    "m40:task-4-3/s2/caution"
+   ],
+   "skill_id": "skill:p-task-4-3",
+   "stem": "In \u201cBattery replacement\u201d, before the step \u201cDisconnect the negative cable first, then the positive cable.\u201d, which warning, caution or note does the manual give?",
+   "variant_of": null
+  },
+  {
+   "answer": "0",
+   "choices": [
+    "The battery weighs 28 kg. Use two people and the lifting strap to lift it.",
+    "Electric variant. Lock out the electrical supply before you open the motor terminal box.",
+    "Stop the pump and remove the start key or lock out the supply before you open any cover. Rotating parts can cause serious injury.",
+    "Diesel variant. Do not open the radiator cap while the engine is hot. Hot coolant can cause burns."
+   ],
+   "difficulty": 0.5,
+   "kind": "mc",
+   "lang": "en",
+   "note": null,
+   "q_id": "q:guard:m40-task-4-3-s3-warning",
+   "rationales": [
+    "The manual's warning: \u201cThe battery weighs 28 kg. Use two people and the lifting strap to lift it.\u201d (Task 4-3, Step 3, Warning).",
+    "That guards \u201cPump overheats\u201d.",
+    "That guards \u201cCHAPTER 3. TROUBLESHOOTING\u201d.",
+    "That guards \u201cPump overheats\u201d."
+   ],
+   "section_ids": [
+    "m40:task-4-3/s3",
+    "m40:task-4-3/s3/warning"
+   ],
+   "skill_id": "skill:p-task-4-3",
+   "stem": "In \u201cBattery replacement\u201d, before the step \u201cRemove the hold-down clamp and lift out the battery.\u201d, which warning, caution or note does the manual give?",
+   "variant_of": null
+  },
+  {
+   "answer": "2",
+   "choices": [
+    "Is the intake strainer clear of debris?",
+    "What is the condition of the cooling fan belt: tight, loose or broken?",
+    "What is the battery voltage at terminals B+ and B- with the key OFF?"
+   ],
+   "difficulty": 0.4,
+   "kind": "mc",
+   "lang": "en",
+   "note": null,
+   "q_id": "q:signal-next:t-table-3-1:spn-168-fmi-1",
+   "rationales": [
+    "That is the first step for \u201cSPN 110 FMI 0\u201d.",
+    "That is a question of \u201cPump overheats\u201d.",
+    "The manual: \u201cWhat is the battery voltage at terminals B+ and B- with the key OFF?\u201d (Table 3-1, Question 2)."
+   ],
+   "section_ids": [
+    "m40:table-3-3-displayed-fault-codes-continue",
+    "m40:table-3-1/q2"
+   ],
+   "skill_id": "skill:t-table-3-1",
+   "stem": "The machine shows \u201cSPN 168 FMI 1\u201d. What does the manual say to do first?",
+   "variant_of": null
+  },
+  {
+   "answer": "0",
+   "choices": [
+    "What is the battery voltage at terminals B+ and B- with the key OFF?",
+    "The fault is corrected. Return the pump to service.",
+    "Is the battery switch ON and is the 15 A start fuse F2 good?",
+    "Is more than 10 V present at starter relay K1 terminal 86 when the key is turned to START?"
+   ],
+   "difficulty": 0.5,
+   "kind": "mc",
+   "lang": "en",
+   "note": null,
+   "q_id": "q:t-table-3-1:next:t-table-3-1-ac1:1",
+   "rationales": [
+    "The manual: \u201cWhat is the battery voltage at terminals B+ and B- with the key OFF?\u201d (Table 3-1, Question 2).",
+    "That follows the result YES at this question, not NO.",
+    "That comes after Continue at \u201cThe engine does not crank when the start key is turned to START.\u201d.",
+    "That comes after 12.5 V or more at \u201cWhat is the battery voltage at terminals B+ and B- with the key OFF?\u201d."
+   ],
+   "section_ids": [
+    "m40:table-3-1/ac1",
+    "m40:table-3-1/q2",
+    "m40:table-3-1/sy1",
+    "m40:table-3-1/q1"
+   ],
+   "skill_id": "skill:t-table-3-1",
+   "stem": "Symptom: \u201cThe engine does not crank when the start key is turned to START.\u201d. So far: \u201cIs the battery switch ON and is the 15 A start fuse F2 good?\u201d: NO. At \u201cTurn the battery switch ON or replace fuse F2, then try to start. Does the engine crank now?\u201d the result is NO. What does the manual say to do next?",
+   "variant_of": null
+  },
+  {
+   "answer": "2",
+   "choices": [
+    "What is the battery voltage at terminals B+ and B- with the key OFF?",
+    "Charge the battery, then repeat the voltage test.",
+    "The fault is corrected. Return the pump to service.",
+    "Replace the battery. Refer to task 4-3."
+   ],
+   "difficulty": 0.5,
+   "kind": "mc",
+   "lang": "en",
+   "note": null,
+   "q_id": "q:t-table-3-1:next:t-table-3-1-ac1:2",
+   "rationales": [
+    "That follows the result NO at this question, not YES.",
+    "That comes after 11.5 V to 12.5 V at \u201cWhat is the battery voltage at terminals B+ and B- with the key OFF?\u201d.",
+    "The manual: \u201cThe fault is corrected. Return the pump to service.\u201d (Table 3-1, page 3-3).",
+    "That comes after Below 11.5 V at \u201cWhat is the battery voltage at terminals B+ and B- with the key OFF?\u201d."
+   ],
+   "section_ids": [
+    "m40:table-3-1/ac1",
+    "m40:table-3-1/en1",
+    "m40:table-3-1/sy1",
+    "m40:table-3-1/q1"
+   ],
+   "skill_id": "skill:t-table-3-1",
+   "stem": "Symptom: \u201cThe engine does not crank when the start key is turned to START.\u201d. So far: \u201cIs the battery switch ON and is the 15 A start fuse F2 good?\u201d: NO. At \u201cTurn the battery switch ON or replace fuse F2, then try to start. Does the engine crank now?\u201d the result is YES. What does the manual say to do next?",
+   "variant_of": null
+  },
+  {
+   "answer": "3",
+   "choices": [
+    "Charge the battery, then repeat the voltage test.",
+    "Replace the battery. Refer to task 4-3.",
+    "Replace starter relay K1.",
+    "Is more than 10 V present at starter relay K1 terminal 86 when the key is turned to START?"
+   ],
+   "difficulty": 0.5,
+   "kind": "mc",
+   "lang": "en",
+   "note": null,
+   "q_id": "q:t-table-3-1:next:t-table-3-1-q2:2",
+   "rationales": [
+    "That follows the result 11.5 V to 12.5 V at this question, not 12.5 V or more.",
+    "That follows the result Below 11.5 V at this question, not 12.5 V or more.",
+    "That comes after FAIL at \u201cTest starter relay K1 with the relay tester.\u201d.",
+    "The manual: \u201cIs more than 10 V present at starter relay K1 terminal 86 when the key is turned to START?\u201d (Table 3-1, Question 3)."
+   ],
+   "section_ids": [
+    "m40:table-3-1/q2",
+    "m40:table-3-1/q3",
+    "m40:table-3-1/sy1",
+    "m40:table-3-1/q1"
+   ],
+   "skill_id": "skill:t-table-3-1",
+   "stem": "Symptom: \u201cThe engine does not crank when the start key is turned to START.\u201d. So far: \u201cIs the battery switch ON and is the 15 A start fuse F2 good?\u201d: YES. At \u201cWhat is the battery voltage at terminals B+ and B- with the key OFF?\u201d the result is 12.5 V or more. What does the manual say to do next?",
+   "variant_of": null
+  },
+  {
+   "answer": "0",
+   "choices": [
+    "Charge the battery, then repeat the voltage test.",
+    "Replace the battery. Refer to task 4-3.",
+    "Is more than 10 V present at starter relay K1 terminal 86 when the key is turned to START?",
+    "Turn the battery switch ON or replace fuse F2, then try to start. Does the engine crank now?"
+   ],
+   "difficulty": 0.5,
+   "kind": "mc",
+   "lang": "en",
+   "note": null,
+   "q_id": "q:t-table-3-1:next:t-table-3-1-q2:3",
+   "rationales": [
+    "The manual: \u201cCharge the battery, then repeat the voltage test.\u201d (Table 3-1, page 3-3).",
+    "That follows the result Below 11.5 V at this question, not 11.5 V to 12.5 V.",
+    "That follows the result 12.5 V or more at this question, not 11.5 V to 12.5 V.",
+    "That comes after NO at \u201cIs the battery switch ON and is the 15 A start fuse F2 good?\u201d."
+   ],
+   "section_ids": [
+    "m40:table-3-1/q2",
+    "m40:table-3-1/ac3",
+    "m40:table-3-1/sy1",
+    "m40:table-3-1/q1"
+   ],
+   "skill_id": "skill:t-table-3-1",
+   "stem": "Symptom: \u201cThe engine does not crank when the start key is turned to START.\u201d. So far: \u201cIs the battery switch ON and is the 15 A start fuse F2 good?\u201d: YES. At \u201cWhat is the battery voltage at terminals B+ and B- with the key OFF?\u201d the result is 11.5 V to 12.5 V. What does the manual say to do next?",
+   "variant_of": null
+  },
+  {
+   "answer": "1",
+   "choices": [
+    "Test starter relay K1 with the relay tester.",
+    "Key switch or wiring fault. Refer to field maintenance for wiring repair.",
+    "Replace the battery. Refer to task 4-3.",
+    "Replace starter relay K1."
+   ],
+   "difficulty": 0.6000000000000001,
+   "kind": "mc",
+   "lang": "en",
+   "note": null,
+   "q_id": "q:t-table-3-1:next:t-table-3-1-q3:1",
+   "rationales": [
+    "That follows the result YES at this question, not NO.",
+    "The manual: \u201cKey switch or wiring fault. Refer to field maintenance for wiring repair.\u201d (Table 3-1, page 3-5).",
+    "That comes after Below 11.5 V at \u201cWhat is the battery voltage at terminals B+ and B- with the key OFF?\u201d.",
+    "That comes after FAIL at \u201cTest starter relay K1 with the relay tester.\u201d."
+   ],
+   "section_ids": [
+    "m40:table-3-1/q3",
+    "m40:table-3-1/es1",
+    "m40:table-3-1/sy1",
+    "m40:table-3-1/q1",
+    "m40:table-3-1/q2"
+   ],
+   "skill_id": "skill:t-table-3-1",
+   "stem": "Symptom: \u201cThe engine does not crank when the start key is turned to START.\u201d. So far: \u201cIs the battery switch ON and is the 15 A start fuse F2 good?\u201d: YES; \u201cWhat is the battery voltage at terminals B+ and B- with the key OFF?\u201d: 12.5 V or more. At \u201cIs more than 10 V present at starter relay K1 terminal 86 when the key is turned to START?\u201d the result is NO. What does the manual say to do next?",
+   "variant_of": null
+  },
+  {
+   "answer": "3",
+   "choices": [
+    "Key switch or wiring fault. Refer to field maintenance for wiring repair.",
+    "Replace starter relay K1.",
+    "Charge the battery, then repeat the voltage test.",
+    "Test starter relay K1 with the relay tester."
+   ],
+   "difficulty": 0.6000000000000001,
+   "kind": "mc",
+   "lang": "en",
+   "note": null,
+   "q_id": "q:t-table-3-1:next:t-table-3-1-q3:2",
+   "rationales": [
+    "That follows the result NO at this question, not YES.",
+    "That comes after FAIL at \u201cTest starter relay K1 with the relay tester.\u201d.",
+    "That comes after 11.5 V to 12.5 V at \u201cWhat is the battery voltage at terminals B+ and B- with the key OFF?\u201d.",
+    "The manual: \u201cTest starter relay K1 with the relay tester.\u201d (Table 3-1, Question 4)."
+   ],
+   "section_ids": [
+    "m40:table-3-1/q3",
+    "m40:table-3-1/q4",
+    "m40:table-3-1/sy1",
+    "m40:table-3-1/q1",
+    "m40:table-3-1/q2"
+   ],
+   "skill_id": "skill:t-table-3-1",
+   "stem": "Symptom: \u201cThe engine does not crank when the start key is turned to START.\u201d. So far: \u201cIs the battery switch ON and is the 15 A start fuse F2 good?\u201d: YES; \u201cWhat is the battery voltage at terminals B+ and B- with the key OFF?\u201d: 12.5 V or more. At \u201cIs more than 10 V present at starter relay K1 terminal 86 when the key is turned to START?\u201d the result is YES. What does the manual say to do next?",
+   "variant_of": null
+  },
+  {
+   "answer": "3",
+   "choices": [
+    "Replace starter relay K1.",
+    "The fault is corrected. Return the pump to service.",
+    "Charge the battery, then repeat the voltage test.",
+    "Starter motor fault. Send the starter motor to the repair shop."
+   ],
+   "difficulty": 0.7,
+   "kind": "mc",
+   "lang": "en",
+   "note": null,
+   "q_id": "q:t-table-3-1:next:t-table-3-1-q4:1",
+   "rationales": [
+    "That follows the result FAIL at this question, not PASS.",
+    "That comes after YES at \u201cTurn the battery switch ON or replace fuse F2, then try to start. Does the engine crank now?\u201d.",
+    "That comes after 11.5 V to 12.5 V at \u201cWhat is the battery voltage at terminals B+ and B- with the key OFF?\u201d.",
+    "The manual: \u201cStarter motor fault. Send the starter motor to the repair shop.\u201d (Table 3-1, page 3-7)."
+   ],
+   "section_ids": [
+    "m40:table-3-1/q4",
+    "m40:table-3-1/es2",
+    "m40:table-3-1/sy1",
+    "m40:table-3-1/q1",
+    "m40:table-3-1/q2",
+    "m40:table-3-1/q3"
+   ],
+   "skill_id": "skill:t-table-3-1",
+   "stem": "Symptom: \u201cThe engine does not crank when the start key is turned to START.\u201d. So far: \u201cIs the battery switch ON and is the 15 A start fuse F2 good?\u201d: YES; \u201cWhat is the battery voltage at terminals B+ and B- with the key OFF?\u201d: 12.5 V or more; \u201cIs more than 10 V present at starter relay K1 terminal 86 when the key is turned to START?\u201d: YES. At \u201cTest starter relay K1 with the relay tester.\u201d the result is PASS. What does the manual say to do next?",
+   "variant_of": null
+  },
+  {
+   "answer": "3",
+   "choices": [
+    "Starter motor fault. Send the starter motor to the repair shop.",
+    "Replace the battery. Refer to task 4-3.",
+    "Charge the battery, then repeat the voltage test.",
+    "Replace starter relay K1."
+   ],
+   "difficulty": 0.7,
+   "kind": "mc",
+   "lang": "en",
+   "note": null,
+   "q_id": "q:t-table-3-1:next:t-table-3-1-q4:2",
+   "rationales": [
+    "That follows the result PASS at this question, not FAIL.",
+    "That comes after Below 11.5 V at \u201cWhat is the battery voltage at terminals B+ and B- with the key OFF?\u201d.",
+    "That comes after 11.5 V to 12.5 V at \u201cWhat is the battery voltage at terminals B+ and B- with the key OFF?\u201d.",
+    "The manual: \u201cReplace starter relay K1.\u201d (Table 3-1, page 3-7)."
+   ],
+   "section_ids": [
+    "m40:table-3-1/q4",
+    "m40:table-3-1/ac4",
+    "m40:table-3-1/sy1",
+    "m40:table-3-1/q1",
+    "m40:table-3-1/q2",
+    "m40:table-3-1/q3"
+   ],
+   "skill_id": "skill:t-table-3-1",
+   "stem": "Symptom: \u201cThe engine does not crank when the start key is turned to START.\u201d. So far: \u201cIs the battery switch ON and is the 15 A start fuse F2 good?\u201d: YES; \u201cWhat is the battery voltage at terminals B+ and B- with the key OFF?\u201d: 12.5 V or more; \u201cIs more than 10 V present at starter relay K1 terminal 86 when the key is turned to START?\u201d: YES. At \u201cTest starter relay K1 with the relay tester.\u201d the result is FAIL. What does the manual say to do next?",
+   "variant_of": null
+  },
+  {
+   "answer": "1",
+   "choices": [
+    "Start fuse F2 blown.",
+    "Starter relay K1 failed.",
+    "Battery switch off.",
+    "Battery discharged."
+   ],
+   "difficulty": 0.6,
+   "kind": "mc",
+   "lang": "en",
+   "note": null,
+   "q_id": "q:t-table-3-1:open:t-table-3-1-q3:0",
+   "rationales": [
+    "The checks so far have ruled that out: the manual no longer lists it here.",
+    "The manual still lists \u201cStarter relay K1 failed.\u201d at this question (Table 3-1, Question 3).",
+    "The checks so far have ruled that out: the manual no longer lists it here.",
+    "The checks so far have ruled that out: the manual no longer lists it here."
+   ],
+   "section_ids": [
+    "m40:table-3-1/q3",
+    "m40:table-3-1/sy1",
+    "m40:table-3-1/q1",
+    "m40:table-3-1/q2"
+   ],
+   "skill_id": "skill:t-table-3-1",
+   "stem": "Symptom: \u201cThe engine does not crank when the start key is turned to START.\u201d. So far: \u201cIs the battery switch ON and is the 15 A start fuse F2 good?\u201d: YES; \u201cWhat is the battery voltage at terminals B+ and B- with the key OFF?\u201d: 12.5 V or more. Which possible problem does the manual still list at \u201cIs more than 10 V present at starter relay K1 terminal 86 when the key is turned to START?\u201d?",
+   "variant_of": null
+  },
+  {
+   "answer": "2",
+   "choices": [
+    "Start fuse F2 blown.",
+    "Battery switch off.",
+    "Starter motor failed.",
+    "Battery discharged."
+   ],
+   "difficulty": 0.6,
+   "kind": "mc",
+   "lang": "en",
+   "note": null,
+   "q_id": "q:t-table-3-1:open:t-table-3-1-q3:1",
+   "rationales": [
+    "The checks so far have ruled that out: the manual no longer lists it here.",
+    "The checks so far have ruled that out: the manual no longer lists it here.",
+    "The manual still lists \u201cStarter motor failed.\u201d at this question (Table 3-1, Question 3).",
+    "The checks so far have ruled that out: the manual no longer lists it here."
+   ],
+   "section_ids": [
+    "m40:table-3-1/q3",
+    "m40:table-3-1/sy1",
+    "m40:table-3-1/q1",
+    "m40:table-3-1/q2"
+   ],
+   "skill_id": "skill:t-table-3-1",
+   "stem": "Symptom: \u201cThe engine does not crank when the start key is turned to START.\u201d. So far: \u201cIs the battery switch ON and is the 15 A start fuse F2 good?\u201d: YES; \u201cWhat is the battery voltage at terminals B+ and B- with the key OFF?\u201d: 12.5 V or more. Which possible problem does the manual still list at \u201cIs more than 10 V present at starter relay K1 terminal 86 when the key is turned to START?\u201d?",
+   "variant_of": null
+  },
+  {
+   "answer": "2",
+   "choices": [
+    "Key switch or wiring open.",
+    "Start fuse F2 blown.",
+    "Starter relay K1 failed.",
+    "Battery switch off."
+   ],
+   "difficulty": 0.6,
+   "kind": "mc",
+   "lang": "en",
+   "note": null,
+   "q_id": "q:t-table-3-1:open:t-table-3-1-q4:0",
+   "rationales": [
+    "The checks so far have ruled that out: the manual no longer lists it here.",
+    "The checks so far have ruled that out: the manual no longer lists it here.",
+    "The manual still lists \u201cStarter relay K1 failed.\u201d at this question (Table 3-1, Question 4).",
+    "The checks so far have ruled that out: the manual no longer lists it here."
+   ],
+   "section_ids": [
+    "m40:table-3-1/q4",
+    "m40:table-3-1/sy1",
+    "m40:table-3-1/q1",
+    "m40:table-3-1/q2",
+    "m40:table-3-1/q3"
+   ],
+   "skill_id": "skill:t-table-3-1",
+   "stem": "Symptom: \u201cThe engine does not crank when the start key is turned to START.\u201d. So far: \u201cIs the battery switch ON and is the 15 A start fuse F2 good?\u201d: YES; \u201cWhat is the battery voltage at terminals B+ and B- with the key OFF?\u201d: 12.5 V or more; \u201cIs more than 10 V present at starter relay K1 terminal 86 when the key is turned to START?\u201d: YES. Which possible problem does the manual still list at \u201cTest starter relay K1 with the relay tester.\u201d?",
+   "variant_of": null
+  },
+  {
+   "answer": "1",
+   "choices": [
+    "Start fuse F2 blown.",
+    "Starter motor failed.",
+    "Battery switch off.",
+    "Battery discharged."
+   ],
+   "difficulty": 0.6,
+   "kind": "mc",
+   "lang": "en",
+   "note": null,
+   "q_id": "q:t-table-3-1:open:t-table-3-1-q4:1",
+   "rationales": [
+    "The checks so far have ruled that out: the manual no longer lists it here.",
+    "The manual still lists \u201cStarter motor failed.\u201d at this question (Table 3-1, Question 4).",
+    "The checks so far have ruled that out: the manual no longer lists it here.",
+    "The checks so far have ruled that out: the manual no longer lists it here."
+   ],
+   "section_ids": [
+    "m40:table-3-1/q4",
+    "m40:table-3-1/sy1",
+    "m40:table-3-1/q1",
+    "m40:table-3-1/q2",
+    "m40:table-3-1/q3"
+   ],
+   "skill_id": "skill:t-table-3-1",
+   "stem": "Symptom: \u201cThe engine does not crank when the start key is turned to START.\u201d. So far: \u201cIs the battery switch ON and is the 15 A start fuse F2 good?\u201d: YES; \u201cWhat is the battery voltage at terminals B+ and B- with the key OFF?\u201d: 12.5 V or more; \u201cIs more than 10 V present at starter relay K1 terminal 86 when the key is turned to START?\u201d: YES. Which possible problem does the manual still list at \u201cTest starter relay K1 with the relay tester.\u201d?",
+   "variant_of": null
+  },
+  {
+   "answer": "1",
+   "choices": [
+    "Below 11.5 V",
+    "12.5 V or more",
+    "11.5 V to 12.5 V"
+   ],
+   "difficulty": 0.5,
+   "kind": "mc",
+   "lang": "en",
+   "note": null,
+   "q_id": "q:t-table-3-1:range:t-table-3-1-q2:2",
+   "rationales": [
+    "That reading leads to \u201cReplace the battery. Refer to task 4-3.\u201d.",
+    "The manual's branch 12.5 V or more leads there (Table 3-1, Question 2).",
+    "That reading leads to \u201cCharge the battery, then repeat the voltage test.\u201d."
+   ],
+   "section_ids": [
+    "m40:table-3-1/q2",
+    "m40:table-3-1/q3"
+   ],
+   "skill_id": "skill:t-table-3-1",
+   "stem": "At \u201cWhat is the battery voltage at terminals B+ and B- with the key OFF?\u201d, which reading leads the manual to \u201cIs more than 10 V present at starter relay K1 terminal 86 when the key is turned to START?\u201d?",
+   "variant_of": null
+  },
+  {
+   "answer": "1",
+   "choices": [
+    "12.5 V or more",
+    "11.5 V to 12.5 V",
+    "Below 11.5 V"
+   ],
+   "difficulty": 0.5,
+   "kind": "mc",
+   "lang": "en",
+   "note": null,
+   "q_id": "q:t-table-3-1:range:t-table-3-1-q2:3",
+   "rationales": [
+    "That reading leads to \u201cIs more than 10 V present at starter relay K1 terminal 86 when the key is turned to START?\u201d.",
+    "The manual's branch 11.5 V to 12.5 V leads there (Table 3-1, Question 2).",
+    "That reading leads to \u201cReplace the battery. Refer to task 4-3.\u201d."
+   ],
+   "section_ids": [
+    "m40:table-3-1/q2",
+    "m40:table-3-1/ac3"
+   ],
+   "skill_id": "skill:t-table-3-1",
+   "stem": "At \u201cWhat is the battery voltage at terminals B+ and B- with the key OFF?\u201d, which reading leads the manual to \u201cCharge the battery, then repeat the voltage test.\u201d?",
+   "variant_of": null
+  },
+  {
+   "answer": "0",
+   "choices": [
+    "A battery that was just charged reads high for about an hour. Wait before you test it.",
+    "A tight belt moves no more than 15 mm when pressed.",
+    "Batteries give off explosive gas. Keep sparks and flames away from the battery.",
+    "Do not let the meter leads touch each other or the frame while they are on the battery terminals."
+   ],
+   "difficulty": 0.5,
+   "kind": "mc",
+   "lang": "en",
+   "note": null,
+   "q_id": "q:guard:m40-table-3-1-q2-test-s3-note",
+   "rationales": [
+    "The manual's note: \u201cA battery that was just charged reads high for about an hour. Wait before you test it.\u201d (Table 3-1, Question 2, Test procedure, Step 3, Note).",
+    "That guards \u201cPress the belt midway between the pulleys.\u201d in \u201cBelt condition check\u201d.",
+    "That guards \u201cBattery voltage test\u201d.",
+    "That guards \u201cPlace the red lead on B+ and the black lead on B-.\u201d in \u201cBattery voltage test\u201d."
+   ],
+   "section_ids": [
+    "m40:table-3-1/q2/test/s3",
+    "m40:table-3-1/q2/test/s3/note"
+   ],
+   "skill_id": "skill:t-table-3-1.q2.test",
+   "stem": "In \u201cBattery voltage test\u201d, before the step \u201cRead the voltage with the key OFF.\u201d, which warning, caution or note does the manual give?",
+   "variant_of": null
+  },
+  {
+   "answer": "1",
+   "choices": [
+    "Do not let the meter leads touch each other or the frame while they are on the battery terminals.",
+    "Do not bridge relay terminals with a bare wire. Use the relay tester only.",
+    "Disconnect the negative cable first to prevent a short circuit.",
+    "A battery that was just charged reads high for about an hour. Wait before you test it."
+   ],
+   "difficulty": 0.5,
+   "kind": "mc",
+   "lang": "en",
+   "note": null,
+   "q_id": "q:guard:m40-table-3-1-q4-test-s2-caution",
+   "rationales": [
+    "That guards \u201cPlace the red lead on B+ and the black lead on B-.\u201d in \u201cBattery voltage test\u201d.",
+    "The manual's caution: \u201cDo not bridge relay terminals with a bare wire. Use the relay tester only.\u201d (Table 3-1, Question 4, Test procedure, Step 2, Caution).",
+    "That guards \u201cDisconnect the negative cable first, then the positive cable.\u201d in \u201cBattery replacement\u201d.",
+    "That guards \u201cRead the voltage with the key OFF.\u201d in \u201cBattery voltage test\u201d."
+   ],
+   "section_ids": [
+    "m40:table-3-1/q4/test/s2",
+    "m40:table-3-1/q4/test/s2/caution"
+   ],
+   "skill_id": "skill:t-table-3-1.q4.test",
+   "stem": "In \u201cStarter relay test\u201d, before the step \u201cInsert K1 in the relay tester and press TEST.\u201d, which warning, caution or note does the manual give?",
+   "variant_of": null
+  },
+  {
+   "answer": "3",
+   "choices": [
+    "What is the battery voltage at terminals B+ and B- with the key OFF?",
+    "Is the battery switch ON and is the 15 A start fuse F2 good?",
+    "Test starter relay K1 with the relay tester.",
+    "Is the intake strainer clear of debris?"
+   ],
+   "difficulty": 0.4,
+   "kind": "mc",
+   "lang": "en",
+   "note": null,
+   "q_id": "q:signal-next:t-table-3-2:e21",
+   "rationales": [
+    "That is the first step for \u201cSPN 168 FMI 1\u201d.",
+    "That is a question of \u201cEngine will not crank\u201d.",
+    "That is a question of \u201cEngine will not crank\u201d.",
+    "The manual: \u201cIs the intake strainer clear of debris?\u201d (Table 3-2, Question 1)."
+   ],
+   "section_ids": [
+    "m40:table",
+    "m40:table-3-2/q1"
+   ],
+   "skill_id": "skill:t-table-3-2",
+   "stem": "The machine shows \u201cE21\u201d. What does the manual say to do first?",
+   "variant_of": null
+  },
+  {
+   "answer": "2",
+   "choices": [
+    "What is the battery voltage at terminals B+ and B- with the key OFF?",
+    "Is the battery switch ON and is the 15 A start fuse F2 good?",
+    "Is the intake strainer clear of debris?",
+    "Test starter relay K1 with the relay tester."
+   ],
+   "difficulty": 0.4,
+   "kind": "mc",
+   "lang": "en",
+   "note": null,
+   "q_id": "q:signal-next:t-table-3-2:spn-110-fmi-0",
+   "rationales": [
+    "That is the first step for \u201cSPN 168 FMI 1\u201d.",
+    "That is a question of \u201cEngine will not crank\u201d.",
+    "The manual: \u201cIs the intake strainer clear of debris?\u201d (Table 3-2, Question 1).",
+    "That is a question of \u201cEngine will not crank\u201d."
+   ],
+   "section_ids": [
+    "m40:table",
+    "m40:table-3-2/q1"
+   ],
+   "skill_id": "skill:t-table-3-2",
+   "stem": "The machine shows \u201cSPN 110 FMI 0\u201d. What does the manual say to do first?",
+   "variant_of": null
+  },
+  {
+   "answer": "3",
+   "choices": [
+    "Replace the cooling fan belt.",
+    "Adjust the belt tension.",
+    "Clean the intake strainer.",
+    "Internal cooling fault. Report to the field maintenance shop."
+   ],
+   "difficulty": 0.5,
+   "kind": "mc",
+   "lang": "en",
+   "note": null,
+   "q_id": "q:t-table-3-2:next:t-table-3-2-q2:1",
+   "rationales": [
+    "That follows the result BROKEN at this question, not TIGHT.",
+    "That follows the result LOOSE at this question, not TIGHT.",
+    "That comes after NO at \u201cIs the intake strainer clear of debris?\u201d.",
+    "The manual: \u201cInternal cooling fault. Report to the field maintenance shop.\u201d (Table 3-2, page 3-9)."
+   ],
+   "section_ids": [
+    "m40:table-3-2/q2",
+    "m40:table-3-2/es1",
+    "m40:table-3-2/sy1",
+    "m40:table-3-2/q1"
+   ],
+   "skill_id": "skill:t-table-3-2",
+   "stem": "Symptom: \u201cThe high temperature lamp is on or the controller shows a high temperature code.\u201d. So far: \u201cIs the intake strainer clear of debris?\u201d: YES. At \u201cWhat is the condition of the cooling fan belt: tight, loose or broken?\u201d the result is TIGHT. What does the manual say to do next?",
+   "variant_of": null
+  },
+  {
+   "answer": "0",
+   "choices": [
+    "Adjust the belt tension.",
+    "Replace the cooling fan belt.",
+    "Internal cooling fault. Report to the field maintenance shop.",
+    "Clean the intake strainer."
+   ],
+   "difficulty": 0.5,
+   "kind": "mc",
+   "lang": "en",
+   "note": null,
+   "q_id": "q:t-table-3-2:next:t-table-3-2-q2:3",
+   "rationales": [
+    "The manual: \u201cAdjust the belt tension.\u201d (Table 3-2, page 3-9).",
+    "That follows the result BROKEN at this question, not LOOSE.",
+    "That follows the result TIGHT at this question, not LOOSE.",
+    "That comes after NO at \u201cIs the intake strainer clear of debris?\u201d."
+   ],
+   "section_ids": [
+    "m40:table-3-2/q2",
+    "m40:table-3-2/ac2",
+    "m40:table-3-2/sy1",
+    "m40:table-3-2/q1"
+   ],
+   "skill_id": "skill:t-table-3-2",
+   "stem": "Symptom: \u201cThe high temperature lamp is on or the controller shows a high temperature code.\u201d. So far: \u201cIs the intake strainer clear of debris?\u201d: YES. At \u201cWhat is the condition of the cooling fan belt: tight, loose or broken?\u201d the result is LOOSE. What does the manual say to do next?",
+   "variant_of": null
+  },
+  {
+   "answer": "1",
+   "choices": [
+    "A battery that was just charged reads high for about an hour. Wait before you test it.",
+    "A tight belt moves no more than 15 mm when pressed.",
+    "Stop the pump before you touch the belt. The fan can cut fingers.",
+    "Do not let the meter leads touch each other or the frame while they are on the battery terminals."
+   ],
+   "difficulty": 0.5,
+   "kind": "mc",
+   "lang": "en",
+   "note": null,
+   "q_id": "q:guard:m40-table-3-2-q2-test-s2-note",
+   "rationales": [
+    "That guards \u201cRead the voltage with the key OFF.\u201d in \u201cBattery voltage test\u201d.",
+    "The manual's note: \u201cA tight belt moves no more than 15 mm when pressed.\u201d (Table 3-2, Question 2, Test procedure, Step 2, Note).",
+    "That guards \u201cBelt condition check\u201d.",
+    "That guards \u201cPlace the red lead on B+ and the black lead on B-.\u201d in \u201cBattery voltage test\u201d."
+   ],
+   "section_ids": [
+    "m40:table-3-2/q2/test/s2",
+    "m40:table-3-2/q2/test/s2/note"
+   ],
+   "skill_id": "skill:t-table-3-2.q2.test",
+   "stem": "In \u201cBelt condition check\u201d, before the step \u201cPress the belt midway between the pulleys.\u201d, which warning, caution or note does the manual give?",
+   "variant_of": null
+  },
+  {
+   "answer": "2",
+   "choices": [
+    "Look for cracks, fraying or missing pieces.",
+    "Read the PASS or FAIL lamp on the tester.",
+    "Press the belt midway between the pulleys.",
+    "Record the date code of the new battery."
+   ],
+   "difficulty": 0.4,
+   "kind": "mc",
+   "lang": "en",
+   "note": null,
+   "q_id": "q:order:t-table-3-2-q2-test:1",
+   "rationales": [
+    "That is step 3 of this task.",
+    "That is a step of \u201cStarter relay test\u201d.",
+    "Step 2: \u201cPress the belt midway between the pulleys.\u201d.",
+    "That is a step of \u201cBattery replacement\u201d."
+   ],
+   "section_ids": [
+    "m40:table-3-2/q2/test/s2",
+    "m40:table-3-2/q2/test/s1"
+   ],
+   "skill_id": "skill:t-table-3-2.q2.test",
+   "stem": "In \u201cBelt condition check\u201d, after \u201cOpen the fan guard.\u201d, what is the next step?",
+   "variant_of": null
+  },
+  {
+   "answer": "1",
+   "choices": [
+    "Open the fan guard.",
+    "Look for cracks, fraying or missing pieces.",
+    "Insert K1 in the relay tester and press TEST.",
+    "Read the PASS or FAIL lamp on the tester."
+   ],
+   "difficulty": 0.4,
+   "kind": "mc",
+   "lang": "en",
+   "note": null,
+   "q_id": "q:order:t-table-3-2-q2-test:2",
+   "rationales": [
+    "That is step 1 of this task, already done.",
+    "Step 3: \u201cLook for cracks, fraying or missing pieces.\u201d.",
+    "That is a step of \u201cStarter relay test\u201d.",
+    "That is a step of \u201cStarter relay test\u201d."
+   ],
+   "section_ids": [
+    "m40:table-3-2/q2/test/s3",
+    "m40:table-3-2/q2/test/s2"
+   ],
+   "skill_id": "skill:t-table-3-2.q2.test",
+   "stem": "In \u201cBelt condition check\u201d, after \u201cPress the belt midway between the pulleys.\u201d, what is the next step?",
+   "variant_of": null
+  }
+ ],
+ "topics": [
+  {
+   "lang": "en",
+   "ord": 1,
+   "parent_id": null,
+   "summary": "Walking the manual's troubleshooting trees.",
+   "title": "Troubleshooting",
+   "topic_id": "topic:troubleshooting"
+  },
+  {
+   "lang": "en",
+   "ord": 2,
+   "parent_id": null,
+   "summary": "The order and the safety of the manual's tasks.",
+   "title": "Maintenance tasks",
+   "topic_id": "topic:tasks"
+  }
+ ]
+}
