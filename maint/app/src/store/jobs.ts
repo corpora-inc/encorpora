@@ -146,6 +146,7 @@ export const useJobs = create<JobsState>()(
           try {
             const answer = await call("ask", {
               question: query,
+              pack_id: v?.job.pack_id ?? null,
               equip_id: v?.job.equip_id ?? null,
               level: v?.step?.level.id ?? null,
               scope: v ? { tree_id: v.job.tree_id } : null,

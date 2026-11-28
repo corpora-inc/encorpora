@@ -10,12 +10,12 @@ import { NotFound } from "../screens/NotFound.tsx";
 import { UnitPage } from "../screens/UnitPage.tsx";
 import { useDescribe } from "../store/describe.ts";
 import { useFleet } from "../store/fleet.ts";
-import { isGeneral, usePack, variantName } from "../store/pack.ts";
+import { allEquipment, isGeneral, packOf, usePack, variantName } from "../store/pack.ts";
 import { useActiveUnit } from "./Frame.tsx";
 
 export function HomePage() {
   const { loaded, assets, jobs, sync } = useFleet();
-  const equipment = usePack((s) => s.equipment);
+  const equipment = allEquipment(usePack((s) => s.packs));
   const variants = Object.fromEntries(equipment.map((e) => [e.equip_id, e.name]));
   return <Home loading={!loaded} units={assets} variants={variants} openJobs={jobs.filter((j) => j.status === "open")} pending={sync?.pending ?? 0} lastSync={sync?.last_synced_at ?? null} />;
 }
@@ -23,7 +23,8 @@ export function HomePage() {
 export function IdentifyPage() {
   const { mode = "type" } = useParams();
   const navigate = useNavigate();
-  const equipment = usePack((s) => s.equipment);
+  const packs = usePack((s) => s.packs);
+  const equipment = allEquipment(packs);
   const [observed, setObserved] = useState<EquipResolveParams>({});
   const [phase, setPhase] = useState<IdentifyPhase>("entry");
   const [result, setResult] = useState<Resolved | null>(null);
@@ -51,7 +52,16 @@ export function IdentifyPage() {
       onResolve={async () => {
         setPhase("resolving");
         try {
-          setResult(await call("equip.resolve", observed));
+          // Each pack resolves within its own equipment family; the plate matches in one, several or none.
+          const all = await Promise.all(Object.keys(packs).map((pack_id) => call("equip.resolve", { ...observed, pack_id })));
+          const hits = all.filter((r) => r.equip_id);
+          setResult(
+            hits.length === 0
+              ? (all[0] ?? null)
+              : hits.length === 1
+                ? hits[0]!
+                : { ambiguous: true, attrs: {}, candidates: hits.flatMap((r) => r.candidates), equip_id: null, name: null, rejected: hits.flatMap((r) => r.rejected) },
+          );
           setPicked(null);
           setPhase("done");
         } catch (e) {
@@ -67,7 +77,9 @@ export function IdentifyPage() {
         setSaving(true);
         try {
           const h = Number(hours);
-          const a = await useFleet.getState().create({ name: name.trim(), serial: observed.serial ?? null, equip_id: equipId, hours: hours.trim() && Number.isFinite(h) ? h : null });
+          const pack = packOf(packs, equipId);
+          if (!pack) throw new Error(`No pack holds ${equipId}`);
+          const a = await useFleet.getState().create({ name: name.trim(), serial: observed.serial ?? null, equip_id: equipId, hours: hours.trim() && Number.isFinite(h) ? h : null }, pack.info.pack_id);
           navigate(unitPath(a.asset_id), { replace: true });
         } catch (e) {
           reportError("identify.save", e, e instanceof EngineError ? e.message : "The unit could not be saved.");
@@ -83,7 +95,8 @@ export function IdentifyPage() {
 export function UnitRoute() {
   const { unitId = "" } = useParams();
   const { loaded, assets, jobs, history } = useFleet();
-  const equipment = usePack((s) => s.equipment);
+  const packs = usePack((s) => s.packs);
+  const equipment = allEquipment(packs);
   const unit = assets.find((a) => a.asset_id === unitId);
   const codes = useDescribe((s) => s.entries[unitId]?.codes);
   const match = useDescribe((s) => s.matches[unitId]);
@@ -92,7 +105,8 @@ export function UnitRoute() {
     if (unit) void useFleet.getState().loadHistory(unit.asset_id);
   }, [unit?.asset_id]); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {
-    if (unit && codes?.length) void useDescribe.getState().matchCodes(unit.asset_id);
+    const pack = packOf(packs, unit?.equip_id);
+    if (unit && pack && codes?.length) void useDescribe.getState().matchCodes(unit.asset_id, pack.info.pack_id);
   }, [unit?.asset_id, codes]); // eslint-disable-line react-hooks/exhaustive-deps
   if (!unit) return loaded ? <NotFound /> : null;
   const openJob = jobs.find((j) => j.asset_id === unit.asset_id && j.status === "open") ?? null;

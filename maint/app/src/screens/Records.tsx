@@ -10,7 +10,8 @@ export interface RecordsProps {
   sync: SyncStatus | null;
   /** This device's id and public key, for an administrator to enroll. */
   device: DeviceInfo | null;
-  pack: PackInfoView;
+  /** Every pack on the device, with its sources, editions and licenses as the pack gives them. */
+  packs: PackInfoView[];
   notes: FieldNote[] | null;
   audit: AuditRecord[] | null;
   chain: ChainReport | null;
@@ -172,19 +173,38 @@ export function Records(p: RecordsProps) {
             )}
           </Panel>
 
-          <Panel label="Manual pack">
-            <dl className="m-0 grid grid-cols-[8rem_minmax(0,1fr)] gap-x-4 gap-y-1.5 text-small">
-              <dt className="text-ink-3">Pack</dt>
-              <dd className="m-0 font-semibold">
-                {p.pack.pack_id} <span className="code">{p.pack.version}</span>
-              </dd>
-              <dt className="text-ink-3">Built</dt>
-              <dd className="m-0">{formatDate(p.pack.built_at)}</dd>
-              {p.pack.sources.map((s) => (
-                <SourceRow key={s.source_id} label="Source" value={`${s.title}, ${s.edition}`} />
-              ))}
-            </dl>
-          </Panel>
+          <section aria-labelledby="sources" className="flex flex-col gap-3">
+            <h2 id="sources" className="text-h3">
+              Sources
+            </h2>
+            {p.packs.map((pk) => (
+              <Panel key={pk.pack_id}>
+                <p className="mb-2 text-meta text-ink-3">
+                  Pack <span className="code">{pk.pack_id}</span> <span className="code">{pk.version}</span>, built {formatDate(pk.built_at)}
+                </p>
+                {pk.sources.map((src) => (
+                  <dl key={src.source_id} className="m-0 grid grid-cols-[7rem_minmax(0,1fr)] gap-x-4 gap-y-1 border-t border-line pt-2 text-small first-of-type:border-t-0 first-of-type:pt-0">
+                    <dt className="text-ink-3">Title</dt>
+                    <dd className="manual-text m-0 font-semibold">{src.title}</dd>
+                    <dt className="text-ink-3">Edition</dt>
+                    <dd className="m-0">{src.edition}</dd>
+                    <dt className="text-ink-3">Publisher</dt>
+                    <dd className="m-0">{src.publisher}</dd>
+                    <dt className="text-ink-3">Retrieved</dt>
+                    <dd className="m-0">{formatDate(src.retrieved_at)}</dd>
+                    <dt className="text-ink-3">License</dt>
+                    <dd className="m-0">{src.license}</dd>
+                    {src.url && (
+                      <>
+                        <dt className="text-ink-3">From</dt>
+                        <dd className="m-0 break-all">{src.url}</dd>
+                      </>
+                    )}
+                  </dl>
+                ))}
+              </Panel>
+            ))}
+          </section>
 
           <Panel label="On-device model">
             {p.model ? (
@@ -228,6 +248,13 @@ const EVENT: Record<string, string> = {
   "job.close": "Job closed",
   "lesson.create": "Lesson saved",
   "field.install": "Field notes installed",
+  "asset.import": "Fleet file imported",
+  "asset.create": "Unit added",
+  "asset.update": "Unit changed",
+  "run.start": "Task started",
+  "run.record": "Task step recorded",
+  "run.finish": "Task finished",
+  "run.abandon": "Task stopped",
 };
 
 function pick(e: ChangeEvent<HTMLInputElement>, then: (f: File) => void) {

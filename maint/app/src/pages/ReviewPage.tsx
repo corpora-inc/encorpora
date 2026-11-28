@@ -5,7 +5,7 @@ import { EngineError, hubCall, setHubToken } from "../engine/client.ts";
 import type { EnrolledDevice, HubStatus, Principal, ReviewItem } from "../engine/types.ts";
 import { reviewPath } from "../routes.ts";
 import { HubSignIn, Review, suggestedNote, type ReviewDraft } from "../screens/Review.tsx";
-import { usePack } from "../store/pack.ts";
+import { allEquipment, treeTitles, usePack } from "../store/pack.ts";
 import { useSettings } from "../store/settings.ts";
 
 const say = (e: unknown, fallback: string) => (e instanceof EngineError ? e.message : fallback);
@@ -13,7 +13,7 @@ const say = (e: unknown, fallback: string) => (e instanceof EngineError ? e.mess
 export function ReviewPage() {
   const { lessonId } = useParams();
   const navigate = useNavigate();
-  const { trees, equipment } = usePack();
+  const packs = usePack((s) => s.packs);
   const { hubToken, setHubToken: keepToken } = useSettings();
   const [me, setMe] = useState<Principal | null>(null);
   const [signInError, setSignInError] = useState<string | null>(null);
@@ -85,8 +85,8 @@ export function ReviewPage() {
       queue={queue}
       approved={approved}
       selected={selected}
-      titles={Object.fromEntries(trees.map((t) => [t.tree_id, t.title]))}
-      variants={Object.fromEntries(equipment.map((e) => [e.equip_id, e.name]))}
+      titles={treeTitles(packs)}
+      variants={Object.fromEntries(allEquipment(packs).map((e) => [e.equip_id, e.name]))}
       draft={draft}
       suggested={suggested}
       me={me}

@@ -9,37 +9,52 @@ import { TaskSteps } from "../ui/TaskSteps.tsx";
 
 const KIND: Record<string, string> = { maintenance: "Maintenance", test: "Tests", inspection: "Inspections", service: "Service" };
 
+export interface TaskGroup {
+  packId: string;
+  /** The manual the tasks come from. */
+  title: string;
+  tasks: TaskSummary[];
+}
+
 export interface TaskListProps {
   /** The variant the list is filtered to (the engine filters; this only names it). */
   variant: string | null;
-  tasks: TaskSummary[] | null;
+  /** One group per manual: one when a unit is chosen, every pack's otherwise. */
+  groups: TaskGroup[] | null;
 }
 
 /** Maintenance tasks for the active variant, grouped as the manual groups them. */
-export function TaskList({ variant, tasks }: TaskListProps) {
-  const kinds = tasks ? [...new Set(tasks.map((t) => t.kind))] : [];
+export function TaskList({ variant, groups }: TaskListProps) {
   return (
-    <Page title="Maintenance tasks" kicker={variant ?? "All variants"}>
-      {tasks === null ? (
+    <Page title="Maintenance tasks" kicker={variant ?? "All manuals on this device"}>
+      {groups === null ? (
         <Skeleton className="h-[240px]" />
-      ) : tasks.length === 0 ? (
-        <p className="text-body text-ink-2">This manual has no tasks for this variant.</p>
+      ) : groups.every((g) => g.tasks.length === 0) ? (
+        <p className="text-body text-ink-2">No tasks in these manuals for this variant.</p>
       ) : (
-        kinds.map((k) => (
-          <List key={k} label={KIND[k] ?? k}>
-            {tasks
-              .filter((t) => t.kind === k)
-              .map((t) => (
-                <Row key={t.proc_id} to={procedurePath(t.proc_id)} title={<span className="manual-text">{t.title}</span>} meta={t.summary} />
+        groups
+          .filter((g) => g.tasks.length > 0)
+          .map((g) => (
+            <div key={g.packId} className="flex flex-col gap-4">
+              {groups.length > 1 && <h2 className="manual-text text-h3">{g.title}</h2>}
+              {[...new Set(g.tasks.map((t) => t.kind))].map((k) => (
+                <List key={k} label={KIND[k] ?? k}>
+                  {g.tasks
+                    .filter((t) => t.kind === k)
+                    .map((t) => (
+                      <Row key={t.proc_id} to={procedurePath(g.packId, t.proc_id)} title={<span className="manual-text">{t.title}</span>} meta={t.summary} />
+                    ))}
+                </List>
               ))}
-          </List>
-        ))
+            </div>
+          ))
       )}
     </Page>
   );
 }
 
 export interface TaskPageProps {
+  packId: string;
   task: TaskView;
   /** An open run of this task on this device, if any. */
   run: Run | null;
@@ -66,7 +81,7 @@ export function TaskPage(p: TaskPageProps) {
       kicker={t.summary}
       wide
       actions={
-        <Link to={printProcedurePath(t.proc_id)} className="inline-flex min-h-tap items-center gap-2 rounded-control border-2 border-line-strong bg-surface px-5 text-small font-semibold text-ink no-underline">
+        <Link to={printProcedurePath(p.packId, t.proc_id)} className="inline-flex min-h-tap items-center gap-2 rounded-control border-2 border-line-strong bg-surface px-5 text-small font-semibold text-ink no-underline">
           <Printer aria-hidden size={20} />
           Print
         </Link>

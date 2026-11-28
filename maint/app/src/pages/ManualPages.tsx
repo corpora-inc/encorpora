@@ -6,50 +6,65 @@ import type { ManualHit, SectionRef, SectionView } from "../engine/types.ts";
 import { ManualHome, ManualResults, SectionReader } from "../screens/Manual.tsx";
 import { NotFound } from "../screens/NotFound.tsx";
 import { useFleet } from "../store/fleet.ts";
-import { usePack } from "../store/pack.ts";
+import { packOf, packTitle, usePack } from "../store/pack.ts";
 import { useSettings } from "../store/settings.ts";
-import { useAssetSrc } from "../ui/manual.tsx";
+import { ManualPack, pageFor, useAssetSrc } from "../ui/manual.tsx";
 
-/** The active unit's variant: the engine marks what applies to it. */
-function useEquip() {
+/** The active unit's variant, when it belongs to this pack: the engine marks what applies to it. */
+function useEquip(packId: string) {
   const active = useSettings((s) => s.activeUnit);
-  return useFleet((s) => s.assets.find((a) => a.asset_id === active)?.equip_id ?? null);
+  const equip = useFleet((s) => s.assets.find((a) => a.asset_id === active)?.equip_id ?? null);
+  const packs = usePack((s) => s.packs);
+  return packOf(packs, equip)?.info.pack_id === packId ? equip : null;
 }
 
+/** Every manual on the device, the active unit's first; or one, at /manual/<pack>. */
 export function ManualHomePage() {
-  const info = usePack((s) => s.info);
-  const equip = useEquip();
-  const [contents, setContents] = useState<SectionRef[] | null>(null);
+  const { packId } = useParams();
+  const { packs, ids } = usePack();
+  const active = useSettings((s) => s.activeUnit);
+  const activeEquip = useFleet((s) => s.assets.find((a) => a.asset_id === active)?.equip_id ?? null);
+  const first = packOf(packs, activeEquip)?.info.pack_id;
+  const shown = packId ? [packId] : [...ids].sort((a, b) => (a === first ? -1 : b === first ? 1 : 0));
+  const [contents, setContents] = useState<Record<string, SectionRef[]>>({});
   useEffect(() => {
-    call("manual.children", { equip_id: equip })
-      .then(setContents)
-      .catch((e: unknown) => reportError("manual.children", e, "The manual's contents could not be read."));
-  }, [equip]);
-  return <ManualHome title={info?.sources.map((s) => `${s.title}, ${s.edition}`).join("; ") ?? ""} contents={contents} />;
+    for (const id of shown)
+      call("manual.children", { pack_id: id })
+        .then((c) => setContents((cur) => ({ ...cur, [id]: c })))
+        .catch((e: unknown) => reportError("manual.children", e, "A manual's contents could not be read."));
+  }, [shown.join("|")]); // eslint-disable-line react-hooks/exhaustive-deps
+  if (packId && !packs[packId]) return <NotFound />;
+  return (
+    <ManualHome
+      manuals={shown.map((id) => {
+        const p = packs[id]!;
+        return { packId: id, title: packTitle(p), edition: p.info.sources[0]?.edition ?? p.info.version, contents: contents[id] ?? null };
+      })}
+    />
+  );
 }
 
 export function ManualSearchPage() {
-  const { q = "" } = useParams();
-  const equip = useEquip();
+  const { packId = "", q = "" } = useParams();
+  const equip = useEquip(packId);
   const [hits, setHits] = useState<ManualHit[] | null>(null);
   useEffect(() => {
     setHits(null);
-    call("manual.search", { query: q, equip_id: equip, k: 20 })
+    call("manual.search", { pack_id: packId, query: q, equip_id: equip, k: 20 })
       .then((r) => setHits(r.hits))
       .catch((e: unknown) => reportError("manual.search", e, "The search did not run."));
-  }, [q, equip]);
-  return <ManualResults key={q} query={q} hits={hits} />;
+  }, [packId, q, equip]);
+  return <ManualResults key={q} packId={packId} query={q} hits={hits} />;
 }
 
 export function SectionPage() {
-  const { sectionId = "", assetId } = useParams();
-  const equip = useEquip();
+  const { packId = "", sectionId = "", assetId } = useParams();
+  const equip = useEquip(packId);
   const src = useAssetSrc();
-  const packId = usePack((s) => s.info?.pack_id ?? "");
   const [view, setView] = useState<SectionView | null>(null);
   const [missing, setMissing] = useState(false);
   useEffect(() => {
-    call("manual.section", { section_id: sectionId, equip_id: equip })
+    call("manual.section", { pack_id: packId, section_id: sectionId, equip_id: equip })
       .then((v) => {
         setView(v);
         setMissing(false);
@@ -58,9 +73,13 @@ export function SectionPage() {
         setMissing(true);
         reportError("manual.section", e, "This section could not be read.");
       });
-  }, [sectionId, equip]);
+  }, [packId, sectionId, equip]);
   if (!view || view.section.section_id !== sectionId) return missing ? <NotFound /> : null;
   // The section's own page image, else the page its citation points at.
-  const page = view.assets.find((a) => a.role === "page") ?? null;
-  return <SectionReader view={view} page={page} pageOpen={!!assetId && page?.asset_id === assetId} src={(a) => src(packId, a)} />;
+  const page = pageFor(view.assets, view.citation);
+  return (
+    <ManualPack.Provider value={packId}>
+      <SectionReader packId={packId} view={view} page={page} pageOpen={!!assetId && page?.asset_id === assetId} src={(a) => src(packId, a)} />
+    </ManualPack.Provider>
+  );
 }

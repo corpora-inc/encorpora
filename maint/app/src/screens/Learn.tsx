@@ -10,15 +10,25 @@ const KIND: Record<string, string> = { symptom: "Symptom", check: "Check", actio
  * read the lessons technicians captured. Practice items come next, from the
  * shared practice engine, cited the same way.
  */
-export function LearnHome({ trees, lessons, titles }: { trees: FaultTree[]; lessons: Lesson[] | null; titles: Record<string, string> }) {
+export interface TreeGroup {
+  packId: string;
+  title: string;
+  trees: FaultTree[];
+}
+
+export function LearnHome({ groups, lessons, titles }: { groups: TreeGroup[]; lessons: Lesson[] | null; titles: Record<string, string> }) {
   return (
     <Page title="Learn" wide>
       <div className="grid items-start gap-6 lg:grid-cols-2">
-        <List label="Troubleshooting tables">
-          {trees.map((t) => (
-            <Row key={t.tree_id} to={learnTreePath(t.tree_id)} title={<span className="manual-text">{t.title}</span>} meta={t.system ?? undefined} />
+        <div className="flex min-w-0 flex-col gap-6">
+          {groups.map((g) => (
+            <List key={g.packId} label={groups.length > 1 ? g.title : "Troubleshooting tables"}>
+              {g.trees.map((t) => (
+                <Row key={t.tree_id} to={learnTreePath(g.packId, t.tree_id)} title={<span className="manual-text">{t.title}</span>} meta={t.system ?? undefined} />
+              ))}
+            </List>
           ))}
-        </List>
+        </div>
         <section aria-labelledby="lessons">
           <h2 id="lessons" className="mb-2 text-h3">
             Lessons from the fleet

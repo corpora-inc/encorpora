@@ -7,6 +7,8 @@
 #   scripts/engine.sh device C   device C on 127.0.0.1:4323, never enrolled at the hub
 # Each start uses fresh records. Everything lives in .engine/ (git-ignored). Run from maint/app.
 #   HARVEST_BIN=<path to harvest> (default .engine/harvest)
+#   MAINT_PACKS=<packs root> and MAINT_PACKS_PUBKEY=<key file>: serve real packs instead of the
+#   fixture (the preview; tests stay on the fixture).
 set -euo pipefail
 cd "$(dirname "$0")/.."
 BIN="${HARVEST_BIN:-.engine/harvest}"
@@ -33,7 +35,11 @@ JSON
     NAME="${2:-A}"
     case "$NAME" in A) PORT=4317 ;; B) PORT=4320 ;; C) PORT=4323 ;; *) echo "device A, B or C" >&2; exit 2 ;; esac
     KEY="${HARVEST_PUBKEY:-$("$BIN" fixture .engine/fx --json | python3 -c 'import json,sys;print(json.load(sys.stdin)["pubkey"])')}"
-    exec "$BIN" serve .engine/pump40 --records ".engine/records-$NAME-$STAMP.db" --pubkey "$KEY" \
+    FIELD_KEY="$KEY"
+    PACKS=.engine/pump40
+    # The fixture's test key also signs the hub's field-note bundles (hub --dev-key).
+    if [ -n "${MAINT_PACKS:-}" ]; then PACKS="$MAINT_PACKS"; KEY="$MAINT_PACKS_PUBKEY"; fi
+    exec "$BIN" serve "$PACKS" --field-pubkey "$FIELD_KEY" --records ".engine/records-$NAME-$STAMP.db" --pubkey "$KEY" \
       --bind "127.0.0.1:$PORT" --hub "$HUB" "${ORIGINS[@]}"
     ;;
   *) echo "usage: engine.sh hub | device A|B|C" >&2; exit 2 ;;

@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { reportError } from "@appkit/toast.ts";
 import { call } from "../engine/client.ts";
-import type { JobReport, Lesson, TaskSummary, TaskView } from "../engine/types.ts";
+import type { JobReport, Lesson, TaskView } from "../engine/types.ts";
 import { NotFound } from "../screens/NotFound.tsx";
 import { PrintJob, PrintProcedure } from "../screens/Print.tsx";
-import { TaskList, TaskPage } from "../screens/Tasks.tsx";
+import { TaskList, TaskPage, type TaskGroup } from "../screens/Tasks.tsx";
 import { useFleet } from "../store/fleet.ts";
-import { usePack, variantName } from "../store/pack.ts";
-import { useRuns } from "../store/runs.ts";
+import { allEquipment, packOf, packTitle, usePack, variantName } from "../store/pack.ts";
+import { runKey, useRuns } from "../store/runs.ts";
 import { useSettings } from "../store/settings.ts";
 import { unitName } from "../ui/format.ts";
 
@@ -16,72 +16,79 @@ import { unitName } from "../ui/format.ts";
 function useActive() {
   const active = useSettings((s) => s.activeUnit);
   const assets = useFleet((s) => s.assets);
-  const equipment = usePack((s) => s.equipment);
+  const packs = usePack((s) => s.packs);
   const unit = assets.find((a) => a.asset_id === active) ?? null;
-  return { unit, variant: unit ? variantName(equipment, unit.equip_id) : null };
+  return { unit, variant: unit ? variantName(allEquipment(packs), unit.equip_id) : null, pack: packOf(packs, unit?.equip_id) };
 }
 
 export function TaskListPage() {
-  const { unit, variant } = useActive();
-  const [tasks, setTasks] = useState<TaskSummary[] | null>(null);
+  const { unit, variant, pack } = useActive();
+  const packs = usePack((s) => s.packs);
+  const [groups, setGroups] = useState<TaskGroup[] | null>(null);
   useEffect(() => {
-    call("task.list", { equip_id: unit?.equip_id ?? null })
-      .then(setTasks)
+    // The active unit's manual, filtered to its variant; with no unit, every manual's tasks.
+    const which = pack ? [pack] : Object.values(packs);
+    Promise.all(which.map(async (p) => ({ packId: p.info.pack_id, title: packTitle(p), tasks: await call("task.list", { pack_id: p.info.pack_id, equip_id: unit?.equip_id ?? null }) })))
+      .then(setGroups)
       .catch((e: unknown) => reportError("tasks.list", e, "The task list could not be read."));
-  }, [unit?.equip_id]);
-  return <TaskList variant={variant} tasks={tasks} />;
+  }, [unit?.equip_id, pack, packs]);
+  return <TaskList variant={variant} groups={groups} />;
 }
 
-function useTask(procId: string, equipId: string | null) {
+function useTask(packId: string, procId: string, equipId: string | null) {
   const [task, setTask] = useState<TaskView | null>(null);
   const [missing, setMissing] = useState(false);
   useEffect(() => {
-    call("task.get", { proc_id: procId, equip_id: equipId })
+    call("task.get", { pack_id: packId, proc_id: procId, equip_id: equipId })
       .then(setTask)
       .catch((e: unknown) => {
         setMissing(true);
         reportError("tasks.get", e, "This task could not be read from the manual.");
       });
-  }, [procId, equipId]);
+  }, [packId, procId, equipId]);
   return { task, missing };
 }
 
 export function TaskRoute() {
-  const { taskId = "" } = useParams();
+  const { packId = "", taskId = "" } = useParams();
   const { unit } = useActive();
   const level = useSettings((s) => s.level);
-  const info = usePack((s) => s.info);
-  const { task, missing } = useTask(taskId, unit?.equip_id ?? null);
+  const info = usePack((s) => s.packs[packId]?.info);
+  // A unit from another equipment family does not narrow this manual's task.
+  const equip = unit && packOf(usePack.getState().packs, unit.equip_id)?.info.pack_id === packId ? unit.equip_id : null;
+  const { task, missing } = useTask(packId, taskId, equip);
   const runs = useRuns();
-  if (!task) return missing ? <NotFound /> : null;
+  const key = runKey(packId, taskId);
+  if (!task || !info) return missing ? <NotFound /> : null;
   return (
     <TaskPage
+      packId={packId}
       task={task}
-      run={runs.open[taskId] ?? null}
-      guidance={runs.guidance[taskId] ?? null}
-      report={runs.reports[taskId] ?? null}
+      run={runs.open[key] ?? null}
+      guidance={runs.guidance[key] ?? null}
+      report={runs.reports[key] ?? null}
       busy={runs.busy}
-      unitName={unit ? unitName(unit) : null}
-      onStart={() => void runs.start(taskId, unit?.asset_id ?? null, unit?.equip_id ?? null, level ?? info?.levels[0]?.id ?? "")}
-      onRecord={(ord, outcome, value) => void runs.record(taskId, ord, outcome, value)}
-      onFinish={() => void runs.end(taskId, "finish")}
-      onAbandon={() => void runs.end(taskId, "abandon")}
+      unitName={equip && unit ? unitName(unit) : null}
+      onStart={() => void runs.start(packId, taskId, equip && unit ? unit.asset_id : null, equip, info.levels.find((l) => l.id === level)?.id ?? info.levels[0]?.id ?? "")}
+      onRecord={(ord, outcome, value) => void runs.record(key, ord, outcome, value)}
+      onFinish={() => void runs.end(key, "finish")}
+      onAbandon={() => void runs.end(key, "abandon")}
     />
   );
 }
 
 export function PrintProcedurePage() {
-  const { taskId = "" } = useParams();
+  const { packId = "", taskId = "" } = useParams();
   const { unit } = useActive();
-  const info = usePack((s) => s.info);
-  const { task, missing } = useTask(taskId, unit?.equip_id ?? null);
+  const info = usePack((s) => s.packs[packId]?.info);
+  const { task, missing } = useTask(packId, taskId, unit?.equip_id ?? null);
   if (!task || !info) return missing ? <NotFound /> : null;
   return <PrintProcedure task={task} pack={info} unit={unit ? unitName(unit) : null} />;
 }
 
 export function PrintJobPage() {
   const { jobId = "" } = useParams();
-  const info = usePack((s) => s.info);
+  const packs = usePack((s) => s.packs);
   const assets = useFleet((s) => s.assets);
   const [report, setReport] = useState<JobReport | null>(null);
   const [lesson, setLesson] = useState<Lesson | null>(null);
@@ -97,6 +104,7 @@ export function PrintJobPage() {
       .then((l) => setLesson(l[l.length - 1] ?? null))
       .catch((e: unknown) => reportError("print.lesson", e, "The job's lesson could not be read."));
   }, [jobId]);
+  const info = report ? packs[report.pack_id]?.info : undefined;
   if (!report || !info) return missing ? <NotFound /> : null;
   const asset = assets.find((a) => a.asset_id === report.asset_id);
   return <PrintJob report={report} pack={info} unit={asset ? unitName(asset) : null} lesson={lesson} />;

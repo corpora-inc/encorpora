@@ -50,7 +50,7 @@ import { Records, type RecordsProps } from "../screens/Records.tsx";
 import { HubSignIn, Review, suggestedNote, type ReviewProps } from "../screens/Review.tsx";
 import { designPath } from "../routes.ts";
 import { unitName } from "../ui/format.ts";
-import { AssetSource } from "../ui/manual.tsx";
+import { AssetSource, ManualPack } from "../ui/manual.tsx";
 import { Shell, type ShellUnit } from "../ui/Shell.tsx";
 import raw from "./captured.json";
 
@@ -160,6 +160,7 @@ const step = (v: JobView, extra: Partial<StepProps> = {}): StepProps => ({
   job: v.job,
   step: v.step!,
   levels: D.pack.levels,
+  facetLabels: Object.fromEntries((D.pack.facets ?? []).map((f) => [f.id, f.label])),
   phase: "ready",
   draft: "",
   note: "",
@@ -179,7 +180,13 @@ const step = (v: JobView, extra: Partial<StepProps> = {}): StepProps => ({
   ...extra,
 });
 
-const lessonFrom = (s: JobView) => ({ cause: "", action: s.step!.node.text, parts: D.task.requirements.filter((r) => r.kind === "part").map((r) => ({ ident: r.ident, text: r.text, qty: r.qty })), minutes: 45, note: "" });
+const lessonFrom = (s: JobView) => ({
+  cause: "",
+  action: s.step!.node.text,
+  parts: D.task.requirements.filter((r) => r.kind === "part").map((r) => ({ ident: r.ident, text: r.text, qty: r.qty })),
+  minutes: 45,
+  note: "",
+});
 
 const close = (v: JobView, extra: Partial<CloseOutProps> = {}): CloseOutProps => ({
   phase: "action",
@@ -201,6 +208,7 @@ const close = (v: JobView, extra: Partial<CloseOutProps> = {}): CloseOutProps =>
 const pageAsset = D.steps.check.step!.assets.find((a) => a.role === "page")!;
 
 const taskPage = (extra: Partial<TaskPageProps> = {}): TaskPageProps => ({
+  packId: D.pack.pack_id,
   task: D.task,
   run: null,
   guidance: null,
@@ -217,7 +225,7 @@ const taskPage = (extra: Partial<TaskPageProps> = {}): TaskPageProps => ({
 const records: RecordsProps = {
   sync: D.outbox,
   device: { device_id: "dev-15db3c55739b5c4c", public_key: "5MdZk4KLMfL+gvk5FUsE4EmxidH7WojwxR4xVwCE2Qs=" },
-  pack: D.pack,
+  packs: [D.pack],
   notes: D.fieldNotes,
   audit: D.audit,
   chain: null,
@@ -238,7 +246,19 @@ const variantsById = Object.fromEntries(D.equipment.map((e) => [e.equip_id, e.na
 const reviewItem = (l: Lesson): ReviewItem => ({ current: l, first_received_at: l.created_at, lesson_id: l.lesson_id, needs_reviewer: false, reopened: false, reviews: [], status: "pending", versions: [] });
 const reviewQueue = D.lessons.map(reviewItem);
 const first = reviewQueue[0] ?? null;
-const hubStatus: HubStatus = { bundles: 1, conflicts: 0, devices: 2, items: 3, jobs: 2, key_id: "1c3d7ada6ee7d67c", latest_bundle: 1, lessons_approved: 1, lessons_pending: reviewQueue.length, lessons_rejected: 0, stream: "pump40-fleet" };
+const hubStatus: HubStatus = {
+  bundles: 1,
+  conflicts: 0,
+  devices: 2,
+  items: 3,
+  jobs: 2,
+  key_id: "1c3d7ada6ee7d67c",
+  latest_bundle: 1,
+  lessons_approved: 1,
+  lessons_pending: reviewQueue.length,
+  lessons_rejected: 0,
+  stream: "pump40-fleet",
+};
 const review: ReviewProps = {
   status: hubStatus,
   queue: reviewQueue,
@@ -268,7 +288,12 @@ export const GALLERY: Record<string, { title: string; states: Entry[] }> = {
     states: [
       { state: "first-run", label: "First run", unit: null, render: () => <Home loading={false} units={[]} variants={variants} openJobs={[]} pending={0} lastSync={null} /> },
       { state: "loading", label: "Loading", unit: null, render: () => <Home loading units={[]} variants={variants} openJobs={[]} pending={0} lastSync={null} /> },
-      { state: "fleet", label: "Units and open jobs", unit: shellUnit, render: () => <Home loading={false} units={D.assets} variants={variants} openJobs={openJobs} pending={D.outbox.pending} lastSync={D.outbox.last_synced_at} /> },
+      {
+        state: "fleet",
+        label: "Units and open jobs",
+        unit: shellUnit,
+        render: () => <Home loading={false} units={D.assets} variants={variants} openJobs={openJobs} pending={D.outbox.pending} lastSync={D.outbox.last_synced_at} />,
+      },
     ],
   },
   identify: {
@@ -287,10 +312,45 @@ export const GALLERY: Record<string, { title: string; states: Entry[] }> = {
     title: "3. Unit",
     states: [
       { state: "history", label: "History, repeats, fleet", unit: shellUnit, render: () => <UnitPage unit={unit} variant={variant} history={D.history} openJob={openJobs[0] ?? null} codes={[]} /> },
-      { state: "codes", label: "With active codes", unit: shellUnit, render: () => <UnitPage unit={unit} variant={variant} history={D.history} openJob={null} codes={[{ value: "spn:168/fmi:1", title: "Battery voltage low" }, { value: "X99", title: null }]} /> },
+      {
+        state: "codes",
+        label: "With active codes",
+        unit: shellUnit,
+        render: () => (
+          <UnitPage
+            unit={unit}
+            variant={variant}
+            history={D.history}
+            openJob={null}
+            codes={[
+              { value: "spn:168/fmi:1", title: "Battery voltage low" },
+              { value: "X99", title: null },
+            ]}
+          />
+        ),
+      },
       { state: "connect", label: "Connect to vehicle, empty", unit: shellUnit, render: () => <Connect {...connect} /> },
-      { state: "connect-codes", label: "Connect, codes read", unit: shellUnit, render: () => <Connect {...connect} codes={[{ signal_kind: null, value: "spn:168/fmi:1" }, { signal_kind: null, value: "X99" }]} match={D.search.codes.signals} /> },
-      { state: "new", label: "New unit", unit: shellUnit, render: () => <UnitPage unit={unit} variant={variant} history={{ ...D.history, events: [], jobs: [], fleet_history: [], failure_modes: [] }} openJob={null} codes={[]} /> },
+      {
+        state: "connect-codes",
+        label: "Connect, codes read",
+        unit: shellUnit,
+        render: () => (
+          <Connect
+            {...connect}
+            codes={[
+              { signal_kind: null, value: "spn:168/fmi:1" },
+              { signal_kind: null, value: "X99" },
+            ]}
+            match={D.search.codes.signals}
+          />
+        ),
+      },
+      {
+        state: "new",
+        label: "New unit",
+        unit: shellUnit,
+        render: () => <UnitPage unit={unit} variant={variant} history={{ ...D.history, events: [], jobs: [], fleet_history: [], failure_modes: [] }} openJob={null} codes={[]} />,
+      },
       { state: "loading", label: "Loading history", unit: shellUnit, render: () => <UnitPage unit={unit} variant={variant} history={null} openJob={null} codes={[]} /> },
     ],
   },
@@ -337,7 +397,12 @@ export const GALLERY: Record<string, { title: string; states: Entry[] }> = {
       { state: "action", label: "Corrective action, task run", unit: shellUnit, render: () => <CloseOut {...close(D.steps.action)} /> },
       { state: "verify", label: "Did it fix it?", unit: shellUnit, render: () => <CloseOut {...close(D.steps.action, { phase: "verify" })} /> },
       { state: "lesson", label: "Lesson, prefilled", unit: shellUnit, render: () => <CloseOut {...close(D.steps.action, { phase: "lesson" })} /> },
-      { state: "referral", label: "Referral", unit: shellUnit, render: () => <CloseOut {...close(D.steps.escalate, { phase: "lesson", resolution: "escalated", task: null, draft: { ...lessonFrom(D.steps.escalate), parts: [] } })} /> },
+      {
+        state: "referral",
+        label: "Referral",
+        unit: shellUnit,
+        render: () => <CloseOut {...close(D.steps.escalate, { phase: "lesson", resolution: "escalated", task: null, draft: { ...lessonFrom(D.steps.escalate), parts: [] } })} />,
+      },
       { state: "queued", label: "Saved, waiting to sync", unit: shellUnit, render: () => <CloseOut {...close(D.steps.end, { phase: "saved", saved: D.closed.lesson })} /> },
       { state: "approved", label: "Approved", unit: shellUnit, render: () => <CloseOut {...close(D.steps.end, { phase: "saved", saved: { ...D.closed.lesson!, status: "approved" } })} /> },
     ],
@@ -348,7 +413,12 @@ Object.assign(GALLERY, {
   tasks: {
     title: "7. Maintenance tasks",
     states: [
-      { state: "list", label: "Tasks for the variant", unit: shellUnit, render: () => <TaskList variant={variant} tasks={D.tasks} /> },
+      {
+        state: "list",
+        label: "Tasks for the variant",
+        unit: shellUnit,
+        render: () => <TaskList variant={variant} groups={[{ packId: D.pack.pack_id, title: D.pack.sources[0]?.title ?? D.pack.pack_id, tasks: D.tasks }]} />,
+      },
       { state: "task", label: "A task, before starting", unit: shellUnit, render: () => <TaskPage {...taskPage()} /> },
       { state: "run", label: "Running, two steps recorded", unit: shellUnit, render: () => <TaskPage {...taskPage({ run: D.run })} /> },
       { state: "failed", label: "A failed step", unit: shellUnit, render: () => <TaskPage {...taskPage({ run: { ...D.run, steps: [D.failedStep.record] }, guidance: D.failedStep.guidance })} /> },
@@ -359,16 +429,31 @@ Object.assign(GALLERY, {
   manual: {
     title: "8. Manual",
     states: [
-      { state: "contents", label: "Contents and search", unit: shellUnit, render: () => <ManualHome title={D.pack.sources.map((x) => `${x.title}, ${x.edition}`).join("; ")} contents={D.manualTop} /> },
-      { state: "section", label: "A section", unit: shellUnit, render: () => <SectionReader view={D.section} page={sectionPage} pageOpen={false} src={(a) => imageFor(D.pack.pack_id, a)} /> },
-      { state: "page", label: "Original page, passage marked", unit: shellUnit, render: () => <SectionReader view={D.section} page={sectionPage} pageOpen src={(a) => imageFor(D.pack.pack_id, a)} /> },
-      { state: "search", label: "Search results", unit: shellUnit, render: () => <ManualResults query="battery voltage" hits={D.manualSearch.hits} /> },
+      {
+        state: "contents",
+        label: "Contents and search",
+        unit: shellUnit,
+        render: () => <ManualHome manuals={[{ packId: D.pack.pack_id, title: D.pack.sources[0]?.title ?? "", edition: D.pack.sources[0]?.edition ?? "", contents: D.manualTop }]} />,
+      },
+      { state: "section", label: "A section", unit: shellUnit, render: () => <SectionReader packId={D.pack.pack_id} view={D.section} page={sectionPage} pageOpen={false} src={(a) => imageFor(D.pack.pack_id, a)} /> },
+      {
+        state: "page",
+        label: "Original page, passage marked",
+        unit: shellUnit,
+        render: () => <SectionReader packId={D.pack.pack_id} view={D.section} page={sectionPage} pageOpen src={(a) => imageFor(D.pack.pack_id, a)} />,
+      },
+      { state: "search", label: "Search results", unit: shellUnit, render: () => <ManualResults packId={D.pack.pack_id} query="battery voltage" hits={D.manualSearch.hits} /> },
     ],
   },
   learn: {
     title: "9. Learn",
     states: [
-      { state: "home", label: "Tables and lessons", unit: shellUnit, render: () => <LearnHome trees={D.trees} lessons={D.lessons} titles={titles} /> },
+      {
+        state: "home",
+        label: "Tables and lessons",
+        unit: shellUnit,
+        render: () => <LearnHome groups={[{ packId: D.pack.pack_id, title: D.pack.sources[0]?.title ?? "", trees: D.trees }]} lessons={D.lessons} titles={titles} />,
+      },
       { state: "tree", label: "A whole table", unit: shellUnit, render: () => <TreeStudy tree={D.tree} /> },
     ],
   },
@@ -383,7 +468,12 @@ Object.assign(GALLERY, {
     title: "11. Review (hub)",
     states: [
       { state: "queue", label: "A lesson to review", unit: null, render: () => <Review {...review} /> },
-      { state: "edited", label: "Edited before approval", unit: null, render: () => <Review {...review} draft={{ text: "Check the battery date code first: batteries over three years old failed the voltage test.", note: "Made it a check to do first.", version: null }} /> },
+      {
+        state: "edited",
+        label: "Edited before approval",
+        unit: null,
+        render: () => <Review {...review} draft={{ text: "Check the battery date code first: batteries over three years old failed the voltage test.", note: "Made it a check to do first.", version: null }} />,
+      },
       {
         state: "conflict",
         label: "Two units' versions to choose from",
@@ -404,7 +494,20 @@ Object.assign(GALLERY, {
       },
       { state: "reviewer-only", label: "Signed in as a reviewer only", unit: null, render: () => <Review {...review} me={{ name: "Line reviewer", roles: ["reviewer"], via: "token" }} devices={null} /> },
       { state: "sign-in", label: "Sign in", unit: null, render: () => <HubSignIn error={null} busy={false} onSignIn={none} /> },
-      { state: "empty", label: "Nothing waiting", unit: null, render: () => <Review {...review} queue={[]} selected={null} draft={null} approved={reviewQueue.map((r) => ({ ...r, status: "approved", reviews: [{ action: "approve", at: r.current.created_at, item_id: r.lesson_id, note: null, reviewer: "Shop supervisor" }] }))} /> },
+      {
+        state: "empty",
+        label: "Nothing waiting",
+        unit: null,
+        render: () => (
+          <Review
+            {...review}
+            queue={[]}
+            selected={null}
+            draft={null}
+            approved={reviewQueue.map((r) => ({ ...r, status: "approved", reviews: [{ action: "approve", at: r.current.created_at, item_id: r.lesson_id, note: null, reviewer: "Shop supervisor" }] }))}
+          />
+        ),
+      },
     ],
   },
 });
@@ -449,13 +552,15 @@ export function GalleryState() {
     );
   return (
     <AssetSource.Provider value={imageFor}>
-      {entry.bare ? (
-        entry.render()
-      ) : (
-        <Shell unit={entry.unit} link="offline" queued={D.outbox.pending}>
-          {entry.render()}
-        </Shell>
-      )}
+      <ManualPack.Provider value={D.pack.pack_id}>
+        {entry.bare ? (
+          entry.render()
+        ) : (
+          <Shell unit={entry.unit} link="offline" queued={D.outbox.pending}>
+            {entry.render()}
+          </Shell>
+        )}
+      </ManualPack.Provider>
     </AssetSource.Provider>
   );
 }

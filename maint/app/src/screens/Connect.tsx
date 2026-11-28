@@ -46,7 +46,7 @@ export function Connect(p: ConnectProps) {
               <p className="text-body text-ink-2">No vehicle link on this device. Type the codes from the unit's display, or paste a diagnostic log.</p>
             )}
           </Panel>
-          <Panel label="Type a code">
+          <Panel label="Type what the unit reports">
             <form
               className="flex gap-2"
               onSubmit={(e) => {
@@ -56,7 +56,7 @@ export function Connect(p: ConnectProps) {
                 setCode("");
               }}
             >
-              <input aria-label="Fault code" placeholder={example ? `e.g. ${example}` : "Fault code"} value={code} onChange={(e) => setCode(e.target.value)} className={cx(inputClass, "code min-w-0 flex-1")} autoComplete="off" spellCheck={false} autoCapitalize="characters" />
+              <input aria-label="Code or message" placeholder={example ? `e.g. ${example}` : "Code or message"} value={code} onChange={(e) => setCode(e.target.value)} className={cx(inputClass, "code min-w-0 flex-1")} autoComplete="off" spellCheck={false} />
               <Button type="submit" disabled={!code.trim()}>
                 <Plus aria-hidden size={22} />
                 Add
@@ -64,7 +64,7 @@ export function Connect(p: ConnectProps) {
             </form>
           </Panel>
           <Panel label="Paste a log">
-            <textarea aria-label="Diagnostic log" rows={5} value={log} onChange={(e) => setLog(e.target.value)} placeholder="One code per line" className={cx(inputClass, "code py-3")} spellCheck={false} />
+            <textarea aria-label="Diagnostic log" rows={5} value={log} onChange={(e) => setLog(e.target.value)} placeholder="One code or message per line" className={cx(inputClass, "code py-3")} spellCheck={false} />
             <Button
               className="mt-3"
               disabled={!log.trim()}
@@ -106,6 +106,10 @@ export function Connect(p: ConnectProps) {
             </ul>
           )}
           {p.matching && !p.match && <Skeleton className="h-[120px]" />}
+          {p.match && p.codes.length > 0 && p.match.hits.length === 0 && (
+            <p className="rounded-panel border-2 border-dashed border-line-strong p-4 text-body">This manual has no entry for {p.codes.length === 1 ? "this code" : "these codes"}. Describe the problem instead.</p>
+          )}
+          {p.match && p.match.hits.length > 1 && <p className="text-small text-ink-2">{p.match.hits.length} entries in the manual match. Start with the one that fits.</p>}
           {p.match?.hits.map((h, i) => (
             <section key={i} className="sheet flex flex-col gap-3 p-4 sm:flex-row sm:items-center" aria-label={`Code ${h.observed.value}`}>
               <div className="min-w-0 flex-1">

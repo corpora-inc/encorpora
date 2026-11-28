@@ -2,7 +2,8 @@ import { useEffect } from "react";
 import { Outlet } from "react-router";
 import { useDevice } from "../store/device.ts";
 import { useFleet } from "../store/fleet.ts";
-import { usePack, variantName } from "../store/pack.ts";
+import { allEquipment, packOf, usePack, variantName } from "../store/pack.ts";
+import { ManualPack } from "../ui/manual.tsx";
 import { useSettings } from "../store/settings.ts";
 import { unitName } from "../ui/format.ts";
 import { linkState } from "../ui/link.ts";
@@ -13,7 +14,8 @@ export function Frame() {
   const active = useSettings((s) => s.activeUnit);
   const assets = useFleet((s) => s.assets);
   const sync = useFleet((s) => s.sync);
-  const equipment = usePack((s) => s.equipment);
+  const packs = usePack((s) => s.packs);
+  const equipment = allEquipment(packs);
   const hub = useDevice((s) => s.hub);
   const asset = assets.find((a) => a.asset_id === active) ?? null;
   // Keep the outbox count current while the app is open.
@@ -23,7 +25,10 @@ export function Frame() {
   }, []);
   return (
     <Shell unit={asset ? { asset_id: asset.asset_id, name: unitName(asset), variant: variantName(equipment, asset.equip_id) } : null} link={linkState(sync)} queued={sync?.pending ?? 0} hub={hub}>
-      <Outlet />
+      {/* Citations open in the active unit's manual unless a screen names another (a job's own pack). */}
+      <ManualPack.Provider value={packOf(packs, asset?.equip_id)?.info.pack_id ?? usePack.getState().ids[0] ?? ""}>
+        <Outlet />
+      </ManualPack.Provider>
     </Shell>
   );
 }

@@ -8,7 +8,7 @@ import { formatDate } from "./format.ts";
 import { cx } from "./kit.tsx";
 
 /** "Table 3-1, Question 1" plus its heading when the section has one. */
-export const sectionTitle = (c: Citation) => [c.citation, c.heading].filter(Boolean).join(" ");
+export const sectionTitle = (c: Citation) => (c.heading && !c.citation.includes(c.heading) ? `${c.citation} ${c.heading}` : c.citation);
 
 /** The full citation in reading order: manual, edition, section, figure. The page sits on the folio. */
 export function citationText(c: Citation): string {
@@ -26,6 +26,19 @@ export const AssetSource = createContext<(packId: string, asset: PackAsset) => s
 export const useAssetSrc = () => useContext(AssetSource);
 
 /**
+ * The original page for a passage: the step's own page image, else the page
+ * the citation points at (a signed pack asset the engine serves by id).
+ */
+export function pageFor(assets: PackAsset[], c: Citation): PackAsset | null {
+  const own = assets.find((a) => a.role === "page");
+  if (own) return own;
+  return c.page_asset_id ? { asset_id: c.page_asset_id, bytes: 0, height: null, media_type: "image/png", path: "", role: "page", sha256: "", width: null } : null;
+}
+
+/** The pack whose manual a citation points into (set by the screen: the job's or the unit's pack). */
+export const ManualPack = createContext<string>("");
+
+/**
  * A cut of the printed page: the manual's exact words, its citation, and the
  * page number in the corner. The folio opens the original page.
  */
@@ -33,8 +46,8 @@ export function ManualSheet({ citation, onPage, children, className, size = "lea
   return (
     <figure className={cx("sheet m-0", className)}>
       <blockquote className={cx("m-0 px-4 pt-4 pb-4 sm:px-5", size === "lead" ? "text-lead" : "text-body")}>{children}</blockquote>
-      <figcaption className="flex items-stretch border-t border-line">
-        <span className="min-w-0 flex-1 px-4 py-2.5 font-sans text-meta text-ink-3 sm:px-5">{citationText(citation)}</span>
+      <figcaption className="flex flex-wrap items-stretch border-t border-line">
+        <span className="min-w-0 grow basis-[14rem] px-4 py-2.5 font-sans text-meta text-ink-3 sm:px-5">{citationText(citation)}</span>
         <Folio citation={citation} to={onPage} />
       </figcaption>
     </figure>
@@ -42,16 +55,18 @@ export function ManualSheet({ citation, onPage, children, className, size = "lea
 }
 
 function Folio({ citation, to }: { citation: Citation; to?: string }) {
-  const label = citation.page_label ? `Page ${citation.page_label}` : citation.citation;
+  const pack = useContext(ManualPack);
+  // The page number when the source has pages; a web or digital source opens in the manual reader.
+  const label = citation.page_label ? `Page ${citation.page_label}` : "In the manual";
   const body = (
     <>
       <FileText aria-hidden size={18} />
       <span>{label}</span>
     </>
   );
-  const cls = "flex min-h-11 shrink-0 items-center gap-1.5 self-end bg-sheet-line px-3 font-sans text-small font-bold whitespace-nowrap text-sheet no-underline tabular";
+  const cls = "ml-auto flex min-h-11 shrink-0 items-center gap-1.5 self-end bg-sheet-line px-3 font-sans text-small font-bold whitespace-nowrap text-sheet no-underline tabular";
   return (
-    <Link to={to ?? manualPath(citation.section_id)} className={cls} aria-label={to ? `${label}: open the original page` : `${label}: open in the manual`}>
+    <Link to={to ?? manualPath(pack, citation.section_id)} className={cls} aria-label={to ? `${label}: open the original page` : `${label}: open in the manual`}>
       {body}
     </Link>
   );

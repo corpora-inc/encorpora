@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
 import { reportError, useToast } from "@appkit/toast.ts";
 import { call, EngineError } from "../engine/client.ts";
-import type { AuditRecord, ChainReport, DeviceInfo, FieldNote } from "../engine/types.ts";
+import type { AssetRegistry, AuditRecord, ChainReport, DeviceInfo, FieldNote } from "../engine/types.ts";
 import { Records } from "../screens/Records.tsx";
 import { LINK_LABEL, linkState, refusalText } from "../ui/link.ts";
 import { useDevice } from "../store/device.ts";
 import { useFleet } from "../store/fleet.ts";
-import { usePack } from "../store/pack.ts";
+import { packOf, usePack } from "../store/pack.ts";
 import { applyTheme, useSettings } from "../store/settings.ts";
 
 const message = (e: unknown, fallback: string) => (e instanceof EngineError ? e.message : fallback);
 
 export function RecordsPage() {
   const sync = useFleet((s) => s.sync);
-  const info = usePack((s) => s.info);
+  const packs = usePack((s) => s.packs);
   const model = useDevice((s) => s.assistantModel);
   const { model: modelOn, theme, setModel, setTheme } = useSettings();
   const [notes, setNotes] = useState<FieldNote[] | null>(null);
@@ -31,13 +31,12 @@ export function RecordsPage() {
       .then(setDevice)
       .catch((e: unknown) => reportError("records.device", e, "This device's identity could not be read."));
   }, []);
-  if (!info) return null;
   const readJson = async (f: File) => JSON.parse(await f.text()) as unknown;
   return (
     <Records
       sync={sync}
       device={device}
-      pack={info}
+      packs={Object.values(packs).map((x) => x.info)}
       notes={notes}
       audit={audit}
       chain={chain}
@@ -90,11 +89,25 @@ export function RecordsPage() {
       onImportFleet={async (f) => {
         setBusy("fleet");
         try {
-          const r = await call("asset.import", { registry: (await readJson(f)) as never });
-          useToast.getState().show("info", `Added ${r.created} and updated ${r.updated} units.`);
+          // Each unit is checked by the pack that holds its variant: a fleet can hold pumps and boats.
+          const registry = (await readJson(f)) as AssetRegistry;
+          const byPack = new Map<string, AssetRegistry["assets"]>();
+          for (const a of registry.assets) {
+            const pack = packOf(packs, a.equip_id)?.info.pack_id;
+            if (!pack) throw new Error(`No manual on this device covers ${a.asset_id} (${a.equip_id ?? "no variant"}).`);
+            byPack.set(pack, [...(byPack.get(pack) ?? []), a]);
+          }
+          let created = 0;
+          let updated = 0;
+          for (const [pack_id, assets] of byPack) {
+            const r = await call("asset.import", { pack_id, registry: { ...registry, assets } });
+            created += r.created;
+            updated += r.updated;
+          }
+          useToast.getState().show("info", `Added ${created} and updated ${updated} units.`);
           await useFleet.getState().refresh();
         } catch (e) {
-          reportError("records.import", e, message(e, "That file is not a fleet registry this app can read."));
+          reportError("records.import", e, e instanceof Error && e.message.startsWith("No manual") ? e.message : message(e, "That file is not a fleet registry this app can read."));
         } finally {
           setBusy(null);
         }

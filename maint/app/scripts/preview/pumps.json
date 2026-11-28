@@ -1,0 +1,8 @@
+{
+  "format": "harvest-assets/1",
+  "assets": [
+    { "asset_id": "unit-101", "name": "Pump 101", "equip_id": "model-40-diesel", "serial": "P40D-2310", "hours": 1840.5, "attrs": { "location": "North yard" } },
+    { "asset_id": "unit-102", "name": "Pump 102", "equip_id": "model-40-diesel", "serial": "P40D-3120", "hours": 920 },
+    { "asset_id": "unit-201", "name": "Pump 201", "equip_id": "model-40-electric", "serial": "P40E-1044", "hours": 310 }
+  ]
+}

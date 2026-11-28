@@ -4,8 +4,13 @@
 # device C (4323) is not, so its uploads stay queued.
 # The apps: device A on 4340 (npm run dev), B on 4343 (npm run dev:b), C on 4345 (npm run dev:c).
 # MAINT_IMPORT names the devices that get the fleet file up front (default: A B C).
+# MAINT_REAL=1 serves the real packs (~/.cache/harvest/packs/maint-dev) for the preview, with
+# pumps and a boat; without it, the fixture (what the tests use).
 set -euo pipefail
 cd "$(dirname "$0")/.."
+if [ "${MAINT_REAL:-}" = 1 ]; then
+  export MAINT_PACKS="$HOME/.cache/harvest/packs/maint-dev/root" MAINT_PACKS_PUBKEY="$HOME/.cache/harvest/packs/maint-dev/pack.pub"
+fi
 for port in 4319 4317 4320 4323; do pkill -f "bind 127.0.0.1:$port" || true; done
 up() { for _ in $(seq 1 40); do curl -s -o /dev/null "http://127.0.0.1:$1/" && return 0; sleep 0.25; done; echo "engine on $1 did not start" >&2; return 1; }
 port_of() { case "$1" in A) echo 4317 ;; B) echo 4320 ;; C) echo 4323 ;; esac; }
@@ -24,7 +29,13 @@ for d in A B; do
   curl -s -X POST -H 'Content-Type: application/json' -H 'Authorization: Bearer dev-supervisor-token' \
     --data "{\"public_key\": \"$key\", \"name\": \"Device $d\"}" http://127.0.0.1:4319/api/hub.enroll | grep -q '"ok":true' || { echo "enrolling device $d failed" >&2; exit 1; }
 done
+imp() { curl -s -X POST -H 'Content-Type: application/json' --data-binary "{$2\"registry\": $(cat "$3")}" "http://127.0.0.1:$1/api/asset.import" | grep -q '"ok":true' || { echo "fleet import failed on $1 ($3)" >&2; exit 1; }; }
 for d in ${MAINT_IMPORT:-A B C}; do
-  curl -s -X POST -H 'Content-Type: application/json' --data-binary "{\"registry\": $(cat .engine/pump40-samples/assets.json)}" "http://127.0.0.1:$(port_of "$d")/api/asset.import" >/dev/null
+  if [ -n "${MAINT_PACKS:-}" ]; then
+    imp "$(port_of "$d")" '"pack_id": "pump40v2-proof", ' scripts/preview/pumps.json
+    imp "$(port_of "$d")" '"pack_id": "ardupilot-prearm", ' scripts/preview/boats.json
+  else
+    imp "$(port_of "$d")" "" .engine/pump40-samples/assets.json
+  fi
 done
 echo "hub 4319; devices A 4317 and B 4320 enrolled, C 4323 not; fleet file on: ${MAINT_IMPORT:-A B C}"

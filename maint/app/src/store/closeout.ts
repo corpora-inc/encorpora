@@ -19,7 +19,7 @@ interface CloseOutState {
   busy: boolean;
   setPhase(jobId: string, p: CloseOutPhase): void;
   setDraft(jobId: string, d: LessonDraft): void;
-  startRun(jobId: string, procId: string, asset: string | null, equipId: string | null, role: string): Promise<void>;
+  startRun(jobId: string, packId: string, procId: string, asset: string | null, equipId: string | null, role: string): Promise<void>;
   record(jobId: string, ord: number, outcome: Outcome, value?: string): Promise<void>;
   finishRun(jobId: string): Promise<void>;
   setSaved(jobId: string, l: Lesson): void;
@@ -36,10 +36,10 @@ export const useCloseOut = create<CloseOutState>()(
       busy: false,
       setPhase: (jobId, p) => set({ phase: { ...get().phase, [jobId]: p } }),
       setDraft: (jobId, d) => set({ drafts: { ...get().drafts, [jobId]: d } }),
-      async startRun(jobId, procId, asset, equipId, role) {
+      async startRun(jobId, packId, procId, asset, equipId, role) {
         if (get().runs[jobId]?.proc_id === procId) return;
         try {
-          const run = await call("run.start", { proc_id: procId, asset, equip_id: equipId, role });
+          const run = await call("run.start", { pack_id: packId, proc_id: procId, asset, equip_id: equipId, role });
           set({ runs: { ...get().runs, [jobId]: run } });
         } catch (e) {
           reportError("closeout.run", e, "The task could not be opened for recording.");

@@ -8,7 +8,7 @@ import { useVoiceInput } from "@appkit/voice/useVoiceInput.ts";
 import { Keypad } from "../ui/Keypad.tsx";
 import { VoiceControl, voiceStatus } from "../ui/VoiceControl.tsx";
 import { PageViewer } from "../ui/PageViewer.tsx";
-import { citationText, FieldNotes, guardKind, Guards, ManualSheet, Requirements, sectionTitle, useAssetSrc } from "../ui/manual.tsx";
+import { citationText, FieldNotes, pageFor, guardKind, Guards, ManualSheet, Requirements, sectionTitle, useAssetSrc } from "../ui/manual.tsx";
 
 export type StepOverlay = { kind: "page"; asset: PackAsset } | { kind: "ask"; query: string; answer: AskResponse | null } | null;
 
@@ -23,6 +23,8 @@ export interface StepProps {
   step: StepView;
   /** The pack's levels, most guidance first. */
   levels: Level[];
+  /** The manual's own heading for each facet (pack.info.facets), for facets shown apart from their node. */
+  facetLabels: Record<string, string>;
   /** "sending": the result is with the engine; the step stays put until the next one arrives. */
   phase: "ready" | "sending";
   /** Typed value for a measurement. */
@@ -53,11 +55,11 @@ const WARNING_ID = "step-warning";
 export function Step(p: StepProps) {
   const { step, job } = p;
   const assetSrc = useAssetSrc();
-  const page = step.assets.find((a) => a.role === "page") ?? null;
+  const page = pageFor(step.assets, step.citation);
   const figure = step.assets.find((a) => a.role === "figure") ?? null;
   const main = step.facets.filter((f) => f.facet !== "known" && f.facet !== "possible");
   const known = step.facets.filter((f) => f.facet === "known");
-  const possibleLabel = step.facets.find((f) => f.facet === "possible")?.label ?? null;
+  const possibleLabel = step.facets.find((f) => f.facet === "possible")?.label ?? p.facetLabels.possible ?? null;
   const needs = [...step.setup, ...step.requirements, ...(step.test_procedure?.requirements ?? [])];
   const busy = p.phase === "sending";
   const pageOpen = p.overlay?.kind === "page" ? p.overlay.asset : null;
@@ -178,7 +180,7 @@ export function Step(p: StepProps) {
           }}
         />
       )}
-      {p.overlay?.kind === "ask" && <AskSheet jobId={job.job_id} query={p.overlay.query} answer={p.overlay.answer} onQuery={p.onAskQuery} />}
+      {p.overlay?.kind === "ask" && <AskSheet packId={step.pack_id} jobId={job.job_id} query={p.overlay.query} answer={p.overlay.answer} onQuery={p.onAskQuery} />}
     </div>
   );
 }
@@ -363,7 +365,7 @@ function ResultBar(p: StepProps & { busy: boolean }) {
   return (
     <div className={bar} aria-label="Record the result">
       {step.node.kind === "action" && step.target?.target.kind === "procedure" && (
-        <Link to={procedurePath(step.target.target.id)} className="mb-3 flex min-h-tap items-center justify-between gap-3 rounded-control border-2 border-line-strong bg-surface px-4 text-small font-semibold text-ink no-underline">
+        <Link to={procedurePath(step.pack_id, step.target.target.id)} className="mb-3 flex min-h-tap items-center justify-between gap-3 rounded-control border-2 border-line-strong bg-surface px-4 text-small font-semibold text-ink no-underline">
           <span className="min-w-0 truncate">Open the task: {step.target.title ?? step.target.target.id}</span>
           <ArrowUpRight aria-hidden size={22} className="shrink-0" />
         </Link>
@@ -468,7 +470,7 @@ function PathSoFar({ path, step, busy, onBack }: { path: PathEntry[]; step: Step
         ))}
         <li className="grid grid-cols-[1.75rem_minmax(0,1fr)] gap-x-2 pt-2">
           <span className="text-meta font-bold tabular">{path.length + 1}</span>
-          <span className="text-small font-bold">Now: {sectionTitle(step.citation)}</span>
+          <span className="text-small font-bold">Now: {(KIND[step.node.kind] ?? step.node.kind).toLowerCase()}</span>
         </li>
       </ol>
       {path.length > 0 && (
@@ -522,7 +524,7 @@ function PageThumb({ asset, src, to, label }: { asset: PackAsset; src: string; t
  * manual's words, set as the manual; anything else the engine composed is in
  * the app's type. When the manual does not answer, it says so.
  */
-function AskSheet({ jobId, query, answer, onQuery }: { jobId: string; query: string; answer: AskResponse | null; onQuery(q: string): void }) {
+function AskSheet({ packId, jobId, query, answer, onQuery }: { packId: string; jobId: string; query: string; answer: AskResponse | null; onQuery(q: string): void }) {
   const [draft, setDraft] = useState(query);
   return (
     <div className="fixed inset-0 z-40 flex justify-end">
@@ -555,7 +557,7 @@ function AskSheet({ jobId, query, answer, onQuery }: { jobId: string; query: str
               <Skeleton className="h-[96px]" />
             </div>
           ) : (
-            <AskBody answer={answer} />
+            <AskBody packId={packId} answer={answer} />
           )}
         </div>
       </section>
@@ -563,7 +565,7 @@ function AskSheet({ jobId, query, answer, onQuery }: { jobId: string; query: str
   );
 }
 
-function AskBody({ answer }: { answer: AskResponse }) {
+function AskBody({ packId, answer }: { packId: string; answer: AskResponse }) {
   if (answer.mode === "declined" || answer.body.length === 0)
     return (
       <div className="flex flex-col gap-3">
@@ -574,7 +576,7 @@ function AskBody({ answer }: { answer: AskResponse }) {
             <ul className="m-0 flex list-none flex-col p-0">
               {answer.nearest.map((id) => (
                 <li key={id}>
-                  <Link to={manualPath(id)} className="flex min-h-11 items-center font-semibold text-ink">
+                  <Link to={manualPath(packId, id)} className="flex min-h-11 items-center font-semibold text-ink">
                     {id}
                   </Link>
                 </li>
@@ -592,7 +594,7 @@ function AskBody({ answer }: { answer: AskResponse }) {
           <figure key={i} className="sheet m-0">
             <blockquote className="m-0 p-4 text-body">{s.text}</blockquote>
             <figcaption className="border-t border-line px-4 py-2 font-sans">
-              <Link to={manualPath(s.section_id)} className="inline-flex min-h-11 items-center text-meta font-semibold text-ink-2">
+              <Link to={manualPath(packId, s.section_id)} className="inline-flex min-h-11 items-center text-meta font-semibold text-ink-2">
                 {s.section_id}
               </Link>
             </figcaption>

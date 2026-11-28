@@ -2,12 +2,12 @@ import { useState } from "react";
 import { ChevronRight, Search } from "lucide-react";
 import { Link, useNavigate } from "react-router";
 import type { ManualHit, PackAsset, SectionRef, SectionView } from "../engine/types.ts";
-import { manualPagePath, manualPath, manualSearchPath } from "../routes.ts";
+import { manualPackPath, manualPagePath, manualPath, manualSearchPath } from "../routes.ts";
 import { Button, cx, inputClass, Page, Skeleton } from "../ui/kit.tsx";
 import { Guards, ManualSheet, sectionTitle } from "../ui/manual.tsx";
 import { PageViewer } from "../ui/PageViewer.tsx";
 
-function SearchBox({ initial = "" }: { initial?: string }) {
+function SearchBox({ packId, initial = "" }: { packId: string; initial?: string }) {
   const navigate = useNavigate();
   const [q, setQ] = useState(initial);
   return (
@@ -16,7 +16,7 @@ function SearchBox({ initial = "" }: { initial?: string }) {
       className="flex gap-2"
       onSubmit={(e) => {
         e.preventDefault();
-        if (q.trim()) navigate(manualSearchPath(q.trim()));
+        if (q.trim()) navigate(manualSearchPath(packId, q.trim()));
       }}
     >
       <div className="relative min-w-0 flex-1">
@@ -30,12 +30,12 @@ function SearchBox({ initial = "" }: { initial?: string }) {
   );
 }
 
-function SectionList({ items }: { items: SectionRef[] }) {
+function SectionList({ packId, items }: { packId: string; items: SectionRef[] }) {
   return (
     <ul className="m-0 list-none overflow-hidden rounded-panel border border-line bg-surface p-0">
       {items.map((c) => (
         <li key={c.section_id} className="border-b border-line last:border-b-0">
-          <Link to={manualPath(c.section_id)} className="flex min-h-tap items-center gap-3 px-4 py-2.5 text-ink no-underline">
+          <Link to={manualPath(packId, c.section_id)} className="flex min-h-tap items-center gap-3 px-4 py-2.5 text-ink no-underline">
             <span className="manual-text min-w-0 flex-1 text-body">
               <span className="font-semibold">{c.citation}</span>
               {c.heading && ` ${c.heading}`}
@@ -48,20 +48,37 @@ function SectionList({ items }: { items: SectionRef[] }) {
   );
 }
 
-/** The manual's contents and its search. */
-export function ManualHome({ title, contents }: { title: string; contents: SectionRef[] | null }) {
+export interface ManualEntry {
+  packId: string;
+  title: string;
+  edition: string;
+  contents: SectionRef[] | null;
+}
+
+/** The manuals on this device: each one's contents and its search. */
+export function ManualHome({ manuals }: { manuals: ManualEntry[] }) {
   return (
-    <Page title="Manual" kicker={title}>
-      <SearchBox />
-      {contents === null ? <Skeleton className="h-[200px]" /> : <SectionList items={contents} />}
+    <Page title="Manual" wide={manuals.length > 1}>
+      <div className={cx("grid items-start gap-8", manuals.length > 1 && "lg:grid-cols-2")}>
+        {manuals.map((m) => (
+          <section key={m.packId} className="flex min-w-0 flex-col gap-3" aria-label={m.title}>
+            <div>
+              <h2 className="manual-text text-h3">{m.title}</h2>
+              <p className="text-small text-ink-2">{m.edition}</p>
+            </div>
+            <SearchBox packId={m.packId} />
+            {m.contents === null ? <Skeleton className="h-[200px]" /> : <SectionList packId={m.packId} items={m.contents} />}
+          </section>
+        ))}
+      </div>
     </Page>
   );
 }
 
-export function ManualResults({ query, hits }: { query: string; hits: ManualHit[] | null }) {
+export function ManualResults({ packId, query, hits }: { packId: string; query: string; hits: ManualHit[] | null }) {
   return (
     <Page title="Manual">
-      <SearchBox initial={query} />
+      <SearchBox packId={packId} initial={query} />
       {hits === null ? (
         <Skeleton className="h-[240px]" />
       ) : hits.length === 0 ? (
@@ -70,7 +87,7 @@ export function ManualResults({ query, hits }: { query: string; hits: ManualHit[
         <ol className="m-0 flex list-none flex-col gap-2 p-0">
           {hits.map((h) => (
             <li key={h.chunk_id}>
-              <Link to={h.section_id ? manualPath(h.section_id) : "#"} className="sheet block p-4 text-ink no-underline">
+              <Link to={h.section_id ? manualPath(packId, h.section_id) : manualPackPath(packId)} className="sheet block p-4 text-ink no-underline">
                 <span className="block font-sans text-meta font-semibold text-ink-2">{[h.citation, h.heading].filter(Boolean).join(" ")}</span>
                 <span className="mt-1 line-clamp-3 block text-body">{h.text}</span>
               </Link>
@@ -87,7 +104,7 @@ export function ManualResults({ query, hits }: { query: string; hits: ManualHit[
  * with the page in the corner, what is under it, and the original page with
  * the passage marked.
  */
-export function SectionReader({ view, page, pageOpen, src }: { view: SectionView; page: PackAsset | null; pageOpen: boolean; src: (a: PackAsset) => string }) {
+export function SectionReader({ packId, view, page, pageOpen, src }: { packId: string; view: SectionView; page: PackAsset | null; pageOpen: boolean; src: (a: PackAsset) => string }) {
   const c = view.citation;
   const id = view.section.section_id;
   const trail = c.path.slice(0, -1);
@@ -97,13 +114,13 @@ export function SectionReader({ view, page, pageOpen, src }: { view: SectionView
       kicker={
         trail.length > 0 && (
           <nav aria-label="Where this sits" className="flex flex-wrap items-center gap-x-1">
-            <Link to="/manual" className="inline-flex min-h-11 items-center text-ink-2">
+            <Link to={manualPackPath(packId)} className="inline-flex min-h-11 items-center text-ink-2">
               Manual
             </Link>
             {trail.map((t) => (
               <span key={t.section_id} className="inline-flex items-center gap-1">
                 <ChevronRight aria-hidden size={16} />
-                <Link to={manualPath(t.section_id)} className="inline-flex min-h-11 items-center text-ink-2">
+                <Link to={manualPath(packId, t.section_id)} className="inline-flex min-h-11 items-center text-ink-2">
                   {[t.citation, t.heading].filter(Boolean).join(" ")}
                 </Link>
               </span>
@@ -118,17 +135,17 @@ export function SectionReader({ view, page, pageOpen, src }: { view: SectionView
           {view.applies_to.length > 0 && <p className="text-small text-ink-2">Applies to: {view.applies_to.join(", ")}</p>}
           <Guards guards={view.guards} />
           {view.section.text && (
-            <ManualSheet citation={c} onPage={page ? manualPagePath(id, page.asset_id) : undefined} size="body">
+            <ManualSheet citation={c} onPage={page ? manualPagePath(packId, id, page.asset_id) : undefined} size="body">
               {view.section.text}
             </ManualSheet>
           )}
-          {view.children.length > 0 && <SectionList items={view.children} />}
+          {view.children.length > 0 && <SectionList packId={packId} items={view.children} />}
         </div>
         {pageOpen && page && (
           <>
-            <PageViewer asset={page} src={src(page)} citation={c} closeTo={manualPath(id)} docked />
+            <PageViewer asset={page} src={src(page)} citation={c} closeTo={manualPath(packId, id)} docked />
             <div className="fixed inset-0 z-40 bg-page lg:hidden">
-              <PageViewer asset={page} src={src(page)} citation={c} closeTo={manualPath(id)} />
+              <PageViewer asset={page} src={src(page)} citation={c} closeTo={manualPath(packId, id)} />
             </div>
           </>
         )}

@@ -26,8 +26,8 @@ interface DescribeState {
   addCodes(assetId: string, values: string[]): void;
   removeCode(assetId: string, i: number): void;
   clearCodes(assetId: string): void;
-  matchCodes(assetId: string): Promise<void>;
-  search(assetId: string): Promise<void>;
+  matchCodes(assetId: string, packId: string): Promise<void>;
+  search(assetId: string, packId: string): Promise<void>;
 }
 
 const empty: Entry = { query: "", codes: [] };
@@ -53,7 +53,7 @@ export const useDescribe = create<DescribeState>()(
         },
         removeCode: (id, i) => put(id, { ...entry(id), codes: entry(id).codes.filter((_, j) => j !== i) }),
         clearCodes: (id) => put(id, { ...entry(id), codes: [] }),
-        async matchCodes(id) {
+        async matchCodes(id, packId) {
           const codes = entry(id).codes;
           if (codes.length === 0) {
             const { [id]: _, ...matches } = get().matches;
@@ -61,13 +61,13 @@ export const useDescribe = create<DescribeState>()(
             return;
           }
           try {
-            const m = await call("signal.match", { asset_id: id, observations: codes });
+            const m = await call("signal.match", { asset_id: id, pack_id: packId, observations: codes });
             set({ matches: { ...get().matches, [id]: m } });
           } catch (err) {
             reportError("describe.codes", err, "The codes could not be checked against the manual.");
           }
         },
-        async search(id) {
+        async search(id, packId) {
           const e = entry(id);
           if (!e.query.trim() && e.codes.length === 0) {
             const { [id]: _, ...results } = get().results;
@@ -77,7 +77,7 @@ export const useDescribe = create<DescribeState>()(
           const mine = ++seq;
           set({ pending: { ...get().pending, [id]: true } });
           try {
-            const r = await call("symptom.search", { asset_id: id, text: e.query.trim() || null, observations: e.codes });
+            const r = await call("symptom.search", { asset_id: id, pack_id: packId, text: e.query.trim() || null, observations: e.codes });
             // A slower, older search never overwrites a newer one.
             if (mine === seq) set({ results: { ...get().results, [id]: r } });
           } catch (err) {

@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { reportError } from "@appkit/toast.ts";
 import { call } from "../engine/client.ts";
 import type { Asset, AssetHistory, AssetInput, JobSummary, SyncStatus } from "../engine/types.ts";
+import { packOf, usePack } from "./pack.ts";
 
 /**
  * The units on this device, every job, and the outbox. One store: any change
@@ -17,7 +18,7 @@ interface FleetState {
   refresh(): Promise<void>;
   refreshSync(): Promise<void>;
   loadHistory(assetId: string): Promise<void>;
-  create(asset: AssetInput): Promise<Asset>;
+  create(asset: AssetInput, packId: string): Promise<Asset>;
   /** After a job changes: its list entry, its unit's history and the outbox. */
   touched(assetId: string | null): Promise<void>;
 }
@@ -45,14 +46,16 @@ export const useFleet = create<FleetState>()((set, get) => ({
   },
   async loadHistory(assetId) {
     try {
-      const h = await call("asset.history", { asset_id: assetId });
+      // A unit's history is read in the pack its variant belongs to.
+      const equip = get().assets.find((a) => a.asset_id === assetId)?.equip_id;
+      const h = await call("asset.history", { asset_id: assetId, pack_id: packOf(usePack.getState().packs, equip)?.info.pack_id ?? null });
       set({ history: { ...get().history, [assetId]: h } });
     } catch (e) {
       reportError("fleet.history", e, "This unit's history could not be read.");
     }
   },
-  async create(asset) {
-    const a = await call("asset.create", { asset });
+  async create(asset, packId) {
+    const a = await call("asset.create", { asset, pack_id: packId });
     await get().refresh();
     return a;
   },
