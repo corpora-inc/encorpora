@@ -266,3 +266,42 @@ def test_span_across_a_hyphenated_line_break():
     pm.regions.append(Region("p0.r1", "box", (0, 0, 300, 40), words=list(range(7)), lines=[[0, 1, 2, 3], [4, 5, 6]]))
     loc, prob = locate({0: pm}, 0, "p0.r1", "Refer to field maintenance for repair.")
     assert prob is None and loc.text == "Refer to field mainte- nance for repair."
+
+
+def test_chart_printed_as_a_table(tmp_path):
+    """STEP | SEQUENCE | RESULT | WHAT TO DO NEXT: one check per step, a branch per result row."""
+    from harvest_pipeline.maint.rules import derive
+    path = tmp_path / "chart.pdf"
+    c = canvas.Canvas(str(path), pagesize=letter, invariant=1)
+    c.setFont("Helvetica-Bold", 9)
+    c.drawString(40, H - 50, "Chart 14. Coolant temperature circuit failed high.")
+    rows = [["STEP", "SEQUENCE", "RESULT", "WHAT TO DO NEXT"],
+            ["14-1", "Read the fault code with the reader.", "PID 110 FMI 3", "Go to step 14-2."],
+            ["", "", "No code", "Fault is intermittent. Refer to field maintenance."],
+            ["14-2", "Is the sensor connector clean and tight?", "YES", "Replace the coolant temperature sensor."],
+            ["", "", "NO", "Clean and reconnect the sensor connector."]]
+    widths = [50, 200, 110, 180]
+    y = 70
+    for r in rows:
+        x = 40
+        for w, cell in zip(widths, r):
+            c.rect(x, H - y - 18, w, 18)
+            c.setFont("Helvetica", 7)
+            c.drawString(x + 3, H - y - 12, cell)
+            x += w
+        y += 18
+    c.drawCentredString(W / 2, 28, "H-121")
+    c.showPage()
+    c.save()
+    pm = page_models(path.read_bytes(), "chart")[0]
+    out, qs = derive([0], {0: pm})
+    t = out["trees"][0]
+    assert t["ref"] == "Chart 14" and t["title"]["text"].startswith("Coolant temperature circuit")
+    checks = [n for n in t["nodes"] if n["kind"] == "check"]
+    assert [n["number"] for n in checks] == ["14-1", "14-2"]
+    s1 = checks[0]
+    assert s1["expect"] == {"kind": "choice", "unit": None, "options": ["PID 110 FMI 3", "No code"]}
+    assert s1["branches"][0]["to"] == checks[1]["id"]
+    assert checks[1]["expect"]["kind"] == "yes_no"
+    kinds = sorted(n["kind"] for n in t["nodes"] if n["kind"] != "check")
+    assert kinds == ["action", "action", "escalate"]

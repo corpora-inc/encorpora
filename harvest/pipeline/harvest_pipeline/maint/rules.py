@@ -319,7 +319,8 @@ def derive(unit_pages: list[int], pages: dict[int, PageModel], options: dict | N
             _wire(pm, tree, nodes, questions)
     close_proc()
     for t in out["trees"]:
-        _finish_tree(t, out, questions)
+        if not t.pop("_done", False):      # charts printed as tables are complete already
+            _finish_tree(t, out, questions)
     for p in out["procedures"]:
         p.pop("_for", None)
     _equipment_parent(out, pages, unit_pages, questions)
@@ -556,6 +557,9 @@ def _table(pm: PageModel, cells: list[Region], out: dict, questions: list[Questi
     head = [pm.region_text(c).lower() for c in grid[0]]
     body = grid[1:]
     col = lambda *ws: next((i for i, h in enumerate(head) if any(w in h for w in ws)), None)  # noqa: E731
+    if col("step") is not None and col("result") is not None and col("next", "action", "do") is not None:
+        _chart(pm, grid, head, col, out, regs)
+        return
     if col("symptom") is not None and col("troubleshooting", "table") is not None:
         ci, ti = col("symptom"), col("troubleshooting", "table")
         for r in body:
@@ -626,3 +630,84 @@ def _equipment_parent(out: dict, pages: dict[int, PageModel], unit_pages: list[i
     elif cands:
         questions.append(Question("equipment-parent", "Which printed name is the machine these variants belong to?",
                                   cands + ["none of these"], len(cands), "parent", {}))
+
+
+_GO = re.compile(r"(?i)\b(?:go|proceed|continue)\s+to\s+step\s+([A-Z0-9][\w.-]*?)\.?(?:\s|$)")
+
+
+def _chart(pm: PageModel, grid: list, head: list[str], col, out: dict, regs) -> None:
+    """A troubleshooting chart printed as a table: STEP | SEQUENCE (the test) | RESULT | WHAT TO DO NEXT.
+    One check node per step (its test text), one branch per result row (the result as printed is the
+    option), to the step the next-cell names ("Go to step 14-2") or to an action box of its own."""
+    si, ti, ri, ni = col("step"), col("sequence", "test", "check", "procedure"), col("result"), col("next", "action", "do")
+    if ti is None:
+        return
+    rows = []
+    cur_step = cur_test = None
+    for r in grid[1:]:
+        cells = {c.col: c for c in r}
+        st = cells.get(si)
+        if st is not None and pm.region_text(st).strip():
+            cur_step, cur_test = st, cells.get(ti)
+        res, nxt = cells.get(ri), cells.get(ni)
+        if cur_step is None or res is None or nxt is None:
+            continue
+        rows.append((cur_step, cur_test, res, nxt))
+    if not rows:
+        return
+    cap = next((r for r in sorted((x for x in regs if x.kind == "text" and x.bbox[3] <= grid[0][0].bbox[1] + 1),
+                                   key=lambda x: -x.bbox[3])), None)
+    title = pm.region_text(cap) if cap else pm.region_text(grid[0][0])
+    m = re.match(r"^(?P<ref>(?:CHART|Chart|TABLE|Table|FLASH CODE|Flash Code)\s+[\w-]+(?:\.\d+)?)[.:]?\s*(?P<title>.*)$", title)
+    ref = m.group("ref") if m else title[:40]
+    steps: dict[str, dict] = {}
+    nodes: list[dict] = []
+    for st, test, res, nxt in rows:
+        sid = pm.region_text(st).strip()
+        if sid not in steps:
+            n = {"id": f"s{len(steps) + 1}", "kind": "check", "number": sid,
+                 "text": _sp(test, pm.region_text(test)) if test is not None else _sp(st, sid),
+                 "expect": {"kind": "choice", "unit": None, "options": []}, "facets": [], "branches": [],
+                 "test_procedure": None, "target": None, "guards": [], "_ev": [f"chart step {sid}"]}
+            steps[sid] = n
+            nodes.append(n)
+    acts = 0
+    for st, test, res, nxt in rows:
+        n = steps[pm.region_text(st).strip()]
+        label = pm.region_text(res)
+        nt = pm.region_text(nxt)
+        n["expect"]["options"].append(label)
+        g = _GO.search(nt)
+        if g and g.group(1) in steps:
+            to = steps[g.group(1)]["id"]
+            ev = f"result {label!r}: {nt!r}"
+        else:
+            acts += 1
+            kind = "escalate" if re.search(DEFAULTS["escalate"], nt) else "end" if re.search(DEFAULTS["end"], nt) \
+                else "action"
+            a = {"id": f"a{acts}", "kind": kind, "number": None, "text": _sp(nxt, nt), "expect": None, "facets": [],
+                 "branches": [], "test_procedure": None, "target": None, "guards": [], "_ev": [f"chart action {nt[:40]!r}"]}
+            tm = re.search(DEFAULTS["target"], nt)
+            if tm:
+                a["target"] = {"kind": "tree" if tm.group("ref").lower().startswith("table") else "procedure",
+                               "ref": tm.group("ref")}
+            nodes.append(a)
+            to = a["id"]
+            ev = f"result {label!r}: action in the same row"
+        n["branches"].append({"label": _sp(res, label), "outcome": label.lower(), "cond": None, "to": to,
+                              "retry": False, "_ev": ev})
+    for n in nodes:
+        if n["kind"] == "check":
+            opts = n["expect"]["options"]
+            folded = {o.strip().lower() for o in opts}
+            if folded <= {"yes", "no"} and len(folded) == 2:
+                n["expect"] = {"kind": "yes_no", "unit": None, "options": []}
+            elif folded <= {"pass", "fail", "ok", "not ok"} and len(folded) == 2:
+                n["expect"] = {"kind": "pass_fail", "unit": None, "options": []}
+            elif len(opts) == 1:
+                n["expect"] = {"kind": "ack", "unit": None, "options": []}
+                for b in n["branches"]:
+                    b["outcome"] = "done"
+    out["trees"].append({"ref": ref, "title": _sp(cap, m.group("title") if m and m.group("title") else title)
+                         if cap else _sp(grid[0][0], title), "applies": [], "setup": [], "guards": [], "nodes": nodes,
+                         "_ev": ["troubleshooting chart as a table"], "_done": True})
