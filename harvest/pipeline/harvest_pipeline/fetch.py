@@ -95,7 +95,8 @@ def _retrieve(spec: SourceSpec, corpus_dir: Path) -> tuple[bytes, str, str, str]
             raise ManualSourceMissing(f"{spec.id}: download {f.get('url') or spec.url} in a browser and save it as {p}")
         data = p.read_bytes()
         mt = spec.media_type or mimetypes.guess_type(p.name)[0] or "application/octet-stream"
-        return data, mt, f.get("url") or p.as_uri(), spec.edition or "unversioned"
+        # never an absolute local path in the committed lock: the URL it came from, else the corpus-relative path
+        return data, mt, f.get("url") or f"file:{f['path']}", spec.edition or "unversioned"
     raise SystemExit(f"source {spec.id}: unknown fetch kind {kind!r}")
 
 
@@ -147,6 +148,8 @@ def fetch(corpus: Corpus, only: set[str] | None = None, now: str | None = None) 
         }
         if status == "edition-only":
             rec["retrieved_at"] = stamp
+        if spec.distribution:
+            rec["distribution"] = spec.distribution   # the distribution marking exactly as the source prints it
         lock["sources"][spec.id] = rec
         out.append(Fetched(rec, status, prev))
     save_lock(corpus, lock)
