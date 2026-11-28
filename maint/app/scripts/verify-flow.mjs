@@ -314,7 +314,7 @@ try {
   // Connect to vehicle with no link on this device: a pasted log; the engine says what each code is and where to start.
   await page.goto(`${base}/units/unit-101`);
   await page.getByRole("link", { name: "Connect to vehicle" }).click();
-  await page.getByRole("radio", { name: "Recorded log" }).click();
+  await page.getByRole("radio", { name: "Recorded" }).click();
   await page.getByLabel("Recorded log").fill("(1700000000.000000) can0 18FECA00#0401A8000101FFFF\n");
   await page.getByRole("button", { name: "Read the log" }).click();
   await page.getByText("SPN 168", { exact: true }).waitFor();

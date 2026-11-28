@@ -35,7 +35,7 @@ export interface ConnectProps {
 
 const SOURCES = [
   { value: "live", label: "Live" },
-  { value: "recorded", label: "Recorded log" },
+  { value: "recorded", label: "Recorded" },
   { value: "typed", label: "Typed" },
 ] as const;
 
