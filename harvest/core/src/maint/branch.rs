@@ -305,12 +305,12 @@ pub fn choose<'a>(
             // A named reading instead of a number.
             if result.value.is_some() || result.unit.is_some() {
                 return Err(Error::Invalid(format!(
-                    "node {}: give a value in {unit} or a named reading, not both",
+                    "node {}: give a value in {unit} (with its unit) or a named reading, not both",
                     node.node_id
                 )));
             }
             let outcome = result.outcome.as_deref().map(fold).unwrap_or_default();
-            if !labels.iter().any(|l| fold(l) == outcome) {
+            if outcome.is_empty() || !labels.iter().any(|l| fold(l) == outcome) {
                 return Err(Error::Invalid(format!(
                     "node {} expects a measured value in {unit}{}; got {:?}",
                     node.node_id,
