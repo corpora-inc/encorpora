@@ -13,56 +13,165 @@ fn expansion(queries: &[&str]) -> String {
     out(json!({"queries": queries, "ambiguous": false, "clarify": null}))
 }
 
+/// A model that answers by schema: expansions, all offered passages, and
+/// evidence for the sentences that start with `targets`.
+struct Oracle {
+    answer: &'static str,
+    targets: Vec<&'static str>,
+    note: Option<&'static str>,
+    requests: std::sync::Mutex<Vec<harvest_core::LlmRequest>>,
+}
+
+impl Oracle {
+    fn new(answer: &'static str, targets: Vec<&'static str>) -> Self {
+        Self {
+            answer,
+            targets,
+            note: None,
+            requests: Default::default(),
+        }
+    }
+    fn asked(&self) -> Vec<String> {
+        self.requests
+            .lock()
+            .unwrap()
+            .iter()
+            .map(|r| r.schema.0.clone())
+            .collect()
+    }
+}
+
+impl harvest_core::Llm for Oracle {
+    fn id(&self) -> String {
+        "oracle".into()
+    }
+    fn complete(&self, req: &harvest_core::LlmRequest) -> harvest_core::Result<String> {
+        self.requests.lock().unwrap().push(req.clone());
+        let user: serde_json::Value = serde_json::from_str(&req.user).unwrap();
+        Ok(match req.schema.0.as_str() {
+            "expansion" => expansion(&[]),
+            "selection" => out(
+                json!({"section_ids": user["passages"].as_array().unwrap().iter()
+                .map(|p| p["section_id"].clone()).collect::<Vec<_>>()}),
+            ),
+            "answer_evidence" => {
+                let mut ev = Vec::new();
+                for p in user["passages"].as_array().unwrap() {
+                    let s: Vec<u64> = p["sentences"]
+                        .as_array()
+                        .unwrap()
+                        .iter()
+                        .filter(|x| {
+                            self.targets
+                                .iter()
+                                .any(|t| x["text"].as_str().unwrap().starts_with(t))
+                        })
+                        .map(|x| x["s"].as_u64().unwrap())
+                        .collect();
+                    if !s.is_empty() {
+                        ev.push(json!({"p": p["p"], "s": s}));
+                    }
+                }
+                out(json!({"answer": self.answer, "evidence": ev, "note": self.note}))
+            }
+            other => panic!("unexpected {other}"),
+        })
+    }
+}
+
 #[test]
-fn composes_from_retrieved_text_and_the_checker_cleans_it() {
+fn composes_from_named_sentences_and_the_checker_cleans_the_answer() {
     let b = common::pack();
-    let fact = b.pack.facts_for_section("ex.2").unwrap()[0].quote.clone();
-    let llm = Arc::new(ScriptedLlm::new([
-        expansion(&[
-            "minimum clearance energized line",
-            "spotter clearance distance",
-        ]),
-        out(json!({"segments": [
-            {"t": "text", "text": "Identify energized lines first."},
-            {"t": "text", "text": "First, identify energized lines before work begins:"},
-            {"t": "quote", "section_id": "ex.2", "text": "Before work begins, the controlling party must identify energized lines within the work zone."},
-            {"t": "cite", "section_id": "ex.2"},
-            {"t": "text", "text": "Keep at least 10 feet away from lines up to 50 kV."},
-            {"t": "cite", "section_id": "ex.2"},
-            {"t": "text", "text": "Use a dedicated spotter:"},
-            {"t": "quote", "section_id": "ex.2(a)", "text": "A dedicated spotter must be used"},
-            {"t": "text", "text": "Helmets must be painted orange on Tuesdays."},
-            {"t": "quote", "section_id": "ex.2", "text": "a sentence the section never says"}
-        ]})),
-    ]));
+    let llm = Arc::new(Oracle::new(
+        "Identify energized lines before work begins, and use a dedicated spotter.",
+        vec!["Before work begins", "A dedicated spotter must be used"],
+    ));
     let e = common::engine(&b).with_llm(llm.clone());
     let (r, trace) = e
         .ask_traced(
             "what do I need to know about working near power lines",
-            &AskOptions::default(),
+            &AskOptions {
+                cache_threshold: 2.0,
+                ..AskOptions::default()
+            },
         )
         .unwrap();
     assert_eq!(r.mode, Mode::Composed, "{:?}", trace.model_error);
-    assert_eq!(r.model.as_deref(), Some("scripted-test-model"));
-    assert_eq!(llm.asked(), vec!["expansion", "answer_segments"]);
-    assert!(
-        trace
-            .expansions
-            .contains(&"spotter clearance distance".to_string())
+    assert_eq!(r.model.as_deref(), Some("oracle"));
+    assert_eq!(llm.asked(), vec!["expansion", "answer_evidence"]);
+    // The answer first, then the named sentences copied verbatim by the engine.
+    assert_eq!(
+        r.body[0],
+        Segment::text("Identify energized lines before work begins, and use a dedicated spotter.")
     );
-    // The limit paraphrase became the verbatim quote; the fabricated quote and
-    // its unsupported claim are gone.
-    assert!(r.body.contains(&Segment::quote("ex.2", fact)));
-    assert!(!r.body.iter().any(|s| matches!(s, Segment::Text { text } if text.contains("10 feet") || text.contains("orange"))));
-    // A sourced sentence with no number survives.
-    assert_eq!(r.body[0], Segment::text("Identify energized lines first."));
-    assert!(!r.check.quotes_ok);
-    assert_eq!(r.check.dropped, 3);
-    assert_eq!(r.citations, vec!["ex.2".to_string(), "ex.2(a)".to_string()]);
-    // The model saw only pack text.
+    assert!(r.body.contains(&Segment::quote(
+        "ex.2",
+        "Before work begins, the controlling party must identify energized lines within the work zone."
+    )));
+    assert!(r.check.quotes_ok && r.check.cites_ok);
+    assert!(
+        r.citations.contains(&"ex.2".to_string()) && r.citations.contains(&"ex.2(a)".to_string())
+    );
+    // The model saw numbered pack sentences only.
     let req = &llm.requests.lock().unwrap()[1];
-    assert!(req.user.contains("controlling party must identify"));
-    assert!(req.user.contains("must_quote_verbatim"));
+    assert!(req.user.contains("controlling party must identify") && req.user.contains("\"s\":1"));
+}
+
+#[test]
+fn an_answer_with_a_number_the_sentences_do_not_state_is_dropped() {
+    let b = common::pack();
+    let llm = Arc::new(Oracle::new(
+        "Keep at least 20 feet from lines up to 50 kV.",
+        vec!["No part of the machine"],
+    ));
+    let (r, _) = common::engine(&b)
+        .with_llm(llm)
+        .ask_traced(
+            "how close can the machine get to a 40 kV energized line",
+            &AskOptions {
+                cache_threshold: 2.0,
+                ..AskOptions::default()
+            },
+        )
+        .unwrap();
+    // The wrong number is gone; the verbatim sentence with the right one stays.
+    assert!(
+        !r.body
+            .iter()
+            .any(|s| matches!(s, Segment::Text { text } if text.contains("20 feet")))
+    );
+    assert!(
+        r.body
+            .iter()
+            .any(|s| matches!(s, Segment::Quote { text, .. } if text.contains("10 feet")))
+    );
+}
+
+#[test]
+fn evidence_out_of_range_is_ignored() {
+    let b = common::pack();
+    let llm = Arc::new(ScriptedLlm::new([
+        expansion(&[]),
+        out(
+            json!({"answer": "A competent person inspects it each shift.",
+                   "evidence": [{"p": 9, "s": [1]}, {"p": 1, "s": [99]}], "note": null}),
+        ),
+    ]));
+    let (r, trace) = common::engine(&b)
+        .with_llm(llm)
+        .ask_traced(
+            "who inspects the machine every shift",
+            &AskOptions {
+                cache_threshold: 2.0,
+                ..AskOptions::default()
+            },
+        )
+        .unwrap();
+    assert!(
+        r.model.is_none(),
+        "nothing verifiable: the deterministic answer stands"
+    );
+    assert!(trace.model_error.is_some());
 }
 
 #[test]
@@ -105,7 +214,7 @@ fn clarifies_only_when_the_model_says_ambiguous() {
     let llm = Arc::new(ScriptedLlm::new([
         out(json!({"queries": [], "ambiguous": true, "clarify": "  "})),
         out(
-            json!({"segments": [{"t": "text", "text": "Inspect each shift before use."}, {"t": "cite", "section_id": "ex.3"}]}),
+            json!({"answer": "Inspect each shift before use.", "evidence": [{"p": 1, "s": [1]}], "note": null}),
         ),
     ]));
     let e = common::engine(&b).with_llm(llm);
@@ -132,7 +241,7 @@ fn model_failure_falls_back_to_the_deterministic_answer() {
     // A composition with nothing supported also falls back.
     let llm = Arc::new(ScriptedLlm::new([
         expansion(&[]),
-        out(json!({"segments": [{"t": "text", "text": "Unsupported."}]})),
+        out(json!({"answer": "Unsupported.", "evidence": [], "note": null})),
     ]));
     let e = common::engine(&b).with_llm(llm);
     let (r, trace) = e
@@ -165,10 +274,9 @@ fn context_carries_role_and_equipment() {
     let b = common::pack();
     let llm = Arc::new(ScriptedLlm::new([
         expansion(&["stabilizers fully extended"]),
-        out(json!({"segments": [
-            {"t": "quote", "section_id": "ex.4", "text": "When stabilizers are used, they must be fully extended or deployed as specified in the load chart."},
-            {"t": "cite", "section_id": "ex.4"}
-        ]})),
+        out(
+            json!({"answer": "Yes, fully extended.", "evidence": [{"p": 1, "s": [1]}], "note": null}),
+        ),
     ]));
     let e = common::engine(&b).with_llm(llm.clone());
     let opts = AskOptions {
@@ -237,10 +345,7 @@ fn bare_citations_are_not_a_model_answer() {
     let b = common::pack();
     let llm = Arc::new(ScriptedLlm::new([
         expansion(&["periodic inspection"]),
-        out(json!({"segments": [
-            {"t": "text", "text": "Inspect it every 7 weeks."},
-            {"t": "cite", "section_id": "ex.3"}
-        ]})),
+        out(json!({"answer": "Inspect it every 7 weeks.", "evidence": [], "note": null})),
     ]));
     let e = common::engine(&b).with_llm(llm);
     let (r, trace) = e
@@ -371,10 +476,10 @@ fn the_engine_survives_a_reasoning_model() {
         think(),
         out(json!({"section_ids": ["ex.3"]})),
         think(),
-        out(json!({"segments": [
-            {"t": "quote", "section_id": "ex.3", "text": "A competent person must inspect the machine each shift before use."},
-            {"t": "cite", "section_id": "ex.3"}
-        ]})),
+        out(
+            json!({"answer": "A competent person must inspect the machine each shift.",
+                   "evidence": [{"p": 1, "s": [1]}], "note": null}),
+        ),
     ]));
     let (r, trace) = common::engine(&b)
         .with_llm(llm)
@@ -393,4 +498,64 @@ fn the_engine_survives_a_reasoning_model() {
         trace.model_error
     );
     assert_eq!(r.mode, Mode::Composed);
+}
+
+#[test]
+fn a_verdict_stands_only_with_the_rule_that_decides_it() {
+    let b = common::pack();
+    let check = |t: &str| {
+        let body = vec![
+            Segment::text(t),
+            Segment::quote(
+                "ex.3",
+                "A competent person must inspect the machine each shift before use.",
+            ),
+            Segment::cite("ex.3"),
+        ];
+        harvest_core::check::check(&b.pack, &body, harvest_core::check::CheckOptions::STRICT)
+            .unwrap()
+            .0
+    };
+    assert!(
+        !check("No.")
+            .iter()
+            .any(|s| matches!(s, Segment::Text { .. })),
+        "bare verdict"
+    );
+    let kept = check("Yes, a competent person must inspect the machine each shift.");
+    assert!(matches!(&kept[0], Segment::Text { text } if text.starts_with("Yes,")));
+    // The claim after the verdict is still held to the source.
+    assert!(
+        !check("Yes, a crane operator inspects the boom annually.")
+            .iter()
+            .any(|s| matches!(s, Segment::Text { .. }))
+    );
+}
+
+#[test]
+fn sections_the_model_did_not_cite_follow_its_answer() {
+    let b = common::pack();
+    let llm = Arc::new(Oracle::new(
+        "A dedicated spotter must be used near energized lines.",
+        vec!["A dedicated spotter must be used"],
+    ));
+    let opts = AskOptions {
+        cache_threshold: 2.0,
+        ..AskOptions::default()
+    };
+    let q = "what do I need to know about working near power lines";
+    let without = common::engine(&b).ask(q, &opts).unwrap();
+    let r = common::engine(&b).with_llm(llm).ask(q, &opts).unwrap();
+    assert_eq!(
+        r.body[0],
+        Segment::text("A dedicated spotter must be used near energized lines.")
+    );
+    // Every section the model-off answer composes is still there.
+    for id in &without.citations {
+        assert!(
+            r.citations.contains(id),
+            "{id} missing from {:?}",
+            r.citations
+        );
+    }
 }

@@ -170,10 +170,8 @@ fn ask_with_an_openai_compatible_server_and_audit() {
     let (base, server) = mock_server(vec![
         serde_json::json!({"queries": ["shift inspection competent person"], "ambiguous": false, "clarify": null}).to_string(),
         serde_json::json!({"section_ids": ["ex.3", "ex.999"]}).to_string(),
-        serde_json::json!({"segments": [
-            {"t": "text", "text": "A competent person inspects before each shift."},
-            {"t": "quote", "section_id": "ex.3", "text": "A competent person must inspect the machine each shift before use."}
-        ]})
+        serde_json::json!({"answer": "A competent person inspects before each shift.",
+                           "evidence": [{"p": 1, "s": [1]}], "note": null})
         .to_string(),
     ]);
     let db = tmp.path().join("records.db");
@@ -193,7 +191,8 @@ fn ask_with_an_openai_compatible_server_and_audit() {
     let a: Value = serde_json::from_str(&out).unwrap();
     assert_eq!(a["mode"], "composed");
     assert_eq!(a["model"], "mock-model", "{err}");
-    assert_eq!(a["citations"], serde_json::json!(["ex.3"]));
+    // The model's cited section first; the gate's other choices follow.
+    assert_eq!(a["citations"][0], "ex.3");
     let seen = server.join().unwrap();
     assert!(seen[0].starts_with("/v1/models"));
     assert!(seen[1].contains("\"json_schema\"") && seen[1].contains("\"expansion\""));
@@ -201,7 +200,7 @@ fn ask_with_an_openai_compatible_server_and_audit() {
     let sent: Value = serde_json::from_str(seen[1].split_once(' ').unwrap().1).unwrap();
     assert_eq!(sent["reasoning_budget_tokens"], 0, "{}", seen[1]);
     assert!(seen[2].contains("\"selection\""));
-    assert!(seen[3].contains("answer_segments"));
+    assert!(seen[3].contains("answer_evidence"));
     // Only the selected section was offered to compose.
     assert!(
         seen[3].contains("competent person must inspect") && !seen[3].contains("Tracked machines")

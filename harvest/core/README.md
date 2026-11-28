@@ -100,8 +100,11 @@ pub trait Llm: Send + Sync {
    questions get their answer; off-topic ones are declined.
 3. **Retrieve** the question plus its expansions (RRF over every list).
 4. **Select** (`selection`, only when more than `max_sections + 1` sections qualify).
-5. **Compose** (`answer_segments`) from those passages only. Limits are marked
-   `must_quote_verbatim`.
+5. **Compose** (`answer_evidence`) from those passages only, offered as
+   numbered sentences: the model writes the direct answer and names the
+   supporting sentences by number; the engine quotes those sentences verbatim
+   (at most four per passage). A leading Yes/No stands only with the rule
+   after it, which the checker holds to the sources.
 6. **Check** in strict mode. The model's body is kept only with a verbatim
    quote, or a surviving sentence and its cite. Otherwise, or if the model
    errs, the deterministic answer is returned and `trace.model_error` says why.

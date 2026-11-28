@@ -128,12 +128,75 @@ pub fn segment_schema() -> Value {
     })
 }
 
-#[derive(Deserialize)]
-struct Composed {
-    segments: Vec<Segment>,
+/// The sentences of a passage, as the model sees them numbered: split after
+/// `.`, `;` or `:` followed by a space. Joining a run of them with spaces
+/// gives back a verbatim (whitespace-normalized) substring of the passage.
+pub fn sentences(text: &str) -> Vec<String> {
+    let t = normalize_ws(text);
+    let b = t.as_bytes();
+    let mut out = Vec::new();
+    let mut start = 0;
+    for i in 1..b.len() {
+        if b[i] == b' ' && matches!(b[i - 1], b'.' | b';' | b':') {
+            out.push(t[start..i].to_string());
+            start = i + 1;
+        }
+    }
+    if start < t.len() {
+        out.push(t[start..].to_string());
+    }
+    out
 }
 
-/// Compose an answer from `passages` only.
+#[derive(Deserialize)]
+struct Evidence {
+    #[serde(default)]
+    p: usize,
+    #[serde(default)]
+    s: Vec<usize>,
+}
+
+#[derive(Deserialize)]
+struct Composed {
+    #[serde(default)]
+    answer: String,
+    #[serde(default)]
+    evidence: Vec<Evidence>,
+    #[serde(default)]
+    note: Option<String>,
+}
+
+/// Most sentences quoted from one passage.
+const MAX_EVIDENCE_SENTENCES: usize = 4;
+
+/// The compose schema: a direct answer, the evidence as passage and
+/// sentence numbers (the engine copies those sentences verbatim, so the
+/// model never has to), and an optional teaching note.
+pub fn compose_schema() -> Value {
+    json!({
+        "type": "object",
+        "properties": {
+            "answer": {"type": "string"},
+            "evidence": {"type": "array", "items": {
+                "type": "object",
+                "properties": {
+                    "p": {"type": "integer"},
+                    "s": {"type": "array", "items": {"type": "integer"}}
+                },
+                "required": ["p", "s"],
+                "additionalProperties": false
+            }},
+            "note": {"type": ["string", "null"]}
+        },
+        "required": ["answer", "evidence", "note"],
+        "additionalProperties": false
+    })
+}
+
+/// Compose an answer from `passages` only. The model writes the direct
+/// answer and names the sentences that support it; the engine builds the
+/// segments: the answer, each cited run of sentences quoted verbatim with
+/// its cite, then the note. The strict checker then decides what survives.
 pub fn compose(
     llm: &dyn Llm,
     question: &str,
@@ -141,35 +204,83 @@ pub fn compose(
     context: &str,
     passages: &[Passage],
 ) -> Result<Vec<Segment>> {
+    let split: Vec<Vec<String>> = passages.iter().map(|p| sentences(&p.text)).collect();
     let offered: Vec<Value> = passages
         .iter()
-        .map(|p| {
+        .zip(&split)
+        .enumerate()
+        .map(|(i, (p, ss))| {
             json!({
-                "section_id": p.section_id,
+                "p": i + 1,
                 "citation": p.citation,
                 "heading": p.heading,
-                "text": p.text,
-                "must_quote_verbatim": p.limits,
+                "sentences": ss.iter().enumerate().map(|(k, t)| json!({"s": k + 1, "text": t})).collect::<Vec<_>>(),
             })
         })
         .collect();
     let req = LlmRequest {
         system: format!(
-            "Answer the question using only the passages. Write for a {level}. Teach in plain, short \
-             sentences. Rules: every statement is followed by a quote or cite segment of the passage \
-             that supports it; a quote copies the passage text exactly, character for character; any \
-             limit, distance, capacity, interval or other number is given as a quote, never \
-             paraphrased (the must_quote_verbatim strings are ready to quote); do not count things \
-             (\"there are three\"); never add facts the passages do not state; keep every \
-             \"not\", \"no\" and \"must\" exactly as the passage has it; if the passages do not \
-             answer the question, return no segments."
+            "You answer a {level}'s question from numbered regulation passages. Reply with: \
+             answer: one or two plain sentences that answer the question directly, in the cited \
+             sentences' own words: the requirement or the number first, or Yes or No followed by \
+             the rule that decides it (\"No, excavators are excluded from this standard.\"); keep every \
+             \"not\", \"no\", \"must\" and number exactly as the sentences have them; \
+             evidence: the passage number p and sentence numbers s that support the answer, the \
+             fewest that do; note: an optional short plain explanation of the cited sentences, or \
+             null. If no sentence answers the question, give an empty answer and empty evidence."
         ),
         user: json!({"question": question, "context": context, "passages": offered}).to_string(),
-        schema: ("answer_segments".into(), segment_schema()),
-        max_tokens: 900,
-        temperature: 0.2,
+        schema: ("answer_evidence".into(), compose_schema()),
+        max_tokens: 600,
+        temperature: 0.0,
     };
-    Ok(complete_json::<Composed>(llm, &req)?.segments)
+    let c: Composed = complete_json(llm, &req)?;
+    let mut out = Vec::new();
+    if !c.answer.trim().is_empty() {
+        out.push(Segment::text(c.answer.trim()));
+    }
+    let mut cited = Vec::new();
+    for e in &c.evidence {
+        let Some((p, ss)) =
+            e.p.checked_sub(1)
+                .and_then(|i| Some((passages.get(i)?, split.get(i)?)))
+        else {
+            continue;
+        };
+        // Runs of consecutive sentences become one quote each.
+        let mut idx: Vec<usize> =
+            e.s.iter()
+                .filter_map(|k| k.checked_sub(1))
+                .filter(|k| *k < ss.len())
+                .collect();
+        idx.sort_unstable();
+        idx.dedup();
+        // The fewest sentences that support it: a long list is not evidence.
+        idx.truncate(MAX_EVIDENCE_SENTENCES);
+        let mut k = 0;
+        while k < idx.len() {
+            let mut end = k;
+            while end + 1 < idx.len() && idx[end + 1] == idx[end] + 1 {
+                end += 1;
+            }
+            out.push(Segment::quote(
+                p.section_id.clone(),
+                ss[idx[k]..=idx[end]].join(" "),
+            ));
+            k = end + 1;
+        }
+        if !idx.is_empty() && !cited.contains(&p.section_id) {
+            cited.push(p.section_id.clone());
+            out.push(Segment::cite(p.section_id.clone()));
+        }
+    }
+    if let Some(n) = c.note.as_deref().map(str::trim).filter(|n| !n.is_empty())
+        && let Some(id) = cited.first()
+    {
+        out.push(Segment::text(n));
+        out.push(Segment::cite(id.clone()));
+    }
+    Ok(out)
 }
 
 /// The passages for `section_ids`.
