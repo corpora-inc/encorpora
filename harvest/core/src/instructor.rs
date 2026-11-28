@@ -866,9 +866,11 @@ impl Instructor {
     /// away). Texts the conversation already showed (in `history`) are not
     /// shown again; when that leaves nothing, the next unshown field is.
     fn node_block_after(&self, n: &CourseNode, fields: &[String], history: &[Message]) -> Block {
+        // A text counts as shown when the conversation carries it whole (a
+        // short text could sit inside something unrelated).
         let seen = |f: &str| {
             let t = field_of(n, f);
-            !t.is_empty()
+            t.len() >= 40
                 && history
                     .iter()
                     .any(|m| m.who == "instructor" && m.text.contains(t))
@@ -885,6 +887,19 @@ impl Instructor {
                 .copied()
                 .filter(|f| !field_of(n, f).is_empty() && !seen(f))
                 .take(1)
+                .collect();
+        }
+        // Everything shown already: the learner asked again for the named
+        // fields, so show them; with none named, the overview.
+        if want.is_empty() {
+            let again: Vec<&str> = if fields.is_empty() {
+                DEFAULT_FIELDS.to_vec()
+            } else {
+                fields.iter().map(String::as_str).collect()
+            };
+            want = again
+                .into_iter()
+                .filter(|f| !field_of(n, f).is_empty())
                 .collect();
         }
         let texts: Vec<NodeText> = want
