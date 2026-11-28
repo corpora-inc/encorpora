@@ -391,12 +391,18 @@ fn rule_claims_are_told_from_teaching() {
         "Only a qualified rigger can attach loads.",
         "You should always wear a harness.",
         "You should wear a harness.",
+        "You may lift over workers if the horn sounds.",
+        "No one may ride the hook.",
+        "Do not stand under the load.",
+        "You can\u{2019}t swing over people.",
+        "\u{201C}Never\u{201D} means stay clear of the swing radius.",
     ] {
         assert!(is_rule_claim(s), "{s}");
     }
     for s in [
         "You have to read the chart and do the math carefully.",
         "You should practice the load chart questions.",
+        "You can find the load on the chart.",
         "Load charts are where most people lose points.",
         "Let's look at radius next.",
     ] {
@@ -419,4 +425,23 @@ fn a_leading_no_is_a_verdict_only_before_punctuation() {
         src,
         0.75
     ));
+}
+
+#[test]
+fn a_claim_takes_its_numbers_from_one_row_and_odd_first_characters_are_safe() {
+    use harvest_core::check::holds;
+    let rows =
+        "Voltage (kV) | Minimum clearance distance (feet)\nup to 50 | 10\nover 50 to 200 | 15";
+    assert!(holds("Over 50 to 200 kV is 15 feet.", rows, 0.5));
+    assert!(
+        !holds("Over 50 kV is 10 feet.", rows, 0.5),
+        "50 and 10 from different rows"
+    );
+    for s in [
+        "\u{201C}No\u{201D} is the answer.",
+        "\u{2014}no",
+        "\u{1F600} yes",
+    ] {
+        let _ = holds(s, rows, 0.75); // no panic on a multi-byte first character
+    }
 }

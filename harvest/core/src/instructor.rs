@@ -227,6 +227,9 @@ pub struct Trace {
     pub model_error: Option<String>,
     #[serde(default)]
     pub elapsed_ms: u64,
+    /// The model's plans, as returned (for the audit log and re-checks).
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub plans: Vec<Value>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -364,7 +367,13 @@ pub fn is_rule_claim(sentence: &str) -> bool {
         " {} ",
         sentence
             .to_lowercase()
-            .replace(['.', ',', ';', ':', '!', '?', '(', ')'], " ")
+            .replace(['\u{2019}', '\u{2018}'], "'")
+            .replace(
+                [
+                    '.', ',', ';', ':', '!', '?', '(', ')', '\u{201C}', '\u{201D}', '"'
+                ],
+                " "
+            )
     );
     if RULE_WORDS.iter().any(|w| s.contains(&format!(" {w} "))) {
         return true;
@@ -397,13 +406,27 @@ const SOFT_MODALS: &[&str] = &[
     "don't",
     "do not",
     "ought to",
+    "may",
+    "can",
+    "is ok to",
+    "it's ok to",
+    "okay to",
 ];
 /// Word starts that make a soft modal a duty.
 const DUTY_STEMS: &[&str] = &[
     "certif", "qualif", "inspect", "permit", "osha", "rule", "law", "legal", "regulat", "requir",
     "employer", "document", "train", "authoriz", "approv", "licens", "wear", "harness", "ride",
-    "swing", "clearanc", "distanc", "signal", "spotter", "tag", "lock",
+    "swing", "clearanc", "distanc", "signal", "spotter", "tag", "lock", "lift", "stand", "hook",
+    "operat", "enter", "climb", "hoist",
 ];
+
+/// True when the learner's words are about traveling (driving the crane,
+/// moving it with no load), which has its own clearance table.
+fn traveling(text: &str) -> bool {
+    normalize::content_stems(text)
+        .iter()
+        .any(|s| ["travel", "drive", "driven", "drove", "transit"].contains(&s.as_str()))
+}
 
 /// True when `sentence` measures something a rule would: a length, weight,
 /// voltage, speed, angle, or an interval of days or more (not exam minutes
@@ -465,8 +488,6 @@ struct Plan {
     #[serde(default)]
     tool: Option<String>,
     #[serde(default)]
-    traveling: Option<bool>,
-    #[serde(default)]
     search: Option<String>,
 }
 
@@ -482,10 +503,9 @@ fn plan_schema() -> Value {
             "evidence": {"type": "array", "items": {"type": "string"}},
             "say": {"type": "string"},
             "tool": {"type": ["string", "null"], "enum": [TOOLS[0], TOOLS[1], TOOLS[2], null]},
-            "traveling": n("boolean"),
             "search": n("string")
         },
-        "required": ["intent", "node_id", "fields", "show", "evidence", "say", "tool", "traveling", "search"],
+        "required": ["intent", "node_id", "fields", "show", "evidence", "say", "tool", "search"],
         "additionalProperties": false
     })
 }
@@ -997,7 +1017,7 @@ impl Instructor {
              - say: 1 to 3 short sentences, plain words. Never state a rule, number or \
              requirement unless its sentence is in evidence; the app drops any that is not. If \
              nothing fits, say so honestly and point to what the course covers.\n\
-             - tool, traveling: for intent tool (the voltage comes from the learner's words).\n\
+             - tool: for intent tool (the app reads the voltage from the learner's words).\n\
              - search: a better search for the rules index if `rules` miss, else null.",
             title = self.course_title,
         )
@@ -1038,8 +1058,13 @@ impl Instructor {
                 max_tokens: 500,
                 temperature: 0.2,
             };
-            match complete_json::<Plan>(llm.as_ref(), &req_llm) {
-                Ok(p) => plan = p,
+            match complete_json::<Value>(llm.as_ref(), &req_llm)
+                .and_then(|v| Ok((serde_json::from_value::<Plan>(v.clone())?, v)))
+            {
+                Ok((p, raw)) => {
+                    plan = p;
+                    trace.plans.push(raw);
+                }
                 Err(e) => {
                     trace.model_error = Some(e.to_string());
                     let mut t = self.model_off(text, &node_hits, trace);
@@ -1348,7 +1373,7 @@ impl Instructor {
                 context.push_str(&seen.to_string());
                 blocks.push(b);
             }
-            "tool" => blocks.extend(self.tool_blocks(plan.tool.as_deref(), text, plan.traveling)),
+            "tool" => blocks.extend(self.tool_blocks(plan.tool.as_deref(), text)),
             _ => {}
         }
 
@@ -1417,7 +1442,21 @@ impl Instructor {
     /// The first range table among the passages with a value from `text`
     /// in its unit: its section and the checked answer segments.
     fn table_rows(&self, text: &str, passages: &[Passage]) -> Option<(String, Vec<Segment>)> {
-        for p in passages {
+        // The traveling table when the words are about traveling, else the others first.
+        let moving = traveling(text);
+        let mut order: Vec<&Passage> = passages.iter().collect();
+        order.sort_by_key(|p| {
+            let travel_table = self
+                .engine
+                .pack
+                .section(&p.section_id)
+                .ok()
+                .flatten()
+                .and_then(|s| s.heading)
+                .is_some_and(|h| h.to_lowercase().contains("travel"));
+            travel_table != moving
+        });
+        for p in order {
             let Ok(Some(sec)) = self.engine.pack.section(&p.section_id) else {
                 continue;
             };
@@ -1538,7 +1577,7 @@ impl Instructor {
     /// model's: `clearance` carries the voltage only when the learner said
     /// it, and the table row itself is shown by [`Self::table_rows`] from
     /// the same words.
-    fn tool_blocks(&self, tool: Option<&str>, text: &str, traveling: Option<bool>) -> Vec<Block> {
+    fn tool_blocks(&self, tool: Option<&str>, text: &str) -> Vec<Block> {
         let Some(tool) = tool.filter(|t| TOOLS.contains(t)) else {
             return Vec::new();
         };
@@ -1555,7 +1594,7 @@ impl Instructor {
             .and_then(|w| w[0].parse::<f64>().ok());
         vec![Block::Tool {
             tool: "clearance".into(),
-            input: json!({"kv": kv, "traveling": traveling.unwrap_or(false)}),
+            input: json!({"kv": kv, "traveling": traveling(text)}),
         }]
     }
 }

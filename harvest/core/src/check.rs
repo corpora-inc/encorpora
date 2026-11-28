@@ -309,11 +309,28 @@ pub fn holds(text: &str, source: &str, min_overlap: f64) -> bool {
         .into_iter()
         .filter(|t| is_number(t))
         .collect();
-    if text_numbers(&text)
-        .iter()
-        .any(|n| !source_numbers.contains(n))
-    {
+    let numbers = text_numbers(&text);
+    if numbers.iter().any(|n| !source_numbers.contains(n)) {
         return false;
+    }
+    // The numbers of one claim come from one source sentence or table row,
+    // with the same range words: "over 50 kV, 10 feet" takes neither 10 from
+    // the "up to 50 | 10" row nor 50 from one row and 10 from another.
+    if !numbers.is_empty() {
+        let text_toks = normalize::tokens(&text);
+        let ranges: Vec<&str> = RANGE_WORDS
+            .iter()
+            .copied()
+            .filter(|w| text_toks.iter().any(|t| t == w))
+            .collect();
+        let one = sentences(source).iter().any(|s| {
+            let toks = normalize::tokens(s);
+            numbers.iter().all(|n| toks.contains(n))
+                && ranges.iter().all(|w| toks.iter().any(|t| t == w))
+        });
+        if !one {
+            return false;
+        }
     }
     let source_stems = normalize::stem_set(source);
     let stems: Vec<String> = normalize::content_stems(&text)
@@ -328,6 +345,12 @@ pub fn holds(text: &str, source: &str, min_overlap: f64) -> bool {
     (hit as f64) / (stems.len() as f64) >= need && polarity_ok(&sentences(source), &stems, &text)
 }
 
+/// Words that say which side of a number a value falls.
+const RANGE_WORDS: &[&str] = &[
+    "over", "under", "above", "below", "up", "more", "less", "least", "most", "exceed", "exceeds",
+    "beyond", "within",
+];
+
 fn is_number(t: &str) -> bool {
     t.chars().next().is_some_and(|c| c.is_ascii_digit())
 }
@@ -336,7 +359,7 @@ fn is_number(t: &str) -> bool {
 fn strip_verdict(text: &str) -> String {
     let t = text.trim_start();
     for v in ["yes", "no"] {
-        if t.len() >= v.len() && t[..v.len()].eq_ignore_ascii_case(v) {
+        if t.get(..v.len()).is_some_and(|h| h.eq_ignore_ascii_case(v)) {
             let rest = &t[v.len()..];
             // "No, …" is a verdict; "No part of …" is a negated claim and
             // keeps its "No".
