@@ -1,0 +1,588 @@
+proc_id: signal-person-qualification-check
+title: Signal Person Qualification Check
+kind: inspection
+summary: Use this check to confirm that a signal person is qualified and documented, and that the hand, voice or
+  radio signal setup meets the rules, before they give any signals. Do it before signaling starts on each job, any
+  time a signal person is added or replaced, and again if their actions show they may not meet the qualification
+  requirements.
+roles:
+- competent_person
+- lift_director
+- operator
+- signal_person
+lang: en
+section_ids:
+- 29cfr1926.1428
+- 29cfr1926.1419
+- 29cfr1926.1420
+- 29cfr1926.1421
+- 29cfr1926.1422
+- 29cfr1926.cc.appC
+steps:
+- ord: 1
+  phase: Before you start
+  text: Decide whether this operation requires a signal person.
+  detail:
+    trainee: A signal person is required when the operator cannot fully see the load path or landing area, when
+      the view is blocked while the crane travels, or when the operator or the person handling the load decides
+      one is needed for safety. Good means the reason is known and a signal person is assigned.
+    operator: 'Ask three questions: Is the point of operation out of full view? Is the travel direction blocked?
+      Do site safety concerns call for one? A yes to any of them means a signal person is required.'
+    inspector: Confirm a signal person is provided wherever any condition in 1926.1419(a)(1)-(3) applies, and record
+      which condition triggered the requirement.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1419(a)
+  - 29cfr1926.1419(a)(1)
+  - 29cfr1926.1419(a)(2)
+  - 29cfr1926.1419(a)(3)
+  deficiency:
+    guidance: A signal person is required but none has been assigned.
+    action: Do not start the operation until a qualified signal person is assigned.
+    section_id: 29cfr1926.1419(a)
+    quote: 'A signal person must be provided in each of the following situations:'
+  practice_only: false
+  value_unit: null
+- ord: 2
+  phase: Before you start
+  text: Record the signal person's name, employer and the signal types planned.
+  detail:
+    trainee: Write down who will signal, who employs them, and whether they will use hand, voice, radio or other
+      signals. The qualification duty belongs to the signal person's employer, so you need to know who that is.
+    operator: Record the name, the employer and each signal type and transmission method planned for this job.
+    inspector: Identify the employer responsible under 1926.1428(a) and the signal types the documentation must
+      cover.
+  check_kind: note
+  section_ids:
+  - 29cfr1926.1428(a)
+  deficiency: null
+  practice_only: false
+  value_unit: null
+- ord: 3
+  phase: Qualification documents
+  text: Confirm the signal person is qualified under Option 1 or Option 2 before giving any signals.
+  detail:
+    trainee: The signal person must be qualified either by a third-party qualified evaluator (Option 1) or by their
+      own employer's qualified evaluator (Option 2). Good means there is a document from one of these two sources.
+    operator: No document from a third-party evaluator or the employer's evaluator means no signals from this person.
+    inspector: Verify which option was used and that the documentation shows the person meets the 1926.1428(c) requirements,
+      as 1926.1428(a)(1) or (a)(2) requires.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1428(a)
+  - 29cfr1926.1428(a)(1)
+  - 29cfr1926.1428(a)(2)
+  deficiency:
+    guidance: There is no evidence that this person meets the qualification requirements.
+    action: Do not allow this person to signal. Assign a qualified signal person.
+    section_id: 29cfr1926.1428(a)
+    quote: The employer of the signal person must ensure that each signal person meets the Qualification Requirements
+      (paragraph (c) of this section) prior to giving any signals.
+  practice_only: false
+  value_unit: null
+- ord: 4
+  phase: Qualification documents
+  text: If Option 2 was used, confirm the assessment came from the person's current employer.
+  detail:
+    trainee: An assessment by an employer's own evaluator only counts for that employer. It does not transfer if
+      the person works for someone else. Good means the employer named on the document is the person's current employer.
+    operator: Compare the employer on the Option 2 document with the person's current employer. If they differ,
+      the document does not qualify them. Mark N/A for Option 1.
+    inspector: Verify that an Option 2 assessment is not being used by a different employer, since it is not portable
+      under 1926.1428(a)(2).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1428(a)(2)
+  deficiency:
+    guidance: The document belongs to another employer and cannot be used to qualify this person.
+    action: Do not allow this person to signal until their current employer qualifies them under Option 1 or Option
+      2.
+    section_id: 29cfr1926.1428(a)(2)
+    quote: An assessment by an employer's qualified evaluator under this option is not portable—other employers
+      are not permitted to use it to meet the requirements of this section.
+  practice_only: false
+  value_unit: null
+- ord: 5
+  phase: Qualification documents
+  text: Confirm the qualification documentation is available at the site.
+  detail:
+    trainee: The qualification document has to be on site, either on paper or where it can be pulled up, for as
+      long as the person works for that employer. Good means you can see it now.
+    operator: Ask to see the document on site before signaling starts. Being told it is "at the office" does not
+      meet this requirement.
+    inspector: Verify that the documentation is available at the site while the person is employed, as 1926.1428(a)(3)
+      requires.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1428(a)(3)
+  deficiency:
+    guidance: The documentation is not available at the site.
+    action: Do not start signaling until the documentation is available at the site.
+    section_id: 29cfr1926.1428(a)(3)
+    quote: The employer must make the documentation for whichever option is used available at the site while the
+      signal person is employed by the employer.
+  practice_only: false
+  value_unit: null
+- ord: 6
+  phase: Qualification documents
+  text: Confirm the document lists every signal type this person will use today.
+  detail:
+    trainee: The document must name each type of signaling the person is qualified for, such as hand signals or
+      radio signals. Someone qualified only for hand signals is not covered for radio. Good means every planned
+      signal type is listed.
+    operator: Compare the signal types on the document with the types planned for this job. Any planned type that
+      is not listed is not allowed for this person.
+    inspector: Verify that the documentation specifies each type of signaling used on this job, as 1926.1428(a)(3)
+      requires.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1428(a)(3)
+  deficiency:
+    guidance: The person is not documented as qualified for at least one planned signal type.
+    action: Use only the signal types listed on the document, or assign a signal person qualified for the needed
+      type.
+    section_id: 29cfr1926.1428(a)(3)
+    quote: The documentation must specify each type of signaling (e.g. hand signals, radio signals, etc.) for which
+      the signal person meets the requirements of paragraph (c) of this section.
+  practice_only: false
+  value_unit: null
+- ord: 7
+  phase: Qualification documents
+  text: Confirm the qualification included an oral or written test and a practical test.
+  detail:
+    trainee: Being qualified means the person passed a knowledge test (oral or written) and a hands-on practical
+      test. Good means the document shows both.
+    operator: Check that the document shows both tests. A knowledge test alone is not enough.
+    inspector: Verify that the documentation shows the person demonstrated (c)(1)-(4) through an oral or written
+      test and a practical test, as 1926.1428(c)(5) requires.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1428(c)(5)
+  deficiency:
+    guidance: The qualification is incomplete because one of the required tests is missing.
+    action: Do not allow this person to signal until both tests are completed and documented.
+    section_id: 29cfr1926.1428(c)(5)
+    quote: through an oral or written test, and through a practical test.
+  practice_only: false
+  value_unit: null
+- ord: 8
+  phase: Qualification documents
+  text: Photograph the qualification document for the job file.
+  detail:
+    trainee: A clear photo of the document is a record of what you checked. This is good practice; the rule requires
+      the document to be available on site, not photographed.
+    operator: Take one legible photo showing the name, the evaluator, the signal types and the date.
+    inspector: Keep the photo with this check as evidence of what was reviewed. This is practice, not a rule requirement.
+  check_kind: photo
+  section_ids: []
+  deficiency: null
+  practice_only: true
+  value_unit: null
+- ord: 9
+  phase: Qualification criteria
+  text: Confirm the person knows the signal types in use, including the Standard Method for hand signals.
+  detail:
+    trainee: The signal person must know and understand the signals being used. If hand signals are used, they must
+      know the Standard Method in appendix A. Good means the qualification covers this and they give the signals
+      correctly when asked.
+    operator: Ask for a few signals, such as stop, emergency stop, hoist and swing, and confirm they match the Standard
+      Method chart.
+    inspector: Verify that the qualification covers 1926.1428(c)(1) for each signal type in use.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1428(c)(1)
+  deficiency:
+    guidance: The person does not show that they know the signals in use.
+    action: Remove the person from signaling until re-training and re-assessment confirm they are qualified.
+    section_id: 29cfr1926.1428(b)
+    quote: the employer must not allow the individual to continue working as a signal person until re-training is
+      provided and a re-assessment is made
+  practice_only: false
+  value_unit: null
+- ord: 10
+  phase: Qualification criteria
+  text: Confirm the person is competent in applying the signal types used.
+  detail:
+    trainee: Knowing the signals is not enough. The person must give them clearly, at the right time and in the
+      right order. Good means smooth, clear signals that the operator understands right away.
+    operator: Watch the first signals closely. Hesitant, unclear or wrong signals mean stop and question their competence.
+    inspector: Verify that the qualification covers 1926.1428(c)(2) and record any concerns seen in the field.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1428(c)(2)
+  deficiency:
+    guidance: The person is not competent in applying the signals.
+    action: Remove the person from signaling until re-training and re-assessment confirm they are qualified.
+    section_id: 29cfr1926.1428(b)
+    quote: the employer must not allow the individual to continue working as a signal person until re-training is
+      provided and a re-assessment is made
+  practice_only: false
+  value_unit: null
+- ord: 11
+  phase: Qualification criteria
+  text: Confirm basic understanding of crane operation, load swing and stopping, and boom deflection.
+  detail:
+    trainee: The signal person must understand how the crane behaves. Loads keep swinging after the crane stops,
+      and the boom bends under load, which can drop the hook or move the load out. Good means they allow for this
+      when they signal.
+    operator: Ask how they would signal a swing stop and how boom deflection affects the landing point. Vague answers
+      mean the check fails.
+    inspector: Verify that the qualification covers the 1926.1428(c)(3) knowledge of equipment operation and limitations.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1428(c)(3)
+  deficiency:
+    guidance: The person does not have the required basic understanding of crane operation and limitations.
+    action: Remove the person from signaling until re-training and re-assessment confirm they are qualified.
+    section_id: 29cfr1926.1428(b)
+    quote: the employer must not allow the individual to continue working as a signal person until re-training is
+      provided and a re-assessment is made
+  practice_only: false
+  value_unit: null
+- ord: 12
+  phase: Qualification criteria
+  text: Confirm the person knows the signal rules in 1926.1419-1422 and 1926.1428.
+  detail:
+    trainee: 'The signal person must know the signaling rules, for example: only one person signals at a time, directions
+      are given from the operator''s point of view, voice signals follow a set order, and radios need a dedicated
+      channel. Good means they can explain these rules.'
+    operator: Ask two or three questions about the rules, such as whose direction perspective is used and what happens
+      if radio contact is lost.
+    inspector: Verify that the qualification covers 1926.1428(c)(4).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1428(c)(4)
+  deficiency:
+    guidance: The person does not know the relevant signal rules.
+    action: Remove the person from signaling until re-training and re-assessment confirm they are qualified.
+    section_id: 29cfr1926.1428(b)
+    quote: the employer must not allow the individual to continue working as a signal person until re-training is
+      provided and a re-assessment is made
+  practice_only: false
+  value_unit: null
+- ord: 13
+  phase: Signal setup
+  text: Confirm the signal type and transmission method suit the site conditions.
+  detail:
+    trainee: Signals must be hand, voice, audible or approved new signals. The way they reach the operator, such
+      as line of sight, radio or video, must work in this site's noise, distance and visibility. Good means the
+      operator can reliably get every signal.
+    operator: Check line of sight, noise and distance. If you cannot reliably see or hear the signals, change the
+      method before you start.
+    inspector: Verify that the signal type is permitted under 1926.1419(b) and that the signals and transmission
+      method are appropriate for the site under 1926.1419(e).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1419(b)
+  - 29cfr1926.1419(e)
+  deficiency:
+    guidance: The signals or the transmission method do not suit the site conditions.
+    action: Change the signal method before starting operations.
+    section_id: 29cfr1926.1419(e)
+    quote: The signals used (hand, voice, audible, or new), and means of transmitting the signals to the operator
+      (such as direct line of sight, video, radio, etc.), must be appropriate for the site conditions.
+  practice_only: false
+  value_unit: null
+- ord: 14
+  phase: Signal setup
+  text: If new signals are used, confirm the employer has shown they are at least equally effective.
+  detail:
+    trainee: Signals other than hand, voice or audible signals are allowed only if the employer shows they communicate
+      at least as well as the standard methods, either directly or through a national consensus standard. Mark N/A
+      if no new signals are used.
+    operator: Do not use a new signal system unless the employer's demonstration is available.
+    inspector: Verify the employer's demonstration under 1926.1419(d)(1) or (d)(2).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1419(d)
+  - 29cfr1926.1419(d)(1)
+  - 29cfr1926.1419(d)(2)
+  deficiency:
+    guidance: New signals are in use without the employer's demonstration.
+    action: Do not use the new signals. Switch to hand, voice or audible signals.
+    section_id: 29cfr1926.1419(d)
+    quote: 'Signals other than hand, voice, or audible signals may be used where the employer demonstrates that:'
+  practice_only: false
+  value_unit: null
+- ord: 15
+  phase: Signal setup
+  text: For hand signals, confirm the Standard Method is used or non-standard signals were agreed beforehand.
+  detail:
+    trainee: Hand signals must follow the Standard Method. Non-standard signals are allowed only when the Standard
+      Method is infeasible or does not cover the operation, and the signal person, operator and lift director must
+      agree on them before work starts. Mark N/A if no hand signals are used.
+    operator: If any non-standard signal will be used, agree on it with the signal person and the lift director
+      (if there is one) before the first lift.
+    inspector: Verify that the Standard Method is used per 1926.1419(c)(1), or that any non-standard signals are
+      justified and were agreed in advance per 1926.1419(c)(2).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1419(c)(1)
+  - 29cfr1926.1419(c)(2)
+  deficiency:
+    guidance: Non-standard hand signals are being used without prior agreement, or the Standard Method is not being
+      followed.
+    action: Stop and hold the pre-operation agreement on signals before continuing.
+    section_id: 29cfr1926.1419(c)(2)
+    quote: When using non-standard hand signals, the signal person, operator, and lift director (where there is
+      one) must contact each other prior to the operation and agree on the non-standard hand signals that will be
+      used.
+  practice_only: false
+  value_unit: null
+- ord: 16
+  phase: Signal setup
+  text: Confirm a hand signal chart is posted on the equipment or conspicuously nearby.
+  detail:
+    trainee: A hand signal chart must be posted on the crane or where it is easy to see near the hoisting work.
+      Good means anyone on the crew can find it quickly.
+    operator: Check the cab or crane body, or a conspicuous spot near the lift, for the chart.
+    inspector: Verify the chart's posting location under 1926.1422 and record where it is.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1422
+  deficiency:
+    guidance: No hand signal chart is posted.
+    action: Post a hand signal chart on the equipment or near the work before starting.
+    section_id: 29cfr1926.1422
+    quote: Hand signal charts must be either posted on the equipment or conspicuously posted in the vicinity of
+      the hoisting operations.
+  practice_only: false
+  value_unit: null
+- ord: 17
+  phase: Signal setup
+  text: For voice signals, confirm the operator, signal person and lift director agreed on them first.
+  detail:
+    trainee: Before work starts, the operator, signal person and lift director (if there is one) must meet and agree
+      on the voice signals. They must meet again if a worker is added or replaced, if there is confusion, or if
+      a signal changes. Mark N/A if no voice signals are used.
+    operator: Hold the voice signal agreement before the first lift. Repeat it whenever the crew changes or a signal
+      is confusing or changed.
+    inspector: Verify that the pre-operation agreement under 1926.1421(a) took place and that it was repeated after
+      any crew substitution.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1421(a)
+  deficiency:
+    guidance: The voice signals have not been agreed, or the crew changed and no new agreement was held.
+    action: Do not begin operations until the voice signals are agreed.
+    section_id: 29cfr1926.1421(a)
+    quote: Prior to beginning operations, the operator, signal person and lift director (if there is one), must
+      contact each other and agree on the voice signals that will be used.
+  practice_only: false
+  value_unit: null
+- ord: 18
+  phase: Signal setup
+  text: 'Confirm voice signals follow this order: function, direction; distance and/or speed; function, stop.'
+  detail:
+    trainee: 'Every voice signal has three parts in a fixed order: the function and direction (for example "hoist
+      up"), the distance and/or speed, then the function and stop (for example "hoist stop"). Good means every call
+      follows this pattern.'
+    operator: Listen to practice calls. Ask for the call again if any element is missing or out of order.
+    inspector: Verify that the voice signals contain the three elements in the order 1926.1421(b) requires.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1421(b)
+  deficiency:
+    guidance: The voice signals are missing required elements or are given out of order.
+    action: Correct the signal format before operations begin.
+    section_id: 29cfr1926.1421(b)
+    quote: 'Each voice signal must contain the following three elements, given in the following order: function
+      (such as hoist, boom, etc.), direction; distance and/or speed; function, stop command.'
+  practice_only: false
+  value_unit: null
+- ord: 19
+  phase: Signal setup
+  text: Confirm the operator, signal person and lift director communicate effectively in the language used.
+  detail:
+    trainee: Everyone who gives or takes voice signals must understand the same language well enough to communicate
+      without confusion.
+    operator: If you cannot clearly understand the signal person, or they cannot understand you, do not start.
+    inspector: Verify effective communication in the language used, as 1926.1421(c) requires.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1421(c)
+  deficiency:
+    guidance: There is a language barrier between the crew members who give and take signals.
+    action: Assign a signal person who can communicate effectively with the operator before starting.
+    section_id: 29cfr1926.1421(c)
+    quote: The operator, signal person and lift director (if there is one), must be able to effectively communicate
+      in the language used.
+  practice_only: false
+  value_unit: null
+- ord: 20
+  phase: Signal setup
+  text: Test radio or other electronic signal devices on site before operations.
+  detail:
+    trainee: Radios and other electronic signal devices must be tested at the site before work starts to prove the
+      signals come through clearly and reliably. Good means clear transmission from every point the signal person
+      will work from. Mark N/A if no electronic devices are used.
+    operator: Run a radio check from the signal positions you will use, including the landing area. Static, dropouts
+      or garbled words mean the test fails.
+    inspector: Verify that the on-site test under 1926.1420(a) was done and record the result.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1420(a)
+  deficiency:
+    guidance: The signal transmission is not effective, clear and reliable.
+    action: Do not begin operations until the devices are fixed or replaced and pass a retest.
+    section_id: 29cfr1926.1420(a)
+    quote: The device(s) used to transmit signals must be tested on site before beginning operations to ensure that
+      the signal transmission is effective, clear, and reliable.
+  practice_only: false
+  value_unit: null
+- ord: 21
+  phase: Signal setup
+  text: Confirm radio signals use a dedicated channel and record the channel.
+  detail:
+    trainee: Crane signals need their own channel so other radio traffic cannot interfere. The only exceptions are
+      cranes sharing a channel to coordinate their work, and work on or next to railroad tracks that needs coordination
+      with trains or other equipment.
+    operator: Confirm no other crews are using the channel. Shared use is allowed only under the two listed exceptions.
+    inspector: Verify a dedicated channel or an applicable exception under 1926.1420(b) and record the channel used.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1420(b)
+  - 29cfr1926.1420(b)(1)
+  - 29cfr1926.1420(b)(2)
+  deficiency:
+    guidance: The signal channel is shared with unrelated traffic.
+    action: Move to a dedicated channel before operations begin.
+    section_id: 29cfr1926.1420(b)
+    quote: 'Signal transmission must be through a dedicated channel, except:'
+  practice_only: false
+  value_unit: null
+- ord: 22
+  phase: Signal setup
+  text: Confirm the operator receives radio signals through a hands-free system.
+  detail:
+    trainee: The operator needs both hands for the controls, so radio signals must come through a hands-free system,
+      not a handheld radio.
+    operator: Use a hands-free setup, such as a cab speaker or headset. Holding a radio to listen does not meet
+      the rule.
+    inspector: Verify hands-free reception as 1926.1420(c) requires.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1420(c)
+  deficiency:
+    guidance: The operator is not receiving signals hands-free.
+    action: Install a hands-free system before radio-signaled operations begin.
+    section_id: 29cfr1926.1420(c)
+    quote: The operator's reception of signals must be by a hands-free system.
+  practice_only: false
+  value_unit: null
+- ord: 23
+  phase: Signal setup
+  text: If signaling more than one crane, confirm each signal identifies the crane first.
+  detail:
+    trainee: When one signal person works with more than one crane, every signal must first name the crane it is
+      for, or use another method that is just as effective, so the wrong crane does not move. Mark N/A for a single
+      crane.
+    operator: Respond only to signals that name your crane before the function and direction.
+    inspector: Verify the crane identification system under 1926.1419(m).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1419(m)
+  - 29cfr1926.1419(m)(1)
+  - 29cfr1926.1419(m)(2)
+  deficiency:
+    guidance: There is no system for identifying which crane a signal is for.
+    action: Set up the identification system before operations begin.
+    section_id: 29cfr1926.1419(m)(1)
+    quote: for each signal, prior to giving the function/direction, the signal person must identify the crane/derrick
+      the signal is for, or
+  practice_only: false
+  value_unit: null
+- ord: 24
+  phase: Signal setup
+  text: 'Brief the crew: one signal person at a time, directions from the operator''s perspective, anyone may signal
+    stop.'
+  detail:
+    trainee: Only one person gives signals at a time. The exception is that anyone who sees a safety problem must
+      give the stop or emergency stop signal. Directions such as left and right are given from the operator's point
+      of view.
+    operator: Confirm who the single signal person is. Obey a stop or emergency stop from anyone.
+    inspector: Verify that the crew understands 1926.1419(h), (j) and (k).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1419(h)
+  - 29cfr1926.1419(j)
+  - 29cfr1926.1419(k)
+  deficiency:
+    guidance: The crew is unclear on who signals or on whose direction perspective is used.
+    action: Correct this in the briefing before operations begin.
+    section_id: 29cfr1926.1419(h)
+    quote: Only one person may give signals to a crane/derrick at a time, except in circumstances covered by paragraph
+      (j) of this section.
+  practice_only: false
+  value_unit: null
+- ord: 25
+  phase: During operations
+  text: Stop operations whenever signal communication is lost until it is restored.
+  detail:
+    trainee: If the operator can no longer see or hear the signal person, the operator must safely stop until contact
+      is restored and a proper signal is given and understood. If the operator sees a safety problem, they stop
+      and talk it through with the signal person before resuming.
+    operator: Lost contact means a safe stop. Resume only after a proper signal is given and understood, or after
+      you and the signal person agree the problem is resolved.
+    inspector: Verify that the crew follows 1926.1419(f) and (g) when communication is interrupted or a safety problem
+      comes up.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1419(f)
+  - 29cfr1926.1419(g)
+  deficiency:
+    guidance: Operations continued without the ability to transmit signals.
+    action: Stop operations requiring signals until communication is reestablished.
+    section_id: 29cfr1926.1419(f)
+    quote: If that ability is interrupted at any time, the operator must safely stop operations requiring signals
+      until it is reestablished and a proper signal is given and understood.
+  practice_only: false
+  value_unit: null
+- ord: 26
+  phase: During operations
+  text: Watch the signal person's performance and remove them if their actions show they are not qualified.
+  detail:
+    trainee: A qualification on paper is not the end of the check. If the person later gives wrong, unclear or unsafe
+      signals, they must stop signaling until they are re-trained and re-assessed.
+    operator: Repeated errors, wrong-perspective directions or confused signals mean stop and report to the employer.
+    inspector: Verify that anyone whose actions show they do not meet 1926.1428(c) is kept from signaling until
+      re-training and a new assessment under 1926.1428(a) confirm they are qualified.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1428(b)
+  deficiency:
+    guidance: The person's actions show they do not meet the qualification requirements.
+    action: Remove them from signaling. Allow them back only after re-training and a re-assessment that confirms
+      they are qualified.
+    section_id: 29cfr1926.1428(b)
+    quote: the employer must not allow the individual to continue working as a signal person until re-training is
+      provided and a re-assessment is made
+  practice_only: false
+  value_unit: null
+- ord: 27
+  phase: Records
+  text: Record the check result, the qualification option, the signal types approved and the checker's name.
+  detail:
+    trainee: Write down what you checked and what you found so the next shift knows the status. This record is good
+      practice; the rule requires the qualification document itself to be on site.
+    operator: Note the result, the option used (third party or employer), the approved signal types, the radio channel
+      and any deficiencies found.
+    inspector: Keep this record with the job file. This is practice, not a rule requirement.
+  check_kind: note
+  section_ids: []
+  deficiency: null
+  practice_only: true
+  value_unit: null
+prov:
+  prov_id: f744609ec9fd59a4bf7b
+  backend: claude-cli
+  model: claude-opus-5-5
+  prompt_id: procedures
+  prompt_version: '1'
+  prompt_sha256: 739cedd36ddf99f40f81ae9030ade12697499f0414421879c8bf963c86c8454f
+  input_sha256: cc3c6a76f01ed5349c49449bdcbd33368bb8b277632a0d370ad8ce66834c28bc
+  output_sha256: 29928b5cee3c41698844edd3bd268df378589fa802b527ce2cf7716220b747d2
+  created_at: '2026-11-28T02:24:26+00:00'
+  verifier: crane-content/verify v1 (exact substring of eCFR text, typography repair)
+  verdict: pass
+  notes: null
