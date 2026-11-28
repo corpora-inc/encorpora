@@ -63,6 +63,13 @@ class Perturb(unittest.TestCase):
         self.assertIn("outrigers", m[0])
         n = p.edit("no crane words here at all", "id-2", "misspell")
         self.assertEqual(n[1], "typo1")
+        for seed in range(30):
+            protected = p.edit("is NCCCO crane in Subpart CC or Appendix Barricades", f"id-{seed}", "typo1")[0]
+            self.assertIn("NCCCO", protected)
+            self.assertIn("Subpart CC", protected)
+            self.assertIn("Appendix Barricades", protected)
+            self.assertNotIn("crane", protected)  # the only editable word
+        self.assertEqual(p.typo("boom", __import__("random").Random(1)) != "boom", True)
         many = p.edit(" ".join(["alpha", "bravo", "charlie", "delta", "echo"] * 6), "id-3", "typo10")
         self.assertEqual(sum(1 for w, v in zip((["alpha", "bravo", "charlie", "delta", "echo"] * 6), many[0].split())
                              if w != v), 3)
@@ -72,8 +79,12 @@ class Perturb(unittest.TestCase):
             src = Path(d) / "set.jsonl"
             src.write_text(json.dumps({"id": "x1", "question": "is the outrigger pad required"}) + "\n")
             out = Path(d) / "out.jsonl"
+            saved = sys.argv
             sys.argv = ["perturb", "--set", str(src), "--mode", "misspell", "--out", str(out)]
-            load_perturb().main()
+            try:
+                load_perturb().main()
+            finally:
+                sys.argv = saved
             row = json.loads(out.read_text())
             self.assertEqual(row["question_original"], "is the outrigger pad required")
             self.assertEqual(row["perturbation"], "misspell")

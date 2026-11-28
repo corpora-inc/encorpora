@@ -10,7 +10,8 @@ Modes (every edit is seeded by the item id, so a set always perturbs the same wa
   misspell  phonetic misspellings of crane vocabulary people get wrong (outrigger -> outriger,
             "two-blocking" -> "too blocking", ...); questions with none of these words get one typo1
             edit instead, and the item records which kind it got
-Numbers, section references and words under 4 letters are never edited.
+Never edited: words under 4 letters, anything containing a digit, all-caps words (acronyms such as
+NCCCO), and "Subpart", "Appendix", "Table" or "Part" with the word after them. Every typo changes the word.
 """
 from __future__ import annotations
 
@@ -37,18 +38,31 @@ MISSPELL = {
     "personnel": "personel", "barricade": "baracade", "barricades": "baracades",
     "inspection": "inspecshun", "inspections": "inspecshuns", "qualified": "qualifyed",
     "certification": "certifacation", "certified": "certifyed", "clearance": "clearence",
-    "voltage": "voltige", "energized": "energised", "deenergized": "de-energised",
+    "voltage": "voltige", "energized": "enerjized", "deenergized": "de-enerjized",
     "counterweight": "counter wieght", "counterweights": "counter wieghts", "capacity": "capasity",
-    "radius": "raidius", "boom": "boome", "jib": "jibb", "sheave": "sheeve", "sheaves": "sheeves",
+    "radius": "raidius", "boom": "boome", "sheave": "sheeve", "sheaves": "sheeves",
     "shackle": "shackel", "shackles": "shackels", "sling": "slinge", "slings": "slinges",
     "two-blocking": "too blocking", "two-block": "too block", "anti-two-block": "anti too block",
     "assembly": "assembley", "disassembly": "dissasembly", "dismantling": "dismanteling",
     "signal": "signel", "signals": "signels", "operator": "operater", "operators": "operaters",
     "maintenance": "maintainance", "equipment": "equiptment", "foreseeable": "forseeable",
-    "crawler": "crawller", "cribbing": "cribing", "pendant": "pendent", "pendants": "pendents",
+    "crawler": "crawller", "cribbing": "cribing", "pendant": "pendint", "pendants": "pendints",
     "telescoping": "telescopeing", "articulating": "articulateing", "wire": "wyre",
 }
 WORD = re.compile(r"[A-Za-z][A-Za-z'-]*")
+PROTECT_NEXT = {"subpart", "appendix", "table", "part"}
+
+
+def editable(q: str) -> list[re.Match]:
+    """Words a typo may touch: 4+ letters, not an acronym, not the label after Subpart/Appendix/..."""
+    out, prev = [], ""
+    for m in WORD.finditer(q):
+        w = m.group()
+        if (len(w) >= 4 and not w.isupper() and w.lower() not in PROTECT_NEXT
+                and prev.lower() not in PROTECT_NEXT):
+            out.append(m)
+        prev = w
+    return out
 
 
 def rng(item_id: str, mode: str) -> random.Random:
@@ -56,7 +70,17 @@ def rng(item_id: str, mode: str) -> random.Random:
 
 
 def typo(word: str, r: random.Random) -> str:
-    i = r.randrange(1, len(word) - 1)
+    """One edit at a letter inside the word; retried until the word actually changes."""
+    for _ in range(20):
+        out = _typo_once(word, r)
+        if out != word:
+            return out
+    return word[:-1]  # every edit was a no-op (a word like "booo"): drop the last letter
+
+
+def _typo_once(word: str, r: random.Random) -> str:
+    letters = [k for k in range(1, len(word) - 1) if word[k].isalpha()]
+    i = r.choice(letters) if letters else 1
     op = r.choice(["swap", "drop", "double", "neighbour"])
     if op == "swap":
         return word[:i] + word[i + 1] + word[i] + word[i + 2:]
@@ -71,7 +95,7 @@ def typo(word: str, r: random.Random) -> str:
 
 def edit(q: str, item_id: str, mode: str) -> tuple[str, str]:
     r = rng(item_id, mode)
-    spans = [m for m in WORD.finditer(q) if len(m.group()) >= 4]
+    spans = editable(q)
     if mode == "misspell":
         hits = [m for m in WORD.finditer(q) if m.group().lower() in MISSPELL]
         if hits:
