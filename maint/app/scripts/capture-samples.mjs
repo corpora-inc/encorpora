@@ -5,8 +5,8 @@
  * pump fixture, so the gallery shows the engine's own shapes and words.
  *
  *   harvest fixture .engine/pump40 --maint --samples .engine/pump40-samples
- *   harvest serve .engine/pump40 --records .engine/capture.db --pubkey <test key> --bind 127.0.0.1:4318
- *   MAINT_ENGINE=http://127.0.0.1:4318 node scripts/capture-samples.mjs
+ *   harvest serve .engine/pump40 --records .engine/capture.db --pubkey <test key> --bind 127.0.0.1:4322
+ *   MAINT_ENGINE=http://127.0.0.1:4322 node scripts/capture-samples.mjs
  *
  * Use a fresh records file: the capture imports the fleet and installs the
  * field-note bundle. Writes src/design/captured.json and the pack's figure and
@@ -17,7 +17,7 @@ import { fileURLToPath } from "node:url";
 import path from "node:path";
 
 const root = fileURLToPath(new URL("..", import.meta.url));
-const base = process.env.MAINT_ENGINE ?? "http://127.0.0.1:4318";
+const base = process.env.MAINT_ENGINE ?? "http://127.0.0.1:4322";
 const samples = process.env.MAINT_SAMPLES ?? path.join(root, ".engine", "pump40-samples");
 
 async function call(method, params = {}) {

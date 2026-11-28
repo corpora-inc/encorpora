@@ -51,6 +51,7 @@ jobs:
       amp_native: ${{ steps.filter.outputs.amp_native }}
       aha_app: ${{ steps.filter.outputs.aha_app }}
       crane_app: ${{ steps.filter.outputs.crane_app }}
+      maint_app: ${{ steps.filter.outputs.maint_app }}
       crane_native: ${{ steps.filter.outputs.crane_native }}
       harvest_core: ${{ steps.filter.outputs.harvest_core }}
       harvest_pipeline: ${{ steps.filter.outputs.harvest_pipeline }}
@@ -205,7 +206,10 @@ jobs:
           # TypeScript directly and links harvest-core and the shared plugins
           # by path, so each consumer filter includes what it compiles. Every
           # job below skips its steps cleanly until its directory exists.
-          set_output crane_app '^(crane/(app|content)/|harvest/(practice|core|pipeline)/|harvest/CONTRACT\.md$|corpan/plugins/|amp/(browser-security\.mjs|scripts/(install-browser\.mjs|configure-browser-sandbox\.sh))$)'
+          set_output crane_app '^(crane/(app|content)/|harvest/(practice|core|pipeline|appkit)/|harvest/CONTRACT\.md$|corpan/plugins/|amp/(browser-security\.mjs|scripts/(install-browser\.mjs|configure-browser-sandbox\.sh))$)'
+          # The maintenance app compiles the shared app kit and the generated API types, and its
+          # flow test runs against harvest-core's own `harvest serve` and `harvest hub`.
+          set_output maint_app '^(maint/app/|harvest/(appkit|api|core)/|amp/(browser-security\.mjs|scripts/(install-browser\.mjs|configure-browser-sandbox\.sh))$)'
           set_output crane_native '^(crane/app/src-tauri/|harvest/core/|corpan/plugins/|corpan/corpan-app/src-tauri/vendor/|homeschool-offline/app/src-tauri/plugins/tauri-plugin-ios-share/)'
           set_output harvest_core '^(harvest/(core|api|sim)/)'
           set_output harvest_pipeline '^(harvest/pipeline/)'
@@ -415,7 +419,7 @@ jobs:
           # app compiles all of them). `.github/workflows/ios-native.yml`
           # additionally compiles their Swift, but it is advisory and does not
           # count here.
-          covered='^(amp/|corpan/corpan-app/|corpan/dja/|corpan/infra/terraform/lambda/|corpan/packs/|corpan/infra/terraform/.*(\.tf|\.tfvars|\.tf\.json)$|corpan/infra/terraform/\.terraform\.lock\.hcl$|web/(io|data|pages|scripts)/|corpan/plugins/|dynawalla/dynawalla-app/|dynawalla/(curriculum|engine|games|packs)/|crane/app/|crane/content/|harvest/(core|pipeline|practice|api|sim)/)'
+          covered='^(amp/|corpan/corpan-app/|corpan/dja/|corpan/infra/terraform/lambda/|corpan/packs/|corpan/infra/terraform/.*(\.tf|\.tfvars|\.tf\.json)$|corpan/infra/terraform/\.terraform\.lock\.hcl$|web/(io|data|pages|scripts)/|corpan/plugins/|dynawalla/dynawalla-app/|dynawalla/(curriculum|engine|games|packs)/|crane/app/|crane/content/|maint/app/|harvest/(core|pipeline|practice|api|sim|appkit)/)'
 
           # Carve-outs checked BEFORE `covered`, because a broader area prefix
           # would otherwise swallow them. grep -E has no negative lookahead,
@@ -1976,6 +1980,107 @@ jobs:
           if-no-files-found: ignore
           retention-days: 7
 
+  # Maintenance app (maint/app) and the shared app kit. A path-gated input to
+  # `ci-gate`, never its own required context. Unit tests and types, the
+  # /design gallery at four widths in both themes, then the whole job end to
+  # end against harvest-core's own engine: two devices and a hub.
+  maint-app:
+    name: maint-app
+    needs: changes
+    if: needs.changes.outputs.maint_app == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    defaults:
+      run:
+        working-directory: .
+    steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/7ac9640a94395e199ea6edf38318b3aa1efb2212/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != 'd28194d064f7e633e894d99a40bf8521da9c7bb1b749e8a38a1a3d832d56717c':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name, '--source-commit', '7ac9640a94395e199ea6edf38318b3aa1efb2212'], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
+      - uses: actions/checkout@v4
+      - id: tree
+        name: Detect maint/app
+        run: |
+          if [ -f maint/app/package-lock.json ]; then echo "present=true" >> "$GITHUB_OUTPUT"
+          else echo "present=false" >> "$GITHUB_OUTPUT"; echo "maint/app not present yet; skipping."; fi
+      - uses: actions/setup-node@v4
+        if: steps.tree.outputs.present == 'true'
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: maint/app/package-lock.json
+      - if: steps.tree.outputs.present == 'true'
+        working-directory: maint/app
+        run: npm ci
+      - if: steps.tree.outputs.present == 'true'
+        working-directory: maint/app
+        run: npm test
+      - if: steps.tree.outputs.present == 'true'
+        working-directory: maint/app
+        run: npm run tsc
+      # The design build keeps the /design gallery, which the UI check walks.
+      - if: steps.tree.outputs.present == 'true'
+        working-directory: maint/app
+        run: VITE_DESIGN=1 npm run build
+      - name: Install browser for UI checks
+        if: steps.tree.outputs.present == 'true'
+        working-directory: maint/app
+        run: npx playwright install-deps chromium && node ../../amp/scripts/install-browser.mjs --configure-linux-sandbox
+      - if: steps.tree.outputs.present == 'true'
+        working-directory: maint/app
+        run: npm run test:ui
+      - uses: Swatinem/rust-cache@v2
+        if: steps.tree.outputs.present == 'true'
+        with:
+          workspaces: harvest/core
+      - name: Build the engine
+        if: steps.tree.outputs.present == 'true'
+        working-directory: harvest/core
+        run: cargo build --locked --bin harvest
+      - name: The whole job, two devices and a hub
+        if: steps.tree.outputs.present == 'true'
+        working-directory: maint/app
+        env:
+          HARVEST_BIN: ${{ github.workspace }}/harvest/core/target/debug/harvest
+          MAINT_IMPORT: B
+        run: |
+          set -euo pipefail
+          scripts/loop.sh
+          # Device A's app on 4341 and device B's on 4344, each proxying to its own engine.
+          nohup npx vite preview --host 127.0.0.1 > "$RUNNER_TEMP/preview-a.log" 2>&1 &
+          MAINT_PORT=4343 MAINT_ENGINE=http://127.0.0.1:4320 nohup npx vite preview --host 127.0.0.1 > "$RUNNER_TEMP/preview-b.log" 2>&1 &
+          for port in 4341 4344; do
+            for _ in $(seq 1 60); do curl -s -o /dev/null "http://127.0.0.1:$port/" && break; sleep 0.5; done
+          done
+          MAINT_UI_BASE=http://127.0.0.1:4341 MAINT_UI_BASE_B=http://127.0.0.1:4344 npm run test:flow
+      - uses: actions/upload-artifact@v4
+        if: always() && steps.tree.outputs.present == 'true'
+        with:
+          name: maint-app-ui
+          path: maint/app/artifacts/
+          if-no-files-found: ignore
+          retention-days: 7
+
   crane-native:
     name: crane-native
     needs: changes
@@ -2741,6 +2846,7 @@ jobs:
         aha-native,
         ci-scripts,
         crane-app,
+        maint-app,
         crane-native,
         harvest-core,
         harvest-pipeline,
