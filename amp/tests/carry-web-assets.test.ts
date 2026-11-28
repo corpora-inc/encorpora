@@ -58,6 +58,27 @@ test("releases past the window or the count are dropped, with their files", () =
   assert.ok(!result.copy.includes("ancient.js"));
 });
 
+test("the release being replaced is kept however old it is", () => {
+  // Four days without a deploy: the live release is past the window, and is
+  // still the one every open page and old pod serves.
+  const result = plan({
+    own: ["now.js"],
+    builtAt,
+    seedLedger: {
+      releases: [
+        { builtAt: at(24 * 4), files: ["live.js"] },
+        { builtAt: at(24 * 5), files: ["older.js"] },
+      ],
+    },
+    seedFiles: ["live.js", "older.js"],
+  });
+  assert.deepEqual(result.copy, ["live.js"]);
+  assert.deepEqual(
+    result.ledger.releases.map((release: { files: string[] }) => release.files),
+    [["now.js"], ["live.js"]],
+  );
+});
+
 test("only files the seed really has, with plain names, are carried", () => {
   const result = plan({
     own: ["now.js"],
