@@ -555,7 +555,7 @@ impl Pack {
     }
 
     /// Whether `table` has `column` (optional columns added after schema v1 shipped).
-    fn has_column(&self, table: &str, column: &str) -> Result<bool> {
+    pub(crate) fn has_column(&self, table: &str, column: &str) -> Result<bool> {
         let n: i64 = self.conn().query_row(
             "SELECT count(*) FROM pragma_table_info(?1) WHERE name = ?2",
             [table, column],

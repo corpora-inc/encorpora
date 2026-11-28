@@ -7,6 +7,7 @@
 //! which facets open expanded and whether the test procedure opens, never
 //! whether a guard is shown.
 
+use super::PageBox;
 use super::branch::{Cond, Expect};
 use super::{FaultNode, Fold, GUARD_KINDS, Level, PackAsset, Requirement, Target, Tree};
 use crate::error::{Error, Result};
@@ -39,6 +40,10 @@ pub struct Citation {
     pub page_label: Option<String>,
     pub page_index: Option<i64>,
     pub figure_label: Option<String>,
+    /// The page image to open (a signed asset), when the pack has one.
+    pub page_asset_id: Option<String>,
+    /// Where the passage sits on that page image, normalized 0 to 1.
+    pub boxes: Vec<PageBox>,
 }
 
 /// A warning, caution or note, verbatim.
@@ -65,6 +70,9 @@ pub struct FacetText {
 #[derive(Debug, Clone, Serialize, JsonSchema, PartialEq)]
 pub struct FacetGroup {
     pub facet: String,
+    /// The manual's own heading for it (`pack_meta.facets`); `None` when
+    /// the pack names none (validation reports that).
+    pub label: Option<String>,
     pub expanded: bool,
     pub texts: Vec<FacetText>,
 }
@@ -213,6 +221,10 @@ pub fn citation(pack: &Pack, section_id: &str) -> Result<Citation> {
         }
     }
     let loc = pack.section_loc_inherited(section_id)?;
+    let page_asset_id = assets_for(pack, section_id)?
+        .into_iter()
+        .find(|a| a.role.as_deref() == Some("page"))
+        .map(|a| a.asset_id);
     Ok(Citation {
         section_id: sec.section_id,
         citation: sec.citation,
@@ -225,6 +237,8 @@ pub fn citation(pack: &Pack, section_id: &str) -> Result<Citation> {
         page_label: loc.page_label,
         page_index: loc.page_index,
         figure_label: loc.figure_label,
+        page_asset_id,
+        boxes: loc.boxes,
     })
 }
 
@@ -365,6 +379,7 @@ pub fn node_view(
             retry: e.retry,
         })
         .collect();
+    let defs = pack.facet_defs()?;
     let mut groups: Vec<FacetGroup> = Vec::new();
     for f in tree.facets_of(node_id) {
         match groups.iter_mut().find(|g| g.facet == f.facet) {
@@ -374,6 +389,10 @@ pub fn node_view(
             }),
             None => groups.push(FacetGroup {
                 facet: f.facet.clone(),
+                label: defs
+                    .iter()
+                    .find(|d| d.id == f.facet)
+                    .map(|d| d.label.clone()),
                 expanded: level.shows_facet(&f.facet),
                 texts: vec![FacetText {
                     text: f.text.clone(),
@@ -382,6 +401,13 @@ pub fn node_view(
             }),
         }
     }
+    // The pack's facet order, then any it does not name, by name.
+    let rank = |f: &str| defs.iter().position(|d| d.id == f).unwrap_or(usize::MAX);
+    groups.sort_by(|a, b| {
+        rank(&a.facet)
+            .cmp(&rank(&b.facet))
+            .then(a.facet.cmp(&b.facet))
+    });
     let open = open_facet(pack);
     let possible_open = std::iter::once(node_id.to_string())
         .chain(path.iter().rev().cloned())

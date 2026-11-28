@@ -81,6 +81,9 @@ pub fn validate(pack: &Pack) -> Result<GraphReport> {
     if let Err(e) = pack.levels() {
         out.add("pack.levels", None, None, e.to_string());
     }
+    if let Err(e) = pack.facet_defs() {
+        out.add("pack.facets", None, None, e.to_string());
+    }
     let tree_ids: Vec<String> = if pack.has_fault_trees()? {
         let conn = pack.conn();
         let mut stmt = conn.prepare("SELECT tree_id FROM fault_tree ORDER BY tree_id")?;
@@ -137,6 +140,7 @@ pub fn validate(pack: &Pack) -> Result<GraphReport> {
         &mut counts,
     )?;
     validate_assets(pack, &mut out, &mut counts)?;
+    validate_locs(pack, &mut out)?;
     Ok(GraphReport {
         ok: out.v.is_empty(),
         counts,
@@ -311,7 +315,17 @@ fn validate_tree(
         }
         coverage(&expect, &edges, t, node, out);
     }
+    let defs = pack.facet_defs().unwrap_or_default();
+    let mut unlabelled: BTreeSet<&str> = BTreeSet::new();
     for f in &raw.facets {
+        if !defs.iter().any(|d| d.id == f.facet) && unlabelled.insert(f.facet.as_str()) {
+            out.add(
+                "facet.label",
+                t,
+                Some(&f.node_id),
+                format!("facet {:?} has no heading in pack_meta.facets", f.facet),
+            );
+        }
         if let Err(m) = pack.verbatim(&f.text, &f.section_id) {
             out.add(
                 "facet.verbatim",
@@ -736,6 +750,32 @@ fn validate_assets(pack: &Pack, out: &mut Out, counts: &mut GraphCounts) -> Resu
                     format!("asset {a}: role {role:?} is not figure or page"),
                 );
             }
+        }
+    }
+    Ok(())
+}
+
+fn validate_locs(pack: &Pack, out: &mut Out) -> Result<()> {
+    if !pack.has_table("section_loc")? {
+        return Ok(());
+    }
+    let ids: Vec<String> = {
+        let conn = pack.conn();
+        let mut stmt = conn.prepare("SELECT section_id FROM section_loc ORDER BY section_id")?;
+        stmt.query_map([], |r| r.get(0))?
+            .collect::<rusqlite::Result<_>>()?
+    };
+    for id in ids {
+        if !pack.section_exists(&id)? {
+            out.add(
+                "loc.section",
+                None,
+                None,
+                format!("section_loc {id}: no such section"),
+            );
+        }
+        if let Err(e) = pack.section_loc(&id) {
+            out.add("loc.box", None, None, e.to_string());
         }
     }
     Ok(())

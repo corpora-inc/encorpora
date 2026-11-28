@@ -412,6 +412,19 @@ pub const SECTIONS: &[Sec] = &[
     ),
 ];
 
+/// Passage boxes on the page images: (section, json boxes).
+pub const BOXES: &[(&str, &str)] = &[
+    ("m40.3-1", r#"[{"x0":0.08,"y0":0.06,"x1":0.92,"y1":0.12}]"#),
+    (
+        "m40.3-1.q1",
+        r#"[{"x0":0.08,"y0":0.18,"x1":0.92,"y1":0.30},{"x0":0.08,"y0":0.30,"x1":0.50,"y1":0.34}]"#,
+    ),
+    (
+        "m40.3-1.q2",
+        r#"[{"x0":0.08,"y0":0.36,"x1":0.92,"y1":0.52}]"#,
+    ),
+];
+
 /// Guards: (warning/caution/note section, the section it guards).
 pub const GUARDS: &[(&str, &str)] = &[
     ("m40.3.w1", "m40.3"),
@@ -832,6 +845,16 @@ pub const FACETS: &[(&str, &str, i64, &str, &str)] = &[
     ),
 ];
 
+/// Facet headings, in the manual's order.
+pub fn facets() -> Value {
+    json!([
+        {"id": "test_option", "label": "Test options"},
+        {"id": "reason", "label": "Reason for question"},
+        {"id": "known", "label": "Known info"},
+        {"id": "possible", "label": "Possible problems"}
+    ])
+}
+
 /// Depth levels: the most guidance first.
 pub fn levels() -> Value {
     json!([
@@ -937,6 +960,15 @@ fn populate(conn: &Connection, version: &str) -> Result<()> {
         ("bake_backends", "[\"deterministic\"]".into()),
         ("source_count", "1".into()),
         ("levels", levels().to_string()),
+        ("facets", facets().to_string()),
+        (
+            "signal_kinds",
+            json!([
+                {"kind": "j1939.dm1", "label": "Engine fault code (SPN/FMI)", "example": "spn:110/fmi:0"},
+                {"kind": "pump40.code", "label": "Controller display code", "example": "E21"}
+            ])
+            .to_string(),
+        ),
         ("repeat_window_days", "30".into()),
         ("row_counts", json!({"section": SECTIONS.len()}).to_string()),
     ];
@@ -980,9 +1012,13 @@ fn populate(conn: &Connection, version: &str) -> Result<()> {
                 sha(text)
             ],
         )?;
+        let boxes = BOXES
+            .iter()
+            .find(|(s, _)| s == id)
+            .map(|(_, b)| b.to_string());
         conn.execute(
-            "INSERT INTO section_loc VALUES (?1, ?2, ?3, ?4)",
-            params![id, page, page.map(page_index), figure],
+            "INSERT INTO section_loc VALUES (?1, ?2, ?3, ?4, ?5)",
+            params![id, page, page.map(page_index), figure, boxes],
         )?;
         conn.execute(
             "INSERT INTO chunk VALUES (?1, 'section', ?2, ?3, 'en')",

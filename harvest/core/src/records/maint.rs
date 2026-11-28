@@ -462,7 +462,10 @@ pub struct JobView {
 #[derive(Debug, Clone, Serialize, Deserialize, JsonSchema, PartialEq)]
 pub struct JobSummary {
     pub job_id: String,
+    pub pack_id: String,
     pub tree_id: String,
+    /// The tree's title in the pack (when the pack is at hand).
+    pub tree_title: Option<String>,
     pub symptom_id: Option<String>,
     pub system: Option<String>,
     pub asset_id: Option<String>,
@@ -786,7 +789,7 @@ fn opt(s: Option<String>) -> Option<String> {
 }
 
 /// Days since 1970-01-01 of a `YYYY-MM-DD…` date.
-pub(crate) fn day_number(date: &str) -> Option<i64> {
+pub fn day_number(date: &str) -> Option<i64> {
     let d = date.get(..10)?;
     let mut it = d.split('-');
     let y: i64 = it.next()?.parse().ok()?;
@@ -1719,7 +1722,7 @@ impl Records {
             .conn
             .prepare(
                 "SELECT job_id, opened_at, symptom_id, system FROM job
-                 WHERE asset_id = ?1 AND job_id != ?2 AND (opened_at < ?3 OR (opened_at = ?3 AND job_id < ?2))
+                 WHERE asset_id = ?1 AND job_id != ?2 AND opened_at <= ?3
                  ORDER BY opened_at DESC",
             )?
             .query_map(params![asset, job.job_id, job.opened_at], |r| {
@@ -1775,7 +1778,14 @@ impl Records {
             .asset(asset_id)?
             .ok_or_else(|| Error::Invalid(format!("no asset {asset_id:?}")))?;
         let mut jobs = Vec::new();
-        for s in self.jobs(Some(asset_id), None)? {
+        for mut s in self.jobs(Some(asset_id), None)? {
+            if s.pack_id == pack.pack_id() {
+                s.tree_title = pack
+                    .fault_trees(None)?
+                    .into_iter()
+                    .find(|t| t.tree_id == s.tree_id)
+                    .map(|t| t.title);
+            }
             let job = self
                 .job(&s.job_id)?
                 .ok_or_else(|| Error::Invalid(format!("job {} vanished", s.job_id)))?;
@@ -2274,7 +2284,9 @@ fn job_or_none(job: &Job) -> Option<Job> {
 fn summary(j: &Job) -> JobSummary {
     JobSummary {
         job_id: j.job_id.clone(),
+        pack_id: j.pack_id.clone(),
         tree_id: j.tree_id.clone(),
+        tree_title: None,
         symptom_id: j.symptom_id.clone(),
         system: j.system.clone(),
         asset_id: j.asset_id.clone(),

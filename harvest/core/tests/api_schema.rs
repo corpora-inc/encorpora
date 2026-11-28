@@ -34,12 +34,18 @@ fn every_method_has_a_schema_and_a_type() {
     for m in harvest_core::api::METHODS {
         assert!(s["methods"][m]["params"].is_object(), "{m} params");
         assert!(s["methods"][m]["result"].is_object(), "{m} result");
-        assert!(ts.contains(&format!("\"{m}\": {{ params:")), "{m} in types.ts");
+        assert!(
+            ts.contains(&format!("\"{m}\": {{ params:")),
+            "{m} in types.ts"
+        );
     }
     // Every reference resolves.
     let text = s.to_string();
     for r in text.split("\"#/$defs/").skip(1) {
         let name = r.split('"').next().unwrap();
-        assert!(s["$defs"][name].is_object() || s["$defs"][name].is_boolean(), "dangling ref {name}");
+        assert!(
+            s["$defs"][name].is_object() || s["$defs"][name].is_boolean(),
+            "dangling ref {name}"
+        );
     }
 }

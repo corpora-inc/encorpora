@@ -980,6 +980,13 @@
     "Citation": {
       "description": "A citation down to the page: manual, edition, the section path\n(chapter, paragraph …), page and figure.",
       "properties": {
+        "boxes": {
+          "description": "Where the passage sits on that page image, normalized 0 to 1.",
+          "items": {
+            "$ref": "#/$defs/PageBox"
+          },
+          "type": "array"
+        },
         "citation": {
           "type": "string"
         },
@@ -993,6 +1000,13 @@
           ]
         },
         "heading": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "page_asset_id": {
+          "description": "The page image to open (a signed asset), when the pack has one.",
           "type": [
             "string",
             "null"
@@ -1042,7 +1056,9 @@
         "path",
         "page_label",
         "page_index",
-        "figure_label"
+        "figure_label",
+        "page_asset_id",
+        "boxes"
       ],
       "type": "object"
     },
@@ -1128,6 +1144,15 @@
           "type": "string"
         }
       ]
+    },
+    "Confidence": {
+      "description": "How sure a symptom match is, by a fixed rule (CONTRACT \"Symptom\nsearch\"): `confident` when a signal matched, when the query's\nmeaningful words are covered (at least `symptom_confident_coverage` of\nthem, and at least two or all of them), or when the dense cosine\nreaches `symptom_confident_dense` beside a lexical match; `closest`\notherwise; `none` for a search with no hit.",
+      "enum": [
+        "confident",
+        "closest",
+        "none"
+      ],
+      "type": "string"
     },
     "DenseStatus": {
       "description": "Why the dense half did or did not run.",
@@ -1462,6 +1487,23 @@
       ],
       "type": "object"
     },
+    "FacetDef": {
+      "additionalProperties": false,
+      "description": "A facet the pack names: its id and the manual's heading for it\n(`pack_meta.facets`, an ordered list; the order is the display order).",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "label"
+      ],
+      "type": "object"
+    },
     "FacetGroup": {
       "description": "A node's facet (`reason`, `known`, `possible`, `test_option`, …), in\norder, and whether the level opens it.",
       "properties": {
@@ -1470,6 +1512,13 @@
         },
         "facet": {
           "type": "string"
+        },
+        "label": {
+          "description": "The manual's own heading for it (`pack_meta.facets`); `None` when\nthe pack names none (validation reports that).",
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "texts": {
           "items": {
@@ -1480,6 +1529,7 @@
       },
       "required": [
         "facet",
+        "label",
         "expanded",
         "texts"
       ],
@@ -2123,6 +2173,9 @@
         "opened_at": {
           "type": "string"
         },
+        "pack_id": {
+          "type": "string"
+        },
         "repeat": {
           "$ref": "#/$defs/RepeatFlag"
         },
@@ -2153,11 +2206,20 @@
         },
         "tree_id": {
           "type": "string"
+        },
+        "tree_title": {
+          "description": "The tree's title in the pack (when the pack is at hand).",
+          "type": [
+            "string",
+            "null"
+          ]
         }
       },
       "required": [
         "job_id",
+        "pack_id",
         "tree_id",
+        "tree_title",
         "symptom_id",
         "system",
         "asset_id",
@@ -2209,6 +2271,48 @@
         "lexical",
         "dense",
         "score"
+      ],
+      "type": "object"
+    },
+    "HubState": {
+      "description": "Where the upload destination stands: configured, and reachable as of\nthe last attempt (never probed live).",
+      "properties": {
+        "configured": {
+          "type": "boolean"
+        },
+        "destination": {
+          "description": "`folder` (a removable drive or shared folder) or `hub`.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "last_attempt_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "last_error": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reachable": {
+          "description": "As of the last attempt; `None` before any.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "configured",
+        "destination",
+        "reachable",
+        "last_attempt_at",
+        "last_error"
       ],
       "type": "object"
     },
@@ -2725,7 +2829,7 @@
         "signals": {
           "default": [],
           "items": {
-            "$ref": "#/$defs/Observation"
+            "$ref": "#/$defs/ObservationInput"
           },
           "type": "array"
         },
@@ -2853,6 +2957,9 @@
         "opened_at": {
           "type": "string"
         },
+        "pack_id": {
+          "type": "string"
+        },
         "resolution": {
           "anyOf": [
             {
@@ -2880,11 +2987,20 @@
         },
         "tree_id": {
           "type": "string"
+        },
+        "tree_title": {
+          "description": "The tree's title in the pack (when the pack is at hand).",
+          "type": [
+            "string",
+            "null"
+          ]
         }
       },
       "required": [
         "job_id",
+        "pack_id",
         "tree_id",
+        "tree_title",
         "symptom_id",
         "system",
         "asset_id",
@@ -3559,10 +3675,14 @@
     },
     "Observation": {
       "additionalProperties": false,
-      "description": "A normalized machine observation (protocol decoding happens before\nthis): `{\"signal_kind\": \"j1939.dm1\", \"value\": \"spn:110/fmi:0\"}`,\n`{\"signal_kind\": \"obd2.dtc\", \"value\": \"P0217\"}`.",
+      "description": "A normalized machine observation (protocol decoding happens before\nthis): `{\"signal_kind\": \"j1939.dm1\", \"value\": \"spn:110/fmi:0\"}`,\n`{\"signal_kind\": \"obd2.dtc\", \"value\": \"P0217\"}`. A `null` kind (a code\ntyped off a display) is matched against every kind.",
       "properties": {
         "signal_kind": {
-          "type": "string"
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "value": {
           "type": "string"
@@ -3574,54 +3694,23 @@
       ],
       "type": "object"
     },
-    "OutboxStatus": {
-      "description": "Queue counts.",
+    "ObservationInput": {
+      "additionalProperties": false,
+      "description": "A normalized machine observation (protocol decoding happens before\nthis): `{\"signal_kind\": \"j1939.dm1\", \"value\": \"spn:110/fmi:0\"}`,\n`{\"signal_kind\": \"obd2.dtc\", \"value\": \"P0217\"}`. A `null` kind (a code\ntyped off a display) is matched against every kind.",
       "properties": {
-        "acked": {
-          "format": "uint64",
-          "minimum": 0,
-          "type": "integer"
-        },
-        "failing": {
-          "description": "Pending items that have failed at least once.",
-          "format": "uint64",
-          "minimum": 0,
-          "type": "integer"
-        },
-        "last_error": {
+        "signal_kind": {
+          "default": null,
           "type": [
             "string",
             "null"
           ]
         },
-        "pending": {
-          "format": "uint64",
-          "minimum": 0,
-          "type": "integer"
-        },
-        "pending_by_kind": {
-          "additionalProperties": {
-            "format": "uint64",
-            "minimum": 0,
-            "type": "integer"
-          },
-          "description": "Pending items per kind.",
-          "type": "object"
-        },
-        "quarantined": {
-          "description": "Items whose stored payload no longer matches its hash; never sent.",
-          "format": "uint64",
-          "minimum": 0,
-          "type": "integer"
+        "value": {
+          "type": "string"
         }
       },
       "required": [
-        "pending",
-        "acked",
-        "failing",
-        "quarantined",
-        "pending_by_kind",
-        "last_error"
+        "value"
       ],
       "type": "object"
     },
@@ -3723,6 +3812,13 @@
           },
           "type": "array"
         },
+        "facets": {
+          "description": "Facet headings, in the manual's order.",
+          "items": {
+            "$ref": "#/$defs/FacetDef"
+          },
+          "type": "array"
+        },
         "has_fault_trees": {
           "type": "boolean"
         },
@@ -3759,6 +3855,13 @@
           "minimum": 0,
           "type": "integer"
         },
+        "signal_kinds": {
+          "description": "The signal kinds the pack maps, with a label and an example.",
+          "items": {
+            "$ref": "#/$defs/SignalKind"
+          },
+          "type": "array"
+        },
         "sources": {
           "items": {
             "$ref": "#/$defs/Source"
@@ -3789,6 +3892,8 @@
         "equipment",
         "has_fault_trees",
         "systems",
+        "facets",
+        "signal_kinds",
         "repeat_window_days",
         "packs"
       ],
@@ -3806,6 +3911,35 @@
           ]
         }
       },
+      "type": "object"
+    },
+    "PageBox": {
+      "additionalProperties": false,
+      "description": "A box on a page image, normalized 0 to 1 against the image: `x0 < x1`,\n`y0 < y1`, origin top left.",
+      "properties": {
+        "x0": {
+          "format": "double",
+          "type": "number"
+        },
+        "x1": {
+          "format": "double",
+          "type": "number"
+        },
+        "y0": {
+          "format": "double",
+          "type": "number"
+        },
+        "y1": {
+          "format": "double",
+          "type": "number"
+        }
+      },
+      "required": [
+        "x0",
+        "y0",
+        "x1",
+        "y1"
+      ],
       "type": "object"
     },
     "PartUsed": {
@@ -4865,6 +4999,14 @@
     "SectionLoc": {
       "description": "Printed location of a section.",
       "properties": {
+        "boxes": {
+          "default": [],
+          "description": "Where the passage sits on its page image, normalized 0 to 1 (a\npassage may take more than one box).",
+          "items": {
+            "$ref": "#/$defs/PageBox"
+          },
+          "type": "array"
+        },
         "figure_label": {
           "type": [
             "string",
@@ -4888,7 +5030,8 @@
       "required": [
         "page_label",
         "page_index",
-        "figure_label"
+        "figure_label",
+        "boxes"
       ],
       "type": "object"
     },
@@ -5137,6 +5280,32 @@
       ],
       "type": "object"
     },
+    "SignalKind": {
+      "additionalProperties": false,
+      "description": "A kind of machine signal the pack maps (`pack_meta.signal_kinds`, else\nderived from the signal map with the kind as its label).",
+      "properties": {
+        "example": {
+          "default": null,
+          "description": "A value as it would be typed or read (`spn:110/fmi:0`, `E21`).",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "kind": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "label",
+        "example"
+      ],
+      "type": "object"
+    },
     "SignalMatch": {
       "description": "The result of matching observations.",
       "properties": {
@@ -5196,7 +5365,7 @@
         },
         "observations": {
           "items": {
-            "$ref": "#/$defs/Observation"
+            "$ref": "#/$defs/ObservationInput"
           },
           "type": "array"
         },
@@ -5682,6 +5851,14 @@
     "SymptomHit": {
       "description": "One ranked symptom.",
       "properties": {
+        "confidence": {
+          "$ref": "#/$defs/Confidence"
+        },
+        "coverage": {
+          "description": "Share of the query's meaningful words the best phrase covers.",
+          "format": "double",
+          "type": "number"
+        },
         "score": {
           "format": "double",
           "type": "number"
@@ -5699,12 +5876,18 @@
       "required": [
         "symptom",
         "score",
+        "confidence",
+        "coverage",
         "why"
       ],
       "type": "object"
     },
     "SymptomSearch": {
       "properties": {
+        "confidence": {
+          "$ref": "#/$defs/Confidence",
+          "description": "The best hit's confidence; `none` with no hit."
+        },
         "dense": {
           "description": "True when the dense half ran.",
           "type": "boolean"
@@ -5735,6 +5918,7 @@
         }
       },
       "required": [
+        "confidence",
         "hits",
         "dense",
         "equip_id",
@@ -5774,7 +5958,7 @@
           "default": [],
           "description": "Signals read from the machine.",
           "items": {
-            "$ref": "#/$defs/Observation"
+            "$ref": "#/$defs/ObservationInput"
           },
           "type": "array"
         },
@@ -5794,6 +5978,69 @@
           ]
         }
       },
+      "type": "object"
+    },
+    "SyncStatus": {
+      "description": "The outbox and the link.",
+      "properties": {
+        "acked": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "failing": {
+          "description": "Pending items that have failed at least once.",
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "hub": {
+          "$ref": "#/$defs/HubState"
+        },
+        "last_error": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "last_synced_at": {
+          "description": "When an item was last acknowledged.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "pending": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "pending_by_kind": {
+          "additionalProperties": {
+            "format": "uint64",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "description": "Pending items per kind.",
+          "type": "object"
+        },
+        "quarantined": {
+          "description": "Items whose stored payload no longer matches its hash; never sent.",
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "pending",
+        "acked",
+        "failing",
+        "quarantined",
+        "pending_by_kind",
+        "last_error",
+        "last_synced_at",
+        "hub"
+      ],
       "type": "object"
     },
     "Target": {
@@ -6613,7 +6860,7 @@
         "$ref": "#/$defs/NoParams"
       },
       "result": {
-        "$ref": "#/$defs/OutboxStatus"
+        "$ref": "#/$defs/SyncStatus"
       }
     },
     "task.get": {

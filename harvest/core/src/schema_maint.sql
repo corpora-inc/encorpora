@@ -1,7 +1,8 @@
 -- Maintenance tables (optional; CONTRACT "Maintenance tables"). A pack without
 -- them reads as before; the core detects each table on its own.
 CREATE TABLE section_loc (section_id TEXT PRIMARY KEY, page_label TEXT, page_index INTEGER,
-                          figure_label TEXT);
+                          figure_label TEXT,
+                          boxes TEXT);                   -- json [{x0,y0,x1,y1}], 0..1 on the page image
 CREATE TABLE asset (asset_id TEXT PRIMARY KEY, path TEXT NOT NULL, sha256 TEXT NOT NULL,
                     media_type TEXT NOT NULL, bytes INTEGER NOT NULL, width INTEGER, height INTEGER);
 CREATE TABLE section_asset (section_id TEXT NOT NULL, asset_id TEXT NOT NULL,
