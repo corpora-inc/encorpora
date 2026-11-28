@@ -1,0 +1,20 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["items"],
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "probs", "cue"],
+        "properties": {
+          "id": {"type": "string"},
+          "probs": {"type": "array", "minItems": 4, "maxItems": 4, "items": {"type": "number"}},
+          "cue": {"type": "string"}
+        }
+      }
+    }
+  }
+}

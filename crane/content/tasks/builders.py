@@ -186,9 +186,7 @@ def questions_inputs():
     items = []
     for s in skills():
         text = skill_text(s)
-        n = "8-12" if s["kind"] in ("knowledge", "judgment", "procedure") else "4-8"
-        prompt = (skill_header(s) + f"Write {n} facts for this skill (fewer only if the text truly supports fewer).\n\n"
-                  f"Rule text:\n{text}\n")
+        prompt = skill_header(s) + f"\nRule text:\n{text}\n"
         items.append({"input_id": s["skill_id"], "prompt": prompt, "meta": {"skill_id": s["skill_id"], "topic_id": s["topic_id"]}})
     return items
 
@@ -204,87 +202,313 @@ def meta_language(*texts) -> list[str]:
     return [f"refers to its prompt: {hits[0]!r}"] if hits else []
 
 
-def key_stands_out(choices: list[str], answer: int) -> bool:
-    """The key gives itself away by length: over 1.5x the longest distractor and 20+ chars longer."""
-    key = len(choices[answer])
-    other = max(len(c) for i, c in enumerate(choices) if i != answer)
-    return key > 1.5 * other and key - other >= 20
+_PLACEHOLDER = re.compile(r"placeholder|\bTBD\b|\bTODO\b|lorem ipsum|NOT FOR USE|\bXXX\b|\[(insert|fill|blank)[^\]]*\]", re.I)
+_COMBO = re.compile(r"\b(all|none) of the (above|options|choices)\b|\bboth\b.*\band\b.*\b(above|options)\b|\b(options?|choices?) [a-d] and [a-d]\b", re.I)
+_B30_OK = re.compile(r"ASME B30\.5(?:,? Chapter 5-[0-3](?: \([^)]*\))?)?$")
+
+
+def _content(s: str) -> set:
+    return {w for w in re.findall(r"[a-z0-9]+(?:\.[0-9]+)?", s.lower()) if w not in _STOP}
+
+
+_STOP = frozenset("a an the of to in on at for by with or and is are be it its this that as from than then any each".split())
+
+
+def choice_flaws(choices: list[str], answer: int) -> list[str]:
+    """Testwiseness rules a test-wise candidate would exploit, checked without a model."""
+    errs = []
+    if len({norm_key(c) for c in choices}) != 4:
+        errs.append("duplicate choices")
+    if any(_COMBO.search(c) for c in choices):
+        errs.append("combination option (all/none/both)")
+    sets = [_content(c) for c in choices]
+    for a in range(4):
+        for b in range(a + 1, 4):
+            A, B = sets[a], sets[b]
+            # overlap: one option contained in another, or the same words reordered; near-miss
+            # options that differ in one word or number are what the exam does, and are fine
+            if A and B and (A == B or (len(A) >= 2 and A < B) or (len(B) >= 2 and B < A)):
+                errs.append("choices overlap")
+                break
+        else:
+            continue
+        break
+    lens = [len(c) for c in choices]
+    mean = sum(lens) / 4
+    if any(abs(n - mean) > max(0.2 * mean, 6) for n in lens):
+        errs.append("options differ in length")
+    return errs
+
+
+def key_length_ranks(rows) -> dict:
+    """How often the key is the longest, shortest or in between (ties count as in between)."""
+    c = {"longest": 0, "shortest": 0, "middle": 0}
+    for r in rows:
+        lens = [len(x) for x in r["choices"]]
+        k = lens[int(r["answer"])]
+        if k == max(lens) and lens.count(k) == 1:
+            c["longest"] += 1
+        elif k == min(lens) and lens.count(k) == 1:
+            c["shortest"] += 1
+        else:
+            c["middle"] += 1
+    n = sum(c.values()) or 1
+    return {**c, "longest_share": round(c["longest"] / n, 3), "shortest_share": round(c["shortest"] / n, 3)}
+
+
+def _item_rows(rec: dict, out_items: list, skill_id: str, topic_id: str, rows: list, stats: dict, repair_of=lambda item: None):
+    """Rows for one record's items with every deterministic check applied (gates not yet attached)."""
+    for item in out_items:
+        errs = []
+        opts = item["options"]
+        keys = [k for k, o in enumerate(opts) if o["key"]]
+        if len(opts) != 4 or len(keys) != 1:
+            errs.append("bad shape: need 4 options and exactly one key")
+            opts = (opts + [{"text": "", "key": False, "why": "", "misconception": ""}] * 4)[:4]
+        ch = [o["text"].strip() for o in opts]
+        item["answer"] = keys[0] if len(keys) == 1 else 0
+        item["rationales"] = [o["why"] for o in opts]
+        item["misconceptions"] = [o["misconception"] for o in opts]
+        if any(not (r or "").strip() for r in item["rationales"]):
+            errs.append("missing rationale")
+        if not (item.get("beyond") or "").strip():
+            errs.append("missing beyond line for the key")
+        texts = [item["stem"], *ch, *item["rationales"], item.get("point") or ""]
+        if any(_PLACEHOLDER.search(x or "") for x in texts):
+            errs.append("placeholder text")
+        errs += meta_language(*texts)
+        if not any(e.startswith("bad shape") for e in errs):
+            errs += choice_flaws(ch, item["answer"])
+        basis = item["basis"]
+        quotes = []
+        if basis == "rule":
+            if not item.get("section_id") or not item.get("quote"):
+                errs.append("rule item without quote")
+            else:
+                q = {"section_id": item["section_id"], "quote": item["quote"]}
+                _, rep, e = repair_quotes(q)
+                stats["quotes_repaired"] += rep
+                errs += e
+                quotes = [q]
+        elif basis == "practice" and not (item.get("source") or "").strip():
+            errs.append("practice item without source")
+        src = item.get("source") or ""
+        if "B30.5" in src and not all(_B30_OK.match(x.strip()) for x in re.findall(r"ASME B30\.5[^;]*", src)):
+            errs.append("B30.5 cited below chapter level")
+        if item.get("tier") not in (1, 2, 3):
+            errs.append("bad tier")
+        p = perm(item["stem"], 4) if len(ch) == 4 else [0, 1, 2, 3]
+        choices = [ch[i] for i in p]
+        answer = p.index(item["answer"]) if 0 <= item["answer"] < 4 else 0
+        stats["items"] += 1
+        stats["det_pass"] += not errs
+        for r in errs:
+            k = r.split(":")[0][:40]
+            stats["fail_reasons"][k] = stats["fail_reasons"].get(k, 0) + 1
+        rows.append({"repair_of": repair_of(item), "q_id": f"q.{skill_id}.{sha(item['stem'])[:10]}", "skill_id": skill_id, "topic_id": topic_id, "variant_of": None,
+                     "kind": "mc", "tier": item["tier"], "stem": item["stem"], "choices": choices, "answer": str(answer),
+                     "rationales": [item["rationales"][i] for i in p], "misconceptions": [item["misconceptions"][i] for i in p],
+                     "section_ids": [quotes[0]["section_id"]] if quotes else [], "quotes": quotes,
+                     "note": (item.get("beyond") or "").strip() or None, "fact": item.get("point"), "basis": basis, "source": item.get("source"), "difficulty": item["difficulty"],
+                     "lang": "en", "_errs": errs, "_rec": rec})
+
+
+def exam_rows(task, items) -> tuple[dict, dict]:
+    """Round-0 rows: every writer's items for every skill (gates not yet attached)."""
+    stats = {"skills": 0, "items": 0, "det_pass": 0, "quotes_repaired": 0, "fail_reasons": {}}
+    by_topic: dict[str, list] = {}
+    for it in items:
+        recs = task.cached_all(it)
+        if recs:
+            stats["skills"] += 1
+        for rec in recs:
+            out = json.loads(json.dumps(rec["output"]))
+            skill_id, topic_id = it["meta"]["skill_id"], it["meta"]["topic_id"]
+            _item_rows(rec, out["items"], skill_id, topic_id, by_topic.setdefault(topic_id, []), stats)
+    return by_topic, stats
+
+
+def fix_rows(stats: dict) -> dict:
+    """Round-1 rows: rewrites of round-0 items that failed a gate (tasks/questions_fix)."""
+    task = common.Task(HERE / "questions_fix")
+    by_topic: dict[str, list] = {}
+    for it in questions_fix_inputs():
+        rec = task.cached(it)
+        if not rec or rec.get("prompt_version") != task.version:
+            continue
+        out = json.loads(json.dumps(rec["output"]))
+        allowed = set(it["meta"]["q_ids"])
+        keep = [x for x in out["items"] if x.get("replaces") in allowed]
+        _item_rows(rec, keep, it["meta"]["skill_id"], it["meta"]["topic_id"], by_topic.setdefault(it["meta"]["topic_id"], []),
+                   stats, repair_of=lambda item: item.get("replaces"))
+    return by_topic
+
+
+def _judge_for(writer_model: str) -> str:
+    """A judge from another model family than the writer."""
+    return "sonnet" if common.backend_of(writer_model.split(",")[0]) == "codex" else "codex:gpt-6-astra"
+
+
+def _gate_blocks(kind: str, by_topic: dict, suffix: str) -> list:
+    items = []
+    for rows in by_topic.values():
+        by_skill: dict[str, list] = {}
+        for r in rows:
+            if not r["_errs"]:
+                w = common.backend_of(r["_rec"]["model"].split(",")[0])
+                by_skill.setdefault(f"{r['skill_id']}@{w}{suffix}", []).append(r)
+        for key, rs in sorted(by_skill.items()):
+            letters = "ABCD"
+            blocks = [f"id: {r['q_id']}\n{r['stem']}\n" + "\n".join(f"{letters[k]}. {c}" for k, c in enumerate(r["choices"])) for r in rs]
+            judge = "codex:gpt-6-astra" if kind == "naive" else _judge_for(rs[0]["_rec"]["model"])
+            items.append({"input_id": key, "prompt": "\n\n".join(blocks) + "\n", "model": judge,
+                          "meta": {"skill_id": rs[0]["skill_id"], "q_ids": [r["q_id"] for r in rs]}})
+    return items
+
+
+def _gate_inputs(kind: str, rounds=(0, 1)):
+    qtask = common.Task(HERE / "questions")
+    out = []
+    if 0 in rounds:
+        out += _gate_blocks(kind, exam_rows(qtask, questions_inputs())[0], "")
+    if 1 in rounds:
+        out += _gate_blocks(kind, fix_rows({"items": 0, "det_pass": 0, "quotes_repaired": 0, "fail_reasons": {}}), "#fix")
+    return out
+
+
+def gate_naive_inputs():
+    return _gate_inputs("naive")
+
+
+def gate_solve_inputs():
+    return _gate_inputs("solve")
+
+
+NAIVE_MAX = 0.4     # a reader with no crane training may not pick the key with this much probability
+SOLVE_MIN = 0.6     # the solver must pick the key with at least this confidence and flag nothing
+
+
+def _gate_results(name: str, rounds=(0, 1)) -> dict:
+    task = common.Task(HERE / name)
+    out = {}
+    for it in _gate_inputs("naive" if name == "gate_naive" else "solve", rounds):
+        rec = task.cached(it)
+        if rec:
+            for x in rec["output"]["items"]:
+                if x["id"] in it["meta"]["q_ids"]:
+                    out[x["id"]] = {**x, "judge": rec["model"]}
+    return out
+
+
+def gate_verdict(r: dict, opts: dict, solve: dict) -> tuple[list[str], dict]:
+    """Gate errors and results for one row that passed the deterministic checks."""
+    errs, gates = [], {}
+    o, s = opts.get(r["q_id"]), solve.get(r["q_id"])
+    if not o or not s:
+        return ["not gated"], gates
+    k = int(r["answer"])
+    pr = [max(0.0, float(x)) for x in o["probs"]]
+    tot = sum(pr) or 1.0
+    pr = [x / tot for x in pr]
+    gates["naive"] = {"p_key": round(pr[k], 3), "top": pr.index(max(pr)), "cue": o["cue"], "judge": o["judge"]}
+    if pr.index(max(pr)) == k and pr[k] >= NAIVE_MAX:
+        errs.append(f"testwise: a reader with no crane training picked the key (p={pr[k]:.2f}; {o['cue'][:80]})")
+    gates["solve"] = {"answer": s["answer"], "confidence": s["confidence"], "tier": s["tier"], "flaw": s["flaw"], "judge": s["judge"]}
+    if s["answer"] != k or s["confidence"] < SOLVE_MIN or s["flaw"].strip():
+        errs.append(f"solver disagrees: picked {s['answer']} at {s['confidence']}; {s['flaw'][:80]}")
+    elif abs(s["tier"] - r["tier"]) > 1 or (r["tier"] == 3 and s["tier"] == 1):
+        errs.append(f"tier {r['tier']} rated {s['tier']}")
+    return errs, gates
 
 
 def questions_write(task, items):
-    stats = {"skills": 0, "facts": 0, "mc": 0, "free_text": 0, "pass": 0, "fail": 0, "quotes_repaired": 0, "answer_pos": [0, 0, 0, 0], "fail_reasons": {}}
-    by_topic: dict[str, list] = {}
-    for it in items:
-        rec = task.cached(it)
-        if not rec:
-            continue
-        out = json.loads(json.dumps(rec["output"]))
-        skill_id, topic_id = it["meta"]["skill_id"], it["meta"]["topic_id"]
-        stats["skills"] += 1
-        rows = by_topic.setdefault(topic_id, [])
-        for fact in out["facts"]:
-            stats["facts"] += 1
-            errs = []
-            if fact["basis"] == "rule":
-                ok, rep, e = repair_quotes(fact)
-                stats["quotes_repaired"] += rep
-                errs += e
-                if not fact.get("section_id") or not fact.get("quote"):
-                    errs.append("rule fact without quote")
-            group = None
-            for item in fact["items"]:
-                e2 = list(errs)
-                ch = item["choices"]
-                if len({norm_key(c) for c in ch}) != 4:
-                    e2.append("duplicate choices")
-                if not 0 <= item["answer"] < 4 or len(item["rationales"]) != 4:
-                    e2.append("bad answer/rationales")
-                elif key_stands_out(ch, item["answer"]):
-                    e2.append("key conspicuously longest")
-                e2 += meta_language(item["stem"], *ch, *item["rationales"])
-                p = perm(item["stem"], 4)
-                choices = [ch[i] for i in p]
-                rats = [item["rationales"][i] for i in p]
-                answer = p.index(item["answer"]) if 0 <= item["answer"] < 4 else -1
-                q_id = f"q.{skill_id}.{sha(item['stem'])[:10]}"
-                group = group or q_id
-                verdict = "pass" if not e2 else "fail"
-                stats[verdict] += 1
-                for r in e2:
-                    stats["fail_reasons"][r.split(":")[0][:40]] = stats["fail_reasons"].get(r.split(":")[0][:40], 0) + 1
-                if verdict == "pass":
-                    stats["answer_pos"][answer] += 1
-                    lens = [len(c) for c in choices]
-                    stats["key_longest"] = stats.get("key_longest", 0) + (lens[answer] == max(lens) and lens.count(max(lens)) == 1)
-                stats["mc"] += 1
-                rows.append({"q_id": q_id, "skill_id": skill_id, "topic_id": topic_id, "variant_of": None if group == q_id else group,
-                             "kind": "mc", "stem": item["stem"], "choices": choices, "answer": str(answer), "rationales": rats,
-                             "section_ids": [fact["section_id"]] if fact.get("section_id") else [],
-                             "quotes": [{"section_id": fact["section_id"], "quote": fact["quote"]}] if fact["basis"] == "rule" and fact.get("quote") else [],
-                             "fact": fact["fact"], "basis": fact["basis"], "difficulty": item["difficulty"], "lang": "en",
-                             "prov": provenance(rec, VERIFIER, verdict, "; ".join(e2) or None)})
-        for ft in out["free_text"]:
-            ok, rep, errs = repair_quotes(ft)
-            stats["quotes_repaired"] += rep
-            bad = [x for x in ft["section_ids"] if not index().exists(x)]
-            if bad:
-                errs.append(f"unknown ids {bad}")
-            rub = ft["rubric"]
-            if not 1 <= rub["pass"] <= len(rub["points"]):
-                errs.append("rubric pass out of range")
-            if rubric_matches(rub, rub["sample_answer"]) < rub["pass"]:
-                errs.append("sample answer fails its own rubric")
+    by_topic, stats = exam_rows(task, items)
+    fixes = fix_rows(stats)
+    opts, solve = _gate_results("gate_naive"), _gate_results("gate_solve")
+    fixed = {r["repair_of"] for rows in fixes.values() for r in rows if not r["_errs"] and not gate_verdict(r, opts, solve)[0]}
+    for topic_id, rows in fixes.items():
+        by_topic.setdefault(topic_id, []).extend(rows)
+    g = stats["gates"] = {"naive_fail": 0, "solve_fail": 0, "tier_fail": 0, "not_gated": 0, "replaced_by_fix": 0}
+    by_model: dict[str, dict] = {}
+    for rows in by_topic.values():
+        for r in rows:
+            errs = r.pop("_errs")
+            rec = r.pop("_rec")
+            gates = {}
+            if not errs:
+                errs, gates = gate_verdict(r, opts, solve)
+                for e in errs:
+                    g["naive_fail" if e.startswith("testwise") else "solve_fail" if e.startswith("solver")
+                      else "not_gated" if e.startswith("not gated") else "tier_fail"] += 1
+            if r["q_id"] in fixed:
+                errs = errs + ["replaced by a gated rewrite"]
+                g["replaced_by_fix"] += 1
             verdict = "pass" if not errs else "fail"
-            stats[verdict] += 1
-            stats["free_text"] += 1
-            q_id = f"q.{skill_id}.{sha(ft['stem'])[:10]}"
-            rows.append({"q_id": q_id, "skill_id": skill_id, "topic_id": topic_id, "variant_of": None, "kind": "free_text",
-                         "stem": ft["stem"], "choices": None, "answer": ft["rubric"], "rationales": None,
-                         "section_ids": ft["section_ids"], "quotes": ft["quotes"], "fact": None, "basis": "rule",
-                         "difficulty": ft["difficulty"], "lang": "en", "prov": provenance(rec, VERIFIER, verdict, "; ".join(errs) or None)})
+            m = by_model.setdefault(rec["model"].split(",")[0] + (" (fix)" if r.get("repair_of") else ""), {"items": 0, "pass": 0})
+            m["items"] += 1
+            m["pass"] += verdict == "pass"
+            r["gates"] = gates or None
+
+            r["prov"] = provenance(rec, VERIFIER + "; gates: options-only + solver", verdict, "; ".join(errs) or None)
+    stats["by_model"] = by_model
+    shipped = [r for rows in by_topic.values() for r in rows if r["prov"]["verdict"] == "pass"]
+    stats["key_length_rank"] = key_length_ranks(shipped)
+    stats["pass"] = sum(m["pass"] for m in by_model.values())
+    stats["fail"] = sum(m["items"] - m["pass"] for m in by_model.values())
+    # only gated, passing items ship in the bank; the failures are counted above
     for topic_id, rows in by_topic.items():
-        _write_jsonl(CONTENT / "data" / "questions" / f"{topic_id}.jsonl", rows)
+        _write_jsonl(CONTENT / "data" / "questions" / f"{topic_id}.jsonl", [r for r in rows if r["prov"]["verdict"] == "pass"])
     return stats
+
+
+# ================================================================ questions_fix (one rewrite round for gate failures)
+
+MIN_PER_SKILL = 8  # below this many passing items, a skill's failures from any writer get a rewrite
+
+FIXABLE = ("testwise", "solver disagrees", "tier ", "options differ in length", "choices overlap",
+           "combination option", "duplicate choices", "missing beyond")
+
+
+def questions_fix_inputs():
+    qtask = common.Task(HERE / "questions")
+    by_topic, _ = exam_rows(qtask, questions_inputs())
+    opts, solve = _gate_results("gate_naive", (0,)), _gate_results("gate_solve", (0,))
+    sk = {s["skill_id"]: s for s in skills()}
+    passing: dict[str, int] = {}
+    for rows in by_topic.values():
+        for r in rows:
+            if not r["_errs"] and not gate_verdict(r, opts, solve)[0]:
+                passing[r["skill_id"]] = passing.get(r["skill_id"], 0) + 1
+    items = []
+    for topic_id, rows in by_topic.items():
+        by_skill: dict[str, list] = {}
+        for r in rows:
+            errs = r["_errs"] or gate_verdict(r, opts, solve)[0]
+            w = common.backend_of(r["_rec"]["model"].split(",")[0])
+            # Opus items get a rewrite; another writer's failures are dropped unless the skill is short of items
+            if w != "claude" and passing.get(r["skill_id"], 0) >= MIN_PER_SKILL:
+                continue
+            if errs and all(e.startswith(FIXABLE) for e in errs):
+                by_skill.setdefault(f"{r['skill_id']}@{w}", []).append((r, errs))
+        for key, rs in sorted(by_skill.items()):
+            skill_id = rs[0][0]["skill_id"]
+            blocks = []
+            for r, errs in rs:
+                k = int(r["answer"])
+                opts_txt = "\n".join(f"  - {'KEY ' if n == k else ''}{c}  [{r['misconceptions'][n]}]" for n, c in enumerate(r["choices"]))
+                blocks.append(f"q_id: {r['q_id']}\ntier: {r['tier']}\npoint: {r['fact']}\nbasis: {r['basis']} {r['quotes'][0] if r['quotes'] else r.get('source') or ''}\n"
+                              f"stem: {r['stem']}\noptions:\n{opts_txt}\nfailed: {'; '.join(errs)}\n")
+            prompt = (skill_header(sk[skill_id]) + f"\nRule text:\n{skill_text(sk[skill_id])}\n\nItems to rewrite:\n\n" + "\n".join(blocks))
+            items.append({"input_id": key, "prompt": prompt, "meta": {"skill_id": skill_id, "topic_id": topic_id, "q_ids": [r["q_id"] for r, _ in rs]}})
+    return items
+
+
+def questions_fix_write(task, items):
+    return {"inputs": len(items), "items": sum(len(i["meta"]["q_ids"]) for i in items), "cached": sum(1 for it in items if task.cached(it))}
+
+
+def gate_write(task, items):
+    return {"inputs": len(items), "cached": sum(1 for it in items if task.cached(it))}
 
 
 # ================================================================ answers
@@ -593,7 +817,6 @@ def glossary_write(task, items):
 
 # ================================================================ course tree text (harvest/CONTRACT.md "course_node", "Instructor turns")
 
-_PLACEHOLDER = re.compile(r"placeholder|\bTBD\b|\bTODO\b|lorem ipsum|NOT FOR USE|\bXXX\b|\[(insert|fill|blank)[^\]]*\]", re.I)
 TREE = CONTENT / "course" / "tree.jsonl"
 WELCOME = CONTENT / "course" / "welcome.json"
 TEXT_FIELDS = ("summary", "hard", "mistakes", "exam")
@@ -742,8 +965,10 @@ def course_write(task, items):
     return stats
 
 INPUTS = {"course": course_inputs, "procedures": procedures_inputs, "questions": questions_inputs, "answers": answers_inputs,
+          "gate_naive": gate_naive_inputs, "gate_solve": gate_solve_inputs, "questions_fix": questions_fix_inputs,
           "lessons": lessons_inputs, "glossary": glossary_inputs}
 WRITERS = {"course": course_write, "procedures": procedures_write, "questions": questions_write, "answers": answers_write,
+           "gate_naive": gate_write, "gate_solve": gate_write, "questions_fix": questions_fix_write,
            "lessons": lessons_write, "glossary": glossary_write}
 
 

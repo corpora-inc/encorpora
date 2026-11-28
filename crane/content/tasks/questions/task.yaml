@@ -1,5 +1,5 @@
 task_id: questions
-prompt_version: 4
-accept_versions: [3]
-model: sonnet
-description: Question bank for one skill. Every testable fact in the given rule text, each in several variants (4-choice MC with a rationale per choice), plus "explain why" free-text items with rubrics.
+prompt_version: 8
+model: opus
+multi_writer: true  # Opus and Codex each write a set per skill; every item passes the same gates
+description: Exam-prep bank for one skill. 12 four-option items at three labeled tiers, distractors from real misconceptions, a teaching rationale per choice; gated for testwiseness and solver agreement before they ship.

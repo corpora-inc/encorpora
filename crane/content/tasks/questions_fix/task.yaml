@@ -1,0 +1,4 @@
+task_id: questions_fix
+prompt_version: 3
+model: opus
+description: One rewrite round for exam items that failed a gate (testwiseness, solver disagreement, tier, key length or specificity, overlapping options). Rewrites are gated again before they ship.

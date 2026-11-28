@@ -1,0 +1,4 @@
+task_id: gate_solve
+prompt_version: 1
+model: codex:gpt-6-astra
+description: Solver gate. A strong model answers each full item independently, rates its tier, and flags ambiguity or errors.
