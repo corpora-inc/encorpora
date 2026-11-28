@@ -20,7 +20,9 @@ use sha2::{Digest, Sha256};
 use std::path::Path;
 use std::sync::atomic::{AtomicU64, Ordering};
 
+pub mod attach;
 pub mod maint;
+pub use attach::*;
 pub use maint::*;
 
 const DDL: &str = "
@@ -376,6 +378,7 @@ impl Records {
         conn.busy_timeout(std::time::Duration::from_secs(5))?;
         conn.execute_batch(DDL)?;
         conn.execute_batch(maint::DDL)?;
+        conn.execute_batch(attach::DDL)?;
         maint::migrate(&conn)?;
         crate::audit::init(&conn)?;
         sync::init(&conn)?;

@@ -305,6 +305,7 @@ macro_rules! methods {
 
 methods! {
     "pack.info" => pack_info(PackParams) -> PackInfoView,
+    "pack.list" => pack_list(NoParams) -> Vec<PackSummary>,
     "pack.validate" => pack_validate(PackParams) -> GraphReport,
     "equip.list" => equip_list(PackParams) -> Vec<EquipView>,
     "equip.resolve" => equip_resolve(EquipResolveParams) -> Resolved,
@@ -839,6 +840,20 @@ pub struct SyncPull {
     pub pack_errors: Vec<String>,
 }
 
+/// One installed pack, for choosing among several.
+#[derive(Debug, Clone, Serialize, JsonSchema)]
+pub struct PackSummary {
+    pub pack_id: String,
+    /// `pack_meta.title`, else the first source's title, else the id.
+    pub title: String,
+    pub version: String,
+    /// The top of each equipment tree (no parent).
+    pub equipment_roots: Vec<Equipment>,
+    /// The sources' licenses, each once.
+    pub licenses: Vec<String>,
+    pub has_fault_trees: bool,
+}
+
 /// What a pack is and how to talk to it.
 #[derive(Debug, Clone, Serialize, JsonSchema)]
 pub struct PackInfoView {
@@ -994,6 +1009,35 @@ type R<T> = std::result::Result<T, ApiError>;
 
 fn nz(s: &Option<String>) -> Option<&str> {
     s.as_deref().map(str::trim).filter(|s| !s.is_empty())
+}
+
+fn pack_list(h: &Host, _who: Option<&Principal>, _: NoParams) -> R<Vec<PackSummary>> {
+    let mut out = Vec::new();
+    for pack in h.packs() {
+        let info = pack.info()?;
+        let mut licenses: Vec<String> = info.sources.iter().map(|s| s.license.clone()).collect();
+        licenses.sort();
+        licenses.dedup();
+        out.push(PackSummary {
+            title: pack
+                .meta("title")
+                .map(str::to_string)
+                .or_else(|| info.sources.first().map(|s| s.title.clone()))
+                .unwrap_or_else(|| pack.pack_id().to_string()),
+            pack_id: pack.pack_id().to_string(),
+            version: pack.version().to_string(),
+            equipment_roots: pack
+                .equipment()
+                .iter()
+                .filter(|e| e.parent_id.is_none())
+                .cloned()
+                .collect(),
+            licenses,
+            has_fault_trees: pack.has_fault_trees()?,
+        });
+    }
+    out.sort_by(|a, b| a.pack_id.cmp(&b.pack_id));
+    Ok(out)
 }
 
 fn pack_info(h: &Host, _who: Option<&Principal>, p: PackParams) -> R<PackInfoView> {

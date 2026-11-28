@@ -5,6 +5,8 @@
 //! POST /hub/receive                     Delivery (signed by the device) → ReceiveReport
 //! POST /hub/hello                       Hello (signed by the device) → HelloReply
 //! GET  /hub/fleet                       → the signed fleet summary | null
+//! GET  /hub/attachment?sha256=&total=   → {held}
+//! POST /hub/attachment                  AttachmentChunk (signed) → {held}
 //! GET  /hub/bundles?since=<seq>         → [bundle]
 //! GET  /hub/pack-offer?pack_id=&have=   → PackOffer | null
 //! GET  /hub/pack-file/<pack>/<dir>/<path> → the file
@@ -12,7 +14,7 @@
 
 use super::ReceiveReport;
 use crate::error::{Error, Result};
-use crate::sync::{DeviceKey, HelloReply, HubLink, PackOffer, Receipt, Upload};
+use crate::sync::{DeviceKey, HelloReply, HubLink, LinkClass, PackOffer, Receipt, Upload};
 use serde_json::Value;
 
 /// A hub over HTTP.
@@ -20,6 +22,7 @@ pub struct HttpHubLink {
     base: String,
     key: DeviceKey,
     agent: ureq::Agent,
+    link: LinkClass,
 }
 
 impl HttpHubLink {
@@ -28,11 +31,18 @@ impl HttpHubLink {
         Self {
             base: base.trim_end_matches('/').to_string(),
             key,
+            link: LinkClass::Normal,
             agent: ureq::Agent::config_builder()
                 .timeout_global(Some(timeout))
                 .build()
                 .into(),
         }
+    }
+
+    /// The link class to tell the hub (the host knows its link).
+    pub fn with_link(mut self, link: LinkClass) -> Self {
+        self.link = link;
+        self
     }
 
     fn get_json(&self, path: &str) -> Result<Value> {
@@ -116,7 +126,7 @@ impl HubLink for HttpHubLink {
     fn hello(&self) -> Result<HelloReply> {
         self.agent
             .post(&format!("{}/hub/hello", self.base))
-            .send_json(self.key.hello()?)
+            .send_json(self.key.hello(self.link)?)
             .map_err(|e| Error::Sync(format!("hub hello: {e}")))?
             .body_mut()
             .read_json()
@@ -125,5 +135,40 @@ impl HubLink for HttpHubLink {
 
     fn public_key(&self) -> String {
         self.key.public_base64()
+    }
+
+    fn link_class(&self) -> LinkClass {
+        self.link
+    }
+
+    fn attachment_offset(&self, sha256: &str, total: u64) -> Result<u64> {
+        let v = self.get_json(&format!(
+            "/hub/attachment?sha256={}&total={total}",
+            q(sha256)
+        ))?;
+        v.get("held")
+            .and_then(Value::as_u64)
+            .ok_or_else(|| Error::Sync("hub attachment: no `held`".into()))
+    }
+
+    fn put_chunk(
+        &self,
+        sha256: &str,
+        variant: &str,
+        total: u64,
+        offset: u64,
+        data: &[u8],
+    ) -> Result<u64> {
+        let v: Value = self
+            .agent
+            .post(&format!("{}/hub/attachment", self.base))
+            .send_json(self.key.chunk(sha256, variant, total, offset, data)?)
+            .map_err(|e| Error::Sync(format!("hub attachment: {e}")))?
+            .body_mut()
+            .read_json()
+            .map_err(|e| Error::Sync(format!("hub attachment: {e}")))?;
+        v.get("held")
+            .and_then(Value::as_u64)
+            .ok_or_else(|| Error::Sync("hub attachment: no `held`".into()))
     }
 }

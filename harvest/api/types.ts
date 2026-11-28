@@ -136,6 +136,9 @@ export interface AssetUpdateParams {
   pack_id?: string | null;
 }
 
+/** What attachments travel on a link (the hub's policy per link class). */
+export type AttachmentMode = "full" | "refs" | "downscaled";
+
 /** One retrieved chunk as the log keeps it. */
 export interface AuditChunk {
   chunk_id: string;
@@ -329,6 +332,31 @@ export interface CitePart {
   citation: string;
   heading: string | null;
   section_id: string;
+}
+
+/** The closest entries for one text observation no rule matched. */
+export interface Closest {
+  observed: Observation;
+  /**
+   * The words searched: the text with a leading tag (`PreArm:`) taken
+   * off and numbers and instance digits dropped.
+   */
+  query: string;
+  /** Text rules of the same signal kind, rated by the same rule. */
+  signals: ClosestSignal[];
+  /** The symptom index, ranked and rated as `symptom.search` does. */
+  symptoms: SymptomHit[];
+}
+
+/** A signal rule close to an unmatched text. */
+export interface ClosestSignal {
+  citation: string | null;
+  confidence: Confidence;
+  coverage: number;
+  has_tree: boolean;
+  rule: SignalRule;
+  score: number;
+  section: SignalSection | null;
 }
 
 /**
@@ -794,6 +822,10 @@ export interface Heartbeat {
 /** The hub's answer to a hello. */
 export interface HelloReply {
   accepted: boolean;
+  /** What attachments may travel on the link the device named. */
+  attachments: AttachmentMode;
+  /** The attachment chunk size, bytes. */
+  chunk_bytes: number;
   /**
    * How often a device fetches a changed fleet summary (a hub setting
    * the device learns here).
@@ -1372,6 +1404,19 @@ export interface PackParams {
   pack_id?: string | null;
 }
 
+/** One installed pack, for choosing among several. */
+export interface PackSummary {
+  /** The top of each equipment tree (no parent). */
+  equipment_roots: Equipment[];
+  has_fault_trees: boolean;
+  /** The sources' licenses, each once. */
+  licenses: string[];
+  pack_id: string;
+  /** `pack_meta.title`, else the first source's title, else the id. */
+  title: string;
+  version: string;
+}
+
 /** A pack replaced by a newer one from the hub. */
 export interface PackUpdate {
   bytes: number;
@@ -1856,6 +1901,12 @@ export interface SignalMatch {
    * do not count).
    */
   ambiguous: boolean;
+  /**
+   * For each unmatched text observation, the closest entries in the
+   * manual: never a match, never a start. The app says "no exact
+   * entry; closest entries in this manual".
+   */
+  closest: Closest[];
   /** Most specific first: exact, glob, prefix, regex; then observation order. */
   hits: SignalHit[];
   suggested: EntryPoint | null;
@@ -2282,6 +2333,7 @@ export type Why = {
 /** Every method: its params and its result. */
 export interface Methods {
   "pack.info": { params: PackParams; result: PackInfoView };
+  "pack.list": { params: NoParams; result: PackSummary[] };
   "pack.validate": { params: PackParams; result: GraphReport };
   "equip.list": { params: PackParams; result: EquipView[] };
   "equip.resolve": { params: EquipResolveParams; result: Resolved };
@@ -2350,6 +2402,7 @@ export type Envelope<T> = { ok: true; result: T } | { ok: false; error: ApiError
 
 export const METHODS = [
   "pack.info",
+  "pack.list",
   "pack.validate",
   "equip.list",
   "equip.resolve",
