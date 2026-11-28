@@ -123,6 +123,10 @@ def gate(bar: dict, runs: list[Path], system: str, pack: Path | None, set_path: 
     rec = agg["decline"]["recall"] or 0.0
     check("correct declines (must-decline declined)", rec >= t["declines"], round(rec, 4), f">= {t['declines']}",
           f"{agg['decline']['tp']} of {agg['n_must_decline']}")
+    answered = [r for r in rows if truthy(r.get("ok", "True")) and not truthy(r["declined"])]
+    unjudged = [r["id"] for r in answered if r.get("claims_supported") in ("", None)]
+    check("every shipped answer has a support verdict", not unjudged, len(unjudged), "0 answers without one",
+          "a missing support verdict would hide unsupported claims" + (f": {unjudged[:10]}" if unjudged else ""))
     u = agg["claims"]["unsupported"]
     check("unsupported claims in shipped answers", u <= t["unsupported_claims"], u,
           f"<= {t['unsupported_claims']}", f"rate {agg.get('unsupported_claim_rate')}; "
@@ -136,7 +140,15 @@ def gate(bar: dict, runs: list[Path], system: str, pack: Path | None, set_path: 
         if other not in backends:
             check(f"beats {other}", False, None, "present in the runs", "comparison not run on this set")
             continue
-        ofc = backends[other][0]["correctness"]["fully_correct"] or 0.0
+        oagg = backends[other][0]
+        healthy = (oagg["errors"] == 0 and not oagg.get("grades_missing")
+                   and oagg["correctness"].get("fully_correct") is not None)
+        if not healthy:
+            check(f"beats {other}", False, {"errors": oagg["errors"],
+                                             "grades_missing": len(oagg.get("grades_missing") or [])},
+                  "a clean comparison run", "the comparison run has failed calls or missing grades")
+            continue
+        ofc = oagg["correctness"]["fully_correct"]
         check(f"beats {other} on fully correct", fc > ofc, {"system": round(fc, 4), other: round(ofc, 4)},
               "system > comparison, with 0 unsupported claims",
               f"{other} unsupported-claim rate {backends[other][0].get('unsupported_claim_rate')}")
@@ -166,11 +178,13 @@ def gate(bar: dict, runs: list[Path], system: str, pack: Path | None, set_path: 
         if not sp.exists():
             raise SystemExit(f"set file {sp} not found: pass --set")
         cont = contamination(sp, pack, cc.get("near", 0.6), cc.get("leak", 0.9))
-        check("set not in the bake", not cont["leaks"], len(cont["leaks"]),
+        check("set not in the bake", not cont["leaks"] and cont["pack_texts"] > 0, len(cont["leaks"]),
               f"no pack alias, answer or question with token Jaccard >= {cc.get('leak', 0.9)} to a set question",
               f"{len(cont['near'])} look-alikes in [{cc.get('near', 0.6)}, {cc.get('leak', 0.9)}) "
               f"over {cont['pack_texts']} pack texts (reported, not failing)")
-    hidden = fresh.get(sha) in set(bar.get("hidden_sets") or [])
+    # Fail closed: item text is shown only for a registered set that is not hidden. An edited hidden
+    # set has a new sha256, and its text must still stay out of the outputs.
+    hidden = sha not in fresh or fresh[sha] in set(bar.get("hidden_sets") or [])
     if hidden:
         meta_set = {k: v for k, v in meta_set.items() if k != "path"}
         if cont:

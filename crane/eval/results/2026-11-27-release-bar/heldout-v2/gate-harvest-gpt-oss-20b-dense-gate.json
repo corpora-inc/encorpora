@@ -48,6 +48,13 @@
    "why": "13 of 14"
   },
   {
+   "criterion": "every shipped answer has a support verdict",
+   "pass": true,
+   "value": 0,
+   "bar": "0 answers without one",
+   "why": "a missing support verdict would hide unsupported claims"
+  },
+  {
    "criterion": "unsupported claims in shipped answers",
    "pass": false,
    "value": 6,

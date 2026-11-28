@@ -36,6 +36,7 @@ def agg(fc: float, tp: int, unsupported: int, quotes_ok: int = 3, errors: int = 
             "quote_verbatim_rate": quotes_ok / 3, "cites_exist_rate": 1.0}
 
 
+UNJUDGED: set = set()
 GOOD = (agg(1.0, 1, 0), ["2", "2", "2", "2"], [False, False, False, True])
 FRONT = (agg(0.67, 1, 4), ["2", "2", "0", "2"], [False, False, False, True])
 
@@ -46,13 +47,15 @@ def write_run(d: Path, backends: dict, sha: str = SHA) -> Path:
         "meta": {"set": {"path": str(d.parent / "set.jsonl"), "sha256": sha, "items": 4}},
         "backends": {k: v[0] for k, v in backends.items()}}))
     with (d / "items.csv").open("w", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=["backend", "id", "category", "must_decline", "declined", "score",
-                                          "claims_unsupported"])
+        w = csv.DictWriter(f, fieldnames=["backend", "id", "category", "must_decline", "ok", "declined", "score",
+                                          "claims_supported", "claims_unsupported"])
         w.writeheader()
         for name, (_a, scores, declined) in backends.items():
             for (i, _q, cat, md), sc, dec in zip(ITEMS, scores, declined):
-                w.writerow({"backend": name, "id": i, "category": cat, "must_decline": md, "declined": dec,
-                            "score": sc, "claims_unsupported": "0"})
+                judged = "" if (name, i) in UNJUDGED else ("" if dec else "2")
+                w.writerow({"backend": name, "id": i, "category": cat, "must_decline": md, "ok": True,
+                            "declined": dec, "score": sc, "claims_supported": judged,
+                            "claims_unsupported": "" if judged == "" else "0"})
     return d
 
 
@@ -127,6 +130,33 @@ class Gate(unittest.TestCase):
         self.assertNotIn("path", out["set"])
         self.assertEqual(out["contamination"]["leaks"][0]["id"], "q1")
         self.assertNotIn("question", out["contamination"]["leaks"][0])
+        self.assertNotIn("pack_text", out["contamination"]["leaks"][0])
+        from harvest_eval.gate import write
+        md = write(out, None)
+        self.assertNotIn("inspect the hook", md.lower())
+
+    def test_missing_support_verdict_fails(self):
+        UNJUDGED.add(("sys", "q2"))
+        try:
+            out = gate(BAR, [write_run(self.d / "run", {"sys": GOOD, "frontier": FRONT})], "sys", None)
+        finally:
+            UNJUDGED.clear()
+        self.assertFalse(self.crit(out, "every shipped answer has a support verdict")["pass"])
+        self.assertFalse(out["pass"])
+
+    def test_unhealthy_comparison_fails(self):
+        bad_front = ({**agg(0.3, 1, 0, errors=40)}, ["0", "0", "0", "2"], [False, False, False, True])
+        out = gate(BAR, [write_run(self.d / "run", {"sys": GOOD, "frontier": bad_front})], "sys", None)
+        self.assertFalse(self.crit(out, "beats frontier")["pass"])
+
+    def test_edited_hidden_set_and_empty_pack_fail_closed(self):
+        run = write_run(self.d / "run", {"sys": GOOD, "frontier": FRONT}, sha="99" * 32)
+        db = self.d / "empty.sqlite"
+        sqlite3.connect(db).close()
+        out = gate(BAR, [run], "sys", db, self.d / "set.jsonl")
+        self.assertTrue(out["set"]["hidden"])
+        self.assertNotIn("path", out["set"])
+        self.assertFalse(self.crit(out, "set not in the bake")["pass"])
 
     def test_cli_exit_code_and_outputs(self):
         run = write_run(self.d / "run", {"sys": GOOD, "frontier": FRONT})

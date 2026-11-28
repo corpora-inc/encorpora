@@ -9,6 +9,7 @@ Set: heldout-v2 (73 items). **FAIL**
 | no failed calls | yes | {'errors': 0, 'grades_missing': 0} | 0 and 0 |  |
 | fully correct (answerable) | **no** | 0.4746 | >= 0.9 | 28 of 59; 95% CI [0.3559322033898305, 0.6101694915254238] |
 | correct declines (must-decline declined) | **no** | 0.9286 | >= 0.95 | 13 of 14 |
+| every shipped answer has a support verdict | yes | 0 | 0 answers without one | a missing support verdict would hide unsupported claims |
 | unsupported claims in shipped answers | **no** | 6 | <= 0 | rate 0.027149321266968326; 5 answers carry one |
 | every quote verbatim | yes | 1.0 | >= 1.0 | 177 of 177 |
 | every citation real | yes | 1.0 | >= 1.0 |  |

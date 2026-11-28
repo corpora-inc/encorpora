@@ -16,7 +16,7 @@ same commit, dense retrieval and `--dense-gate 0.2:0.77` as in
 
 | Criterion | Bar | Engine + gpt-oss 20B | Engine, model off | Sonnet alone | Opus alone |
 |---|---|---|---|---|---|
-| Fully correct (59 answerable) | ≥ 90% | **47.5%** (35.6–61.0) | **37.3%** (25.4–49.2) | 84.7% (74.6–93.2) | 79.7% (67.8–89.8) |
+| Fully correct (59 answerable) | ≥ 90% | **47.5%** (35.6–61.0) | **37.3%** (25.4–50.8) | 84.7% (74.6–93.2) | 79.7% (67.8–89.8) |
 | Correct declines (14 must-decline) | ≥ 95% | 92.9% | 92.9% | 100% | 100% |
 | Unsupported claims in shipped answers | 0 | **6** (in 5 answers) | **7** (in 3 answers) | 21.4% of claims; 86% of answers | 35.7% of claims; 100% of answers |
 | Every quote verbatim | 100% | 100% (177) | 100% | no quotes | no quotes |
@@ -86,7 +86,7 @@ results.
 | v3 authoring (Opus) | $5.26 |
 | v3 independent check (Sonnet, 34 calls) | not recorded by the tool |
 | Sonnet alone and Opus alone answers on v2 | $1.22 + $2.62 |
-| Judging v2 (frontier $8.94, engine $2.71) | $11.65 |
+| Judging v2 (frontier $8.94; engine $2.71, from the per-run results before the combined pass, whose `results.json` reads the cache and shows 0) | $11.65 |
 
 Weekly Claude usage reached 57% during this work, past the content lane's 55%
 runner ceiling. So the v3 judged runs (about 2,000 judge items across four

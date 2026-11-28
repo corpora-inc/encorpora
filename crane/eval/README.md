@@ -35,7 +35,7 @@ cd harvest/eval
 | Citations | every citation real | the cited section exists in the corpus |
 | Beat the frontier | fully correct above Sonnet alone and Opus alone, on the same set, with 0 unsupported claims | `results/2026-11-27-frontier/` (no retrieval, no tools, the baseline system prompt) |
 | Not in the bake | no pack alias, answer or bank question copies a set question | token Jaccard ≥ 0.9 fails; 0.6–0.9 look-alikes are listed |
-| No failed calls | 0 errors, 0 missing grades | |
+| No failed calls | 0 errors, 0 missing grades; every shipped answer has a support verdict; the comparison runs are clean too | a missing verdict would hide an unsupported claim |
 
 The gate also reports every category (fully correct for answerable topics,
 declines for must-decline kinds) and flags any category below 90%, so weak
@@ -47,7 +47,7 @@ no lane reads it while building content. The contamination check catches
 copies. **v3 is hidden**: its items, authoring outputs and item-level
 results stay in the lab's private store, never in this repository (see
 `.gitignore`). Only its sha256, the tooling that wrote it, and aggregate and
-per-category results are committed, and the gate prints item ids only. Do not
+per-category results are committed, and the gate prints item ids only. Run v3 into an output directory whose name contains `v3` (e.g. `heldout-v3/`); `.gitignore` keeps its responses and items out of git. Do not
 put v2 or v3 items into prompts, alias lists or pack content.
 
 ## Files
