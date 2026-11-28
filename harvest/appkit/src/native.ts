@@ -12,14 +12,9 @@ import { addPluginListener } from "@tauri-apps/api/core";
 import { pickVoice, type VoiceOption } from "./voice/voices.ts";
 import { logError } from "./log.ts";
 
-export type Invoke = (cmd: string, args?: Record<string, unknown> | Uint8Array, options?: { headers?: Record<string, string> }) => Promise<unknown>;
+import { isNative, tauriInvoke, type Invoke } from "./bridge.ts";
 
-export function tauriInvoke(): Invoke | null {
-  const w = globalThis as unknown as { __TAURI_INTERNALS__?: { invoke: Invoke } };
-  return w.__TAURI_INTERNALS__?.invoke ?? null;
-}
-
-export const isNative = () => tauriInvoke() !== null;
+export { isNative, tauriInvoke, type Invoke };
 
 export interface NativeConfig {
   /** The bundled whisper model's file name, which the STT plugin also uses as its model id. */

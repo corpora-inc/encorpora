@@ -108,7 +108,15 @@ out.closed = await call("job.close", {
   resolution: "fixed",
   lesson: { job_id: job2, cause: "Start fuse F2 blown", action: "Replaced fuse F2", parts: [{ text: "Fuse, 15 A", qty: "1" }], minutes: 20, note: "Fuse holder was loose.", submit: true },
 });
+out.jobReport = await call("job.report", { job_id: job2 });
 out.jobs = await call("job.list", {});
+out.manualTop = await call("manual.children", { equip_id: unit.equip_id });
+out.section = await call("manual.section", { section_id: "m40.3-1", equip_id: unit.equip_id });
+out.manualSearch = await call("manual.search", { query: "battery voltage", equip_id: unit.equip_id, k: 8 });
+out.tree = await call("tree.get", { tree_id: "t-nocrank" });
+out.fieldNotes = await call("field.list");
+const failed = await call("run.start", { proc_id: "proc-battery", asset: unit.asset_id, equip_id: unit.equip_id, role: level });
+out.failedStep = await call("run.record", { run_id: failed.run_id, ord: 1, outcome: "fail" });
 out.history = await call("asset.history", { asset_id: unit.asset_id });
 out.lessons = await call("lesson.list", {});
 out.outbox = await call("sync.status");

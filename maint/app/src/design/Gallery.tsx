@@ -9,6 +9,16 @@ import { Link, useParams } from "react-router";
 import type {
   AskResponse,
   Asset,
+  AuditRecord,
+  ChainReport,
+  FieldNote,
+  JobReport,
+  Lesson,
+  ManualSearch,
+  SectionRef,
+  SectionView,
+  StepOutcome,
+  Tree,
   AssetHistory,
   EquipView,
   FaultTree,
@@ -29,6 +39,12 @@ import { Home } from "../screens/Home.tsx";
 import { Identify, type IdentifyProps } from "../screens/Identify.tsx";
 import { Step, type StepProps } from "../screens/Step.tsx";
 import { UnitPage } from "../screens/UnitPage.tsx";
+import { TaskList, TaskPage, type TaskPageProps } from "../screens/Tasks.tsx";
+import { PrintJob, PrintProcedure } from "../screens/Print.tsx";
+import { ManualHome, ManualResults, SectionReader } from "../screens/Manual.tsx";
+import { LearnHome, TreeStudy } from "../screens/Learn.tsx";
+import { Records, type RecordsProps } from "../screens/Records.tsx";
+import { Review, type ReviewProps } from "../screens/Review.tsx";
 import { designPath } from "../routes.ts";
 import { unitName } from "../ui/format.ts";
 import { AssetSource } from "../ui/manual.tsx";
@@ -44,6 +60,7 @@ interface Captured {
   search: { results: SymptomSearch; none: SymptomSearch; closest: SymptomSearch; codes: SymptomSearch };
   steps: Record<"symptom" | "check" | "checkLevel2" | "value" | "action" | "back" | "passfail" | "escalate" | "actionCheck" | "end" | "choice", JobView>;
   task: TaskView;
+  tasks: import("../engine/types.ts").TaskSummary[];
   run: Run;
   ask: AskResponse;
   askDeclined: AskResponse;
@@ -51,6 +68,16 @@ interface Captured {
   jobs: JobSummary[];
   history: AssetHistory;
   outbox: SyncStatus;
+  lessons: Lesson[];
+  audit: AuditRecord[];
+  chain: ChainReport;
+  jobReport: JobReport;
+  manualTop: SectionRef[];
+  section: SectionView;
+  manualSearch: ManualSearch;
+  tree: Tree;
+  fieldNotes: FieldNote[];
+  failedStep: StepOutcome;
 }
 const D = raw as unknown as Captured;
 
@@ -70,6 +97,8 @@ interface Entry {
   state: string;
   label: string;
   unit: ShellUnit | null;
+  /** A document with no app chrome (print). */
+  bare?: boolean;
   render(): ReactNode;
 }
 
@@ -149,6 +178,57 @@ const close = (v: JobView, extra: Partial<CloseOutProps> = {}): CloseOutProps =>
 
 const pageAsset = D.steps.check.step!.assets.find((a) => a.role === "page")!;
 
+const taskPage = (extra: Partial<TaskPageProps> = {}): TaskPageProps => ({
+  task: D.task,
+  run: null,
+  guidance: null,
+  report: null,
+  busy: false,
+  unitName: unitName(unit),
+  onStart: none,
+  onRecord: none,
+  onFinish: none,
+  onAbandon: none,
+  ...extra,
+});
+
+const records: RecordsProps = {
+  sync: D.outbox,
+  pack: D.pack,
+  notes: D.fieldNotes,
+  audit: D.audit,
+  chain: null,
+  model: null,
+  modelOn: false,
+  theme: "system",
+  busy: null,
+  onSync: none,
+  onVerifyChain: none,
+  onInstallNotes: none,
+  onImportFleet: none,
+  onModel: none,
+  onTheme: none,
+};
+
+const titles = Object.fromEntries(D.trees.map((t) => [t.tree_id, t.title]));
+const reviewQueue = D.lessons.map((l) => ({ ...l, status: "uploaded" as const }));
+const first = reviewQueue[0] ?? null;
+const review: ReviewProps = {
+  queue: reviewQueue,
+  selected: first,
+  titles,
+  units: Object.fromEntries(D.assets.map((a) => [a.asset_id, unitName(a)])),
+  context: D.steps.end.step?.node.text ?? null,
+  draft: first ? { cause: first.cause, action: first.action, note: first.note ?? "", reviewNote: "" } : null,
+  sent: D.fieldNotes,
+  busy: false,
+  onDraft: none,
+  onApprove: none,
+  onReject: none,
+};
+
+const sectionPage = D.section.assets.find((a) => a.role === "page") ?? null;
+
 export const GALLERY: Record<string, { title: string; states: Entry[] }> = {
   home: {
     title: "1. Fleet",
@@ -226,6 +306,51 @@ export const GALLERY: Record<string, { title: string; states: Entry[] }> = {
   },
 };
 
+Object.assign(GALLERY, {
+  tasks: {
+    title: "7. Maintenance tasks",
+    states: [
+      { state: "list", label: "Tasks for the variant", unit: shellUnit, render: () => <TaskList variant={variant} tasks={D.tasks} /> },
+      { state: "task", label: "A task, before starting", unit: shellUnit, render: () => <TaskPage {...taskPage()} /> },
+      { state: "run", label: "Running, two steps recorded", unit: shellUnit, render: () => <TaskPage {...taskPage({ run: D.run })} /> },
+      { state: "failed", label: "A failed step", unit: shellUnit, render: () => <TaskPage {...taskPage({ run: { ...D.run, steps: [D.failedStep.record] }, guidance: D.failedStep.guidance })} /> },
+      { state: "print", label: "Printable task", unit: null, bare: true, render: () => <PrintProcedure task={D.task} pack={D.pack} unit={unitName(unit)} /> },
+      { state: "print-job", label: "Printable job", unit: null, bare: true, render: () => <PrintJob report={D.jobReport} pack={D.pack} unit={unitName(unit)} lesson={D.closed.lesson} /> },
+    ],
+  },
+  manual: {
+    title: "8. Manual",
+    states: [
+      { state: "contents", label: "Contents and search", unit: shellUnit, render: () => <ManualHome title={D.pack.sources.map((x) => `${x.title}, ${x.edition}`).join("; ")} contents={D.manualTop} /> },
+      { state: "section", label: "A section", unit: shellUnit, render: () => <SectionReader view={D.section} page={sectionPage} pageOpen={false} src={(a) => imageFor(D.pack.pack_id, a)} /> },
+      { state: "page", label: "Original page, passage marked", unit: shellUnit, render: () => <SectionReader view={D.section} page={sectionPage} pageOpen src={(a) => imageFor(D.pack.pack_id, a)} /> },
+      { state: "search", label: "Search results", unit: shellUnit, render: () => <ManualResults query="battery voltage" hits={D.manualSearch.hits} /> },
+    ],
+  },
+  learn: {
+    title: "9. Learn",
+    states: [
+      { state: "home", label: "Tables and lessons", unit: shellUnit, render: () => <LearnHome trees={D.trees} lessons={D.lessons} titles={titles} /> },
+      { state: "tree", label: "A whole table", unit: shellUnit, render: () => <TreeStudy tree={D.tree} /> },
+    ],
+  },
+  records: {
+    title: "10. Sync and records",
+    states: [
+      { state: "records", label: "Queue, notes, audit, pack", unit: shellUnit, render: () => <Records {...records} /> },
+      { state: "chain", label: "Chain checked", unit: shellUnit, render: () => <Records {...records} chain={D.chain} model="gemma-4-e4b" modelOn /> },
+    ],
+  },
+  review: {
+    title: "11. Review (hub)",
+    states: [
+      { state: "queue", label: "A lesson to review", unit: null, render: () => <Review {...review} /> },
+      { state: "edited", label: "Edited before approval", unit: null, render: () => <Review {...review} draft={review.draft && { ...review.draft, cause: "Battery discharged; date code three years old", reviewNote: "Cause tightened." }} /> },
+      { state: "empty", label: "Nothing waiting", unit: null, render: () => <Review {...review} queue={[]} selected={null} draft={null} /> },
+    ],
+  },
+});
+
 export function GalleryIndex() {
   return (
     <Shell unit={null} online={false} queued={0}>
@@ -266,9 +391,13 @@ export function GalleryState() {
     );
   return (
     <AssetSource.Provider value={imageFor}>
-      <Shell unit={entry.unit} online={false} queued={D.outbox.pending}>
-        {entry.render()}
-      </Shell>
+      {entry.bare ? (
+        entry.render()
+      ) : (
+        <Shell unit={entry.unit} online={false} queued={D.outbox.pending}>
+          {entry.render()}
+        </Shell>
+      )}
     </AssetSource.Provider>
   );
 }

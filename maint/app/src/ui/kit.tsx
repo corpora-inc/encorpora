@@ -144,7 +144,8 @@ const STATUS = {
   queued: { label: "Waiting to sync", tone: "border-line-strong text-ink-2" },
   uploaded: { label: "Sent to hub", tone: "border-field text-field-ink bg-field-wash" },
   approved: { label: "Approved", tone: "border-ok text-ok bg-ok-wash" },
-  returned: { label: "Returned with edits", tone: "border-caution text-ink bg-caution-wash" },
+  edited: { label: "Approved with edits", tone: "border-ok text-ok bg-ok-wash" },
+  rejected: { label: "Not approved", tone: "border-line-strong text-ink-2" },
 } as const;
 
 export type Status = keyof typeof STATUS;

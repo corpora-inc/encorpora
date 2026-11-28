@@ -121,6 +121,43 @@
   color-scheme: dark;
 }
 
+/* Paper: the printed copy keeps the light tokens whatever the screen theme. */
+.paper {
+  --page: #e3e7ea;
+  --surface: #ffffff;
+  --surface-2: #eef1f3;
+  --surface-3: #d9dfe4;
+  --line: #c2cad1;
+  --line-strong: #6c7984;
+  --ink: #0b1724;
+  --ink-2: #303e4b;
+  --ink-3: #4d5a66;
+  --sheet: #ffffff;
+  --sheet-line: #0b1724;
+  --plate: #0b1724;
+  --plate-ink: #ffffff;
+  --warn: #b01e0c;
+  --warn-ink: #ffffff;
+  --warn-wash: #fdf0ed;
+  --caution: #f2b705;
+  --caution-ink: #1a1300;
+  --caution-wash: #fff8e0;
+  --field: #0d5f7a;
+  --field-wash: #e2f0f5;
+  --field-ink: #06384a;
+  --ok: #156b3a;
+  --ok-wash: #e2f2e8;
+  --error: #a3122a;
+  --error-wash: #fbe9ec;
+  --focus: #0a5bd6;
+  --overlay: rgba(11, 23, 36, 0.94);
+  --overlay-ink: #ffffff;
+  --scrim: rgba(11, 23, 36, 0.45);
+  color-scheme: light;
+  background: var(--surface);
+  color: var(--ink);
+}
+
 @theme inline {
   --color-page: var(--page);
   --color-surface: var(--surface);
@@ -375,5 +412,12 @@
     .no-print {
       display: none !important;
     }
+  }
+}
+
+@media print {
+  html,
+  body {
+    background: #ffffff;
   }
 }

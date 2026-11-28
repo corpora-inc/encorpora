@@ -5,7 +5,8 @@
  * the technician entered and renders what comes back; it never decides a
  * branch, a match or a variant itself.
  */
-import { isNative, tauriInvoke } from "@appkit/native.ts";
+// A relative path (not the @appkit alias) so node runs this module in tests.
+import { isNative, tauriInvoke } from "../../../../harvest/appkit/src/bridge.ts";
 import type { Envelope, Method, Params, Result } from "./types.ts";
 
 export class EngineError extends Error {

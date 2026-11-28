@@ -34,7 +34,9 @@ const TABS = [
 export function Shell({ unit, online, queued, hub = false, children }: ShellProps) {
   const tabs = hub ? [...TABS, { to: reviewPath(), label: "Review", icon: Inbox, end: false }] : TABS;
   return (
-    <div className="min-h-dvh md:pl-rail">
+    // The rail's white column is painted by the page itself, so it runs the full
+    // length of any page (and of a full-page capture), not just the viewport.
+    <div data-shell className="min-h-dvh md:bg-[linear-gradient(to_right,var(--surface)_calc(var(--spacing-rail)-1px),var(--line)_calc(var(--spacing-rail)-1px),var(--line)_var(--spacing-rail),transparent_var(--spacing-rail))] md:pl-rail">
       <nav aria-label="Main" className="no-print fixed inset-y-0 left-0 z-20 hidden w-rail flex-col gap-1 border-r border-line bg-surface px-2 pt-[max(10px,env(safe-area-inset-top))] pb-3 md:flex">
         <Link to={homePath()} className="mb-2 flex h-12 items-center justify-center no-underline" aria-label={PRODUCT.name}>
           <Mark />

@@ -36,7 +36,14 @@ try {
   const errors = [];
   page.on("pageerror", (e) => errors.push(e.message));
   page.on("console", (m) => m.type() === "error" && errors.push(m.text()));
-  const shot = async (name) => page.screenshot({ path: path.join(out, `${String(++n).padStart(2, "0")}-${name}.png`), fullPage: true });
+  // Grow the viewport to the page so fixed bars sit where they do on a device, then shoot it.
+  const shot = async (name) => {
+    const vp = page.viewportSize();
+    const full = await page.evaluate(() => document.documentElement.scrollHeight);
+    if (full > vp.height) await page.setViewportSize({ width: vp.width, height: full });
+    await page.screenshot({ path: path.join(out, `${String(++n).padStart(2, "0")}-${name}.png`) });
+    if (full > vp.height) await page.setViewportSize(vp);
+  };
   const settle = () => page.waitForLoadState("networkidle");
   // The keypad, key by key, as a gloved hand would.
   const typeValue = async (v) => {

@@ -4,7 +4,10 @@ import { PRODUCT } from "./config.ts";
 import { Frame } from "./pages/Frame.tsx";
 import { HomePage, IdentifyPage, UnitRoute } from "./pages/FleetPages.tsx";
 import { CloseOutPage, DescribePage, JobPage } from "./pages/JobPages.tsx";
+import { LearnPage, TreeStudyPage } from "./pages/LearnPages.tsx";
+import { ManualHomePage, ManualSearchPage, SectionPage } from "./pages/ManualPages.tsx";
 import { RecordsPage } from "./pages/RecordsPage.tsx";
+import { PrintJobPage, PrintProcedurePage, TaskListPage, TaskRoute } from "./pages/TaskPages.tsx";
 import { NotFound } from "./screens/NotFound.tsx";
 
 /** The design gallery ships only in development and design builds. */
@@ -43,6 +46,9 @@ const router = createBrowserRouter([
             { path: "/design/:screen/:state", element: <GalleryState /> },
           ]
         : []),
+      // Hard copy: a plain document, no app chrome.
+      { path: "/print/procedure/:taskId", element: <PrintProcedurePage /> },
+      { path: "/print/job/:jobId", element: <PrintJobPage /> },
       {
         element: <Frame />,
         children: [
@@ -55,6 +61,14 @@ const router = createBrowserRouter([
           { path: "/jobs/:jobId/page/:assetId", element: <JobPage /> },
           { path: "/jobs/:jobId/close", element: <CloseOutPage /> },
           { path: "/records", element: <RecordsPage /> },
+          { path: "/procedures", element: <TaskListPage /> },
+          { path: "/procedures/:taskId", element: <TaskRoute /> },
+          { path: "/manual", element: <ManualHomePage /> },
+          { path: "/manual/search/:q", element: <ManualSearchPage /> },
+          { path: "/manual/:sectionId", element: <SectionPage /> },
+          { path: "/manual/:sectionId/page/:assetId", element: <SectionPage /> },
+          { path: "/learn", element: <LearnPage /> },
+          { path: "/learn/tree/:treeId", element: <TreeStudyPage /> },
           { path: "*", element: <NotFound /> },
         ],
       },

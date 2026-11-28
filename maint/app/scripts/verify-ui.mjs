@@ -94,6 +94,14 @@ async function measure(page) {
         .filter((el) => visible(el) && el.getBoundingClientRect().height < 43.5)
         .slice(0, 3)
         .map((el) => `${name(el)} ${Math.round(el.getBoundingClientRect().height)}px`),
+      // The rail column (tablet and up) runs to the bottom of the page, however long.
+      railShort: (() => {
+        const shell = document.querySelector("[data-shell]");
+        if (!shell || window.innerWidth < 768) return null;
+        const doc = document.documentElement.scrollHeight;
+        const h = shell.getBoundingClientRect().height + window.scrollY;
+        return getComputedStyle(shell).backgroundImage.includes("gradient") && h >= doc - 1 ? null : `${Math.round(h)} < ${doc}`;
+      })(),
       clipped: [...document.querySelectorAll("button, a")]
         .filter((el) => visible(el) && getComputedStyle(el).whiteSpace === "nowrap" && el.scrollWidth > el.clientWidth + 1 && !el.querySelector(".truncate"))
         .slice(0, 3)
@@ -140,6 +148,7 @@ try {
         if (m.wide.length) problems.push(`past the right edge: ${m.wide.join(", ")}`);
         if (m.shift >= 0.001) problems.push(`layout shift ${m.shift.toFixed(4)}`);
         if (m.small.length) problems.push(`controls under 44 px: ${m.small.join(", ")}`);
+        if (m.railShort) problems.push(`rail stops short of the page bottom: ${m.railShort}`);
         if (m.clipped.length) problems.push(`labels cut off: ${m.clipped.join(", ")}`);
         if (errors.length) problems.push(`console: ${errors.splice(0).join(" | ")}`);
         if (problems.length) failures.push(`${label}: ${problems.join("; ")}`);
