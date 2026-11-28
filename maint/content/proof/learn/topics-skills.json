@@ -1,0 +1,58 @@
+{
+ "topics": [
+  {
+   "topic_id": "topic:troubleshooting",
+   "parent_id": null,
+   "ord": 1,
+   "title": "Troubleshooting",
+   "summary": "Walking the manual's troubleshooting trees.",
+   "lang": "en"
+  },
+  {
+   "topic_id": "topic:tasks",
+   "parent_id": null,
+   "ord": 2,
+   "title": "Maintenance tasks",
+   "summary": "The order and the safety of the manual's tasks.",
+   "lang": "en"
+  }
+ ],
+ "skills": [
+  {
+   "skill_id": "skill:t-table-3-1",
+   "topic_id": "topic:troubleshooting",
+   "title": "Troubleshoot: Engine will not crank",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:t-table-3-2",
+   "topic_id": "topic:troubleshooting",
+   "title": "Troubleshoot: Pump overheats",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:t-table-3-1.q2.test",
+   "topic_id": "topic:tasks",
+   "title": "Battery voltage test",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:t-table-3-1.q4.test",
+   "topic_id": "topic:tasks",
+   "title": "Starter relay test",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:t-table-3-2.q2.test",
+   "topic_id": "topic:tasks",
+   "title": "Belt condition check",
+   "lang": "en"
+  },
+  {
+   "skill_id": "skill:p-task-4-3",
+   "topic_id": "topic:tasks",
+   "title": "Battery replacement",
+   "lang": "en"
+  }
+ ]
+}

@@ -1,0 +1,215 @@
+{
+ "format": "maint-expected/1",
+ "trees": [
+  {
+   "title": "Pump overheats",
+   "entry": "The high temperature lamp is on or the controller shows a high temperature code.",
+   "applies": [],
+   "nodes": [
+    {
+     "text": "The high temperature lamp is on or the controller shows a high temperature code.",
+     "kind": "symptom",
+     "expect": {
+      "kind": "ack"
+     }
+    },
+    {
+     "text": "Is the intake strainer clear of debris?",
+     "kind": "check",
+     "expect": {
+      "kind": "yes_no"
+     }
+    },
+    {
+     "text": "Clean the intake strainer.",
+     "kind": "action",
+     "expect": null
+    },
+    {
+     "text": "What is the condition of the cooling fan belt: tight, loose or broken?",
+     "kind": "check",
+     "expect": {
+      "kind": "choice",
+      "options": [
+       "tight",
+       "loose",
+       "broken"
+      ]
+     },
+     "proc": "Belt condition check"
+    },
+    {
+     "text": "Internal cooling fault. Report to the field maintenance shop.",
+     "kind": "escalate",
+     "expect": null
+    },
+    {
+     "text": "Adjust the belt tension.",
+     "kind": "action",
+     "expect": null
+    },
+    {
+     "text": "Replace the cooling fan belt.",
+     "kind": "action",
+     "expect": null
+    }
+   ],
+   "edges": [
+    {
+     "from": "The high temperature lamp is on or the controller shows a high temperature code.",
+     "label": "continue",
+     "to": "Is the intake strainer clear of debris?"
+    },
+    {
+     "from": "Is the intake strainer clear of debris?",
+     "label": "yes",
+     "to": "What is the condition of the cooling fan belt: tight, loose or broken?"
+    },
+    {
+     "from": "Is the intake strainer clear of debris?",
+     "label": "no",
+     "to": "Clean the intake strainer."
+    },
+    {
+     "from": "What is the condition of the cooling fan belt: tight, loose or broken?",
+     "label": "tight",
+     "to": "Internal cooling fault. Report to the field maintenance shop."
+    },
+    {
+     "from": "What is the condition of the cooling fan belt: tight, loose or broken?",
+     "label": "loose",
+     "to": "Adjust the belt tension."
+    },
+    {
+     "from": "What is the condition of the cooling fan belt: tight, loose or broken?",
+     "label": "broken",
+     "to": "Replace the cooling fan belt."
+    }
+   ],
+   "facets": [],
+   "setup": []
+  }
+ ],
+ "procedures": [
+  {
+   "title": "Belt condition check",
+   "steps": [
+    "Open the fan guard.",
+    "Press the belt midway between the pulleys.",
+    "Look for cracks, fraying or missing pieces."
+   ],
+   "requirements": []
+  },
+  {
+   "title": "Battery replacement",
+   "steps": [
+    "Turn the battery switch OFF.",
+    "Disconnect the negative cable first, then the positive cable.",
+    "Remove the hold-down clamp and lift out the battery.",
+    "Install the new battery. Connect the positive cable first, then the negative cable.",
+    "Tighten the terminal nuts to 6 N.m. Coat the terminals with terminal grease.",
+    "Record the date code of the new battery."
+   ],
+   "requirements": [
+    {
+     "kind": "tool",
+     "text": "10 mm wrench"
+    },
+    {
+     "kind": "tool",
+     "text": "battery lifting strap"
+    },
+    {
+     "kind": "part",
+     "text": "Battery, 12 V, 100 Ah"
+    },
+    {
+     "kind": "consumable",
+     "text": "Terminal grease."
+    },
+    {
+     "kind": "personnel",
+     "text": "Two technicians."
+    }
+   ],
+   "applies": [
+    "Model 40 diesel"
+   ]
+  }
+ ],
+ "guards": [
+  {
+   "kind": "warning",
+   "text": "Do not open the radiator cap while the engine is hot. Hot coolant can cause burns.",
+   "guards": "tree:Pump overheats",
+   "applies": [
+    "Model 40 diesel"
+   ]
+  },
+  {
+   "kind": "warning",
+   "text": "Lock out the electrical supply before you open the motor terminal box.",
+   "guards": "tree:Pump overheats",
+   "applies": [
+    "Model 40 electric"
+   ]
+  },
+  {
+   "kind": "warning",
+   "text": "Stop the pump before you touch the belt. The fan can cut fingers.",
+   "guards": "procedure:Belt condition check"
+  },
+  {
+   "kind": "note",
+   "text": "A tight belt moves no more than 15 mm when pressed.",
+   "guards": "step:Press the belt midway between the pulleys."
+  },
+  {
+   "kind": "caution",
+   "text": "Disconnect the negative cable first to prevent a short circuit.",
+   "guards": "step:Disconnect the negative cable first, then the positive cable."
+  },
+  {
+   "kind": "warning",
+   "text": "The battery weighs 28 kg. Use two people and the lifting strap to lift it.",
+   "guards": "step:Remove the hold-down clamp and lift out the battery."
+  }
+ ],
+ "symptoms": [],
+ "signals": [],
+ "equipment": [
+  {
+   "name": "Model 40 utility pump",
+   "parent": null
+  },
+  {
+   "name": "Model 40 diesel",
+   "parent": "Model 40 utility pump",
+   "ident": [
+    [
+     "model",
+     "P40-D"
+    ],
+    [
+     "serial_range",
+     "P40D-1000..P40D-4999"
+    ]
+   ]
+  },
+  {
+   "name": "Model 40 electric",
+   "parent": "Model 40 utility pump",
+   "ident": [
+    [
+     "model",
+     "P40-E"
+    ],
+    [
+     "serial_range",
+     "P40E-1000..P40E-4999"
+    ]
+   ]
+  }
+ ],
+ "variant": "s1000d"
+}

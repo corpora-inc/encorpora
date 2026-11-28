@@ -1,0 +1,59 @@
+date,equipment,meter_hrs,problem / work done,parts used,mechanic
+2025-03-15,P40D-2308,1785 hrs,dead on key; sent to field mx - wiring,,CHEN
+2025-03-15,unit-202,141200 hrs,high temp shutdown; tightened fan belt,,PATEL
+2025-03-20,unit-203,864 hrs,250 hr service; greased bearings,,OSEI
+2025-04-01,Pump 106,1640 hrs,ENGINE NO CRANK; low batt - charged,,CHEN
+2025-04-03,Pump 103,1228 hrs,"250 hr service; PM service, oil + filter",P40-501,RUIZ
+2052-04-16,P40D-2302,1158 hrs,no crnk; K1 relay swapped out,P40-207,OSEI
+2025-05-26,unit-204,2292 hrs,"overheated, shut down; adj belt tension",,PATEL
+2025-05-27,102,142170 hrs,temp light on; clnd intake strnr,,RUIZ
+2025-06-04,Pump 105,1953 hrs,"overheated, shut down; strainer clogged w/ silt, cleaned",,PATEL
+2025-06-26,104,1926 hrs,starter does nothing; replaced batt,P40-118,OSEI
+2025-07-01,#103,1788 hrs,"overheated, shut down; cooling internal - reported to field shop",,CHEN
+2025-07-28,Pump 108,2656 hrs,high temp shutdown; cleaned strainer,,NOVAK
+2025-08-07,P40D-2307,261420 hrs,"HI TEMP lamp; strainer clogged w/ silt, cleaned",,NOVAK
+2025-08-13,Pump 101,1791 hrs,temp lite on; cleaned strainer,,RUIZ
+2025-08-16,unit-108,2779 hrs,running hot; tightened fan belt,,CHEN
+2025-08-20,#106,2579 hrs,temp lite on; clnd intake strnr,,OSEI
+2025-08-30,104,2336 hrs,"scheduled service; PM service, oil + filter",,CHEN
+2025-09-02,unit-310,2489 hrs,eng wont crank; replaced batt,P40-118,NOVAK
+2025-09-09,Pump 108,2934 hrs,"ENGINE NO CRANK; batt replaced, old one dead",P40-118,RUIZ
+2025-09-10,106,2718 hrs,high temp shutdown; intake screen cleared,,OSEI
+2025-09-21,#102,2165 hrs,"HI TEMP lamp; internal cooling fault, sent to shop",,CHEN
+2035-09-28,#102,2215 hrs,"ENGINE NO CRANK; key sw wiring bad, to field maint",,RUIZ
+2025-10-03,102,2248 hrs,ENGINE NO CRANK; low batt - charged,,RUIZ
+2025-10-03,unit-201,2469 hrs,scheduled service; greased bearings,,CHEN
+2025-10-14,unit-201,2545 hrs,temp light on; cleaned strainer,,CHEN
+2025-11-04,108,3300 hrs,scheduled service; oil & filter chg,P40-501,RUIZ
+2025-11-18,203,3234 hrs,"temp lite on; internal cooling fault, sent to shop",,OSEI
+2025-11-22,unit-203,3258 hrs,temp light on; belt loose - adjusted,,OSEI
+2025-11-25,101,2483 hrs,no crnk; changed relay K1,P40-207,NOVAK
+2025-12-19,#108,3599 hrs,would not crank on key; K1 relay swapped out,P40-207,RUIZ
+2026-01-09,unit-204,3779 hrs,"overheated, shut down; clnd intake strnr",,CHEN
+2026-01-11,Pump 105,3330 hrs,"wouldn't start - no crank; start fuse out, new F2",P40-015,PATEL
+2026-01-15,#105,3356 hrs,eng wont crank; charged battery,,CHEN
+2026-01-19,#203,-3647 hrs,"PM service due; PM service, oil + filter",P40-501,PATEL
+2026-01-27,unit-102,3000 hrs,high temp shutdown; intake screen cleared,,NOVAK
+2026-02-02,104,3356 hrs,running hot; clnd intake strnr,,CHEN
+2026-02-16,101,3037 hrs,running hot,P40-311,CHEN
+2026-03-04,#106,3474 hrs,temp lite on; clnd intake strnr,,PATEL
+2026-03-11,#204,4173 hrs,running hot; tightened fan belt,,CHEN
+2053-06-09,P40E-1401,4097 hrs,"temp light on; strainer clogged w/ silt, cleaned",,NOVAK
+2026-06-15,P40E-1403,4230 hrs,"overheated, shut down; R&R fan belt",P40-311,CHEN
+2053-06-18,unit-104,4261 hrs,HI TEMP lamp; adj belt tension,,PATEL
+2026-06-20,#107,4668 hrs,HI TEMP lamp; clnd intake strnr,,OSEI
+2026-07-12,Pump 202,4910 hrs,"running hot; strainer clogged w/ silt, cleaned",,CHEN
+2026-07-22,P40D-2304,4481 hrs,starter does nothing; replaced fuse F2,P40-015,RUIZ
+2026-07-26,P40D-2305,,wouldn't start - no crank; low batt - charged,,NOVAK
+2026-08-08,Pump 102,4262 hrs,temp lite on; R&R fan belt,P40-311,OSEI
+2026-08-22,#106,4785 hrs,scheduled service; greased bearings,,RUIZ
+2026-08-25,P40D-2302,-4388 hrs,"temp lite on; strainer clogged w/ silt, cleaned",,PATEL
+2026-09-01,unit-310,-4824 hrs,ENGINE NO CRANK; replaced start relay K1,P40-207,PATEL
+2026-09-16,203,5224 hrs,"overheated, shut down; R&R fan belt",P40-311,CHEN
+2026-09-20,P40D-2302,4552 hrs,no crank; new start relay,P40-207,PATEL
+2026-09-21,201,4755 hrs,"HI TEMP lamp; strainer clogged w/ silt, cleaned",,RUIZ
+2026-09-24,#108,5406 hrs,high temp shutdown; new fan belt,P40-311,CHEN
+2026-09-29,P40E-1403,5305 hrs,"overheating; strainer clogged w/ silt, cleaned",,OSEI
+2025-08-27,Pump 203,1000 hrs,"training demo, do not use",,admin
+2026-05-10,P40D-2303,1000 hrs,test record for new tablet,,admin
+2026-09-29,unit-101,1000 hrs,TEST ENTRY - ignore,,RUIZ

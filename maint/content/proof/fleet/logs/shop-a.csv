@@ -1,0 +1,81 @@
+Unit,Date,Hours,Complaint,Action,Part,Tech
+P40D-2302,03/29/2025,1331,starter does nothing,replaced batt,P40-118,A. Patel
+Pump 104,04/27/2025,1518,250 hr service,greased bearings,,M. Chen
+P40D-2307,05/01/2025,1956,running hot,adj belt tension,,J. Ruiz
+Pump 105,05/05/2025,1708,wouldn't start - no crank,R&R battery,P40-118,K. Osei
+Pump 108,05/20/2025,2225,high temp shutdown,intake screen cleared,,J. Ruiz
+Pump 102,05/24/2025,1398,"overheated, shut down",cooling internal - reported to field shop,,K. Osei
+P40D-2307,05/24/2025,2106,temp lite on,"belt broken, replaced",P40-311,M. Chen
+P40E-1402,05/25/2025,1888,"overheated, shut down",adj belt tension,,J. Ruiz
+unit-102,06/08/2052,1503,eng wont crank,changed relay K1,P40-207,J. Ruiz
+P40D-2304,06/16/2025,1857,HI TEMP lamp,tightened fan belt,,D. Novak
+203,06/26/2025,2297,high temp shutdown,belt loose - adjusted,,D. Novak
+#101,07/08/2025,1556,scheduled service,"PM service, oil + filter",P40-501,D. Novak
+Pump 106,07/12/2025,2319,overheating,adj belt tension,,A. Patel
+unit-201,07/21/2025,2018,"overheated, shut down",tightened fan belt,,M. Chen
+#202,07/24/2025,2274,"overheated, shut down",cleaned strainer,,K. Osei
+unit-204,07/25/2052,2692,high temp shutdown,clnd intake strnr,,K. Osei
+204,08/04/2025,2757,running hot,cleaned strainer,,K. Osei
+Pump 103,08/06/2025,2025,no crank,batt on charger overnight,,D. Novak
+unit-106,08/07/2025,2496,temp lite on,"strainer clogged w/ silt, cleaned",,M. Chen
+#101,08/10/2025,1779,HI TEMP lamp,intake screen cleared,,J. Ruiz
+#107,08/14/2025,2660,overheating,intake screen cleared,,A. Patel
+106,08/16/2025,2555,running hot,"strainer clogged w/ silt, cleaned",,D. Novak
+Pump 202,08/17/2025,2434,"overheated, shut down",intake screen cleared,,M. Chen
+204,08/19/2025,2864,temp light on,adj belt tension,,K. Osei
+Pump 105,08/29/2025,2461,250 hr service,oil & filter chg,P40-501,K. Osei
+unit-103,08/30/2025,2171,wouldn't start - no crank,changed relay K1,P40-207,M. Chen
+P40D-2301,09/02/2025,1931,running hot,cleaned strainer,,D. Novak
+204,09/19/2025,3066,HI TEMP lamp,cleaned strainer,,M. Chen
+P40D-2302,09/24/2025,2187,PM service due,oil & filter chg,P40-501,K. Osei
+P40D-2302,10/08/2025,2276,250 hr service,greased bearings,,M. Chen
+Pump 204,10/13/2025,3220,PM service due,greased bearings,,M. Chen
+Pump 106,10/26/2025,3020,temp light on,"belt broken, replaced",P40-311,D. Novak
+203,10/26/2025,3087,running hot,R&R fan belt,P40-311,D. Novak
+unit-201,11/01/2025,-2677,high temp shutdown,cooling internal - reported to field shop,,A. Patel
+#107,11/03/2025,3173,dead on key,"start fuse out, new F2",P40-015,J. Ruiz
+Pump 105,11/14/2025,2975,wouldn't start - no crank,"start fuse out, new F2",,M. Chen
+P40E-1401,12/02/2025,2887,HI TEMP lamp,belt loose - adjusted,,J. Ruiz
+#106,12/04/2025,3276,high temp shutdown,"strainer clogged w/ silt, cleaned",,J. Ruiz
+P40D-2307,12/17/2025,3458,temp light on,clnd intake strnr,,A. Patel
+204,12/25/2025,3697,"overheated, shut down",clnd intake strnr,,D. Novak
+unit-107,01/14/2036,3392,250 hr service,greased bearings,,J. Ruiz
+#203,02/06/2026,3759,running hot,"strainer clogged w/ silt, cleaned",,K. Osei
+Pump 104,02/13/2026,3434,high temp shutdown,"belt broken, replaced",P40-311,J. Ruiz
+Pump 202,02/24/2026,3646,high temp shutdown,belt loose - adjusted,,A. Patel
+unit-201,02/25/2026,3429,HI TEMP lamp,clnd intake strnr,,J. Ruiz
+P40D-2308,03/12/2026,4126,high temp shutdown,"strainer clogged w/ silt, cleaned",,D. Novak
+P40D-2306,03/30/2026,0,running hot,new fan belt,P40-311,D. Novak
+P40E-1402,04/10/2026,3932,temp light on,intake screen cleared,,A. Patel
+#107,04/17/2026,4244,no crnk,R&R K1,P40-207,A. Patel
+Pump 202,04/21/2026,4007,250 hr service,oil & filter chg,P40-501,J. Ruiz
+#202,04/29/2026,4058,"overheated, shut down",intake screen cleared,,K. Osei
+#106,04/30/2036,4265,PM service due,,P40-501,D. Novak
+unit-109,05/16/2026,4583,high temp shutdown,tightened fan belt,,M. Chen
+Pump 103,05/19/2026,4136,scheduled service,"PM service, oil + filter",P40-501,A. Patel
+Pump 104,05/24/2026,-4087,"overheated, shut down",cooling internal - reported to field shop,,M. Chen
+unit-201,05/25/2026,4003,temp lite on,cooling internal - reported to field shop,,A. Patel
+Pump 105,05/26/2026,4182,temp lite on,adj belt tension,,K. Osei
+Pump 103,05/31/2026,3958,scheduled service,oil & filter chg,P40-501,J. Ruiz
+unit-105,06/01/2026,4224,"overheated, shut down",clnd intake strnr,,K. Osei
+Pump 203,06/07/2026,0,overheating,"strainer clogged w/ silt, cleaned",,K. Osei
+102,06/10/2026,3892,overheating,clnd intake strnr,,D. Novak
+#201,06/25/2026,3989,high temp shutdown,intake screen cleared,,J. Ruiz
+Pump 105,06/26/2026,4398,eng wont crank,new start relay,P40-207,D. Novak
+Pump 105,06/28/2026,4213,HI TEMP lamp,,,A. Patel
+#106,07/06/2053,4716,"overheated, shut down","strainer clogged w/ silt, cleaned",,J. Ruiz
+Pump 107,07/15/2026,,"overheated, shut down",cleaned strainer,,M. Chen
+unit-106,07/17/2026,4791,no crank,R&R K1,P40-207,M. Chen
+unit-201,07/21/2026,4359,running hot,"strainer clogged w/ silt, cleaned",,D. Novak
+unit-103,07/24/2053,4492,high temp shutdown,intake screen cleared,,M. Chen
+P40D-2306,07/28/2026,4869,250 hr service,,P40-501,K. Osei
+P40D-2301,08/19/2026,4242,overheating,intake screen cleared,,K. Osei
+202,08/27/2026,4818,high temp shutdown,cooling internal - reported to field shop,,K. Osei
+104,09/04/2026,5276,temp lite on,cleaned strainer,,A. Patel
+#101,09/07/2026,4358,running hot,cleaned strainer,,J. Ruiz
+P40D-2308,09/09/2036,5306,no crnk,"key sw wiring bad, to field maint",,D. Novak
+Pump 204,09/15/2026,5356,"overheated, shut down",new fan belt,P40-311,D. Novak
+P40D-2301,09/25/2026,4471,dead on key,changed relay K1,P40-207,K. Osei
+unit-107,10/22/2025,1000,"training demo, do not use",,,trainee
+P40D-2306,07/30/2026,1000,TRAINING,,,J. Ruiz
+unit-105,10/10/2025,1000,"training demo, do not use",,,trainee

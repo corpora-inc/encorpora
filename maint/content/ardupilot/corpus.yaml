@@ -1,0 +1,67 @@
+# ArduPilot pre-arm safety checks: one table of failure messages (Message | Cause | Solution) from the
+# ArduPilot wiki, as a pack of its own. The wiki is licensed CC BY-SA 3.0 Unported; that share-alike
+# license stays with this pack alone, so it never merges into another pack. Attribution and license are
+# in the source row and in pack_meta (attribution, license, license_url) for the app to show.
+#
+# Structure is deterministic (harvest/pipeline/harvest_pipeline/maint/tables.py): each row is a symptom,
+# a small fault tree (message -> cause as a facet -> the solution's sentences as ordered actions) and a
+# signal pattern for the message as the autopilot sends it ("PreArm: " + the text, numbers and instance
+# letters filled in). The only model output is the symptoms' plain-language synonyms (Sonnet, cached,
+# the row's own text as the only input).
+#
+#   harvest-bake fetch maint/content/ardupilot/corpus.yaml
+#   harvest-bake maint synonyms maint/content/ardupilot/corpus.yaml      # the model step; cached
+#   harvest-bake maint table-build maint/content/ardupilot/corpus.yaml --harvest "$HARVEST_BIN"
+corpus_id: ardupilot-prearm
+pack_id: ardupilot-prearm
+lang: en
+version: 2026.11.28-5
+
+sources:
+  - id: ardupilot-prearm
+    title: "Pre-Arm Safety Checks (ArduPilot wiki, Rover; source common/source/docs/common-prearm-safety-checks.rst)"
+    publisher: ArduPilot Dev Team
+    url: https://ardupilot.org/rover/docs/common-prearm-safety-checks.html
+    license: "CC-BY-SA-3.0 (Creative Commons Attribution-ShareAlike 3.0 Unported), © Copyright 2024, ArduPilot Dev Team"
+    distribution: "none printed; published under CC BY-SA 3.0 Unported"
+    edition: "© Copyright 2024, ArduPilot Dev Team; page as retrieved 2026-11-28"
+    media_type: text/html
+    parser: maint-table-html
+    parser_options:
+      id_prefix: prearm
+      citation_prefix: "ArduPilot wiki, Pre-Arm Safety Checks"
+      columns: {message: 0, cause: 1, solution: 2}
+      signal_kind: mavlink.statustext
+      signal_prefix: "PreArm: "
+    fetch: {kind: manual, path: ~/.cache/harvest/raw/maint/ardupilot/prearm.html,
+            url: "https://ardupilot.org/rover/docs/common-prearm-safety-checks.html"}
+
+equipment:
+  - {id: ardupilot-rover, name: "ArduPilot Rover / boat", aliases: [ardupilot rover, ardupilot boat, rover, boat]}
+
+maint:
+  presentations:    # how each symptom shows up, for search from a technician's own words (maint presentations)
+    cache_dir: cache/presentations
+    author: {backend: claude-cli, model: sonnet, max_week_pct: 60}
+  learn:            # practice items from the pack's structure; the readers gate them (harvest-bake maint learn)
+    cache_dir: cache/learn
+    readers:
+      solver-sonnet: {reader: with_source, author: {backend: claude-cli, model: sonnet, max_week_pct: 60}}
+      options-sonnet: {reader: options_only, author: {backend: claude-cli, model: sonnet, max_week_pct: 60}}
+      nosource-sonnet: {reader: no_source, author: {backend: claude-cli, model: sonnet, max_week_pct: 60}}
+      nosource-gemma: {reader: no_source, author: {backend: openai-compatible, model: gemma-4-26b-a4b,
+                       base_url: "http://127.0.0.1:8093/v1", mode: json_schema, timeout: 1800, temperature: 0,
+                       extra: {chat_template_kwargs: {enable_thinking: false}}}}
+  kind: table
+  cache_dir: cache
+  ledger: cache/ledger.jsonl
+  cause_label: Cause
+  synonyms:
+    author: {backend: claude-cli, model: sonnet, max_week_pct: 60, timeout: 1800}
+  attribution: "Pre-Arm Safety Checks, ArduPilot wiki. © Copyright 2024, ArduPilot Dev Team. Licensed CC BY-SA 3.0 Unported."
+  license: CC-BY-SA-3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0/
+  signal_kinds:
+    - {kind: mavlink.statustext, label: "Autopilot message (STATUSTEXT)", example: "PreArm: Battery below minimum arming voltage"}
+
+embedder: {kind: hash}
