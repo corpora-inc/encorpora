@@ -1,0 +1,113 @@
+{
+ "format": "harvest-assets/1",
+ "assets": [
+  {
+   "asset_id": "unit-101",
+   "equip_id": "model-40-diesel",
+   "serial": "P40D-2301",
+   "name": "Pump 101",
+   "attrs": {},
+   "hours": null,
+   "events": []
+  },
+  {
+   "asset_id": "unit-102",
+   "equip_id": "model-40-diesel",
+   "serial": "P40D-2302",
+   "name": "Pump 102",
+   "attrs": {},
+   "hours": null,
+   "events": []
+  },
+  {
+   "asset_id": "unit-103",
+   "equip_id": "model-40-diesel",
+   "serial": "P40D-2303",
+   "name": "Pump 103",
+   "attrs": {},
+   "hours": null,
+   "events": []
+  },
+  {
+   "asset_id": "unit-104",
+   "equip_id": "model-40-diesel",
+   "serial": "P40D-2304",
+   "name": "Pump 104",
+   "attrs": {},
+   "hours": null,
+   "events": []
+  },
+  {
+   "asset_id": "unit-105",
+   "equip_id": "model-40-diesel",
+   "serial": "P40D-2305",
+   "name": "Pump 105",
+   "attrs": {},
+   "hours": null,
+   "events": []
+  },
+  {
+   "asset_id": "unit-106",
+   "equip_id": "model-40-diesel",
+   "serial": "P40D-2306",
+   "name": "Pump 106",
+   "attrs": {},
+   "hours": null,
+   "events": []
+  },
+  {
+   "asset_id": "unit-107",
+   "equip_id": "model-40-diesel",
+   "serial": "P40D-2307",
+   "name": "Pump 107",
+   "attrs": {},
+   "hours": null,
+   "events": []
+  },
+  {
+   "asset_id": "unit-108",
+   "equip_id": "model-40-diesel",
+   "serial": "P40D-2308",
+   "name": "Pump 108",
+   "attrs": {},
+   "hours": null,
+   "events": []
+  },
+  {
+   "asset_id": "unit-201",
+   "equip_id": "model-40-electric",
+   "serial": "P40E-1401",
+   "name": "Pump 201",
+   "attrs": {},
+   "hours": null,
+   "events": []
+  },
+  {
+   "asset_id": "unit-202",
+   "equip_id": "model-40-electric",
+   "serial": "P40E-1402",
+   "name": "Pump 202",
+   "attrs": {},
+   "hours": null,
+   "events": []
+  },
+  {
+   "asset_id": "unit-203",
+   "equip_id": "model-40-electric",
+   "serial": "P40E-1403",
+   "name": "Pump 203",
+   "attrs": {},
+   "hours": null,
+   "events": []
+  },
+  {
+   "asset_id": "unit-204",
+   "equip_id": "model-40-electric",
+   "serial": "P40E-1404",
+   "name": "Pump 204",
+   "attrs": {},
+   "hours": null,
+   "events": []
+  }
+ ]
+}

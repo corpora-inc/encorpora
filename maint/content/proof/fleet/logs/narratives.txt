@@ -1,0 +1,91 @@
+03 Mar 25 - unit-102: overheating. R&R fan belt (P40-311). 1713 hrs. -AP
+
+07 Mar 25 - #107: overheated, shut down. new fan belt (P40-311). 1598 hrs. -AP
+
+17 Mar 25 - #104: eng wont crank. R&R K1 (P40-207). 1253 hrs. -MC
+
+After action, 27 March 2025. unit-107 reported temp light on. internal cooling fault, sent to shop. 1733 hrs. Reported by D. Novak.
+
+After action, 31 March 2025. unit-203 reported overheated, shut down. internal cooling fault, sent to shop. 1732 hrs. Reported by M. Chen.
+
+After action, 07 April 2025. #101 reported dead on key. R&R K1 (P40-207). 973 hrs. Reported by K. Osei.
+
+After action, 04 July 2025. Pump 104 reported ENGINE NO CRANK. K1 relay swapped out (P40-207). 1392 hrs. Reported by M. Chen.
+
+28 May 25 - P40D-2308: overheated, shut down. R&R fan belt (P40-311). 2279 hrs. -AP
+
+03 Jun 25 - P40D-2307: eng wont crank. R&R battery (P40-118). 2181 hrs. -AP
+
+12 Jun 25 - P40D-2308: wouldn't start - no crank.  (P40-207). 2379 hrs. -MC
+
+19 Jul 25 - #103: HI TEMP lamp. internal cooling fault, sent to shop. 1906 hrs. -KO
+
+After action, 19 July 2025. #106 reported HI TEMP lamp. clnd intake strnr. 2367 hrs. Reported by A. Patel.
+
+After action, 29 July 2025. 102 reported scheduled service. greased bearings. 1813 hrs. Reported by A. Patel.
+
+30 Jul 25 - P40D-2301: HI TEMP lamp. belt broken, replaced (P40-311). 1708 hrs. -JR
+
+01 Aug 25 - 103: ENGINE NO CRANK. wiring fault, referred up. 1991 hrs. -JR
+
+03 Aug 25 - 107: temp light on. cleaned strainer. 2588 hrs. -AP
+
+03 Aug 25 - P40E-1401: overheating. belt loose - adjusted. 2106 hrs. -AP
+
+After action, 21 August 2025. unit-101 reported temp light on. clnd intake strnr. 1848 hrs. Reported by K. Osei.
+
+After action, 03 September 2025. P40D-2304 reported 250 hr service. PM service, oil + filter (P40-501). 2357 hrs. Reported by M. Chen.
+
+03 Sep 25 - 105: PM service due. oil & filter chg (P40-501). 2494 hrs. -MC
+
+After action, 12 October 2025. Pump 203 reported running hot. clnd intake strnr. 2990 hrs. Reported by D. Novak.
+
+11 Nov 25 - Pump 115: scheduled service. greased bearings. 2835 hrs. -KO
+
+After action, 12 November 2025. #102 reported no crank. new battery installed (P40-118). 2517 hrs. Reported by J. Ruiz.
+
+After action, 23 November 2025. P40D-2305 reported PM service due. oil & filter chg (P40-501). 3025 hrs. Reported by M. Chen.
+
+28 Nov 25 - P40E-1402: PM service due. greased bearings. -MC
+
+04 Dec 25 - P40E-1403: HI TEMP lamp. adj belt tension. 3345 hrs. -DN
+
+After action, 05 December 2025. 204 reported dead on key. batt on charger overnight. 2986 hrs. Reported by K. Osei.
+
+After action, 12 December 2035. 108 reported dead on key. K1 relay swapped out (P40-207). 3554 hrs. Reported by J. Ruiz.
+
+After action, 26 December 2025. #106 reported HI TEMP lamp. adj belt tension. 3430 hrs. Reported by M. Chen.
+
+After action, 02 January 2026. P40D-2308 reported running hot. new fan belt (P40-311). 3688 hrs. Reported by D. Novak.
+
+09 Jan 26 - #108: running hot. strainer clogged w/ silt, cleaned. 373810 hrs. -JR
+
+After action, 16 January 2026. unit-104 reported 250 hr service. PM service, oil + filter (P40-501). 3241 hrs. Reported by M. Chen.
+
+25 Jan 26 - #204: running hot. strainer clogged w/ silt, cleaned. 388340 hrs. -DN
+
+After action, 04 February 2026. #202 reported scheduled service. oil & filter chg (P40-501). 3508 hrs. Reported by D. Novak.
+
+After action, 16 February 2026. Pump 107 reported 250 hr service. greased bearings. 3871 hrs. Reported by D. Novak.
+
+After action, 24 February 2026. 108 reported overheating. internal cooling fault, sent to shop. 3606 hrs. Reported by M. Chen.
+
+27 Feb 26 - #204: running hot. R&R fan belt (P40-311). -4096 hrs. -MC
+
+20 Mar 26 - #203: temp lite on. R&R fan belt (P40-311). 4034 hrs. -JR
+
+30 Mar 26 - 107: high temp shutdown. clnd intake strnr. 4131 hrs. -DN
+
+13 May 26 - Pump 202: running hot. belt broken, replaced (P40-311). 4143 hrs. -AP
+
+After action, 07 June 2026. 201 reported overheated, shut down. internal cooling fault, sent to shop. 4086 hrs. Reported by M. Chen.
+
+24 Aug 26 - #101: HI TEMP lamp. clnd intake strnr. 4275 hrs. -KO
+
+29 Sep 26 - P40D-2399: scheduled service. PM service, oil + filter (P40-501). -DN
+
+30 Sep 26 - P40E-1401: overheating. cooling internal - reported to field shop. 4811 hrs. -JR
+
+23 Aug 26 - 103: test record for new tablet. . 1000 hrs. -a
+
+28 Aug 25 - P40D-2307: TRAINING. . 1000 hrs. -t

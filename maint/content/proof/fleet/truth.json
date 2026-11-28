@@ -1,0 +1,3318 @@
+{
+ "format": "maint-log-truth/1",
+ "events": 183,
+ "records": [
+  {
+   "source": "N",
+   "event": "E0001",
+   "noise": [
+    "id_misalign"
+   ],
+   "truth": {
+    "asset_id": "unit-108",
+    "date": "2025-03-03",
+    "hours": 1713.2,
+    "symptom_id": "s-pump-overheats",
+    "action": "Replace the cooling fan belt.",
+    "part": "P40-311",
+    "tech": "A. Patel"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:1",
+   "repeat": false
+  },
+  {
+   "source": "N",
+   "event": "E0002",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-107",
+    "date": "2025-03-07",
+    "hours": 1598.2,
+    "symptom_id": "s-pump-overheats",
+    "action": "Replace the cooling fan belt.",
+    "part": "P40-311",
+    "tech": "A. Patel"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:2",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "E0003",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-108",
+    "date": "2025-03-15",
+    "hours": 1785.2,
+    "symptom_id": "s-engine-will-not-crank",
+    "action": "Key switch or wiring fault. Refer to field maintenance for wiring repair.",
+    "part": null,
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:2",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "E0004",
+   "noise": [
+    "invalid"
+   ],
+   "truth": {
+    "asset_id": "unit-202",
+    "date": "2025-03-15",
+    "hours": null,
+    "symptom_id": "s-pump-overheats",
+    "action": "Adjust the belt tension.",
+    "part": null,
+    "tech": "A. Patel"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:3",
+   "repeat": false
+  },
+  {
+   "source": "N",
+   "event": "E0005",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-104",
+    "date": "2025-03-17",
+    "hours": 1253.4,
+    "symptom_id": "s-engine-will-not-crank",
+    "action": "Replace starter relay K1.",
+    "part": "P40-207",
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:3",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "E0006",
+   "noise": [
+    "id_misalign"
+   ],
+   "truth": {
+    "asset_id": "unit-101",
+    "date": "2025-03-20",
+    "hours": 863.5,
+    "symptom_id": null,
+    "action": null,
+    "part": null,
+    "tech": "K. Osei"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:4",
+   "repeat": false
+  },
+  {
+   "source": "N",
+   "event": "E0007",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-107",
+    "date": "2025-03-27",
+    "hours": 1732.7,
+    "symptom_id": "s-pump-overheats",
+    "action": "Internal cooling fault. Report to the field maintenance shop.",
+    "part": null,
+    "tech": "D. Novak"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:4",
+   "repeat": true
+  },
+  {
+   "source": "A",
+   "event": "E0008",
+   "noise": [
+    "id_misalign"
+   ],
+   "truth": {
+    "asset_id": "unit-104",
+    "date": "2025-03-29",
+    "hours": 1331.4,
+    "symptom_id": "s-engine-will-not-crank",
+    "action": "Replace the battery. Refer to task 4-3.",
+    "part": "P40-118",
+    "tech": "A. Patel"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:2",
+   "repeat": true
+  },
+  {
+   "source": "N",
+   "event": "E0009",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-203",
+    "date": "2025-03-31",
+    "hours": 1732.2,
+    "symptom_id": "s-pump-overheats",
+    "action": "Internal cooling fault. Report to the field maintenance shop.",
+    "part": null,
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:5",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "E0010",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-106",
+    "date": "2025-04-01",
+    "hours": 1639.6,
+    "symptom_id": "s-engine-will-not-crank",
+    "action": "Charge the battery, then repeat the voltage test.",
+    "part": null,
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:5",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "E0011",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-103",
+    "date": "2025-04-03",
+    "hours": 1228.2,
+    "symptom_id": null,
+    "action": null,
+    "part": "P40-501",
+    "tech": "J. Ruiz"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:6",
+   "repeat": false
+  },
+  {
+   "source": "N",
+   "event": "E0012",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-101",
+    "date": "2025-04-07",
+    "hours": 973.2,
+    "symptom_id": "s-engine-will-not-crank",
+    "action": "Replace starter relay K1.",
+    "part": "P40-207",
+    "tech": "K. Osei"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:6",
+   "repeat": false
+  },
+  {
+   "source": "N",
+   "event": "E0013",
+   "noise": [
+    "wrong_date"
+   ],
+   "truth": {
+    "asset_id": "unit-104",
+    "date": "2025-04-07",
+    "hours": 1391.5,
+    "symptom_id": "s-engine-will-not-crank",
+    "action": "Replace starter relay K1.",
+    "part": "P40-207",
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:7",
+   "repeat": true
+  },
+  {
+   "source": "S",
+   "event": "E0014",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-204",
+    "date": "2025-04-12",
+    "hours": 2006.9,
+    "symptom_id": "s-pump-overheats",
+    "action": "Replace the cooling fan belt.",
+    "part": "P40-311",
+    "tech": "D. Novak"
+   },
+   "test_record": false,
+   "rec_id": "scans/scan-01.png",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "E0015",
+   "noise": [
+    "wrong_date"
+   ],
+   "truth": {
+    "asset_id": "unit-102",
+    "date": "2025-04-16",
+    "hours": 1158.1,
+    "symptom_id": "s-engine-will-not-crank",
+    "action": "Replace starter relay K1.",
+    "part": "P40-207",
+    "tech": "K. Osei"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:7",
+   "repeat": false
+  },
+  {
+   "source": "S",
+   "event": "E0016",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-105",
+    "date": "2025-04-24",
+    "hours": 1634.9,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "K. Osei"
+   },
+   "test_record": false,
+   "rec_id": "scans/scan-02.png",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0017",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-104",
+    "date": "2025-04-27",
+    "hours": 1518.1,
+    "symptom_id": null,
+    "action": null,
+    "part": null,
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:3",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0018",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-107",
+    "date": "2025-05-01",
+    "hours": 1956.3,
+    "symptom_id": "s-pump-overheats",
+    "action": "Adjust the belt tension.",
+    "part": null,
+    "tech": "J. Ruiz"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:4",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0019",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-105",
+    "date": "2025-05-05",
+    "hours": 1708.3,
+    "symptom_id": "s-engine-will-not-crank",
+    "action": "Replace the battery. Refer to task 4-3.",
+    "part": "P40-118",
+    "tech": "K. Osei"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:5",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0020",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-108",
+    "date": "2025-05-20",
+    "hours": 2225.2,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "J. Ruiz"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:6",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0021",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-102",
+    "date": "2025-05-24",
+    "hours": 1397.8,
+    "symptom_id": "s-pump-overheats",
+    "action": "Internal cooling fault. Report to the field maintenance shop.",
+    "part": null,
+    "tech": "K. Osei"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:7",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0022",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-107",
+    "date": "2025-05-24",
+    "hours": 2105.8,
+    "symptom_id": "s-pump-overheats",
+    "action": "Replace the cooling fan belt.",
+    "part": "P40-311",
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:8",
+   "repeat": true
+  },
+  {
+   "source": "A",
+   "event": "E0023",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-202",
+    "date": "2025-05-25",
+    "hours": 1888.2,
+    "symptom_id": "s-pump-overheats",
+    "action": "Adjust the belt tension.",
+    "part": null,
+    "tech": "J. Ruiz"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:9",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "E0024",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-204",
+    "date": "2025-05-26",
+    "hours": 2292.5,
+    "symptom_id": "s-pump-overheats",
+    "action": "Adjust the belt tension.",
+    "part": null,
+    "tech": "A. Patel"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:8",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "E0025",
+   "noise": [
+    "invalid"
+   ],
+   "truth": {
+    "asset_id": "unit-102",
+    "date": "2025-05-27",
+    "hours": null,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "J. Ruiz"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:9",
+   "repeat": true
+  },
+  {
+   "source": "S",
+   "event": "E0026",
+   "noise": [
+    "invalid"
+   ],
+   "truth": {
+    "asset_id": "unit-106",
+    "date": "2025-05-28",
+    "hours": null,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "A. Patel"
+   },
+   "test_record": false,
+   "rec_id": "scans/scan-03.png",
+   "repeat": false
+  },
+  {
+   "source": "N",
+   "event": "E0027",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-108",
+    "date": "2025-05-28",
+    "hours": 2279.3,
+    "symptom_id": "s-pump-overheats",
+    "action": "Replace the cooling fan belt.",
+    "part": "P40-311",
+    "tech": "A. Patel"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:8",
+   "repeat": true
+  },
+  {
+   "source": "N",
+   "event": "E0028",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-107",
+    "date": "2025-06-03",
+    "hours": 2180.8,
+    "symptom_id": "s-engine-will-not-crank",
+    "action": "Replace the battery. Refer to task 4-3.",
+    "part": "P40-118",
+    "tech": "A. Patel"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:9",
+   "repeat": false
+  },
+  {
+   "source": "S",
+   "event": "E0029",
+   "noise": [
+    "invalid",
+    "missing"
+   ],
+   "truth": {
+    "asset_id": "unit-105",
+    "date": "2025-06-04",
+    "hours": null,
+    "symptom_id": "s-engine-will-not-crank",
+    "action": "Turn the battery switch ON or replace fuse F2, then try to start. Does the engine crank now?",
+    "part": null,
+    "tech": "A. Patel"
+   },
+   "test_record": false,
+   "rec_id": "scans/scan-04.png",
+   "repeat": true
+  },
+  {
+   "source": "B",
+   "event": "E0030",
+   "noise": [
+    "id_misalign"
+   ],
+   "truth": {
+    "asset_id": "unit-202",
+    "date": "2025-06-04",
+    "hours": 1953.3,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "A. Patel"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:10",
+   "repeat": true
+  },
+  {
+   "source": "A",
+   "event": "E0031",
+   "noise": [
+    "wrong_date"
+   ],
+   "truth": {
+    "asset_id": "unit-102",
+    "date": "2025-06-08",
+    "hours": 1503.0,
+    "symptom_id": "s-engine-will-not-crank",
+    "action": "Replace starter relay K1.",
+    "part": "P40-207",
+    "tech": "J. Ruiz"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:10",
+   "repeat": false
+  },
+  {
+   "source": "N",
+   "event": "E0032",
+   "noise": [
+    "missing"
+   ],
+   "truth": {
+    "asset_id": "unit-108",
+    "date": "2025-06-12",
+    "hours": 2378.6,
+    "symptom_id": "s-engine-will-not-crank",
+    "action": null,
+    "part": "P40-207",
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:10",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0033",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-104",
+    "date": "2025-06-16",
+    "hours": 1857.4,
+    "symptom_id": "s-pump-overheats",
+    "action": "Adjust the belt tension.",
+    "part": null,
+    "tech": "D. Novak"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:11",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "E0034",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-104",
+    "date": "2025-06-26",
+    "hours": 1925.9,
+    "symptom_id": "s-engine-will-not-crank",
+    "action": "Replace the battery. Refer to task 4-3.",
+    "part": "P40-118",
+    "tech": "K. Osei"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:11",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0035",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-203",
+    "date": "2025-06-26",
+    "hours": 2296.7,
+    "symptom_id": "s-pump-overheats",
+    "action": "Adjust the belt tension.",
+    "part": null,
+    "tech": "D. Novak"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:12",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "E0036",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-103",
+    "date": "2025-07-01",
+    "hours": 1788.5,
+    "symptom_id": "s-pump-overheats",
+    "action": "Internal cooling fault. Report to the field maintenance shop.",
+    "part": null,
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:12",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0037",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-101",
+    "date": "2025-07-08",
+    "hours": 1556.5,
+    "symptom_id": null,
+    "action": null,
+    "part": "P40-501",
+    "tech": "D. Novak"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:13",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0038",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-106",
+    "date": "2025-07-12",
+    "hours": 2319.4,
+    "symptom_id": "s-pump-overheats",
+    "action": "Adjust the belt tension.",
+    "part": null,
+    "tech": "A. Patel"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:14",
+   "repeat": false
+  },
+  {
+   "source": "N",
+   "event": "E0039",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-103",
+    "date": "2025-07-19",
+    "hours": 1905.5,
+    "symptom_id": "s-pump-overheats",
+    "action": "Internal cooling fault. Report to the field maintenance shop.",
+    "part": null,
+    "tech": "K. Osei"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:11",
+   "repeat": true
+  },
+  {
+   "source": "N",
+   "event": "E0040",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-106",
+    "date": "2025-07-19",
+    "hours": 2366.9,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "A. Patel"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:12",
+   "repeat": true
+  },
+  {
+   "source": "A",
+   "event": "E0041",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-201",
+    "date": "2025-07-21",
+    "hours": 2018.0,
+    "symptom_id": "s-pump-overheats",
+    "action": "Adjust the belt tension.",
+    "part": null,
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:15",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0042",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-202",
+    "date": "2025-07-24",
+    "hours": 2274.4,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "K. Osei"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:16",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0043",
+   "noise": [
+    "wrong_date"
+   ],
+   "truth": {
+    "asset_id": "unit-204",
+    "date": "2025-07-25",
+    "hours": 2692.2,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "K. Osei"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:17",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "E0044",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-108",
+    "date": "2025-07-28",
+    "hours": 2655.6,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "D. Novak"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:13",
+   "repeat": false
+  },
+  {
+   "source": "N",
+   "event": "E0045",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-102",
+    "date": "2025-07-29",
+    "hours": 1813.1,
+    "symptom_id": null,
+    "action": null,
+    "part": null,
+    "tech": "A. Patel"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:13",
+   "repeat": false
+  },
+  {
+   "source": "N",
+   "event": "E0046",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-101",
+    "date": "2025-07-30",
+    "hours": 1707.5,
+    "symptom_id": "s-pump-overheats",
+    "action": "Replace the cooling fan belt.",
+    "part": "P40-311",
+    "tech": "J. Ruiz"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:14",
+   "repeat": false
+  },
+  {
+   "source": "N",
+   "event": "E0047",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-103",
+    "date": "2025-08-01",
+    "hours": 1991.4,
+    "symptom_id": "s-engine-will-not-crank",
+    "action": "Key switch or wiring fault. Refer to field maintenance for wiring repair.",
+    "part": null,
+    "tech": "J. Ruiz"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:15",
+   "repeat": false
+  },
+  {
+   "source": "N",
+   "event": "E0048",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-107",
+    "date": "2025-08-03",
+    "hours": 2588.2,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "A. Patel"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:16",
+   "repeat": false
+  },
+  {
+   "source": "N",
+   "event": "E0049",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-201",
+    "date": "2025-08-03",
+    "hours": 2105.5,
+    "symptom_id": "s-pump-overheats",
+    "action": "Adjust the belt tension.",
+    "part": null,
+    "tech": "A. Patel"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:17",
+   "repeat": true
+  },
+  {
+   "source": "A",
+   "event": "E0050",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-204",
+    "date": "2025-08-04",
+    "hours": 2757.2,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "K. Osei"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:18",
+   "repeat": true
+  },
+  {
+   "source": "A",
+   "event": "E0051",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-103",
+    "date": "2025-08-06",
+    "hours": 2025.0,
+    "symptom_id": "s-engine-will-not-crank",
+    "action": "Charge the battery, then repeat the voltage test.",
+    "part": null,
+    "tech": "D. Novak"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:19",
+   "repeat": true
+  },
+  {
+   "source": "A",
+   "event": "E0052",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-106",
+    "date": "2025-08-07",
+    "hours": 2496.2,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:20",
+   "repeat": true
+  },
+  {
+   "source": "B",
+   "event": "E0053",
+   "noise": [
+    "invalid"
+   ],
+   "truth": {
+    "asset_id": "unit-107",
+    "date": "2025-08-07",
+    "hours": null,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "D. Novak"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:14",
+   "repeat": true
+  },
+  {
+   "source": "A",
+   "event": "E0054",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-101",
+    "date": "2025-08-10",
+    "hours": 1779.0,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "J. Ruiz"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:21",
+   "repeat": true
+  },
+  {
+   "source": "B",
+   "event": "E0055",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-101",
+    "date": "2025-08-13",
+    "hours": 1790.9,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "J. Ruiz"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:15",
+   "repeat": true
+  },
+  {
+   "source": "A",
+   "event": "E0056",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-107",
+    "date": "2025-08-14",
+    "hours": 2660.5,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "A. Patel"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:22",
+   "repeat": true
+  },
+  {
+   "source": "A",
+   "event": "E0057",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-106",
+    "date": "2025-08-16",
+    "hours": 2555.2,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "D. Novak"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:23",
+   "repeat": true
+  },
+  {
+   "source": "B",
+   "event": "E0058",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-108",
+    "date": "2025-08-16",
+    "hours": 2779.1,
+    "symptom_id": "s-pump-overheats",
+    "action": "Adjust the belt tension.",
+    "part": null,
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:16",
+   "repeat": true
+  },
+  {
+   "source": "A",
+   "event": "E0059",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-202",
+    "date": "2025-08-17",
+    "hours": 2433.6,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:24",
+   "repeat": true
+  },
+  {
+   "source": "A",
+   "event": "E0060",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-204",
+    "date": "2025-08-19",
+    "hours": 2863.5,
+    "symptom_id": "s-pump-overheats",
+    "action": "Adjust the belt tension.",
+    "part": null,
+    "tech": "K. Osei"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:25",
+   "repeat": true
+  },
+  {
+   "source": "B",
+   "event": "E0061",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-106",
+    "date": "2025-08-20",
+    "hours": 2579.4,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "K. Osei"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:17",
+   "repeat": true
+  },
+  {
+   "source": "N",
+   "event": "E0062",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-101",
+    "date": "2025-08-21",
+    "hours": 1847.9,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "K. Osei"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:18",
+   "repeat": true
+  },
+  {
+   "source": "A",
+   "event": "E0063",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-105",
+    "date": "2025-08-29",
+    "hours": 2461.0,
+    "symptom_id": null,
+    "action": null,
+    "part": "P40-501",
+    "tech": "K. Osei"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:26",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0064",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-103",
+    "date": "2025-08-30",
+    "hours": 2171.0,
+    "symptom_id": "s-engine-will-not-crank",
+    "action": "Replace starter relay K1.",
+    "part": "P40-207",
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:27",
+   "repeat": true
+  },
+  {
+   "source": "B",
+   "event": "E0065",
+   "noise": [
+    "missing"
+   ],
+   "truth": {
+    "asset_id": "unit-104",
+    "date": "2025-08-30",
+    "hours": 2336.1,
+    "symptom_id": null,
+    "action": null,
+    "part": null,
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:18",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0066",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-101",
+    "date": "2025-09-02",
+    "hours": 1931.4,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "D. Novak"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:28",
+   "repeat": true
+  },
+  {
+   "source": "B",
+   "event": "E0067",
+   "noise": [
+    "out_of_fleet"
+   ],
+   "truth": {
+    "asset_id": null,
+    "date": "2025-09-02",
+    "hours": 2489.0,
+    "symptom_id": "s-engine-will-not-crank",
+    "action": "Replace the battery. Refer to task 4-3.",
+    "part": "P40-118",
+    "tech": "D. Novak"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:19",
+   "repeat": false
+  },
+  {
+   "source": "N",
+   "event": "E0068",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-104",
+    "date": "2025-09-03",
+    "hours": 2356.9,
+    "symptom_id": null,
+    "action": null,
+    "part": "P40-501",
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:19",
+   "repeat": false
+  },
+  {
+   "source": "N",
+   "event": "E0069",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-105",
+    "date": "2025-09-03",
+    "hours": 2493.5,
+    "symptom_id": null,
+    "action": null,
+    "part": "P40-501",
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:20",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "E0070",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-108",
+    "date": "2025-09-09",
+    "hours": 2934.5,
+    "symptom_id": "s-engine-will-not-crank",
+    "action": "Replace the battery. Refer to task 4-3.",
+    "part": "P40-118",
+    "tech": "J. Ruiz"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:20",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "E0071",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-106",
+    "date": "2025-09-10",
+    "hours": 2717.7,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "K. Osei"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:21",
+   "repeat": true
+  },
+  {
+   "source": "A",
+   "event": "E0072",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-204",
+    "date": "2025-09-19",
+    "hours": 3066.5,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:29",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "E0073",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-102",
+    "date": "2025-09-21",
+    "hours": 2164.9,
+    "symptom_id": "s-pump-overheats",
+    "action": "Internal cooling fault. Report to the field maintenance shop.",
+    "part": null,
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:22",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0074",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-102",
+    "date": "2025-09-24",
+    "hours": 2187.4,
+    "symptom_id": null,
+    "action": null,
+    "part": "P40-501",
+    "tech": "K. Osei"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:30",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "E0075",
+   "noise": [
+    "wrong_date"
+   ],
+   "truth": {
+    "asset_id": "unit-102",
+    "date": "2025-09-28",
+    "hours": 2215.3,
+    "symptom_id": "s-engine-will-not-crank",
+    "action": "Key switch or wiring fault. Refer to field maintenance for wiring repair.",
+    "part": null,
+    "tech": "J. Ruiz"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:23",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "E0076",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-102",
+    "date": "2025-10-03",
+    "hours": 2247.8,
+    "symptom_id": "s-engine-will-not-crank",
+    "action": "Charge the battery, then repeat the voltage test.",
+    "part": null,
+    "tech": "J. Ruiz"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:24",
+   "repeat": true
+  },
+  {
+   "source": "B",
+   "event": "E0077",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-201",
+    "date": "2025-10-03",
+    "hours": 2468.8,
+    "symptom_id": null,
+    "action": null,
+    "part": null,
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:25",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0078",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-102",
+    "date": "2025-10-08",
+    "hours": 2276.5,
+    "symptom_id": null,
+    "action": null,
+    "part": null,
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:31",
+   "repeat": false
+  },
+  {
+   "source": "N",
+   "event": "E0079",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-203",
+    "date": "2025-10-12",
+    "hours": 2990.2,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "D. Novak"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:21",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0080",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-204",
+    "date": "2025-10-13",
+    "hours": 3220.2,
+    "symptom_id": null,
+    "action": null,
+    "part": null,
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:32",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "E0081",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-201",
+    "date": "2025-10-14",
+    "hours": 2545.2,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:26",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0082",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-106",
+    "date": "2025-10-26",
+    "hours": 3019.7,
+    "symptom_id": "s-pump-overheats",
+    "action": "Replace the cooling fan belt.",
+    "part": "P40-311",
+    "tech": "D. Novak"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:33",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0083",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-203",
+    "date": "2025-10-26",
+    "hours": 3086.8,
+    "symptom_id": "s-pump-overheats",
+    "action": "Replace the cooling fan belt.",
+    "part": "P40-311",
+    "tech": "D. Novak"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:34",
+   "repeat": true
+  },
+  {
+   "source": "A",
+   "event": "E0084",
+   "noise": [
+    "invalid"
+   ],
+   "truth": {
+    "asset_id": "unit-201",
+    "date": "2025-11-01",
+    "hours": null,
+    "symptom_id": "s-pump-overheats",
+    "action": "Internal cooling fault. Report to the field maintenance shop.",
+    "part": null,
+    "tech": "A. Patel"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:35",
+   "repeat": true
+  },
+  {
+   "source": "A",
+   "event": "E0085",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-107",
+    "date": "2025-11-03",
+    "hours": 3172.6,
+    "symptom_id": "s-engine-will-not-crank",
+    "action": "Turn the battery switch ON or replace fuse F2, then try to start. Does the engine crank now?",
+    "part": "P40-015",
+    "tech": "J. Ruiz"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:36",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "E0086",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-108",
+    "date": "2025-11-04",
+    "hours": 3300.4,
+    "symptom_id": null,
+    "action": null,
+    "part": "P40-501",
+    "tech": "J. Ruiz"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:27",
+   "repeat": false
+  },
+  {
+   "source": "N",
+   "event": "E0087",
+   "noise": [
+    "out_of_fleet"
+   ],
+   "truth": {
+    "asset_id": null,
+    "date": "2025-11-11",
+    "hours": 2834.6,
+    "symptom_id": null,
+    "action": null,
+    "part": null,
+    "tech": "K. Osei"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:22",
+   "repeat": false
+  },
+  {
+   "source": "N",
+   "event": "E0088",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-102",
+    "date": "2025-11-12",
+    "hours": 2517.0,
+    "symptom_id": "s-engine-will-not-crank",
+    "action": "Replace the battery. Refer to task 4-3.",
+    "part": "P40-118",
+    "tech": "J. Ruiz"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:23",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0089",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-105",
+    "date": "2025-11-14",
+    "hours": 2974.6,
+    "symptom_id": "s-engine-will-not-crank",
+    "action": "Turn the battery switch ON or replace fuse F2, then try to start. Does the engine crank now?",
+    "part": null,
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:37",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "E0090",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-203",
+    "date": "2025-11-18",
+    "hours": 3234.4,
+    "symptom_id": "s-pump-overheats",
+    "action": "Internal cooling fault. Report to the field maintenance shop.",
+    "part": null,
+    "tech": "K. Osei"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:28",
+   "repeat": true
+  },
+  {
+   "source": "B",
+   "event": "E0091",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-203",
+    "date": "2025-11-22",
+    "hours": 3258.4,
+    "symptom_id": "s-pump-overheats",
+    "action": "Adjust the belt tension.",
+    "part": null,
+    "tech": "K. Osei"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:29",
+   "repeat": true
+  },
+  {
+   "source": "N",
+   "event": "E0092",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-105",
+    "date": "2025-11-23",
+    "hours": 3024.9,
+    "symptom_id": null,
+    "action": null,
+    "part": "P40-501",
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:24",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "E0093",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-101",
+    "date": "2025-11-25",
+    "hours": 2482.6,
+    "symptom_id": "s-engine-will-not-crank",
+    "action": "Replace starter relay K1.",
+    "part": "P40-207",
+    "tech": "D. Novak"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:30",
+   "repeat": false
+  },
+  {
+   "source": "N",
+   "event": "E0094",
+   "noise": [
+    "missing"
+   ],
+   "truth": {
+    "asset_id": "unit-202",
+    "date": "2025-11-28",
+    "hours": null,
+    "symptom_id": null,
+    "action": null,
+    "part": null,
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:25",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0095",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-201",
+    "date": "2025-12-02",
+    "hours": 2887.1,
+    "symptom_id": "s-pump-overheats",
+    "action": "Adjust the belt tension.",
+    "part": null,
+    "tech": "J. Ruiz"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:38",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0096",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-106",
+    "date": "2025-12-04",
+    "hours": 3276.3,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "J. Ruiz"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:39",
+   "repeat": false
+  },
+  {
+   "source": "N",
+   "event": "E0097",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-203",
+    "date": "2025-12-04",
+    "hours": 3344.8,
+    "symptom_id": "s-pump-overheats",
+    "action": "Adjust the belt tension.",
+    "part": null,
+    "tech": "D. Novak"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:26",
+   "repeat": true
+  },
+  {
+   "source": "N",
+   "event": "E0098",
+   "noise": [
+    "id_misalign"
+   ],
+   "truth": {
+    "asset_id": "unit-104",
+    "date": "2025-12-05",
+    "hours": 2986.4,
+    "symptom_id": "s-engine-will-not-crank",
+    "action": "Charge the battery, then repeat the voltage test.",
+    "part": null,
+    "tech": "K. Osei"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:27",
+   "repeat": false
+  },
+  {
+   "source": "N",
+   "event": "E0099",
+   "noise": [
+    "wrong_date"
+   ],
+   "truth": {
+    "asset_id": "unit-108",
+    "date": "2025-12-12",
+    "hours": 3553.6,
+    "symptom_id": "s-engine-will-not-crank",
+    "action": "Replace starter relay K1.",
+    "part": "P40-207",
+    "tech": "J. Ruiz"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:28",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0100",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-107",
+    "date": "2025-12-17",
+    "hours": 3457.5,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "A. Patel"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:40",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "E0101",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-108",
+    "date": "2025-12-19",
+    "hours": 3599.1,
+    "symptom_id": "s-engine-will-not-crank",
+    "action": "Replace starter relay K1.",
+    "part": "P40-207",
+    "tech": "J. Ruiz"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:31",
+   "repeat": true
+  },
+  {
+   "source": "S",
+   "event": "E0102",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-201",
+    "date": "2025-12-25",
+    "hours": 3030.9,
+    "symptom_id": "s-pump-overheats",
+    "action": "Adjust the belt tension.",
+    "part": null,
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "scans/scan-05.png",
+   "repeat": true
+  },
+  {
+   "source": "A",
+   "event": "E0103",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-204",
+    "date": "2025-12-25",
+    "hours": 3697.0,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "D. Novak"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:41",
+   "repeat": false
+  },
+  {
+   "source": "N",
+   "event": "E0104",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-106",
+    "date": "2025-12-26",
+    "hours": 3429.5,
+    "symptom_id": "s-pump-overheats",
+    "action": "Adjust the belt tension.",
+    "part": null,
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:29",
+   "repeat": true
+  },
+  {
+   "source": "S",
+   "event": "E0105",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-203",
+    "date": "2025-12-27",
+    "hours": 3489.7,
+    "symptom_id": null,
+    "action": null,
+    "part": "P40-501",
+    "tech": "J. Ruiz"
+   },
+   "test_record": false,
+   "rec_id": "scans/scan-06.png",
+   "repeat": false
+  },
+  {
+   "source": "N",
+   "event": "E0106",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-108",
+    "date": "2026-01-02",
+    "hours": 3687.8,
+    "symptom_id": "s-pump-overheats",
+    "action": "Replace the cooling fan belt.",
+    "part": "P40-311",
+    "tech": "D. Novak"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:30",
+   "repeat": false
+  },
+  {
+   "source": "N",
+   "event": "E0107",
+   "noise": [
+    "invalid"
+   ],
+   "truth": {
+    "asset_id": "unit-108",
+    "date": "2026-01-09",
+    "hours": null,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "J. Ruiz"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:31",
+   "repeat": true
+  },
+  {
+   "source": "B",
+   "event": "E0108",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-204",
+    "date": "2026-01-09",
+    "hours": 3779.4,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:32",
+   "repeat": true
+  },
+  {
+   "source": "B",
+   "event": "E0109",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-105",
+    "date": "2026-01-11",
+    "hours": 3329.6,
+    "symptom_id": "s-engine-will-not-crank",
+    "action": "Turn the battery switch ON or replace fuse F2, then try to start. Does the engine crank now?",
+    "part": "P40-015",
+    "tech": "A. Patel"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:33",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0110",
+   "noise": [
+    "id_misalign",
+    "wrong_date"
+   ],
+   "truth": {
+    "asset_id": "unit-202",
+    "date": "2026-01-14",
+    "hours": 3391.7,
+    "symptom_id": null,
+    "action": null,
+    "part": null,
+    "tech": "J. Ruiz"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:42",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "E0111",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-105",
+    "date": "2026-01-15",
+    "hours": 3355.6,
+    "symptom_id": "s-engine-will-not-crank",
+    "action": "Charge the battery, then repeat the voltage test.",
+    "part": null,
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:34",
+   "repeat": true
+  },
+  {
+   "source": "N",
+   "event": "E0112",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-104",
+    "date": "2026-01-16",
+    "hours": 3240.9,
+    "symptom_id": null,
+    "action": null,
+    "part": "P40-501",
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:32",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "E0113",
+   "noise": [
+    "invalid"
+   ],
+   "truth": {
+    "asset_id": "unit-203",
+    "date": "2026-01-19",
+    "hours": null,
+    "symptom_id": null,
+    "action": null,
+    "part": "P40-501",
+    "tech": "A. Patel"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:35",
+   "repeat": false
+  },
+  {
+   "source": "S",
+   "event": "E0114",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-104",
+    "date": "2026-01-24",
+    "hours": 3295.3,
+    "symptom_id": "s-pump-overheats",
+    "action": "Replace the cooling fan belt.",
+    "part": "P40-311",
+    "tech": "J. Ruiz"
+   },
+   "test_record": false,
+   "rec_id": "scans/scan-07.png",
+   "repeat": false
+  },
+  {
+   "source": "N",
+   "event": "E0115",
+   "noise": [
+    "invalid"
+   ],
+   "truth": {
+    "asset_id": "unit-204",
+    "date": "2026-01-25",
+    "hours": null,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "D. Novak"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:33",
+   "repeat": true
+  },
+  {
+   "source": "B",
+   "event": "E0116",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-102",
+    "date": "2026-01-27",
+    "hours": 2999.6,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "D. Novak"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:36",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "E0117",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-104",
+    "date": "2026-02-02",
+    "hours": 3356.2,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:37",
+   "repeat": true
+  },
+  {
+   "source": "N",
+   "event": "E0118",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-202",
+    "date": "2026-02-04",
+    "hours": 3508.1,
+    "symptom_id": null,
+    "action": null,
+    "part": "P40-501",
+    "tech": "D. Novak"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:34",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0119",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-203",
+    "date": "2026-02-06",
+    "hours": 3759.2,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "K. Osei"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:43",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0120",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-104",
+    "date": "2026-02-13",
+    "hours": 3434.4,
+    "symptom_id": "s-pump-overheats",
+    "action": "Replace the cooling fan belt.",
+    "part": "P40-311",
+    "tech": "J. Ruiz"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:44",
+   "repeat": true
+  },
+  {
+   "source": "B",
+   "event": "E0121",
+   "noise": [
+    "missing"
+   ],
+   "truth": {
+    "asset_id": "unit-101",
+    "date": "2026-02-16",
+    "hours": 3037.2,
+    "symptom_id": "s-pump-overheats",
+    "action": null,
+    "part": "P40-311",
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:38",
+   "repeat": false
+  },
+  {
+   "source": "N",
+   "event": "E0122",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-107",
+    "date": "2026-02-16",
+    "hours": 3871.0,
+    "symptom_id": null,
+    "action": null,
+    "part": null,
+    "tech": "D. Novak"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:35",
+   "repeat": false
+  },
+  {
+   "source": "N",
+   "event": "E0123",
+   "noise": [
+    "id_misalign"
+   ],
+   "truth": {
+    "asset_id": "unit-105",
+    "date": "2026-02-24",
+    "hours": 3605.8,
+    "symptom_id": "s-pump-overheats",
+    "action": "Internal cooling fault. Report to the field maintenance shop.",
+    "part": null,
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:36",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0124",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-202",
+    "date": "2026-02-24",
+    "hours": 3645.5,
+    "symptom_id": "s-pump-overheats",
+    "action": "Adjust the belt tension.",
+    "part": null,
+    "tech": "A. Patel"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:45",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0125",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-201",
+    "date": "2026-02-25",
+    "hours": 3429.1,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "J. Ruiz"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:46",
+   "repeat": false
+  },
+  {
+   "source": "N",
+   "event": "E0126",
+   "noise": [
+    "invalid"
+   ],
+   "truth": {
+    "asset_id": "unit-204",
+    "date": "2026-02-27",
+    "hours": null,
+    "symptom_id": "s-pump-overheats",
+    "action": "Replace the cooling fan belt.",
+    "part": "P40-311",
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:37",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "E0127",
+   "noise": [
+    "id_misalign"
+   ],
+   "truth": {
+    "asset_id": "unit-201",
+    "date": "2026-03-04",
+    "hours": 3474.2,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "A. Patel"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:39",
+   "repeat": true
+  },
+  {
+   "source": "B",
+   "event": "E0128",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-204",
+    "date": "2026-03-11",
+    "hours": 4173.2,
+    "symptom_id": "s-pump-overheats",
+    "action": "Adjust the belt tension.",
+    "part": null,
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:40",
+   "repeat": true
+  },
+  {
+   "source": "A",
+   "event": "E0129",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-108",
+    "date": "2026-03-12",
+    "hours": 4126.1,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "D. Novak"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:47",
+   "repeat": false
+  },
+  {
+   "source": "N",
+   "event": "E0130",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-203",
+    "date": "2026-03-20",
+    "hours": 4034.2,
+    "symptom_id": "s-pump-overheats",
+    "action": "Replace the cooling fan belt.",
+    "part": "P40-311",
+    "tech": "J. Ruiz"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:38",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0131",
+   "noise": [
+    "invalid"
+   ],
+   "truth": {
+    "asset_id": "unit-106",
+    "date": "2026-03-30",
+    "hours": null,
+    "symptom_id": "s-pump-overheats",
+    "action": "Replace the cooling fan belt.",
+    "part": "P40-311",
+    "tech": "D. Novak"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:48",
+   "repeat": false
+  },
+  {
+   "source": "N",
+   "event": "E0132",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-107",
+    "date": "2026-03-30",
+    "hours": 4130.9,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "D. Novak"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:39",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0133",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-202",
+    "date": "2026-04-10",
+    "hours": 3932.1,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "A. Patel"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:49",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0134",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-107",
+    "date": "2026-04-17",
+    "hours": 4243.7,
+    "symptom_id": "s-engine-will-not-crank",
+    "action": "Replace starter relay K1.",
+    "part": "P40-207",
+    "tech": "A. Patel"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:50",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0135",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-202",
+    "date": "2026-04-21",
+    "hours": 4007.4,
+    "symptom_id": null,
+    "action": null,
+    "part": "P40-501",
+    "tech": "J. Ruiz"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:51",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0136",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-202",
+    "date": "2026-04-29",
+    "hours": 4057.9,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "K. Osei"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:52",
+   "repeat": true
+  },
+  {
+   "source": "A",
+   "event": "E0137",
+   "noise": [
+    "missing",
+    "wrong_date"
+   ],
+   "truth": {
+    "asset_id": "unit-106",
+    "date": "2026-04-30",
+    "hours": 4264.8,
+    "symptom_id": null,
+    "action": null,
+    "part": "P40-501",
+    "tech": "D. Novak"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:53",
+   "repeat": false
+  },
+  {
+   "source": "N",
+   "event": "E0138",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-202",
+    "date": "2026-05-13",
+    "hours": 4142.9,
+    "symptom_id": "s-pump-overheats",
+    "action": "Replace the cooling fan belt.",
+    "part": "P40-311",
+    "tech": "A. Patel"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:40",
+   "repeat": true
+  },
+  {
+   "source": "A",
+   "event": "E0139",
+   "noise": [
+    "out_of_fleet"
+   ],
+   "truth": {
+    "asset_id": null,
+    "date": "2026-05-16",
+    "hours": 4583.3,
+    "symptom_id": "s-pump-overheats",
+    "action": "Adjust the belt tension.",
+    "part": null,
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:54",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0140",
+   "noise": [
+    "id_misalign"
+   ],
+   "truth": {
+    "asset_id": "unit-105",
+    "date": "2026-05-19",
+    "hours": 4136.3,
+    "symptom_id": null,
+    "action": null,
+    "part": "P40-501",
+    "tech": "A. Patel"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:55",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0141",
+   "noise": [
+    "invalid"
+   ],
+   "truth": {
+    "asset_id": "unit-104",
+    "date": "2026-05-24",
+    "hours": null,
+    "symptom_id": "s-pump-overheats",
+    "action": "Internal cooling fault. Report to the field maintenance shop.",
+    "part": null,
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:56",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0142",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-201",
+    "date": "2026-05-25",
+    "hours": 4002.8,
+    "symptom_id": "s-pump-overheats",
+    "action": "Internal cooling fault. Report to the field maintenance shop.",
+    "part": null,
+    "tech": "A. Patel"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:57",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0143",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-105",
+    "date": "2026-05-26",
+    "hours": 4182.0,
+    "symptom_id": "s-pump-overheats",
+    "action": "Adjust the belt tension.",
+    "part": null,
+    "tech": "K. Osei"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:58",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0144",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-103",
+    "date": "2026-05-31",
+    "hours": 3958.1,
+    "symptom_id": null,
+    "action": null,
+    "part": "P40-501",
+    "tech": "J. Ruiz"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:59",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0145",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-105",
+    "date": "2026-06-01",
+    "hours": 4224.2,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "K. Osei"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:60",
+   "repeat": true
+  },
+  {
+   "source": "N",
+   "event": "E0146",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-201",
+    "date": "2026-06-07",
+    "hours": 4086.0,
+    "symptom_id": "s-pump-overheats",
+    "action": "Internal cooling fault. Report to the field maintenance shop.",
+    "part": null,
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:41",
+   "repeat": true
+  },
+  {
+   "source": "A",
+   "event": "E0147",
+   "noise": [
+    "invalid"
+   ],
+   "truth": {
+    "asset_id": "unit-203",
+    "date": "2026-06-07",
+    "hours": null,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "K. Osei"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:61",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "E0148",
+   "noise": [
+    "wrong_date"
+   ],
+   "truth": {
+    "asset_id": "unit-201",
+    "date": "2026-06-09",
+    "hours": 4096.8,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "D. Novak"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:41",
+   "repeat": true
+  },
+  {
+   "source": "A",
+   "event": "E0149",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-102",
+    "date": "2026-06-10",
+    "hours": 3891.6,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "D. Novak"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:62",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "E0150",
+   "noise": [
+    "id_misalign"
+   ],
+   "truth": {
+    "asset_id": "unit-104",
+    "date": "2026-06-15",
+    "hours": 4229.9,
+    "symptom_id": "s-pump-overheats",
+    "action": "Replace the cooling fan belt.",
+    "part": "P40-311",
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:42",
+   "repeat": true
+  },
+  {
+   "source": "B",
+   "event": "E0151",
+   "noise": [
+    "wrong_date"
+   ],
+   "truth": {
+    "asset_id": "unit-104",
+    "date": "2026-06-18",
+    "hours": 4260.9,
+    "symptom_id": "s-pump-overheats",
+    "action": "Adjust the belt tension.",
+    "part": null,
+    "tech": "A. Patel"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:43",
+   "repeat": true
+  },
+  {
+   "source": "B",
+   "event": "E0152",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-107",
+    "date": "2026-06-20",
+    "hours": 4667.6,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "K. Osei"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:44",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0153",
+   "noise": [
+    "id_misalign"
+   ],
+   "truth": {
+    "asset_id": "unit-102",
+    "date": "2026-06-25",
+    "hours": 3989.1,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "J. Ruiz"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:63",
+   "repeat": true
+  },
+  {
+   "source": "A",
+   "event": "E0154",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-105",
+    "date": "2026-06-26",
+    "hours": 4398.0,
+    "symptom_id": "s-engine-will-not-crank",
+    "action": "Replace starter relay K1.",
+    "part": "P40-207",
+    "tech": "D. Novak"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:64",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0155",
+   "noise": [
+    "id_misalign",
+    "missing"
+   ],
+   "truth": {
+    "asset_id": "unit-201",
+    "date": "2026-06-28",
+    "hours": 4213.4,
+    "symptom_id": "s-pump-overheats",
+    "action": null,
+    "part": null,
+    "tech": "A. Patel"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:65",
+   "repeat": true
+  },
+  {
+   "source": "A",
+   "event": "E0156",
+   "noise": [
+    "wrong_date"
+   ],
+   "truth": {
+    "asset_id": "unit-106",
+    "date": "2026-07-06",
+    "hours": 4715.6,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "J. Ruiz"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:66",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "E0157",
+   "noise": [
+    "id_misalign"
+   ],
+   "truth": {
+    "asset_id": "unit-108",
+    "date": "2026-07-12",
+    "hours": 4909.6,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:45",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0158",
+   "noise": [
+    "missing"
+   ],
+   "truth": {
+    "asset_id": "unit-107",
+    "date": "2026-07-15",
+    "hours": null,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:67",
+   "repeat": true
+  },
+  {
+   "source": "A",
+   "event": "E0159",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-106",
+    "date": "2026-07-17",
+    "hours": 4791.0,
+    "symptom_id": "s-engine-will-not-crank",
+    "action": "Replace starter relay K1.",
+    "part": "P40-207",
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:68",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0160",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-201",
+    "date": "2026-07-21",
+    "hours": 4358.6,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "D. Novak"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:69",
+   "repeat": true
+  },
+  {
+   "source": "B",
+   "event": "E0161",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-104",
+    "date": "2026-07-22",
+    "hours": 4480.6,
+    "symptom_id": "s-engine-will-not-crank",
+    "action": "Turn the battery switch ON or replace fuse F2, then try to start. Does the engine crank now?",
+    "part": "P40-015",
+    "tech": "J. Ruiz"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:46",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0162",
+   "noise": [
+    "id_misalign",
+    "wrong_date"
+   ],
+   "truth": {
+    "asset_id": "unit-104",
+    "date": "2026-07-24",
+    "hours": 4492.2,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:70",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "E0163",
+   "noise": [
+    "missing"
+   ],
+   "truth": {
+    "asset_id": "unit-105",
+    "date": "2026-07-26",
+    "hours": null,
+    "symptom_id": "s-engine-will-not-crank",
+    "action": "Charge the battery, then repeat the voltage test.",
+    "part": null,
+    "tech": "D. Novak"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:47",
+   "repeat": true
+  },
+  {
+   "source": "A",
+   "event": "E0164",
+   "noise": [
+    "missing"
+   ],
+   "truth": {
+    "asset_id": "unit-106",
+    "date": "2026-07-28",
+    "hours": 4869.1,
+    "symptom_id": null,
+    "action": null,
+    "part": "P40-501",
+    "tech": "K. Osei"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:71",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "E0165",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-102",
+    "date": "2026-08-08",
+    "hours": 4262.5,
+    "symptom_id": "s-pump-overheats",
+    "action": "Replace the cooling fan belt.",
+    "part": "P40-311",
+    "tech": "K. Osei"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:48",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0166",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-101",
+    "date": "2026-08-19",
+    "hours": 4242.2,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "K. Osei"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:72",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "E0167",
+   "noise": [
+    "id_misalign"
+   ],
+   "truth": {
+    "asset_id": "unit-202",
+    "date": "2026-08-22",
+    "hours": 4785.2,
+    "symptom_id": null,
+    "action": null,
+    "part": null,
+    "tech": "J. Ruiz"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:49",
+   "repeat": false
+  },
+  {
+   "source": "N",
+   "event": "E0168",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-101",
+    "date": "2026-08-24",
+    "hours": 4274.7,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "K. Osei"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:42",
+   "repeat": true
+  },
+  {
+   "source": "B",
+   "event": "E0169",
+   "noise": [
+    "invalid"
+   ],
+   "truth": {
+    "asset_id": "unit-102",
+    "date": "2026-08-25",
+    "hours": null,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "A. Patel"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:50",
+   "repeat": true
+  },
+  {
+   "source": "A",
+   "event": "E0170",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-202",
+    "date": "2026-08-27",
+    "hours": 4818.1,
+    "symptom_id": "s-pump-overheats",
+    "action": "Internal cooling fault. Report to the field maintenance shop.",
+    "part": null,
+    "tech": "K. Osei"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:73",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "E0171",
+   "noise": [
+    "out_of_fleet",
+    "invalid"
+   ],
+   "truth": {
+    "asset_id": null,
+    "date": "2026-09-01",
+    "hours": null,
+    "symptom_id": "s-engine-will-not-crank",
+    "action": "Replace starter relay K1.",
+    "part": "P40-207",
+    "tech": "A. Patel"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:51",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0172",
+   "noise": [
+    "id_misalign"
+   ],
+   "truth": {
+    "asset_id": "unit-108",
+    "date": "2026-09-04",
+    "hours": 5275.7,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "A. Patel"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:74",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0173",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-101",
+    "date": "2026-09-07",
+    "hours": 4358.4,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "J. Ruiz"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:75",
+   "repeat": true
+  },
+  {
+   "source": "A",
+   "event": "E0174",
+   "noise": [
+    "wrong_date"
+   ],
+   "truth": {
+    "asset_id": "unit-108",
+    "date": "2026-09-09",
+    "hours": 5306.1,
+    "symptom_id": "s-engine-will-not-crank",
+    "action": "Key switch or wiring fault. Refer to field maintenance for wiring repair.",
+    "part": null,
+    "tech": "D. Novak"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:76",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "E0175",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-204",
+    "date": "2026-09-15",
+    "hours": 5355.8,
+    "symptom_id": "s-pump-overheats",
+    "action": "Replace the cooling fan belt.",
+    "part": "P40-311",
+    "tech": "D. Novak"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:77",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "E0176",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-203",
+    "date": "2026-09-16",
+    "hours": 5224.1,
+    "symptom_id": "s-pump-overheats",
+    "action": "Replace the cooling fan belt.",
+    "part": "P40-311",
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:52",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "E0177",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-102",
+    "date": "2026-09-20",
+    "hours": 4552.5,
+    "symptom_id": "s-engine-will-not-crank",
+    "action": "Replace starter relay K1.",
+    "part": "P40-207",
+    "tech": "A. Patel"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:53",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "E0178",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-201",
+    "date": "2026-09-21",
+    "hours": 4755.1,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "J. Ruiz"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:54",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "E0179",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-108",
+    "date": "2026-09-24",
+    "hours": 5406.3,
+    "symptom_id": "s-pump-overheats",
+    "action": "Replace the cooling fan belt.",
+    "part": "P40-311",
+    "tech": "M. Chen"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:55",
+   "repeat": true
+  },
+  {
+   "source": "A",
+   "event": "E0180",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-101",
+    "date": "2026-09-25",
+    "hours": 4471.2,
+    "symptom_id": "s-engine-will-not-crank",
+    "action": "Replace starter relay K1.",
+    "part": "P40-207",
+    "tech": "K. Osei"
+   },
+   "test_record": false,
+   "rec_id": "shop-a.csv:78",
+   "repeat": false
+  },
+  {
+   "source": "N",
+   "event": "E0181",
+   "noise": [
+    "out_of_fleet",
+    "missing"
+   ],
+   "truth": {
+    "asset_id": null,
+    "date": "2026-09-29",
+    "hours": null,
+    "symptom_id": null,
+    "action": null,
+    "part": "P40-501",
+    "tech": "D. Novak"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:43",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "E0182",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-203",
+    "date": "2026-09-29",
+    "hours": 5304.9,
+    "symptom_id": "s-pump-overheats",
+    "action": "Clean the intake strainer.",
+    "part": null,
+    "tech": "K. Osei"
+   },
+   "test_record": false,
+   "rec_id": "shop-b.csv:56",
+   "repeat": true
+  },
+  {
+   "source": "N",
+   "event": "E0183",
+   "noise": [],
+   "truth": {
+    "asset_id": "unit-201",
+    "date": "2026-09-30",
+    "hours": 4810.8,
+    "symptom_id": "s-pump-overheats",
+    "action": "Internal cooling fault. Report to the field maintenance shop.",
+    "part": null,
+    "tech": "J. Ruiz"
+   },
+   "test_record": false,
+   "rec_id": "narratives.txt:44",
+   "repeat": true
+  },
+  {
+   "source": "N",
+   "event": "T001",
+   "noise": [
+    "test_record"
+   ],
+   "truth": null,
+   "test_record": true,
+   "rec_id": "narratives.txt:45",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "T002",
+   "noise": [
+    "test_record"
+   ],
+   "truth": null,
+   "test_record": true,
+   "rec_id": "shop-b.csv:57",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "T003",
+   "noise": [
+    "test_record"
+   ],
+   "truth": null,
+   "test_record": true,
+   "rec_id": "shop-b.csv:58",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "T004",
+   "noise": [
+    "test_record"
+   ],
+   "truth": null,
+   "test_record": true,
+   "rec_id": "shop-a.csv:79",
+   "repeat": false
+  },
+  {
+   "source": "N",
+   "event": "T005",
+   "noise": [
+    "test_record"
+   ],
+   "truth": null,
+   "test_record": true,
+   "rec_id": "narratives.txt:46",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "T006",
+   "noise": [
+    "test_record"
+   ],
+   "truth": null,
+   "test_record": true,
+   "rec_id": "shop-a.csv:80",
+   "repeat": false
+  },
+  {
+   "source": "A",
+   "event": "T007",
+   "noise": [
+    "test_record"
+   ],
+   "truth": null,
+   "test_record": true,
+   "rec_id": "shop-a.csv:81",
+   "repeat": false
+  },
+  {
+   "source": "B",
+   "event": "T008",
+   "noise": [
+    "test_record"
+   ],
+   "truth": null,
+   "test_record": true,
+   "rec_id": "shop-b.csv:59",
+   "repeat": false
+  }
+ ]
+}

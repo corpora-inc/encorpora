@@ -1,0 +1,18 @@
+{
+  "sources": {
+    "ardupilot-prearm": {
+      "bytes": 72181,
+      "distribution": "none printed; published under CC BY-SA 3.0 Unported",
+      "edition": "© Copyright 2024, ArduPilot Dev Team; page as retrieved 2026-11-28",
+      "fetched_url": "https://ardupilot.org/rover/docs/common-prearm-safety-checks.html",
+      "license": "CC-BY-SA-3.0 (Creative Commons Attribution-ShareAlike 3.0 Unported), © Copyright 2024, ArduPilot Dev Team",
+      "media_type": "text/html",
+      "publisher": "ArduPilot Dev Team",
+      "retrieved_at": "2026-11-28T08:42:52+00:00",
+      "sha256": "ff086a97c33da63924ff5991e6232862b187e338f5434ebeddb78b45c36be9e5",
+      "source_id": "ardupilot-prearm",
+      "title": "Pre-Arm Safety Checks (ArduPilot wiki, Rover; source common/source/docs/common-prearm-safety-checks.rst)",
+      "url": "https://ardupilot.org/rover/docs/common-prearm-safety-checks.html"
+    }
+  }
+}
