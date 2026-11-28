@@ -148,6 +148,7 @@ const step = (v: JobView, extra: Partial<StepProps> = {}): StepProps => ({
   photos: 0,
   keypadOpen: false,
   overlay: null,
+  voice: false,
   onDraft: none,
   onKeypad: none,
   onAnswer: none,

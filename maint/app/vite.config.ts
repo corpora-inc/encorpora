@@ -14,9 +14,10 @@ const engineUrl = process.env.MAINT_ENGINE ?? "http://127.0.0.1:4317";
 const hubUrl = process.env.MAINT_HUB ?? "http://127.0.0.1:4319";
 const port = Number(process.env.MAINT_PORT ?? 4340);
 const proxy = {
-  "/api": engineUrl,
-  "/asset": engineUrl,
-  "/hub": { target: hubUrl, changeOrigin: true, rewrite: (p: string) => p.replace(/^\/hub/, "") },
+  // Anchored: a bare "/asset" prefix would also catch the build's own /assets/ files.
+  "^/api/": { target: engineUrl, changeOrigin: true },
+  "^/asset/": { target: engineUrl, changeOrigin: true },
+  "^/hub/": { target: hubUrl, changeOrigin: true, rewrite: (p: string) => p.replace(/^\/hub/, "") },
 };
 
 export default defineConfig({

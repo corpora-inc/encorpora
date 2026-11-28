@@ -1,8 +1,9 @@
 import { Loader2, Mic, Settings } from "lucide-react";
 import { cx } from "./kit.tsx";
 
-/** The phases of one spoken entry (the shared voice hook's VoicePhase). */
-export type VoicePhase = "idle" | "starting" | "listening" | "transcribing" | "done" | "nothing" | "denied" | "unavailable" | "failed";
+import type { VoicePhase } from "@appkit/voice/useVoiceInput.ts";
+
+export type { VoicePhase };
 
 /**
  * The microphone beside the search box: one 56 px square whose icon and
@@ -33,6 +34,8 @@ export function voiceStatus(phase: VoicePhase): string {
   switch (phase) {
     case "listening":
       return "Listening. Stops when you pause.";
+    case "done":
+      return "Check the words, then use them.";
     case "transcribing":
       return "Writing it out.";
     case "nothing":

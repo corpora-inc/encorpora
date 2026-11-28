@@ -34,6 +34,57 @@ const samples = process.env.MAINT_SAMPLES ?? path.join(root, ".engine", "pump40-
 const out = process.env.CI ? path.join(root, "artifacts", "flow") : path.join(root, ".screens", "flow");
 await mkdir(out, { recursive: true });
 
+/**
+ * A stand-in for the native shell, so on-device voice input runs in the browser
+ * check: engine calls go through the native `engine_call` command (answered
+ * here over HTTP), and the STT plugin hears a short spoken sentence.
+ */
+const fakeNative = (said) => {
+  const callbacks = new Map();
+  const listeners = {};
+  let nextId = 1;
+  const emit = (event, message) => {
+    for (const l of listeners[event] ?? []) callbacks.get(l.id)?.({ message, index: l.index++ });
+  };
+  window.__TAURI_INTERNALS__ = {
+    transformCallback: (cb) => {
+      const id = nextId++;
+      callbacks.set(id, cb);
+      return id;
+    },
+    unregisterCallback: (id) => callbacks.delete(id),
+    invoke: async (cmd, args) => {
+      switch (cmd) {
+        case "engine_call": {
+          const r = await fetch(`/api/${args.method}`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(args.params ?? {}) });
+          return r.json();
+        }
+        case "voice_model": return { status: "ready", file: "ggml-test.bin" };
+        case "plugin:stt|is_available": return true;
+        case "plugin:stt|validate_model": return { valid: true };
+        case "plugin:stt|prepare": return { ready: true };
+        case "plugin:stt|register_listener": (listeners[args.event] ??= []).push({ id: args.handler.id, index: 0 }); return null;
+        case "plugin:stt|remove_listener": return null;
+        case "plugin:stt|start_session": {
+          let t = 0;
+          window.__sttTimer = setInterval(() => {
+            t += 125;
+            emit("audio_level", { rms: t < 500 ? 0.03 : t < 2000 ? 0.2 : 0.03, t });
+            if (t > 6000) clearInterval(window.__sttTimer);
+          }, 125);
+          return { started: true };
+        }
+        case "plugin:stt|stop_session": clearInterval(window.__sttTimer); return { text: said };
+        case "plugin:stt|cancel_session": clearInterval(window.__sttTimer); return null;
+        case "plugin:tts|stop": return null;
+        case "plugin:tts|list_voices": return [];
+        case "plugin:corpan-llm|llm_status": return { loaded: false, modelId: null };
+        default: throw `unexpected command ${cmd}`;
+      }
+    },
+  };
+};
+
 const browser = await chromium.launch();
 let n = 0;
 try {
@@ -209,6 +260,28 @@ try {
   await page.getByRole("button", { name: "Check the chain" }).click();
   await page.getByText(/Intact, \d+ entries/).waitFor();
   await shot("records");
+
+  // Voice, on a device with the speech model: the words land in the box to be checked before they are used.
+  const native = await browser.newContext({ viewport: { width: 1280, height: 800 } });
+  await native.addInitScript(fakeNative, " Engine does not crank. ");
+  const pv = await native.newPage();
+  pv.on("pageerror", (e) => errors.push(`voice: ${e.message}`));
+  await pv.goto(`${base}/units/unit-101/troubleshoot`);
+  await pv.getByRole("button", { name: "Speak" }).click();
+  await pv.getByText("Check the words, then use them.").waitFor();
+  assert.equal(await pv.getByLabel("Describe the problem").inputValue(), "Engine does not crank.");
+  await pv.getByRole("button", { name: /Engine will not crank.*Matched/ }).first().click();
+  await pv.getByText("Step 1, symptom").waitFor();
+  await pv.getByRole("button", { name: "Note", exact: true }).click();
+  await pv.getByRole("dialog", { name: "Note" }).getByRole("button", { name: "Speak" }).click();
+  await pv.getByRole("dialog", { name: "Note" }).getByText("Check the words, then use them.").waitFor();
+  const box = pv.getByLabel("Note with this answer");
+  assert.equal(await box.inputValue(), "Engine does not crank.");
+  await box.fill("Engine does not crank. Starter silent.");
+  await pv.screenshot({ path: path.join(out, `${String(++n).padStart(2, "0")}-voice-note.png`) });
+  await pv.getByRole("button", { name: "Keep note" }).click();
+  await pv.getByText("Engine does not crank. Starter silent.").waitFor();
+  await native.close();
 
   // The result controls stay within reach on narrow and portrait screens.
   for (const width of [390, 768]) {

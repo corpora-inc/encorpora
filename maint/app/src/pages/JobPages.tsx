@@ -88,6 +88,7 @@ export function JobPage() {
   const note = useJobs((s) => s.notes[key] ?? "");
   const photos = useJobs((s) => s.photos[key]?.length ?? 0);
   const file = useRef<HTMLInputElement>(null);
+  const voiceOn = useDevice((s) => s.voice);
   useActiveUnit(view?.job.asset_id);
   useEffect(() => {
     void useJobs.getState().load(jobId).then((v) => setMissing(!v));
@@ -121,6 +122,7 @@ export function JobPage() {
         photos={photos}
         keypadOpen={keypad}
         overlay={overlay}
+        voice={voiceOn}
         onDraft={(v) => useJobs.getState().setDraft(key, v)}
         onKeypad={setKeypad}
         onAnswer={(input) => {

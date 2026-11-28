@@ -4,7 +4,9 @@ import { Link } from "react-router";
 import type { AskResponse, Citation, FacetGroup, Job, Level, PackAsset, PathEntry, StepView } from "../engine/types.ts";
 import { closeOutPath, jobAskPath, jobPagePath, jobPath, manualPath, printJobPath, procedurePath } from "../routes.ts";
 import { Button, cx, Segmented, Skeleton } from "../ui/kit.tsx";
+import { useVoiceInput } from "@appkit/voice/useVoiceInput.ts";
 import { Keypad } from "../ui/Keypad.tsx";
+import { VoiceControl, voiceStatus } from "../ui/VoiceControl.tsx";
 import { PageViewer } from "../ui/PageViewer.tsx";
 import { citationText, FieldNotes, guardKind, Guards, ManualSheet, Requirements, sectionTitle, useAssetSrc } from "../ui/manual.tsx";
 
@@ -30,6 +32,8 @@ export interface StepProps {
   photos: number;
   keypadOpen: boolean;
   overlay: StepOverlay;
+  /** On-device voice input is installed. */
+  voice: boolean;
   onDraft(v: string): void;
   onKeypad(open: boolean): void;
   onAnswer(input: ResultInput): void;
@@ -158,6 +162,7 @@ export function Step(p: StepProps) {
       {noteOpen && (
         <NoteSheet
           initial={p.note}
+          voice={p.voice}
           onClose={() => setNoteOpen(false)}
           onSave={(t) => {
             p.onNote(t);
@@ -368,8 +373,11 @@ function ResultBar(p: StepProps & { busy: boolean }) {
 }
 
 /** A note that goes with this answer. */
-function NoteSheet({ initial, onSave, onClose }: { initial: string; onSave(t: string): void; onClose(): void }) {
+function NoteSheet({ initial, voice, onSave, onClose }: { initial: string; voice: boolean; onSave(t: string): void; onClose(): void }) {
   const [text, setText] = useState(initial);
+  // Spoken words land in the box, to read and correct; nothing is kept until "Keep note".
+  const mic = useVoiceInput("en", (t) => setText((cur) => (cur.trim() ? `${cur.trim()} ${t}` : t)));
+  const status = voiceStatus(voice ? mic.phase : "unavailable");
   return (
     <div className="fixed inset-0 z-40 flex items-end justify-center sm:items-center">
       <button type="button" aria-label="Close" onClick={onClose} className="absolute inset-0 bg-[var(--scrim)]" />
@@ -385,8 +393,16 @@ function NoteSheet({ initial, onSave, onClose }: { initial: string; onSave(t: st
       >
         <label className="block">
           <span className="mb-1.5 block text-meta font-semibold text-ink-2">Note with this answer</span>
-          <textarea autoFocus rows={4} value={text} onChange={(e) => setText(e.target.value)} className="block w-full rounded-control border-2 border-line-strong bg-surface px-4 py-3 text-body focus:border-ink focus:outline-none" />
+          <span className="flex items-start gap-2">
+            <textarea autoFocus rows={4} value={text} onChange={(e) => setText(e.target.value)} className="block min-w-0 flex-1 rounded-control border-2 border-line-strong bg-surface px-4 py-3 text-body focus:border-ink focus:outline-none" />
+            <VoiceControl phase={voice ? mic.phase : "unavailable"} onPress={() => void mic.toggle()} />
+          </span>
         </label>
+        {voice && (
+          <p aria-live="polite" className="mt-1 min-h-[1.35em] text-meta text-ink-2">
+            {status}
+          </p>
+        )}
         <div className="mt-3 grid grid-cols-2 gap-3">
           <Button onClick={onClose}>Cancel</Button>
           <Button type="submit" variant="primary">
