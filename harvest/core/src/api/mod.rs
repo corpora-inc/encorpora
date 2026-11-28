@@ -183,6 +183,11 @@ impl Host {
             .insert(pack.pack_id().to_string(), pack);
     }
 
+    /// Run `f` on the device records (a host's own sync loop, tests).
+    pub fn with_records<T>(&self, f: impl FnOnce(&Records) -> T) -> T {
+        f(&self.records())
+    }
+
     fn records(&self) -> MutexGuard<'_, Records> {
         // A panic while writing rolls the transaction back; the store stays valid.
         self.records.lock().unwrap_or_else(|p| p.into_inner())
@@ -372,6 +377,10 @@ methods! {
     "fleet.summary" => fleet_summary(NoParams) -> Option<crate::records::FleetSummary>,
     "audit.list" => audit_list(AuditListParams) -> Vec<AuditRecord>,
     "audit.verify" => audit_verify(NoParams) -> ChainReport,
+    "practice.items" => practice_items(PracticeItemsParams) -> crate::practice::PracticeItems,
+    "practice.record" => practice_record(PracticeRecordParams) -> crate::records::PracticeAttempt,
+    "practice.history" => practice_history(PackParams) -> Vec<crate::records::PracticeAttempt>,
+    "hub.practice" => hub_practice(HubPracticeParams) -> crate::hub::PracticeExport,
     "hub.status" => hub_status(NoParams) -> crate::hub::HubStatus,
     "hub.queue" => hub_queue(HubQueueParams) -> Vec<crate::hub::ReviewItem>,
     "hub.approve" => hub_approve(HubApproveParams) -> crate::records::FieldNoteIn,
@@ -379,9 +388,9 @@ methods! {
     "hub.publish" => hub_publish(HubPublishParams) -> Option<Value>,
     "hub.bundles" => hub_bundles(HubBundlesParams) -> Vec<Value>,
     "hub.fleet" => hub_fleet(NoParams) -> crate::records::FleetSummary,
-    "hub.conflicts" => hub_conflicts(NoParams) -> Vec<crate::hub::Conflict>,
+    "hub.conflicts" => hub_conflicts(PageParams) -> Vec<crate::hub::Conflict>,
     "hub.audit" => hub_audit(AuditListParams) -> Vec<AuditRecord>,
-    "hub.devices" => hub_devices(NoParams) -> Vec<crate::hub::EnrolledDevice>,
+    "hub.devices" => hub_devices(PageParams) -> Vec<crate::hub::EnrolledDevice>,
     "hub.enroll" => hub_enroll(HubEnrollParams) -> crate::hub::EnrolledDevice,
     "hub.revoke" => hub_revoke(HubRevokeParams) -> crate::hub::EnrolledDevice,
     "hub.whoami" => hub_whoami(NoParams) -> Principal,
@@ -797,6 +806,67 @@ pub struct HubQueueParams {
     /// `pending` | `approved` | `rejected`; all when absent.
     #[serde(default)]
     pub status: Option<String>,
+    #[serde(default)]
+    pub offset: usize,
+    /// At most this many (default 100, at most 500).
+    #[serde(default)]
+    pub limit: Option<usize>,
+}
+
+#[derive(Debug, Clone, Default, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct PracticeItemsParams {
+    #[serde(default)]
+    pub pack_id: Option<String>,
+    /// The variant (questions that do not apply to it are left out).
+    #[serde(default)]
+    pub equip_id: Option<String>,
+}
+
+#[derive(Debug, Clone, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct PracticeRecordParams {
+    #[serde(default)]
+    pub pack_id: Option<String>,
+    pub q_id: String,
+    /// The choice index as text (mc), the value (numeric) or the text
+    /// written (free_text).
+    pub chosen: String,
+    pub correct: bool,
+    /// Milliseconds from showing the question to the answer.
+    pub ms: u64,
+    /// When it was answered (RFC 3339); now when absent.
+    #[serde(default)]
+    pub at: Option<String>,
+}
+
+#[derive(Debug, Clone, Default, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct HubPracticeParams {
+    /// Statements after this hub sequence (`next_since` of the last page).
+    #[serde(default)]
+    pub since: i64,
+    /// At most this many (default 500, at most 5000).
+    #[serde(default)]
+    pub limit: Option<usize>,
+}
+
+/// A page of a hub list: skip `offset`, return at most `limit` (default
+/// 100, at most 500). Fewer than `limit` means the end.
+#[derive(Debug, Clone, Default, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct PageParams {
+    #[serde(default)]
+    pub offset: usize,
+    #[serde(default)]
+    pub limit: Option<usize>,
+}
+
+fn page<T>(all: Vec<T>, offset: usize, limit: Option<usize>) -> Vec<T> {
+    all.into_iter()
+        .skip(offset)
+        .take(limit.unwrap_or(100).clamp(1, 500))
+        .collect()
 }
 
 #[derive(Debug, Clone, Deserialize, JsonSchema)]
@@ -852,6 +922,9 @@ pub struct HubRevokeParams {
 pub struct HubBundlesParams {
     #[serde(default)]
     pub since: u64,
+    /// At most this many (default 50, at most 200), in seq order.
+    #[serde(default)]
+    pub limit: Option<usize>,
 }
 
 // ----------------------------------------------------------- results
@@ -1682,7 +1755,9 @@ fn sync_attachments(
     let secs = p.max_seconds.unwrap_or(10).clamp(1, 300);
     let until = std::time::Instant::now() + std::time::Duration::from_secs(secs);
     Ok(h.records()
-        .send_attachments(link.as_ref(), &|| std::time::Instant::now() >= until)?)
+        .send_attachments(link.as_ref(), &h.field_keys, &|| {
+            std::time::Instant::now() >= until
+        })?)
 }
 
 fn sync_flush(
@@ -1691,7 +1766,9 @@ fn sync_flush(
     p: SyncFlushParams,
 ) -> R<crate::records::HubFlush> {
     if let Some(link) = &h.hub_link {
-        return Ok(h.records().flush_to_hub(link.as_ref(), 50, p.force)?);
+        return Ok(h
+            .records()
+            .flush_to_hub(link.as_ref(), &h.field_keys, 50, p.force)?);
     }
     let dir = h
         .outbox_dir
@@ -1799,13 +1876,61 @@ fn hub_status(h: &Host, who: Option<&Principal>, _: NoParams) -> R<crate::hub::H
     Ok(h.hub_store()?.status()?)
 }
 
+fn practice_items(
+    h: &Host,
+    _who: Option<&Principal>,
+    p: PracticeItemsParams,
+) -> R<crate::practice::PracticeItems> {
+    let pack = h.pack(nz(&p.pack_id))?;
+    Ok(crate::practice::items(&pack, nz(&p.equip_id))?)
+}
+
+fn practice_record(
+    h: &Host,
+    _who: Option<&Principal>,
+    p: PracticeRecordParams,
+) -> R<crate::records::PracticeAttempt> {
+    let pack = h.pack(nz(&p.pack_id))?;
+    let input = crate::records::PracticeInput {
+        q_id: p.q_id,
+        chosen: p.chosen,
+        correct: p.correct,
+        ms: p.ms,
+        at: p.at,
+    };
+    Ok(h.records().record_practice(&pack, &input)?)
+}
+
+fn practice_history(
+    h: &Host,
+    _who: Option<&Principal>,
+    p: PackParams,
+) -> R<Vec<crate::records::PracticeAttempt>> {
+    let pack = h.pack(nz(&p.pack_id))?;
+    Ok(h.records().practice_history(pack.pack_id())?)
+}
+
+fn hub_practice(
+    h: &Host,
+    who: Option<&Principal>,
+    p: HubPracticeParams,
+) -> R<crate::hub::PracticeExport> {
+    need(who, None)?;
+    Ok(h.hub_store()?
+        .practice_statements(p.since, p.limit.unwrap_or(500).clamp(1, 5000))?)
+}
+
 fn hub_queue(
     h: &Host,
     who: Option<&Principal>,
     p: HubQueueParams,
 ) -> R<Vec<crate::hub::ReviewItem>> {
     need(who, None)?;
-    Ok(h.hub_store()?.queue(nz(&p.status))?)
+    Ok(page(
+        h.hub_store()?.queue(nz(&p.status))?,
+        p.offset,
+        p.limit,
+    ))
 }
 
 fn hub_approve(
@@ -1837,7 +1962,8 @@ fn hub_publish(h: &Host, who: Option<&Principal>, p: HubPublishParams) -> R<Opti
 
 fn hub_bundles(h: &Host, who: Option<&Principal>, p: HubBundlesParams) -> R<Vec<Value>> {
     need(who, None)?;
-    Ok(h.hub_store()?.bundles_since(p.since)?)
+    Ok(h.hub_store()?
+        .bundles_page(p.since, p.limit.unwrap_or(50).clamp(1, 200))?)
 }
 
 fn hub_fleet(h: &Host, who: Option<&Principal>, _: NoParams) -> R<crate::records::FleetSummary> {
@@ -1845,18 +1971,18 @@ fn hub_fleet(h: &Host, who: Option<&Principal>, _: NoParams) -> R<crate::records
     Ok(h.hub_store()?.fleet()?)
 }
 
-fn hub_conflicts(h: &Host, who: Option<&Principal>, _: NoParams) -> R<Vec<crate::hub::Conflict>> {
+fn hub_conflicts(h: &Host, who: Option<&Principal>, p: PageParams) -> R<Vec<crate::hub::Conflict>> {
     need(who, None)?;
-    Ok(h.hub_store()?.conflicts()?)
+    Ok(page(h.hub_store()?.conflicts()?, p.offset, p.limit))
 }
 
 fn hub_devices(
     h: &Host,
     who: Option<&Principal>,
-    _: NoParams,
+    p: PageParams,
 ) -> R<Vec<crate::hub::EnrolledDevice>> {
     need(who, None)?;
-    Ok(h.hub_store()?.devices()?)
+    Ok(page(h.hub_store()?.devices()?, p.offset, p.limit))
 }
 
 fn hub_enroll(
@@ -1893,7 +2019,7 @@ fn hub_audit(h: &Host, who: Option<&Principal>, p: AuditListParams) -> R<Vec<Aud
         .filter(|r| match r {
             AuditRecord::Answer { seq, .. } | AuditRecord::Event { seq, .. } => *seq > after,
         })
-        .take(p.limit.unwrap_or(200))
+        .take(p.limit.unwrap_or(200).clamp(1, 1000))
         .collect())
 }
 

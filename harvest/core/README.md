@@ -96,6 +96,8 @@ let cfg = HostConfig {
     encrypt_records: true,                          // key: shell::RECORDS_KEY in the key store
     embedder_url: Some("http://127.0.0.1:8095".into()), // the GGUF it serves is found and hashed
     hub_url: Some("https://hub.example".into()),    // device key: shell::DEVICE_KEY
+    hub_ca_pem: Some(HUB_CA_PEM.to_vec()),          // optional pin; else Mozilla (or platform) roots
+    field_keys: vec![TrustedKey::parse(HUB_PUBKEY)?], // the hub's key: bundles, receipts, hello, held
     ..Default::default()
 };
 let (host, report) = shell::open_host(&cfg, &Keychain)?;

@@ -38,6 +38,69 @@ pub struct ServeConfig {
     pub allow_origins: Vec<String>,
 }
 
+/// An error envelope as it leaves the machine: file paths replaced (the
+/// full message goes to the log).
+fn public(mut out: serde_json::Value) -> serde_json::Value {
+    if let Some(m) = out
+        .pointer_mut("/error/message")
+        .and_then(|m| m.as_str().map(str::to_string))
+    {
+        let r = redact(&m);
+        if r != m {
+            eprintln!("harvest serve: {m}");
+        }
+        out["error"]["message"] = serde_json::Value::String(r);
+    }
+    out
+}
+
+/// Replace anything that looks like a file path with `<path>`: a run that
+/// starts with `/`, `~/`, `./`, `../` or a drive (`C:\`) after a space,
+/// quote, bracket or `=`, up to the next such delimiter. URLs keep theirs.
+pub fn redact(msg: &str) -> String {
+    let chars: Vec<char> = msg.chars().collect();
+    let delim = |c: char| c.is_whitespace() || "\"'`()[]{}<>,;=".contains(c);
+    let mut out = String::with_capacity(msg.len());
+    let mut i = 0;
+    while i < chars.len() {
+        let boundary = i == 0 || delim(chars[i - 1]);
+        let rest: String = chars[i..chars.len().min(i + 3)].iter().collect();
+        let tail: String = chars[i..].iter().take(8).collect();
+        let route = ["/hub/", "/api/", "/asset/"]
+            .iter()
+            .any(|r| tail.starts_with(r));
+        let starts = boundary
+            && !route
+            && (chars[i] == '/'
+                || chars[i] == '\\'
+                || tail.starts_with("file:")
+                || (chars[i].is_ascii_alphabetic()
+                    && chars.get(i + 1) == Some(&':')
+                    && chars.get(i + 2) == Some(&'/'))
+                || rest.starts_with("~/")
+                || rest.starts_with("./")
+                || rest.starts_with("../")
+                || (chars[i].is_ascii_alphabetic()
+                    && chars.get(i + 1) == Some(&':')
+                    && chars.get(i + 2) == Some(&'\\')));
+        if starts {
+            let mut j = i;
+            while j < chars.len() && !(delim(chars[j]) && chars[j] != '=') {
+                j += 1;
+            }
+            out.push_str("<path>");
+            i = j;
+        } else {
+            out.push(chars[i]);
+            i += 1;
+        }
+    }
+    out
+}
+
+/// Bundles per `/hub/bundles` page by default.
+pub const BUNDLE_PAGE: usize = 50;
+
 /// Request workers.
 const WORKERS: usize = 4;
 
@@ -271,7 +334,7 @@ fn handle(
                 };
                 envelope(params.and_then(|v| super::call_as(host, who.as_ref(), method, v)))
             };
-            req.respond(cors(json_response(200, &out)))
+            req.respond(cors(json_response(200, &public(out))))
         }
         (m, p) if p.starts_with("/hub/") => {
             let Some(hub) = host.hub() else {
@@ -301,7 +364,10 @@ fn handle(
                     Response::from_data(b)
                         .with_header(h("Content-Type", "application/octet-stream")),
                 )),
-                Err((code, msg)) => req.respond(cors(text(code, &msg))),
+                Err((code, msg)) => {
+                    eprintln!("harvest serve: {p}: {code} {msg}");
+                    req.respond(cors(text(code, &redact(&msg))))
+                }
             }
         }
         (Method::Get, p) if p.starts_with("/asset/") => {
@@ -321,7 +387,10 @@ fn handle(
                         .with_header(h("Cache-Control", "private, max-age=3600")),
                 )),
                 Ok(None) => req.respond(cors(text(404, "not found"))),
-                Err(e) => req.respond(cors(text(500, &e.to_string()))),
+                Err(e) => {
+                    eprintln!("harvest serve: {p}: {e}");
+                    req.respond(cors(text(500, "the asset could not be read")))
+                }
             }
         }
         (Method::Get, p) => match &cfg.static_dir {
@@ -418,18 +487,23 @@ fn hub_route(
             let total = query_get(query, "total")
                 .and_then(|t| t.parse::<u64>().ok())
                 .ok_or((400, "total".to_string()))?;
+            // Older devices do not name themselves; the answer still has `held`.
+            let device = query_get(query, "device_id").unwrap_or_default();
+            let held = hub.held_for(&device, &sha, total).map_err(err)?;
             Ok(HubReply::Json(
-                serde_json::json!({"held": hub.attachment_offset(&sha, total).map_err(err)?}),
+                serde_json::to_value(held).map_err(|e| (500, e.to_string()))?,
             ))
         }
         (Method::Post, "/hub/attachment") => {
             let c: crate::sync::AttachmentChunk =
                 serde_json::from_str(body).map_err(|e| (400, format!("chunk: {e}")))?;
-            let held = hub.put_chunk(&c).map_err(|e| match e {
+            let held = hub.put_chunk_signed(&c).map_err(|e| match e {
                 Error::Signature(m) => (403, m),
                 other => err(other),
             })?;
-            Ok(HubReply::Json(serde_json::json!({"held": held})))
+            Ok(HubReply::Json(
+                serde_json::to_value(held).map_err(|e| (500, e.to_string()))?,
+            ))
         }
         (Method::Get, "/hub/fleet") => Ok(HubReply::Json(
             hub.fleet_document()
@@ -440,8 +514,12 @@ fn hub_route(
             let since = query_get(query, "since")
                 .and_then(|s| s.parse::<u64>().ok())
                 .unwrap_or(0);
+            let limit = query_get(query, "limit")
+                .and_then(|s| s.parse::<usize>().ok())
+                .unwrap_or(BUNDLE_PAGE)
+                .clamp(1, 200);
             Ok(HubReply::Json(serde_json::Value::Array(
-                hub.bundles_since(since).map_err(err)?,
+                hub.bundles_page(since, limit).map_err(err)?,
             )))
         }
         (Method::Get, "/hub/pack-offer") => {
@@ -517,6 +595,40 @@ fn static_file(dir: &Path, url_path: &str) -> Option<(PathBuf, &'static str)> {
         _ => "application/octet-stream",
     };
     p.is_file().then_some((p, media))
+}
+
+#[cfg(test)]
+mod redact_tests {
+    use super::redact;
+
+    #[test]
+    fn paths_never_leave_the_machine() {
+        assert_eq!(
+            redact("open /Users/x/records.db: denied"),
+            "open <path> denied"
+        );
+        assert_eq!(redact("pack \"/tmp/p/m.json\" bad"), "pack \"<path>\" bad");
+        assert_eq!(
+            redact("at ~/keys/k and ./a/b and C:\\x\\y"),
+            "at <path> and <path> and <path>"
+        );
+        assert_eq!(
+            redact("hub /hub/bundles?since=0: 503"),
+            "hub /hub/bundles?since=0: 503"
+        );
+        assert_eq!(
+            redact("at C:/Users/x and \\\\srv\\share and file:///Users/x"),
+            "at <path> and <path> and <path>"
+        );
+        assert_eq!(
+            redact("fetch http://hub:4318/hub/receive failed"),
+            "fetch http://hub:4318/hub/receive failed"
+        );
+        assert_eq!(
+            redact("no pack \"pump40\" is loaded"),
+            "no pack \"pump40\" is loaded"
+        );
+    }
 }
 
 #[cfg(test)]

@@ -32,7 +32,8 @@ const USAGE: &str = "usage:
   harvest serve   <packs-root|pack-dir> --records <records-db> [--bind 127.0.0.1:4317] [--static DIR]
                   [--allow-origin URL]... [--records-key FILE] [--outbox-dir DIR] [--field-pubkey KEY]
                   [--embedder auto|none|hashing|<file.gguf>|<url> [--embedder-gguf FILE|--embedder-sha256 HEX]] [--pubkey KEY]   # the JSON API over HTTP (CONTRACT \"API\")
-                  [--hub URL [--packs-root ROOT] [--device-key FILE]]   # sync.flush / sync.pull through a hub
+                  [--hub URL [--hub-ca PEM] [--hub-insecure-http] [--packs-root ROOT] [--device-key FILE]]
+                  # sync through a hub: https:// (Mozilla roots, or only --hub-ca), http:// to this machine only
   harvest api-schema <dir> [--check]      # writes (or checks) api.schema.json and types.ts
   harvest hub     <hub-db> --stream NAME [--packs ROOT] [--bind 127.0.0.1:4318] [--allow-origin URL]...
                   (--reviewers FILE | --trusted-proxy IP[,IP] --identity-header NAME --roles FILE)
@@ -62,6 +63,7 @@ impl Args {
                     || name == "maint"
                     || name == "check"
                     || name == "dev-key"
+                    || name == "hub-insecure-http"
                 {
                     flags.push((name.to_string(), None));
                 } else if let Some((k, v)) = name.split_once('=') {
@@ -1114,6 +1116,8 @@ fn serve(args: &Args) -> Result<(), CliError> {
         "embedder-sha256",
         "pubkey",
         "hub",
+        "hub-ca",
+        "hub-insecure-http",
         "packs-root",
         "device-key",
     ])?;
@@ -1165,11 +1169,23 @@ fn serve(args: &Args) -> Result<(), CliError> {
                 device_key.device_id(),
                 device_key.public_base64()
             );
-            let link = harvest_core::hub::http::HttpHubLink::new(
+            use harvest_core::hub::http::{HubRoots, HubTls};
+            let tls = HubTls {
+                roots: match args.get("hub-ca") {
+                    Some(path) => HubRoots::Pem(
+                        std::fs::read(path)
+                            .map_err(|e| CliError::Usage(format!("--hub-ca {path}: {e}")))?,
+                    ),
+                    None => HubRoots::Mozilla,
+                },
+                allow_insecure_http: args.has("hub-insecure-http"),
+            };
+            let link = harvest_core::hub::http::HttpHubLink::with_tls(
                 url,
                 device_key,
                 std::time::Duration::from_secs(60),
-            );
+                &tls,
+            )?;
             host = host.with_hub_link(
                 Arc::new(link),
                 args.get("packs-root").map(PathBuf::from),

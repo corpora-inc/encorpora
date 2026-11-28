@@ -3327,13 +3327,28 @@
           "minimum": 0,
           "type": "integer"
         },
+        "device_id": {
+          "description": "The device the hub answered (signed with the rest).",
+          "type": "string"
+        },
         "fleet_every_hours": {
           "description": "How often a device fetches a changed fleet summary (a hub setting\nthe device learns here).",
           "format": "double",
           "type": "number"
         },
+        "format": {
+          "description": "`harvest-hello-reply/1`.",
+          "type": "string"
+        },
+        "hello_sha256": {
+          "description": "The SHA-256 of the signed hello this answers (its canonical JSON,\nsignature included) and the link class it named: a reply to any\nother hello counts for nothing.",
+          "type": "string"
+        },
         "hub_time": {
           "type": "string"
+        },
+        "link": {
+          "$ref": "#/$defs/LinkClass"
         },
         "refused": {
           "anyOf": [
@@ -3345,6 +3360,9 @@
             }
           ]
         },
+        "signature": {
+          "description": "The hub's signature over the rest (its bundle key)."
+        },
         "stream": {
           "default": null,
           "description": "The hub's bundle stream: a device pulls by this stream's seq.",
@@ -3355,6 +3373,10 @@
         }
       },
       "required": [
+        "format",
+        "device_id",
+        "hello_sha256",
+        "link",
         "accepted",
         "refused",
         "fleet_every_hours",
@@ -3578,6 +3600,16 @@
     "HubBundlesParams": {
       "additionalProperties": false,
       "properties": {
+        "limit": {
+          "default": null,
+          "description": "At most this many (default 50, at most 200), in seq order.",
+          "format": "uint",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
         "since": {
           "default": 0,
           "format": "uint64",
@@ -3654,6 +3686,28 @@
       ],
       "type": "object"
     },
+    "HubPracticeParams": {
+      "additionalProperties": false,
+      "properties": {
+        "limit": {
+          "default": null,
+          "description": "At most this many (default 500, at most 5000).",
+          "format": "uint",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "since": {
+          "default": 0,
+          "description": "Statements after this hub sequence (`next_since` of the last page).",
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
     "HubPublishParams": {
       "additionalProperties": false,
       "properties": {
@@ -3668,6 +3722,22 @@
     "HubQueueParams": {
       "additionalProperties": false,
       "properties": {
+        "limit": {
+          "default": null,
+          "description": "At most this many (default 100, at most 500).",
+          "format": "uint",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "offset": {
+          "default": 0,
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
         "status": {
           "default": null,
           "description": "`pending` | `approved` | `rejected`; all when absent.",
@@ -5040,6 +5110,14 @@
       ],
       "type": "object"
     },
+    "LinkClass": {
+      "description": "How good the device's current link is (the host decides: a satellite\nor radio link is `low`).",
+      "enum": [
+        "low",
+        "normal"
+      ],
+      "type": "string"
+    },
     "ManualHit": {
       "description": "One search hit with its text and citation.",
       "properties": {
@@ -5722,6 +5800,28 @@
       ],
       "type": "object"
     },
+    "PageParams": {
+      "additionalProperties": false,
+      "description": "A page of a hub list: skip `offset`, return at most `limit` (default\n100, at most 500). Fewer than `limit` means the end.",
+      "properties": {
+        "limit": {
+          "default": null,
+          "format": "uint",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "offset": {
+          "default": 0,
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
     "PartUsed": {
       "additionalProperties": false,
       "description": "A part used.",
@@ -5899,6 +5999,292 @@
         "firmware",
         "params",
         "text"
+      ],
+      "type": "object"
+    },
+    "PracticeAttempt": {
+      "description": "One recorded attempt.",
+      "properties": {
+        "at": {
+          "type": "string"
+        },
+        "attempt_id": {
+          "type": "string"
+        },
+        "chosen": {
+          "type": "string"
+        },
+        "correct": {
+          "type": "boolean"
+        },
+        "ms": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "pack_id": {
+          "type": "string"
+        },
+        "pack_version": {
+          "type": "string"
+        },
+        "q_id": {
+          "type": "string"
+        },
+        "skill_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "attempt_id",
+        "pack_id",
+        "pack_version",
+        "q_id",
+        "skill_id",
+        "chosen",
+        "correct",
+        "ms",
+        "at"
+      ],
+      "type": "object"
+    },
+    "PracticeExport": {
+      "description": "A page of practice statements.",
+      "properties": {
+        "next_since": {
+          "description": "Pass as `since` for the next page.",
+          "format": "int64",
+          "type": "integer"
+        },
+        "statements": {
+          "description": "xAPI-style statements (actor, verb, object, result, context,\ntimestamp, stored).",
+          "items": true,
+          "type": "array"
+        }
+      },
+      "required": [
+        "statements",
+        "next_since"
+      ],
+      "type": "object"
+    },
+    "PracticeItems": {
+      "properties": {
+        "questions": {
+          "items": {
+            "$ref": "#/$defs/PracticeQuestion"
+          },
+          "type": "array"
+        },
+        "skills": {
+          "items": {
+            "$ref": "#/$defs/PracticeSkill"
+          },
+          "type": "array"
+        },
+        "topics": {
+          "items": {
+            "$ref": "#/$defs/PracticeTopic"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "topics",
+        "skills",
+        "questions"
+      ],
+      "type": "object"
+    },
+    "PracticeItemsParams": {
+      "additionalProperties": false,
+      "properties": {
+        "equip_id": {
+          "default": null,
+          "description": "The variant (questions that do not apply to it are left out).",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "pack_id": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "PracticeQuestion": {
+      "properties": {
+        "answer": {
+          "description": "mc: the choice index as text; numeric: the value; free_text: rubric JSON.",
+          "type": "string"
+        },
+        "choices": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "citations": {
+          "description": "The question's own citations (its `section_ids`).",
+          "items": {
+            "$ref": "#/$defs/Citation"
+          },
+          "type": "array"
+        },
+        "difficulty": {
+          "format": "double",
+          "type": "number"
+        },
+        "kind": {
+          "description": "`mc` | `numeric` | `free_text`.",
+          "type": "string"
+        },
+        "note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "q_id": {
+          "type": "string"
+        },
+        "rationale_citations": {
+          "description": "One per rationale: where the manual says it. The answer's comes from\nthe question's own section; a wrong choice's from the section that\nholds the passage its rationale quotes (or the choice itself), when\none does; `null` otherwise.",
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Citation"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "type": "array"
+        },
+        "rationales": {
+          "description": "One per choice: why right, why wrong.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "skill_id": {
+          "type": "string"
+        },
+        "stem": {
+          "type": "string"
+        },
+        "variant_of": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "q_id",
+        "skill_id",
+        "kind",
+        "stem",
+        "choices",
+        "answer",
+        "difficulty",
+        "variant_of",
+        "note",
+        "rationales",
+        "rationale_citations",
+        "citations"
+      ],
+      "type": "object"
+    },
+    "PracticeRecordParams": {
+      "additionalProperties": false,
+      "properties": {
+        "at": {
+          "default": null,
+          "description": "When it was answered (RFC 3339); now when absent.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "chosen": {
+          "description": "The choice index as text (mc), the value (numeric) or the text\nwritten (free_text).",
+          "type": "string"
+        },
+        "correct": {
+          "type": "boolean"
+        },
+        "ms": {
+          "description": "Milliseconds from showing the question to the answer.",
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "pack_id": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "q_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "q_id",
+        "chosen",
+        "correct",
+        "ms"
+      ],
+      "type": "object"
+    },
+    "PracticeSkill": {
+      "properties": {
+        "prereqs": {
+          "description": "Skills to practise first (`pack_meta.skill_prereqs`).",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "skill_id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "topic_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "skill_id",
+        "title",
+        "topic_id",
+        "prereqs"
+      ],
+      "type": "object"
+    },
+    "PracticeTopic": {
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "topic_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "topic_id",
+        "title"
       ],
       "type": "object"
     },
@@ -9378,7 +9764,7 @@
     },
     "hub.conflicts": {
       "params": {
-        "$ref": "#/$defs/NoParams"
+        "$ref": "#/$defs/PageParams"
       },
       "result": {
         "items": {
@@ -9389,7 +9775,7 @@
     },
     "hub.devices": {
       "params": {
-        "$ref": "#/$defs/NoParams"
+        "$ref": "#/$defs/PageParams"
       },
       "result": {
         "items": {
@@ -9412,6 +9798,14 @@
       },
       "result": {
         "$ref": "#/$defs/FleetSummary"
+      }
+    },
+    "hub.practice": {
+      "params": {
+        "$ref": "#/$defs/HubPracticeParams"
+      },
+      "result": {
+        "$ref": "#/$defs/PracticeExport"
       }
     },
     "hub.publish": {
@@ -9609,6 +10003,33 @@
       },
       "result": {
         "$ref": "#/$defs/GraphReport"
+      }
+    },
+    "practice.history": {
+      "params": {
+        "$ref": "#/$defs/PackParams"
+      },
+      "result": {
+        "items": {
+          "$ref": "#/$defs/PracticeAttempt"
+        },
+        "type": "array"
+      }
+    },
+    "practice.items": {
+      "params": {
+        "$ref": "#/$defs/PracticeItemsParams"
+      },
+      "result": {
+        "$ref": "#/$defs/PracticeItems"
+      }
+    },
+    "practice.record": {
+      "params": {
+        "$ref": "#/$defs/PracticeRecordParams"
+      },
+      "result": {
+        "$ref": "#/$defs/PracticeAttempt"
       }
     },
     "run.abandon": {

@@ -39,6 +39,16 @@ fn fleet() -> Fleet {
     }
 }
 
+/// The fleet hub's key (taken before any call that locks the hub).
+fn hub_keys(f: &Fleet) -> Vec<harvest_core::TrustedKey> {
+    vec![f.hub.lock().unwrap().trusted_key()]
+}
+
+/// The hub's key, as the device trusts it.
+fn hk(l: &LocalLink) -> Vec<harvest_core::TrustedKey> {
+    vec![l.hub.lock().unwrap().trusted_key()]
+}
+
 fn key(n: u8) -> DeviceKey {
     DeviceKey::from_seed(&[n; 32])
 }
@@ -155,7 +165,15 @@ fn receipts_are_idempotent_and_bad_items_are_refused() {
     assert!(hub.verify_audit().unwrap().ok);
     drop(hub);
     // The device's flush acknowledges everything through the link.
-    let r = rec.flush(&LinkTransport(&link), 10).unwrap();
+    let r = rec
+        .flush(
+            &LinkTransport {
+                link: &link,
+                keys: &hk(&link),
+            },
+            10,
+        )
+        .unwrap();
     assert_eq!((r.acked, r.remaining), (2, 0));
 }
 
@@ -279,7 +297,14 @@ fn reviews_become_signed_bundles_that_devices_install() {
     let l1 = fixed_job(&f, &rec, "unit-101", "Replaced relay K1");
     let l2 = fixed_job(&f, &rec, "unit-102", "Replaced relay K1");
     let l3 = fixed_job(&f, &rec, "unit-102", "Hit the starter with a hammer");
-    rec.flush(&LinkTransport(&link), 50).unwrap();
+    rec.flush(
+        &LinkTransport {
+            link: &link,
+            keys: &hk(&link),
+        },
+        50,
+    )
+    .unwrap();
     {
         let hub = f.hub.lock().unwrap();
         assert!(
@@ -504,9 +529,18 @@ mod http {
             &base,
             DeviceKey::from_seed(&k.seed()),
             std::time::Duration::from_secs(10),
-        );
+        )
+        .unwrap();
         let lesson = fixed_job(&f, &rec, "unit-101", "Replaced relay K1");
-        let r = rec.flush(&LinkTransport(&link), 50).unwrap();
+        let r = rec
+            .flush(
+                &LinkTransport {
+                    link: &link,
+                    keys: &hub_keys(&f),
+                },
+                50,
+            )
+            .unwrap();
         assert_eq!(r.acked, 0);
         assert!(r.error.unwrap().contains("403"));
         // Enrollment is an administrator's.
@@ -524,7 +558,15 @@ mod http {
         let (_, e) = call(addr, Some("admin-token-0000001"), "hub.enroll", enroll);
         assert_eq!(e["result"]["device_id"], k.device_id().as_str());
         assert_eq!(e["result"]["enrolled_by"], "Admin Z");
-        let r = rec.flush(&LinkTransport(&link), 50).unwrap();
+        let r = rec
+            .flush(
+                &LinkTransport {
+                    link: &link,
+                    keys: &hub_keys(&f),
+                },
+                50,
+            )
+            .unwrap();
         assert_eq!(r.acked, 2);
         // No token, a bad token: refused before any method runs.
         assert_eq!(
@@ -582,7 +624,15 @@ mod http {
             json!({"device_id": k.device_id(), "reason": "lost tablet"}),
         );
         fixed_job(&f, &rec, "unit-101", "Replaced relay K1");
-        let r = rec.flush(&LinkTransport(&link), 50).unwrap();
+        let r = rec
+            .flush(
+                &LinkTransport {
+                    link: &link,
+                    keys: &hub_keys(&f),
+                },
+                50,
+            )
+            .unwrap();
         assert_eq!(r.acked, 0);
         assert_eq!(rec.outbox_status().unwrap().pending, 2);
         running.stop();
@@ -645,7 +695,14 @@ fn the_fleet_summary_moves_only_when_it_changes() {
     let f = fleet();
     let (rec, link) = device(&f);
     let l = fixed_job(&f, &rec, "unit-101", "Replaced relay K1");
-    rec.flush(&LinkTransport(&link), 50).unwrap();
+    rec.flush(
+        &LinkTransport {
+            link: &link,
+            keys: &hk(&link),
+        },
+        50,
+    )
+    .unwrap();
     let keys = [f.hub.lock().unwrap().trusted_key()];
     {
         let hub = f.hub.lock().unwrap();
@@ -680,13 +737,25 @@ fn the_simulation_keeps_its_invariants_and_repeats_itself() {
         gap_minutes: 20.0,
     }];
     s.tamper_prob = 0.3;
+    s.forge_prob = 0.2;
     s.rogue_device = true;
     s.revoke = vec![harvest_core::sim::ScriptedRevoke {
         device: 2,
         day: 2.0,
     }];
+    s.photos = Some(harvest_core::sim::PhotoSpec {
+        per_lesson: 1.0,
+        median_kb: 400.0,
+        sigma: 0.5,
+        small_ratio: 0.08,
+        byte_scale: 100,
+    });
     let m = harvest_core::sim::run(&s, None).unwrap();
     assert!(m.invariants.ok, "{:#?}", m.invariants);
+    // Someone on the link forged receipts, hello replies and `held`:
+    // nothing was marked sent that the hub does not hold.
+    assert!(m.link.forged_replies > 20, "{}", m.link.forged_replies);
+    assert!(m.invariants.nothing_lost && m.invariants.no_attachment_marked_sent_without_hub);
     assert_eq!(m.delivery.lost, 0);
     assert!(
         m.delivery.delivered_of_deliverable > 0.99,
@@ -817,7 +886,7 @@ fn a_refused_device_sends_only_hellos_and_backs_off() {
     };
     fixed_job(&f, &rec, "unit-101", "Replaced relay K1");
     harvest_core::audit::set_clock(Some(ms("2026-03-01T10:00")));
-    let r = rec.flush_to_hub(&link, 50, false).unwrap();
+    let r = rec.flush_to_hub(&link, &hk(&link), 50, false).unwrap();
     assert_eq!(
         r.hello.as_ref().unwrap().refused,
         Some(harvest_core::sync::Refusal::Unenrolled)
@@ -831,20 +900,20 @@ fn a_refused_device_sends_only_hellos_and_backs_off() {
     // Within the back-off nothing at all is sent.
     harvest_core::audit::set_clock(Some(ms("2026-03-01T10:02")));
     assert!(
-        rec.flush_to_hub(&link, 50, false)
+        rec.flush_to_hub(&link, &hk(&link), 50, false)
             .unwrap()
             .skipped_until
             .is_some()
     );
     // The back-off doubles.
     harvest_core::audit::set_clock(Some(ms("2026-03-01T10:06")));
-    let r2 = rec.flush_to_hub(&link, 50, false).unwrap();
+    let r2 = rec.flush_to_hub(&link, &hk(&link), 50, false).unwrap();
     assert!(r2.hello.is_some());
     let until = r2.skipped_until.unwrap();
     assert!(until.starts_with("2026-03-01T10:16"), "{until}");
     // Once enrolled, a forced try goes through at once.
     f.hub.lock().unwrap().enroll(&pk, None, "Admin").unwrap();
-    let r3 = rec.flush_to_hub(&link, 50, true).unwrap();
+    let r3 = rec.flush_to_hub(&link, &hk(&link), 50, true).unwrap();
     assert_eq!(r3.flush.unwrap().acked, 2);
     assert_eq!(rec.sync_state().unwrap().refused, None);
     harvest_core::audit::set_clock(None);
@@ -897,13 +966,15 @@ fn attachments_move_by_content_resume_and_follow_the_link_policy() {
     // Records first: nothing moves while the outbox holds anything.
     fixed_job(&f, &rec, "unit-101", "Replaced relay K1");
     assert!(rec.outbox_status().unwrap().pending > 0);
-    let rep = rec.send_attachments(&normal, &|| false).unwrap();
+    let rep = rec
+        .send_attachments(&normal, &hk(&normal), &|| false)
+        .unwrap();
     assert!(rep.yielded && rep.chunks == 0);
-    rec.flush_to_hub(&normal, 50, false).unwrap();
+    rec.flush_to_hub(&normal, &hk(&normal), 50, false).unwrap();
     assert_eq!(rec.outbox_status().unwrap().pending, 0);
 
     // A low link sends the downscaled copy only.
-    let rep = rec.send_attachments(&low, &|| false).unwrap();
+    let rep = rec.send_attachments(&low, &hk(&low), &|| false).unwrap();
     assert_eq!(rep.mode, Some(AttachmentMode::Downscaled));
     assert_eq!(rep.bytes, 300);
     let small_sha = rec.attachments().unwrap()[0].small_sha256.clone().unwrap();
@@ -925,7 +996,7 @@ fn attachments_move_by_content_resume_and_follow_the_link_policy() {
     // On a normal link the full file follows, cut short and resumed.
     let calls = std::cell::Cell::new(0);
     let rep = rec
-        .send_attachments(&normal, &|| {
+        .send_attachments(&normal, &hk(&normal), &|| {
             calls.set(calls.get() + 1);
             calls.get() > 4
         })
@@ -939,7 +1010,9 @@ fn attachments_move_by_content_resume_and_follow_the_link_policy() {
             .unwrap(),
         2048
     );
-    let rep = rec.send_attachments(&normal, &|| false).unwrap();
+    let rep = rec
+        .send_attachments(&normal, &hk(&normal), &|| false)
+        .unwrap();
     assert_eq!(
         (rep.resumed, rep.resumed_bytes, rep.bytes),
         (1, 2048, 5000 - 2048)
@@ -951,7 +1024,9 @@ fn attachments_move_by_content_resume_and_follow_the_link_policy() {
     // Another device with the same file sends nothing: the hub has it.
     let (rec2, link2) = device(&f);
     rec2.add_attachment(&full, "image/jpeg", None).unwrap();
-    let rep = rec2.send_attachments(&link2, &|| false).unwrap();
+    let rep = rec2
+        .send_attachments(&link2, &hk(&link2), &|| false)
+        .unwrap();
     assert_eq!((rep.chunks, rep.completed), (0, 1));
 
     // References only: nothing moves.
@@ -961,7 +1036,9 @@ fn attachments_move_by_content_resume_and_follow_the_link_policy() {
         .set_attachment_policy(AttachmentMode::Refs, AttachmentMode::Refs, 1024);
     rec.add_attachment(&photo(900, 9), "image/jpeg", None)
         .unwrap();
-    let rep = rec.send_attachments(&normal, &|| false).unwrap();
+    let rep = rec
+        .send_attachments(&normal, &hk(&normal), &|| false)
+        .unwrap();
     assert_eq!(
         (rep.mode, rep.chunks, rep.backlog_bytes),
         (Some(AttachmentMode::Refs), 0, 0)
@@ -1104,4 +1181,263 @@ fn a_device_pulls_by_the_hubs_own_stream() {
     assert_eq!(p.installed, vec![1], "{p:?}");
     // And not twice.
     assert!(rec.pull(&link, &keys).unwrap().installed.is_empty());
+}
+
+/// A link that strips or replaces the hub's signatures.
+struct Forger {
+    inner: LocalLink,
+    /// Sign with this key instead of passing the hub's signature through.
+    key: Option<ed25519_dalek::SigningKey>,
+    /// Answer every hello with this (an old, genuine reply) instead.
+    replay: Option<harvest_core::sync::HelloReply>,
+}
+
+impl Forger {
+    fn resign<T: serde::Serialize>(&self, t: &T) -> Option<serde_json::Value> {
+        self.key
+            .as_ref()
+            .map(|k| harvest_core::sync::hub_sign(t, k).unwrap())
+    }
+}
+
+impl HubLink for Forger {
+    fn device_id(&self) -> String {
+        self.inner.device_id()
+    }
+    fn send(&self, batch: &[Upload]) -> harvest_core::Result<harvest_core::sync::ReceiptSet> {
+        let mut r = self.inner.send(batch)?;
+        r.signature = self.resign(&r);
+        Ok(r)
+    }
+    fn bundles_since(&self, since: u64) -> harvest_core::Result<Vec<serde_json::Value>> {
+        self.inner.bundles_since(since)
+    }
+    fn pack_offer(
+        &self,
+        pack_id: &str,
+        have: Option<&str>,
+    ) -> harvest_core::Result<Option<harvest_core::sync::PackOffer>> {
+        self.inner.pack_offer(pack_id, have)
+    }
+    fn fetch(
+        &self,
+        offer: &harvest_core::sync::PackOffer,
+        path: &str,
+    ) -> harvest_core::Result<Vec<u8>> {
+        self.inner.fetch(offer, path)
+    }
+    fn fleet(&self) -> harvest_core::Result<Option<serde_json::Value>> {
+        self.inner.fleet()
+    }
+    fn hello(
+        &self,
+    ) -> harvest_core::Result<(harvest_core::sync::Hello, harvest_core::sync::HelloReply)> {
+        let (h, mut r) = self.inner.hello()?;
+        if let Some(old) = &self.replay {
+            return Ok((h, old.clone()));
+        }
+        r.signature = self.resign(&r);
+        Ok((h, r))
+    }
+    fn public_key(&self) -> String {
+        self.inner.public_key()
+    }
+    fn attachment_offset(
+        &self,
+        sha256: &str,
+        total: u64,
+    ) -> harvest_core::Result<harvest_core::sync::Held> {
+        let mut h = self.inner.attachment_offset(sha256, total)?;
+        h.held = total;
+        h.signature = self.resign(&h);
+        Ok(h)
+    }
+    fn put_chunk(
+        &self,
+        sha256: &str,
+        variant: &str,
+        total: u64,
+        offset: u64,
+        data: &[u8],
+    ) -> harvest_core::Result<harvest_core::sync::Held> {
+        let mut h = self.inner.put_chunk(sha256, variant, total, offset, data)?;
+        h.signature = self.resign(&h);
+        Ok(h)
+    }
+}
+
+#[test]
+fn a_device_acts_only_on_replies_the_hub_signed() {
+    let f = fleet();
+    let (rec, link) = device(&f);
+    let keys = hk(&link);
+    fixed_job(&f, &rec, "unit-101", "Replaced relay K1");
+    rec.add_attachment(&photo(3000, 7), "image/jpeg", None)
+        .unwrap();
+    for key in [
+        None,
+        Some(ed25519_dalek::SigningKey::from_bytes(&[0x66; 32])),
+    ] {
+        let forger = Forger {
+            inner: LocalLink {
+                hub: f.hub.clone(),
+                key: DeviceKey::from_seed(&link.key.seed()),
+                link: Default::default(),
+            },
+            key,
+            replay: None,
+        };
+        // The hub stores the items, but the receipts do not verify: the
+        // device keeps them queued (they go again, as duplicates).
+        let r = rec.flush_to_hub(&forger, &keys, 50, true).unwrap();
+        assert!(r.hello.is_none() && r.error.is_some(), "{r:?}");
+        let r = rec
+            .flush(
+                &LinkTransport {
+                    link: &forger,
+                    keys: &keys,
+                },
+                50,
+            )
+            .unwrap();
+        assert_eq!(r.acked, 0, "{r:?}");
+        assert!(rec.outbox_status().unwrap().pending > 0);
+    }
+    // The real hub's receipts do.
+    let r = rec.flush_to_hub(&link, &keys, 50, false).unwrap();
+    assert!(r.flush.unwrap().acked > 0);
+    assert_eq!(rec.outbox_status().unwrap().pending, 0);
+    // A forged "you have it all" for a file the hub never got: not marked sent.
+    let forger = Forger {
+        inner: LocalLink {
+            hub: f.hub.clone(),
+            key: DeviceKey::from_seed(&link.key.seed()),
+            link: Default::default(),
+        },
+        key: Some(ed25519_dalek::SigningKey::from_bytes(&[0x66; 32])),
+        replay: None,
+    };
+    let rep = rec.send_attachments(&forger, &keys, &|| false).unwrap();
+    assert_eq!(rep.completed, 0, "{rep:?}");
+    assert_eq!(rec.attachments().unwrap()[0].sent, "none");
+    // A genuine reply replayed for a later hello does not count.
+    let (_, old) = link.hello().unwrap();
+    rec.add_attachment(&photo(500, 8), "image/jpeg", None)
+        .unwrap();
+    let replayer = Forger {
+        inner: LocalLink {
+            hub: f.hub.clone(),
+            key: DeviceKey::from_seed(&link.key.seed()),
+            link: Default::default(),
+        },
+        key: None,
+        replay: Some(old),
+    };
+    let e = harvest_core::sync::checked_hello(&replayer, &keys).unwrap_err();
+    assert!(e.to_string().contains("another hello"), "{e}");
+    let rep = rec.send_attachments(&replayer, &keys, &|| false).unwrap();
+    assert!(rep.mode.is_none() && rep.chunks == 0, "{rep:?}");
+    // A reply for another device does not count either.
+    let other = harvest_core::sync::verify_hub_reply(
+        &f.hub
+            .lock()
+            .unwrap()
+            .held_for("dev-00", &"a".repeat(64), 10)
+            .unwrap(),
+        harvest_core::sync::HELD_FORMAT,
+        &link.device_id(),
+        &keys,
+    );
+    assert!(other.is_err());
+}
+
+#[test]
+fn practice_attempts_are_recorded_queued_and_exported_as_statements() {
+    use harvest_core::api::{self, Host};
+    let tmp = tempfile::tempdir().unwrap();
+    fixture::build(&tmp.path().join("crane"), "2026.1.0-1").unwrap();
+    let crane = Arc::new(Pack::open(&tmp.path().join("crane"), &[fixture::trusted_key()]).unwrap());
+    let f = fleet();
+    let (rec, link) = device(&f);
+    let keys = hk(&link);
+    let host = Host::new(vec![crane.clone()], rec);
+    let items = api::call(&host, "practice.items", json!({})).unwrap();
+    let q = &items["questions"][0];
+    assert_eq!(q["q_id"], "q-clear-1");
+    assert_eq!(
+        items["skills"][0]["topic_id"],
+        items["topics"][0]["topic_id"]
+    );
+    let rc = q["rationale_citations"].as_array().unwrap();
+    assert_eq!(rc.len(), 4);
+    assert_eq!(
+        rc[1]["section_id"], "ex.2",
+        "the answer cites its own section"
+    );
+    assert!(rc[1]["citation"].is_string());
+    let a = api::call(
+        &host,
+        "practice.record",
+        json!({"q_id": "q-clear-1", "chosen": "1", "correct": true, "ms": 4200, "at": "2026-03-01T10:00:00Z"}),
+    )
+    .unwrap();
+    assert_eq!(a["skill_id"], "skill-clearance");
+    assert!(
+        api::call(
+            &host,
+            "practice.record",
+            json!({"q_id": "nope", "chosen": "1", "correct": true, "ms": 1})
+        )
+        .is_err()
+    );
+    let h = api::call(&host, "practice.history", json!({})).unwrap();
+    assert_eq!(h.as_array().unwrap().len(), 1);
+    assert_eq!(h[0]["chosen"], "1");
+    // Queued as its own kind, delivered, exported as a statement.
+    let hub_host = Host::new(vec![crane], Records::in_memory().unwrap()).with_hub(f.hub.clone());
+    let pending = api::call(&host, "sync.status", json!({})).unwrap();
+    assert_eq!(pending["pending_by_kind"]["practice"], 1, "{pending}");
+    let r = host_records_flush(&host, &link, &keys);
+    assert_eq!(r, 1);
+    let who = harvest_core::hub::auth::Principal::local("records office", &[]);
+    let out = api::call_as(&hub_host, Some(&who), "hub.practice", json!({})).unwrap();
+    let st = &out["statements"][0];
+    assert_eq!(st["verb"]["id"], "http://adlnet.gov/expapi/verbs/answered");
+    assert_eq!(st["actor"]["account"]["name"], link.device_id());
+    assert_eq!(
+        st["object"]["id"],
+        format!("urn:harvest:question:{}:q-clear-1", fixture::PACK_ID)
+    );
+    assert_eq!(
+        st["result"],
+        json!({"success": true, "duration": "PT4.200S"})
+    );
+    assert_eq!(
+        st["context"]["extensions"]["urn:harvest:pack-version"],
+        "2026.1.0-1"
+    );
+    assert_eq!(st["id"].as_str().unwrap().len(), 36);
+    let again = api::call_as(
+        &hub_host,
+        Some(&who),
+        "hub.practice",
+        json!({"since": out["next_since"]}),
+    )
+    .unwrap();
+    assert!(again["statements"].as_array().unwrap().is_empty());
+}
+
+/// Flush a host's records through `link`; the items acknowledged.
+fn host_records_flush(
+    host: &harvest_core::api::Host,
+    link: &LocalLink,
+    keys: &[harvest_core::TrustedKey],
+) -> usize {
+    host.with_records(|rec| {
+        rec.flush_to_hub(link, keys, 50, false)
+            .unwrap()
+            .flush
+            .unwrap()
+            .acked
+    })
 }

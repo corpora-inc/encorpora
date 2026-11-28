@@ -435,8 +435,9 @@ fn sync_dir(dir: &Path) -> Result<()> {
 pub trait HubLink {
     /// The device's id as the hub knows it.
     fn device_id(&self) -> String;
-    /// Store `batch`; receipts as for [`Transport::send`].
-    fn send(&self, batch: &[Upload]) -> Result<Vec<Receipt>>;
+    /// Store `batch`; the hub's signed receipts (checked by
+    /// [`LinkTransport`]).
+    fn send(&self, batch: &[Upload]) -> Result<ReceiptSet>;
     /// Signed field-note bundles with `seq` above `since`, in order.
     fn bundles_since(&self, since: u64) -> Result<Vec<serde_json::Value>>;
     /// The pack the hub offers for `pack_id` to a device holding `have`.
@@ -447,7 +448,8 @@ pub trait HubLink {
     fn fleet(&self) -> Result<Option<serde_json::Value>>;
     /// The small signed hello that opens every upload: the hub answers
     /// whether it accepts this device before any payload is sent.
-    fn hello(&self) -> Result<HelloReply>;
+    /// Say a signed hello; the hello sent and the hub's reply.
+    fn hello(&self) -> Result<(Hello, HelloReply)>;
     /// The link the device is on now (the hub's attachment policy depends
     /// on it); `normal` unless the host knows better.
     fn link_class(&self) -> LinkClass {
@@ -457,7 +459,7 @@ pub trait HubLink {
     fn public_key(&self) -> String;
     /// How much of an attachment variant the hub already holds (resume
     /// point; `total` when it holds it all, from any device).
-    fn attachment_offset(&self, sha256: &str, total: u64) -> Result<u64>;
+    fn attachment_offset(&self, sha256: &str, total: u64) -> Result<Held>;
     /// Sign and send one chunk of an attachment variant; returns how much
     /// of it the hub now holds.
     fn put_chunk(
@@ -467,7 +469,7 @@ pub trait HubLink {
         total: u64,
         offset: u64,
         data: &[u8],
-    ) -> Result<u64>;
+    ) -> Result<Held>;
 }
 
 /// Why the hub refuses a device.
@@ -591,6 +593,15 @@ impl Hello {
 /// The hub's answer to a hello.
 #[derive(Debug, Clone, Serialize, Deserialize, JsonSchema, PartialEq)]
 pub struct HelloReply {
+    /// `harvest-hello-reply/1`.
+    pub format: String,
+    /// The device the hub answered (signed with the rest).
+    pub device_id: String,
+    /// The SHA-256 of the signed hello this answers (its canonical JSON,
+    /// signature included) and the link class it named: a reply to any
+    /// other hello counts for nothing.
+    pub hello_sha256: String,
+    pub link: LinkClass,
     pub accepted: bool,
     pub refused: Option<Refusal>,
     /// How often a device fetches a changed fleet summary (a hub setting
@@ -606,6 +617,203 @@ pub struct HelloReply {
     /// The hub's bundle stream: a device pulls by this stream's seq.
     #[serde(default)]
     pub stream: Option<String>,
+    /// The hub's signature over the rest (its bundle key).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    #[schemars(with = "Option<serde_json::Value>")]
+    pub signature: Option<serde_json::Value>,
+    /// The reply as received, when it came over a wire: the signature is
+    /// checked on these bytes, so fields this version does not know still
+    /// count.
+    #[serde(skip)]
+    #[schemars(skip)]
+    pub raw: Option<serde_json::Value>,
+}
+
+/// Format ids of the hub's signed replies.
+pub const HELLO_REPLY_FORMAT: &str = "harvest-hello-reply/1";
+pub const RECEIPTS_FORMAT: &str = "harvest-receipts/1";
+pub const HELD_FORMAT: &str = "harvest-held/1";
+
+/// The hub's receipts for one delivery, signed: a device marks an item
+/// sent only on a receipt in a set that verifies against the hub's key.
+#[derive(Debug, Clone, Serialize, Deserialize, JsonSchema, PartialEq)]
+pub struct ReceiptSet {
+    /// `harvest-receipts/1`.
+    pub format: String,
+    pub device_id: String,
+    pub receipts: Vec<Receipt>,
+    pub signed_at: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    #[schemars(with = "Option<serde_json::Value>")]
+    pub signature: Option<serde_json::Value>,
+    /// The reply as received (see [`HelloReply::raw`]).
+    #[serde(skip)]
+    #[schemars(skip)]
+    pub raw: Option<serde_json::Value>,
+}
+
+/// How much of an attachment variant the hub holds, signed: a device
+/// resumes from, or marks sent on, nothing else.
+#[derive(Debug, Clone, Serialize, Deserialize, JsonSchema, PartialEq)]
+pub struct Held {
+    /// `harvest-held/1`.
+    pub format: String,
+    pub device_id: String,
+    pub sha256: String,
+    pub total: u64,
+    pub held: u64,
+    pub signed_at: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    #[schemars(with = "Option<serde_json::Value>")]
+    pub signature: Option<serde_json::Value>,
+    /// The reply as received (see [`HelloReply::raw`]).
+    #[serde(skip)]
+    #[schemars(skip)]
+    pub raw: Option<serde_json::Value>,
+}
+
+/// Canonical JSON has no floating-point numbers: a signed reply signs a
+/// float as its shortest round-trip text (the same on both sides).
+fn floats_as_text(v: &mut serde_json::Value) {
+    match v {
+        serde_json::Value::Number(n) if n.is_f64() => {
+            *v = serde_json::Value::String(n.to_string());
+        }
+        serde_json::Value::Array(a) => a.iter_mut().for_each(floats_as_text),
+        serde_json::Value::Object(o) => o.values_mut().for_each(floats_as_text),
+        _ => {}
+    }
+}
+
+/// Sign a hub reply with the hub's key (any `signature` it had is
+/// replaced). The signature covers the canonical JSON of the rest.
+pub fn hub_sign<T: Serialize>(
+    reply: &T,
+    key: &ed25519_dalek::SigningKey,
+) -> Result<serde_json::Value> {
+    let mut v = serde_json::to_value(reply)?;
+    floats_as_text(&mut v);
+    if let Some(o) = v.as_object_mut() {
+        o.remove("signature");
+    }
+    crate::packs::sign_manifest(&mut v, key)?;
+    Ok(v["signature"].clone())
+}
+
+/// A signed hub reply that may carry the JSON it arrived as.
+pub trait HubReply {
+    fn raw(&self) -> Option<&serde_json::Value>;
+}
+impl HubReply for HelloReply {
+    fn raw(&self) -> Option<&serde_json::Value> {
+        self.raw.as_ref()
+    }
+}
+impl HubReply for ReceiptSet {
+    fn raw(&self) -> Option<&serde_json::Value> {
+        self.raw.as_ref()
+    }
+}
+impl HubReply for Held {
+    fn raw(&self) -> Option<&serde_json::Value> {
+        self.raw.as_ref()
+    }
+}
+
+/// Parse a signed reply off the wire, keeping the JSON it came as.
+pub fn reply_from_json<T: serde::de::DeserializeOwned + HubReplyRaw>(
+    v: serde_json::Value,
+) -> Result<T> {
+    let mut t: T =
+        serde_json::from_value(v.clone()).map_err(|e| Error::Sync(format!("hub reply: {e}")))?;
+    t.set_raw(v);
+    Ok(t)
+}
+
+/// Setting the received JSON on a reply.
+pub trait HubReplyRaw {
+    fn set_raw(&mut self, v: serde_json::Value);
+}
+impl HubReplyRaw for HelloReply {
+    fn set_raw(&mut self, v: serde_json::Value) {
+        self.raw = Some(v);
+    }
+}
+impl HubReplyRaw for ReceiptSet {
+    fn set_raw(&mut self, v: serde_json::Value) {
+        self.raw = Some(v);
+    }
+}
+impl HubReplyRaw for Held {
+    fn set_raw(&mut self, v: serde_json::Value) {
+        self.raw = Some(v);
+    }
+}
+
+impl Hello {
+    /// The SHA-256 of this hello's canonical JSON, signature included (what
+    /// a reply names).
+    pub fn sha256(&self) -> Result<String> {
+        Ok(hex_encode(&Sha256::digest(crate::canon::to_vec(
+            &serde_json::to_value(self)?,
+        )?)))
+    }
+}
+
+/// Say hello through `link` and check the reply: the hub's signature, this
+/// device, and this very hello (so an old reply cannot be replayed).
+pub fn checked_hello(link: &dyn HubLink, keys: &[crate::packs::TrustedKey]) -> Result<HelloReply> {
+    let (hello, r) = link.hello()?;
+    verify_hub_reply(&r, HELLO_REPLY_FORMAT, &link.device_id(), keys)?;
+    if r.hello_sha256 != hello.sha256()? || r.link != hello.link {
+        return Err(Error::Signature(
+            "the hub's reply answers another hello".into(),
+        ));
+    }
+    Ok(r)
+}
+
+/// Check a hub `held` for this variant.
+pub fn checked_held(
+    held: &Held,
+    link: &dyn HubLink,
+    sha256: &str,
+    total: u64,
+    keys: &[crate::packs::TrustedKey],
+) -> Result<u64> {
+    verify_hub_reply(held, HELD_FORMAT, &link.device_id(), keys)?;
+    if held.sha256 != sha256 || held.total != total || held.held > total {
+        return Err(Error::Signature(
+            "hub `held` is for another attachment".into(),
+        ));
+    }
+    Ok(held.held)
+}
+
+/// Check a hub reply: its format, that it answers this device, and its
+/// signature against the trusted hub keys.
+pub fn verify_hub_reply<T: Serialize + HubReply>(
+    reply: &T,
+    format: &str,
+    device_id: &str,
+    keys: &[crate::packs::TrustedKey],
+) -> Result<()> {
+    let mut v = match reply.raw() {
+        Some(r) => r.clone(),
+        None => serde_json::to_value(reply)?,
+    };
+    floats_as_text(&mut v);
+    if v.get("format").and_then(|f| f.as_str()) != Some(format) {
+        return Err(Error::Signature(format!("hub reply is not {format}")));
+    }
+    if v.get("device_id").and_then(|f| f.as_str()) != Some(device_id) {
+        return Err(Error::Signature("hub reply is for another device".into()));
+    }
+    if v.get("signature").is_none_or(|s| s.is_null()) {
+        return Err(Error::Signature("hub reply is unsigned".into()));
+    }
+    crate::packs::verify_signature(&v, keys)
+        .map_err(|e| Error::Signature(format!("hub reply: {e}")))
 }
 
 fn default_mode() -> AttachmentMode {
@@ -779,11 +987,18 @@ pub struct PackOffer {
 }
 
 /// [`HubLink`] as an upload [`Transport`].
-pub struct LinkTransport<'a>(pub &'a dyn HubLink);
+/// The outbox's transport over a hub link: receipts count only when the
+/// set verifies against `keys` (the hub's) and answers this device.
+pub struct LinkTransport<'a> {
+    pub link: &'a dyn HubLink,
+    pub keys: &'a [crate::packs::TrustedKey],
+}
 
 impl Transport for LinkTransport<'_> {
     fn send(&self, batch: &[Upload]) -> Result<Vec<Receipt>> {
-        self.0.send(batch)
+        let set = self.link.send(batch)?;
+        verify_hub_reply(&set, RECEIPTS_FORMAT, &self.link.device_id(), self.keys)?;
+        Ok(set.receipts)
     }
 }
 

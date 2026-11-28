@@ -893,13 +893,26 @@ export interface HelloReply {
   attachments: AttachmentMode;
   /** The attachment chunk size, bytes. */
   chunk_bytes: number;
+  /** The device the hub answered (signed with the rest). */
+  device_id: string;
   /**
    * How often a device fetches a changed fleet summary (a hub setting
    * the device learns here).
    */
   fleet_every_hours: number;
+  /** `harvest-hello-reply/1`. */
+  format: string;
+  /**
+   * The SHA-256 of the signed hello this answers (its canonical JSON,
+   * signature included) and the link class it named: a reply to any
+   * other hello counts for nothing.
+   */
+  hello_sha256: string;
   hub_time: string;
+  link: LinkClass;
   refused: Refusal | null;
+  /** The hub's signature over the rest (its bundle key). */
+  signature?: unknown;
   /** The hub's bundle stream: a device pulls by this stream's seq. */
   stream: string | null;
 }
@@ -962,6 +975,8 @@ export interface HubApproveParams {
 }
 
 export interface HubBundlesParams {
+  /** At most this many (default 50, at most 200), in seq order. */
+  limit?: number | null;
   since?: number;
 }
 
@@ -985,12 +1000,22 @@ export interface HubFlush {
   skipped_until: string | null;
 }
 
+export interface HubPracticeParams {
+  /** At most this many (default 500, at most 5000). */
+  limit?: number | null;
+  /** Statements after this hub sequence (`next_since` of the last page). */
+  since?: number;
+}
+
 export interface HubPublishParams {
   /** Publish a bundle (with the fleet summary) even when no note changed. */
   always?: boolean;
 }
 
 export interface HubQueueParams {
+  /** At most this many (default 100, at most 500). */
+  limit?: number | null;
+  offset?: number;
   /** `pending` | `approved` | `rejected`; all when absent. */
   status?: string | null;
 }
@@ -1331,6 +1356,12 @@ export interface LevelText {
   text: string;
 }
 
+/**
+ * How good the device's current link is (the host decides: a satellite
+ * or radio link is `low`).
+ */
+export type LinkClass = "low" | "normal";
+
 /** One search hit with its text and citation. */
 export interface ManualHit {
   chunk_id: string;
@@ -1511,6 +1542,15 @@ export interface PageBox {
   y1: number;
 }
 
+/**
+ * A page of a hub list: skip `offset`, return at most `limit` (default
+ * 100, at most 500). Fewer than `limit` means the end.
+ */
+export interface PageParams {
+  limit?: number | null;
+  offset?: number;
+}
+
 /** A part used. */
 export interface PartUsed {
   ident: string | null;
@@ -1552,6 +1592,95 @@ export interface Plate {
   serial: string | null;
   /** Free text (a data plate read aloud or by a camera). */
   text: string | null;
+}
+
+/** One recorded attempt. */
+export interface PracticeAttempt {
+  at: string;
+  attempt_id: string;
+  chosen: string;
+  correct: boolean;
+  ms: number;
+  pack_id: string;
+  pack_version: string;
+  q_id: string;
+  skill_id: string;
+}
+
+/** A page of practice statements. */
+export interface PracticeExport {
+  /** Pass as `since` for the next page. */
+  next_since: number;
+  /**
+   * xAPI-style statements (actor, verb, object, result, context,
+   * timestamp, stored).
+   */
+  statements: unknown[];
+}
+
+export interface PracticeItems {
+  questions: PracticeQuestion[];
+  skills: PracticeSkill[];
+  topics: PracticeTopic[];
+}
+
+export interface PracticeItemsParams {
+  /** The variant (questions that do not apply to it are left out). */
+  equip_id?: string | null;
+  pack_id?: string | null;
+}
+
+export interface PracticeQuestion {
+  /** mc: the choice index as text; numeric: the value; free_text: rubric JSON. */
+  answer: string;
+  choices: string[];
+  /** The question's own citations (its `section_ids`). */
+  citations: Citation[];
+  difficulty: number;
+  /** `mc` | `numeric` | `free_text`. */
+  kind: string;
+  note: string | null;
+  q_id: string;
+  /**
+   * One per rationale: where the manual says it. The answer's comes from
+   * the question's own section; a wrong choice's from the section that
+   * holds the passage its rationale quotes (or the choice itself), when
+   * one does; `null` otherwise.
+   */
+  rationale_citations: (Citation | null)[];
+  /** One per choice: why right, why wrong. */
+  rationales: string[];
+  skill_id: string;
+  stem: string;
+  variant_of: string | null;
+}
+
+export interface PracticeRecordParams {
+  /** When it was answered (RFC 3339); now when absent. */
+  at?: string | null;
+  /**
+   * The choice index as text (mc), the value (numeric) or the text
+   * written (free_text).
+   */
+  chosen: string;
+  correct: boolean;
+  /** Milliseconds from showing the question to the answer. */
+  ms: number;
+  pack_id?: string | null;
+  q_id: string;
+}
+
+export interface PracticeSkill {
+  /** Skills to practise first (`pack_meta.skill_prereqs`). */
+  prereqs: string[];
+  skill_id: string;
+  title: string;
+  topic_id: string;
+}
+
+export interface PracticeTopic {
+  title: string;
+  topic_id: string;
 }
 
 /** An identified person. */
@@ -2555,6 +2684,10 @@ export interface Methods {
   "fleet.summary": { params: NoParams; result: FleetSummary | null };
   "audit.list": { params: AuditListParams; result: AuditRecord[] };
   "audit.verify": { params: NoParams; result: ChainReport };
+  "practice.items": { params: PracticeItemsParams; result: PracticeItems };
+  "practice.record": { params: PracticeRecordParams; result: PracticeAttempt };
+  "practice.history": { params: PackParams; result: PracticeAttempt[] };
+  "hub.practice": { params: HubPracticeParams; result: PracticeExport };
   "hub.status": { params: NoParams; result: HubStatus };
   "hub.queue": { params: HubQueueParams; result: ReviewItem[] };
   "hub.approve": { params: HubApproveParams; result: FieldNoteIn };
@@ -2562,9 +2695,9 @@ export interface Methods {
   "hub.publish": { params: HubPublishParams; result: unknown };
   "hub.bundles": { params: HubBundlesParams; result: unknown[] };
   "hub.fleet": { params: NoParams; result: FleetSummary };
-  "hub.conflicts": { params: NoParams; result: Conflict[] };
+  "hub.conflicts": { params: PageParams; result: Conflict[] };
   "hub.audit": { params: AuditListParams; result: AuditRecord[] };
-  "hub.devices": { params: NoParams; result: EnrolledDevice[] };
+  "hub.devices": { params: PageParams; result: EnrolledDevice[] };
   "hub.enroll": { params: HubEnrollParams; result: EnrolledDevice };
   "hub.revoke": { params: HubRevokeParams; result: EnrolledDevice };
   "hub.whoami": { params: NoParams; result: Principal };
@@ -2625,6 +2758,10 @@ export const METHODS = [
   "fleet.summary",
   "audit.list",
   "audit.verify",
+  "practice.items",
+  "practice.record",
+  "practice.history",
+  "hub.practice",
   "hub.status",
   "hub.queue",
   "hub.approve",

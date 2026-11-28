@@ -594,14 +594,15 @@ pub struct RankingParams {
     pub weak_words_add: Vec<String>,
 }
 
-/// The calibrated defaults (618 development items).
+/// The calibrated defaults (618 development items; the dense-active
+/// confidence set checked on 837 held-out items).
 pub const LEXICAL_WEIGHT: f64 = 0.10;
 pub const RRF_K: f64 = 60.0;
 pub const DENSE_FLOOR: f64 = 0.5;
-pub const CONFIDENT_MARGIN: f64 = 0.02;
-pub const CONFIDENT_COVERAGE: f64 = 0.50;
+pub const CONFIDENT_MARGIN: f64 = 0.05;
+pub const CONFIDENT_COVERAGE: f64 = 0.30;
 pub const CONFIDENT_STRONG_HITS: u32 = 1;
-pub const CONFIDENT_DENSE_ALONE: f64 = 0.85;
+pub const CONFIDENT_DENSE_ALONE: f64 = 0.80;
 pub const CONFIDENT_MARGIN_LEXICAL: f64 = 0.15;
 pub const CONFIDENT_COVERAGE_LEXICAL: f64 = 0.30;
 pub const CONFIDENT_STRONG_HITS_LEXICAL: u32 = 1;
