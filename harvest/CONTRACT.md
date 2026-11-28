@@ -461,13 +461,13 @@ names what the app needs to reserve its height:
 | `text` | `text` | prose; no markdown tables |
 | `quote` | `section_id`, `text` | rule text, copied from the pack by the engine and checked verbatim; never model output |
 | `cite` | `section_id` | the citation for the quotes before it |
-| `node` | `node_id`, `level`, `title`, `path [{node_id, level, title}]`, `texts [{field, text}]` | course-tree text, shown as written |
+| `node` | `node_id`, `level`, `title`, `path [{node_id, level, title}]`, `texts [{field, text}]` | course-tree text, shown as written: the named fields, else `summary` and `hard` (follow-ups offer the rest); a text the conversation already showed is not shown again; with at most three of the node's quotes, unshown first |
 | `exam` | `exam_id` | the exam's domains, weights and counts, from the blueprint |
 | `lesson` | `lesson_id` | a lesson card |
 | `film` | `film_id`, `node_id` | a lesson film; the app fills aspect, duration and poster from its media catalog |
 | `diagram` | `diagram_id` | a diagram |
 | `question` | `q_id`, `chosen?` | inline practice (recorded in practice state); with `chosen`, the learner's answer under review with the rationales |
-| `focus` | `items [{node_id, title, domain, weight, mastery\|null}]` | study priorities: domain weight × (1 − mastery), an unpractised skill at 0.5 |
+| `focus` | `items [{node_id, title, domain, weight, mastery\|null}]` | study priorities: the skill's share of each domain that tests it (weight / √skills), summed, × (1 − mastery); an unpractised skill at 0.5 |
 | `tool` | `tool` (`clearance`\|`load-chart`\|`signals`), `input?` | the app's tool; `clearance` with `input {kv, traveling}` is followed by the table row as text, quote and cite |
 | `search` | `query` | the grouped rule results for a query (the rules index the app shows) |
 
