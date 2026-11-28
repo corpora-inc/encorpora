@@ -23,6 +23,8 @@
 //! plugins (desktop, Android) or the iOS share sheet from Rust only.
 
 mod export;
+/// The Instructor: one turn at a time through harvest-core.
+mod instructor;
 /// The knowledge pack: installed, verified and read through harvest-core.
 mod pack;
 /// Pack signing keys compiled into the app (production; lab in dev builds only).
@@ -50,6 +52,8 @@ pub fn run() {
         .invoke_handler(tauri::generate_handler![
             export::export_file,
             pack::pack_show,
+            instructor::instructor_welcome,
+            instructor::instructor_turn,
             voice::voice_model
         ])
         .run(tauri::generate_context!())

@@ -142,7 +142,7 @@ function placeOf(id: string): string {
     .join(" › ");
 }
 
-function RuleCard({ group, terms }: { group: RuleGroup; terms: ReadonlySet<string> }) {
+export function RuleCard({ group, terms }: { group: RuleGroup; terms: ReadonlySet<string> }) {
   const t = useT();
   const e = engine();
   const best = e.sections.get(group.best_id);

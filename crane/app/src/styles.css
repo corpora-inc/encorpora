@@ -211,6 +211,25 @@
     -webkit-box-decoration-break: clone;
     box-shadow: inset 0 -2px 0 var(--amber);
   }
+  /* A follow-up the instructor offers: a 44 px pill that wraps at spaces, never mid-word. */
+  .follow-up {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    max-width: 100%;
+    padding: 8px 16px;
+    border-radius: 999px;
+    border: 2px solid var(--line-strong);
+    background: var(--surface);
+    color: var(--ink);
+    font-weight: 600;
+    font-size: var(--text-small);
+    text-align: left;
+    cursor: pointer;
+  }
+  .follow-up:active {
+    transform: translateY(1px);
+  }
   /* Another matching paragraph of the same section: a compact link, still a 44 px target. */
   .chip {
     display: inline-flex;

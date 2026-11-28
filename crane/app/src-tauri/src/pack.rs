@@ -33,13 +33,20 @@ pub fn keys() -> Result<Vec<TrustedKey>, String> {
 
 /// The JSON is built once per launch: the pack does not change while the app runs.
 static SHOW: OnceLock<Result<String, String>> = OnceLock::new();
+/// The pack, opened once per launch and shared by the read API and the Instructor.
+static PACK: OnceLock<Result<std::sync::Arc<Pack>, String>> = OnceLock::new();
+
+/// The opened, verified pack.
+pub fn opened(app: &AppHandle) -> Result<std::sync::Arc<Pack>, String> {
+    PACK.get_or_init(|| open(app).map(std::sync::Arc::new))
+        .clone()
+}
 
 /// Everything the read API returns, as `harvest-show/1` JSON text.
 #[tauri::command]
 pub async fn pack_show(app: AppHandle) -> Result<String, String> {
-    let app2 = app.clone();
     tauri::async_runtime::spawn_blocking(move || {
-        SHOW.get_or_init(|| open(&app2).and_then(|p| show(&p)))
+        SHOW.get_or_init(|| opened(&app).and_then(|p| show(&p)))
             .clone()
     })
     .await
