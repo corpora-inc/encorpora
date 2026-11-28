@@ -211,7 +211,17 @@ fn strict_paragraph(
     let mut kept_texts = Vec::new();
     let mut inserted = Vec::new();
     for t in texts {
-        let Segment::Text { text } = t else { continue };
+        let Segment::Text { text: shown } = t else {
+            continue;
+        };
+        // A leading "Yes," / "No," is the verdict; the claim after it is what
+        // the sources must support. A bare "Yes." or "No." states nothing the
+        // checker can hold to a source, so it never stands alone.
+        let text = &strip_verdict(shown);
+        if text.trim().is_empty() {
+            report.dropped += 1;
+            continue;
+        }
         let numbers = text_numbers(text);
         if numbers.iter().any(|n| !source_numbers.contains(n)) {
             report.dropped += 1; // a number no source states
@@ -287,6 +297,22 @@ const DISCOURSE: &[&str] = &[
 
 fn is_number(t: &str) -> bool {
     t.chars().next().is_some_and(|c| c.is_ascii_digit())
+}
+
+/// `text` without a leading yes/no verdict ("No, the rule…" → "the rule…").
+fn strip_verdict(text: &str) -> String {
+    let t = text.trim_start();
+    for v in ["yes", "no"] {
+        if t.len() >= v.len() && t[..v.len()].eq_ignore_ascii_case(v) {
+            let rest = &t[v.len()..];
+            if rest.is_empty() || rest.starts_with([',', '.', ';', ':', '!', ' ', '—', '-']) {
+                return rest
+                    .trim_start_matches([',', '.', ';', ':', '!', ' ', '—', '-'])
+                    .to_string();
+            }
+        }
+    }
+    t.to_string()
 }
 
 /// Every number in `text` (number words already turned into digits). Each

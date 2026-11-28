@@ -25,6 +25,8 @@
 mod export;
 /// Pack signing keys compiled into the app (production; lab in dev builds only).
 pub mod pack_keys;
+/// The bundled speech model, installed into the STT plugin on first launch.
+mod voice;
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
@@ -40,9 +42,13 @@ pub fn run() {
     builder
         .setup(|app| {
             export::clear_shared(app.handle());
+            voice::start(app.handle());
             Ok(())
         })
-        .invoke_handler(tauri::generate_handler![export::export_file])
+        .invoke_handler(tauri::generate_handler![
+            export::export_file,
+            voice::voice_model
+        ])
         .run(tauri::generate_context!())
         .expect("error while running the crane app");
 }

@@ -33,6 +33,7 @@ env:
 jobs:
   changes:
     runs-on: ubuntu-24.04
+    timeout-minutes: 5
     outputs:
       browser: ${{ steps.paths.outputs.amp_browser }}
       content: ${{ steps.paths.outputs.amp_content }}
@@ -66,6 +67,9 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          # History for the diff without old file contents: commits and trees
+          # only (about 10 MB instead of 600), and git fetches a blob it reads.
+          filter: blob:none
       - id: paths
         env:
           BASE: ${{ github.event.before }}
@@ -476,6 +480,7 @@ jobs:
     needs: amp-ui-sweep
     if: ${{ needs.amp-ui-sweep.result == 'success' }}
     runs-on: ubuntu-24.04
+    timeout-minutes: 5
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -657,6 +662,7 @@ jobs:
     needs: [changes, amp-content-checks]
     if: ${{ always() && needs.changes.outputs.content == 'true' }}
     runs-on: ubuntu-24.04
+    timeout-minutes: 5
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -694,6 +700,7 @@ jobs:
     needs: [changes, amp-browser, amp-native-session, amp-ui-sweep, amp-ui-coverage, amp-content]
     if: ${{ always() && !cancelled() }}
     runs-on: ubuntu-24.04
+    timeout-minutes: 5
     permissions:
       contents: read
       issues: write

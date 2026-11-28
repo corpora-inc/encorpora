@@ -32,6 +32,9 @@ const ROUTES = [
   "/ask",
   "/ask/a/a.powerline-clearance",
   "/ask/q/rules%20for%20barge%20mounted%20cranes",
+  "/ask/q/signaling",
+  "/ask/q/outrigers",
+  "/ask/q/xyzzy",
   "/read/29cfr1926.1408(b)(3)",
   "/do",
   "/do/shift-inspection",
@@ -53,7 +56,7 @@ const ROUTES = [
   "/settings",
   "/settings/about",
 ];
-const SCREENSHOT = new Set(["/learn/topic/ground", "/ask", "/ask/a/a.powerline-clearance", "/read/29cfr1926.1408(b)(3)", "/do/shift-inspection", "/learn", "/practice", "/tools/clearance", "/tools/load-chart", "/tools/signals", "/settings"]);
+const SCREENSHOT = new Set(["/learn/topic/ground", "/ask", "/ask/q/signaling", "/ask/q/outrigers", "/ask/q/xyzzy", "/ask/a/a.powerline-clearance", "/read/29cfr1926.1408(b)(3)", "/do/shift-inspection", "/learn", "/practice", "/tools/clearance", "/tools/load-chart", "/tools/signals", "/settings"]);
 // Serve every page under the shipped app's Content-Security-Policy, so anything the
 // native WebView would block (inline script, a stray fetch, a blob image) fails here too.
 const CSP = JSON.parse(await readFile(path.join(root, "src-tauri", "tauri.conf.json"), "utf8")).app.security.csp;
@@ -76,14 +79,91 @@ async function waitUp() {
 /** Seed settings so a route renders past first run. */
 const seeded = (role = "operator") => `localStorage.setItem("crane.settings", JSON.stringify({ state: { role: "${role}", equipment: null, theme: "system", lang: "en", assistant: false }, version: 1 }));`;
 
-async function newPage(browser, width, theme, { seed = true } = {}) {
-  const context = await browser.newContext({ viewport: { width, height: 860 }, colorScheme: theme, deviceScaleFactor: 1 });
+/**
+ * A stand-in for the Tauri bridge, so the native voice and read-aloud UI runs
+ * in the browser check. It answers the commands src/lib/native.ts invokes with
+ * the shapes the plugins return, emits microphone levels like the STT plugin
+ * (about 8 a second: room noise, a spoken question, then a pause), and records
+ * read-aloud calls in window.__tts. `deny` makes the microphone permission fail
+ * the way iOS reports it.
+ */
+const fakeNative = (opts) => {
+  const callbacks = new Map();
+  let nextId = 1;
+  window.__tts = [];
+  window.__stt = [];
+  window.__calls = [];
+  const listeners = {};
+  const emit = (event, message) => {
+    for (const l of listeners[event] ?? []) callbacks.get(l.id)?.({ message, index: l.index++ });
+  };
+  window.__TAURI_INTERNALS__ = {
+    transformCallback: (cb) => {
+      const id = nextId++;
+      callbacks.set(id, cb);
+      return id;
+    },
+    unregisterCallback: (id) => callbacks.delete(id),
+    invoke: async (cmd, args) => {
+      window.__stt.push(cmd);
+      window.__calls.push([cmd, args]);
+      switch (cmd) {
+        case "voice_model": return { status: args?.wait ? "ready" : "installing", file: "ggml-test.bin" };
+        case "plugin:stt|is_available": return true;
+        case "plugin:stt|validate_model": return { model: args.model, valid: true, problems: [] };
+        case "plugin:stt|prepare": return { ready: true, model: args.args.model };
+        case "plugin:stt|register_listener":
+          (listeners[args.event] ??= []).push({ id: args.handler.id, index: 0 });
+          return null;
+        case "plugin:stt|remove_listener": return null;
+        case "plugin:stt|start_session": {
+          if (opts.deny) throw "MIC_PERMISSION_DENIED: Microphone access was denied";
+          window.__sttPrompt = args.args.whisperParams?.initial_prompt ?? null;
+          let t = 0;
+          const timer = setInterval(() => {
+            t += 125;
+            const rms = t < 500 ? 0.03 : t < 2500 ? 0.18 + 0.04 * Math.sin(t) : 0.03;
+            emit("audio_level", { rms, t });
+            if (t > 9000) clearInterval(timer);
+          }, 125);
+          window.__sttTimer = timer;
+          return { started: true, sessionId: args.args.sessionId };
+        }
+        case "plugin:stt|stop_session":
+          clearInterval(window.__sttTimer);
+          await new Promise((r) => setTimeout(r, 400));
+          return { sessionId: args.args.sessionId, text: " How close can I get to a 345 kV line? " };
+        case "plugin:stt|cancel_session": clearInterval(window.__sttTimer); return null;
+        case "plugin:tts|list_voices":
+          return [
+            { id: "compact", language: "en-US", quality: "default" },
+            { id: "cloud", language: "en-US", quality: "very_high", networkRequired: true },
+            { id: "ava-premium", language: "en-US", quality: "enhanced", name: "Ava (Premium)" },
+          ];
+        case "plugin:tts|speak": window.__tts.push(args.args); await new Promise((r) => setTimeout(r, 300)); return null;
+        case "plugin:tts|stop": return null;
+        case "plugin:tts|open_tts_settings": return null;
+        case "plugin:tts|open_app_details":
+          if (args?.args?.packageName !== "inc.corpora.crane") throw "missing required key args";
+          return null;
+        case "plugin:corpan-llm|llm_status": return { loaded: false, modelId: null };
+        default: throw `unexpected command ${cmd}`;
+      }
+    },
+  };
+};
+
+const ANDROID_UA = "Mozilla/5.0 (Linux; Android 15; Pixel 8a) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0 Mobile Safari/537.36";
+
+async function newPage(browser, width, theme, { seed = true, native = null } = {}) {
+  const context = await browser.newContext({ viewport: { width, height: 860 }, colorScheme: theme, deviceScaleFactor: 1, ...(native?.android ? { userAgent: ANDROID_UA } : {}) });
   await context.route("**/*", async (route) => {
     if (route.request().resourceType() !== "document") return route.continue();
     const response = await route.fetch();
     await route.fulfill({ response, headers: { ...response.headers(), "content-security-policy": CSP } });
   });
   if (seed) await context.addInitScript(seeded());
+  if (native) await context.addInitScript(fakeNative, native);
   await context.addInitScript(() => {
     window.__shift = 0;
     new PerformanceObserver((list) => {
@@ -205,9 +285,9 @@ try {
     checks++;
   }
 
-  // 3. Ask: a paraphrase is answered from the pack; an uncovered question declines with nearest sections.
+  // 3. Ask is a search over the rules: results grouped by section, course-map matches first, never a cached answer.
   {
-    const { context, page } = await newPage(browser, 390, "light");
+    const { context, page, errors } = await newPage(browser, 390, "light");
     await page.goto(base + "/ask");
     const input = page.getByLabel("Ask about a rule, a limit or a step");
     // Empty submit: inline error in the reserved line, nothing moves.
@@ -216,10 +296,45 @@ try {
     await input.fill("when do I need a signal person");
     await input.press("Enter");
     await page.waitForURL(/\/ask\/q\//);
-    await page.getByText("The point of operation").first().waitFor();
+    await page.getByRole("heading", { level: 1, name: "Here’s what I found about “when do I need a signal person”" }).waitFor();
+    await page.locator(".rule-hit").first().waitFor();
+    assert.equal(await page.getByText(/answer that directly/).count(), 0, "no decline text over results");
+    // The signal words, however asked, put §1926.1419 in the first group of rules, with the Signals topic and chart above.
+    for (const q of ["signaling", "signalling", "hand signals", "who can give signals"]) {
+      await page.goto(base + "/ask/q/" + encodeURIComponent(q));
+      await page.locator(".rule-hit").first().waitFor();
+      assert.equal(await page.locator(".rule-hit").first().getAttribute("data-root"), "29cfr1926.1419", `${q}: first group`);
+      assert.match(await page.locator(".rule-hit").first().innerText(), /§1926\.1419/, `${q}: first group shows its citation`);
+      const learn = page.getByRole("heading", { name: "Learn", exact: true });
+      const rules = page.getByRole("heading", { name: "In the rules", exact: true });
+      assert.ok((await learn.boundingBox()).y < (await rules.boundingBox()).y, `${q}: course-map matches come first`);
+      assert.ok(await page.locator("a[href='/learn/topic/signals']").count() === 1, `${q}: the Signals topic`);
+      assert.ok(await page.locator("a[href='/tools/signals']").count() === 1, `${q}: the hand signal chart`);
+      assert.ok(await page.locator(".rule-hit mark.hit").count() >= 1, `${q}: matched words highlighted`);
+      checks++;
+    }
+    // A result opens the exact paragraph in the Reader; back returns to the results.
+    const best = page.locator(".rule-hit").first().locator("a").first();
+    const href = await best.getAttribute("href");
+    await best.click();
+    await page.waitForURL((u) => u.pathname === decodeURIComponent(href) || u.pathname === href);
+    await page.locator('[aria-current="true"]').first().waitFor();
+    await page.goBack();
+    await page.locator(".rule-hit").first().waitFor();
+    // A typo is read as the indexed word and says so.
+    await page.goto(base + "/ask/q/outrigers");
+    await page.getByText("Read “outrigers” as “outriggers”.").waitFor();
+    assert.ok(await page.locator(".rule-hit").count() >= 1, "a typo still reaches the rules");
+    await page.goto(base + "/ask/q/" + encodeURIComponent("de-energized"));
+    await page.locator(".rule-hit[data-root='29cfr1926.1408'], .rule-hit[data-root='29cfr1926.1407']").first().waitFor();
+    // Truly off-topic: one plain line and the course map.
+    await page.goto(base + "/ask/q/xyzzy");
+    await page.getByText("Nothing in the crane rules matches that.", { exact: false }).waitFor();
+    assert.equal(await page.locator(".rule-hit").count(), 0);
+    assert.ok(await page.locator("a[href^='/learn/topic/']").count() >= 3, "topics offered");
     await page.goto(base + "/ask/q/" + encodeURIComponent("barge cranes floating on water"));
-    await page.getByText("Closest sections").waitFor();
-    assert.ok(await page.locator("a[href^='/read/']").count() >= 1);
+    await page.locator(".rule-hit[data-root='29cfr1926.1437']").first().waitFor();
+    assert.deepEqual(errors, []);
     await context.close();
     checks++;
   }
@@ -324,6 +439,89 @@ try {
     assert.ok((await page.locator("a[href^='/read/']").count()) >= 1, "a topic with no lessons links its rules");
     await page.getByRole("link", { name: "Practice this topic" }).waitFor();
     await page.getByLabel("Ask about a rule, a limit or a step").waitFor();
+    await context.close();
+    checks++;
+  }
+
+  // Voice: one tap, live level, ends on the pause, transcript to check and edit, then Ask.
+  for (const width of [320, 390]) {
+    const { context, page, errors } = await newPage(browser, width, "light", { native: {} });
+    await page.goto(base + "/ask");
+    const talk = page.getByRole("button", { name: "Tap and ask" });
+    await talk.waitFor();
+    const box = page.getByLabel("Ask about a rule, a limit or a step");
+    const starters = page.getByText("Common questions");
+    const before = await Promise.all([box.boundingBox(), starters.boundingBox(), talk.boundingBox()]);
+    assert.ok(before[2].height >= 72, `voice control is ${before[2].height}px tall`);
+    await talk.click();
+    const listening = page.getByRole("button", { name: /Listening/ });
+    await listening.waitFor();
+    assert.equal(await listening.getAttribute("aria-pressed"), "true");
+    await page.screenshot({ path: path.join(out, `flow-voice-listening-${width}.png`), fullPage: true });
+    // It stops on its own after the pause; the transcript lands in the box, not asked yet.
+    await page.getByText("Check the question above, fix any word, then tap search.").waitFor({ timeout: 8000 });
+    assert.equal(await box.inputValue(), "How close can I get to a 345 kV line?");
+    assert.match(page.url(), /\/ask$/, "a spoken question is not asked until the person taps Ask");
+    assert.ok((await page.evaluate(() => window.__sttPrompt))?.includes("deenergized"), "whisper is primed with the crane vocabulary");
+    const after = await Promise.all([box.boundingBox(), starters.boundingBox(), talk.boundingBox()]);
+    before.forEach((b, i) => assert.ok(Math.abs(b.y - after[i].y) < 0.5 && Math.abs(b.height - after[i].height) < 0.5, `voice states moved element ${i}`));
+    await page.screenshot({ path: path.join(out, `flow-voice-done-${width}.png`), fullPage: true });
+    await box.fill("What's the minimum clearance for a 345 kV line?");
+    await box.press("Enter");
+    await page.waitForURL(/\/ask\/q\//);
+    assert.ok(decodeURIComponent(page.url()).endsWith("What's the minimum clearance for a 345 kV line?"));
+    assert.deepEqual(errors, []);
+    await context.close();
+    checks++;
+  }
+
+  // Voice with the microphone refused: an inline way forward, typing still works, nothing moves.
+  {
+    const { context, page, errors } = await newPage(browser, 320, "light", { native: { deny: true } });
+    await page.goto(base + "/ask");
+    const talk = page.getByRole("button", { name: "Tap and ask" });
+    const starters = page.getByText("Common questions");
+    const y0 = (await starters.boundingBox()).y;
+    await talk.click();
+    await page.getByText("The microphone is off for this app. Allow it in Settings, or type the question.").waitFor();
+    assert.equal((await starters.boundingBox()).y, y0, "the refusal message does not move the page");
+    // A tap that would only fail again is never offered: the control now opens Settings.
+    await page.getByRole("button", { name: "Open Settings" }).click();
+    await page.waitForFunction(() => window.__stt.includes("plugin:tts|open_tts_settings"));
+    assert.deepEqual(errors.filter((e) => !/voice\.start|MIC_PERMISSION/.test(e)), [], "opening Settings did not fail");
+    await context.close();
+    checks++;
+  }
+
+  // The same refusal on Android opens the app's details screen, with the plugin's argument shape.
+  {
+    const { context, page, errors } = await newPage(browser, 390, "light", { native: { deny: true, android: true } });
+    await page.goto(base + "/ask");
+    await page.getByRole("button", { name: "Tap and ask" }).click();
+    await page.getByRole("button", { name: "Open Settings" }).click();
+    await page.waitForFunction(() => window.__calls.some(([c]) => c === "plugin:tts|open_app_details"));
+    const [, args] = await page.evaluate(() => window.__calls.find(([c]) => c === "plugin:tts|open_app_details"));
+    assert.deepEqual(args, { args: { packageName: "inc.corpora.crane" } });
+    assert.deepEqual(errors.filter((e) => !/voice\.start|MIC_PERMISSION/.test(e)), []);
+    await context.close();
+    checks++;
+  }
+
+  // Read-aloud: answers and procedure steps, in the most natural offline voice.
+  {
+    const { context, page, errors } = await newPage(browser, 390, "light", { native: {} });
+    await page.goto(base + "/do/shift-inspection");
+    await page.getByRole("button", { name: "Start" }).click();
+    await page.waitForURL(/\/do\/run\/.+\/1$/);
+    await page.getByRole("button", { name: "Read step" }).click();
+    await page.waitForFunction(() => window.__tts.length > 0);
+    const spoken = await page.evaluate(() => window.__tts[0]);
+    assert.equal(spoken.voiceId, "ava-premium", "the enhanced offline voice, never the network one");
+    assert.match(spoken.text, /Control mechanisms/);
+    await page.goto(base + "/ask/a/a.powerline-clearance");
+    await page.getByRole("button", { name: "Read aloud" }).click();
+    await page.waitForFunction(() => window.__tts.length > 0);
+    assert.deepEqual(errors, []);
     await context.close();
     checks++;
   }

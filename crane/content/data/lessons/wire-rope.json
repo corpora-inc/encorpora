@@ -1,0 +1,735 @@
+[
+ {
+  "lesson_id": "l.wire-rope.01",
+  "topic_id": "wire-rope",
+  "ord": 1,
+  "title": "Wire rope construction: wires, strands, core and lay",
+  "skills": [
+   "wire-rope.construction"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Wire rope has three parts. **Wires** are twisted together into a **strand**. Strands are laid helically around a **core**, which holds the strands in place and keeps the rope round under load."
+   },
+   {
+    "t": "text",
+    "text": "Cores come in two kinds:\n- Fiber core: natural or synthetic fiber. Flexible, but it crushes easily and adds little strength.\n- Steel core: either a strand or a small independent wire rope in the center. It resists crushing on drums and is stronger.\nThis description of construction is trade practice, not rule text."
+   },
+   {
+    "t": "text",
+    "text": "The rules limit where fiber core rope can go. The boom hoist carries the boom all the time, so a crushed core there is dangerous."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1414(d)(1)",
+    "text": "Fiber core ropes must not be used for boom hoist reeving, except for derricks."
+   },
+   {
+    "t": "text",
+    "text": "**Lay** is how the strands wind around the core. Broken-wire limits are counted per rope lay, so you need to know what a lay is."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1413(a)(2)(ii)(A)(1)",
+    "text": "a rope lay is the length along the rope in which one strand makes a complete revolution around the rope."
+   },
+   {
+    "t": "text",
+    "text": "To find one lay in the field (practice), mark the crown of one strand with chalk. Then count strands along the rope until you reach the same strand again. On a 6-strand rope that means counting six crowns past your mark."
+   },
+   {
+    "t": "text",
+    "text": "Lay direction (right or left) and lay type (regular or lang) change how a rope handles and wears. Measure **nominal diameter** with calipers across the crowns of opposite strands, never across the flat between strands. These are practice too."
+   },
+   {
+    "t": "text",
+    "text": "Replacement rope is not a free choice. It must match what the crane was designed for."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1414(a)",
+    "text": "Selection of replacement wire rope must be in accordance with the recommendations of the wire rope manufacturer, the equipment manufacturer, or a qualified person."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1414(c)",
+    "text": "Wire rope must be compatible with the safe functioning of the equipment."
+   },
+   {
+    "t": "text",
+    "text": "Common mistakes:\n- Measuring diameter across the flats, which reads small.\n- Swapping in a rope of a different construction because it has the same diameter.\n- Putting fiber core rope on a crane boom hoist."
+   },
+   {
+    "t": "check",
+    "question": "How do you measure one rope lay on a 6-strand rope?",
+    "answer": "Mark one strand, then count six strand crowns along the rope until you reach the same strand again."
+   },
+   {
+    "t": "check",
+    "question": "Where is fiber core rope prohibited?",
+    "answer": "In boom hoist reeving, except on derricks."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "bb91fdab15fc52dadd00",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "03cd74546e25f559bc30bab1a8308f0ffcc82f297d79130748a53493a6c87a1a",
+   "output_sha256": "5ec39f405d72f60a285381e48dc8bd28198d6f6253ce5018a58b3fc3c4cb8ad6",
+   "created_at": "2026-11-27T22:24:44+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.wire-rope.02",
+  "topic_id": "wire-rope",
+  "ord": 2,
+  "title": "Rotation-resistant rope: Types I, II, III and design factors",
+  "skills": [
+   "wire-rope.rotation-resistant"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "**Rotation-resistant rope** has layers of strands laid in opposite directions, so the torque of one layer cancels the torque of the other. This keeps a single-part line from spinning the load. The inner layers are hidden and wear unseen, which makes this rope harder to inspect."
+   },
+   {
+    "t": "text",
+    "text": "The rules sort rotation-resistant rope by its count of outer strands:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1414(e)(1)(i)",
+    "text": "It has at least 15 outer strands and comprises an assembly of at least three layers of strands laid helically over a center in two operations."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1414(e)(1)(ii)",
+    "text": "It has at least 10 outer strands and comprises an assembly of two or more layers of strands laid helically over a center in two or three operations."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1414(e)(1)(iii)",
+    "text": "It has no more than nine outer strands, and comprises an assembly of two layers of strands laid helically over a center in two operations."
+   },
+   {
+    "t": "text",
+    "text": "The **operating design factor** is minimum breaking force divided by the load on the rope. Worked example: a rope with a 50,000 lb minimum breaking force carrying 10,000 lb has a design factor of 50,000 / 10,000 = 5."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1414(e)(2)(ii)",
+    "text": "Rotation resistant ropes (including Types I, II and III) must have an operating design factor of no less than 3.5."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1414(e)(2)(i)",
+    "text": "Types II and III with an operating design factor of less than 5 must not be used for duty cycle or repetitive lifts."
+   },
+   {
+    "t": "text",
+    "text": "Type I needs a design factor of at least 5 unless both the wire rope manufacturer and the equipment manufacturer approve a lower one in writing."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1414(e)(2)(iii)"
+   },
+   {
+    "t": "text",
+    "text": "Types II and III may drop below 5 only for non-duty-cycle, non-repetitive lifts. When they do, a qualified person must inspect the rope before each lift, the lift must be run to minimize dynamic effects, and every such lift must be recorded."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1414(e)(3)(i)",
+    "text": "In making this determination, more than one broken wire in any one rope lay must be considered a hazard."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1414(e)(3)(iii)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1414(e)(4)(i)",
+    "text": "Rotation resistant ropes must not be used for boom hoist reeving, except where the requirements of paragraph (e)(4)(ii) of this section are met."
+   },
+   {
+    "t": "text",
+    "text": "That exception covers load hoists used as boom hoists, for example on luffing attachments. It requires drum and sheave pitch diameters of at least 18 times the rope diameter and a system design factor of at least five. The diagram shows what the D/d ratio measures."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "d-over-d"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1414(e)(4)(ii)(D)"
+   },
+   {
+    "t": "check",
+    "question": "A Type II rope has a design factor of 4. Can it be used for repetitive lifts?",
+    "answer": "No. Below 5, Types II and III must not be used for duty cycle or repetitive lifts."
+   },
+   {
+    "t": "check",
+    "question": "What is the lowest operating design factor allowed for any rotation-resistant rope?",
+    "answer": "3.5."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "bb91fdab15fc52dadd00",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "03cd74546e25f559bc30bab1a8308f0ffcc82f297d79130748a53493a6c87a1a",
+   "output_sha256": "5ec39f405d72f60a285381e48dc8bd28198d6f6253ce5018a58b3fc3c4cb8ad6",
+   "created_at": "2026-11-27T22:24:44+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.wire-rope.03",
+  "topic_id": "wire-rope",
+  "ord": 3,
+  "title": "Reeving, parts of line, and line pull vs rope strength",
+  "skills": [
+   "wire-rope.reeving",
+   "wire-rope.parts-of-line",
+   "wire-rope.line-pull-vs-swl"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "**Reeving** is the path the rope takes from the drum, over the boom tip sheaves, through the block sheaves, to the dead end. Reeve exactly as the equipment manufacturer's reeving diagram shows for the part count you need. That diagram is practice, not rule text, but a wrong path can rub the rope on the boom, tip the block, or overload one sheave."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1414(c)"
+   },
+   {
+    "t": "text",
+    "text": "**Parts of line** is the number of rope parts that hold up the hook block. Count the lines running between the boom tip and the block. Do not count the lead line running back to the drum. With an even part count the dead end usually sits at the boom tip. With an odd count it sits on the block. That is practice."
+   },
+   {
+    "t": "text",
+    "text": "Worked example (practice):\n- Load 24,000 lb, plus hook block 1,500 lb, plus rigging 500 lb, gives 26,000 lb on the hook.\n- Allowable line pull is 7,000 lb per part.\n- 26,000 / 7,000 = 3.7, so round up to 4 parts.\n- Check: 4 x 7,000 = 28,000 lb, which is more than 26,000 lb.\nAlways round up. Three parts would allow only 21,000 lb."
+   },
+   {
+    "t": "text",
+    "text": "**Maximum line pull** is the most pull per part that the manufacturer allows for that hoist and rope. Find it on the load chart or the rating plate. The rope's breaking force divided by its design factor is a separate number. Use whichever limit is lower, and never use the rope's breaking strength as the line pull. The rope rule asks only for enough breaking force and design factor:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1414(b)(2)",
+    "text": "Wire rope must be designed to have, in relation to the equipment's rated capacity, a sufficient minimum breaking force and design factor so that compliance with the applicable inspection provisions in § 1926.1413 will be an effective means of preventing sudden rope failure."
+   },
+   {
+    "t": "text",
+    "text": "Physics: every sheave adds friction, so the lead line pulls a little more than load divided by parts. Adding parts does not raise the crane's chart capacity. It only lowers the pull per part, and the hook moves slower."
+   },
+   {
+    "t": "text",
+    "text": "Common mistakes:\n- Counting the lead line as a part.\n- Leaving out block and rigging weight.\n- Rounding down.\n- Reeving more parts than the block or chart allows."
+   },
+   {
+    "t": "check",
+    "question": "The hook load is 30,000 lb and allowable line pull is 8,000 lb. How many parts?",
+    "answer": "30,000 / 8,000 = 3.75, so 4 parts."
+   },
+   {
+    "t": "check",
+    "question": "Is the line lifting capacity the same as the rope's breaking strength?",
+    "answer": "No. Line pull is the manufacturer's working limit, which is far below breaking strength."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "bb91fdab15fc52dadd00",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "03cd74546e25f559bc30bab1a8308f0ffcc82f297d79130748a53493a6c87a1a",
+   "output_sha256": "5ec39f405d72f60a285381e48dc8bd28198d6f6253ce5018a58b3fc3c4cb8ad6",
+   "created_at": "2026-11-27T22:24:44+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.wire-rope.04",
+  "topic_id": "wire-rope",
+  "ord": 4,
+  "title": "Wedge sockets, cutting rope, and two wraps on the drum",
+  "skills": [
+   "wire-rope.terminations",
+   "wire-rope.drum-wraps"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "A **wedge socket** grips rope by pulling a wedge into a tapered socket. The loaded side is the **live end**. The tail is the **dead end**."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1414(f)",
+    "text": "Wire rope clips used in conjunction with wedge sockets must be attached to the unloaded dead end of the rope only, except that the use of devices specifically designed for dead-ending rope in a wedge socket is permitted."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1414(g)",
+    "text": "Socketing must be done in the manner specified by the manufacturer of the wire rope or fitting."
+   },
+   {
+    "t": "text",
+    "text": "Install steps (practice, follow the fitting maker's sheet):\n- Match the socket and wedge to the rope size.\n- Run the live end straight out of the socket in line with the pin, not off the angled side.\n- Leave the tail length the fitting maker specifies.\n- Clip the tail to itself or to a short loose piece, never to the live line.\n- Seat the wedge with a light load first, then check it."
+   },
+   {
+    "t": "text",
+    "text": "Cutting rope lets the strands spring loose and unlay. Seize the rope first:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1414(h)",
+    "text": "Prior to cutting a wire rope, seizings must be placed on each side of the point to be cut."
+   },
+   {
+    "t": "text",
+    "text": "**Drum wraps.** The wraps left on the drum take load off the drum anchor. Without them the anchor carries the full line pull and can pull out."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1417(t)",
+    "text": "Neither the load nor the boom must be lowered below the point where less than two full wraps of rope remain on their respective drums."
+   },
+   {
+    "t": "text",
+    "text": "When a damaged section is cut out, the shorter rope must still leave two wraps at the lowest hook or boom position. Ropes cannot be spliced back together."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1413(a)(4)(i)(B)",
+    "text": "Joining lengths of wire rope by splicing is prohibited."
+   },
+   {
+    "t": "text",
+    "text": "Common mistakes:\n- Clipping the tail to the live line.\n- Running the live end off the angled side of the socket.\n- Lowering into a hole or off a barge past the last two wraps.\n- Shortening a rope without checking the wraps left at the lowest position."
+   },
+   {
+    "t": "check",
+    "question": "Where does a wire rope clip go on a wedge socket termination?",
+    "answer": "On the unloaded dead end only."
+   },
+   {
+    "t": "check",
+    "question": "What is the minimum rope left on the drum at the lowest load or boom position?",
+    "answer": "Two full wraps."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "bb91fdab15fc52dadd00",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "03cd74546e25f559bc30bab1a8308f0ffcc82f297d79130748a53493a6c87a1a",
+   "output_sha256": "5ec39f405d72f60a285381e48dc8bd28198d6f6253ce5018a58b3fc3c4cb8ad6",
+   "created_at": "2026-11-27T22:24:44+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.wire-rope.05",
+  "topic_id": "wire-rope",
+  "ord": 5,
+  "title": "The shift inspection and Category I deficiencies",
+  "skills": [
+   "wire-rope.shift-inspection",
+   "wire-rope.standing-ropes"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "The **shift inspection** is a visual check of the ropes before or during every shift the crane works. A **competent person** does it."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1413(a)(1)",
+    "text": "A competent person must begin a visual inspection prior to each shift the equipment is used, which must be completed before or during that shift."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1413(a)(1)",
+    "text": "Untwisting (opening) of wire rope or booming down is not required as part of this inspection."
+   },
+   {
+    "t": "text",
+    "text": "It covers **running ropes** (hoist lines) and **standing ropes** (pendants), as long as they are likely to be used that shift."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1413(a)(1)"
+   },
+   {
+    "t": "text",
+    "text": "Category I deficiencies are distortion, corrosion and damaged ends:\n- Kinking, crushing, unstranding, birdcaging, signs of core failure, or steel core poking out between strands.\n- Significant corrosion.\n- Electric arc damage (from a source other than power lines) or heat damage.\n- End connections that were applied wrong.\n- End connections that are corroded, cracked, bent or worn."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1413(a)(2)(i)"
+   },
+   {
+    "t": "text",
+    "text": "Pay particular attention to the **critical review items**:\n- Rotation-resistant rope.\n- Boom hoist and luffing hoist rope, especially at reverse bends.\n- Drum flange points, crossover points and repeat pickup points.\n- Rope at or near the terminal ends.\n- Rope on saddles, equalizer sheaves, or other sheaves where rope travel is limited."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1413(a)(3)"
+   },
+   {
+    "t": "text",
+    "text": "A Category I finding does not automatically remove the rope. The competent person must decide on the spot whether it is a hazard."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1413(a)(4)(i)",
+    "text": "If a deficiency in Category I (see paragraph (a)(2)(i) of this section) is identified, an immediate determination must be made by the competent person as to whether the deficiency constitutes a safety hazard."
+   },
+   {
+    "t": "text",
+    "text": "If it is a hazard, the rope stays out of use until it is replaced or until the damaged section is cut off. Field method (practice): pay rope out slowly and watch the drum. Check the ends, sockets and pendant fittings, and look at the hook block sheaves."
+   },
+   {
+    "t": "check",
+    "question": "Must the boom be lowered for the shift inspection?",
+    "answer": "No. Booming down and opening the rope are not required."
+   },
+   {
+    "t": "check",
+    "question": "Who decides whether a Category I deficiency is a hazard?",
+    "answer": "The competent person, right away."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "bb91fdab15fc52dadd00",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "03cd74546e25f559bc30bab1a8308f0ffcc82f297d79130748a53493a6c87a1a",
+   "output_sha256": "5ec39f405d72f60a285381e48dc8bd28198d6f6253ce5018a58b3fc3c4cb8ad6",
+   "created_at": "2026-11-27T22:24:44+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.wire-rope.06",
+  "topic_id": "wire-rope",
+  "ord": 6,
+  "title": "Removal criteria: broken wires, diameter, Category III",
+  "skills": [
+   "wire-rope.removal-criteria",
+   "wire-rope.standing-ropes"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "**Category II** findings are counted defects. Once a Category II finding is identified, the rope cannot be used. It stays out until the manufacturer's removal criterion is met, the rope is replaced, or the damaged section is cut off. The broken-wire limits:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1413(a)(2)(ii)(A)(1)",
+    "text": "In running wire ropes: Six randomly distributed broken wires in one rope lay or three broken wires in one strand in one rope lay"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1413(a)(2)(ii)(A)(2)",
+    "text": "In rotation resistant ropes: Two randomly distributed broken wires in six rope diameters or four randomly distributed broken wires in 30 rope diameters."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1413(a)(2)(ii)(A)(3)",
+    "text": "In pendants or standing wire ropes: More than two broken wires in one rope lay located in rope beyond end connections and/or more than one broken wire in a rope lay located at an end connection."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1413(a)(2)(ii)(B)",
+    "text": "A diameter reduction of more than 5% from nominal diameter."
+   },
+   {
+    "t": "text",
+    "text": "Worked examples for a 1-inch rope:\n- Rotation-resistant: six diameters is 6 in and 30 diameters is 30 in. Two breaks within any 6 in, or four within any 30 in, is Category II.\n- Diameter: 5% of 1 in is 0.05 in. A caliper reading below 0.95 in is Category II.\n- Running 6-strand rope: three breaks in one strand within one lay is Category II, even when the rest of the rope is clean."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1413(a)(4)(ii)"
+   },
+   {
+    "t": "text",
+    "text": "**Category III** findings take the rope out of use right away:\n- Core protrusion or other distortion showing core failure in rotation-resistant rope.\n- Any prior contact with a power line.\n- A broken strand."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1413(a)(2)(iii)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1413(a)(4)(iii)(B)",
+    "text": "Repair of wire rope that contacted an energized power line is also prohibited."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1413(a)(4)(iv)",
+    "text": "Where a wire rope is required to be removed from service under this section, either the equipment (as a whole) or the hoist with that wire rope must be tagged-out, in accordance with § 1926.1417(f)(1), until the wire rope is repaired or replaced."
+   },
+   {
+    "t": "text",
+    "text": "Common mistakes:\n- Using the running-rope count on rotation-resistant rope.\n- Ignoring a single break at a pendant end fitting.\n- Cutting out a power-line-contact section and keeping the rest of the rope.\n- Taking the rope out of use without tagging out the crane or the hoist."
+   },
+   {
+    "t": "check",
+    "question": "A 1-inch rotation-resistant rope has two broken wires 4 in apart. What is it?",
+    "answer": "Category II. That is two breaks within six diameters (6 in)."
+   },
+   {
+    "t": "check",
+    "question": "A rope touched an energized line, but only near the hook. Can you cut off that end?",
+    "answer": "No. Power-line-contact rope must be replaced. Repairing it is prohibited."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "bb91fdab15fc52dadd00",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "03cd74546e25f559bc30bab1a8308f0ffcc82f297d79130748a53493a6c87a1a",
+   "output_sha256": "5ec39f405d72f60a285381e48dc8bd28198d6f6253ce5018a58b3fc3c4cb8ad6",
+   "created_at": "2026-11-27T22:24:44+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.wire-rope.07",
+  "topic_id": "wire-rope",
+  "ord": 7,
+  "title": "Monthly and annual rope inspections, records and lubrication",
+  "skills": [
+   "wire-rope.monthly-annual",
+   "wire-rope.lubrication",
+   "wire-rope.standing-ropes"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "The **monthly inspection** follows the same method as the shift inspection. It also covers any items the annual inspector flagged for watching, and it is written down."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1413(b)(1)",
+    "text": "Each month an inspection must be conducted in accordance with paragraph (a) (shift inspection) of this section."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1413(b)(3)",
+    "text": "Wire ropes on equipment must not be used until an inspection under this paragraph demonstrates that no corrective action under paragraph (a)(4) of this section is required."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1413(b)(4)"
+   },
+   {
+    "t": "text",
+    "text": "The **annual/comprehensive inspection** is done by a **qualified person** at least every 12 months. It covers the full length of each rope, including the parts the shift checks never see."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1413(c)(2)(ii)",
+    "text": "The inspection must be complete and thorough, covering the surface of the entire length of the wire ropes"
+   },
+   {
+    "t": "text",
+    "text": "It must give particular attention to:\n- The critical review items.\n- Sections normally hidden during shift and monthly inspections.\n- Rope subject to reverse bends.\n- Rope passing over sheaves."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1413(c)(2)(ii)"
+   },
+   {
+    "t": "text",
+    "text": "If the setup or the site makes the full inspection infeasible, it can wait, but only within a limit. Standing ropes such as tower crane pendants are often checked at disassembly for this reason."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1413(c)(2)(iii)",
+    "text": "such inspections must be conducted as soon as it becomes feasible, but no longer than an additional 6 months for running ropes and, for standing ropes, at the time of disassembly."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1413(c)(3)(ii)",
+    "text": "If the qualified person determines that, though not presently a safety hazard, the deficiency needs to be monitored, the employer must ensure that the deficiency is checked in the monthly inspections."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1413(e)",
+    "text": "All documents produced under this section must be available, during the applicable document retention period, to all persons who conduct inspections under this section."
+   },
+   {
+    "t": "text",
+    "text": "**Lubrication** cuts internal wear and corrosion. A heavy lubricant can also hide broken wires."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1413(d)",
+    "text": "Rope lubricants that are of the type that hinder inspection must not be used."
+   },
+   {
+    "t": "text",
+    "text": "Practice: use the type of lubricant the rope maker recommends. Apply it to clean rope at a sheave or drum where the rope opens. Wipe off any buildup before you count broken wires."
+   },
+   {
+    "t": "check",
+    "question": "What is the longest an infeasible annual inspection of running rope may be delayed?",
+    "answer": "An additional 6 months."
+   },
+   {
+    "t": "check",
+    "question": "Who does the annual wire rope inspection?",
+    "answer": "A qualified person."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "bb91fdab15fc52dadd00",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "03cd74546e25f559bc30bab1a8308f0ffcc82f297d79130748a53493a6c87a1a",
+   "output_sha256": "5ec39f405d72f60a285381e48dc8bd28198d6f6253ce5018a58b3fc3c4cb8ad6",
+   "created_at": "2026-11-27T22:24:44+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.wire-rope.08",
+  "topic_id": "wire-rope",
+  "ord": 8,
+  "title": "General industry rope inspection rules (1910.179 and 1910.180)",
+  "skills": [
+   "wire-rope.general-industry"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Cranes in general industry fall under Part 1910 instead of the construction rules. Overhead and gantry cranes are covered by 1910.179. Crawler, locomotive and truck cranes are covered by 1910.180. Both require a **monthly thorough inspection** with a signed record."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(g)(1)",
+    "text": "A thorough inspection of all ropes in use shall be made at least once a month"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(g)(1)",
+    "text": "All inspections shall be performed by an appointed or authorized person."
+   },
+   {
+    "t": "text",
+    "text": "The **certification record** must show three things: the inspection date, the inspector's signature, and an identifier for the ropes inspected."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1910.179(m)(1)"
+   },
+   {
+    "t": "text",
+    "text": "These rules give no broken-wire counts. The inspector judges whether the deterioration amounts to an appreciable loss of strength. Conditions that point to it:\n- Diameter below nominal from loss of core support, corrosion or wear.\n- The number of broken outside wires and how concentrated they are.\n- Worn outside wires.\n- Corroded or broken wires at end connections.\n- End connections that are corroded, cracked, bent, worn or applied wrong.\n- Severe kinking, crushing, cutting or unstranding."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1910.179(m)(1)"
+   },
+   {
+    "t": "text",
+    "text": "Rope on an idle crane deteriorates too, so it must be inspected before it goes back to work:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.179(m)(2)",
+    "text": "All rope which has been idle for a period of a month or more due to shutdown or storage of a crane on which it is installed shall be given a thorough inspection before it is used."
+   },
+   {
+    "t": "text",
+    "text": "Two locations need particular care:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(g)(2)(i)",
+    "text": "Particular care shall be taken to inspect ropes at these locations."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1910.180(g)(2)(iii)",
+    "text": "Particular care shall be taken in the inspection of nonrotating rope."
+   },
+   {
+    "t": "text",
+    "text": "The first quote refers to rope on equalizer sheaves, sheaves with limited travel, and saddles. Practice: many employers borrow the construction rules' broken-wire counts or the rope maker's criteria to guide the judgment. Write down which criterion you used."
+   },
+   {
+    "t": "check",
+    "question": "A truck crane in a plant sat idle for six weeks. What is required before use?",
+    "answer": "A thorough inspection by an appointed or authorized person, with a certification record."
+   },
+   {
+    "t": "check",
+    "question": "What three items go on the general industry rope certification record?",
+    "answer": "The date, the inspector's signature, and a rope identifier."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "bb91fdab15fc52dadd00",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "03cd74546e25f559bc30bab1a8308f0ffcc82f297d79130748a53493a6c87a1a",
+   "output_sha256": "5ec39f405d72f60a285381e48dc8bd28198d6f6253ce5018a58b3fc3c4cb8ad6",
+   "created_at": "2026-11-27T22:24:44+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ }
+]

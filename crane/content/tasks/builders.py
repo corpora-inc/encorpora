@@ -191,6 +191,17 @@ def questions_inputs():
     return items
 
 
+# The writer must sound like the reference, not like a model describing its prompt.
+META = re.compile(r"\b(supplied|provided|given|quoted) (federal )?(rule|rules|text|paragraph|paragraphs|section|sections|excerpt|passage)s?\b"
+                  r"|\b(this|the) (paragraph|excerpt|passage|text) (alone|used here|given|provided|supplied|shown|above)\b"
+                  r"|\btext (used|given|shown) here\b|\baccording to the text\b", re.I)
+
+
+def meta_language(*texts) -> list[str]:
+    hits = [m.group(0) for t in texts if t for m in [META.search(t)] if m]
+    return [f"refers to its prompt: {hits[0]!r}"] if hits else []
+
+
 def key_stands_out(choices: list[str], answer: int) -> bool:
     """The key gives itself away by length: over 1.5x the longest distractor and 20+ chars longer."""
     key = len(choices[answer])
@@ -228,6 +239,7 @@ def questions_write(task, items):
                     e2.append("bad answer/rationales")
                 elif key_stands_out(ch, item["answer"]):
                     e2.append("key conspicuously longest")
+                e2 += meta_language(item["stem"], *ch, *item["rationales"])
                 p = perm(item["stem"], 4)
                 choices = [ch[i] for i in p]
                 rats = [item["rationales"][i] for i in p]
@@ -299,6 +311,7 @@ def answers_write(task, items):
             ok, rep, errs = repair_quotes(a["body"])
             errs += segments_ok(a["body"])
             errs += direct_answer_first(a["question"], a["body"])
+            errs += meta_language(a["question"], *[s.get("text") for s in a["body"] if s.get("t") == "text"])
             stats["quotes_ok"] += ok
             stats["quotes_repaired"] += rep
             seen = {norm_key(a["question"])}

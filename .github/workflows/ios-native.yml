@@ -28,9 +28,11 @@ on:
       - ".github/workflows/ios-native.yml"
   workflow_dispatch: {}
 
+# A newer push to a pull request cancels its superseded run. Runs for main
+# finish, so each main commit keeps its own result.
 concurrency:
   group: ios-native-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 env:
   NODE_OPTIONS: --use-openssl-ca
@@ -39,6 +41,7 @@ jobs:
   plugins-ios:
     name: Tauri plugins · Swift compile (aarch64-apple-ios)
     runs-on: macos-26
+    timeout-minutes: 60
     steps:
       - name: Initialize verified client trust
         id: ci-trust

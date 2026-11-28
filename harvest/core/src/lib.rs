@@ -26,6 +26,7 @@ pub mod records;
 pub mod retrieval;
 pub mod segments;
 pub mod sync;
+pub mod tools;
 
 #[doc(hidden)]
 pub mod fixture;

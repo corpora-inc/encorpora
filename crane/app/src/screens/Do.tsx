@@ -13,6 +13,7 @@ import { useSettings } from "../store/settings.ts";
 import { reportError, useToast } from "../store/toast.ts";
 import { Button, ButtonLink, List, Page, Panel, Row, cx } from "../ui/kit.tsx";
 import { CitePlate, Quote } from "../ui/law.tsx";
+import { ReadAloud } from "../ui/ReadAloud.tsx";
 import { useT } from "../ui/useT.ts";
 import { NotFound } from "./NotFound.tsx";
 
@@ -263,6 +264,9 @@ export function RunStep() {
       <Panel>
         <p className="m-0 mb-2 text-h3 font-display font-semibold">{step.text}</p>
         <p className="m-0 mb-4 text-ink-2">{step.detail[role]}</p>
+        <div className="mb-4">
+          <ReadAloud text={`${step.text} ${step.detail[role]}`} label={t("do.readStep")} />
+        </div>
         <div className="mb-5 flex flex-wrap gap-2">
           {step.section_ids.map((id) => (
             <CitePlate key={id} sectionId={id} />

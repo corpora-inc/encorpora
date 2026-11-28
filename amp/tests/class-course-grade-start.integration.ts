@@ -123,11 +123,18 @@ test(
       );
       // Sixteen right answers: grade 4, and a stretch from grade 5. Two
       // thirds of grade 4's skills are not earned in sixteen answers.
+      // Every batch is drawn with a fresh random seed, so the mix varies. In
+      // 1,680 runs grade 4 itself was 4 to 11 of the sixteen: a floor of six
+      // failed one run in thirty. The mean grade stayed between 4.08 and
+      // 4.42 (sd 0.055), so the centre is what is asserted.
       const grades = await practice(child, 16);
-      assert.ok(Math.max(...grades) <= 5.5, `sixteen: ${grades.join(" ")}`);
+      const sixteen = grades.join(" ");
+      assert.ok(Math.max(...grades) <= 5.5, `sixteen: ${sixteen}`);
+      const mean = grades.reduce((sum, grade) => sum + grade, 0) / 16;
+      assert.ok(mean >= 3.75 && mean < 4.75, `centred on 4: ${sixteen}`);
       assert.ok(
-        grades.filter((grade) => grade >= 3.5 && grade < 4.5).length >= 6,
-        `grade 4 problems: ${grades.join(" ")}`,
+        grades.filter((grade) => grade >= 3.5 && grade < 4.5).length >= 3,
+        `grade 4 problems: ${sixteen}`,
       );
       const after = await frontierOf(child);
       assert.equal(after.gradeStart, true);

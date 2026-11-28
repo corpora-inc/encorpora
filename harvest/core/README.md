@@ -100,8 +100,11 @@ pub trait Llm: Send + Sync {
    questions get their answer; off-topic ones are declined.
 3. **Retrieve** the question plus its expansions (RRF over every list).
 4. **Select** (`selection`, only when more than `max_sections + 1` sections qualify).
-5. **Compose** (`answer_segments`) from those passages only. Limits are marked
-   `must_quote_verbatim`.
+5. **Compose** (`answer_evidence`) from those passages only, offered as
+   numbered sentences: the model writes the direct answer and names the
+   supporting sentences by number; the engine quotes those sentences verbatim
+   (at most four per passage). A leading Yes/No stands only with the rule
+   after it, which the checker holds to the sources.
 6. **Check** in strict mode. The model's body is kept only with a verbatim
    quote, or a surviving sentence and its cite. Otherwise, or if the model
    errs, the deterministic answer is returned and `trace.model_error` says why.
@@ -121,6 +124,7 @@ pub trait Llm: Send + Sync {
 | `audit` | Append-only, hash-chained `audit` table (triggers refuse UPDATE/DELETE); `verify_chain` (read-only) recomputes every link and reports modes, the bake hit rate and `head_hash`; anchor `(entries, head_hash)` outside the database to detect truncation. |
 | `grade` | Rubric grading: keyword rules with the model off. With it on, the model judges and must quote the learner's own words as evidence. |
 | `notes` | Field note → `{component, condition, action}`. Keywords with the model off; model output kept only when grounded in the vocabulary or the note. |
+| `tools` | Range-table lookups over the pack's own `table` sections (`up to 50 \| 10`, `over 50 to 200 \| 15`): a number the question states in the table's unit is answered from its row, quoted verbatim. |
 | `content` | Read API for everything the app renders: info, sources, sections and children, xrefs, topics, skills, lessons (checked), terms, diagrams, questions (validated), procedures with steps, answer cache with role variants (checked), exams, prereqs and starters from `pack_meta`. Only rows whose provenance passed. |
 | `records` | Device record store (`records.db`): procedure runs and step results validated against the pack's `check_kind`; a failed step returns the pack's deficiency guidance with its citation (quote verified verbatim) and is queued at once; declined questions queued as misses. |
 | `crypt` | Encryption at rest for `records.db` (XChaCha20-Poly1305, key from the platform keystore via `Records::open_with_key`): step values, notes, photo refs, structured notes, outbox payloads and audit entries are sealed and bound to their row; ids, statuses and times stay clear. Wrong or missing key is an error; the audit chain verifies without the key. |

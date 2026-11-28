@@ -9,7 +9,7 @@ use crate::embed::Embedder;
 use crate::error::{Error, Result};
 use crate::llm::Llm;
 use crate::normalize::{self, Concept, Normalized, normalize_ws};
-use crate::pack::{CachedAnswer, Pack};
+use crate::pack::{CachedAnswer, Pack, Section};
 use crate::retrieval::{Hit, Reranker, Retriever, SearchOptions};
 use crate::segments::{self, Segment};
 use rusqlite::params;
@@ -71,6 +71,12 @@ pub struct AskOptions {
     pub k: usize,
     /// Minimum alias similarity (0..1) for an answer-cache hit.
     pub cache_threshold: f64,
+    /// Below this similarity a hit must be confirmed as the same question
+    /// before it is served: the embedder's cosine between the question and
+    /// the alias must reach `cache_intent_min`. Without an embedder such a
+    /// hit is not served and the question goes to retrieval.
+    pub cache_confirm: f64,
+    pub cache_intent_min: f64,
     /// Minimum share of the question's content words a section must cover to
     /// support an answer; below it, decline.
     pub support_threshold: f64,
@@ -104,7 +110,9 @@ impl Default for AskOptions {
             lang: "en".into(),
             k: 10,
             cache_threshold: 0.75,
-            support_threshold: 0.5,
+            cache_confirm: 0.85,
+            cache_intent_min: 0.9,
+            support_threshold: 0.4,
             max_sections: 3,
             max_quote_chars: 600,
             nearest: 5,
@@ -122,7 +130,7 @@ impl AskOptions {
                 .and_then(|v| v.parse::<f64>().ok())
                 .filter(|v| v.is_finite())
         };
-        Self {
+        let mut o = Self {
             dense_gate: match (num("gate_dense_support_threshold"), num("gate_dense_min")) {
                 (Some(support_threshold), Some(min_dense)) => Some(DenseGate {
                     support_threshold,
@@ -131,7 +139,14 @@ impl AskOptions {
                 _ => None,
             },
             ..Self::default()
+        };
+        if let Some(v) = num("cache_confirm_similarity") {
+            o.cache_confirm = v;
         }
+        if let Some(v) = num("cache_intent_min") {
+            o.cache_intent_min = v;
+        }
+        o
     }
 }
 
@@ -219,6 +234,10 @@ pub struct AskResponse {
     /// The deterministic gate's view of the question (all modes).
     #[serde(default)]
     pub support: Support,
+    /// The deterministic tool that answered first, if any
+    /// (`range_table:<section_id>`).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub tool: Option<String>,
 }
 
 /// What the engine considered, for the audit log.
@@ -308,7 +327,7 @@ impl Engine {
         trace.support = candidates.iter().map(|c| c.coverage).fold(0.0, f64::max);
 
         // Answer cache.
-        let (cached, similarity) = self.cache_lookup(&norm, opts)?;
+        let (cached, similarity) = self.cache_lookup_for(question, &norm, opts)?;
         trace.cache_similarity = similarity;
         let support = Support {
             score: trace.support,
@@ -339,6 +358,7 @@ impl Engine {
                         model: None,
                         elapsed_ms: started.elapsed().as_millis() as u64,
                         support: support.clone(),
+                        tool: None,
                     },
                     trace,
                 ));
@@ -354,9 +374,29 @@ impl Engine {
             support_threshold: threshold,
             ..opts.clone()
         };
+        let best = trace.support;
+        let chosen: Vec<&SupportCandidate> = candidates
+            .iter()
+            .filter(|c| dense_ok && c.coverage >= threshold && c.coverage >= best - SUPPORT_WINDOW)
+            .take(opts.max_sections)
+            .collect();
         if let Some(llm) = self.llm.clone().filter(|_| dense_ok) {
             match self.ask_model(llm.as_ref(), question, &norm, &model_opts, &mut trace) {
                 Ok(Some(mut resp)) => {
+                    // The model's answer leads; the sections the gate chose
+                    // that it did not cite follow, composed as without a
+                    // model, so a model that picks too little never loses
+                    // what the deterministic answer would have shown.
+                    let (more, _) =
+                        self.compose_chosen(question, &norm, &chosen, &resp.citations, opts)?;
+                    if !more.is_empty() {
+                        resp.body.extend(more);
+                        let (body, check) =
+                            check::check(&self.pack, &resp.body, CheckOptions::STRUCTURAL)?;
+                        resp.citations = segments::citations(&body);
+                        resp.body = body;
+                        resp.check.dropped += check.dropped;
+                    }
                     resp.elapsed_ms = started.elapsed().as_millis() as u64;
                     resp.support = support.clone();
                     return Ok((resp, trace));
@@ -367,12 +407,6 @@ impl Engine {
         }
 
         // Compose from the best-supported sections, or decline.
-        let best = trace.support;
-        let chosen: Vec<&SupportCandidate> = candidates
-            .iter()
-            .filter(|c| dense_ok && c.coverage >= threshold && c.coverage >= best - SUPPORT_WINDOW)
-            .take(opts.max_sections)
-            .collect();
         if chosen.is_empty() {
             let nearest = nearest_sections(&hits, opts.nearest);
             return Ok((
@@ -392,14 +426,12 @@ impl Engine {
                     model: None,
                     elapsed_ms: started.elapsed().as_millis() as u64,
                     support,
+                    tool: None,
                 },
                 trace,
             ));
         }
-        let mut body = Vec::new();
-        for c in chosen {
-            body.extend(self.compose_section(&c.section_id, &norm, opts)?);
-        }
+        let (body, tool_section) = self.compose_chosen(question, &norm, &chosen, &[], opts)?;
         let (body, check) = check::check(&self.pack, &body, CheckOptions::STRUCTURAL)?;
         Ok((
             AskResponse {
@@ -414,9 +446,135 @@ impl Engine {
                 model: None,
                 elapsed_ms: started.elapsed().as_millis() as u64,
                 support,
+                tool: tool_section.map(|id| format!("range_table:{id}")),
             },
             trace,
         ))
+    }
+
+    /// The deterministic composition of the chosen sections, skipping those
+    /// in `skip`: a table lookup first when one applies, then each section's
+    /// block. Returns the table's section id when the lookup answered.
+    fn compose_chosen(
+        &self,
+        question: &str,
+        norm: &Normalized,
+        chosen: &[&SupportCandidate],
+        skip: &[String],
+        opts: &AskOptions,
+    ) -> Result<(Vec<Segment>, Option<String>)> {
+        let mut body = Vec::new();
+        // A number in a table's unit is looked up in the table, first.
+        // Only a table the gate chose: a table merely retrieved alongside
+        // (the question names a voltage for another reason) does not answer.
+        let open: Vec<SupportCandidate> = chosen
+            .iter()
+            .filter(|c| !skip.contains(&c.section_id))
+            .map(|c| (*c).clone())
+            .collect();
+        let tool = self.table_answer(question, &open)?;
+        let tool_section = tool.as_ref().map(|(id, _)| id.clone());
+        if let Some((_, segs)) = tool {
+            body.extend(segs);
+        }
+        for c in &open {
+            if Some(&c.section_id) == tool_section.as_ref() {
+                continue;
+            }
+            body.extend(self.compose_section(&c.section_id, norm, opts)?);
+        }
+        Ok((body, tool_section))
+    }
+
+    /// The range-table answer for a question that states a number in a
+    /// retrieved table's unit: the best-supported such table (coverage, then
+    /// rank), one lead per value.
+    fn table_answer(
+        &self,
+        question: &str,
+        candidates: &[SupportCandidate],
+    ) -> Result<Option<(String, Vec<Segment>)>> {
+        // Table sections among the candidates that hold a number the
+        // question states in their unit.
+        let mut tables = Vec::new();
+        for c in candidates {
+            let Some(sec) = self.pack.section(&c.section_id)? else {
+                continue;
+            };
+            if sec.kind != "table" {
+                continue;
+            }
+            let Some(table) = crate::tools::RangeTable::parse(&sec) else {
+                continue;
+            };
+            let mut values = table.values_in(question);
+            values.dedup();
+            if !values.is_empty() {
+                tables.push((c, sec, table, values));
+            }
+        }
+        // Between tables for the same quantity (operating vs traveling, say),
+        // a table whose heading qualifies it with words the question does not
+        // use is the wrong table: rank by those missing qualifiers, then by
+        // support and rank.
+        let q_stems = normalize::stem_set(question);
+        let heading_stems =
+            |sec: &Section| normalize::stem_set(sec.heading.as_deref().unwrap_or(""));
+        let all: Vec<BTreeSet<String>> = tables.iter().map(|t| heading_stems(&t.1)).collect();
+        // Distinctive heading words: in this table's heading, not in every
+        // other's (operating vs "while traveling with no load", say).
+        let distinct = |i: usize| -> (i64, i64) {
+            let d: Vec<&String> = all[i]
+                .iter()
+                .filter(|s| {
+                    all.iter()
+                        .enumerate()
+                        .any(|(j, o)| j != i && !o.contains(*s))
+                })
+                .collect();
+            let hit = d.iter().filter(|s| q_stems.contains(**s)).count() as i64;
+            (hit, d.len() as i64 - hit)
+        };
+        // With an embedder, the heading closest in meaning to the question
+        // wins ("drive under it with no load" is traveling); without one, the
+        // most distinctive heading words used, then the fewest unused.
+        let mut closeness = vec![0.0f32; tables.len()];
+        if tables.len() > 1
+            && let Some(e) = &self.embedder
+        {
+            let q = e.embed_query(question)?;
+            for (i, t) in tables.iter().enumerate() {
+                let h = e.embed_query(t.1.heading.as_deref().unwrap_or(&t.1.citation))?;
+                closeness[i] = q.iter().zip(&h).map(|(x, y)| x * y).sum();
+            }
+        }
+        let mut order: Vec<usize> = (0..tables.len()).collect();
+        order.sort_by(|&a, &b| {
+            closeness[b]
+                .total_cmp(&closeness[a])
+                .then(distinct(b).0.cmp(&distinct(a).0))
+                .then(distinct(a).1.cmp(&distinct(b).1))
+                .then(tables[b].0.coverage.total_cmp(&tables[a].0.coverage))
+                .then(tables[a].0.rank.cmp(&tables[b].0.rank))
+        });
+        for i in order {
+            let (c, sec, table, values) = &tables[i];
+            let caption = sec.heading.clone().unwrap_or_else(|| sec.citation.clone());
+            let mut segs: Vec<Segment> = Vec::new();
+            for &v in values {
+                if let Some(a) = table.answer(v, &caption) {
+                    for s in a {
+                        if !segs.contains(&s) {
+                            segs.push(s);
+                        }
+                    }
+                }
+            }
+            if !segs.is_empty() {
+                return Ok(Some((c.section_id.clone(), segs)));
+            }
+        }
+        Ok(None)
     }
 
     /// The model path. `Ok(None)`: nothing the model wrote survived the
@@ -458,6 +616,7 @@ impl Engine {
             model: Some(llm.id()),
             elapsed_ms: 0,
             support: Support::default(),
+            tool: None,
         };
         // The long tail: the model may use sections with partial lexical
         // support; the strict checker decides what survives.
@@ -512,7 +671,9 @@ impl Engine {
         };
         let passages = compose::passages(&self.pack, &chosen, 1500)?;
         let body = compose::compose(llm, question, opts.role.as_str(), &context, &passages)?;
-        let (body, check) = check::check(&self.pack, &body, CheckOptions::STRICT)?;
+        let (mut body, check) = check::check(&self.pack, &body, CheckOptions::STRICT)?;
+        // A dropped sentence can leave its cite next to the same cite.
+        body.dedup();
         // Bare citations are not an answer: keep the model's body only with
         // a verbatim quote, or a surviving sentence and its cite.
         let has_quote = body.iter().any(|s| matches!(s, Segment::Quote { .. }));
@@ -551,6 +712,18 @@ impl Engine {
         norm: &Normalized,
         opts: &AskOptions,
     ) -> Result<(Option<CachedAnswer>, f64)> {
+        self.cache_lookup_for(&norm.text, norm, opts)
+    }
+
+    /// [`Engine::cache_lookup`] with the question as asked, for the intent
+    /// check of near-threshold hits.
+    pub fn cache_lookup_for(
+        &self,
+        question: &str,
+        norm: &Normalized,
+        opts: &AskOptions,
+    ) -> Result<(Option<CachedAnswer>, f64)> {
+        let mut question_vec: Option<Vec<f32>> = None;
         let Some(m) = normalize::fts_query(
             std::iter::once(norm.text.as_str()).chain(norm.expansions.iter().map(String::as_str)),
         ) else {
@@ -574,6 +747,21 @@ impl Engine {
             best_sim = best_sim.max(sim);
             if sim < opts.cache_threshold {
                 continue;
+            }
+            // Near the threshold the words may overlap while the question
+            // differs: confirm it is the same question, or leave it to
+            // retrieval.
+            if sim < opts.cache_confirm {
+                let Some(e) = &self.embedder else { continue };
+                if question_vec.is_none() {
+                    question_vec = Some(e.embed_query(question)?);
+                }
+                let q = question_vec.as_deref().unwrap_or_default();
+                let a = e.embed_query(&alias)?;
+                let cos: f32 = q.iter().zip(&a).map(|(x, y)| x * y).sum();
+                if f64::from(cos) < opts.cache_intent_min {
+                    continue;
+                }
             }
             let Some(answer) = self.pack.answer(&answer_id)? else {
                 continue;
@@ -628,44 +816,56 @@ impl Engine {
         opts: &AskOptions,
     ) -> Result<Vec<SupportCandidate>> {
         let mut out = Vec::new();
-        // (section, its retrieved chunk text, first rank, best score)
-        let mut hit_text: Vec<(String, String, usize, f64)> = Vec::new();
+        // (section, its retrieved chunk texts, first rank, best score)
+        let mut hit_text: Vec<(String, Vec<String>, usize, f64)> = Vec::new();
         for (i, h) in hits.iter().enumerate() {
             if let Some(s) = &h.section_id {
                 match hit_text.iter_mut().find(|(id, ..)| id == s) {
                     Some((_, t, _, best)) => {
-                        t.push(' ');
-                        t.push_str(&h.text);
+                        t.push(h.text.clone());
                         *best = best.max(h.score);
                     }
-                    None => hit_text.push((s.clone(), h.text.clone(), i + 1, h.score)),
+                    None => hit_text.push((s.clone(), vec![h.text.clone()], i + 1, h.score)),
                 }
             }
         }
-        for (section_id, extra, rank, retrieval) in hit_text {
+        for (section_id, chunks, rank, retrieval) in hit_text {
             let Some(sec) = self.pack.section(&section_id)? else {
                 continue;
             };
-            let mut doc = format!(
-                "{} {} {}",
-                sec.heading.as_deref().unwrap_or(""),
-                sec.text,
-                extra
-            );
+            // Support is local: the best single passage of the section (the
+            // size of the quote an answer would show), one retrieved chunk,
+            // or the role's explanation, each with the heading. Not the union
+            // of everything the section says: a long section (a definitions
+            // list, a broad summary) mentions nearly any word, so the union
+            // let it support nearly any question.
+            let heading = sec.heading.as_deref().unwrap_or("");
+            let mut units: Vec<String> = vec![best_passage(
+                &sec.text,
+                &norm.concepts,
+                opts.max_quote_chars,
+            )];
+            units.extend(chunks);
             if let Some(e) = self
                 .pack
                 .explanation(&section_id, opts.role.as_str(), &opts.lang)?
             {
-                doc.push(' ');
-                doc.push_str(&e);
+                units.push(best_passage(&e, &norm.concepts, opts.max_quote_chars));
             }
-            let stems = normalize::stem_set(&doc);
+            let best = units
+                .iter()
+                .map(|u| normalize::stem_set(&format!("{heading} {u}")))
+                .map(|stems| (coverage(&norm.concepts, &stems), stems))
+                .fold(
+                    (0.0f64, BTreeSet::new()),
+                    |a, b| if b.0 > a.0 { b } else { a },
+                );
             out.push(SupportCandidate {
-                coverage: coverage(&norm.concepts, &stems),
+                coverage: best.0,
                 covered: norm
                     .concepts
                     .iter()
-                    .filter(|c| c.satisfied_by(&stems))
+                    .filter(|c| c.satisfied_by(&best.1))
                     .map(|c| c.stem.clone())
                     .collect(),
                 section_id,
@@ -686,18 +886,49 @@ impl Engine {
         let Some(sec) = self.pack.section(section_id)? else {
             return Ok(Vec::new());
         };
-        let mut out = Vec::new();
-        out.push(Segment::text(match &sec.heading {
-            Some(h) => format!("{} {}", sec.citation, h),
-            None => sec.citation.clone(),
-        }));
-        if let Some(e) = self
+        // Answer first: the most relevant verified plain-language line (a
+        // baked fact's statement, or a sentence of the role's explanation)
+        // leads, then the rule's own words. No section header: the cite
+        // names the section.
+        let explanation = self
             .pack
-            .explanation(section_id, opts.role.as_str(), &opts.lang)?
-        {
-            out.push(Segment::text(e));
-        }
+            .explanation(section_id, opts.role.as_str(), &opts.lang)?;
+        // Leads summarize what is quoted: a fact whose quote lies in the shown
+        // passage, or an explanation sentence. Only a clear best leads; a tie
+        // (two limits for two cases, say) opens with the rule itself.
         let passage = best_passage(&sec.text, &norm.concepts, opts.max_quote_chars);
+        let shown = normalize_ws(&passage);
+        let mut leads: Vec<(f64, u8, String)> = Vec::new();
+        for f in self.pack.facts_for_section(section_id)? {
+            if !shown.contains(&normalize_ws(&f.quote)) {
+                continue;
+            }
+            let cov = coverage(
+                &norm.concepts,
+                &normalize::stem_set(&format!("{} {}", f.statement, f.quote)),
+            );
+            leads.push((cov, 1, f.statement));
+        }
+        if let Some(e) = &explanation {
+            for sentence in e.split_inclusive(". ") {
+                let cov = coverage(&norm.concepts, &normalize::stem_set(sentence));
+                leads.push((cov, 0, sentence.trim().to_string()));
+            }
+        }
+        leads.sort_by(|a, b| b.0.total_cmp(&a.0).then(b.1.cmp(&a.1)));
+        let clear = match (leads.first(), leads.get(1)) {
+            (Some(a), Some(b)) => a.0 > b.0 + 1e-9,
+            (Some(_), None) => true,
+            _ => false,
+        };
+        let lead = leads
+            .into_iter()
+            .next()
+            .filter(|l| clear && l.0 >= MIN_LEAD_COVERAGE);
+        let mut out = Vec::new();
+        if let Some((_, _, text)) = &lead {
+            out.push(Segment::text(text.clone()));
+        }
         out.push(Segment::quote(section_id, passage.clone()));
         // Verbatim mode: limits and the like are quoted, never left out of a
         // trimmed passage.
@@ -713,10 +944,20 @@ impl Engine {
                 out.push(Segment::quote(section_id, f.quote.clone()));
             }
         }
+        // The whole explanation teaches after the rule (a lead taken from it
+        // is one sentence; the rest still matters).
+        if let Some(e) = explanation {
+            out.push(Segment::cite(section_id));
+            out.push(Segment::text(e));
+        }
         out.push(Segment::cite(section_id));
         Ok(out)
     }
 }
+
+/// Least share of the question a lead line must cover to open an answer;
+/// below it the answer opens with the rule's own words.
+const MIN_LEAD_COVERAGE: f64 = 0.3;
 
 /// Share of `concepts` satisfied by `doc`.
 pub fn coverage(concepts: &[Concept], doc: &BTreeSet<String>) -> f64 {

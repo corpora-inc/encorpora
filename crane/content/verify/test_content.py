@@ -218,6 +218,14 @@ class Writers(unittest.TestCase):
         self.assertIn("duplicate intent of a1", rows[1]["prov"]["notes"] or "")
         self.assertNotIn("duplicate intent of a2", rows[2]["prov"]["notes"] or "")
 
+    def test_meta_language(self):
+        m = self.b.meta_language
+        self.assertTrue(m("Does the supplied federal rule say to use the next longer radius?"))
+        self.assertTrue(m("The next-longer-radius method cannot be established from this paragraph alone."))
+        self.assertTrue(m("The rule text used here sets no minimum angle."))
+        self.assertEqual(m("The federal rules set no minimum sling angle.", "Use the next longer radius (practice)."), [])
+        self.assertEqual(m("The utility must provide the requested voltage information."), [])
+
     def test_key_stands_out(self):
         self.assertTrue(self.b.key_stands_out(["short", "tiny", "a much longer and more qualified correct answer", "small"], 2))
         self.assertFalse(self.b.key_stands_out(["about this long", "roughly as long", "same length here", "near the same"], 0))

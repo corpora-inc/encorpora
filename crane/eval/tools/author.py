@@ -174,6 +174,23 @@ V2_BATCHES = [
     ("V06", ["29cfr1910.179", "29cfr1910.180", "29cfr1910.184"], 10,
      "general industry: overhead and gantry cranes; crawler, locomotive and truck cranes; slings"),
 ]
+# Set v3: the large fresh set for the release bar (README "Release bar"). The v1 section groups at
+# 12 items each, one batch for the material v2 skipped (1926.1443 and the Subpart CC appendices),
+# and three must-decline batches; every batch sees the v1 and v2 questions on its sections.
+V3_BATCHES = [(f"W{b[1:]}", prefixes, 12, focus) for b, prefixes, _n, focus in BATCHES[:21]] + [
+    ("W22", ["29cfr1926.1443", "29cfr1926-subpartCC-appA", "29cfr1926-subpartCC-appB", "29cfr1926-subpartCC-appC"], 14,
+     "severability, the assembly/disassembly sample procedures (Appendix B) and the operator written-exam "
+     "and practical-exam criteria (Appendix C); Appendix A is figures only, so ask about it only through "
+     "the rule text that refers to it"),
+    ("W23", ["29cfr1926.1417", "29cfr1926.1431", "29cfr1926.1435", "29cfr1926.1437", "29cfr1910.179(b)",
+             "29cfr1910.180(c)", "29cfr1926.1433"], 14,
+     "wind, weather and lightning; load charts and rated capacity; multiple-crane and tandem lifts"),
+]
+V3_DECLINE_BATCHES = [
+    ("WD1", "decline-manufacturer: 7, decline-specific-load-chart: 7, decline-asme: 6"),
+    ("WD2", "decline-legal: 6, decline-non-crane: 8, decline-other-jurisdiction: 6"),
+    ("WD3", "decline-other: 8, decline-manufacturer: 3, decline-specific-load-chart: 3, decline-non-crane: 4"),
+]
 V2_DECLINE_BATCHES = [
     ("VD1", "decline-manufacturer: 3, decline-specific-load-chart: 2, decline-asme: 2, decline-legal: 2, "
             "decline-non-crane: 2, decline-other-jurisdiction: 2, decline-other: 1"),
@@ -222,14 +239,16 @@ def main() -> None:
     ap.add_argument("--only", nargs="*")
     ap.add_argument("--jobs", type=int, default=3)
     ap.add_argument("--model", default="opus")
-    ap.add_argument("--set", choices=["v1", "v2"], default="v1")
-    ap.add_argument("--avoid", type=Path, help="v2: an existing set (JSON lines) whose questions must not be repeated")
+    ap.add_argument("--set", choices=["v1", "v2", "v3"], default="v1")
+    ap.add_argument("--avoid", type=Path, nargs="*", default=[],
+                    help="existing sets (JSON lines) whose questions must not be repeated")
     a = ap.parse_args()
     a.out.mkdir(parents=True, exist_ok=True)
     rows = load_sections(a.sections)
     jobs = []
-    batches, decline_batches = (BATCHES, DECLINE_BATCHES) if a.set == "v1" else (V2_BATCHES, V2_DECLINE_BATCHES)
-    avoid = [json.loads(l) for l in a.avoid.open()] if a.avoid else []
+    batches, decline_batches = {"v1": (BATCHES, DECLINE_BATCHES), "v2": (V2_BATCHES, V2_DECLINE_BATCHES),
+                                "v3": (V3_BATCHES, V3_DECLINE_BATCHES)}[a.set]
+    avoid = [json.loads(l) for path in a.avoid for l in path.open()]
 
     def avoid_block(prefixes: list[str] | None) -> str:
         qs = [it["question"] for it in avoid

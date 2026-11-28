@@ -36,18 +36,7 @@ console.log(`Selected ${lane} checks:\n${selected.join("\n")}`);
 const commands =
   lane === "browser"
     ? selected.map((file) => ["--import", "tsx", file])
-    : [
-        [
-          "--import",
-          "tsx",
-          "--test",
-          // A test that waits on another session forever fails by name
-          // instead of holding the job until GitHub cancels it. The slowest
-          // database test takes about two minutes on a CI runner.
-          ...(lane === "database" ? ["--test-timeout=300000"] : []),
-          ...selected,
-        ],
-      ];
+    : [["--import", "tsx", "--test", ...selected]];
 for (const args of commands) {
   const result = spawnSync(process.execPath, args, {
     cwd: root,

@@ -236,7 +236,8 @@ harvest show    <pack> info|sections|topics|skills|lessons|terms|diagrams|questi
   "check": { "quotes_ok": true, "cites_ok": true, "dropped": 0 },
   "nearest": ["…"],            // when declined
   "pack_version": "…", "model": "…|null", "elapsed_ms": 0,
-  "support": { "score": 0.0, "threshold": 0.5, "window": 0.25, "max_sections": 3, "depth": 12,
+  "tool": "range_table:<section_id>",   // present when a table lookup answered first
+  "support": { "score": 0.0, "threshold": 0.4, "window": 0.25, "max_sections": 3, "depth": 12,
                "concepts": ["…"], "cache_similarity": 0.0, "cache_threshold": 0.75,
                "top_dense": 0.0, "min_dense": null,
                "candidates": [{ "section_id": "…", "rank": 1, "retrieval": 0.0,
@@ -253,10 +254,23 @@ dense retrieval ran), the engine also declines when `top_dense < min_dense`,
 with the model on as well, and `threshold` is the gate's coverage bar.
 The cache answers first when `cache_similarity >= cache_threshold`.
 
+Composed answers open with the answer: the clearly most relevant verified
+line (a baked fact's statement whose quote is in the shown passage, or a
+sentence of the role's explanation, covering at least 30% of the question),
+then the rule's own words and the explanation. When the question states a
+number in the unit of a range table the gate chose (a `table` section
+with `x | y` rows such as `over 50 to 200 | 15`), the row is looked up and the
+answer states it, quoting the header and the row (and the table's note when
+the number is a band's bound); `tool` names the table. A cache hit with
+similarity below `cache_confirm` (0.85) is served only when the embedder's
+cosine between the question and the alias reaches `cache_intent_min` (0.9);
+without an embedder it goes to retrieval. A pack may override both in
+`pack_meta` (`cache_confirm_similarity`, `cache_intent_min`).
+
 A pack states its calibrated dense gate in `pack_meta`:
 `gate_dense_support_threshold` and `gate_dense_min` (both numbers as text;
 they belong to the pack's embedder, whose cosine scale they assume). Without
-them, or without dense vectors, the coverage-only threshold (0.5) applies.
+them, or without dense vectors, the coverage-only threshold (0.4) applies.
 
 The Tauri app calls the same functions in-process; the CLI exists so evaluation
 measures exactly the code the app runs.
