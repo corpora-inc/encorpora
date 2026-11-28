@@ -4,7 +4,7 @@
  * Lexical retrieval only, no model. Replaced by harvest-core when it lands.
  */
 import { checkBody } from "./check.ts";
-import { Bm25, resolveQuery, surfaceWords, tokens } from "./text.ts";
+import { Bm25, Lexicon, resolveQuery, tokens } from "./text.ts";
 import type {
   AskResult, Diagram, Engine, Equipment, ExamBlueprintRow, FindResult, Lesson, PackInfo, Procedure, Question,
   Reading, Role, RuleGroup, Section, Segment, SkillRow, Source, Term, Topic,
@@ -34,7 +34,7 @@ export interface RawPack {
 const json = <T>(v: unknown): T => (typeof v === "string" ? (JSON.parse(v) as T) : (v as T));
 
 /** "1926.1419", "1926.1419(c)(2)": a CFR citation inside a query. */
-const CITATION = /(19\d\d\.\d{2,4})((?:\([0-9a-zA-Z]{1,4}\))*)/g;
+const CITATION = /(19\d\d\.\d{2,4})((?:\([0-9a-zA-Z]{1,4}\))*)/gi;
 
 export function openFixture(raw: RawPack): Engine {
   const t0 = () => (typeof performance !== "undefined" ? performance.now() : Date.now());
@@ -126,23 +126,48 @@ export function openFixture(raw: RawPack): Engine {
     };
   };
 
-  let surface: Map<string, string> | null = null;
-  const said = (term: string) => (surface ??= surfaceWords([...sections.values()].map((s) => `${s.heading ?? ""} ${s.text}`))).get(term) ?? term;
+  const lexicon = new Lexicon(sectionIndex.vocab, () => [...sections.values()].map((s) => `${s.heading ?? ""} ${s.text}`));
+
+  /**
+   * The section a typed citation names: as typed, then with its paragraph
+   * letters lowercased ("(C)" -> "(c)"), then one level up at a time, so
+   * "1926.1419(z)" still opens §1926.1419.
+   */
+  const citedSection = (num: string, levels: string): string | null => {
+    const parts = levels.match(/\([0-9a-zA-Z]{1,4}\)/g) ?? [];
+    for (let n = parts.length; n >= 0; n--) {
+      const head = parts.slice(0, n);
+      for (const tail of [head.join(""), head.join("").toLowerCase()]) {
+        const id = `29cfr${num}${tail}`;
+        if (sections.has(id)) return id;
+      }
+      // Mixed levels, e.g. "(a)(2)(iii)(A)": lowercase all but a fourth-level capital.
+      const mixed = head.map((p, i) => (i === 3 ? p.toUpperCase() : p.toLowerCase())).join("");
+      if (sections.has(`29cfr${num}${mixed}`)) return `29cfr${num}${mixed}`;
+    }
+    return null;
+  };
 
   // A section's own heading counts once more when it is the top of its group.
   const headingIndex = new Bm25(
     [...sections.values()].filter((s) => s.parent_id === null && s.heading).map((s) => ({ id: s.section_id, tokens: tokens(s.heading!) })),
   );
 
-  const queryTerms = (text: string) => [...new Set(resolveQuery(text, sectionIndex.vocab).flatMap((r) => r.terms))];
-
   const find = (query: string, max = 8): FindResult => {
     const started = t0();
-    const cites = [...query.matchAll(CITATION)];
-    const resolved = resolveQuery(query.replace(CITATION, " "), sectionIndex.vocab);
+    // A citation typed as words ("1926.1419", "§1926.1419(c)") opens its paragraph first.
+    // Only a citation the pack holds is taken out of the words searched.
+    const cited: string[] = [];
+    const rest = query.replace(CITATION, (whole, num: string, levels: string) => {
+      const id = citedSection(num, levels);
+      if (!id) return whole;
+      cited.push(id);
+      return " ";
+    });
+    const resolved = resolveQuery(rest, lexicon);
     const terms = [...new Set(resolved.flatMap((r) => r.terms))];
     const readings: Reading[] = resolved.flatMap((r) =>
-      r.via === "exact" || r.via === "none" ? [] : [{ word: r.word, as: r.terms.map(said), via: r.via }],
+      r.via === "exact" || r.via === "none" ? [] : [{ word: r.word, as: r.terms.map((t) => lexicon.said(t)), via: r.via }],
     );
     const byRoot = new Map<string, { section_id: string; score: number }[]>();
     for (const h of terms.length ? sectionIndex.score(terms, 400) : []) {
@@ -150,13 +175,6 @@ export function openFixture(raw: RawPack): Engine {
       const list = byRoot.get(root) ?? [];
       list.push({ section_id: h.id, score: h.score });
       byRoot.set(root, list);
-    }
-    // A citation typed as words ("1926.1419", "§1926.1419(c)") opens a group of its own, first.
-    for (const m of cites) {
-      const id = `29cfr${m[1]}${m[2]}`;
-      if (!sections.has(id)) continue;
-      const root = ancestors(id)[0]?.section_id ?? id;
-      byRoot.set(root, [{ section_id: id, score: Number.POSITIVE_INFINITY }, ...(byRoot.get(root) ?? []).filter((h) => h.section_id !== id)]);
     }
     const heading = new Map(headingIndex.score(terms, 100).map((h) => [h.id, h.score]));
     const groups: RuleGroup[] = [...byRoot.entries()].map(([root_id, hits]) => {
@@ -167,7 +185,13 @@ export function openFixture(raw: RawPack): Engine {
       const best = hits.find((h) => textLen(h) >= 40 && h.score >= 0.6 * hits[0]!.score) ?? hits.find((h) => textLen(h) > 0) ?? hits[0]!;
       return { root_id, best_id: best.section_id, hits: hits.slice(0, 12), score };
     });
-    groups.sort((a, b) => b.score - a.score || (sections.get(a.root_id)?.ord ?? 0) - (sections.get(b.root_id)?.ord ?? 0));
+    for (const id of cited.reverse()) {
+      const root_id = ancestors(id)[0]?.section_id ?? id;
+      const words = groups.find((g) => g.root_id === root_id);
+      const group: RuleGroup = { root_id, best_id: id, hits: [{ section_id: id, score: words?.hits[0]?.score ?? 0 }, ...(words?.hits ?? []).filter((h) => h.section_id !== id)], score: words?.score ?? 0, cited: true };
+      groups.splice(0, groups.length, ...groups.filter((g) => g.root_id !== root_id), group);
+    }
+    groups.sort((a, b) => Number(Boolean(b.cited)) - Number(Boolean(a.cited)) || b.score - a.score || (sections.get(a.root_id)?.ord ?? 0) - (sections.get(b.root_id)?.ord ?? 0));
     return { query, terms, readings, groups: groups.slice(0, max), pack_version: info.version, elapsed_ms: Math.round(t0() - started) };
   };
 
@@ -203,7 +227,6 @@ export function openFixture(raw: RawPack): Engine {
     async find(query, max) {
       return find(query, max);
     },
-    queryTerms,
   };
   return engine;
 }

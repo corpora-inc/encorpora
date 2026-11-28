@@ -283,9 +283,12 @@ function FindView({ query, result }: { query: string; result: FindResult | null 
           )}
         </>
       )}
-      <div className="mt-4 border-t border-line pt-5">
-        <AskBox initial={query} />
-      </div>
+      {/* Not under the placeholder: it would sit high, then drop when the results land. */}
+      {result !== null && (
+        <div className="mt-4 border-t border-line pt-5">
+          <AskBox initial={query} />
+        </div>
+      )}
     </Page>
   );
 }

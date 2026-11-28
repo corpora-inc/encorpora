@@ -175,6 +175,8 @@ export interface RuleGroup {
   best_id: string;
   hits: SearchHit[];
   score: number;
+  /** The query named this section by citation; cited groups come first and `best_id` is the cited paragraph. */
+  cited?: boolean;
 }
 
 /** A query word the index did not hold as typed, and the indexed words it was read as. */
@@ -187,7 +189,11 @@ export interface Reading {
 /** Ask is a search over the rules: what the index holds for the words asked, grouped by section. */
 export interface FindResult {
   query: string;
-  /** Index terms the query resolved to, for highlighting and for matching topics, lessons and terms. */
+  /**
+   * Index terms the query resolved to, for highlighting and for matching
+   * topics, lessons and terms. The UI compares them with its own tokens(),
+   * so every engine emits them as Porter2 (Snowball English) stems.
+   */
   terms: string[];
   readings: Reading[];
   groups: RuleGroup[];
@@ -236,6 +242,4 @@ export interface Engine {
    * implements this over harvest-core's hybrid search.
    */
   find(query: string, groups?: number): Promise<FindResult>;
-  /** The index terms of `text`, as `find` reads them. */
-  queryTerms(text: string): string[];
 }

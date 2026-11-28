@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { openFixture, type RawPack } from "./fixture.ts";
 import { checkBody } from "./check.ts";
-import { editDistance, matchWindow, spellingVariants, stem, tokens } from "./text.ts";
+import { editDistance, highlight, matchWindow, spellingVariants, stem, tokens } from "./text.ts";
 
 const raw = JSON.parse(readFileSync(new URL("./fixture/pack.json", import.meta.url), "utf8")) as RawPack;
 const e = openFixture(raw);
@@ -90,9 +90,41 @@ test("each group shows a paragraph with text and opens a real section", async ()
   assert.equal(await first("barge cranes floating on water"), "29cfr1926.1437");
 });
 
-test("a typed citation opens that paragraph first", async () => {
-  const r = await e.find("1926.1419(c)");
-  assert.equal(r.groups[0]?.best_id, "29cfr1926.1419(c)");
+test("a typed citation opens that paragraph first, forgiving case and a missing level", async () => {
+  for (const [q, want] of [
+    ["1926.1419(c)", "29cfr1926.1419(c)"],
+    ["§1926.1419(C)", "29cfr1926.1419(c)"],
+    ["1926.1419(z)", "29cfr1926.1419"],
+    ["1926.1419 signal", "29cfr1926.1419"],
+    ["29 CFR 1926.1408(a)(2)(iii)(a)", "29cfr1926.1408(a)(2)(iii)(A)"],
+  ] as [string, string][]) {
+    const r = await e.find(q);
+    assert.equal(r.groups[0]?.best_id, want, q);
+    assert.equal(r.groups[0]?.cited, true, q);
+    for (const g of r.groups) assert.ok(Number.isFinite(g.score), `${q}: finite scores`);
+  }
+});
+
+test("misspelt words are matched as whole words, not stems", async () => {
+  for (const [q, word] of [
+    ["operater", "operator"],
+    ["certificaton", "certification"],
+    ["inspeciton", "inspection"],
+    ["riging", "rigging"],
+    ["riggin", "rigging"],
+    ["enegized", "energized"],
+  ] as [string, string][]) {
+    const r = await e.find(q);
+    assert.deepEqual(r.readings, [{ word: q, as: [word], via: "typo" }], q);
+    assert.ok(r.groups.length > 0, q);
+  }
+});
+
+test("a pasted blob does not stall the search", async () => {
+  const t = Date.now();
+  await e.find("x".repeat(20000));
+  await e.find(Array.from({ length: 2000 }, (_, i) => `zq${i.toString(36)}word`).join(" "));
+  assert.ok(Date.now() - t < 500, `${Date.now() - t} ms`);
 });
 
 test("an empty or off-topic query finds nothing", async () => {
@@ -171,4 +203,6 @@ test("a result's excerpt keeps the first matched word in view and starts on a wh
   const sentence = `Short first sentence here. ${"Filler words that run on and on. ".repeat(5)}Outriggers must be set.`;
   assert.ok(matchWindow(sentence, terms).startsWith("…Outriggers"));
   assert.equal(matchWindow("Outriggers first.", terms), "Outriggers first.");
+  const nums = highlight("Lines over 1,000 kV and §1926.1419.", new Set(tokens("1,000 1926.1419")));
+  assert.deepEqual(nums.filter((r) => r.mark).map((r) => r.text), ["1,000", "1926.1419"]);
 });

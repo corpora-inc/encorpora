@@ -78,7 +78,7 @@ const SPELLING: [RegExp, string][] = [
   [/oe/, "e"],
   [/our(s|ed|ing)?$/, "or$1"],
   [/([^aeiou])re(s|d)?$/, "$1er$2"],
-  [/is(e|es|ed|ing|ation|ations)$/, "iz$1"],
+  [/is(e|es|ed|er|ers|ing|ation|ations)$/, "iz$1"],
   [/ys(e|es|ed|ing)$/, "yz$1"],
   [/ence$/, "ense"],
   [/ogue$/, "og"],
@@ -128,14 +128,78 @@ export interface QueryTerm {
 }
 
 /**
- * Resolve each content word of `query` against `vocab` (index term -> document
- * frequency), forgiving British spellings, run-together words and typos.
+ * The index vocabulary: term -> document frequency, plus the words that
+ * produced each term (built on first need), for typo matching on whole words
+ * and for showing a reading in words.
  */
-export function resolveQuery(query: string, vocab: ReadonlyMap<string, number>): QueryTerm[] {
+export class Lexicon {
+  readonly df: ReadonlyMap<string, number>;
+  private readonly texts: () => Iterable<string>;
+  private built: { word: Map<string, string>; surface: Map<string, string> } | null = null;
+  constructor(df: ReadonlyMap<string, number>, texts: () => Iterable<string>) {
+    this.df = df;
+    this.texts = texts;
+  }
+  private get index() {
+    if (this.built) return this.built;
+    const counts = new Map<string, Map<string, number>>();
+    for (const text of this.texts())
+      for (const w of words(text)) {
+        if (STOP.has(w) || /^\d/.test(w)) continue;
+        const s = stem(w);
+        const m = counts.get(s) ?? new Map<string, number>();
+        m.set(w, (m.get(w) ?? 0) + 1);
+        counts.set(s, m);
+      }
+    const word = new Map<string, string>();
+    const surface = new Map<string, string>();
+    for (const [s, m] of counts) {
+      for (const w of m.keys()) word.set(w, s);
+      surface.set(s, [...m.entries()].sort((x, y) => y[1] - x[1] || x[0].localeCompare(y[0]))[0]![0]);
+    }
+    this.built = { word, surface };
+    return this.built;
+  }
+  /** The commonest word in the pack for an index term. */
+  said(term: string): string {
+    return this.index.surface.get(term) ?? term;
+  }
+  /**
+   * The index term of the closest pack word: one edit for words of 5 to 7
+   * letters, two from 8. Whole words are compared, since a stemmer cuts a
+   * correct word harder than a misspelt one ("operator" -> "oper",
+   * "operater" -> "operat"). Ties go to the commoner term.
+   */
+  nearest(word: string): string | null {
+    if (word.length < 5 || word.length > MAX_WORD || !/^\p{L}+$/u.test(word)) return null;
+    const max = word.length >= 8 ? 2 : 1;
+    let best: { t: string; d: number; df: number } | null = null;
+    for (const [w, t] of this.index.word) {
+      const d = editDistance(word, w, max);
+      if (d > max) continue;
+      const df = this.df.get(t) ?? 0;
+      if (!best || d < best.d || (d === best.d && (df > best.df || (df === best.df && t < best.t)))) best = { t, d, df };
+    }
+    return best?.t ?? null;
+  }
+}
+
+/** Longer words are not split or typo-matched: a pasted blob must not stall the screen. */
+const MAX_WORD = 40;
+/** Distinct words read from one query. */
+const MAX_WORDS = 32;
+
+/**
+ * Resolve each content word of `query` against the index, forgiving British
+ * spellings, typos and run-together words, in that order.
+ */
+export function resolveQuery(query: string, lex: Lexicon): QueryTerm[] {
+  const vocab = lex.df;
   const out: QueryTerm[] = [];
   const seen = new Set<string>();
   for (const word of words(query)) {
     if (STOP.has(word) || seen.has(word)) continue;
+    if (seen.size >= MAX_WORDS) break;
     seen.add(word);
     const s = stem(word);
     if (vocab.has(s) || /^\d/.test(word)) {
@@ -149,21 +213,21 @@ export function resolveQuery(query: string, vocab: ReadonlyMap<string, number>):
       out.push({ word, terms: [spelled], via: "spelling" });
       continue;
     }
-    const split = splitWord(word, vocab);
-    if (split) {
-      out.push({ word, terms: split, via: "split" });
+    const typo = lex.nearest(word);
+    if (typo) {
+      out.push({ word, terms: [typo], via: "typo" });
       continue;
     }
-    const typo = nearest(s, vocab);
-    out.push(typo ? { word, terms: [typo], via: "typo" } : { word, terms: [], via: "none" });
+    const split = splitWord(word, vocab);
+    out.push(split ? { word, terms: split, via: "split" } : { word, terms: [], via: "none" });
   }
   return out;
 }
 
-/** "powerline" -> ["power", "line"] when both halves are index terms. */
+/** "powerline" -> ["power", "line"] when both halves, four letters or more, are index terms. */
 function splitWord(word: string, vocab: ReadonlyMap<string, number>): string[] | null {
-  if (word.length < 6) return null;
-  for (let i = 3; i <= word.length - 3; i++) {
+  if (word.length < 8 || word.length > MAX_WORD) return null;
+  for (let i = 4; i <= word.length - 4; i++) {
     const a = word.slice(0, i);
     const b = word.slice(i);
     if (STOP.has(a) || STOP.has(b)) continue;
@@ -174,36 +238,6 @@ function splitWord(word: string, vocab: ReadonlyMap<string, number>): string[] |
   return null;
 }
 
-/** The closest index term: one edit for stems of 5 to 7 letters, two from 8. Ties go to the commoner term. */
-function nearest(s: string, vocab: ReadonlyMap<string, number>): string | null {
-  if (s.length < 5 || !/^\p{L}+$/u.test(s)) return null;
-  const max = s.length >= 8 ? 2 : 1;
-  let best: { t: string; d: number; df: number } | null = null;
-  for (const [t, df] of vocab) {
-    if (!/^\p{L}/u.test(t)) continue;
-    const d = editDistance(s, t, max);
-    if (d > max) continue;
-    if (!best || d < best.d || (d === best.d && (df > best.df || (df === best.df && t < best.t)))) best = { t, d, df };
-  }
-  return best?.t ?? null;
-}
-
-/** Index term -> the commonest word in `texts` that produced it, to show a reading in words. */
-export function surfaceWords(texts: Iterable<string>): Map<string, string> {
-  const counts = new Map<string, Map<string, number>>();
-  for (const text of texts)
-    for (const w of words(text)) {
-      if (STOP.has(w)) continue;
-      const s = stem(w);
-      const m = counts.get(s) ?? new Map<string, number>();
-      m.set(w, (m.get(w) ?? 0) + 1);
-      counts.set(s, m);
-    }
-  const out = new Map<string, string>();
-  for (const [s, m] of counts) out.set(s, [...m.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0]![0]);
-  return out;
-}
-
 /** `text` cut into runs, `mark` on each word whose stem is in `terms`. */
 export function highlight(text: string, terms: ReadonlySet<string>): { text: string; mark: boolean }[] {
   const out: { text: string; mark: boolean }[] = [];
@@ -212,7 +246,8 @@ export function highlight(text: string, terms: ReadonlySet<string>): { text: str
     if (last && last.mark === mark) last.text += t;
     else if (t) out.push({ text: t, mark });
   };
-  for (const part of text.split(/([\p{L}\p{N}][\p{L}\p{N}'-]*)/u)) {
+  // A word may hold an apostrophe or hyphen, and a number its "1,000" comma or "1926.1419" point.
+  for (const part of text.split(/([\p{L}\p{N}](?:[\p{L}\p{N}'-]|[.,](?=\p{N}))*)/u)) {
     if (!part) continue;
     const isWord = /^[\p{L}\p{N}]/u.test(part);
     const hit = isWord && words(part).some((w) => !STOP.has(w) && terms.has(stem(w)));
