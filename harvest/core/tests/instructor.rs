@@ -445,3 +445,30 @@ fn a_claim_takes_its_numbers_from_one_row_and_odd_first_characters_are_safe() {
         let _ = holds(s, rows, 0.75); // no panic on a multi-byte first character
     }
 }
+
+#[test]
+fn outside_rule_turns_a_quote_must_back_a_claim() {
+    let b = common::pack();
+    let llm = Dyn(Box::new(|u| {
+        let a = handle(u, "§2", "must identify energized lines");
+        plan(
+            "node",
+            Some("domain:core.site"),
+            vec![a],
+            "Site is 60% of the exam.",
+        )
+    }));
+    let i = instructor(&b.pack, Some(Arc::new(llm)));
+    let t = i
+        .turn(&ask(
+            "tell me about the site part of the test and power lines",
+        ))
+        .unwrap();
+    assert!(
+        !t.blocks
+            .iter()
+            .any(|b| matches!(b, Block::Quote { .. } | Block::Cite { .. })),
+        "{:?}",
+        t.blocks
+    );
+}

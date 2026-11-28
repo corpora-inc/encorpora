@@ -347,11 +347,6 @@ const RULE_WORDS: &[&str] = &[
     "is allowed",
     "are allowed",
     "at least",
-    "never",
-    "always",
-    "cannot",
-    "can't",
-    "can not",
     "forbidden",
     "illegal",
     "banned",
@@ -411,13 +406,18 @@ const SOFT_MODALS: &[&str] = &[
     "is ok to",
     "it's ok to",
     "okay to",
+    "never",
+    "always",
+    "cannot",
+    "can't",
+    "can not",
 ];
 /// Word starts that make a soft modal a duty.
 const DUTY_STEMS: &[&str] = &[
-    "certif", "qualif", "inspect", "permit", "osha", "rule", "law", "legal", "regulat", "requir",
-    "employer", "document", "train", "authoriz", "approv", "licens", "wear", "harness", "ride",
-    "swing", "clearanc", "distanc", "signal", "spotter", "tag", "lock", "lift", "stand", "hook",
-    "operat", "enter", "climb", "hoist",
+    "certif", "qualif", "inspect", "permit", "requir", "employer", "document", "train", "authoriz",
+    "approv", "licens", "wear", "harness", "ride", "swing", "clearanc", "distanc", "signal",
+    "spotter", "tag", "lock", "lift", "stand", "hook", "operat", "enter", "climb", "hoist",
+    "exceed", "closer", "approach", "travel", "leav", "unattend",
 ];
 
 /// True when the learner's words are about traveling (driving the crane,
@@ -640,7 +640,7 @@ impl Instructor {
                         .then_some(b.clone())
                 }
                 Block::Text { ref text } => self
-                    .check_say(text, &[], &context, trace)
+                    .check_say(text, "", &context, trace)
                     .map(|t| Block::Text { text: t }),
                 Block::Node {
                     ref node_id,
@@ -1012,11 +1012,13 @@ impl Instructor {
              - node_id: the best node from `nodes` (or the current node), else null.\n\
              - fields: which node texts to show: summary, hard, mistakes, exam. Empty = all.\n\
              - show: ids from the node's links to show (a film, lesson, diagram, or \"practice\").\n\
-             - evidence: handles of rule sentences (like \"r1.2\") that state the rule you talk \
-             about. Use them for any requirement, distance, limit or interval.\n\
+             - evidence: the 1 to 3 rule sentences (handles like \"r1.2\") that state the rule \
+             you talk about; the app quotes exactly these. Leave it empty when you state no rule.\n\
              - say: 1 to 3 short sentences, plain words. Never state a rule, number or \
              requirement unless its sentence is in evidence; the app drops any that is not. If \
-             nothing fits, say so honestly and point to what the course covers.\n\
+             nothing fits, say so honestly and point to what the course covers. For \
+             out_of_scope, say plainly that this course does not cover it, then name what it does \
+             cover.\n\
              - tool: for intent tool (the app reads the voltage from the learner's words).\n\
              - search: a better search for the rules index if `rules` miss, else null.",
             title = self.course_title,
@@ -1148,7 +1150,17 @@ impl Instructor {
             return Ok(false);
         };
         let norm = self.engine.retriever().normalize(query);
-        let ss = sentences(&best_passage(&sec.text, &norm.concepts, 600));
+        // A table's rows are its sentences, so a turn can quote one row.
+        let ss: Vec<String> = if sec.kind == "table" {
+            sec.text
+                .lines()
+                .map(normalize_ws)
+                .filter(|l| !l.is_empty())
+                .take(24)
+                .collect()
+        } else {
+            sentences(&best_passage(&sec.text, &norm.concepts, 600))
+        };
         if ss.is_empty() {
             return Ok(false);
         }
@@ -1380,33 +1392,48 @@ impl Instructor {
         // A range table among the rules and a value in its unit in the
         // learner's words: the row for that value leads (like the answer
         // engine's table tool), instead of the whole table.
-        let table = matches!(plan.intent.as_str(), "rule" | "tool")
+        let table = (!matches!(plan.intent.as_str(), "out_of_scope" | "chat"))
             .then(|| self.table_rows(text, passages))
             .flatten();
         let skip: Option<String> = table.as_ref().map(|(sid, _)| sid.clone());
         // Rule sentences the model named: copied from the pack, runs merged.
-        let (mut rule_blocks, mut sources) =
-            self.evidence_blocks(&plan.evidence, passages, skip.as_deref());
+        let mut runs = self.evidence_runs(&plan.evidence, passages, skip.as_deref());
+        if matches!(plan.intent.as_str(), "rule" | "tool" | "review") {
+            runs.truncate(4);
+        } else {
+            // Elsewhere a quote earns its place by backing a claim in `say`.
+            let claims: Vec<String> = sentences(&normalize_ws(&plan.say))
+                .into_iter()
+                .filter(|s| is_rule_claim(s) || !numbers(s).is_empty())
+                .collect();
+            runs.retain(|r| {
+                let support = self.support_text(std::slice::from_ref(r));
+                claims
+                    .iter()
+                    .any(|c| check::holds(c, &support, CheckOptions::STRICT.min_overlap))
+            });
+        }
+        let mut table_runs: Vec<(String, String)> = Vec::new();
+        let mut rule_blocks: Vec<Block> = Vec::new();
         if let Some((_, segs)) = table {
-            let mut tb = Vec::new();
             for s in segs {
                 match s {
-                    Segment::Text { text } => tb.push(Block::Text { text }),
+                    Segment::Text { text } => rule_blocks.push(Block::Text { text }),
                     Segment::Quote { section_id, text } => {
-                        sources.push(Segment::quote(section_id.clone(), text.clone()));
-                        tb.push(Block::Quote { section_id, text })
+                        table_runs.push((section_id.clone(), text.clone()));
+                        rule_blocks.push(Block::Quote { section_id, text })
                     }
-                    Segment::Cite { section_id } => {
-                        sources.push(Segment::cite(section_id.clone()));
-                        tb.push(Block::Cite { section_id })
+                    Segment::Cite { section_id } => rule_blocks.push(Block::Cite { section_id }),
+                    Segment::Diagram { diagram_id } => {
+                        rule_blocks.push(Block::Diagram { diagram_id })
                     }
-                    Segment::Diagram { diagram_id } => tb.push(Block::Diagram { diagram_id }),
                 }
             }
-            tb.append(&mut rule_blocks);
-            rule_blocks = tb;
         }
-        let said = self.check_say(&plan.say, &sources, &context, &mut trace);
+        rule_blocks.extend(Self::run_blocks(&runs));
+        table_runs.extend(runs);
+        let support = self.support_text(&table_runs);
+        let said = self.check_say(&plan.say, &support, &context, &mut trace);
         let has_rules = !rule_blocks.is_empty();
         if let Some(s) = said {
             blocks.insert(0, Block::Text { text: s });
@@ -1422,13 +1449,14 @@ impl Instructor {
                     .unwrap_or_else(|| text.to_string()),
             });
         }
-        // Next steps from where the conversation is, else from the part of
-        // the course the learner's words found, else the top.
+        // Next steps from the part of the course the learner's words found,
+        // else from where the conversation is, else the top.
         if follow.is_empty()
-            && let Some(b) = at
-                .as_deref()
-                .and_then(|a| self.tree.node(a))
-                .or_else(|| trace.node_hits.first().and_then(|h| self.tree.node(h)))
+            && let Some(b) = trace
+                .node_hits
+                .first()
+                .and_then(|h| self.tree.node(h))
+                .or_else(|| at.as_deref().and_then(|a| self.tree.node(a)))
                 .or_else(|| self.tree.root())
         {
             follow = self.next_steps(b, &[]);
@@ -1478,12 +1506,14 @@ impl Instructor {
         None
     }
 
-    fn evidence_blocks(
+    /// The rule sentences the model named, as runs of adjacent sentences
+    /// `(section_id, text)` copied from the pack and checked verbatim.
+    fn evidence_runs(
         &self,
         evidence: &[String],
         passages: &[Passage],
         skip: Option<&str>,
-    ) -> (Vec<Block>, Vec<Segment>) {
+    ) -> Vec<(String, String)> {
         let mut by_p: BTreeMap<usize, Vec<usize>> = BTreeMap::new();
         for h in evidence {
             let h = h.trim().trim_start_matches(['r', 'p']);
@@ -1499,8 +1529,7 @@ impl Instructor {
                 by_p.entry(p - 1).or_default().push(s - 1);
             }
         }
-        let mut blocks = Vec::new();
-        let mut sources = Vec::new();
+        let mut runs = Vec::new();
         for (p, mut idx) in by_p {
             idx.sort_unstable();
             idx.dedup();
@@ -1510,48 +1539,67 @@ impl Instructor {
                 continue;
             }
             let mut k = 0;
-            let mut any = false;
             while k < idx.len() {
                 let mut end = k;
                 while end + 1 < idx.len() && idx[end + 1] == idx[end] + 1 {
                     end += 1;
                 }
-                let quote = ss[idx[k]..=idx[end]].join(" ");
-                if let Some([q, _]) = self.quote_cite(sid, &quote) {
-                    sources.push(Segment::quote(sid.clone(), quote));
-                    blocks.push(q);
-                    any = true;
+                // Table rows keep their line breaks (one claim, one row).
+                let quote = ss[idx[k]..=idx[end]].join("\n");
+                if self.quote_cite(sid, &quote).is_some() {
+                    runs.push((sid.clone(), quote));
                 }
                 k = end + 1;
             }
-            if any {
-                blocks.push(Block::Cite {
+        }
+        runs
+    }
+
+    /// Quote blocks for `runs`, each section's cite after its last quote.
+    fn run_blocks(runs: &[(String, String)]) -> Vec<Block> {
+        let mut out = Vec::new();
+        for (i, (sid, text)) in runs.iter().enumerate() {
+            out.push(Block::Quote {
+                section_id: sid.clone(),
+                text: text.clone(),
+            });
+            if runs.get(i + 1).is_none_or(|(next, _)| next != sid) {
+                out.push(Block::Cite {
                     section_id: sid.clone(),
                 });
-                sources.push(Segment::cite(sid.clone()));
             }
         }
-        (blocks, sources)
+        out
+    }
+
+    /// What a claim may lean on: the quoted runs, each with its section's
+    /// heading (shown with the cite), one per line.
+    fn support_text(&self, runs: &[(String, String)]) -> String {
+        runs.iter()
+            .map(|(sid, text)| {
+                let heading = self
+                    .engine
+                    .pack
+                    .section(sid)
+                    .ok()
+                    .flatten()
+                    .and_then(|s| s.heading)
+                    .unwrap_or_default();
+                format!("{heading}\n{text}")
+            })
+            .collect::<Vec<_>>()
+            .join("\n")
     }
 
     /// The sentences of `say` that hold, joined; `None` when none do.
     fn check_say(
         &self,
         say: &str,
-        sources: &[Segment],
+        quoted: &str,
         context: &str,
         trace: &mut Trace,
     ) -> Option<String> {
         let ctx: BTreeSet<String> = numbers(context).into_iter().collect();
-        // Only the rule text shown in this turn supports a claim.
-        let quoted: String = sources
-            .iter()
-            .filter_map(|s| match s {
-                Segment::Quote { text, .. } => Some(text.as_str()),
-                _ => None,
-            })
-            .collect::<Vec<_>>()
-            .join(" ");
         let mut kept: Vec<String> = Vec::new();
         for s in sentences(&normalize_ws(say)) {
             let nums = numbers(&s);
@@ -1564,7 +1612,7 @@ impl Instructor {
             }
             if quoted.is_empty() {
                 trace.dropped.push(format!("no rule named: {s}"));
-            } else if check::holds(&s, &quoted, CheckOptions::STRICT.min_overlap) {
+            } else if check::holds(&s, quoted, CheckOptions::STRICT.min_overlap) {
                 kept.push(s);
             } else {
                 trace.dropped.push(format!("not in the quoted rules: {s}"));

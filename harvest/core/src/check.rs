@@ -293,6 +293,7 @@ fn strict_paragraph(
 /// domain words: a crane term never goes here.
 const DISCOURSE: &[&str] = &[
     "also", "first", "follow", "import", "key", "rememb", "second", "simpl", "thing", "third",
+    "say", "state", "list", "mean", "tell", "show",
 ];
 
 /// True when `text` (one sentence) holds against `source` alone, by the
