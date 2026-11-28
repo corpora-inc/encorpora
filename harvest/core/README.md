@@ -130,7 +130,9 @@ pub trait Llm: Send + Sync {
 | `crypt` | Encryption at rest for `records.db` (XChaCha20-Poly1305, key from the platform keystore via `Records::open_with_key`): step values, notes, photo refs, structured notes, outbox payloads and audit entries are sealed and bound to their row; ids, statuses and times stay clear. Wrong or missing key is an error; the audit chain verifies without the key. |
 | `sync` | Outbox: ordered, idempotent uploads marked done only on a receipt that echoes the payload hash; `Transport` trait (the app's HTTPS), `DirTransport` for a removable drive or shared folder. |
 | `llama` | (feature `llama`) in-process GGUF embedder on the same `llama-cpp-2 =0.1.146` pin as the app's LLM plugin. |
+| `maint` | Maintenance manuals (CONTRACT "Maintenance tables"): fault trees read whole and verbatim-checked, deterministic branching (`branch::choose`), graph validation (`graph::validate`, run by `harvest verify`), the step and task views (citations to the page and box, guards in manual order at every level, facets, requirements, assets), variant identification, symptom search with confidence, signal matching. |
 | `fixture` | Fictional signed pack for tests (`harvest fixture <dir>`). Its key is public. Never trust it outside tests. |
+| `fixture_maint` | A fictional pump manual with trees, tasks and levels (`harvest fixture <dir> --maint [--samples DIR]`). Same public key. |
 
 ### Embedder ids
 
@@ -204,7 +206,7 @@ harvest show    <pack-dir> <what> [--id ID] [--role R]        # verified content
 harvest show    <pack-dir> tree [--id NODE] [--exams FILE]    # the course knowledge tree (CONTRACT)
 harvest search  <pack-dir> "<query>" --in tree                # search the tree, not the rules
 harvest converse <pack-dir> <script.json> [--llm URL] [--exams FILE]   # scripted Instructor conversations (CONTRACT)
-harvest fixture <dir>
+harvest fixture <dir> [--maint [--samples DIR]]
 ```
 
 `KEY` is a base64 or hex public key, or a file holding one; it defaults to

@@ -1,9 +1,10 @@
 //! Answer-segment JSON (CONTRACT "Answer-segment JSON").
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 /// One segment of an answer or lesson body.
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, JsonSchema)]
 #[serde(tag = "t", rename_all = "lowercase")]
 pub enum Segment {
     /// Plain prose. A claim: it must be supported in its paragraph.

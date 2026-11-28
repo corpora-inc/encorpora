@@ -14,6 +14,7 @@ use crate::error::{Error, Result};
 use crate::pack::{CachedAnswer, Pack, ProcStep, Procedure, Section};
 use crate::segments::Segment;
 use rusqlite::{OptionalExtension, Row};
+use schemars::JsonSchema;
 use serde::Serialize;
 use serde_json::Value;
 use std::collections::BTreeMap;
@@ -21,7 +22,7 @@ use std::collections::BTreeMap;
 /// Rows whose provenance passed verification.
 const PASSED: &str = "prov_id IN (SELECT prov_id FROM provenance WHERE verdict = 'pass')";
 
-#[derive(Debug, Clone, Serialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, PartialEq, JsonSchema)]
 pub struct Source {
     pub source_id: String,
     pub title: String,
@@ -35,7 +36,7 @@ pub struct Source {
 }
 
 /// What the About screen shows.
-#[derive(Debug, Clone, Serialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, PartialEq, JsonSchema)]
 pub struct PackInfo {
     pub pack_id: String,
     pub version: String,
@@ -46,7 +47,7 @@ pub struct PackInfo {
     pub row_counts: BTreeMap<String, i64>,
 }
 
-#[derive(Debug, Clone, Serialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, PartialEq, JsonSchema)]
 pub struct Xref {
     pub from_id: String,
     pub to_id: String,
@@ -125,7 +126,7 @@ pub struct Question {
 }
 
 /// A procedure with its steps, for the Do screens.
-#[derive(Debug, Clone, Serialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, PartialEq, JsonSchema)]
 pub struct FullProcedure {
     #[serde(flatten)]
     pub procedure: Procedure,
@@ -554,7 +555,7 @@ impl Pack {
     }
 
     /// Whether `table` has `column` (optional columns added after schema v1 shipped).
-    fn has_column(&self, table: &str, column: &str) -> Result<bool> {
+    pub(crate) fn has_column(&self, table: &str, column: &str) -> Result<bool> {
         let n: i64 = self.conn().query_row(
             "SELECT count(*) FROM pragma_table_info(?1) WHERE name = ?2",
             [table, column],

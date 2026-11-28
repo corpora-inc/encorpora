@@ -7,6 +7,7 @@ use crate::error::Result;
 use crate::normalize::{self, Normalized};
 use crate::pack::Pack;
 use rusqlite::params;
+use schemars::JsonSchema;
 use serde::Serialize;
 use std::collections::HashMap;
 
@@ -31,6 +32,9 @@ pub struct SearchOptions {
     pub equip: Option<String>,
     /// Multiplier for chunks that apply to the user's equipment.
     pub equip_boost: f64,
+    /// When not empty, only chunks whose section is one of these or lies
+    /// under one of them (a tree's, a task's or a chapter's sections).
+    pub within: Vec<String>,
 }
 
 impl Default for SearchOptions {
@@ -41,6 +45,7 @@ impl Default for SearchOptions {
             rrf_k: 60.0,
             equip: None,
             equip_boost: 1.25,
+            within: Vec::new(),
         }
     }
 }
@@ -48,7 +53,7 @@ impl Default for SearchOptions {
 /// One retrieved chunk. `lexical` is the BM25 score (higher is better, 0 when
 /// the lexical list missed it), `dense` the cosine (0 when not compared),
 /// `score` the fused (or reranked) score the list is sorted by.
-#[derive(Debug, Clone, Serialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, PartialEq, JsonSchema)]
 pub struct Hit {
     pub chunk_id: String,
     pub ref_kind: String,
@@ -63,7 +68,7 @@ pub struct Hit {
 }
 
 /// Why the dense half did or did not run.
-#[derive(Debug, Clone, Serialize, PartialEq, Eq)]
+#[derive(Debug, Clone, Serialize, PartialEq, Eq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum DenseStatus {
     /// Vectors compared.
@@ -81,7 +86,7 @@ pub enum DenseStatus {
 }
 
 /// A search result.
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, JsonSchema)]
 pub struct SearchResult {
     pub query: String,
     pub normalized: String,
@@ -160,6 +165,12 @@ impl<'a> Retriever<'a> {
         opts: &SearchOptions,
     ) -> Result<SearchResult> {
         let norm = self.normalize(query);
+        // A scoped search looks deeper: the scope drops most candidates.
+        let depth = if opts.within.is_empty() {
+            opts.depth
+        } else {
+            opts.depth.max(2000)
+        };
         let mut lists: Vec<Vec<(String, f64)>> = Vec::new();
         let mut lexical: HashMap<String, f64> = HashMap::new();
         let mut dense: HashMap<String, f64> = HashMap::new();
@@ -181,7 +192,7 @@ impl<'a> Retriever<'a> {
         }
         for parts in &lexical_queries {
             if let Some(m) = normalize::fts_query(parts.iter().copied()) {
-                let list = self.lexical(&m, opts.depth)?;
+                let list = self.lexical(&m, depth)?;
                 for (id, s) in &list {
                     let e = lexical.entry(id.clone()).or_insert(0.0);
                     *e = e.max(*s);
@@ -202,7 +213,7 @@ impl<'a> Retriever<'a> {
                             break;
                         }
                         normalize_l2(&mut q);
-                        let list = dense_top(index, &q, opts.depth);
+                        let list = dense_top(index, &q, depth);
                         for (id, s) in &list {
                             let d = dense.entry(id.clone()).or_insert(f64::MIN);
                             *d = d.max(*s);
@@ -243,6 +254,9 @@ impl<'a> Retriever<'a> {
                 continue;
             };
             let section_id = self.pack.chunk_section(&chunk.ref_kind, &chunk.ref_id)?;
+            if !in_scope(self.pack, section_id.as_deref(), &opts.within)? {
+                continue;
+            }
             if let (Some(user), Some(equip)) = (&user_equip, opts.equip.as_deref()) {
                 let applies =
                     self.applies(&chunk.ref_kind, &chunk.ref_id, section_id.as_deref())?;
@@ -338,6 +352,19 @@ impl<'a> Retriever<'a> {
             .collect::<rusqlite::Result<Vec<_>>>()?;
         Ok(rows)
     }
+}
+
+/// True when `within` is empty, or `section` is one of its sections or lies
+/// under one.
+pub(crate) fn in_scope(pack: &Pack, section: Option<&str>, within: &[String]) -> Result<bool> {
+    if within.is_empty() {
+        return Ok(true);
+    }
+    let Some(s) = section else { return Ok(false) };
+    Ok(pack
+        .section_lineage(s)?
+        .iter()
+        .any(|a| within.iter().any(|w| w == a)))
 }
 
 /// Brute-force cosine over the int8 index; top `depth` by similarity.
