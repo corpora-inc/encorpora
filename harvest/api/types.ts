@@ -970,7 +970,12 @@ export interface Guard {
   rank: number;
   section_id: string;
   text: string;
+  /** How it looks: `danger` | `warning` | `caution` | `notice` | `note`. */
+  tone: GuardTone;
 }
+
+/** What a guard class means, for how it looks. */
+export type GuardTone = "danger" | "warning" | "caution" | "notice" | "note";
 
 /** What to do when a step fails, and the rule behind it when there is one. */
 export interface Guidance {

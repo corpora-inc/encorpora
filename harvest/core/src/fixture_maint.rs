@@ -1028,6 +1028,15 @@ fn populate(conn: &Connection, version: &str) -> Result<()> {
             ])
             .to_string(),
         ),
+        (
+            "guard_classes",
+            json!([
+                {"id": "warning", "label": "WARNING", "rank": 1, "must_show": true, "tone": "warning"},
+                {"id": "caution", "label": "CAUTION", "rank": 2, "must_show": true, "tone": "caution"},
+                {"id": "note", "label": "NOTE", "rank": 3, "must_show": true, "tone": "note"}
+            ])
+            .to_string(),
+        ),
         ("min_reader", "2".into()),
         ("row_counts", json!({"section": SECTIONS.len()}).to_string()),
     ];

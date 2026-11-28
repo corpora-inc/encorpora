@@ -1313,7 +1313,8 @@ fn guard_classes_are_the_packs_own() {
     );
     // A manual that prints DANGER … TIP.
     let six = pump_with(exec(
-        r#"INSERT INTO pack_meta VALUES ('guard_classes', '[{"id":"danger","label":"DANGER","rank":1,"must_show":true},{"id":"warning","label":"WARNING","rank":2,"must_show":true},{"id":"caution","label":"CAUTION","rank":3,"must_show":true},{"id":"notice","label":"NOTICE","rank":4,"must_show":true},{"id":"note","label":"NOTE","rank":5,"must_show":false},{"id":"tip","label":"TIP","rank":6,"must_show":false}]');
+        r#"DELETE FROM pack_meta WHERE key = 'guard_classes';
+           INSERT INTO pack_meta VALUES ('guard_classes', '[{"id":"danger","label":"DANGER","rank":1,"must_show":true},{"id":"warning","label":"WARNING","rank":2,"must_show":true},{"id":"caution","label":"CAUTION","rank":3,"must_show":true},{"id":"notice","label":"NOTICE","rank":4,"must_show":true},{"id":"note","label":"NOTE","rank":5,"must_show":false},{"id":"tip","label":"TIP","rank":6,"must_show":false}]');
            UPDATE section SET kind = 'danger' WHERE section_id = 'm40.3.w1';"#,
     ));
     let r = graph::validate(&six.pack).unwrap();
@@ -1346,9 +1347,51 @@ fn guard_classes_are_the_packs_own() {
     assert!(rules(&graph::validate(&bad.pack).unwrap()).contains(&"guard.class".to_string()));
     // Classes must run most severe first.
     let order = pump_with(exec(
-        r#"INSERT INTO pack_meta VALUES ('guard_classes', '[{"id":"note","label":"NOTE","rank":3,"must_show":false},{"id":"warning","label":"WARNING","rank":1,"must_show":true}]');"#,
+        r#"DELETE FROM pack_meta WHERE key = 'guard_classes';
+           INSERT INTO pack_meta VALUES ('guard_classes', '[{"id":"note","label":"NOTE","rank":3,"must_show":false},{"id":"warning","label":"WARNING","rank":1,"must_show":true}]');"#,
     ));
     assert!(order.pack.guard_classes().is_err());
+    // Tone: declared, else by the standard word, else note; an unknown tone
+    // is refused.
+    use harvest_core::maint::GuardTone;
+    let three = pump_with(exec(
+        r#"UPDATE pack_meta SET value = '[{"id":"warning","label":"WARNING","rank":1,"must_show":true},{"id":"caution","label":"CAUTION","rank":2,"must_show":true},{"id":"hint","label":"HINT","rank":3,"must_show":false}]' WHERE key = 'guard_classes';"#,
+    ));
+    let tones: Vec<GuardTone> = three
+        .pack
+        .guard_classes()
+        .unwrap()
+        .iter()
+        .map(|c| c.tone())
+        .collect();
+    assert_eq!(
+        tones,
+        [GuardTone::Warning, GuardTone::Caution, GuardTone::Note],
+        "CAUTION at rank 2 still looks like a caution"
+    );
+    let mixed = pump_with(exec(
+        r#"UPDATE pack_meta SET value = '[{"id":"Danger","label":"DANGER","rank":1,"must_show":true},{"id":"NOTICE","label":"NOTICE","rank":2,"must_show":true}]' WHERE key = 'guard_classes';"#,
+    ));
+    let tones: Vec<GuardTone> = mixed
+        .pack
+        .guard_classes()
+        .unwrap()
+        .iter()
+        .map(|c| c.tone())
+        .collect();
+    assert_eq!(tones, [GuardTone::Danger, GuardTone::Notice]);
+    // A must-show class with its own word needs a declared tone.
+    let hazard = pump_with(exec(
+        r#"UPDATE pack_meta SET value = '[{"id":"hazard","label":"HAZARD","rank":1,"must_show":true},{"id":"warning","label":"WARNING","rank":2,"must_show":true},{"id":"caution","label":"CAUTION","rank":3,"must_show":true},{"id":"note","label":"NOTE","rank":4,"must_show":true}]' WHERE key = 'guard_classes';"#,
+    ));
+    assert!(rules(&graph::validate(&hazard.pack).unwrap()).contains(&"guard.tone".to_string()));
+    let bad = pump_with(exec(
+        r#"UPDATE pack_meta SET value = '[{"id":"warning","label":"WARNING","rank":1,"must_show":true,"tone":"scary"}]' WHERE key = 'guard_classes';"#,
+    ));
+    assert!(bad.pack.guard_classes().is_err());
+    assert!(
+        rules(&graph::validate(&bad.pack).unwrap()).contains(&"pack.guard_classes".to_string())
+    );
 }
 
 #[test]

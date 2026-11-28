@@ -51,6 +51,39 @@ pub struct GuardClass {
     /// Shown at every level, never collapsed (the bake sets it for every
     /// class at or above caution).
     pub must_show: bool,
+    /// How the app draws it, from the manual's own definition of the class
+    /// (absent: by the id for the five standard words, else `note`).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub tone: Option<GuardTone>,
+}
+
+/// What a guard class means, for how it looks.
+#[derive(Debug, Clone, Copy, Serialize, Deserialize, JsonSchema, PartialEq, Eq)]
+#[serde(rename_all = "snake_case")]
+pub enum GuardTone {
+    /// Imminent death or serious injury.
+    Danger,
+    /// Possible injury.
+    Warning,
+    /// Equipment damage.
+    Caution,
+    /// Important information, no hazard.
+    Notice,
+    /// An ordinary note or tip.
+    Note,
+}
+
+impl GuardClass {
+    /// The tone: as declared, else by the id for the standard words.
+    pub fn tone(&self) -> GuardTone {
+        self.tone.unwrap_or(match self.id.to_lowercase().as_str() {
+            "danger" => GuardTone::Danger,
+            "warning" => GuardTone::Warning,
+            "caution" => GuardTone::Caution,
+            "notice" => GuardTone::Notice,
+            _ => GuardTone::Note,
+        })
+    }
 }
 
 /// The features a pack uses that a base (level 1) reader does not know:
@@ -108,6 +141,7 @@ pub fn default_guard_classes() -> Vec<GuardClass> {
             label: l.to_string(),
             rank: i as u32 + 1,
             must_show: true,
+            tone: None,
         })
         .collect()
 }
