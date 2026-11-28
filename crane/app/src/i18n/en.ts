@@ -134,6 +134,7 @@ export const en = {
   "practice.whyNot": "Why not {letter}:",
   "practice.source": "Source: {cites}.",
   "practice.readSource": "Read the source",
+  "practice.noRule": "Good practice. No rule states this one.",
   "practice.key": "The answer",
   "practice.yours": "Your answer",
   "practice.next": "Next question",

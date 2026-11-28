@@ -273,8 +273,14 @@ try {
     await choices.first().click();
     await page.locator(".practice-feedback").waitFor();
     await page.screenshot({ path: path.join(out, "flow-first-run-answer.png"), fullPage: true });
-    // The source opens the exact paragraph.
-    await page.locator(".practice-feedback a[href^='/read/'], .practice-feedback .plate").first().click();
+    // The source opens the exact paragraph (a good-practice item has none: go on to one that cites a rule).
+    const ruleLink = page.locator(".practice-feedback a[href^='/read/']");
+    for (let n = 0; n < 10 && !(await ruleLink.count()); n++) {
+      await page.getByRole("button", { name: "Next question" }).click();
+      await choices.first().click();
+      await page.locator(".practice-feedback").waitFor();
+    }
+    await ruleLink.first().click();
     await page.waitForURL(/\/read\//);
     await page.locator('[aria-current="true"]').first().waitFor();
     assert.equal(await page.locator('[aria-current="true"]').count(), 1, "the cited paragraph is marked");
@@ -475,6 +481,7 @@ try {
     assert.equal(await choices.first().isDisabled(), false);
     // One feedback card, never filler: "Correct." or "Not quite. The answer is C.", why (and, when wrong,
     // why not the choice made), one line past the answer, "Source: 29 CFR …. Read the source", and one Next button.
+    let readSource = false;
     for (let n = 0; n < 8; n++) {
       await choices.first().waitFor();
       const domain = await page.locator("h2").first().locator("xpath=preceding-sibling::p[1]").innerText();
@@ -500,20 +507,24 @@ try {
       // The line past the answer shows when the item has one (the current bank has none yet), never empty.
       for (const note of await panel.locator(".feedback-note").allInnerTexts())
         assert.ok(note.split(/\s+/).length >= 5 && !reasons.includes(note), `one line past the answer: "${note}"`);
-      assert.match(await panel.locator(".feedback-source").innerText(), /^Source: (29 CFR 19\d\d\.\d+|Appendix)[^]*Read the source$/);
+      // A rule item names its source and links it; a good-practice item says no rule states it.
+      assert.match(await panel.locator(".feedback-source").innerText(), /^(Source: (29 CFR 19\d\d\.\d+|Appendix)[^]*Read the source|Good practice\. No rule states this one\.)$/);
       assert.equal(await panel.getByRole("button").count(), 1, "a single Next button");
       if (n === 0) await page.screenshot({ path: path.join(out, "flow-practice-feedback-reasons.png"), fullPage: true });
       if (verdict !== "Correct." && !(await page.locator(".practice-feedback-shot").count())) await page.screenshot({ path: path.join(out, "flow-practice-feedback-wrong.png"), fullPage: true });
-      if (n === 7) {
-        await panel.getByRole("link", { name: "Read the source" }).click();
+      const source = panel.getByRole("link", { name: "Read the source" });
+      if (!readSource && (await source.count())) {
+        await source.click();
         await page.waitForURL(/\/read\//);
         await page.locator('[aria-current="true"]').first().waitFor();
         await page.goBack();
         await page.locator(".practice-feedback").waitFor();
+        readSource = true;
       }
       await page.getByRole("button", { name: "Next question" }).click();
       checks++;
     }
+    assert.ok(readSource, "Read the source opened the Reader at least once");
     await context.close();
     checks++;
   }

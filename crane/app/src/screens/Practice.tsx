@@ -142,13 +142,16 @@ export function PracticeSession() {
             </p>
           )}
           {q.note && <p className="feedback-note m-0 mt-2">{q.note}</p>}
-          {sources.length > 0 && (
+          {sources.length > 0 ? (
             <p className="feedback-source m-0 mt-3 text-small text-ink-2">
               {t("practice.source", { cites: sources.map((id) => cfrCite(e.sections.get(id)!.citation)).join("; ") })}{" "}
               <Link to={readerPath(sources[0]!)} className="font-semibold whitespace-nowrap text-ink">
                 {t("practice.readSource")}
               </Link>
             </p>
+          ) : (
+            // A good-practice item cites no rule, and says so rather than look like one.
+            <p className="feedback-source m-0 mt-3 text-small text-ink-2">{t("practice.noRule")}</p>
           )}
           <Button ref={nextRef} variant="primary" className="mt-4 w-full" onClick={() => next(e, Date.now(), focus)}>
             {t("practice.next")}
