@@ -1,4 +1,5 @@
-/** Tokenizing and lexical scoring shared by the fixture engine. */
+/** Tokenizing, a forgiving query vocabulary, and lexical scoring for the fixture engine. */
+import { stem as porter2 } from "porter2";
 
 const STOP = new Set(
   "a an and are as at be by can do does for from how i if in into is it its me my of on or so than that the then there this to was what when where which who why will with you your we our must".split(" "),
@@ -25,27 +26,199 @@ export function excerpt(text: string, max = 120): string {
   return `${kept.replace(/[\s,;:.\u2013\u2014-]+$/, "")}…`;
 }
 
-/** A light English stem: enough to match "inspections"/"inspection", "lines"/"line". */
+/**
+ * Porter2 (Snowball English), the stemmer harvest-core's normalizer uses
+ * (rust-stemmers `Algorithm::English`), so both sides reduce a word alike:
+ * "signalling", "signaling" and "signals" all become "signal".
+ */
 export function stem(w: string): string {
-  if (w.length <= 3 || /^\d/.test(w)) return w;
-  for (const suf of ["ations", "ation", "ings", "ing", "edly", "ed", "es", "s"]) {
-    if (w.endsWith(suf) && w.length - suf.length >= 3) {
-      const base = w.slice(0, -suf.length);
-      return suf === "es" && !/(ss|sh|ch|x|z)$/.test(base) ? w.slice(0, -1) : base;
-    }
+  return /^\d/.test(w) ? w : porter2(w);
+}
+
+/** Lowercased words; "1,000" is one number and a hyphenated word also yields its joined form. */
+export function words(s: string): string[] {
+  const out: string[] = [];
+  const text = s
+    .toLowerCase()
+    .replace(/[‘’]/g, "'")
+    .replace(/(\d),(?=\d{3}(?!\d))/g, "$1");
+  for (const raw of text.split(/[^\p{L}\p{N}.'-]+/u)) {
+    const w = raw.replace(/^[.'-]+|[.'-]+$/g, "");
+    if (!w) continue;
+    const parts = w.split("-").filter(Boolean);
+    // "de-energized" also matches "deenergized", and "power-lines" matches "power lines".
+    if (parts.length > 1) out.push(parts.join(""));
+    out.push(...parts);
   }
-  return w;
+  return out;
 }
 
 export function tokens(s: string): string[] {
-  return s
-    .toLowerCase()
-    .replace(/[‘’]/g, "'")
-    .replace(/[^\p{L}\p{N}.']+/gu, " ")
-    .split(" ")
-    .map((w) => w.replace(/^[.']+|[.']+$/g, ""))
-    .filter((w) => w.length > 0 && !STOP.has(w))
+  return words(s)
+    .filter((w) => !STOP.has(w))
     .map(stem);
+}
+
+/**
+ * British spellings rewritten to the American spelling the CFR uses. Each
+ * rewrite is only a candidate: a query word takes it only when the word
+ * itself is not in the index and the rewrite is.
+ */
+const SPELLING: [RegExp, string][] = [
+  [/^tyre(s?)$/, "tire$1"],
+  [/^kerb(s?)$/, "curb$1"],
+  [/^grey/, "gray"],
+  [/^aluminium/, "aluminum"],
+  [/^plough/, "plow"],
+  [/^draught/, "draft"],
+  [/^storey(s?)$/, "story"],
+  [/^manoeuv?re/, "maneuver"],
+  [/^manoeuv/, "maneuv"],
+  [/ae/, "e"],
+  [/oe/, "e"],
+  [/our(s|ed|ing)?$/, "or$1"],
+  [/([^aeiou])re(s|d)?$/, "$1er$2"],
+  [/is(e|es|ed|ing|ation|ations)$/, "iz$1"],
+  [/ys(e|es|ed|ing)$/, "yz$1"],
+  [/ence$/, "ense"],
+  [/ogue$/, "og"],
+  [/ll(ing|ed|er|ers)$/, "l$1"],
+  [/lment$/, "llment"],
+];
+
+export function spellingVariants(w: string): string[] {
+  const out = new Set<string>();
+  for (const [re, to] of SPELLING) if (re.test(w)) out.add(w.replace(re, to));
+  // Two rules at once: "manoeuvres" -> "maneuvers".
+  for (const v of [...out]) for (const [re, to] of SPELLING) if (re.test(v)) out.add(v.replace(re, to));
+  out.delete(w);
+  return [...out];
+}
+
+/** Damerau-Levenshtein (optimal string alignment) distance, stopping early past `max`. */
+export function editDistance(a: string, b: string, max = 2): number {
+  if (Math.abs(a.length - b.length) > max) return max + 1;
+  let prev2: number[] = [];
+  let prev = Array.from({ length: b.length + 1 }, (_, j) => j);
+  for (let i = 1; i <= a.length; i++) {
+    const cur = [i];
+    let best = i;
+    for (let j = 1; j <= b.length; j++) {
+      const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+      let d = Math.min(prev[j]! + 1, cur[j - 1]! + 1, prev[j - 1]! + cost);
+      if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) d = Math.min(d, prev2[j - 2]! + 1);
+      cur.push(d);
+      best = Math.min(best, d);
+    }
+    if (best > max) return max + 1;
+    prev2 = prev;
+    prev = cur;
+  }
+  return prev[b.length]!;
+}
+
+/** One query word resolved against the index vocabulary. */
+export interface QueryTerm {
+  /** The word as typed. */
+  word: string;
+  /** Index terms it matched: itself, a spelling variant, a typo fix, or the halves of a run-together word. */
+  terms: string[];
+  /** How it matched. "none" when nothing in the index is close. */
+  via: "exact" | "spelling" | "split" | "typo" | "none";
+}
+
+/**
+ * Resolve each content word of `query` against `vocab` (index term -> document
+ * frequency), forgiving British spellings, run-together words and typos.
+ */
+export function resolveQuery(query: string, vocab: ReadonlyMap<string, number>): QueryTerm[] {
+  const out: QueryTerm[] = [];
+  const seen = new Set<string>();
+  for (const word of words(query)) {
+    if (STOP.has(word) || seen.has(word)) continue;
+    seen.add(word);
+    const s = stem(word);
+    if (vocab.has(s) || /^\d/.test(word)) {
+      // A rare run-together form ("powerline") also searches the usual two words ("power line").
+      const split = (vocab.get(s) ?? 0) <= 2 ? splitWord(word, vocab) : null;
+      out.push({ word, terms: split ? [s, ...split] : [s], via: "exact" });
+      continue;
+    }
+    const spelled = spellingVariants(word).map(stem).find((v) => vocab.has(v));
+    if (spelled) {
+      out.push({ word, terms: [spelled], via: "spelling" });
+      continue;
+    }
+    const split = splitWord(word, vocab);
+    if (split) {
+      out.push({ word, terms: split, via: "split" });
+      continue;
+    }
+    const typo = nearest(s, vocab);
+    out.push(typo ? { word, terms: [typo], via: "typo" } : { word, terms: [], via: "none" });
+  }
+  return out;
+}
+
+/** "powerline" -> ["power", "line"] when both halves are index terms. */
+function splitWord(word: string, vocab: ReadonlyMap<string, number>): string[] | null {
+  if (word.length < 6) return null;
+  for (let i = 3; i <= word.length - 3; i++) {
+    const a = word.slice(0, i);
+    const b = word.slice(i);
+    if (STOP.has(a) || STOP.has(b)) continue;
+    const sa = stem(a);
+    const sb = stem(b);
+    if (vocab.has(sa) && vocab.has(sb)) return [sa, sb];
+  }
+  return null;
+}
+
+/** The closest index term: one edit for stems of 5 to 7 letters, two from 8. Ties go to the commoner term. */
+function nearest(s: string, vocab: ReadonlyMap<string, number>): string | null {
+  if (s.length < 5 || !/^\p{L}+$/u.test(s)) return null;
+  const max = s.length >= 8 ? 2 : 1;
+  let best: { t: string; d: number; df: number } | null = null;
+  for (const [t, df] of vocab) {
+    if (!/^\p{L}/u.test(t)) continue;
+    const d = editDistance(s, t, max);
+    if (d > max) continue;
+    if (!best || d < best.d || (d === best.d && (df > best.df || (df === best.df && t < best.t)))) best = { t, d, df };
+  }
+  return best?.t ?? null;
+}
+
+/** Index term -> the commonest word in `texts` that produced it, to show a reading in words. */
+export function surfaceWords(texts: Iterable<string>): Map<string, string> {
+  const counts = new Map<string, Map<string, number>>();
+  for (const text of texts)
+    for (const w of words(text)) {
+      if (STOP.has(w)) continue;
+      const s = stem(w);
+      const m = counts.get(s) ?? new Map<string, number>();
+      m.set(w, (m.get(w) ?? 0) + 1);
+      counts.set(s, m);
+    }
+  const out = new Map<string, string>();
+  for (const [s, m] of counts) out.set(s, [...m.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0]![0]);
+  return out;
+}
+
+/** `text` cut into runs, `mark` on each word whose stem is in `terms`. */
+export function highlight(text: string, terms: ReadonlySet<string>): { text: string; mark: boolean }[] {
+  const out: { text: string; mark: boolean }[] = [];
+  const push = (t: string, mark: boolean) => {
+    const last = out[out.length - 1];
+    if (last && last.mark === mark) last.text += t;
+    else if (t) out.push({ text: t, mark });
+  };
+  for (const part of text.split(/([\p{L}\p{N}][\p{L}\p{N}'-]*)/u)) {
+    if (!part) continue;
+    const isWord = /^[\p{L}\p{N}]/u.test(part);
+    const hit = isWord && words(part).some((w) => !STOP.has(w) && terms.has(stem(w)));
+    push(part, hit);
+  }
+  return out;
 }
 
 export interface Doc {
@@ -77,6 +250,10 @@ export class Bm25 {
     }
     this.avg = docs.length ? total / docs.length : 0;
   }
+  /** Index term -> number of documents that contain it. */
+  get vocab(): ReadonlyMap<string, number> {
+    return this.df;
+  }
   idf(t: string): number {
     const n = this.docs.length;
     const df = this.df.get(t) ?? 0;
@@ -97,4 +274,20 @@ export class Bm25 {
     });
     return out.sort((a, b) => b.score - a.score || a.id.localeCompare(b.id)).slice(0, k);
   }
+}
+
+/** The paragraph text from its first matched word's sentence, so the match is in view. */
+export function matchWindow(text: string, terms: ReadonlySet<string>, max = 260): string {
+  const runs = highlight(text, terms);
+  let at = 0;
+  for (const r of runs) {
+    if (r.mark) break;
+    at += r.text.length;
+  }
+  if (at >= text.length || at < max / 2) return excerpt(text, max);
+  // Start at the matched word's sentence, or a few words before it in a long sentence.
+  const dot = text.lastIndexOf(". ", at);
+  let start = dot < 0 ? 0 : dot + 2;
+  if (at - start > max / 2) start = text.lastIndexOf(" ", at - 40) + 1;
+  return `${start > 0 ? "…" : ""}${excerpt(text.slice(start), max)}`;
 }
