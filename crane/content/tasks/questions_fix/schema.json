@@ -1,0 +1,113 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "items"
+  ],
+  "properties": {
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 14,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "replaces",
+          "tier",
+          "point",
+          "stem",
+          "options",
+          "basis",
+          "section_id",
+          "quote",
+          "source",
+          "difficulty",
+          "beyond"
+        ],
+        "properties": {
+          "tier": {
+            "type": "integer",
+            "enum": [
+              1,
+              2,
+              3
+            ]
+          },
+          "point": {
+            "type": "string"
+          },
+          "stem": {
+            "type": "string"
+          },
+          "basis": {
+            "type": "string",
+            "enum": [
+              "rule",
+              "physics",
+              "practice"
+            ]
+          },
+          "section_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "quote": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "source": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "difficulty": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "options": {
+            "type": "array",
+            "minItems": 4,
+            "maxItems": 4,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "text",
+                "key",
+                "why",
+                "misconception"
+              ],
+              "properties": {
+                "text": {
+                  "type": "string"
+                },
+                "key": {
+                  "type": "boolean"
+                },
+                "why": {
+                  "type": "string"
+                },
+                "misconception": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "replaces": {
+            "type": "string"
+          },
+          "beyond": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

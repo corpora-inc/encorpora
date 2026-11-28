@@ -607,7 +607,7 @@ function genNetCapacity(rng: Rng): Problem {
 
 function marginText(m: number): string {
   if (m === 0) return 'Yes, exactly at the net capacity';
-  return m > 0 ? `Yes, with ${formatLb(m)} to spare` : `No, ${formatLb(-m)} over the net capacity`;
+  return m > 0 ? `Yes, ${formatLb(m)} under the net capacity` : `No, ${formatLb(-m)} over the net capacity`;
 }
 
 function genCanLift(rng: Rng): Problem {

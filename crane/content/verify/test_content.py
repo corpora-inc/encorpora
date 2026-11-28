@@ -252,9 +252,39 @@ class Writers(unittest.TestCase):
         self.assertEqual(m("The federal rules set no minimum sling angle.", "Use the next longer radius (practice)."), [])
         self.assertEqual(m("The utility must provide the requested voltage information."), [])
 
-    def test_key_stands_out(self):
-        self.assertTrue(self.b.key_stands_out(["short", "tiny", "a much longer and more qualified correct answer", "small"], 2))
-        self.assertFalse(self.b.key_stands_out(["about this long", "roughly as long", "same length here", "near the same"], 0))
+    def test_choice_flaws(self):
+        f = self.b.choice_flaws
+        self.assertEqual(f(["10 feet", "15 feet", "20 feet", "25 feet"], 2), [])
+        self.assertIn("options differ in length", f(["No", "Yes", "Only with a dedicated spotter and insulating links", "Never"], 2))
+        self.assertEqual(f(["Stop the lift and report it", "Lower the load and re-rig", "Swing clear and keep going", "Call the lift director"], 0), [])
+        self.assertIn("combination option (all/none/both)", f(["A thing", "B thing", "All of the above", "C thing"], 0))
+        self.assertIn("choices overlap", f(["Stop the lift", "Stop the lift and report it", "Lower the boom", "Swing away"], 0))
+        self.assertIn("duplicate choices", f(["Stop", "stop", "Go", "Wait"], 2))
+        # near-miss options that differ in one word or number are the point, not an overlap
+        self.assertEqual(self.b.key_length_ranks([{"choices": ["aa", "a", "aaa", "aaaa"], "answer": "3"}, {"choices": ["aa", "a", "aaa", "aaaa"], "answer": "1"}])["longest_share"], 0.5)
+        self.assertEqual(f(["Above 50 percent at the longest radius", "Above 75 percent at the longest radius",
+                            "Above 90 percent at the longest radius", "Above 75 percent at the shortest radius"], 1), [])
+
+    def test_exam_rows_bundle_options_and_shuffle_consistently(self):
+        class T:
+            version = "5"
+
+            def cached(self, it):
+                return {"prompt_version": "5", "model": "m", "backend": "b", "prompt_id": "questions", "prompt_sha256": "p",
+                        "input_sha256": "i", "output_sha256": "o", "created_at": "t", "input_id": "s.k",
+                        "output": {"items": [{"tier": 2, "point": "p", "stem": "How far?", "basis": "physics", "section_id": None,
+                                              "quote": None, "source": None, "difficulty": 0.5,
+                                              "beyond": "b", "options": [{"text": f"{n} feet", "key": n == 20, "why": f"why {n}", "misconception": "key" if n == 20 else f"m{n}"}
+                                                          for n in (10, 15, 20, 25)]}]}}
+
+        T.cached_all = lambda self, it: [self.cached(it)]
+        by_topic, stats = self.b.exam_rows(T(), [{"input_id": "s.k", "meta": {"skill_id": "s.k", "topic_id": "t"}}])
+        r = by_topic["t"][0]
+        k = int(r["answer"])
+        self.assertEqual(r["choices"][k], "20 feet")
+        self.assertEqual(r["rationales"][k], "why 20")
+        self.assertEqual(r["misconceptions"][k], "key")
+        self.assertEqual(r["_errs"], [])
 
 
 class Budget(unittest.TestCase):
