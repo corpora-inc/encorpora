@@ -192,7 +192,12 @@ pub struct NodeView {
     pub record: RecordHow,
     pub detail: Vec<LevelText>,
     pub level: Level,
+    /// Where this node leads in the pack; `None` when it names nothing the
+    /// pack holds (then `reference` is the manual's printed reference, to
+    /// show as "see … in the manual").
     pub target: Option<TargetView>,
+    /// The printed cross-reference, verbatim, when the node has one.
+    pub reference: Option<String>,
 }
 
 /// The facet whose texts are the open candidate causes
@@ -463,12 +468,12 @@ pub fn node_view(
     let target = match &node.target {
         Some(t) => Some(TargetView {
             title: match t {
-                Target::Tree(id) => pack
+                Target::Tree { id, .. } => pack
                     .fault_trees(None)?
                     .into_iter()
                     .find(|x| &x.tree_id == id)
                     .map(|x| x.title),
-                Target::Procedure(id) => pack.procedure(id)?.map(|p| p.title),
+                Target::Procedure { id } => pack.procedure(id)?.map(|p| p.title),
             },
             target: t.clone(),
         }),
@@ -514,6 +519,7 @@ pub fn node_view(
         detail,
         level: level.clone(),
         target,
+        reference: node.reference.clone(),
         node,
     })
 }

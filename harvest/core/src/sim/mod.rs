@@ -19,7 +19,7 @@ use crate::records::{
     AssetRegistry, JobAnswer, JobClose, JobStart, LessonFilter, LessonInput, Records,
     ResolutionKind,
 };
-use crate::sync::{HubLink, LinkTransport, PackOffer, Receipt, Upload};
+use crate::sync::{DeviceKey, HubLink, LinkTransport, PackOffer, Receipt, Upload};
 use serde::{Deserialize, Serialize};
 use serde_json::{Value, json};
 use std::cell::RefCell;
@@ -145,6 +145,14 @@ pub struct ScriptedConflict {
     pub gap_minutes: f64,
 }
 
+/// A device revoked at the hub.
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[serde(deny_unknown_fields)]
+pub struct ScriptedRevoke {
+    pub device: usize,
+    pub day: f64,
+}
+
 /// A scenario file.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(deny_unknown_fields)]
@@ -168,6 +176,17 @@ pub struct Scenario {
     /// Chance a bundle is corrupted in transit (the device must refuse it).
     #[serde(default)]
     pub tamper_prob: f64,
+    /// A changed fleet summary is fetched at most this often.
+    #[serde(default = "default_fleet_every")]
+    pub fleet_every_hours: f64,
+    /// One more device that was never enrolled: it works and tries to
+    /// upload like the others; the hub must accept nothing from it.
+    #[serde(default)]
+    pub rogue_device: bool,
+    /// Devices revoked at the hub on a day; nothing they send after it is
+    /// accepted.
+    #[serde(default)]
+    pub revoke: Vec<ScriptedRevoke>,
     /// A new pack version is published at the hub on this day.
     #[serde(default)]
     pub pack_update_day: Option<f64>,
@@ -178,6 +197,9 @@ pub struct Scenario {
     pub sample_every_days: f64,
 }
 
+fn default_fleet_every() -> f64 {
+    crate::records::maint::DEFAULT_FLEET_EVERY_HOURS
+}
 fn default_sync_every() -> f64 {
     60.0
 }
@@ -218,6 +240,9 @@ pub struct Delivery {
     pub captured: u64,
     pub delivered: u64,
     pub pending: u64,
+    /// Of `pending`: items held on a device the hub refuses (unenrolled or
+    /// revoked); they stay on the device, never accepted.
+    pub blocked: u64,
     pub lost: u64,
     pub rate: f64,
 }
@@ -231,6 +256,8 @@ pub struct Bytes {
     pub per_lesson: Option<f64>,
     pub per_day: f64,
     pub bundles: u64,
+    /// The signed fleet summary, fetched only when it changed.
+    pub fleet: u64,
     pub packs: u64,
 }
 
@@ -243,6 +270,8 @@ pub struct Link {
     pub duplicates_sent: u64,
     pub duplicates_suppressed: u64,
     pub flush_attempts: u64,
+    /// Deliveries the hub refused (an unenrolled or revoked device).
+    pub refused_deliveries: u64,
 }
 
 #[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
@@ -296,6 +325,7 @@ pub struct Invariants {
     pub nothing_applied_twice: bool,
     pub no_bad_bundle_installed: bool,
     pub audit_chains_intact: bool,
+    pub no_upload_from_unenrolled_or_revoked: bool,
     pub details: Vec<String>,
 }
 
@@ -378,9 +408,11 @@ enum Ev {
     Review,
     Sample,
     PackUpdate,
+    Revoke(usize),
 }
 
 struct Device {
+    key: DeviceKey,
     rec: Records,
     pack: Arc<Pack>,
     root: PathBuf,
@@ -403,6 +435,8 @@ struct Net {
     bytes_up: u64,
     bytes_down: u64,
     bytes_bundles: u64,
+    bytes_fleet: u64,
+    refused_deliveries: u64,
     bytes_packs: u64,
     bytes_kind: BTreeMap<String, u64>,
     hub_at: BTreeMap<String, i64>,
@@ -415,7 +449,7 @@ struct Net {
 struct Wire<'a> {
     hub: &'a Hub,
     net: &'a RefCell<Net>,
-    device_id: String,
+    key: &'a DeviceKey,
     skew_ms: i64,
 }
 
@@ -480,12 +514,12 @@ impl Wire<'_> {
 
 impl HubLink for Wire<'_> {
     fn device_id(&self) -> String {
-        self.device_id.clone()
+        self.key.device_id()
     }
 
     fn send(&self, batch: &[Upload]) -> Result<Vec<Receipt>> {
-        let body =
-            serde_json::to_vec(&json!({"device_id": self.device_id, "items": batch}))?.len() as u64;
+        let delivery = self.key.deliver(batch)?;
+        let body = serde_json::to_vec(&delivery)?.len() as u64;
         let (stored, replied) = self.transfer(body, 120 * batch.len() as u64);
         if !stored {
             return Err(Error::Sync("link dropped during the upload".into()));
@@ -495,7 +529,13 @@ impl HubLink for Wire<'_> {
             .filter(|u| !self.hub.has_item(&u.item_id).unwrap_or(true))
             .map(|u| u.item_id.clone())
             .collect();
-        let r = self.at_hub(|h| h.receive(&self.device_id, batch))?;
+        let r = match self.at_hub(|h| h.receive(&delivery)) {
+            Ok(r) => r,
+            Err(e) => {
+                self.net.borrow_mut().refused_deliveries += 1;
+                return Err(e);
+            }
+        };
         {
             let mut n = self.net.borrow_mut();
             n.m.duplicates_suppressed += r.duplicates;
@@ -509,7 +549,7 @@ impl HubLink for Wire<'_> {
             if n.rng.f() < n.spec.dup_prob {
                 n.m.duplicates_sent += 1;
                 drop(n);
-                let again = self.at_hub(|h| h.receive(&self.device_id, batch))?;
+                let again = self.at_hub(|h| h.receive(&delivery))?;
                 self.net.borrow_mut().m.duplicates_suppressed += again.duplicates;
             }
         }
@@ -560,6 +600,19 @@ impl HubLink for Wire<'_> {
         self.net.borrow_mut().bytes_packs += bytes.len() as u64;
         Ok(bytes)
     }
+
+    fn fleet(&self) -> Result<Option<Value>> {
+        let doc = self.at_hub(|h| h.fleet_document())?;
+        let size = serde_json::to_vec(&doc)?.len() as u64;
+        let (_, replied) = self.transfer(80, size);
+        if !replied {
+            return Err(Error::Sync(
+                "link dropped while fetching the fleet summary".into(),
+            ));
+        }
+        self.net.borrow_mut().bytes_fleet += size;
+        Ok(doc)
+    }
 }
 
 fn db_bytes(rec: &Records) -> u64 {
@@ -603,9 +656,11 @@ fn work_job(
             ..Default::default()
         },
     )?;
-    let tree = pack
-        .fault_tree(&job.tree_id)?
-        .ok_or_else(|| Error::Invalid("tree vanished".into()))?;
+    let load = |id: &str| -> Result<crate::maint::Tree> {
+        pack.fault_tree(id)?
+            .ok_or_else(|| Error::Invalid("tree vanished".into()))
+    };
+    let mut tree = load(&job.tree_id)?;
     let mut steps = 0;
     let mut node_id = job.current_node.clone();
     let mut capped = false;
@@ -614,21 +669,35 @@ fn work_job(
             .node(&node_id)
             .ok_or_else(|| Error::Invalid("node vanished".into()))?;
         let edges = tree.edges_from(&node_id);
-        if edges.is_empty() {
-            break;
-        }
         steps += 1;
         if steps > 60 {
             capped = true;
             break;
         }
-        let e = edges[rng.below(edges.len())];
-        let ans = answer_for(node, e, &node_id);
-        let j = dev.rec.answer_job(pack, &job.job_id, &ans)?;
+        let j = if edges.is_empty() {
+            // A goto into another tree is followed; any other end stops.
+            match &node.target {
+                Some(crate::maint::Target::Tree { .. }) => {
+                    match dev.rec.follow_job(pack, &job.job_id) {
+                        Ok(j) => j,
+                        Err(_) => break, // the tree does not apply to this unit
+                    }
+                }
+                _ => break,
+            }
+        } else {
+            let e = edges[rng.below(edges.len())];
+            let ans = answer_for(node, e, &node_id);
+            let j = dev.rec.answer_job(pack, &job.job_id, &ans)?;
+            if rng.f() < wl.back_prob {
+                dev.rec.back_job(pack, &job.job_id)?
+            } else {
+                j
+            }
+        };
         node_id = j.current_node;
-        if rng.f() < wl.back_prob {
-            let j = dev.rec.back_job(pack, &job.job_id)?;
-            node_id = j.current_node;
+        if j.tree_id != tree.tree.tree_id {
+            tree = load(&j.tree_id)?;
         }
     }
     let end = tree.node(&node_id).map(|n| n.kind);
@@ -789,6 +858,8 @@ fn run_in(s: &Scenario, pack_src: Option<&Path>, tmp: &Path) -> Result<Metrics> 
         bytes_up: 0,
         bytes_down: 0,
         bytes_bundles: 0,
+        bytes_fleet: 0,
+        refused_deliveries: 0,
         bytes_packs: 0,
         bytes_kind: BTreeMap::new(),
         hub_at: BTreeMap::new(),
@@ -797,7 +868,8 @@ fn run_in(s: &Scenario, pack_src: Option<&Path>, tmp: &Path) -> Result<Metrics> 
     });
     // Devices: each its own packs root, records store, fleet slice.
     let mut devices = Vec::new();
-    for i in 0..s.devices {
+    let total_devices = s.devices + usize::from(s.rogue_device);
+    for i in 0..total_devices {
         let root = tmp.join(format!("dev-{i}"));
         let skew_ms = ((rng.f() * 2.0 - 1.0) * s.clock_skew_minutes * 60_000.0) as i64;
         set_clock(Some(EPOCH_MS + skew_ms));
@@ -827,7 +899,22 @@ fn run_in(s: &Scenario, pack_src: Option<&Path>, tmp: &Path) -> Result<Metrics> 
             serde_json::from_value(json!({"format": "harvest-assets/1", "assets": reg}))?;
         rec.import_assets(Some(&pack), &registry)?;
         let first_window = (s.link.initial_down_days * DAY as f64) as i64;
+        let key = DeviceKey::from_seed(&{
+            use sha2::Digest;
+            let h: [u8; 32] =
+                sha2::Sha256::digest(format!("sim device {} {i}", s.seed).as_bytes()).into();
+            h
+        });
+        let rogue = s.rogue_device && i == s.devices;
+        if !rogue {
+            hub.enroll(
+                &key.public_base64(),
+                Some(&format!("Unit {i}")),
+                "Fleet admin",
+            )?;
+        }
         devices.push(Device {
+            key,
             rec,
             pack,
             root,
@@ -859,6 +946,16 @@ fn run_in(s: &Scenario, pack_src: Option<&Path>, tmp: &Path) -> Result<Metrics> 
             &mut q,
             EPOCH_MS + (-(1.0 - rng.f()).ln() / rate * DAY as f64) as i64,
             Ev::Job(i),
+        );
+    }
+    for r in &s.revoke {
+        if r.device >= s.devices {
+            return Err(Error::Invalid(format!("revoke: no device {}", r.device)));
+        }
+        push(
+            &mut q,
+            EPOCH_MS + (r.day * DAY as f64) as i64,
+            Ev::Revoke(r.device),
         );
     }
     for (ci, c) in s.conflicts.iter().enumerate() {
@@ -896,6 +993,7 @@ fn run_in(s: &Scenario, pack_src: Option<&Path>, tmp: &Path) -> Result<Metrics> 
     let mut applied_twice = false;
     let mut bad_install = false;
     let mut conflict_lessons: BTreeMap<usize, String> = BTreeMap::new();
+    let mut revoked_at: BTreeMap<usize, String> = BTreeMap::new();
     let sync_every = (s.sync_every_minutes.max(1.0) * 60_000.0) as i64;
     let horizon = if s.final_sync { end + DAY } else { end };
     let mut final_started = false;
@@ -953,12 +1051,12 @@ fn run_in(s: &Scenario, pack_src: Option<&Path>, tmp: &Path) -> Result<Metrics> 
                 let wire = Wire {
                     hub: &hub,
                     net: &net,
-                    device_id: d.rec.device_id()?,
+                    key: &d.key,
                     skew_ms: skew,
                 };
                 net.borrow_mut().m.flush_attempts += 1;
                 d.rec.flush(&LinkTransport(&wire), 50)?;
-                let pull = d.rec.pull(&wire, &field_keys)?;
+                let pull = d.rec.pull_with(&wire, &field_keys, s.fleet_every_hours)?;
                 for seqn in &pull.installed {
                     if !d.installed_seqs.insert(*seqn) {
                         applied_twice = true;
@@ -1182,7 +1280,7 @@ fn run_in(s: &Scenario, pack_src: Option<&Path>, tmp: &Path) -> Result<Metrics> 
                         m.lessons.rejected += 1;
                     }
                 }
-                if hub.publish(false)?.is_some() {
+                if hub.publish(false, "Publisher A")?.is_some() {
                     m.bundles.published += 1;
                 }
                 push(
@@ -1204,6 +1302,15 @@ fn run_in(s: &Scenario, pack_src: Option<&Path>, tmp: &Path) -> Result<Metrics> 
                         Ev::Sample,
                     );
                 }
+            }
+            Ev::Revoke(i) => {
+                set_clock(Some(t));
+                hub.revoke(
+                    &devices[i].key.device_id(),
+                    "Fleet admin",
+                    Some("scripted revocation"),
+                )?;
+                revoked_at.insert(i, crate::audit::now_rfc3339());
             }
             Ev::PackUpdate => {
                 set_clock(Some(t));
@@ -1236,11 +1343,29 @@ fn run_in(s: &Scenario, pack_src: Option<&Path>, tmp: &Path) -> Result<Metrics> 
     // Final accounting.
     let n = net.into_inner();
     m.link = n.m.clone();
+    m.link.refused_deliveries = n.refused_deliveries;
     m.bundles.tampered_in_transit = n.tampered;
     let mut lost = 0u64;
     let mut pending = 0u64;
     let mut delivered = 0u64;
     let mut to_hub = Vec::new();
+    let mut blocked = 0u64;
+    let refused_devices: Vec<usize> = revoked_at
+        .keys()
+        .copied()
+        .chain(s.rogue_device.then_some(s.devices))
+        .collect();
+    let blocked_ids: BTreeSet<String> = refused_devices
+        .iter()
+        .flat_map(|i| {
+            devices[*i]
+                .rec
+                .pending(1_000_000)
+                .unwrap_or_default()
+                .into_iter()
+                .map(|u| u.item_id)
+        })
+        .collect();
     let pending_ids: BTreeSet<String> = devices
         .iter()
         .flat_map(|d| {
@@ -1275,6 +1400,9 @@ fn run_in(s: &Scenario, pack_src: Option<&Path>, tmp: &Path) -> Result<Metrics> 
             ));
         } else if pending_ids.contains(id) || row.0 {
             pending += 1;
+            if blocked_ids.contains(id) {
+                blocked += 1;
+            }
         }
         // No row and not at the hub: a lesson upload withdrawn by a later
         // edit on the device, replaced by the new version (not lost).
@@ -1285,11 +1413,13 @@ fn run_in(s: &Scenario, pack_src: Option<&Path>, tmp: &Path) -> Result<Metrics> 
         captured: counted,
         delivered,
         pending,
+        blocked,
         lost,
-        rate: if counted == 0 {
+        // Of what accepted devices captured.
+        rate: if counted <= blocked {
             1.0
         } else {
-            ((delivered as f64 / counted as f64) * 10_000.0).round() / 10_000.0
+            ((delivered as f64 / (counted - blocked) as f64) * 10_000.0).round() / 10_000.0
         },
     };
     m.capture_to_hub_hours = stats(to_hub);
@@ -1311,6 +1441,7 @@ fn run_in(s: &Scenario, pack_src: Option<&Path>, tmp: &Path) -> Result<Metrics> 
             .then(|| (lessons_bytes as f64 / lessons_at_hub as f64).round()),
         per_day: ((n.bytes_up + n.bytes_down) as f64 / s.days).round(),
         bundles: n.bytes_bundles,
+        fleet: n.bytes_fleet,
         packs: n.bytes_packs,
     };
     let queue = hub.queue(None)?;
@@ -1366,12 +1497,37 @@ fn run_in(s: &Scenario, pack_src: Option<&Path>, tmp: &Path) -> Result<Metrics> 
             bytes_per_day: ((last.saturating_sub(first)) as f64 / s.days).round(),
         });
     }
+    // Nothing from a device the hub does not accept.
+    let mut unenrolled_ok = true;
+    let count_from = |dev: &str, after: Option<&str>| -> Result<i64> {
+        Ok(hub.conn().query_row(
+            "SELECT count(*) FROM item WHERE device_id = ?1 AND (?2 IS NULL OR received_at >= ?2)",
+            rusqlite::params![dev, after],
+            |r| r.get(0),
+        )?)
+    };
+    if s.rogue_device {
+        let rogue = devices[s.devices].key.device_id();
+        if count_from(&rogue, None)? > 0 {
+            unenrolled_ok = false;
+            details.push("the hub accepted an upload from an unenrolled device".into());
+        }
+    }
+    for (i, at) in &revoked_at {
+        if count_from(&devices[*i].key.device_id(), Some(at))? > 0 {
+            unenrolled_ok = false;
+            details.push(format!(
+                "the hub accepted an upload from device {i} after its revocation"
+            ));
+        }
+    }
     m.invariants = Invariants {
         nothing_lost: lost == 0,
         nothing_applied_twice: !applied_twice,
         no_bad_bundle_installed: !bad_install,
         audit_chains_intact: chains,
-        ok: lost == 0 && !applied_twice && !bad_install && chains,
+        no_upload_from_unenrolled_or_revoked: unenrolled_ok,
+        ok: lost == 0 && !applied_twice && !bad_install && chains && unenrolled_ok,
         details,
     };
     Ok(m)
@@ -1465,7 +1621,8 @@ pub fn named(name: &str) -> Option<Scenario> {
             "clock_skew_minutes": 10, "sync_every_minutes": 5,
             "conflicts": [{"day": 3, "device": 0, "other": 1, "gap_minutes": 0},
                           {"day": 9, "device": 2, "other": 3, "gap_minutes": 45}],
-            "tamper_prob": 0.05, "final_sync": true
+            "tamper_prob": 0.05, "rogue_device": true,
+            "revoke": [{"device": 3, "day": 20}], "final_sync": true
         }),
         _ => return None,
     };

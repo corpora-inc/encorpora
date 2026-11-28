@@ -15,6 +15,7 @@
 //! sees which one won and which lost. A version that displaces an already
 //! reviewed lesson reopens it.
 
+pub mod auth;
 #[cfg(feature = "hub")]
 pub mod http;
 
@@ -26,7 +27,7 @@ use crate::records::maint::{
     LessonStatus, NoteCounts, NoteScope, day_number,
 };
 use crate::records::{JOB_REPORT_FORMAT, LESSON_FORMAT, Lesson};
-use crate::sync::{HubLink, PackOffer, Receipt, Upload};
+use crate::sync::{Delivery, DeviceKey, HubLink, PackOffer, Receipt, Upload};
 use ed25519_dalek::SigningKey;
 use rusqlite::{Connection, OptionalExtension, params};
 use schemars::JsonSchema;
@@ -112,6 +113,22 @@ CREATE TABLE IF NOT EXISTS bundle (
   issued_at TEXT NOT NULL,
   body      TEXT NOT NULL
 );
+CREATE TABLE IF NOT EXISTS enrolled (
+  device_id   TEXT PRIMARY KEY,
+  public_key  TEXT NOT NULL,
+  name        TEXT,
+  enrolled_at TEXT NOT NULL,
+  enrolled_by TEXT NOT NULL,
+  revoked_at  TEXT,
+  revoked_by  TEXT,
+  reason      TEXT
+);
+CREATE TABLE IF NOT EXISTS fleet_doc (
+  seq       INTEGER PRIMARY KEY,
+  sha256    TEXT NOT NULL,
+  issued_at TEXT NOT NULL,
+  body      TEXT NOT NULL
+);
 CREATE TABLE IF NOT EXISTS conflict (
   seq       INTEGER PRIMARY KEY,
   lesson_id TEXT NOT NULL,
@@ -136,6 +153,35 @@ pub struct HubStatus {
     pub bundles: u64,
     pub latest_bundle: u64,
     pub conflicts: u64,
+}
+
+/// A device the hub accepts uploads from (or no longer does).
+#[derive(Debug, Clone, Serialize, Deserialize, JsonSchema, PartialEq)]
+pub struct EnrolledDevice {
+    pub device_id: String,
+    /// base64 ed25519 public key.
+    pub public_key: String,
+    pub name: Option<String>,
+    pub enrolled_at: String,
+    pub enrolled_by: String,
+    pub revoked_at: Option<String>,
+    pub revoked_by: Option<String>,
+    pub reason: Option<String>,
+    pub last_seen: Option<String>,
+    pub items: u64,
+}
+
+fn decode_key(b64: &str) -> Result<[u8; 32]> {
+    use base64::Engine as _;
+    let raw = base64::engine::general_purpose::STANDARD
+        .decode(b64.trim())
+        .map_err(|_| Error::Signature("device key is not base64".into()))?;
+    let arr: [u8; 32] = raw
+        .try_into()
+        .map_err(|_| Error::Signature("device key must be 32 bytes".into()))?;
+    ed25519_dalek::VerifyingKey::from_bytes(&arr)
+        .map_err(|e| Error::Signature(format!("device key: {e}")))?;
+    Ok(arr)
 }
 
 /// What one delivery did.
@@ -316,11 +362,37 @@ impl Hub {
         )?)
     }
 
-    /// Store a device's batch. Every item stored (now or before, with the
-    /// same hash) gets a receipt; nothing is applied twice.
-    pub fn receive(&self, device_id: &str, batch: &[Upload]) -> Result<ReceiveReport> {
-        if device_id.trim().is_empty() || device_id.len() > 128 {
-            return Err(Error::Invalid("a delivery names its device".into()));
+    /// Store a device's signed delivery. Refused whole unless the device is
+    /// enrolled, not revoked, and its key signed it. Every item stored (now
+    /// or before, with the same hash) gets a receipt; nothing is applied
+    /// twice.
+    pub fn receive(&self, d: &Delivery) -> Result<ReceiveReport> {
+        let device_id = d.device_id.as_str();
+        let batch = d.items.as_slice();
+        let enrolled: Option<(String, Option<String>)> = self
+            .conn
+            .query_row(
+                "SELECT public_key, revoked_at FROM enrolled WHERE device_id = ?1",
+                [device_id],
+                |r| Ok((r.get(0)?, r.get(1)?)),
+            )
+            .optional()?;
+        let verdict = match &enrolled {
+            None => Err(Error::Signature(format!(
+                "device {device_id} is not enrolled"
+            ))),
+            Some((_, Some(at))) => Err(Error::Signature(format!(
+                "device {device_id} was revoked at {at}"
+            ))),
+            Some((key, None)) => decode_key(key).and_then(|k| d.verify(&k)),
+        };
+        if let Err(e) = verdict {
+            let tx = self.tx()?;
+            let mut ev = AuditEvent::new("hub.refuse", device_id);
+            ev.detail = json!({"items": batch.len(), "why": e.to_string()});
+            self.audit(&tx, &ev)?;
+            tx.commit()?;
+            return Err(e);
         }
         let tx = self.tx()?;
         let now = now_rfc3339();
@@ -380,6 +452,101 @@ impl Hub {
         }
         tx.commit()?;
         Ok(report)
+    }
+
+    /// Enroll a device by its public key (base64). Returns its id.
+    pub fn enroll(
+        &self,
+        public_key: &str,
+        name: Option<&str>,
+        actor: &str,
+    ) -> Result<EnrolledDevice> {
+        let key = decode_key(public_key)?;
+        let device_id = crate::sync::device_id_for(&key);
+        let now = now_rfc3339();
+        let tx = self.tx()?;
+        let existing: Option<Option<String>> = tx
+            .query_row(
+                "SELECT revoked_at FROM enrolled WHERE device_id = ?1",
+                [&device_id],
+                |r| r.get(0),
+            )
+            .optional()?;
+        if let Some(Some(_)) = existing {
+            return Err(Error::Invalid(format!(
+                "device {device_id} was revoked; a revoked key is not enrolled again"
+            )));
+        }
+        tx.execute(
+            "INSERT INTO enrolled (device_id, public_key, name, enrolled_at, enrolled_by) VALUES (?1, ?2, ?3, ?4, ?5)
+             ON CONFLICT (device_id) DO UPDATE SET name = excluded.name",
+            params![device_id, public_key.trim(), name, now, actor],
+        )?;
+        let mut ev = AuditEvent::new("hub.enroll", &device_id);
+        ev.detail = json!({"by": actor, "name": name, "public_key": public_key.trim()});
+        self.audit(&tx, &ev)?;
+        tx.commit()?;
+        self.device(&device_id)?
+            .ok_or_else(|| Error::Invalid("enrollment vanished".into()))
+    }
+
+    /// Revoke a device: nothing it sends is accepted from now on.
+    pub fn revoke(
+        &self,
+        device_id: &str,
+        actor: &str,
+        reason: Option<&str>,
+    ) -> Result<EnrolledDevice> {
+        let now = now_rfc3339();
+        let tx = self.tx()?;
+        let n = tx.execute(
+            "UPDATE enrolled SET revoked_at = ?2, revoked_by = ?3, reason = ?4 WHERE device_id = ?1 AND revoked_at IS NULL",
+            params![device_id, now, actor, reason],
+        )?;
+        if n == 0 {
+            return Err(Error::Invalid(format!(
+                "no enrolled device {device_id:?} to revoke"
+            )));
+        }
+        let mut ev = AuditEvent::new("hub.revoke", device_id);
+        ev.detail = json!({"by": actor, "reason": reason});
+        self.audit(&tx, &ev)?;
+        tx.commit()?;
+        self.device(device_id)?
+            .ok_or_else(|| Error::Invalid("enrollment vanished".into()))
+    }
+
+    fn device(&self, device_id: &str) -> Result<Option<EnrolledDevice>> {
+        Ok(self
+            .devices()?
+            .into_iter()
+            .find(|d| d.device_id == device_id))
+    }
+
+    /// Enrolled devices.
+    pub fn devices(&self) -> Result<Vec<EnrolledDevice>> {
+        Ok(self
+            .conn
+            .prepare(
+                "SELECT e.device_id, e.public_key, e.name, e.enrolled_at, e.enrolled_by, e.revoked_at,
+                        e.revoked_by, e.reason, d.last_seen, COALESCE(d.items, 0)
+                 FROM enrolled e LEFT JOIN device d ON d.device_id = e.device_id ORDER BY e.enrolled_at, e.device_id",
+            )?
+            .query_map([], |r| {
+                Ok(EnrolledDevice {
+                    device_id: r.get(0)?,
+                    public_key: r.get(1)?,
+                    name: r.get(2)?,
+                    enrolled_at: r.get(3)?,
+                    enrolled_by: r.get(4)?,
+                    revoked_at: r.get(5)?,
+                    revoked_by: r.get(6)?,
+                    reason: r.get(7)?,
+                    last_seen: r.get(8)?,
+                    items: r.get::<_, i64>(9)? as u64,
+                })
+            })?
+            .collect::<rusqlite::Result<_>>()?)
     }
 
     fn apply(&self, tx: &Connection, device_id: &str, u: &Upload, now: &str) -> Result<()> {
@@ -719,7 +886,7 @@ impl Hub {
     /// Publish what changed since the last bundle (approved notes, revoked
     /// ones, review outcomes) as the next signed bundle, with the fleet
     /// summary. `None` when nothing changed and `always` is false.
-    pub fn publish(&self, always: bool) -> Result<Option<Value>> {
+    pub fn publish(&self, always: bool, actor: &str) -> Result<Option<Value>> {
         type N = (String, String, String, String, String, String);
         let notes: Vec<N> = self
             .conn
@@ -752,6 +919,16 @@ impl Hub {
             return Ok(None);
         }
         let fleet = self.fleet()?;
+        let fleet_sha = crate::records::maint::fleet_sha256(&fleet)?;
+        let held: Option<String> = self
+            .conn
+            .query_row(
+                "SELECT sha256 FROM fleet_doc ORDER BY seq DESC LIMIT 1",
+                [],
+                |r| r.get(0),
+            )
+            .optional()?;
+        let new_fleet = held.as_deref() != Some(fleet_sha.as_str());
         let counts = |lesson_id: &str| -> Result<NoteCounts> { self.counts_for(lesson_id, &fleet) };
         let mut note_values = Vec::new();
         for (note_id, lesson_id, scope, text, approver, approved_at) in &notes {
@@ -780,10 +957,24 @@ impl Hub {
             "notes": note_values,
             "revoke": revoke,
             "reviews": reviews.iter().map(|(_, l, a, n)| json!({"lesson_id": l, "status": a, "note": n})).collect::<Vec<_>>(),
-            "fleet": fleet,
+            "fleet_sha256": fleet_sha,
         });
         packs::sign_manifest(&mut body, &self.key)?;
         let tx = self.tx()?;
+        if new_fleet {
+            let mut doc = json!({
+                "format": crate::records::maint::FLEET_FORMAT,
+                "stream": self.stream,
+                "sha256": fleet_sha,
+                "issued_at": now,
+                "summary": fleet,
+            });
+            packs::sign_manifest(&mut doc, &self.key)?;
+            tx.execute(
+                "INSERT INTO fleet_doc (sha256, issued_at, body) VALUES (?1, ?2, ?3)",
+                params![fleet_sha, now, doc.to_string()],
+            )?;
+        }
         tx.execute(
             "INSERT INTO bundle (seq, issued_at, body) VALUES (?1, ?2, ?3)",
             params![seq, now, body.to_string()],
@@ -807,10 +998,23 @@ impl Hub {
             )?;
         }
         let mut ev = AuditEvent::new("hub.publish", &self.stream);
-        ev.detail = json!({"seq": seq, "notes": notes.len(), "revoke": revoke.len(), "reviews": reviews.len()});
+        ev.detail = json!({"seq": seq, "by": actor, "notes": notes.len(), "revoke": revoke.len(), "reviews": reviews.len(), "fleet_sha256": fleet_sha, "new_fleet": new_fleet});
         self.audit(&tx, &ev)?;
         tx.commit()?;
         Ok(Some(body))
+    }
+
+    /// The newest signed fleet summary (`harvest-fleet/1`).
+    pub fn fleet_document(&self) -> Result<Option<Value>> {
+        let body: Option<String> = self
+            .conn
+            .query_row(
+                "SELECT body FROM fleet_doc ORDER BY seq DESC LIMIT 1",
+                [],
+                |r| r.get(0),
+            )
+            .optional()?;
+        body.map(|b| Ok(serde_json::from_str(&b)?)).transpose()
     }
 
     /// Bundles with `seq` above `since`, in order.
@@ -1157,7 +1361,7 @@ fn strip_format(mut v: Value) -> Value {
 /// A device's link straight to an in-process hub (tests, one-box setups).
 pub struct LocalLink {
     pub hub: Arc<Mutex<Hub>>,
-    pub device_id: String,
+    pub key: DeviceKey,
 }
 
 impl LocalLink {
@@ -1168,10 +1372,11 @@ impl LocalLink {
 
 impl HubLink for LocalLink {
     fn device_id(&self) -> String {
-        self.device_id.clone()
+        self.key.device_id()
     }
     fn send(&self, batch: &[Upload]) -> Result<Vec<Receipt>> {
-        Ok(self.hub().receive(&self.device_id, batch)?.receipts)
+        let d = self.key.deliver(batch)?;
+        Ok(self.hub().receive(&d)?.receipts)
     }
     fn bundles_since(&self, since: u64) -> Result<Vec<Value>> {
         self.hub().bundles_since(since)
@@ -1181,6 +1386,9 @@ impl HubLink for LocalLink {
     }
     fn fetch(&self, offer: &PackOffer, path: &str) -> Result<Vec<u8>> {
         self.hub().fetch(offer, path)
+    }
+    fn fleet(&self) -> Result<Option<Value>> {
+        self.hub().fleet_document()
     }
 }
 

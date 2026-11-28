@@ -537,7 +537,9 @@ own. Generated rows carry `prov_id` and ship only when it passed.
 ```sql
 -- Maintenance tables (optional; CONTRACT "Maintenance tables"). A pack without
 -- them reads as before; the core detects each table on its own.
-CREATE TABLE section_loc (section_id TEXT PRIMARY KEY, page_label TEXT, page_index INTEGER,
+CREATE TABLE section_loc (section_id TEXT PRIMARY KEY,
+                          page_label TEXT,               -- the printed page ('3-2')
+                          page_index INTEGER,            -- the 1-based physical page of the source file
                           figure_label TEXT,
                           boxes TEXT);                   -- json [{x0,y0,x1,y1}], 0..1 on the page image
 CREATE TABLE asset (asset_id TEXT PRIMARY KEY, path TEXT NOT NULL, sha256 TEXT NOT NULL,
@@ -557,9 +559,10 @@ CREATE TABLE fault_node (node_id TEXT PRIMARY KEY, tree_id TEXT NOT NULL,
   text TEXT NOT NULL,                                    -- verbatim: a substring of the section's text
   section_id TEXT NOT NULL,
   expect TEXT,                                           -- json: how a result is recorded
-  target TEXT,                                           -- tree:<id> | procedure:<id> (goto; optional on action)
+  target TEXT,                                           -- tree:<id>[#<node_id>] | procedure:<id> (goto; optional on action)
   proc_id TEXT,                                          -- the test procedure that answers the question
-  lang TEXT NOT NULL, prov_id TEXT NOT NULL);
+  lang TEXT NOT NULL, prov_id TEXT NOT NULL,
+  reference TEXT);                                       -- the printed cross-reference, verbatim
 CREATE TABLE fault_edge (from_node TEXT NOT NULL, ord INTEGER NOT NULL, label TEXT NOT NULL,
   cond TEXT,                                             -- json numeric predicate; null: label equality
   to_node TEXT NOT NULL, retry INTEGER NOT NULL DEFAULT 0, PRIMARY KEY (from_node, ord));
@@ -601,9 +604,20 @@ CREATE TABLE failure_mode (mode_id TEXT PRIMARY KEY, equip_id TEXT NOT NULL, sys
   `{"op":"between","min":a,"max":b}` (`a <= v < b`). No unit conversion:
   a value in another unit is refused. `retry = 1` marks a loop the manual
   makes on purpose (re-test after an adjustment).
-- **`target`**: `tree:<id>` or `procedure:<id>`; a `goto` must have one, an
-  `action` may (the task to do). **`proc_id`**: the procedure whose steps
-  answer the node's question (its steps carry their own guards).
+- **`target`**: `tree:<id>`, `tree:<id>#<node_id>` (enter that tree at
+  that node: "go to Table 3-2, step 4"; the node must be in that tree) or
+  `procedure:<id>`; a `goto` must have one, an `action` may (the task to
+  do). **`reference`** (optional column) is the node's printed
+  cross-reference, verbatim in its section. An `action` whose reference
+  resolves to nothing in the pack is legal: it keeps its text and has no
+  target, and the view returns `target: null` with `reference` so the app
+  says "see … in the manual" instead of offering a link. **`proc_id`**: the
+  procedure whose steps answer the node's question; guards on the
+  procedure (its section or above) are returned once at its head, guards
+  on a step only before that step.
+- **Provenance.** `fault_edge` and `fault_facet` rows carry no `prov_id`
+  of their own: they ship or fail with their node's provenance (a tree
+  with one node that did not pass is refused whole).
 - **Facets** (`fault_facet.facet`) are the pack's names (`reason`, `known`,
   `possible`, `test_option`, …); the core returns them grouped, in the
   order and with the headings of `pack_meta.facets`
@@ -645,8 +659,9 @@ CREATE TABLE failure_mode (mode_id TEXT PRIMARY KEY, equip_id TEXT NOT NULL, sys
   the query's other words and at least two of them (or all, when fewer),
   or the cosine reaches `symptom_confident_dense` (default 0.85) beside a
   lexical match; else `closest`. Each hit says why it matched.
-- **Locations and assets.** `section_loc.boxes` is optional (older packs
-  have no such column). A citation carries the source, edition, the
+- **Locations and assets.** `section_loc.page_label` is the printed page
+  ("3-2"); `page_index` is the 1-based physical page of the source file.
+  `section_loc.boxes` is optional (older packs have no such column). A citation carries the source, edition, the
   section path from the root, page label and index (inherited from the
   nearest ancestor when the section has none), figure label, the page
   image's asset id and the boxes. An asset is served only when the signed
@@ -683,10 +698,14 @@ upgrades in place):
   The next node is chosen by code from the recorded result; an answer
   names the node it answers and is refused unless that is the job's
   current node. Going back marks the last step superseded (kept) and
-  returns to its node. A job is recorded against its tree as it was when
-  it began (SHA-256 of tree, nodes and edges): a pack that changed it
-  refuses further answers.
-- Every job event (`job.start`, `job.answer`, `job.back`, `job.close`) and
+  returns to its node. At a `goto` into another tree, `job.follow`
+  continues the job there (at the named node, else the tree's entry): the
+  jump is a step of its own (outcome `goto`, `tree_id` of the tree it left),
+  so the path is kept across trees and going back returns to the goto
+  node. Each step records its `tree_id`. A job is recorded against each
+  tree as it was when the job entered it (SHA-256 of tree, nodes and
+  edges): a pack that changed it refuses further answers.
+- Every job event (`job.start`, `job.answer`, `job.back`, `job.goto`, `job.close`) and
   `lesson.create`, `asset.import`, `field.install` appends to the audit
   chain in the same transaction: an event entry `{ts, event, pack_id,
   pack_version, subject, node_id, asked (the node's text), result,
@@ -747,8 +766,21 @@ upload, holds lessons for review, publishes field notes and offers packs.
 `harvest hub` serves it over HTTP together with the API (`hub.*` methods,
 for a reviewer's screen).
 
-- **Receive.** `POST /hub/receive` `{device_id, items: [Upload]}` →
-  `{receipts, stored, duplicates, refused}`. Items are stored by `item_id`:
+- **Devices.** Each device has its own ed25519 key, made on the device; the
+  private half lives where the host keeps the records key (the platform
+  keystore; `harvest serve` keeps it in `<records-db>.device-key`). Its id
+  is `dev-<key id>`. An administrator enrolls a device by its public key
+  (`hub.enroll`) and can revoke it (`hub.revoke`); a revoked key is never
+  enrolled again. Both are audited with who did them.
+- **Receive.** `POST /hub/receive` takes a delivery
+  `{device_id, signed_at, items: [Upload], signature}` signed by the
+  device over the canonical JSON of `{format: "harvest-delivery/1",
+  device_id, signed_at, items: [{item_id, kind, payload_sha256}]}`. The
+  hub refuses the whole delivery (403, audited as `hub.refuse`) from an
+  unknown or revoked device, or when the signature does not verify; the
+  device keeps everything queued. It answers
+  `{receipts, stored, duplicates, refused}` and records the device id on
+  every item. Items are stored by `item_id`:
   the same id with the same hash gets the same receipt again (a duplicate,
   never applied twice); a payload that does not match its hash, or an id
   already stored with other content, gets none. `job` items
@@ -771,12 +803,18 @@ for a reviewer's screen).
 - **Bundles.** `publish` signs the next `harvest-field/1` bundle (seq + 1)
   with the hub's ed25519 key: new or re-approved notes with their counts
   (units the action was recorded on, resolved of attempts), notes to
-  revoke, review outcomes, and `fleet`, the fleet summary (jobs per tree,
-  symptom and variant; resolved of attempts per corrective action; repeat
-  discrepancies per asset; the top causes per symptom). `GET
-  /hub/bundles?since=<seq>` returns them in order. A device's
-  `Records::pull` installs them in order and stops at the first it
-  refuses, so the next pull asks for it again.
+  revoke, review outcomes, and `fleet_sha256`, the hash of the fleet
+  summary (jobs per tree, symptom and variant; resolved of attempts per
+  corrective action; repeat discrepancies per asset; the top causes per
+  symptom). The summary itself is its own signed document
+  (`harvest-fleet/1`: `{format, stream, sha256, issued_at, summary,
+  signature}`, the hash over the canonical summary with `generated_at`
+  blank), served at `GET /hub/fleet`. `GET /hub/bundles?since=<seq>`
+  returns bundles in order. A device's `Records::pull` installs them in
+  order and stops at the first it refuses (the next pull asks for it
+  again); last, and only when the newest bundle announces a hash it does
+  not hold, it fetches the summary and keeps it once its signature and
+  hash check.
 - **Packs.** The hub's packs root holds `<pack_id>/<version>/` (full) and
   `<pack_id>/delta-<base>-<target>/` (delta) directories, checked against
   the publisher's keys. `GET /hub/pack-offer?pack_id=&have=` returns the
@@ -790,8 +828,20 @@ for a reviewer's screen).
   `LocalLink` an in-process one. `harvest serve --hub URL [--packs-root
   ROOT]` makes `sync.flush` send through it and `sync.pull` fetch bundles
   and packs.
-- Reviewers and devices are not authenticated yet; run the hub on a
-  network you trust.
+- **People.** `harvest hub` identifies reviewers, publishers and
+  administrators through one interface with two implementations:
+  `--reviewers FILE` (development: `[{name, token | token_sha256, roles}]`,
+  sent as `Authorization: Bearer <token>`), or `--trusted-proxy IP[,IP]
+  --identity-header NAME --roles FILE` (behind an authenticating reverse
+  proxy, such as a smart-card or single-sign-on gateway: the header is
+  believed only on requests from the proxy's addresses and refused from
+  anywhere else; roles come from the file by user name). Roles: `reviewer`
+  (approve, edit, reject), `publisher` (publish), `admin` (enroll, revoke).
+  Every `hub.*` method needs an identified person (`unauthenticated`
+  otherwise) holding the role (`forbidden` otherwise), and records their
+  name. In process, `api::call_as` passes the person.
+- Reads of bundles, the fleet summary and packs are not authenticated:
+  each is signed, and a device checks the signature before using it.
 
 ## Fleet simulation
 

@@ -15,6 +15,7 @@ use crate::audit::{AuditRecord, ChainReport};
 use crate::content::PackInfo;
 use crate::embed::Embedder;
 use crate::error::{Error, Result};
+use crate::hub::auth::{Identify, Principal, Role as HubRole};
 use crate::llm::Llm;
 use crate::maint::graph::{self, GraphReport};
 use crate::maint::resolve::{self, Plate, Resolved};
@@ -57,6 +58,7 @@ pub struct Host {
     hub_link: Option<Arc<dyn crate::sync::HubLink + Send + Sync>>,
     packs_root: Option<PathBuf>,
     hub: Option<Arc<Mutex<crate::hub::Hub>>>,
+    identity: Option<Arc<dyn Identify>>,
 }
 
 impl Host {
@@ -77,6 +79,7 @@ impl Host {
             hub_link: None,
             packs_root: None,
             hub: None,
+            identity: None,
         }
     }
     /// The embedder for one pack (dense retrieval runs only when it matches).
@@ -119,6 +122,18 @@ impl Host {
     pub fn with_hub(mut self, hub: Arc<Mutex<crate::hub::Hub>>) -> Self {
         self.hub = Some(hub);
         self
+    }
+
+    /// How the transport identifies people (reviewers, publishers,
+    /// administrators) for the `hub.*` methods.
+    pub fn with_identity(mut self, id: Arc<dyn Identify>) -> Self {
+        self.identity = Some(id);
+        self
+    }
+
+    /// The identity provider, when one is set.
+    pub fn identity(&self) -> Option<&Arc<dyn Identify>> {
+        self.identity.as_ref()
     }
 
     /// The hub's store, when this host is a hub.
@@ -225,7 +240,18 @@ fn parse<T: DeserializeOwned>(method: &str, params: Value) -> std::result::Resul
 /// Call one method. `params` is the method's params object (`null` for
 /// none); the result is its result object.
 pub fn call(host: &Host, method: &str, params: Value) -> std::result::Result<Value, ApiError> {
-    dispatch(host, method, params)
+    dispatch(host, None, method, params)
+}
+
+/// [`call`] on behalf of an identified person (the transport identified
+/// them; `hub.*` methods check their roles and record their name).
+pub fn call_as(
+    host: &Host,
+    who: Option<&Principal>,
+    method: &str,
+    params: Value,
+) -> std::result::Result<Value, ApiError> {
+    dispatch(host, who, method, params)
 }
 
 /// [`call`] over JSON text: always returns the envelope
@@ -250,11 +276,11 @@ pub fn envelope(out: std::result::Result<Value, ApiError>) -> Value {
 
 macro_rules! methods {
     ($( $name:literal => $handler:ident($params:ty) -> $result:ty ),* $(,)?) => {
-        fn dispatch(host: &Host, method: &str, params: Value) -> std::result::Result<Value, ApiError> {
+        fn dispatch(host: &Host, who: Option<&Principal>, method: &str, params: Value) -> std::result::Result<Value, ApiError> {
             match method {
                 $( $name => {
                     let p: $params = parse(method, params)?;
-                    let r: $result = $handler(host, p)?;
+                    let r: $result = $handler(host, who, p)?;
                     serde_json::to_value(r).map_err(|e| ApiError::from(Error::from(e)))
                 } )*
                 other => Err(ApiError {
@@ -296,6 +322,7 @@ methods! {
     "job.get" => job_get(JobGetParams) -> JobView,
     "job.answer" => job_answer(JobAnswerParams) -> JobView,
     "job.back" => job_back(JobIdParams) -> JobView,
+    "job.follow" => job_follow(JobIdParams) -> JobView,
     "job.close" => job_close(JobCloseParams) -> JobClosed,
     "job.list" => job_list(JobListParams) -> Vec<JobSummary>,
     "job.report" => job_report(JobIdParams) -> JobReport,
@@ -330,6 +357,10 @@ methods! {
     "hub.fleet" => hub_fleet(NoParams) -> crate::records::FleetSummary,
     "hub.conflicts" => hub_conflicts(NoParams) -> Vec<crate::hub::Conflict>,
     "hub.audit" => hub_audit(AuditListParams) -> Vec<AuditRecord>,
+    "hub.devices" => hub_devices(NoParams) -> Vec<crate::hub::EnrolledDevice>,
+    "hub.enroll" => hub_enroll(HubEnrollParams) -> crate::hub::EnrolledDevice,
+    "hub.revoke" => hub_revoke(HubRevokeParams) -> crate::hub::EnrolledDevice,
+    "hub.whoami" => hub_whoami(NoParams) -> Principal,
 }
 
 // ------------------------------------------------------------ params
@@ -706,8 +737,6 @@ pub struct HubQueueParams {
 #[serde(deny_unknown_fields)]
 pub struct HubApproveParams {
     pub lesson_id: String,
-    /// Who approves (recorded and audited).
-    pub reviewer: String,
     /// Edit before approving: the note's text and/or scope.
     #[serde(default)]
     pub edit: Option<crate::hub::NoteEdit>,
@@ -719,7 +748,6 @@ pub struct HubApproveParams {
 #[serde(deny_unknown_fields)]
 pub struct HubRejectParams {
     pub lesson_id: String,
-    pub reviewer: String,
     #[serde(default)]
     pub reason: Option<String>,
 }
@@ -730,6 +758,23 @@ pub struct HubPublishParams {
     /// Publish a bundle (with the fleet summary) even when no note changed.
     #[serde(default)]
     pub always: bool,
+}
+
+#[derive(Debug, Clone, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct HubEnrollParams {
+    /// The device's ed25519 public key, base64.
+    pub public_key: String,
+    #[serde(default)]
+    pub name: Option<String>,
+}
+
+#[derive(Debug, Clone, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct HubRevokeParams {
+    pub device_id: String,
+    #[serde(default)]
+    pub reason: Option<String>,
 }
 
 #[derive(Debug, Clone, Default, Deserialize, JsonSchema)]
@@ -895,7 +940,7 @@ fn nz(s: &Option<String>) -> Option<&str> {
     s.as_deref().map(str::trim).filter(|s| !s.is_empty())
 }
 
-fn pack_info(h: &Host, p: PackParams) -> R<PackInfoView> {
+fn pack_info(h: &Host, _who: Option<&Principal>, p: PackParams) -> R<PackInfoView> {
     let pack = &h.pack(nz(&p.pack_id))?;
     let mut systems: Vec<String> = pack
         .fault_trees(None)?
@@ -918,12 +963,12 @@ fn pack_info(h: &Host, p: PackParams) -> R<PackInfoView> {
     })
 }
 
-fn pack_validate(h: &Host, p: PackParams) -> R<GraphReport> {
+fn pack_validate(h: &Host, _who: Option<&Principal>, p: PackParams) -> R<GraphReport> {
     let pack = h.pack(nz(&p.pack_id))?;
     Ok(graph::validate(&pack)?)
 }
 
-fn equip_list(h: &Host, p: PackParams) -> R<Vec<EquipView>> {
+fn equip_list(h: &Host, _who: Option<&Principal>, p: PackParams) -> R<Vec<EquipView>> {
     let pack = &h.pack(nz(&p.pack_id))?;
     pack.equipment()
         .iter()
@@ -936,7 +981,7 @@ fn equip_list(h: &Host, p: PackParams) -> R<Vec<EquipView>> {
         .collect()
 }
 
-fn equip_resolve(h: &Host, p: EquipResolveParams) -> R<Resolved> {
+fn equip_resolve(h: &Host, _who: Option<&Principal>, p: EquipResolveParams) -> R<Resolved> {
     let pack = &h.pack(nz(&p.pack_id))?;
     Ok(resolve::resolve(
         pack,
@@ -950,11 +995,11 @@ fn equip_resolve(h: &Host, p: EquipResolveParams) -> R<Resolved> {
     )?)
 }
 
-fn asset_list(h: &Host, _: NoParams) -> R<Vec<Asset>> {
+fn asset_list(h: &Host, _who: Option<&Principal>, _: NoParams) -> R<Vec<Asset>> {
     Ok(h.records().assets()?)
 }
 
-fn asset_get(h: &Host, p: AssetIdParams) -> R<Asset> {
+fn asset_get(h: &Host, _who: Option<&Principal>, p: AssetIdParams) -> R<Asset> {
     Ok(h.records()
         .asset(&p.asset_id)?
         .ok_or_else(|| Error::Invalid(format!("no asset {:?}", p.asset_id)))?)
@@ -967,23 +1012,23 @@ fn optional_pack(h: &Host, id: &Option<String>) -> R<Option<Arc<Pack>>> {
     }
 }
 
-fn asset_create(h: &Host, p: AssetCreateParams) -> R<Asset> {
+fn asset_create(h: &Host, _who: Option<&Principal>, p: AssetCreateParams) -> R<Asset> {
     let pack = optional_pack(h, &p.pack_id)?;
     Ok(h.records().create_asset(pack.as_deref(), p.asset)?)
 }
 
-fn asset_update(h: &Host, p: AssetUpdateParams) -> R<Asset> {
+fn asset_update(h: &Host, _who: Option<&Principal>, p: AssetUpdateParams) -> R<Asset> {
     let pack = optional_pack(h, &p.pack_id)?;
     Ok(h.records()
         .update_asset(pack.as_deref(), &p.asset_id, p.changes)?)
 }
 
-fn asset_import(h: &Host, p: AssetImportParams) -> R<ImportReport> {
+fn asset_import(h: &Host, _who: Option<&Principal>, p: AssetImportParams) -> R<ImportReport> {
     let pack = optional_pack(h, &p.pack_id)?;
     Ok(h.records().import_assets(pack.as_deref(), &p.registry)?)
 }
 
-fn asset_history(h: &Host, p: AssetHistoryParams) -> R<AssetHistory> {
+fn asset_history(h: &Host, _who: Option<&Principal>, p: AssetHistoryParams) -> R<AssetHistory> {
     let pack = &h.pack(nz(&p.pack_id))?;
     Ok(h.records().asset_history(pack, &p.asset_id)?)
 }
@@ -1003,7 +1048,7 @@ fn equip_for(h: &Host, equip: &Option<String>, asset: &Option<String>) -> R<Opti
     }
 }
 
-fn symptom_search(h: &Host, p: SymptomSearchParams) -> R<SymptomSearch> {
+fn symptom_search(h: &Host, _who: Option<&Principal>, p: SymptomSearchParams) -> R<SymptomSearch> {
     let pack = &h.pack(nz(&p.pack_id))?;
     let equip = equip_for(h, &p.equip_id, &p.asset_id)?;
     let (hits, dense) = search::symptom_search(
@@ -1034,7 +1079,7 @@ fn symptom_search(h: &Host, p: SymptomSearchParams) -> R<SymptomSearch> {
     })
 }
 
-fn signal_match(h: &Host, p: SignalMatchParams) -> R<SignalMatch> {
+fn signal_match(h: &Host, _who: Option<&Principal>, p: SignalMatchParams) -> R<SignalMatch> {
     let pack = &h.pack(nz(&p.pack_id))?;
     let equip = equip_for(h, &p.equip_id, &p.asset_id)?;
     Ok(search::signal_match(
@@ -1044,7 +1089,7 @@ fn signal_match(h: &Host, p: SignalMatchParams) -> R<SignalMatch> {
     )?)
 }
 
-fn tree_list(h: &Host, p: TreeListParams) -> R<Vec<FaultTree>> {
+fn tree_list(h: &Host, _who: Option<&Principal>, p: TreeListParams) -> R<Vec<FaultTree>> {
     let pack = &h.pack(nz(&p.pack_id))?;
     Ok(pack
         .fault_trees(nz(&p.equip_id))?
@@ -1053,7 +1098,7 @@ fn tree_list(h: &Host, p: TreeListParams) -> R<Vec<FaultTree>> {
         .collect())
 }
 
-fn tree_get(h: &Host, p: TreeGetParams) -> R<Tree> {
+fn tree_get(h: &Host, _who: Option<&Principal>, p: TreeGetParams) -> R<Tree> {
     let pack = &h.pack(nz(&p.pack_id))?;
     Ok(pack
         .fault_tree(&p.tree_id)?
@@ -1067,7 +1112,7 @@ fn job_pack(h: &Host, rec: &Records, job_id: &str) -> R<Arc<Pack>> {
     Ok(h.pack(Some(&job.pack_id))?)
 }
 
-fn job_start(h: &Host, p: JobStartParams) -> R<JobView> {
+fn job_start(h: &Host, _who: Option<&Principal>, p: JobStartParams) -> R<JobView> {
     let pack = &h.pack(nz(&p.pack_id))?;
     let rec = h.records();
     let job = rec.start_job(
@@ -1086,13 +1131,13 @@ fn job_start(h: &Host, p: JobStartParams) -> R<JobView> {
     Ok(rec.job_view(pack, &job.job_id, None)?)
 }
 
-fn job_get(h: &Host, p: JobGetParams) -> R<JobView> {
+fn job_get(h: &Host, _who: Option<&Principal>, p: JobGetParams) -> R<JobView> {
     let rec = h.records();
     let pack = &job_pack(h, &rec, &p.job_id)?;
     Ok(rec.job_view(pack, &p.job_id, nz(&p.level))?)
 }
 
-fn job_answer(h: &Host, p: JobAnswerParams) -> R<JobView> {
+fn job_answer(h: &Host, _who: Option<&Principal>, p: JobAnswerParams) -> R<JobView> {
     let rec = h.records();
     let pack = &job_pack(h, &rec, &p.job_id)?;
     rec.answer_job(
@@ -1110,14 +1155,21 @@ fn job_answer(h: &Host, p: JobAnswerParams) -> R<JobView> {
     Ok(rec.job_view(pack, &p.job_id, None)?)
 }
 
-fn job_back(h: &Host, p: JobIdParams) -> R<JobView> {
+fn job_back(h: &Host, _who: Option<&Principal>, p: JobIdParams) -> R<JobView> {
     let rec = h.records();
     let pack = &job_pack(h, &rec, &p.job_id)?;
     rec.back_job(pack, &p.job_id)?;
     Ok(rec.job_view(pack, &p.job_id, None)?)
 }
 
-fn job_close(h: &Host, p: JobCloseParams) -> R<JobClosed> {
+fn job_follow(h: &Host, _who: Option<&Principal>, p: JobIdParams) -> R<JobView> {
+    let rec = h.records();
+    let pack = &job_pack(h, &rec, &p.job_id)?;
+    rec.follow_job(pack, &p.job_id)?;
+    Ok(rec.job_view(pack, &p.job_id, None)?)
+}
+
+fn job_close(h: &Host, _who: Option<&Principal>, p: JobCloseParams) -> R<JobClosed> {
     let rec = h.records();
     let pack = &job_pack(h, &rec, &p.job_id)?;
     let (job, lesson) = rec.close_job(
@@ -1132,7 +1184,7 @@ fn job_close(h: &Host, p: JobCloseParams) -> R<JobClosed> {
     Ok(JobClosed { job, lesson })
 }
 
-fn job_list(h: &Host, p: JobListParams) -> R<Vec<JobSummary>> {
+fn job_list(h: &Host, _who: Option<&Principal>, p: JobListParams) -> R<Vec<JobSummary>> {
     let mut jobs = h.records().jobs(nz(&p.asset_id), nz(&p.status))?;
     let mut titles: BTreeMap<(String, String), String> = BTreeMap::new();
     for pack in &h.packs() {
@@ -1148,13 +1200,13 @@ fn job_list(h: &Host, p: JobListParams) -> R<Vec<JobSummary>> {
     Ok(jobs)
 }
 
-fn job_report(h: &Host, p: JobIdParams) -> R<JobReport> {
+fn job_report(h: &Host, _who: Option<&Principal>, p: JobIdParams) -> R<JobReport> {
     let rec = h.records();
     let pack = &job_pack(h, &rec, &p.job_id)?;
     Ok(rec.job_report(pack, &p.job_id)?)
 }
 
-fn task_list(h: &Host, p: TaskListParams) -> R<Vec<TaskSummary>> {
+fn task_list(h: &Host, _who: Option<&Principal>, p: TaskListParams) -> R<Vec<TaskSummary>> {
     let pack = &h.pack(nz(&p.pack_id))?;
     let mut out = Vec::new();
     for t in pack.procedures()? {
@@ -1172,7 +1224,7 @@ fn task_list(h: &Host, p: TaskListParams) -> R<Vec<TaskSummary>> {
     Ok(out)
 }
 
-fn task_get(h: &Host, p: TaskGetParams) -> R<TaskView> {
+fn task_get(h: &Host, _who: Option<&Principal>, p: TaskGetParams) -> R<TaskView> {
     let pack = &h.pack(nz(&p.pack_id))?;
     Ok(view::task_view(pack, &p.proc_id, nz(&p.equip_id))?
         .ok_or_else(|| Error::Invalid(format!("no task {:?}", p.proc_id)))?)
@@ -1185,7 +1237,7 @@ fn run_pack(h: &Host, rec: &Records, run_id: &str) -> R<Arc<Pack>> {
     Ok(h.pack(Some(&run.pack_id))?)
 }
 
-fn run_start(h: &Host, p: RunStartParams) -> R<Run> {
+fn run_start(h: &Host, _who: Option<&Principal>, p: RunStartParams) -> R<Run> {
     let pack = &h.pack(nz(&p.pack_id))?;
     Ok(h.records().start_run(
         pack,
@@ -1198,7 +1250,7 @@ fn run_start(h: &Host, p: RunStartParams) -> R<Run> {
     )?)
 }
 
-fn run_record(h: &Host, p: RunRecordParams) -> R<StepOutcome> {
+fn run_record(h: &Host, _who: Option<&Principal>, p: RunRecordParams) -> R<StepOutcome> {
     let rec = h.records();
     let pack = &run_pack(h, &rec, &p.run_id)?;
     Ok(rec.record_step(
@@ -1215,19 +1267,19 @@ fn run_record(h: &Host, p: RunRecordParams) -> R<StepOutcome> {
     )?)
 }
 
-fn run_finish(h: &Host, p: RunIdParams) -> R<Run> {
+fn run_finish(h: &Host, _who: Option<&Principal>, p: RunIdParams) -> R<Run> {
     let rec = h.records();
     let pack = &run_pack(h, &rec, &p.run_id)?;
     Ok(rec.finish_run(pack, &p.run_id)?)
 }
 
-fn run_abandon(h: &Host, p: RunIdParams) -> R<Run> {
+fn run_abandon(h: &Host, _who: Option<&Principal>, p: RunIdParams) -> R<Run> {
     let rec = h.records();
     let pack = &run_pack(h, &rec, &p.run_id)?;
     Ok(rec.abandon_run(pack, &p.run_id)?)
 }
 
-fn run_report(h: &Host, p: RunIdParams) -> R<RunReport> {
+fn run_report(h: &Host, _who: Option<&Principal>, p: RunIdParams) -> R<RunReport> {
     let rec = h.records();
     let pack = &run_pack(h, &rec, &p.run_id)?;
     Ok(rec.report(pack, &p.run_id)?)
@@ -1244,7 +1296,7 @@ fn section_ref(pack: &Pack, s: &Section) -> Result<SectionRef> {
     })
 }
 
-fn manual_section(h: &Host, p: SectionParams) -> R<SectionView> {
+fn manual_section(h: &Host, _who: Option<&Principal>, p: SectionParams) -> R<SectionView> {
     let pack = &h.pack(nz(&p.pack_id))?;
     let section = pack
         .section(&p.section_id)?
@@ -1279,7 +1331,7 @@ fn manual_section(h: &Host, p: SectionParams) -> R<SectionView> {
     })
 }
 
-fn manual_children(h: &Host, p: ChildrenParams) -> R<Vec<SectionRef>> {
+fn manual_children(h: &Host, _who: Option<&Principal>, p: ChildrenParams) -> R<Vec<SectionRef>> {
     let pack = &h.pack(nz(&p.pack_id))?;
     let rows: Vec<Section> = match nz(&p.section_id) {
         Some(id) => pack.children(id)?,
@@ -1339,7 +1391,7 @@ fn scope_sections(pack: &Pack, scope: &Option<Scope>) -> Result<Vec<String>> {
     Ok(out)
 }
 
-fn manual_search(h: &Host, p: ManualSearchParams) -> R<ManualSearch> {
+fn manual_search(h: &Host, _who: Option<&Principal>, p: ManualSearchParams) -> R<ManualSearch> {
     let pack = &h.pack(nz(&p.pack_id))?;
     let mut r = crate::retrieval::Retriever::new(pack);
     r.embedder = h.embedder(pack);
@@ -1376,7 +1428,7 @@ fn manual_search(h: &Host, p: ManualSearchParams) -> R<ManualSearch> {
     })
 }
 
-fn ask(h: &Host, p: AskParams) -> R<AskResponse> {
+fn ask(h: &Host, _who: Option<&Principal>, p: AskParams) -> R<AskResponse> {
     let pack = &h.pack(nz(&p.pack_id))?;
     let level = match nz(&p.level) {
         Some(l) => pack.level(l)?,
@@ -1406,7 +1458,7 @@ fn ask(h: &Host, p: AskParams) -> R<AskResponse> {
     Ok(resp)
 }
 
-fn lesson_create(h: &Host, p: LessonCreateParams) -> R<Lesson> {
+fn lesson_create(h: &Host, _who: Option<&Principal>, p: LessonCreateParams) -> R<Lesson> {
     let rec = h.records();
     let pack = match nz(&p.pack_id) {
         Some(id) => Some(h.pack(Some(id))?),
@@ -1418,22 +1470,22 @@ fn lesson_create(h: &Host, p: LessonCreateParams) -> R<Lesson> {
     Ok(rec.create_lesson(pack.as_deref(), p.lesson)?)
 }
 
-fn lesson_list(h: &Host, p: LessonFilter) -> R<Vec<Lesson>> {
+fn lesson_list(h: &Host, _who: Option<&Principal>, p: LessonFilter) -> R<Vec<Lesson>> {
     Ok(h.records().lessons(&p)?)
 }
 
-fn field_install(h: &Host, p: FieldInstallParams) -> R<FieldInstall> {
+fn field_install(h: &Host, _who: Option<&Principal>, p: FieldInstallParams) -> R<FieldInstall> {
     if h.field_keys.is_empty() {
         return Err(Error::Signature("no trusted key for field-note bundles".into()).into());
     }
     Ok(h.records().install_field_bundle(&p.bundle, &h.field_keys)?)
 }
 
-fn field_list(h: &Host, _: NoParams) -> R<Vec<FieldNote>> {
+fn field_list(h: &Host, _who: Option<&Principal>, _: NoParams) -> R<Vec<FieldNote>> {
     Ok(h.records().field_notes()?)
 }
 
-fn sync_status(h: &Host, _: NoParams) -> R<SyncStatus> {
+fn sync_status(h: &Host, _who: Option<&Principal>, _: NoParams) -> R<SyncStatus> {
     let rec = h.records();
     let state = rec.sync_state()?;
     let destination = if h.hub_link.is_some() {
@@ -1454,7 +1506,7 @@ fn sync_status(h: &Host, _: NoParams) -> R<SyncStatus> {
     })
 }
 
-fn sync_flush(h: &Host, _: NoParams) -> R<FlushReport> {
+fn sync_flush(h: &Host, _who: Option<&Principal>, _: NoParams) -> R<FlushReport> {
     if let Some(link) = &h.hub_link {
         return Ok(h
             .records()
@@ -1468,7 +1520,7 @@ fn sync_flush(h: &Host, _: NoParams) -> R<FlushReport> {
         .flush(&crate::sync::DirTransport::new(dir), 50)?)
 }
 
-fn sync_pull(h: &Host, _: NoParams) -> R<SyncPull> {
+fn sync_pull(h: &Host, _who: Option<&Principal>, _: NoParams) -> R<SyncPull> {
     let link = h
         .hub_link
         .as_ref()
@@ -1516,52 +1568,124 @@ fn sync_pull(h: &Host, _: NoParams) -> R<SyncPull> {
     })
 }
 
-fn lesson_update(h: &Host, p: LessonUpdateParams) -> R<Lesson> {
+fn lesson_update(h: &Host, _who: Option<&Principal>, p: LessonUpdateParams) -> R<Lesson> {
     let pack = optional_pack(h, &p.pack_id)?;
     Ok(h.records()
         .update_lesson(pack.as_deref(), &p.lesson_id, p.lesson)?)
 }
 
-fn fleet_summary(h: &Host, _: NoParams) -> R<Option<crate::records::FleetSummary>> {
+fn fleet_summary(
+    h: &Host,
+    _who: Option<&Principal>,
+    _: NoParams,
+) -> R<Option<crate::records::FleetSummary>> {
     Ok(h.records().fleet_summary()?)
 }
 
-fn hub_status(h: &Host, _: NoParams) -> R<crate::hub::HubStatus> {
+/// The principal, who must hold `role` (any identified person when `None`).
+fn need(who: Option<&Principal>, role: Option<HubRole>) -> R<&Principal> {
+    let p = who.ok_or_else(|| ApiError {
+        code: "unauthenticated".into(),
+        message: "hub methods need an identified person".into(),
+    })?;
+    if let Some(r) = role
+        && !p.has(r)
+    {
+        return Err(ApiError {
+            code: "forbidden".into(),
+            message: format!("{} does not hold the {r:?} role", p.name).to_lowercase(),
+        });
+    }
+    Ok(p)
+}
+
+fn hub_status(h: &Host, who: Option<&Principal>, _: NoParams) -> R<crate::hub::HubStatus> {
+    need(who, None)?;
     Ok(h.hub_store()?.status()?)
 }
 
-fn hub_queue(h: &Host, p: HubQueueParams) -> R<Vec<crate::hub::ReviewItem>> {
+fn hub_queue(
+    h: &Host,
+    who: Option<&Principal>,
+    p: HubQueueParams,
+) -> R<Vec<crate::hub::ReviewItem>> {
+    need(who, None)?;
     Ok(h.hub_store()?.queue(nz(&p.status))?)
 }
 
-fn hub_approve(h: &Host, p: HubApproveParams) -> R<crate::records::FieldNoteIn> {
+fn hub_approve(
+    h: &Host,
+    who: Option<&Principal>,
+    p: HubApproveParams,
+) -> R<crate::records::FieldNoteIn> {
+    let who = need(who, Some(HubRole::Reviewer))?;
     Ok(h.hub_store()?
-        .approve(&p.lesson_id, &p.reviewer, p.edit, p.note.as_deref())?)
+        .approve(&p.lesson_id, &who.name, p.edit, p.note.as_deref())?)
 }
 
-fn hub_reject(h: &Host, p: HubRejectParams) -> R<crate::hub::HubStatus> {
+fn hub_reject(h: &Host, who: Option<&Principal>, p: HubRejectParams) -> R<crate::hub::HubStatus> {
+    let who = need(who, Some(HubRole::Reviewer))?;
     let hub = h.hub_store()?;
-    hub.reject(&p.lesson_id, &p.reviewer, p.reason.as_deref())?;
+    hub.reject(&p.lesson_id, &who.name, p.reason.as_deref())?;
     Ok(hub.status()?)
 }
 
-fn hub_publish(h: &Host, p: HubPublishParams) -> R<Option<Value>> {
-    Ok(h.hub_store()?.publish(p.always)?)
+fn hub_publish(h: &Host, who: Option<&Principal>, p: HubPublishParams) -> R<Option<Value>> {
+    let who = need(who, Some(HubRole::Publisher))?;
+    Ok(h.hub_store()?.publish(p.always, &who.name)?)
 }
 
-fn hub_bundles(h: &Host, p: HubBundlesParams) -> R<Vec<Value>> {
+fn hub_bundles(h: &Host, who: Option<&Principal>, p: HubBundlesParams) -> R<Vec<Value>> {
+    need(who, None)?;
     Ok(h.hub_store()?.bundles_since(p.since)?)
 }
 
-fn hub_fleet(h: &Host, _: NoParams) -> R<crate::records::FleetSummary> {
+fn hub_fleet(h: &Host, who: Option<&Principal>, _: NoParams) -> R<crate::records::FleetSummary> {
+    need(who, None)?;
     Ok(h.hub_store()?.fleet()?)
 }
 
-fn hub_conflicts(h: &Host, _: NoParams) -> R<Vec<crate::hub::Conflict>> {
+fn hub_conflicts(h: &Host, who: Option<&Principal>, _: NoParams) -> R<Vec<crate::hub::Conflict>> {
+    need(who, None)?;
     Ok(h.hub_store()?.conflicts()?)
 }
 
-fn hub_audit(h: &Host, p: AuditListParams) -> R<Vec<AuditRecord>> {
+fn hub_devices(
+    h: &Host,
+    who: Option<&Principal>,
+    _: NoParams,
+) -> R<Vec<crate::hub::EnrolledDevice>> {
+    need(who, None)?;
+    Ok(h.hub_store()?.devices()?)
+}
+
+fn hub_enroll(
+    h: &Host,
+    who: Option<&Principal>,
+    p: HubEnrollParams,
+) -> R<crate::hub::EnrolledDevice> {
+    let who = need(who, Some(HubRole::Admin))?;
+    Ok(h.hub_store()?
+        .enroll(&p.public_key, p.name.as_deref(), &who.name)?)
+}
+
+fn hub_revoke(
+    h: &Host,
+    who: Option<&Principal>,
+    p: HubRevokeParams,
+) -> R<crate::hub::EnrolledDevice> {
+    let who = need(who, Some(HubRole::Admin))?;
+    Ok(h.hub_store()?
+        .revoke(&p.device_id, &who.name, p.reason.as_deref())?)
+}
+
+fn hub_whoami(_h: &Host, who: Option<&Principal>, _: NoParams) -> R<Principal> {
+    Ok(need(who, None)?.clone())
+}
+
+fn hub_audit(h: &Host, who: Option<&Principal>, p: AuditListParams) -> R<Vec<AuditRecord>> {
+    need(who, None)?;
+
     let all = h.hub_store()?.audit_records()?;
     let after = p.after_seq.unwrap_or(0);
     Ok(all
@@ -1573,7 +1697,7 @@ fn hub_audit(h: &Host, p: AuditListParams) -> R<Vec<AuditRecord>> {
         .collect())
 }
 
-fn audit_list(h: &Host, p: AuditListParams) -> R<Vec<AuditRecord>> {
+fn audit_list(h: &Host, _who: Option<&Principal>, p: AuditListParams) -> R<Vec<AuditRecord>> {
     let rec = h.records();
     let all = crate::audit::records_with(rec.conn(), rec.key())?;
     let after = p.after_seq.unwrap_or(0);
@@ -1586,7 +1710,7 @@ fn audit_list(h: &Host, p: AuditListParams) -> R<Vec<AuditRecord>> {
         .collect())
 }
 
-fn audit_verify(h: &Host, _: NoParams) -> R<ChainReport> {
+fn audit_verify(h: &Host, _who: Option<&Principal>, _: NoParams) -> R<ChainReport> {
     Ok(h.records().verify_audit()?)
 }
 

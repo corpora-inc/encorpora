@@ -2,7 +2,8 @@
 //! [`crate::api::serve`]):
 //!
 //! ```text
-//! POST /hub/receive                     {device_id, items: [Upload]} → ReceiveReport
+//! POST /hub/receive                     Delivery (signed by the device) → ReceiveReport
+//! GET  /hub/fleet                       → the signed fleet summary | null
 //! GET  /hub/bundles?since=<seq>         → [bundle]
 //! GET  /hub/pack-offer?pack_id=&have=   → PackOffer | null
 //! GET  /hub/pack-file/<pack>/<dir>/<path> → the file
@@ -10,22 +11,22 @@
 
 use super::ReceiveReport;
 use crate::error::{Error, Result};
-use crate::sync::{HubLink, PackOffer, Receipt, Upload};
-use serde_json::{Value, json};
+use crate::sync::{DeviceKey, HubLink, PackOffer, Receipt, Upload};
+use serde_json::Value;
 
 /// A hub over HTTP.
 pub struct HttpHubLink {
     base: String,
-    device_id: String,
+    key: DeviceKey,
     agent: ureq::Agent,
 }
 
 impl HttpHubLink {
     /// `base` is the hub's root (`http://host:port`).
-    pub fn new(base: &str, device_id: &str, timeout: std::time::Duration) -> Self {
+    pub fn new(base: &str, key: DeviceKey, timeout: std::time::Duration) -> Self {
         Self {
             base: base.trim_end_matches('/').to_string(),
-            device_id: device_id.to_string(),
+            key,
             agent: ureq::Agent::config_builder()
                 .timeout_global(Some(timeout))
                 .build()
@@ -58,14 +59,14 @@ fn q(s: &str) -> String {
 
 impl HubLink for HttpHubLink {
     fn device_id(&self) -> String {
-        self.device_id.clone()
+        self.key.device_id()
     }
 
     fn send(&self, batch: &[Upload]) -> Result<Vec<Receipt>> {
         let r: ReceiveReport = self
             .agent
             .post(&format!("{}/hub/receive", self.base))
-            .send_json(json!({"device_id": self.device_id, "items": batch}))
+            .send_json(self.key.deliver(batch)?)
             .map_err(|e| Error::Sync(format!("hub receive: {e}")))?
             .body_mut()
             .read_json()
@@ -104,5 +105,10 @@ impl HubLink for HttpHubLink {
             .limit(4 << 30)
             .read_to_vec()
             .map_err(|e| Error::Sync(format!("hub file {path}: {e}")))
+    }
+
+    fn fleet(&self) -> Result<Option<Value>> {
+        let v = self.get_json("/hub/fleet")?;
+        Ok((!v.is_null()).then_some(v))
     }
 }

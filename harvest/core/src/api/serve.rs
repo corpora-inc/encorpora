@@ -196,6 +196,35 @@ fn handle(
             if body.len() as u64 > MAX_BODY {
                 return req.respond(cors(text(413, "request too large")));
             }
+            // Who is calling, when the host identifies people.
+            let who = match host.identity() {
+                None => None,
+                Some(id) => {
+                    let meta = crate::hub::auth::RequestMeta {
+                        remote: req.remote_addr().map(|a| a.ip()),
+                        headers: req
+                            .headers()
+                            .iter()
+                            .map(|h| {
+                                (
+                                    h.field.as_str().as_str().to_ascii_lowercase(),
+                                    h.value.as_str().to_string(),
+                                )
+                            })
+                            .collect(),
+                    };
+                    match id.identify(&meta) {
+                        Ok(p) => p,
+                        Err(e) => {
+                            let body = envelope(Err(super::ApiError {
+                                code: "unauthenticated".into(),
+                                message: e.to_string(),
+                            }));
+                            return req.respond(cors(json_response(401, &body)));
+                        }
+                    }
+                }
+            };
             let out = if p == "/api" {
                 match serde_json::from_str::<serde_json::Value>(&body) {
                     Ok(v) => {
@@ -205,16 +234,18 @@ fn handle(
                             .unwrap_or("")
                             .to_string();
                         let params = v.get("params").cloned().unwrap_or(serde_json::Value::Null);
-                        envelope(super::call(host, &method, params))
+                        envelope(super::call_as(host, who.as_ref(), &method, params))
                     }
                     Err(e) => envelope(Err(super::bad_params("request", e))),
                 }
             } else {
                 let method = &p["/api/".len()..];
-                serde_json::from_str::<serde_json::Value>(
-                    super::call_json(host, method, &body).as_str(),
-                )
-                .unwrap_or_default()
+                let params = if body.trim().is_empty() {
+                    Ok(serde_json::Value::Null)
+                } else {
+                    serde_json::from_str(&body).map_err(|e| super::bad_params(method, e))
+                };
+                envelope(params.and_then(|v| super::call_as(host, who.as_ref(), method, v)))
             };
             req.respond(cors(json_response(200, &out)))
         }
@@ -340,19 +371,21 @@ fn hub_route(
     };
     match (m, path) {
         (Method::Post, "/hub/receive") => {
-            #[derive(serde::Deserialize)]
-            #[serde(deny_unknown_fields)]
-            struct Delivery {
-                device_id: String,
-                items: Vec<crate::sync::Upload>,
-            }
-            let d: Delivery =
+            let d: crate::sync::Delivery =
                 serde_json::from_str(body).map_err(|e| (400, format!("delivery: {e}")))?;
-            let r = hub.receive(&d.device_id, &d.items).map_err(err)?;
+            let r = hub.receive(&d).map_err(|e| match e {
+                Error::Signature(m) => (403, m),
+                other => err(other),
+            })?;
             Ok(HubReply::Json(
                 serde_json::to_value(r).map_err(|e| (500, e.to_string()))?,
             ))
         }
+        (Method::Get, "/hub/fleet") => Ok(HubReply::Json(
+            hub.fleet_document()
+                .map_err(err)?
+                .unwrap_or(serde_json::Value::Null),
+        )),
         (Method::Get, "/hub/bundles") => {
             let since = query_get(query, "since")
                 .and_then(|s| s.parse::<u64>().ok())

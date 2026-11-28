@@ -341,6 +341,21 @@ export type DenseStatus = "used" | "no_embedder" | {
   };
 } | "no_vectors";
 
+/** A device the hub accepts uploads from (or no longer does). */
+export interface EnrolledDevice {
+  device_id: string;
+  enrolled_at: string;
+  enrolled_by: string;
+  items: number;
+  last_seen: string | null;
+  name: string | null;
+  /** base64 ed25519 public key. */
+  public_key: string;
+  reason: string | null;
+  revoked_at: string | null;
+  revoked_by: string | null;
+}
+
 /** How a job was entered. */
 export type EntryKind = "symptom" | "signals" | "chosen";
 
@@ -468,6 +483,11 @@ export interface FaultNode {
   node_id: string;
   /** The procedure whose steps tell how to answer this node's question. */
   proc_id: string | null;
+  /**
+   * The manual's printed cross-reference ("Refer to field maintenance"),
+   * verbatim; kept also when it resolves to no target in the pack.
+   */
+  reference: string | null;
   section_id: string;
   target: Target | null;
   text: string;
@@ -687,12 +707,16 @@ export interface HubApproveParams {
   edit?: NoteEdit | null;
   lesson_id: string;
   note?: string | null;
-  /** Who approves (recorded and audited). */
-  reviewer: string;
 }
 
 export interface HubBundlesParams {
   since?: number;
+}
+
+export interface HubEnrollParams {
+  name?: string | null;
+  /** The device's ed25519 public key, base64. */
+  public_key: string;
 }
 
 export interface HubPublishParams {
@@ -708,7 +732,11 @@ export interface HubQueueParams {
 export interface HubRejectParams {
   lesson_id: string;
   reason?: string | null;
-  reviewer: string;
+}
+
+export interface HubRevokeParams {
+  device_id: string;
+  reason?: string | null;
 }
 
 /**
@@ -874,6 +902,8 @@ export interface JobStep {
   seq: number;
   /** When the technician went back over it (the step is kept, audited). */
   superseded_at: string | null;
+  /** The tree the node belongs to (a job can follow a goto into another). */
+  tree_id: string;
   unit: string | null;
   value: number | null;
 }
@@ -1210,11 +1240,21 @@ export interface PhotoRef {
   sha256: string;
 }
 
+/** An identified person. */
+export interface Principal {
+  name: string;
+  roles: Role[];
+  /** How they were identified: `token`, `proxy` or `local` (in process). */
+  via: string;
+}
+
 /** What one pull from the hub did. */
 export interface PullReport {
   /** Bytes of bundles received. */
   bytes: number;
   error: string | null;
+  /** Bytes of the fleet summary received (fetched only when it changed). */
+  fleet_bytes: number;
   fleet_updated: boolean;
   /** Bundles installed, in order. */
   installed: number[];
@@ -1296,6 +1336,8 @@ export interface ReportJobStep {
   /** When the technician went back over it (the step is kept, audited). */
   superseded_at: string | null;
   text: string | null;
+  /** The tree the node belongs to (a job can follow a goto into another). */
+  tree_id: string;
   unit: string | null;
   value: number | null;
 }
@@ -1393,6 +1435,9 @@ export interface ReviewRecord {
   note: string | null;
   reviewer: string;
 }
+
+/** What a person may do at the hub. */
+export type Role = "reviewer" | "publisher" | "admin";
 
 /** One procedure run. */
 export interface Run {
@@ -1673,10 +1718,17 @@ export interface StepView {
    */
   possible_open: string[];
   record: RecordHow;
+  /** The printed cross-reference, verbatim, when the node has one. */
+  reference: string | null;
   /** What this node itself needs. */
   requirements: Requirement[];
   /** The tree's initial setup (conditions, tools, references, personnel). */
   setup: Requirement[];
+  /**
+   * Where this node leads in the pack; `None` when it names nothing the
+   * pack holds (then `reference` is the manual's printed reference, to
+   * show as "see … in the manual").
+   */
   target: TargetView | null;
   /** True when no branch leaves this node (the path ends here). */
   terminal: boolean;
@@ -1804,6 +1856,7 @@ export interface SyncStatus {
 export type Target = {
   id: string;
   kind: "tree";
+  node_id: string | null;
 } | {
   id: string;
   kind: "procedure";
@@ -1956,6 +2009,7 @@ export interface Methods {
   "job.get": { params: JobGetParams; result: JobView };
   "job.answer": { params: JobAnswerParams; result: JobView };
   "job.back": { params: JobIdParams; result: JobView };
+  "job.follow": { params: JobIdParams; result: JobView };
   "job.close": { params: JobCloseParams; result: JobClosed };
   "job.list": { params: JobListParams; result: JobSummary[] };
   "job.report": { params: JobIdParams; result: JobReport };
@@ -1990,6 +2044,10 @@ export interface Methods {
   "hub.fleet": { params: NoParams; result: FleetSummary };
   "hub.conflicts": { params: NoParams; result: Conflict[] };
   "hub.audit": { params: AuditListParams; result: AuditRecord[] };
+  "hub.devices": { params: NoParams; result: EnrolledDevice[] };
+  "hub.enroll": { params: HubEnrollParams; result: EnrolledDevice };
+  "hub.revoke": { params: HubRevokeParams; result: EnrolledDevice };
+  "hub.whoami": { params: NoParams; result: Principal };
 }
 
 export type Method = keyof Methods;
@@ -2017,6 +2075,7 @@ export const METHODS = [
   "job.get",
   "job.answer",
   "job.back",
+  "job.follow",
   "job.close",
   "job.list",
   "job.report",
@@ -2051,4 +2110,8 @@ export const METHODS = [
   "hub.fleet",
   "hub.conflicts",
   "hub.audit",
+  "hub.devices",
+  "hub.enroll",
+  "hub.revoke",
+  "hub.whoami",
 ] as const satisfies readonly Method[];
