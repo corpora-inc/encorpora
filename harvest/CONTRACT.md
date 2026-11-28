@@ -665,19 +665,34 @@ CREATE TABLE failure_mode (mode_id TEXT PRIMARY KEY, equip_id TEXT NOT NULL, sys
 - **Symptom search** is lexical over the title and synonyms (Dice over
   content stems, pack synonyms applied), plus cosine over the symptom's
   `chunk` (`ref_kind = 'symptom'`) when the host's embedder matches the
-  pack's, plus 1 for a matched signal. Words in
-  `pack_meta.symptom_weak_words` (default: run, work, keep, …) never make
-  a match alone. A hit is `confident` when a signal matched, or its best
-  phrase covers at least `symptom_confident_coverage` (default 0.5) of
-  the query's other words and at least two of them (or all, when fewer),
-  or the cosine reaches `symptom_confident_dense` (default 0.85) beside a
-  lexical match; else `closest`. Each hit says why it matched, and
-  carries the rule's inputs (`lexical`, `coverage`, `strong_hits`,
-  `strong_query_words`, `cosine` whenever dense ran) and the result the
-  pack's `thresholds`, so the rule can be calibrated offline. `pack.info`
-  and `pack.list` say per pack whether dense search runs on this host and
-  why not (`pack_has_no_vectors`, `no_embedder_loaded`, `id_mismatch`,
-  `dimension_mismatch`).
+  pack's, plus 1 for a matched signal. Words in the weak-word list (core
+  default: run, work, keep, …) never make a lexical match alone. A
+  dense-only hit is listed from cosine `symptom_dense_floor` (0.5).
+  - **Score.** Dense active: `w·lexical + (1−w)·cosine`,
+    `w = symptom_fusion_lexical_weight` (0.10); dense off: `lexical`
+    (`symptom_fusion: rrf` switches to reciprocal-rank fusion,
+    `symptom_rrf_k` 60, for comparison).
+  - **Confidence.** A hit's `margin` is its score minus the best other
+    hit's; a single hit satisfies any margin. `confident` when a signal
+    matched; else, dense active: `margin ≥ symptom_confident_margin`
+    (0.02) and either `coverage ≥ symptom_confident_coverage` (0.50) with
+    `strong_hits ≥ symptom_confident_strong_hits` (1), or `cosine ≥
+    symptom_confident_dense_alone` (0.85); dense off: `margin ≥
+    symptom_confident_margin_lexical` (0.15), `coverage ≥
+    symptom_confident_coverage_lexical` (0.30) and `strong_hits ≥
+    symptom_confident_strong_hits_lexical` (1). Otherwise `closest`;
+    `none` with no hit. The closest signal rules of `signal.match` are
+    rated by the dense-off rule.
+  - Every value is a `pack_meta` key with the default shown (weak words:
+    `symptom_weak_words` replaces the core list, `symptom_weak_words_add`
+    adds to it); `symptom.search {ranking: {...}}` overrides any for one
+    call. Each hit carries the rule's inputs (`lexical`, `coverage`,
+    `strong_hits`, `strong_query_words`, `cosine` whenever dense ran,
+    `margin`) and the result `thresholds`: every value applied and
+    `dense_active`, so a result can be replayed.
+  - `pack.info` and `pack.list` say per pack whether dense search runs on
+    this host and why not (`pack_has_no_vectors`, `no_embedder_loaded`,
+    `id_mismatch`, `dimension_mismatch`).
 - **Locations and assets.** `section_loc.page_label` is the printed page
   ("3-2"); `page_index` is the 1-based physical page of the source file.
   `section_loc.boxes` is optional (older packs have no such column). A citation carries the source, edition, the
@@ -798,9 +813,12 @@ for a reviewer's screen).
   `{format: "harvest-hello/1", device_id, signed_at, link}`; `link` is
   `low` or `normal`, as the host knows its link). The hub answers
   `{accepted, refused: "unenrolled" | "revoked" | "signature" | null,
-  fleet_every_hours, hub_time, attachments, chunk_bytes}` before any
-  payload moves, and audits a
-  refusal. A refused device sends nothing but the hello, backing off (5
+  fleet_every_hours, hub_time, attachments, chunk_bytes, stream}` before
+  any payload moves (a device pulls bundles by `stream`'s own seq), and audits a
+  refusal (once per device, reason and detail an hour, at most 600 an
+  hour, and never for an id that is not `dev-<hex>`). A queue item
+  carries `suggested_note` and `suggested_scope`: what an unedited
+  approval publishes. A refused device sends nothing but the hello, backing off (5
   minutes, doubling, at most a day; restarted when the refusal reason
   changes or an operator forces a try with `sync.flush {force: true}`). A
   device with nothing queued sends no hello. `sync.status.hub` carries
@@ -829,7 +847,11 @@ for a reviewer's screen).
   is dropped and starts over; a complete one is audited
   (`hub.attachment`). A device retries a cut request (three in a row end
   the pass) and resumes from `held`. A file sent downscaled is sent in
-  full when a later hello allows it.
+  full when a later hello allows it. A copy damaged on the device is set
+  aside (`damaged`) and the lane goes on. `sync.attachments {max_seconds}`
+  runs one pass (it holds the records store; call it in short passes);
+  `sync.status.attachments` gives `mode`, `pending`, `pending_bytes`,
+  `sent`, `sent_downscaled`, `damaged`, `last_attempt_at`, `failing`.
 - **Receive.** `POST /hub/receive` takes a delivery
   `{device_id, signed_at, items: [Upload], signature}` signed by the
   device over the canonical JSON of `{format: "harvest-delivery/1",

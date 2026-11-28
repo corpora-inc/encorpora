@@ -38,6 +38,9 @@ pub struct ServeConfig {
     pub allow_origins: Vec<String>,
 }
 
+/// Request workers.
+const WORKERS: usize = 4;
+
 /// A running server.
 pub struct Running {
     server: Arc<Server>,
@@ -51,7 +54,9 @@ impl Running {
     }
     /// Stop accepting and wait for the server thread.
     pub fn stop(mut self) {
-        self.server.unblock();
+        for _ in 0..WORKERS {
+            self.server.unblock();
+        }
         if let Some(t) = self.thread.take() {
             let _ = t.join();
         }
@@ -74,12 +79,31 @@ pub fn start(host: Arc<Host>, cfg: ServeConfig) -> Result<Running> {
         .to_ip()
         .ok_or_else(|| Error::Invalid("the server has no IP address".into()))?;
     let s = server.clone();
+    // A few workers, so one slow upload does not hold every other device
+    // up; a panic in a handler costs that request, never the server.
+    let cfg = Arc::new(cfg);
     let thread = std::thread::spawn(move || {
-        for req in s.incoming_requests() {
-            let resp = handle(&host, &cfg, addr, req);
-            if let Err(e) = resp {
-                eprintln!("harvest serve: {e}");
-            }
+        let workers: Vec<_> = (0..WORKERS)
+            .map(|_| {
+                let (s, host, cfg) = (s.clone(), host.clone(), cfg.clone());
+                std::thread::spawn(move || {
+                    while let Ok(req) = s.recv() {
+                        let out = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+                            handle(&host, &cfg, addr, req)
+                        }));
+                        match out {
+                            Ok(Ok(())) => {}
+                            Ok(Err(e)) => eprintln!("harvest serve: {e}"),
+                            Err(_) => eprintln!(
+                                "harvest serve: a request handler panicked; the request was dropped"
+                            ),
+                        }
+                    }
+                })
+            })
+            .collect();
+        for w in workers {
+            let _ = w.join();
         }
     });
     Ok(Running {
@@ -452,22 +476,8 @@ fn hub_route(
     }
 }
 
-/// A pack asset's bytes, re-hashed before they go out.
 fn asset(host: &Host, pack_id: &str, asset_id: &str) -> Result<Option<(String, Vec<u8>)>> {
-    let Ok(pack) = host.pack(Some(pack_id)) else {
-        return Ok(None);
-    };
-    let Some((a, path)) = pack.asset_file(asset_id)? else {
-        return Ok(None);
-    };
-    let bytes = std::fs::read(&path)?;
-    use sha2::{Digest, Sha256};
-    if !crate::packs::hex_encode(&Sha256::digest(&bytes)).eq_ignore_ascii_case(&a.sha256) {
-        return Err(Error::Integrity(format!(
-            "asset {asset_id}: sha256 mismatch"
-        )));
-    }
-    Ok(Some((a.media_type, bytes)))
+    host.asset(pack_id, asset_id)
 }
 
 /// A file under `dir` for a URL path; app routes without an extension get

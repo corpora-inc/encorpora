@@ -136,8 +136,53 @@ export interface AssetUpdateParams {
   pack_id?: string | null;
 }
 
+/** What one pass of the attachment lane did. */
+export interface AttachReport {
+  /** Bytes still to send under the current policy. */
+  backlog_bytes: number;
+  bytes: number;
+  chunks: number;
+  /** Variants the hub now holds in full (sent now or found there). */
+  completed: number;
+  /**
+   * Attachments whose stored copy is damaged on this device (set aside;
+   * the record keeps its reference).
+   */
+  damaged: string[];
+  error: string | null;
+  mode: AttachmentMode | null;
+  /**
+   * Variants continued from where the hub had them, and the bytes not
+   * resent because of it.
+   */
+  resumed: number;
+  resumed_bytes: number;
+  /** Stopped early because the host asked (records waiting, window closing). */
+  yielded: boolean;
+}
+
 /** What attachments travel on a link (the hub's policy per link class). */
 export type AttachmentMode = "full" | "refs" | "downscaled";
+
+/** The attachment lane's state, apart from the records'. */
+export interface AttachmentStatus {
+  /** Files whose stored copy is damaged on this device. */
+  damaged: number;
+  failing: string | null;
+  /** The last pass, and its error when it failed. */
+  last_attempt_at: string | null;
+  /**
+   * The hub's policy for this device's link at the last hello (`None`
+   * before any).
+   */
+  mode: AttachmentMode | null;
+  /** Files still to send under that policy (under `full` when unknown). */
+  pending: number;
+  pending_bytes: number;
+  /** Files the hub holds in full, and those it holds only downscaled. */
+  sent: number;
+  sent_downscaled: number;
+}
 
 /** One retrieved chunk as the log keeps it. */
 export interface AuditChunk {
@@ -354,9 +399,12 @@ export interface ClosestSignal {
   confidence: Confidence;
   coverage: number;
   has_tree: boolean;
+  /** The score's lead over the best other rule (its own score alone). */
+  margin: number;
   rule: SignalRule;
   score: number;
   section: SignalSection | null;
+  strong_hits: number;
 }
 
 /**
@@ -778,6 +826,9 @@ export type Fold = "expanded" | "collapsed";
 /** The input formats. */
 export type Format = "j1939_candump" | "j1939_frames" | "j1587" | "display" | "mavlink_tlog" | "mavlink_raw";
 
+/** How lexical and dense scores combine. */
+export type Fusion = "weighted" | "rrf";
+
 /** What was checked. */
 export interface GraphCounts {
   assets: number;
@@ -849,6 +900,8 @@ export interface HelloReply {
   fleet_every_hours: number;
   hub_time: string;
   refused: Refusal | null;
+  /** The hub's bundle stream: a device pulls by this stream's seq. */
+  stream: string | null;
 }
 
 /** A fleet history event baked in the pack. */
@@ -1527,6 +1580,64 @@ export interface PullReport {
   refused: RefusedBundle | null;
 }
 
+/**
+ * The symptom ranking and confidence rule (CONTRACT "Symptom search"):
+ * the code defaults, then `pack_meta`, then a caller's overrides. A
+ * search returns the values it applied and whether dense was active, so
+ * any result can be replayed.
+ */
+export interface Ranking {
+  coverage: number;
+  coverage_lexical: number;
+  /** Whether the dense half ran for this result (set by the search). */
+  dense_active: boolean;
+  dense_alone: number;
+  /**
+   * `symptom_dense_floor`: a dense hit with no lexical match is listed
+   * from this cosine.
+   */
+  dense_floor: number;
+  fusion: Fusion;
+  /** `symptom_fusion_lexical_weight` w (the cosine weighs `1 - w`). */
+  lexical_weight: number;
+  /**
+   * Dense active: `symptom_confident_margin`, `symptom_confident_coverage`,
+   * `symptom_confident_strong_hits`, `symptom_confident_dense_alone`.
+   */
+  margin: number;
+  /**
+   * Dense off: `symptom_confident_margin_lexical`,
+   * `symptom_confident_coverage_lexical`,
+   * `symptom_confident_strong_hits_lexical`.
+   */
+  margin_lexical: number;
+  /** `symptom_rrf_k`. */
+  rrf_k: number;
+  strong_hits: number;
+  strong_hits_lexical: number;
+  /** The weak words in force (the core list or the pack's, plus additions). */
+  weak_words: string[];
+}
+
+/** Overrides of a pack's ranking, field by field. */
+export interface RankingParams {
+  coverage?: number | null;
+  coverage_lexical?: number | null;
+  dense_alone?: number | null;
+  dense_floor?: number | null;
+  fusion?: Fusion | null;
+  lexical_weight?: number | null;
+  margin?: number | null;
+  margin_lexical?: number | null;
+  rrf_k?: number | null;
+  strong_hits?: number | null;
+  strong_hits_lexical?: number | null;
+  /** Replace the weak-word list. */
+  weak_words?: string[] | null;
+  /** Add to it. */
+  weak_words_add?: string[];
+}
+
 /** How a query word the pack does not hold as typed was read. */
 export interface Reading {
   /** The indexed words it was read as. */
@@ -1693,6 +1804,12 @@ export interface ReviewItem {
   reviews: ReviewRecord[];
   /** `pending` | `approved` | `rejected`. */
   status: string;
+  /**
+   * The field note an unedited approval of `current` publishes, and
+   * where it shows (the app shows these; it does not word its own).
+   */
+  suggested_note: string;
+  suggested_scope: NoteScope;
   versions: LessonVersion[];
 }
 
@@ -2143,6 +2260,11 @@ export interface SymptomHit {
    * dense ran, counted or not).
    */
   lexical: number;
+  /**
+   * This hit's score minus the best other hit's (its own score when it
+   * is alone, which satisfies any margin).
+   */
+  margin: number;
   score: number;
   strong_hits: number;
   strong_query_words: number;
@@ -2161,10 +2283,11 @@ export interface SymptomSearch {
   /** The signal match, when observations were given. */
   signals: SignalMatch | null;
   /**
-   * The confidence rule's thresholds for this pack (with each hit's
-   * inputs, enough to calibrate the rule offline).
+   * Every value of the ranking and confidence rule this search applied
+   * (the pack's, with the call's overrides) and whether dense was
+   * active: with each hit's inputs, the result can be replayed.
    */
-  thresholds: Thresholds;
+  thresholds: Ranking;
 }
 
 export interface SymptomSearchParams {
@@ -2176,8 +2299,23 @@ export interface SymptomSearchParams {
   /** Signals read from the machine. */
   observations?: ObservationInput[];
   pack_id?: string | null;
+  /** Overrides of the pack's ranking rule (for calibration). */
+  ranking?: RankingParams | null;
   /** The technician's words. */
   text?: string | null;
+}
+
+/**
+ * One pass of the attachment lane (after `sync.flush`; it sends nothing
+ * while records are queued).
+ */
+export interface SyncAttachmentsParams {
+  /**
+   * Stop starting chunks after this long (default 10, at most 300). The
+   * pass holds the records store, so a host calls it in short passes
+   * while the link is up.
+   */
+  max_seconds?: number | null;
 }
 
 export interface SyncFlushParams {
@@ -2199,6 +2337,8 @@ export interface SyncPull {
 /** The outbox and the link. */
 export interface SyncStatus {
   acked: number;
+  /** The attachment lane, apart from the records. */
+  attachments: AttachmentStatus;
   /** Pending items that have failed at least once. */
   failing: number;
   hub: HubState;
@@ -2314,16 +2454,6 @@ export interface TestProcedure {
   title: string;
 }
 
-/** The confidence rule's thresholds a pack sets (or the defaults). */
-export interface Thresholds {
-  /** `symptom_confident_coverage`. */
-  coverage: number;
-  /** `symptom_confident_dense`. */
-  dense: number;
-  /** A dense hit with no lexical match counts from this cosine. */
-  dense_alone: number;
-}
-
 /** A whole tree, checked: every node passed and its text is verbatim. */
 export interface Tree {
   edges: FaultEdge[];
@@ -2417,6 +2547,7 @@ export interface Methods {
   "field.install": { params: FieldInstallParams; result: FieldInstall };
   "field.list": { params: NoParams; result: FieldNote[] };
   "sync.status": { params: NoParams; result: SyncStatus };
+  "sync.attachments": { params: SyncAttachmentsParams; result: AttachReport };
   "sync.flush": { params: SyncFlushParams; result: HubFlush };
   "device.info": { params: NoParams; result: DeviceInfo };
   "sync.pull": { params: NoParams; result: SyncPull };
@@ -2486,6 +2617,7 @@ export const METHODS = [
   "field.install",
   "field.list",
   "sync.status",
+  "sync.attachments",
   "sync.flush",
   "device.info",
   "sync.pull",

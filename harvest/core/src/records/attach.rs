@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS attachment (
   small_bytes  INTEGER,
   created_at   TEXT NOT NULL,
   -- what the hub holds: none | small | full
-  sent         TEXT NOT NULL DEFAULT 'none' CHECK (sent IN ('none', 'small', 'full'))
+  sent         TEXT NOT NULL DEFAULT 'none' CHECK (sent IN ('none', 'small', 'full', 'damaged'))
 );
 CREATE TABLE IF NOT EXISTS attachment_chunk (
   sha256  TEXT NOT NULL,
@@ -57,7 +57,8 @@ pub struct Attachment {
     pub small_sha256: Option<String>,
     pub small_bytes: Option<u64>,
     pub created_at: String,
-    /// What the hub holds: `none`, `small` or `full`.
+    /// What the hub holds: `none`, `small` or `full`; `damaged` when the
+    /// stored copy no longer matches its hash (never sent).
     pub sent: String,
 }
 
@@ -77,6 +78,9 @@ pub struct AttachReport {
     pub yielded: bool,
     /// Bytes still to send under the current policy.
     pub backlog_bytes: u64,
+    /// Attachments whose stored copy is damaged on this device (set aside;
+    /// the record keeps its reference).
+    pub damaged: Vec<String>,
     pub error: Option<String>,
 }
 
@@ -96,6 +100,7 @@ impl Records {
         if bytes.is_empty() {
             return Err(Error::Invalid("an attachment needs bytes".into()));
         }
+        let small = small.filter(|s| !s.is_empty());
         let sha = sha_hex(bytes);
         let small_sha = small.map(sha_hex);
         let tx = self.write_tx()?;
@@ -187,7 +192,7 @@ impl Records {
         let mut out = Vec::new();
         for a in self.attachments()? {
             match (mode, a.sent.as_str()) {
-                (AttachmentMode::Refs, _) | (_, "full") => {}
+                (AttachmentMode::Refs, _) | (_, "full") | (_, "damaged") => {}
                 (AttachmentMode::Downscaled, "small") => {}
                 (AttachmentMode::Downscaled, _) => match (&a.small_sha256, a.small_bytes) {
                     (Some(s), Some(n)) => out.push((a.sha256.clone(), "small", s.clone(), n)),
@@ -215,6 +220,17 @@ impl Records {
         link: &dyn HubLink,
         stop: &dyn Fn() -> bool,
     ) -> Result<AttachReport> {
+        let r = self.attachment_pass(link, stop)?;
+        if r.mode.is_some() || r.error.is_some() {
+            let mut gate = super::maint::HubGate::load(&self.conn)?;
+            gate.attachments_at = Some(now_rfc3339());
+            gate.attachments_error = r.error.clone();
+            gate.save(&self.conn)?;
+        }
+        Ok(r)
+    }
+
+    fn attachment_pass(&self, link: &dyn HubLink, stop: &dyn Fn() -> bool) -> Result<AttachReport> {
         let mut report = AttachReport::default();
         if self.attachment_backlog(AttachmentMode::Full)? == 0 {
             return Ok(report);
@@ -276,12 +292,25 @@ impl Records {
                 report.resumed_bytes += offset;
             }
             if offset < total {
-                let data = self.attachment_bytes(&sha, variant)?;
-                if data.len() as u64 != total || sha_hex(&data) != vsha {
-                    return Err(Error::Crypto(format!(
-                        "attachment {sha}: stored bytes do not match their hash"
-                    )));
-                }
+                // A damaged stored copy is set aside and reported; the
+                // lane goes on with the rest.
+                let data = match self.attachment_bytes(&sha, variant) {
+                    Ok(d) if d.len() as u64 == total && sha_hex(&d) == vsha => d,
+                    Ok(_) | Err(_) => {
+                        eprintln!(
+                            "harvest: attachment {sha} ({variant}) is damaged on this device; set aside"
+                        );
+                        self.conn.execute(
+                            "UPDATE attachment SET sent = 'damaged' WHERE sha256 = ?1",
+                            [&sha],
+                        )?;
+                        report.damaged.push(sha.clone());
+                        continue;
+                    }
+                };
+                // The hub dropping the whole (it did not hash to its name)
+                // more than twice for one file ends the pass.
+                let mut restarts = 0u32;
                 while offset < total {
                     if self.outbox_status()?.pending > 0 || stop() {
                         report.yielded = true;
@@ -296,15 +325,17 @@ impl Records {
                             // The hub says what it holds; resume from there.
                             // Going backwards (the hub found the whole
                             // damaged and dropped it) counts as a failure.
-                            if held < end
-                                && tries.give_up(
-                                    &mut report,
-                                    Error::Sync(format!(
-                                        "attachment {vsha}: the hub holds {held} of {end}"
-                                    )),
-                                )
-                            {
-                                break 'items;
+                            if held < end {
+                                restarts += 1;
+                                let e = Error::Sync(format!(
+                                    "attachment {vsha}: the hub holds {held} of {end}"
+                                ));
+                                if restarts > 2 || tries.give_up(&mut report, e) {
+                                    report.error = Some(format!(
+                                        "attachment {vsha}: the hub keeps dropping it"
+                                    ));
+                                    break 'items;
+                                }
                             }
                             if held >= end {
                                 tries = Tries::default();
@@ -357,7 +388,45 @@ impl Tries {
     }
 }
 
+/// The attachment lane's state, apart from the records'.
+#[derive(Debug, Clone, Default, Serialize, Deserialize, JsonSchema, PartialEq)]
+pub struct AttachmentStatus {
+    /// The hub's policy for this device's link at the last hello (`None`
+    /// before any).
+    pub mode: Option<AttachmentMode>,
+    /// Files still to send under that policy (under `full` when unknown).
+    pub pending: u64,
+    pub pending_bytes: u64,
+    /// Files the hub holds in full, and those it holds only downscaled.
+    pub sent: u64,
+    pub sent_downscaled: u64,
+    /// Files whose stored copy is damaged on this device.
+    pub damaged: u64,
+    /// The last pass, and its error when it failed.
+    pub last_attempt_at: Option<String>,
+    pub failing: Option<String>,
+}
+
 impl Records {
+    /// Where the attachment lane stands.
+    pub fn attachment_status(&self) -> Result<AttachmentStatus> {
+        let gate = super::maint::HubGate::load(&self.conn)?;
+        let mode = gate.attachments;
+        let work = self.attachment_work(mode.unwrap_or(AttachmentMode::Full))?;
+        let all = self.attachments()?;
+        let count = |s: &str| all.iter().filter(|a| a.sent == s).count() as u64;
+        Ok(AttachmentStatus {
+            mode,
+            pending: work.len() as u64,
+            pending_bytes: work.iter().map(|w| w.3).sum(),
+            sent: count("full"),
+            sent_downscaled: count("small"),
+            damaged: count("damaged"),
+            last_attempt_at: gate.attachments_at,
+            failing: gate.attachments_error,
+        })
+    }
+
     /// One attachment by hash.
     pub fn attachment(&self, sha256: &str) -> Result<Option<Attachment>> {
         Ok(self.attachments()?.into_iter().find(|a| a.sha256 == sha256))

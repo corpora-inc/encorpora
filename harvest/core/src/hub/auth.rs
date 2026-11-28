@@ -199,6 +199,15 @@ impl TrustedProxy {
 impl Identify for TrustedProxy {
     fn identify(&self, req: &RequestMeta) -> Result<Option<Principal>> {
         let from_proxy = req.remote.is_some_and(|r| self.proxies.contains(&r));
+        // A proxy that appends rather than replaces would let the client's
+        // own value through: two of the header is refused.
+        let want = self.header.to_ascii_lowercase();
+        if req.headers.iter().filter(|(k, _)| *k == want).count() > 1 {
+            return Err(Error::Signature(format!(
+                "{} appears more than once",
+                self.header
+            )));
+        }
         let name = req
             .header(&self.header)
             .map(str::trim)
@@ -286,5 +295,13 @@ mod tests {
             .unwrap()
             .unwrap();
         assert!(nobody.roles.is_empty());
+        // Two of the header (a proxy that appends): refused.
+        assert!(
+            p.identify(&meta(
+                "10.0.0.5",
+                &[("X-Remote-User", "admin"), ("X-Remote-User", "j.doe")]
+            ))
+            .is_err()
+        );
     }
 }

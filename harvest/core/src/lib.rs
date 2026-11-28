@@ -32,6 +32,7 @@ pub mod packs;
 pub mod records;
 pub mod retrieval;
 pub mod segments;
+pub mod shell;
 pub mod sim;
 pub mod sync;
 pub mod tools;

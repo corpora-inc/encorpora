@@ -438,6 +438,8 @@ fn the_api_reports_signal_kinds_sync_state_and_tree_titles() {
     assert_eq!(m["suggested"]["node_id"], "oh.1");
     assert_eq!(m["hits"][0]["rule"]["signal_kind"], "pump40.code");
     let s = ok(&h, "sync.status", json!({}));
+    assert_eq!(s["attachments"]["pending"], 0);
+    assert!(s["attachments"]["mode"].is_null());
     assert_eq!(s["hub"]["configured"], true);
     assert_eq!(s["hub"]["reachable"], Value::Null);
     assert_eq!(s["last_synced_at"], Value::Null);
@@ -519,6 +521,8 @@ fn dense_search_says_when_it_is_off_and_why() {
     );
     assert_eq!(s["dense"], true);
     assert_eq!(s["thresholds"]["coverage"], 0.5);
+    assert_eq!(s["thresholds"]["fusion"], "weighted");
+    assert_eq!(s["thresholds"]["dense_active"], true);
     let top = &s["hits"][0];
     assert!(top["cosine"].is_number() && top["lexical"].is_number());
     assert!(top["strong_query_words"].as_u64().unwrap() >= top["strong_hits"].as_u64().unwrap());
@@ -542,4 +546,94 @@ fn dense_search_says_when_it_is_off_and_why() {
     );
     assert_eq!(s["dense"], false);
     assert!(s["hits"][0]["cosine"].is_null());
+}
+
+#[test]
+fn the_ranking_rule_comes_from_the_pack_and_the_call_can_override_it() {
+    let (_t, h) = host(env());
+    let q = "engine will not crank";
+    let base = ok(&h, "symptom.search", json!({"text": q}));
+    assert_eq!(base["thresholds"]["lexical_weight"], 0.1);
+    assert_eq!(base["thresholds"]["margin"], 0.02);
+    assert_eq!(base["confidence"], "confident");
+    assert!(base["hits"][0]["margin"].as_f64().unwrap() > 0.0);
+    // Reciprocal-rank fusion: the top hit leads both rankings.
+    let rrf = ok(
+        &h,
+        "symptom.search",
+        json!({"text": q, "ranking": {"fusion": "rrf", "rrf_k": 10}}),
+    );
+    assert_eq!(
+        rrf["hits"][0]["symptom"]["symptom_id"],
+        base["hits"][0]["symptom"]["symptom_id"]
+    );
+    let top = rrf["hits"][0]["score"].as_f64().unwrap();
+    assert!(top <= 2.0 / 11.0 + 1e-9 && top > 0.0, "{top}");
+    // A margin the top hit cannot reach demotes it to closest (with a
+    // runner-up; a single hit satisfies any margin).
+    let two = "engine will not crank and it runs hot";
+    let m = ok(
+        &h,
+        "symptom.search",
+        json!({"text": two, "ranking": {"margin": 100.0}}),
+    );
+    assert!(m["hits"].as_array().unwrap().len() >= 2, "{m}");
+    assert_eq!(m["confidence"], "closest");
+    let m = ok(
+        &h,
+        "symptom.search",
+        json!({"text": q, "k": 1, "ranking": {"margin": 0.0}}),
+    );
+    assert_eq!(m["confidence"], "confident");
+    // Weak-word additions: every query word weak, no lexical match.
+    let w = ok(
+        &h,
+        "symptom.search",
+        json!({"text": "engine crank", "ranking": {"weak_words_add": ["engine", "crank"], "dense_floor": 2.0}}),
+    );
+    assert!(w["hits"].as_array().unwrap().is_empty(), "{w}");
+    assert!(
+        api::call(
+            &h,
+            "symptom.search",
+            json!({"text": q, "ranking": {"margin": -1}})
+        )
+        .is_err()
+    );
+}
+
+#[test]
+fn a_native_shell_opens_the_host_with_its_own_key_store() {
+    use harvest_core::shell::{self, HostConfig, KeyStore, MemoryKeyStore};
+    let tmp = tempfile::tempdir().unwrap();
+    let root = tmp.path().join("packs");
+    fixture_maint::build(&root.join("pump40"), "2026.3.1-1").unwrap();
+    let keys = MemoryKeyStore::default();
+    let cfg = HostConfig {
+        packs_root: root.clone(),
+        records_path: tmp.path().join("records.db"),
+        pack_keys: vec![fixture::trusted_key()],
+        encrypt_records: true,
+        ..Default::default()
+    };
+    let (host, report) = shell::open_host(&cfg, &keys).unwrap();
+    assert_eq!(report.packs, vec!["pump40"]);
+    assert!(report.dense[0].1.active, "the fixture's hashing embedder");
+    let rk = keys.load(shell::RECORDS_KEY).unwrap().unwrap();
+    let dk = keys.load(shell::DEVICE_KEY).unwrap().unwrap();
+    assert_eq!((rk.len(), dk.len()), (32, 32));
+    let list = ok(&host, "pack.list", json!({}));
+    assert_eq!(list[0]["pack_id"], "pump40");
+    let (media, bytes) = host.asset("pump40", "fig-3-1").unwrap().unwrap();
+    assert!(media.starts_with("image/") && !bytes.is_empty());
+    assert!(host.asset("pump40", "no-such").unwrap().is_none());
+    drop(host);
+    // Again: the same keys, the same device.
+    let (_h, again) = shell::open_host(&cfg, &keys).unwrap();
+    assert_eq!(again.device_id, report.device_id);
+    assert_eq!(keys.load(shell::RECORDS_KEY).unwrap().unwrap(), rk);
+    // Without the records key, the encrypted store does not open.
+    let empty = MemoryKeyStore::default();
+    empty.store(shell::DEVICE_KEY, &dk).unwrap();
+    assert!(shell::open_host(&cfg, &empty).is_err());
 }

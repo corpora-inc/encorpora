@@ -16,7 +16,7 @@
 //! reviewed lesson reopens it.
 
 pub mod auth;
-#[cfg(feature = "hub")]
+#[cfg(feature = "net")]
 pub mod http;
 
 use crate::audit::{AuditEvent, now_rfc3339};
@@ -259,6 +259,29 @@ pub struct ReviewItem {
     /// Two units edited it within the clock-skew bound: approving it needs
     /// the reviewer to choose a version.
     pub needs_reviewer: bool,
+    /// The field note an unedited approval of `current` publishes, and
+    /// where it shows (the app shows these; it does not word its own).
+    pub suggested_note: String,
+    pub suggested_scope: NoteScope,
+}
+
+/// The note an unedited approval publishes.
+pub fn suggested_note(l: &Lesson) -> String {
+    format!(
+        "Verified cause: {}. Corrective action: {}.",
+        l.cause.trim_end_matches('.'),
+        l.action.trim_end_matches('.')
+    )
+}
+
+/// Where an unedited approval's note shows.
+pub fn suggested_scope(l: &Lesson) -> NoteScope {
+    NoteScope {
+        equip_id: l.equip_id.clone(),
+        tree_id: l.tree_id.clone(),
+        node_id: None,
+        symptom_id: l.symptom_id.clone(),
+    }
 }
 
 /// A reviewer's changes when approving.
@@ -301,6 +324,22 @@ pub struct Hub {
     attachments_low: crate::sync::AttachmentMode,
     attachments_normal: crate::sync::AttachmentMode,
     chunk_bytes: u64,
+    /// When each (device, reason) refusal was last audited: repeats within
+    /// an hour are not written again, so refused traffic cannot fill the
+    /// chain.
+    refusals_audited: std::sync::Mutex<BTreeMap<String, i64>>,
+}
+
+/// Distinct refusals audited per hour at most.
+const REFUSALS_PER_HOUR: usize = 600;
+
+/// A device id as devices make them (`dev-` and hex): anything else is
+/// refused without being written to the audit chain.
+fn plausible_device_id(id: &str) -> bool {
+    id.len() <= 68
+        && id
+            .strip_prefix("dev-")
+            .is_some_and(|h| !h.is_empty() && h.bytes().all(|b| b.is_ascii_hexdigit()))
 }
 
 fn fold(s: &str) -> String {
@@ -375,6 +414,7 @@ impl Hub {
             attachments_low: crate::sync::AttachmentMode::Refs,
             attachments_normal: crate::sync::AttachmentMode::Full,
             chunk_bytes: crate::sync::DEFAULT_CHUNK_BYTES,
+            refusals_audited: std::sync::Mutex::new(BTreeMap::new()),
         })
     }
 
@@ -564,6 +604,25 @@ impl Hub {
     }
 
     fn refuse(&self, device_id: &str, why: Refusal, detail: &str, items: usize) -> Result<()> {
+        if !plausible_device_id(device_id) {
+            return Ok(());
+        }
+        let now = crate::audit::now_ms();
+        let detail: String = detail.chars().take(240).collect();
+        {
+            // The same refusal again within the hour is not written again,
+            // and at most REFUSALS_PER_HOUR distinct ones are.
+            let mut seen = self
+                .refusals_audited
+                .lock()
+                .unwrap_or_else(|p| p.into_inner());
+            seen.retain(|_, at| now - *at < 3_600_000);
+            let k = format!("{device_id}|{}|{detail}", why.as_str());
+            if seen.contains_key(&k) || seen.len() >= REFUSALS_PER_HOUR {
+                return Ok(());
+            }
+            seen.insert(k, now);
+        }
         let tx = self.tx()?;
         let mut ev = AuditEvent::new("hub.refuse", device_id);
         ev.detail = json!({"items": items, "refused": why.as_str(), "why": detail});
@@ -592,6 +651,7 @@ impl Hub {
                 crate::sync::LinkClass::Normal => self.attachments_normal,
             },
             chunk_bytes: self.chunk_bytes,
+            stream: Some(self.stream.clone()),
         })
     }
 
@@ -1005,6 +1065,8 @@ impl Hub {
                     })?
                     .collect::<rusqlite::Result<_>>()?;
                 Ok(ReviewItem {
+                    suggested_note: suggested_note(&current),
+                    suggested_scope: suggested_scope(&current),
                     lesson_id,
                     status,
                     reopened,
@@ -1090,18 +1152,9 @@ impl Hub {
         let text = match edit.text.as_deref().map(str::trim) {
             Some(t) if !t.is_empty() => t.to_string(),
             Some(_) => return Err(Error::Invalid("an edited note needs text".into())),
-            None => format!(
-                "Verified cause: {}. Corrective action: {}.",
-                l.cause.trim_end_matches('.'),
-                l.action.trim_end_matches('.')
-            ),
+            None => suggested_note(&l),
         };
-        let scope = edit.scope.unwrap_or(NoteScope {
-            equip_id: l.equip_id.clone(),
-            tree_id: l.tree_id.clone(),
-            node_id: None,
-            symptom_id: l.symptom_id.clone(),
-        });
+        let scope = edit.scope.unwrap_or_else(|| suggested_scope(&l));
         if scope.equip_id.is_none()
             && scope.tree_id.is_none()
             && scope.node_id.is_none()

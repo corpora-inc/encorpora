@@ -266,41 +266,19 @@ fn embedder(args: &Args, pack: &Pack) -> Result<Option<Arc<dyn Embedder>>, CliEr
     }
 }
 
-/// The SHA-256 of the GGUF a local llama-server loaded: its `/props`
-/// (`model_path`) or `/v1/models` (the first model's id) names the file,
-/// which is hashed here (once per process).
+/// The SHA-256 of the GGUF a local llama-server loaded (once per process).
 fn server_model_sha(url: &str) -> Result<String, CliError> {
     static CACHE: std::sync::Mutex<std::collections::BTreeMap<String, String>> =
         std::sync::Mutex::new(std::collections::BTreeMap::new());
     if let Some(s) = CACHE.lock().unwrap_or_else(|p| p.into_inner()).get(url) {
         return Ok(s.clone());
     }
-    let root = url.trim_end_matches('/');
-    let root = root.strip_suffix("/v1").unwrap_or(root);
-    let agent: ureq::Agent = ureq::Agent::config_builder()
-        .timeout_global(Some(std::time::Duration::from_secs(10)))
-        .build()
-        .into();
-    let get = |path: &str| -> Option<serde_json::Value> {
-        agent
-            .get(&format!("{root}{path}"))
-            .call()
-            .ok()?
-            .body_mut()
-            .read_json::<serde_json::Value>()
-            .ok()
-    };
-    let path = get("/props")
-        .and_then(|v| v["model_path"].as_str().map(str::to_string))
-        .or_else(|| get("/v1/models").and_then(|v| v["data"][0]["id"].as_str().map(str::to_string)))
-        .filter(|p| Path::new(p).is_file())
-        .ok_or_else(|| {
-            CliError::Usage(format!(
-                "{url} does not say which GGUF it loaded (or the file is not on this machine): give --embedder-gguf FILE or --embedder-sha256 HEX"
-            ))
-        })?;
-    let sha = harvest_core::packs::sha256_file(Path::new(&path))?;
-    eprintln!("harvest: {url} serves {path} (sha256 {})", &sha[..16]);
+    let sha = harvest_core::embed::served_model_sha256(url).map_err(|e| {
+        CliError::Usage(format!(
+            "{e} (--embedder-gguf FILE or --embedder-sha256 HEX)"
+        ))
+    })?;
+    eprintln!("harvest: {url} serves a GGUF with sha256 {}", &sha[..16]);
     CACHE
         .lock()
         .unwrap_or_else(|p| p.into_inner())
@@ -1117,44 +1095,7 @@ fn truncate(s: &str, n: usize) -> String {
 /// The packs under `root`: a pack directory itself, or a root holding pack
 /// directories or installed packs (`<pack_id>/current`).
 fn load_packs(root: &Path, keys: &[TrustedKey]) -> Result<Vec<Arc<Pack>>, CliError> {
-    let open = |dir: &Path| -> Result<Arc<Pack>, CliError> {
-        Ok(Arc::new(Pack::open_with(
-            dir,
-            keys,
-            harvest_core::Verify::InstallStamp,
-        )?))
-    };
-    if root.join(harvest_core::packs::MANIFEST).is_file() {
-        return Ok(vec![open(root)?]);
-    }
-    let mut out = Vec::new();
-    let mut entries: Vec<PathBuf> = std::fs::read_dir(root)
-        .map_err(|e| CliError::Usage(format!("{}: {e}", root.display())))?
-        .filter_map(|e| e.ok().map(|e| e.path()))
-        .filter(|p| p.is_dir())
-        .collect();
-    entries.sort();
-    for sub in entries {
-        let name = sub
-            .file_name()
-            .and_then(|n| n.to_str())
-            .unwrap_or("")
-            .to_string();
-        if sub.join("current").is_file() {
-            if let Some(dir) = harvest_core::packs::current(root, &name)? {
-                out.push(open(&dir)?);
-            }
-        } else if sub.join(harvest_core::packs::MANIFEST).is_file() {
-            out.push(open(&sub)?);
-        }
-    }
-    if out.is_empty() {
-        return Err(CliError::Usage(format!(
-            "no pack under {} (a pack directory, or a root of packs)",
-            root.display()
-        )));
-    }
-    Ok(out)
+    Ok(harvest_core::packs::load_root(root, keys)?)
 }
 
 #[cfg(feature = "serve")]

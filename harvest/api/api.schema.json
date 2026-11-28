@@ -519,6 +519,84 @@
       ],
       "type": "object"
     },
+    "AttachReport": {
+      "description": "What one pass of the attachment lane did.",
+      "properties": {
+        "backlog_bytes": {
+          "description": "Bytes still to send under the current policy.",
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "bytes": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "chunks": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "completed": {
+          "description": "Variants the hub now holds in full (sent now or found there).",
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "damaged": {
+          "description": "Attachments whose stored copy is damaged on this device (set aside;\nthe record keeps its reference).",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "error": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "mode": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AttachmentMode"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "resumed": {
+          "description": "Variants continued from where the hub had them, and the bytes not\nresent because of it.",
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "resumed_bytes": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "yielded": {
+          "description": "Stopped early because the host asked (records waiting, window closing).",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "mode",
+        "chunks",
+        "bytes",
+        "completed",
+        "resumed",
+        "resumed_bytes",
+        "yielded",
+        "backlog_bytes",
+        "damaged",
+        "error"
+      ],
+      "type": "object"
+    },
     "AttachmentMode": {
       "description": "What attachments travel on a link (the hub's policy per link class).",
       "oneOf": [
@@ -539,6 +617,74 @@
           "type": "string"
         }
       ]
+    },
+    "AttachmentStatus": {
+      "description": "The attachment lane's state, apart from the records'.",
+      "properties": {
+        "damaged": {
+          "description": "Files whose stored copy is damaged on this device.",
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "failing": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "last_attempt_at": {
+          "description": "The last pass, and its error when it failed.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "mode": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AttachmentMode"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "The hub's policy for this device's link at the last hello (`None`\nbefore any)."
+        },
+        "pending": {
+          "description": "Files still to send under that policy (under `full` when unknown).",
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "pending_bytes": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "sent": {
+          "description": "Files the hub holds in full, and those it holds only downscaled.",
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "sent_downscaled": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "mode",
+        "pending",
+        "pending_bytes",
+        "sent",
+        "sent_downscaled",
+        "damaged",
+        "last_attempt_at",
+        "failing"
+      ],
+      "type": "object"
     },
     "AuditChunk": {
       "description": "One retrieved chunk as the log keeps it.",
@@ -1295,6 +1441,11 @@
         "has_tree": {
           "type": "boolean"
         },
+        "margin": {
+          "description": "The score's lead over the best other rule (its own score alone).",
+          "format": "double",
+          "type": "number"
+        },
         "rule": {
           "$ref": "#/$defs/SignalRule"
         },
@@ -1311,12 +1462,19 @@
               "type": "null"
             }
           ]
+        },
+        "strong_hits": {
+          "format": "uint32",
+          "minimum": 0,
+          "type": "integer"
         }
       },
       "required": [
         "rule",
         "score",
         "coverage",
+        "strong_hits",
+        "margin",
         "confidence",
         "citation",
         "section",
@@ -2908,6 +3066,21 @@
         }
       ]
     },
+    "Fusion": {
+      "description": "How lexical and dense scores combine.",
+      "oneOf": [
+        {
+          "const": "weighted",
+          "description": "`w * lexical + (1 - w) * cosine` with dense active, else `lexical`.",
+          "type": "string"
+        },
+        {
+          "const": "rrf",
+          "description": "Reciprocal-rank fusion: `1 / (rrf_k + rank)` summed over the lexical\nand the dense ranking (kept for comparison; not the default).",
+          "type": "string"
+        }
+      ]
+    },
     "GraphCounts": {
       "description": "What was checked.",
       "properties": {
@@ -3171,6 +3344,14 @@
               "type": "null"
             }
           ]
+        },
+        "stream": {
+          "default": null,
+          "description": "The hub's bundle stream: a device pulls by this stream's seq.",
+          "type": [
+            "string",
+            "null"
+          ]
         }
       },
       "required": [
@@ -3179,7 +3360,8 @@
         "fleet_every_hours",
         "hub_time",
         "attachments",
-        "chunk_bytes"
+        "chunk_bytes",
+        "stream"
       ],
       "type": "object"
     },
@@ -5805,6 +5987,207 @@
       ],
       "type": "object"
     },
+    "Ranking": {
+      "description": "The symptom ranking and confidence rule (CONTRACT \"Symptom search\"):\nthe code defaults, then `pack_meta`, then a caller's overrides. A\nsearch returns the values it applied and whether dense was active, so\nany result can be replayed.",
+      "properties": {
+        "coverage": {
+          "format": "double",
+          "type": "number"
+        },
+        "coverage_lexical": {
+          "format": "double",
+          "type": "number"
+        },
+        "dense_active": {
+          "description": "Whether the dense half ran for this result (set by the search).",
+          "type": "boolean"
+        },
+        "dense_alone": {
+          "format": "double",
+          "type": "number"
+        },
+        "dense_floor": {
+          "description": "`symptom_dense_floor`: a dense hit with no lexical match is listed\nfrom this cosine.",
+          "format": "double",
+          "type": "number"
+        },
+        "fusion": {
+          "$ref": "#/$defs/Fusion"
+        },
+        "lexical_weight": {
+          "description": "`symptom_fusion_lexical_weight` w (the cosine weighs `1 - w`).",
+          "format": "double",
+          "type": "number"
+        },
+        "margin": {
+          "description": "Dense active: `symptom_confident_margin`, `symptom_confident_coverage`,\n`symptom_confident_strong_hits`, `symptom_confident_dense_alone`.",
+          "format": "double",
+          "type": "number"
+        },
+        "margin_lexical": {
+          "description": "Dense off: `symptom_confident_margin_lexical`,\n`symptom_confident_coverage_lexical`,\n`symptom_confident_strong_hits_lexical`.",
+          "format": "double",
+          "type": "number"
+        },
+        "rrf_k": {
+          "description": "`symptom_rrf_k`.",
+          "format": "double",
+          "type": "number"
+        },
+        "strong_hits": {
+          "format": "uint32",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "strong_hits_lexical": {
+          "format": "uint32",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "weak_words": {
+          "description": "The weak words in force (the core list or the pack's, plus additions).",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "fusion",
+        "lexical_weight",
+        "rrf_k",
+        "dense_floor",
+        "margin",
+        "coverage",
+        "strong_hits",
+        "dense_alone",
+        "margin_lexical",
+        "coverage_lexical",
+        "strong_hits_lexical",
+        "weak_words",
+        "dense_active"
+      ],
+      "type": "object"
+    },
+    "RankingParams": {
+      "additionalProperties": false,
+      "description": "Overrides of a pack's ranking, field by field.",
+      "properties": {
+        "coverage": {
+          "default": null,
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "coverage_lexical": {
+          "default": null,
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "dense_alone": {
+          "default": null,
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "dense_floor": {
+          "default": null,
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "fusion": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Fusion"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "lexical_weight": {
+          "default": null,
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "margin": {
+          "default": null,
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "margin_lexical": {
+          "default": null,
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "rrf_k": {
+          "default": null,
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "strong_hits": {
+          "default": null,
+          "format": "uint32",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "strong_hits_lexical": {
+          "default": null,
+          "format": "uint32",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "weak_words": {
+          "default": null,
+          "description": "Replace the weak-word list.",
+          "items": {
+            "type": "string"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "weak_words_add": {
+          "default": [],
+          "description": "Add to it.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "Reading": {
       "description": "How a query word the pack does not hold as typed was read.",
       "properties": {
@@ -6421,6 +6804,13 @@
           "description": "`pending` | `approved` | `rejected`.",
           "type": "string"
         },
+        "suggested_note": {
+          "description": "The field note an unedited approval of `current` publishes, and\nwhere it shows (the app shows these; it does not word its own).",
+          "type": "string"
+        },
+        "suggested_scope": {
+          "$ref": "#/$defs/NoteScope"
+        },
         "versions": {
           "items": {
             "$ref": "#/$defs/LessonVersion"
@@ -6436,7 +6826,9 @@
         "versions",
         "reviews",
         "first_received_at",
-        "needs_reviewer"
+        "needs_reviewer",
+        "suggested_note",
+        "suggested_scope"
       ],
       "type": "object"
     },
@@ -7930,6 +8322,11 @@
           "format": "double",
           "type": "number"
         },
+        "margin": {
+          "description": "This hit's score minus the best other hit's (its own score when it\nis alone, which satisfies any margin).",
+          "format": "double",
+          "type": "number"
+        },
         "score": {
           "format": "double",
           "type": "number"
@@ -7963,7 +8360,8 @@
         "lexical",
         "strong_hits",
         "strong_query_words",
-        "cosine"
+        "cosine",
+        "margin"
       ],
       "type": "object"
     },
@@ -8002,8 +8400,8 @@
           "description": "The signal match, when observations were given."
         },
         "thresholds": {
-          "$ref": "#/$defs/Thresholds",
-          "description": "The confidence rule's thresholds for this pack (with each hit's\ninputs, enough to calibrate the rule offline)."
+          "$ref": "#/$defs/Ranking",
+          "description": "Every value of the ranking and confidence rule this search applied\n(the pack's, with the call's overrides) and whether dense was\nactive: with each hit's inputs, the result can be replayed."
         }
       },
       "required": [
@@ -8059,11 +8457,40 @@
             "null"
           ]
         },
+        "ranking": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RankingParams"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Overrides of the pack's ranking rule (for calibration)."
+        },
         "text": {
           "default": null,
           "description": "The technician's words.",
           "type": [
             "string",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "SyncAttachmentsParams": {
+      "additionalProperties": false,
+      "description": "One pass of the attachment lane (after `sync.flush`; it sends nothing\nwhile records are queued).",
+      "properties": {
+        "max_seconds": {
+          "default": null,
+          "description": "Stop starting chunks after this long (default 10, at most 300). The\npass holds the records store, so a host calls it in short passes\nwhile the link is up.",
+          "format": "uint64",
+          "minimum": 0,
+          "type": [
+            "integer",
             "null"
           ]
         }
@@ -8116,6 +8543,10 @@
           "minimum": 0,
           "type": "integer"
         },
+        "attachments": {
+          "$ref": "#/$defs/AttachmentStatus",
+          "description": "The attachment lane, apart from the records."
+        },
         "failing": {
           "description": "Pending items that have failed at least once.",
           "format": "uint64",
@@ -8167,7 +8598,8 @@
         "pending_by_kind",
         "last_error",
         "last_synced_at",
-        "hub"
+        "hub",
+        "attachments"
       ],
       "type": "object"
     },
@@ -8558,32 +8990,6 @@
         "guards",
         "requirements",
         "steps"
-      ],
-      "type": "object"
-    },
-    "Thresholds": {
-      "description": "The confidence rule's thresholds a pack sets (or the defaults).",
-      "properties": {
-        "coverage": {
-          "description": "`symptom_confident_coverage`.",
-          "format": "double",
-          "type": "number"
-        },
-        "dense": {
-          "description": "`symptom_confident_dense`.",
-          "format": "double",
-          "type": "number"
-        },
-        "dense_alone": {
-          "description": "A dense hit with no lexical match counts from this cosine.",
-          "format": "double",
-          "type": "number"
-        }
-      },
-      "required": [
-        "coverage",
-        "dense",
-        "dense_alone"
       ],
       "type": "object"
     },
@@ -9267,6 +9673,14 @@
       },
       "result": {
         "$ref": "#/$defs/SymptomSearch"
+      }
+    },
+    "sync.attachments": {
+      "params": {
+        "$ref": "#/$defs/SyncAttachmentsParams"
+      },
+      "result": {
+        "$ref": "#/$defs/AttachReport"
       }
     },
     "sync.flush": {

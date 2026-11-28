@@ -195,6 +195,14 @@ pub struct HubGate {
     pub attachments: Option<crate::sync::AttachmentMode>,
     #[serde(default)]
     pub chunk_bytes: Option<u64>,
+    /// The hub's bundle stream (learned at a hello or from a bundle).
+    #[serde(default)]
+    pub stream: Option<String>,
+    /// The attachment lane's last pass: when, and its error if it failed.
+    #[serde(default)]
+    pub attachments_at: Option<String>,
+    #[serde(default)]
+    pub attachments_error: Option<String>,
 }
 
 /// First back-off after a refusal, and its cap.
@@ -208,6 +216,9 @@ impl HubGate {
         self.fleet_every_hours = Some(reply.fleet_every_hours);
         self.attachments = Some(reply.attachments);
         self.chunk_bytes = Some(reply.chunk_bytes);
+        if reply.stream.is_some() {
+            self.stream = reply.stream.clone();
+        }
         if reply.accepted {
             self.refused = None;
         }
@@ -2787,6 +2798,9 @@ impl Records {
         gate.fleet_every_hours = Some(reply.fleet_every_hours);
         gate.attachments = Some(reply.attachments);
         gate.chunk_bytes = Some(reply.chunk_bytes);
+        if reply.stream.is_some() {
+            gate.stream = reply.stream.clone();
+        }
         if !reply.accepted {
             gate.backoff_s = if force || gate.refused != reply.refused {
                 BACKOFF_FIRST_S
@@ -2859,6 +2873,19 @@ impl Records {
     }
 
     /// The highest bundle seq installed (across streams).
+    /// The newest bundle seq installed from `stream`.
+    pub fn stream_seq(&self, stream: &str) -> Result<u64> {
+        let n: Option<i64> = self
+            .conn
+            .query_row(
+                "SELECT seq FROM field_stream WHERE stream = ?1",
+                [stream],
+                |r| r.get(0),
+            )
+            .optional()?;
+        Ok(n.unwrap_or(0).max(0) as u64)
+    }
+
     pub fn installed_bundle_seq(&self) -> Result<u64> {
         let n: Option<i64> = self
             .conn
@@ -2875,11 +2902,15 @@ impl Records {
     /// `fleet_every_hours`, the hub's setting learned at the last hello
     /// (24 until then): it is the least urgent thing on the link.
     pub fn pull(&self, link: &dyn crate::sync::HubLink, keys: &[TrustedKey]) -> Result<PullReport> {
-        let fleet_every_hours = HubGate::load(&self.conn)?
-            .fleet_every_hours
-            .unwrap_or(DEFAULT_FLEET_EVERY_HOURS);
+        let mut gate = HubGate::load(&self.conn)?;
+        let fleet_every_hours = gate.fleet_every_hours.unwrap_or(DEFAULT_FLEET_EVERY_HOURS);
         let mut report = PullReport::default();
-        let since = self.installed_bundle_seq()?;
+        // The hub's own stream's seq: a bundle from another stream (a USB
+        // install) says nothing about where this hub is.
+        let since = match &gate.stream {
+            Some(s) => self.stream_seq(s)?,
+            None => 0,
+        };
         let bundles = match link.bundles_since(since) {
             Ok(b) => b,
             Err(e) => {
@@ -2890,11 +2921,20 @@ impl Records {
         for b in bundles {
             report.bytes += serde_json::to_vec(&b)?.len() as u64;
             let seq = b.get("seq").and_then(Value::as_u64);
-            if seq.is_some_and(|s| s <= self.installed_bundle_seq().unwrap_or(0)) {
+            let stream = b.get("stream").and_then(Value::as_str).map(str::to_string);
+            let have = match &stream {
+                Some(s) => self.stream_seq(s)?,
+                None => 0,
+            };
+            if seq.is_some_and(|s| s <= have) {
                 continue; // a duplicate delivery: already installed
             }
             match self.install_field_bundle(&b, keys) {
                 Ok(r) => {
+                    if stream.is_some() && gate.stream != stream {
+                        gate.stream = stream.clone();
+                        gate.save(&self.conn)?;
+                    }
                     report.installed.push(r.seq);
                     report.notes += r.installed;
                 }
