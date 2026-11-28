@@ -7,3 +7,7 @@ src-tauri/voice/
 voice-eval/models/
 voice-eval/audio/
 voice-eval/work*/
+
+# The knowledge pack the release workflow builds and places (never committed).
+/src-tauri/resources/pack/
+/public/pack/
