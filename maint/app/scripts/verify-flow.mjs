@@ -261,6 +261,21 @@ try {
   await page.getByText(/Intact, \d+ entries/).waitFor();
   await shot("records");
 
+  // Connect to vehicle with no link on this device: a pasted log; the engine says what each code is and where to start.
+  await page.goto(`${base}/units/unit-101`);
+  await page.getByRole("link", { name: "Connect to vehicle" }).click();
+  await page.getByLabel("Diagnostic log").fill("spn:168/fmi:1\nX99\n");
+  await page.getByRole("button", { name: "Add the codes" }).click();
+  await page.getByText("Battery voltage low").first().waitFor();
+  await page.getByText("Not in this manual").waitFor();
+  await shot("connect-codes");
+  await page.goto(`${base}/units/unit-101`);
+  await page.getByText("Battery voltage low").first().waitFor();
+  await page.getByRole("link", { name: "Connect to vehicle" }).click();
+  await page.getByRole("button", { name: "Start here" }).first().click();
+  await page.getByText(/^Step \d+, check/).waitFor();
+  assert.match(await page.locator("article").first().innerText(), /battery voltage/i);
+
   // Voice, on a device with the speech model: the words land in the box to be checked before they are used.
   const native = await browser.newContext({ viewport: { width: 1280, height: 800 } });
   await native.addInitScript(fakeNative, " Engine does not crank. ");

@@ -4,6 +4,7 @@ export const homePath = () => "/";
 export type IdentifyMode = "type" | "scan" | "connect";
 export const newUnitPath = (mode: IdentifyMode = "type") => `/units/new/${mode}`;
 export const unitPath = (id: string) => `/units/${enc(id)}`;
+export const connectPath = (unitId: string) => `/units/${enc(unitId)}/connect`;
 export const describePath = (unitId: string) => `/units/${enc(unitId)}/troubleshoot`;
 export const jobPath = (jobId: string) => `/jobs/${enc(jobId)}`;
 export const jobPagePath = (jobId: string, assetId: string) => `/jobs/${enc(jobId)}/page/${enc(assetId)}`;

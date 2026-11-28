@@ -3,7 +3,7 @@ import { createBrowserRouter, Outlet, RouterProvider, useLocation } from "react-
 import { PRODUCT } from "./config.ts";
 import { Frame } from "./pages/Frame.tsx";
 import { HomePage, IdentifyPage, UnitRoute } from "./pages/FleetPages.tsx";
-import { CloseOutPage, DescribePage, JobPage } from "./pages/JobPages.tsx";
+import { CloseOutPage, ConnectPage, DescribePage, JobPage } from "./pages/JobPages.tsx";
 import { LearnPage, TreeStudyPage } from "./pages/LearnPages.tsx";
 import { ManualHomePage, ManualSearchPage, SectionPage } from "./pages/ManualPages.tsx";
 import { RecordsPage } from "./pages/RecordsPage.tsx";
@@ -57,6 +57,7 @@ const router = createBrowserRouter([
           { path: "/units/new/:mode", element: <IdentifyPage /> },
           { path: "/units/:unitId", element: <UnitRoute /> },
           { path: "/units/:unitId/troubleshoot", element: <DescribePage /> },
+          { path: "/units/:unitId/connect", element: <ConnectPage /> },
           { path: "/jobs/:jobId", element: <JobPage /> },
           { path: "/jobs/:jobId/ask", element: <JobPage /> },
           { path: "/jobs/:jobId/page/:assetId", element: <JobPage /> },

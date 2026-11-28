@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { ChevronRight, Plus, Search, X } from "lucide-react";
+import { Cable, ChevronRight, Plus, Search, X } from "lucide-react";
 import type { EntryPoint, FaultTree, ObservationInput, SignalKind, SignalMatch, SymptomHit, SymptomSearch, Why } from "../engine/types.ts";
-import { Button, cx, inputClass, Page, Skeleton } from "../ui/kit.tsx";
+import { Button, ButtonLink, cx, inputClass, Page, Skeleton } from "../ui/kit.tsx";
 import { VoiceControl, voiceStatus, type VoicePhase } from "../ui/VoiceControl.tsx";
 
 export interface IndexGroup {
@@ -11,6 +11,8 @@ export interface IndexGroup {
 
 export interface DescribeProps {
   unitName: string;
+  /** Where the unit's codes are read over a link, typed or pasted. */
+  connectTo: string;
   query: string;
   /** "searching": a search is out; the previous results stay until it returns. */
   phase: "empty" | "searching" | "results";
@@ -114,6 +116,10 @@ function Codes(p: DescribeProps) {
           <Plus aria-hidden size={22} />
           Add code
         </Button>
+        <ButtonLink to={p.connectTo} className="hidden sm:inline-flex">
+          <Cable aria-hidden size={20} />
+          Connect
+        </ButtonLink>
       </form>
       {p.codes.length > 0 && (
         <div className="flex flex-wrap gap-2" role="list" aria-label="Codes">

@@ -8,6 +8,7 @@ import { Home } from "../screens/Home.tsx";
 import { Identify, type IdentifyPhase } from "../screens/Identify.tsx";
 import { NotFound } from "../screens/NotFound.tsx";
 import { UnitPage } from "../screens/UnitPage.tsx";
+import { useDescribe } from "../store/describe.ts";
 import { useFleet } from "../store/fleet.ts";
 import { isGeneral, usePack, variantName } from "../store/pack.ts";
 import { useActiveUnit } from "./Frame.tsx";
@@ -84,12 +85,18 @@ export function UnitRoute() {
   const { loaded, assets, jobs, history } = useFleet();
   const equipment = usePack((s) => s.equipment);
   const unit = assets.find((a) => a.asset_id === unitId);
+  const codes = useDescribe((s) => s.entries[unitId]?.codes);
+  const match = useDescribe((s) => s.matches[unitId]);
   useActiveUnit(unit?.asset_id);
   useEffect(() => {
     if (unit) void useFleet.getState().loadHistory(unit.asset_id);
   }, [unit?.asset_id]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    if (unit && codes?.length) void useDescribe.getState().matchCodes(unit.asset_id);
+  }, [unit?.asset_id, codes]); // eslint-disable-line react-hooks/exhaustive-deps
   if (!unit) return loaded ? <NotFound /> : null;
   const openJob = jobs.find((j) => j.asset_id === unit.asset_id && j.status === "open") ?? null;
-  return <UnitPage unit={unit} variant={variantName(equipment, unit.equip_id)} history={history[unit.asset_id] ?? null} openJob={openJob} />;
+  const titled = (codes ?? []).map((c) => ({ value: c.value, title: match?.hits.find((h) => h.observed.value === c.value)?.rule.title ?? null }));
+  return <UnitPage unit={unit} variant={variantName(equipment, unit.equip_id)} history={history[unit.asset_id] ?? null} openJob={openJob} codes={titled} />;
 }
 

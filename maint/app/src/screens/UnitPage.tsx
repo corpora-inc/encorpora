@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
-import { ChevronRight, ClipboardList, Repeat2, Search } from "lucide-react";
+import { Cable, ChevronRight, ClipboardList, Repeat2, Search } from "lucide-react";
 import { Link } from "react-router";
 import type { Asset, AssetHistory, JobSummary } from "../engine/types.ts";
-import { describePath, jobPath, proceduresPath } from "../routes.ts";
+import { connectPath, describePath, jobPath, proceduresPath } from "../routes.ts";
 import { formatDate, formatNumber, formatTime, unitName } from "../ui/format.ts";
 import { ButtonLink, Page, Panel, Skeleton } from "../ui/kit.tsx";
 
@@ -12,12 +12,14 @@ export interface UnitPageProps {
   /** Null while the engine reads the history. */
   history: AssetHistory | null;
   openJob: JobSummary | null;
+  /** The unit's active codes, with what the manual calls each (null: not in this manual). */
+  codes: { value: string; title: string | null }[];
 }
 
 export const RESOLUTION: Record<string, string> = { fixed: "Fixed", escalated: "Referred", abandoned: "Abandoned", redirected: "Redirected", unresolved: "Not resolved" };
 
 /** One unit: what it is, what it has been through, and the two ways to start work. */
-export function UnitPage({ unit, variant, history, openJob }: UnitPageProps) {
+export function UnitPage({ unit, variant, history, openJob, codes }: UnitPageProps) {
   const location = typeof unit.attrs.location === "string" ? unit.attrs.location : null;
   return (
     <Page title={<span className="code">{unitName(unit)}</span>} kicker={variant} wide>
@@ -51,6 +53,30 @@ export function UnitPage({ unit, variant, history, openJob }: UnitPageProps) {
           Maintenance tasks
         </ButtonLink>
       </div>
+
+      <section className="flex flex-col gap-3 rounded-panel border border-line bg-surface p-4 sm:flex-row sm:items-center sm:p-5" aria-labelledby="codes">
+        <div className="min-w-0 flex-1">
+          <h2 id="codes" className="mb-1 text-small font-bold text-ink-2">
+            Active codes
+          </h2>
+          {codes.length === 0 ? (
+            <p className="text-body text-ink-3">None read.</p>
+          ) : (
+            <ul className="m-0 flex list-none flex-wrap gap-2 p-0">
+              {codes.map((c) => (
+                <li key={c.value} className="inline-flex min-h-10 items-center gap-2 rounded-plate border-2 border-ink px-2.5">
+                  <span className="code text-small font-semibold">{c.value}</span>
+                  <span className="text-meta text-ink-2">{c.title ?? "Not in this manual"}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+        <ButtonLink to={connectPath(unit.asset_id)} className="shrink-0">
+          <Cable aria-hidden size={20} />
+          Connect to vehicle
+        </ButtonLink>
+      </section>
 
       {history === null ? <HistorySkeleton /> : <HistoryBlocks history={history} variant={variant} />}
     </Page>

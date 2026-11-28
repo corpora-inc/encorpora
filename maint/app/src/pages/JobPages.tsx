@@ -4,8 +4,9 @@ import { reportError } from "@appkit/toast.ts";
 import { useVoiceInput } from "@appkit/voice/useVoiceInput.ts";
 import { call } from "../engine/client.ts";
 import type { EntryPoint, TaskView } from "../engine/types.ts";
-import { closeOutPath, jobPath } from "../routes.ts";
+import { closeOutPath, connectPath, describePath, jobPath } from "../routes.ts";
 import { CloseOut, type LessonDraft } from "../screens/CloseOut.tsx";
+import { Connect } from "../screens/Connect.tsx";
 import { Describe, type IndexGroup } from "../screens/Describe.tsx";
 import { NotFound } from "../screens/NotFound.tsx";
 import { Step, type StepOverlay } from "../screens/Step.tsx";
@@ -54,6 +55,7 @@ export function DescribePage() {
   return (
     <Describe
       unitName={unitName(unit)}
+      connectTo={connectPath(unitId)}
       query={query}
       phase={!query.trim() && codes.length === 0 ? "empty" : pending ? "searching" : "results"}
       search={search}
@@ -251,3 +253,49 @@ export function CloseOutPage() {
     />
   );
 }
+
+export function ConnectPage() {
+  const { unitId = "" } = useParams();
+  const navigate = useNavigate();
+  const { loaded, assets } = useFleet();
+  const info = usePack((s) => s.info);
+  const level = useSettings((s) => s.level);
+  const codes = useDescribe((s) => s.entries[unitId]?.codes ?? NO_CODES);
+  const match = useDescribe((s) => s.matches[unitId] ?? null);
+  const [matching, setMatching] = useState(false);
+  const unit = assets.find((a) => a.asset_id === unitId);
+  useActiveUnit(unit?.asset_id);
+  useEffect(() => {
+    if (!unit) return;
+    setMatching(true);
+    void useDescribe
+      .getState()
+      .matchCodes(unitId)
+      .finally(() => setMatching(false));
+  }, [unitId, unit, codes]);
+  if (!unit || !info) return loaded ? <NotFound /> : null;
+  const d = useDescribe.getState();
+  return (
+    <Connect
+      unitName={unitName(unit)}
+      linkAvailable={false}
+      signalKinds={info.signal_kinds}
+      codes={codes}
+      match={codes.length ? match : null}
+      matching={matching}
+      describeTo={describePath(unitId)}
+      onRead={() => {}}
+      onAddCode={(v) => d.addCode(unitId, v)}
+      // One code per line; the engine decodes and matches each against every kind it maps.
+      onPasteLog={(text) => d.addCodes(unitId, text.split(/\r?\n/).map((l) => l.trim()).filter(Boolean))}
+      onRemove={(i) => d.removeCode(unitId, i)}
+      onClear={() => d.clearCodes(unitId)}
+      onStart={async (e) => {
+        const id = await useJobs.getState().start({ asset_id: unitId, level: level ?? info.levels[0]?.id ?? "", tree_id: e.tree_id, node_id: e.node_id || null, signals: codes });
+        if (id) navigate(jobPath(id));
+      }}
+    />
+  );
+}
+
+const NO_CODES: never[] = [];

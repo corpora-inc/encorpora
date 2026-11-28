@@ -36,6 +36,7 @@ import type {
   TaskView,
 } from "../engine/types.ts";
 import { CloseOut, type CloseOutProps } from "../screens/CloseOut.tsx";
+import { Connect, type ConnectProps } from "../screens/Connect.tsx";
 import { Describe, type DescribeProps, type IndexGroup } from "../screens/Describe.tsx";
 import { Home } from "../screens/Home.tsx";
 import { Identify, type IdentifyProps } from "../screens/Identify.tsx";
@@ -123,6 +124,7 @@ const identify: Omit<IdentifyProps, "mode" | "phase" | "result"> = {
 
 const describe: Omit<DescribeProps, "phase"> = {
   unitName: unitName(unit),
+  connectTo: "/units/unit-101/connect",
   query: "",
   search: null,
   codes: [],
@@ -136,6 +138,22 @@ const describe: Omit<DescribeProps, "phase"> = {
   onStartSymptom: none,
   onStartTree: none,
   onStartSignal: none,
+};
+
+const connect: ConnectProps = {
+  unitName: unitName(unit),
+  linkAvailable: false,
+  signalKinds: D.pack.signal_kinds,
+  codes: [],
+  match: null,
+  matching: false,
+  describeTo: "/units/unit-101/troubleshoot",
+  onRead: none,
+  onAddCode: none,
+  onPasteLog: none,
+  onRemove: none,
+  onClear: none,
+  onStart: none,
 };
 
 const step = (v: JobView, extra: Partial<StepProps> = {}): StepProps => ({
@@ -263,9 +281,12 @@ export const GALLERY: Record<string, { title: string; states: Entry[] }> = {
   unit: {
     title: "3. Unit",
     states: [
-      { state: "history", label: "History, repeats, fleet", unit: shellUnit, render: () => <UnitPage unit={unit} variant={variant} history={D.history} openJob={openJobs[0] ?? null} /> },
-      { state: "new", label: "New unit", unit: shellUnit, render: () => <UnitPage unit={unit} variant={variant} history={{ ...D.history, events: [], jobs: [], fleet_history: [], failure_modes: [] }} openJob={null} /> },
-      { state: "loading", label: "Loading history", unit: shellUnit, render: () => <UnitPage unit={unit} variant={variant} history={null} openJob={null} /> },
+      { state: "history", label: "History, repeats, fleet", unit: shellUnit, render: () => <UnitPage unit={unit} variant={variant} history={D.history} openJob={openJobs[0] ?? null} codes={[]} /> },
+      { state: "codes", label: "With active codes", unit: shellUnit, render: () => <UnitPage unit={unit} variant={variant} history={D.history} openJob={null} codes={[{ value: "spn:168/fmi:1", title: "Battery voltage low" }, { value: "X99", title: null }]} /> },
+      { state: "connect", label: "Connect to vehicle, empty", unit: shellUnit, render: () => <Connect {...connect} /> },
+      { state: "connect-codes", label: "Connect, codes read", unit: shellUnit, render: () => <Connect {...connect} codes={[{ signal_kind: null, value: "spn:168/fmi:1" }, { signal_kind: null, value: "X99" }]} match={D.search.codes.signals} /> },
+      { state: "new", label: "New unit", unit: shellUnit, render: () => <UnitPage unit={unit} variant={variant} history={{ ...D.history, events: [], jobs: [], fleet_history: [], failure_modes: [] }} openJob={null} codes={[]} /> },
+      { state: "loading", label: "Loading history", unit: shellUnit, render: () => <UnitPage unit={unit} variant={variant} history={null} openJob={null} codes={[]} /> },
     ],
   },
   describe: {
