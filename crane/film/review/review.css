@@ -1,0 +1,10 @@
+/* The review list, in the crane app's type and spacing. */
+html:has(.cr-index), html:has(.cr-index) body { background: var(--page); overflow: auto; height: auto; }
+.cr-index { max-width: 720px; margin: 0 auto; padding: 32px 16px 64px; display: flex; flex-direction: column; gap: 12px; font-family: var(--font-body); color: var(--ink); }
+.cr-kicker { margin: 0; font: 600 15px/1.35 var(--font-display); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
+.cr-title { margin: 0 0 12px; font: 700 37px/1.08 var(--font-display); }
+.cr-card { display: flex; flex-direction: column; gap: 4px; min-height: 52px; padding: 16px 18px; border-radius: 16px; background: var(--surface); border: 1.5px solid var(--line); color: var(--ink); text-decoration: none; }
+.cr-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.cr-card-title { font: 600 23px/1.25 var(--font-display); }
+.cr-card-meta { font-size: 15px; color: var(--ink-3); }
+.cr-empty, .cr-error { color: var(--ink-2); }

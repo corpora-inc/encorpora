@@ -2,8 +2,8 @@
 import "./film.css";
 import "./live.css";
 import { Film, TALL, WIDE, type Layout } from "./stage";
-import { mountExample } from "./example";
-import type { Script, Timing } from "./schema";
+import { mountExample, type MountedFigure } from "./example";
+import type { Action, Script, Shot, Timing } from "./schema";
 import { WAVE_PATH } from "../src/web/ui/Loading";
 
 export type LiveLesson = {
@@ -14,8 +14,18 @@ export type LiveLesson = {
   /** The template's example, for {example: true} shots. A shot's own scene is in `script`. */
   figure: unknown;
 };
+/** Draws a shot's figure that is not built from parts: AMP's app figures, or another kit's (crane/film). */
+export type FigureMounter = (
+  figure: unknown,
+  host: HTMLElement,
+  shot: Shot,
+  actions: { a: Action; t0: number; dur: number; beatEnd: number; highlightEnd?: number; sceneEnds?: (number | undefined)[] }[],
+  onUnmount: (dispose: () => void) => void,
+) => MountedFigure;
 export type PlayerOptions = {
   dataUrl: string;
+  /** The figure mount; AMP's app figures when absent. */
+  mountFigure?: FigureMounter;
   audioUrl: string;
   title?: string;
   duration?: number;
@@ -262,7 +272,7 @@ export function mountFilmPlayer(
       lesson.script,
       lesson.timing,
       (host, shot, actions) =>
-        mountExample(lesson!.figure, host, shot, actions, (unmount) =>
+        (options.mountFigure ?? mountExample)(lesson!.figure, host, shot, actions, (unmount) =>
           unmounts.push(unmount),
         ),
       { checks: false, layout: next },

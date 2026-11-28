@@ -1,0 +1,29 @@
+{
+  "id": "demo-slings",
+  "title": "Sling angle and load per leg",
+  "shots": [
+    { "figure": { "crane": { "slings": { "load": 4000, "leg": 10, "angle": 30 } } },
+      "beats": [
+        { "say": "A four thousand pound load hangs from two sling legs. Each leg makes an angle with the horizontal.", "do": [
+          { "do": "crane", "light": "slings.load", "at": "four" },
+          { "do": "crane", "light": "slings.legs", "at": "legs" },
+          { "do": "crane", "light": "slings.angle", "at": "angle" } ] },
+        { "say": "Here the angle is thirty degrees. Each leg is ten feet long, and the hook is five feet above the pick points.", "do": [
+          { "do": "crane", "light": "slings.readout.angle", "at": "thirty" },
+          { "do": "crane", "light": "slings.length", "at": "ten" },
+          { "do": "crane", "light": "slings.height", "at": "five" } ] },
+        { "say": "Ten over five is two. Half the load times two is four thousand pounds in each leg.", "do": [
+          { "do": "crane", "light": "slings.readout.factor", "at": "two" },
+          { "do": "crane", "light": "slings.leg.1", "at": "each" },
+          { "do": "crane", "light": "slings.leg.2", "at": "leg" },
+          { "do": "crane", "light": "slings.readout.tension", "at": "four" } ] },
+        { "say": "A flat sling also pulls the load inward, toward the middle.", "do": [
+          { "do": "crane", "show": "slings.pull", "at": "inward" },
+          { "do": "crane", "light": "slings.pull", "at": "middle" } ] },
+        { "say": "Use longer slings and raise the hook to sixty degrees. The tension drops to two thousand three hundred nine pounds.", "do": [
+          { "do": "crane", "set": { "slings.angle": 60 }, "at": "longer", "dur": 2.4 },
+          { "do": "crane", "light": "slings.hook", "at": "hook" },
+          { "do": "crane", "light": "slings.readout.tension", "at": "drops" } ], "pause": 0.4 }
+      ] }
+  ]
+}

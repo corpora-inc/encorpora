@@ -177,7 +177,7 @@ const DEFAULT_DUR: Record<string, number> = {
   partition: 1.5, shade: 1.3,
   arrive: 0.5, count: 0.5, send: 0.9, leave: 0.45,
   problem: 0.45, write: 0.75, text: 0.45, term: 0.45, watch: 0.45, answer: 0.6, clear: 0.4, scene: 0.9,
-  strike: 0.6, header: 0.45,
+  strike: 0.6, header: 0.45, crane: 1.2,
 };
 
 /** The longest one trade of base-ten blocks may take, when a screenplay asks for a slow one. */
@@ -235,6 +235,8 @@ function opening(a: Action, beat: number, hasFig: boolean): "figure" | "board" |
   if (a.do === "clear") return hasFig ? "board" : undefined;
   if (a.do === "hide" || a.do === "show") return "figure";
   if (a.do === "move" && a.dur !== undefined && a.dur <= JUMP) return "figure";
+  // another kit's figure: showing, hiding, or a jump of its values, sets the shot up the same way
+  if (a.do === "crane" && !a.light && (!a.set || (a.dur !== undefined && a.dur <= JUMP))) return "figure";
   return undefined;
 }
 /** Each beat's actions, in time. Actions without `at` start with the beat, slightly staggered; a shot's setup (see `opening`) at the shot's start `t0`. `shotEnd` is when the shot begins to fade out. */
@@ -258,7 +260,7 @@ function entries(shot: Shot, times: BeatTime[], t0Shot: number, shotEnd = Infini
       const t0 = setup === "figure" ? t0Shot - SETUP : setup === "board" ? t0Shot : a.at ? wordTime(t, a.at, a.nth) : t.start + stagger;
       if (!a.at) stagger += 0.1;
       const entry: Entry = { a, t0, dur: setup === "figure" ? SETUP : a.dur ?? DEFAULT_DUR[a.do] ?? 0.5, beatEnd: t.end, ...(setup && { setup: true }) };
-      if (a.do === "highlight") entry.highlightEnd = highlightEnd(t, a, t0);
+      if (a.do === "highlight" || (a.do === "crane" && a.light)) entry.highlightEnd = highlightEnd(t, a, t0);
       if (a.do === "scene") entry.sceneEnds = a.actions.map((x) => x.do === "highlight" ? highlightEnd(t, x, t0) : undefined);
       if (a.do === "column") {
         const trade = a.trade ? wordAfter(t, a.trade, t0, `column of "${a.of}", trade`) : undefined;
@@ -287,7 +289,7 @@ export function heldHighlights(script: Script, timing: Timing): HeldHighlight[] 
         if (a.do === "count") continue;
         const t0 = a.at ? wordTime(span, a.at, a.nth ?? 1) : span.start + stagger;
         if (!a.at) stagger += 0.1;
-        const moments = a.do === "highlight" ? [highlightHeld(t0, highlightEnd(span, a, t0) ?? span.end)]
+        const moments = a.do === "highlight" || (a.do === "crane" && a.light) ? [highlightHeld(t0, highlightEnd(span, a, t0) ?? span.end)]
           : a.do === "scene" ? a.actions.flatMap((x) => {
             if (x.do !== "highlight") return [];
             const end = highlightEnd(span, x, t0);
@@ -4115,7 +4117,7 @@ export class Film {
    * place. Between shots the pose eases from the previous shot's frame.
    */
   lockFrames() {
-    const motion = new Set(["move", "slide", "turn", "flip", "glide", "view", "zoom", "split", "join", "draw", "partition", "shade", "cut"]);
+    const motion = new Set(["move", "slide", "turn", "flip", "glide", "view", "zoom", "split", "join", "draw", "partition", "shade", "cut", "crane"]);
     for (const s of this.shots) {
       const root = s.el.querySelector<HTMLElement>(".film-fit");
       if (!root || (!s.geo && !s.extern)) continue;
@@ -4124,7 +4126,7 @@ export class Film {
       const raw = [start, Math.max(start, end)];
       for (const e of s.list) {
         raw.push(e.t0, e.t0 + e.dur);
-        if (e.a.do === "highlight") raw.push(e.highlightEnd === undefined ? e.t0 + EMPH_IN + 0.02 : highlightHeld(e.t0, e.highlightEnd), e.highlightEnd ?? e.beatEnd);
+        if (e.a.do === "highlight" || (e.a.do === "crane" && e.a.light)) raw.push(e.highlightEnd === undefined ? e.t0 + EMPH_IN + 0.02 : highlightHeld(e.t0, e.highlightEnd), e.highlightEnd ?? e.beatEnd);
         for (const end of e.sceneEnds ?? []) if (end !== undefined) raw.push(sceneHighlightHeld(e.t0, end, e.dur), end + e.dur);
         if (motion.has(e.a.do)) raw.push(e.t0 + e.dur * 0.33, e.t0 + e.dur * 0.66);
       }
@@ -4183,7 +4185,9 @@ export class Film {
       for (const m of s.mount?.issues ?? []) this.issues.push(`Shot ${i + 1}: ${m}`);
       for (const m of s.mount?.notes ?? []) this.notes.push(`Shot ${i + 1}: ${m}`);
       const fig = this.script.shots[i]!.figure;
-      if ((!fig || "parts" in fig) && s.list.some((e) => e.a.do === "scene"))
+      if (!(fig && "crane" in fig) && s.list.some((e) => e.a.do === "crane"))
+        this.issues.push(`Shot ${i + 1}: crane actions drive a crane figure, but this shot has none. Give it {"crane": ...}.`);
+      if ((!fig || "parts" in fig || "crane" in fig) && s.list.some((e) => e.a.do === "scene"))
         this.issues.push(`Shot ${i + 1}: scene actions drive an app figure, but this shot has none. Give it {"example": true} or {"scene": ...}.`);
       if (!s.geo) return;
       this.checkSize(s, i);
@@ -4351,7 +4355,7 @@ export class Film {
       out.push([s.t0 - 0.05, s.t0 + 0.75]);
       for (const e of s.list) {
         out.push([e.t0 - 0.02, e.t0 + e.dur + 0.02]);
-        if (e.a.do === "highlight") out.push([(e.highlightEnd ?? e.beatEnd) + 0.02, (e.highlightEnd ?? e.beatEnd) + 0.34]);
+        if (e.a.do === "highlight" || (e.a.do === "crane" && e.a.light)) out.push([(e.highlightEnd ?? e.beatEnd) + 0.02, (e.highlightEnd ?? e.beatEnd) + 0.34]);
         for (const end of e.sceneEnds ?? []) if (end !== undefined) out.push([end - 0.02, end + e.dur + 0.02]);
       }
       // each thing's arrival, flight, leaving and light

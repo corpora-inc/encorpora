@@ -1,0 +1,164 @@
+{
+ "id": "demo-clearance",
+ "title": "Power line clearance",
+ "shots": [
+  {
+   "figure": {
+    "crane": {
+     "clearance": {
+      "maxRadius": 60,
+      "line": 85,
+      "clearance": 20,
+      "voltage": "13.8 kV",
+      "swing": 120
+     }
+    }
+   },
+   "beats": [
+    {
+     "say": "Seen from above, the crane's work zone is a full circle, out to its sixty foot working radius.",
+     "do": [
+      {
+       "do": "crane",
+       "light": "clearance.zone",
+       "at": "circle"
+      },
+      {
+       "do": "crane",
+       "light": "clearance.radius",
+       "at": "sixty"
+      }
+     ]
+    },
+    {
+     "say": "A thirteen point eight kilovolt power line runs eighty-five feet from the crane.",
+     "do": [
+      {
+       "do": "crane",
+       "light": "clearance.voltage",
+       "at": "thirteen"
+      },
+      {
+       "do": "crane",
+       "light": "clearance.line",
+       "at": "line"
+      }
+     ]
+    },
+    {
+     "say": "If any part of the crane could get within twenty feet of the line, the power line rules apply.",
+     "do": [
+      {
+       "do": "crane",
+       "light": "clearance.crane",
+       "at": "part"
+      },
+      {
+       "do": "crane",
+       "light": "clearance.band",
+       "at": "within"
+      },
+      {
+       "do": "crane",
+       "light": "clearance.limit",
+       "at": "twenty"
+      },
+      {
+       "do": "crane",
+       "light": "clearance.line",
+       "at": "line"
+      }
+     ]
+    },
+    {
+     "say": "From the edge of the zone to the line is twenty-five feet. The zone stays out of the band.",
+     "do": [
+      {
+       "do": "crane",
+       "light": "clearance.gap",
+       "at": "twenty-five"
+      }
+     ]
+    },
+    {
+     "say": "Set up ten feet closer, and the zone reaches into the band.",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "crane",
+       "set": {
+        "clearance.line": 75
+       },
+       "at": "closer",
+       "dur": 2
+      },
+      {
+       "do": "crane",
+       "light": "clearance.overlap",
+       "at": "reaches"
+      }
+     ]
+    },
+    {
+     "say": "Swing toward the line at full radius, and the boom tip is fifteen feet from it. Pull the boom in, and it is clear again.",
+     "do": [
+      {
+       "do": "crane",
+       "set": {
+        "clearance.swing": 0
+       },
+       "at": "Swing",
+       "dur": 2.5
+      },
+      {
+       "do": "crane",
+       "light": "clearance.boom",
+       "at": "tip"
+      },
+      {
+       "do": "crane",
+       "set": {
+        "clearance.reach": 45
+       },
+       "at": "Pull",
+       "dur": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "crane": {
+     "clearance": {
+      "maxRadius": 50,
+      "line": 80,
+      "kv": 500,
+      "swing": 30,
+      "readouts": true
+     }
+    }
+   },
+   "beats": [
+    {
+     "say": "Higher voltage needs more room. Table A sets twenty-five feet for a five hundred kilovolt line.",
+     "do": [
+      {
+       "do": "crane",
+       "light": "clearance.voltage",
+       "at": "five"
+      },
+      {
+       "do": "crane",
+       "light": [
+        "clearance.band",
+        "clearance.limit"
+       ],
+       "at": "twenty-five"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

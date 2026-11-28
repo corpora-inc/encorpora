@@ -1,0 +1,202 @@
+/*
+ * The crane app's look for lesson films. The film stage (amp/film) paints
+ * from AMP's role names; here those roles take the crane app's tokens
+ * (crane/app/src/tokens.css), and the crane pieces get their own roles
+ * (--cf-*). Barlow is the app's face; numbers are tabular.
+ */
+@import "../app/node_modules/@fontsource/barlow/latin-400.css";
+@import "../app/node_modules/@fontsource/barlow/latin-500.css";
+@import "../app/node_modules/@fontsource/barlow/latin-600.css";
+@import "../app/node_modules/@fontsource/barlow-semi-condensed/latin-600.css";
+@import "../app/node_modules/@fontsource/barlow-semi-condensed/latin-700.css";
+@import "../app/src/tokens.css";
+@import "./pieces/base.css";
+@import "./pieces/clearance.css";
+@import "./pieces/reeving.css";
+@import "./pieces/slings.css";
+
+:root {
+  --font-body: "Barlow", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Barlow Semi Condensed", "Barlow", ui-sans-serif, system-ui, sans-serif;
+
+  /* crane picture roles */
+  --cf-paper: var(--surface);
+  --cf-ink: var(--ink);
+  --cf-ink-2: var(--ink-2);
+  --cf-ink-3: var(--ink-3);
+  --cf-line: var(--line);
+  --cf-steel: #dfe5e9;
+  --cf-steel-dark: #aebbc4;
+  --cf-counterweight: #7f909b;
+  --cf-boom: #f7f9fa;
+  --cf-glass: #b9d3e6;
+  --cf-load: #d3cbbd;
+  --cf-ground: #e4e8ea;
+  --cf-structural: #e3e8ec;
+  /* the light: amber, the crane-paint accent */
+  --cf-light: var(--amber);
+  --cf-light-wash: var(--amber-wash);
+  --cf-light-edge: #b57f00;
+  --cf-light-ink: var(--amber-ink);
+  /* the instrument strip is a display: dark in both themes */
+  --cf-panel: #0c1b26;
+  --cf-panel-cell: #172631;
+  --cf-panel-ink: #eef3f6;
+  --cf-panel-muted: #93a3ae;
+  --cf-danger: var(--fail);
+  --cf-danger-wash: var(--fail-wash);
+
+  /* AMP's film roles, in crane tokens */
+  --color-surface: var(--page);
+  --color-on-surface: var(--ink);
+  --color-surface-raised: var(--surface);
+  --color-on-surface-raised: var(--ink);
+  --color-surface-sunken: var(--surface-2);
+  --color-answer: var(--surface);
+  --color-secondary: var(--surface-2);
+  --color-on-secondary: var(--ink);
+  --color-selected: var(--ink);
+  --color-on-selected: var(--surface);
+  --color-on-primary: var(--surface);
+  /* the answer box: an answer may be "no", so it is the amber result, never the green of a pass */
+  --color-success: var(--amber-wash);
+  --color-on-success: var(--ink);
+  --color-success-accent: #b57f00;
+  --color-danger: var(--fail-wash);
+  --color-on-danger: var(--ink);
+  --color-danger-accent: var(--fail);
+  --color-warning: var(--amber-wash);
+  --color-on-warning: var(--ink);
+  --color-warning-accent: var(--amber);
+  --color-info: var(--surface-2);
+  --color-on-info: var(--ink);
+  --color-info-accent: #1d5f9e;
+  --color-muted-text: var(--ink-3);
+  --color-border: var(--line);
+  --color-border-strong: var(--line-strong);
+  --color-focus-ring: var(--focus);
+  --color-scrim: rgba(12, 27, 38, 0.6);
+  --color-shadow: rgba(12, 27, 38, 0.12);
+  --color-figure-paper: var(--surface);
+  --color-figure-ink: var(--ink);
+  --color-figure-grid: var(--line);
+  --color-figure-axis: var(--line-strong);
+  /* board colors: \cg is the capacity (amber, text-safe), \cw a deduction (red), \ca a length (steel blue) */
+  --color-figure-accent: #1d5f9e;
+  --color-figure-accent-fill: #dde9f4;
+  --color-figure-accent-fill-strong: #c9dcee;
+  --color-figure-warm: var(--fail);
+  --color-figure-warm-fill: var(--fail-wash);
+  --color-figure-gold: #8a5d00;
+  --color-figure-gold-fill: var(--amber-wash);
+  --color-figure-gold-fill-strong: #ffe7a8;
+  --color-figure-empty: var(--surface-2);
+  --color-figure-head-tint: var(--surface-2);
+  --color-strand-operations: #5b4f8f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --cf-steel: #2a3b47;
+    --cf-steel-dark: #3e5160;
+    --cf-counterweight: #5d6f7c;
+    --cf-boom: #dfe6ea;
+    --cf-glass: #3f5f78;
+    --cf-load: #6b6355;
+    --cf-ground: #172631;
+    --cf-structural: #1d2e3a;
+    --cf-light-edge: #ffbf1f;
+    --color-figure-accent: #6cb2ff;
+    --color-figure-accent-fill: #1b3550;
+    --color-figure-gold: #ffbf1f;
+    --color-info-accent: #6cb2ff;
+    --color-shadow: rgba(0, 0, 0, 0.4);
+  }
+}
+:root[data-theme="dark"] {
+  --cf-steel: #2a3b47;
+  --cf-steel-dark: #3e5160;
+  --cf-counterweight: #5d6f7c;
+  --cf-boom: #dfe6ea;
+  --cf-glass: #3f5f78;
+  --cf-load: #6b6355;
+  --cf-ground: #172631;
+  --cf-structural: #1d2e3a;
+  --cf-light-edge: #ffbf1f;
+  --color-figure-accent: #6cb2ff;
+  --color-figure-accent-fill: #1b3550;
+  --color-figure-gold: #ffbf1f;
+  --color-info-accent: #6cb2ff;
+  --color-shadow: rgba(0, 0, 0, 0.4);
+}
+
+/* the app's box model (as in AMP's base styles, which the film stage was laid out with) */
+*, *::before, *::after { box-sizing: border-box; }
+body { font-family: var(--font-body); color: var(--ink); background: var(--page); -webkit-font-smoothing: antialiased; }
+#film { font-family: var(--font-body); font-variant-numeric: tabular-nums; }
+/* the board's numbers in the app's display face: plain arithmetic reads as the app does */
+#film .film-math .katex .mord, #film .film-math .katex .mbin, #film .film-math .katex .mrel, #film .film-math .katex .mpunct,
+#film .film-line .katex .mord, #film .film-line .katex .mbin, #film .film-line .katex .mrel, #film .film-line .katex .mpunct,
+#film .film-head .katex .mord, #film .film-head .katex .mrel {
+  font-family: var(--font-display); font-weight: 600; font-style: normal;
+}
+#film .film-line.term b, #film .film-recap-item b { font-family: var(--font-display); }
+#film .film-recap-item b { color: var(--color-figure-gold); }
+
+/* ---- crane pieces */
+.cf-figure text { font-family: var(--font-display); font-variant-numeric: tabular-nums; }
+.cf-ground { fill: var(--cf-ground); }
+.cf-ground-line { stroke: var(--cf-ink-2); stroke-width: 3; }
+.cf-steel { fill: var(--cf-steel); stroke: var(--cf-ink-2); stroke-width: 3; stroke-linejoin: round; }
+.cf-steel-dark { fill: var(--cf-steel-dark); stroke: var(--cf-ink-2); stroke-width: 3; stroke-linejoin: round; }
+.cf-counterweight { fill: var(--cf-counterweight); stroke: var(--cf-ink-2); stroke-width: 3; }
+.cf-glass { fill: var(--cf-glass); stroke: var(--cf-ink-2); stroke-width: 2.5; stroke-linejoin: round; }
+.cf-tire { fill: var(--cf-ink-2); }
+.cf-hub { fill: var(--cf-steel-dark); }
+.cf-pin { fill: var(--cf-paper); stroke: var(--cf-ink); stroke-width: 3; }
+.cf-centerline { stroke: var(--cf-ink-3); stroke-width: 3; stroke-dasharray: 22 10 4 10; fill: none; }
+.cf-boom { fill: var(--cf-boom); stroke: var(--cf-ink); stroke-width: 3.5; stroke-linejoin: round; }
+.cf-boom-head { fill: var(--cf-steel-dark); stroke: var(--cf-ink); stroke-width: 3.5; stroke-linejoin: round; }
+.cf-sheave { fill: var(--cf-paper); stroke: var(--cf-ink); stroke-width: 3; }
+.cf-cylinder { stroke: var(--cf-ink-2); stroke-width: 9; stroke-linecap: round; }
+.cf-jib { fill: var(--cf-steel); stroke: var(--cf-ink-2); stroke-width: 3; stroke-linejoin: round; }
+.cf-jib-lattice { fill: none; stroke: var(--cf-ink-2); stroke-width: 2; }
+.cf-rope { stroke: var(--cf-ink); stroke-width: 3.5; }
+.cf-sling { stroke: var(--cf-ink); stroke-width: 5; stroke-linecap: round; }
+.cf-block { fill: var(--cf-steel-dark); stroke: var(--cf-ink); stroke-width: 3; }
+.cf-hook { fill: none; stroke: var(--cf-ink); stroke-width: 6; stroke-linecap: round; }
+.cf-load { fill: var(--cf-load); stroke: var(--cf-ink-2); stroke-width: 3; }
+.cf-load-text { fill: var(--cf-ink); font-size: 36px; font-weight: 700; }
+.cf-dim { stroke: var(--cf-ink); stroke-width: 3.5; }
+.cf-dim-head { fill: var(--cf-ink); }
+.cf-dim-ext { stroke: var(--cf-ink-3); stroke-width: 2.5; stroke-dasharray: 8 7; }
+.cf-dim-pill { fill: var(--cf-paper); stroke: var(--cf-ink); stroke-width: 2.5; }
+.cf-dim-text { fill: var(--cf-ink); font-size: 40px; font-weight: 700; }
+.cf-panel { fill: var(--cf-panel); }
+.cf-panel-cell { fill: var(--cf-panel-cell); }
+.cf-panel-cap { fill: var(--cf-panel-muted); font-size: 28px; font-weight: 600; letter-spacing: 0.1em; }
+.cf-panel-value { fill: var(--cf-panel-ink); font-size: 54px; font-weight: 700; }
+.cf-panel-capacity { fill: #ffbf1f; }
+
+.cf-chart-kicker { fill: var(--cf-ink-3); font-size: 28px; font-weight: 600; letter-spacing: 0.1em; }
+.cf-chart-title { fill: var(--cf-ink); font-size: 46px; font-weight: 700; }
+.cf-chart-cap { fill: var(--cf-ink-3); font-size: 26px; font-weight: 600; letter-spacing: 0.1em; }
+.cf-chart-corner { fill: var(--cf-ink-3); font-size: 26px; font-weight: 600; letter-spacing: 0.04em; }
+.cf-chart-head { fill: var(--cf-ink); font-size: 46px; font-weight: 700; }
+.cf-chart-rule { stroke: var(--cf-ink-2); stroke-width: 3; }
+.cf-chart-limit { fill: none; stroke: var(--cf-ink); stroke-width: 6; stroke-linecap: square; }
+.cf-chart-units { fill: var(--cf-ink-3); font-size: 34px; font-weight: 600; }
+.cf-cell { fill: var(--cf-paper); stroke: var(--cf-line); stroke-width: 2; }
+.cf-cell-structural { fill: var(--cf-structural); }
+.cf-cell-text { fill: var(--cf-ink); font-size: 44px; font-weight: 600; }
+.cf-cell-blank { fill: var(--cf-ink-3); }
+.cf-band { fill: color-mix(in srgb, var(--cf-light) 22%, transparent); stroke: var(--cf-light-edge); stroke-width: 4; }
+.cf-mark { fill: var(--cf-ink); }
+.cf-mark-tip { fill: var(--cf-ink); }
+.cf-mark-text { fill: var(--cf-paper); font-size: 36px; font-weight: 700; }
+.cf-note-bg { fill: var(--cf-paper); stroke: var(--cf-line); stroke-width: 2; }
+.cf-note-bullet { fill: var(--cf-light); }
+.cf-note-text { fill: var(--cf-ink); font-family: var(--font-body) !important; font-size: 38px; font-weight: 500; }
+
+/* A pinned header covers the work that scrolls up under it, instead of letting the top line show through cut in half. */
+#film .film-head { background: var(--color-surface); }

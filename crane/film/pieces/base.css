@@ -1,0 +1,58 @@
+/* crane.base piece styles (theme roles only: --cf-*, crane tokens).
+ * A part's group carries --lit (0..1); every paint below that should take the
+ * light mixes toward amber by it, so lighting a part lights all of it. */
+.cfb-ground { fill: var(--cf-ground); }
+.cfb-ground-line { stroke: var(--cf-ink-2); stroke-width: 3; }
+.cfb-steel, .cfb-steel-dark, .cfb-cw, .cfb-float, .cfb-boom, .cfb-head, .cfb-load, .cfb-block {
+  stroke: color-mix(in srgb, var(--cf-light-edge) calc(var(--lit, 0) * 100%), var(--cf-ink-2));
+  stroke-width: calc(3px + 2px * var(--lit, 0));
+  stroke-linejoin: round;
+}
+.cfb-steel { fill: color-mix(in srgb, var(--cf-light) calc(var(--lit, 0) * 55%), var(--cf-steel)); }
+.cfb-steel-dark { fill: color-mix(in srgb, var(--cf-light) calc(var(--lit, 0) * 55%), var(--cf-steel-dark)); }
+.cfb-cw { fill: color-mix(in srgb, var(--cf-light) calc(var(--lit, 0) * 55%), var(--cf-counterweight)); }
+.cfb-float { fill: color-mix(in srgb, var(--cf-light) calc(var(--lit, 0) * 100%), var(--cf-steel)); }
+.cfb-boom { fill: color-mix(in srgb, var(--cf-light) calc(var(--lit, 0) * 70%), var(--cf-boom)); stroke: color-mix(in srgb, var(--cf-light-edge) calc(var(--lit, 0) * 100%), var(--cf-ink)); }
+.cfb-head { fill: var(--cf-steel-dark); stroke: color-mix(in srgb, var(--cf-light-edge) calc(var(--lit, 0) * 100%), var(--cf-ink)); }
+.cfb-load { fill: color-mix(in srgb, var(--cf-light) calc(var(--lit, 0) * 100%), var(--cf-load)); }
+.cfb-block { fill: color-mix(in srgb, var(--cf-light) calc(var(--lit, 0) * 100%), var(--cf-steel-dark)); stroke: var(--cf-ink); }
+.cfb-glass { fill: var(--cf-glass); stroke: var(--cf-ink-2); stroke-width: 2.5; stroke-linejoin: round; }
+.cfb-tire { fill: var(--cf-ink-2); }
+.cfb-hub { fill: var(--cf-steel-dark); }
+.cfb-pin { fill: var(--cf-paper); stroke: var(--cf-ink); stroke-width: 3; }
+.cfb-cyl { stroke: var(--cf-ink-2); stroke-width: 9; stroke-linecap: round; }
+.cfb-rope { stroke: color-mix(in srgb, var(--cf-light-edge) calc(var(--lit, 0) * 100%), var(--cf-ink)); stroke-width: 3.5; }
+.cfb-sling { stroke: color-mix(in srgb, var(--cf-light-edge) calc(var(--lit, 0) * 100%), var(--cf-ink)); stroke-width: 4.5; stroke-linecap: round; }
+.cfb-hook { fill: none; stroke: var(--cf-ink); stroke-width: 5; stroke-linecap: round; }
+.cfb-center { stroke: color-mix(in srgb, var(--cf-light-edge) calc(var(--lit, 0) * 100%), var(--cf-ink-3)); stroke-width: calc(3px + 2px * var(--lit, 0)); stroke-dasharray: 18 8 4 8; fill: none; }
+.cfb-center-dot { fill: color-mix(in srgb, var(--cf-light) calc(var(--lit, 0) * 100%), var(--cf-paper)); stroke: var(--cf-ink); stroke-width: 4; }
+
+/* weights: heavy arrows; a paper halo keeps the crane's arrow readable where it crosses the house */
+.cfb-force { stroke: color-mix(in srgb, var(--cf-light-edge) calc(var(--lit, 0) * 100%), var(--cf-ink)); stroke-width: 7; stroke-linecap: butt; }
+.cfb-force-head { fill: color-mix(in srgb, var(--cf-light-edge) calc(var(--lit, 0) * 100%), var(--cf-ink)); }
+.cfb-halo { stroke: var(--cf-paper); stroke-width: 15; stroke-linecap: round; }
+.cfb-cg-ring { fill: var(--cf-paper); stroke: color-mix(in srgb, var(--cf-light-edge) calc(var(--lit, 0) * 100%), var(--cf-ink)); stroke-width: 4; }
+.cfb-cg-q { fill: color-mix(in srgb, var(--cf-light-edge) calc(var(--lit, 0) * 100%), var(--cf-ink)); }
+.cfb-weight-text { fill: var(--cf-ink); font-size: 40px; font-weight: 700; paint-order: stroke; stroke: var(--cf-paper); stroke-width: 8; stroke-linejoin: round; }
+
+/* the tipping axis */
+.cfb-fulcrum { fill: color-mix(in srgb, var(--cf-light) calc(var(--lit, 0) * 100%), var(--cf-ink-2)); stroke: color-mix(in srgb, var(--cf-light-edge) calc(var(--lit, 0) * 100%), var(--cf-ink)); stroke-width: 3; stroke-linejoin: round; }
+.cfb-axisline { stroke: color-mix(in srgb, var(--cf-light-edge) calc(var(--lit, 0) * 100%), var(--cf-ink-3)); stroke-width: calc(3px + 4px * var(--lit, 0)); stroke-dasharray: 14 10; stroke-linecap: round; }
+.cfb-axisline.is-live { stroke: color-mix(in srgb, var(--cf-light-edge) calc(var(--lit, 0) * 100%), var(--cf-ink)); stroke-width: calc(6px + 3px * var(--lit, 0)); stroke-dasharray: none; }
+.cfb-cross { fill: var(--cf-ink); stroke: var(--cf-paper); stroke-width: 4; }
+
+/* dimensions */
+.cfb-dim { stroke: color-mix(in srgb, var(--cf-light-edge) calc(var(--lit, 0) * 100%), var(--cf-ink)); stroke-width: calc(3.5px + 2.5px * var(--lit, 0)); }
+.cfb-dim-head { fill: color-mix(in srgb, var(--cf-light-edge) calc(var(--lit, 0) * 100%), var(--cf-ink)); }
+.cfb-dim-ext { stroke: var(--cf-ink-3); stroke-width: 2.5; stroke-dasharray: 8 7; }
+.cfb-pill { fill: color-mix(in srgb, var(--cf-light) calc(var(--lit, 0) * 100%), var(--cf-paper)); stroke: color-mix(in srgb, var(--cf-light-edge) calc(var(--lit, 0) * 100%), var(--cf-ink)); stroke-width: 2.5; }
+.cfb-dim-text { fill: var(--cf-ink); font-size: 40px; font-weight: 700; }
+
+/* the balance panel */
+.cfb-moment-value { fill: var(--cf-panel-ink); font-size: 42px; font-weight: 700; }
+.cfb-rated-value { fill: var(--cf-light); }
+.cfb-track { fill: color-mix(in srgb, var(--cf-panel-ink) 9%, transparent); }
+.cfb-bar-crane { fill: var(--cf-steel-dark); }
+.cfb-bar-load { fill: var(--cf-load); }
+.cfb-bar-load.is-over { fill: color-mix(in srgb, var(--cf-danger) 70%, var(--cf-panel-ink)); }
+.cfb-balance { stroke: var(--cf-panel-ink); stroke-width: 3; stroke-dasharray: 6 6; }
