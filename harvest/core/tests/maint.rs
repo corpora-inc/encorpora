@@ -1145,6 +1145,36 @@ fn a_value_node_takes_closed_ranges_and_named_readings() {
         "{:?}",
         r.violations
     );
+    for (expect, why) in [
+        (
+            r#"{"kind":"value","unit":"V","labels":["No indication","no  INDICATION"]}"#,
+            "repeated",
+        ),
+        (
+            r#"{"kind":"value","unit":"V","labels":["No indication"," "]}"#,
+            "blank",
+        ),
+        (
+            r#"{"kind":"value","unit":"V","labels":["No indication","Off scale"]}"#,
+            "no branch",
+        ),
+    ] {
+        let sql = format!(
+            "UPDATE fault_node SET expect = '{expect}' WHERE node_id = 'nc.2';
+             INSERT INTO fault_edge VALUES ('nc.2', 4, 'No indication', NULL, 'nc.3n', 0);"
+        );
+        let bad = pump_with(exec(&sql));
+        let r = graph::validate(&bad.pack).unwrap();
+        assert!(
+            r.violations.iter().any(|v| v.detail.contains(why)),
+            "{why}: {:?}",
+            r.violations
+        );
+    }
+    assert!(
+        choose(&t, "nc.2", outcome(" ")).is_err(),
+        "a blank outcome is no reading"
+    );
     let stray = pump_with(exec(
         "INSERT INTO fault_edge VALUES ('nc.2', 4, 'Flat', NULL, 'nc.3n', 0);",
     ));

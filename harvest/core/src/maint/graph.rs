@@ -463,6 +463,9 @@ fn coverage(
             if named.iter().collect::<BTreeSet<_>>().len() != named.len() {
                 out.add("node.expect", t, node, "repeated reading labels");
             }
+            if named.iter().any(|l| l.is_empty()) {
+                out.add("node.expect", t, node, "a reading label is blank");
+            }
             let mut ivs: Vec<(String, Interval)> = Vec::new();
             let mut got: BTreeMap<String, usize> = BTreeMap::new();
             for (label, c) in &conds {

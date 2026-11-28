@@ -1140,7 +1140,7 @@ fn answer_for(
     match &node.expect {
         Some(Expect::Value { .. }) if e.cond.is_none() => JobAnswer {
             node_id: node_id.to_string(),
-            outcome: Some(e.label.clone()),
+            outcome: Some(branch::fold(&e.label)),
             ..Default::default()
         },
         Some(Expect::Value { unit, min, max, .. }) => {
