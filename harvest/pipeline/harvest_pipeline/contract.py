@@ -162,7 +162,35 @@ def procedure_problems(p: dict) -> list[str]:
     return out
 
 
+SEGMENT_FIELDS = {"text": ("text",), "quote": ("section_id", "text"), "cite": ("section_id",),
+                  "diagram": ("diagram_id",), "check": ("question", "answer")}
+
+
+def body_problems(body) -> list[str]:
+    """Answer-segment JSON (CONTRACT): every segment a kind the core reads, with its fields as text."""
+    if isinstance(body, str):
+        import json
+        try:
+            body = json.loads(body)
+        except json.JSONDecodeError:
+            return ["body is text that is not JSON"]
+    if not isinstance(body, list):
+        return ["body is not a list of segments"]
+    out = []
+    for k, seg in enumerate(body):
+        kind = seg.get("t") if isinstance(seg, dict) else None
+        if kind not in SEGMENT_FIELDS:
+            out.append(f"segment {k}: unknown kind {kind!r}")
+            continue
+        missing = [f for f in SEGMENT_FIELDS[kind] if not isinstance(seg.get(f), str) or not seg[f].strip()]
+        if missing:
+            out.append(f"segment {k} ({kind}): no {', '.join(missing)}")
+    return out
+
+
 def row_problems(table: str, row: dict) -> list[str]:
+    if table in ("lesson", "answer"):
+        return body_problems(row.get("body"))
     if table == "question":
         return question_problems(row)
     if table == "procedure":

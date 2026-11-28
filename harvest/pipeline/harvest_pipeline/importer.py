@@ -34,6 +34,7 @@ from __future__ import annotations
 
 import glob
 import json
+import re
 import sqlite3
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -125,6 +126,9 @@ def import_topics(stage: Stage, path: Path, rep: "ImportReport") -> None:
     Topic and skill rows are authored structure, not generated, so they carry no provenance;
     every section id they name must exist (reported, not dropped)."""
     doc = yaml.safe_load(path.read_text()) or {}
+    split = _split_keys(doc.get("topics") or [])
+    if split:
+        raise SystemExit(f"{path.name}: " + "; ".join(split[:10]) + (f" (+{len(split) - 10} more)" if len(split) > 10 else ""))
     lang = doc.get("lang", "en")
     for k, t in enumerate(doc.get("topics") or [], 1):
         rep.rows += 1
@@ -138,6 +142,23 @@ def import_topics(stage: Stage, path: Path, rep: "ImportReport") -> None:
                                    "lang": lang})
             rep.problems += [f"{sk['skill_id']}: unknown section_id {s}" for s in sk.get("section_ids") or []
                              if not stage.exists(s)]
+
+
+_KEY = re.compile(r"^[a-z_][a-z0-9_]*$")
+
+
+def _split_keys(topics: list) -> list[str]:
+    """Keys that are fragments of a value, not keys: in a YAML flow mapping an unquoted comma ends
+    the value, so `{title: Know A, B and C, kind: x}` reads as title "Know A" plus keys "B and C".
+    A real key is a plain identifier; anything else means a value lost its tail."""
+    out = []
+    for t in topics:
+        for row, id_key in [(t, "topic_id"), *((sk, "skill_id") for sk in (t.get("skills") or []))]:
+            bad = [k for k in row if not (isinstance(k, str) and _KEY.match(k))]
+            if bad:
+                out.append(f"{row.get(id_key)}: {', '.join(repr(k) for k in bad)} is not a key; quote the value "
+                           f"before it (an unquoted comma split {row.get('title')!r})")
+    return out
 
 
 def import_rows(stage: Stage, corpus_dir: Path, specs: list[dict]) -> list[ImportReport]:

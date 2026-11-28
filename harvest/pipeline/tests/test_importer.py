@@ -181,3 +181,23 @@ def test_pack_meta_ids_are_checked(corpus_dir):
     msg = str(e.value)
     assert "unknown skill t.c" in msg and "prerequisite cycle through t.a" in msg
     assert "answer a.none is missing" in msg and "unknown role pilot" in msg
+
+
+def test_unquoted_comma_in_a_blueprint_title_fails_the_import(corpus_dir):
+    import pytest
+    (corpus_dir / "blueprint.yaml").write_text(
+        "lang: en\ntopics:\n  - {topic_id: t, ord: 1, title: T, summary: S, skills: [\n"
+        "      {skill_id: t.a, title: Know the power line, drill shaft and tank cases, kind: knowledge}]}\n")
+    c = _with_imports(corpus_dir, "  - {table: topic, files: [blueprint.yaml]}\n")
+    with pytest.raises(SystemExit) as e:
+        build(c, c.profile(), log=None)
+    assert "t.a: 'drill shaft and tank cases' is not a key" in str(e.value)
+
+
+def test_segment_kinds_are_checked():
+    from harvest_pipeline.contract import body_problems
+    ok = [{"t": "text", "text": "a"}, {"t": "cite", "section_id": "s"}, {"t": "quote", "section_id": "s", "text": "q"},
+          {"t": "diagram", "diagram_id": "d"}, {"t": "check", "question": "Q?", "answer": "A."}]
+    assert body_problems(ok) == [] and body_problems(json.dumps(ok)) == []
+    assert body_problems([{"t": "quiz", "q": "x"}]) == ["segment 0: unknown kind 'quiz'"]
+    assert body_problems([{"t": "check", "question": "Q?"}]) == ["segment 0 (check): no answer"]

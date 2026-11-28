@@ -3,7 +3,8 @@
 //! - every `quote` is an exact substring of its section's text after
 //!   whitespace normalization, and its section exists;
 //! - every `cite` names an existing section, every `diagram` an existing
-//!   diagram;
+//!   diagram; a `check` (a lesson self-check) needs a question and an answer,
+//!   stands alone, and is dropped in strict mode;
 //! - a paragraph is a run of `text` segments followed by the `quote` / `cite`
 //!   / `diagram` segments after them; a paragraph with no surviving quote or
 //!   cite loses its text (an unsupported claim);
@@ -119,6 +120,14 @@ pub fn check(pack: &Pack, body: &[Segment], opts: CheckOptions) -> Result<(Vec<S
                     valid.push(seg.clone());
                 }
             }
+            // Baked lessons carry self-checks; a model-composed body never may.
+            Segment::Check { question, answer } => {
+                if opts.strict || question.trim().is_empty() || answer.trim().is_empty() {
+                    report.dropped += 1;
+                } else {
+                    valid.push(seg.clone());
+                }
+            }
         }
     }
 
@@ -126,12 +135,20 @@ pub fn check(pack: &Pack, body: &[Segment], opts: CheckOptions) -> Result<(Vec<S
     let mut out: Vec<Segment> = Vec::with_capacity(valid.len());
     let mut i = 0;
     while i < valid.len() {
+        // A self-check stands alone: it ends a paragraph and supports nothing.
+        if matches!(valid[i], Segment::Check { .. }) {
+            out.push(valid[i].clone());
+            i += 1;
+            continue;
+        }
         let start = i;
         while i < valid.len() && matches!(valid[i], Segment::Text { .. }) {
             i += 1;
         }
         let text_end = i;
-        while i < valid.len() && !matches!(valid[i], Segment::Text { .. }) {
+        while i < valid.len()
+            && !matches!(valid[i], Segment::Text { .. } | Segment::Check { .. })
+        {
             i += 1;
         }
         let para = &valid[start..i];

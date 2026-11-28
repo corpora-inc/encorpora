@@ -120,6 +120,44 @@ fn unsupported_lesson_quotes_are_dropped_and_bad_rows_are_errors() {
 }
 
 #[test]
+fn lesson_self_checks_render_and_never_support_a_claim() {
+    use harvest_core::Segment;
+    let (_t, p) = pack_with(
+        r#"UPDATE lesson SET body = '[{"t":"text","text":"Keep clear of the line."},{"t":"cite","section_id":"ex.2"},
+             {"t":"check","question":"Who keeps watch?","answer":"A dedicated spotter."},
+             {"t":"text","text":"An unsupported claim after a check."},
+             {"t":"check","question":"","answer":"blank question"}]'
+           WHERE lesson_id = 'lesson-lines';"#,
+    );
+    let l = p.lesson("lesson-lines").unwrap().unwrap();
+    let kinds: Vec<&str> = l
+        .body
+        .iter()
+        .map(|s| match s {
+            Segment::Text { .. } => "text",
+            Segment::Cite { .. } => "cite",
+            Segment::Check { .. } => "check",
+            _ => "other",
+        })
+        .collect();
+    // The check is kept on its own; the claim after it has no support (a check
+    // supports nothing) and goes; a check with no question goes.
+    assert_eq!(kinds, ["text", "cite", "check"]);
+    assert_eq!(l.check.dropped, 2);
+    // A model-composed (strict) body may not carry a check.
+    let (kept, _) = harvest_core::check::check(
+        &p,
+        &[Segment::Check {
+            question: "q".into(),
+            answer: "a".into(),
+        }],
+        harvest_core::check::CheckOptions::STRICT,
+    )
+    .unwrap();
+    assert!(kept.is_empty());
+}
+
+#[test]
 fn app_data_comes_from_pack_meta() {
     let (_t, p) = pack_with(
         r#"INSERT INTO pack_meta VALUES ('exam_blueprints', '[{"id":"core","title":"Core","minutes":90,"passPercent":70,"domains":[]}]');

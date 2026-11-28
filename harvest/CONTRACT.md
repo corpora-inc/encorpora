@@ -207,12 +207,20 @@ validates it.
 [ { "t": "text",  "text": "There are three clearances to know." },
   { "t": "quote", "section_id": "29cfr1926.1408(a)(2)", "text": "<verbatim substring of section.text>" },
   { "t": "cite",  "section_id": "29cfr1926.1408(a)(2)" },
-  { "t": "diagram", "diagram_id": "…" } ]
+  { "t": "diagram", "diagram_id": "…" },
+  { "t": "check", "question": "Who keeps watch near the line?", "answer": "A dedicated spotter." } ]
 ```
 
 A `quote` must be an exact substring of the section's `text` (after whitespace
 normalization). A `cite` must name an existing section. The checker drops any
 claim segment that has no supporting quote or cite in the same paragraph.
+
+A `check` is a lesson's self-check: the app shows `question`, and the reader
+reveals `answer`. It recalls what the lesson's cited paragraphs already taught.
+It is not a claim, it supports nothing, and it ends a paragraph. Baked bodies
+(lessons) may carry checks; the checker drops a check with an empty question or
+answer, and every check in a model-composed (strict) body. No other segment
+kind exists: the bake fails a body with an unknown kind.
 
 ## Core CLI (what eval and the bake verifier call)
 

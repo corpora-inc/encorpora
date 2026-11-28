@@ -174,7 +174,7 @@ topics:
     skills:
       - {skill_id: rules.scope, title: Know what equipment Subpart CC covers, kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1400(a)", "29cfr1926.1400(b)"], exam: [core.tech.1]}
       - {skill_id: rules.exclusions, title: Recognize equipment and uses excluded from Subpart CC, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1400(c)"], exam: [core.tech.1]}
-      - {skill_id: rules.construction-vs-general, title: Tell construction (1926 Subpart CC) from general industry (1910.179, .180, .184), kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1400", "29cfr1910.179", "29cfr1910.180", "29cfr1910.184"], exam: [core.tech.1]}
+      - {skill_id: rules.construction-vs-general, title: "Tell construction (1926 Subpart CC) from general industry (1910.179, .180, .184)", kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1400", "29cfr1910.179", "29cfr1910.180", "29cfr1910.184"], exam: [core.tech.1]}
       - {skill_id: rules.definitions, title: Use the defined terms precisely, kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1401"], exam: [core.tech.2]}
       - {skill_id: rules.controlling-entity, title: Know the controlling entity's duties, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1400(e)", "29cfr1926.1402(c)", "29cfr1926.1424(a)(2)"], exam: [core.site.6]}
       - {skill_id: rules.standards, title: Place consensus standards (ASME B30 series) alongside the federal rules, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1433(b)"], exam: [core.tech.1]}
@@ -186,12 +186,12 @@ topics:
     summary: Operator certification and evaluation, signal person and rigger qualification, competent vs qualified persons, A/D and lift directors, training, and the authority to stop.
     section_ids: ["29cfr1926.1427", "29cfr1926.1428", "29cfr1926.1429", "29cfr1926.1430", "29cfr1926.1418", "29cfr1926.1401"]
     skills:
-      - {skill_id: roles.competent-vs-qualified, title: Distinguish competent person, qualified person and qualified rigger, kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1401", "29cfr1926.1404(r)(1)", "29cfr1926.1425(c)(3)"], exam: [core.tech.2]}
+      - {skill_id: roles.competent-vs-qualified, title: "Distinguish competent person, qualified person and qualified rigger", kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1401", "29cfr1926.1404(r)(1)", "29cfr1926.1425(c)(3)"], exam: [core.tech.2]}
       - {skill_id: roles.operator-certification, title: Know the operator certification options and what certification covers, kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1427(a)", "29cfr1926.1427(b)", "29cfr1926.1427(d)", "29cfr1926.1427(e)", "29cfr1926.1427(j)"], exam: [core.tech.1]}
       - {skill_id: roles.operator-evaluation, title: Know the employer's evaluation and documentation duties, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1427(f)"], exam: [core.tech.1]}
       - {skill_id: roles.operator-in-training, title: Apply the operator-in-training conditions, kind: knowledge, levels: [trainee, operator], section_ids: ["29cfr1926.1427(a)(1)"], exam: [core.tech.1]}
       - {skill_id: roles.signal-person-qualification, title: Know signal person qualification requirements, kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1428(a)", "29cfr1926.1428(c)"], exam: [core.ops.7]}
-      - {skill_id: roles.training, title: Know required training topics (power lines, signals, crush/pinch points, tag-out), kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1430"], exam: [core.tech.1]}
+      - {skill_id: roles.training, title: "Know required training topics (power lines, signals, crush/pinch points, tag-out)", kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1430"], exam: [core.tech.1]}
       - {skill_id: roles.authority-to-stop, title: Apply the operator's authority and duty to stop, kind: judgment, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1418", "29cfr1926.1417(y)"], exam: [core.ops.21]}
       - {skill_id: roles.ad-director, title: Know the A/D director's role, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1404(a)", "29cfr1926.1401"], exam: [spec.site.2]}
       - {skill_id: roles.maintenance-operators, title: Know when maintenance and inspection personnel may operate, kind: knowledge, levels: [inspector], section_ids: ["29cfr1926.1429"], exam: [core.tech.13]}
@@ -204,18 +204,18 @@ topics:
     summary: Ground conditions and who must provide them, mats and cribbing, outriggers and leveling, swing-radius barricades, the fall zone and keeping people clear.
     section_ids: ["29cfr1926.1402", "29cfr1926.1404(q)", "29cfr1926.1424", "29cfr1926.1425", "29cfr1926.1415(a)(1)"]
     skills:
-      - {skill_id: site.ground-conditions, title: Judge ground conditions as firm, drained and graded, kind: judgment, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1402(a)", "29cfr1926.1402(b)"], exam: [core.site.1]}
-      - {skill_id: site.hazards-below-surface, title: Identify voids, tanks, utilities and loose fill, kind: judgment, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1402(e)"], exam: [core.site.1]}
+      - {skill_id: site.ground-conditions, title: "Judge ground conditions as firm, drained and graded", kind: judgment, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1402(a)", "29cfr1926.1402(b)"], exam: [core.site.1]}
+      - {skill_id: site.hazards-below-surface, title: "Identify voids, tanks, utilities and loose fill", kind: judgment, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1402(e)"], exam: [core.site.1]}
       - {skill_id: site.controlling-entity-ground, title: Know who must ensure and disclose ground conditions, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1402(c)", "29cfr1926.1402(d)", "29cfr1926.1402(e)"], exam: [core.site.6]}
-      - {skill_id: site.supporting-materials, title: Use mats, blocking and cribbing correctly, kind: procedure, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1402(a)", "29cfr1926.1402(b)"], exam: [core.site.2, spec.site.1]}
+      - {skill_id: site.supporting-materials, title: "Use mats, blocking and cribbing correctly", kind: procedure, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1402(a)", "29cfr1926.1402(b)"], exam: [core.site.2, spec.site.1]}
       - {skill_id: site.ground-bearing, title: Compute outrigger ground bearing pressure (force over area), kind: calc, levels: [operator, inspector], section_ids: ["29cfr1926.1402(b)"], exam: [core.site.1, core.lc.2]}
       - {skill_id: site.outriggers, title: Deploy outriggers and stabilizers per the manufacturer, kind: procedure, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1404(q)", "29cfr1926.1415(a)(5)"], exam: [spec.site.3]}
       - {skill_id: site.outrigger-sensors, title: Know outrigger position sensor requirements, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1416(e)(5)(i)"], exam: [spec.site.4]}
       - {skill_id: site.leveling, title: Level the crane and know why level matters, kind: procedure, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1415(a)(1)"], exam: [core.ops.2, core.ops.14]}
       - {skill_id: site.swing-radius, title: Barricade the swing radius of the rotating superstructure, kind: procedure, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1424(a)"], exam: [core.site.5]}
       - {skill_id: site.fall-zone, title: Define the fall zone and keep people out of it, kind: judgment, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1401", "29cfr1926.1425"], exam: [core.ops.11]}
-      - {skill_id: site.keeping-clear, title: Apply the rules for hooking, guiding and receiving loads, kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1425(b)", "29cfr1926.1425(c)", "29cfr1926.1425(d)"], exam: [core.ops.11]}
-      - {skill_id: site.access-hazards, title: Recognize access, pinch and crush hazards at set-up, kind: judgment, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1424(a)", "29cfr1926.1430(e)"], exam: [core.site.5]}
+      - {skill_id: site.keeping-clear, title: "Apply the rules for hooking, guiding and receiving loads", kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1425(b)", "29cfr1926.1425(c)", "29cfr1926.1425(d)"], exam: [core.ops.11]}
+      - {skill_id: site.access-hazards, title: "Recognize access, pinch and crush hazards at set-up", kind: judgment, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1424(a)", "29cfr1926.1430(e)"], exam: [core.site.5]}
       - {skill_id: site.travel-without-load, title: Travel the crane safely without a load, kind: knowledge, levels: [operator], section_ids: ["29cfr1926.1411"], exam: [core.site.4]}
       - {skill_id: site.multiple-cranes-area, title: Coordinate when cranes' working radii overlap, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1424(b)"], exam: [core.ops.8]}
 
@@ -228,18 +228,18 @@ topics:
     skills:
       - {skill_id: powerlines.work-zone, title: Define the work zone (demarcated or 360 degrees to maximum working radius), kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1408(a)(1)"], exam: [core.ops.5]}
       - {skill_id: powerlines.twenty-foot-check, title: Decide whether any part could get within 20 feet, kind: judgment, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1408(a)(2)"], exam: [core.ops.5]}
-      - {skill_id: powerlines.options, title: Choose among deenergize-and-ground, 20-foot clearance and Table A clearance, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1408(a)(2)(i)", "29cfr1926.1408(a)(2)(ii)", "29cfr1926.1408(a)(2)(iii)"], exam: [core.ops.5]}
+      - {skill_id: powerlines.options, title: "Choose among deenergize-and-ground, 20-foot clearance and Table A clearance", kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1408(a)(2)(i)", "29cfr1926.1408(a)(2)(ii)", "29cfr1926.1408(a)(2)(iii)"], exam: [core.ops.5]}
       - {skill_id: powerlines.table-a, title: Read Table A minimum clearance by voltage, kind: calc, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1408"], exam: [core.ops.5, core.tech.9]}
-      - {skill_id: powerlines.over-350kv, title: Apply the over-350 kV rules (50 feet up to 1,000 kV; utility or engineer above), kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1409(a)", "29cfr1926.1409(b)"], exam: [core.ops.5]}
-      - {skill_id: powerlines.encroachment-measures, title: Set up the encroachment prevention measures (meeting, nonconductive tag lines, warning line, plus one more), kind: procedure, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1408(b)"], exam: [core.ops.5, core.tech.9]}
+      - {skill_id: powerlines.over-350kv, title: "Apply the over-350 kV rules (50 feet up to 1,000 kV; utility or engineer above)", kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1409(a)", "29cfr1926.1409(b)"], exam: [core.ops.5]}
+      - {skill_id: powerlines.encroachment-measures, title: "Set up the encroachment prevention measures (meeting, nonconductive tag lines, warning line, plus one more)", kind: procedure, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1408(b)"], exam: [core.ops.5, core.tech.9]}
       - {skill_id: powerlines.dedicated-spotter, title: Know the dedicated spotter's duties and qualification, kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1408(b)(4)(ii)", "29cfr1926.1401"], exam: [core.ops.5]}
       - {skill_id: powerlines.voltage-and-energized, title: Get voltage from the utility; treat lines as energized until confirmed and grounded, kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1408(c)", "29cfr1926.1408(e)"], exam: [core.ops.5]}
       - {skill_id: powerlines.below-lines, title: Know the limits on operating and assembling below power lines, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1408(d)", "29cfr1926.1407(c)"], exam: [core.ops.5, core.site.3]}
       - {skill_id: powerlines.assembly, title: Assemble and disassemble near power lines, kind: procedure, levels: [operator, inspector], section_ids: ["29cfr1926.1407"], exam: [core.site.3, core.ops.5]}
       - {skill_id: powerlines.closer-than-table-a, title: Know the conditions for work closer than Table A, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1410"], exam: [core.ops.5]}
       - {skill_id: powerlines.travel, title: Travel under or near power lines with no load, kind: knowledge, levels: [operator], section_ids: ["29cfr1926.1411"], exam: [core.ops.5, core.site.4]}
-      - {skill_id: powerlines.contact-emergency, title: Respond to power line contact (operator stays on, others stay away), kind: judgment, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1408(g)"], exam: [core.ops.15]}
-      - {skill_id: powerlines.protective-limits, title: Know the limits of insulating links, proximity alarms and range limiters, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1408(b)(4)", "29cfr1926.1408(h)"], exam: [core.tech.9]}
+      - {skill_id: powerlines.contact-emergency, title: "Respond to power line contact (operator stays on, others stay away)", kind: judgment, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1408(g)"], exam: [core.ops.15]}
+      - {skill_id: powerlines.protective-limits, title: "Know the limits of insulating links, proximity alarms and range limiters", kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1408(b)(4)", "29cfr1926.1408(h)"], exam: [core.tech.9]}
       - {skill_id: powerlines.towers, title: Handle induced current near transmitter towers, kind: knowledge, levels: [operator], section_ids: ["29cfr1926.1408(f)"], exam: [core.tech.9]}
       - {skill_id: powerlines.general-industry, title: Know the general industry overhead line rule, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1910.180(j)"], exam: [core.tech.1]}
       - {skill_id: powerlines.training, title: Know what power line training must cover, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1408(g)", "29cfr1926.1430(a)"], exam: [core.tech.9]}
@@ -253,8 +253,8 @@ topics:
     skills:
       - {skill_id: signals.when-required, title: Know when a signal person must be provided, kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1419(a)"], exam: [core.ops.7]}
       - {skill_id: signals.hand-signals, title: Give and read the standard hand signals, kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1419(c)", "29cfr1926.1422", "29cfr1926.cc.appA"], exam: [core.ops.7]}
-      - {skill_id: signals.types, title: Choose hand, voice, audible or new signals, kind: knowledge, levels: [trainee, operator], section_ids: ["29cfr1926.1419(b)", "29cfr1926.1419(d)", "29cfr1926.1419(e)"], exam: [core.ops.7]}
-      - {skill_id: signals.radio, title: Test and use radio signals on a dedicated channel, hands-free, kind: knowledge, levels: [trainee, operator], section_ids: ["29cfr1926.1420"], exam: [core.ops.7]}
+      - {skill_id: signals.types, title: "Choose hand, voice, audible or new signals", kind: knowledge, levels: [trainee, operator], section_ids: ["29cfr1926.1419(b)", "29cfr1926.1419(d)", "29cfr1926.1419(e)"], exam: [core.ops.7]}
+      - {skill_id: signals.radio, title: "Test and use radio signals on a dedicated channel, hands-free", kind: knowledge, levels: [trainee, operator], section_ids: ["29cfr1926.1420"], exam: [core.ops.7]}
       - {skill_id: signals.voice, title: Give voice signals with the three elements in order, kind: knowledge, levels: [trainee, operator], section_ids: ["29cfr1926.1421"], exam: [core.ops.7]}
       - {skill_id: signals.one-signaler, title: Apply one signaler at a time and anyone may stop, kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1419(h)", "29cfr1926.1417(y)", "29cfr1926.1419(j)"], exam: [core.ops.7, core.ops.21]}
       - {skill_id: signals.interruption, title: Stop when signals are interrupted, kind: knowledge, levels: [trainee, operator], section_ids: ["29cfr1926.1419(f)", "29cfr1926.1419(g)"], exam: [core.ops.7]}
@@ -270,16 +270,16 @@ topics:
     skills:
       - {skill_id: rigging.load-weight, title: Determine load weight from a recognized source or calculation, kind: calc, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1417(o)(3)"], exam: [core.ops.3, core.lc.2]}
       - {skill_id: rigging.center-of-gravity, title: Find the center of gravity and rig so the hook is over it, kind: judgment, levels: [trainee, operator], section_ids: ["29cfr1926.1404(h)(6)"], exam: [core.ops.3]}
-      - {skill_id: rigging.hitches, title: Choose vertical, choker or basket hitches and know their relative capacity, kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1910.184(b)"], exam: [core.tech.5]}
+      - {skill_id: rigging.hitches, title: "Choose vertical, choker or basket hitches and know their relative capacity", kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1910.184(b)"], exam: [core.tech.5]}
       - {skill_id: rigging.sling-angle, title: Compute sling leg tension from sling angle (load angle factor), kind: calc, levels: [trainee, operator, inspector], section_ids: ["29cfr1910.184(b)", "29cfr1910.184(c)(4)"], exam: [core.tech.5, core.lc.2]}
       - {skill_id: rigging.multi-leg, title: Know why only some legs of a multi-leg bridle carry the load, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1910.184(b)"], exam: [core.tech.5]}
       - {skill_id: rigging.d-over-d, title: Apply D/d (bend diameter to rope diameter) to sling efficiency, kind: calc, levels: [operator, inspector], section_ids: ["29cfr1910.184(f)"], exam: [core.tech.5]}
-      - {skill_id: rigging.hardware, title: Use shackles, hooks, eyebolts, spreader and lifting beams correctly, kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1910.184(c)"], exam: [core.tech.5]}
+      - {skill_id: rigging.hardware, title: "Use shackles, hooks, eyebolts, spreader and lifting beams correctly", kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1910.184(c)"], exam: [core.tech.5]}
       - {skill_id: rigging.safe-practices, title: Apply the sling safe-operating practices, kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1910.184(c)"], exam: [core.tech.5]}
       - {skill_id: rigging.softeners, title: Protect slings from sharp edges, kind: knowledge, levels: [trainee, operator], section_ids: ["29cfr1910.184(c)(7)"], exam: [core.tech.5]}
       - {skill_id: rigging.sling-inspection, title: Inspect slings daily and remove damaged ones, kind: procedure, levels: [trainee, operator, inspector], section_ids: ["29cfr1910.184(d)", "29cfr1910.184(e)", "29cfr1910.184(f)(5)", "29cfr1910.184(h)", "29cfr1910.184(i)"], exam: [core.tech.5]}
       - {skill_id: rigging.chain-slings, title: Know alloy chain sling rules, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1910.184(e)"], exam: [core.tech.5]}
-      - {skill_id: rigging.wire-rope-slings, title: Know wire rope sling rules (length, temperature, end attachments, removal), kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1910.184(f)"], exam: [core.tech.5]}
+      - {skill_id: rigging.wire-rope-slings, title: "Know wire rope sling rules (length, temperature, end attachments, removal)", kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1910.184(f)"], exam: [core.tech.5]}
       - {skill_id: rigging.synthetic-slings, title: Know synthetic web and fiber rope sling rules, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1910.184(h)", "29cfr1910.184(i)"], exam: [core.tech.5]}
       - {skill_id: rigging.tag-lines, title: Use tag lines and restraint lines, kind: knowledge, levels: [trainee, operator], section_ids: ["29cfr1926.1417(w)", "29cfr1926.1408(b)(2)"], exam: [core.ops.10]}
       - {skill_id: rigging.qualified-rigger, title: Know when a qualified rigger is required, kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1425(c)(3)", "29cfr1926.1404(r)(1)"], exam: [core.tech.5]}
@@ -292,14 +292,14 @@ topics:
     summary: Construction and types, reeving and parts of line, line pull, terminations, inspection categories and removal criteria, and lubrication.
     section_ids: ["29cfr1926.1413", "29cfr1926.1414", "29cfr1910.180(g)", "29cfr1910.179(m)"]
     skills:
-      - {skill_id: wire-rope.construction, title: Name wire rope parts (wires, strands, core, lay), kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1413(a)(2)"], exam: [core.tech.8]}
+      - {skill_id: wire-rope.construction, title: "Name wire rope parts (wires, strands, core, lay)", kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1413(a)(2)"], exam: [core.tech.8]}
       - {skill_id: wire-rope.rotation-resistant, title: Know rotation-resistant rope rules, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1414(e)"], exam: [core.tech.8]}
       - {skill_id: wire-rope.reeving, title: Reeve to the manufacturer's procedures; count parts of line, kind: knowledge, levels: [trainee, operator], section_ids: ["29cfr1926.1414(c)", "29cfr1926.1414(d)"], exam: [core.ops.6]}
       - {skill_id: wire-rope.parts-of-line, title: Compute parts of line from load and allowable line pull, kind: calc, levels: [trainee, operator], section_ids: ["29cfr1926.1414(c)"], exam: [core.ops.6, core.lc.4, spec.lc.3]}
       - {skill_id: wire-rope.line-pull-vs-swl, title: Distinguish maximum line pull from the rope's safe working load, kind: knowledge, levels: [operator], section_ids: ["29cfr1926.1414(b)"], exam: [spec.lc.3]}
-      - {skill_id: wire-rope.terminations, title: Install wedge sockets, clips and sockets correctly, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1414(f)", "29cfr1926.1414(g)", "29cfr1926.1414(h)"], exam: [core.tech.6]}
+      - {skill_id: wire-rope.terminations, title: "Install wedge sockets, clips and sockets correctly", kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1414(f)", "29cfr1926.1414(g)", "29cfr1926.1414(h)"], exam: [core.tech.6]}
       - {skill_id: wire-rope.drum-wraps, title: Keep at least two full wraps on the drum, kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1417(t)"], exam: [core.ops.6]}
-      - {skill_id: wire-rope.shift-inspection, title: Do the shift wire rope inspection (category I, II, III deficiencies), kind: procedure, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1413(a)"], exam: [core.tech.4, core.tech.8]}
+      - {skill_id: wire-rope.shift-inspection, title: "Do the shift wire rope inspection (category I, II, III deficiencies)", kind: procedure, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1413(a)"], exam: [core.tech.4, core.tech.8]}
       - {skill_id: wire-rope.removal-criteria, title: Apply broken-wire and other removal criteria, kind: calc, levels: [operator, inspector], section_ids: ["29cfr1926.1413(a)(4)"], exam: [core.tech.8, spec.tech.3]}
       - {skill_id: wire-rope.monthly-annual, title: Know monthly and annual wire rope inspection duties, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1413(b)", "29cfr1926.1413(c)"], exam: [core.tech.4]}
       - {skill_id: wire-rope.standing-ropes, title: Inspect standing ropes and pendants, kind: knowledge, levels: [inspector], section_ids: ["29cfr1926.1413(a)(4)(ii)", "29cfr1910.180(g)(2)"], exam: [spec.tech.3]}
@@ -313,17 +313,17 @@ topics:
     summary: Radius and boom length, configurations (outriggers fully or partly extended, on rubber, crawler), gross vs net capacity and deductions, range diagrams, chart notes, structural vs stability, quadrants and parts of line.
     section_ids: ["29cfr1926.1417(o)", "29cfr1926.1417(c)", "29cfr1926.1417(r)", "29cfr1926.1417(s)", "29cfr1910.180(c)"]
     skills:
-      - {skill_id: loadchart.terminology, title: Use load chart terms (radius, boom length, rated capacity, gross, net), kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1401"], exam: [core.lc.1]}
+      - {skill_id: loadchart.terminology, title: "Use load chart terms (radius, boom length, rated capacity, gross, net)", kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1401"], exam: [core.lc.1]}
       - {skill_id: loadchart.read-gross, title: Read gross capacity at a radius and boom length, kind: calc, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1417(o)(1)"], exam: [core.lc.4, spec.lc.2]}
       - {skill_id: loadchart.radius-between-rows, title: Use the next longer radius when between rows, kind: calc, levels: [trainee, operator], section_ids: ["29cfr1926.1417(o)(1)"], exam: [core.lc.4, spec.lc.2]}
       - {skill_id: loadchart.boom-between-columns, title: Handle a boom length between chart columns, kind: calc, levels: [trainee, operator], section_ids: ["29cfr1926.1417(o)(1)"], exam: [core.lc.4, spec.lc.2]}
       - {skill_id: loadchart.net-capacity, title: Compute net capacity (gross minus all load-handling devices), kind: calc, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1417(o)(1)", "29cfr1926.1417(o)(3)"], exam: [core.lc.4, spec.lc.2]}
-      - {skill_id: loadchart.deductions, title: Apply deductions (hook block, ball, jib stowed or erected, rigging), kind: calc, levels: [trainee, operator], section_ids: ["29cfr1926.1417(o)(1)"], exam: [core.lc.4, spec.lc.2]}
-      - {skill_id: loadchart.configuration, title: Select the chart for the configuration (outriggers full, mid, on rubber, crawler), kind: calc, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1404(q)", "29cfr1926.1417(o)(1)"], exam: [core.lc.3, core.lc.5, spec.ops.1]}
+      - {skill_id: loadchart.deductions, title: "Apply deductions (hook block, ball, jib stowed or erected, rigging)", kind: calc, levels: [trainee, operator], section_ids: ["29cfr1926.1417(o)(1)"], exam: [core.lc.4, spec.lc.2]}
+      - {skill_id: loadchart.configuration, title: "Select the chart for the configuration (outriggers full, mid, on rubber, crawler)", kind: calc, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1404(q)", "29cfr1926.1417(o)(1)"], exam: [core.lc.3, core.lc.5, spec.ops.1]}
       - {skill_id: loadchart.on-rubber, title: Lift and pick-and-carry on rubber within chart limits, kind: calc, levels: [operator], section_ids: ["29cfr1926.1417(u)", "29cfr1926.1417(r)"], exam: [spec.ops.1, spec.ops.2]}
       - {skill_id: loadchart.quadrants, title: Know quadrants of operation and lifts over the front, kind: knowledge, levels: [operator], section_ids: ["29cfr1926.1417(r)"], exam: [core.site.1, spec.ops.1]}
       - {skill_id: loadchart.jib, title: Read jib and extension capacities by offset, kind: calc, levels: [operator], section_ids: ["29cfr1926.1417(o)(1)"], exam: [spec.lc.1, spec.lc.2]}
-      - {skill_id: loadchart.range-diagram, title: Use the range diagram (radius, boom angle, tip height), kind: calc, levels: [trainee, operator], section_ids: ["29cfr1926.1417(c)(1)"], exam: [core.lc.4, spec.lc.1, spec.lc.2]}
+      - {skill_id: loadchart.range-diagram, title: "Use the range diagram (radius, boom angle, tip height)", kind: calc, levels: [trainee, operator], section_ids: ["29cfr1926.1417(c)(1)"], exam: [core.lc.4, spec.lc.1, spec.lc.2]}
       - {skill_id: loadchart.chart-notes, title: Apply the chart notes, kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1417(c)(1)", "29cfr1926.1417(a)"], exam: [spec.lc.1]}
       - {skill_id: loadchart.structural-vs-stability, title: Tell structural-strength limits from stability limits, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1910.180(c)(1)"], exam: [core.lc.4, spec.lc.1]}
       - {skill_id: loadchart.parts-of-line, title: Use parts-of-line and line pull tables, kind: calc, levels: [trainee, operator], section_ids: ["29cfr1926.1414(c)"], exam: [core.lc.4, spec.lc.3]}
@@ -356,7 +356,7 @@ topics:
       - {skill_id: ops.brake-test, title: Test brakes on loads of 90% or more of the maximum line pull, kind: procedure, levels: [operator], section_ids: ["29cfr1926.1417(s)"], exam: [core.ops.1]}
       - {skill_id: ops.travel-with-load, title: Travel with a load only as the manufacturer and a competent person allow, kind: knowledge, levels: [operator], section_ids: ["29cfr1926.1417(u)"], exam: [spec.ops.2]}
       - {skill_id: ops.swing-speed, title: Control swing speed so the load does not swing out, kind: knowledge, levels: [trainee, operator], section_ids: ["29cfr1926.1417(v)"], exam: [core.ops.16]}
-      - {skill_id: ops.dynamic-loading, title: Recognize shock loading, duty cycle and rapid loss of load, kind: judgment, levels: [trainee, operator], section_ids: ["29cfr1910.184(c)(11)", "29cfr1926.1417(v)"], exam: [core.ops.16]}
+      - {skill_id: ops.dynamic-loading, title: "Recognize shock loading, duty cycle and rapid loss of load", kind: judgment, levels: [trainee, operator], section_ids: ["29cfr1910.184(c)(11)", "29cfr1926.1417(v)"], exam: [core.ops.16]}
       - {skill_id: ops.backward-stability, title: Understand backward stability and boom stops, kind: knowledge, levels: [operator], section_ids: ["29cfr1926.1415(a)(2)"], exam: [core.ops.16, spec.ops.5]}
       - {skill_id: ops.boom-deflection, title: Account for boom deflection increasing radius, kind: knowledge, levels: [operator], section_ids: ["29cfr1926.1417(o)(1)"], exam: [core.ops.18, core.ops.4]}
       - {skill_id: ops.radius-verification, title: Determine and verify radius, kind: procedure, levels: [trainee, operator], section_ids: ["29cfr1926.1416(e)(1)"], exam: [core.ops.4]}
@@ -365,8 +365,8 @@ topics:
       - {skill_id: ops.duty-cycle, title: Know duty-cycle work limits, kind: knowledge, levels: [operator], section_ids: ["29cfr1926.1414(c)"], exam: [core.ops.8, core.ops.16]}
       - {skill_id: ops.multi-drum, title: Run multi-drum and main/auxiliary hoist operations, kind: knowledge, levels: [operator], section_ids: ["29cfr1910.179(a)(17)", "29cfr1910.180(a)(47)", "29cfr1910.179(b)(5)", "29cfr1926.1431(k)(11)"], exam: [core.ops.8]}
       - {skill_id: ops.barge, title: Know the added rules for cranes on barges and floating cranes, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1437"], exam: [core.ops.8, core.ops.19]}
-      - {skill_id: ops.lifting-from-water, title: Account for buoyancy, suction and water weight when lifting from water, kind: judgment, levels: [operator], section_ids: ["29cfr1926.1417(o)(3)"], exam: [core.ops.9]}
-      - {skill_id: ops.emergencies, title: Respond to control, travel, two-block, overload and fire emergencies, kind: judgment, levels: [trainee, operator], section_ids: ["29cfr1926.1417(j)", "29cfr1926.1418"], exam: [core.ops.15]}
+      - {skill_id: ops.lifting-from-water, title: "Account for buoyancy, suction and water weight when lifting from water", kind: judgment, levels: [operator], section_ids: ["29cfr1926.1417(o)(3)"], exam: [core.ops.9]}
+      - {skill_id: ops.emergencies, title: "Respond to control, travel, two-block, overload and fire emergencies", kind: judgment, levels: [trainee, operator], section_ids: ["29cfr1926.1417(j)", "29cfr1926.1418"], exam: [core.ops.15]}
       - {skill_id: ops.attachments, title: Use only manufacturer-approved attachments, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1400(b)", "29cfr1926.1434"], exam: [core.ops.20]}
       - {skill_id: ops.shutdown, title: Shut down and secure lattice and telescopic cranes, kind: procedure, levels: [trainee, operator], section_ids: ["29cfr1926.1417(e)"], exam: [core.ops.22, spec.ops.3]}
       - {skill_id: ops.general-industry-load, title: Know the general industry load-handling rules, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1910.180(h)", "29cfr1910.179(n)"], exam: [core.tech.1]}
@@ -378,11 +378,11 @@ topics:
     summary: Wind, ice and snow adjustments by the competent person, storm warnings, lightning, temperature, wave action and wind indicators.
     section_ids: ["29cfr1926.1417(n)", "29cfr1926.1417(h)"]
     skills:
-      - {skill_id: weather.competent-person, title: Adjust or stop operations for wind, ice, snow and other weather, kind: judgment, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1417(n)"], exam: [core.ops.19]}
+      - {skill_id: weather.competent-person, title: "Adjust or stop operations for wind, ice, snow and other weather", kind: judgment, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1417(n)"], exam: [core.ops.19]}
       - {skill_id: weather.storm-warning, title: Follow manufacturer procedures on a storm warning, kind: knowledge, levels: [operator], section_ids: ["29cfr1926.1417(h)"], exam: [core.ops.19]}
-      - {skill_id: weather.wind-effects, title: Understand wind on boom and load (sail area, swing, side load), kind: judgment, levels: [trainee, operator], section_ids: ["29cfr1926.1417(n)"], exam: [core.ops.19]}
+      - {skill_id: weather.wind-effects, title: "Understand wind on boom and load (sail area, swing, side load)", kind: judgment, levels: [trainee, operator], section_ids: ["29cfr1926.1417(n)"], exam: [core.ops.19]}
       - {skill_id: weather.wind-indicator, title: Read wind indicators and manufacturer wind limits, kind: knowledge, levels: [operator], section_ids: ["29cfr1926.1417(a)"], exam: [core.ops.12, core.ops.19]}
-      - {skill_id: weather.lightning-temperature, title: Handle lightning, cold and heat, kind: judgment, levels: [trainee, operator], section_ids: ["29cfr1926.1417(n)"], exam: [core.ops.19]}
+      - {skill_id: weather.lightning-temperature, title: "Handle lightning, cold and heat", kind: judgment, levels: [trainee, operator], section_ids: ["29cfr1926.1417(n)"], exam: [core.ops.19]}
       - {skill_id: weather.severe-service, title: Know when weather and use trigger severe-service inspection, kind: knowledge, levels: [inspector], section_ids: ["29cfr1926.1412(g)"], exam: [core.tech.4]}
 
   # ------------------------------------------------------------------ 11
@@ -393,12 +393,12 @@ topics:
     section_ids: ["29cfr1926.1403", "29cfr1926.1404", "29cfr1926.1405", "29cfr1926.1406", "29cfr1926.1407", "29cfr1926.cc.appB"]
     skills:
       - {skill_id: assembly.procedures, title: Choose manufacturer or employer A/D procedures, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1403", "29cfr1926.1406"], exam: [spec.site.2]}
-      - {skill_id: assembly.director, title: Know the A/D director's duties (supervision, review, crew instructions), kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1404(a)", "29cfr1926.1404(b)", "29cfr1926.1404(c)", "29cfr1926.1404(d)"], exam: [spec.site.2]}
+      - {skill_id: assembly.director, title: "Know the A/D director's duties (supervision, review, crew instructions)", kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1404(a)", "29cfr1926.1404(b)", "29cfr1926.1404(c)", "29cfr1926.1404(d)"], exam: [spec.site.2]}
       - {skill_id: assembly.out-of-view, title: Protect crew members out of the operator's view, kind: knowledge, levels: [trainee, operator], section_ids: ["29cfr1926.1404(e)"], exam: [core.site.5]}
       - {skill_id: assembly.under-boom, title: Keep people out from under the boom when pins come out, kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1404(f)", "29cfr1926.cc.appB"], exam: [spec.site.2]}
-      - {skill_id: assembly.specific-hazards, title: Address site, blocking, CG, boom support, pin and loss-of-backward-stability hazards, kind: judgment, levels: [operator, inspector], section_ids: ["29cfr1926.1404(h)"], exam: [spec.site.2, core.ops.16]}
+      - {skill_id: assembly.specific-hazards, title: "Address site, blocking, CG, boom support, pin and loss-of-backward-stability hazards", kind: judgment, levels: [operator, inspector], section_ids: ["29cfr1926.1404(h)"], exam: [spec.site.2, core.ops.16]}
       - {skill_id: assembly.boom-dismantling, title: Remove boom and jib pins in a safe order, kind: procedure, levels: [operator, inspector], section_ids: ["29cfr1926.1405"], exam: [spec.site.2]}
-      - {skill_id: assembly.components, title: Verify components, configuration, weights and shipping pins, kind: procedure, levels: [operator, inspector], section_ids: ["29cfr1926.1404(j)", "29cfr1926.1404(k)", "29cfr1926.1404(m)", "29cfr1926.1404(o)"], exam: [spec.site.2]}
+      - {skill_id: assembly.components, title: "Verify components, configuration, weights and shipping pins", kind: procedure, levels: [operator, inspector], section_ids: ["29cfr1926.1404(j)", "29cfr1926.1404(k)", "29cfr1926.1404(m)", "29cfr1926.1404(o)"], exam: [spec.site.2]}
       - {skill_id: assembly.capacity-limits, title: Stay within capacity during assembly, kind: knowledge, levels: [operator], section_ids: ["29cfr1926.1404(g)"], exam: [spec.site.2]}
       - {skill_id: assembly.rigging, title: Rig A/D lifts with a qualified rigger and approved slings, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1404(r)"], exam: [spec.site.2, core.tech.5]}
       - {skill_id: assembly.outriggers, title: Fully extend or set outriggers per the manufacturer, kind: procedure, levels: [operator], section_ids: ["29cfr1926.1404(q)"], exam: [spec.site.3]}
@@ -413,7 +413,7 @@ topics:
     summary: Shift, monthly, annual/comprehensive, post-assembly, modified, repaired, severe-service and idle-equipment inspections, who does them, what they cover and what to record.
     section_ids: ["29cfr1926.1412", "29cfr1926.1413", "29cfr1910.180(d)", "29cfr1910.179(j)"]
     skills:
-      - {skill_id: inspections.shift, title: Do the shift inspection (competent person, visual, before each shift), kind: procedure, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1412(d)"], exam: [core.tech.4]}
+      - {skill_id: inspections.shift, title: "Do the shift inspection (competent person, visual, before each shift)", kind: procedure, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1412(d)"], exam: [core.tech.4]}
       - {skill_id: inspections.monthly, title: Do the monthly inspection and keep the record, kind: procedure, levels: [operator, inspector], section_ids: ["29cfr1926.1412(e)"], exam: [core.tech.4]}
       - {skill_id: inspections.annual, title: Do the annual/comprehensive inspection (qualified person), kind: procedure, levels: [inspector], section_ids: ["29cfr1926.1412(f)"], exam: [core.tech.4]}
       - {skill_id: inspections.modified-repaired, title: Inspect modified and repaired equipment before use, kind: knowledge, levels: [inspector], section_ids: ["29cfr1926.1412(a)", "29cfr1926.1412(b)"], exam: [core.tech.4]}
@@ -422,8 +422,8 @@ topics:
       - {skill_id: inspections.deficiencies, title: Decide whether a deficiency is a safety hazard and act, kind: judgment, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1412(d)(2)", "29cfr1926.1412(e)(2)", "29cfr1926.1412(f)(3)"], exam: [core.tech.4]}
       - {skill_id: inspections.documentation, title: Document inspections and keep records available, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1412(e)(3)", "29cfr1926.1412(f)(7)", "29cfr1926.1412(k)"], exam: [core.tech.4]}
       - {skill_id: inspections.general-industry, title: Know frequent vs periodic inspection in general industry, kind: knowledge, levels: [inspector], section_ids: ["29cfr1910.180(d)", "29cfr1910.179(j)"], exam: [core.tech.4]}
-      - {skill_id: inspections.hooks, title: Inspect hooks (cracks, throat opening, twist), kind: procedure, levels: [trainee, operator, inspector], section_ids: ["29cfr1910.180(d)(3)(v)", "29cfr1910.184(f)(5)(vi)"], exam: [core.tech.4, core.tech.7]}
-      - {skill_id: inspections.personnel-safety, title: Stay safe while inspecting (lockout, fall protection), kind: knowledge, levels: [inspector], section_ids: ["29cfr1926.1423(e)", "29cfr1926.1417(f)"], exam: [core.tech.13]}
+      - {skill_id: inspections.hooks, title: "Inspect hooks (cracks, throat opening, twist)", kind: procedure, levels: [trainee, operator, inspector], section_ids: ["29cfr1910.180(d)(3)(v)", "29cfr1910.184(f)(5)(vi)"], exam: [core.tech.4, core.tech.7]}
+      - {skill_id: inspections.personnel-safety, title: "Stay safe while inspecting (lockout, fall protection)", kind: knowledge, levels: [inspector], section_ids: ["29cfr1926.1423(e)", "29cfr1926.1417(f)"], exam: [core.tech.13]}
       - {skill_id: inspections.testing, title: Know load and operational testing requirements, kind: knowledge, levels: [inspector], section_ids: ["29cfr1926.1433", "29cfr1910.180(e)", "29cfr1910.179(k)"], exam: [core.tech.4]}
 
   # ------------------------------------------------------------------ 13
@@ -437,11 +437,11 @@ topics:
       - {skill_id: devices.safety-device-failure, title: Stop when a safety device fails, kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1415(b)"], exam: [core.ops.14]}
       - {skill_id: devices.category-i, title: Know Category I aids and their alternative measures, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1416(d)"], exam: [core.ops.12, core.ops.13, spec.ops.4]}
       - {skill_id: devices.category-ii, title: Know Category II aids and their alternative measures, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1416(e)"], exam: [core.ops.12, core.ops.13, spec.ops.4]}
-      - {skill_id: devices.repair-deadlines, title: Know repair deadlines (7 days Category I, 30 days Category II), kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1416(d)", "29cfr1926.1416(e)"], exam: [core.ops.13]}
+      - {skill_id: devices.repair-deadlines, title: "Know repair deadlines (7 days Category I, 30 days Category II)", kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1416(d)", "29cfr1926.1416(e)"], exam: [core.ops.13]}
       - {skill_id: devices.anti-two-block, title: Know anti-two-block requirements by crane type, kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1416(d)(3)"], exam: [core.ops.12, spec.ops.7]}
       - {skill_id: devices.two-blocking, title: Recognize and prevent two-blocking (telescoping and hoisting), kind: judgment, levels: [trainee, operator], section_ids: ["29cfr1926.1416(d)(3)", "29cfr1926.1401"], exam: [core.ops.15, spec.ops.7]}
-      - {skill_id: devices.lmi, title: Use load moment indicators, limiters and load weighing devices, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1416(e)(4)"], exam: [core.ops.12]}
-      - {skill_id: devices.indicators, title: Use boom angle, radius, length, jib angle and drum rotation indicators, kind: knowledge, levels: [trainee, operator], section_ids: ["29cfr1926.1416(e)(1)", "29cfr1926.1416(e)(2)", "29cfr1926.1416(e)(3)", "29cfr1926.1416(e)(5)"], exam: [core.ops.12, spec.ops.4, core.tech.10]}
+      - {skill_id: devices.lmi, title: "Use load moment indicators, limiters and load weighing devices", kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1416(e)(4)"], exam: [core.ops.12]}
+      - {skill_id: devices.indicators, title: "Use boom angle, radius, length, jib angle and drum rotation indicators", kind: knowledge, levels: [trainee, operator], section_ids: ["29cfr1926.1416(e)(1)", "29cfr1926.1416(e)(2)", "29cfr1926.1416(e)(3)", "29cfr1926.1416(e)(5)"], exam: [core.ops.12, spec.ops.4, core.tech.10]}
       - {skill_id: devices.boom-hoist-limiting, title: Know boom hoist and luffing jib limiting devices, kind: knowledge, levels: [operator], section_ids: ["29cfr1926.1416(d)(1)", "29cfr1926.1416(d)(2)"], exam: [spec.ops.4]}
       - {skill_id: devices.power-flow, title: Understand hydraulic and mechanical power flow and holding valves, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1415(a)(5)", "29cfr1926.1426(c)"], exam: [spec.ops.6]}
 
@@ -453,7 +453,7 @@ topics:
     section_ids: ["29cfr1926.1431"]
     skills:
       - {skill_id: personnel.when-allowed, title: Know when hoisting personnel is permitted, kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1431(a)", "29cfr1926.1431(b)"], exam: [core.ops.8]}
-      - {skill_id: personnel.equipment-criteria, title: Set up equipment for personnel hoisting (level, outriggers, aids), kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1431(c)", "29cfr1926.1431(d)"], exam: [core.ops.8]}
+      - {skill_id: personnel.equipment-criteria, title: "Set up equipment for personnel hoisting (level, outriggers, aids)", kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1431(c)", "29cfr1926.1431(d)"], exam: [core.ops.8]}
       - {skill_id: personnel.platform-criteria, title: Know personnel platform design and marking criteria, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1431(e)"], exam: [core.ops.8]}
       - {skill_id: personnel.loading, title: Load the platform within its rated capacity and the 50% rule, kind: calc, levels: [operator, inspector], section_ids: ["29cfr1926.1431(f)", "29cfr1926.1431(d)"], exam: [core.ops.8, core.lc.2]}
       - {skill_id: personnel.rigging, title: Rig personnel platforms correctly, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1431(g)"], exam: [core.ops.8]}
@@ -461,7 +461,7 @@ topics:
       - {skill_id: personnel.proof-test, title: Run the proof test, kind: procedure, levels: [operator, inspector], section_ids: ["29cfr1926.1431(j)"], exam: [core.ops.8]}
       - {skill_id: personnel.work-practices, title: Follow personnel-hoisting work practices, kind: knowledge, levels: [operator], section_ids: ["29cfr1926.1431(k)"], exam: [core.ops.8]}
       - {skill_id: personnel.pre-lift-meeting, title: Hold the pre-lift meeting, kind: procedure, levels: [operator], section_ids: ["29cfr1926.1431(m)"], exam: [core.ops.8]}
-      - {skill_id: personnel.special-cases, title: Know the power line, drill shaft, pile driving, marine and tank cases, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1431(n)", "29cfr1926.1431(o)", "29cfr1926.1431(p)", "29cfr1926.1431(r)", "29cfr1926.1431(s)"], exam: [core.ops.8]}
+      - {skill_id: personnel.special-cases, title: "Know the power line, drill shaft, pile driving, marine and tank cases", kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1431(n)", "29cfr1926.1431(o)", "29cfr1926.1431(p)", "29cfr1926.1431(r)", "29cfr1926.1431(s)"], exam: [core.ops.8]}
 
   # ------------------------------------------------------------------ 15
   - topic_id: lift-planning
@@ -470,7 +470,7 @@ topics:
     summary: Planning lifts that need more than routine care; the federal rule for multiple-crane lifts; how industry practice defines and plans a critical lift (the federal rules do not define "critical lift").
     section_ids: ["29cfr1926.1432", "29cfr1926.1417(o)", "29cfr1926.1404(h)"]
     skills:
-      - {skill_id: lift-planning.basics, title: Plan a lift (weight, CG, radius, chart, rigging, ground, clearances, people), kind: procedure, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1417(o)(3)", "29cfr1926.1402(b)"], exam: [core.ops.3, core.ops.4]}
+      - {skill_id: lift-planning.basics, title: "Plan a lift (weight, CG, radius, chart, rigging, ground, clearances, people)", kind: procedure, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1417(o)(3)", "29cfr1926.1402(b)"], exam: [core.ops.3, core.ops.4]}
       - {skill_id: lift-planning.critical, title: Recognize a lift that needs a written critical-lift plan (industry practice), kind: judgment, levels: [operator, inspector], section_ids: ["29cfr1926.1432(a)"], exam: [core.ops.8]}
       - {skill_id: lift-planning.multi-crane-plan, title: Develop a multiple-crane lift plan, kind: procedure, levels: [operator, inspector], section_ids: ["29cfr1926.1432(a)"], exam: [core.ops.8]}
       - {skill_id: lift-planning.multi-crane-implement, title: Implement a multiple-crane lift, kind: procedure, levels: [operator], section_ids: ["29cfr1926.1432(b)"], exam: [core.ops.8]}
@@ -484,7 +484,7 @@ topics:
     summary: Boom walkways, steps and handholds, when fall protection is required on and off the boom, anchorages, and never tying off to the load line except as permitted.
     section_ids: ["29cfr1926.1423"]
     skills:
-      - {skill_id: access.walkways-steps, title: Know walkway, step, handhold and guardrail requirements, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1423(b)", "29cfr1926.1423(c)"], exam: [core.tech.12, core.tech.15]}
+      - {skill_id: access.walkways-steps, title: "Know walkway, step, handhold and guardrail requirements", kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1423(b)", "29cfr1926.1423(c)"], exam: [core.tech.12, core.tech.15]}
       - {skill_id: access.fall-protection-thresholds, title: Know when fall protection is required (non-assembly work), kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1423(d)", "29cfr1926.1423(e)"], exam: [core.tech.14]}
       - {skill_id: access.anchorages, title: Use acceptable anchorages and the load-line rule, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1423(g)", "29cfr1926.1423(j)"], exam: [core.tech.14]}
       - {skill_id: access.maintenance, title: Protect workers during maintenance and inspection at height, kind: knowledge, levels: [inspector], section_ids: ["29cfr1926.1423(e)", "29cfr1926.1423(k)"], exam: [core.tech.11, core.tech.13]}
@@ -497,11 +497,11 @@ topics:
     section_ids: ["29cfr1926.1401", "29cfr1926.1433", "29cfr1926.1434"]
     skills:
       - {skill_id: technical.crane-types, title: Identify crane types and their typical limits, kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1400(a)", "29cfr1926.1401"], exam: [core.tech.3, spec.tech.1, spec.tech.2]}
-      - {skill_id: technical.components, title: Name crane components (boom, jib, sheaves, drums, outriggers, swing bearing), kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1401"], exam: [core.tech.2, spec.tech.1]}
+      - {skill_id: technical.components, title: "Name crane components (boom, jib, sheaves, drums, outriggers, swing bearing)", kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1401"], exam: [core.tech.2, spec.tech.1]}
       - {skill_id: technical.jibs-extensions, title: Know jib and extension types and offsets, kind: knowledge, levels: [trainee, operator], section_ids: ["29cfr1926.1401", "29cfr1926.1415(a)(3)"], exam: [spec.tech.2]}
       - {skill_id: technical.hydraulics, title: Understand hydraulic systems and holding valves, kind: knowledge, levels: [trainee, operator, inspector], section_ids: ["29cfr1926.1415(a)(5)"], exam: [core.tech.3, spec.ops.6]}
       - {skill_id: technical.instruments, title: Read instruments and gauges, kind: knowledge, levels: [trainee, operator], section_ids: ["29cfr1926.1416(e)"], exam: [core.tech.10]}
-      - {skill_id: technical.design-testing, title: Know design, construction and testing requirements, kind: knowledge, levels: [inspector], section_ids: ["29cfr1926.1433"], exam: [core.tech.1]}
+      - {skill_id: technical.design-testing, title: "Know design, construction and testing requirements", kind: knowledge, levels: [inspector], section_ids: ["29cfr1926.1433"], exam: [core.tech.1]}
       - {skill_id: technical.modifications, title: Know when modifications are allowed, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1434"], exam: [core.ops.20, core.tech.3]}
 
   # ------------------------------------------------------------------ 18
@@ -512,14 +512,14 @@ topics:
     section_ids: ["29cfr1910.179", "29cfr1910.180", "29cfr1926.1435", "29cfr1926.1436", "29cfr1926.1437", "29cfr1926.1438", "29cfr1926.1439", "29cfr1926.1440", "29cfr1926.1441"]
     skills:
       - {skill_id: other.overhead-general, title: Know overhead and gantry crane requirements (general industry), kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1910.179(b)", "29cfr1910.179(e)", "29cfr1910.179(f)", "29cfr1910.179(i)"], equipment: [overhead], exam: []}
-      - {skill_id: other.overhead-inspection, title: Inspect overhead cranes (frequent, periodic, idle), kind: procedure, levels: [inspector], section_ids: ["29cfr1910.179(j)", "29cfr1910.179(m)"], equipment: [overhead], exam: []}
+      - {skill_id: other.overhead-inspection, title: "Inspect overhead cranes (frequent, periodic, idle)", kind: procedure, levels: [inspector], section_ids: ["29cfr1910.179(j)", "29cfr1910.179(m)"], equipment: [overhead], exam: []}
       - {skill_id: other.overhead-operation, title: Handle loads with overhead cranes, kind: knowledge, levels: [operator], section_ids: ["29cfr1910.179(n)"], equipment: [overhead], exam: []}
       - {skill_id: other.overhead-construction, title: Know when 1926.1438 applies to overhead cranes in construction, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1438"], equipment: [overhead], exam: [core.tech.1]}
-      - {skill_id: other.mobile-general-industry, title: Know 1910.180 for crawler, locomotive and truck cranes, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1910.180(b)", "29cfr1910.180(c)", "29cfr1910.180(h)", "29cfr1910.180(i)"], exam: [core.tech.1]}
+      - {skill_id: other.mobile-general-industry, title: "Know 1910.180 for crawler, locomotive and truck cranes", kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1910.180(b)", "29cfr1910.180(c)", "29cfr1910.180(h)", "29cfr1910.180(i)"], exam: [core.tech.1]}
       - {skill_id: other.tower, title: Know tower crane supplemental requirements, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1435"], equipment: [tower], exam: []}
       - {skill_id: other.derricks, title: Know derrick requirements, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1436"], equipment: [derrick], exam: []}
       - {skill_id: other.floating, title: Know floating crane and barge requirements, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1437"], equipment: [floating], exam: [core.ops.8]}
-      - {skill_id: other.sideboom-small-piledriver, title: Know sideboom, small-crane and pile driver provisions, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1439", "29cfr1926.1440", "29cfr1926.1441"], exam: []}
+      - {skill_id: other.sideboom-small-piledriver, title: "Know sideboom, small-crane and pile driver provisions", kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1439", "29cfr1926.1440", "29cfr1926.1441"], exam: []}
       - {skill_id: other.articulating, title: Know articulating crane provisions and exclusions, kind: knowledge, levels: [operator, inspector], section_ids: ["29cfr1926.1400(c)(17)", "29cfr1926.1416(d)(3)(iii)", "29cfr1926.1416(e)(4)(ii)"], equipment: [articulating], exam: []}
 
 coverage_notes:
