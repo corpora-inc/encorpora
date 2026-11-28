@@ -373,6 +373,38 @@ pub fn is_rule_claim(sentence: &str) -> bool {
     if RULE_WORDS.iter().any(|w| s.contains(&format!(" {w} "))) {
         return true;
     }
+    // "Assume every line is energized", "lines are presumed energized",
+    // "the employer is responsible for ...": duties with no modal.
+    let own = [
+        " i assume ",
+        " i'll assume ",
+        " let's assume ",
+        " i'm assuming ",
+    ];
+    if (s.contains(" assume ") || s.contains(" assumed ")) && !own.iter().any(|w| s.contains(w))
+        || [
+            " presume",
+            " presumed ",
+            " responsible for ",
+            " deemed ",
+            " treated as ",
+            " considered energized ",
+        ]
+        .iter()
+        .any(|w| s.contains(w))
+    {
+        return true;
+    }
+    // An instruction about the work ("Keep the boom clear of the line",
+    // "Stay out of the swing radius") is a rule told as an order.
+    let words: Vec<&str> = s.split_whitespace().collect();
+    if words.first().is_some_and(|w| IMPERATIVES.contains(w))
+        && words
+            .iter()
+            .any(|w| WORK_WORDS.contains(&w.trim_end_matches('s')))
+    {
+        return true;
+    }
     // "Only a qualified rigger can attach loads."
     if s.contains(" only ")
         && [" can ", " may ", " is allowed ", " are allowed "]
@@ -388,6 +420,82 @@ pub fn is_rule_claim(sentence: &str) -> bool {
             .iter()
             .any(|d| s.split_whitespace().any(|t| t.starts_with(d)))
 }
+
+/// Verbs that open an order about the work.
+const IMPERATIVES: &[&str] = &[
+    "assume",
+    "keep",
+    "stay",
+    "stop",
+    "use",
+    "make",
+    "ensure",
+    "never",
+    "always",
+    "avoid",
+    "wear",
+    "lower",
+    "raise",
+    "call",
+    "contact",
+    "treat",
+    "maintain",
+    "inspect",
+    "verify",
+    "secure",
+    "set",
+    "place",
+    "put",
+    "follow",
+    "get",
+    "don't",
+    "do",
+    "report",
+    "tag",
+    "lock",
+    "block",
+    "barricade",
+    "wait",
+    "remove",
+    "position",
+    "hold",
+    "give",
+    "post",
+    "mark",
+];
+/// Things the work is done with or near (singular; a trailing s is dropped).
+const WORK_WORDS: &[&str] = &[
+    "line",
+    "load",
+    "crane",
+    "boom",
+    "energized",
+    "live",
+    "spotter",
+    "signal",
+    "rigging",
+    "outrigger",
+    "hook",
+    "voltage",
+    "clearance",
+    "worker",
+    "people",
+    "personnel",
+    "operator",
+    "power",
+    "swing",
+    "radiu",
+    "sling",
+    "mat",
+    "ground",
+    "jib",
+    "rope",
+    "block",
+    "zone",
+    "area",
+    "equipment",
+    "machine",
+];
 
 const SOFT_MODALS: &[&str] = &[
     "have to",
@@ -491,12 +599,15 @@ struct Plan {
     search: Option<String>,
 }
 
-fn plan_schema() -> Value {
+/// The plan's schema; `intents` are the ones this turn can serve (no
+/// `review` without an answer to review), so a small model cannot pick one
+/// the engine has nothing for.
+fn plan_schema(intents: &[&str]) -> Value {
     let n = |t: &str| json!({"type": [t, "null"]});
     json!({
         "type": "object",
         "properties": {
-            "intent": {"type": "string", "enum": INTENTS},
+            "intent": {"type": "string", "enum": intents},
             "node_id": n("string"),
             "fields": {"type": "array", "items": {"type": "string", "enum": FIELDS}},
             "show": {"type": "array", "items": {"type": "string"}},
@@ -745,11 +856,13 @@ impl Instructor {
 
     /// The node's rule quotes, each with its cite.
     fn node_quotes(&self, n: &CourseNode) -> Vec<Block> {
-        n.quotes
+        let runs: Vec<(String, String)> = n
+            .quotes
             .iter()
-            .filter_map(|q| self.quote_cite(&q.section_id, &q.quote))
-            .flatten()
-            .collect()
+            .filter(|q| self.quote_cite(&q.section_id, &q.quote).is_some())
+            .map(|q| (q.section_id.clone(), q.quote.clone()))
+            .collect();
+        Self::run_blocks(&self.with_lead_ins(runs))
     }
 
     /// A practice question on a skill: the first the learner has not just answered.
@@ -911,21 +1024,24 @@ impl Instructor {
             return self.lost(node_id);
         };
         let norm = self.engine.retriever().normalize(&n.title);
-        let mut blocks: Vec<Block> = self.node_quotes(n);
+        let mut runs: Vec<(String, String)> = n
+            .quotes
+            .iter()
+            .filter(|q| self.quote_cite(&q.section_id, &q.quote).is_some())
+            .map(|q| (q.section_id.clone(), q.quote.clone()))
+            .collect();
         for sid in n.section_ids.iter().take(3) {
             if let Ok(Some(sec)) = self.engine.pack.section(sid) {
                 let passage = best_passage(&sec.text, &norm.concepts, 600);
-                let dup = blocks
-                    .iter()
-                    .any(|b| matches!(b, Block::Quote { text, .. } if text == &passage));
                 if !passage.is_empty()
-                    && !dup
-                    && let Some(qc) = self.quote_cite(sid, &passage)
+                    && !runs.iter().any(|(_, t)| t == &passage)
+                    && self.quote_cite(sid, &passage).is_some()
                 {
-                    blocks.extend(qc);
+                    runs.push((sid.clone(), passage));
                 }
             }
         }
+        let blocks = Self::run_blocks(&self.with_lead_ins(runs));
         let all: Vec<String> = FIELDS.iter().map(|s| s.to_string()).collect();
         let follow = self
             .next_steps(n, &all)
@@ -1022,8 +1138,9 @@ impl Instructor {
              their words. Learners write messy, misspelled, slangy messages; work out the meaning.\n\
              Reply with JSON:\n\
              - intent: node (show a course node), rule (answer what a rule requires from the rule \
-             passages), focus (study priorities from their mastery), review (explain their last \
-             practice answer), practice (an inline practice question on a skill node), tool (a \
+             passages), focus (what to study, where they stand, how to prepare for the exam: the \
+             app shows their weakest skills weighted by the exam), review (explain their last \
+             practice answer, learner.last_answer), practice (an inline practice question on a skill node), tool (a \
              calculator: clearance for a voltage, load-chart, signals), chat (greeting, thanks, nerves), out_of_scope (not \
              in this course: other countries, other machines, legal advice or fines, the text of \
              private standards), clarify (ask one short question).\n\
@@ -1032,7 +1149,8 @@ impl Instructor {
              - show: ids from the node's links to show (a film, lesson, diagram, or \"practice\").\n\
              - evidence: the 1 to 3 rule sentences (handles like \"r1.2\") that state the rule \
              you talk about; the app quotes exactly these. Leave it empty when you state no rule.\n\
-             - say: 1 to 3 short sentences, plain words. Never state a rule, number or \
+             - say: 1 to 3 short sentences, plain words. The app places the blocks; do not write \
+             \"below\" or \"quoted here\". Never state a rule, number or \
              requirement unless its sentence is in evidence; the app drops any that is not. If \
              nothing fits, say so honestly and point to what the course covers. For \
              out_of_scope, say plainly that this course does not cover it, then name what it does \
@@ -1061,6 +1179,11 @@ impl Instructor {
             return Ok(self.model_off(text, &node_hits, trace));
         };
 
+        let intents: Vec<&str> = INTENTS
+            .iter()
+            .copied()
+            .filter(|i| *i != "review" || review.is_some())
+            .collect();
         let mut plan = Plan::default();
         for step in 0..2 {
             let user = self.prompt(
@@ -1074,7 +1197,7 @@ impl Instructor {
             let req_llm = LlmRequest {
                 system: self.system(),
                 user,
-                schema: ("instructor_turn".into(), plan_schema()),
+                schema: ("instructor_turn".into(), plan_schema(&intents)),
                 max_tokens: 500,
                 temperature: 0.2,
             };
@@ -1122,7 +1245,7 @@ impl Instructor {
             let req_llm = LlmRequest {
                 system: self.system(),
                 user: user.to_string(),
-                schema: ("instructor_turn".into(), plan_schema()),
+                schema: ("instructor_turn".into(), plan_schema(&intents)),
                 max_tokens: 500,
                 temperature: 0.2,
             };
@@ -1360,7 +1483,7 @@ impl Instructor {
         &self,
         req: &TurnRequest,
         text: &str,
-        plan: Plan,
+        mut plan: Plan,
         passages: &[Passage],
         review: Option<(Block, Vec<String>, Value)>,
         mut trace: Trace,
@@ -1402,6 +1525,10 @@ impl Instructor {
             })
             .unwrap_or_default();
 
+        // Nothing to review means the learner asks where they stand: focus.
+        if plan.intent == "review" && review.is_none() {
+            plan.intent = "focus".into();
+        }
         match plan.intent.as_str() {
             "node" | "practice" if node.is_some() => {
                 let n = node.unwrap();
@@ -1474,6 +1601,7 @@ impl Instructor {
                     .any(|c| check::holds(c, &support, CheckOptions::STRICT.min_overlap))
             });
         }
+        let runs = self.with_lead_ins(runs);
         let mut table_runs: Vec<(String, String)> = Vec::new();
         let mut rule_blocks: Vec<Block> = Vec::new();
         if let Some((_, segs)) = table {
@@ -1511,6 +1639,7 @@ impl Instructor {
             blocks.insert(0, l);
         }
         blocks.extend(rule_blocks);
+        self.drop_dangling(&mut blocks, &mut trace);
         if plan.intent == "rule" && !has_rules {
             // Unsure: show what the rules search finds rather than guess.
             blocks.push(Block::Search {
@@ -1625,6 +1754,101 @@ impl Instructor {
             }
         }
         runs
+    }
+
+    /// Drop sentences of the model's line that point at something the turn
+    /// does not show ("the rule quoted below" with no quote, "the lesson
+    /// below" with no lesson card).
+    fn drop_dangling(&self, blocks: &mut Vec<Block>, trace: &mut Trace) {
+        let has = |f: &dyn Fn(&Block) -> bool| blocks.iter().any(f);
+        let quote = has(&|b| matches!(b, Block::Quote { .. }));
+        let lesson = has(&|b| matches!(b, Block::Lesson { .. }));
+        let question = has(&|b| matches!(b, Block::Question { .. }));
+        let film = has(&|b| matches!(b, Block::Film { .. }));
+        let diagram = has(&|b| matches!(b, Block::Diagram { .. }));
+        let any = has(&|b| !matches!(b, Block::Text { .. }));
+        // The model's line is the first text block that is not the engine's
+        // table lead ("For 200 kV, …").
+        let Some(Block::Text { text }) = blocks
+            .iter_mut()
+            .find(|b| matches!(b, Block::Text { text } if !text.starts_with("For ")))
+        else {
+            return;
+        };
+        let mut kept = Vec::new();
+        for sent in sentences(text) {
+            let l = format!(
+                " {} ",
+                sent.to_lowercase().replace(['.', ',', ':', '!', '?'], " ")
+            );
+            let points = [
+                " below ",
+                " above ",
+                " quoted ",
+                " shown here ",
+                " here's the ",
+                " see the ",
+            ]
+            .iter()
+            .any(|w| l.contains(w));
+            let names = |ws: &[&str]| ws.iter().any(|w| l.contains(&format!(" {w}")));
+            let ok = !points
+                || if names(&[
+                    "rule",
+                    "quote",
+                    "text",
+                    "section",
+                    "passage",
+                    "table",
+                    "paragraph",
+                ]) {
+                    quote
+                } else if names(&["lesson"]) {
+                    lesson
+                } else if names(&["question", "practice", "quiz"]) {
+                    question
+                } else if names(&["video", "film"]) {
+                    film
+                } else if names(&["diagram", "picture", "figure", "drawing"]) {
+                    diagram
+                } else {
+                    any
+                };
+            if ok {
+                kept.push(sent);
+            } else {
+                trace
+                    .dropped
+                    .push(format!("points at nothing shown: {sent}"));
+            }
+        }
+        *text = kept.join(" ");
+        blocks.retain(|b| !matches!(b, Block::Text { text } if text.trim().is_empty()));
+    }
+
+    /// `runs` with the sentence that introduces each list item's list (and its
+    /// parent list) quoted before it, once.
+    fn with_lead_ins(&self, runs: Vec<(String, String)>) -> Vec<(String, String)> {
+        let mut out: Vec<(String, String)> = Vec::new();
+        for r in runs {
+            let shown: String = out
+                .iter()
+                .chain(std::iter::once(&r))
+                .map(|(_, t)| t.as_str())
+                .collect::<Vec<_>>()
+                .join("\n");
+            if let Ok(intros) = self.engine.pack.list_lead_ins(&r.0, &shown) {
+                for i in intros {
+                    if !out.contains(&i) && self.quote_cite(&i.0, &i.1).is_some() {
+                        out.push(i);
+                    }
+                }
+            }
+            if !out.contains(&r) {
+                out.push(r);
+            }
+        }
+        out
     }
 
     /// Quote blocks for `runs`, each section's cite after its last quote.

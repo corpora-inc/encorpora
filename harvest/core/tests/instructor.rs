@@ -518,3 +518,135 @@ fn a_reply_that_loses_sentences_is_written_again_once() {
     assert!(t.trace.dropped[0].starts_with("repaired: "));
     assert_eq!(t.trace.plans.len(), 2);
 }
+
+#[test]
+fn a_list_item_is_quoted_with_the_sentence_that_introduces_its_list() {
+    let tmp = tempfile::tempdir().unwrap();
+    let dir = tmp.path().join("p");
+    fixture::build_with(&dir, "2026.1.1-1", |c| {
+        c.execute_batch(
+            "INSERT INTO section VALUES ('ex.9', 'ex-rules', NULL, 90, 1, 'section', '§9', 'Stopping',
+               'The operator must stop the lift in any of the following circumstances:\n(a) The load is over a cofferdam.', 'x', 'en');
+             INSERT INTO section VALUES ('ex.9(a)', 'ex-rules', 'ex.9', 91, 2, 'paragraph', '§9(a)', NULL,
+               '(a) The load is over a cofferdam.', 'y', 'en');
+             INSERT INTO chunk VALUES ('c-ex.9(a)', 'section', 'ex.9(a)', 'Stopping a lift: the load is over a cofferdam.', 'en');",
+        )?;
+        Ok(())
+    })
+    .unwrap();
+    let pack = Arc::new(Pack::open(&dir, &[fixture::trusted_key()]).unwrap());
+    let llm = Dyn(Box::new(|u| {
+        let h = handle(u, "§9(a)", "cofferdam");
+        plan(
+            "rule",
+            None,
+            vec![h],
+            "Yes: a load over a cofferdam is one of the cases.",
+        )
+    }));
+    let i = instructor(&pack, Some(Arc::new(llm)));
+    let t = i
+        .turn(&ask("do i stop a lift when the load is over a cofferdam"))
+        .unwrap();
+    let quotes: Vec<&Block> = t
+        .blocks
+        .iter()
+        .filter(|b| matches!(b, Block::Quote { .. }))
+        .collect();
+    assert_eq!(
+        quotes,
+        [
+            &Block::Quote {
+                section_id: "ex.9".into(),
+                text: "The operator must stop the lift in any of the following circumstances:"
+                    .into()
+            },
+            &Block::Quote {
+                section_id: "ex.9(a)".into(),
+                text: "(a) The load is over a cofferdam.".into()
+            },
+        ],
+        "{:?}",
+        t.blocks
+    );
+}
+
+#[test]
+fn study_talk_without_an_answer_to_review_shows_the_focus_list() {
+    use harvest_core::llm::ScriptedLlm;
+    let b = common::pack();
+    let llm = Arc::new(ScriptedLlm::new([plan(
+        "review",
+        None,
+        vec![],
+        "Here is where to spend your week.",
+    )
+    .to_string()]));
+    let i = instructor(&b.pack, Some(llm.clone()));
+    let learner = Learner {
+        mastery: [("skill-clearance".to_string(), 0.2)].into(),
+        ..Learner::default()
+    };
+    let t = i
+        .turn(&TurnRequest {
+            learner,
+            ..ask("test is next week what do i study")
+        })
+        .unwrap();
+    assert!(
+        matches!(&t.blocks[1], Block::Focus { items } if items[0].node_id == "skill:skill-clearance"),
+        "{:?}",
+        t.blocks
+    );
+    assert!(!t.blocks.iter().any(|b| matches!(b, Block::Quote { .. })));
+    // No answer to review: the model is not offered `review` at all.
+    let schema = &llm.requests.lock().unwrap()[0].schema.1;
+    let intents = schema["properties"]["intent"]["enum"].as_array().unwrap();
+    assert!(!intents.iter().any(|i| i == "review") && intents.iter().any(|i| i == "focus"));
+}
+
+#[test]
+fn orders_and_presumptions_are_claims_and_pointers_need_their_block() {
+    use harvest_core::instructor::is_rule_claim;
+    for s in [
+        "Assume every line is live.",
+        "Lines are presumed energized until the utility says otherwise.",
+        "The controlling entity is responsible for ground conditions.",
+        "Keep the boom clear of the line.",
+        "Stay out of the swing radius.",
+    ] {
+        assert!(is_rule_claim(s), "{s}");
+    }
+    for s in [
+        "I assume you mean the load chart.",
+        "Try the practice question next.",
+        "Read the chart title first.",
+    ] {
+        assert!(!is_rule_claim(s), "{s}");
+    }
+    let b = common::pack();
+    let llm = Dyn(Box::new(|_| {
+        plan(
+            "node",
+            Some("domain:core.site"),
+            vec![],
+            "The rule is quoted below. Site is 60% of the exam.",
+        )
+    }));
+    let i = instructor(&b.pack, Some(Arc::new(llm)));
+    let t = i.turn(&ask("tell me about site")).unwrap();
+    assert_eq!(
+        t.blocks[0],
+        Block::Text {
+            text: "Site is 60% of the exam.".into()
+        }
+    );
+    assert!(
+        t.trace
+            .dropped
+            .iter()
+            .any(|d| d.contains("points at nothing shown")),
+        "{:?}",
+        t.trace.dropped
+    );
+}
