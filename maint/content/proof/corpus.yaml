@@ -60,7 +60,7 @@ maint:
                  max_week_pct: 60}}, images: false}
   # recorded machine inputs, decoded by harvest-core and matched against the pack (`maint signals`)
   signal_samples:
-    - {file: samples/pump40-dm1.candump, format: j1939_candump,
+    - {file: samples/pump40-dm1.candump, format: j1939_candump, expect_dtcs: 4,   # two single frames, one BAM of two
        expect: [{tree: Pump overheats}, {tree: Engine will not crank, node: What is the battery voltage}]}
     - {file: samples/pump40-display.txt, format: display, kind: display,
        expect: [{tree: Pump overheats, node: Is the intake strainer clear}]}

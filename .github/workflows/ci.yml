@@ -2345,6 +2345,9 @@ jobs:
           export PATH="$RUNNER_TEMP/venv/bin:$PATH"
           maint/content/build-pack.sh "$RUNNER_TEMP/maint-v1" maint/content/proof/corpus.yaml
           MAINT_PACK_ARM=rules maint/content/build-pack.sh "$RUNNER_TEMP/maint-v2" maint/content/proof/corpus-v2.yaml
+          # the pipeline's vectors are ones the core searches densely (no silently ignored embedder)
+          "$RUNNER_TEMP/venv/bin/pip" install pytest
+          "$RUNNER_TEMP/venv/bin/python" -m pytest -q harvest/pipeline/tests/test_embed_core.py
       - uses: actions/upload-artifact@v4
         if: always() && steps.tree.outputs.present == 'true'
         with:

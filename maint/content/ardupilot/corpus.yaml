@@ -15,7 +15,7 @@
 corpus_id: ardupilot-prearm
 pack_id: ardupilot-prearm
 lang: en
-version: 2026.11.28-1
+version: 2026.11.28-2
 
 sources:
   - id: ardupilot-prearm

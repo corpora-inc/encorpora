@@ -55,6 +55,38 @@ def _match_in(pm: PageModel, reg: Region, text: str) -> tuple[list[int], str] | 
                 if all(ch in _PUNCT for ch in tail):
                     return reg.words[k0:k1 + 1], joined[at:end]
             at = hay.find(needle, at + 1)
+    return _match_dehyphenated(pm, reg, want)
+
+
+def _match_dehyphenated(pm: PageModel, reg: Region, want: str) -> tuple[list[int], str] | None:
+    """A word broken across a line end ("mainte-" / "nance") read as one word: the span may name the
+    whole word. The stored text is still the text layer's own words, hyphen and all."""
+    line_end = {ln[-1] for ln in reg.lines if ln}
+    toks: list[tuple[str, list[int]]] = []
+    for i in reg.words:
+        w = pm.words[i].text
+        if toks and toks[-1][0].endswith("-") and toks[-1][1][-1] in line_end and w[:1].islower():
+            toks[-1] = (toks[-1][0][:-1] + w, toks[-1][1] + [i])
+        else:
+            toks.append((w, [i]))
+    if all(len(t[1]) == 1 for t in toks):
+        return None
+    joined = " ".join(t[0] for t in toks)
+    at = joined.find(want)
+    while at >= 0:
+        starts, pos = [], 0
+        for t, _ in toks:
+            starts.append(pos)
+            pos += len(t) + 1
+        end = at + len(want)
+        if at in starts:
+            k0 = starts.index(at)
+            k1 = max(k for k, s in enumerate(starts) if s < end)
+            tail = joined[end:starts[k1] + len(toks[k1][0])]
+            if all(ch in _PUNCT for ch in tail):
+                idxs = [i for _, ids in toks[k0:k1 + 1] for i in ids]
+                return idxs, " ".join(pm.words[i].text for i in idxs)
+        at = joined.find(want, at + 1)
     return None
 
 

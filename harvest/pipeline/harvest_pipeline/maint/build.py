@@ -338,7 +338,8 @@ def build(corpus: Corpus, arm_name: str | None, out_dir: Path | None, harvest: s
         else:
             raise SystemExit(f"graph validation still fails after {max_rounds} rounds: {rep.get('graph')}")
     finally:
-        emb.close()
+        if emb is not None:
+            emb.close()
     hist = None
     if m.get("history"):
         # the fleet's maintenance logs, read against this very pack: history and failure modes ship with it
@@ -359,7 +360,8 @@ def build(corpus: Corpus, arm_name: str | None, out_dir: Path | None, harvest: s
                              bake_backends={"author": a.spec, "judge": None, "history": h.get("arm", "rules")},
                              lang=corpus.lang, extra_meta=meta, files=files)
         finally:
-            emb.close()
+            if emb is not None:
+                emb.close()
         rep = verify_graph(harvest, out_dir, pubkey)
         (out_dir.parent / f"{out_dir.name}.registry.json").write_text(json.dumps(lr["_out"]["registry"], indent=1))
         hist = {"arm": h.get("arm", "rules"), "history": len(lr["_out"]["history"]),
@@ -437,7 +439,8 @@ def build_table(corpus: Corpus, out_dir: Path | None, harvest: str, pubkey: str 
                          bake_backends={"author": "rules", "synonyms": (m.get("synonyms") or {}).get("author")},
                          lang=corpus.lang, extra_meta=meta)
     finally:
-        emb.close()
+        if emb is not None:
+            emb.close()
     rep = verify_graph(harvest, out_dir, pubkey)
     pc = __import__("sqlite3").connect(res["path"])
     shipped = {r[0] for r in pc.execute("SELECT tree_id FROM fault_tree")}
@@ -499,6 +502,12 @@ def signals_check(corpus: Corpus, pack_dir: Path, harvest: str, pubkey: str | No
             if smp.get("kind"):
                 cmd += ["--kind", smp["kind"]]
             dec = json.loads(subprocess.run(cmd, capture_output=True, text=True).stdout or "{}")
+            if dec.get("errors"):
+                out["wrong"].append({"sample": smp["file"], "decode_errors": dec["errors"]})
+            if "expect_dtcs" in smp:     # every DTC of every DM1 message, single-frame and multi-packet alike
+                n = sum(len(m.get("dtcs", [])) for m in dec.get("dm1", []))
+                if n != smp["expect_dtcs"]:
+                    out["wrong"].append({"sample": smp["file"], "dtcs": n, "want_dtcs": smp["expect_dtcs"]})
             for obs, want in zip(dec.get("observations", []), smp["expect"]):
                 out["observations"] += 1
                 body = json.dumps({"observations": [obs]}).encode()

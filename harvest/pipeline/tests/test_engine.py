@@ -106,7 +106,7 @@ def test_cache_reused_and_offline_build_is_deterministic(corpus):
                         "WHERE chunk_fts MATCH 'energized'").fetchall()
     assert ("s:99cfr1999.12(a)(1)",) in hits
     meta = dict(conn.execute("SELECT key, value FROM pack_meta"))
-    assert meta["embedder_id"] == "hash-v1-64" and meta["embed_dim"] == "64"
+    assert meta["embedder_id"] == "hash-v1-64" and meta["embed_dim"] == "64"   # tests only (HARVEST_TEST_EMBEDDER)
     assert conn.execute("SELECT COUNT(*) FROM chunk_vec").fetchone()[0] == conn.execute(
         "SELECT COUNT(*) FROM chunk").fetchone()[0]
 

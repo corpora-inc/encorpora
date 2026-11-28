@@ -210,6 +210,12 @@ def write_pack(stage: Stage, out_dir: Path, pack_id: str, version: str, corpus_i
     nodes = _node_texts(dst)
 
     meta_embed = {}
+    if embedder is not None:
+        from .embed import core_accepts
+        test_ok = os.environ.get("HARVEST_TEST_EMBEDDER") == "1" and embedder.id.startswith("hash-v1-")
+        if not core_accepts(embedder.id) and not test_ok:
+            raise SystemExit(f"embedder {embedder.id!r}: harvest-core would ignore these vectors (it accepts "
+                             "<model>@<gguf sha16>[/mrlN]); bake with a model the device runs, or with no vectors")
     if embedder is not None and chunks:
         vecs = embedder.embed_docs([(c[4], c[3]) for c in chunks])
         dst.executemany("INSERT INTO chunk_vec (chunk_id, vec, scale) VALUES (?,?,?)",

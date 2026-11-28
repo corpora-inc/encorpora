@@ -84,7 +84,7 @@ def tree2() -> str:
        <isolationStepAnswer><listOfChoices><choice nextActionRefId="stp-0001">Continue</choice></listOfChoices></isolationStepAnswer></isolationStep>
       <isolationStep id="stp-0001"><isolationStepQuestion>{x(C.H1)}</isolationStepQuestion>{_facets(C.H1_FACETS)}
        <isolationStepAnswer><yesNoAnswer><yesAnswer nextActionRefId="stp-0002"/><noAnswer nextActionRefId="end-0001"/></yesNoAnswer></isolationStepAnswer></isolationStep>
-      <isolationStep id="stp-0002"><isolationStepQuestion>{x(C.H2)}</isolationStepQuestion>{_facets(C.H2_FACETS)}
+      <isolationStep id="stp-0002"><action><para>Do the belt condition check (<dmRef><dmRefIdent>{_dmc("32", "345")}</dmRefIdent></dmRef>).</para></action><isolationStepQuestion>{x(C.H2)}</isolationStepQuestion>{_facets(C.H2_FACETS)}
        <isolationStepAnswer><listOfChoices>
         <choice nextActionRefId="end-0002">{x(C.H2_LABELS[0].title())}</choice>
         <choice nextActionRefId="end-0003">{x(C.H2_LABELS[1].title())}</choice>
@@ -131,6 +131,77 @@ def task43() -> str:
     return _dm("24", "920", C.T43_TITLE, "Replace", _applic(C.T43_APPLIES, ["P40-D"]), body)
 
 
+def _dmc(sys_code: str, info: str) -> str:
+    return (f'<dmCode modelIdentCode="{MODEL}" systemDiffCode="A" systemCode="{sys_code}" subSystemCode="0" '
+            f'subSubSystemCode="0" assyCode="00" disassyCode="00" disassyCodeVariant="A" infoCode="{info}" '
+            f'infoCodeVariant="A" itemLocationCode="A"/>')
+
+
+def belt_check() -> str:
+    """The test procedure for the belt question, its own module (the fault module points here by dmRef)."""
+    wc = (f'<warningsAndCautions><warning id="warn-0001"><warningAndCautionPara>{x(C.TPH2_WARNING)}'
+          f'</warningAndCautionPara></warning></warningsAndCautions>')
+    steps = [f'    <proceduralStep id="stp-0001"><para>{x(C.TPH2_STEPS[0])}</para></proceduralStep>',
+             f'    <proceduralStep id="stp-0002"><note><notePara>{x(C.TPH2_NOTE)}</notePara></note>'
+             f'<para>{x(C.TPH2_STEPS[1])}</para></proceduralStep>',
+             f'    <proceduralStep id="stp-0003"><para>{x(C.TPH2_STEPS[2])}</para></proceduralStep>']
+    body = f"""  {wc}
+  <procedure>
+   <preliminaryRqmts>
+    <reqCondGroup><noConds/></reqCondGroup>
+    <reqSafety><safetyRqmts warningRefs="warn-0001"/></reqSafety>
+   </preliminaryRqmts>
+   <mainProcedure>
+{chr(10).join(steps)}
+   </mainProcedure>
+   <closeRqmts><reqCondGroup><noConds/></reqCondGroup></closeRqmts>
+  </procedure>"""
+    return _dm("32", "345", C.TPH2_TITLE, "Test", _applic(C.T2_APPLIES, ["P40-D", "P40-E"]), body)
+
+
+def act() -> str:
+    """Applicability cross-reference table: the product attributes and their values."""
+    enums = "".join(f'<enumeration applicPropertyValues="{m}" enumerationLabel="{x(name)}"/>'
+                    for name, m in ((C.VARIANTS[0][0], "P40-D"), (C.VARIANTS[1][0], "P40-E")))
+    body = f"""  <applicCrossRefTable>
+   <productAttributeList>
+    <productAttribute id="model"><name>Model</name><displayName>Model</displayName><descr>Model designation</descr>{enums}</productAttribute>
+    <productAttribute id="serialno"><name>Serial number</name><displayName>Serial number</displayName><descr>Serial number range</descr></productAttribute>
+   </productAttributeList>
+  </applicCrossRefTable>"""
+    return _dm("00", "00W", "Model 40 utility pump", "Applicability cross-reference table",
+               "<displayText><simplePara>All</simplePara></displayText>", body)
+
+
+def pct() -> str:
+    """Products cross-reference table: each product's attribute values (model and serial range)."""
+    prods = "".join(
+        f'<product id="prd-{k}"><assign applicPropertyIdent="model" applicPropertyType="prodattr" applicPropertyValue="{m}"/>'
+        f'<assign applicPropertyIdent="serialno" applicPropertyType="prodattr" applicPropertyValue="{sn}"/></product>'
+        for k, (m, sn) in enumerate((("P40-D", "P40D-1000~P40D-4999"), ("P40-E", "P40E-1000~P40E-4999")), 1))
+    body = f"  <productCrossRefTable>{prods}</productCrossRefTable>"
+    return _dm("00", "00P", "Model 40 utility pump", "Products cross-reference table",
+               "<displayText><simplePara>All</simplePara></displayText>", body)
+
+
+def write_set(out_zip: Path) -> Path:
+    """The publication's data module set as one zip (how S1000D data is delivered), byte-stable."""
+    import zipfile
+    files = {
+        f"DMC-{MODEL}-A-00-0-0-00-00A-00WA-A_003-00_EN-US.XML": act(),
+        f"DMC-{MODEL}-A-00-0-0-00-00A-00PA-A_003-00_EN-US.XML": pct(),
+        f"DMC-{MODEL}-A-32-0-0-00-00A-421A-A_003-00_EN-US.XML": tree2(),
+        f"DMC-{MODEL}-A-32-0-0-00-00A-345A-A_003-00_EN-US.XML": belt_check(),
+        f"DMC-{MODEL}-A-24-0-0-00-00A-920A-A_003-00_EN-US.XML": task43(),
+    }
+    with zipfile.ZipFile(out_zip, "w", zipfile.ZIP_DEFLATED) as z:
+        for name in sorted(files):
+            zi = zipfile.ZipInfo(name, date_time=(2026, 3, 1, 0, 0, 0))
+            zi.compress_type = zipfile.ZIP_DEFLATED
+            z.writestr(zi, files[name])
+    return out_zip
+
+
 def write_modules(out: Path) -> list[Path]:
     out.mkdir(parents=True, exist_ok=True)
     files = {
@@ -149,12 +220,9 @@ def expected() -> dict:
     """The answer key for what the two modules carry: the overheating tree (S1000D has no facets) and
     task 4-3, with their warnings, cautions, setup and applicability."""
     x = C.expected()
-    x["trees"] = [dict(t, facets=[], nodes=[{k: v for k, v in n.items() if k != "proc"} for n in t["nodes"]])
-                  for t in x["trees"] if t["title"] == C.T2_TITLE]      # no facets; no test-procedure module
-    for e in x["equipment"]:
-        e["ident"] = [i for i in e.get("ident", []) if i[0] == "model"]  # serial ranges live in the ACT/PCT, not here
-    x["procedures"] = [p for p in x["procedures"] if p["title"] == C.T43_TITLE]
-    keep = {"tree:" + C.T2_TITLE} | {"step:" + s for s in C.T43_STEPS}
+    x["trees"] = [dict(t, facets=[]) for t in x["trees"] if t["title"] == C.T2_TITLE]   # no facets in S1000D
+    x["procedures"] = [p for p in x["procedures"] if p["title"] in (C.T43_TITLE, C.TPH2_TITLE)]
+    keep = {"tree:" + C.T2_TITLE, "procedure:" + C.TPH2_TITLE} | {"step:" + s for s in C.T43_STEPS + C.TPH2_STEPS}
     x["guards"] = [g for g in x["guards"] if g["guards"] in keep]
     x["symptoms"], x["signals"] = [], []
     x["variant"] = "s1000d"

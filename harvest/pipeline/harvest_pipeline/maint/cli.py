@@ -166,7 +166,7 @@ def main(argv: list[str]) -> int:
         from .build import signals_check
         r = signals_check(c, Path(a.pack), _harvest(a), a.pubkey)
         print(json.dumps(r, indent=1))
-        return 0 if r.get("right") == r.get("observations") else 1
+        return 0 if r.get("right") == r.get("observations") and not r.get("wrong") else 1
     if a.cmd == "cost":
         from .build import ledger
         rows = [r for r in ledger(c).rows() if not a.arm or r.get("arm") == a.arm]

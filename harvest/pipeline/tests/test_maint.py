@@ -255,3 +255,14 @@ def test_crane_shaped_pack_has_no_maintenance_tables(tmp_path):
                       "retrieved_at": "r", "sha256": "0", "media_type": "text/plain", "license": "l"})
     db = _pack(stage, tmp_path)
     assert db.execute("SELECT 1 FROM sqlite_master WHERE name='fault_tree'").fetchone() is None
+
+
+def test_span_across_a_hyphenated_line_break():
+    from harvest_pipeline.maint.layout import PageModel, Region, Word
+    pm = PageModel("s", 0, 600, 800)
+    words = ["Refer", "to", "field", "mainte-", "nance", "for", "repair."]
+    for k, w in enumerate(words):
+        pm.words.append(Word(k, w, 10 + 40 * (k % 4), 10 if k < 4 else 22, 40 + 40 * (k % 4), 18 if k < 4 else 30, 8))
+    pm.regions.append(Region("p0.r1", "box", (0, 0, 300, 40), words=list(range(7)), lines=[[0, 1, 2, 3], [4, 5, 6]]))
+    loc, prob = locate({0: pm}, 0, "p0.r1", "Refer to field maintenance for repair.")
+    assert prob is None and loc.text == "Refer to field mainte- nance for repair."

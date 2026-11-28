@@ -35,7 +35,8 @@
        "loose",
        "broken"
       ]
-     }
+     },
+     "proc": "Belt condition check"
     },
     {
      "text": "Internal cooling fault. Report to the field maintenance shop.",
@@ -91,6 +92,15 @@
  ],
  "procedures": [
   {
+   "title": "Belt condition check",
+   "steps": [
+    "Open the fan guard.",
+    "Press the belt midway between the pulleys.",
+    "Look for cracks, fraying or missing pieces."
+   ],
+   "requirements": []
+  },
+  {
    "title": "Battery replacement",
    "steps": [
     "Turn the battery switch OFF.",
@@ -145,6 +155,16 @@
    ]
   },
   {
+   "kind": "warning",
+   "text": "Stop the pump before you touch the belt. The fan can cut fingers.",
+   "guards": "procedure:Belt condition check"
+  },
+  {
+   "kind": "note",
+   "text": "A tight belt moves no more than 15 mm when pressed.",
+   "guards": "step:Press the belt midway between the pulleys."
+  },
+  {
    "kind": "caution",
    "text": "Disconnect the negative cable first to prevent a short circuit.",
    "guards": "step:Disconnect the negative cable first, then the positive cable."
@@ -160,8 +180,7 @@
  "equipment": [
   {
    "name": "Model 40 utility pump",
-   "parent": null,
-   "ident": []
+   "parent": null
   },
   {
    "name": "Model 40 diesel",
@@ -170,6 +189,10 @@
     [
      "model",
      "P40-D"
+    ],
+    [
+     "serial_range",
+     "P40D-1000..P40D-4999"
     ]
    ]
   },
@@ -180,6 +203,10 @@
     [
      "model",
      "P40-E"
+    ],
+    [
+     "serial_range",
+     "P40E-1000..P40E-4999"
     ]
    ]
   }

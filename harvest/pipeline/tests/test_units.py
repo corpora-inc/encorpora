@@ -229,7 +229,8 @@ def test_remote_embedder_id_names_declared_weights(monkeypatch, tmp_path):
     assert e.id == f"{EMBEDDINGGEMMA2['model_name']}@{EMBEDDINGGEMMA2['sha256'][:16]}" and e._base == "http://127.0.0.1:9"
     monkeypatch.setenv("HARVEST_EMBED_MODEL_SHA256", "ab" * 32)
     assert make_embedder({"kind": "llama-server", "model_path": "/x.gguf", "model_name": "m"}).id == "m@" + "ab" * 8
-    assert make_embedder({"kind": "hash", "dim": 8}).id == "hash-v1-8"
+    assert make_embedder({"kind": "hash", "dim": 8}) is None          # lexical only: no vectors
+    assert make_embedder({"kind": "hash-test", "dim": 8}).id == "hash-v1-8"
     e.close()  # never started: nothing to stop, no log handle
     monkeypatch.delenv("HARVEST_EMBED_MODEL_SHA256")
     with pytest.raises(SystemExit, match="SHA-256"):
@@ -260,3 +261,19 @@ def test_contract_numeric_and_rubric_rules_match_the_readers():
     for bad in ({"choices": [1, 2]}, {"answer": "-0"}, {"answer": "1_0"}, {"answer": True}, {"q_id": None},
                 {"section_ids": "29cfr1926.1402(b)"}, {"rationales": [1, 2]}):
         assert question_problems({**mc, **bad}), bad
+
+
+def test_write_pack_refuses_vectors_the_core_would_ignore(tmp_path, monkeypatch):
+    from harvest_pipeline.embed import core_accepts, make_embedder
+    from harvest_pipeline.pack import write_pack
+    from harvest_pipeline.stage import Stage
+    monkeypatch.delenv("HARVEST_TEST_EMBEDDER", raising=False)
+    assert core_accepts("ggml-org/embeddinggemma-2-GGUF:embeddinggemma-2-Q8_0.gguf@2188ac1deca4b77d")
+    assert core_accepts("m@0123456789abcdef/mrl256") and not core_accepts("hash-v1-256")
+    st = Stage(tmp_path / "s.sqlite")
+    with pytest.raises(SystemExit, match="would ignore"):
+        write_pack(st, tmp_path / "p", "x", "1", "x", make_embedder({"kind": "hash-test", "dim": 8}))
+    res = write_pack(st, tmp_path / "q", "x", "1", "x", make_embedder({"kind": "hash"}))   # None: lexical only
+    import sqlite3
+    meta = dict(sqlite3.connect(res["path"]).execute("SELECT key, value FROM pack_meta"))
+    assert meta["embedder_id"] == "none"
