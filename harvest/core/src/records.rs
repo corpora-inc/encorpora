@@ -464,11 +464,14 @@ impl Records {
             }
             Err(e) => serde_json::json!({"at": now_rfc3339(), "ok": false, "error": e.to_string()}),
         };
-        self.conn.execute(
+        // The flush's own result wins; failing to note it is only logged.
+        if let Err(e) = self.conn.execute(
             "INSERT INTO records_meta (key, value) VALUES ('sync_last_attempt', ?1)
              ON CONFLICT (key) DO UPDATE SET value = excluded.value",
             [state.to_string()],
-        )?;
+        ) {
+            eprintln!("harvest: could not note the sync attempt: {e}");
+        }
         out
     }
 

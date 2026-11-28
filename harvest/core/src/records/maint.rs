@@ -149,6 +149,33 @@ pub(crate) fn migrate(conn: &Connection) -> Result<()> {
     Ok(())
 }
 
+/// What a sealed job-step column is bound to: its row and every clear
+/// column beside it (outcome, value, unit, branch, next node, time), so a
+/// result edited in place, or a sealed value moved to another row, fails
+/// to open.
+#[allow(clippy::too_many_arguments)]
+fn job_step_aad(
+    col: &str,
+    job_id: &str,
+    seq: i64,
+    node: &str,
+    at: &str,
+    outcome: Option<&str>,
+    value: Option<f64>,
+    unit: Option<&str>,
+    label: &str,
+    next: &str,
+) -> String {
+    format!(
+        "job_step.{col}:{job_id}#{seq}|{node}|{at}|{}|{}|{}|{label}|{next}",
+        outcome.unwrap_or(""),
+        value
+            .map(|v| format!("{:016x}", v.to_bits()))
+            .unwrap_or_default(),
+        unit.unwrap_or("")
+    )
+}
+
 /// The asset registry file format.
 pub const ASSET_REGISTRY_FORMAT: &str = "harvest-assets/1";
 /// The job report format (the queued `job` upload).
@@ -897,6 +924,9 @@ pub struct FieldNote {
     /// Always `field`: the host shows it apart from the manual.
     pub source: String,
     pub stream: String,
+    /// The pack the note was issued for (its tree and node ids are that
+    /// pack's); any pack when `None`.
+    pub pack_id: Option<String>,
     pub seq: u64,
     pub scope: NoteScope,
     pub text: String,
@@ -931,7 +961,22 @@ pub fn day_number(date: &str) -> Option<i64> {
     let y: i64 = it.next()?.parse().ok()?;
     let m: i64 = it.next()?.parse().ok()?;
     let dd: i64 = it.next()?.parse().ok()?;
-    if !(1..=12).contains(&m) || !(1..=31).contains(&dd) {
+    let leap = (y % 4 == 0 && y % 100 != 0) || y % 400 == 0;
+    let days = [
+        31,
+        if leap { 29 } else { 28 },
+        31,
+        30,
+        31,
+        30,
+        31,
+        31,
+        30,
+        31,
+        30,
+        31,
+    ];
+    if !(1..=12).contains(&m) || dd < 1 || dd > days[(m - 1) as usize] {
         return None;
     }
     // Days from civil (Howard Hinnant).
@@ -1364,7 +1409,20 @@ impl Records {
         )?;
         let outcome = result.outcome.as_deref().map(branch::fold);
         let at = now_rfc3339();
-        let aad = |col: &str| format!("job_step.{col}:{job_id}#{seq}|{}|{at}", node.node_id);
+        let aad = |col: &str| {
+            job_step_aad(
+                col,
+                job_id,
+                seq,
+                &node.node_id,
+                &at,
+                outcome.as_deref(),
+                result.value,
+                result.unit.as_deref(),
+                &edge.label,
+                &edge.to_node,
+            )
+        };
         tx.execute(
             "INSERT INTO job_step (job_id, seq, node_id, outcome, value, unit, label, note, photos,
                                    next_node, at, tree_id)
@@ -1452,8 +1510,21 @@ impl Records {
             |r| r.get(0),
         )?;
         let at = now_rfc3339();
-        let aad = |col: &str| format!("job_step.{col}:{job_id}#{seq}|{}|{at}", node.node_id);
         let label = format!("Go to {}", next.tree.title);
+        let aad = |col: &str| {
+            job_step_aad(
+                col,
+                job_id,
+                seq,
+                &node.node_id,
+                &at,
+                Some("goto"),
+                None,
+                None,
+                &label,
+                &entry,
+            )
+        };
         tx.execute(
             "INSERT INTO job_step (job_id, seq, node_id, outcome, value, unit, label, note, photos,
                                    next_node, at, tree_id)
@@ -1561,7 +1632,7 @@ impl Records {
                 job_id,
                 closed_at,
                 self.seal(
-                    &format!("job.resolution:{job_id}"),
+                    &format!("job.resolution:{job_id}|closed|{closed_at}"),
                     Some(&serde_json::to_string(&resolution)?)
                 )?
             ],
@@ -1675,7 +1746,13 @@ impl Records {
             None => Value::Null,
         };
         let resolution: Option<Resolution> = self
-            .unseal(&format!("job.resolution:{job_id}"), resolution)?
+            .unseal(
+                &format!(
+                    "job.resolution:{job_id}|{status}|{}",
+                    closed_at.as_deref().unwrap_or("")
+                ),
+                resolution,
+            )?
             .map(|r| serde_json::from_str(&r))
             .transpose()?;
         type S = (
@@ -1732,7 +1809,20 @@ impl Records {
             step_tree,
         ) in rows
         {
-            let aad = |col: &str| format!("job_step.{col}:{job_id}#{seq}|{node_id}|{at}");
+            let aad = |col: &str| {
+                job_step_aad(
+                    col,
+                    &job_id,
+                    seq,
+                    &node_id,
+                    &at,
+                    outcome.as_deref(),
+                    value,
+                    unit.as_deref(),
+                    &label,
+                    &next_node,
+                )
+            };
             steps.push(JobStep {
                 note: self.unseal(&aad("note"), note)?,
                 photos: serde_json::from_str(
@@ -2345,6 +2435,8 @@ impl Records {
                 )));
             }
         }
+        let seq = i64::try_from(b.seq)
+            .map_err(|_| Error::Invalid(format!("field bundle seq {} is out of range", b.seq)))?;
         let tx = self.write_tx()?;
         let installed: Option<i64> = tx
             .query_row(
@@ -2354,7 +2446,7 @@ impl Records {
             )
             .optional()?;
         if let Some(prev) = installed
-            && (b.seq as i64) <= prev
+            && seq <= prev
         {
             return Err(Error::Invalid(format!(
                 "field bundle {} seq {} is not newer than the installed seq {prev}",
@@ -2384,7 +2476,7 @@ impl Records {
                 params![
                     n.note_id,
                     b.stream,
-                    b.seq as i64,
+                    seq,
                     b.pack_id,
                     n.scope.equip_id,
                     n.scope.tree_id,
@@ -2424,7 +2516,8 @@ impl Records {
                 }
             };
             out.reviews += tx.execute(
-                "UPDATE lesson SET status = ?2, review_note = ?3, updated_at = ?4 WHERE lesson_id = ?1",
+                "UPDATE lesson SET status = ?2, review_note = ?3, updated_at = ?4
+                 WHERE lesson_id = ?1 AND status != 'local'",
                 params![r.lesson_id, status, r.note, now],
             )? as u64;
         }
@@ -2439,7 +2532,7 @@ impl Records {
             "INSERT INTO field_stream (stream, seq, key_id, installed_at) VALUES (?1, ?2, ?3, ?4)
              ON CONFLICT (stream) DO UPDATE SET seq = excluded.seq, key_id = excluded.key_id,
                installed_at = excluded.installed_at",
-            params![b.stream, b.seq as i64, key_id, now],
+            params![b.stream, seq, key_id, now],
         )?;
         let mut ev = AuditEvent::new("field.install", &b.stream);
         ev.pack_id = b.pack_id.clone();
@@ -2464,6 +2557,8 @@ impl Records {
         let all = self.field_notes()?;
         Ok(all
             .into_iter()
+            // Tree and node ids are a pack's own: a note for another pack never shows.
+            .filter(|n| n.pack_id.as_deref().is_none_or(|p| p == pack.pack_id()))
             .filter(|n| {
                 let s = &n.scope;
                 let equip_ok = s
@@ -2497,12 +2592,13 @@ impl Records {
             String,
             Option<String>,
             String,
+            Option<String>,
         );
         let rows: Vec<F> = self
             .conn
             .prepare(
                 "SELECT note_id, stream, seq, equip_id, tree_id, node_id, symptom_id, text, counts, approver,
-                        approved_at, supersedes, received_at
+                        approved_at, supersedes, received_at, pack_id
                  FROM field_note WHERE active = 1 ORDER BY approved_at DESC, note_id",
             )?
             .query_map([], |r| {
@@ -2520,6 +2616,7 @@ impl Records {
                     r.get(10)?,
                     r.get(11)?,
                     r.get(12)?,
+                    r.get(13)?,
                 ))
             })?
             .collect::<rusqlite::Result<_>>()?;
@@ -2529,6 +2626,7 @@ impl Records {
                     note_id: r.0,
                     source: "field".into(),
                     stream: r.1,
+                    pack_id: r.13,
                     seq: r.2 as u64,
                     scope: NoteScope {
                         equip_id: r.3,
