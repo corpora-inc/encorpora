@@ -1,6 +1,7 @@
 import type { Engine } from "./types.ts";
 import { openFixture } from "./fixture.ts";
 import { fromShow, type ShowPack } from "./show.ts";
+import { pack } from "../lib/native.ts";
 
 let current: Engine | null = null;
 
@@ -8,12 +9,20 @@ let current: Engine | null = null;
 export const PACK_URL = `${import.meta.env.BASE_URL}pack/crane-us.browser.json`;
 
 /**
- * Open the real pack: the harvest-show/1 copy of the signed pack, built in
- * CI and by scripts/build-browser-pack.sh (never committed). There is no
- * fallback: without the pack the app says so. The fixture is for tests only.
+ * Open the real pack. The native app gets it from harvest-core, which
+ * installs and verifies the bundled signed pack. A browser reads the
+ * harvest-show/1 copy built in CI and by scripts/build-browser-pack.sh (never
+ * committed). There is no fallback: without the pack the app says so. The
+ * fixture is for tests only.
  */
 export async function openEngine(): Promise<Engine> {
   if (current) return current;
+  // The native app opens the signed pack through harvest-core: signature and file hashes checked.
+  const native = await pack.show();
+  if (native !== null) {
+    current = openFixture(fromShow(JSON.parse(native) as ShowPack));
+    return current;
+  }
   const res = await fetch(PACK_URL);
   const hint = "Build it with crane/app/scripts/build-browser-pack.sh";
   if (!res.ok) throw new Error(`pack ${PACK_URL}: HTTP ${res.status}. ${hint}`);

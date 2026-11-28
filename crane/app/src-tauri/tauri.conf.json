@@ -43,7 +43,8 @@
       "minSdkVersion": 26
     },
     "resources": [
-      "voice"
+      "voice",
+      "resources/pack/"
     ]
   }
 }

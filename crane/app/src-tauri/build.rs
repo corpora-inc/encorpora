@@ -4,6 +4,11 @@ fn main() {
     // path that does not exist, and a dev checkout has no model, so create the
     // folder empty: the build compiles, and the app shows no microphone.
     std::fs::create_dir_all("voice").expect("failed to create the src-tauri/voice resource folder");
+    // Likewise `resources/pack/`, where release-crane.yml places the signed
+    // knowledge pack. Without one the app says it carries no pack.
+    std::fs::create_dir_all("resources/pack")
+        .expect("failed to create the src-tauri/resources/pack folder");
+    println!("cargo:rerun-if-changed=resources/pack");
     // Tell src/voice.rs whether this build carries the model, so a build
     // without it never offers a microphone that cannot work.
     let manifest: serde_json::Value = serde_json::from_str(
