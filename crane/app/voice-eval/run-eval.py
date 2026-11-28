@@ -101,6 +101,8 @@ def main() -> None:
     ap.add_argument("--batch-threads", type=int, default=4, help="threads for accuracy batches (results do not depend on it; latency runs always use 4)")
     ap.add_argument("--cpus", help="pin latency runs to these CPUs (taskset list), e.g. mid-range-phone-class cores")
     ap.add_argument("--latency-only", action="store_true", help="only time the models (prompted, snr10), no accuracy batches")
+    ap.add_argument("--prompt-only", action="store_true", help="only the crane-prompted setting (what the app ships)")
+    ap.add_argument("--voices", help="comma-separated voice tags to keep (clip names end in -<voice>), e.g. ava,daniel,aman")
     a = ap.parse_args()
 
     items = {i["id"]: i for i in json.loads((HERE / "items.json").read_text())["items"]}
@@ -120,12 +122,15 @@ def main() -> None:
             print(model, lat_runs[-1], flush=True)
         return
     for model in models:
-        for use_prompt in (False, True):
+        for use_prompt in ((True,) if a.prompt_only else (False, True)):
             for cond in a.conditions:
                 key = (model, use_prompt, cond)
                 if key in done:
                     continue
                 clips = sorted((a.audio / cond).glob("*.wav"))
+                if a.voices:
+                    keep = set(a.voices.split(","))
+                    clips = [c for c in clips if c.stem.rsplit("-", 1)[-1] in keep]
                 started = time.time()
                 hyps = run_batch(a.cli, a.models / model, clips, a.work / model / ("prompt" if use_prompt else "plain") / cond, PROMPT if use_prompt else None, a.batch_threads)
                 errs = words = hits = terms = cmd_ok = cmd_n = 0
