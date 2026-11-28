@@ -76,7 +76,8 @@ export function PracticeSession() {
   const next = usePractice((s) => s.next);
   const choose = usePractice((s) => s.choose);
   const topic = focus ? e.topics.find((x) => x.topic_id === focus) : null;
-  const stale = !current || current.focus !== focus;
+  // An item the pack no longer shows (a new pack, a renamed or hidden item) is picked again, never a dead end.
+  const stale = !current || current.focus !== focus || !qById(current.itemId);
   useEffect(() => {
     if (stale) next(e, Date.now(), focus);
   }, [stale, e, focus, next]);
@@ -119,8 +120,11 @@ export function PracticeSession() {
                 {LETTERS[i]}
               </span>
               <span className="flex-1">{c}</span>
-              {answered && isKey && <Check aria-label={t("practice.key")} size={22} className="shrink-0 text-pass" />}
-              {answered && isChosen && !isKey && <X aria-label={t("practice.yours")} size={22} className="shrink-0 text-fail" />}
+              {/* The mark's slot is always there, so a choice never rewraps when the answer is shown. */}
+              <span className="inline-flex size-[22px] shrink-0 items-center justify-center">
+                {answered && isKey && <Check aria-label={t("practice.key")} size={22} className="text-pass" />}
+                {answered && isChosen && !isKey && <X aria-label={t("practice.yours")} size={22} className="text-fail" />}
+              </span>
             </button>
           );
         })}

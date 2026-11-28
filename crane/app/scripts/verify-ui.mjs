@@ -30,7 +30,6 @@ const WIDTHS = [320, 390, 768, 1280];
 const THEMES = ["light", "dark"];
 const ROUTES = [
   "/ask",
-  "/ask/a/a.powerline-clearance",
   "/ask/q/rules%20for%20barge%20mounted%20cranes",
   "/ask/q/signaling",
   "/ask/q/outrigers",
@@ -40,14 +39,15 @@ const ROUTES = [
   "/do/shift-inspection",
   "/do/critical-lift-plan",
   "/learn",
-  "/learn/topic/power-lines",
-  "/learn/topic/ground",
-  "/learn/lesson/power-lines-table-a",
+  "/learn/topic/powerlines",
+  "/learn/topic/site",
+  "/learn/lesson/l.powerlines.01",
+  "/learn/lesson/l.assembly.05",
   "/learn/glossary",
   "/learn/rules",
   "/practice",
   "/practice/skills",
-  "/practice/exam/core-practice",
+  "/practice/exam/mobile-core",
   "/tools",
   "/tools/clearance",
   "/tools/load-chart",
@@ -57,7 +57,7 @@ const ROUTES = [
   "/settings",
   "/settings/about",
 ];
-const SCREENSHOT = new Set(["/learn/topic/ground", "/ask", "/ask/q/signaling", "/ask/q/outrigers", "/ask/q/xyzzy", "/ask/a/a.powerline-clearance", "/read/29cfr1926.1408(b)(3)", "/do", "/do/shift-inspection", "/learn", "/practice", "/tools/clearance", "/tools/load-chart", "/tools/signals", "/settings"]);
+const SCREENSHOT = new Set(["/learn/topic/site", "/learn/lesson/l.assembly.05", "/ask", "/ask/q/signaling", "/ask/q/outrigers", "/ask/q/xyzzy", "/read/29cfr1926.1408(b)(3)", "/do", "/do/shift-inspection", "/learn", "/practice", "/tools/clearance", "/tools/load-chart", "/tools/signals", "/settings"]);
 // Serve every page under the shipped app's Content-Security-Policy, so anything the
 // native WebView would block (inline script, a stray fetch, a blob image) fails here too.
 const CSP = JSON.parse(await readFile(path.join(root, "src-tauri", "tauri.conf.json"), "utf8")).app.security.csp;
@@ -298,17 +298,25 @@ try {
     checks++;
   }
 
-  // 2a. A starter answer cites the rule, and the citation opens the exact paragraph.
+  // 2a. No answer cache: an old answer link opens Ask. A lesson's self-check opens in place; its citation opens the paragraph.
   {
     const { context, page, errors } = await newPage(browser, 390, "light");
     await page.goto(base + "/ask/a/a.powerline-clearance");
-    await page.locator("blockquote").first().waitFor();
-    assert.ok(await page.locator(".plate").count() >= 2, "answer has citation plates");
-    await page.locator(".plate", { hasText: "§1926.1408(a)(2)" }).first().click();
-    await page.waitForURL(/\/read\/29cfr1926\.1408\(a\)\(2\)$/);
-    assert.match(await page.locator('[aria-current="true"]').innerText(), /closer than 20 feet/);
-    await page.goBack();
-    await page.waitForURL("**/ask/a/a.powerline-clearance");
+    await page.waitForURL(/\/ask$/);
+    await page.goto(base + "/learn/lesson/l.assembly.05");
+    const check = page.locator("details.self-check").first();
+    await check.waitFor();
+    assert.equal(await check.evaluate((d) => d.open), false, "the answer starts hidden");
+    await check.locator("summary").click();
+    assert.equal(await check.evaluate((d) => d.open), true, "a tap shows the answer");
+    assert.ok((await check.locator("p").innerText()).trim().length > 0);
+    assert.ok(await page.locator("blockquote").count() >= 1, "the lesson quotes the rule");
+    assert.ok(await page.locator(".diagram svg text").count() >= 1, "the lesson draws its diagram, labels and all");
+    assert.equal(await page.locator(".diagram style, .diagram script, .diagram foreignObject").count(), 0, "pack SVG is drawing markup only");
+    await page.screenshot({ path: path.join(out, "flow-lesson-check.png"), fullPage: true });
+    await page.locator(".plate").first().click();
+    await page.waitForURL(/\/read\//);
+    await page.locator('[aria-current="true"]').first().waitFor();
     assert.deepEqual(errors, []);
     await context.close();
     checks++;
@@ -344,7 +352,7 @@ try {
     await page.goto(base + "/ask");
     const input = page.getByLabel("Ask about a rule, a limit or a step");
     // Empty submit: inline error in the reserved line, nothing moves.
-    await steady(page, [input, page.getByText("Common questions")], () => page.getByRole("button", { name: "Ask", exact: true }).click(), "empty ask");
+    await steady(page, [input, page.getByText("Search a topic")], () => page.getByRole("button", { name: "Ask", exact: true }).click(), "empty ask");
     await page.getByText("Type a question first.").waitFor();
     await input.fill("when do I need a signal person");
     await input.press("Enter");
@@ -489,8 +497,9 @@ try {
         assert.match(reasons[1], /^Why not [A-F]: /);
       }
       assert.equal(await panel.getByText(/^Correct\.?$/).count(), verdict === "Correct." ? 1 : 0, "no duplicated Correct");
-      const note = await panel.locator(".feedback-note").innerText();
-      assert.ok(note.split(/\s+/).length >= 5 && !reasons.includes(note), `one line past the answer: "${note}"`);
+      // The line past the answer shows when the item has one (the current bank has none yet), never empty.
+      for (const note of await panel.locator(".feedback-note").allInnerTexts())
+        assert.ok(note.split(/\s+/).length >= 5 && !reasons.includes(note), `one line past the answer: "${note}"`);
       assert.match(await panel.locator(".feedback-source").innerText(), /^Source: (29 CFR 19\d\d\.\d+|Appendix)[^]*Read the source$/);
       assert.equal(await panel.getByRole("button").count(), 1, "a single Next button");
       if (n === 0) await page.screenshot({ path: path.join(out, "flow-practice-feedback-reasons.png"), fullPage: true });
@@ -512,16 +521,16 @@ try {
   // 6. Timed exam: start, answer, review, submit, results by domain and skill.
   {
     const { context, page } = await newPage(browser, 390, "light");
-    await page.goto(base + "/practice/exam/core-practice");
+    await page.goto(base + "/practice/exam/mobile-core");
     await page.getByRole("button", { name: "Start exam" }).click();
-    await page.waitForURL(/\/practice\/exam\/core-practice\/1$/);
-    assert.match(await page.getByRole("timer").innerText(), /^2[45]:\d\d$/);
+    await page.waitForURL(/\/practice\/exam\/mobile-core\/1$/);
+    assert.match(await page.getByRole("timer").innerText(), /^(90|89):\d\d$/);
     await page.getByRole("radio").first().click();
     await page.getByRole("button", { name: "Flag for review" }).click();
     await page.getByRole("button", { name: "Next" }).click();
     await page.waitForURL(/\/2$/);
-    await page.goto(base + "/practice/exam/core-practice/review");
-    await page.getByText("1 of 20 answered.").waitFor();
+    await page.goto(base + "/practice/exam/mobile-core/review");
+    await page.getByText(/^1 of \d+ answered\.$/).waitFor();
     await page.getByRole("button", { name: "Submit exam" }).click();
     await page.waitForURL(/\/results$/);
     await page.getByRole("heading", { name: "By domain" }).waitFor();
@@ -531,14 +540,14 @@ try {
     checks++;
   }
 
-  // A topic whose lessons are not written yet still teaches: its rules, practice and Ask.
+  // A topic teaches: its lessons, its rules and practice.
   {
     const { context, page } = await newPage(browser, 390, "light");
-    await page.goto(base + "/learn/topic/ground");
+    await page.goto(base + "/learn/topic/site");
     await page.getByText("The rules for this topic").waitFor();
-    assert.ok((await page.locator("a[href^='/read/']").count()) >= 1, "a topic with no lessons links its rules");
+    assert.ok((await page.locator("a[href^='/read/']").count()) >= 1, "a topic links its rules");
+    assert.ok((await page.locator("a[href^='/learn/lesson/']").count()) >= 1, "a topic lists its lessons");
     await page.getByRole("link", { name: "Practice this topic" }).waitFor();
-    await page.getByLabel("Ask about a rule, a limit or a step").waitFor();
     await context.close();
     checks++;
   }
@@ -550,7 +559,7 @@ try {
     const talk = page.getByRole("button", { name: "Tap and ask" });
     await talk.waitFor();
     const box = page.getByLabel("Ask about a rule, a limit or a step");
-    const starters = page.getByText("Common questions");
+    const starters = page.getByText("Search a topic");
     const before = await Promise.all([box.boundingBox(), starters.boundingBox(), talk.boundingBox()]);
     assert.ok(before[2].height >= 72, `voice control is ${before[2].height}px tall`);
     await talk.click();
@@ -580,7 +589,7 @@ try {
     const { context, page, errors } = await newPage(browser, 320, "light", { native: { deny: true } });
     await page.goto(base + "/ask");
     const talk = page.getByRole("button", { name: "Tap and ask" });
-    const starters = page.getByText("Common questions");
+    const starters = page.getByText("Search a topic");
     const y0 = (await starters.boundingBox()).y;
     await talk.click();
     await page.getByText("The microphone is off for this app. Allow it in Settings, or type the question.").waitFor();
@@ -618,7 +627,7 @@ try {
     const spoken = await page.evaluate(() => window.__tts[0]);
     assert.equal(spoken.voiceId, "ava-premium", "the enhanced offline voice, never the network one");
     assert.match(spoken.text, /competent person/);
-    await page.goto(base + "/ask/a/a.powerline-clearance");
+    await page.goto(base + "/ask/q/signaling");
     await page.getByRole("button", { name: "Read aloud" }).click();
     await page.waitForFunction(() => window.__tts.length > 0);
     assert.deepEqual(errors, []);

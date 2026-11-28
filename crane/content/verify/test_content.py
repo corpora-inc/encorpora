@@ -66,6 +66,14 @@ class Blueprint(unittest.TestCase):
         for e in BLUEPRINT["exams"]:
             self.assertAlmostEqual(sum(d["weight"] for d in e["domains"]), 1.0, places=6, msg=e["exam_id"])
 
+    def test_flow_mappings_parse_whole(self):
+        """An unquoted comma inside a flow mapping silently cuts a title and adds a stray key."""
+        allowed = {"skill_id", "title", "kind", "levels", "section_ids", "exam", "equipment"}
+        for s in self.skills():
+            self.assertEqual(set(s) - allowed, set(), s["skill_id"])
+        for e in BLUEPRINT["equipment"]:
+            self.assertEqual(set(e) - {"equip_id", "parent_id", "name", "aliases"}, set(), e["equip_id"])
+
     def test_skill_fields(self):
         equip = {e["equip_id"] for e in BLUEPRINT["equipment"]}
         for s in self.skills():
@@ -144,6 +152,11 @@ class Grounding(unittest.TestCase):
         self.assertIsNone(self.ix.repair("29cfr1926.1408", "over 50 to 200 20"))  # never pairs the wrong cell
         self.assertIsNone(self.ix.repair("29cfr1926.1408", "up to 5 0 | 10"))  # never joins split digits
         self.assertTrue(self.ix.has_quote("29cfr1926.1437", "permanent attachment: | | Any rated capacity | 10 | 10"))
+        self.assertEqual(self.ix.repair("29cfr1926.1437", "permanent attachment: Any rated capacity 10 10"),
+                         "permanent attachment: | | Any rated capacity | 10 | 10")  # empty cells
+        self.assertTrue(self.ix.has_quote("29cfr1926.1404(r)", "localized compression. Note: Requirements for the protection"))
+        self.assertEqual(self.ix.repair("29cfr1926.1404(r)", "localized compression. Requirements for the protection"),
+                         "localized compression. Note: Requirements for the protection")  # a Note label, as in the stage
         self.assertTrue(self.ix.has_quote("29cfr1910.184", "1⁄4 | 13⁄64"))
 
     def test_table_quote_cited_to_a_paragraph_is_repointed_to_its_section(self):
@@ -314,6 +327,47 @@ class Budget(unittest.TestCase):
         (task.cache / "k--older.json").write_text(json.dumps({"input_id": "k", "input_sha256": self.c.sha("p"), "prompt_version": "2", "output": 2}))
         (task.cache / "k--other.json").write_text(json.dumps({"input_id": "k", "input_sha256": self.c.sha("q"), "prompt_version": "3", "output": 3}))
         self.assertEqual(task.cached(item)["output"], 1)
+
+
+
+@unittest.skipUnless(index_available(), "no eCFR index")
+class CourseTree(unittest.TestCase):
+    """course/tree.jsonl and course/welcome.json (harvest/CONTRACT.md, course_node and Instructor turns)."""
+
+    def setUp(self):
+        p = CONTENT / "course" / "tree.jsonl"
+        if not p.exists():
+            self.skipTest("no course tree")
+        self.rows = [json.loads(x) for x in p.read_text().splitlines() if x.strip()]
+
+    def test_every_node_present_and_passing_text_verifies(self):
+        ix = verify.load_index(None)
+        ids = {r["node_id"] for r in self.rows}
+        self.assertIn("course", ids)
+        for s in (s for t in BLUEPRINT["topics"] for s in t["skills"]):
+            self.assertIn(f"skill:{s['skill_id']}", ids)
+        bad = []
+        for r in self.rows:
+            if r["prov"]["verdict"] != "pass":
+                continue
+            for q in r["quotes"]:
+                if not ix.has_quote(q["section_id"], q["quote"]):
+                    bad.append((r["node_id"], q["section_id"]))
+            bad += [(r["node_id"], s) for s in r["section_ids"] if not ix.exists(s)]
+        self.assertEqual(bad, [])
+
+    def test_welcome_uses_the_handbook_numbers(self):
+        p = CONTENT / "course" / "welcome.json"
+        if not p.exists():
+            self.skipTest("no welcome")
+        w = json.loads(p.read_text())
+        self.assertEqual(w["prov"]["verdict"], "pass")
+        core = next(e for e in BLUEPRINT["exams"] if e["exam_id"] == "mobile-core")
+        text = " ".join(b["text"] for b in w["blocks"] if b["t"] == "text")
+        self.assertIn(str(core["items"]), text)
+        for d in core["domains"]:
+            self.assertIn(f"{round(d['weight'] * 100)}", text)
+        self.assertEqual([b for b in w["blocks"] if b["t"] in ("quote", "cite")], [])
 
 
 if __name__ == "__main__":
