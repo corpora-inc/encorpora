@@ -122,7 +122,8 @@ CREATE TABLE question (
   rationales TEXT,                  -- json array, one per choice: why right / why wrong
   section_ids TEXT NOT NULL,        -- json array
   difficulty REAL NOT NULL,         -- 0..1 prior
-  lang TEXT NOT NULL, prov_id TEXT NOT NULL
+  lang TEXT NOT NULL, prov_id TEXT NOT NULL,
+  note TEXT                         -- optional: one line past the answer (why it matters, the edge case, the related rule)
 );
 
 CREATE TABLE answer (               -- the answer cache

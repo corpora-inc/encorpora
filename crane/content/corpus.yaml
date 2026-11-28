@@ -183,7 +183,8 @@ embedder: {kind: embeddinggemma-2}
 imports:
   - {table: topic, files: [blueprint.yaml]}
   - {table: term, files: [data/glossary.jsonl]}
-  - {table: question, files: ["data/questions/*.jsonl"]}
+  # the bank's one-line "beyond" (past the answer) is the question's optional `note`
+  - {table: question, files: ["data/questions/*.jsonl"], rename: {beyond: note}}
   - {table: answer, files: ["data/answers/*.jsonl"]}
   - {table: lesson, files: ["data/lessons/*.json"]}
   - {table: procedure, files: ["procedures/*.yaml"]}

@@ -88,7 +88,7 @@ fn rows_that_failed_verification_never_render() {
         "INSERT INTO provenance VALUES ('prov-bad', 'claude-cli', 'm', 'p', '1', 'x', 'x', 'x',
            '2026-01-01T00:00:00Z', 'verifier', 'fail', 'wrong citation');
          INSERT INTO question VALUES ('q-bad', 'skill-clearance', NULL, 'mc', 'Bad?', '[\"a\",\"b\"]', '0',
-           '[\"x\",\"y\"]', '[\"ex.2\"]', 0.5, 'en', 'prov-bad');
+           '[\"x\",\"y\"]', '[\"ex.2\"]', 0.5, 'en', 'prov-bad', NULL);
          INSERT INTO lesson VALUES ('lesson-bad', 'topic-lines', 2, 'Bad', '[{\"t\":\"text\",\"text\":\"x\"}]', 'en', 'prov-bad');
          INSERT INTO answer VALUES ('a-bad', 'q', '[{\"t\":\"cite\",\"section_id\":\"ex.2\"}]', '[\"ex.2\"]', NULL, 'en', 'prov-bad');
          INSERT INTO procedure VALUES ('proc-bad', 'Bad', 'inspection', 's', '[\"operator\"]', 'en', 'prov-bad');",
@@ -195,6 +195,21 @@ fn practice_deficiencies_carry_no_rule_and_say_so() {
         );
         assert!(p.proc_steps("proc-shift").is_err(), "{d}");
     }
+}
+
+#[test]
+fn a_question_note_is_optional_and_older_packs_still_read() {
+    let (_t, p) = pack_with("");
+    let q = p.question("q-clear-1").unwrap().unwrap();
+    assert_eq!(
+        q.note.as_deref(),
+        Some("Above 50 kV the distance grows with voltage.")
+    );
+    // A pack baked before `note` existed has no column; its questions read with no note.
+    let (_t, old) = pack_with("ALTER TABLE question DROP COLUMN note;");
+    let q = old.question("q-clear-1").unwrap().unwrap();
+    assert_eq!(q.note, None);
+    assert!(!old.questions().unwrap().is_empty());
 }
 
 #[test]

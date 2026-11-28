@@ -16,7 +16,8 @@ imports:
 ```
 
 Files are JSONL, a JSON array, or YAML (a list or one document; `key` names the list inside a
-document). Each row has the contract columns plus a `prov` object with the contract provenance
+document; `rename` maps a source field to its column, `{beyond: note}`). Each row has the contract
+columns plus a `prov` object with the contract provenance
 columns; a spec's `prov` is the default for rows without one (hand-authored rows). `file_columns`
 fills a column from the file a row names, relative to that file (`{svg: file}`). Lists and objects
 in TEXT columns are JSON-encoded (a free-text question's rubric `answer` included); other keys are
@@ -184,6 +185,9 @@ def import_rows(stage: Stage, corpus_dir: Path, specs: list[dict]) -> list[Impor
                 rep.rows += 1
                 prov = dict(raw.get("prov") or spec.get("prov") or {})
                 body = {k: v for k, v in raw.items() if k != "prov"}
+                for src_key, col in (spec.get("rename") or {}).items():  # a source field -> its column
+                    if src_key in body and col not in body:
+                        body[col] = body.pop(src_key)
                 problems = []
                 for col, name_key in (spec.get("file_columns") or {}).items():
                     f = path.parent / str(body.get(name_key, ""))
