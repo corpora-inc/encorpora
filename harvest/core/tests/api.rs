@@ -176,6 +176,18 @@ fn the_api_reads_the_manual_tasks_and_variants() {
         json!({"run_id": rid, "ord": 1, "outcome": "pass"}),
     );
     assert_eq!(rec["record"]["ord"], 1);
+    let bad = api::call(
+        &h,
+        "run.record",
+        json!({"run_id": rid, "ord": 5, "outcome": "value", "value": "2611"}),
+    )
+    .unwrap_err();
+    assert!(
+        bad.message
+            .contains("send outcome note with a non-empty note"),
+        "{}",
+        bad.message
+    );
     assert_eq!(
         ok(&h, "run.report", json!({"run_id": rid}))["format"],
         "harvest-run/1"

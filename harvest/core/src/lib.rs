@@ -17,6 +17,7 @@ pub mod delta;
 pub mod embed;
 pub mod error;
 pub mod grade;
+pub mod hub;
 pub mod instructor;
 pub mod lexicon;
 #[cfg(feature = "llama")]
@@ -30,6 +31,7 @@ pub mod packs;
 pub mod records;
 pub mod retrieval;
 pub mod segments;
+pub mod sim;
 pub mod sync;
 pub mod tools;
 

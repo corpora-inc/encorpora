@@ -33,7 +33,11 @@ fn every_method_has_a_schema_and_a_type() {
     let ts = schema::typescript();
     for m in harvest_core::api::METHODS {
         assert!(s["methods"][m]["params"].is_object(), "{m} params");
-        assert!(s["methods"][m]["result"].is_object(), "{m} result");
+        let r = &s["methods"][m]["result"];
+        assert!(
+            r.is_object() || r == &serde_json::Value::Bool(true),
+            "{m} result"
+        );
         assert!(
             ts.contains(&format!("\"{m}\": {{ params:")),
             "{m} in types.ts"

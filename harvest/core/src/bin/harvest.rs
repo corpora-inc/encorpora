@@ -32,7 +32,12 @@ const USAGE: &str = "usage:
   harvest serve   <packs-root|pack-dir> --records <records-db> [--bind 127.0.0.1:4317] [--static DIR]
                   [--allow-origin URL]... [--records-key FILE] [--outbox-dir DIR] [--field-pubkey KEY]
                   [--embedder auto|none|hashing] [--pubkey KEY]   # the JSON API over HTTP (CONTRACT \"API\")
+                  [--hub URL [--packs-root ROOT]]   # sync.flush / sync.pull through a hub
   harvest api-schema <dir> [--check]      # writes (or checks) api.schema.json and types.ts
+  harvest hub     <hub-db> --stream NAME [--packs ROOT] [--bind 127.0.0.1:4318] [--allow-origin URL]...
+                  [--pubkey KEY] [--dev-key]   # the hub (CONTRACT \"Hub\"); signs with $HARVEST_HUB_KEY
+                  # (base64 ed25519 seed); --dev-key: the public test key, for development only
+  harvest simulate <scenario.json> [--out metrics.json] [--pack DIR]   # devices and a hub on a simulated link
 
 KEY: base64 or hex ed25519 public key, or a file holding one; repeatable or
 comma-separated. Defaults to $HARVEST_PUBKEY.";
@@ -49,7 +54,12 @@ impl Args {
         let mut it = raw.into_iter();
         while let Some(a) = it.next() {
             if let Some(name) = a.strip_prefix("--") {
-                if name == "json" || name == "help" || name == "maint" || name == "check" {
+                if name == "json"
+                    || name == "help"
+                    || name == "maint"
+                    || name == "check"
+                    || name == "dev-key"
+                {
                     flags.push((name.to_string(), None));
                 } else if let Some((k, v)) = name.split_once('=') {
                     flags.push((k.to_string(), Some(v.to_string())));
@@ -117,6 +127,8 @@ fn main() -> ExitCode {
         "converse" => converse(&args),
         "serve" => serve(&args),
         "api-schema" => api_schema(&args),
+        "hub" => hub(&args),
+        "simulate" => simulate(&args),
         "help" | "--help" | "-h" => {
             println!("{USAGE}");
             return ExitCode::SUCCESS;
@@ -1091,6 +1103,8 @@ fn serve(args: &Args) -> Result<(), CliError> {
         "field-pubkey",
         "embedder",
         "pubkey",
+        "hub",
+        "packs-root",
     ])?;
     let root = pack_dir(args)?;
     let keys = keys(args)?;
@@ -1101,6 +1115,7 @@ fn serve(args: &Args) -> Result<(), CliError> {
     let key = records_key(args)?;
     let records =
         harvest_core::records::Records::open_with_key(Path::new(records_path), key.as_ref())?;
+    let device_id = records.device_id()?;
     let field_specs: Vec<String> = args
         .all("field-pubkey")
         .iter()
@@ -1119,6 +1134,28 @@ fn serve(args: &Args) -> Result<(), CliError> {
     }
     if let Some(d) = args.get("outbox-dir") {
         host = host.with_outbox_dir(PathBuf::from(d));
+    }
+    if let Some(url) = args.get("hub") {
+        #[cfg(feature = "hub")]
+        {
+            let link = harvest_core::hub::http::HttpHubLink::new(
+                url,
+                &device_id,
+                std::time::Duration::from_secs(60),
+            );
+            host = host.with_hub_link(
+                Arc::new(link),
+                args.get("packs-root").map(PathBuf::from),
+                keys.clone(),
+            );
+        }
+        #[cfg(not(feature = "hub"))]
+        {
+            let _ = url;
+            return Err(CliError::Usage(
+                "--hub needs a build with the `hub` feature".into(),
+            ));
+        }
     }
     let bind: std::net::SocketAddr = args
         .get("bind")
@@ -1202,5 +1239,128 @@ fn api_schema(args: &Args) -> Result<(), CliError> {
         files[1].0,
         dir.display()
     );
+    Ok(())
+}
+
+fn hub_key(args: &Args) -> Result<ed25519_dalek::SigningKey, CliError> {
+    if args.has("dev-key") {
+        eprintln!("harvest hub: signing with the public test key (development only)");
+        return Ok(harvest_core::fixture::signing_key());
+    }
+    let b64 = std::env::var("HARVEST_HUB_KEY").map_err(|_| {
+        CliError::Usage("set HARVEST_HUB_KEY (base64 ed25519 seed) or pass --dev-key".into())
+    })?;
+    use base64::Engine as _;
+    let raw = base64::engine::general_purpose::STANDARD
+        .decode(b64.trim())
+        .map_err(|_| CliError::Usage("HARVEST_HUB_KEY is not base64".into()))?;
+    let seed: [u8; 32] = raw
+        .try_into()
+        .map_err(|_| CliError::Usage("HARVEST_HUB_KEY must be a 32-byte ed25519 seed".into()))?;
+    Ok(ed25519_dalek::SigningKey::from_bytes(&seed))
+}
+
+#[cfg(feature = "hub")]
+fn hub(args: &Args) -> Result<(), CliError> {
+    use harvest_core::api::{Host, serve};
+    args.reject_unknown(&[
+        "stream",
+        "packs",
+        "bind",
+        "allow-origin",
+        "pubkey",
+        "dev-key",
+    ])?;
+    let db = PathBuf::from(
+        args.positional
+            .first()
+            .ok_or_else(|| CliError::Usage("missing <hub-db>".into()))?,
+    );
+    let stream = args
+        .get("stream")
+        .ok_or_else(|| CliError::Usage("hub needs --stream NAME".into()))?;
+    let key = hub_key(args)?;
+    let mut hub = harvest_core::hub::Hub::open(&db, key, stream)?;
+    let mut packs = Vec::new();
+    if let Some(root) = args.get("packs") {
+        let keys = keys(args)?;
+        hub = hub.with_packs(PathBuf::from(root), keys.clone());
+        // Load the newest of each for titles and validation.
+        for entry in std::fs::read_dir(root).map_err(Error::from)? {
+            let dir = entry.map_err(Error::from)?.path();
+            let Some(id) = dir.file_name().and_then(|n| n.to_str()) else {
+                continue;
+            };
+            if let Ok(Some(offer)) = hub.pack_offer(id, None)
+                && let Ok(p) = Pack::open(&dir.join(&offer.dir), &keys)
+            {
+                packs.push(Arc::new(p));
+            }
+        }
+    }
+    let public = {
+        use base64::Engine as _;
+        base64::engine::general_purpose::STANDARD.encode(hub.trusted_key().key.as_bytes())
+    };
+    let hub = Arc::new(std::sync::Mutex::new(hub));
+    let host = Host::new(packs, harvest_core::records::Records::in_memory()?).with_hub(hub);
+    let bind: std::net::SocketAddr = args
+        .get("bind")
+        .unwrap_or("127.0.0.1:4318")
+        .parse()
+        .map_err(|e| CliError::Usage(format!("--bind: {e}")))?;
+    let cfg = serve::ServeConfig {
+        bind,
+        static_dir: None,
+        allow_origins: args
+            .all("allow-origin")
+            .iter()
+            .map(|s| s.to_string())
+            .collect(),
+    };
+    let running = serve::start(Arc::new(host), cfg)?;
+    println!(
+        "harvest hub: http://{} stream {stream}; devices trust {public}",
+        running.addr()
+    );
+    running.wait();
+    Ok(())
+}
+
+#[cfg(not(feature = "hub"))]
+fn hub(_: &Args) -> Result<(), CliError> {
+    Err(CliError::Usage(
+        "hub needs a build with the `hub` feature".into(),
+    ))
+}
+
+fn simulate(args: &Args) -> Result<(), CliError> {
+    args.reject_unknown(&["out", "pack", "json"])?;
+    let path = args
+        .positional
+        .first()
+        .ok_or_else(|| CliError::Usage("missing <scenario.json>".into()))?;
+    let text =
+        std::fs::read_to_string(path).map_err(|e| CliError::Usage(format!("{path}: {e}")))?;
+    let scenario: harvest_core::sim::Scenario =
+        serde_json::from_str(&text).map_err(|e| CliError::Usage(format!("{path}: {e}")))?;
+    let metrics = harvest_core::sim::run(&scenario, args.get("pack").map(Path::new))?;
+    let out = serde_json::to_string_pretty(&metrics).map_err(Error::from)?;
+    match args.get("out") {
+        Some(o) => std::fs::write(o, format!("{out}\n")).map_err(Error::from)?,
+        None => println!("{out}"),
+    }
+    eprintln!(
+        "harvest simulate: {} — invariants {}",
+        scenario.name,
+        if metrics.invariants.ok {
+            "hold"
+        } else {
+            "BROKEN"
+        }
+    );
+    if !metrics.invariants.ok {
+        return Err(CliError::Exit(1));
+    }
     Ok(())
 }

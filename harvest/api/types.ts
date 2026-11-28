@@ -324,6 +324,15 @@ export type CondOp = "<" | "<=" | ">" | ">=" | "==" | "between";
  */
 export type Confidence = "confident" | "closest" | "none";
 
+/** A conflict between two units' versions of a lesson and how it resolved. */
+export interface Conflict {
+  at: string;
+  lesson_id: string;
+  loser: string;
+  rule: string;
+  winner: string;
+}
+
 /** Why the dense half did or did not run. */
 export type DenseStatus = "used" | "no_embedder" | {
   mismatch: {
@@ -508,6 +517,66 @@ export interface FieldNote {
   text: string;
 }
 
+/** A reviewer-approved field note as the hub sends it. */
+export interface FieldNoteIn {
+  approved_at: string;
+  approver: string;
+  counts: NoteCounts;
+  lang: string | null;
+  note_id: string;
+  scope: NoteScope;
+  /** The note this one replaces. */
+  supersedes: string | null;
+  text: string;
+}
+
+export interface FleetAction {
+  action: string;
+  attempts: number;
+  resolved: number;
+  tree_id: string | null;
+}
+
+export interface FleetCause {
+  cause: string;
+  count: number;
+}
+
+export interface FleetCauses {
+  causes: FleetCause[];
+  symptom_id: string;
+}
+
+export interface FleetJobs {
+  equip_id: string | null;
+  fixed: number;
+  jobs: number;
+  symptom_id: string | null;
+  tree_id: string;
+}
+
+export interface FleetRepeat {
+  asset_id: string;
+  jobs: number;
+  symptom_id: string | null;
+  system: string | null;
+}
+
+/** What the fleet shows, aggregated by the hub across every unit. */
+export interface FleetSummary {
+  /** Corrective actions: how often each resolved the fault it was tried on. */
+  actions: FleetAction[];
+  generated_at: string;
+  /** Jobs per symptom (or tree, when entered without one) and variant. */
+  jobs: FleetJobs[];
+  /** The same asset with the same symptom or system again within the window. */
+  repeats: FleetRepeat[];
+  /** The most frequent verified causes per symptom. */
+  top_causes: FleetCauses[];
+  /** Units that reported. */
+  units: number;
+}
+
 /** What one [`flush`] did. */
 export interface FlushReport {
   acked: number;
@@ -613,6 +682,35 @@ export interface Hit {
   section_id?: string | null;
 }
 
+export interface HubApproveParams {
+  /** Edit before approving: the note's text and/or scope. */
+  edit?: NoteEdit | null;
+  lesson_id: string;
+  note?: string | null;
+  /** Who approves (recorded and audited). */
+  reviewer: string;
+}
+
+export interface HubBundlesParams {
+  since?: number;
+}
+
+export interface HubPublishParams {
+  /** Publish a bundle (with the fleet summary) even when no note changed. */
+  always?: boolean;
+}
+
+export interface HubQueueParams {
+  /** `pending` | `approved` | `rejected`; all when absent. */
+  status?: string | null;
+}
+
+export interface HubRejectParams {
+  lesson_id: string;
+  reason?: string | null;
+  reviewer: string;
+}
+
 /**
  * Where the upload destination stands: configured, and reachable as of
  * the last attempt (never probed live).
@@ -625,6 +723,21 @@ export interface HubState {
   last_error: string | null;
   /** As of the last attempt; `None` before any. */
   reachable: boolean | null;
+}
+
+/** How the hub stands. */
+export interface HubStatus {
+  bundles: number;
+  conflicts: number;
+  devices: number;
+  items: number;
+  jobs: number;
+  key_id: string;
+  latest_bundle: number;
+  lessons_approved: number;
+  lessons_pending: number;
+  lessons_rejected: number;
+  stream: string;
 }
 
 /** One rule that matched. */
@@ -839,6 +952,11 @@ export interface LessonInput {
   equip_id?: string | null;
   /** Fills asset, equipment, tree, symptom and node when they are absent. */
   job_id?: string | null;
+  /**
+   * The lesson's id when it continues one begun on another unit (its
+   * edits then meet at the hub); new when absent.
+   */
+  lesson_id?: string | null;
   /** The technician's level. */
   level?: string | null;
   minutes?: number | null;
@@ -855,6 +973,26 @@ export interface LessonInput {
 
 /** Where a lesson is. */
 export type LessonStatus = "local" | "queued" | "uploaded" | "approved" | "edited" | "rejected";
+
+export interface LessonUpdateParams {
+  lesson: LessonInput;
+  lesson_id: string;
+  pack_id?: string | null;
+}
+
+/** One stored version of a lesson. */
+export interface LessonVersion {
+  device_id: string;
+  item_id: string;
+  lesson: Lesson;
+  received_at: string;
+  /**
+   * `current` (the winner), `superseded` (an earlier version from the
+   * winner's unit) or `lost` (another unit's version that lost the rule).
+   */
+  state: string;
+  updated_at: string;
+}
 
 /** A depth level, from `pack_meta.levels` (ordered, most guidance first). */
 export interface Level {
@@ -925,12 +1063,28 @@ export interface NoteCounts {
   units: number | null;
 }
 
+/** A reviewer's changes when approving. */
+export interface NoteEdit {
+  /** Where it shows; the lesson's variant, tree and symptom when absent. */
+  scope?: NoteScopeInput | null;
+  /** The field note's text; from the lesson when absent. */
+  text?: string | null;
+}
+
 /** What a field note is about: any of these; every one given must match. */
 export interface NoteScope {
   equip_id: string | null;
   node_id: string | null;
   symptom_id: string | null;
   tree_id: string | null;
+}
+
+/** What a field note is about: any of these; every one given must match. */
+export interface NoteScopeInput {
+  equip_id?: string | null;
+  node_id?: string | null;
+  symptom_id?: string | null;
+  tree_id?: string | null;
 }
 
 /**
@@ -1002,6 +1156,16 @@ export interface PackParams {
   pack_id?: string | null;
 }
 
+/** A pack replaced by a newer one from the hub. */
+export interface PackUpdate {
+  bytes: number;
+  from: string;
+  /** `full` | `delta`. */
+  kind: string;
+  pack_id: string;
+  to: string;
+}
+
 /**
  * A box on a page image, normalized 0 to 1 against the image: `x0 < x1`,
  * `y0 < y1`, origin top left.
@@ -1046,6 +1210,22 @@ export interface PhotoRef {
   sha256: string;
 }
 
+/** What one pull from the hub did. */
+export interface PullReport {
+  /** Bytes of bundles received. */
+  bytes: number;
+  error: string | null;
+  fleet_updated: boolean;
+  /** Bundles installed, in order. */
+  installed: number[];
+  notes: number;
+  /**
+   * The bundle that was refused (and why); the pull stops there and the
+   * next one asks for it again.
+   */
+  refused: RefusedBundle | null;
+}
+
 /** How a query word the pack does not hold as typed was read. */
 export interface Reading {
   /** The indexed words it was read as. */
@@ -1060,6 +1240,11 @@ export interface Reading {
 export interface RecordHow {
   branches: Branch[];
   expect: Expect | null;
+}
+
+export interface RefusedBundle {
+  error: string;
+  seq: number | null;
 }
 
 /** One entry of an asset registry. */
@@ -1185,6 +1370,28 @@ export interface Retrieved {
   lexical: number;
   ref_id: string;
   score: number;
+}
+
+/** A lesson in the review queue, with every version. */
+export interface ReviewItem {
+  current: Lesson;
+  first_received_at: string;
+  lesson_id: string;
+  /** True when a newer version arrived after a review. */
+  reopened: boolean;
+  reviews: ReviewRecord[];
+  /** `pending` | `approved` | `rejected`. */
+  status: string;
+  versions: LessonVersion[];
+}
+
+/** A review action as recorded. */
+export interface ReviewRecord {
+  action: string;
+  at: string;
+  item_id: string;
+  note: string | null;
+  reviewer: string;
 }
 
 /** One procedure run. */
@@ -1569,6 +1776,14 @@ export interface SymptomSearchParams {
   text?: string | null;
 }
 
+/** What `sync.pull` did. */
+export interface SyncPull {
+  bundles: PullReport;
+  /** A pack the hub offered that could not be installed, and why. */
+  pack_errors: string[];
+  packs: PackUpdate[];
+}
+
 /** The outbox and the link. */
 export interface SyncStatus {
   acked: number;
@@ -1644,6 +1859,11 @@ export interface TaskSummary {
 /** A task (procedure) ready to show. */
 export interface TaskView {
   applies_to: string[];
+  /**
+   * Guards on the task (its section or above), shown once at its head;
+   * a step carries only the guards on that step.
+   */
+  guards: Guard[];
   kind: string;
   proc_id: string;
   requirements: Requirement[];
@@ -1657,6 +1877,8 @@ export interface TaskView {
 export interface TestProcedure {
   /** Whether it opens expanded at this level. */
   expanded: boolean;
+  /** Guards on the whole procedure, shown once before its steps. */
+  guards: Guard[];
   proc_id: string;
   requirements: Requirement[];
   steps: TaskStep[];
@@ -1754,8 +1976,20 @@ export interface Methods {
   "field.list": { params: NoParams; result: FieldNote[] };
   "sync.status": { params: NoParams; result: SyncStatus };
   "sync.flush": { params: NoParams; result: FlushReport };
+  "sync.pull": { params: NoParams; result: SyncPull };
+  "lesson.update": { params: LessonUpdateParams; result: Lesson };
+  "fleet.summary": { params: NoParams; result: FleetSummary | null };
   "audit.list": { params: AuditListParams; result: AuditRecord[] };
   "audit.verify": { params: NoParams; result: ChainReport };
+  "hub.status": { params: NoParams; result: HubStatus };
+  "hub.queue": { params: HubQueueParams; result: ReviewItem[] };
+  "hub.approve": { params: HubApproveParams; result: FieldNoteIn };
+  "hub.reject": { params: HubRejectParams; result: HubStatus };
+  "hub.publish": { params: HubPublishParams; result: unknown };
+  "hub.bundles": { params: HubBundlesParams; result: unknown[] };
+  "hub.fleet": { params: NoParams; result: FleetSummary };
+  "hub.conflicts": { params: NoParams; result: Conflict[] };
+  "hub.audit": { params: AuditListParams; result: AuditRecord[] };
 }
 
 export type Method = keyof Methods;
@@ -1803,6 +2037,18 @@ export const METHODS = [
   "field.list",
   "sync.status",
   "sync.flush",
+  "sync.pull",
+  "lesson.update",
+  "fleet.summary",
   "audit.list",
   "audit.verify",
+  "hub.status",
+  "hub.queue",
+  "hub.approve",
+  "hub.reject",
+  "hub.publish",
+  "hub.bundles",
+  "hub.fleet",
+  "hub.conflicts",
+  "hub.audit",
 ] as const satisfies readonly Method[];

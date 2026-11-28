@@ -1081,7 +1081,7 @@ fn populate(conn: &Connection, version: &str) -> Result<()> {
         INSERT INTO requirement VALUES ('fault_tree', 't-nocrank', 1, 'condition', 'Pump stopped, start key removed.', NULL, NULL, 'm40.3-1.setup', 'prov-pump40');
         INSERT INTO requirement VALUES ('fault_tree', 't-nocrank', 2, 'tool', 'Digital multimeter', NULL, NULL, 'm40.3-1.setup', 'prov-pump40');
         INSERT INTO requirement VALUES ('fault_tree', 't-nocrank', 3, 'tool', 'relay tester', NULL, NULL, 'm40.3-1.setup', 'prov-pump40');
-        INSERT INTO requirement VALUES ('fault_tree', 't-nocrank', 4, 'reference', 'Wiring diagram, Figure 3-1.', 'Figure 3-1', NULL, 'm40.3-1.setup', 'prov-pump40');
+        INSERT INTO requirement VALUES ('fault_tree', 't-nocrank', 4, 'reference', 'Wiring diagram, Figure 3-1.', NULL, NULL, 'm40.3-1.setup', 'prov-pump40');
         INSERT INTO requirement VALUES ('fault_tree', 't-nocrank', 5, 'personnel', 'One technician.', NULL, '1', 'm40.3-1.setup', 'prov-pump40');
         INSERT INTO requirement VALUES ('fault_node', 'nc.4', 1, 'tool', 'relay tester', NULL, NULL, 'm40.3-1.q4', 'prov-pump40');
         INSERT INTO requirement VALUES ('procedure', 'proc-battery', 1, 'tool', '10 mm wrench', NULL, NULL, 'm40.4-3.req', 'prov-pump40');

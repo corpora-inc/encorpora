@@ -17,13 +17,16 @@ path = "src/bin/harvest.rs"
 required-features = ["cli"]
 
 [features]
-default = ["cli", "serve"]
+default = ["cli", "serve", "hub"]
 # The `harvest` binary (eval, bake verifier) and its OpenAI-compatible HTTP
 # client. The app links the library with `default-features = false`.
 cli = ["dep:ureq"]
 # `harvest serve`: the local HTTP transport of the JSON API (`api`), for the
 # app in a browser during development. Pure-Rust, synchronous.
 serve = ["cli", "dep:tiny_http"]
+# `harvest hub` (the hub's HTTP service and the device's HTTP link to it)
+# and `harvest simulate`. The hub's store and review logic are always built.
+hub = ["serve"]
 # In-process llama.cpp embedder. Off by default: CI and the eval CLI stay
 # offline and model-free; the app enables it (or bridges its own runtime).
 llama = ["dep:llama-cpp-2", "dep:llama-cpp-sys-2"]

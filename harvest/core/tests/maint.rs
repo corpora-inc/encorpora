@@ -396,6 +396,7 @@ fn guards_show_at_every_level_and_levels_only_fold_facets_and_steps() {
         let v = view::node_view(p, &t, "nc.2", l, Some("pump40-diesel"), &[]).unwrap();
         let tp = v.test_procedure.as_ref().unwrap();
         let mut g: Vec<String> = v.guards.iter().map(|g| g.section_id.clone()).collect();
+        g.extend(tp.guards.iter().map(|g| g.section_id.clone()));
         for s in &tp.steps {
             g.extend(s.guards.iter().map(|g| g.section_id.clone()));
         }
@@ -428,18 +429,20 @@ fn guards_show_at_every_level_and_levels_only_fold_facets_and_steps() {
         guard_sets.windows(2).all(|w| w[0] == w[1]),
         "{guard_sets:?}"
     );
-    // The battery test: the task warning on every step, the caution and note on theirs.
+    // The battery test: the task's warning once at its head, the caution
+    // and the note before their own steps only.
     assert_eq!(
         guard_sets[0],
-        [
-            "m40.3.w1",
-            "m40.4-2.w1",
-            "m40.4-2.w1",
-            "m40.4-2.c1",
-            "m40.4-2.w1",
-            "m40.4-2.n1"
-        ]
+        ["m40.3.w1", "m40.4-2.w1", "m40.4-2.c1", "m40.4-2.n1"]
     );
+    let tp = view::node_view(p, &t, "nc.2", &levels[0], None, &[])
+        .unwrap()
+        .test_procedure
+        .unwrap();
+    assert_eq!(tp.guards.len(), 1);
+    assert!(tp.steps[0].guards.is_empty());
+    assert_eq!(tp.steps[1].guards[0].kind, "caution");
+    assert_eq!(tp.steps[2].guards[0].kind, "note");
     // A level that tries to name a guard as a facet still cannot hide it.
     let b2 = pump_with(exec(
         r#"UPDATE pack_meta SET value = '[{"id":"x","label":"X","facets":["warning","caution","note"],"test_steps":"collapsed"}]' WHERE key = 'levels';"#,

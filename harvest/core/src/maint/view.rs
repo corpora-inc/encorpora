@@ -129,6 +129,9 @@ pub struct TaskStep {
 pub struct TaskView {
     #[serde(flatten)]
     pub procedure: Procedure,
+    /// Guards on the task (its section or above), shown once at its head;
+    /// a step carries only the guards on that step.
+    pub guards: Vec<Guard>,
     pub requirements: Vec<Requirement>,
     pub steps: Vec<TaskStep>,
     pub applies_to: Vec<String>,
@@ -141,6 +144,8 @@ pub struct TestProcedure {
     pub title: String,
     /// Whether it opens expanded at this level.
     pub expanded: bool,
+    /// Guards on the whole procedure, shown once before its steps.
+    pub guards: Vec<Guard>,
     pub requirements: Vec<Requirement>,
     pub steps: Vec<TaskStep>,
 }
@@ -250,9 +255,14 @@ pub fn guards(pack: &Pack, section_ids: &[String], equip: Option<&str>) -> Resul
     for s in section_ids {
         targets.extend(pack.section_lineage(s)?);
     }
+    guards_on(pack, &targets, equip)
+}
+
+/// The guards whose target is one of `targets` exactly.
+fn guards_on(pack: &Pack, targets: &BTreeSet<String>, equip: Option<&str>) -> Result<Vec<Guard>> {
     let mut seen = BTreeSet::new();
     let mut out: Vec<(i64, Guard)> = Vec::new();
-    for t in &targets {
+    for t in targets {
         for x in pack.xrefs_to(t)? {
             if x.kind != "guards" || !seen.insert(x.from_id.clone()) {
                 continue;
@@ -319,7 +329,7 @@ fn task_step(pack: &Pack, s: &ProcStep, equip: Option<&str>) -> Result<TaskStep>
         check_kind: s.check_kind.clone(),
         section_ids: s.section_ids.clone(),
         citation: first.map(|f| citation(pack, f)).transpose()?,
-        guards: guards(pack, &s.section_ids, equip)?,
+        guards: guards_on(pack, &s.section_ids.iter().cloned().collect(), equip)?,
         assets: match first {
             Some(f) => assets_for(pack, f)?,
             None => Vec::new(),
@@ -335,12 +345,23 @@ pub fn task_view(pack: &Pack, proc_id: &str, equip: Option<&str>) -> Result<Opti
     let Some(procedure) = pack.procedure(proc_id)? else {
         return Ok(None);
     };
-    let steps = pack
-        .proc_steps(proc_id)?
+    let rows = pack.proc_steps(proc_id)?;
+    let steps = rows
         .iter()
         .map(|s| task_step(pack, s, equip))
         .collect::<Result<Vec<_>>>()?;
+    // What guards the task as a whole: everything above its steps.
+    let own: BTreeSet<String> = rows.iter().flat_map(|s| s.section_ids.clone()).collect();
+    let mut above: BTreeSet<String> = BTreeSet::new();
+    for s in &own {
+        above.extend(
+            pack.section_lineage(s)?
+                .into_iter()
+                .filter(|a| !own.contains(a)),
+        );
+    }
     Ok(Some(TaskView {
+        guards: guards_on(pack, &above, equip)?,
         requirements: pack.requirements_for("procedure", proc_id, equip)?,
         applies_to: pack.applies_to("procedure", proc_id)?,
         procedure,
@@ -432,6 +453,7 @@ pub fn node_view(
                 proc_id: task.procedure.proc_id,
                 title: task.procedure.title,
                 expanded: level.test_steps == Fold::Expanded,
+                guards: task.guards,
                 requirements: task.requirements,
                 steps: task.steps,
             })
