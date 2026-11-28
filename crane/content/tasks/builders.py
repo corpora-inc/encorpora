@@ -597,7 +597,10 @@ def exams_write():
         for d, c in zip(e["domains"], counts):
             ids = [s["skill_id"] for s in sk if any(x.startswith(d["domain_id"] + ".") for x in s.get("exam", []))]
             doms.append({"id": d["domain_id"], "title": d["title"], "weight": d["weight"], "count": c, "skillIds": ids})
-        out.append({"id": e["exam_id"], "title": e["title"], "minutes": e["minutes"], "calculator": e["calculator"],
+        src = bp["exam_source"]
+        out.append({"id": e["exam_id"], "title": e["title"], "items": e["items"], "minutes": e["minutes"], "calculator": e["calculator"],
+                    "source": {"title": src["title"], "edition": src["edition"], "url": src["url"], "sha256": src["sha256"],
+                               "retrieved_at": src["retrieved_at"]},
                     "passPercent": 70, "passPercentNote": "practice target; the certifier reports scaled scores",
                     "domains": doms})
     p = CONTENT / "exams.json"
