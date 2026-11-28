@@ -1,0 +1,12 @@
+# Constructed from SAE J1939-73 (DM1) and J1939-21 (transport protocol); not a capture from a vehicle.
+# Engine (SA 0x00): amber warning lamp on, SPN 110 FMI 0, seen once.
+(1767225600.000000) can0 18FECA00#04FF6E000001FFFF
+# Unrelated traffic: EEC1 and a request.
+(1767225600.010000) can0 0CF00400#F07D7D0000F07D7D
+(1767225600.020000) can0 18EAFF00#CAFE00
+# Transmission (SA 0x03), two codes as a BAM: MIL on, SPN 110 FMI 0 (2) and SPN 168 FMI 1 (1).
+(1767225600.030000) can0 1CECFF03#200A0002FFCAFE00
+(1767225600.040000) can0 1CEBFF03#0140FF6E000002A8
+(1767225600.041000) can0 1CEBFF03#02000101FFFFFFFF
+# A third node with nothing active.
+(1767225600.100000) can0 18FECA0B#00FF00000000FFFF

@@ -389,6 +389,24 @@ fn hub_route(
                 serde_json::to_value(r).map_err(|e| (500, e.to_string()))?,
             ))
         }
+        (Method::Get, "/hub/attachment") => {
+            let sha = query_get(query, "sha256").ok_or((400, "sha256".to_string()))?;
+            let total = query_get(query, "total")
+                .and_then(|t| t.parse::<u64>().ok())
+                .ok_or((400, "total".to_string()))?;
+            Ok(HubReply::Json(
+                serde_json::json!({"held": hub.attachment_offset(&sha, total).map_err(err)?}),
+            ))
+        }
+        (Method::Post, "/hub/attachment") => {
+            let c: crate::sync::AttachmentChunk =
+                serde_json::from_str(body).map_err(|e| (400, format!("chunk: {e}")))?;
+            let held = hub.put_chunk(&c).map_err(|e| match e {
+                Error::Signature(m) => (403, m),
+                other => err(other),
+            })?;
+            Ok(HubReply::Json(serde_json::json!({"held": held})))
+        }
         (Method::Get, "/hub/fleet") => Ok(HubReply::Json(
             hub.fleet_document()
                 .map_err(err)?

@@ -1,0 +1,5 @@
+mavlink-sample.tlog: constructed with an independent Python encoder from the MAVLink 2 common message
+definitions (HEARTBEAT, SYS_STATUS with the GPS present but unhealthy, a STATUSTEXT, a STATUSTEXT in two
+chunks, AUTOPILOT_VERSION 4.5.7 official, BATTERY_STATUS with four cells, two PARAM_VALUEs, an ATTITUDE,
+one frame with a broken CRC and one signed frame). Each frame follows an 8-byte big-endian microsecond
+timestamp, as in a .tlog. It is not a capture from a vehicle.

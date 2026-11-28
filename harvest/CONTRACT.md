@@ -571,7 +571,8 @@ CREATE TABLE fault_facet (node_id TEXT NOT NULL, facet TEXT NOT NULL, ord INTEGE
 CREATE TABLE symptom (symptom_id TEXT PRIMARY KEY, tree_id TEXT NOT NULL, title TEXT NOT NULL,
   system TEXT, synonyms TEXT NOT NULL, lang TEXT NOT NULL, prov_id TEXT NOT NULL);
 CREATE TABLE signal_map (signal_kind TEXT NOT NULL, pattern TEXT NOT NULL, title TEXT NOT NULL,
-  tree_id TEXT NOT NULL, node_id TEXT, section_id TEXT, quote TEXT, prov_id TEXT NOT NULL,
+  tree_id TEXT,                                          -- null: a cause with no tree; section_id says it
+  node_id TEXT, section_id TEXT, quote TEXT, prov_id TEXT NOT NULL,
   PRIMARY KEY (signal_kind, pattern, tree_id));
 CREATE TABLE equip_attr (equip_id TEXT NOT NULL, key TEXT NOT NULL, value TEXT NOT NULL,
                          PRIMARY KEY (equip_id, key));
@@ -648,7 +649,19 @@ CREATE TABLE failure_mode (mode_id TEXT PRIMARY KEY, equip_id TEXT NOT NULL, sys
   prefix, regex, then observation order; the first suggests the entry
   (its `node_id`, else the tree's entry). An observation with no kind
   matches every kind. `pack_meta.signal_kinds` (`[{"kind","label","example"}]`)
-  labels them for the app.
+  labels them for the app. A row with no `tree_id` (a status the manual explains
+  with a cause and no troubleshooting) cites a `section_id` and no node:
+  its hit carries the section's verbatim text and citation, `has_tree:
+  false`, and never suggests an entry.
+- **Closest entries.** An observation no rule matches stays in
+  `unmatched`. When its value is text (at least two words once a leading
+  tag such as `PreArm:` is dropped, words starting with a digit dropped and
+  digits inside words dropped), `closest` gives, for it, the top three of
+  the symptom index (as `symptom.search` ranks and rates them, without the
+  embedder) and the top three plain-text rules of its kind (rated by the
+  same coverage rule over the rule's pattern and title). Never a hit,
+  never a suggested entry; the app says "no exact entry; closest entries
+  in this manual".
 - **Symptom search** is lexical over the title and synonyms (Dice over
   content stems, pack synonyms applied), plus cosine over the symptom's
   `chunk` (`ref_kind = 'symptom'`) when the host's embedder matches the
@@ -744,7 +757,9 @@ for the shapes; this section states the rules.
   `{"ok":false,"error":{"code","message"}}`. Unknown params fields are
   refused (`bad_params`).
 - Methods that read a pack take an optional `pack_id` (the only pack when
-  one is loaded); job and run methods find theirs from the record.
+  one is loaded); job and run methods find theirs from the record. `pack.list` names every installed pack: id, title
+  (`pack_meta.title`, else the first source's title), version, equipment
+  roots, licenses, whether it has trees.
 - `job.start`, `job.get`, `job.answer` and `job.back` return a job view:
   the job, the step view of its current node (verbatim text, full
   citation, guards in manual order, setup and requirements, facets with

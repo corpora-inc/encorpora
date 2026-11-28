@@ -132,6 +132,22 @@ CREATE TABLE IF NOT EXISTS fleet_doc (
   issued_at TEXT NOT NULL,
   body      TEXT NOT NULL
 );
+CREATE TABLE IF NOT EXISTS attachment (
+  sha256     TEXT PRIMARY KEY,           -- of this variant's bytes
+  total      INTEGER NOT NULL,
+  received   INTEGER NOT NULL,
+  complete   INTEGER NOT NULL DEFAULT 0,
+  device_id  TEXT NOT NULL,
+  variant    TEXT NOT NULL,
+  started_at TEXT NOT NULL,
+  completed_at TEXT
+);
+CREATE TABLE IF NOT EXISTS attachment_data (
+  sha256 TEXT NOT NULL,
+  offset INTEGER NOT NULL,
+  data   BLOB NOT NULL,
+  PRIMARY KEY (sha256, offset)
+);
 CREATE TABLE IF NOT EXISTS conflict (
   seq       INTEGER PRIMARY KEY,
   lesson_id TEXT NOT NULL,
@@ -282,6 +298,9 @@ pub struct Hub {
     repeat_window_days: i64,
     fleet_every_hours: f64,
     skew_bound_ms: i64,
+    attachments_low: crate::sync::AttachmentMode,
+    attachments_normal: crate::sync::AttachmentMode,
+    chunk_bytes: u64,
 }
 
 fn fold(s: &str) -> String {
@@ -353,6 +372,9 @@ impl Hub {
             repeat_window_days: crate::maint::DEFAULT_REPEAT_WINDOW_DAYS,
             fleet_every_hours: crate::records::maint::DEFAULT_FLEET_EVERY_HOURS,
             skew_bound_ms: DEFAULT_SKEW_BOUND_MINUTES * 60_000,
+            attachments_low: crate::sync::AttachmentMode::Refs,
+            attachments_normal: crate::sync::AttachmentMode::Full,
+            chunk_bytes: crate::sync::DEFAULT_CHUNK_BYTES,
         })
     }
 
@@ -380,6 +402,20 @@ impl Hub {
     /// ordered by their clocks: the lesson waits for a reviewer to choose.
     pub fn with_skew_bound_minutes(mut self, minutes: i64) -> Self {
         self.skew_bound_ms = minutes.max(0) * 60_000;
+        self
+    }
+
+    /// What attachments may move on a low and on a normal link, and the
+    /// chunk size (devices learn both at every hello).
+    pub fn with_attachment_policy(
+        mut self,
+        low: crate::sync::AttachmentMode,
+        normal: crate::sync::AttachmentMode,
+        chunk_bytes: u64,
+    ) -> Self {
+        self.attachments_low = low;
+        self.attachments_normal = normal;
+        self.chunk_bytes = chunk_bytes.max(1024);
         self
     }
 
@@ -539,7 +575,117 @@ impl Hub {
             refused,
             fleet_every_hours: self.fleet_every_hours,
             hub_time: now_rfc3339(),
+            attachments: match h.link {
+                crate::sync::LinkClass::Low => self.attachments_low,
+                crate::sync::LinkClass::Normal => self.attachments_normal,
+            },
+            chunk_bytes: self.chunk_bytes,
         })
+    }
+
+    /// How much of an attachment variant the hub holds (`total` when
+    /// complete, from whichever device sent it).
+    pub fn attachment_offset(&self, sha256: &str, total: u64) -> Result<u64> {
+        let row: Option<(i64, i64, bool)> = self
+            .conn
+            .query_row(
+                "SELECT total, received, complete FROM attachment WHERE sha256 = ?1",
+                [sha256],
+                |r| Ok((r.get(0)?, r.get(1)?, r.get(2)?)),
+            )
+            .optional()?;
+        Ok(match row {
+            Some((_, _, true)) => total,
+            Some((t, r, false)) if t as u64 == total => r as u64,
+            _ => 0,
+        })
+    }
+
+    /// Take one signed chunk: refused unless from an enrolled device and at
+    /// the offset the hub holds; the finished variant must hash to its
+    /// name. Returns how much the hub now holds.
+    pub fn put_chunk(&self, c: &crate::sync::AttachmentChunk) -> Result<u64> {
+        if let Err((why, e)) = self.check_device(&c.device_id, |k| c.verify(k)) {
+            self.refuse(&c.device_id, why, &e, 0)?;
+            return Err(Error::Signature(format!("{}: {e}", why.as_str())));
+        }
+        if c.sha256.len() != 64 || !c.sha256.bytes().all(|b| b.is_ascii_hexdigit()) {
+            return Err(Error::Invalid(
+                "an attachment is named by its SHA-256".into(),
+            ));
+        }
+        use base64::Engine as _;
+        let data = base64::engine::general_purpose::STANDARD
+            .decode(c.data.as_bytes())
+            .map_err(|_| Error::Invalid("chunk is not base64".into()))?;
+        let held = self.attachment_offset(&c.sha256, c.total)?;
+        if held >= c.total || c.offset != held {
+            return Ok(held); // done already, or not where the hub is: resume from `held`
+        }
+        if c.offset + data.len() as u64 > c.total || data.is_empty() {
+            return Err(Error::Invalid("chunk runs past the attachment".into()));
+        }
+        let now = now_rfc3339();
+        let tx = self.tx()?;
+        if held == 0 {
+            tx.execute("DELETE FROM attachment_data WHERE sha256 = ?1", [&c.sha256])?;
+            tx.execute(
+                "INSERT INTO attachment (sha256, total, received, device_id, variant, started_at)
+                 VALUES (?1, ?2, 0, ?3, ?4, ?5)
+                 ON CONFLICT (sha256) DO UPDATE SET total = excluded.total, received = 0, complete = 0",
+                params![c.sha256, c.total as i64, c.device_id, c.variant, now],
+            )?;
+        }
+        tx.execute(
+            "INSERT INTO attachment_data (sha256, offset, data) VALUES (?1, ?2, ?3)",
+            params![c.sha256, c.offset as i64, data],
+        )?;
+        let received = c.offset + data.len() as u64;
+        tx.execute(
+            "UPDATE attachment SET received = ?2 WHERE sha256 = ?1",
+            params![c.sha256, received as i64],
+        )?;
+        let mut held = received;
+        if received == c.total {
+            let parts: Vec<Vec<u8>> = tx
+                .prepare("SELECT data FROM attachment_data WHERE sha256 = ?1 ORDER BY offset")?
+                .query_map([&c.sha256], |r| r.get(0))?
+                .collect::<rusqlite::Result<_>>()?;
+            let whole: Vec<u8> = parts.concat();
+            if hex_encode(&Sha256::digest(&whole)) == c.sha256.to_ascii_lowercase() {
+                tx.execute(
+                    "UPDATE attachment SET complete = 1, completed_at = ?2 WHERE sha256 = ?1",
+                    params![c.sha256, now],
+                )?;
+                let mut ev = AuditEvent::new("hub.attachment", &c.sha256);
+                ev.detail =
+                    json!({"device_id": c.device_id, "variant": c.variant, "bytes": c.total});
+                self.audit(&tx, &ev)?;
+            } else {
+                // Damaged: start over.
+                tx.execute("DELETE FROM attachment_data WHERE sha256 = ?1", [&c.sha256])?;
+                tx.execute(
+                    "UPDATE attachment SET received = 0 WHERE sha256 = ?1",
+                    [&c.sha256],
+                )?;
+                held = 0;
+            }
+        }
+        tx.commit()?;
+        Ok(held)
+    }
+
+    /// Is an attachment variant complete at the hub?
+    pub fn has_attachment(&self, sha256: &str) -> Result<bool> {
+        Ok(self
+            .conn
+            .query_row(
+                "SELECT complete FROM attachment WHERE sha256 = ?1",
+                [sha256],
+                |r| r.get::<_, bool>(0),
+            )
+            .optional()?
+            .unwrap_or(false))
     }
 
     /// Enroll a device by its public key (base64). Returns its id.
@@ -1539,8 +1685,22 @@ impl HubLink for LocalLink {
         self.hub().fleet_document()
     }
     fn hello(&self) -> Result<HelloReply> {
-        let h = self.key.hello()?;
+        let h = self.key.hello(self.link_class())?;
         self.hub().hello(&h)
+    }
+    fn attachment_offset(&self, sha256: &str, total: u64) -> Result<u64> {
+        self.hub().attachment_offset(sha256, total)
+    }
+    fn put_chunk(
+        &self,
+        sha256: &str,
+        variant: &str,
+        total: u64,
+        offset: u64,
+        data: &[u8],
+    ) -> Result<u64> {
+        let c = self.key.chunk(sha256, variant, total, offset, data)?;
+        self.hub().put_chunk(&c)
     }
     fn public_key(&self) -> String {
         self.key.public_base64()

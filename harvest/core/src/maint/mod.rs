@@ -309,7 +309,9 @@ pub struct SignalRule {
     /// `re:…` (a regular expression).
     pub pattern: String,
     pub title: String,
-    pub tree_id: String,
+    /// The tree it leads into; `None` when the manual prints a cause with
+    /// no troubleshooting (then `section_id` is what it says).
+    pub tree_id: Option<String>,
     pub node_id: Option<String>,
     pub section_id: Option<String>,
     pub quote: Option<String>,
@@ -1070,7 +1072,7 @@ impl Pack {
             String,
             String,
             String,
-            String,
+            Option<String>,
             Option<String>,
             Option<String>,
             Option<String>,

@@ -100,7 +100,10 @@ fn frame(id: &str, data: &[u8]) -> Result<Frame, String> {
         return Err(format!("CAN id {id:#x} is wider than 29 bits"));
     }
     if data.len() > 8 {
-        return Err(format!("{} data bytes: classic CAN carries at most 8", data.len()));
+        return Err(format!(
+            "{} data bytes: classic CAN carries at most 8",
+            data.len()
+        ));
     }
     Ok(Frame {
         id,
@@ -147,7 +150,7 @@ impl Reassembler {
                         let size = u16::from_le_bytes([d[1], d[2]]) as usize;
                         let packets = d[3];
                         let pgn = u32::from_le_bytes([d[5], d[6], d[7], 0]);
-                        if size < 9 || size > 1785 || packets as usize != size.div_ceil(7) {
+                        if !(9..=1785).contains(&size) || packets as usize != size.div_ceil(7) {
                             return Err(format!("TP.CM: {size} bytes in {packets} packets"));
                         }
                         self.sessions.insert(
@@ -173,7 +176,10 @@ impl Reassembler {
             PGN_TP_DT => {
                 let key = (f.source(), dest);
                 let Some(s) = self.sessions.get_mut(&key) else {
-                    return Err(format!("TP.DT from {:#04x} with no open session", f.source()));
+                    return Err(format!(
+                        "TP.DT from {:#04x} with no open session",
+                        f.source()
+                    ));
                 };
                 if f.data.len() < 8 {
                     return Err("TP.DT shorter than 8 bytes".into());
@@ -285,7 +291,11 @@ pub fn parse_dm1(source: u8, data: &[u8]) -> Result<Dm1, String> {
             conversion_method: c[3] & 0x80 != 0,
         });
     }
-    Ok(Dm1 { source, lamps, dtcs })
+    Ok(Dm1 {
+        source,
+        lamps,
+        dtcs,
+    })
 }
 
 /// `j1939.dm1` observations (`spn:<n>/fmi:<n>`), one per distinct code.
@@ -322,22 +332,37 @@ mod tests {
 
     #[test]
     fn pgn_of_pdu1_and_pdu2() {
-        let dm1 = Frame { id: 0x18FECA00, data: vec![] };
+        let dm1 = Frame {
+            id: 0x18FECA00,
+            data: vec![],
+        };
         assert_eq!((dm1.pgn(), dm1.source(), dm1.priority()), (PGN_DM1, 0, 6));
         assert_eq!(dm1.destination(), None);
-        let cm = Frame { id: 0x1CECFF00, data: vec![] };
+        let cm = Frame {
+            id: 0x1CECFF00,
+            data: vec![],
+        };
         assert_eq!(cm.pgn(), PGN_TP_CM);
         assert_eq!(cm.destination(), Some(0xFF));
     }
 
     #[test]
     fn dtc_round_trip() {
-        for (spn, fmi, oc) in [(110, 0, 1), (524287, 31, 127), (100, 1, 3), (65535, 18, 0), (70000, 4, 9)] {
+        for (spn, fmi, oc) in [
+            (110, 0, 1),
+            (524287, 31, 127),
+            (100, 1, 3),
+            (65535, 18, 0),
+            (70000, 4, 9),
+        ] {
             let b = encode_dtc(spn, fmi, oc);
             let mut data = vec![0x40, 0xFF];
             data.extend_from_slice(&b);
             let d = parse_dm1(0, &data).unwrap();
-            assert_eq!((d.dtcs[0].spn, d.dtcs[0].fmi, d.dtcs[0].occurrences), (spn, fmi, oc));
+            assert_eq!(
+                (d.dtcs[0].spn, d.dtcs[0].fmi, d.dtcs[0].occurrences),
+                (spn, fmi, oc)
+            );
         }
     }
 }

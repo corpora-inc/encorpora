@@ -107,6 +107,20 @@ pub struct SignalHit {
     pub rule: SignalRule,
     /// The rule's section citation, when it cites one.
     pub citation: Option<String>,
+    /// The cited section's verbatim text. For a rule with no tree this is
+    /// all the manual says (a cause with no corrective action).
+    pub section: Option<SignalSection>,
+    /// False when the rule leads to no troubleshooting tree.
+    pub has_tree: bool,
+}
+
+/// The manual text a signal rule cites.
+#[derive(Debug, Clone, Serialize, Deserialize, JsonSchema, PartialEq)]
+pub struct SignalSection {
+    pub section_id: String,
+    pub citation: String,
+    pub heading: Option<String>,
+    pub text: String,
 }
 
 /// Where the signals suggest starting.
@@ -123,10 +137,182 @@ pub struct SignalMatch {
     /// Most specific first: exact, glob, prefix, regex; then observation order.
     pub hits: Vec<SignalHit>,
     pub suggested: Option<EntryPoint>,
-    /// True when the hits lead to more than one tree.
+    /// True when the hits lead to more than one tree (rules with no tree
+    /// do not count).
     pub ambiguous: bool,
     /// Observations no rule matched.
     pub unmatched: Vec<Observation>,
+    /// For each unmatched text observation, the closest entries in the
+    /// manual: never a match, never a start. The app says "no exact
+    /// entry; closest entries in this manual".
+    pub closest: Vec<Closest>,
+}
+
+/// The closest entries for one text observation no rule matched.
+#[derive(Debug, Clone, Serialize, Deserialize, JsonSchema, PartialEq)]
+pub struct Closest {
+    pub observed: Observation,
+    /// The words searched: the text with a leading tag (`PreArm:`) taken
+    /// off and numbers and instance digits dropped.
+    pub query: String,
+    /// The symptom index, ranked and rated as `symptom.search` does.
+    pub symptoms: Vec<SymptomHit>,
+    /// Text rules of the same signal kind, rated by the same rule.
+    pub signals: Vec<ClosestSignal>,
+}
+
+/// A signal rule close to an unmatched text.
+#[derive(Debug, Clone, Serialize, Deserialize, JsonSchema, PartialEq)]
+pub struct ClosestSignal {
+    pub rule: SignalRule,
+    pub score: f64,
+    pub coverage: f64,
+    pub confidence: Confidence,
+    pub citation: Option<String>,
+    pub section: Option<SignalSection>,
+    pub has_tree: bool,
+}
+
+/// How many closest entries of each kind come back.
+const CLOSEST_K: usize = 3;
+
+/// The words of a status text to search with, or `None` when it is not
+/// text (a code, a number). A leading tag ending in `:` is dropped, a word
+/// starting with a digit is dropped, and digits inside words are dropped
+/// (`Battery 1`, `Compass2` → `Battery`, `Compass`).
+pub fn closest_query(value: &str) -> Option<String> {
+    let mut v = value.trim();
+    if let Some(i) = v.find(':') {
+        let tag = &v[..i];
+        if !tag.is_empty()
+            && tag.len() <= 24
+            && tag
+                .chars()
+                .all(|c| c.is_alphanumeric() || c == '_' || c == '-')
+        {
+            v = v[i + 1..].trim_start();
+        }
+    }
+    let words: Vec<String> = v
+        .split_whitespace()
+        .filter(|w| !w.starts_with(|c: char| c.is_ascii_digit()))
+        .map(|w| {
+            w.chars()
+                .filter(|c| !c.is_ascii_digit())
+                .collect::<String>()
+        })
+        .filter(|w| w.chars().filter(|c| c.is_alphabetic()).count() >= 2)
+        .collect();
+    if words.len() < 2 {
+        return None;
+    }
+    let q = words.join(" ");
+    (!normalize::content_stems(&q).is_empty()).then_some(q)
+}
+
+/// Rate a phrase against query stems by the `symptom.search` rule:
+/// `(dice, coverage, confident)`, or `None` with no strong word in common.
+fn rate_phrase(
+    q: &[String],
+    weak: &BTreeSet<String>,
+    cov_t: f64,
+    phrase: &str,
+) -> Option<(f64, f64, bool)> {
+    let p: BTreeSet<String> = normalize::content_stems(phrase).into_iter().collect();
+    if p.is_empty() || q.is_empty() {
+        return None;
+    }
+    let qs: BTreeSet<&String> = q.iter().collect();
+    let words: Vec<&String> = p.iter().filter(|w| qs.contains(w)).collect();
+    let strong = words.iter().filter(|w| !weak.contains(**w)).count();
+    if strong == 0 {
+        return None;
+    }
+    let strong_q = qs.iter().filter(|w| !weak.contains(**w)).count();
+    let strong_hits = strong.min(strong_q);
+    let coverage = if strong_q == 0 {
+        0.0
+    } else {
+        strong_hits as f64 / strong_q as f64
+    };
+    let dice = 2.0 * words.len().min(qs.len()) as f64 / (qs.len() + p.len()) as f64;
+    let confident = coverage >= cov_t && strong_hits >= strong_q.min(2) && strong_hits > 0;
+    Some((dice, coverage, confident))
+}
+
+fn closest_for(
+    pack: &Pack,
+    o: &Observation,
+    rules: &[SignalRule],
+    equip: Option<&str>,
+    applies: &dyn Fn(&SignalRule) -> Result<bool>,
+) -> Result<Option<Closest>> {
+    let Some(query) = closest_query(&o.value) else {
+        return Ok(None);
+    };
+    let (symptoms, _) = symptom_search(pack, Some(&query), &[], equip, None, CLOSEST_K)?;
+    let mut q = normalize::content_stems(&query);
+    q.sort();
+    q.dedup();
+    let weak = weak_stems(pack)?;
+    let cov_t = meta_f64(pack, "symptom_confident_coverage", CONFIDENT_COVERAGE);
+    let mut signals = Vec::new();
+    for r in rules.iter().filter(|r| {
+        o.signal_kind
+            .as_deref()
+            .is_none_or(|k| fold(&r.signal_kind) == fold(k))
+    }) {
+        // Only plain-text rules: a code pattern is no phrase.
+        if ["prefix:", "glob:", "re:"]
+            .iter()
+            .any(|p| r.pattern.starts_with(p))
+            || !applies(r)?
+        {
+            continue;
+        }
+        let best = [r.pattern.as_str(), r.title.as_str()]
+            .into_iter()
+            .filter_map(|ph| rate_phrase(&q, &weak, cov_t, ph))
+            .max_by(|a, b| a.0.total_cmp(&b.0).then(a.1.total_cmp(&b.1)));
+        let Some((dice, coverage, confident)) = best else {
+            continue;
+        };
+        let sec = match &r.section_id {
+            Some(s) => pack.section(s)?,
+            None => None,
+        };
+        signals.push(ClosestSignal {
+            rule: r.clone(),
+            score: (dice * 1_000_000.0).round() / 1_000_000.0,
+            coverage: (coverage * 1000.0).round() / 1000.0,
+            confidence: if confident {
+                Confidence::Confident
+            } else {
+                Confidence::Closest
+            },
+            citation: sec.as_ref().map(|s| s.citation.clone()),
+            section: sec.map(|s| SignalSection {
+                section_id: s.section_id,
+                citation: s.citation,
+                heading: s.heading,
+                text: s.text,
+            }),
+            has_tree: r.tree_id.is_some(),
+        });
+    }
+    signals.sort_by(|a, b| {
+        b.score
+            .total_cmp(&a.score)
+            .then_with(|| a.rule.signal_kind.cmp(&b.rule.signal_kind))
+            .then_with(|| a.rule.pattern.cmp(&b.rule.pattern))
+    });
+    signals.truncate(CLOSEST_K);
+    Ok(Some(Closest {
+        observed: o.clone(),
+        query,
+        symptoms,
+        signals,
+    }))
 }
 
 /// Match observations against the pack's signal map, for `equip`.
@@ -137,8 +323,19 @@ pub fn signal_match(
 ) -> Result<SignalMatch> {
     let rules = pack.signal_rules()?;
     let trees: Vec<super::FaultTree> = pack.fault_trees(equip)?;
+    let applies = |r: &SignalRule| -> Result<bool> {
+        Ok(match &r.tree_id {
+            Some(tree) => trees.iter().any(|t| &t.tree_id == tree),
+            // No tree: the cited section must apply to the equipment.
+            None => match &r.section_id {
+                Some(sid) => pack.applies(&pack.section_applies_to(sid)?, equip),
+                None => false,
+            },
+        })
+    };
     let mut hits: Vec<(usize, SignalHit)> = Vec::new();
     let mut unmatched = Vec::new();
+    let mut closest = Vec::new();
     for (i, o) in observations.iter().enumerate() {
         let mut any = false;
         for r in rules.iter().filter(|r| {
@@ -146,14 +343,14 @@ pub fn signal_match(
                 .as_deref()
                 .is_none_or(|k| fold(&r.signal_kind) == fold(k))
         }) {
-            if !trees.iter().any(|t| t.tree_id == r.tree_id) {
+            if !applies(r)? {
                 continue;
             }
             match pattern_matches(&r.pattern, &o.value) {
                 Ok(Some(kind)) => {
                     any = true;
-                    let citation = match &r.section_id {
-                        Some(s) => pack.section(s)?.map(|s| s.citation),
+                    let sec = match &r.section_id {
+                        Some(s) => pack.section(s)?,
                         None => None,
                     };
                     hits.push((
@@ -162,7 +359,14 @@ pub fn signal_match(
                             observed: o.clone(),
                             matched: kind,
                             rule: r.clone(),
-                            citation,
+                            citation: sec.as_ref().map(|s| s.citation.clone()),
+                            section: sec.map(|s| SignalSection {
+                                section_id: s.section_id,
+                                citation: s.citation,
+                                heading: s.heading,
+                                text: s.text,
+                            }),
+                            has_tree: r.tree_id.is_some(),
                         },
                     ));
                 }
@@ -175,6 +379,9 @@ pub fn signal_match(
         }
         if !any {
             unmatched.push(o.clone());
+            if let Some(c) = closest_for(pack, o, &rules, equip, &applies)? {
+                closest.push(c);
+            }
         }
     }
     hits.sort_by(|a, b| {
@@ -184,22 +391,30 @@ pub fn signal_match(
             .then_with(|| a.1.rule.pattern.cmp(&b.1.rule.pattern))
     });
     let hits: Vec<SignalHit> = hits.into_iter().map(|(_, h)| h).collect();
-    let tree_set: BTreeSet<&str> = hits.iter().map(|h| h.rule.tree_id.as_str()).collect();
-    let suggested = hits.first().map(|h| EntryPoint {
-        tree_id: h.rule.tree_id.clone(),
-        node_id: h.rule.node_id.clone().unwrap_or_else(|| {
-            trees
-                .iter()
-                .find(|t| t.tree_id == h.rule.tree_id)
-                .map(|t| t.entry_node.clone())
-                .unwrap_or_default()
-        }),
+    let tree_set: BTreeSet<&str> = hits
+        .iter()
+        .filter_map(|h| h.rule.tree_id.as_deref())
+        .collect();
+    // Only a rule with a tree suggests where to start.
+    let suggested = hits.iter().find_map(|h| {
+        let tree_id = h.rule.tree_id.clone()?;
+        Some(EntryPoint {
+            node_id: h.rule.node_id.clone().unwrap_or_else(|| {
+                trees
+                    .iter()
+                    .find(|t| t.tree_id == tree_id)
+                    .map(|t| t.entry_node.clone())
+                    .unwrap_or_default()
+            }),
+            tree_id,
+        })
     });
     Ok(SignalMatch {
         ambiguous: tree_set.len() > 1,
         hits,
         suggested,
         unmatched,
+        closest,
     })
 }
 
@@ -422,7 +637,11 @@ pub fn symptom_search(
         }
         let mut signal = 0.0;
         if let Some(sm) = &signals {
-            for h in sm.hits.iter().filter(|h| h.rule.tree_id == s.tree_id) {
+            for h in sm
+                .hits
+                .iter()
+                .filter(|h| h.rule.tree_id.as_deref() == Some(s.tree_id.as_str()))
+            {
                 signal = 1.0;
                 why.push(Why::Signal {
                     signal_kind: h.rule.signal_kind.clone(),

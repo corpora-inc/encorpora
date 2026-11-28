@@ -916,3 +916,89 @@ fn page_index_is_the_physical_page() {
         Some(10)
     );
 }
+
+#[test]
+fn a_signal_can_lead_to_a_section_with_no_tree() {
+    let b = pump();
+    let m = search::signal_match(&b.pack, &[obs("pump40.code", "E40")], None).unwrap();
+    assert_eq!(m.hits.len(), 1);
+    let h = &m.hits[0];
+    assert!(!h.has_tree && h.rule.tree_id.is_none());
+    let sec = h.section.as_ref().unwrap();
+    assert_eq!(sec.section_id, "m40.3-2.codes");
+    assert!(
+        sec.text
+            .contains("Code E40: suction pressure below the warning limit.")
+    );
+    assert!(m.suggested.is_none(), "no tree to enter");
+    assert!(graph::validate(&b.pack).unwrap().ok);
+    // With a tree-hit alongside, the tree is suggested.
+    let both = search::signal_match(
+        &b.pack,
+        &[obs("pump40.code", "E40"), obs("pump40.code", "E21")],
+        None,
+    )
+    .unwrap();
+    assert_eq!(both.suggested.unwrap().node_id, "oh.1");
+    assert!(!both.ambiguous);
+    let bad = pump_with(exec(
+        "UPDATE signal_map SET section_id = NULL WHERE pattern = 'E40';",
+    ));
+    assert!(rules(&graph::validate(&bad.pack).unwrap()).contains(&"signal.target".to_string()));
+}
+
+#[test]
+fn an_unmatched_status_text_gets_closest_entries_never_a_match() {
+    // The vehicle adds a tag and an instance number the table does not print.
+    let b = pump_with(exec(
+        "INSERT INTO signal_map VALUES ('mavlink.statustext', 'Battery below minimum arming voltage', 'Battery below minimum arming voltage', NULL, NULL, 'm40.3-2.codes', NULL, 'prov-pump40');
+         INSERT INTO symptom VALUES ('s-arm', 't-nocrank', 'Battery below minimum arming voltage', 'starting', '[]', 'en', 'prov-pump40');",
+    ));
+    assert_eq!(
+        search::closest_query("PreArm: Battery 1 below minimum arming voltage").as_deref(),
+        Some("Battery below minimum arming voltage")
+    );
+    assert_eq!(search::closest_query("E40"), None, "a code is not text");
+    assert_eq!(search::closest_query("12.5 V"), None);
+    let o = obs(
+        "mavlink.statustext",
+        "PreArm: Battery 1 below minimum arming voltage",
+    );
+    let m = search::signal_match(&b.pack, std::slice::from_ref(&o), None).unwrap();
+    assert!(
+        m.hits.is_empty() && m.suggested.is_none(),
+        "never a match or a start"
+    );
+    assert_eq!(m.unmatched, vec![o.clone()]);
+    let c = &m.closest[0];
+    assert_eq!(c.symptoms[0].symptom.symptom_id, "s-arm");
+    assert_eq!(c.symptoms[0].confidence, search::Confidence::Confident);
+    assert_eq!(
+        c.signals[0].rule.pattern,
+        "Battery below minimum arming voltage"
+    );
+    assert_eq!(c.signals[0].confidence, search::Confidence::Confident);
+    assert!(!c.signals[0].has_tree);
+    assert_eq!(
+        c.signals[0].section.as_ref().unwrap().section_id,
+        "m40.3-2.codes"
+    );
+    // Deterministic.
+    assert_eq!(search::signal_match(&b.pack, &[o], None).unwrap(), m);
+    // One shared word is only "closest".
+    let weak = search::signal_match(
+        &b.pack,
+        &[obs(
+            "mavlink.statustext",
+            "PreArm: Compass2 voltage odd reading",
+        )],
+        None,
+    )
+    .unwrap();
+    assert!(
+        weak.closest[0]
+            .signals
+            .iter()
+            .all(|s| s.confidence == search::Confidence::Closest)
+    );
+}

@@ -9,10 +9,14 @@
 //!   FMI, active or previously active, occurrence count.
 //! - [`display`]: a two-part code (main, sub) read off a display and typed
 //!   by hand.
+//! - [`mavlink`]: MAVLink 2 (and 1) frames from a `.tlog` file or a raw
+//!   stream: status texts, sensor health, battery, mode and arming,
+//!   firmware and board, parameters.
 
 pub mod display;
 pub mod j1587;
 pub mod j1939;
+pub mod mavlink;
 
 use crate::maint::search::Observation;
 use schemars::JsonSchema;
@@ -27,6 +31,8 @@ pub struct Decoded {
     pub dm1: Vec<j1939::Dm1>,
     /// J1587 diagnostic codes.
     pub j1587: Vec<j1587::Dtc>,
+    /// MAVLink messages, when the input was MAVLink.
+    pub mavlink: Option<mavlink::Decoded>,
     /// Input lines or frames that could not be read, and why (decoding
     /// goes on past them).
     pub errors: Vec<String>,
@@ -45,6 +51,10 @@ pub enum Format {
     J1587,
     /// A display code typed by hand (`E21-3`, `21.3`, `21 / 3`).
     Display,
+    /// A MAVLink `.tlog` file, base64.
+    MavlinkTlog,
+    /// Raw MAVLink bytes (a capture of the link), base64.
+    MavlinkRaw,
 }
 
 /// Decode `input` in `format`. `kind` names the signal kind for display
@@ -66,10 +76,12 @@ pub fn decode(format: Format, input: &str, kind: Option<&str>) -> Decoded {
                 };
                 match frame {
                     Ok(f) => match asm.feed(&f) {
-                        Ok(Some(msg)) if msg.pgn == j1939::PGN_DM1 => match j1939::parse_dm1(msg.source, &msg.data) {
-                            Ok(d) => out.dm1.push(d),
-                            Err(e) => out.errors.push(format!("line {}: {e}", n + 1)),
-                        },
+                        Ok(Some(msg)) if msg.pgn == j1939::PGN_DM1 => {
+                            match j1939::parse_dm1(msg.source, &msg.data) {
+                                Ok(d) => out.dm1.push(d),
+                                Err(e) => out.errors.push(format!("line {}: {e}", n + 1)),
+                            }
+                        }
                         Ok(_) => {}
                         Err(e) => out.errors.push(format!("line {}: {e}", n + 1)),
                     },
@@ -91,6 +103,21 @@ pub fn decode(format: Format, input: &str, kind: Option<&str>) -> Decoded {
             }
             out.observations = j1587::observations(&out.j1587);
         }
+        Format::MavlinkTlog | Format::MavlinkRaw => {
+            use base64::Engine as _;
+            match base64::engine::general_purpose::STANDARD.decode(input.trim()) {
+                Ok(bytes) => {
+                    let m = mavlink::decode(&bytes, format == Format::MavlinkTlog);
+                    out.observations = m.observations.clone();
+                    if m.stats.bad_crc > 0 {
+                        out.errors
+                            .push(format!("{} frames failed their CRC", m.stats.bad_crc));
+                    }
+                    out.mavlink = Some(m);
+                }
+                Err(e) => out.errors.push(format!("not base64: {e}")),
+            }
+        }
         Format::Display => match display::parse(input) {
             Ok(code) => out.observations.push(Observation {
                 signal_kind: kind.map(str::to_string),
@@ -109,7 +136,7 @@ pub(crate) fn hex_bytes(s: &str) -> Result<Vec<u8>, String> {
         .filter(|c| !c.is_whitespace() && *c != ':' && *c != ',')
         .collect();
     let digits = digits.trim_start_matches("0x");
-    if digits.len() % 2 != 0 {
+    if !digits.len().is_multiple_of(2) {
         return Err(format!("odd number of hex digits in {s:?}"));
     }
     (0..digits.len())

@@ -463,3 +463,32 @@ fn the_api_reports_signal_kinds_sync_state_and_tree_titles() {
     assert!(s["last_synced_at"].is_string());
     assert_eq!(s["pending"], 0);
 }
+
+#[test]
+fn pack_list_names_every_installed_pack() {
+    let Env { _tmp, pack, rec } = env();
+    let crane_dir = _tmp.path().join("crane");
+    fixture::build(&crane_dir, "2026.1.0-1").unwrap();
+    let crane = Arc::new(Pack::open(&crane_dir, &[fixture::trusted_key()]).unwrap());
+    let h = Host::new(vec![pack, crane.clone()], rec);
+    let list = ok(&h, "pack.list", json!({}));
+    let list = list.as_array().unwrap();
+    assert_eq!(list.len(), 2);
+    let ids: Vec<&str> = list
+        .iter()
+        .map(|p| p["pack_id"].as_str().unwrap())
+        .collect();
+    assert!(ids.windows(2).all(|w| w[0] < w[1]), "sorted by id");
+    let pump = list.iter().find(|p| p["pack_id"] == "pump40").unwrap();
+    assert_eq!(pump["version"], "2026.3.1-1");
+    assert_eq!(pump["has_fault_trees"], true);
+    assert!(!pump["title"].as_str().unwrap().is_empty());
+    assert!(!pump["licenses"].as_array().unwrap().is_empty());
+    let roots = pump["equipment_roots"].as_array().unwrap();
+    assert!(!roots.is_empty() && roots.iter().all(|e| e["parent_id"].is_null()));
+    let c = list
+        .iter()
+        .find(|p| p["pack_id"] == crane.pack_id())
+        .unwrap();
+    assert_eq!(c["has_fault_trees"], false);
+}

@@ -567,28 +567,49 @@ fn validate_signals(
     for s in pack.signal_rules()? {
         counts.signals += 1;
         let what = format!("signal {} {}", s.signal_kind, s.pattern);
-        if !trees.contains(&s.tree_id) {
-            out.add(
-                "signal.target",
-                Some(&s.tree_id),
-                None,
-                format!("{what}: no tree"),
-            );
-        }
-        if let Some(n) = &s.node_id
-            && node_tree.get(n) != Some(&s.tree_id)
-        {
-            out.add(
-                "signal.target",
-                Some(&s.tree_id),
-                Some(n),
-                format!("{what}: the node is not in that tree"),
-            );
+        match &s.tree_id {
+            Some(tree) => {
+                if !trees.contains(tree) {
+                    out.add(
+                        "signal.target",
+                        Some(tree),
+                        None,
+                        format!("{what}: no tree"),
+                    );
+                }
+                if let Some(n) = &s.node_id
+                    && node_tree.get(n) != Some(tree)
+                {
+                    out.add(
+                        "signal.target",
+                        Some(tree),
+                        Some(n),
+                        format!("{what}: the node is not in that tree"),
+                    );
+                }
+            }
+            // A cause with no troubleshooting: the section is the answer.
+            None => {
+                let ok = match &s.section_id {
+                    Some(sid) => pack.section_exists(sid)?,
+                    None => false,
+                };
+                if !ok || s.node_id.is_some() {
+                    out.add(
+                        "signal.target",
+                        None,
+                        None,
+                        format!(
+                            "{what}: a rule with no tree cites an existing section and no node"
+                        ),
+                    );
+                }
+            }
         }
         if let Err(m) = search::pattern_matches(&s.pattern, "") {
             out.add(
                 "signal.pattern",
-                Some(&s.tree_id),
+                s.tree_id.as_deref(),
                 None,
                 format!("{what}: {m}"),
             );
@@ -596,7 +617,7 @@ fn validate_signals(
         if s.quote.is_some() && !s.quote_verified {
             out.add(
                 "signal.quote",
-                Some(&s.tree_id),
+                s.tree_id.as_deref(),
                 None,
                 format!("{what}: the quote is not verbatim in its section"),
             );

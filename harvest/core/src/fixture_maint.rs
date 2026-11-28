@@ -185,7 +185,7 @@ pub const SECTIONS: &[Sec] = &[
         "table",
         "Table 3-2, Codes",
         Some("Fault codes"),
-        "Code SPN 110 FMI 0: engine coolant temperature above the shutdown limit. Code E21: motor winding temperature high. Code SPN 168 FMI 1: battery voltage below the cranking limit.",
+        "Code SPN 110 FMI 0: engine coolant temperature above the shutdown limit. Code E21: motor winding temperature high. Code SPN 168 FMI 1: battery voltage below the cranking limit. Code E40: suction pressure below the warning limit.",
         Some("3-4"),
         None,
     ),
@@ -1118,6 +1118,7 @@ fn populate(conn: &Connection, version: &str) -> Result<()> {
         INSERT INTO signal_map VALUES ('j1939.dm1', 'glob:spn:110/fmi:*', 'Engine coolant temperature fault', 't-hot', NULL, 'm40.3-2.codes', NULL, 'prov-pump40');
         INSERT INTO signal_map VALUES ('pump40.code', 'E21', 'Motor winding temperature high', 't-hot', 'oh.1', 'm40.3-2.codes', 'Code E21: motor winding temperature high.', 'prov-pump40');
         INSERT INTO signal_map VALUES ('j1939.dm1', 'spn:168/fmi:1', 'Battery voltage low', 't-nocrank', 'nc.2', 'm40.3-2.codes', 'Code SPN 168 FMI 1: battery voltage below the cranking limit.', 'prov-pump40');
+        INSERT INTO signal_map VALUES ('pump40.code', 'E40', 'Suction pressure low', NULL, NULL, 'm40.3-2.codes', 'Code E40: suction pressure below the warning limit.', 'prov-pump40');
         INSERT INTO history VALUES ('h-relay-2026', 'pump40-diesel', 'starting', '2026-02-10', 'Starter relay K1 replaced on three units after no-crank reports.', NULL, '{"units":3}');
         INSERT INTO history VALUES ('h-strainer-2025', 'pump40', 'cooling', '2025-11-03', 'Intake strainers found clogged after a flood response; cleaning interval shortened.', NULL, '{}');
         INSERT INTO history VALUES ('h-winding-2025', 'pump40-electric', 'cooling', '2025-08-21', 'Motor winding temperature code E21 cleared after the motor fan cover was cleaned.', NULL, '{}');

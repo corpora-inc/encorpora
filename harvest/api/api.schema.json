@@ -519,6 +519,27 @@
       ],
       "type": "object"
     },
+    "AttachmentMode": {
+      "description": "What attachments travel on a link (the hub's policy per link class).",
+      "oneOf": [
+        {
+          "enum": [
+            "full"
+          ],
+          "type": "string"
+        },
+        {
+          "const": "refs",
+          "description": "Only the references (they travel with the records); the files wait.",
+          "type": "string"
+        },
+        {
+          "const": "downscaled",
+          "description": "The downscaled copy when the host made one, else the file.",
+          "type": "string"
+        }
+      ]
+    },
     "AuditChunk": {
       "description": "One retrieved chunk as the log keeps it.",
       "properties": {
@@ -774,6 +795,68 @@
         }
       ]
     },
+    "AutopilotVersion": {
+      "description": "AUTOPILOT_VERSION.",
+      "properties": {
+        "board_version": {
+          "format": "uint32",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "capabilities": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "firmware": {
+          "description": "`major.minor.patch`.",
+          "type": "string"
+        },
+        "firmware_type": {
+          "description": "`official`, `rc`, `beta`, `alpha`, `dev` or a number.",
+          "type": "string"
+        },
+        "git_hash": {
+          "description": "The flight software's custom version (a git hash, as autopilots send it).",
+          "type": "string"
+        },
+        "product_id": {
+          "format": "uint16",
+          "maximum": 65535,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "sysid": {
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "uid": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "vendor_id": {
+          "format": "uint16",
+          "maximum": 65535,
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "sysid",
+        "firmware",
+        "firmware_type",
+        "git_hash",
+        "board_version",
+        "vendor_id",
+        "product_id",
+        "capabilities",
+        "uid"
+      ],
+      "type": "object"
+    },
     "Basis": {
       "description": "What a deficiency rests on (CONTRACT \"Procedure step deficiency\").",
       "oneOf": [
@@ -788,6 +871,81 @@
           "type": "string"
         }
       ]
+    },
+    "Battery": {
+      "description": "BATTERY_STATUS.",
+      "properties": {
+        "cells": {
+          "description": "Cell volts, as reported.",
+          "items": {
+            "format": "double",
+            "type": "number"
+          },
+          "type": "array"
+        },
+        "consumed_mah": {
+          "format": "int32",
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "current": {
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "id": {
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "remaining": {
+          "format": "int8",
+          "maximum": 127,
+          "minimum": -128,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "sysid": {
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "temperature": {
+          "description": "Degrees Celsius.",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "voltage": {
+          "description": "Volts, the sum of the cells reported.",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "sysid",
+        "id",
+        "voltage",
+        "cells",
+        "current",
+        "consumed_mah",
+        "remaining",
+        "temperature"
+      ],
+      "type": "object"
     },
     "Branch": {
       "description": "A branch the technician can take, as code will take it.",
@@ -1085,6 +1243,87 @@
       ],
       "type": "object"
     },
+    "Closest": {
+      "description": "The closest entries for one text observation no rule matched.",
+      "properties": {
+        "observed": {
+          "$ref": "#/$defs/Observation"
+        },
+        "query": {
+          "description": "The words searched: the text with a leading tag (`PreArm:`) taken\noff and numbers and instance digits dropped.",
+          "type": "string"
+        },
+        "signals": {
+          "description": "Text rules of the same signal kind, rated by the same rule.",
+          "items": {
+            "$ref": "#/$defs/ClosestSignal"
+          },
+          "type": "array"
+        },
+        "symptoms": {
+          "description": "The symptom index, ranked and rated as `symptom.search` does.",
+          "items": {
+            "$ref": "#/$defs/SymptomHit"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "observed",
+        "query",
+        "symptoms",
+        "signals"
+      ],
+      "type": "object"
+    },
+    "ClosestSignal": {
+      "description": "A signal rule close to an unmatched text.",
+      "properties": {
+        "citation": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "confidence": {
+          "$ref": "#/$defs/Confidence"
+        },
+        "coverage": {
+          "format": "double",
+          "type": "number"
+        },
+        "has_tree": {
+          "type": "boolean"
+        },
+        "rule": {
+          "$ref": "#/$defs/SignalRule"
+        },
+        "score": {
+          "format": "double",
+          "type": "number"
+        },
+        "section": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SignalSection"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "rule",
+        "score",
+        "coverage",
+        "confidence",
+        "citation",
+        "section",
+        "has_tree"
+      ],
+      "type": "object"
+    },
     "Cond": {
       "additionalProperties": false,
       "description": "A numeric predicate over a measured value (`fault_edge.cond`):\n`{\"op\":\"<\",\"value\":11.5}` or `{\"op\":\"between\",\"min\":11.5,\"max\":13}`.",
@@ -1195,6 +1434,130 @@
       ],
       "type": "object"
     },
+    "Decoded": {
+      "description": "What a decode produced.",
+      "properties": {
+        "dm1": {
+          "description": "J1939 DM1 messages, one per source address and message.",
+          "items": {
+            "$ref": "#/$defs/Dm1"
+          },
+          "type": "array"
+        },
+        "errors": {
+          "description": "Input lines or frames that could not be read, and why (decoding\ngoes on past them).",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "j1587": {
+          "description": "J1587 diagnostic codes.",
+          "items": {
+            "$ref": "#/$defs/Dtc2"
+          },
+          "type": "array"
+        },
+        "mavlink": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Decoded2"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "MAVLink messages, when the input was MAVLink."
+        },
+        "observations": {
+          "description": "Ready for `signal.match` / `symptom.search` / `job.start`.",
+          "items": {
+            "$ref": "#/$defs/Observation"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "observations",
+        "dm1",
+        "j1587",
+        "mavlink",
+        "errors"
+      ],
+      "type": "object"
+    },
+    "Decoded2": {
+      "description": "Everything decoded from a stream.",
+      "properties": {
+        "autopilot_versions": {
+          "items": {
+            "$ref": "#/$defs/AutopilotVersion"
+          },
+          "type": "array"
+        },
+        "batteries": {
+          "description": "Newest per system and battery.",
+          "items": {
+            "$ref": "#/$defs/Battery"
+          },
+          "type": "array"
+        },
+        "heartbeats": {
+          "description": "Newest per system.",
+          "items": {
+            "$ref": "#/$defs/Heartbeat"
+          },
+          "type": "array"
+        },
+        "observations": {
+          "description": "For `signal.match`.",
+          "items": {
+            "$ref": "#/$defs/Observation"
+          },
+          "type": "array"
+        },
+        "params": {
+          "additionalProperties": {
+            "format": "double",
+            "type": "number"
+          },
+          "description": "Newest value of each parameter.",
+          "type": "object"
+        },
+        "plate": {
+          "$ref": "#/$defs/Plate",
+          "description": "For `equip.resolve`: firmware, board and parameters."
+        },
+        "stats": {
+          "$ref": "#/$defs/Stats"
+        },
+        "status_texts": {
+          "description": "In order received.",
+          "items": {
+            "$ref": "#/$defs/StatusText"
+          },
+          "type": "array"
+        },
+        "sys_status": {
+          "items": {
+            "$ref": "#/$defs/SysStatus"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "stats",
+        "heartbeats",
+        "sys_status",
+        "autopilot_versions",
+        "batteries",
+        "status_texts",
+        "params",
+        "observations",
+        "plate"
+      ],
+      "type": "object"
+    },
     "DenseStatus": {
       "description": "Why the dense half did or did not run.",
       "oneOf": [
@@ -1264,6 +1627,116 @@
       "required": [
         "device_id",
         "public_key"
+      ],
+      "type": "object"
+    },
+    "Dm1": {
+      "description": "A DM1 message from one source.",
+      "properties": {
+        "dtcs": {
+          "description": "Empty when the source reports no active codes.",
+          "items": {
+            "$ref": "#/$defs/Dtc"
+          },
+          "type": "array"
+        },
+        "lamps": {
+          "$ref": "#/$defs/Lamps"
+        },
+        "source": {
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "source",
+        "lamps",
+        "dtcs"
+      ],
+      "type": "object"
+    },
+    "Dtc": {
+      "description": "One active trouble code.",
+      "properties": {
+        "conversion_method": {
+          "description": "The SPN conversion method bit (1: an older byte order; read as\nsent, flagged so the host can tell).",
+          "type": "boolean"
+        },
+        "fmi": {
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "occurrences": {
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "spn": {
+          "format": "uint32",
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "spn",
+        "fmi",
+        "occurrences",
+        "conversion_method"
+      ],
+      "type": "object"
+    },
+    "Dtc2": {
+      "description": "One diagnostic code.",
+      "properties": {
+        "active": {
+          "description": "False when the code is previously active.",
+          "type": "boolean"
+        },
+        "code": {
+          "description": "A PID (`sid` false) or a SID (`sid` true) of the transmitter.",
+          "format": "uint16",
+          "maximum": 65535,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "fmi": {
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "mid": {
+          "description": "The transmitter (message identifier).",
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "occurrences": {
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "sid": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "mid",
+        "code",
+        "sid",
+        "fmi",
+        "active",
+        "occurrences"
       ],
       "type": "object"
     },
@@ -2311,6 +2784,41 @@
       ],
       "type": "string"
     },
+    "Format": {
+      "description": "The input formats.",
+      "oneOf": [
+        {
+          "const": "j1939_candump",
+          "description": "candump log lines (`(t) can0 18FECA00#…` or `can0 18FECA00 [8] …`).",
+          "type": "string"
+        },
+        {
+          "const": "j1939_frames",
+          "description": "One frame per line: `<29-bit id hex> <data hex>` (`18FECA00 0400D20A12000000`).",
+          "type": "string"
+        },
+        {
+          "const": "j1587",
+          "description": "J1708 messages as hex bytes, one per line (MID first; a trailing\nchecksum byte is checked when present).",
+          "type": "string"
+        },
+        {
+          "const": "display",
+          "description": "A display code typed by hand (`E21-3`, `21.3`, `21 / 3`).",
+          "type": "string"
+        },
+        {
+          "const": "mavlink_tlog",
+          "description": "A MAVLink `.tlog` file, base64.",
+          "type": "string"
+        },
+        {
+          "const": "mavlink_raw",
+          "description": "Raw MAVLink bytes (a capture of the link), base64.",
+          "type": "string"
+        }
+      ]
+    },
     "GraphCounts": {
       "description": "What was checked.",
       "properties": {
@@ -2495,11 +3003,67 @@
       ],
       "type": "object"
     },
+    "Heartbeat": {
+      "description": "HEARTBEAT.",
+      "properties": {
+        "armed": {
+          "type": "boolean"
+        },
+        "autopilot": {
+          "type": "string"
+        },
+        "base_mode": {
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "custom_mode": {
+          "format": "uint32",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "sysid": {
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "system_status": {
+          "type": "string"
+        },
+        "vehicle_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "sysid",
+        "vehicle_type",
+        "autopilot",
+        "custom_mode",
+        "base_mode",
+        "armed",
+        "system_status"
+      ],
+      "type": "object"
+    },
     "HelloReply": {
       "description": "The hub's answer to a hello.",
       "properties": {
         "accepted": {
           "type": "boolean"
+        },
+        "attachments": {
+          "$ref": "#/$defs/AttachmentMode",
+          "default": "full",
+          "description": "What attachments may travel on the link the device named."
+        },
+        "chunk_bytes": {
+          "default": 65536,
+          "description": "The attachment chunk size, bytes.",
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
         },
         "fleet_every_hours": {
           "description": "How often a device fetches a changed fleet summary (a hub setting\nthe device learns here).",
@@ -2524,7 +3088,9 @@
         "accepted",
         "refused",
         "fleet_every_hours",
-        "hub_time"
+        "hub_time",
+        "attachments",
+        "chunk_bytes"
       ],
       "type": "object"
     },
@@ -3753,6 +4319,40 @@
       ],
       "type": "object"
     },
+    "Lamp": {
+      "description": "A lamp's state.",
+      "enum": [
+        "off",
+        "on",
+        "error",
+        "not_available"
+      ],
+      "type": "string"
+    },
+    "Lamps": {
+      "description": "The four DM1 lamps.",
+      "properties": {
+        "amber_warning": {
+          "$ref": "#/$defs/Lamp"
+        },
+        "malfunction": {
+          "$ref": "#/$defs/Lamp"
+        },
+        "protect": {
+          "$ref": "#/$defs/Lamp"
+        },
+        "red_stop": {
+          "$ref": "#/$defs/Lamp"
+        }
+      },
+      "required": [
+        "malfunction",
+        "red_stop",
+        "amber_warning",
+        "protect"
+      ],
+      "type": "object"
+    },
     "Lesson": {
       "description": "A captured lesson.",
       "properties": {
@@ -4740,6 +5340,47 @@
       },
       "type": "object"
     },
+    "PackSummary": {
+      "description": "One installed pack, for choosing among several.",
+      "properties": {
+        "equipment_roots": {
+          "description": "The top of each equipment tree (no parent).",
+          "items": {
+            "$ref": "#/$defs/Equipment"
+          },
+          "type": "array"
+        },
+        "has_fault_trees": {
+          "type": "boolean"
+        },
+        "licenses": {
+          "description": "The sources' licenses, each once.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "pack_id": {
+          "type": "string"
+        },
+        "title": {
+          "description": "`pack_meta.title`, else the first source's title, else the id.",
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "pack_id",
+        "title",
+        "version",
+        "equipment_roots",
+        "licenses",
+        "has_fault_trees"
+      ],
+      "type": "object"
+    },
     "PackUpdate": {
       "description": "A pack replaced by a newer one from the hub.",
       "properties": {
@@ -4927,6 +5568,56 @@
       "required": [
         "path",
         "sha256"
+      ],
+      "type": "object"
+    },
+    "Plate": {
+      "additionalProperties": false,
+      "description": "What the technician or the machine reports.",
+      "properties": {
+        "firmware": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "model": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "params": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "default": {},
+          "type": "object"
+        },
+        "serial": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "text": {
+          "default": null,
+          "description": "Free text (a data plate read aloud or by a camera).",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "model",
+        "serial",
+        "firmware",
+        "params",
+        "text"
       ],
       "type": "object"
     },
@@ -6329,6 +7020,69 @@
         }
       ]
     },
+    "SignalDecode": {
+      "description": "Decoded data and what it matches in the pack.",
+      "properties": {
+        "decoded": {
+          "$ref": "#/$defs/Decoded"
+        },
+        "match": {
+          "$ref": "#/$defs/SignalMatch"
+        }
+      },
+      "required": [
+        "decoded",
+        "match"
+      ],
+      "type": "object"
+    },
+    "SignalDecodeParams": {
+      "additionalProperties": false,
+      "description": "Raw vehicle data to decode into observations.",
+      "properties": {
+        "asset_id": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "equip_id": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "format": {
+          "$ref": "#/$defs/Format"
+        },
+        "input": {
+          "description": "The text: log lines, frames, hex messages, or the typed code.",
+          "type": "string"
+        },
+        "pack_id": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "signal_kind": {
+          "default": null,
+          "description": "For a display code: its signal kind (`pump40.code`); any kind when absent.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "format",
+        "input"
+      ],
+      "type": "object"
+    },
     "SignalHit": {
       "description": "One signal rule an observation matched.",
       "properties": {
@@ -6339,6 +7093,10 @@
             "null"
           ]
         },
+        "has_tree": {
+          "description": "False when the rule leads to no troubleshooting tree.",
+          "type": "boolean"
+        },
         "matched": {
           "$ref": "#/$defs/MatchKind"
         },
@@ -6347,13 +7105,26 @@
         },
         "rule": {
           "$ref": "#/$defs/SignalRule"
+        },
+        "section": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SignalSection"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "The cited section's verbatim text. For a rule with no tree this is\nall the manual says (a cause with no corrective action)."
         }
       },
       "required": [
         "observed",
         "matched",
         "rule",
-        "citation"
+        "citation",
+        "section",
+        "has_tree"
       ],
       "type": "object"
     },
@@ -6387,8 +7158,15 @@
       "description": "The result of matching observations.",
       "properties": {
         "ambiguous": {
-          "description": "True when the hits lead to more than one tree.",
+          "description": "True when the hits lead to more than one tree (rules with no tree\ndo not count).",
           "type": "boolean"
+        },
+        "closest": {
+          "description": "For each unmatched text observation, the closest entries in the\nmanual: never a match, never a start. The app says \"no exact\nentry; closest entries in this manual\".",
+          "items": {
+            "$ref": "#/$defs/Closest"
+          },
+          "type": "array"
         },
         "hits": {
           "description": "Most specific first: exact, glob, prefix, regex; then observation order.",
@@ -6419,7 +7197,8 @@
         "hits",
         "suggested",
         "ambiguous",
-        "unmatched"
+        "unmatched",
+        "closest"
       ],
       "type": "object"
     },
@@ -6495,7 +7274,11 @@
           "type": "string"
         },
         "tree_id": {
-          "type": "string"
+          "description": "The tree it leads into; `None` when the manual prints a cause with\nno troubleshooting (then `section_id` is what it says).",
+          "type": [
+            "string",
+            "null"
+          ]
         }
       },
       "required": [
@@ -6507,6 +7290,33 @@
         "section_id",
         "quote",
         "quote_verified"
+      ],
+      "type": "object"
+    },
+    "SignalSection": {
+      "description": "The manual text a signal rule cites.",
+      "properties": {
+        "citation": {
+          "type": "string"
+        },
+        "heading": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "section_id": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "section_id",
+        "citation",
+        "heading",
+        "text"
       ],
       "type": "object"
     },
@@ -6550,6 +7360,70 @@
         "sha256",
         "media_type",
         "license"
+      ],
+      "type": "object"
+    },
+    "Stats": {
+      "description": "What reading the bytes found.",
+      "properties": {
+        "bad_crc": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "frames": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "signed": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "skipped_bytes": {
+          "description": "Bytes skipped between frames.",
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "unknown": {
+          "description": "Valid-looking frames of messages this decoder does not know (their\nCRC cannot be checked without the message's CRC_EXTRA).",
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "frames",
+        "bad_crc",
+        "unknown",
+        "signed",
+        "skipped_bytes"
+      ],
+      "type": "object"
+    },
+    "StatusText": {
+      "description": "STATUSTEXT, chunks joined.",
+      "properties": {
+        "severity": {
+          "description": "`emergency` … `debug`.",
+          "type": "string"
+        },
+        "sysid": {
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "sysid",
+        "severity",
+        "text"
       ],
       "type": "object"
     },
@@ -7164,6 +8038,77 @@
         "last_error",
         "last_synced_at",
         "hub"
+      ],
+      "type": "object"
+    },
+    "SysStatus": {
+      "description": "SYS_STATUS: sensors by name, battery.",
+      "properties": {
+        "battery_current": {
+          "description": "Amperes.",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "battery_remaining": {
+          "description": "Percent.",
+          "format": "int8",
+          "maximum": 127,
+          "minimum": -128,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "battery_voltage": {
+          "description": "Volts; `None` when the autopilot does not know.",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "enabled": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "load_percent": {
+          "format": "double",
+          "type": "number"
+        },
+        "present": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "sysid": {
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "unhealthy": {
+          "description": "Present and enabled but not healthy.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "sysid",
+        "present",
+        "enabled",
+        "unhealthy",
+        "battery_voltage",
+        "battery_current",
+        "battery_remaining",
+        "load_percent"
       ],
       "type": "object"
     },
@@ -8085,6 +9030,17 @@
         "$ref": "#/$defs/PackInfoView"
       }
     },
+    "pack.list": {
+      "params": {
+        "$ref": "#/$defs/NoParams"
+      },
+      "result": {
+        "items": {
+          "$ref": "#/$defs/PackSummary"
+        },
+        "type": "array"
+      }
+    },
     "pack.validate": {
       "params": {
         "$ref": "#/$defs/PackParams"
@@ -8131,6 +9087,14 @@
       },
       "result": {
         "$ref": "#/$defs/Run"
+      }
+    },
+    "signal.decode": {
+      "params": {
+        "$ref": "#/$defs/SignalDecodeParams"
+      },
+      "result": {
+        "$ref": "#/$defs/SignalDecode"
       }
     },
     "signal.match": {
