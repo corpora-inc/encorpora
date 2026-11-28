@@ -178,7 +178,7 @@ export function Page({
   const canGoBack = location.key !== "default";
   return (
     <div className="mx-auto w-full max-w-[760px] px-4 pb-8 sm:px-6">
-      <header className="flex h-16 items-center gap-2">
+      <header className="flex h-header items-center gap-2">
         {up && (
           <button
             type="button"

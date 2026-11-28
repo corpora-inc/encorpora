@@ -114,6 +114,8 @@
   --radius-control: 12px;
   --radius-panel: 16px;
   --spacing-tap: 3.25rem; /* 52 px: gloved thumbs */
+  --spacing-header: 4rem; /* 64 px: the screen header row */
+  --spacing-tabbar: 4.75rem; /* 76 px: the phone tab bar and its gap */
 }
 
 /* Base rules sit in the base layer so utilities (text-surface, font-display, margins) override them. */
@@ -249,6 +251,11 @@
   }
   .diagram .dg-bar {
     fill: var(--amber);
+  }
+  /* A deep-linked paragraph lands below a header's height of room and above the phone tab bar. */
+  .reader-target {
+    scroll-margin-top: calc(var(--spacing-header) + env(safe-area-inset-top));
+    scroll-margin-bottom: calc(var(--spacing-tabbar) + env(safe-area-inset-bottom));
   }
   .target-flash {
     background: var(--amber-wash);
