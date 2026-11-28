@@ -26,6 +26,9 @@ export interface Applicability {
   status: Tri;
 }
 
+/** What `step.ask` shows. */
+export type AskDecision = "answer" | "decline";
+
 export interface AskParams {
   equip_id?: string | null;
   /** A level of the pack; the first when absent. */
@@ -1430,6 +1433,38 @@ export interface LessonInput {
   tree_id?: string | null;
 }
 
+export interface LessonPrefill {
+  elapsed_ms: number;
+  model: string | null;
+  prompt_version: string;
+  proposal: LessonProposal;
+}
+
+export interface LessonPrefillParams {
+  job_id: string;
+  /**
+   * The fields the model may fill: narrows the host's policy (by device
+   * class), never widens it.
+   */
+  policy?: PrefillPolicy | null;
+  /** The technician's close-out note. */
+  text: string;
+}
+
+/** A `LessonInput`-shaped proposal, field by field. */
+export interface LessonProposal {
+  action: ProposedText;
+  asset_id: ProposedText;
+  cause: ProposedText;
+  equip_id: ProposedText;
+  job_id: ProposedText;
+  minutes: ProposedMinutes;
+  note: ProposedText;
+  parts: ProposedParts;
+  symptom_id: ProposedText;
+  tree_id: ProposedText;
+}
+
 /** Where a lesson is. */
 export type LessonStatus = "local" | "queued" | "uploaded" | "approved" | "edited" | "rejected";
 
@@ -1478,6 +1513,29 @@ export interface LevelText {
  * or radio link is `low`).
  */
 export type LinkClass = "low" | "normal";
+
+/** The last model call, as `llm.status` reports it. */
+export interface LlmLast {
+  /** The model answered (whatever it said). */
+  answered: boolean;
+  at: string;
+  elapsed_ms: number;
+  error: string | null;
+  method: string;
+  /** It answered with a usable decision. */
+  ok: boolean;
+}
+
+/** Whether a model is configured and how its last call went. */
+export interface LlmStatus {
+  configured: boolean;
+  last: LlmLast | null;
+  model: string | null;
+  /** The prompt versions this engine runs. */
+  prompt_versions: string[];
+  /** As of the last call (`None` before any). */
+  reachable: boolean | null;
+}
 
 /** One search hit with its text and citation. */
 export interface ManualHit {
@@ -1829,12 +1887,37 @@ export interface PracticeTopic {
   topic_id: string;
 }
 
+/** The fields the model may prefill (by device class). */
+export interface PrefillPolicy {
+  /** From `cause`, `action`, `parts`, `minutes`, `note`. */
+  fields: string[];
+}
+
 /** An identified person. */
 export interface Principal {
   name: string;
   roles: Role[];
   /** How they were identified: `token`, `proxy` or `local` (in process). */
   via: string;
+}
+
+export interface ProposedMinutes {
+  source: Source2;
+  value: number | null;
+}
+
+export interface ProposedParts {
+  labels: string[];
+  source: Source2;
+  value: PartUsed[];
+}
+
+/** One proposed text field. */
+export interface ProposedText {
+  /** The model's label (`C2`, `A1`, `other`, `unknown`). */
+  label: string | null;
+  source: Source2;
+  value: string | null;
 }
 
 /** What one pull from the hub did. */
@@ -2297,6 +2380,12 @@ export type Segment = {
   t: "check";
 };
 
+/** A sentence shown: the pack's own text and its citation. */
+export interface ShownSentence {
+  citation: Citation | null;
+  text: string;
+}
+
 /** Decoded data and what it matches in the pack. */
 export interface SignalDecode {
   decoded: Decoded;
@@ -2417,6 +2506,9 @@ export interface Source {
   url: string;
 }
 
+/** Where a proposed value came from. */
+export type Source2 = "job" | "model" | "unknown";
+
 /** One printed statement and how it evaluated. */
 export interface Statement {
   section_id: string;
@@ -2445,6 +2537,24 @@ export interface StatusText {
   severity: string;
   sysid: number;
   text: string;
+}
+
+export interface StepAsk {
+  decision: AskDecision;
+  elapsed_ms: number;
+  /** One of the fixed headings (empty: none). */
+  heading: string;
+  model: string | null;
+  /** On decline: the nearest passages. */
+  nearest: ShownSentence[];
+  prompt_version: string;
+  /** The pack's own sentences, each with its citation. */
+  sentences: ShownSentence[];
+}
+
+export interface StepAskParams {
+  job_id: string;
+  question: string;
 }
 
 /** What recording a step returns: the guidance to show when it failed. */
@@ -2518,6 +2628,9 @@ export interface StepView {
   tree: TreeSummary;
 }
 
+/** What `symptom.suggest` proposes. */
+export type SuggestDecision = "route" | "suggest" | "clarify" | "list";
+
 /**
  * How the deterministic answer gate saw the question: enough to replay the
  * decision offline for any threshold. A section is kept when its coverage
@@ -2573,6 +2686,27 @@ export interface Symptom {
   symptom_id: string;
   synonyms: string[];
   system: string | null;
+  title: string;
+  tree_id: string;
+}
+
+/** A candidate entry, described only by the pack. */
+export interface SymptomEntry {
+  /** Synonyms (up to 4). */
+  also: string[];
+  /** The tree's applicability for the asset, when it has statements. */
+  applicability: Applicability | null;
+  /** The first open causes in tree order (up to 4). */
+  causes: string[];
+  confidence: Confidence;
+  /** The search's score for it. */
+  match: number;
+  /**
+   * The tree's symptom statement (its entry node), when it says more
+   * than the title.
+   */
+  statement: string | null;
+  symptom_id: string;
   title: string;
   tree_id: string;
 }
@@ -2633,6 +2767,30 @@ export interface SymptomSearchParams {
   ranking?: RankingParams | null;
   /** The technician's words. */
   text?: string | null;
+}
+
+/** A proposal the engine checked: never an action. */
+export interface SymptomSuggest {
+  decision: SuggestDecision;
+  elapsed_ms: number;
+  /**
+   * `route`: the one entry; `suggest`: the model's pick; `clarify`: the
+   * two or three to choose between; `list`: the candidates.
+   */
+  entries: SymptomEntry[];
+  /** The model asked (`None`: the engine decided, or no model). */
+  model: string | null;
+  prompt_version: string | null;
+  search: SymptomSearch;
+}
+
+export interface SymptomSuggestParams {
+  asset_id?: string | null;
+  equip_id?: string | null;
+  observations?: ObservationInput[];
+  pack_id?: string | null;
+  /** The technician's words. */
+  text: string;
 }
 
 /**
@@ -2983,6 +3141,10 @@ export interface Methods {
   "table.lookup": { params: TableLookupParams; result: RowHit[] };
   "asset.attrs": { params: AssetAttrsParams; result: AssetAttrs };
   "asset.set_attrs": { params: AssetSetAttrsParams; result: AssetAttrs };
+  "symptom.suggest": { params: SymptomSuggestParams; result: SymptomSuggest };
+  "lesson.prefill": { params: LessonPrefillParams; result: LessonPrefill };
+  "step.ask": { params: StepAskParams; result: StepAsk };
+  "llm.status": { params: NoParams; result: LlmStatus };
   "practice.items": { params: PracticeItemsParams; result: PracticeItems };
   "practice.record": { params: PracticeRecordParams; result: PracticeAttempt };
   "practice.history": { params: PackParams; result: PracticeAttempt[] };
@@ -3062,6 +3224,10 @@ export const METHODS = [
   "table.lookup",
   "asset.attrs",
   "asset.set_attrs",
+  "symptom.suggest",
+  "lesson.prefill",
+  "step.ask",
+  "llm.status",
   "practice.items",
   "practice.record",
   "practice.history",

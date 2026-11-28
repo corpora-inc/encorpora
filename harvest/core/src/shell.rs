@@ -111,6 +111,13 @@ pub struct HostConfig {
     pub install_root: Option<PathBuf>,
     /// Where `sync.export` writes for a removable drive.
     pub outbox_dir: Option<PathBuf>,
+    /// A local OpenAI-compatible model server (`…/v1`, JSON-schema output),
+    /// feature `net`; and its model name (the first it lists when absent).
+    pub llm_url: Option<String>,
+    pub llm_model: Option<String>,
+    /// The fields `lesson.prefill` may fill on this device class (default
+    /// minutes and parts).
+    pub prefill_policy: Option<crate::assist::PrefillPolicy>,
 }
 
 /// What [`open_host`] found, for the shell to log or show.
@@ -190,6 +197,11 @@ pub fn open_host(cfg: &HostConfig, keys: &dyn KeyStore) -> Result<(Host, HostRep
         }
     }
     host = with_hub(host, cfg, dk)?;
+    host = with_llm(host, cfg, &mut report)?;
+    if let Some(p) = &cfg.prefill_policy {
+        p.check()?;
+        host = host.with_prefill_policy(p.clone());
+    }
     Ok((host, report))
 }
 
@@ -276,6 +288,35 @@ fn with_hub(host: Host, cfg: &HostConfig, _: DeviceKey) -> Result<Host> {
     if cfg.hub_url.is_some() {
         return Err(Error::Invalid(
             "a hub address needs harvest-core's `net` feature".into(),
+        ));
+    }
+    Ok(host)
+}
+
+#[cfg(feature = "net")]
+fn with_llm(host: Host, cfg: &HostConfig, report: &mut HostReport) -> Result<Host> {
+    let Some(url) = &cfg.llm_url else {
+        return Ok(host);
+    };
+    match crate::llm::OpenAiCompatible::new(
+        url,
+        cfg.llm_model.as_deref(),
+        std::time::Duration::from_secs(60),
+    ) {
+        Ok(l) => Ok(host.with_llm(Arc::new(l))),
+        // Not fatal: the model methods answer with the model off.
+        Err(e) => {
+            report.warnings.push(format!("model off: {e}"));
+            Ok(host)
+        }
+    }
+}
+
+#[cfg(not(feature = "net"))]
+fn with_llm(host: Host, cfg: &HostConfig, _: &mut HostReport) -> Result<Host> {
+    if cfg.llm_url.is_some() {
+        return Err(Error::Invalid(
+            "a model URL needs harvest-core's `net` feature".into(),
         ));
     }
     Ok(host)

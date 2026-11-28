@@ -1,0 +1,18 @@
+{
+  "sources": {
+    "m40": {
+      "bytes": 53389,
+      "distribution": "none printed (fictional proof document)",
+      "edition": "Revision C, Change 1",
+      "fetched_url": "file:pump40v2-manual.pdf",
+      "license": "fictional-test-content",
+      "media_type": "application/pdf",
+      "publisher": "Harvest proof (fictional content)",
+      "retrieved_at": "2026-11-28T08:37:22+00:00",
+      "sha256": "f8d0e847fec8c3b703fb849e7b391f363c3059550eac5c27c05d57f43a63ebe7",
+      "source_id": "m40",
+      "title": "Model 40 Utility Pump Field Maintenance Manual (fictional, harvest proof, variant 2)",
+      "url": "https://example.invalid/model-40"
+    }
+  }
+}

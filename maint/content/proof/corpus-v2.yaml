@@ -1,0 +1,84 @@
+# Variant 2 of the proof: the same fictional pump manual laid out the hard way (make_pump40v2.py: a tree
+# across three spreads, a lettered off-page connector, a floating caution, a two-level procedure, a table
+# split across a page break, change marks, one scanned page). Its answer key is pump40v2-expected.json.
+corpus_id: maint-proof-pump40v2
+pack_id: pump40v2-proof
+lang: en
+version: 2026.11.28-5
+
+sources:
+  - id: m40
+    title: Model 40 Utility Pump Field Maintenance Manual (fictional, harvest proof, variant 2)
+    publisher: Harvest proof (fictional content)
+    url: https://example.invalid/model-40
+    license: fictional-test-content
+    distribution: none printed (fictional proof document)
+    edition: Revision C, Change 1
+    parser: maint-pdf
+    parser_options: {id_prefix: m40, citation_prefix: ""}
+    fetch: {kind: file, path: pump40v2-manual.pdf}
+
+maint:
+  presentations:    # how each symptom shows up, for search from a technician's own words (maint presentations)
+    cache_dir: cache/presentations
+    author: {backend: claude-cli, model: sonnet, max_week_pct: 60}
+  learn:            # practice items from the pack's structure; the readers gate them (harvest-bake maint learn)
+    cache_dir: cache/learn
+    readers:
+      solver-sonnet: {reader: with_source, author: {backend: claude-cli, model: sonnet, max_week_pct: 60}}
+      options-sonnet: {reader: options_only, author: {backend: claude-cli, model: sonnet, max_week_pct: 60}}
+      nosource-sonnet: {reader: no_source, author: {backend: claude-cli, model: sonnet, max_week_pct: 60}}
+      nosource-gemma: {reader: no_source, author: {backend: openai-compatible, model: gemma-4-26b-a4b,
+                       base_url: "http://127.0.0.1:8093/v1", mode: json_schema, timeout: 1800, temperature: 0,
+                       extra: {chat_template_kwargs: {enable_thinking: false}}}}
+  release_arm: sonnet-img
+  history: {config: fleet/fleet.yaml, arm: rules}   # the fleet's logs, read against this pack (no model)
+  expected: pump40v2-expected.json            # the answer key: `maint score` and build-pack.sh use it
+  cache_dir: cache-v2
+  ledger: cache-v2/ledger.jsonl
+  image_px: 1400
+  concurrency: 2
+  arms:
+    # frontier, reading the page images as well as the page model
+    sonnet-img: {author: {backend: claude-cli, model: sonnet, max_week_pct: 60, timeout: 1800}, images: true}
+    # frontier, page model text and geometry only (separates "which model" from "with the image")
+    sonnet-text: {author: {backend: claude-cli, model: sonnet, max_week_pct: 60, timeout: 1800}, images: false}
+    # open weight on our own hardware (no image: the lab has no vision projector for these files)
+    gemma4-26b: {author: {backend: openai-compatible, model: gemma-4-26b-a4b, base_url: "http://127.0.0.1:8093/v1",
+                          mode: json_schema, timeout: 3600, temperature: 0,
+                          extra: {chat_template_kwargs: {enable_thinking: false}}}, images: false}
+    gpt-oss-120b: {author: {backend: openai-compatible, model: gpt-oss-120b, base_url: "http://127.0.0.1:8093/v1",
+                            mode: json_schema, timeout: 3600, temperature: 1.0,
+                            extra: {chat_template_kwargs: {reasoning_effort: medium}}}, images: false}
+    # rules first: structure from the page model by deterministic rules; leftovers as closed questions
+    rules: {author: {backend: rules}, images: false}
+    rules+gemma4-26b: {author: {backend: rules, resolver: {backend: openai-compatible, model: gemma-4-26b-a4b,
+                       base_url: "http://127.0.0.1:8093/v1", mode: json_schema, timeout: 3600, temperature: 0,
+                       extra: {chat_template_kwargs: {enable_thinking: false}}}}, images: false}
+    rules+gpt-oss-120b: {author: {backend: rules, resolver: {backend: openai-compatible, model: gpt-oss-120b,
+                         base_url: "http://127.0.0.1:8093/v1", mode: json_schema, timeout: 3600, temperature: 1.0,
+                         extra: {chat_template_kwargs: {reasoning_effort: medium}}}}, images: false}
+    rules+sonnet: {author: {backend: rules, resolver: {backend: claude-cli, model: sonnet, max_week_pct: 60}},
+                   images: false}
+    # measurement: every guard placement and facet box asked as a closed question (rules' answer = default)
+    ask: {author: {backend: rules, rules: {ask: [guards, facets]}}, images: false}
+    ask+gemma4-26b: {author: {backend: rules, rules: {ask: [guards, facets]}, resolver: {backend: openai-compatible,
+                     model: gemma-4-26b-a4b, base_url: "http://127.0.0.1:8093/v1", mode: json_schema, timeout: 3600,
+                     temperature: 0, extra: {chat_template_kwargs: {enable_thinking: false}}}}, images: false}
+    ask+gpt-oss-120b: {author: {backend: rules, rules: {ask: [guards, facets]}, resolver: {backend: openai-compatible,
+                       model: gpt-oss-120b, base_url: "http://127.0.0.1:8093/v1", mode: json_schema, timeout: 3600,
+                       temperature: 1.0, extra: {chat_template_kwargs: {reasoning_effort: medium}}}}, images: false}
+    ask+sonnet: {author: {backend: rules, rules: {ask: [guards, facets]}, resolver: {backend: claude-cli, model: sonnet,
+                 max_week_pct: 60}}, images: false}
+  # recorded machine inputs, decoded by harvest-core and matched against the pack (`maint signals`)
+  signal_samples:
+    - {file: samples/pump40-dm1.candump, format: j1939_candump, expect_dtcs: 4,   # two single frames, one BAM of two
+       expect: [{tree: Pump overheats}, {tree: Engine will not crank, node: What is the battery voltage}]}
+    - {file: samples/pump40-display.txt, format: display, kind: display,
+       expect: [{tree: Pump overheats, node: Is the intake strainer clear}]}
+  roles: [apprentice, technician, expert]
+  signal_kinds:
+    - {kind: j1939.dm1, label: "Engine fault code (SPN/FMI)", example: "spn:110/fmi:0"}
+    - {kind: display, label: "Displayed code", example: "E21"}
+
+embedder: {kind: hash}

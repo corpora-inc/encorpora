@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.s1000d.org/S1000D_5-0/xml_schema_flat/fault.xsd">
+ <identAndStatusSection>
+  <dmAddress>
+   <dmIdent>
+    <dmCode modelIdentCode="M40" systemDiffCode="A" systemCode="24" subSystemCode="0"
+            subSubSystemCode="0" assyCode="00" disassyCode="00" disassyCodeVariant="A"
+            infoCode="920" infoCodeVariant="A" itemLocationCode="A"/>
+    <language languageIsoCode="en" countryIsoCode="US"/>
+    <issueInfo issueNumber="003" inWork="00"/>
+   </dmIdent>
+   <dmAddressItems>
+    <issueDate year="2026" month="03" day="01"/>
+    <dmTitle><techName>Battery replacement</techName><infoName>Replace</infoName></dmTitle>
+   </dmAddressItems>
+  </dmAddress>
+  <dmStatus issueType="changed">
+   <security securityClassification="01"/>
+   <responsiblePartnerCompany><enterpriseName>Harvest proof (fictional)</enterpriseName></responsiblePartnerCompany>
+   <applic><displayText><simplePara>Diesel variant only.</simplePara></displayText><assert applicPropertyIdent="model" applicPropertyType="prodattr" applicPropertyValues="P40-D"/></applic>
+   <brexDmRef><dmRef><dmRefIdent><dmCode modelIdentCode="S1000D" systemDiffCode="H" systemCode="04"
+     subSystemCode="1" subSubSystemCode="0" assyCode="0301" disassyCode="00" disassyCodeVariant="A"
+     infoCode="022" infoCodeVariant="A" itemLocationCode="D"/></dmRefIdent></dmRef></brexDmRef>
+   <qualityAssurance><unverified/></qualityAssurance>
+  </dmStatus>
+ </identAndStatusSection>
+ <content>
+  <warningsAndCautions><caution id="caut-0001"><warningAndCautionPara>Disconnect the negative cable first to prevent a short circuit.</warningAndCautionPara></caution><warning id="warn-0001"><warningAndCautionPara>The battery weighs 28 kg. Use two people and the lifting strap to lift it.</warningAndCautionPara></warning></warningsAndCautions>
+  <procedure>
+   <preliminaryRqmts>
+    <reqCondGroup><noConds/></reqCondGroup>
+    <reqPersons><person man="A"/><personnelDescr>Two technicians.</personnelDescr></reqPersons><reqSupportEquips><supportEquipDescrGroup><supportEquipDescr><name>10 mm wrench</name><reqQuantity>1</reqQuantity></supportEquipDescr><supportEquipDescr><name>Battery lifting strap</name><reqQuantity>1</reqQuantity></supportEquipDescr></supportEquipDescrGroup></reqSupportEquips><reqSupplies><supplyDescrGroup><supplyDescr><name>Terminal grease</name></supplyDescr></supplyDescrGroup></reqSupplies><reqSpares><spareDescrGroup><spareDescr><name>Battery, 12 V, 100 Ah</name><partRef partNumberValue="P40-118"/><reqQuantity>1</reqQuantity></spareDescr></spareDescrGroup></reqSpares>
+    <reqSafety><noSafety/></reqSafety>
+   </preliminaryRqmts>
+   <mainProcedure>
+    <proceduralStep id="stp-0001"><para>Turn the battery switch OFF.</para></proceduralStep>
+    <proceduralStep id="stp-0002" cautionRefs="caut-0001"><para>Disconnect the negative cable first, then the positive cable.</para></proceduralStep>
+    <proceduralStep id="stp-0003" warningRefs="warn-0001"><para>Remove the hold-down clamp and lift out the battery.</para></proceduralStep>
+    <proceduralStep id="stp-0004"><para>Install the new battery. Connect the positive cable first, then the negative cable.</para></proceduralStep>
+    <proceduralStep id="stp-0005"><para>Tighten the terminal nuts to 6 N.m. Coat the terminals with terminal grease.</para></proceduralStep>
+    <proceduralStep id="stp-0006"><para>Record the date code of the new battery.</para></proceduralStep>
+   </mainProcedure>
+   <closeRqmts><reqCondGroup><noConds/></reqCondGroup></closeRqmts>
+  </procedure>
+ </content>
+</dmodule>

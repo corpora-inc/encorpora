@@ -1,0 +1,659 @@
+{
+ "format": "maint-expected/1",
+ "trees": [
+  {
+   "title": "Engine will not crank",
+   "entry": "The engine does not crank when the start key is turned to START.",
+   "applies": [
+    "Model 40 diesel"
+   ],
+   "nodes": [
+    {
+     "text": "The engine does not crank when the start key is turned to START.",
+     "kind": "symptom",
+     "expect": {
+      "kind": "ack"
+     }
+    },
+    {
+     "text": "Is the battery switch ON and is the 15 A start fuse F2 good?",
+     "kind": "check",
+     "expect": {
+      "kind": "yes_no"
+     }
+    },
+    {
+     "text": "Turn the battery switch ON or replace fuse F2, then try to start. Does the engine crank now?",
+     "kind": "action",
+     "expect": {
+      "kind": "yes_no"
+     }
+    },
+    {
+     "text": "The fault is corrected. Return the pump to service.",
+     "kind": "end",
+     "expect": null
+    },
+    {
+     "text": "What is the battery voltage at terminals B+ and B- with the key OFF?",
+     "kind": "check",
+     "expect": {
+      "kind": "value",
+      "unit": "V"
+     },
+     "proc": "Battery voltage test"
+    },
+    {
+     "text": "Replace the battery. Refer to task 4-3.",
+     "kind": "action",
+     "expect": null,
+     "target": "procedure:Battery replacement"
+    },
+    {
+     "text": "Charge the battery, then repeat the voltage test.",
+     "kind": "action",
+     "expect": {
+      "kind": "ack"
+     }
+    },
+    {
+     "text": "Is more than 10 V present at starter relay K1 terminal 86 when the key is turned to START?",
+     "kind": "check",
+     "expect": {
+      "kind": "yes_no"
+     }
+    },
+    {
+     "text": "Key switch or wiring fault. Refer to field maintenance for wiring repair.",
+     "kind": "escalate",
+     "expect": null
+    },
+    {
+     "text": "Test starter relay K1 with the relay tester.",
+     "kind": "check",
+     "expect": {
+      "kind": "pass_fail"
+     },
+     "proc": "Starter relay test"
+    },
+    {
+     "text": "Starter motor fault. Send the starter motor to the repair shop.",
+     "kind": "escalate",
+     "expect": null
+    },
+    {
+     "text": "Replace starter relay K1.",
+     "kind": "action",
+     "expect": null
+    }
+   ],
+   "edges": [
+    {
+     "from": "The engine does not crank when the start key is turned to START.",
+     "label": "continue",
+     "to": "Is the battery switch ON and is the 15 A start fuse F2 good?"
+    },
+    {
+     "from": "Is the battery switch ON and is the 15 A start fuse F2 good?",
+     "label": "yes",
+     "to": "What is the battery voltage at terminals B+ and B- with the key OFF?"
+    },
+    {
+     "from": "Is the battery switch ON and is the 15 A start fuse F2 good?",
+     "label": "no",
+     "to": "Turn the battery switch ON or replace fuse F2, then try to start. Does the engine crank now?"
+    },
+    {
+     "from": "Turn the battery switch ON or replace fuse F2, then try to start. Does the engine crank now?",
+     "label": "yes",
+     "to": "The fault is corrected. Return the pump to service."
+    },
+    {
+     "from": "Turn the battery switch ON or replace fuse F2, then try to start. Does the engine crank now?",
+     "label": "no",
+     "to": "What is the battery voltage at terminals B+ and B- with the key OFF?"
+    },
+    {
+     "from": "What is the battery voltage at terminals B+ and B- with the key OFF?",
+     "label": "<11.5",
+     "to": "Replace the battery. Refer to task 4-3."
+    },
+    {
+     "from": "What is the battery voltage at terminals B+ and B- with the key OFF?",
+     "label": "11.5..12.5",
+     "to": "Charge the battery, then repeat the voltage test."
+    },
+    {
+     "from": "What is the battery voltage at terminals B+ and B- with the key OFF?",
+     "label": ">=12.5",
+     "to": "Is more than 10 V present at starter relay K1 terminal 86 when the key is turned to START?"
+    },
+    {
+     "from": "Charge the battery, then repeat the voltage test.",
+     "label": "retry",
+     "to": "What is the battery voltage at terminals B+ and B- with the key OFF?",
+     "retry": true
+    },
+    {
+     "from": "Is more than 10 V present at starter relay K1 terminal 86 when the key is turned to START?",
+     "label": "yes",
+     "to": "Test starter relay K1 with the relay tester."
+    },
+    {
+     "from": "Is more than 10 V present at starter relay K1 terminal 86 when the key is turned to START?",
+     "label": "no",
+     "to": "Key switch or wiring fault. Refer to field maintenance for wiring repair."
+    },
+    {
+     "from": "Test starter relay K1 with the relay tester.",
+     "label": "pass",
+     "to": "Starter motor fault. Send the starter motor to the repair shop."
+    },
+    {
+     "from": "Test starter relay K1 with the relay tester.",
+     "label": "fail",
+     "to": "Replace starter relay K1."
+    }
+   ],
+   "facets": [
+    {
+     "node": "Is the battery switch ON and is the 15 A start fuse F2 good?",
+     "facet": "test_option",
+     "ord": 1,
+     "text": "Look at the switch."
+    },
+    {
+     "node": "Is the battery switch ON and is the 15 A start fuse F2 good?",
+     "facet": "test_option",
+     "ord": 2,
+     "text": "Pull F2 and check it with the multimeter."
+    },
+    {
+     "node": "Is the battery switch ON and is the 15 A start fuse F2 good?",
+     "facet": "reason",
+     "ord": 1,
+     "text": "A switch left OFF or a blown fuse stops all cranking current."
+    },
+    {
+     "node": "Is the battery switch ON and is the 15 A start fuse F2 good?",
+     "facet": "known",
+     "ord": 1,
+     "text": "The engine does not crank."
+    },
+    {
+     "node": "Is the battery switch ON and is the 15 A start fuse F2 good?",
+     "facet": "possible",
+     "ord": 1,
+     "text": "Battery switch off."
+    },
+    {
+     "node": "Is the battery switch ON and is the 15 A start fuse F2 good?",
+     "facet": "possible",
+     "ord": 2,
+     "text": "Start fuse F2 blown."
+    },
+    {
+     "node": "Is the battery switch ON and is the 15 A start fuse F2 good?",
+     "facet": "possible",
+     "ord": 3,
+     "text": "Battery discharged."
+    },
+    {
+     "node": "Is the battery switch ON and is the 15 A start fuse F2 good?",
+     "facet": "possible",
+     "ord": 4,
+     "text": "Starter relay K1 failed."
+    },
+    {
+     "node": "What is the battery voltage at terminals B+ and B- with the key OFF?",
+     "facet": "test_option",
+     "ord": 1,
+     "text": "Measure at the battery terminals with the multimeter on DC volts."
+    },
+    {
+     "node": "What is the battery voltage at terminals B+ and B- with the key OFF?",
+     "facet": "reason",
+     "ord": 1,
+     "text": "Cranking needs a charged battery; below 11.5 V the starter cannot turn the engine."
+    },
+    {
+     "node": "What is the battery voltage at terminals B+ and B- with the key OFF?",
+     "facet": "known",
+     "ord": 1,
+     "text": "Battery switch ON."
+    },
+    {
+     "node": "What is the battery voltage at terminals B+ and B- with the key OFF?",
+     "facet": "known",
+     "ord": 2,
+     "text": "Fuse F2 good."
+    },
+    {
+     "node": "What is the battery voltage at terminals B+ and B- with the key OFF?",
+     "facet": "possible",
+     "ord": 1,
+     "text": "Battery discharged."
+    },
+    {
+     "node": "What is the battery voltage at terminals B+ and B- with the key OFF?",
+     "facet": "possible",
+     "ord": 2,
+     "text": "Starter relay K1 failed."
+    },
+    {
+     "node": "What is the battery voltage at terminals B+ and B- with the key OFF?",
+     "facet": "possible",
+     "ord": 3,
+     "text": "Starter motor failed."
+    },
+    {
+     "node": "Is more than 10 V present at starter relay K1 terminal 86 when the key is turned to START?",
+     "facet": "reason",
+     "ord": 1,
+     "text": "Voltage at terminal 86 shows the key switch and wiring deliver the start signal."
+    },
+    {
+     "node": "Is more than 10 V present at starter relay K1 terminal 86 when the key is turned to START?",
+     "facet": "known",
+     "ord": 1,
+     "text": "Battery OK."
+    },
+    {
+     "node": "Is more than 10 V present at starter relay K1 terminal 86 when the key is turned to START?",
+     "facet": "known",
+     "ord": 2,
+     "text": "Fuse OK."
+    },
+    {
+     "node": "Is more than 10 V present at starter relay K1 terminal 86 when the key is turned to START?",
+     "facet": "possible",
+     "ord": 1,
+     "text": "Starter relay K1 failed."
+    },
+    {
+     "node": "Is more than 10 V present at starter relay K1 terminal 86 when the key is turned to START?",
+     "facet": "possible",
+     "ord": 2,
+     "text": "Starter motor failed."
+    },
+    {
+     "node": "Is more than 10 V present at starter relay K1 terminal 86 when the key is turned to START?",
+     "facet": "possible",
+     "ord": 3,
+     "text": "Key switch or wiring open."
+    },
+    {
+     "node": "Test starter relay K1 with the relay tester.",
+     "facet": "reason",
+     "ord": 1,
+     "text": "A relay that passes the test points to the starter motor."
+    },
+    {
+     "node": "Test starter relay K1 with the relay tester.",
+     "facet": "known",
+     "ord": 1,
+     "text": "Start signal present at K1."
+    },
+    {
+     "node": "Test starter relay K1 with the relay tester.",
+     "facet": "possible",
+     "ord": 1,
+     "text": "Starter relay K1 failed."
+    },
+    {
+     "node": "Test starter relay K1 with the relay tester.",
+     "facet": "possible",
+     "ord": 2,
+     "text": "Starter motor failed."
+    }
+   ],
+   "setup": [
+    {
+     "kind": "condition",
+     "text": "Pump stopped, start key removed."
+    },
+    {
+     "kind": "tool",
+     "text": "Digital multimeter"
+    },
+    {
+     "kind": "tool",
+     "text": "relay tester"
+    },
+    {
+     "kind": "reference",
+     "text": "Wiring diagram, Figure 3-1."
+    },
+    {
+     "kind": "personnel",
+     "text": "One technician."
+    }
+   ]
+  },
+  {
+   "title": "Pump overheats",
+   "entry": "The high temperature lamp is on or the controller shows a high temperature code.",
+   "applies": [],
+   "nodes": [
+    {
+     "text": "The high temperature lamp is on or the controller shows a high temperature code.",
+     "kind": "symptom",
+     "expect": {
+      "kind": "ack"
+     }
+    },
+    {
+     "text": "Is the intake strainer clear of debris?",
+     "kind": "check",
+     "expect": {
+      "kind": "yes_no"
+     }
+    },
+    {
+     "text": "Clean the intake strainer.",
+     "kind": "action",
+     "expect": null
+    },
+    {
+     "text": "What is the condition of the cooling fan belt: tight, loose or broken?",
+     "kind": "check",
+     "expect": {
+      "kind": "choice",
+      "options": [
+       "tight",
+       "loose",
+       "broken"
+      ]
+     },
+     "proc": "Belt condition check"
+    },
+    {
+     "text": "Internal cooling fault. Report to the field maintenance shop.",
+     "kind": "escalate",
+     "expect": null
+    },
+    {
+     "text": "Adjust the belt tension.",
+     "kind": "action",
+     "expect": null
+    },
+    {
+     "text": "Replace the cooling fan belt.",
+     "kind": "action",
+     "expect": null
+    }
+   ],
+   "edges": [
+    {
+     "from": "The high temperature lamp is on or the controller shows a high temperature code.",
+     "label": "continue",
+     "to": "Is the intake strainer clear of debris?"
+    },
+    {
+     "from": "Is the intake strainer clear of debris?",
+     "label": "yes",
+     "to": "What is the condition of the cooling fan belt: tight, loose or broken?"
+    },
+    {
+     "from": "Is the intake strainer clear of debris?",
+     "label": "no",
+     "to": "Clean the intake strainer."
+    },
+    {
+     "from": "What is the condition of the cooling fan belt: tight, loose or broken?",
+     "label": "tight",
+     "to": "Internal cooling fault. Report to the field maintenance shop."
+    },
+    {
+     "from": "What is the condition of the cooling fan belt: tight, loose or broken?",
+     "label": "loose",
+     "to": "Adjust the belt tension."
+    },
+    {
+     "from": "What is the condition of the cooling fan belt: tight, loose or broken?",
+     "label": "broken",
+     "to": "Replace the cooling fan belt."
+    }
+   ],
+   "facets": [
+    {
+     "node": "Is the intake strainer clear of debris?",
+     "facet": "reason",
+     "ord": 1,
+     "text": "A blocked strainer starves the pump and it heats up."
+    },
+    {
+     "node": "Is the intake strainer clear of debris?",
+     "facet": "possible",
+     "ord": 1,
+     "text": "Intake strainer blocked."
+    },
+    {
+     "node": "Is the intake strainer clear of debris?",
+     "facet": "possible",
+     "ord": 2,
+     "text": "Cooling fan belt loose or broken."
+    },
+    {
+     "node": "Is the intake strainer clear of debris?",
+     "facet": "possible",
+     "ord": 3,
+     "text": "Internal cooling fault."
+    },
+    {
+     "node": "What is the condition of the cooling fan belt: tight, loose or broken?",
+     "facet": "possible",
+     "ord": 1,
+     "text": "Cooling fan belt loose or broken."
+    },
+    {
+     "node": "What is the condition of the cooling fan belt: tight, loose or broken?",
+     "facet": "possible",
+     "ord": 2,
+     "text": "Internal cooling fault."
+    }
+   ],
+   "setup": []
+  }
+ ],
+ "procedures": [
+  {
+   "title": "Battery voltage test",
+   "steps": [
+    "Set the multimeter to DC volts.",
+    "Place the red lead on B+ and the black lead on B-.",
+    "Read the voltage with the key OFF."
+   ],
+   "requirements": []
+  },
+  {
+   "title": "Starter relay test",
+   "steps": [
+    "Remove starter relay K1 from its socket.",
+    "Insert K1 in the relay tester and press TEST.",
+    "Read the PASS or FAIL lamp on the tester."
+   ],
+   "requirements": [
+    {
+     "kind": "tool",
+     "text": "Relay tester."
+    }
+   ]
+  },
+  {
+   "title": "Belt condition check",
+   "steps": [
+    "Open the fan guard.",
+    "Press the belt midway between the pulleys.",
+    "Look for cracks, fraying or missing pieces."
+   ],
+   "requirements": []
+  },
+  {
+   "title": "Battery replacement",
+   "steps": [
+    "Turn the battery switch OFF.",
+    "Disconnect the negative cable first, then the positive cable.",
+    "Remove the hold-down clamp and lift out the battery.",
+    "Install the new battery.",
+    "Connect the positive cable first.",
+    "Connect the negative cable.",
+    "Tighten the terminal nuts to 6 N.m. Coat the terminals with terminal grease.",
+    "Record the date code of the new battery."
+   ],
+   "requirements": [
+    {
+     "kind": "tool",
+     "text": "10 mm wrench"
+    },
+    {
+     "kind": "tool",
+     "text": "battery lifting strap"
+    },
+    {
+     "kind": "part",
+     "text": "Battery, 12 V, 100 Ah"
+    },
+    {
+     "kind": "consumable",
+     "text": "Terminal grease."
+    },
+    {
+     "kind": "personnel",
+     "text": "Two technicians."
+    }
+   ],
+   "applies": [
+    "Model 40 diesel"
+   ]
+  }
+ ],
+ "guards": [
+  {
+   "kind": "warning",
+   "text": "Stop the pump and remove the start key or lock out the supply before you open any cover. Rotating parts can cause serious injury.",
+   "guards": "heading:CHAPTER 3. TROUBLESHOOTING"
+  },
+  {
+   "kind": "warning",
+   "text": "Batteries give off explosive gas. Keep sparks and flames away from the battery.",
+   "guards": "procedure:Battery voltage test"
+  },
+  {
+   "kind": "caution",
+   "text": "Do not let the meter leads touch each other or the frame while they are on the battery terminals.",
+   "guards": "step:Place the red lead on B+ and the black lead on B-."
+  },
+  {
+   "kind": "note",
+   "text": "A battery that was just charged reads high for about an hour. Wait before you test it.",
+   "guards": "step:Read the voltage with the key OFF."
+  },
+  {
+   "kind": "caution",
+   "text": "Do not bridge relay terminals with a bare wire. Use the relay tester only.",
+   "guards": "step:Insert K1 in the relay tester and press TEST."
+  },
+  {
+   "kind": "warning",
+   "text": "Do not open the radiator cap while the engine is hot. Hot coolant can cause burns.",
+   "guards": "tree:Pump overheats",
+   "applies": [
+    "Model 40 diesel"
+   ]
+  },
+  {
+   "kind": "warning",
+   "text": "Lock out the electrical supply before you open the motor terminal box.",
+   "guards": "tree:Pump overheats",
+   "applies": [
+    "Model 40 electric"
+   ]
+  },
+  {
+   "kind": "warning",
+   "text": "Stop the pump before you touch the belt. The fan can cut fingers.",
+   "guards": "procedure:Belt condition check"
+  },
+  {
+   "kind": "note",
+   "text": "A tight belt moves no more than 15 mm when pressed.",
+   "guards": "step:Press the belt midway between the pulleys."
+  },
+  {
+   "kind": "caution",
+   "text": "Disconnect the negative cable first to prevent a short circuit.",
+   "guards": "step:Disconnect the negative cable first, then the positive cable."
+  },
+  {
+   "kind": "warning",
+   "text": "The battery weighs 28 kg. Use two people and the lifting strap to lift it.",
+   "guards": "step:Remove the hold-down clamp and lift out the battery."
+  }
+ ],
+ "symptoms": [
+  {
+   "title": "Engine will not crank",
+   "tree": "Engine will not crank"
+  },
+  {
+   "title": "Pump overheats",
+   "tree": "Pump overheats"
+  }
+ ],
+ "signals": [
+  {
+   "kind": "j1939.dm1",
+   "pattern": "spn:110/fmi:0",
+   "tree": "Pump overheats",
+   "node": null
+  },
+  {
+   "kind": "display",
+   "pattern": "E21",
+   "tree": "Pump overheats",
+   "node": "Is the intake strainer clear of debris?"
+  },
+  {
+   "kind": "j1939.dm1",
+   "pattern": "spn:168/fmi:1",
+   "tree": "Engine will not crank",
+   "node": "What is the battery voltage at terminals B+ and B- with the key OFF?"
+  }
+ ],
+ "equipment": [
+  {
+   "name": "Model 40 utility pump",
+   "parent": null
+  },
+  {
+   "name": "Model 40 diesel",
+   "parent": "Model 40 utility pump",
+   "ident": [
+    [
+     "model",
+     "P40-D"
+    ],
+    [
+     "serial_range",
+     "P40D-1000..P40D-4999"
+    ]
+   ]
+  },
+  {
+   "name": "Model 40 electric",
+   "parent": "Model 40 utility pump",
+   "ident": [
+    [
+     "model",
+     "P40-E"
+    ],
+    [
+     "serial_range",
+     "P40E-1000..P40E-4999"
+    ]
+   ]
+  }
+ ],
+ "variant": 2
+}

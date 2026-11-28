@@ -52,6 +52,14 @@
       ],
       "type": "object"
     },
+    "AskDecision": {
+      "description": "What `step.ask` shows.",
+      "enum": [
+        "answer",
+        "decline"
+      ],
+      "type": "string"
+    },
     "AskParams": {
       "additionalProperties": false,
       "properties": {
@@ -5390,6 +5398,111 @@
       ],
       "type": "object"
     },
+    "LessonPrefill": {
+      "properties": {
+        "elapsed_ms": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "model": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "prompt_version": {
+          "type": "string"
+        },
+        "proposal": {
+          "$ref": "#/$defs/LessonProposal"
+        }
+      },
+      "required": [
+        "proposal",
+        "model",
+        "prompt_version",
+        "elapsed_ms"
+      ],
+      "type": "object"
+    },
+    "LessonPrefillParams": {
+      "additionalProperties": false,
+      "properties": {
+        "job_id": {
+          "type": "string"
+        },
+        "policy": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PrefillPolicy"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The fields the model may fill: narrows the host's policy (by device\nclass), never widens it."
+        },
+        "text": {
+          "description": "The technician's close-out note.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "job_id",
+        "text"
+      ],
+      "type": "object"
+    },
+    "LessonProposal": {
+      "description": "A `LessonInput`-shaped proposal, field by field.",
+      "properties": {
+        "action": {
+          "$ref": "#/$defs/ProposedText"
+        },
+        "asset_id": {
+          "$ref": "#/$defs/ProposedText"
+        },
+        "cause": {
+          "$ref": "#/$defs/ProposedText"
+        },
+        "equip_id": {
+          "$ref": "#/$defs/ProposedText"
+        },
+        "job_id": {
+          "$ref": "#/$defs/ProposedText"
+        },
+        "minutes": {
+          "$ref": "#/$defs/ProposedMinutes"
+        },
+        "note": {
+          "$ref": "#/$defs/ProposedText"
+        },
+        "parts": {
+          "$ref": "#/$defs/ProposedParts"
+        },
+        "symptom_id": {
+          "$ref": "#/$defs/ProposedText"
+        },
+        "tree_id": {
+          "$ref": "#/$defs/ProposedText"
+        }
+      },
+      "required": [
+        "job_id",
+        "asset_id",
+        "equip_id",
+        "tree_id",
+        "symptom_id",
+        "cause",
+        "action",
+        "parts",
+        "minutes",
+        "note"
+      ],
+      "type": "object"
+    },
     "LessonStatus": {
       "description": "Where a lesson is.",
       "enum": [
@@ -5520,6 +5633,91 @@
         "normal"
       ],
       "type": "string"
+    },
+    "LlmLast": {
+      "description": "The last model call, as `llm.status` reports it.",
+      "properties": {
+        "answered": {
+          "description": "The model answered (whatever it said).",
+          "type": "boolean"
+        },
+        "at": {
+          "type": "string"
+        },
+        "elapsed_ms": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "error": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "method": {
+          "type": "string"
+        },
+        "ok": {
+          "description": "It answered with a usable decision.",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "method",
+        "at",
+        "answered",
+        "ok",
+        "error",
+        "elapsed_ms"
+      ],
+      "type": "object"
+    },
+    "LlmStatus": {
+      "description": "Whether a model is configured and how its last call went.",
+      "properties": {
+        "configured": {
+          "type": "boolean"
+        },
+        "last": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/LlmLast"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "model": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "prompt_versions": {
+          "description": "The prompt versions this engine runs.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "reachable": {
+          "description": "As of the last call (`None` before any).",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "configured",
+        "model",
+        "reachable",
+        "last",
+        "prompt_versions"
+      ],
+      "type": "object"
     },
     "ManualHit": {
       "description": "One search hit with its text and citation.",
@@ -6786,6 +6984,23 @@
       ],
       "type": "object"
     },
+    "PrefillPolicy": {
+      "additionalProperties": false,
+      "description": "The fields the model may prefill (by device class).",
+      "properties": {
+        "fields": {
+          "description": "From `cause`, `action`, `parts`, `minutes`, `note`.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "fields"
+      ],
+      "type": "object"
+    },
     "Principal": {
       "description": "An identified person.",
       "properties": {
@@ -6807,6 +7022,78 @@
         "name",
         "roles",
         "via"
+      ],
+      "type": "object"
+    },
+    "ProposedMinutes": {
+      "properties": {
+        "source": {
+          "$ref": "#/$defs/Source2"
+        },
+        "value": {
+          "format": "uint32",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "value",
+        "source"
+      ],
+      "type": "object"
+    },
+    "ProposedParts": {
+      "properties": {
+        "labels": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "source": {
+          "$ref": "#/$defs/Source2"
+        },
+        "value": {
+          "items": {
+            "$ref": "#/$defs/PartUsed"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "value",
+        "source",
+        "labels"
+      ],
+      "type": "object"
+    },
+    "ProposedText": {
+      "description": "One proposed text field.",
+      "properties": {
+        "label": {
+          "description": "The model's label (`C2`, `A1`, `other`, `unknown`).",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source": {
+          "$ref": "#/$defs/Source2"
+        },
+        "value": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "value",
+        "source",
+        "label"
       ],
       "type": "object"
     },
@@ -8508,6 +8795,29 @@
         }
       ]
     },
+    "ShownSentence": {
+      "description": "A sentence shown: the pack's own text and its citation.",
+      "properties": {
+        "citation": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Citation"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "text",
+        "citation"
+      ],
+      "type": "object"
+    },
     "SignalDecode": {
       "description": "Decoded data and what it matches in the pack.",
       "properties": {
@@ -8873,6 +9183,15 @@
       ],
       "type": "object"
     },
+    "Source2": {
+      "description": "Where a proposed value came from.",
+      "enum": [
+        "job",
+        "model",
+        "unknown"
+      ],
+      "type": "string"
+    },
     "Statement": {
       "description": "One printed statement and how it evaluated.",
       "properties": {
@@ -8955,6 +9274,71 @@
         "sysid",
         "severity",
         "text"
+      ],
+      "type": "object"
+    },
+    "StepAsk": {
+      "properties": {
+        "decision": {
+          "$ref": "#/$defs/AskDecision"
+        },
+        "elapsed_ms": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "heading": {
+          "description": "One of the fixed headings (empty: none).",
+          "type": "string"
+        },
+        "model": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "nearest": {
+          "description": "On decline: the nearest passages.",
+          "items": {
+            "$ref": "#/$defs/ShownSentence"
+          },
+          "type": "array"
+        },
+        "prompt_version": {
+          "type": "string"
+        },
+        "sentences": {
+          "description": "The pack's own sentences, each with its citation.",
+          "items": {
+            "$ref": "#/$defs/ShownSentence"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "decision",
+        "heading",
+        "sentences",
+        "nearest",
+        "model",
+        "prompt_version",
+        "elapsed_ms"
+      ],
+      "type": "object"
+    },
+    "StepAskParams": {
+      "additionalProperties": false,
+      "properties": {
+        "job_id": {
+          "type": "string"
+        },
+        "question": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "job_id",
+        "question"
       ],
       "type": "object"
     },
@@ -9188,6 +9572,31 @@
       ],
       "type": "object"
     },
+    "SuggestDecision": {
+      "description": "What `symptom.suggest` proposes.",
+      "oneOf": [
+        {
+          "const": "route",
+          "description": "The engine's own confident rule: go to this entry.",
+          "type": "string"
+        },
+        {
+          "const": "suggest",
+          "description": "The model picked this entry; the technician confirms.",
+          "type": "string"
+        },
+        {
+          "const": "clarify",
+          "description": "Ask which of these two or three it is.",
+          "type": "string"
+        },
+        {
+          "const": "list",
+          "description": "Show the list.",
+          "type": "string"
+        }
+      ]
+    },
     "Support": {
       "description": "How the deterministic answer gate saw the question: enough to replay the\ndecision offline for any threshold. A section is kept when its coverage\nreaches `threshold` and is within `window` of the best; the first\n`max_sections` kept are composed; none kept means decline.",
       "properties": {
@@ -9359,6 +9768,72 @@
         "synonyms",
         "lang",
         "applies_to"
+      ],
+      "type": "object"
+    },
+    "SymptomEntry": {
+      "description": "A candidate entry, described only by the pack.",
+      "properties": {
+        "also": {
+          "description": "Synonyms (up to 4).",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "applicability": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Applicability"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "The tree's applicability for the asset, when it has statements."
+        },
+        "causes": {
+          "description": "The first open causes in tree order (up to 4).",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "confidence": {
+          "$ref": "#/$defs/Confidence"
+        },
+        "match": {
+          "description": "The search's score for it.",
+          "format": "double",
+          "type": "number"
+        },
+        "statement": {
+          "description": "The tree's symptom statement (its entry node), when it says more\nthan the title.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "symptom_id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "tree_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "symptom_id",
+        "tree_id",
+        "title",
+        "statement",
+        "causes",
+        "also",
+        "match",
+        "confidence",
+        "applicability"
       ],
       "type": "object"
     },
@@ -9541,6 +10016,92 @@
           ]
         }
       },
+      "type": "object"
+    },
+    "SymptomSuggest": {
+      "description": "A proposal the engine checked: never an action.",
+      "properties": {
+        "decision": {
+          "$ref": "#/$defs/SuggestDecision"
+        },
+        "elapsed_ms": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "entries": {
+          "description": "`route`: the one entry; `suggest`: the model's pick; `clarify`: the\ntwo or three to choose between; `list`: the candidates.",
+          "items": {
+            "$ref": "#/$defs/SymptomEntry"
+          },
+          "type": "array"
+        },
+        "model": {
+          "description": "The model asked (`None`: the engine decided, or no model).",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "prompt_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "search": {
+          "$ref": "#/$defs/SymptomSearch"
+        }
+      },
+      "required": [
+        "decision",
+        "entries",
+        "model",
+        "prompt_version",
+        "elapsed_ms",
+        "search"
+      ],
+      "type": "object"
+    },
+    "SymptomSuggestParams": {
+      "additionalProperties": false,
+      "properties": {
+        "asset_id": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "equip_id": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "observations": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/ObservationInput"
+          },
+          "type": "array"
+        },
+        "pack_id": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "text": {
+          "description": "The technician's words.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "text"
+      ],
       "type": "object"
     },
     "SyncAttachmentsParams": {
@@ -10952,12 +11513,28 @@
         "type": "array"
       }
     },
+    "lesson.prefill": {
+      "params": {
+        "$ref": "#/$defs/LessonPrefillParams"
+      },
+      "result": {
+        "$ref": "#/$defs/LessonPrefill"
+      }
+    },
     "lesson.update": {
       "params": {
         "$ref": "#/$defs/LessonUpdateParams"
       },
       "result": {
         "$ref": "#/$defs/Lesson"
+      }
+    },
+    "llm.status": {
+      "params": {
+        "$ref": "#/$defs/NoParams"
+      },
+      "result": {
+        "$ref": "#/$defs/LlmStatus"
       }
     },
     "manual.children": {
@@ -11097,12 +11674,28 @@
         "$ref": "#/$defs/SignalMatch"
       }
     },
+    "step.ask": {
+      "params": {
+        "$ref": "#/$defs/StepAskParams"
+      },
+      "result": {
+        "$ref": "#/$defs/StepAsk"
+      }
+    },
     "symptom.search": {
       "params": {
         "$ref": "#/$defs/SymptomSearchParams"
       },
       "result": {
         "$ref": "#/$defs/SymptomSearch"
+      }
+    },
+    "symptom.suggest": {
+      "params": {
+        "$ref": "#/$defs/SymptomSuggestParams"
+      },
+      "result": {
+        "$ref": "#/$defs/SymptomSuggest"
       }
     },
     "sync.attachments": {

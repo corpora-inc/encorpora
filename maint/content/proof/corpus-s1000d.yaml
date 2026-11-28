@@ -1,0 +1,30 @@
+# The proof's S1000D side: the same pump content as data modules (s1000d.py), mapped into the pack by
+# the schema (harvest_pipeline/maint/s1000d.py), no model. Answer key: pump40-s1000d-expected.json
+# (the overheating tree without facets, which S1000D isolation steps do not carry, its belt test module, task 4-3).
+corpus_id: maint-proof-pump40-s1000d
+pack_id: pump40-s1000d-proof
+lang: en
+version: 2026.11.28-1
+
+sources:
+  - id: m40-s1000d
+    title: "Model 40 utility pump, S1000D data module set (ACT, PCT, fault isolation, test, replace; fictional)"
+    publisher: Harvest proof (fictional content)
+    url: https://example.invalid/model-40/s1000d
+    license: fictional-test-content
+    edition: "Issue 003"
+    media_type: application/zip
+    parser: maint-s1000d
+    parser_options: {id_prefix: m40-dm, citation_prefix: ""}
+    fetch: {kind: file, path: pump40-s1000d.zip}
+
+# no equipment here: the set's ACT and PCT declare the variants, their model codes and serial ranges
+
+maint:
+  release_arm: s1000d
+  expected: pump40-s1000d-expected.json
+  arms:
+    s1000d: {author: {backend: rules}, images: false}
+  signal_kinds: []
+
+embedder: {kind: hash}

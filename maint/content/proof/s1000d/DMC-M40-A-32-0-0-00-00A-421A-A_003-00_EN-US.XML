@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.s1000d.org/S1000D_5-0/xml_schema_flat/fault.xsd">
+ <identAndStatusSection>
+  <dmAddress>
+   <dmIdent>
+    <dmCode modelIdentCode="M40" systemDiffCode="A" systemCode="32" subSystemCode="0"
+            subSubSystemCode="0" assyCode="00" disassyCode="00" disassyCodeVariant="A"
+            infoCode="421" infoCodeVariant="A" itemLocationCode="A"/>
+    <language languageIsoCode="en" countryIsoCode="US"/>
+    <issueInfo issueNumber="003" inWork="00"/>
+   </dmIdent>
+   <dmAddressItems>
+    <issueDate year="2026" month="03" day="01"/>
+    <dmTitle><techName>Pump overheats</techName><infoName>Fault isolation procedure</infoName></dmTitle>
+   </dmAddressItems>
+  </dmAddress>
+  <dmStatus issueType="changed">
+   <security securityClassification="01"/>
+   <responsiblePartnerCompany><enterpriseName>Harvest proof (fictional)</enterpriseName></responsiblePartnerCompany>
+   <applic><displayText><simplePara>All variants.</simplePara></displayText><evaluate andOr="or"><assert applicPropertyIdent="model" applicPropertyType="prodattr" applicPropertyValues="P40-D"/><assert applicPropertyIdent="model" applicPropertyType="prodattr" applicPropertyValues="P40-E"/></evaluate></applic>
+   <brexDmRef><dmRef><dmRefIdent><dmCode modelIdentCode="S1000D" systemDiffCode="H" systemCode="04"
+     subSystemCode="1" subSubSystemCode="0" assyCode="0301" disassyCode="00" disassyCodeVariant="A"
+     infoCode="022" infoCodeVariant="A" itemLocationCode="D"/></dmRefIdent></dmRef></brexDmRef>
+   <qualityAssurance><unverified/></qualityAssurance>
+  </dmStatus>
+ </identAndStatusSection>
+ <content>
+  <referencedApplicGroup><applic id="app-d"><displayText><simplePara>Diesel variant.</simplePara></displayText><assert applicPropertyIdent="model" applicPropertyType="prodattr" applicPropertyValues="P40-D"/></applic><applic id="app-e"><displayText><simplePara>Electric variant.</simplePara></displayText><assert applicPropertyIdent="model" applicPropertyType="prodattr" applicPropertyValues="P40-E"/></applic></referencedApplicGroup>
+  <warningsAndCautions><warning id="warn-0001" applicRefId="app-d"><warningAndCautionPara>Do not open the radiator cap while the engine is hot. Hot coolant can cause burns.</warningAndCautionPara></warning><warning id="warn-0002" applicRefId="app-e"><warningAndCautionPara>Lock out the electrical supply before you open the motor terminal box.</warningAndCautionPara></warning></warningsAndCautions>
+  <faultIsolation>
+   <faultIsolationProcedure>
+    <fault faultCode="M40-T32"><faultDescr><descr>Pump overheats</descr></faultDescr></fault>
+    <isolationProcedure warningRefs="warn-0001 warn-0002">
+     <isolationMainProcedure>
+      <isolationStep id="stp-0000"><action>The high temperature lamp is on or the controller shows a high temperature code.</action>
+       <isolationStepAnswer><listOfChoices><choice nextActionRefId="stp-0001">Continue</choice></listOfChoices></isolationStepAnswer></isolationStep>
+      <isolationStep id="stp-0001"><isolationStepQuestion>Is the intake strainer clear of debris?</isolationStepQuestion>
+       <isolationStepAnswer><yesNoAnswer><yesAnswer nextActionRefId="stp-0002"/><noAnswer nextActionRefId="end-0001"/></yesNoAnswer></isolationStepAnswer></isolationStep>
+      <isolationStep id="stp-0002"><action><para>Do the belt condition check (<dmRef><dmRefIdent><dmCode modelIdentCode="M40" systemDiffCode="A" systemCode="32" subSystemCode="0" subSubSystemCode="0" assyCode="00" disassyCode="00" disassyCodeVariant="A" infoCode="345" infoCodeVariant="A" itemLocationCode="A"/></dmRefIdent></dmRef>).</para></action><isolationStepQuestion>What is the condition of the cooling fan belt: tight, loose or broken?</isolationStepQuestion>
+       <isolationStepAnswer><listOfChoices>
+        <choice nextActionRefId="end-0002">Tight</choice>
+        <choice nextActionRefId="end-0003">Loose</choice>
+        <choice nextActionRefId="end-0004">Broken</choice>
+       </listOfChoices></isolationStepAnswer></isolationStep>
+      <isolationProcedureEnd id="end-0001"><action>Clean the intake strainer.</action></isolationProcedureEnd>
+      <isolationProcedureEnd id="end-0002"><action>Internal cooling fault. Report to the field maintenance shop.</action></isolationProcedureEnd>
+      <isolationProcedureEnd id="end-0003"><action>Adjust the belt tension.</action></isolationProcedureEnd>
+      <isolationProcedureEnd id="end-0004"><action>Replace the cooling fan belt.</action></isolationProcedureEnd>
+     </isolationMainProcedure>
+    </isolationProcedure>
+   </faultIsolationProcedure>
+  </faultIsolation>
+ </content>
+</dmodule>

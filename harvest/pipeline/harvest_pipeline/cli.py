@@ -12,6 +12,7 @@
   harvest-bake verify PACK_DIR [--pubkey FILE]           manifest hashes (+ signature)
   harvest-bake keygen KEY.pem                            new ed25519 signing key (keep out of git)
   harvest-bake tasks  [CORPUS.yaml]                      registered tasks
+  harvest-bake maint  ...                                maintenance manuals (harvest-bake maint --help)
 """
 
 from __future__ import annotations
@@ -212,6 +213,10 @@ def cmd_course_skeleton(a):
 
 
 def main(argv=None) -> int:
+    args = sys.argv[1:] if argv is None else list(argv)
+    if args[:1] == ["maint"]:
+        from .maint.cli import main as maint_main
+        return maint_main(args[1:])
     ap = argparse.ArgumentParser(prog="harvest-bake", description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -286,7 +291,7 @@ def main(argv=None) -> int:
     s = sub.add_parser("tasks")
     s.add_argument("corpus", nargs="?")
     s.set_defaults(fn=cmd_tasks)
-    a = ap.parse_args(argv)
+    a = ap.parse_args(args)
     return int(a.fn(a) or 0)
 
 
