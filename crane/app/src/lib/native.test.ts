@@ -19,7 +19,8 @@ const PLUGIN_DIR: Record<string, string> = {
   "corpan-llm": "../../corpan/plugins/tauri-plugin-corpan-llm",
 };
 
-const native = read("src/lib/native.ts");
+// The shared native bridge (harvest/appkit) and crane's own commands, read as one.
+const native = read("src/lib/native.ts") + read("../../harvest/appkit/src/native.ts");
 const invoked = [...native.matchAll(/"plugin:([a-z-]+)\|([a-z_]+)"/g)].map((m) => ({ plugin: m[1]!, cmd: m[2]! }));
 const grants: string[] = JSON.parse(read("src-tauri/capabilities/default.json")).permissions;
 const grantFor = ({ plugin, cmd }: { plugin: string; cmd: string }) => `${plugin}:allow-${cmd.replace(/_/g, "-")}`;

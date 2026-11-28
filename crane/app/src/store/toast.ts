@@ -1,33 +1,3 @@
-import { create } from "zustand";
-import { logError } from "../lib/log.ts";
-
-export interface Toast {
-  id: number;
-  kind: "error" | "info";
-  text: string;
-}
-
-interface ToastState {
-  toast: Toast | null;
-  show(kind: Toast["kind"], text: string): void;
-  clear(id: number): void;
-}
-
-let seq = 0;
-export const useToast = create<ToastState>()((set, get) => ({
-  toast: null,
-  show(kind, text) {
-    const id = ++seq;
-    set({ toast: { id, kind, text } });
-    setTimeout(() => get().clear(id), kind === "error" ? 6000 : 3000);
-  },
-  clear(id) {
-    if (get().toast?.id === id) set({ toast: null });
-  },
-}));
-
-/** One error pattern: log it, then say what happened and what to do, in a toast that overlays. */
-export function reportError(where: string, error: unknown, message: string): void {
-  logError(where, error);
-  useToast.getState().show("error", message);
-}
+/** One toast at a time, and the one error pattern (shared kit). */
+import "../lib/appkit.ts";
+export { reportError, useToast, type Toast } from "../../../../harvest/appkit/src/toast.ts";
