@@ -102,6 +102,20 @@ CREATE VIRTUAL TABLE alias_fts USING fts5(alias, content='answer_alias', content
                                           tokenize='porter unicode61');
 CREATE TABLE chunk_vec (chunk_id TEXT PRIMARY KEY, vec BLOB NOT NULL, scale REAL NOT NULL);
 
+CREATE TABLE course_node (
+  node_id TEXT PRIMARY KEY, parent_id TEXT, ord INTEGER NOT NULL,
+  level TEXT NOT NULL,
+  title TEXT NOT NULL,
+  summary TEXT NOT NULL,
+  hard TEXT NOT NULL,
+  mistakes TEXT NOT NULL,
+  exam TEXT NOT NULL,
+  links TEXT NOT NULL,
+  section_ids TEXT NOT NULL,
+  quotes TEXT NOT NULL,
+  lang TEXT NOT NULL, prov_id TEXT NOT NULL);
+CREATE TABLE course_node_vec (node_id TEXT PRIMARY KEY, vec BLOB NOT NULL, scale REAL NOT NULL);
+
 CREATE TABLE provenance (
   prov_id TEXT PRIMARY KEY,
   backend TEXT NOT NULL,
@@ -117,7 +131,8 @@ CREATE TABLE provenance (
 """
 
 # Tables whose rows are generated and carry prov_id; a release pack keeps only verdict = 'pass'.
-GENERATED = ("term", "fact", "explanation", "lesson", "diagram", "question", "answer", "procedure", "proc_step")
+GENERATED = ("term", "fact", "explanation", "lesson", "diagram", "question", "answer", "procedure", "proc_step",
+             "course_node")
 # Child tables without prov_id, filtered through their parent.
 CHILD_FILTERS = {
     "answer_alias": "answer_id IN (SELECT answer_id FROM answer)",

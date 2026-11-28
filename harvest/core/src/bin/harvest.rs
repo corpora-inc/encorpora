@@ -13,7 +13,7 @@ use std::time::Instant;
 
 const USAGE: &str = "usage:
   harvest verify  <pack-dir> [--pubkey KEY] [--json]
-  harvest search  <pack-dir> \"<query>\" [--k 10] [--equip ID] [--embedder auto|none|hashing|<file.gguf>|<url> [--embedder-gguf FILE|--embedder-sha256 HEX]] [--pubkey KEY] [--json]
+  harvest search  <pack-dir> \"<query>\" [--k 10] [--equip ID] [--in rules|tree [--exams FILE]] [--embedder auto|none|hashing|<file.gguf>|<url> [--embedder-gguf FILE|--embedder-sha256 HEX]] [--pubkey KEY] [--json]
   harvest ask     <pack-dir> \"<question>\" [--role operator] [--equip ID] [--llm off|http://host:port/v1]
                   [--llm-model NAME] [--embedder auto|none|hashing|<file.gguf>|<url> [--embedder-gguf FILE|--embedder-sha256 HEX]] [--audit <records-db> [--records-key FILE]]
                   [--support-threshold X (coverage-only gate)] [--dense-gate COVERAGE:MIN_DENSE|off] [--pubkey KEY] [--json]
@@ -22,8 +22,8 @@ const USAGE: &str = "usage:
   harvest install <root> <pack-or-delta-dir> [--pubkey KEY] [--json]   # full or delta, verified, atomic
   harvest delta   <base-dir> <target-dir> <out-dir> [--pubkey KEY] [--json]
                   # signs with $HARVEST_SIGNING_KEY (base64 ed25519 seed) when set, else writes it unsigned
-  harvest show    <pack-dir> info|sections|topics|skills|lessons|terms|diagrams|questions|procedures|answers|exams|prereqs|starters
-                  [--id ID] [--role operator] [--pubkey KEY]   # verified content as JSON (what the app reads)
+  harvest show    <pack-dir> info|sections|topics|skills|lessons|terms|diagrams|questions|procedures|answers|exams|prereqs|starters|tree
+                  [--id ID] [--role operator] [--exams FILE] [--pubkey KEY]   # verified content as JSON (what the app reads)
   harvest fixture <dir> [--version V]     # writes the test-only fixture pack
 
 KEY: base64 or hex ed25519 public key, or a file holding one; repeatable or
@@ -302,6 +302,8 @@ fn search(args: &Args) -> Result<(), CliError> {
         "embedder",
         "embedder-gguf",
         "embedder-sha256",
+        "in",
+        "exams",
     ])?;
     let dir = pack_dir(args)?;
     let query = query_arg(args)?;
@@ -322,6 +324,39 @@ fn search(args: &Args) -> Result<(), CliError> {
         equip: args.get("equip").map(str::to_string),
         ..SearchOptions::default()
     };
+    match args.get("in").unwrap_or("rules") {
+        "rules" => {}
+        "tree" => {
+            let tree = harvest_core::course::CourseTree::from_pack(&pack, exams_arg(args)?)?;
+            let hits = tree.search(&engine.retriever(), &query, k)?;
+            let elapsed = started.elapsed().as_millis() as u64;
+            if args.has("json") {
+                println!(
+                    "{}",
+                    json!({"query": query, "derived": tree.derived, "hits": hits, "elapsed_ms": elapsed})
+                );
+            } else {
+                for (i, h) in hits.iter().enumerate() {
+                    println!(
+                        "{:>2}. {:.4} lex {:.2} dense {:.2}  {} [{}] {}",
+                        i + 1,
+                        h.score,
+                        h.lexical,
+                        h.dense,
+                        h.node_id,
+                        h.level,
+                        h.title
+                    );
+                }
+            }
+            return Ok(());
+        }
+        other => {
+            return Err(CliError::Usage(format!(
+                "--in {other}: expected rules or tree"
+            )));
+        }
+    }
     let result = engine.retriever().search(&query, &opts)?;
     let elapsed = started.elapsed().as_millis() as u64;
     if args.has("json") {
@@ -696,7 +731,7 @@ fn citation(pack: &Pack, section_id: &str) -> Result<String, CliError> {
 }
 
 fn show(args: &Args) -> Result<(), CliError> {
-    args.reject_unknown(&["pubkey", "json", "id", "role"])?;
+    args.reject_unknown(&["pubkey", "json", "id", "role", "exams"])?;
     let dir = pack_dir(args)?;
     let what = args
         .positional
@@ -735,12 +770,45 @@ fn show(args: &Args) -> Result<(), CliError> {
                 .map(|(a, check)| json!({"answer": a, "check": check})),
         ))?,
         ("exams", _) => pack.exams()?,
+        ("tree", _) => {
+            let tree = harvest_core::course::CourseTree::from_pack(&pack, exams_arg(args)?)?;
+            match id {
+                None => json!({"derived": tree.derived, "nodes": tree.nodes}),
+                Some(i) => {
+                    let node = tree
+                        .node(i)
+                        .ok_or_else(|| CliError::Usage(format!("no tree node {i:?}")))?;
+                    let brief = |n: &harvest_core::course::CourseNode| json!({"node_id": n.node_id, "level": n.level, "title": n.title});
+                    json!({
+                        "derived": tree.derived,
+                        "node": node,
+                        "path": tree.path(i).into_iter().map(brief).collect::<Vec<_>>(),
+                        "children": tree.children(i).into_iter().map(brief).collect::<Vec<_>>(),
+                    })
+                }
+            }
+        }
         ("prereqs", _) => to(serde_json::to_value(pack.prereqs()?))?,
         ("starters", _) => to(serde_json::to_value(pack.starters(role)?))?,
         (other, _) => return Err(CliError::Usage(format!("cannot show {other:?}"))),
     };
     println!("{}", serde_json::to_string(&out).map_err(Error::from)?);
     Ok(())
+}
+
+/// `--exams FILE`: exam blueprints (a JSON array) that override the pack's.
+fn exams_arg(args: &Args) -> Result<Option<serde_json::Value>, CliError> {
+    let Some(path) = args.get("exams") else {
+        return Ok(None);
+    };
+    let text = std::fs::read_to_string(path)
+        .map_err(|e| CliError::Usage(format!("--exams {path}: {e}")))?;
+    let v: serde_json::Value =
+        serde_json::from_str(&text).map_err(|e| CliError::Usage(format!("--exams {path}: {e}")))?;
+    if !v.is_array() {
+        return Err(CliError::Usage(format!("--exams {path}: not a JSON array")));
+    }
+    Ok(Some(v))
 }
 
 fn fixture(args: &Args) -> Result<(), CliError> {
