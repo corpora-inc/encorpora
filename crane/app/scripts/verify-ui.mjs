@@ -367,31 +367,41 @@ try {
     await page.getByRole("button", { name: "Next question" }).click();
     await choices.first().waitFor();
     assert.equal(await choices.first().isDisabled(), false);
-    // Feedback is real reasons, never filler: a wrong answer says why it is wrong and why the key is right;
-    // a right answer says why, once. Alternate wrong and right over several items.
+    // One feedback card, never filler: "Correct." or "Not quite. The answer is C.", why (and, when wrong,
+    // why not the choice made), "Source: 29 CFR …. Read the source", and one Next button.
     for (let n = 0; n < 8; n++) {
       await choices.first().waitFor();
+      const domain = await page.locator("h2").first().locator("xpath=preceding-sibling::p[1]").innerText();
+      assert.match(domain, /^(SITE|OPERATIONS|TECHNICAL KNOWLEDGE|LOAD CHARTS|[A-Z ]+)/, "domain label above the stem");
       const pick = n % 2 === 0 ? 0 : (await choices.count()) - 1;
       await choices.nth(pick).click();
       const panel = page.locator(".practice-feedback");
       await panel.waitFor();
       const verdict = await panel.locator("h3").innerText();
-      const reasons = await panel.locator(".feedback-why p:last-child").allInnerTexts();
+      const reasons = await panel.locator(".feedback-why").allInnerTexts();
       for (const r of reasons) {
         assert.ok(r.trim().split(/\s+/).length >= 5, `feedback reason too short: "${r}"`);
         assert.doesNotMatch(r, /^(correct|incorrect)\b/i, `feedback reason restates the verdict: "${r}"`);
       }
-      if (verdict === "Correct") {
+      if (verdict === "Correct.") {
         assert.equal(reasons.length, 1, "a right answer gets one reason");
-        assert.equal(await panel.getByText(/^Why( not)? “/).count(), 0);
       } else {
-        assert.equal(verdict, "Not this one");
-        assert.equal(reasons.length, 2, "a wrong answer gets why-not and why");
-        assert.equal(await panel.getByText(/^Why not “/).count(), 1);
-        assert.equal(await panel.getByText(/^Why “/).count(), 1);
-        assert.notEqual(reasons[0], reasons[1]);
+        assert.match(verdict, /^Not quite\. The answer is [A-F]\.$/);
+        assert.equal(reasons.length, 2, "a wrong answer gets why, then why not the choice made");
+        assert.match(reasons[1], /^Why not [A-F]: /);
       }
+      assert.equal(await panel.getByText(/^Correct\.?$/).count(), verdict === "Correct." ? 1 : 0, "no duplicated Correct");
+      assert.match(await panel.locator(".feedback-source").innerText(), /^Source: (29 CFR 19\d\d\.\d+|Appendix)[^]*Read the source$/);
+      assert.equal(await panel.getByRole("button").count(), 1, "a single Next button");
       if (n === 0) await page.screenshot({ path: path.join(out, "flow-practice-feedback-reasons.png"), fullPage: true });
+      if (verdict !== "Correct." && !(await page.locator(".practice-feedback-shot").count())) await page.screenshot({ path: path.join(out, "flow-practice-feedback-wrong.png"), fullPage: true });
+      if (n === 7) {
+        await panel.getByRole("link", { name: "Read the source" }).click();
+        await page.waitForURL(/\/read\//);
+        await page.locator('[aria-current="true"]').first().waitFor();
+        await page.goBack();
+        await page.locator(".practice-feedback").waitFor();
+      }
       await page.getByRole("button", { name: "Next question" }).click();
       checks++;
     }
