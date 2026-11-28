@@ -131,6 +131,7 @@ pub trait Llm: Send + Sync {
 | `sync` | Outbox: ordered, idempotent uploads marked done only on a receipt that echoes the payload hash; `Transport` trait (the app's HTTPS), `DirTransport` for a removable drive or shared folder. |
 | `llama` | (feature `llama`) in-process GGUF embedder on the same `llama-cpp-2 =0.1.146` pin as the app's LLM plugin. |
 | `maint` | Maintenance manuals (CONTRACT "Maintenance tables"): fault trees read whole and verbatim-checked, deterministic branching (`branch::choose`), graph validation (`graph::validate`, run by `harvest verify`), the step and task views (citations to the page and box, guards in manual order at every level, facets, requirements, assets), variant identification, symptom search with confidence, signal matching. |
+| `records::maint` | Assets and registry import, troubleshooting jobs with audited corrections, lessons, signed field-note bundles, the repeat flag; job and lesson uploads through the outbox. |
 | `fixture` | Fictional signed pack for tests (`harvest fixture <dir>`). Its key is public. Never trust it outside tests. |
 | `fixture_maint` | A fictional pump manual with trees, tasks and levels (`harvest fixture <dir> --maint [--samples DIR]`). Same public key. |
 

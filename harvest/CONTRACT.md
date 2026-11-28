@@ -660,3 +660,48 @@ requirements, symptoms, signals, assets and boxes resolve. The report
 lists every violation with a stable rule code (`edge.coverage`,
 `tree.cycle`, `node.verbatim`, …) and counts.
 
+## Maintenance records
+
+`records.db` adds (all `CREATE TABLE IF NOT EXISTS`, so an older store
+upgrades in place):
+
+- `asset`: a physical unit (`asset_id`, `equip_id`, `serial`, `name`,
+  `attrs`, `hours`, `miles`); `asset_event`: its registry history. A fleet
+  is preloaded from a registry file `{"format":"harvest-assets/1","assets":[{asset_id, equip_id, serial, name, attrs, hours, miles, events:[{date, system, symptom_id, tree_id, text}]}]}`
+  (upsert by id; an asset's registry events are replaced).
+- `job`: one troubleshooting session (tree, entry node, entered by
+  `symptom` | `signals` | `chosen`, level, status `open` | `closed`,
+  resolution `fixed` | `escalated` | `redirected` | `unresolved` |
+  `abandoned`) and `job_step` (seq, node, outcome or value and unit, the
+  branch label taken, note, photos, next node, time, `superseded_at`).
+  The next node is chosen by code from the recorded result; an answer
+  names the node it answers and is refused unless that is the job's
+  current node. Going back marks the last step superseded (kept) and
+  returns to its node. A job is recorded against its tree as it was when
+  it began (SHA-256 of tree, nodes and edges): a pack that changed it
+  refuses further answers.
+- Every job event (`job.start`, `job.answer`, `job.back`, `job.close`) and
+  `lesson.create`, `asset.import`, `field.install` appends to the audit
+  chain in the same transaction: an event entry `{ts, event, pack_id,
+  pack_version, subject, node_id, asked (the node's text), result,
+  next_node, detail}`. `verify_chain` counts them under `events`; the
+  bake hit rate counts answers only.
+- `lesson`: the close-out (cause, corrective action, parts, minutes, note,
+  photos, level, status `local` | `queued` | `uploaded` (its upload was
+  acknowledged) | `approved` | `edited` | `rejected`).
+- Outbox kinds `job` (payload `harvest-job/1`: the job, every step
+  including superseded ones, node texts when the tree is unchanged) and
+  `lesson` (`harvest-lesson/1`: the lesson).
+- **Repeat discrepancy**: an earlier job or registry event on the same
+  asset with the same symptom, or else the same system, within the pack's
+  window.
+- **Field notes** arrive as a signed bundle
+  `{"format":"harvest-field/1","stream","pack_id","seq","issued_at","notes":[{note_id, scope:{equip_id?,tree_id?,node_id?,symptom_id?}, text, counts:{units,resolved,attempts}, approver, approved_at, supersedes?}],"revoke":[note_id],"reviews":[{lesson_id,status,note}],"signature":{…}}`,
+  signed like a manifest (ed25519 over the canonical JSON without
+  `signature`, a trusted key). The device refuses a bad or untrusted
+  signature and a `seq` not above the stream's installed one. A note shows
+  where every scope field it gives matches; the API returns notes apart
+  from manual text (`field_notes`, `source: "field"`).
+- People's entries (job query and signals, step notes and photos,
+  resolutions, lesson texts) are sealed at rest like run records.
+

@@ -14,10 +14,14 @@ use crate::pack::{Deficiency, Pack, ProcStep};
 use crate::packs::hex_encode;
 use crate::sync;
 use rusqlite::{Connection, OptionalExtension, Transaction, TransactionBehavior, params};
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 use std::path::Path;
 use std::sync::atomic::{AtomicU64, Ordering};
+
+pub mod maint;
+pub use maint::*;
 
 const DDL: &str = "
 CREATE TABLE IF NOT EXISTS records_meta (key TEXT PRIMARY KEY, value TEXT NOT NULL);
@@ -49,7 +53,7 @@ CREATE TABLE IF NOT EXISTS step_result (
 ";
 
 /// How a step came out.
-#[derive(Debug, Clone, Copy, Serialize, Deserialize, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, Serialize, Deserialize, PartialEq, Eq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum Outcome {
     Pass,
@@ -86,14 +90,14 @@ impl Outcome {
 }
 
 /// A photo the host stored; the record keeps its path and hash.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, JsonSchema)]
 pub struct PhotoRef {
     pub path: String,
     pub sha256: String,
 }
 
 /// What the user entered for one step.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, JsonSchema)]
 pub struct StepInput {
     pub outcome: Outcome,
     #[serde(default)]
@@ -120,7 +124,7 @@ impl StepInput {
 }
 
 /// A recorded step.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, JsonSchema)]
 pub struct StepRecord {
     pub ord: i64,
     #[serde(flatten)]
@@ -130,7 +134,7 @@ pub struct StepRecord {
 }
 
 /// What recording a step returns: the guidance to show when it failed.
-#[derive(Debug, Clone, Serialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, PartialEq, JsonSchema)]
 pub struct StepOutcome {
     pub record: StepRecord,
     /// The pack's guidance for a failed step. `quote_verified` says whether
@@ -139,7 +143,7 @@ pub struct StepOutcome {
     pub guidance: Option<Guidance>,
 }
 
-#[derive(Debug, Clone, Serialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, PartialEq, JsonSchema)]
 pub struct Guidance {
     #[serde(flatten)]
     pub deficiency: Deficiency,
@@ -148,7 +152,7 @@ pub struct Guidance {
 }
 
 /// One procedure run.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, JsonSchema)]
 pub struct Run {
     pub run_id: String,
     pub pack_id: String,
@@ -170,11 +174,22 @@ impl Run {
     }
 }
 
+/// The outbox's last contact with the other side.
+#[derive(Debug, Clone, Default, Serialize, Deserialize, JsonSchema, PartialEq)]
+pub struct SyncState {
+    /// When an item was last acknowledged.
+    pub last_synced_at: Option<String>,
+    /// When the last upload was attempted, and whether it got through.
+    pub last_attempt_at: Option<String>,
+    pub last_attempt_ok: Option<bool>,
+    pub last_error: Option<String>,
+}
+
 /// The run report format id.
 pub const RUN_REPORT_FORMAT: &str = "harvest-run/1";
 
 /// A run as it is exported and uploaded (`harvest-run/1`).
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, JsonSchema)]
 pub struct RunReport {
     pub format: String,
     pub pack_id: String,
@@ -199,7 +214,7 @@ pub struct RunReport {
 
 /// One step of a report: the pack's step (when known) and what was recorded
 /// (`outcome` is null when the step was not recorded).
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, JsonSchema)]
 pub struct ReportStep {
     pub ord: i64,
     pub text: Option<String>,
@@ -326,6 +341,7 @@ impl Records {
         conn.pragma_update(None, "foreign_keys", true)?;
         conn.busy_timeout(std::time::Duration::from_secs(5))?;
         conn.execute_batch(DDL)?;
+        conn.execute_batch(maint::DDL)?;
         crate::audit::init(&conn)?;
         sync::init(&conn)?;
         let mode: Option<String> = conn
@@ -339,7 +355,8 @@ impl Records {
             (None, _) => {
                 let used: bool = conn.query_row(
                     "SELECT EXISTS (SELECT 1 FROM proc_run) OR EXISTS (SELECT 1 FROM outbox)
-                            OR EXISTS (SELECT 1 FROM audit)",
+                            OR EXISTS (SELECT 1 FROM audit) OR EXISTS (SELECT 1 FROM job)
+                            OR EXISTS (SELECT 1 FROM asset) OR EXISTS (SELECT 1 FROM lesson)",
                     [],
                     |r| r.get(0),
                 )?;
@@ -412,7 +429,44 @@ impl Records {
         transport: &dyn sync::Transport,
         batch_size: usize,
     ) -> Result<sync::FlushReport> {
-        sync::flush_with(&self.conn, self.key(), transport, batch_size)
+        let out = sync::flush_with(&self.conn, self.key(), transport, batch_size);
+        // Remember how the last attempt went (never a live probe).
+        let state = match &out {
+            Ok(r) => {
+                serde_json::json!({"at": now_rfc3339(), "ok": r.error.is_none(), "error": r.error})
+            }
+            Err(e) => serde_json::json!({"at": now_rfc3339(), "ok": false, "error": e.to_string()}),
+        };
+        self.conn.execute(
+            "INSERT INTO records_meta (key, value) VALUES ('sync_last_attempt', ?1)
+             ON CONFLICT (key) DO UPDATE SET value = excluded.value",
+            [state.to_string()],
+        )?;
+        out
+    }
+
+    /// When the outbox last reached the other side, and how the last
+    /// attempt went.
+    pub fn sync_state(&self) -> Result<SyncState> {
+        let last_synced_at: Option<String> =
+            self.conn
+                .query_row("SELECT MAX(acked_at) FROM outbox", [], |r| r.get(0))?;
+        let last: Option<String> = self
+            .conn
+            .query_row(
+                "SELECT value FROM records_meta WHERE key = 'sync_last_attempt'",
+                [],
+                |r| r.get(0),
+            )
+            .optional()?;
+        let last: Option<serde_json::Value> = last.and_then(|l| serde_json::from_str(&l).ok());
+        let get = |k: &str| last.as_ref().and_then(|v| v.get(k)).cloned();
+        Ok(SyncState {
+            last_synced_at,
+            last_attempt_at: get("at").and_then(|v| v.as_str().map(str::to_string)),
+            last_attempt_ok: get("ok").and_then(|v| v.as_bool()),
+            last_error: get("error").and_then(|v| v.as_str().map(str::to_string)),
+        })
     }
 
     /// Queue counts.
@@ -952,15 +1006,21 @@ fn validate(step: &ProcStep, input: &StepInput) -> Result<()> {
         )));
     }
     for p in &input.photos {
-        if p.path.trim().is_empty()
-            || p.sha256.len() != 64
-            || !p.sha256.bytes().all(|b| b.is_ascii_hexdigit())
-        {
-            return Err(Error::Invalid(format!(
-                "photo {:?} needs a path and a SHA-256",
-                p.path
-            )));
-        }
+        check_photo(p)?;
+    }
+    Ok(())
+}
+
+/// A photo reference needs a path and a SHA-256.
+pub(crate) fn check_photo(p: &PhotoRef) -> Result<()> {
+    if p.path.trim().is_empty()
+        || p.sha256.len() != 64
+        || !p.sha256.bytes().all(|b| b.is_ascii_hexdigit())
+    {
+        return Err(Error::Invalid(format!(
+            "photo {:?} needs a path and a SHA-256",
+            p.path
+        )));
     }
     Ok(())
 }
