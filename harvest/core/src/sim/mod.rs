@@ -220,6 +220,10 @@ pub struct Scenario {
     /// accepted.
     #[serde(default)]
     pub revoke: Vec<ScriptedRevoke>,
+    /// The link speed during the final sync (the unit reaches port), bits
+    /// per second; the scenario's link speed when absent.
+    #[serde(default)]
+    pub final_bandwidth_bps: Option<f64>,
     /// Photos with lessons; their bytes move on the attachment lane.
     #[serde(default)]
     pub photos: Option<PhotoSpec>,
@@ -432,6 +436,14 @@ pub struct Metrics {
     pub invariants: Invariants,
 }
 
+/// One sample of the attachment backlog (full-scale bytes).
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
+pub struct Backlog {
+    pub day: f64,
+    pub full_bytes: u64,
+    pub downscaled_bytes: u64,
+}
+
 /// The attachment lane: what moved, what waits, and whether it ever held
 /// up a record.
 #[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
@@ -439,19 +451,23 @@ pub struct Attachments {
     pub photos: u64,
     /// Full-size bytes of every photo taken.
     pub bytes_taken: u64,
-    /// Wire bytes the lane sent (full scale), and the requests.
+    /// Wire bytes of the lane both ways (full scale: base64 chunks,
+    /// signatures, hellos, resume queries, overhead), its requests, the
+    /// requests cut, and the chunks sent.
     pub bytes_sent: u64,
+    pub requests: u64,
+    pub failed_requests: u64,
     pub chunks: u64,
-    /// Bytes not resent after an interruption (the hub already held them).
-    pub resumed_bytes: u64,
+    /// Photos continued from where the hub had them after a cut.
+    pub resumed: u64,
     /// Variants complete at the hub, and the photos complete in full.
     pub complete_at_hub: u64,
     pub full_at_hub: u64,
     /// Passes the lane cut short to let records go first.
     pub yields: u64,
-    /// `(day, bytes)` of photo bytes still on devices under the full
-    /// policy (what waits for a link good enough to send it).
-    pub backlog: Vec<(f64, u64)>,
+    /// Photo bytes still on the devices over time: the full files the hub
+    /// lacks, and the downscaled copies it lacks.
+    pub backlog: Vec<Backlog>,
     /// Capture to hub of every record and lesson, in a run with the
     /// attachment lane off and in this run.
     pub records_latency_without: Stats,
@@ -543,6 +559,8 @@ struct Net {
     att_lane: bool,
     att_bytes: u64,
     att_chunks: u64,
+    att_requests: u64,
+    att_failed: u64,
     byte_scale: u64,
     now: i64,
     window_end: i64,
@@ -579,7 +597,6 @@ impl Wire<'_> {
     /// arrived.
     fn transfer(&self, up: u64, down: u64) -> (bool, bool) {
         let mut n = self.net.borrow_mut();
-        n.m.requests += 1;
         let bps = n.spec.bandwidth_bps.max(1.0);
         let lat = n.spec.latency_ms as i64;
         let t_up = lat + ((up + n.spec.overhead_bytes) as f64 * 8.0 / bps * 1000.0) as i64;
@@ -602,28 +619,44 @@ impl Wire<'_> {
         };
         let sent_up = up + n.spec.overhead_bytes;
         let sent_down = down + n.spec.overhead_bytes;
-        match cut {
+        let (b_up, b_down, out) = match cut {
             None => {
                 n.now += total;
-                n.bytes_up += sent_up;
-                n.bytes_down += sent_down;
-                (true, true)
+                (sent_up, sent_down, (true, true))
             }
             Some(c) => {
-                n.m.failed_requests += 1;
                 n.now += c;
                 let frac_up = (c as f64 / t_up.max(1) as f64).min(1.0);
-                n.bytes_up += (sent_up as f64 * frac_up) as u64;
+                let b_up = (sent_up as f64 * frac_up) as u64;
                 if c >= t_up {
-                    n.m.lost_replies += 1;
-                    n.bytes_down +=
+                    let b_down =
                         (sent_down as f64 * ((c - t_up) as f64 / t_down.max(1) as f64)) as u64;
-                    (true, false)
+                    (b_up, b_down, (true, false))
                 } else {
-                    (false, false)
+                    (b_up, 0, (false, false))
+                }
+            }
+        };
+        // The attachment lane keeps its own books, so the record metrics
+        // read the same with it on or off.
+        if att {
+            n.att_requests += 1;
+            n.att_bytes += b_up + b_down;
+            if cut.is_some() {
+                n.att_failed += 1;
+            }
+        } else {
+            n.m.requests += 1;
+            n.bytes_up += b_up;
+            n.bytes_down += b_down;
+            if cut.is_some() {
+                n.m.failed_requests += 1;
+                if out.0 {
+                    n.m.lost_replies += 1;
                 }
             }
         }
+        out
     }
 
     fn at_hub<T>(&self, f: impl FnOnce(&Hub) -> T) -> T {
@@ -796,11 +829,7 @@ impl HubLink for Wire<'_> {
         // The wire carries the full-size chunk (base64 and the signature included).
         let size = (c.data.len() as u64) * scale + 400;
         let (stored, replied) = self.transfer(size, 80);
-        {
-            let mut n = self.net.borrow_mut();
-            n.att_bytes += size;
-            n.att_chunks += 1;
-        }
+        self.net.borrow_mut().att_chunks += 1;
         if !stored {
             return Err(Error::Sync(
                 "link dropped during an attachment chunk".into(),
@@ -814,6 +843,24 @@ impl HubLink for Wire<'_> {
         }
         Ok(held)
     }
+}
+
+fn backlog(devices: &[Device], day: f64, scale: u64) -> Result<Backlog> {
+    let mut b = Backlog {
+        day,
+        ..Default::default()
+    };
+    for d in devices {
+        b.full_bytes += d
+            .rec
+            .attachment_backlog(crate::sync::AttachmentMode::Full)?
+            * scale;
+        b.downscaled_bytes += d
+            .rec
+            .attachment_backlog(crate::sync::AttachmentMode::Downscaled)?
+            * scale;
+    }
+    Ok(b)
 }
 
 fn db_bytes(rec: &Records) -> u64 {
@@ -1106,7 +1153,7 @@ fn run_in(
         .with_attachment_policy(
             s.attachments_low,
             s.attachments_normal,
-            (s.chunk_kb * 1024 / s.photos.as_ref().map_or(1, |p| p.byte_scale.max(1))).max(1024),
+            s.chunk_kb * 1024 / s.photos.as_ref().map_or(1, |p| p.byte_scale.max(1)),
         );
     let field_keys = vec![hub.trusted_key()];
     let pack_id = crate::packs::read_manifest(&first_version_dir(&hub_packs)?, &keys)?.pack_id;
@@ -1117,6 +1164,8 @@ fn run_in(
         att_lane: false,
         att_bytes: 0,
         att_chunks: 0,
+        att_requests: 0,
+        att_failed: 0,
         byte_scale: s.photos.as_ref().map_or(1, |p| p.byte_scale.max(1)),
         now: EPOCH_MS,
         window_end: EPOCH_MS,
@@ -1281,6 +1330,9 @@ fn run_in(
         }
         if s.final_sync && t >= end && !final_started {
             final_started = true;
+            if let Some(b) = s.final_bandwidth_bps {
+                net.borrow_mut().spec.bandwidth_bps = b;
+            }
             for (i, d) in devices.iter_mut().enumerate() {
                 d.up = true;
                 d.window_end = horizon;
@@ -1409,13 +1461,22 @@ fn run_in(
                         .min()
                         .unwrap_or(i64::MAX);
                     let deadline = next.min(window_end).min(next_record);
+                    // Start a chunk only when it ends before the deadline,
+                    // so no chunk is on the wire when records are due.
+                    let chunk_ms = {
+                        let n = net.borrow();
+                        let wire_bytes =
+                            s.chunk_kb * 1024 * 4 / 3 + 400 + 2 * n.spec.overhead_bytes;
+                        (wire_bytes as f64 * 8.0 / n.spec.bandwidth_bps.max(1.0) * 1000.0) as i64
+                            + 2 * n.spec.latency_ms as i64
+                    };
                     net.borrow_mut().att_lane = true;
                     let r = d
                         .rec
-                        .send_attachments(&wire, &|| net.borrow().now >= deadline);
+                        .send_attachments(&wire, &|| net.borrow().now + chunk_ms >= deadline);
                     net.borrow_mut().att_lane = false;
                     let r = r?;
-                    att.resumed_bytes += r.resumed_bytes * att.byte_scale;
+                    att.resumed += r.resumed;
                     if r.yielded {
                         att.yields += 1;
                     }
@@ -1622,14 +1683,11 @@ fn run_in(
             Ev::Sample => {
                 let day = (t - EPOCH_MS) as f64 / DAY as f64;
                 if s.photos.is_some() {
-                    let mut b = 0u64;
-                    for d in &devices {
-                        b += d
-                            .rec
-                            .attachment_backlog(crate::sync::AttachmentMode::Full)?
-                            * att.byte_scale;
-                    }
-                    att.backlog.push(((day * 10.0).round() / 10.0, b));
+                    att.backlog.push(backlog(
+                        &devices,
+                        (day * 10.0).round() / 10.0,
+                        att.byte_scale,
+                    )?);
                 }
                 for d in &mut devices {
                     d.growth
@@ -1682,7 +1740,7 @@ fn run_in(
     set_clock(Some(horizon));
     // Final accounting.
     let n = net.into_inner();
-    let net_att = (n.att_bytes, n.att_chunks);
+    let net_att = (n.att_bytes, n.att_chunks, n.att_requests, n.att_failed);
     m.link = n.m.clone();
     m.link.refused_deliveries = n.refused_deliveries;
     m.link.refused_hellos = n.refused_hellos;
@@ -1891,6 +1949,8 @@ fn run_in(
         att.bytes_taken = photos_taken.1;
         att.bytes_sent = n.0;
         att.chunks = n.1;
+        att.requests = n.2;
+        att.failed_requests = n.3;
         att.complete_at_hub = hub.conn().query_row(
             "SELECT count(*) FROM attachment WHERE complete = 1",
             [],
@@ -1901,14 +1961,11 @@ fn run_in(
             [],
             |r| r.get::<_, i64>(0),
         )? as u64;
-        let mut b = 0u64;
-        for d in &devices {
-            b += d
-                .rec
-                .attachment_backlog(crate::sync::AttachmentMode::Full)?
-                * att.byte_scale;
-        }
-        att.backlog.push((s.days, b));
+        att.backlog.push(backlog(
+            &devices,
+            s.days + if s.final_sync { 1.0 } else { 0.0 },
+            att.byte_scale,
+        )?);
         m.attachments = Some(att);
     }
     Ok((m, latencies))
@@ -1992,7 +2049,9 @@ pub fn named(name: &str) -> Option<Scenario> {
             "workload": {"jobs_per_device_per_day": 1.5, "lesson_prob": 0.6, "back_prob": 0.05},
             "clock_skew_minutes": 20, "sync_every_minutes": 30,
             "conflicts": [{"day": 5, "device": 2, "other": 3, "gap_minutes": 10}],
-            "tamper_prob": 0.02, "fleet_every_hours": 168, "final_sync": true
+            "tamper_prob": 0.02, "fleet_every_hours": 168, "final_sync": true,
+            "photos": {"per_lesson": 1.2, "median_kb": 1500, "sigma": 0.5},
+            "final_bandwidth_bps": 2000000, "sample_every_days": 3
         }),
         "disconnected-180" => json!({
             "name": "disconnected-180", "seed": 3, "days": 180, "devices": 3,

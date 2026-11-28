@@ -60,6 +60,7 @@
       "day": 20.0
     }
   ],
+  "final_bandwidth_bps": null,
   "photos": null,
   "attachments_low": "downscaled",
   "attachments_normal": "full",

@@ -415,8 +415,20 @@ impl Hub {
     ) -> Self {
         self.attachments_low = low;
         self.attachments_normal = normal;
-        self.chunk_bytes = chunk_bytes.max(1024);
+        self.chunk_bytes = chunk_bytes.max(256);
         self
+    }
+
+    /// Change the attachment policy of a running hub.
+    pub fn set_attachment_policy(
+        &mut self,
+        low: crate::sync::AttachmentMode,
+        normal: crate::sync::AttachmentMode,
+        chunk_bytes: u64,
+    ) {
+        self.attachments_low = low;
+        self.attachments_normal = normal;
+        self.chunk_bytes = chunk_bytes.max(256);
     }
 
     pub fn with_repeat_window_days(mut self, days: i64) -> Self {
@@ -1656,6 +1668,8 @@ fn strip_format(mut v: Value) -> Value {
 pub struct LocalLink {
     pub hub: Arc<Mutex<Hub>>,
     pub key: DeviceKey,
+    /// The link class this device reports at the hello.
+    pub link: crate::sync::LinkClass,
 }
 
 impl LocalLink {
@@ -1687,6 +1701,9 @@ impl HubLink for LocalLink {
     fn hello(&self) -> Result<HelloReply> {
         let h = self.key.hello(self.link_class())?;
         self.hub().hello(&h)
+    }
+    fn link_class(&self) -> crate::sync::LinkClass {
+        self.link
     }
     fn attachment_offset(&self, sha256: &str, total: u64) -> Result<u64> {
         self.hub().attachment_offset(sha256, total)

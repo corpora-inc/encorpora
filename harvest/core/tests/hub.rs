@@ -67,6 +67,7 @@ fn device(f: &Fleet) -> (Records, LocalLink) {
         LocalLink {
             hub: f.hub.clone(),
             key: k,
+            link: Default::default(),
         },
     )
 }
@@ -387,6 +388,7 @@ fn the_hub_offers_the_newest_pack_or_a_delta() {
     let link = LocalLink {
         hub: hub.clone(),
         key: key(9),
+        link: Default::default(),
     };
     let full = link
         .pack_offer("pump40", Some("2026.3.1-1"))
@@ -809,6 +811,7 @@ fn a_refused_device_sends_only_hellos_and_backs_off() {
     let link = LocalLink {
         hub: f.hub.clone(),
         key: k,
+        link: Default::default(),
     };
     fixed_job(&f, &rec, "unit-101", "Replaced relay K1");
     harvest_core::audit::set_clock(Some(ms("2026-03-01T10:00")));
@@ -853,4 +856,169 @@ fn a_refused_device_sends_only_hellos_and_backs_off() {
         .filter(|r| matches!(r, harvest_core::audit::AuditRecord::Event { event, .. } if event.event == "hub.refuse"))
         .count();
     assert_eq!(refusals, 2, "two hellos refused, no deliveries");
+}
+
+// --------------------------------------------------------- attachments
+
+fn photo(n: usize, seed: u8) -> Vec<u8> {
+    (0..n).map(|i| (i as u8).wrapping_mul(31) ^ seed).collect()
+}
+
+#[test]
+fn attachments_move_by_content_resume_and_follow_the_link_policy() {
+    use harvest_core::sync::{AttachmentMode, LinkClass};
+    let f = fleet();
+    f.hub.lock().unwrap().set_attachment_policy(
+        AttachmentMode::Downscaled,
+        AttachmentMode::Full,
+        1024,
+    );
+    let (rec, normal) = device(&f);
+    let low = LocalLink {
+        hub: f.hub.clone(),
+        key: DeviceKey::from_seed(&normal.key.seed()),
+        link: LinkClass::Low,
+    };
+    let full = photo(5000, 1);
+    let small = photo(300, 2);
+    let r = rec
+        .add_attachment(&full, "image/jpeg", Some(&small))
+        .unwrap();
+    // The same bytes again: one attachment.
+    assert_eq!(rec.add_attachment(&full, "image/jpeg", None).unwrap(), r);
+    assert_eq!(rec.attachments().unwrap().len(), 1);
+    assert_eq!(rec.attachment_bytes(&r.sha256, "full").unwrap(), full);
+
+    // Records first: nothing moves while the outbox holds anything.
+    fixed_job(&f, &rec, "unit-101", "Replaced relay K1");
+    assert!(rec.outbox_status().unwrap().pending > 0);
+    let rep = rec.send_attachments(&normal, &|| false).unwrap();
+    assert!(rep.yielded && rep.chunks == 0);
+    rec.flush_to_hub(&normal, 50, false).unwrap();
+    assert_eq!(rec.outbox_status().unwrap().pending, 0);
+
+    // A low link sends the downscaled copy only.
+    let rep = rec.send_attachments(&low, &|| false).unwrap();
+    assert_eq!(rep.mode, Some(AttachmentMode::Downscaled));
+    assert_eq!(rep.bytes, 300);
+    let small_sha = rec.attachments().unwrap()[0].small_sha256.clone().unwrap();
+    assert!(f.hub.lock().unwrap().has_attachment(&small_sha).unwrap());
+    assert!(!f.hub.lock().unwrap().has_attachment(&r.sha256).unwrap());
+    assert_eq!(
+        rec.attachment_backlog(AttachmentMode::Downscaled).unwrap(),
+        0
+    );
+    assert_eq!(rec.attachment_backlog(AttachmentMode::Full).unwrap(), 5000);
+
+    // On a normal link the full file follows, cut short and resumed.
+    let calls = std::cell::Cell::new(0);
+    let rep = rec
+        .send_attachments(&normal, &|| {
+            calls.set(calls.get() + 1);
+            calls.get() > 4
+        })
+        .unwrap();
+    assert!(rep.yielded && rep.chunks == 2, "{rep:?}");
+    assert_eq!(
+        f.hub
+            .lock()
+            .unwrap()
+            .attachment_offset(&r.sha256, 5000)
+            .unwrap(),
+        2048
+    );
+    let rep = rec.send_attachments(&normal, &|| false).unwrap();
+    assert_eq!(
+        (rep.resumed, rep.resumed_bytes, rep.bytes),
+        (1, 2048, 5000 - 2048)
+    );
+    assert!(f.hub.lock().unwrap().has_attachment(&r.sha256).unwrap());
+    assert_eq!(rec.attachments().unwrap()[0].sent, "full");
+    assert_eq!(rec.attachment_backlog(AttachmentMode::Full).unwrap(), 0);
+
+    // Another device with the same file sends nothing: the hub has it.
+    let (rec2, link2) = device(&f);
+    rec2.add_attachment(&full, "image/jpeg", None).unwrap();
+    let rep = rec2.send_attachments(&link2, &|| false).unwrap();
+    assert_eq!((rep.chunks, rep.completed), (0, 1));
+
+    // References only: nothing moves.
+    f.hub
+        .lock()
+        .unwrap()
+        .set_attachment_policy(AttachmentMode::Refs, AttachmentMode::Refs, 1024);
+    rec.add_attachment(&photo(900, 9), "image/jpeg", None)
+        .unwrap();
+    let rep = rec.send_attachments(&normal, &|| false).unwrap();
+    assert_eq!(
+        (rep.mode, rep.chunks, rep.backlog_bytes),
+        (Some(AttachmentMode::Refs), 0, 0)
+    );
+}
+
+#[test]
+fn the_hub_refuses_chunks_from_strangers_and_out_of_place_or_damaged() {
+    let f = fleet();
+    let h = f.hub.lock().unwrap();
+    let data = photo(100, 3);
+    let sha = {
+        use sha2::Digest;
+        sha2::Sha256::digest(&data)
+            .iter()
+            .map(|b| format!("{b:02x}"))
+            .collect::<String>()
+    };
+    let stranger = key(77);
+    let c = stranger.chunk(&sha, "full", 100, 0, &data).unwrap();
+    assert!(matches!(h.put_chunk(&c), Err(Error::Signature(_))));
+    let k = key(78);
+    h.enroll(&k.public_base64(), None, "Admin").unwrap();
+    // A forged chunk (data changed after signing).
+    let mut bad = k.chunk(&sha, "full", 100, 0, &data[..50]).unwrap();
+    bad.data = k.chunk(&sha, "full", 100, 0, &data[50..]).unwrap().data;
+    assert!(matches!(h.put_chunk(&bad), Err(Error::Signature(_))));
+    // Out of place: the hub answers where it is.
+    assert_eq!(
+        h.put_chunk(&k.chunk(&sha, "full", 100, 50, &data[50..]).unwrap())
+            .unwrap(),
+        0
+    );
+    // Bytes that do not hash to the name are dropped whole.
+    let wrong = photo(100, 4);
+    assert_eq!(
+        h.put_chunk(&k.chunk(&sha, "full", 100, 0, &wrong).unwrap())
+            .unwrap(),
+        0
+    );
+    assert!(!h.has_attachment(&sha).unwrap());
+    assert_eq!(
+        h.put_chunk(&k.chunk(&sha, "full", 100, 0, &data[..60]).unwrap())
+            .unwrap(),
+        60
+    );
+    assert_eq!(
+        h.put_chunk(&k.chunk(&sha, "full", 100, 60, &data[60..]).unwrap())
+            .unwrap(),
+        100
+    );
+    assert!(h.has_attachment(&sha).unwrap());
+    assert!(h.verify_audit().unwrap().ok);
+}
+
+#[test]
+fn underway_attachment_traffic_never_delays_a_record() {
+    let s = harvest_core::sim::named("underway-two-weeks").unwrap();
+    let m = harvest_core::sim::run(&s, None).unwrap();
+    let a = m.attachments.as_ref().unwrap();
+    assert!(m.invariants.ok, "{:?}", m.invariants.details);
+    assert!(a.never_delayed_a_record && m.invariants.attachments_never_delay_records);
+    assert_eq!(a.records_latency_with, a.records_latency_without);
+    assert!(
+        a.photos > 0 && a.full_at_hub == a.photos,
+        "every photo in full after port"
+    );
+    // Underway the downscaled copies keep up; the full files wait.
+    let mid = &a.backlog[a.backlog.len() / 2];
+    assert!(mid.full_bytes > 10 * mid.downscaled_bytes);
+    assert_eq!(a.backlog.last().unwrap().full_bytes, 0);
 }

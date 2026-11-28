@@ -47,11 +47,18 @@
   "skew_bound_minutes": 30,
   "rogue_device": false,
   "revoke": [],
-  "photos": null,
+  "final_bandwidth_bps": 2000000.0,
+  "photos": {
+    "per_lesson": 1.2,
+    "median_kb": 1500.0,
+    "sigma": 0.5,
+    "small_ratio": 0.08,
+    "byte_scale": 100
+  },
   "attachments_low": "downscaled",
   "attachments_normal": "full",
   "chunk_kb": 64,
   "pack_update_day": null,
   "final_sync": true,
-  "sample_every_days": 30.0
+  "sample_every_days": 3.0
 }

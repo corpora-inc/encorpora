@@ -788,10 +788,12 @@ for a reviewer's screen).
   (`hub.enroll`) and can revoke it (`hub.revoke`); a revoked key is never
   enrolled again. Both are audited with who did them.
 - **Hello.** Every upload opens with `POST /hub/hello`, a small signed
-  `{device_id, signed_at, signature}` (over the canonical JSON of
-  `{format: "harvest-hello/1", device_id, signed_at}`). The hub answers
+  `{device_id, signed_at, link, signature}` (over the canonical JSON of
+  `{format: "harvest-hello/1", device_id, signed_at, link}`; `link` is
+  `low` or `normal`, as the host knows its link). The hub answers
   `{accepted, refused: "unenrolled" | "revoked" | "signature" | null,
-  fleet_every_hours, hub_time}` before any payload moves, and audits a
+  fleet_every_hours, hub_time, attachments, chunk_bytes}` before any
+  payload moves, and audits a
   refusal. A refused device sends nothing but the hello, backing off (5
   minutes, doubling, at most a day; restarted when the refusal reason
   changes or an operator forces a try with `sync.flush {force: true}`). A
@@ -799,6 +801,29 @@ for a reviewer's screen).
   `reachable` (the hub answered at all: a refusal is an answer),
   `refused`, and `backoff_until`; `device.info` returns the device's id
   and public key for an administrator to enroll.
+- **Attachments.** A record carries a photo or file by reference
+  (`{path: "attachment:<sha256>", sha256}`); the bytes live in the records
+  store (`attachment`, `attachment_chunk`, chunks sealed at rest like other
+  records), with the host's downscaled copy when it made one. They move
+  on their own lane, after records, lessons and bundles: the lane starts
+  only with the outbox empty, says its own hello (the policy follows the
+  link the device is on now: `attachments` is `refs` (nothing moves),
+  `downscaled` (the small copy, or the file when there is none) or `full`;
+  hub settings per link class, default `refs` on `low` and `full` on
+  `normal`), and stops between chunks whenever the host asks (records
+  queued, the window closing). Content addressed: `GET
+  /hub/attachment?sha256=&total=` → `{held}` says how much of that variant
+  the hub holds (all of it when any device sent it), and `POST
+  /hub/attachment` takes one chunk at that offset, signed over the
+  canonical JSON of `{format: "harvest-attachment/1", device_id, sha256,
+  variant, total, offset, chunk_sha256, signed_at}`, and answers
+  `{held}`. A chunk from an unenrolled or revoked device, or with a bad
+  signature, is refused (403, audited); one at the wrong offset is
+  answered with where to resume; a whole that does not hash to its name
+  is dropped and starts over; a complete one is audited
+  (`hub.attachment`). A device retries a cut request (three in a row end
+  the pass) and resumes from `held`. A file sent downscaled is sent in
+  full when a later hello allows it.
 - **Receive.** `POST /hub/receive` takes a delivery
   `{device_id, signed_at, items: [Upload], signature}` signed by the
   device over the canonical JSON of `{format: "harvest-delivery/1",
@@ -901,6 +926,11 @@ bundle counts (tampered bundles all refused); pack updates; records-store
 size per device over time; and the invariants: nothing lost (no item
 acknowledged that the hub does not hold), nothing applied twice, no
 bundle installed that is not the hub's own, every audit chain intact.
-The same seed gives the same report. `harvest/sim/` holds the named
+With `photos`, lessons carry photos (Poisson count, log-normal size,
+a downscaled copy) and the attachment lane runs after each sync; the
+same fleet is run twice, the lane off and on, with record traffic and
+attachment traffic on separate random streams, and the invariant
+`attachments_never_delay_records` holds when every record and lesson
+reaches the hub at the same moment in both runs. The same seed gives the same report. `harvest/sim/` holds the named
 scenarios: `pier-daily`, `underway-two-weeks`, `disconnected-180`,
 `flapping`.
