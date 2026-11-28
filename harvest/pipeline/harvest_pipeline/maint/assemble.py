@@ -152,6 +152,8 @@ class Assembly:
         self.forced: dict = (self.o.get("forced") or {})   # (table, key) -> reason, from the core's graph check
         self.review_of: dict = (self.o.get("review") or {})  # (table, key) -> reason, from cross-arm agreement
         self.guard_recs: list = []
+        self.guard_info: list = []       # each placed guard: its section, xref row and unit (targets.py)
+        self.items: dict = {}            # each step and question: its span, section, row (targets.py)
         self.edge_recs: list = []
         self.node_recs: list = []
         self.plausibility_on = bool(self.o.get("plausibility", True))
@@ -226,7 +228,7 @@ class Assembly:
                "text": loc.text, "parent_rid": parent_rid, "page": pm.index, "label": pm.label, "bbox": loc.bbox,
                "pm": pm}
         self.sections[key] = rec
-        self.order[key] = self.order.get(loc.region, 0) + 0.5
+        self.order[key] = self.order.get(loc.region, 0) + 0.5 + (loc.words[0] if loc.words else 0) / 1e6
         return rec
 
     # ---- provenance -----------------------------------------------------------------------------
@@ -437,7 +439,7 @@ class Assembly:
             self.equip(ctx, e, ek)
 
     # ---- guards ---------------------------------------------------------------------------------
-    def guard(self, ctx: Ctx, g: dict, target: dict, key: str, container_rid: str) -> None:
+    def guard(self, ctx: Ctx, g: dict, target: dict, key: str, container_rid: str, item: str | None = None) -> None:
         """A block the reading names: its class word as printed (lead-in, heading line, label inside or beside;
         blocks.class_of_block), its body (a verified span), and what it guards."""
         from .blocks import BASE_KIND, class_of_block, guard_kind, manual_classes
@@ -520,6 +522,9 @@ class Assembly:
         if loc:
             row["from_id"] = gsec["sid"]
             self.rows.append(("xref", row, pid))
+            self.guard_info.append({"pid": pid, "region": loc.region, "gsec": gsec, "target": target, "row": row,
+                                    "unit": ctx.unit_key, "item": item, "page": loc.page, "bbox": loc.bbox,
+                                    "word0": loc.words[0] if loc.words else 0})
             self.loc("guard", row["from_id"], "text", loc)
             if label_loc is not None:
                 self.loc("guard", row["from_id"], "label", label_loc)
@@ -599,7 +604,7 @@ class Assembly:
                 ssec = self.claim(sloc.region, "step", f"{title_sec['sid']}/s{sk}", f"{citation}, Step {sk}",
                                   parent_rid=title_sec["rid"])
                 for gk, g in enumerate(s.get("guards") or []):
-                    self.guard(ctx, g, ssec, f"{proc_id}#{sk}.g{gk}", title_sec["rid"])
+                    self.guard(ctx, g, ssec, f"{proc_id}#{sk}.g{gk}", title_sec["rid"], item=f"proc_step:{proc_id}#{sk}")
             row = {"proc_id": proc_id, "ord": sk, "text": sloc.text if sloc else "", "detail": "{}",
                    "check_kind": s.get("check_kind") or "pass_fail",
                    "section_ids": json.dumps([ssec["sid"]] if ssec else []), "deficiency": None, "lang": "en"}
@@ -608,6 +613,10 @@ class Assembly:
             self.rows.append(("proc_step", row, pid))
             if sloc:
                 self.loc("proc_step", f"{proc_id}#{sk}", "text", sloc)
+                if ssec:
+                    self.items[f"proc_step:{proc_id}#{sk}"] = {
+                        "kind": "step", "loc": sloc, "sec": ssec, "row": row, "field": "section_ids",
+                        "sid_base": f"{title_sec['sid']}/s{sk}", "citation": f"{citation}, Step {sk}"}
             step_ids.append(pid)
             self.tally("proc_step", pid)
         if title_sec:
@@ -924,7 +933,8 @@ class Assembly:
             rec["expect"] = expect
             if rec.get("sec"):
                 for gk2, g in enumerate(n.get("guards") or []):
-                    self.guard(ctx, g, rec["sec"], f"{nid}.g{gk2}", title_sec["rid"] if title_sec else rec["sec"]["rid"])
+                    self.guard(ctx, g, rec["sec"], f"{nid}.g{gk2}", title_sec["rid"] if title_sec else rec["sec"]["rid"],
+                               item=f"fault_node:{rec['node_id']}")
         # entry: the symptom node, else the first node in reading order with no incoming edge
         incoming = {e["to"] for e in edges_out}
         sym = [gk for gk, r in ordered if r["raw"].get("kind") == "symptom"]
@@ -961,6 +971,11 @@ class Assembly:
             self.rows.append(("fault_node", row, pid))
             if rec["loc"]:
                 self.loc("fault_node", rec["node_id"], "text", rec["loc"])
+                if rec.get("sec"):
+                    self.items[f"fault_node:{rec['node_id']}"] = {
+                        "kind": "node", "loc": rec["loc"], "sec": rec["sec"], "row": row, "field": "section_id",
+                        "sid_base": f"{title_sec['sid']}/{rec['node_id'].split('.')[-1]}" if title_sec else
+                        f"{rec['sec']['sid']}-{rec['node_id'].split('.')[-1]}", "citation": rec["sec"]["citation"]}
             for f in rec.get("facets", []):
                 self.rows.append(("fault_facet", f, pid))
             self.tally("fault_node", pid)
