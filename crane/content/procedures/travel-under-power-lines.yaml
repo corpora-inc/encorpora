@@ -1,0 +1,400 @@
+proc_id: travel-under-power-lines
+title: Travel Under or Near Power Lines (No Load)
+kind: operation
+summary: This procedure covers moving a crane on a construction site under or near power lines with no load on the
+  hook. It applies to every no-load move near lines and keeps the Table T clearances in § 1926.1411; travel with
+  a load falls under § 1926.1408, 1409 or 1410 and § 1926.1417(u) instead.
+roles:
+- operator
+- signal_person
+- competent_person
+lang: en
+section_ids:
+- 29cfr1926.1411
+- 29cfr1926.1408(b)
+- 29cfr1926.1417(u)
+steps:
+- ord: 1
+  phase: Before you start
+  text: Confirm the crane will travel with no load on the hook.
+  detail:
+    trainee: 'This checklist covers only travel with no load. Travel with a load falls under different rules: the
+      power line section that applies (1408, 1409 or 1410) plus § 1926.1417(u). Good looks like an empty hook with
+      no rigging or load attached.'
+    operator: Check that no load is attached. If you plan to travel with a load, stop here. Switch to the traveling-with-a-load
+      procedure, where a competent person supervises the move and sets the route and speed.
+    inspector: Verify that the move is a no-load move. If not, verify that the 1408/1409/1410 and 1417(u) requirements
+      are being applied, per § 1926.1411(a).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1411(a)
+  deficiency:
+    guidance: A load is attached, so this procedure and Table T do not govern the move.
+    action: Do not travel under this procedure. Switch to the traveling-with-a-load procedure and the power line
+      section that applies.
+    section_id: 29cfr1926.1411(a)
+    quote: Equipment traveling on a construction site with a load is governed by § 1926.1408, § 1926.1409 or § 1926.1410,
+      whichever is appropriate, and § 1926.1417(u).
+  practice_only: false
+- ord: 2
+  phase: Before you start
+  text: Walk the travel route and record every overhead line along it.
+  detail:
+    trainee: Walk the whole route before the crane moves and look up the entire way. Watch for service drops, guy
+      wires and lines crossing at low points. Good looks like a list or sketch of every line, with its location
+      and approximate low point.
+    operator: Walk the route yourself or review the route survey. Mark the crossings and any points where the route
+      runs close to a line.
+    inspector: Record whether a route survey was done. The rule text does not require a survey; it is good practice
+      that supports the Table T and spotter determinations.
+  check_kind: note
+  section_ids: []
+  deficiency: null
+  practice_only: true
+- ord: 3
+  phase: Before you start
+  text: Record the nominal voltage of each line on the route.
+  detail:
+    trainee: The required clearance depends on the line's voltage, so you need the voltage before you can pick a
+      distance. Get it from the utility owner/operator. Do not guess from how the line looks.
+    operator: Record the nominal AC voltage in kV for each line. If the voltage is unknown, do not move the crane
+      until it is confirmed.
+    inspector: Document the voltage of each line and its source. The Table T distance in § 1926.1411 is based on
+      nominal voltage.
+  check_kind: value
+  value_unit: kV
+  section_ids:
+  - 29cfr1926.1411
+  deficiency:
+    guidance: Without the voltage, you cannot select the Table T clearance.
+    action: Do not move the crane. Get the voltage from the utility owner/operator before travel. (Waiting until
+      the voltage is confirmed is practice; the rule requires that the Table T clearance be maintained.)
+    section_id: 29cfr1926.1411(b)(2)
+    quote: The clearances specified in Table T of this section are maintained.
+  practice_only: false
+- ord: 4
+  phase: Before you start
+  text: Look up and record the Table T minimum travel clearance for each line.
+  detail:
+    trainee: 'Table T gives the minimum distance for traveling with no load, by voltage: up to 0.75 kV, 4 ft; over
+      0.75 to 50 kV, 6 ft; over 50 to 345 kV, 10 ft; over 345 to 750 kV, 16 ft; over 750 to 1,000 kV, 20 ft. For
+      lines over 1,000 kV, the distance is set by the utility owner/operator or a registered professional engineer
+      who is a qualified person in power transmission and distribution.'
+    operator: Write down the Table T distance in feet for each line. On a route with several lines, use each line's
+      own distance at that line. For lines over 1,000 kV, get the distance in writing from the utility owner/operator
+      or the qualified registered professional engineer before moving.
+    inspector: Verify that the recorded distance matches the Table T band for the line's voltage. For lines over
+      1,000 kV, verify who set the distance, per § 1926.1411 Table T.
+  check_kind: value
+  value_unit: feet
+  section_ids:
+  - 29cfr1926.1411
+  deficiency:
+    guidance: The clearance is missing, below the Table T band, or (for lines over 1,000 kV) not set by the utility
+      or a qualified registered professional engineer.
+    action: Do not move the crane until the correct distance is recorded. For lines over 1,000 kV, get the distance
+      from the utility owner/operator or a qualified registered professional engineer.
+    section_id: 29cfr1926.1411
+    quote: Over 1,000 | (as established by the utility owner/operator or registered professional engineer who is
+      a qualified person with respect to electrical power transmission and distribution).
+  practice_only: false
+- ord: 5
+  phase: Before you start
+  text: Decide whether any part of the crane may come within 20 feet of a line.
+  detail:
+    trainee: 'If any part of the crane might come closer than 20 feet to a power line while traveling, a dedicated
+      spotter is required. Count every part: boom tip, mast, gantry, cab roof and any attachments.'
+    operator: Compare the travel height and route against the line locations. Record yes or no. If yes, complete
+      the dedicated spotter steps before moving.
+    inspector: Document the 20-foot determination and its basis. It triggers the dedicated spotter requirement in
+      § 1926.1411(b)(4).
+  check_kind: note
+  section_ids:
+  - 29cfr1926.1411(b)(4)
+  deficiency: null
+  practice_only: false
+- ord: 6
+  phase: Before you start
+  text: Brief the operator and spotter on line locations, clearances, route and stop signals.
+  detail:
+    trainee: Everyone involved in the move should know where the lines are, the clearance for each one, the route,
+      and how to call a stop. A short talk at the crane before moving is enough.
+    operator: Go over each line crossing, its Table T distance, the travel speed and the stop signal. A competent
+      person can lead the briefing.
+    inspector: Record that a briefing was held. A pre-move briefing is good practice for no-load travel. (The planning
+      meeting in § 1926.1408(b)(1) applies to work under that section, not to this procedure.)
+  check_kind: pass_fail
+  section_ids: []
+  deficiency:
+    guidance: The crew does not share the same understanding of the lines and the plan.
+    action: Hold the briefing before moving.
+    section_id: null
+    quote: null
+  practice_only: true
+- ord: 7
+  phase: Configure the crane
+  text: Lower the boom/mast and its support system enough to meet Table T clearance.
+  detail:
+    trainee: Bring the boom or mast down, along with the gantry, mast or pendants that hold it up, so the highest
+      point of the crane stays clear of the lines by the Table T distance. Good looks like the boom resting on its
+      cradle or as low as the configuration allows.
+    operator: Lower the boom/mast and support system to the travel position. Confirm the highest point of the machine
+      will stay below each line by at least its Table T distance.
+    inspector: Verify the boom/mast and support system position before travel, per § 1926.1411(b)(1).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1411(b)(1)
+  deficiency:
+    guidance: The boom/mast or support system is too high to keep Table T clearance under the lines.
+    action: Do not move. Lower the boom/mast and support system further, or choose another route.
+    section_id: 29cfr1926.1411(b)(1)
+    quote: The boom/mast and boom/mast support system are lowered sufficiently to meet the requirements of this
+      paragraph.
+  practice_only: false
+- ord: 8
+  phase: Configure the crane
+  text: Record the planned closest clearance between the crane and the line.
+  detail:
+    trainee: Estimate the smallest gap between the closest part of the crane and the line at the tightest point
+      of the route. It must be at least the Table T distance. Lines sag more in heat and under heavy electrical
+      load, so the low point can drop.
+    operator: Find the line's low point and the crane's travel height, then record the expected minimum clearance
+      in feet. Measure from a distance or with non-conductive methods only (practice). If the clearance is less
+      than Table T, do not go.
+    inspector: Compare the planned clearance with the recorded Table T distance, per § 1926.1411(b)(2).
+  check_kind: value
+  value_unit: feet
+  section_ids:
+  - 29cfr1926.1411(b)(2)
+  deficiency:
+    guidance: The planned clearance is less than the Table T distance.
+    action: Do not travel. Lower the crane further or change the route until the Table T clearance can be maintained.
+    section_id: 29cfr1926.1411(b)(2)
+    quote: The clearances specified in Table T of this section are maintained.
+  practice_only: false
+- ord: 9
+  phase: Configure the crane
+  text: Check route terrain and set a travel speed that will not breach clearance.
+  detail:
+    trainee: Bumps, ruts, slopes, soft ground and sudden stops can make the boom bounce or the crane tip toward
+      a line. Moving slowly reduces that movement. Good looks like a known speed and every rough spot near a line
+      marked or fixed.
+    operator: Identify the grades, holes and soft spots near each line, and plan for boom bounce and tilt on side
+      slopes. Set a slow, steady speed and plan to stop before you reach the line, not under it.
+    inspector: Verify that the effects of speed and terrain were considered, including movement of the boom/mast,
+      per § 1926.1411(b)(3).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1411(b)(3)
+  deficiency:
+    guidance: Terrain or speed could move the crane or boom into the Table T zone.
+    action: Fix the route (grade or fill it), slow down, lower the boom further, or reroute before moving.
+    section_id: 29cfr1926.1411(b)(3)
+    quote: The effects of speed and terrain on equipment movement (including movement of the boom/mast) are considered
+      so that those effects do not cause the minimum clearance distances specified in Table T of this section to
+      be breached.
+  practice_only: false
+- ord: 10
+  phase: Dedicated spotter (if within 20 feet)
+  text: Assign a dedicated spotter in continuous contact with the operator.
+  detail:
+    trainee: If the crane might come within 20 feet of a line, one person's only job is to watch the gap between
+      the crane and the line and tell the operator. The spotter does no other work during the move.
+    operator: Confirm who the spotter is and that you can see or hear them for the whole move. Do not move without
+      the spotter in contact.
+    inspector: Verify that a dedicated spotter is assigned and in continuous contact with the driver/operator whenever
+      the 20-foot trigger applies, per § 1926.1411(b)(4).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1411(b)(4)
+  deficiency:
+    guidance: The crane may come within 20 feet of a line and no dedicated spotter is assigned.
+    action: Do not move until a dedicated spotter is assigned and in contact with the operator.
+    section_id: 29cfr1926.1411(b)(4)
+    quote: the employer must ensure that a dedicated spotter who is in continuous contact with the driver/operator
+      is used.
+  practice_only: false
+- ord: 11
+  phase: Dedicated spotter (if within 20 feet)
+  text: Position the spotter where they can judge the clearance to the line.
+  detail:
+    trainee: The spotter needs a view from the side, roughly in line with the wire, to judge the gap. Standing right
+      under the line or behind the crane makes the gap hard to judge.
+    operator: Agree on where the spotter will stand at each crossing and when they will move to the next spot. Stop
+      if the spotter has to reposition.
+    inspector: Verify that the spotter's position allows them to gauge the clearance effectively, per § 1926.1411(b)(4)(i).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1411(b)(4)(i)
+  deficiency:
+    guidance: From this position, the spotter cannot judge the gap reliably.
+    action: Stop and move the spotter to a better position before continuing.
+    section_id: 29cfr1926.1411(b)(4)(i)
+    quote: Be positioned to effectively gauge the clearance distance.
+  practice_only: false
+- ord: 12
+  phase: Dedicated spotter (if within 20 feet)
+  text: Test radio or other communication equipment between spotter and operator.
+  detail:
+    trainee: If the operator cannot clearly see or hear the spotter, use a radio or similar device so the spotter
+      can talk to the operator directly. Good looks like a clear radio check before the crane moves.
+    operator: Do a radio check on the assigned channel. Confirm the stop command and what to do if the signal is
+      lost.
+    inspector: Verify that communication equipment is used where necessary and works, per § 1926.1411(b)(4)(ii).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1411(b)(4)(ii)
+  deficiency:
+    guidance: The spotter cannot communicate directly with the operator.
+    action: Do not move until direct communication works.
+    section_id: 29cfr1926.1411(b)(4)(ii)
+    quote: Where necessary, use equipment that enables the dedicated spotter to communicate directly with the operator.
+  practice_only: false
+- ord: 13
+  phase: Dedicated spotter (if within 20 feet)
+  text: Set up a visual reference that marks the clearance limit for the spotter.
+  detail:
+    trainee: A ground line, cones or line-of-sight landmarks help the spotter judge distance. Judging the gap by
+      eye alone is unreliable.
+    operator: Place the markers before the move and confirm the spotter knows what each one means.
+    inspector: Note whether a visual aid was used. It is good practice for no-load travel; the visual aid requirement
+      in § 1926.1408(b)(4)(ii)(A) applies to work under that section.
+  check_kind: pass_fail
+  section_ids: []
+  deficiency:
+    guidance: The spotter has no reference for the clearance limit.
+    action: Set up markers before moving.
+    section_id: null
+    quote: null
+  practice_only: true
+- ord: 14
+  phase: Poor visibility
+  text: Record whether travel is at night or in poor visibility.
+  detail:
+    trainee: Darkness, fog, rain, snow, dust or glare make lines hard to see. These conditions require extra precautions.
+    operator: Record the conditions. If it is night or visibility is poor, complete the next two steps in addition
+      to all the earlier steps.
+    inspector: Document the visibility conditions. They trigger the added precautions in § 1926.1411(b)(5).
+  check_kind: note
+  section_ids:
+  - 29cfr1926.1411(b)(5)
+  deficiency: null
+  practice_only: false
+- ord: 15
+  phase: Poor visibility
+  text: Illuminate the power lines or mark their location another way.
+  detail:
+    trainee: At night or in poor visibility, the operator and spotter must be able to tell exactly where the lines
+      are. Light them, or mark their location with another reliable method.
+    operator: Confirm that every line on the route is lit or otherwise identified and visible from the cab and the
+      spotter's position.
+    inspector: Verify the lighting or identification method and record it, per § 1926.1411(b)(5)(i).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1411(b)(5)(i)
+  deficiency:
+    guidance: The line locations cannot be identified in the current conditions.
+    action: Do not move until the lines are lit or otherwise identified, or wait for better visibility.
+    section_id: 29cfr1926.1411(b)(5)(i)
+    quote: The power lines are illuminated or another means of identifying the location of the lines is used.
+  practice_only: false
+- ord: 16
+  phase: Poor visibility
+  text: Identify and mark a safe path of travel, and use it.
+  detail:
+    trainee: Mark the exact path the crane will follow so it does not drift toward a line in the dark. Good looks
+      like a lit or clearly marked lane.
+    operator: Mark the path with lights or reflective markers and stay within it for the whole move.
+    inspector: Verify that a safe path was identified and that the crane used it, per § 1926.1411(b)(5)(ii).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1411(b)(5)(ii)
+  deficiency:
+    guidance: No safe path has been identified, or the crane is leaving it.
+    action: Stop. Identify and mark the path before moving or continuing.
+    section_id: 29cfr1926.1411(b)(5)(ii)
+    quote: A safe path of travel is identified and used.
+  practice_only: false
+- ord: 17
+  phase: Travel
+  text: Travel at the planned speed while the spotter gives timely clearance calls.
+  detail:
+    trainee: Drive slowly and steadily. The spotter calls out the gap early enough for the operator to stop before
+      reaching the limit. A late warning does not help.
+    operator: Hold the planned speed. Stop right away on a stop call, a lost signal or any doubt about the gap.
+    inspector: Observe that the spotter gives timely information that lets the operator maintain clearance, per
+      § 1926.1411(b)(4)(iii).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1411(b)(4)(iii)
+  - 29cfr1926.1411(b)(3)
+  deficiency:
+    guidance: Calls are late, or the crane is moving too fast to stop within the clearance.
+    action: Stop the crane. Re-brief, slow down, and resume only with timely calls.
+    section_id: 29cfr1926.1411(b)(4)(iii)
+    quote: Give timely information to the operator so that the required clearance distance can be maintained.
+  practice_only: false
+- ord: 18
+  phase: Travel
+  text: Stop immediately if contact between the spotter and operator is lost.
+  detail:
+    trainee: The spotter must stay in contact the whole time the crane might come within 20 feet of a line. If the
+      radio cuts out or the operator loses sight of the spotter, stop until contact is back.
+    operator: On any lost signal, stop all travel and boom motion and wait until contact is restored.
+    inspector: Verify that contact was continuous during travel within 20 feet, per § 1926.1411(b)(4).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1411(b)(4)
+  deficiency:
+    guidance: The spotter is no longer in continuous contact with the operator.
+    action: Stop travel until contact is restored.
+    section_id: 29cfr1926.1411(b)(4)
+    quote: the employer must ensure that a dedicated spotter who is in continuous contact with the driver/operator
+      is used.
+  practice_only: false
+- ord: 19
+  phase: Travel
+  text: Record the closest clearance seen at each line crossing.
+  detail:
+    trainee: Write down the smallest gap seen at each line. It must never be less than the Table T distance for
+      that line.
+    operator: Record the minimum clearance in feet at each crossing. If clearance is about to drop below Table T,
+      stop and back away along the same path.
+    inspector: Compare the observed clearances with the Table T distances, per § 1926.1411(b)(2).
+  check_kind: value
+  value_unit: feet
+  section_ids:
+  - 29cfr1926.1411(b)(2)
+  deficiency:
+    guidance: The clearance went below, or nearly below, the Table T distance.
+    action: Stop the crane. Back away along the same path. Notify the supervisor and fix the boom height, route
+      or speed before trying again.
+    section_id: 29cfr1926.1411(b)(2)
+    quote: The clearances specified in Table T of this section are maintained.
+  practice_only: false
+- ord: 20
+  phase: Records
+  text: Record the route, line voltages, clearances, spotter and visibility conditions.
+  detail:
+    trainee: Keep a short record of how the move was done so the next crew can repeat it safely.
+    operator: Log the route, each line's voltage and Table T distance, the spotter's name, and the conditions during
+      the move.
+    inspector: File the travel record with the lift documents. The rule text does not require this record; keeping
+      it is good practice.
+  check_kind: note
+  section_ids: []
+  deficiency: null
+  practice_only: true
+prov:
+  prov_id: b07b7479077b6ce770ee
+  backend: claude-cli
+  model: claude-opus-5-5
+  prompt_id: procedures
+  prompt_version: '1'
+  prompt_sha256: 739cedd36ddf99f40f81ae9030ade12697499f0414421879c8bf963c86c8454f
+  input_sha256: 42a2474483f1e668bae95157ec7c0b8a28f2c07c0bc30c341ebff95e70ef7be3
+  output_sha256: 07158ea782a195b12d219e3505096c32b8a52712a3dc7dc6f5f6b6e9e0270486
+  created_at: '2026-11-28T02:24:15+00:00'
+  verifier: crane-content/verify v1 (exact substring of eCFR text, typography repair)
+  verdict: pass
+  notes: null

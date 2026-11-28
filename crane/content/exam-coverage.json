@@ -1,0 +1,1416 @@
+{
+ "handbook": {
+  "title": "Candidate Handbook, Mobile Crane Operator (LAT, TLL, TSS, STC): Written Examination Outline, Core Examination",
+  "revision": "MCO CH REV 06/24 (page footers), DOC 50014-102; cover reads MCO CH REV 01/25",
+  "date": "PDF created 2024-06-11, modified 2024-11-14; Spanish edition (same 111424 id) created 2025-01-14 with identical weights",
+  "url": "https://ccocert.org/wp-content/uploads/2026/06/mobile-crane-operator-candidate-handbook_111424-en.pdf",
+  "items": 95,
+  "minutes": 90,
+  "calculator": "not permitted"
+ },
+ "domains": [
+  {
+   "name": "Site",
+   "weight": 0.22
+  },
+  {
+   "name": "Operations",
+   "weight": 0.28
+  },
+  {
+   "name": "Technical Knowledge",
+   "weight": 0.23
+  },
+  {
+   "name": "Load Charts",
+   "weight": 0.27
+  }
+ ],
+ "web_page_weights": {
+  "source": "ccocert.org/en/certifications/mobile-crane-operator/ (read 2026-11-27)",
+  "Site": 0.2,
+  "Operations": 0.26,
+  "Technical Knowledge": 0.28,
+  "Load Charts": 0.26
+ },
+ "note": "Coverage of the core exam content outline by blueprint skills. Outline item titles are the handbook headings; no handbook text is reproduced. Our items are original practice; no affiliation with the certifying body is implied.",
+ "items": [
+  {
+   "handbook_ref": "D1.1a",
+   "handbook_item": "Below surface (voids, tanks, loose fill)",
+   "our_outline_ids": [
+    "core.site.1"
+   ],
+   "skill_ids": [
+    "site.hazards-below-surface",
+    "site.ground-conditions",
+    "site.controlling-entity-ground"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D1.1b",
+   "handbook_item": "On surface (retaining walls, slopes, excavations, depressions)",
+   "our_outline_ids": [
+    "core.site.1"
+   ],
+   "skill_ids": [
+    "site.ground-conditions",
+    "site.hazards-below-surface",
+    "site.slopes-excavations"
+   ],
+   "coverage_before": "partial",
+   "coverage": "full",
+   "added_skills": [
+    "site.slopes-excavations"
+   ]
+  },
+  {
+   "handbook_ref": "D1.1c",
+   "handbook_item": "Boom position (elevation, quadrant)",
+   "our_outline_ids": [
+    "core.site.1"
+   ],
+   "skill_ids": [
+    "loadchart.quadrants",
+    "site.ground-bearing",
+    "tech.tipping-axis",
+    "site.boom-position-loading"
+   ],
+   "coverage_before": "partial",
+   "coverage": "full",
+   "added_skills": [
+    "tech.tipping-axis",
+    "site.boom-position-loading"
+   ]
+  },
+  {
+   "handbook_ref": "D1.2",
+   "handbook_item": "Proper use of supporting materials (mats, blocking/cribbing)",
+   "our_outline_ids": [
+    "core.site.2"
+   ],
+   "skill_ids": [
+    "site.supporting-materials",
+    "site.ground-bearing",
+    "site.boom-position-loading"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": [
+    "site.boom-position-loading"
+   ]
+  },
+  {
+   "handbook_ref": "D1.3",
+   "handbook_item": "Electric power line hazards during assembly/disassembly",
+   "our_outline_ids": [
+    "core.site.3"
+   ],
+   "skill_ids": [
+    "powerlines.assembly",
+    "powerlines.below-lines"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D1.4",
+   "handbook_item": "Requirements to travel without load",
+   "our_outline_ids": [
+    "core.site.4"
+   ],
+   "skill_ids": [
+    "site.travel-without-load",
+    "powerlines.travel",
+    "ops.travel-preparation"
+   ],
+   "coverage_before": "partial",
+   "coverage": "full",
+   "added_skills": [
+    "ops.travel-preparation"
+   ]
+  },
+  {
+   "handbook_ref": "D1.5a",
+   "handbook_item": "Access to crane set-up location",
+   "our_outline_ids": [
+    "core.site.5"
+   ],
+   "skill_ids": [
+    "site.access-hazards",
+    "ops.travel-preparation"
+   ],
+   "coverage_before": "partial",
+   "coverage": "full",
+   "added_skills": [
+    "ops.travel-preparation"
+   ]
+  },
+  {
+   "handbook_ref": "D1.5b",
+   "handbook_item": "Pinch/crush points",
+   "our_outline_ids": [
+    "core.site.5"
+   ],
+   "skill_ids": [
+    "site.swing-radius",
+    "site.access-hazards"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D1.5c",
+   "handbook_item": "Personnel",
+   "our_outline_ids": [
+    "core.site.5"
+   ],
+   "skill_ids": [
+    "site.keeping-clear",
+    "site.fall-zone",
+    "assembly.out-of-view",
+    "site.swing-radius"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D1.6",
+   "handbook_item": "Controlling entity responsibilities concerning site conditions",
+   "our_outline_ids": [
+    "core.site.6"
+   ],
+   "skill_ids": [
+    "rules.controlling-entity",
+    "site.controlling-entity-ground"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D2.1",
+   "handbook_item": "Unsafe operating conditions",
+   "our_outline_ids": [
+    "core.ops.1"
+   ],
+   "skill_ids": [
+    "ops.manufacturer-procedures",
+    "ops.attention",
+    "ops.tag-out",
+    "ops.pre-start",
+    "ops.slack-rope",
+    "ops.rated-capacity",
+    "ops.obstructions",
+    "ops.free-fall",
+    "ops.counterweight",
+    "loadchart.counterweight",
+    "tech.stability-moments",
+    "tech.backward-stability",
+    "ops.control-malfunction",
+    "ops.overload-response",
+    "ops.fire-response"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": [
+    "tech.stability-moments",
+    "tech.backward-stability",
+    "ops.control-malfunction",
+    "ops.overload-response",
+    "ops.fire-response"
+   ]
+  },
+  {
+   "handbook_ref": "D2.2",
+   "handbook_item": "How to level the crane",
+   "our_outline_ids": [
+    "core.ops.2"
+   ],
+   "skill_ids": [
+    "site.leveling",
+    "devices.safety-devices",
+    "tech.boom-types",
+    "rules.b30-roles-and-language"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": [
+    "tech.boom-types",
+    "rules.b30-roles-and-language"
+   ]
+  },
+  {
+   "handbook_ref": "D2.3",
+   "handbook_item": "Verify load dimensions, weight and center of gravity",
+   "our_outline_ids": [
+    "core.ops.3"
+   ],
+   "skill_ids": [
+    "rigging.load-weight",
+    "loadchart.load-weight",
+    "rigging.center-of-gravity",
+    "lift-planning.basics",
+    "ops.rated-capacity",
+    "rigging.cg-calc"
+   ],
+   "coverage_before": "partial",
+   "coverage": "full",
+   "added_skills": [
+    "rigging.cg-calc"
+   ]
+  },
+  {
+   "handbook_ref": "D2.4",
+   "handbook_item": "Determine and/or verify the radius",
+   "our_outline_ids": [
+    "core.ops.4"
+   ],
+   "skill_ids": [
+    "ops.radius-verification",
+    "ops.boom-deflection",
+    "loadchart.range-diagram",
+    "devices.indicators"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D2.5a",
+   "handbook_item": "Travel",
+   "our_outline_ids": [
+    "core.ops.5"
+   ],
+   "skill_ids": [
+    "powerlines.travel"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D2.5b",
+   "handbook_item": "Operations",
+   "our_outline_ids": [
+    "core.ops.5"
+   ],
+   "skill_ids": [
+    "powerlines.work-zone",
+    "powerlines.twenty-foot-check",
+    "powerlines.options",
+    "powerlines.table-a",
+    "powerlines.over-350kv",
+    "powerlines.encroachment-measures",
+    "powerlines.dedicated-spotter",
+    "powerlines.voltage-and-energized",
+    "powerlines.closer-than-table-a"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D2.5c",
+   "handbook_item": "Assembly/disassembly",
+   "our_outline_ids": [
+    "core.ops.5"
+   ],
+   "skill_ids": [
+    "powerlines.assembly",
+    "powerlines.below-lines"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D2.6a",
+   "handbook_item": "Reeving",
+   "our_outline_ids": [
+    "core.ops.6"
+   ],
+   "skill_ids": [
+    "wire-rope.reeving",
+    "wire-rope.reeving-patterns"
+   ],
+   "coverage_before": "partial",
+   "coverage": "full",
+   "added_skills": [
+    "wire-rope.reeving-patterns"
+   ]
+  },
+  {
+   "handbook_ref": "D2.6b",
+   "handbook_item": "Parts of line",
+   "our_outline_ids": [
+    "core.ops.6"
+   ],
+   "skill_ids": [
+    "wire-rope.parts-of-line",
+    "loadchart.parts-of-line",
+    "wire-rope.drum-wraps",
+    "wire-rope.drum-and-sheaves"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": [
+    "wire-rope.drum-and-sheaves"
+   ]
+  },
+  {
+   "handbook_ref": "D2.7a",
+   "handbook_item": "Hand signals",
+   "our_outline_ids": [
+    "core.ops.7"
+   ],
+   "skill_ids": [
+    "signals.hand-signals"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D2.7b",
+   "handbook_item": "Voice signals",
+   "our_outline_ids": [
+    "core.ops.7"
+   ],
+   "skill_ids": [
+    "signals.voice",
+    "signals.radio"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D2.7c",
+   "handbook_item": "Audible signals",
+   "our_outline_ids": [
+    "core.ops.7"
+   ],
+   "skill_ids": [
+    "signals.types",
+    "signals.horn",
+    "signals.audible"
+   ],
+   "coverage_before": "partial",
+   "coverage": "full",
+   "added_skills": [
+    "signals.audible"
+   ]
+  },
+  {
+   "handbook_ref": "D2.7d",
+   "handbook_item": "New or non-standard signals",
+   "our_outline_ids": [
+    "core.ops.7"
+   ],
+   "skill_ids": [
+    "signals.types"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D2.8a",
+   "handbook_item": "Multi-crane lifts",
+   "our_outline_ids": [
+    "core.ops.8"
+   ],
+   "skill_ids": [
+    "lift-planning.multi-crane-plan",
+    "lift-planning.multi-crane-implement",
+    "lift-planning.load-sharing",
+    "signals.multiple-cranes",
+    "site.multiple-cranes-area"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D2.8b",
+   "handbook_item": "Suspended personnel platforms",
+   "our_outline_ids": [
+    "core.ops.8"
+   ],
+   "skill_ids": [
+    "personnel.when-allowed",
+    "personnel.equipment-criteria",
+    "personnel.platform-criteria",
+    "personnel.loading",
+    "personnel.rigging",
+    "personnel.trial-lift",
+    "personnel.proof-test",
+    "personnel.work-practices",
+    "personnel.pre-lift-meeting",
+    "personnel.special-cases"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D2.8c",
+   "handbook_item": "Duty cycle operations",
+   "our_outline_ids": [
+    "core.ops.8"
+   ],
+   "skill_ids": [
+    "ops.duty-cycle"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D2.8d",
+   "handbook_item": "Barge operations",
+   "our_outline_ids": [
+    "core.ops.8"
+   ],
+   "skill_ids": [
+    "ops.barge",
+    "other.floating"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D2.8e",
+   "handbook_item": "Multi-drum operations",
+   "our_outline_ids": [
+    "core.ops.8"
+   ],
+   "skill_ids": [
+    "ops.multi-drum"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D2.9",
+   "handbook_item": "Effects of lifting loads from beneath the surface of the water",
+   "our_outline_ids": [
+    "core.ops.9"
+   ],
+   "skill_ids": [
+    "ops.lifting-from-water"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D2.10",
+   "handbook_item": "Tag line uses",
+   "our_outline_ids": [
+    "core.ops.10"
+   ],
+   "skill_ids": [
+    "rigging.tag-lines",
+    "powerlines.encroachment-measures"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D2.11",
+   "handbook_item": "The fall zone",
+   "our_outline_ids": [
+    "core.ops.11"
+   ],
+   "skill_ids": [
+    "site.fall-zone",
+    "site.keeping-clear",
+    "lift-planning.tilt-up"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D2.12a",
+   "handbook_item": "Load moment indicator, load moment limiter, load weighing devices",
+   "our_outline_ids": [
+    "core.ops.12"
+   ],
+   "skill_ids": [
+    "devices.lmi",
+    "ops.not-a-substitute"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D2.12b",
+   "handbook_item": "Anti-two-block devices",
+   "our_outline_ids": [
+    "core.ops.12"
+   ],
+   "skill_ids": [
+    "devices.anti-two-block"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D2.12c",
+   "handbook_item": "Boom angle indicator",
+   "our_outline_ids": [
+    "core.ops.12"
+   ],
+   "skill_ids": [
+    "devices.indicators",
+    "devices.category-i"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D2.12d",
+   "handbook_item": "Wind indicator",
+   "our_outline_ids": [
+    "core.ops.12"
+   ],
+   "skill_ids": [
+    "weather.wind-indicator"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D2.12e",
+   "handbook_item": "Drum rotation indicators",
+   "our_outline_ids": [
+    "core.ops.12"
+   ],
+   "skill_ids": [
+    "devices.indicators"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D2.12f",
+   "handbook_item": "Radius indicators",
+   "our_outline_ids": [
+    "core.ops.12"
+   ],
+   "skill_ids": [
+    "devices.indicators"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D2.13",
+   "handbook_item": "Alternative operating procedures when operator aids malfunction",
+   "our_outline_ids": [
+    "core.ops.13"
+   ],
+   "skill_ids": [
+    "devices.category-i",
+    "devices.category-ii",
+    "devices.repair-deadlines"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D2.14a",
+   "handbook_item": "Horn",
+   "our_outline_ids": [
+    "core.ops.14"
+   ],
+   "skill_ids": [
+    "signals.horn",
+    "devices.safety-devices"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D2.14b",
+   "handbook_item": "Level indicator",
+   "our_outline_ids": [
+    "core.ops.14"
+   ],
+   "skill_ids": [
+    "site.leveling",
+    "devices.safety-devices"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D2.15a",
+   "handbook_item": "Electric power line contact",
+   "our_outline_ids": [
+    "core.ops.15"
+   ],
+   "skill_ids": [
+    "powerlines.contact-emergency"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D2.15b",
+   "handbook_item": "Control malfunction",
+   "our_outline_ids": [
+    "core.ops.15"
+   ],
+   "skill_ids": [
+    "ops.emergencies",
+    "ops.control-malfunction"
+   ],
+   "coverage_before": "partial",
+   "coverage": "full",
+   "added_skills": [
+    "ops.control-malfunction"
+   ]
+  },
+  {
+   "handbook_ref": "D2.15c",
+   "handbook_item": "Carrier or travel malfunction",
+   "our_outline_ids": [
+    "core.ops.15"
+   ],
+   "skill_ids": [
+    "ops.emergencies",
+    "ops.control-malfunction"
+   ],
+   "coverage_before": "partial",
+   "coverage": "full",
+   "added_skills": [
+    "ops.control-malfunction"
+   ]
+  },
+  {
+   "handbook_ref": "D2.15d",
+   "handbook_item": "Two-blocking",
+   "our_outline_ids": [
+    "core.ops.15"
+   ],
+   "skill_ids": [
+    "devices.two-blocking",
+    "ops.emergencies"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D2.15e",
+   "handbook_item": "Overloading",
+   "our_outline_ids": [
+    "core.ops.15"
+   ],
+   "skill_ids": [
+    "ops.rated-capacity",
+    "ops.emergencies",
+    "devices.lmi",
+    "tech.stability-moments",
+    "ops.overload-response"
+   ],
+   "coverage_before": "partial",
+   "coverage": "full",
+   "added_skills": [
+    "tech.stability-moments",
+    "ops.overload-response"
+   ]
+  },
+  {
+   "handbook_ref": "D2.15f",
+   "handbook_item": "Fires",
+   "our_outline_ids": [
+    "core.ops.15"
+   ],
+   "skill_ids": [
+    "ops.emergencies",
+    "ops.fire-response"
+   ],
+   "coverage_before": "partial",
+   "coverage": "full",
+   "added_skills": [
+    "ops.fire-response"
+   ]
+  },
+  {
+   "handbook_ref": "D2.16a",
+   "handbook_item": "Shock loading",
+   "our_outline_ids": [
+    "core.ops.16"
+   ],
+   "skill_ids": [
+    "ops.dynamic-loading"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D2.16b",
+   "handbook_item": "Rapidly moving loads (duty cycle)",
+   "our_outline_ids": [
+    "core.ops.16"
+   ],
+   "skill_ids": [
+    "ops.dynamic-loading",
+    "ops.duty-cycle",
+    "ops.swing-speed"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D2.16c",
+   "handbook_item": "Rapid loss of load",
+   "our_outline_ids": [
+    "core.ops.16"
+   ],
+   "skill_ids": [
+    "ops.dynamic-loading",
+    "ops.backward-stability",
+    "tech.stability-moments",
+    "tech.backward-stability"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": [
+    "tech.stability-moments",
+    "tech.backward-stability"
+   ]
+  },
+  {
+   "handbook_ref": "D2.16d",
+   "handbook_item": "Loss of backward stability",
+   "our_outline_ids": [
+    "core.ops.16"
+   ],
+   "skill_ids": [
+    "ops.backward-stability",
+    "assembly.specific-hazards",
+    "tech.stability-moments",
+    "tech.backward-stability"
+   ],
+   "coverage_before": "partial",
+   "coverage": "full",
+   "added_skills": [
+    "tech.stability-moments",
+    "tech.backward-stability"
+   ]
+  },
+  {
+   "handbook_ref": "D2.17",
+   "handbook_item": "Cause and effect of side loading",
+   "our_outline_ids": [
+    "core.ops.17"
+   ],
+   "skill_ids": [
+    "ops.side-loading",
+    "weather.wind-effects",
+    "ops.swing-speed"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D2.18",
+   "handbook_item": "Causes and effects of boom deflection",
+   "our_outline_ids": [
+    "core.ops.18"
+   ],
+   "skill_ids": [
+    "ops.boom-deflection"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D2.19",
+   "handbook_item": "Operating in weather (wind, temperature, wave action) and solutions",
+   "our_outline_ids": [
+    "core.ops.19"
+   ],
+   "skill_ids": [
+    "weather.competent-person",
+    "weather.storm-warning",
+    "weather.wind-effects",
+    "weather.wind-indicator",
+    "weather.lightning-temperature",
+    "ops.barge"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D2.20",
+   "handbook_item": "Manufacturer-approved attachments and their effect on operation",
+   "our_outline_ids": [
+    "core.ops.20"
+   ],
+   "skill_ids": [
+    "ops.attachments",
+    "technical.modifications",
+    "ops.manufacturer-procedures",
+    "loadchart.deductions",
+    "tech.boom-types"
+   ],
+   "coverage_before": "partial",
+   "coverage": "full",
+   "added_skills": [
+    "tech.boom-types"
+   ]
+  },
+  {
+   "handbook_ref": "D2.21",
+   "handbook_item": "Operator's authority to stop operations",
+   "our_outline_ids": [
+    "core.ops.21"
+   ],
+   "skill_ids": [
+    "roles.authority-to-stop",
+    "signals.one-signaler",
+    "rules.b30-roles-and-language"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": [
+    "rules.b30-roles-and-language"
+   ]
+  },
+  {
+   "handbook_ref": "D2.22",
+   "handbook_item": "Shutdown to secure the crane when unattended",
+   "our_outline_ids": [
+    "core.ops.22"
+   ],
+   "skill_ids": [
+    "ops.unattended",
+    "ops.shutdown"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D3.1",
+   "handbook_item": "Federal regulations and industry standards (ASME B30.5, B30.10, OSHA 1910.180, 1926 Subpart CC)",
+   "our_outline_ids": [
+    "core.tech.1"
+   ],
+   "skill_ids": [
+    "rules.scope",
+    "rules.exclusions",
+    "rules.construction-vs-general",
+    "rules.standards",
+    "other.mobile-general-industry",
+    "roles.operator-certification",
+    "loadchart.rated-capacity-rules",
+    "tech.gauges",
+    "rules.b30-roles-and-language"
+   ],
+   "coverage_before": "partial",
+   "coverage": "full",
+   "added_skills": [
+    "tech.gauges",
+    "rules.b30-roles-and-language"
+   ]
+  },
+  {
+   "handbook_ref": "D3.2",
+   "handbook_item": "Basic crane terminology and definitions",
+   "our_outline_ids": [
+    "core.tech.2"
+   ],
+   "skill_ids": [
+    "rules.definitions",
+    "technical.components",
+    "roles.competent-vs-qualified",
+    "tech.boom-types"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": [
+    "tech.boom-types"
+   ]
+  },
+  {
+   "handbook_ref": "D3.3",
+   "handbook_item": "Functions and limitations of cranes and attachments",
+   "our_outline_ids": [
+    "core.tech.3"
+   ],
+   "skill_ids": [
+    "technical.crane-types",
+    "technical.hydraulics",
+    "technical.modifications",
+    "tech.stability-moments",
+    "tech.tipping-axis",
+    "tech.boom-types"
+   ],
+   "coverage_before": "partial",
+   "coverage": "full",
+   "added_skills": [
+    "tech.stability-moments",
+    "tech.tipping-axis",
+    "tech.boom-types"
+   ]
+  },
+  {
+   "handbook_ref": "D3.4a",
+   "handbook_item": "Shift inspections",
+   "our_outline_ids": [
+    "core.tech.4"
+   ],
+   "skill_ids": [
+    "inspections.shift",
+    "wire-rope.shift-inspection"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D3.4b",
+   "handbook_item": "Monthly inspections",
+   "our_outline_ids": [
+    "core.tech.4"
+   ],
+   "skill_ids": [
+    "inspections.monthly",
+    "wire-rope.monthly-annual"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D3.4c",
+   "handbook_item": "Notifying supervision of inspection deficiencies (monthly, annual)",
+   "our_outline_ids": [
+    "core.tech.4"
+   ],
+   "skill_ids": [
+    "inspections.deficiencies",
+    "inspections.documentation",
+    "ops.repairs-needed",
+    "inspections.annual"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D3.5",
+   "handbook_item": "Rigging devices and their use (slings, softeners, lifting beams, shackles)",
+   "our_outline_ids": [
+    "core.tech.5"
+   ],
+   "skill_ids": [
+    "rigging.hitches",
+    "rigging.sling-angle",
+    "rigging.multi-leg",
+    "rigging.d-over-d",
+    "rigging.hardware",
+    "rigging.safe-practices",
+    "rigging.softeners",
+    "rigging.sling-inspection",
+    "rigging.chain-slings",
+    "rigging.wire-rope-slings",
+    "rigging.synthetic-slings",
+    "rigging.qualified-rigger",
+    "rigging.cg-calc"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": [
+    "rigging.cg-calc"
+   ]
+  },
+  {
+   "handbook_ref": "D3.6",
+   "handbook_item": "Termination of wire rope",
+   "our_outline_ids": [
+    "core.tech.6"
+   ],
+   "skill_ids": [
+    "wire-rope.terminations",
+    "wire-rope.clip-count"
+   ],
+   "coverage_before": "partial",
+   "coverage": "full",
+   "added_skills": [
+    "wire-rope.clip-count"
+   ]
+  },
+  {
+   "handbook_ref": "D3.7",
+   "handbook_item": "Proper use of hook blocks and overhaul balls",
+   "our_outline_ids": [
+    "core.tech.7"
+   ],
+   "skill_ids": [
+    "rigging.hook-blocks",
+    "inspections.hooks",
+    "tech.hook-block-selection"
+   ],
+   "coverage_before": "partial",
+   "coverage": "full",
+   "added_skills": [
+    "tech.hook-block-selection"
+   ]
+  },
+  {
+   "handbook_ref": "D3.8a",
+   "handbook_item": "Types and designations and their application",
+   "our_outline_ids": [
+    "core.tech.8"
+   ],
+   "skill_ids": [
+    "wire-rope.construction",
+    "wire-rope.rotation-resistant",
+    "wire-rope.designations",
+    "wire-rope.drum-and-sheaves"
+   ],
+   "coverage_before": "partial",
+   "coverage": "full",
+   "added_skills": [
+    "wire-rope.designations",
+    "wire-rope.drum-and-sheaves"
+   ]
+  },
+  {
+   "handbook_ref": "D3.8b",
+   "handbook_item": "Replacement criteria and inspection of running ropes",
+   "our_outline_ids": [
+    "core.tech.8"
+   ],
+   "skill_ids": [
+    "wire-rope.removal-criteria",
+    "wire-rope.shift-inspection",
+    "wire-rope.monthly-annual",
+    "wire-rope.drum-and-sheaves"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": [
+    "wire-rope.drum-and-sheaves"
+   ]
+  },
+  {
+   "handbook_ref": "D3.8c",
+   "handbook_item": "Maintenance and lubrication",
+   "our_outline_ids": [
+    "core.tech.8"
+   ],
+   "skill_ids": [
+    "wire-rope.lubrication",
+    "wire-rope.drum-and-sheaves"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": [
+    "wire-rope.drum-and-sheaves"
+   ]
+  },
+  {
+   "handbook_ref": "D3.9",
+   "handbook_item": "Protective measures against electrical hazards and their limitations",
+   "our_outline_ids": [
+    "core.tech.9"
+   ],
+   "skill_ids": [
+    "powerlines.protective-limits",
+    "powerlines.encroachment-measures",
+    "powerlines.table-a",
+    "powerlines.towers",
+    "powerlines.training"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D3.10",
+   "handbook_item": "Significance of instrument and gauge readings",
+   "our_outline_ids": [
+    "core.tech.10"
+   ],
+   "skill_ids": [
+    "technical.instruments",
+    "devices.indicators",
+    "tech.gauges",
+    "rules.b30-roles-and-language"
+   ],
+   "coverage_before": "partial",
+   "coverage": "full",
+   "added_skills": [
+    "tech.gauges",
+    "rules.b30-roles-and-language"
+   ]
+  },
+  {
+   "handbook_ref": "D3.11",
+   "handbook_item": "Fall protection during assembly/disassembly/maintenance",
+   "our_outline_ids": [
+    "core.tech.11"
+   ],
+   "skill_ids": [
+    "assembly.fall-protection",
+    "access.maintenance",
+    "rules.b30-roles-and-language"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": [
+    "rules.b30-roles-and-language"
+   ]
+  },
+  {
+   "handbook_ref": "D3.12",
+   "handbook_item": "Access and egress of the crane",
+   "our_outline_ids": [
+    "core.tech.12"
+   ],
+   "skill_ids": [
+    "access.walkways-steps",
+    "rules.b30-roles-and-language"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": [
+    "rules.b30-roles-and-language"
+   ]
+  },
+  {
+   "handbook_ref": "D3.13",
+   "handbook_item": "Personnel safety during crane inspections",
+   "our_outline_ids": [
+    "core.tech.13"
+   ],
+   "skill_ids": [
+    "inspections.personnel-safety",
+    "roles.maintenance-operators",
+    "access.maintenance",
+    "rules.b30-roles-and-language"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": [
+    "rules.b30-roles-and-language"
+   ]
+  },
+  {
+   "handbook_ref": "D3.14",
+   "handbook_item": "Fall protection requirements",
+   "our_outline_ids": [
+    "core.tech.14"
+   ],
+   "skill_ids": [
+    "access.fall-protection-thresholds",
+    "access.anchorages",
+    "rules.b30-roles-and-language"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": [
+    "rules.b30-roles-and-language"
+   ]
+  },
+  {
+   "handbook_ref": "D3.15",
+   "handbook_item": "Access and egress requirements",
+   "our_outline_ids": [
+    "core.tech.15"
+   ],
+   "skill_ids": [
+    "access.walkways-steps",
+    "rules.b30-roles-and-language"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": [
+    "rules.b30-roles-and-language"
+   ]
+  },
+  {
+   "handbook_ref": "D4.1",
+   "handbook_item": "Terminology needed to use load charts",
+   "our_outline_ids": [
+    "core.lc.1"
+   ],
+   "skill_ids": [
+    "loadchart.terminology"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D4.2",
+   "handbook_item": "Read, write, comprehend and use arithmetic",
+   "our_outline_ids": [
+    "core.lc.2"
+   ],
+   "skill_ids": [
+    "loadchart.percent-capacity",
+    "loadchart.net-capacity",
+    "loadchart.load-weight",
+    "rigging.sling-angle",
+    "site.ground-bearing",
+    "loadchart.arithmetic"
+   ],
+   "coverage_before": "partial",
+   "coverage": "full",
+   "added_skills": [
+    "loadchart.arithmetic"
+   ]
+  },
+  {
+   "handbook_ref": "D4.3",
+   "handbook_item": "Select the appropriate load chart for the machine and application",
+   "our_outline_ids": [
+    "core.lc.3"
+   ],
+   "skill_ids": [
+    "loadchart.configuration",
+    "loadchart.chart-in-cab"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D4.4a",
+   "handbook_item": "Rated capacity chart",
+   "our_outline_ids": [
+    "core.lc.4"
+   ],
+   "skill_ids": [
+    "loadchart.read-gross",
+    "loadchart.radius-between-rows",
+    "loadchart.boom-between-columns",
+    "loadchart.net-capacity",
+    "loadchart.deductions",
+    "loadchart.structural-vs-stability"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D4.4b",
+   "handbook_item": "Range diagram",
+   "our_outline_ids": [
+    "core.lc.4"
+   ],
+   "skill_ids": [
+    "loadchart.range-diagram"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": []
+  },
+  {
+   "handbook_ref": "D4.4c",
+   "handbook_item": "Work area chart",
+   "our_outline_ids": [
+    "core.lc.4"
+   ],
+   "skill_ids": [
+    "loadchart.quadrants",
+    "tech.tipping-axis",
+    "loadchart.work-area-diagram"
+   ],
+   "coverage_before": "partial",
+   "coverage": "full",
+   "added_skills": [
+    "tech.tipping-axis",
+    "loadchart.work-area-diagram"
+   ]
+  },
+  {
+   "handbook_ref": "D4.4d",
+   "handbook_item": "Parts-of-line information",
+   "our_outline_ids": [
+    "core.lc.4"
+   ],
+   "skill_ids": [
+    "loadchart.parts-of-line",
+    "wire-rope.parts-of-line",
+    "wire-rope.drum-and-sheaves"
+   ],
+   "coverage_before": "full",
+   "coverage": "full",
+   "added_skills": [
+    "wire-rope.drum-and-sheaves"
+   ]
+  },
+  {
+   "handbook_ref": "D4.4e",
+   "handbook_item": "Maximum/minimum boom angle information",
+   "our_outline_ids": [
+    "core.lc.4"
+   ],
+   "skill_ids": [
+    "loadchart.range-diagram",
+    "loadchart.chart-notes",
+    "loadchart.boom-angle-limits"
+   ],
+   "coverage_before": "partial",
+   "coverage": "full",
+   "added_skills": [
+    "loadchart.boom-angle-limits"
+   ]
+  },
+  {
+   "handbook_ref": "D4.5",
+   "handbook_item": "Optimizing configuration",
+   "our_outline_ids": [
+    "core.lc.5"
+   ],
+   "skill_ids": [
+    "loadchart.configuration",
+    "loadchart.counterweight",
+    "tech.stability-moments",
+    "loadchart.optimize-configuration"
+   ],
+   "coverage_before": "partial",
+   "coverage": "full",
+   "added_skills": [
+    "tech.stability-moments",
+    "loadchart.optimize-configuration"
+   ]
+  }
+ ]
+}
