@@ -13,7 +13,7 @@
     "tsc": "tsc --noEmit",
     "test": "node --experimental-strip-types --no-warnings=ExperimentalWarning --test \"src/**/*.test.ts\"",
     "test:ui": "node scripts/verify-ui.mjs",
-    "fixture": "node scripts/build-fixture.mjs",
+    "fixture": "node --experimental-strip-types --no-warnings=ExperimentalWarning scripts/build-fixture.mjs",
     "tauri": "tauri"
   },
   "dependencies": {

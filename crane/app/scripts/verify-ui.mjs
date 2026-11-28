@@ -367,6 +367,34 @@ try {
     await page.getByRole("button", { name: "Next question" }).click();
     await choices.first().waitFor();
     assert.equal(await choices.first().isDisabled(), false);
+    // Feedback is real reasons, never filler: a wrong answer says why it is wrong and why the key is right;
+    // a right answer says why, once. Alternate wrong and right over several items.
+    for (let n = 0; n < 8; n++) {
+      await choices.first().waitFor();
+      const pick = n % 2 === 0 ? 0 : (await choices.count()) - 1;
+      await choices.nth(pick).click();
+      const panel = page.locator(".practice-feedback");
+      await panel.waitFor();
+      const verdict = await panel.locator("h3").innerText();
+      const reasons = await panel.locator(".feedback-why p:last-child").allInnerTexts();
+      for (const r of reasons) {
+        assert.ok(r.trim().split(/\s+/).length >= 5, `feedback reason too short: "${r}"`);
+        assert.doesNotMatch(r, /^(correct|incorrect)\b/i, `feedback reason restates the verdict: "${r}"`);
+      }
+      if (verdict === "Correct") {
+        assert.equal(reasons.length, 1, "a right answer gets one reason");
+        assert.equal(await panel.getByText(/^Why( not)? “/).count(), 0);
+      } else {
+        assert.equal(verdict, "Not this one");
+        assert.equal(reasons.length, 2, "a wrong answer gets why-not and why");
+        assert.equal(await panel.getByText(/^Why not “/).count(), 1);
+        assert.equal(await panel.getByText(/^Why “/).count(), 1);
+        assert.notEqual(reasons[0], reasons[1]);
+      }
+      if (n === 0) await page.screenshot({ path: path.join(out, "flow-practice-feedback-reasons.png"), fullPage: true });
+      await page.getByRole("button", { name: "Next question" }).click();
+      checks++;
+    }
     await context.close();
     checks++;
   }
