@@ -114,7 +114,7 @@ pub const SECTIONS: &[Sec] = &[
         "step",
         "Table 3-1, Question 1",
         None,
-        "Is the battery switch ON and is the 15 A start fuse F2 good? TEST OPTIONS: Look at the switch. Pull F2 and check it with the multimeter. REASON FOR QUESTION: A switch left OFF or a blown fuse stops all cranking current. KNOWN INFO: The engine does not crank. POSSIBLE PROBLEMS: Battery switch off. Start fuse F2 blown. Battery discharged. Starter relay K1 failed. If NO: Turn the battery switch ON or replace fuse F2, then try to start. Does the engine crank now?",
+        "Is the battery switch ON and is the 15 A start fuse F2 good? TEST OPTIONS: Look at the switch. Pull F2 and check it with the multimeter. REASON FOR QUESTION: A switch left OFF or a blown fuse stops all cranking current. KNOWN INFO: The engine does not crank. POSSIBLE PROBLEMS: Battery switch off. Start fuse F2 blown. Battery discharged. Starter relay K1 failed. If NO: Turn the battery switch ON or replace fuse F2, then try to start. Does the engine crank now? If it cranks but the temperature lamp comes on: go to Table 3-2, question 1.",
         Some("3-2"),
         None,
     ),
@@ -185,7 +185,7 @@ pub const SECTIONS: &[Sec] = &[
         "table",
         "Table 3-2, Codes",
         Some("Fault codes"),
-        "Code SPN 110 FMI 0: engine coolant temperature above the shutdown limit. Code E21: motor winding temperature high. Code SPN 168 FMI 1: battery voltage below the cranking limit.",
+        "Code SPN 110 FMI 0: engine coolant temperature above the shutdown limit. Code E21: motor winding temperature high. Code SPN 168 FMI 1: battery voltage below the cranking limit. Code E40: suction pressure below the warning limit.",
         Some("3-4"),
         None,
     ),
@@ -477,8 +477,18 @@ pub const NODES: &[Node] = &[
         "action",
         "Turn the battery switch ON or replace fuse F2, then try to start. Does the engine crank now?",
         "m40.3-1.q1",
-        Some(r#"{"kind":"yes_no"}"#),
+        Some(r#"{"kind":"choice","options":["Cranks","Temperature lamp on","Does not crank"]}"#),
         None,
+        None,
+    ),
+    (
+        "nc.1g",
+        "t-nocrank",
+        "goto",
+        "go to Table 3-2, question 1.",
+        "m40.3-1.q1",
+        None,
+        Some("tree:t-hot#oh.1"),
         None,
     ),
     (
@@ -658,8 +668,9 @@ pub const EDGES: &[Edge] = &[
     ("nc.0", 1, "Continue", None, "nc.1", false),
     ("nc.1", 1, "Yes", None, "nc.2", false),
     ("nc.1", 2, "No", None, "nc.1a", false),
-    ("nc.1a", 1, "Yes", None, "nc.end", false),
-    ("nc.1a", 2, "No", None, "nc.2", false),
+    ("nc.1a", 1, "Cranks", None, "nc.end", false),
+    ("nc.1a", 2, "Temperature lamp on", None, "nc.1g", false),
+    ("nc.1a", 3, "Does not crank", None, "nc.2", false),
     (
         "nc.2",
         1,
@@ -695,6 +706,14 @@ pub const EDGES: &[Edge] = &[
     ("oh.2", 1, "Tight", None, "oh.2t", false),
     ("oh.2", 2, "Loose", None, "oh.2l", false),
     ("oh.2", 3, "Broken", None, "oh.2b", false),
+];
+
+/// Printed cross-references, verbatim: (node, reference). The second names
+/// nothing this pack holds, so the node keeps the text and no target.
+pub const REFERENCES: &[(&str, &str)] = &[
+    ("nc.2a", "Refer to task 4-3."),
+    ("nc.3n", "Refer to field maintenance for wiring repair."),
+    ("nc.1g", "go to Table 3-2, question 1."),
 ];
 
 /// Facets: (node, facet, ord, text, section).
@@ -1081,7 +1100,7 @@ fn populate(conn: &Connection, version: &str) -> Result<()> {
         INSERT INTO requirement VALUES ('fault_tree', 't-nocrank', 1, 'condition', 'Pump stopped, start key removed.', NULL, NULL, 'm40.3-1.setup', 'prov-pump40');
         INSERT INTO requirement VALUES ('fault_tree', 't-nocrank', 2, 'tool', 'Digital multimeter', NULL, NULL, 'm40.3-1.setup', 'prov-pump40');
         INSERT INTO requirement VALUES ('fault_tree', 't-nocrank', 3, 'tool', 'relay tester', NULL, NULL, 'm40.3-1.setup', 'prov-pump40');
-        INSERT INTO requirement VALUES ('fault_tree', 't-nocrank', 4, 'reference', 'Wiring diagram, Figure 3-1.', 'Figure 3-1', NULL, 'm40.3-1.setup', 'prov-pump40');
+        INSERT INTO requirement VALUES ('fault_tree', 't-nocrank', 4, 'reference', 'Wiring diagram, Figure 3-1.', NULL, NULL, 'm40.3-1.setup', 'prov-pump40');
         INSERT INTO requirement VALUES ('fault_tree', 't-nocrank', 5, 'personnel', 'One technician.', NULL, '1', 'm40.3-1.setup', 'prov-pump40');
         INSERT INTO requirement VALUES ('fault_node', 'nc.4', 1, 'tool', 'relay tester', NULL, NULL, 'm40.3-1.q4', 'prov-pump40');
         INSERT INTO requirement VALUES ('procedure', 'proc-battery', 1, 'tool', '10 mm wrench', NULL, NULL, 'm40.4-3.req', 'prov-pump40');
@@ -1099,6 +1118,7 @@ fn populate(conn: &Connection, version: &str) -> Result<()> {
         INSERT INTO signal_map VALUES ('j1939.dm1', 'glob:spn:110/fmi:*', 'Engine coolant temperature fault', 't-hot', NULL, 'm40.3-2.codes', NULL, 'prov-pump40');
         INSERT INTO signal_map VALUES ('pump40.code', 'E21', 'Motor winding temperature high', 't-hot', 'oh.1', 'm40.3-2.codes', 'Code E21: motor winding temperature high.', 'prov-pump40');
         INSERT INTO signal_map VALUES ('j1939.dm1', 'spn:168/fmi:1', 'Battery voltage low', 't-nocrank', 'nc.2', 'm40.3-2.codes', 'Code SPN 168 FMI 1: battery voltage below the cranking limit.', 'prov-pump40');
+        INSERT INTO signal_map VALUES ('pump40.code', 'E40', 'Suction pressure low', NULL, NULL, 'm40.3-2.codes', 'Code E40: suction pressure below the warning limit.', 'prov-pump40');
         INSERT INTO history VALUES ('h-relay-2026', 'pump40-diesel', 'starting', '2026-02-10', 'Starter relay K1 replaced on three units after no-crank reports.', NULL, '{"units":3}');
         INSERT INTO history VALUES ('h-strainer-2025', 'pump40', 'cooling', '2025-11-03', 'Intake strainers found clogged after a flood response; cleaning interval shortened.', NULL, '{}');
         INSERT INTO history VALUES ('h-winding-2025', 'pump40-electric', 'cooling', '2025-08-21', 'Motor winding temperature code E21 cleared after the motor fan cover was cleaned.', NULL, '{}');
@@ -1120,9 +1140,12 @@ fn populate(conn: &Connection, version: &str) -> Result<()> {
         "#,
     )?;
     for (id, tree, kind, text, section, expect, target, proc_id) in NODES {
+        let reference = REFERENCES.iter().find(|(n, _)| n == id).map(|(_, r)| *r);
         conn.execute(
-            "INSERT INTO fault_node VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, 'en', ?9)",
-            params![id, tree, kind, text, section, expect, target, proc_id, PROV],
+            "INSERT INTO fault_node (node_id, tree_id, kind, text, section_id, expect, target, proc_id,
+                                     lang, prov_id, reference)
+             VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, 'en', ?9, ?10)",
+            params![id, tree, kind, text, section, expect, target, proc_id, PROV, reference],
         )?;
     }
     for (from, ord, label, cond, to, retry) in EDGES {
@@ -1140,14 +1163,18 @@ fn populate(conn: &Connection, version: &str) -> Result<()> {
     Ok(())
 }
 
-/// `3-2` → 302: a stable sort index for a chapter-page label.
+/// The fictional manual's physical pages, in file order: the printed
+/// label of each (CONTRACT: `page_index` is 1-based in the source file).
+const PAGES: &[&str] = &[
+    "1-1", "3-1", "3-2", "3-3", "3-4", "3-5", "4-1", "4-2", "4-3", "4-4",
+];
+
+/// The 1-based physical page of a printed label.
 fn page_index(label: &str) -> i64 {
-    let mut parts = label.split('-').filter_map(|p| p.parse::<i64>().ok());
-    match (parts.next(), parts.next()) {
-        (Some(c), Some(p)) => c * 100 + p,
-        (Some(p), None) => p,
-        _ => 0,
-    }
+    PAGES
+        .iter()
+        .position(|p| *p == label)
+        .map_or(0, |i| i as i64 + 1)
 }
 
 /// A field-note bundle (`harvest-field/1`) for the fixture pack, signed with

@@ -208,7 +208,7 @@ jobs:
           # job below skips its steps cleanly until its directory exists.
           set_output crane_app '^(crane/(app|content)/|harvest/(practice|core|pipeline)/|harvest/CONTRACT\.md$|corpan/plugins/|amp/(browser-security\.mjs|scripts/(install-browser\.mjs|configure-browser-sandbox\.sh))$)'
           set_output crane_native '^(crane/app/src-tauri/|harvest/core/|corpan/plugins/|corpan/corpan-app/src-tauri/vendor/|homeschool-offline/app/src-tauri/plugins/tauri-plugin-ios-share/)'
-          set_output harvest_core '^(harvest/(core|api)/)'
+          set_output harvest_core '^(harvest/(core|api|sim)/)'
           set_output harvest_pipeline '^(harvest/pipeline/)'
           set_output harvest_practice '^(harvest/practice/)'
           # The crane pack: built from its content with the pipeline, read back with the core.
@@ -418,7 +418,7 @@ jobs:
           # app compiles all of them). `.github/workflows/ios-native.yml`
           # additionally compiles their Swift, but it is advisory and does not
           # count here.
-          covered='^(amp/|corpan/corpan-app/|corpan/dja/|corpan/infra/terraform/lambda/|corpan/packs/|corpan/infra/terraform/.*(\.tf|\.tfvars|\.tf\.json)$|corpan/infra/terraform/\.terraform\.lock\.hcl$|web/(io|data|pages|scripts)/|corpan/plugins/|dynawalla/dynawalla-app/|dynawalla/(curriculum|engine|games|packs)/|crane/app/|crane/content/|harvest/(core|pipeline|practice)/)'
+          covered='^(amp/|corpan/corpan-app/|corpan/dja/|corpan/infra/terraform/lambda/|corpan/packs/|corpan/infra/terraform/.*(\.tf|\.tfvars|\.tf\.json)$|corpan/infra/terraform/\.terraform\.lock\.hcl$|web/(io|data|pages|scripts)/|corpan/plugins/|dynawalla/dynawalla-app/|dynawalla/(curriculum|engine|games|packs)/|crane/app/|crane/content/|harvest/(core|pipeline|practice|api|sim)/)'
 
           # Carve-outs checked BEFORE `covered`, because a broader area prefix
           # would otherwise swallow them. grep -E has no negative lookahead,

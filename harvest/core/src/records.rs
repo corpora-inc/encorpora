@@ -183,6 +183,14 @@ pub struct SyncState {
     pub last_attempt_at: Option<String>,
     pub last_attempt_ok: Option<bool>,
     pub last_error: Option<String>,
+    /// Whether the hub answered at all on the last attempt (a refusal is an
+    /// answer).
+    pub reachable: Option<bool>,
+    /// Why the hub refused this device on the last hello.
+    pub refused: Option<sync::Refusal>,
+    /// No upload is attempted before this time (backing off after a
+    /// refusal).
+    pub backoff_until: Option<String>,
 }
 
 /// The run report format id.
@@ -293,6 +301,15 @@ const KEY_CHECK: &str = "harvest-records-v1";
 
 static COUNTER: AtomicU64 = AtomicU64::new(0);
 
+thread_local! {
+    static SIM_COUNTER: std::cell::Cell<u64> = const { std::cell::Cell::new(0) };
+}
+
+/// Restart the id sequence of a virtual-clock run (simulations only).
+pub fn reset_sim_ids() {
+    SIM_COUNTER.with(|c| c.set(0));
+}
+
 /// A fresh, unguessable-enough local id: SHA-256 over the parts, the clock
 /// and a process counter, 32 hex.
 pub(crate) fn new_id(prefix: &str, parts: &[&str]) -> String {
@@ -301,12 +318,29 @@ pub(crate) fn new_id(prefix: &str, parts: &[&str]) -> String {
         h.update(p.as_bytes());
         h.update([0]);
     }
-    let t = std::time::SystemTime::now()
-        .duration_since(std::time::UNIX_EPOCH)
-        .unwrap_or_default();
-    h.update(t.as_nanos().to_le_bytes());
-    h.update(COUNTER.fetch_add(1, Ordering::Relaxed).to_le_bytes());
-    h.update(std::process::id().to_le_bytes());
+    match crate::audit::virtual_now_ms() {
+        // On a virtual clock (a simulation) ids repeat run for run.
+        Some(ms) => {
+            h.update(ms.to_le_bytes());
+            h.update(
+                SIM_COUNTER
+                    .with(|c| {
+                        let n = c.get();
+                        c.set(n + 1);
+                        n
+                    })
+                    .to_le_bytes(),
+            );
+        }
+        None => {
+            let t = std::time::SystemTime::now()
+                .duration_since(std::time::UNIX_EPOCH)
+                .unwrap_or_default();
+            h.update(t.as_nanos().to_le_bytes());
+            h.update(COUNTER.fetch_add(1, Ordering::Relaxed).to_le_bytes());
+            h.update(std::process::id().to_le_bytes());
+        }
+    }
     format!("{prefix}-{}", &hex_encode(&h.finalize())[..32])
 }
 
@@ -342,6 +376,7 @@ impl Records {
         conn.busy_timeout(std::time::Duration::from_secs(5))?;
         conn.execute_batch(DDL)?;
         conn.execute_batch(maint::DDL)?;
+        maint::migrate(&conn)?;
         crate::audit::init(&conn)?;
         sync::init(&conn)?;
         let mode: Option<String> = conn
@@ -433,15 +468,20 @@ impl Records {
         // Remember how the last attempt went (never a live probe).
         let state = match &out {
             Ok(r) => {
-                serde_json::json!({"at": now_rfc3339(), "ok": r.error.is_none(), "error": r.error})
+                serde_json::json!({"at": now_rfc3339(), "ok": r.error.is_none(), "reachable": r.error.is_none(), "error": r.error})
             }
-            Err(e) => serde_json::json!({"at": now_rfc3339(), "ok": false, "error": e.to_string()}),
+            Err(e) => {
+                serde_json::json!({"at": now_rfc3339(), "ok": false, "reachable": false, "error": e.to_string()})
+            }
         };
-        self.conn.execute(
+        // The flush's own result wins; failing to note it is only logged.
+        if let Err(e) = self.conn.execute(
             "INSERT INTO records_meta (key, value) VALUES ('sync_last_attempt', ?1)
              ON CONFLICT (key) DO UPDATE SET value = excluded.value",
             [state.to_string()],
-        )?;
+        ) {
+            eprintln!("harvest: could not note the sync attempt: {e}");
+        }
         out
     }
 
@@ -461,11 +501,17 @@ impl Records {
             .optional()?;
         let last: Option<serde_json::Value> = last.and_then(|l| serde_json::from_str(&l).ok());
         let get = |k: &str| last.as_ref().and_then(|v| v.get(k)).cloned();
+        let gate = maint::HubGate::load(&self.conn)?;
         Ok(SyncState {
             last_synced_at,
             last_attempt_at: get("at").and_then(|v| v.as_str().map(str::to_string)),
             last_attempt_ok: get("ok").and_then(|v| v.as_bool()),
             last_error: get("error").and_then(|v| v.as_str().map(str::to_string)),
+            reachable: get("reachable")
+                .and_then(|v| v.as_bool())
+                .or(get("ok").and_then(|v| v.as_bool())),
+            refused: gate.refused,
+            backoff_until: gate.next_try_at,
         })
     }
 
@@ -1000,9 +1046,15 @@ fn validate(step: &ProcStep, input: &StepInput) -> Result<()> {
         }
     };
     if !ok {
+        let send = match step.check_kind.as_str() {
+            "pass_fail" => "outcome pass, fail or na",
+            "value" => "outcome value with a non-empty value (or na)",
+            "note" => "outcome note with a non-empty note (or na)",
+            _ => "outcome photo with at least one photo (or na)",
+        };
         return Err(Error::Invalid(format!(
-            "step {} expects {} (with its value, note or photo), got {:?}",
-            step.ord, step.check_kind, input.outcome
+            "step {} is a {} step: send {send}",
+            step.ord, step.check_kind
         )));
     }
     for p in &input.photos {

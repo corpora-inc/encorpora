@@ -1,0 +1,5 @@
+# Constructed from SAE J1587 PID 194 and J1708 framing; not a capture from a vehicle.
+# MID 128 (engine): road speed, then PID 110 FMI 0 active (3 times) and SID 20 FMI 3 previously active.
+80 54 40 C2 05 6E 80 03 14 63 BD
+# MID 130 (transmission): PID 177 FMI 4 active.
+82 C2 02 B1 04 05

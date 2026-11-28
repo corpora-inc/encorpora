@@ -107,6 +107,20 @@ pub struct SignalHit {
     pub rule: SignalRule,
     /// The rule's section citation, when it cites one.
     pub citation: Option<String>,
+    /// The cited section's verbatim text. For a rule with no tree this is
+    /// all the manual says (a cause with no corrective action).
+    pub section: Option<SignalSection>,
+    /// False when the rule leads to no troubleshooting tree.
+    pub has_tree: bool,
+}
+
+/// The manual text a signal rule cites.
+#[derive(Debug, Clone, Serialize, Deserialize, JsonSchema, PartialEq)]
+pub struct SignalSection {
+    pub section_id: String,
+    pub citation: String,
+    pub heading: Option<String>,
+    pub text: String,
 }
 
 /// Where the signals suggest starting.
@@ -123,7 +137,8 @@ pub struct SignalMatch {
     /// Most specific first: exact, glob, prefix, regex; then observation order.
     pub hits: Vec<SignalHit>,
     pub suggested: Option<EntryPoint>,
-    /// True when the hits lead to more than one tree.
+    /// True when the hits lead to more than one tree (rules with no tree
+    /// do not count).
     pub ambiguous: bool,
     /// Observations no rule matched.
     pub unmatched: Vec<Observation>,
@@ -146,14 +161,22 @@ pub fn signal_match(
                 .as_deref()
                 .is_none_or(|k| fold(&r.signal_kind) == fold(k))
         }) {
-            if !trees.iter().any(|t| t.tree_id == r.tree_id) {
+            let applies = match &r.tree_id {
+                Some(tree) => trees.iter().any(|t| &t.tree_id == tree),
+                // No tree: the cited section must apply to the equipment.
+                None => match &r.section_id {
+                    Some(sid) => pack.applies(&pack.section_applies_to(sid)?, equip),
+                    None => false,
+                },
+            };
+            if !applies {
                 continue;
             }
             match pattern_matches(&r.pattern, &o.value) {
                 Ok(Some(kind)) => {
                     any = true;
-                    let citation = match &r.section_id {
-                        Some(s) => pack.section(s)?.map(|s| s.citation),
+                    let sec = match &r.section_id {
+                        Some(s) => pack.section(s)?,
                         None => None,
                     };
                     hits.push((
@@ -162,7 +185,14 @@ pub fn signal_match(
                             observed: o.clone(),
                             matched: kind,
                             rule: r.clone(),
-                            citation,
+                            citation: sec.as_ref().map(|s| s.citation.clone()),
+                            section: sec.map(|s| SignalSection {
+                                section_id: s.section_id,
+                                citation: s.citation,
+                                heading: s.heading,
+                                text: s.text,
+                            }),
+                            has_tree: r.tree_id.is_some(),
                         },
                     ));
                 }
@@ -184,16 +214,23 @@ pub fn signal_match(
             .then_with(|| a.1.rule.pattern.cmp(&b.1.rule.pattern))
     });
     let hits: Vec<SignalHit> = hits.into_iter().map(|(_, h)| h).collect();
-    let tree_set: BTreeSet<&str> = hits.iter().map(|h| h.rule.tree_id.as_str()).collect();
-    let suggested = hits.first().map(|h| EntryPoint {
-        tree_id: h.rule.tree_id.clone(),
-        node_id: h.rule.node_id.clone().unwrap_or_else(|| {
-            trees
-                .iter()
-                .find(|t| t.tree_id == h.rule.tree_id)
-                .map(|t| t.entry_node.clone())
-                .unwrap_or_default()
-        }),
+    let tree_set: BTreeSet<&str> = hits
+        .iter()
+        .filter_map(|h| h.rule.tree_id.as_deref())
+        .collect();
+    // Only a rule with a tree suggests where to start.
+    let suggested = hits.iter().find_map(|h| {
+        let tree_id = h.rule.tree_id.clone()?;
+        Some(EntryPoint {
+            node_id: h.rule.node_id.clone().unwrap_or_else(|| {
+                trees
+                    .iter()
+                    .find(|t| t.tree_id == tree_id)
+                    .map(|t| t.entry_node.clone())
+                    .unwrap_or_default()
+            }),
+            tree_id,
+        })
     });
     Ok(SignalMatch {
         ambiguous: tree_set.len() > 1,
@@ -422,7 +459,11 @@ pub fn symptom_search(
         }
         let mut signal = 0.0;
         if let Some(sm) = &signals {
-            for h in sm.hits.iter().filter(|h| h.rule.tree_id == s.tree_id) {
+            for h in sm
+                .hits
+                .iter()
+                .filter(|h| h.rule.tree_id.as_deref() == Some(s.tree_id.as_str()))
+            {
                 signal = 1.0;
                 why.push(Why::Signal {
                     signal_kind: h.rule.signal_kind.clone(),

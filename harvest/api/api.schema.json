@@ -774,6 +774,68 @@
         }
       ]
     },
+    "AutopilotVersion": {
+      "description": "AUTOPILOT_VERSION.",
+      "properties": {
+        "board_version": {
+          "format": "uint32",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "capabilities": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "firmware": {
+          "description": "`major.minor.patch`.",
+          "type": "string"
+        },
+        "firmware_type": {
+          "description": "`official`, `rc`, `beta`, `alpha`, `dev` or a number.",
+          "type": "string"
+        },
+        "git_hash": {
+          "description": "The flight software's custom version (a git hash, as autopilots send it).",
+          "type": "string"
+        },
+        "product_id": {
+          "format": "uint16",
+          "maximum": 65535,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "sysid": {
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "uid": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "vendor_id": {
+          "format": "uint16",
+          "maximum": 65535,
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "sysid",
+        "firmware",
+        "firmware_type",
+        "git_hash",
+        "board_version",
+        "vendor_id",
+        "product_id",
+        "capabilities",
+        "uid"
+      ],
+      "type": "object"
+    },
     "Basis": {
       "description": "What a deficiency rests on (CONTRACT \"Procedure step deficiency\").",
       "oneOf": [
@@ -788,6 +850,81 @@
           "type": "string"
         }
       ]
+    },
+    "Battery": {
+      "description": "BATTERY_STATUS.",
+      "properties": {
+        "cells": {
+          "description": "Cell volts, as reported.",
+          "items": {
+            "format": "double",
+            "type": "number"
+          },
+          "type": "array"
+        },
+        "consumed_mah": {
+          "format": "int32",
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "current": {
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "id": {
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "remaining": {
+          "format": "int8",
+          "maximum": 127,
+          "minimum": -128,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "sysid": {
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "temperature": {
+          "description": "Degrees Celsius.",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "voltage": {
+          "description": "Volts, the sum of the cells reported.",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "sysid",
+        "id",
+        "voltage",
+        "cells",
+        "current",
+        "consumed_mah",
+        "remaining",
+        "temperature"
+      ],
+      "type": "object"
     },
     "Branch": {
       "description": "A branch the technician can take, as code will take it.",
@@ -1154,6 +1291,171 @@
       ],
       "type": "string"
     },
+    "Conflict": {
+      "description": "A conflict between two units' versions of a lesson and how it resolved.",
+      "properties": {
+        "at": {
+          "type": "string"
+        },
+        "class": {
+          "description": "`auto` (the rule decided) or `needs_reviewer` (the edits were within\nthe clock-skew bound; a reviewer chooses the version).",
+          "type": "string"
+        },
+        "lesson_id": {
+          "type": "string"
+        },
+        "loser": {
+          "type": "string"
+        },
+        "resolved_by": {
+          "description": "The reviewer who chose, for a `needs_reviewer` conflict.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "rule": {
+          "type": "string"
+        },
+        "winner": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "lesson_id",
+        "winner",
+        "loser",
+        "rule",
+        "at",
+        "class",
+        "resolved_by"
+      ],
+      "type": "object"
+    },
+    "Decoded": {
+      "description": "What a decode produced.",
+      "properties": {
+        "dm1": {
+          "description": "J1939 DM1 messages, one per source address and message.",
+          "items": {
+            "$ref": "#/$defs/Dm1"
+          },
+          "type": "array"
+        },
+        "errors": {
+          "description": "Input lines or frames that could not be read, and why (decoding\ngoes on past them).",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "j1587": {
+          "description": "J1587 diagnostic codes.",
+          "items": {
+            "$ref": "#/$defs/Dtc2"
+          },
+          "type": "array"
+        },
+        "mavlink": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Decoded2"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "MAVLink messages, when the input was MAVLink."
+        },
+        "observations": {
+          "description": "Ready for `signal.match` / `symptom.search` / `job.start`.",
+          "items": {
+            "$ref": "#/$defs/Observation"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "observations",
+        "dm1",
+        "j1587",
+        "mavlink",
+        "errors"
+      ],
+      "type": "object"
+    },
+    "Decoded2": {
+      "description": "Everything decoded from a stream.",
+      "properties": {
+        "autopilot_versions": {
+          "items": {
+            "$ref": "#/$defs/AutopilotVersion"
+          },
+          "type": "array"
+        },
+        "batteries": {
+          "description": "Newest per system and battery.",
+          "items": {
+            "$ref": "#/$defs/Battery"
+          },
+          "type": "array"
+        },
+        "heartbeats": {
+          "description": "Newest per system.",
+          "items": {
+            "$ref": "#/$defs/Heartbeat"
+          },
+          "type": "array"
+        },
+        "observations": {
+          "description": "For `signal.match`.",
+          "items": {
+            "$ref": "#/$defs/Observation"
+          },
+          "type": "array"
+        },
+        "params": {
+          "additionalProperties": {
+            "format": "double",
+            "type": "number"
+          },
+          "description": "Newest value of each parameter.",
+          "type": "object"
+        },
+        "plate": {
+          "$ref": "#/$defs/Plate",
+          "description": "For `equip.resolve`: firmware, board and parameters."
+        },
+        "stats": {
+          "$ref": "#/$defs/Stats"
+        },
+        "status_texts": {
+          "description": "In order received.",
+          "items": {
+            "$ref": "#/$defs/StatusText"
+          },
+          "type": "array"
+        },
+        "sys_status": {
+          "items": {
+            "$ref": "#/$defs/SysStatus"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "stats",
+        "heartbeats",
+        "sys_status",
+        "autopilot_versions",
+        "batteries",
+        "status_texts",
+        "params",
+        "observations",
+        "plate"
+      ],
+      "type": "object"
+    },
     "DenseStatus": {
       "description": "Why the dense half did or did not run.",
       "oneOf": [
@@ -1201,6 +1503,206 @@
           "type": "string"
         }
       ]
+    },
+    "DeviceInfo": {
+      "description": "This device as the hub knows it.",
+      "properties": {
+        "device_id": {
+          "description": "`dev-<key id>`; `None` when no hub link (and so no device key) is set.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "public_key": {
+          "description": "The base64 ed25519 public key an administrator enrolls.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "device_id",
+        "public_key"
+      ],
+      "type": "object"
+    },
+    "Dm1": {
+      "description": "A DM1 message from one source.",
+      "properties": {
+        "dtcs": {
+          "description": "Empty when the source reports no active codes.",
+          "items": {
+            "$ref": "#/$defs/Dtc"
+          },
+          "type": "array"
+        },
+        "lamps": {
+          "$ref": "#/$defs/Lamps"
+        },
+        "source": {
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "source",
+        "lamps",
+        "dtcs"
+      ],
+      "type": "object"
+    },
+    "Dtc": {
+      "description": "One active trouble code.",
+      "properties": {
+        "conversion_method": {
+          "description": "The SPN conversion method bit (1: an older byte order; read as\nsent, flagged so the host can tell).",
+          "type": "boolean"
+        },
+        "fmi": {
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "occurrences": {
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "spn": {
+          "format": "uint32",
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "spn",
+        "fmi",
+        "occurrences",
+        "conversion_method"
+      ],
+      "type": "object"
+    },
+    "Dtc2": {
+      "description": "One diagnostic code.",
+      "properties": {
+        "active": {
+          "description": "False when the code is previously active.",
+          "type": "boolean"
+        },
+        "code": {
+          "description": "A PID (`sid` false) or a SID (`sid` true) of the transmitter.",
+          "format": "uint16",
+          "maximum": 65535,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "fmi": {
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "mid": {
+          "description": "The transmitter (message identifier).",
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "occurrences": {
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "sid": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "mid",
+        "code",
+        "sid",
+        "fmi",
+        "active",
+        "occurrences"
+      ],
+      "type": "object"
+    },
+    "EnrolledDevice": {
+      "description": "A device the hub accepts uploads from (or no longer does).",
+      "properties": {
+        "device_id": {
+          "type": "string"
+        },
+        "enrolled_at": {
+          "type": "string"
+        },
+        "enrolled_by": {
+          "type": "string"
+        },
+        "items": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "last_seen": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "public_key": {
+          "description": "base64 ed25519 public key.",
+          "type": "string"
+        },
+        "reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "revoked_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "revoked_by": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "device_id",
+        "public_key",
+        "name",
+        "enrolled_at",
+        "enrolled_by",
+        "revoked_at",
+        "revoked_by",
+        "reason",
+        "last_seen",
+        "items"
+      ],
+      "type": "object"
     },
     "EntryKind": {
       "description": "How a job was entered.",
@@ -1679,6 +2181,13 @@
             "null"
           ]
         },
+        "reference": {
+          "description": "The manual's printed cross-reference (\"Refer to field maintenance\"),\nverbatim; kept also when it resolves to no target in the pack.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "section_id": {
           "type": "string"
         },
@@ -1708,6 +2217,7 @@
         "expect",
         "target",
         "proc_id",
+        "reference",
         "applies_to"
       ],
       "type": "object"
@@ -1827,6 +2337,13 @@
         "note_id": {
           "type": "string"
         },
+        "pack_id": {
+          "description": "The pack the note was issued for (its tree and node ids are that\npack's); any pack when `None`.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "received_at": {
           "type": "string"
         },
@@ -1859,6 +2376,7 @@
         "note_id",
         "source",
         "stream",
+        "pack_id",
         "seq",
         "scope",
         "text",
@@ -1867,6 +2385,251 @@
         "approved_at",
         "supersedes",
         "received_at"
+      ],
+      "type": "object"
+    },
+    "FieldNoteIn": {
+      "additionalProperties": false,
+      "description": "A reviewer-approved field note as the hub sends it.",
+      "properties": {
+        "approved_at": {
+          "type": "string"
+        },
+        "approver": {
+          "type": "string"
+        },
+        "counts": {
+          "$ref": "#/$defs/NoteCounts",
+          "default": {
+            "attempts": null,
+            "resolved": null,
+            "units": null
+          }
+        },
+        "lang": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "note_id": {
+          "type": "string"
+        },
+        "scope": {
+          "$ref": "#/$defs/NoteScope"
+        },
+        "supersedes": {
+          "default": null,
+          "description": "The note this one replaces.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "note_id",
+        "scope",
+        "text",
+        "counts",
+        "approver",
+        "approved_at",
+        "supersedes",
+        "lang"
+      ],
+      "type": "object"
+    },
+    "FleetAction": {
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "type": "string"
+        },
+        "attempts": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "resolved": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "tree_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "tree_id",
+        "action",
+        "attempts",
+        "resolved"
+      ],
+      "type": "object"
+    },
+    "FleetCause": {
+      "additionalProperties": false,
+      "properties": {
+        "cause": {
+          "type": "string"
+        },
+        "count": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "cause",
+        "count"
+      ],
+      "type": "object"
+    },
+    "FleetCauses": {
+      "additionalProperties": false,
+      "properties": {
+        "causes": {
+          "items": {
+            "$ref": "#/$defs/FleetCause"
+          },
+          "type": "array"
+        },
+        "symptom_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "symptom_id",
+        "causes"
+      ],
+      "type": "object"
+    },
+    "FleetJobs": {
+      "additionalProperties": false,
+      "properties": {
+        "equip_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "fixed": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "jobs": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "symptom_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "tree_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "tree_id",
+        "symptom_id",
+        "equip_id",
+        "jobs",
+        "fixed"
+      ],
+      "type": "object"
+    },
+    "FleetRepeat": {
+      "additionalProperties": false,
+      "properties": {
+        "asset_id": {
+          "type": "string"
+        },
+        "jobs": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "symptom_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "system": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "asset_id",
+        "symptom_id",
+        "system",
+        "jobs"
+      ],
+      "type": "object"
+    },
+    "FleetSummary": {
+      "additionalProperties": false,
+      "description": "What the fleet shows, aggregated by the hub across every unit.",
+      "properties": {
+        "actions": {
+          "description": "Corrective actions: how often each resolved the fault it was tried on.",
+          "items": {
+            "$ref": "#/$defs/FleetAction"
+          },
+          "type": "array"
+        },
+        "generated_at": {
+          "type": "string"
+        },
+        "jobs": {
+          "description": "Jobs per symptom (or tree, when entered without one) and variant.",
+          "items": {
+            "$ref": "#/$defs/FleetJobs"
+          },
+          "type": "array"
+        },
+        "repeats": {
+          "description": "The same asset with the same symptom or system again within the window.",
+          "items": {
+            "$ref": "#/$defs/FleetRepeat"
+          },
+          "type": "array"
+        },
+        "top_causes": {
+          "description": "The most frequent verified causes per symptom.",
+          "items": {
+            "$ref": "#/$defs/FleetCauses"
+          },
+          "type": "array"
+        },
+        "units": {
+          "description": "Units that reported.",
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "generated_at",
+        "units",
+        "jobs",
+        "actions",
+        "repeats",
+        "top_causes"
       ],
       "type": "object"
     },
@@ -1918,6 +2681,41 @@
         "collapsed"
       ],
       "type": "string"
+    },
+    "Format": {
+      "description": "The input formats.",
+      "oneOf": [
+        {
+          "const": "j1939_candump",
+          "description": "candump log lines (`(t) can0 18FECA00#…` or `can0 18FECA00 [8] …`).",
+          "type": "string"
+        },
+        {
+          "const": "j1939_frames",
+          "description": "One frame per line: `<29-bit id hex> <data hex>` (`18FECA00 0400D20A12000000`).",
+          "type": "string"
+        },
+        {
+          "const": "j1587",
+          "description": "J1708 messages as hex bytes, one per line (MID first; a trailing\nchecksum byte is checked when present).",
+          "type": "string"
+        },
+        {
+          "const": "display",
+          "description": "A display code typed by hand (`E21-3`, `21.3`, `21 / 3`).",
+          "type": "string"
+        },
+        {
+          "const": "mavlink_tlog",
+          "description": "A MAVLink `.tlog` file, base64.",
+          "type": "string"
+        },
+        {
+          "const": "mavlink_raw",
+          "description": "Raw MAVLink bytes (a capture of the link), base64.",
+          "type": "string"
+        }
+      ]
     },
     "GraphCounts": {
       "description": "What was checked.",
@@ -2103,6 +2901,83 @@
       ],
       "type": "object"
     },
+    "Heartbeat": {
+      "description": "HEARTBEAT.",
+      "properties": {
+        "armed": {
+          "type": "boolean"
+        },
+        "autopilot": {
+          "type": "string"
+        },
+        "base_mode": {
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "custom_mode": {
+          "format": "uint32",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "sysid": {
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "system_status": {
+          "type": "string"
+        },
+        "vehicle_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "sysid",
+        "vehicle_type",
+        "autopilot",
+        "custom_mode",
+        "base_mode",
+        "armed",
+        "system_status"
+      ],
+      "type": "object"
+    },
+    "HelloReply": {
+      "description": "The hub's answer to a hello.",
+      "properties": {
+        "accepted": {
+          "type": "boolean"
+        },
+        "fleet_every_hours": {
+          "description": "How often a device fetches a changed fleet summary (a hub setting\nthe device learns here).",
+          "format": "double",
+          "type": "number"
+        },
+        "hub_time": {
+          "type": "string"
+        },
+        "refused": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Refusal"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "accepted",
+        "refused",
+        "fleet_every_hours",
+        "hub_time"
+      ],
+      "type": "object"
+    },
     "HistoryEvent": {
       "description": "A fleet history event baked in the pack.",
       "properties": {
@@ -2274,9 +3149,197 @@
       ],
       "type": "object"
     },
+    "HubApproveParams": {
+      "additionalProperties": false,
+      "properties": {
+        "edit": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/NoteEdit"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Edit before approving: the note's text and/or scope."
+        },
+        "lesson_id": {
+          "type": "string"
+        },
+        "note": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "version": {
+          "default": null,
+          "description": "The version to approve (an item id from the queue); required when\nthe lesson `needs_reviewer`.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "lesson_id"
+      ],
+      "type": "object"
+    },
+    "HubBundlesParams": {
+      "additionalProperties": false,
+      "properties": {
+        "since": {
+          "default": 0,
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "HubEnrollParams": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "public_key": {
+          "description": "The device's ed25519 public key, base64.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "public_key"
+      ],
+      "type": "object"
+    },
+    "HubFlush": {
+      "description": "What one upload attempt through a hub did.",
+      "properties": {
+        "error": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "flush": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/FlushReport"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "What was sent; `None` unless the hub accepted the device."
+        },
+        "hello": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/HelloReply"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "The hub's answer to the hello; `None` when the attempt was skipped\n(backing off) or the link failed before an answer."
+        },
+        "skipped_until": {
+          "description": "Skipped: backing off after a refusal until this time.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "hello",
+        "flush",
+        "skipped_until",
+        "error"
+      ],
+      "type": "object"
+    },
+    "HubPublishParams": {
+      "additionalProperties": false,
+      "properties": {
+        "always": {
+          "default": false,
+          "description": "Publish a bundle (with the fleet summary) even when no note changed.",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "HubQueueParams": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "default": null,
+          "description": "`pending` | `approved` | `rejected`; all when absent.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "HubRejectParams": {
+      "additionalProperties": false,
+      "properties": {
+        "lesson_id": {
+          "type": "string"
+        },
+        "reason": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "lesson_id"
+      ],
+      "type": "object"
+    },
+    "HubRevokeParams": {
+      "additionalProperties": false,
+      "properties": {
+        "device_id": {
+          "type": "string"
+        },
+        "reason": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "device_id"
+      ],
+      "type": "object"
+    },
     "HubState": {
       "description": "Where the upload destination stands: configured, and reachable as of\nthe last attempt (never probed live).",
       "properties": {
+        "backoff_until": {
+          "description": "No upload is tried before this time (backing off after a refusal).",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "configured": {
           "type": "boolean"
         },
@@ -2300,19 +3363,102 @@
           ]
         },
         "reachable": {
-          "description": "As of the last attempt; `None` before any.",
+          "description": "Whether the hub answered on the last attempt (a refusal is an\nanswer); `None` before any. Never probed live.",
           "type": [
             "boolean",
             "null"
           ]
+        },
+        "refused": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Refusal"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Why the hub refused this device: `unenrolled`, `revoked` or\n`signature`; `None` when accepted or not yet asked."
         }
       },
       "required": [
         "configured",
         "destination",
         "reachable",
+        "refused",
+        "backoff_until",
         "last_attempt_at",
         "last_error"
+      ],
+      "type": "object"
+    },
+    "HubStatus": {
+      "description": "How the hub stands.",
+      "properties": {
+        "bundles": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "conflicts": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "devices": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "items": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "jobs": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "key_id": {
+          "type": "string"
+        },
+        "latest_bundle": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "lessons_approved": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "lessons_pending": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "lessons_rejected": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "stream": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "stream",
+        "key_id",
+        "devices",
+        "items",
+        "jobs",
+        "lessons_pending",
+        "lessons_approved",
+        "lessons_rejected",
+        "bundles",
+        "latest_bundle",
+        "conflicts"
       ],
       "type": "object"
     },
@@ -2898,6 +4044,10 @@
             "null"
           ]
         },
+        "tree_id": {
+          "description": "The tree the node belongs to (a job can follow a goto into another).",
+          "type": "string"
+        },
         "unit": {
           "type": [
             "string",
@@ -2923,7 +4073,8 @@
         "photos",
         "next_node",
         "at",
-        "superseded_at"
+        "superseded_at",
+        "tree_id"
       ],
       "type": "object"
     },
@@ -3049,6 +4200,40 @@
         "tree_changed",
         "repeat",
         "lesson_ids"
+      ],
+      "type": "object"
+    },
+    "Lamp": {
+      "description": "A lamp's state.",
+      "enum": [
+        "off",
+        "on",
+        "error",
+        "not_available"
+      ],
+      "type": "string"
+    },
+    "Lamps": {
+      "description": "The four DM1 lamps.",
+      "properties": {
+        "amber_warning": {
+          "$ref": "#/$defs/Lamp"
+        },
+        "malfunction": {
+          "$ref": "#/$defs/Lamp"
+        },
+        "protect": {
+          "$ref": "#/$defs/Lamp"
+        },
+        "red_stop": {
+          "$ref": "#/$defs/Lamp"
+        }
+      },
+      "required": [
+        "malfunction",
+        "red_stop",
+        "amber_warning",
+        "protect"
       ],
       "type": "object"
     },
@@ -3265,6 +4450,14 @@
             "null"
           ]
         },
+        "lesson_id": {
+          "default": null,
+          "description": "The lesson's id when it continues one begun on another unit (its\nedits then meet at the hub); new when absent.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "level": {
           "default": null,
           "description": "The technician's level.",
@@ -3348,6 +4541,62 @@
         "rejected"
       ],
       "type": "string"
+    },
+    "LessonUpdateParams": {
+      "additionalProperties": false,
+      "properties": {
+        "lesson": {
+          "$ref": "#/$defs/LessonInput"
+        },
+        "lesson_id": {
+          "type": "string"
+        },
+        "pack_id": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "lesson_id",
+        "lesson"
+      ],
+      "type": "object"
+    },
+    "LessonVersion": {
+      "description": "One stored version of a lesson.",
+      "properties": {
+        "device_id": {
+          "type": "string"
+        },
+        "item_id": {
+          "type": "string"
+        },
+        "lesson": {
+          "$ref": "#/$defs/Lesson"
+        },
+        "received_at": {
+          "type": "string"
+        },
+        "state": {
+          "description": "`current` (the winner), `superseded` (an earlier version from the\nwinner's unit) or `lost` (another unit's version that lost the rule).",
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "item_id",
+        "device_id",
+        "updated_at",
+        "received_at",
+        "state",
+        "lesson"
+      ],
+      "type": "object"
     },
     "Level": {
       "additionalProperties": false,
@@ -3632,6 +4881,33 @@
       ],
       "type": "object"
     },
+    "NoteEdit": {
+      "additionalProperties": false,
+      "description": "A reviewer's changes when approving.",
+      "properties": {
+        "scope": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/NoteScopeInput"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Where it shows; the lesson's variant, tree and symptom when absent."
+        },
+        "text": {
+          "default": null,
+          "description": "The field note's text; from the lesson when absent.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    },
     "NoteScope": {
       "additionalProperties": false,
       "description": "What a field note is about: any of these; every one given must match.",
@@ -3671,6 +4947,41 @@
         "node_id",
         "symptom_id"
       ],
+      "type": "object"
+    },
+    "NoteScopeInput": {
+      "additionalProperties": false,
+      "description": "What a field note is about: any of these; every one given must match.",
+      "properties": {
+        "equip_id": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "node_id": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "symptom_id": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "tree_id": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
       "type": "object"
     },
     "Observation": {
@@ -3913,6 +5224,37 @@
       },
       "type": "object"
     },
+    "PackUpdate": {
+      "description": "A pack replaced by a newer one from the hub.",
+      "properties": {
+        "bytes": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "from": {
+          "type": "string"
+        },
+        "kind": {
+          "description": "`full` | `delta`.",
+          "type": "string"
+        },
+        "pack_id": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "pack_id",
+        "from",
+        "to",
+        "kind",
+        "bytes"
+      ],
+      "type": "object"
+    },
     "PageBox": {
       "additionalProperties": false,
       "description": "A box on a page image, normalized 0 to 1 against the image: `x0 < x1`,\n`y0 < y1`, origin top left.",
@@ -4072,6 +5414,141 @@
       ],
       "type": "object"
     },
+    "Plate": {
+      "additionalProperties": false,
+      "description": "What the technician or the machine reports.",
+      "properties": {
+        "firmware": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "model": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "params": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "default": {},
+          "type": "object"
+        },
+        "serial": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "text": {
+          "default": null,
+          "description": "Free text (a data plate read aloud or by a camera).",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "model",
+        "serial",
+        "firmware",
+        "params",
+        "text"
+      ],
+      "type": "object"
+    },
+    "Principal": {
+      "description": "An identified person.",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "roles": {
+          "items": {
+            "$ref": "#/$defs/Role"
+          },
+          "type": "array"
+        },
+        "via": {
+          "description": "How they were identified: `token`, `proxy` or `local` (in process).",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "roles",
+        "via"
+      ],
+      "type": "object"
+    },
+    "PullReport": {
+      "description": "What one pull from the hub did.",
+      "properties": {
+        "bytes": {
+          "description": "Bytes of bundles received.",
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "error": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "fleet_bytes": {
+          "description": "Bytes of the fleet summary received (fetched only when it changed).",
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "fleet_updated": {
+          "type": "boolean"
+        },
+        "installed": {
+          "description": "Bundles installed, in order.",
+          "items": {
+            "format": "uint64",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "notes": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "refused": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RefusedBundle"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "The bundle that was refused (and why); the pull stops there and the\nnext one asks for it again."
+        }
+      },
+      "required": [
+        "installed",
+        "refused",
+        "notes",
+        "fleet_updated",
+        "bytes",
+        "fleet_bytes",
+        "error"
+      ],
+      "type": "object"
+    },
     "Reading": {
       "description": "How a query word the pack does not hold as typed was read.",
       "properties": {
@@ -4121,6 +5598,46 @@
       "required": [
         "expect",
         "branches"
+      ],
+      "type": "object"
+    },
+    "Refusal": {
+      "description": "Why the hub refuses a device.",
+      "oneOf": [
+        {
+          "const": "unenrolled",
+          "description": "The hub does not know this device's key.",
+          "type": "string"
+        },
+        {
+          "const": "revoked",
+          "description": "An administrator revoked it.",
+          "type": "string"
+        },
+        {
+          "const": "signature",
+          "description": "The signature does not verify against the enrolled key.",
+          "type": "string"
+        }
+      ]
+    },
+    "RefusedBundle": {
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "seq": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "seq",
+        "error"
       ],
       "type": "object"
     },
@@ -4309,6 +5826,10 @@
             "null"
           ]
         },
+        "tree_id": {
+          "description": "The tree the node belongs to (a job can follow a goto into another).",
+          "type": "string"
+        },
         "unit": {
           "type": [
             "string",
@@ -4335,6 +5856,7 @@
         "next_node",
         "at",
         "superseded_at",
+        "tree_id",
         "text"
       ],
       "type": "object"
@@ -4612,6 +6134,95 @@
         "score"
       ],
       "type": "object"
+    },
+    "ReviewItem": {
+      "description": "A lesson in the review queue, with every version.",
+      "properties": {
+        "current": {
+          "$ref": "#/$defs/Lesson"
+        },
+        "first_received_at": {
+          "type": "string"
+        },
+        "lesson_id": {
+          "type": "string"
+        },
+        "needs_reviewer": {
+          "description": "Two units edited it within the clock-skew bound: approving it needs\nthe reviewer to choose a version.",
+          "type": "boolean"
+        },
+        "reopened": {
+          "description": "True when a newer version arrived after a review.",
+          "type": "boolean"
+        },
+        "reviews": {
+          "items": {
+            "$ref": "#/$defs/ReviewRecord"
+          },
+          "type": "array"
+        },
+        "status": {
+          "description": "`pending` | `approved` | `rejected`.",
+          "type": "string"
+        },
+        "versions": {
+          "items": {
+            "$ref": "#/$defs/LessonVersion"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "lesson_id",
+        "status",
+        "reopened",
+        "current",
+        "versions",
+        "reviews",
+        "first_received_at",
+        "needs_reviewer"
+      ],
+      "type": "object"
+    },
+    "ReviewRecord": {
+      "description": "A review action as recorded.",
+      "properties": {
+        "action": {
+          "type": "string"
+        },
+        "at": {
+          "type": "string"
+        },
+        "item_id": {
+          "type": "string"
+        },
+        "note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reviewer": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "action",
+        "reviewer",
+        "at",
+        "note",
+        "item_id"
+      ],
+      "type": "object"
+    },
+    "Role": {
+      "description": "What a person may do at the hub.",
+      "enum": [
+        "reviewer",
+        "publisher",
+        "admin"
+      ],
+      "type": "string"
     },
     "Run": {
       "description": "One procedure run.",
@@ -5252,6 +6863,69 @@
         }
       ]
     },
+    "SignalDecode": {
+      "description": "Decoded data and what it matches in the pack.",
+      "properties": {
+        "decoded": {
+          "$ref": "#/$defs/Decoded"
+        },
+        "match": {
+          "$ref": "#/$defs/SignalMatch"
+        }
+      },
+      "required": [
+        "decoded",
+        "match"
+      ],
+      "type": "object"
+    },
+    "SignalDecodeParams": {
+      "additionalProperties": false,
+      "description": "Raw vehicle data to decode into observations.",
+      "properties": {
+        "asset_id": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "equip_id": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "format": {
+          "$ref": "#/$defs/Format"
+        },
+        "input": {
+          "description": "The text: log lines, frames, hex messages, or the typed code.",
+          "type": "string"
+        },
+        "pack_id": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "signal_kind": {
+          "default": null,
+          "description": "For a display code: its signal kind (`pump40.code`); any kind when absent.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "format",
+        "input"
+      ],
+      "type": "object"
+    },
     "SignalHit": {
       "description": "One signal rule an observation matched.",
       "properties": {
@@ -5262,6 +6936,10 @@
             "null"
           ]
         },
+        "has_tree": {
+          "description": "False when the rule leads to no troubleshooting tree.",
+          "type": "boolean"
+        },
         "matched": {
           "$ref": "#/$defs/MatchKind"
         },
@@ -5270,13 +6948,26 @@
         },
         "rule": {
           "$ref": "#/$defs/SignalRule"
+        },
+        "section": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SignalSection"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "The cited section's verbatim text. For a rule with no tree this is\nall the manual says (a cause with no corrective action)."
         }
       },
       "required": [
         "observed",
         "matched",
         "rule",
-        "citation"
+        "citation",
+        "section",
+        "has_tree"
       ],
       "type": "object"
     },
@@ -5310,7 +7001,7 @@
       "description": "The result of matching observations.",
       "properties": {
         "ambiguous": {
-          "description": "True when the hits lead to more than one tree.",
+          "description": "True when the hits lead to more than one tree (rules with no tree\ndo not count).",
           "type": "boolean"
         },
         "hits": {
@@ -5418,7 +7109,11 @@
           "type": "string"
         },
         "tree_id": {
-          "type": "string"
+          "description": "The tree it leads into; `None` when the manual prints a cause with\nno troubleshooting (then `section_id` is what it says).",
+          "type": [
+            "string",
+            "null"
+          ]
         }
       },
       "required": [
@@ -5430,6 +7125,33 @@
         "section_id",
         "quote",
         "quote_verified"
+      ],
+      "type": "object"
+    },
+    "SignalSection": {
+      "description": "The manual text a signal rule cites.",
+      "properties": {
+        "citation": {
+          "type": "string"
+        },
+        "heading": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "section_id": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "section_id",
+        "citation",
+        "heading",
+        "text"
       ],
       "type": "object"
     },
@@ -5473,6 +7195,70 @@
         "sha256",
         "media_type",
         "license"
+      ],
+      "type": "object"
+    },
+    "Stats": {
+      "description": "What reading the bytes found.",
+      "properties": {
+        "bad_crc": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "frames": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "signed": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "skipped_bytes": {
+          "description": "Bytes skipped between frames.",
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "unknown": {
+          "description": "Valid-looking frames of messages this decoder does not know (their\nCRC cannot be checked without the message's CRC_EXTRA).",
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "frames",
+        "bad_crc",
+        "unknown",
+        "signed",
+        "skipped_bytes"
+      ],
+      "type": "object"
+    },
+    "StatusText": {
+      "description": "STATUSTEXT, chunks joined.",
+      "properties": {
+        "severity": {
+          "description": "`emergency` … `debug`.",
+          "type": "string"
+        },
+        "sysid": {
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "sysid",
+        "severity",
+        "text"
       ],
       "type": "object"
     },
@@ -5620,6 +7406,13 @@
         "record": {
           "$ref": "#/$defs/RecordHow"
         },
+        "reference": {
+          "description": "The printed cross-reference, verbatim, when the node has one.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "requirements": {
           "description": "What this node itself needs.",
           "items": {
@@ -5642,7 +7435,8 @@
             {
               "type": "null"
             }
-          ]
+          ],
+          "description": "Where this node leads in the pack; `None` when it names nothing the\npack holds (then `reference` is the manual's printed reference, to\nshow as \"see … in the manual\")."
         },
         "terminal": {
           "description": "True when no branch leaves this node (the path ends here).",
@@ -5680,6 +7474,7 @@
         "detail",
         "level",
         "target",
+        "reference",
         "path",
         "field_notes"
       ],
@@ -5980,6 +7775,44 @@
       },
       "type": "object"
     },
+    "SyncFlushParams": {
+      "additionalProperties": false,
+      "properties": {
+        "force": {
+          "default": false,
+          "description": "Try now even while backing off after a refusal (an operator retrying\nafter the device was enrolled).",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "SyncPull": {
+      "description": "What `sync.pull` did.",
+      "properties": {
+        "bundles": {
+          "$ref": "#/$defs/PullReport"
+        },
+        "pack_errors": {
+          "description": "A pack the hub offered that could not be installed, and why.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "packs": {
+          "items": {
+            "$ref": "#/$defs/PackUpdate"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "bundles",
+        "packs",
+        "pack_errors"
+      ],
+      "type": "object"
+    },
     "SyncStatus": {
       "description": "The outbox and the link.",
       "properties": {
@@ -6043,10 +7876,82 @@
       ],
       "type": "object"
     },
+    "SysStatus": {
+      "description": "SYS_STATUS: sensors by name, battery.",
+      "properties": {
+        "battery_current": {
+          "description": "Amperes.",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "battery_remaining": {
+          "description": "Percent.",
+          "format": "int8",
+          "maximum": 127,
+          "minimum": -128,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "battery_voltage": {
+          "description": "Volts; `None` when the autopilot does not know.",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "enabled": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "load_percent": {
+          "format": "double",
+          "type": "number"
+        },
+        "present": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "sysid": {
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "unhealthy": {
+          "description": "Present and enabled but not healthy.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "sysid",
+        "present",
+        "enabled",
+        "unhealthy",
+        "battery_voltage",
+        "battery_current",
+        "battery_remaining",
+        "load_percent"
+      ],
+      "type": "object"
+    },
     "Target": {
       "description": "Where a `goto` (or an `action` that is a task) leads.",
       "oneOf": [
         {
+          "description": "Another tree, at its entry or at `node_id` (\"go to Table 3-2,\nstep 4\").",
           "properties": {
             "id": {
               "type": "string"
@@ -6054,11 +7959,18 @@
             "kind": {
               "const": "tree",
               "type": "string"
+            },
+            "node_id": {
+              "type": [
+                "string",
+                "null"
+              ]
             }
           },
           "required": [
             "kind",
-            "id"
+            "id",
+            "node_id"
           ],
           "type": "object"
         },
@@ -6260,6 +8172,13 @@
           },
           "type": "array"
         },
+        "guards": {
+          "description": "Guards on the task (its section or above), shown once at its head;\na step carries only the guards on that step.",
+          "items": {
+            "$ref": "#/$defs/Guard"
+          },
+          "type": "array"
+        },
         "kind": {
           "type": "string"
         },
@@ -6297,6 +8216,7 @@
         "kind",
         "summary",
         "roles",
+        "guards",
         "requirements",
         "steps",
         "applies_to"
@@ -6309,6 +8229,13 @@
         "expanded": {
           "description": "Whether it opens expanded at this level.",
           "type": "boolean"
+        },
+        "guards": {
+          "description": "Guards on the whole procedure, shown once before its steps.",
+          "items": {
+            "$ref": "#/$defs/Guard"
+          },
+          "type": "array"
         },
         "proc_id": {
           "type": "string"
@@ -6333,6 +8260,7 @@
         "proc_id",
         "title",
         "expanded",
+        "guards",
         "requirements",
         "steps"
       ],
@@ -6632,6 +8560,14 @@
         "$ref": "#/$defs/ChainReport"
       }
     },
+    "device.info": {
+      "params": {
+        "$ref": "#/$defs/NoParams"
+      },
+      "result": {
+        "$ref": "#/$defs/DeviceInfo"
+      }
+    },
     "equip.list": {
       "params": {
         "$ref": "#/$defs/PackParams"
@@ -6670,6 +8606,136 @@
         "type": "array"
       }
     },
+    "fleet.summary": {
+      "params": {
+        "$ref": "#/$defs/NoParams"
+      },
+      "result": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/FleetSummary"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "hub.approve": {
+      "params": {
+        "$ref": "#/$defs/HubApproveParams"
+      },
+      "result": {
+        "$ref": "#/$defs/FieldNoteIn"
+      }
+    },
+    "hub.audit": {
+      "params": {
+        "$ref": "#/$defs/AuditListParams"
+      },
+      "result": {
+        "items": {
+          "$ref": "#/$defs/AuditRecord"
+        },
+        "type": "array"
+      }
+    },
+    "hub.bundles": {
+      "params": {
+        "$ref": "#/$defs/HubBundlesParams"
+      },
+      "result": {
+        "items": true,
+        "type": "array"
+      }
+    },
+    "hub.conflicts": {
+      "params": {
+        "$ref": "#/$defs/NoParams"
+      },
+      "result": {
+        "items": {
+          "$ref": "#/$defs/Conflict"
+        },
+        "type": "array"
+      }
+    },
+    "hub.devices": {
+      "params": {
+        "$ref": "#/$defs/NoParams"
+      },
+      "result": {
+        "items": {
+          "$ref": "#/$defs/EnrolledDevice"
+        },
+        "type": "array"
+      }
+    },
+    "hub.enroll": {
+      "params": {
+        "$ref": "#/$defs/HubEnrollParams"
+      },
+      "result": {
+        "$ref": "#/$defs/EnrolledDevice"
+      }
+    },
+    "hub.fleet": {
+      "params": {
+        "$ref": "#/$defs/NoParams"
+      },
+      "result": {
+        "$ref": "#/$defs/FleetSummary"
+      }
+    },
+    "hub.publish": {
+      "params": {
+        "$ref": "#/$defs/HubPublishParams"
+      },
+      "result": true
+    },
+    "hub.queue": {
+      "params": {
+        "$ref": "#/$defs/HubQueueParams"
+      },
+      "result": {
+        "items": {
+          "$ref": "#/$defs/ReviewItem"
+        },
+        "type": "array"
+      }
+    },
+    "hub.reject": {
+      "params": {
+        "$ref": "#/$defs/HubRejectParams"
+      },
+      "result": {
+        "$ref": "#/$defs/HubStatus"
+      }
+    },
+    "hub.revoke": {
+      "params": {
+        "$ref": "#/$defs/HubRevokeParams"
+      },
+      "result": {
+        "$ref": "#/$defs/EnrolledDevice"
+      }
+    },
+    "hub.status": {
+      "params": {
+        "$ref": "#/$defs/NoParams"
+      },
+      "result": {
+        "$ref": "#/$defs/HubStatus"
+      }
+    },
+    "hub.whoami": {
+      "params": {
+        "$ref": "#/$defs/NoParams"
+      },
+      "result": {
+        "$ref": "#/$defs/Principal"
+      }
+    },
     "job.answer": {
       "params": {
         "$ref": "#/$defs/JobAnswerParams"
@@ -6692,6 +8758,14 @@
       },
       "result": {
         "$ref": "#/$defs/JobClosed"
+      }
+    },
+    "job.follow": {
+      "params": {
+        "$ref": "#/$defs/JobIdParams"
+      },
+      "result": {
+        "$ref": "#/$defs/JobView"
       }
     },
     "job.get": {
@@ -6746,6 +8820,14 @@
           "$ref": "#/$defs/Lesson"
         },
         "type": "array"
+      }
+    },
+    "lesson.update": {
+      "params": {
+        "$ref": "#/$defs/LessonUpdateParams"
+      },
+      "result": {
+        "$ref": "#/$defs/Lesson"
       }
     },
     "manual.children": {
@@ -6831,6 +8913,14 @@
         "$ref": "#/$defs/Run"
       }
     },
+    "signal.decode": {
+      "params": {
+        "$ref": "#/$defs/SignalDecodeParams"
+      },
+      "result": {
+        "$ref": "#/$defs/SignalDecode"
+      }
+    },
     "signal.match": {
       "params": {
         "$ref": "#/$defs/SignalMatchParams"
@@ -6849,10 +8939,18 @@
     },
     "sync.flush": {
       "params": {
+        "$ref": "#/$defs/SyncFlushParams"
+      },
+      "result": {
+        "$ref": "#/$defs/HubFlush"
+      }
+    },
+    "sync.pull": {
+      "params": {
         "$ref": "#/$defs/NoParams"
       },
       "result": {
-        "$ref": "#/$defs/FlushReport"
+        "$ref": "#/$defs/SyncPull"
       }
     },
     "sync.status": {

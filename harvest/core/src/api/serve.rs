@@ -153,7 +153,10 @@ fn handle(
     }
     let url = req.url().to_string();
     let path = url.split(['?', '#']).next().unwrap_or("/").to_string();
-    let is_api = path == "/api" || path.starts_with("/api/") || path.starts_with("/asset/");
+    let is_api = path == "/api"
+        || path.starts_with("/api/")
+        || path.starts_with("/asset/")
+        || path.starts_with("/hub/");
     if is_api && !origin_ok(origin.as_deref(), host_header.as_deref(), cfg) {
         return req.respond(text(403, "origin not allowed"));
     }
@@ -193,6 +196,35 @@ fn handle(
             if body.len() as u64 > MAX_BODY {
                 return req.respond(cors(text(413, "request too large")));
             }
+            // Who is calling, when the host identifies people.
+            let who = match host.identity() {
+                None => None,
+                Some(id) => {
+                    let meta = crate::hub::auth::RequestMeta {
+                        remote: req.remote_addr().map(|a| a.ip()),
+                        headers: req
+                            .headers()
+                            .iter()
+                            .map(|h| {
+                                (
+                                    h.field.as_str().as_str().to_ascii_lowercase(),
+                                    h.value.as_str().to_string(),
+                                )
+                            })
+                            .collect(),
+                    };
+                    match id.identify(&meta) {
+                        Ok(p) => p,
+                        Err(e) => {
+                            let body = envelope(Err(super::ApiError {
+                                code: "unauthenticated".into(),
+                                message: e.to_string(),
+                            }));
+                            return req.respond(cors(json_response(401, &body)));
+                        }
+                    }
+                }
+            };
             let out = if p == "/api" {
                 match serde_json::from_str::<serde_json::Value>(&body) {
                     Ok(v) => {
@@ -202,18 +234,51 @@ fn handle(
                             .unwrap_or("")
                             .to_string();
                         let params = v.get("params").cloned().unwrap_or(serde_json::Value::Null);
-                        envelope(super::call(host, &method, params))
+                        envelope(super::call_as(host, who.as_ref(), &method, params))
                     }
                     Err(e) => envelope(Err(super::bad_params("request", e))),
                 }
             } else {
                 let method = &p["/api/".len()..];
-                serde_json::from_str::<serde_json::Value>(
-                    super::call_json(host, method, &body).as_str(),
-                )
-                .unwrap_or_default()
+                let params = if body.trim().is_empty() {
+                    Ok(serde_json::Value::Null)
+                } else {
+                    serde_json::from_str(&body).map_err(|e| super::bad_params(method, e))
+                };
+                envelope(params.and_then(|v| super::call_as(host, who.as_ref(), method, v)))
             };
             req.respond(cors(json_response(200, &out)))
+        }
+        (m, p) if p.starts_with("/hub/") => {
+            let Some(hub) = host.hub() else {
+                return req.respond(cors(text(404, "this server is not a hub")));
+            };
+            let query = url
+                .split_once('?')
+                .map(|(_, q)| q.to_string())
+                .unwrap_or_default();
+            let mut body = String::new();
+            if m == Method::Post {
+                let ct = header(&req, "Content-Type").unwrap_or_default();
+                if !ct.to_ascii_lowercase().starts_with("application/json") {
+                    return req.respond(cors(text(415, "hub calls are application/json")));
+                }
+                if let Err(e) = req.as_reader().take(MAX_BODY + 1).read_to_string(&mut body) {
+                    return req.respond(cors(text(400, &format!("body: {e}"))));
+                }
+                if body.len() as u64 > MAX_BODY {
+                    return req.respond(cors(text(413, "request too large")));
+                }
+            }
+            let hub = hub.lock().unwrap_or_else(|p| p.into_inner());
+            match hub_route(&hub, &m, p, &query, &body) {
+                Ok(HubReply::Json(v)) => req.respond(cors(json_response(200, &v))),
+                Ok(HubReply::Bytes(b)) => req.respond(cors(
+                    Response::from_data(b)
+                        .with_header(h("Content-Type", "application/octet-stream")),
+                )),
+                Err((code, msg)) => req.respond(cors(text(code, &msg))),
+            }
         }
         (Method::Get, p) if p.starts_with("/asset/") => {
             let rest = &p["/asset/".len()..];
@@ -250,6 +315,122 @@ fn handle(
             None => req.respond(text(404, "harvest serve: the API is at /api")),
         },
         _ => req.respond(cors(text(405, "method not allowed"))),
+    }
+}
+
+enum HubReply {
+    Json(serde_json::Value),
+    Bytes(Vec<u8>),
+}
+
+fn query_get(query: &str, key: &str) -> Option<String> {
+    query.split('&').find_map(|kv| {
+        let (k, v) = kv.split_once('=')?;
+        (k == key).then(|| percent_decode(v))
+    })
+}
+
+fn percent_decode(s: &str) -> String {
+    let b = s.as_bytes();
+    let mut out = Vec::with_capacity(b.len());
+    let mut i = 0;
+    while i < b.len() {
+        if b[i] == b'%'
+            && i + 2 < b.len() + 1
+            && let Some(x) = s
+                .get(i + 1..i + 3)
+                .and_then(|h| u8::from_str_radix(h, 16).ok())
+        {
+            out.push(x);
+            i += 3;
+            continue;
+        }
+        out.push(if b[i] == b'+' { b' ' } else { b[i] });
+        i += 1;
+    }
+    String::from_utf8_lossy(&out).into_owned()
+}
+
+/// The device routes of a hub (CONTRACT "Hub").
+fn hub_route(
+    hub: &crate::hub::Hub,
+    m: &Method,
+    path: &str,
+    query: &str,
+    body: &str,
+) -> std::result::Result<HubReply, (u16, String)> {
+    let err = |e: Error| {
+        (
+            if matches!(e, Error::Invalid(_)) {
+                400
+            } else {
+                500
+            },
+            e.to_string(),
+        )
+    };
+    match (m, path) {
+        (Method::Post, "/hub/receive") => {
+            let d: crate::sync::Delivery =
+                serde_json::from_str(body).map_err(|e| (400, format!("delivery: {e}")))?;
+            let r = hub.receive(&d).map_err(|e| match e {
+                Error::Signature(m) => (403, m),
+                other => err(other),
+            })?;
+            Ok(HubReply::Json(
+                serde_json::to_value(r).map_err(|e| (500, e.to_string()))?,
+            ))
+        }
+        (Method::Post, "/hub/hello") => {
+            let h: crate::sync::Hello =
+                serde_json::from_str(body).map_err(|e| (400, format!("hello: {e}")))?;
+            let r = hub.hello(&h).map_err(err)?;
+            Ok(HubReply::Json(
+                serde_json::to_value(r).map_err(|e| (500, e.to_string()))?,
+            ))
+        }
+        (Method::Get, "/hub/fleet") => Ok(HubReply::Json(
+            hub.fleet_document()
+                .map_err(err)?
+                .unwrap_or(serde_json::Value::Null),
+        )),
+        (Method::Get, "/hub/bundles") => {
+            let since = query_get(query, "since")
+                .and_then(|s| s.parse::<u64>().ok())
+                .unwrap_or(0);
+            Ok(HubReply::Json(serde_json::Value::Array(
+                hub.bundles_since(since).map_err(err)?,
+            )))
+        }
+        (Method::Get, "/hub/pack-offer") => {
+            let pack_id = query_get(query, "pack_id").ok_or((400, "pack_id".to_string()))?;
+            let have = query_get(query, "have");
+            let o = hub.pack_offer(&pack_id, have.as_deref()).map_err(err)?;
+            Ok(HubReply::Json(
+                serde_json::to_value(o).map_err(|e| (500, e.to_string()))?,
+            ))
+        }
+        (Method::Get, p) if p.starts_with("/hub/pack-file/") => {
+            let rest = &p["/hub/pack-file/".len()..];
+            let mut parts = rest.splitn(3, '/');
+            let (Some(pack_id), Some(dir), Some(file)) = (parts.next(), parts.next(), parts.next())
+            else {
+                return Err((404, "not found".into()));
+            };
+            let offer = crate::sync::PackOffer {
+                pack_id: percent_decode(pack_id),
+                version: String::new(),
+                kind: String::new(),
+                base_version: None,
+                dir: percent_decode(dir),
+                files: Vec::new(),
+                bytes: 0,
+            };
+            Ok(HubReply::Bytes(
+                hub.fetch(&offer, &percent_decode(file)).map_err(err)?,
+            ))
+        }
+        _ => Err((404, "not found".into())),
     }
 }
 

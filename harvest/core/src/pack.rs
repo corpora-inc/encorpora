@@ -604,10 +604,13 @@ impl Pack {
             json.and_then(|j| serde_json::from_str::<Vec<String>>(&j).ok())
                 .and_then(|v| v.into_iter().next())
         };
-        let levels: Vec<String> = self
-            .levels()
-            .map(|l| l.into_iter().map(|l| l.id).collect())
-            .unwrap_or_default();
+        let levels: Vec<String> = match self.levels() {
+            Ok(l) => l.into_iter().map(|l| l.id).collect(),
+            Err(e) => {
+                eprintln!("harvest-core: {e}; explanation chunks read with the default levels");
+                Vec::new()
+            }
+        };
         Ok(match ref_kind {
             "section" => Some(ref_id.to_string()),
             // `<section_id>:<level>` (the pipeline's form) or a bare section id.

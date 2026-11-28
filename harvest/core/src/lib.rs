@@ -13,10 +13,12 @@ pub mod compose;
 pub mod content;
 pub mod course;
 pub mod crypt;
+pub mod decode;
 pub mod delta;
 pub mod embed;
 pub mod error;
 pub mod grade;
+pub mod hub;
 pub mod instructor;
 pub mod lexicon;
 #[cfg(feature = "llama")]
@@ -30,6 +32,7 @@ pub mod packs;
 pub mod records;
 pub mod retrieval;
 pub mod segments;
+pub mod sim;
 pub mod sync;
 pub mod tools;
 
@@ -47,3 +50,13 @@ pub use pack::{Pack, Verify};
 pub use packs::TrustedKey;
 pub use retrieval::{Hit, Reranker, Retriever, SearchOptions, SearchResult};
 pub use segments::Segment;
+
+/// Now in milliseconds since 1970 (the virtual clock when one is set).
+pub(crate) fn sim_clock_ms() -> i64 {
+    audit::virtual_now_ms().unwrap_or_else(|| {
+        std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH)
+            .map(|d| d.as_millis() as i64)
+            .unwrap_or(0)
+    })
+}

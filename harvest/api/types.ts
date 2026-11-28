@@ -208,8 +208,39 @@ export type AuditRecord = {
   type: "event";
 };
 
+/** AUTOPILOT_VERSION. */
+export interface AutopilotVersion {
+  board_version: number;
+  capabilities: number;
+  /** `major.minor.patch`. */
+  firmware: string;
+  /** `official`, `rc`, `beta`, `alpha`, `dev` or a number. */
+  firmware_type: string;
+  /** The flight software's custom version (a git hash, as autopilots send it). */
+  git_hash: string;
+  product_id: number;
+  sysid: number;
+  uid: number;
+  vendor_id: number;
+}
+
 /** What a deficiency rests on (CONTRACT "Procedure step deficiency"). */
 export type Basis = "rule" | "practice";
+
+/** BATTERY_STATUS. */
+export interface Battery {
+  /** Cell volts, as reported. */
+  cells: number[];
+  consumed_mah: number | null;
+  current: number | null;
+  id: number;
+  remaining: number | null;
+  sysid: number;
+  /** Degrees Celsius. */
+  temperature: number | null;
+  /** Volts, the sum of the cells reported. */
+  voltage: number | null;
+}
 
 /** A branch the technician can take, as code will take it. */
 export interface Branch {
@@ -324,6 +355,58 @@ export type CondOp = "<" | "<=" | ">" | ">=" | "==" | "between";
  */
 export type Confidence = "confident" | "closest" | "none";
 
+/** A conflict between two units' versions of a lesson and how it resolved. */
+export interface Conflict {
+  at: string;
+  /**
+   * `auto` (the rule decided) or `needs_reviewer` (the edits were within
+   * the clock-skew bound; a reviewer chooses the version).
+   */
+  class: string;
+  lesson_id: string;
+  loser: string;
+  /** The reviewer who chose, for a `needs_reviewer` conflict. */
+  resolved_by: string | null;
+  rule: string;
+  winner: string;
+}
+
+/** What a decode produced. */
+export interface Decoded {
+  /** J1939 DM1 messages, one per source address and message. */
+  dm1: Dm1[];
+  /**
+   * Input lines or frames that could not be read, and why (decoding
+   * goes on past them).
+   */
+  errors: string[];
+  /** J1587 diagnostic codes. */
+  j1587: Dtc2[];
+  /** MAVLink messages, when the input was MAVLink. */
+  mavlink: Decoded2 | null;
+  /** Ready for `signal.match` / `symptom.search` / `job.start`. */
+  observations: Observation[];
+}
+
+/** Everything decoded from a stream. */
+export interface Decoded2 {
+  autopilot_versions: AutopilotVersion[];
+  /** Newest per system and battery. */
+  batteries: Battery[];
+  /** Newest per system. */
+  heartbeats: Heartbeat[];
+  /** For `signal.match`. */
+  observations: Observation[];
+  /** Newest value of each parameter. */
+  params: Record<string, number>;
+  /** For `equip.resolve`: firmware, board and parameters. */
+  plate: Plate;
+  stats: Stats;
+  /** In order received. */
+  status_texts: StatusText[];
+  sys_status: SysStatus[];
+}
+
 /** Why the dense half did or did not run. */
 export type DenseStatus = "used" | "no_embedder" | {
   mismatch: {
@@ -331,6 +414,62 @@ export type DenseStatus = "used" | "no_embedder" | {
     pack: string | null;
   };
 } | "no_vectors";
+
+/** This device as the hub knows it. */
+export interface DeviceInfo {
+  /** `dev-<key id>`; `None` when no hub link (and so no device key) is set. */
+  device_id: string | null;
+  /** The base64 ed25519 public key an administrator enrolls. */
+  public_key: string | null;
+}
+
+/** A DM1 message from one source. */
+export interface Dm1 {
+  /** Empty when the source reports no active codes. */
+  dtcs: Dtc[];
+  lamps: Lamps;
+  source: number;
+}
+
+/** One active trouble code. */
+export interface Dtc {
+  /**
+   * The SPN conversion method bit (1: an older byte order; read as
+   * sent, flagged so the host can tell).
+   */
+  conversion_method: boolean;
+  fmi: number;
+  occurrences: number;
+  spn: number;
+}
+
+/** One diagnostic code. */
+export interface Dtc2 {
+  /** False when the code is previously active. */
+  active: boolean;
+  /** A PID (`sid` false) or a SID (`sid` true) of the transmitter. */
+  code: number;
+  fmi: number;
+  /** The transmitter (message identifier). */
+  mid: number;
+  occurrences: number | null;
+  sid: boolean;
+}
+
+/** A device the hub accepts uploads from (or no longer does). */
+export interface EnrolledDevice {
+  device_id: string;
+  enrolled_at: string;
+  enrolled_by: string;
+  items: number;
+  last_seen: string | null;
+  name: string | null;
+  /** base64 ed25519 public key. */
+  public_key: string;
+  reason: string | null;
+  revoked_at: string | null;
+  revoked_by: string | null;
+}
 
 /** How a job was entered. */
 export type EntryKind = "symptom" | "signals" | "chosen";
@@ -459,6 +598,11 @@ export interface FaultNode {
   node_id: string;
   /** The procedure whose steps tell how to answer this node's question. */
   proc_id: string | null;
+  /**
+   * The manual's printed cross-reference ("Refer to field maintenance"),
+   * verbatim; kept also when it resolves to no target in the pack.
+   */
+  reference: string | null;
   section_id: string;
   target: Target | null;
   text: string;
@@ -498,6 +642,11 @@ export interface FieldNote {
   approver: string;
   counts: NoteCounts;
   note_id: string;
+  /**
+   * The pack the note was issued for (its tree and node ids are that
+   * pack's); any pack when `None`.
+   */
+  pack_id: string | null;
   received_at: string;
   scope: NoteScope;
   seq: number;
@@ -506,6 +655,66 @@ export interface FieldNote {
   stream: string;
   supersedes: string | null;
   text: string;
+}
+
+/** A reviewer-approved field note as the hub sends it. */
+export interface FieldNoteIn {
+  approved_at: string;
+  approver: string;
+  counts: NoteCounts;
+  lang: string | null;
+  note_id: string;
+  scope: NoteScope;
+  /** The note this one replaces. */
+  supersedes: string | null;
+  text: string;
+}
+
+export interface FleetAction {
+  action: string;
+  attempts: number;
+  resolved: number;
+  tree_id: string | null;
+}
+
+export interface FleetCause {
+  cause: string;
+  count: number;
+}
+
+export interface FleetCauses {
+  causes: FleetCause[];
+  symptom_id: string;
+}
+
+export interface FleetJobs {
+  equip_id: string | null;
+  fixed: number;
+  jobs: number;
+  symptom_id: string | null;
+  tree_id: string;
+}
+
+export interface FleetRepeat {
+  asset_id: string;
+  jobs: number;
+  symptom_id: string | null;
+  system: string | null;
+}
+
+/** What the fleet shows, aggregated by the hub across every unit. */
+export interface FleetSummary {
+  /** Corrective actions: how often each resolved the fault it was tried on. */
+  actions: FleetAction[];
+  generated_at: string;
+  /** Jobs per symptom (or tree, when entered without one) and variant. */
+  jobs: FleetJobs[];
+  /** The same asset with the same symptom or system again within the window. */
+  repeats: FleetRepeat[];
+  /** The most frequent verified causes per symptom. */
+  top_causes: FleetCauses[];
+  /** Units that reported. */
+  units: number;
 }
 
 /** What one [`flush`] did. */
@@ -521,6 +730,9 @@ export interface FlushReport {
 
 /** Whether a test procedure opens expanded or collapsed at a level. */
 export type Fold = "expanded" | "collapsed";
+
+/** The input formats. */
+export type Format = "j1939_candump" | "j1939_frames" | "j1587" | "display" | "mavlink_tlog" | "mavlink_raw";
 
 /** What was checked. */
 export interface GraphCounts {
@@ -568,6 +780,29 @@ export interface Guidance {
   section_id: string | null;
 }
 
+/** HEARTBEAT. */
+export interface Heartbeat {
+  armed: boolean;
+  autopilot: string;
+  base_mode: number;
+  custom_mode: number;
+  sysid: number;
+  system_status: string;
+  vehicle_type: string;
+}
+
+/** The hub's answer to a hello. */
+export interface HelloReply {
+  accepted: boolean;
+  /**
+   * How often a device fetches a changed fleet summary (a hub setting
+   * the device learns here).
+   */
+  fleet_every_hours: number;
+  hub_time: string;
+  refused: Refusal | null;
+}
+
 /** A fleet history event baked in the pack. */
 export interface HistoryEvent {
   attrs: unknown;
@@ -613,18 +848,99 @@ export interface Hit {
   section_id?: string | null;
 }
 
+export interface HubApproveParams {
+  /** Edit before approving: the note's text and/or scope. */
+  edit?: NoteEdit | null;
+  lesson_id: string;
+  note?: string | null;
+  /**
+   * The version to approve (an item id from the queue); required when
+   * the lesson `needs_reviewer`.
+   */
+  version?: string | null;
+}
+
+export interface HubBundlesParams {
+  since?: number;
+}
+
+export interface HubEnrollParams {
+  name?: string | null;
+  /** The device's ed25519 public key, base64. */
+  public_key: string;
+}
+
+/** What one upload attempt through a hub did. */
+export interface HubFlush {
+  error: string | null;
+  /** What was sent; `None` unless the hub accepted the device. */
+  flush: FlushReport | null;
+  /**
+   * The hub's answer to the hello; `None` when the attempt was skipped
+   * (backing off) or the link failed before an answer.
+   */
+  hello: HelloReply | null;
+  /** Skipped: backing off after a refusal until this time. */
+  skipped_until: string | null;
+}
+
+export interface HubPublishParams {
+  /** Publish a bundle (with the fleet summary) even when no note changed. */
+  always?: boolean;
+}
+
+export interface HubQueueParams {
+  /** `pending` | `approved` | `rejected`; all when absent. */
+  status?: string | null;
+}
+
+export interface HubRejectParams {
+  lesson_id: string;
+  reason?: string | null;
+}
+
+export interface HubRevokeParams {
+  device_id: string;
+  reason?: string | null;
+}
+
 /**
  * Where the upload destination stands: configured, and reachable as of
  * the last attempt (never probed live).
  */
 export interface HubState {
+  /** No upload is tried before this time (backing off after a refusal). */
+  backoff_until: string | null;
   configured: boolean;
   /** `folder` (a removable drive or shared folder) or `hub`. */
   destination: string | null;
   last_attempt_at: string | null;
   last_error: string | null;
-  /** As of the last attempt; `None` before any. */
+  /**
+   * Whether the hub answered on the last attempt (a refusal is an
+   * answer); `None` before any. Never probed live.
+   */
   reachable: boolean | null;
+  /**
+   * Why the hub refused this device: `unenrolled`, `revoked` or
+   * `signature`; `None` when accepted or not yet asked.
+   */
+  refused: Refusal | null;
+}
+
+/** How the hub stands. */
+export interface HubStatus {
+  bundles: number;
+  conflicts: number;
+  devices: number;
+  items: number;
+  jobs: number;
+  key_id: string;
+  latest_bundle: number;
+  lessons_approved: number;
+  lessons_pending: number;
+  lessons_rejected: number;
+  stream: string;
 }
 
 /** One rule that matched. */
@@ -761,6 +1077,8 @@ export interface JobStep {
   seq: number;
   /** When the technician went back over it (the step is kept, audited). */
   superseded_at: string | null;
+  /** The tree the node belongs to (a job can follow a goto into another). */
+  tree_id: string;
   unit: string | null;
   value: number | null;
 }
@@ -791,6 +1109,17 @@ export interface JobView {
   /** `None` when the tree changed since the job began (`tree_changed`). */
   step: StepView | null;
   tree_changed: boolean;
+}
+
+/** A lamp's state. */
+export type Lamp = "off" | "on" | "error" | "not_available";
+
+/** The four DM1 lamps. */
+export interface Lamps {
+  amber_warning: Lamp;
+  malfunction: Lamp;
+  protect: Lamp;
+  red_stop: Lamp;
 }
 
 /** A captured lesson. */
@@ -839,6 +1168,11 @@ export interface LessonInput {
   equip_id?: string | null;
   /** Fills asset, equipment, tree, symptom and node when they are absent. */
   job_id?: string | null;
+  /**
+   * The lesson's id when it continues one begun on another unit (its
+   * edits then meet at the hub); new when absent.
+   */
+  lesson_id?: string | null;
   /** The technician's level. */
   level?: string | null;
   minutes?: number | null;
@@ -855,6 +1189,26 @@ export interface LessonInput {
 
 /** Where a lesson is. */
 export type LessonStatus = "local" | "queued" | "uploaded" | "approved" | "edited" | "rejected";
+
+export interface LessonUpdateParams {
+  lesson: LessonInput;
+  lesson_id: string;
+  pack_id?: string | null;
+}
+
+/** One stored version of a lesson. */
+export interface LessonVersion {
+  device_id: string;
+  item_id: string;
+  lesson: Lesson;
+  received_at: string;
+  /**
+   * `current` (the winner), `superseded` (an earlier version from the
+   * winner's unit) or `lost` (another unit's version that lost the rule).
+   */
+  state: string;
+  updated_at: string;
+}
 
 /** A depth level, from `pack_meta.levels` (ordered, most guidance first). */
 export interface Level {
@@ -925,12 +1279,28 @@ export interface NoteCounts {
   units: number | null;
 }
 
+/** A reviewer's changes when approving. */
+export interface NoteEdit {
+  /** Where it shows; the lesson's variant, tree and symptom when absent. */
+  scope?: NoteScopeInput | null;
+  /** The field note's text; from the lesson when absent. */
+  text?: string | null;
+}
+
 /** What a field note is about: any of these; every one given must match. */
 export interface NoteScope {
   equip_id: string | null;
   node_id: string | null;
   symptom_id: string | null;
   tree_id: string | null;
+}
+
+/** What a field note is about: any of these; every one given must match. */
+export interface NoteScopeInput {
+  equip_id?: string | null;
+  node_id?: string | null;
+  symptom_id?: string | null;
+  tree_id?: string | null;
 }
 
 /**
@@ -1002,6 +1372,16 @@ export interface PackParams {
   pack_id?: string | null;
 }
 
+/** A pack replaced by a newer one from the hub. */
+export interface PackUpdate {
+  bytes: number;
+  from: string;
+  /** `full` | `delta`. */
+  kind: string;
+  pack_id: string;
+  to: string;
+}
+
 /**
  * A box on a page image, normalized 0 to 1 against the image: `x0 < x1`,
  * `y0 < y1`, origin top left.
@@ -1046,6 +1426,42 @@ export interface PhotoRef {
   sha256: string;
 }
 
+/** What the technician or the machine reports. */
+export interface Plate {
+  firmware: string | null;
+  model: string | null;
+  params: Record<string, string>;
+  serial: string | null;
+  /** Free text (a data plate read aloud or by a camera). */
+  text: string | null;
+}
+
+/** An identified person. */
+export interface Principal {
+  name: string;
+  roles: Role[];
+  /** How they were identified: `token`, `proxy` or `local` (in process). */
+  via: string;
+}
+
+/** What one pull from the hub did. */
+export interface PullReport {
+  /** Bytes of bundles received. */
+  bytes: number;
+  error: string | null;
+  /** Bytes of the fleet summary received (fetched only when it changed). */
+  fleet_bytes: number;
+  fleet_updated: boolean;
+  /** Bundles installed, in order. */
+  installed: number[];
+  notes: number;
+  /**
+   * The bundle that was refused (and why); the pull stops there and the
+   * next one asks for it again.
+   */
+  refused: RefusedBundle | null;
+}
+
 /** How a query word the pack does not hold as typed was read. */
 export interface Reading {
   /** The indexed words it was read as. */
@@ -1060,6 +1476,14 @@ export interface Reading {
 export interface RecordHow {
   branches: Branch[];
   expect: Expect | null;
+}
+
+/** Why the hub refuses a device. */
+export type Refusal = "unenrolled" | "revoked" | "signature";
+
+export interface RefusedBundle {
+  error: string;
+  seq: number | null;
 }
 
 /** One entry of an asset registry. */
@@ -1111,6 +1535,8 @@ export interface ReportJobStep {
   /** When the technician went back over it (the step is kept, audited). */
   superseded_at: string | null;
   text: string | null;
+  /** The tree the node belongs to (a job can follow a goto into another). */
+  tree_id: string;
   unit: string | null;
   value: number | null;
 }
@@ -1186,6 +1612,36 @@ export interface Retrieved {
   ref_id: string;
   score: number;
 }
+
+/** A lesson in the review queue, with every version. */
+export interface ReviewItem {
+  current: Lesson;
+  first_received_at: string;
+  lesson_id: string;
+  /**
+   * Two units edited it within the clock-skew bound: approving it needs
+   * the reviewer to choose a version.
+   */
+  needs_reviewer: boolean;
+  /** True when a newer version arrived after a review. */
+  reopened: boolean;
+  reviews: ReviewRecord[];
+  /** `pending` | `approved` | `rejected`. */
+  status: string;
+  versions: LessonVersion[];
+}
+
+/** A review action as recorded. */
+export interface ReviewRecord {
+  action: string;
+  at: string;
+  item_id: string;
+  note: string | null;
+  reviewer: string;
+}
+
+/** What a person may do at the hub. */
+export type Role = "reviewer" | "publisher" | "admin";
 
 /** One procedure run. */
 export interface Run {
@@ -1348,13 +1804,38 @@ export type Segment = {
   t: "check";
 };
 
+/** Decoded data and what it matches in the pack. */
+export interface SignalDecode {
+  decoded: Decoded;
+  match: SignalMatch;
+}
+
+/** Raw vehicle data to decode into observations. */
+export interface SignalDecodeParams {
+  asset_id?: string | null;
+  equip_id?: string | null;
+  format: Format;
+  /** The text: log lines, frames, hex messages, or the typed code. */
+  input: string;
+  pack_id?: string | null;
+  /** For a display code: its signal kind (`pump40.code`); any kind when absent. */
+  signal_kind?: string | null;
+}
+
 /** One signal rule an observation matched. */
 export interface SignalHit {
   /** The rule's section citation, when it cites one. */
   citation: string | null;
+  /** False when the rule leads to no troubleshooting tree. */
+  has_tree: boolean;
   matched: MatchKind;
   observed: Observation;
   rule: SignalRule;
+  /**
+   * The cited section's verbatim text. For a rule with no tree this is
+   * all the manual says (a cause with no corrective action).
+   */
+  section: SignalSection | null;
 }
 
 /**
@@ -1370,7 +1851,10 @@ export interface SignalKind {
 
 /** The result of matching observations. */
 export interface SignalMatch {
-  /** True when the hits lead to more than one tree. */
+  /**
+   * True when the hits lead to more than one tree (rules with no tree
+   * do not count).
+   */
   ambiguous: boolean;
   /** Most specific first: exact, glob, prefix, regex; then observation order. */
   hits: SignalHit[];
@@ -1400,7 +1884,19 @@ export interface SignalRule {
   section_id: string | null;
   signal_kind: string;
   title: string;
-  tree_id: string;
+  /**
+   * The tree it leads into; `None` when the manual prints a cause with
+   * no troubleshooting (then `section_id` is what it says).
+   */
+  tree_id: string | null;
+}
+
+/** The manual text a signal rule cites. */
+export interface SignalSection {
+  citation: string;
+  heading: string | null;
+  section_id: string;
+  text: string;
 }
 
 export interface Source {
@@ -1413,6 +1909,28 @@ export interface Source {
   source_id: string;
   title: string;
   url: string;
+}
+
+/** What reading the bytes found. */
+export interface Stats {
+  bad_crc: number;
+  frames: number;
+  signed: number;
+  /** Bytes skipped between frames. */
+  skipped_bytes: number;
+  /**
+   * Valid-looking frames of messages this decoder does not know (their
+   * CRC cannot be checked without the message's CRC_EXTRA).
+   */
+  unknown: number;
+}
+
+/** STATUSTEXT, chunks joined. */
+export interface StatusText {
+  /** `emergency` … `debug`. */
+  severity: string;
+  sysid: number;
+  text: string;
 }
 
 /** What recording a step returns: the guidance to show when it failed. */
@@ -1466,10 +1984,17 @@ export interface StepView {
    */
   possible_open: string[];
   record: RecordHow;
+  /** The printed cross-reference, verbatim, when the node has one. */
+  reference: string | null;
   /** What this node itself needs. */
   requirements: Requirement[];
   /** The tree's initial setup (conditions, tools, references, personnel). */
   setup: Requirement[];
+  /**
+   * Where this node leads in the pack; `None` when it names nothing the
+   * pack holds (then `reference` is the manual's printed reference, to
+   * show as "see … in the manual").
+   */
   target: TargetView | null;
   /** True when no branch leaves this node (the path ends here). */
   terminal: boolean;
@@ -1569,6 +2094,22 @@ export interface SymptomSearchParams {
   text?: string | null;
 }
 
+export interface SyncFlushParams {
+  /**
+   * Try now even while backing off after a refusal (an operator retrying
+   * after the device was enrolled).
+   */
+  force?: boolean;
+}
+
+/** What `sync.pull` did. */
+export interface SyncPull {
+  bundles: PullReport;
+  /** A pack the hub offered that could not be installed, and why. */
+  pack_errors: string[];
+  packs: PackUpdate[];
+}
+
 /** The outbox and the link. */
 export interface SyncStatus {
   acked: number;
@@ -1585,10 +2126,27 @@ export interface SyncStatus {
   quarantined: number;
 }
 
+/** SYS_STATUS: sensors by name, battery. */
+export interface SysStatus {
+  /** Amperes. */
+  battery_current: number | null;
+  /** Percent. */
+  battery_remaining: number | null;
+  /** Volts; `None` when the autopilot does not know. */
+  battery_voltage: number | null;
+  enabled: string[];
+  load_percent: number;
+  present: string[];
+  sysid: number;
+  /** Present and enabled but not healthy. */
+  unhealthy: string[];
+}
+
 /** Where a `goto` (or an `action` that is a task) leads. */
 export type Target = {
   id: string;
   kind: "tree";
+  node_id: string | null;
 } | {
   id: string;
   kind: "procedure";
@@ -1644,6 +2202,11 @@ export interface TaskSummary {
 /** A task (procedure) ready to show. */
 export interface TaskView {
   applies_to: string[];
+  /**
+   * Guards on the task (its section or above), shown once at its head;
+   * a step carries only the guards on that step.
+   */
+  guards: Guard[];
   kind: string;
   proc_id: string;
   requirements: Requirement[];
@@ -1657,6 +2220,8 @@ export interface TaskView {
 export interface TestProcedure {
   /** Whether it opens expanded at this level. */
   expanded: boolean;
+  /** Guards on the whole procedure, shown once before its steps. */
+  guards: Guard[];
   proc_id: string;
   requirements: Requirement[];
   steps: TaskStep[];
@@ -1728,12 +2293,14 @@ export interface Methods {
   "asset.history": { params: AssetHistoryParams; result: AssetHistory };
   "symptom.search": { params: SymptomSearchParams; result: SymptomSearch };
   "signal.match": { params: SignalMatchParams; result: SignalMatch };
+  "signal.decode": { params: SignalDecodeParams; result: SignalDecode };
   "tree.list": { params: TreeListParams; result: FaultTree[] };
   "tree.get": { params: TreeGetParams; result: Tree };
   "job.start": { params: JobStartParams; result: JobView };
   "job.get": { params: JobGetParams; result: JobView };
   "job.answer": { params: JobAnswerParams; result: JobView };
   "job.back": { params: JobIdParams; result: JobView };
+  "job.follow": { params: JobIdParams; result: JobView };
   "job.close": { params: JobCloseParams; result: JobClosed };
   "job.list": { params: JobListParams; result: JobSummary[] };
   "job.report": { params: JobIdParams; result: JobReport };
@@ -1753,9 +2320,26 @@ export interface Methods {
   "field.install": { params: FieldInstallParams; result: FieldInstall };
   "field.list": { params: NoParams; result: FieldNote[] };
   "sync.status": { params: NoParams; result: SyncStatus };
-  "sync.flush": { params: NoParams; result: FlushReport };
+  "sync.flush": { params: SyncFlushParams; result: HubFlush };
+  "device.info": { params: NoParams; result: DeviceInfo };
+  "sync.pull": { params: NoParams; result: SyncPull };
+  "lesson.update": { params: LessonUpdateParams; result: Lesson };
+  "fleet.summary": { params: NoParams; result: FleetSummary | null };
   "audit.list": { params: AuditListParams; result: AuditRecord[] };
   "audit.verify": { params: NoParams; result: ChainReport };
+  "hub.status": { params: NoParams; result: HubStatus };
+  "hub.queue": { params: HubQueueParams; result: ReviewItem[] };
+  "hub.approve": { params: HubApproveParams; result: FieldNoteIn };
+  "hub.reject": { params: HubRejectParams; result: HubStatus };
+  "hub.publish": { params: HubPublishParams; result: unknown };
+  "hub.bundles": { params: HubBundlesParams; result: unknown[] };
+  "hub.fleet": { params: NoParams; result: FleetSummary };
+  "hub.conflicts": { params: NoParams; result: Conflict[] };
+  "hub.audit": { params: AuditListParams; result: AuditRecord[] };
+  "hub.devices": { params: NoParams; result: EnrolledDevice[] };
+  "hub.enroll": { params: HubEnrollParams; result: EnrolledDevice };
+  "hub.revoke": { params: HubRevokeParams; result: EnrolledDevice };
+  "hub.whoami": { params: NoParams; result: Principal };
 }
 
 export type Method = keyof Methods;
@@ -1777,12 +2361,14 @@ export const METHODS = [
   "asset.history",
   "symptom.search",
   "signal.match",
+  "signal.decode",
   "tree.list",
   "tree.get",
   "job.start",
   "job.get",
   "job.answer",
   "job.back",
+  "job.follow",
   "job.close",
   "job.list",
   "job.report",
@@ -1803,6 +2389,23 @@ export const METHODS = [
   "field.list",
   "sync.status",
   "sync.flush",
+  "device.info",
+  "sync.pull",
+  "lesson.update",
+  "fleet.summary",
   "audit.list",
   "audit.verify",
+  "hub.status",
+  "hub.queue",
+  "hub.approve",
+  "hub.reject",
+  "hub.publish",
+  "hub.bundles",
+  "hub.fleet",
+  "hub.conflicts",
+  "hub.audit",
+  "hub.devices",
+  "hub.enroll",
+  "hub.revoke",
+  "hub.whoami",
 ] as const satisfies readonly Method[];
