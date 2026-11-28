@@ -693,3 +693,88 @@ fn job_records_are_sealed_at_rest() {
     );
     assert!(Records::open_with_key(&db, Some(&[1u8; 32])).is_err());
 }
+
+#[test]
+fn sealed_job_records_detect_edited_results() {
+    let tmp = tempfile::tempdir().unwrap();
+    let dir = tmp.path().join("pump40");
+    fixture_maint::build(&dir, "2026.3.1-1").unwrap();
+    let pack = Pack::open(&dir, &[fixture::trusted_key()]).unwrap();
+    let db = tmp.path().join("records.db");
+    let key = [9u8; 32];
+    let rec = Records::open_with_key(&db, Some(&key)).unwrap();
+    let job = rec
+        .start_job(
+            &pack,
+            &JobStart {
+                tree_id: Some("t-hot".into()),
+                level: "expert".into(),
+                ..Default::default()
+            },
+        )
+        .unwrap();
+    rec.answer_job(&pack, &job.job_id, &ans("oh.0", "done"))
+        .unwrap();
+    rec.answer_job(&pack, &job.job_id, &ans("oh.1", "no"))
+        .unwrap();
+    rec.close_job(
+        &pack,
+        &job.job_id,
+        &JobClose {
+            resolution: ResolutionKind::Fixed,
+            note: None,
+            lesson: None,
+        },
+    )
+    .unwrap();
+    assert!(rec.job(&job.job_id).is_ok());
+    // A result flipped in place no longer opens.
+    rec.conn()
+        .execute(
+            "UPDATE job_step SET outcome = 'yes', label = 'Yes', next_node = 'oh.2' WHERE seq = 2",
+            [],
+        )
+        .unwrap();
+    assert!(rec.job(&job.job_id).is_err());
+    rec.conn()
+        .execute(
+            "UPDATE job_step SET outcome = 'no', label = 'No', next_node = 'oh.1n' WHERE seq = 2",
+            [],
+        )
+        .unwrap();
+    assert!(rec.job(&job.job_id).is_ok());
+    // A closed job reopened in place no longer opens.
+    rec.conn()
+        .execute("UPDATE job SET status = 'open'", [])
+        .unwrap();
+    assert!(rec.job(&job.job_id).is_err());
+}
+
+#[test]
+fn field_notes_stay_with_their_pack_and_bundle_seqs_stay_in_range() {
+    let e = env();
+    let keys = [fixture::trusted_key()];
+    let mut other = json!({
+        "format": "harvest-field/1", "stream": "other-fleet", "pack_id": "another-pack", "seq": 1,
+        "issued_at": "2026-04-01T00:00:00.000Z",
+        "notes": [{"note_id": "fn-other", "scope": {"node_id": "nc.4"}, "text": "For another manual.",
+                   "approver": "Reviewer", "approved_at": "2026-04-01"}]
+    });
+    harvest_core::packs::sign_manifest(&mut other, &signing_key()).unwrap();
+    e.rec.install_field_bundle(&other, &keys).unwrap();
+    let notes = e
+        .rec
+        .field_notes_for(&e.pack, None, Some("t-nocrank"), Some("nc.4"), None)
+        .unwrap();
+    assert!(notes.is_empty(), "a note for another pack never shows");
+    let mut huge = json!({
+        "format": "harvest-field/1", "stream": "s2", "seq": u64::MAX, "issued_at": "2026-04-01T00:00:00.000Z"
+    });
+    harvest_core::packs::sign_manifest(&mut huge, &signing_key()).unwrap();
+    assert!(matches!(
+        e.rec.install_field_bundle(&huge, &keys),
+        Err(Error::Invalid(_))
+    ));
+    assert_eq!(harvest_core::records::maint::day_number("2026-02-31"), None);
+    assert!(harvest_core::records::maint::day_number("2028-02-29").is_some());
+}
