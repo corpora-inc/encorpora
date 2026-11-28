@@ -22,7 +22,7 @@ found the bank far too easy. These numbers say how easy, and why.
 |---|---|---|
 | **Key picked from the options alone, no stem** | **62.5%** (466 of 746) | near 25% (chance with 4 options) |
 | **Answered correctly with no rule text** (strong general model) | **84.1%** | well below the pass mark for hard items |
-| **The key shares the most words with the item's own rule quote** | **85.5%** of 3,434 | about 25% |
+| The key shares the most words with the item's own rule quote and fact | 85.5% of 3,434 | a signal, not a target: a correct key agrees with the rule |
 | Key is strictly the longest option | 12.6% | about 25% (the bank already avoids this tell) |
 | Answered correctly with the cited rule text | 98.6% (702 of 712 asked so far) | near 100% |
 | Every option has a rationale | 100% | 100% |
@@ -32,25 +32,28 @@ found the bank far too easy. These numbers say how easy, and why.
 
 **Calibration against the intended tiers:**
 
-| Intended difficulty | Items asked | Options only | No rule text | With rule text |
-|---|---|---|---|---|
-| 0.2 (easy) | 300 | 58.0% | 82.3% | 99.0% |
-| 0.5 (medium) | 300 | 72.0% | 90.7% | 98.9% |
-| 0.8 (hard) | 146 | 52.1% | 74.0% | 97.2% |
+| Intended difficulty | Options only (n) | No rule text (n) | With rule text (n) |
+|---|---|---|---|
+| 0.2 (easy) | 58.0% (300) | 82.3% (300) | 99.0% (286) |
+| 0.5 (medium) | 72.0% (300) | 90.7% (300) | 98.9% (283) |
+| 0.8 (hard) | 52.1% (146) | 74.0% (146) | 97.2% (143) |
 
 ## Findings
 
 1. **The bank gives its answers away.** A strong model shown only the four
    options, with no question, picks the key 62.5% of the time. That is two and
-   a half times chance. The tell is wording: in 85.5% of items the key is the
-   option closest to the rule's own words, while the distractors are written
-   in other words. Length is not a tell (the key is the longest option only
-   12.6% of the time). The bank already controls for length, not for wording.
+   a half times chance. Wording explains part of it, not all: when the key is
+   the option closest to the rule's words (622 sampled items), the model picks
+   it 64.6% of the time; otherwise (124 items) 51.6%, still twice chance. So
+   the distractors themselves are implausible on their face. Length is not a
+   tell (the key is the longest option only 12.6% of the time).
 2. **General knowledge passes it.** With no crane rule text, the strong model
-   answers 84.1% correctly, 82–91% on easy and medium items. The NCCCO core
-   exam's 70% practice pass mark would be cleared without studying the rules.
+   answers 84.1% correctly, 82–91% on easy and medium items. The bank's
+   practice pass mark (70%, `crane/content/exams.json`) would be cleared without
+   studying the rules.
 3. **The tiers don't separate.** Medium items (0.5) come out *easier* than easy
-   items (0.2) on every pass. Hard items (0.8) are only somewhat harder: 74%
+   items (0.2) on both passes without rule text (options only 72% vs 58%; no
+   rule text 91% vs 82%), and the same with it (98.9% vs 99.0%). Hard items (0.8) are only somewhat harder: 74%
    answered with no context, 52% from the options alone. The intended
    difficulty is not a measured difficulty.
 4. **Keys are almost always right.** With the cited rule text, the model
@@ -64,8 +67,8 @@ found the bank far too easy. These numbers say how easy, and why.
 5. **Integrity is good.** Every option has a rationale, every quote is verbatim,
    the keys are evenly placed, and every rule item but 18 free-text ones cites an
    existing section. The 153 multiple-choice items that cite no section are
-   practice items (basis `practice`, mostly load-chart readings), which is by
-   design.
+   practice items (basis `practice`; load-chart items are the largest group, 69 of
+   them), which is by design.
 6. **Too easy everywhere, worst in a few topics** (from the options alone, and
    with no rule text):
    - **site:** 79% and 94%;
@@ -76,15 +79,16 @@ found the bank far too easy. These numbers say how easy, and why.
 
    Technical (30% from the options alone) and rules (40%) are the least
    guessable. See `model-passes/report.md` for every topic.
-7. **421 of 746 sampled items (12.3%) are answered by every pass, including from
-   the options alone.** `model-passes/items.csv` (`everyone_correct`) lists them
-   for rewriting first.
+7. **421 of the 712 items every pass answered (59.1%) are answered correctly by
+   all of them, including from the options alone.** `model-passes/items.csv`
+   (`everyone_correct`) lists them for rewriting first.
 
 ## What would fix it (for the content lane)
 
-- Write distractors in the rule's own vocabulary, and paraphrase the key, so
-  that matching the rule's wording stops pointing to the key. Re-run
-  `key_most_like_rule` until it is near 25%.
+- Write distractors in the rule's own vocabulary, so that matching the rule's
+  wording stops pointing to the key. Keep the key faithful to the rule. Judge
+  the result by `options_only`, not by `key_most_like_rule`, which stays high
+  for a correct key.
 - Make distractors true-sounding near misses: the right number with the wrong
   condition, the neighbouring row of a table, the general-industry rule in a
   construction question. That moves `options_only` toward chance and
@@ -103,8 +107,8 @@ tier measurement:
   in bank order, so they are not reported.
 - **The last 34 crane-aware items.**
 
-Every answer is cached, so finishing costs only these calls. Weekly Claude usage
-is at 67%, so the review stays on the local model.
+Every answer is cached, so finishing costs only these calls, on the local
+model.
 
 ## Reproduce
 

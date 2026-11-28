@@ -7,7 +7,7 @@
 | Gate | Rate | Expected for a good bank |
 |---|---|---|
 | Key is the longest option | 0.1264 | about 0.25 (4 options) |
-| Key shares the most words with the rule quote | 0.8547 | about 0.25 |
+| Key shares the most words with the rule quote and fact | 0.8547 | a signal, not a target (a correct key agrees with the rule) |
 | Every option has a rationale | 1.0 | 1.0 |
 | Every cited section exists | 0.9951 | 1.0 |
 | Every quote verbatim | 1.0 | 1.0 |
@@ -20,13 +20,14 @@
 
 ## Calibration by intended difficulty
 
-| Intended | items in bank | items asked |  |
-|---|---|---|
-| 0.2 | 1547 | 0 |  |
-| 0.5 | 1741 | 0 |  |
-| 0.8 | 146 | 0 |  |
+| Intended | items in bank |  |
+|---|---|
+| 0.2 | 1547 |  |
+| 0.5 | 1741 |  |
+| 0.8 | 146 |  |
 
-Items every answering pass gets right (): 0 (0.0).
+Items every answering pass gets right (): 0 of the 0 every pass answered (None).
+
 
 ## By topic
 

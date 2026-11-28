@@ -126,7 +126,10 @@ class Model:
             self.kind, self.model, self.url = "claude", spec.split(":", 1)[1], None
         else:
             url, _, model = spec.partition("#")
-            self.kind, self.url, self.model = "openai", url.rstrip("/"), model or "default"
+            if not model:
+                # The model name is the cache identity; an unlabelled endpoint would share answers.
+                raise SystemExit(f"{spec}: name the model as URL#model (it keys the answer cache)")
+            self.kind, self.url, self.model = "openai", url.rstrip("/"), model
         # Cache identity: the model, not where it is served.
         self.ident = f"{self.kind}:{self.model}"
         self.cost = 0.0
@@ -270,8 +273,8 @@ def run_pass(name: str, model: Model, items: list[dict], corpus: Corpus, n, cach
                     res = model.ask(system, user, schema)
                     cache.put(res, *ck)
                     break
-                except (RuntimeError, ValueError, urllib.error.URLError, TimeoutError, OSError,
-                        json.JSONDecodeError, subprocess.TimeoutExpired) as e:
+                except (RuntimeError, ValueError, urllib.error.URLError, TimeoutError, OSError, KeyError,
+                        IndexError, TypeError, json.JSONDecodeError, subprocess.TimeoutExpired) as e:
                     if attempt == 2:
                         with lock:
                             errors.append((item["q_id"], f"{type(e).__name__}: {e}"))
@@ -343,12 +346,23 @@ def summarize(items, det, passes, tiers) -> dict:
             if name.startswith("review"):
                 continue
             cal[str(t)][name] = rate(p["rows"][i["q_id"]]["correct"] for i in tier_items if i["q_id"] in p["rows"])
+            cal[str(t)][f"{name}.n"] = sum(1 for i in tier_items if i["q_id"] in p["rows"])
     s["calibration_by_tier"] = cal
     ans = [n for n in passes if not n.startswith("review")]
-    everyone = [i["q_id"] for i in mc if all(i["q_id"] in passes[n]["rows"] and passes[n]["rows"][i["q_id"]]["correct"]
-                                             for n in ans)] if ans else []
-    s["everyone_correct"] = {"n": len(everyone), "rate": round(len(everyone) / len(mc), 4) if mc else None,
+    answered_all = [i for i in mc if ans and all(i["q_id"] in passes[n]["rows"] for n in ans)]
+    everyone = [i["q_id"] for i in answered_all if all(passes[n]["rows"][i["q_id"]]["correct"] for n in ans)]
+    s["everyone_correct"] = {"n": len(everyone), "of": len(answered_all),
+                             "rate": round(len(everyone) / len(answered_all), 4) if answered_all else None,
                              "passes": ans}
+    # How much of options-only success the rule-wording tell explains.
+    if "options_only" in passes:
+        oo = passes["options_only"]["rows"]
+        split = {}
+        for flag in (True, False):
+            sub = [i for i in mc if i["q_id"] in oo and by[i["q_id"]]["key_most_like_rule"] is flag]
+            split["key_most_like_rule" if flag else "other"] = {
+                "n": len(sub), "options_only_correct": rate(oo[i["q_id"]]["correct"] for i in sub)}
+        s["options_only_by_rule_wording"] = split
     by_topic = defaultdict(list)
     for i in mc:
         by_topic[i.get("topic_id")].append(i)
@@ -401,7 +415,7 @@ def write_outputs(out: Path, items, det, passes, summary, everyone) -> None:
              f"{summary['variants']} variants). Intended difficulty: {summary['intended_difficulty']}.", "",
              "## Deterministic gates", "", "| Gate | Rate | Expected for a good bank |", "|---|---|---|",
              f"| Key is the longest option | {d['key_longest']} | about 0.25 (4 options) |",
-             f"| Key shares the most words with the rule quote | {d['key_most_like_rule']} | about 0.25 |",
+             f"| Key shares the most words with the rule quote and fact | {d['key_most_like_rule']} | a signal, not a target (a correct key agrees with the rule) |",
              f"| Every option has a rationale | {d['rationales_complete']} | 1.0 |",
              f"| Every cited section exists | {d['cites_exist']} | 1.0 |",
              f"| Every quote verbatim | {d['quotes_verbatim']} | 1.0 |",
@@ -417,14 +431,21 @@ def write_outputs(out: Path, items, det, passes, summary, everyone) -> None:
         else:
             lines.append(f"| {nme} | {p['n']} | correct {p['correct']} (errors {p['errors']}) |")
     lines += ["", "## Calibration by intended difficulty", "",
-              "| Intended | items in bank | items asked | " + " | ".join(n for n in summary["passes"]
-                                                                  if not n.startswith("review")) + " |",
-              "|---|---|---|" + "---|" * len([n for n in summary["passes"] if not n.startswith("review")])]
+              "| Intended | items in bank | " + " | ".join(f"{n} (n)" for n in summary["passes"]
+                                                   if not n.startswith("review")) + " |",
+              "|---|---|" + "---|" * len([n for n in summary["passes"] if not n.startswith("review")])]
     for t, c in summary["calibration_by_tier"].items():
-        lines.append(f"| {t} | {c['n_bank']} | {c['n']} | " + " | ".join(str(c.get(n)) for n in summary["passes"]
-                                                                          if not n.startswith("review")) + " |")
+        lines.append(f"| {t} | {c['n_bank']} | " + " | ".join(f"{c.get(n)} ({c.get(n + '.n')})" for n in summary["passes"]
+                                                             if not n.startswith("review")) + " |")
     e = summary["everyone_correct"]
-    lines += ["", f"Items every answering pass gets right ({', '.join(e['passes'])}): {e['n']} ({e['rate']}).", "",
+    lines += ["", f"Items every answering pass gets right ({', '.join(e['passes'])}): {e['n']} of the {e['of']} "
+              f"every pass answered ({e['rate']}).", ""]
+    if summary.get("options_only_by_rule_wording"):
+        sp = summary["options_only_by_rule_wording"]
+        lines += [f"Options-only success when the key is the option most like the rule: "
+                  f"{sp['key_most_like_rule']['options_only_correct']} (n={sp['key_most_like_rule']['n']}); "
+                  f"otherwise {sp['other']['options_only_correct']} (n={sp['other']['n']}).", ""]
+    lines += ["",
               "## By topic", "", "| Topic | items in bank | key longest | key most like the rule | items asked | "
               + " | ".join(e["passes"]) + " |", "|---|---|---|---|---|" + "---|" * len(e["passes"])]
     for t, r in summary["by_topic"].items():
@@ -468,6 +489,8 @@ def items_cmd(a) -> int:
     cache = Cache(Path(a.cache) if a.cache else out / "cache")
     passes = {}
     models = {"strong": a.strong, "weak": a.weak, "judge": a.judge or a.strong}
+    if models["weak"] and models["strong"] and Model(models["weak"]).ident == Model(models["strong"]).ident:
+        raise SystemExit("--weak and --strong name the same model; their no_context answers would share the cache")
     for p in a.passes:
         if p == "deterministic":
             continue
@@ -488,12 +511,15 @@ def items_cmd(a) -> int:
         print(f"[{p}] {len(passes[p]['rows'])} done, cost ${m.cost:.2f}", file=sys.stderr)
     tiers = sorted({it.get("difficulty") for it in mc if it.get("difficulty") is not None})
     summary, everyone = summarize(items, det, passes, tiers)
-    summary["models"] = {k: v for k, v in models.items() if v}
-    summary["model_items"] = len(model_ids)
-    summary["review_items"] = len(review_ids)
+    ran = [p for p in a.passes if p != "deterministic"]
+    used = {"strong": any(p in ("options_only", "crane_aware") for p in ran) or "no_context" in ran,
+            "weak": "no_context" in ran, "judge": "review" in ran}
+    summary["models"] = {k: v for k, v in models.items() if v and used[k]}
     summary["per_tier"] = a.per_tier
     summary["cache_only"] = a.cache_only
-    summary["targets"] = {"model_passes": len(model_ids), "review": len(review_ids)}
+    summary["targets"] = {"model_passes": len(model_ids) if ran else 0,
+                          "review": len(review_ids) if "review" in ran else 0}
+    summary["passes_run"] = ran
     write_outputs(out, items, det, passes, summary, everyone)
     print((out / "report.md").read_text())
     return 0

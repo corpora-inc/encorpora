@@ -109,7 +109,7 @@ class Passes(unittest.TestCase):
                 url = f"http://127.0.0.1:{srv.server_port}/v1#stub"
                 rc = main(["items", "--bank", str(d / "bank.jsonl"), "--sections", str(d / "sections.jsonl"),
                            "--out", str(d / "out"), "--passes", "deterministic", "options_only", "no_context",
-                           "crane_aware", "review", "--strong", url, "--weak", url, "--jobs", "2"])
+                           "crane_aware", "review", "--strong", url, "--weak", url + "-weak", "--jobs", "2"])
                 self.assertEqual(rc, 0)
                 s = json.loads((d / "out" / "summary.json").read_text())
                 self.assertEqual(s["mc"], 3)
@@ -127,6 +127,14 @@ class Passes(unittest.TestCase):
                 main(["items", "--bank", str(d / "bank.jsonl"), "--sections", str(d / "sections.jsonl"),
                       "--out", str(d / "out"), "--passes", "options_only", "--strong", url])
                 self.assertEqual(len(list((d / "out" / "cache").rglob("*.json"))), calls_before)
+                self.assertEqual(s["everyone_correct"]["of"], 3)
+                # An unlabelled endpoint, or weak and strong as one model, would share cached answers.
+                base = ["items", "--bank", str(d / "bank.jsonl"), "--sections", str(d / "sections.jsonl"),
+                        "--out", str(d / "out3"), "--passes", "no_context"]
+                with self.assertRaises(SystemExit):
+                    main(base + ["--strong", f"http://127.0.0.1:{srv.server_port}/v1"])
+                with self.assertRaises(SystemExit):
+                    main(base + ["--strong", url, "--weak", url])
                 # The cache is keyed by the model, not its address: the same model elsewhere is a hit.
                 other = f"http://localhost:{srv.server_port}/v1#stub"
                 main(["items", "--bank", str(d / "bank.jsonl"), "--sections", str(d / "sections.jsonl"),

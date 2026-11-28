@@ -39,7 +39,8 @@
  },
  "everyone_correct": {
   "n": 0,
-  "rate": 0.0,
+  "of": 0,
+  "rate": null,
   "passes": []
  },
  "by_topic": {
@@ -153,12 +154,11 @@
   }
  },
  "models": {},
- "model_items": 3434,
- "review_items": 3434,
  "per_tier": null,
  "cache_only": false,
  "targets": {
-  "model_passes": 3434,
-  "review": 3434
- }
+  "model_passes": 0,
+  "review": 0
+ },
+ "passes_run": []
 }

@@ -44,32 +44,52 @@
    "n": 300,
    "n_bank": 1547,
    "options_only": 0.58,
+   "options_only.n": 300,
    "no_context.strong": 0.8233,
-   "crane_aware": 0.9895
+   "no_context.strong.n": 300,
+   "crane_aware": 0.9895,
+   "crane_aware.n": 286
   },
   "0.5": {
    "n": 300,
    "n_bank": 1741,
    "options_only": 0.72,
+   "options_only.n": 300,
    "no_context.strong": 0.9067,
-   "crane_aware": 0.9894
+   "no_context.strong.n": 300,
+   "crane_aware": 0.9894,
+   "crane_aware.n": 283
   },
   "0.8": {
    "n": 146,
    "n_bank": 146,
    "options_only": 0.5205,
+   "options_only.n": 146,
    "no_context.strong": 0.7397,
-   "crane_aware": 0.972
+   "no_context.strong.n": 146,
+   "crane_aware": 0.972,
+   "crane_aware.n": 143
   }
  },
  "everyone_correct": {
   "n": 421,
-  "rate": 0.1226,
+  "of": 712,
+  "rate": 0.5913,
   "passes": [
    "options_only",
    "no_context.strong",
    "crane_aware"
   ]
+ },
+ "options_only_by_rule_wording": {
+  "key_most_like_rule": {
+   "n": 622,
+   "options_only_correct": 0.6463
+  },
+  "other": {
+   "n": 124,
+   "options_only_correct": 0.5161
+  }
  },
  "by_topic": {
   "access-fall": {
@@ -236,15 +256,17 @@
   }
  },
  "models": {
-  "strong": "http://127.0.0.1:18110/v1#gpt-oss-120b",
-  "judge": "http://127.0.0.1:18110/v1#gpt-oss-120b"
+  "strong": "http://127.0.0.1:18110/v1#gpt-oss-120b"
  },
- "model_items": 746,
- "review_items": 746,
  "per_tier": 300,
  "cache_only": true,
  "targets": {
   "model_passes": 746,
-  "review": 746
- }
+  "review": 0
+ },
+ "passes_run": [
+  "options_only",
+  "no_context",
+  "crane_aware"
+ ]
 }

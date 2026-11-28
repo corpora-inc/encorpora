@@ -7,7 +7,7 @@
 | Gate | Rate | Expected for a good bank |
 |---|---|---|
 | Key is the longest option | 0.1264 | about 0.25 (4 options) |
-| Key shares the most words with the rule quote | 0.8547 | about 0.25 |
+| Key shares the most words with the rule quote and fact | 0.8547 | a signal, not a target (a correct key agrees with the rule) |
 | Every option has a rationale | 1.0 | 1.0 |
 | Every cited section exists | 0.9844 | 1.0 |
 | Every quote verbatim | 0.9859 | 1.0 |
@@ -23,13 +23,16 @@
 
 ## Calibration by intended difficulty
 
-| Intended | items in bank | items asked | options_only | no_context.strong | crane_aware |
-|---|---|---|---|---|---|
-| 0.2 | 1547 | 300 | 0.58 | 0.8233 | 0.9895 |
-| 0.5 | 1741 | 300 | 0.72 | 0.9067 | 0.9894 |
-| 0.8 | 146 | 146 | 0.5205 | 0.7397 | 0.972 |
+| Intended | items in bank | options_only (n) | no_context.strong (n) | crane_aware (n) |
+|---|---|---|---|---|
+| 0.2 | 1547 | 0.58 (300) | 0.8233 (300) | 0.9895 (286) |
+| 0.5 | 1741 | 0.72 (300) | 0.9067 (300) | 0.9894 (283) |
+| 0.8 | 146 | 0.5205 (146) | 0.7397 (146) | 0.972 (143) |
 
-Items every answering pass gets right (options_only, no_context.strong, crane_aware): 421 (0.1226).
+Items every answering pass gets right (options_only, no_context.strong, crane_aware): 421 of the 712 every pass answered (0.5913).
+
+Options-only success when the key is the option most like the rule: 0.6463 (n=622); otherwise 0.5161 (n=124).
+
 
 ## By topic
 
