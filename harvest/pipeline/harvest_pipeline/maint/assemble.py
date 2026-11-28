@@ -280,6 +280,26 @@ class Assembly:
                                      or re.fullmatch(r"[A-Z0-9]{1,2}", (pm.region_text(pm.region(c.head)) or "").strip()))
                          for c in out_c)
             if not ok and a["raw"].get("kind") != "symptom":
+                # A branch whose arrow the page model did not find leaving this box, on a page where some arrows
+                # lost their tail,
+                # is a gap in the page model, not evidence against the reading: the stated edge stands,
+                # marked lower confidence, when an arrow (tail unknown) ends in the target or carries the
+                # label, or the target is on another page. Only an arrow that leaves this box and goes
+                # elsewhere, or a page whose arrows all have tails, holds the question.
+                tailless = [c for c in pm.connectors if not c.tail]
+                lab_hit = any(c.label and fold(pm.region_text(pm.region(c.label)) or "") == fold(label) for c in tailless)
+                head_hit = any(c.head == b["loc"].region for c in tailless)
+                mine = [c for c in out_c if c.label and fold(pm.region_text(pm.region(c.label)) or "") == fold(label)]
+                plain = fold(label) in ("continue", "") and not out_c   # an action's one onward arrow
+                if not mine and tailless and (lab_hit or head_hit or plain or a["loc"].page != b["loc"].page):
+                    n = json.loads(self.provs[pid]["notes"])
+                    msg = (f"lower confidence: branch {label!r} kept from the reading; the page model found no arrow "
+                           f"tail at {a['loc'].region}")
+                    if msg not in n["notes"]:
+                        n["notes"].append(msg)
+                    self.provs[pid]["notes"] = json.dumps(n, ensure_ascii=False)
+                    counts["edges_lower_confidence"] = counts.get("edges_lower_confidence", 0) + 1
+                    continue
                 counts["edges"] += 1
                 self.review(pid, f"geometry: no drawn arrow from {a['loc'].region} to {b['loc'].region} ({label})")
         # a tree with a node under review is under review
@@ -346,6 +366,11 @@ class Assembly:
             head = (word.group(1).upper() if word else "")
             printed = GUARD_WORDS.get(head) if (first_line.rstrip(":").upper() in GUARD_WORDS
                                                 or first_line[len(head):len(head) + 2].lstrip("S").startswith(":")) else None
+            if printed is None:
+                above = self._heading_above(pm, reg)
+                if above:
+                    printed = GUARD_WORDS.get(above)
+                    p.notes.append(f"guard {key}: its {above} heading is printed as a separate line above the block")
             if printed is None and g.get("_typed"):
                 p.notes.append(f"guard {key}: typed {kind} by the source's schema")
             elif printed is None:
@@ -589,6 +614,7 @@ class Assembly:
                 self.loc("fault_facet", f"{nid}/{f.get('facet')}#{ordn}", "text", floc)
             rec["facets"] = facets
             # branches
+            self._conditions = False
             drawn = self._drawn(rec)
             for bk, b in enumerate(n.get("branches") or [], 1):
                 to = b.get("to") or ""
@@ -615,6 +641,19 @@ class Assembly:
                     self._check_drawn(rec, tgt_rec, lab_loc, label, drawn, p, bk)
                 edges_out.append({"from": gk, "to": tgt, "ord": bk, "label": label, "cond": cond,
                                   "retry": bool(b.get("retry"))})
+            if n.get("kind") == "goto" and ("as_text", nid) in self.forced:
+                p.notes.append("go-to kept as its printed instruction: " + self.forced[("as_text", nid)])
+            if expect and expect.get("kind") in ("yes_no", "pass_fail") and self._conditions:
+                mine = [e for e in edges_out if e["from"] == gk]
+                expect = {"kind": "choice", "options": [e["label"] for e in mine]}
+                p.notes.append("branches printed as conditions: kept as a choice of the printed conditions")
+            if expect and expect.get("kind") == "value" and ("as_choice", nid) in self.forced:
+                mine = [e for e in edges_out if e["from"] == gk]
+                expect = {"kind": "choice", "options": [e["label"] for e in mine]}
+                for e in mine:
+                    e["cond"] = None
+                p.notes.append("measured value kept as a choice of its printed branch labels: "
+                               + self.forced[("as_choice", nid)])
             # test procedure, target
             proc_id = None
             tpk = n.get("test_procedure")
@@ -700,6 +739,22 @@ class Assembly:
             self.loc("fault_tree", tree_id, "title", title_loc)
         self.tally("fault_tree", pid)
 
+    @staticmethod
+    def _heading_above(pm: PageModel, reg: Region) -> str | None:
+        """A WARNING / CAUTION / NOTE heading the page model split from its body: a region holding only
+        that word, directly above the body (small gap) and overlapping it horizontally."""
+        best = None
+        for r in pm.regions:
+            if r is reg or not r.words or r.bbox[3] > reg.bbox[1] + 1 or reg.bbox[1] - r.bbox[3] > 18:
+                continue
+            if min(r.bbox[2], reg.bbox[2]) - max(r.bbox[0], reg.bbox[0]) <= 0:
+                continue
+            w = pm.region_text(r).strip().rstrip(":").upper()
+            w = w[:-1] if w.endswith("S") and w[:-1] in GUARD_WORDS else w
+            if w in GUARD_WORDS and (best is None or r.bbox[3] > best[0]):
+                best = (r.bbox[3], w)
+        return best[1] if best else None
+
     def _node_cols(self) -> list[str]:
         if not hasattr(self, "_ncols"):
             from ..schema import table_columns
@@ -731,7 +786,9 @@ class Assembly:
                     refs["resolved"] += 1
                 else:
                     refs["unresolved"][t.get("ref")] = refs["unresolved"].get(t.get("ref"), 0) + 1
-                if t.get("kind") == "procedure" and key in procs:
+                if ("as_text", rec["row"]["node_id"]) in self.forced:
+                    rec["row"]["kind"] = "action"      # its target did not ship: the printed instruction stays
+                elif t.get("kind") == "procedure" and key in procs:
                     rec["row"]["target"] = f"procedure:{procs[key]['proc_id']}"
                 elif t.get("kind") == "tree" and key in self.trees:
                     rec["row"]["target"] = f"tree:{self.trees[key]['tree_id']}"
@@ -740,7 +797,10 @@ class Assembly:
                     n["notes"].append(f"target {t.get('ref')!r} is not in this pack; left out")
                     self.provs[rec["pid"]]["notes"] = json.dumps(n, ensure_ascii=False)
                     if rec["raw"].get("kind") == "goto":
-                        self.fail(rec["pid"], f"goto target {t.get('ref')!r} unresolved")
+                        # never fail a node for a reference: the box is kept as the printed instruction
+                        rec["row"]["kind"] = "action"
+                        n["notes"].append(f"go-to {t.get('ref')!r} not in this pack: kept as a printed instruction")
+                        self.provs[rec["pid"]]["notes"] = json.dumps(n, ensure_ascii=False)
 
     def standalone_procedures(self) -> None:
         for rec in self.procs:
@@ -771,7 +831,11 @@ class Assembly:
     def _cond(self, c: dict | None, lab: Located | None, p: Prov, bk: int, expect: dict | None) -> dict | None:
         if not c:
             if expect and expect.get("kind") == "value":
-                p.problems.append(f"branch {bk} of a value question has no numeric condition")
+                if lab is not None and any(re.fullmatch(r"-?\d+(?:\.\d+)?", x) for x in numbers_in(lab.text)):
+                    p.problems.append(f"branch {bk} of a value question: its label {lab.text!r} prints a number "
+                                      "but the branch has no numeric condition")
+                else:
+                    p.notes.append(f"branch {bk} of a value question is categorical ({lab.text if lab else 'no label'!r})")
             return None
         out = {"op": c.get("op")}
         nums = []
@@ -785,6 +849,13 @@ class Assembly:
             have = {float(x) for x in numbers_in(lab.text) if re.fullmatch(r"-?\d+(?:\.\d+)?", x)}
             missing = [n for n in nums if float(n) not in have]
             if missing:
+                from .rules import outcome_of
+                _, printed = outcome_of(lab.text)
+                if printed:
+                    # the reading's numbers are not the printed ones (e.g. nudged to make ranges meet);
+                    # the printed label states the condition itself
+                    p.notes.append(f"branch {bk}: condition {out} replaced by the one its label prints {lab.text!r}")
+                    return {k: v for k, v in printed.items() if v is not None}
                 p.problems.append(f"branch {bk}: condition numbers {missing} are not in its label {lab.text!r}")
         if expect and expect.get("unit") and lab and expect["unit"] not in lab.text:
             p.notes.append(f"branch {bk}: label does not repeat the unit {expect['unit']!r}")
@@ -793,6 +864,13 @@ class Assembly:
     def _label(self, expect: dict | None, outcome: str, lab: Located | None, p: Prov, bk: int) -> str:
         k = (expect or {}).get("kind")
         printed = lab.text if lab else None
+        if k in ("yes_no", "pass_fail") and printed and fold(printed) not in {"yes_no": ("yes", "no"),
+                                                                             "pass_fail": ("pass", "fail")}[k]:
+            # the manual prints the branch as a condition ("If there is no continuity"): the question is a
+            # choice of its printed conditions (`_conditions` turns the node into one after its branches)
+            p.notes.append(f"branch {bk}: printed as a condition {printed!r}")
+            self._conditions = True
+            return printed
         if k in ("yes_no", "pass_fail"):
             want = {"yes_no": ("yes", "no"), "pass_fail": ("pass", "fail")}[k]
             o = outcome if outcome in want else (fold(printed) if printed and fold(printed) in want else None)

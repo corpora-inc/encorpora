@@ -57,6 +57,10 @@ c = json.load(open(sys.argv[1])); need = float(sys.argv[2])
 wc = c["warnings_cautions"]
 print(f"build-pack: warnings+cautions attached {wc['attached']}/{wc['present']}, "
       f"question boxes {c['questions']['attached']}/{c['questions']['present']}")
+if c.get("sanity"):
+    sys.exit("build-pack: coverage is not measurable: " + "; ".join(c["sanity"]))
+if wc["rate"] is None:
+    sys.exit(f"build-pack: no warning or caution found on {c['pages']} pages: coverage cannot pass on nothing")
 if wc["rate"] < need:
     sys.exit(f"build-pack: coverage {wc['rate']:.1%} is below {need:.0%}")
 PY

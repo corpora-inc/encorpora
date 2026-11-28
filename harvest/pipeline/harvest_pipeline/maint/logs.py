@@ -115,6 +115,8 @@ class Record:
     part_raw: str | None = None
     tech_raw: str | None = None
     out: dict = field(default_factory=dict)
+    date_fmt: str | None = None
+    unit_alt: str | None = None
     ev: dict = field(default_factory=dict)
     corrections: dict = field(default_factory=dict)
     decision: str = "accept"
@@ -129,19 +131,92 @@ _DATES = [("%Y-%m-%d", r"\d{4}-\d{2}-\d{2}"), ("%m/%d/%Y", r"\d{1,2}/\d{1,2}/\d{
           ("%d %b %y", r"\d{1,2} [A-Z][a-z]{2} \d{2}"), ("%d %B %Y", r"\d{1,2} [A-Z][a-z]+ \d{4}")]
 
 
-def parse_sources(base: Path, sources: list[dict], ocr_lang: str = "eng") -> list[Record]:
+IMAGE_TYPES = ("*.png", "*.jpg", "*.jpeg", "*.tif", "*.tiff", "*.bmp", "*.webp", "*.gif")
+
+
+def make_image_reader(author: dict, cache_dir: Path, offline: bool, ledger=None, log=sys.stderr):
+    """A model that transcribes an image entry (a card, a photo of a page) as written; code then
+    validates what it says (unit against the registry, date, part against the catalog) like any text.
+    Cached and ledgered; without `--call` only the cache answers."""
+    from ..backends import BackendError, Request, Runner, UsageLimitReached, make_backend
+    from ..cache import ResponseCache
+    from .extract import Arm, _now
+    spec = Arm("image-reader", author, images=True).spec
+    system = ("Transcribe this maintenance record image exactly as written, line by line, keeping each printed "
+              "field label with its handwritten value. Do not correct, expand or guess: copy what is written; "
+              "write [illegible] for what cannot be read.")
+    schema = {"type": "object", "additionalProperties": False, "required": ["text"],
+              "properties": {"text": {"type": "string"}}}
+    st = {"calls": 0, "cached": 0, "missing": 0}
+
+    def read(path: Path) -> str | None:
+        data = path.read_bytes()
+        mt = {"jpg": "image/jpeg", "jpeg": "image/jpeg", "png": "image/png", "webp": "image/webp", "gif": "image/gif"}.get(
+            path.suffix.lower().lstrip("."))
+        if mt is None:                     # tif, bmp: as PNG
+            from PIL import Image
+            buf = io.BytesIO()
+            Image.open(path).save(buf, format="PNG")
+            data, mt = buf.getvalue(), "image/png"
+        isha = sha256_json({"system": system, "image": __import__("hashlib").sha256(data).hexdigest()})
+        cache = ResponseCache(cache_dir)
+        try:
+            hit = cache.get("maint.logs.image", "1", isha, spec)
+            if hit is not None:
+                st["cached"] += 1
+                return hit["output"]["text"]
+            if offline:
+                st["missing"] += 1
+                return None
+            backend = make_backend(author)
+            t0 = time.monotonic()
+            try:
+                resp = Runner(backend, 1).call(Request(system=system, prompt=f"Image file: {path.name}", schema=schema,
+                                                        name="transcription", max_tokens=2000, images=[(mt, data)]))
+            except (BackendError, UsageLimitReached) as e:
+                print(f"[logs] image {path.name}: {e}", file=log)
+                return None
+            secs = round(time.monotonic() - t0, 2)
+            cache.put({"task": "maint.logs.image", "prompt_version": "1", "input_sha256": isha, "model": spec,
+                       "key": path.name, "backend": backend.name, "model_id": resp.model_id, "created_at": _now(),
+                       "output": resp.output, "usage": {**resp.usage, "seconds": secs}})
+            st["calls"] += 1
+            if ledger:
+                ledger.add({"at": _now(), "arm": "logs:image-reader", "backend": backend.name, "model": resp.model_id,
+                            "unit": path.name, "questions": 1, "input_tokens": resp.usage.get("input_tokens", 0),
+                            "output_tokens": resp.usage.get("output_tokens", 0),
+                            "cost_usd": round(float(resp.usage.get("cost_usd", 0.0)), 6), "seconds": secs})
+            return resp.output["text"]
+        finally:
+            cache.close()
+
+    read.stats = st
+    return read
+
+
+def parse_sources(base: Path, sources: list[dict], ocr_lang: str = "eng", fleet=None,
+                  report: dict | None = None, image_reader=None) -> list[Record]:
+    from .logschema import entries, hours_in, induce_columns, parts_in, part_index, unit_index, units_in
     out: list[Record] = []
+    rep = report if report is not None else {}
     for s in sources:
         p = (base / s["path"]).resolve()
         kind = s.get("kind", "csv")
         if kind == "csv":
             rows = list(csv.DictReader(io.StringIO(p.read_text())))
             cm = s["columns"]
+            if cm == "auto":
+                if fleet is None:
+                    raise SystemExit(f"log source {s['id']}: columns: auto needs the fleet registry")
+                cm, crep = induce_columns(list(rows[0]) if rows else [], rows, fleet, float(s.get("min_parse", 0.6)))
+                rep[s["id"] + ":" + p.name] = {"columns": cm, "parse": crep}
             for k, r in enumerate(rows, 2):
                 get = lambda f: (r.get(cm[f]) or "").strip() if f in cm else None  # noqa: E731
                 text = " | ".join(f"{h}: {v}" for h, v in r.items() if v)
                 rec = Record(f"{p.name}:{k}", s["id"], text, get("unit"), get("date"), get("hours"), part_raw=get("part"),
                              tech_raw=get("tech"))
+                rec.date_fmt = cm.get("date_format")
+                rec.unit_alt = get("unit_alt")
                 if "text" in cm:
                     body = get("text") or ""
                     sym, _, act = body.partition(";")
@@ -150,13 +225,52 @@ def parse_sources(base: Path, sources: list[dict], ocr_lang: str = "eng") -> lis
                     rec.symptom_text, rec.action_text = get("symptom") or "", get("action") or ""
                 out.append(rec)
         elif kind in ("text", "scans"):
+            if kind == "text" and s.get("entries", "auto") == "auto" and fleet is not None:
+                # entries induced from the text: each line or block naming a fleet unit, dated by what it
+                # or its heading prints (logschema.entries); the rec id names its first character
+                uidx, pidx = unit_index(fleet.assets), part_index(fleet.parts)
+                txt = p.read_text()
+                ents = entries(txt, uidx)
+                rep[s["id"] + ":" + p.name] = {"entries": len(ents)}
+                for st, en, body, d in ents:
+                    rec = _narrative(f"{p.name}@{st}", s["id"], body)
+                    names = units_in(body, uidx)
+                    rec.unit_raw = names[0][0] if names else rec.unit_raw
+                    rec.date_raw = d or rec.date_raw
+                    rec.hours_raw = hours_in(body) or rec.hours_raw
+                    pp = parts_in(body, pidx)
+                    rec.part_raw = pp[0] if pp else rec.part_raw
+                    out.append(rec)
+                continue
             if kind == "text":
                 blocks = [b.strip() for b in p.read_text().split("\n\n") if b.strip()]
                 items = [(f"{p.name}:{k}", b) for k, b in enumerate(blocks, 1)]
             else:
-                items = [(f"scans/{f.name}", _ocr(f, ocr_lang)) for f in sorted(p.glob("*.png"))]
+                files = sorted({f for pat in IMAGE_TYPES for f in p.glob(pat)} | {f for pat in IMAGE_TYPES
+                                                                                  for f in p.glob(pat.upper())})
+                items = []
+                for f in files:
+                    t = _ocr(f, ocr_lang)
+                    if image_reader is not None and fleet is not None:
+                        from .logschema import date_in
+                        if not (units_in(t, unit_index(fleet.assets)) and date_in(t)):
+                            # OCR did not yield a fleet unit and a date: the image reader transcribes it
+                            mt = image_reader(f)
+                            if mt:
+                                t = " ".join(mt.split())
+                    items.append((f"scans/{f.name}", t))
             for rid, b in items:
-                out.append(_narrative(rid, s["id"], b))
+                rec = _narrative(rid, s["id"], b)
+                if fleet is not None and kind == "scans":
+                    uidx, pidx = unit_index(fleet.assets), part_index(fleet.parts)
+                    names = units_in(b, uidx)
+                    rec.unit_raw = names[0][0] if names else rec.unit_raw
+                    rec.hours_raw = hours_in(b) or rec.hours_raw
+                    from .logschema import date_in
+                    rec.date_raw = date_in(b) or rec.date_raw
+                    pp = parts_in(b, pidx)
+                    rec.part_raw = pp[0] if pp else rec.part_raw
+                out.append(rec)
         else:
             raise SystemExit(f"log source {s['id']}: unknown kind {kind!r}")
     return out
@@ -249,11 +363,19 @@ def ingest(records: list[Record], fleet: Fleet, manual: Manual, cfg: dict, resol
     test_techs = {t.lower() for t in cfg.get("test_technicians", ["trainee", "admin"])}
     for r in records:
         # unit
-        u = fleet.by_label.get(_norm_unit(r.unit_raw or ""))
+        from .logschema import norm_label, parse_date as _any_date, part_index, parts_in, unit_index
+        if not hasattr(fleet, "_uidx"):
+            fleet._uidx, fleet._pidx = unit_index(fleet.assets), part_index(fleet.parts)
+        u = fleet.by_label.get(_norm_unit(r.unit_raw or "")) or fleet._uidx.get(norm_label(r.unit_raw or ""))
+        if not u and r.unit_alt:
+            u = fleet.by_label.get(_norm_unit(r.unit_alt)) or fleet._uidx.get(norm_label(r.unit_alt))
+            if u:
+                r.corrections["unit"] = {"from": r.unit_raw or None, "to": u,
+                                         "why": f"unit from the record's other unit column ({r.unit_alt!r})"}
         r.out["asset_id"] = u
         r.ev["asset_id"] = f"registry label {r.unit_raw!r}" if u else f"no fleet unit is labelled {r.unit_raw!r}"
         # date
-        d = _parse_date(r.date_raw)
+        d = _parse_date(r.date_raw) or _any_date(r.date_raw, r.date_fmt)
         r.out["date"] = d
         if d and not (fleet.period[0] <= d <= fleet.period[1]):
             r.flags.add("date_out_of_period")
@@ -270,6 +392,12 @@ def ingest(records: list[Record], fleet: Fleet, manual: Manual, cfg: dict, resol
         # part
         pm = _PART.search(r.part_raw or "") if r.part_raw else None
         part = pm.group(1) if pm else None
+        if r.part_raw and (part is None or part not in fleet.parts):
+            cat = parts_in(r.part_raw, fleet._pidx)
+            if cat:
+                part = cat[0]
+            elif part is None and re.search(r"\d", r.part_raw or "") and re.search(r"[-\d]{5,}", r.part_raw):
+                part = r.part_raw.split(";")[0].split("/")[0].split("(")[0].strip()
         if part and part not in fleet.parts:
             r.flags.add("part_unknown")
             r.reasons.append(f"part {part} is not in the catalog: left unknown")
@@ -689,7 +817,12 @@ def run_logs(config_path: Path, arm_name: str, call: bool, harvest: str | None =
     db = pack_db
     manual = load_manual(str(db))
     fleet = load_fleet(base, cfg["fleet"])
-    records = parse_sources(base, cfg["sources"])
+    schema_rep: dict = {}
+    img = cfg.get("image_reader")
+    image_reader = make_image_reader(img["author"], base / cfg.get("cache_dir", "cache-logs") / "image-reader",
+                                     offline=not call, ledger=Ledger(base / cfg.get("ledger", "cache-logs/ledger.jsonl")),
+                                     log=log) if img else None
+    records = parse_sources(base, cfg["sources"], fleet=fleet, report=schema_rep, image_reader=image_reader)
     arm = (cfg.get("arms") or {}).get(arm_name)
     if arm is None:
         raise SystemExit(f"unknown arm {arm_name!r}; config has {sorted(cfg.get('arms') or {})}")
@@ -699,7 +832,19 @@ def run_logs(config_path: Path, arm_name: str, call: bool, harvest: str | None =
                                  ledger=Ledger(base / cfg.get("ledger", "cache-logs/ledger.jsonl")), log=log)
     ingest(records, fleet, manual, cfg, resolver)
     out = outputs(records, fleet, manual)
+    # a source the ingest did not understand stops it: rejecting nearly everything is not a result
+    by_src: dict = {}
+    for r in records:
+        b = by_src.setdefault(r.source, {"records": 0, "rejected": 0, "reasons": {}})
+        b["records"] += 1
+        if r.decision == "reject":
+            b["rejected"] += 1
+            why = re.sub(r"'[^']*'|\([^)]*\)", "…", (r.reasons or ["?"])[-1])[:60]
+            b["reasons"][why] = b["reasons"].get(why, 0) + 1
+    limit = float(cfg.get("max_reject_share", 0.5))
+    not_understood = {k: v for k, v in by_src.items() if v["records"] >= 5 and v["rejected"] / v["records"] > limit}
     res = {"arm": arm_name, "records": len(records), "resolver": getattr(resolver, "stats", None),
+           "schema": schema_rep, "sources": by_src, "not_understood": not_understood,
            "history": len(out["history"]), "failure_modes": out["failure_modes"], "repeats": len(out["repeats"])}
     if cfg.get("truth"):
         res["score"] = score(records, json.loads((base / cfg["truth"]).read_text()), fleet.window)
@@ -714,4 +859,9 @@ def run_logs(config_path: Path, arm_name: str, call: bool, harvest: str | None =
                                                          default=str, ensure_ascii=False) + "\n" for r in records))
     res["outputs"] = str(wd)
     res["_out"] = out
+    if not_understood:
+        (wd / "summary.json").write_text(json.dumps({k: v for k, v in res.items() if k != "_out"}, indent=1, default=str))
+        raise SystemExit("maint logs: sources not understood (more than "
+                         f"{limit:.0%} of their records rejected; outputs kept in {wd} for diagnosis): "
+                         + json.dumps(not_understood, default=str))
     return res

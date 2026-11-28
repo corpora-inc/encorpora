@@ -439,12 +439,36 @@ def _connectors(pm: PageModel, segs, heads, tol: float = 2.0) -> list[Connector]
 
 
 # ---- OCR fallback ---------------------------------------------------------------------------
+def skew_angle(img, max_deg: float = 4.0, step: float = 0.1) -> float:
+    """The rotation (degrees, counter-clockwise) that levels a scanned page's text lines: the angle
+    whose row profile of ink is most peaked (text lines and the gaps between them line up)."""
+    import numpy as np
+    g = img.convert("L")
+    scale = 1000 / max(g.width, 1)
+    if scale < 1:
+        g = g.resize((max(1, int(g.width * scale)), max(1, int(g.height * scale))))
+    best, best_v = 0.0, -1.0
+    k = int(round(max_deg / step))
+    for i in range(-k, k + 1):
+        a = i * step
+        r = g.rotate(a, resample=2, expand=False, fillcolor=255)
+        ink = (np.asarray(r, dtype=np.uint8) < 128).sum(axis=1).astype(np.float64)
+        v = float(ink.var())
+        if v > best_v:
+            best, best_v = a, v
+    return round(best, 2)
+
+
 def ocr_page(source_id: str, index: int, img, width_pt: float, height_pt: float, lang: str = "eng") -> PageModel:
     """Words with boxes from Tesseract (TSV); regions are its paragraphs."""
     exe = shutil.which("tesseract")
     if not exe:
         raise SystemExit("OCR needs the tesseract binary")
     pm = PageModel(source_id, index, width_pt, height_pt, ocr=True)
+    angle = skew_angle(img)
+    if abs(angle) >= 0.3:          # a scan fed in at an angle: words of one line would interleave with the next
+        img = img.convert("L").rotate(angle, resample=3, expand=False, fillcolor=255)
+    pm.deskew = angle
     sx, sy = width_pt / img.width, height_pt / img.height
     with tempfile.TemporaryDirectory(prefix="harvest-ocr-") as td:
         p = Path(td) / "page.png"

@@ -42,7 +42,7 @@ from .assets import DEFAULT_PX, file_row, render_pages
 from .extract import FACETS, PROMPT_VERSION, SCHEMA, SYSTEM, Arm, Ledger, run, units
 from .layout import PageModel, load_models, page_models, save_models
 
-LAYOUT_VERSION = "2"
+LAYOUT_VERSION = "3"
 DEFAULT_FACET_LABELS = {"test_option": "Test options", "reason": "Reason for question", "known": "Known info",
                         "possible": "Possible problems"}
 DEFAULT_LEVELS = [
@@ -286,9 +286,28 @@ def _forced_from(report: dict, forced: dict) -> int:
     """Map the core's violations to the rows they condemn. Returns how many new rows failed."""
     import re
     n = 0
+    fresh: set = set()          # nodes given a fallback this round: their other violations wait for the next
     for v in (report.get("graph") or {}).get("violations", []):
+        if v.get("node_id") in fresh:
+            continue
         reason = f"graph {v['rule']}: {v.get('node_id') or ''} {v['detail']}".strip()
         key = None
+        # A measured-value question whose printed branches the engine cannot read as a partition of the
+        # value (a categorical branch such as "NO INDICATION", or a closed printed range next to an open
+        # one): first kept as a choice of its printed labels; the tree fails only if that does not pass.
+        value_gap = ("of a measured value has no numeric condition" in v["detail"]
+                     or v["detail"].startswith("no edge takes values"))
+        if v["rule"] == "edge.coverage" and value_gap and v.get("node_id") and ("as_choice", v["node_id"]) not in forced:
+            forced[("as_choice", v["node_id"])] = reason
+            fresh.add(v["node_id"])
+            n += 1
+            continue
+        # a go-to into a tree that did not ship: the go-to stays as its printed instruction, its own tree ships
+        if v["rule"] == "node.target" and v.get("node_id") and ("as_text", v["node_id"]) not in forced:
+            forced[("as_text", v["node_id"])] = reason
+            fresh.add(v["node_id"])
+            n += 1
+            continue
         if v.get("tree_id") and not v["rule"].startswith(("symptom.", "signal.")):
             key = ("fault_tree", v["tree_id"])
         elif v["rule"].startswith("requirement."):
@@ -415,8 +434,31 @@ def build(corpus: Corpus, arm_name: str | None, out_dir: Path | None, harvest: s
                "references": [a.report.get("references") for a in asms],
                "plausibility": [a.report.get("plausibility") for a in asms],
                "stage": str(work(corpus) / f"stage-{a.name}.sqlite")}
+    summary["density"] = _density(out_dir, srcs, m)
     (work(corpus) / f"build-{a.name}.json").write_text(json.dumps(summary, indent=2, default=str))
+    if summary["density"]["problem"]:
+        raise SystemExit(f"maint build: {summary['density']['problem']} (summary in {work(corpus)}/build-{a.name}.json)")
     return summary
+
+
+def _density(out_dir: Path, srcs, m: dict) -> dict:
+    """Shipped structure per ingested page. A manual's pages carry steps, nodes and warnings; a pack with
+    almost none per page means the reading did not understand the layout, and the build says so loudly
+    instead of shipping an empty pack that passes every check by containing nothing."""
+    import sqlite3
+    c = sqlite3.connect(str(next(out_dir.glob("*.sqlite"))))
+    has = lambda t: c.execute("SELECT 1 FROM sqlite_master WHERE name=?", (t,)).fetchone() is not None  # noqa: E731
+    n = lambda t: c.execute(f"SELECT COUNT(*) FROM {t}").fetchone()[0] if has(t) else 0  # noqa: E731
+    pages = sum(len(models) for _, models, _ in srcs)
+    rows = n("fault_node") + n("proc_step") + n("requirement") + \
+        c.execute("SELECT COUNT(*) FROM xref WHERE kind='guards'").fetchone()[0]
+    floor = float(m.get("min_items_per_page", 0.5))
+    per = round(rows / pages, 3) if pages else None
+    problem = None
+    if pages >= int(m.get("density_min_pages", 8)) and per is not None and per < floor:
+        problem = (f"{rows} steps, nodes, setup lines and guards shipped from {pages} pages ({per}/page, floor {floor}): "
+                   "the layout was not understood")
+    return {"pages": pages, "rows": rows, "per_page": per, "floor": floor, "problem": problem}
 
 
 # ---- troubleshooting-table corpora (message | cause | solution) ---------------------------------

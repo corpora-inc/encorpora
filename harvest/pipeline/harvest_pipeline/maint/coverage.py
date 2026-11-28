@@ -4,8 +4,12 @@ the ingested pages, how many reached the pack intact and attached.
 Counted from the page model alone:
   * a guard block is a region whose first line is WARNING, CAUTION, NOTE or DANGER (a ruled box
     or a text block), or a text block that opens with one of those words and a colon;
-  * a question box is a ruled box that two or more drawn arrows leave, or whose text is a
-    numbered question ("3. Is more than 10 V present ...?").
+    A heading printed as its own line above the body (the page model splits them) is one block.
+  * a question box is a ruled box that two or more drawn arrows touch (leave or reach: a missed
+    arrow tail must not hide a box), or whose text is a question ("3. Is more than 10 V present ...?",
+    or any boxed text ending in "?").
+No rate passes on an empty denominator: with nothing found the rate is null and `sanity` says why;
+a page model that draws arrows but yields no question box is a failure, not 100%.
 In the pack:
   * a guard block is attached when its region's section is a warning, caution or note whose text
     is the block's words (heading aside) and a shipped `guards` xref leads from it to a section;
@@ -47,12 +51,24 @@ def coverage(corpus: Corpus, pack_dir: Path) -> dict:
             out["pages"] += 1
             tails: dict[str, int] = {}
             for cn in pm.connectors:
-                if cn.tail:
-                    tails[cn.tail] = tails.get(cn.tail, 0) + 1
+                for end in {cn.tail, cn.head} - {None}:
+                    tails[end] = tails.get(end, 0) + 1
+            out["arrow_pages"] = out.get("arrow_pages", 0) + bool(pm.connectors)
+            heading_only = {}
+            for r in pm.regions:
+                if r.words and pm.region_text(r).strip().rstrip(":").upper() in ("WARNING", "CAUTION", "NOTE", "DANGER",
+                                                                               "WARNINGS", "CAUTIONS", "NOTES"):
+                    heading_only[r.id] = r
             for r in pm.regions:
                 if not r.words or r.kind in ("header", "footer"):
                     continue
+                if r.id in heading_only:
+                    continue
                 lines = [" ".join(pm.words[i].text for i in ln) for ln in r.lines]
+                above = next((h for h in heading_only.values() if 0 <= r.bbox[1] - h.bbox[3] <= 18
+                              and min(h.bbox[2], r.bbox[2]) - max(h.bbox[0], r.bbox[0]) > 0), None)
+                if above is not None:
+                    lines = [pm.region_text(above).strip()] + lines
                 first = lines[0].strip() if lines else ""
                 m = GUARD.match(first)
                 is_block = m and (first.upper().rstrip(":") in ("WARNING", "CAUTION", "NOTE", "DANGER", "WARNINGS",
@@ -72,7 +88,7 @@ def coverage(corpus: Corpus, pack_dir: Path) -> dict:
                     else:
                         g["missing"].append(f"{where}: {first} {body[:60]}")
                 text = " ".join(lines)
-                if r.kind == "box" and (tails.get(r.id, 0) >= 2 or QUESTION.match(text)):
+                if r.kind == "box" and (tails.get(r.id, 0) >= 2 or QUESTION.match(text) or text.rstrip().endswith("?")):
                     q = out["questions"]
                     q["present"] += 1
                     if sec and sec in node_secs:
@@ -83,22 +99,32 @@ def coverage(corpus: Corpus, pack_dir: Path) -> dict:
     present = sum(v["present"] for v in wc)
     attached = sum(v["attached"] for v in wc)
     out["warnings_cautions"] = {"present": present, "attached": attached,
-                                "rate": round(attached / present, 4) if present else 1.0}
+                                "rate": round(attached / present, 4) if present else None}
     allg = list(out["guards"].values())
     out["all_guards"] = {"present": sum(v["present"] for v in allg), "attached": sum(v["attached"] for v in allg)}
     q = out["questions"]
-    q["rate"] = round(q["attached"] / q["present"], 4) if q["present"] else 1.0
+    q["rate"] = round(q["attached"] / q["present"], 4) if q["present"] else None
+    sanity = []
+    if not q["present"] and out.get("arrow_pages"):
+        sanity.append(f"{out['arrow_pages']} pages draw arrows but no question box was found: the page model "
+                      "does not see this manual's flowcharts")
+    if not present and not out["all_guards"]["present"] and out["pages"] >= 5:
+        sanity.append(f"no WARNING, CAUTION or NOTE block found on {out['pages']} pages")
+    out["sanity"] = sanity
     return out
 
 
 def format_coverage(r: dict) -> str:
     wc = r["warnings_cautions"]
     lines = [f"pages {r['pages']}",
-             f"warnings + cautions attached: {wc['attached']}/{wc['present']} = {wc['rate']:.1%} (target 98%)"]
+             f"warnings + cautions attached: {wc['attached']}/{wc['present']} = "
+             + (f"{wc['rate']:.1%}" if wc["rate"] is not None else "none found") + " (target 98%)"]
     for k, v in sorted(r["guards"].items()):
         lines.append(f"  {k:8} {v['attached']}/{v['present']}")
     q = r["questions"]
-    lines.append(f"question boxes attached to a node: {q['attached']}/{q['present']} = {q['rate']:.1%}")
+    lines.append(f"question boxes attached to a node: {q['attached']}/{q['present']} = "
+                 + (f"{q['rate']:.1%}" if q["rate"] is not None else "none found"))
+    lines += [f"SANITY: {x}" for x in r.get("sanity", [])]
     for k, v in sorted(r["guards"].items()):
         lines += [f"  missing {k}: {m}" for m in v["missing"][:10]]
     lines += [f"  missing question: {m}" for m in q["missing"][:10]]

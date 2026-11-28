@@ -7,9 +7,16 @@ or before trailing punctuation of the last word. Typographic quotes and dashes t
 straight are folded one character for one character, and the source's characters are kept.
 When the cited region does not hold the text but exactly one other region on the same page
 does, the span moves there (recorded); text that only exists across two regions fails.
+
+On a page read by OCR the words are the recogniser's, not the printer's: a span there verifies when
+it aligns with a contiguous run of OCR words in one region at a character similarity of at least
+`OCR_MIN_SIMILARITY` (and no other region aligns as well). The stored text is then the reading that
+was checked, with the similarity recorded; a born-digital page never takes this path.
 """
 
 from __future__ import annotations
+
+import difflib
 
 from dataclasses import dataclass
 
@@ -25,6 +32,26 @@ class Located:
     words: list[int]
     bbox: tuple[float, float, float, float]
     moved_from: str | None = None   # the region the model cited, when it was another
+    ocr_similarity: float | None = None   # set when verified against OCR words by similarity
+
+
+OCR_MIN_SIMILARITY = 0.85
+
+
+def _fuzzy_in(pm: PageModel, reg: Region, want: str) -> tuple[float, list[int]] | None:
+    toks = [pm.words[i].text for i in reg.words]
+    if not toks:
+        return None
+    n = len(want.split())
+    best = None
+    a = want.lower()
+    for k in range(max(1, int(n * 0.75)), int(n * 1.25) + 2):
+        for i in range(0, max(1, len(toks) - k + 1)):
+            cand = " ".join(toks[i:i + k]).lower()
+            r = difflib.SequenceMatcher(None, a, cand, autojunk=False).ratio()
+            if best is None or r > best[0]:
+                best = (r, reg.words[i:i + k])
+    return best
 
 
 _PUNCT = set(".,;:!?)]}\"'”’")
@@ -106,6 +133,16 @@ def locate(pages: dict[int, PageModel], page: int, region: str | None, text: str
             hits.append((reg, m))
             if reg is cited:
                 break
+    if not hits and pm.ocr:
+        want = norm_ws(text)
+        scored = sorted(((f, reg) for reg in order if (f := _fuzzy_in(pm, reg, want))), key=lambda x: -x[0][0])
+        if scored and scored[0][0][0] >= OCR_MIN_SIMILARITY and (len(scored) < 2 or scored[1][0][0] < scored[0][0][0]
+                                                                   or scored[0][1] is cited):
+            (sim, idxs), reg = scored[0]
+            ws = [pm.words[i] for i in idxs]
+            bbox = (min(w.x0 for w in ws), min(w.top for w in ws), max(w.x1 for w in ws), max(w.bottom for w in ws))
+            return Located(want, page, reg.id, idxs, bbox, moved_from=region if reg is not cited else None,
+                           ocr_similarity=round(sim, 3)), None
     if not hits:
         whole = " ".join(pm.words[i].text for r in pm.text_regions() for i in r.words)
         if norm_ws(text) in whole:
