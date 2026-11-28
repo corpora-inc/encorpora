@@ -161,6 +161,7 @@ pub struct Pack {
     equipment: Vec<Equipment>,
     synonyms: Vec<(String, String)>,
     vectors: OnceLock<Option<VecIndex>>,
+    node_vectors: OnceLock<Option<VecIndex>>,
 }
 
 impl std::fmt::Debug for Pack {
@@ -255,6 +256,7 @@ impl Pack {
             equipment,
             synonyms,
             vectors: OnceLock::new(),
+            node_vectors: OnceLock::new(),
         })
     }
 
@@ -603,22 +605,46 @@ impl Pack {
 
     /// Dense vectors, when the pack has them for `embedder_id` at `dim`.
     pub(crate) fn vectors(&self, embedder_id: &str, dim: usize) -> Result<Option<&VecIndex>> {
-        if self.meta("embedder_id") != Some(embedder_id)
-            || self.meta("embed_dim").and_then(|d| d.parse::<usize>().ok()) != Some(dim)
-        {
+        if !self.embedder_matches(embedder_id, dim) {
             return Ok(None);
         }
         if let Some(v) = self.vectors.get() {
             return Ok(v.as_ref());
         }
-        let loaded = self.load_vectors(dim)?;
+        let loaded = self.load_vectors("chunk_vec", "chunk_id", dim)?;
         Ok(self.vectors.get_or_init(|| loaded).as_ref())
     }
 
-    fn load_vectors(&self, dim: usize) -> Result<Option<VecIndex>> {
+    /// Course-tree node vectors (`course_node_vec`), same embedder rule.
+    pub(crate) fn node_vectors(&self, embedder_id: &str, dim: usize) -> Result<Option<&VecIndex>> {
+        if !self.embedder_matches(embedder_id, dim) || !self.has_table("course_node_vec")? {
+            return Ok(None);
+        }
+        if let Some(v) = self.node_vectors.get() {
+            return Ok(v.as_ref());
+        }
+        let loaded = self.load_vectors("course_node_vec", "node_id", dim)?;
+        Ok(self.node_vectors.get_or_init(|| loaded).as_ref())
+    }
+
+    fn embedder_matches(&self, embedder_id: &str, dim: usize) -> bool {
+        self.meta("embedder_id") == Some(embedder_id)
+            && self.meta("embed_dim").and_then(|d| d.parse::<usize>().ok()) == Some(dim)
+    }
+
+    /// True when the pack has `table` (optional tables added after v1's first packs).
+    pub(crate) fn has_table(&self, table: &str) -> Result<bool> {
+        Ok(self
+            .conn()
+            .prepare_cached("SELECT 1 FROM sqlite_master WHERE name = ?1")?
+            .exists([table])?)
+    }
+
+    fn load_vectors(&self, table: &str, id_col: &str, dim: usize) -> Result<Option<VecIndex>> {
         let conn = self.conn();
-        let mut stmt =
-            conn.prepare("SELECT chunk_id, vec, scale FROM chunk_vec ORDER BY chunk_id")?;
+        let mut stmt = conn.prepare(&format!(
+            "SELECT {id_col}, vec, scale FROM {table} ORDER BY {id_col}"
+        ))?;
         let mut rows = stmt.query([])?;
         let mut index = VecIndex {
             dim,
@@ -632,7 +658,7 @@ impl Pack {
             let scale: f64 = r.get(2)?;
             if blob.len() != dim {
                 return Err(Error::Pack(format!(
-                    "chunk_vec {id}: {} bytes, embed_dim is {dim}",
+                    "{table} {id}: {} bytes, embed_dim is {dim}",
                     blob.len()
                 )));
             }

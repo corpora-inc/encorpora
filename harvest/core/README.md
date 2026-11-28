@@ -199,6 +199,8 @@ harvest outbox  <records-db> [--to <dir>] [--records-key FILE] [--json]   # uplo
 harvest install <root> <pack-or-delta-dir> [--json]          # verified, atomic; full or delta
 harvest delta   <base-dir> <target-dir> <out-dir> [--json]    # signs with $HARVEST_SIGNING_KEY when set
 harvest show    <pack-dir> <what> [--id ID] [--role R]        # verified content as JSON (what the app reads)
+harvest show    <pack-dir> tree [--id NODE] [--exams FILE]    # the course knowledge tree (CONTRACT)
+harvest search  <pack-dir> "<query>" --in tree                # search the tree, not the rules
 harvest fixture <dir>
 ```
 
