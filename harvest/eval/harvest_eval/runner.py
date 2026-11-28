@@ -104,14 +104,14 @@ def run(args) -> int:
     if args.pack:
         found = False
         for b in backends_cfg:
-            if b["kind"] == "harvest":
+            if b["kind"] in ("harvest", "harvest-search"):
                 b["pack"] = str(Path(args.pack).resolve())
                 found = True
         if not found:
             backends_cfg.insert(0, {"name": "harvest", "kind": "harvest", "pack": str(Path(args.pack).resolve())})
     if args.binary:
         for b in backends_cfg:
-            if b["kind"] == "harvest":
+            if b["kind"] in ("harvest", "harvest-search"):
                 b["binary"] = args.binary
     if args.llm:
         for b in backends_cfg:
@@ -147,7 +147,7 @@ def run(args) -> int:
     for bcfg in backends_cfg:
         name = bcfg["name"]
         corpus = None
-        if bcfg["kind"] == "harvest":
+        if bcfg["kind"] in ("harvest", "harvest-search"):
             pack = resolve(base, str(bcfg["pack"]))
             bcfg["pack"] = str(pack)
             try:
@@ -155,7 +155,7 @@ def run(args) -> int:
             except Exception as e:  # noqa: BLE001 - a stub run may have no pack db
                 print(f"[{name}] pack not readable as sqlite ({e}); using reference sections", file=sys.stderr)
                 corpus = ref_corpus
-            bmeta = {"kind": "harvest", "pack": str(pack), "pack_sha256": sha256_file(pack)
+            bmeta = {"kind": bcfg["kind"], "pack": str(pack), "pack_sha256": sha256_file(pack)
                      if pack.is_file() else {p.name: sha256_file(p) for p in sorted(pack.glob('*.sqlite'))}
                      if pack.is_dir() else None,
                      "pack_version": corpus.version if corpus is not None else None,
@@ -170,7 +170,7 @@ def run(args) -> int:
             {**bcfg, "pack_sha256": bmeta.get("pack_sha256")}, sort_keys=True, default=str).encode()).hexdigest()
         bmeta["config_sha256"] = fingerprint
         responses = collect(backend, items, out / "responses" / f"{name}.jsonl", fingerprint,
-                            jobs=bcfg.get("jobs", 1 if bcfg["kind"] == "harvest" else 3))
+                            jobs=bcfg.get("jobs", 1 if bcfg["kind"] in ("harvest", "harvest-search") else 3))
         is_h = isinstance(backend, HarvestBackend)
         versions = {r.pack_version for r in responses.values() if r.pack_version}
         models = {r.model for r in responses.values() if r.model}

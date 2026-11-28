@@ -1,0 +1,164 @@
+{
+ "items": 3860,
+ "mc": 3434,
+ "free_text": 426,
+ "variants": 1726,
+ "intended_difficulty": {
+  "0.2": 1549,
+  "0.5": 2065,
+  "0.8": 246
+ },
+ "deterministic": {
+  "key_longest": 0.1264,
+  "key_most_like_rule": 0.8547,
+  "rationales_complete": 1.0,
+  "cites_exist": 0.9951,
+  "quotes_verbatim": 1.0,
+  "answer_position": {
+   "0": 845,
+   "1": 873,
+   "2": 830,
+   "3": 886
+  },
+  "chance": 0.25
+ },
+ "passes": {},
+ "calibration_by_tier": {
+  "0.2": {
+   "n": 0,
+   "n_bank": 1547
+  },
+  "0.5": {
+   "n": 0,
+   "n_bank": 1741
+  },
+  "0.8": {
+   "n": 0,
+   "n_bank": 146
+  }
+ },
+ "everyone_correct": {
+  "n": 0,
+  "of": 0,
+  "rate": null,
+  "passes": []
+ },
+ "by_topic": {
+  "access-fall": {
+   "n_bank": 82,
+   "key_longest": 0.0732,
+   "key_most_like_rule": 0.7561,
+   "n": 0
+  },
+  "assembly": {
+   "n_bank": 228,
+   "key_longest": 0.1491,
+   "key_most_like_rule": 0.8596,
+   "n": 0
+  },
+  "devices-aids": {
+   "n_bank": 206,
+   "key_longest": 0.0922,
+   "key_most_like_rule": 0.8592,
+   "n": 0
+  },
+  "inspections": {
+   "n_bank": 238,
+   "key_longest": 0.1218,
+   "key_most_like_rule": 0.8655,
+   "n": 0
+  },
+  "lift-planning": {
+   "n_bank": 78,
+   "key_longest": 0.0513,
+   "key_most_like_rule": 0.8462,
+   "n": 0
+  },
+  "load-charts": {
+   "n_bank": 220,
+   "key_longest": 0.15,
+   "key_most_like_rule": 0.7045,
+   "n": 0
+  },
+  "operations": {
+   "n_bank": 362,
+   "key_longest": 0.1105,
+   "key_most_like_rule": 0.8867,
+   "n": 0
+  },
+  "other-equipment": {
+   "n_bank": 236,
+   "key_longest": 0.1186,
+   "key_most_like_rule": 0.8559,
+   "n": 0
+  },
+  "personnel-lifts": {
+   "n_bank": 200,
+   "key_longest": 0.145,
+   "key_most_like_rule": 0.82,
+   "n": 0
+  },
+  "powerlines": {
+   "n_bank": 290,
+   "key_longest": 0.1655,
+   "key_most_like_rule": 0.9034,
+   "n": 0
+  },
+  "rigging": {
+   "n_bank": 254,
+   "key_longest": 0.1378,
+   "key_most_like_rule": 0.7992,
+   "n": 0
+  },
+  "roles": {
+   "n_bank": 174,
+   "key_longest": 0.1322,
+   "key_most_like_rule": 0.9138,
+   "n": 0
+  },
+  "rules": {
+   "n_bank": 138,
+   "key_longest": 0.1087,
+   "key_most_like_rule": 0.8261,
+   "n": 0
+  },
+  "signals": {
+   "n_bank": 110,
+   "key_longest": 0.1182,
+   "key_most_like_rule": 0.8636,
+   "n": 0
+  },
+  "site": {
+   "n_bank": 224,
+   "key_longest": 0.1116,
+   "key_most_like_rule": 0.8973,
+   "n": 0
+  },
+  "technical": {
+   "n_bank": 142,
+   "key_longest": 0.1268,
+   "key_most_like_rule": 0.9155,
+   "n": 0
+  },
+  "weather": {
+   "n_bank": 56,
+   "key_longest": 0.0893,
+   "key_most_like_rule": 0.875,
+   "n": 0
+  },
+  "wire-rope": {
+   "n_bank": 196,
+   "key_longest": 0.1531,
+   "key_most_like_rule": 0.8827,
+   "n": 0
+  }
+ },
+ "models": {},
+ "per_tier": null,
+ "cache_only": false,
+ "targets": {
+  "model_passes": 0,
+  "review": 0
+ },
+ "passes_run": []
+}

@@ -39,6 +39,19 @@
       "title": "29 CFR 1910.184, Slings",
       "url": "https://www.ecfr.gov/current/title-29/subtitle-B/chapter-XVII/part-1910/subpart-N/section-1910.184"
     },
+    "ecfr-29-1926-251": {
+      "bytes": 20496,
+      "edition": "eCFR up to date as of 2026-11-24",
+      "fetched_url": "https://www.ecfr.gov/api/versioner/v1/full/2026-11-24/title-29.xml?part=1926&section=1926.251",
+      "license": "public-domain-us-gov",
+      "media_type": "application/xml",
+      "publisher": "Office of the Federal Register, eCFR (U.S. Department of Labor, OSHA)",
+      "retrieved_at": "2026-11-27T21:03:54+00:00",
+      "sha256": "233792c04b7a2503c1ddabb255b7c253574dd40e35b94c2227dd6ab0a756d757",
+      "source_id": "ecfr-29-1926-251",
+      "title": "29 CFR 1926.251, Rigging equipment for material handling",
+      "url": "https://www.ecfr.gov/current/title-29/subtitle-B/chapter-XVII/part-1926/subpart-H/section-1926.251"
+    },
     "ecfr-29-1926-cc": {
       "bytes": 306291,
       "edition": "eCFR up to date as of 2026-11-24",

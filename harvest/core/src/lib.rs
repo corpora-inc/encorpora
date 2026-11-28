@@ -10,11 +10,13 @@ pub mod canon;
 pub mod check;
 pub mod compose;
 pub mod content;
+pub mod course;
 pub mod crypt;
 pub mod delta;
 pub mod embed;
 pub mod error;
 pub mod grade;
+pub mod lexicon;
 #[cfg(feature = "llama")]
 pub mod llama;
 pub mod llm;
@@ -26,6 +28,7 @@ pub mod records;
 pub mod retrieval;
 pub mod segments;
 pub mod sync;
+pub mod tools;
 
 #[doc(hidden)]
 pub mod fixture;

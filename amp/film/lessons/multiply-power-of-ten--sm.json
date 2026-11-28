@@ -1,0 +1,6762 @@
+{
+ "id": "multiply-power-of-ten--sm",
+ "title": "Powers of 10 and place value",
+ "skill": "powers-of-ten",
+ "teaches": [
+  "divide-power-of-ten",
+  "fl-decimal-by-tenth-hundredth",
+  "digit-value-blanks"
+ ],
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "beats": [
+    {
+     "speaker": "learner",
+     "say": "To multiply by ten, I add a zero. Thirty-six becomes three hundred sixty.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Does adding a zero always work?"
+      },
+      {
+       "do": "write",
+       "tex": "36\\times10=360"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.4,
+     -1.5,
+     10.4,
+     5.2
+    ],
+    "points": {
+     "h0P": [
+      1.25,
+      4.3
+     ],
+     "n0P": [
+      1.25,
+      0.05
+     ],
+     "h1P": [
+      3.75,
+      4.3
+     ],
+     "n1P": [
+      3.75,
+      0.05
+     ],
+     "h2P": [
+      6.25,
+      4.3
+     ],
+     "n2P": [
+      6.25,
+      0.05
+     ],
+     "h3P": [
+      8.75,
+      4.3
+     ],
+     "n3P": [
+      8.75,
+      0.05
+     ],
+     "col0A": [
+      0,
+      0.7
+     ],
+     "col0B": [
+      0,
+      3.6
+     ],
+     "col1A": [
+      2.5,
+      0.7
+     ],
+     "col1B": [
+      2.5,
+      3.6
+     ],
+     "col2A": [
+      5,
+      0.7
+     ],
+     "col2B": [
+      5,
+      3.6
+     ],
+     "col3A": [
+      7.5,
+      0.7
+     ],
+     "col3B": [
+      7.5,
+      3.6
+     ],
+     "col4A": [
+      10,
+      0.7
+     ],
+     "col4B": [
+      10,
+      3.6
+     ],
+     "topA": [
+      0,
+      3.6
+     ],
+     "topB": [
+      10,
+      3.6
+     ],
+     "bottomA": [
+      0,
+      0.7
+     ],
+     "bottomB": [
+      10,
+      0.7
+     ],
+     "postA": [
+      5,
+      0.7
+     ],
+     "postB": [
+      5,
+      3.6
+     ],
+     "pointP": [
+      5,
+      1.6
+     ],
+     "d0P": [
+      3.75,
+      2.2
+     ],
+     "d1P": [
+      6.25,
+      2.2
+     ],
+     "extraP": [
+      8.75,
+      2.2
+     ]
+    },
+    "parts": [
+     {
+      "id": "h0",
+      "label": "10",
+      "at": "h0P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n0",
+      "label": "\\text{tens}",
+      "at": "n0P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h1",
+      "label": "1",
+      "at": "h1P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n1",
+      "label": "\\text{ones}",
+      "at": "n1P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h2",
+      "label": "0.1",
+      "at": "h2P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n2",
+      "label": "\\text{tenths}",
+      "at": "n2P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h3",
+      "label": "0.01",
+      "at": "h3P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n3",
+      "label": "\\text{hundredths}",
+      "at": "n3P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "col0",
+      "seg": [
+       "col0A",
+       "col0B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col1",
+      "seg": [
+       "col1A",
+       "col1B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col2",
+      "seg": [
+       "col2A",
+       "col2B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col3",
+      "seg": [
+       "col3A",
+       "col3B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col4",
+      "seg": [
+       "col4A",
+       "col4B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "top",
+      "seg": [
+       "topA",
+       "topB"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "bottom",
+      "seg": [
+       "bottomA",
+       "bottomB"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "post",
+      "seg": [
+       "postA",
+       "postB"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "point",
+      "dot": "pointP",
+      "r": 12,
+      "ink": "gold",
+      "start": true
+     },
+     {
+      "id": "d0",
+      "label": "3",
+      "at": "d0P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "flies": true,
+      "group": "digits"
+     },
+     {
+      "id": "d1",
+      "label": "6",
+      "at": "d1P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "flies": true,
+      "group": "digits"
+     },
+     {
+      "id": "extra",
+      "label": "0",
+      "at": "extraP",
+      "dir": "c",
+      "size": "xl",
+      "ink": "muted"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Try three point six times ten.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear",
+       "dur": 0.01
+      },
+      {
+       "do": "header",
+       "text": "Does adding a zero always work?",
+       "dur": 0.01
+      },
+      {
+       "do": "problem",
+       "text": "Find $3.6\\times10$.",
+       "dur": 0.01
+      },
+      {
+       "do": "highlight",
+       "target": "digits",
+       "at": "three",
+       "until": "times"
+      },
+      {
+       "do": "show",
+       "target": "digits",
+       "at": "three",
+       "dur": 0.1
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Three point six zero?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "extra",
+       "at": "zero"
+      },
+      {
+       "do": "text",
+       "text": "Champ's guess: $3.60$",
+       "at": "zero"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "That is still three point six. Zero hundredths adds nothing. The three and six have not changed places.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "write",
+       "tex": "3.60=3.6",
+       "at": "still"
+      },
+      {
+       "do": "highlight",
+       "target": "extra",
+       "at": "Zero",
+       "until": "The"
+      },
+      {
+       "do": "highlight",
+       "target": "digits",
+       "at": "three",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "So what does multiplying by ten really change?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "hide",
+       "target": "extra",
+       "at": "what"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.6,
+     -1,
+     10.6,
+     4.8
+    ],
+    "points": {
+     "unit": [
+      0,
+      3
+     ],
+     "tenthP": [
+      0.5,
+      0.15
+     ],
+     "sixP": [
+      3,
+      0.15
+     ]
+    },
+    "parts": [
+     {
+      "id": "whole",
+      "bar": "unit",
+      "w": 10,
+      "h": 1.8,
+      "whole": 1,
+      "divisions": 1,
+      "ink": "accent",
+      "start": true
+     },
+     {
+      "id": "tenth",
+      "label": "0.1",
+      "at": "tenthP",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm"
+     },
+     {
+      "id": "sixTenths",
+      "label": "0.6",
+      "at": "sixP",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "A place tells what a digit is worth. Here is one whole.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Ten tenths make one whole"
+      },
+      {
+       "do": "highlight",
+       "target": "whole",
+       "at": "whole"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Cut it into ten equal parts. Each part is one tenth.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "partition",
+       "target": "whole",
+       "into": 10,
+       "at": "ten"
+      },
+      {
+       "do": "shade",
+       "target": "whole",
+       "to": 0.1,
+       "at": "Each"
+      },
+      {
+       "do": "show",
+       "target": "tenth",
+       "at": "tenth"
+      },
+      {
+       "do": "write",
+       "tex": "1=10\\times0.1",
+       "at": "tenth"
+      },
+      {
+       "do": "text",
+       "text": "1 whole, split into 10 equal parts.",
+       "at": "ten"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Ten tenths make one whole. Ten ones make one ten. Each place is worth ten times the place just to its right.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "shade",
+       "target": "whole",
+       "to": 1,
+       "at": "Ten"
+      },
+      {
+       "do": "hide",
+       "target": "tenth",
+       "at": "Ten"
+      },
+      {
+       "do": "text",
+       "text": "Each step left: ten times as much.",
+       "at": "Each"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "So six tenths, made ten times as much, becomes six ones.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "shade",
+       "target": "whole",
+       "to": 0.6,
+       "at": "six"
+      },
+      {
+       "do": "show",
+       "target": "sixTenths",
+       "at": "six",
+       "dur": 0.1
+      },
+      {
+       "do": "write",
+       "tex": "0.6\\times10=6",
+       "at": "six"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.4,
+     -1.5,
+     12.9,
+     5.2
+    ],
+    "points": {
+     "h0P": [
+      1.25,
+      4.3
+     ],
+     "n0P": [
+      1.25,
+      0.05
+     ],
+     "h1P": [
+      3.75,
+      4.3
+     ],
+     "n1P": [
+      3.75,
+      0.05
+     ],
+     "h2P": [
+      6.25,
+      4.3
+     ],
+     "n2P": [
+      6.25,
+      0.05
+     ],
+     "h3P": [
+      8.75,
+      4.3
+     ],
+     "n3P": [
+      8.75,
+      0.05
+     ],
+     "h4P": [
+      11.25,
+      4.3
+     ],
+     "n4P": [
+      11.25,
+      0.05
+     ],
+     "col0A": [
+      0,
+      0.7
+     ],
+     "col0B": [
+      0,
+      3.6
+     ],
+     "col1A": [
+      2.5,
+      0.7
+     ],
+     "col1B": [
+      2.5,
+      3.6
+     ],
+     "col2A": [
+      5,
+      0.7
+     ],
+     "col2B": [
+      5,
+      3.6
+     ],
+     "col3A": [
+      7.5,
+      0.7
+     ],
+     "col3B": [
+      7.5,
+      3.6
+     ],
+     "col4A": [
+      10,
+      0.7
+     ],
+     "col4B": [
+      10,
+      3.6
+     ],
+     "col5A": [
+      12.5,
+      0.7
+     ],
+     "col5B": [
+      12.5,
+      3.6
+     ],
+     "topA": [
+      0,
+      3.6
+     ],
+     "topB": [
+      12.5,
+      3.6
+     ],
+     "bottomA": [
+      0,
+      0.7
+     ],
+     "bottomB": [
+      12.5,
+      0.7
+     ],
+     "postA": [
+      7.5,
+      0.7
+     ],
+     "postB": [
+      7.5,
+      3.6
+     ],
+     "pointP": [
+      7.5,
+      1.6
+     ],
+     "d0P": [
+      6.25,
+      2.2
+     ],
+     "d1P": [
+      8.75,
+      2.2
+     ],
+     "onesZeroP": [
+      6.25,
+      2.2
+     ],
+     "leftA": [
+      8.75,
+      5
+     ],
+     "leftB": [
+      6.25,
+      5
+     ]
+    },
+    "parts": [
+     {
+      "id": "h0",
+      "label": "100",
+      "at": "h0P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n0",
+      "label": "\\scriptsize \\text{hundreds}",
+      "at": "n0P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h1",
+      "label": "10",
+      "at": "h1P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n1",
+      "label": "\\scriptsize \\text{tens}",
+      "at": "n1P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h2",
+      "label": "1",
+      "at": "h2P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n2",
+      "label": "\\scriptsize \\text{ones}",
+      "at": "n2P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h3",
+      "label": "0.1",
+      "at": "h3P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n3",
+      "label": "\\scriptsize \\text{tenths}",
+      "at": "n3P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h4",
+      "label": "0.01",
+      "at": "h4P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n4",
+      "label": "\\scriptsize \\text{hundredths}",
+      "at": "n4P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "col0",
+      "seg": [
+       "col0A",
+       "col0B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col1",
+      "seg": [
+       "col1A",
+       "col1B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col2",
+      "seg": [
+       "col2A",
+       "col2B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col3",
+      "seg": [
+       "col3A",
+       "col3B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col4",
+      "seg": [
+       "col4A",
+       "col4B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col5",
+      "seg": [
+       "col5A",
+       "col5B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "top",
+      "seg": [
+       "topA",
+       "topB"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "bottom",
+      "seg": [
+       "bottomA",
+       "bottomB"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "post",
+      "seg": [
+       "postA",
+       "postB"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "point",
+      "dot": "pointP",
+      "r": 12,
+      "ink": "gold",
+      "start": true
+     },
+     {
+      "id": "d0",
+      "label": "3",
+      "at": "d0P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "flies": true,
+      "start": true,
+      "group": "digits"
+     },
+     {
+      "id": "d1",
+      "label": "6",
+      "at": "d1P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "flies": true,
+      "start": true,
+      "group": "digits"
+     },
+     {
+      "id": "onesZero",
+      "label": "0",
+      "at": "onesZeroP",
+      "dir": "c",
+      "size": "xl",
+      "ink": "muted"
+     },
+     {
+      "id": "left",
+      "ink": "accent",
+      "w": 2.5,
+      "vector": [
+       "leftA",
+       "leftB"
+      ]
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Three point six is three ones and six tenths. The point marks the boundary between ones and tenths.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "The point stays. The digits slide."
+      },
+      {
+       "do": "write",
+       "tex": "3.6=3+0.6"
+      },
+      {
+       "do": "highlight",
+       "target": "d0",
+       "at": "three",
+       "until": "six",
+       "nth": 2,
+       "untilNth": 2
+      },
+      {
+       "do": "highlight",
+       "target": "d1",
+       "at": "six",
+       "until": "The",
+       "nth": 2
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "post",
+        "point"
+       ],
+       "at": "point",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Multiply by ten. Both digits slide one place left, together.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "draw",
+       "target": "left",
+       "at": "slide"
+      },
+      {
+       "do": "move",
+       "points": {
+        "d0P": [
+         3.75,
+         2.2
+        ],
+        "d1P": [
+         6.25,
+         2.2
+        ]
+       },
+       "at": "slide",
+       "dur": 1.7
+      },
+      {
+       "do": "write",
+       "tex": "3.6\\times10=36",
+       "at": "left"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Three tens and six ones. Thirty-six. Every digit is worth ten times as much.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "d0",
+        "h1"
+       ],
+       "at": "Three",
+       "until": "and"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "d1",
+        "h2"
+       ],
+       "at": "six",
+       "until": "Thirty-six"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "The point stayed put!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "post",
+        "point"
+       ],
+       "at": "point"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Multiply by ten again. The three becomes hundreds; the six becomes tens.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "hide",
+       "target": "left"
+      },
+      {
+       "do": "move",
+       "points": {
+        "d0P": [
+         1.25,
+         2.2
+        ],
+        "d1P": [
+         3.75,
+         2.2
+        ]
+       },
+       "at": "again",
+       "dur": 1.6
+      },
+      {
+       "do": "write",
+       "tex": "36\\times10=360",
+       "at": "hundreds"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The empty ones place needs a zero. That is why multiplying a whole number by ten looks like adding a zero.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "show",
+       "target": "onesZero",
+       "at": "zero",
+       "dur": 0.1
+      },
+      {
+       "do": "highlight",
+       "target": "onesZero",
+       "at": "zero",
+       "until": "That"
+      },
+      {
+       "do": "highlight",
+       "target": "digits",
+       "at": "multiplying",
+       "until": "adding"
+      },
+      {
+       "do": "highlight",
+       "target": "onesZero",
+       "at": "zero",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "But what matters is that every digit changes place.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "digits",
+       "at": "digit"
+      },
+      {
+       "do": "text",
+       "text": "3 ones → 3 tens → 3 hundreds",
+       "at": "changes"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.4,
+     -1.5,
+     12.9,
+     5.2
+    ],
+    "points": {
+     "h0P": [
+      1.25,
+      4.3
+     ],
+     "n0P": [
+      1.25,
+      0.05
+     ],
+     "h1P": [
+      3.75,
+      4.3
+     ],
+     "n1P": [
+      3.75,
+      0.05
+     ],
+     "h2P": [
+      6.25,
+      4.3
+     ],
+     "n2P": [
+      6.25,
+      0.05
+     ],
+     "h3P": [
+      8.75,
+      4.3
+     ],
+     "n3P": [
+      8.75,
+      0.05
+     ],
+     "h4P": [
+      11.25,
+      4.3
+     ],
+     "n4P": [
+      11.25,
+      0.05
+     ],
+     "col0A": [
+      0,
+      0.7
+     ],
+     "col0B": [
+      0,
+      3.6
+     ],
+     "col1A": [
+      2.5,
+      0.7
+     ],
+     "col1B": [
+      2.5,
+      3.6
+     ],
+     "col2A": [
+      5,
+      0.7
+     ],
+     "col2B": [
+      5,
+      3.6
+     ],
+     "col3A": [
+      7.5,
+      0.7
+     ],
+     "col3B": [
+      7.5,
+      3.6
+     ],
+     "col4A": [
+      10,
+      0.7
+     ],
+     "col4B": [
+      10,
+      3.6
+     ],
+     "col5A": [
+      12.5,
+      0.7
+     ],
+     "col5B": [
+      12.5,
+      3.6
+     ],
+     "topA": [
+      0,
+      3.6
+     ],
+     "topB": [
+      12.5,
+      3.6
+     ],
+     "bottomA": [
+      0,
+      0.7
+     ],
+     "bottomB": [
+      12.5,
+      0.7
+     ],
+     "postA": [
+      7.5,
+      0.7
+     ],
+     "postB": [
+      7.5,
+      3.6
+     ],
+     "pointP": [
+      7.5,
+      1.6
+     ],
+     "d0P": [
+      1.25,
+      2.2
+     ],
+     "d1P": [
+      3.75,
+      2.2
+     ],
+     "onesZeroP": [
+      6.25,
+      2.2
+     ],
+     "d2P": [
+      6.25,
+      2.2
+     ],
+     "leadingP": [
+      6.25,
+      2.2
+     ]
+    },
+    "parts": [
+     {
+      "id": "h0",
+      "label": "100",
+      "at": "h0P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n0",
+      "label": "\\scriptsize \\text{hundreds}",
+      "at": "n0P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h1",
+      "label": "10",
+      "at": "h1P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n1",
+      "label": "\\scriptsize \\text{tens}",
+      "at": "n1P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h2",
+      "label": "1",
+      "at": "h2P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n2",
+      "label": "\\scriptsize \\text{ones}",
+      "at": "n2P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h3",
+      "label": "0.1",
+      "at": "h3P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n3",
+      "label": "\\scriptsize \\text{tenths}",
+      "at": "n3P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h4",
+      "label": "0.01",
+      "at": "h4P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n4",
+      "label": "\\scriptsize \\text{hundredths}",
+      "at": "n4P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "col0",
+      "seg": [
+       "col0A",
+       "col0B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col1",
+      "seg": [
+       "col1A",
+       "col1B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col2",
+      "seg": [
+       "col2A",
+       "col2B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col3",
+      "seg": [
+       "col3A",
+       "col3B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col4",
+      "seg": [
+       "col4A",
+       "col4B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col5",
+      "seg": [
+       "col5A",
+       "col5B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "top",
+      "seg": [
+       "topA",
+       "topB"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "bottom",
+      "seg": [
+       "bottomA",
+       "bottomB"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "post",
+      "seg": [
+       "postA",
+       "postB"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "point",
+      "dot": "pointP",
+      "r": 12,
+      "ink": "gold",
+      "start": true
+     },
+     {
+      "id": "d0",
+      "label": "3",
+      "at": "d0P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "flies": true,
+      "start": true,
+      "group": "digits"
+     },
+     {
+      "id": "d1",
+      "label": "6",
+      "at": "d1P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "flies": true,
+      "start": true,
+      "group": "digits"
+     },
+     {
+      "id": "d2",
+      "label": "0",
+      "at": "d2P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "muted",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Two multiplications by ten make a hundred. We write ten squared, with a small raised two called an exponent.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "The exponent counts the steps"
+      },
+      {
+       "do": "write",
+       "tex": "10^2=10\\times10=100",
+       "at": "hundred"
+      },
+      {
+       "do": "write",
+       "tex": "3.6\\times10^2=360",
+       "at": "exponent"
+      },
+      {
+       "do": "term",
+       "word": "exponent",
+       "meaning": "Counts the factors of 10.",
+       "at": "called"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Ten to the third power uses three factors of ten. Ten times ten times ten is one thousand.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "10^3=10\\times10\\times10",
+       "at": "three"
+      },
+      {
+       "do": "write",
+       "tex": "10^3=1{,}000",
+       "at": "thousand"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Dividing reverses the motion. Each step right makes every digit worth one tenth as much.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "text",
+       "text": "Each step right: one tenth as much.",
+       "at": "right"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Divide three hundred sixty by one thousand. That is three steps right. First, thirty-six.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "$360\\div1{,}000$"
+      },
+      {
+       "do": "move",
+       "points": {
+        "d0P": [
+         3.75,
+         2.2
+        ],
+        "d1P": [
+         6.25,
+         2.2
+        ]
+       },
+       "at": "First",
+       "dur": 1.3
+      },
+      {
+       "do": "write",
+       "tex": "360\\div10=36",
+       "at": "thirty-six"
+      },
+      {
+       "do": "hide",
+       "target": "d2",
+       "at": "First"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Second, three point six.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "d0P": [
+         6.25,
+         2.2
+        ],
+        "d1P": [
+         8.75,
+         2.2
+        ]
+       },
+       "at": "Second",
+       "dur": 1.3
+      },
+      {
+       "do": "write",
+       "tex": "36\\div10=3.6",
+       "at": "six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Third, zero point three six. A zero holds the empty ones place.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "d0P": [
+         8.75,
+         2.2
+        ],
+        "d1P": [
+         11.25,
+         2.2
+        ]
+       },
+       "at": "Third",
+       "dur": 1.3
+      },
+      {
+       "do": "show",
+       "target": "d2",
+       "at": "holds"
+      },
+      {
+       "do": "answer",
+       "tex": "360\\div1{,}000=0.36",
+       "at": "holds"
+      }
+     ]
+    },
+    {
+     "say": "Three tenths and six hundredths: thirty-six hundredths.",
+     "speaker": "teacher",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "write",
+       "tex": "0.36=\\frac{36}{100}",
+       "at": "thirty-six"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.4,
+     -1.5,
+     12.9,
+     5.2
+    ],
+    "points": {
+     "h0P": [
+      1.25,
+      4.3
+     ],
+     "n0P": [
+      1.25,
+      0.05
+     ],
+     "h1P": [
+      3.75,
+      4.3
+     ],
+     "n1P": [
+      3.75,
+      0.05
+     ],
+     "h2P": [
+      6.25,
+      4.3
+     ],
+     "n2P": [
+      6.25,
+      0.05
+     ],
+     "h3P": [
+      8.75,
+      4.3
+     ],
+     "n3P": [
+      8.75,
+      0.05
+     ],
+     "h4P": [
+      11.25,
+      4.3
+     ],
+     "n4P": [
+      11.25,
+      0.05
+     ],
+     "col0A": [
+      0,
+      0.7
+     ],
+     "col0B": [
+      0,
+      3.6
+     ],
+     "col1A": [
+      2.5,
+      0.7
+     ],
+     "col1B": [
+      2.5,
+      3.6
+     ],
+     "col2A": [
+      5,
+      0.7
+     ],
+     "col2B": [
+      5,
+      3.6
+     ],
+     "col3A": [
+      7.5,
+      0.7
+     ],
+     "col3B": [
+      7.5,
+      3.6
+     ],
+     "col4A": [
+      10,
+      0.7
+     ],
+     "col4B": [
+      10,
+      3.6
+     ],
+     "col5A": [
+      12.5,
+      0.7
+     ],
+     "col5B": [
+      12.5,
+      3.6
+     ],
+     "topA": [
+      0,
+      3.6
+     ],
+     "topB": [
+      12.5,
+      3.6
+     ],
+     "bottomA": [
+      0,
+      0.7
+     ],
+     "bottomB": [
+      12.5,
+      0.7
+     ],
+     "postA": [
+      5,
+      0.7
+     ],
+     "postB": [
+      5,
+      3.6
+     ],
+     "pointP": [
+      5,
+      1.6
+     ],
+     "d0P": [
+      1.25,
+      2.2
+     ],
+     "d1P": [
+      3.75,
+      2.2
+     ],
+     "d2P": [
+      6.25,
+      2.2
+     ],
+     "d3P": [
+      8.75,
+      2.2
+     ]
+    },
+    "parts": [
+     {
+      "id": "h0",
+      "label": "10",
+      "at": "h0P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n0",
+      "label": "\\scriptsize \\text{tens}",
+      "at": "n0P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h1",
+      "label": "1",
+      "at": "h1P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n1",
+      "label": "\\scriptsize \\text{ones}",
+      "at": "n1P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h2",
+      "label": "0.1",
+      "at": "h2P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n2",
+      "label": "\\scriptsize \\text{tenths}",
+      "at": "n2P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h3",
+      "label": "0.01",
+      "at": "h3P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n3",
+      "label": "\\scriptsize \\text{hundredths}",
+      "at": "n3P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h4",
+      "label": "0.001",
+      "at": "h4P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n4",
+      "label": "\\scriptsize \\text{thousandths}",
+      "at": "n4P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "col0",
+      "seg": [
+       "col0A",
+       "col0B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col1",
+      "seg": [
+       "col1A",
+       "col1B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col2",
+      "seg": [
+       "col2A",
+       "col2B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col3",
+      "seg": [
+       "col3A",
+       "col3B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col4",
+      "seg": [
+       "col4A",
+       "col4B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col5",
+      "seg": [
+       "col5A",
+       "col5B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "top",
+      "seg": [
+       "topA",
+       "topB"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "bottom",
+      "seg": [
+       "bottomA",
+       "bottomB"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "post",
+      "seg": [
+       "postA",
+       "postB"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "point",
+      "dot": "pointP",
+      "r": 12,
+      "ink": "gold",
+      "start": true
+     },
+     {
+      "id": "d0",
+      "label": "1",
+      "at": "d0P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "flies": true,
+      "start": true,
+      "group": "digits"
+     },
+     {
+      "id": "d1",
+      "label": "6",
+      "at": "d1P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "flies": true,
+      "start": true,
+      "group": "digits"
+     },
+     {
+      "id": "d2",
+      "label": "6",
+      "at": "d2P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "flies": true,
+      "start": true,
+      "group": "digits"
+     },
+     {
+      "id": "d3",
+      "label": "3",
+      "at": "d3P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "flies": true,
+      "start": true,
+      "group": "digits"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "What is sixteen point six three divided by ten to the first power? Think about the direction and the number of steps.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Choose the value and the reason"
+      },
+      {
+       "do": "problem",
+       "text": "$16.63\\div10^1=\\square$"
+      },
+      {
+       "do": "write",
+       "tex": "10^1=10",
+       "at": "first"
+      },
+      {
+       "do": "highlight",
+       "target": "digits",
+       "at": "direction"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "One step right. Each digit is worth one tenth as much.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "d0P": [
+         3.75,
+         2.2
+        ],
+        "d1P": [
+         6.25,
+         2.2
+        ],
+        "d2P": [
+         8.75,
+         2.2
+        ],
+        "d3P": [
+         11.25,
+         2.2
+        ]
+       },
+       "at": "right",
+       "dur": 1.3
+      },
+      {
+       "do": "text",
+       "text": "Every digit becomes one tenth as much.",
+       "at": "Each"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One point six six three. Keep the digits in the same order.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "16.63\\div10^1=1.663",
+       "at": "three"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.4,
+     -4.9,
+     12.9,
+     5.2
+    ],
+    "points": {
+     "h0P": [
+      1.25,
+      4.3
+     ],
+     "n0P": [
+      1.25,
+      0.05
+     ],
+     "h1P": [
+      3.75,
+      4.3
+     ],
+     "n1P": [
+      3.75,
+      0.05
+     ],
+     "h2P": [
+      6.25,
+      4.3
+     ],
+     "n2P": [
+      6.25,
+      0.05
+     ],
+     "h3P": [
+      8.75,
+      4.3
+     ],
+     "n3P": [
+      8.75,
+      0.05
+     ],
+     "h4P": [
+      11.25,
+      4.3
+     ],
+     "n4P": [
+      11.25,
+      0.05
+     ],
+     "col0A": [
+      0,
+      0.7
+     ],
+     "col0B": [
+      0,
+      3.6
+     ],
+     "col1A": [
+      2.5,
+      0.7
+     ],
+     "col1B": [
+      2.5,
+      3.6
+     ],
+     "col2A": [
+      5,
+      0.7
+     ],
+     "col2B": [
+      5,
+      3.6
+     ],
+     "col3A": [
+      7.5,
+      0.7
+     ],
+     "col3B": [
+      7.5,
+      3.6
+     ],
+     "col4A": [
+      10,
+      0.7
+     ],
+     "col4B": [
+      10,
+      3.6
+     ],
+     "col5A": [
+      12.5,
+      0.7
+     ],
+     "col5B": [
+      12.5,
+      3.6
+     ],
+     "topA": [
+      0,
+      3.6
+     ],
+     "topB": [
+      12.5,
+      3.6
+     ],
+     "bottomA": [
+      0,
+      0.7
+     ],
+     "bottomB": [
+      12.5,
+      0.7
+     ],
+     "postA": [
+      7.5,
+      0.7
+     ],
+     "postB": [
+      7.5,
+      3.6
+     ],
+     "pointP": [
+      7.5,
+      1.6
+     ],
+     "d0P": [
+      1.25,
+      2.2
+     ],
+     "d1P": [
+      3.75,
+      2.2
+     ],
+     "d2P": [
+      6.25,
+      2.2
+     ],
+     "e0P": [
+      1.25,
+      -2.8
+     ],
+     "e1P": [
+      3.75,
+      -2.8
+     ],
+     "e2P": [
+      6.25,
+      -2.8
+     ],
+     "lowerCol0A": [
+      0,
+      -4.3
+     ],
+     "lowerCol0B": [
+      0,
+      -1.4
+     ],
+     "lowerCol1A": [
+      2.5,
+      -4.3
+     ],
+     "lowerCol1B": [
+      2.5,
+      -1.4
+     ],
+     "lowerCol2A": [
+      5,
+      -4.3
+     ],
+     "lowerCol2B": [
+      5,
+      -1.4
+     ],
+     "lowerCol3A": [
+      7.5,
+      -4.3
+     ],
+     "lowerCol3B": [
+      7.5,
+      -1.4
+     ],
+     "lowerCol4A": [
+      10,
+      -4.3
+     ],
+     "lowerCol4B": [
+      10,
+      -1.4
+     ],
+     "lowerCol5A": [
+      12.5,
+      -4.3
+     ],
+     "lowerCol5B": [
+      12.5,
+      -1.4
+     ],
+     "lowerTopA": [
+      0,
+      -1.4
+     ],
+     "lowerTopB": [
+      12.5,
+      -1.4
+     ],
+     "lowerBottomA": [
+      0,
+      -4.3
+     ],
+     "lowerBottomB": [
+      12.5,
+      -4.3
+     ],
+     "lowerPostA": [
+      7.5,
+      -4.3
+     ],
+     "lowerPostB": [
+      7.5,
+      -1.4
+     ],
+     "lowerPointP": [
+      7.5,
+      -3.4
+     ]
+    },
+    "parts": [
+     {
+      "id": "h0",
+      "label": "100",
+      "at": "h0P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n0",
+      "label": "\\scriptsize \\text{hundreds}",
+      "at": "n0P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h1",
+      "label": "10",
+      "at": "h1P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n1",
+      "label": "\\scriptsize \\text{tens}",
+      "at": "n1P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h2",
+      "label": "1",
+      "at": "h2P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n2",
+      "label": "\\scriptsize \\text{ones}",
+      "at": "n2P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h3",
+      "label": "0.1",
+      "at": "h3P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n3",
+      "label": "\\scriptsize \\text{tenths}",
+      "at": "n3P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h4",
+      "label": "0.01",
+      "at": "h4P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n4",
+      "label": "\\scriptsize \\text{hundredths}",
+      "at": "n4P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "col0",
+      "seg": [
+       "col0A",
+       "col0B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col1",
+      "seg": [
+       "col1A",
+       "col1B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col2",
+      "seg": [
+       "col2A",
+       "col2B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col3",
+      "seg": [
+       "col3A",
+       "col3B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col4",
+      "seg": [
+       "col4A",
+       "col4B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col5",
+      "seg": [
+       "col5A",
+       "col5B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "top",
+      "seg": [
+       "topA",
+       "topB"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "bottom",
+      "seg": [
+       "bottomA",
+       "bottomB"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "post",
+      "seg": [
+       "postA",
+       "postB"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "point",
+      "dot": "pointP",
+      "r": 12,
+      "ink": "gold",
+      "start": true
+     },
+     {
+      "id": "d0",
+      "label": "7",
+      "at": "d0P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "flies": true,
+      "start": true,
+      "group": "digits"
+     },
+     {
+      "id": "d1",
+      "label": "1",
+      "at": "d1P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "flies": true,
+      "start": true,
+      "group": "digits"
+     },
+     {
+      "id": "d2",
+      "label": "0",
+      "at": "d2P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "muted",
+      "flies": true,
+      "start": true,
+      "group": "digits"
+     },
+     {
+      "id": "e0",
+      "label": "5",
+      "at": "e0P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "flies": true,
+      "start": true,
+      "group": "second"
+     },
+     {
+      "id": "e1",
+      "label": "2",
+      "at": "e1P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "flies": true,
+      "start": true,
+      "group": "second"
+     },
+     {
+      "id": "e2",
+      "label": "0",
+      "at": "e2P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "muted",
+      "flies": true,
+      "start": true,
+      "group": "second"
+     },
+     {
+      "id": "lowerCol0",
+      "seg": [
+       "lowerCol0A",
+       "lowerCol0B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "lowerCol1",
+      "seg": [
+       "lowerCol1A",
+       "lowerCol1B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "lowerCol2",
+      "seg": [
+       "lowerCol2A",
+       "lowerCol2B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "lowerCol3",
+      "seg": [
+       "lowerCol3A",
+       "lowerCol3B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "lowerCol4",
+      "seg": [
+       "lowerCol4A",
+       "lowerCol4B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "lowerCol5",
+      "seg": [
+       "lowerCol5A",
+       "lowerCol5B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "lowerTop",
+      "seg": [
+       "lowerTopA",
+       "lowerTopB"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "lowerBottom",
+      "seg": [
+       "lowerBottomA",
+       "lowerBottomB"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "lowerPost",
+      "seg": [
+       "lowerPostA",
+       "lowerPostB"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "lowerPoint",
+      "dot": "lowerPointP",
+      "ink": "gold",
+      "r": 12,
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Watch the zeros in seven hundred ten and five hundred twenty. Divide both numbers by a hundred.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Zeros can hold places or add nothing"
+      },
+      {
+       "do": "write",
+       "tex": "710\\div100"
+      },
+      {
+       "do": "write",
+       "tex": "520\\div100"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One step right, then another.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "d0P": [
+         3.75,
+         2.2
+        ],
+        "d1P": [
+         6.25,
+         2.2
+        ],
+        "d2P": [
+         8.75,
+         2.2
+        ]
+       },
+       "at": "One",
+       "dur": 1
+      },
+      {
+       "do": "move",
+       "points": {
+        "e0P": [
+         3.75,
+         -2.8
+        ],
+        "e1P": [
+         6.25,
+         -2.8
+        ],
+        "e2P": [
+         8.75,
+         -2.8
+        ]
+       },
+       "at": "One",
+       "dur": 1
+      },
+      {
+       "do": "move",
+       "points": {
+        "d0P": [
+         6.25,
+         2.2
+        ],
+        "d1P": [
+         8.75,
+         2.2
+        ],
+        "d2P": [
+         11.25,
+         2.2
+        ]
+       },
+       "at": "another",
+       "dur": 1
+      },
+      {
+       "do": "move",
+       "points": {
+        "e0P": [
+         6.25,
+         -2.8
+        ],
+        "e1P": [
+         8.75,
+         -2.8
+        ],
+        "e2P": [
+         11.25,
+         -2.8
+        ]
+       },
+       "at": "another",
+       "dur": 1
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Seven point one zero is seven point one. Five point two zero is five point two.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "710\\;\\div\\;100\\;=\\;7.10\\;=\\;7.1",
+       "at": "Seven"
+      },
+      {
+       "do": "hide",
+       "target": "d2",
+       "at": "is"
+      },
+      {
+       "do": "write",
+       "tex": "520\\;\\div\\;100\\;=\\;5.20\\;=\\;5.2",
+       "at": "Five"
+      },
+      {
+       "do": "hide",
+       "target": "e2",
+       "at": "is",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Those zeros say zero hundredths. Leaving them off changes no value, and moves no other digit.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "text",
+       "text": "Trailing decimal zeros add no value.",
+       "at": "Leaving"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "d0",
+        "d1",
+        "e0",
+        "e1"
+       ],
+       "at": "moves"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.4,
+     -1.5,
+     7.9,
+     5.2
+    ],
+    "points": {
+     "h0P": [
+      1.25,
+      4.3
+     ],
+     "n0P": [
+      1.25,
+      0.05
+     ],
+     "h1P": [
+      3.75,
+      4.3
+     ],
+     "n1P": [
+      3.75,
+      0.05
+     ],
+     "h2P": [
+      6.25,
+      4.3
+     ],
+     "n2P": [
+      6.25,
+      0.05
+     ],
+     "col0A": [
+      0,
+      0.7
+     ],
+     "col0B": [
+      0,
+      3.6
+     ],
+     "col1A": [
+      2.5,
+      0.7
+     ],
+     "col1B": [
+      2.5,
+      3.6
+     ],
+     "col2A": [
+      5,
+      0.7
+     ],
+     "col2B": [
+      5,
+      3.6
+     ],
+     "col3A": [
+      7.5,
+      0.7
+     ],
+     "col3B": [
+      7.5,
+      3.6
+     ],
+     "topA": [
+      0,
+      3.6
+     ],
+     "topB": [
+      7.5,
+      3.6
+     ],
+     "bottomA": [
+      0,
+      0.7
+     ],
+     "bottomB": [
+      7.5,
+      0.7
+     ],
+     "postA": [
+      2.5,
+      0.7
+     ],
+     "postB": [
+      2.5,
+      3.6
+     ],
+     "pointP": [
+      2.5,
+      1.6
+     ],
+     "d0P": [
+      1.25,
+      2.2
+     ],
+     "onesZeroP": [
+      3.75,
+      2.2
+     ],
+     "z0P": [
+      1.25,
+      2.2
+     ],
+     "z1P": [
+      3.75,
+      2.2
+     ]
+    },
+    "parts": [
+     {
+      "id": "h0",
+      "label": "1",
+      "at": "h0P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n0",
+      "label": "\\text{ones}",
+      "at": "n0P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h1",
+      "label": "0.1",
+      "at": "h1P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n1",
+      "label": "\\text{tenths}",
+      "at": "n1P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h2",
+      "label": "0.01",
+      "at": "h2P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n2",
+      "label": "\\text{hundredths}",
+      "at": "n2P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "col0",
+      "seg": [
+       "col0A",
+       "col0B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col1",
+      "seg": [
+       "col1A",
+       "col1B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col2",
+      "seg": [
+       "col2A",
+       "col2B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col3",
+      "seg": [
+       "col3A",
+       "col3B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "top",
+      "seg": [
+       "topA",
+       "topB"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "bottom",
+      "seg": [
+       "bottomA",
+       "bottomB"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "d0",
+      "label": "9",
+      "at": "d0P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "flies": true,
+      "start": true,
+      "group": "digits"
+     },
+     {
+      "id": "post",
+      "seg": [
+       "postA",
+       "postB"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "point",
+      "dot": "pointP",
+      "r": 12,
+      "ink": "gold",
+      "start": true
+     },
+     {
+      "id": "z0",
+      "label": "0",
+      "at": "z0P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "muted"
+     },
+     {
+      "id": "z1",
+      "label": "0",
+      "at": "z1P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "muted"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "say": "But some zeros must stay. Divide nine by a hundred.",
+     "speaker": "teacher",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Keep zeros that hold a place"
+      },
+      {
+       "do": "problem",
+       "text": "$9\\div100$",
+       "at": "Divide"
+      }
+     ]
+    },
+    {
+     "say": "One step right. Two steps right. The nine is in the hundredths place.",
+     "speaker": "teacher",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "d0P": [
+         3.75,
+         2.2
+        ]
+       },
+       "at": "One",
+       "dur": 1
+      },
+      {
+       "do": "move",
+       "points": {
+        "d0P": [
+         6.25,
+         2.2
+        ]
+       },
+       "at": "Two",
+       "dur": 1
+      }
+     ]
+    },
+    {
+     "say": "Zero ones, zero tenths, nine hundredths. Zero point zero nine.",
+     "speaker": "teacher",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": "z0",
+       "at": "ones"
+      },
+      {
+       "do": "show",
+       "target": "z1",
+       "at": "tenths"
+      },
+      {
+       "do": "answer",
+       "tex": "9\\div100=0.09",
+       "at": "nine",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "say": "Leave out that zero in the tenths place, and you get nine tenths. A different number.",
+     "speaker": "teacher",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "z1",
+       "at": "zero",
+       "until": "and"
+      },
+      {
+       "do": "write",
+       "tex": "0.09\\ne0.9",
+       "at": "different"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.4,
+     -1.5,
+     12.9,
+     5.2
+    ],
+    "points": {
+     "h0P": [
+      1.25,
+      4.3
+     ],
+     "n0P": [
+      1.25,
+      0.05
+     ],
+     "h1P": [
+      3.75,
+      4.3
+     ],
+     "n1P": [
+      3.75,
+      0.05
+     ],
+     "h2P": [
+      6.25,
+      4.3
+     ],
+     "n2P": [
+      6.25,
+      0.05
+     ],
+     "h3P": [
+      8.75,
+      4.3
+     ],
+     "n3P": [
+      8.75,
+      0.05
+     ],
+     "h4P": [
+      11.25,
+      4.3
+     ],
+     "n4P": [
+      11.25,
+      0.05
+     ],
+     "col0A": [
+      0,
+      0.7
+     ],
+     "col0B": [
+      0,
+      3.6
+     ],
+     "col1A": [
+      2.5,
+      0.7
+     ],
+     "col1B": [
+      2.5,
+      3.6
+     ],
+     "col2A": [
+      5,
+      0.7
+     ],
+     "col2B": [
+      5,
+      3.6
+     ],
+     "col3A": [
+      7.5,
+      0.7
+     ],
+     "col3B": [
+      7.5,
+      3.6
+     ],
+     "col4A": [
+      10,
+      0.7
+     ],
+     "col4B": [
+      10,
+      3.6
+     ],
+     "col5A": [
+      12.5,
+      0.7
+     ],
+     "col5B": [
+      12.5,
+      3.6
+     ],
+     "topA": [
+      0,
+      3.6
+     ],
+     "topB": [
+      12.5,
+      3.6
+     ],
+     "bottomA": [
+      0,
+      0.7
+     ],
+     "bottomB": [
+      12.5,
+      0.7
+     ],
+     "postA": [
+      5,
+      0.7
+     ],
+     "postB": [
+      5,
+      3.6
+     ],
+     "pointP": [
+      5,
+      1.6
+     ],
+     "d0P": [
+      1.25,
+      2.2
+     ],
+     "d1P": [
+      3.75,
+      2.2
+     ],
+     "d2P": [
+      6.25,
+      2.2
+     ],
+     "leadingP": [
+      3.75,
+      2.2
+     ]
+    },
+    "parts": [
+     {
+      "id": "h0",
+      "label": "10",
+      "at": "h0P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n0",
+      "label": "\\scriptsize \\text{tens}",
+      "at": "n0P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h1",
+      "label": "1",
+      "at": "h1P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n1",
+      "label": "\\scriptsize \\text{ones}",
+      "at": "n1P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h2",
+      "label": "0.1",
+      "at": "h2P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n2",
+      "label": "\\scriptsize \\text{tenths}",
+      "at": "n2P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h3",
+      "label": "0.01",
+      "at": "h3P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n3",
+      "label": "\\scriptsize \\text{hundredths}",
+      "at": "n3P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h4",
+      "label": "0.001",
+      "at": "h4P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n4",
+      "label": "\\scriptsize \\text{thousandths}",
+      "at": "n4P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "col0",
+      "seg": [
+       "col0A",
+       "col0B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col1",
+      "seg": [
+       "col1A",
+       "col1B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col2",
+      "seg": [
+       "col2A",
+       "col2B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col3",
+      "seg": [
+       "col3A",
+       "col3B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col4",
+      "seg": [
+       "col4A",
+       "col4B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col5",
+      "seg": [
+       "col5A",
+       "col5B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "top",
+      "seg": [
+       "topA",
+       "topB"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "bottom",
+      "seg": [
+       "bottomA",
+       "bottomB"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "post",
+      "seg": [
+       "postA",
+       "postB"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "point",
+      "dot": "pointP",
+      "r": 12,
+      "ink": "gold",
+      "start": true
+     },
+     {
+      "id": "d0",
+      "label": "7",
+      "at": "d0P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "flies": true,
+      "start": true,
+      "group": "digits"
+     },
+     {
+      "id": "d1",
+      "label": "6",
+      "at": "d1P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "flies": true,
+      "start": true,
+      "group": "digits"
+     },
+     {
+      "id": "d2",
+      "label": "2",
+      "at": "d2P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "flies": true,
+      "start": true,
+      "group": "digits"
+     },
+     {
+      "id": "leading",
+      "label": "0",
+      "at": "leadingP",
+      "dir": "c",
+      "size": "xl",
+      "ink": "muted"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Zero point one means one tenth. Multiplying by one tenth takes one of ten equal shares.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Multiplying by a tenth takes a tenth"
+      },
+      {
+       "do": "write",
+       "tex": "0.1=\\frac{1}{10}",
+       "at": "tenth"
+      },
+      {
+       "do": "text",
+       "text": "Take one of ten equal shares.",
+       "at": "shares"
+      }
+     ]
+    },
+    {
+     "say": "It is the same as dividing by ten.",
+     "speaker": "teacher",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "write",
+       "tex": "76.2\\times0.1=76.2\\div10",
+       "at": "same"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Seventy-six point two becomes seven point six two. Every digit steps right once.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "d0P": [
+         3.75,
+         2.2
+        ],
+        "d1P": [
+         6.25,
+         2.2
+        ],
+        "d2P": [
+         8.75,
+         2.2
+        ]
+       },
+       "at": "becomes",
+       "dur": 1.3
+      },
+      {
+       "do": "answer",
+       "tex": "76.2\\times0.1=7.62",
+       "at": "once"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "And multiplying by zero point zero one takes a hundredth, so that is two steps right?",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "0.01=\\frac{1}{100}",
+       "at": "hundredth"
+      },
+      {
+       "do": "problem",
+       "text": "Find $76.2\\times0.01$.",
+       "at": "two"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Yes. Start from seventy-six point two again.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "d0P": [
+         1.25,
+         2.2
+        ],
+        "d1P": [
+         3.75,
+         2.2
+        ],
+        "d2P": [
+         6.25,
+         2.2
+        ]
+       },
+       "at": "Start",
+       "dur": 1.3
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One step to the right. A second step to the right. Zero point seven six two.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "d0P": [
+         3.75,
+         2.2
+        ],
+        "d1P": [
+         6.25,
+         2.2
+        ],
+        "d2P": [
+         8.75,
+         2.2
+        ]
+       },
+       "at": "One",
+       "dur": 1.2
+      },
+      {
+       "do": "move",
+       "points": {
+        "d0P": [
+         6.25,
+         2.2
+        ],
+        "d1P": [
+         8.75,
+         2.2
+        ],
+        "d2P": [
+         11.25,
+         2.2
+        ]
+       },
+       "at": "second",
+       "dur": 1.2
+      },
+      {
+       "do": "show",
+       "target": "leading",
+       "at": "Zero"
+      },
+      {
+       "do": "answer",
+       "tex": "76.2\\times0.01=0.762",
+       "at": "six"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.8,
+     -0.8,
+     11.8,
+     8.8
+    ],
+    "points": {
+     "bar0P": [
+      0,
+      7.7
+     ],
+     "count0P": [
+      11,
+      7.15
+     ],
+     "bar1P": [
+      0,
+      5.7
+     ],
+     "count1P": [
+      11,
+      5.15
+     ],
+     "bar2P": [
+      0,
+      3.7
+     ],
+     "count2P": [
+      11,
+      3.1500000000000004
+     ],
+     "bar3P": [
+      0,
+      1.7000000000000002
+     ],
+     "count3P": [
+      11,
+      1.1500000000000001
+     ],
+     "pieceP": [
+      0.5,
+      8.6
+     ]
+    },
+    "parts": [
+     {
+      "id": "bar0",
+      "bar": "bar0P",
+      "w": 10,
+      "h": 1.15,
+      "divisions": 1,
+      "ink": "accent",
+      "start": true,
+      "title": ""
+     },
+     {
+      "id": "count0",
+      "label": "10",
+      "at": "count0P",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent"
+     },
+     {
+      "id": "bar1",
+      "bar": "bar1P",
+      "w": 10,
+      "h": 1.15,
+      "divisions": 1,
+      "ink": "accent",
+      "start": true,
+      "title": ""
+     },
+     {
+      "id": "count1",
+      "label": "10",
+      "at": "count1P",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent"
+     },
+     {
+      "id": "bar2",
+      "bar": "bar2P",
+      "w": 10,
+      "h": 1.15,
+      "divisions": 1,
+      "ink": "accent",
+      "start": true,
+      "title": ""
+     },
+     {
+      "id": "count2",
+      "label": "10",
+      "at": "count2P",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent"
+     },
+     {
+      "id": "bar3",
+      "bar": "bar3P",
+      "w": 10,
+      "h": 1.15,
+      "divisions": 1,
+      "ink": "accent",
+      "start": true,
+      "title": ""
+     },
+     {
+      "id": "count3",
+      "label": "10",
+      "at": "count3P",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent"
+     },
+     {
+      "id": "piece",
+      "label": "0.1",
+      "at": "pieceP",
+      "dir": "c",
+      "size": "m",
+      "ink": "warm"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "But dividing by a tenth asks a different question: how many tenths fit in four wholes?",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "How many tenths fit?"
+      },
+      {
+       "do": "problem",
+       "text": "$4\\div0.1=\\square$"
+      },
+      {
+       "do": "text",
+       "text": "Each strip is 1 whole.",
+       "at": "four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Each whole holds ten tenths.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "partition",
+       "target": "bar0",
+       "into": 10,
+       "at": "ten"
+      },
+      {
+       "do": "partition",
+       "target": "bar1",
+       "into": 10,
+       "at": "ten"
+      },
+      {
+       "do": "partition",
+       "target": "bar2",
+       "into": 10,
+       "at": "ten"
+      },
+      {
+       "do": "partition",
+       "target": "bar3",
+       "into": 10,
+       "at": "ten"
+      },
+      {
+       "do": "show",
+       "target": "piece",
+       "at": "tenths"
+      },
+      {
+       "do": "shade",
+       "target": "bar0",
+       "to": 0.1,
+       "at": "tenths"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Ten here. Twenty altogether. Thirty. Forty.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "hide",
+       "target": "piece",
+       "at": "Ten",
+       "dur": 0.1
+      },
+      {
+       "do": "show",
+       "target": "count0",
+       "at": "Ten",
+       "dur": 0.1
+      },
+      {
+       "do": "highlight",
+       "target": "bar0.part",
+       "at": "Ten",
+       "until": "Twenty"
+      },
+      {
+       "do": "show",
+       "target": "count1",
+       "at": "Twenty",
+       "dur": 0.1
+      },
+      {
+       "do": "highlight",
+       "target": "bar1.part",
+       "at": "Twenty",
+       "until": "Thirty"
+      },
+      {
+       "do": "show",
+       "target": "count2",
+       "at": "Thirty",
+       "dur": 0.1
+      },
+      {
+       "do": "highlight",
+       "target": "bar2.part",
+       "at": "Thirty",
+       "until": "Forty"
+      },
+      {
+       "do": "show",
+       "target": "count3",
+       "at": "Forty",
+       "dur": 0.1
+      },
+      {
+       "do": "highlight",
+       "target": "bar3.part",
+       "at": "Forty"
+      },
+      {
+       "do": "shade",
+       "target": "bar0",
+       "to": 1,
+       "at": "Ten",
+       "dur": 0.1
+      },
+      {
+       "do": "shade",
+       "target": "bar1",
+       "to": 1,
+       "at": "Twenty",
+       "dur": 0.1
+      },
+      {
+       "do": "shade",
+       "target": "bar2",
+       "to": 1,
+       "at": "Thirty",
+       "dur": 0.1
+      },
+      {
+       "do": "shade",
+       "target": "bar3",
+       "to": 1,
+       "at": "Forty",
+       "dur": 0.1
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Four wholes contain forty tenths. The answer counts the little pieces!",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "4\\div0.1=40",
+       "at": "forty"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "That is why dividing by a tenth multiplies the number by ten.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "write",
+       "tex": "4\\div0.1=4\\times10",
+       "at": "why"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.4,
+     -1.5,
+     7.9,
+     5.2
+    ],
+    "points": {
+     "h0P": [
+      1.25,
+      4.3
+     ],
+     "n0P": [
+      1.25,
+      0.05
+     ],
+     "h1P": [
+      3.75,
+      4.3
+     ],
+     "n1P": [
+      3.75,
+      0.05
+     ],
+     "h2P": [
+      6.25,
+      4.3
+     ],
+     "n2P": [
+      6.25,
+      0.05
+     ],
+     "col0A": [
+      0,
+      0.7
+     ],
+     "col0B": [
+      0,
+      3.6
+     ],
+     "col1A": [
+      2.5,
+      0.7
+     ],
+     "col1B": [
+      2.5,
+      3.6
+     ],
+     "col2A": [
+      5,
+      0.7
+     ],
+     "col2B": [
+      5,
+      3.6
+     ],
+     "col3A": [
+      7.5,
+      0.7
+     ],
+     "col3B": [
+      7.5,
+      3.6
+     ],
+     "topA": [
+      0,
+      3.6
+     ],
+     "topB": [
+      7.5,
+      3.6
+     ],
+     "bottomA": [
+      0,
+      0.7
+     ],
+     "bottomB": [
+      7.5,
+      0.7
+     ],
+     "postA": [
+      5,
+      0.7
+     ],
+     "postB": [
+      5,
+      3.6
+     ],
+     "pointP": [
+      5,
+      1.6
+     ],
+     "d0P": [
+      3.75,
+      2.2
+     ],
+     "onesZeroP": [
+      3.75,
+      2.2
+     ]
+    },
+    "parts": [
+     {
+      "id": "h0",
+      "label": "10",
+      "at": "h0P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n0",
+      "label": "\\text{tens}",
+      "at": "n0P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h1",
+      "label": "1",
+      "at": "h1P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n1",
+      "label": "\\text{ones}",
+      "at": "n1P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h2",
+      "label": "0.1",
+      "at": "h2P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n2",
+      "label": "\\text{tenths}",
+      "at": "n2P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "col0",
+      "seg": [
+       "col0A",
+       "col0B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col1",
+      "seg": [
+       "col1A",
+       "col1B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col2",
+      "seg": [
+       "col2A",
+       "col2B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col3",
+      "seg": [
+       "col3A",
+       "col3B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "top",
+      "seg": [
+       "topA",
+       "topB"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "bottom",
+      "seg": [
+       "bottomA",
+       "bottomB"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "post",
+      "seg": [
+       "postA",
+       "postB"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "point",
+      "dot": "pointP",
+      "r": 12,
+      "ink": "gold",
+      "start": true
+     },
+     {
+      "id": "d0",
+      "label": "4",
+      "at": "d0P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "flies": true,
+      "start": true,
+      "group": "digits"
+     },
+     {
+      "id": "onesZero",
+      "label": "0",
+      "at": "onesZeroP",
+      "dir": "c",
+      "size": "xl",
+      "ink": "muted"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "On the chart, four divided by a tenth sends the four one place left, to four tens.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Dividing by a tenth: one step left"
+      },
+      {
+       "do": "write",
+       "tex": "4\\div0.1=4\\times10"
+      },
+      {
+       "do": "move",
+       "points": {
+        "d0P": [
+         1.25,
+         2.2
+        ]
+       },
+       "at": "left",
+       "dur": 1.3
+      },
+      {
+       "do": "show",
+       "target": "onesZero",
+       "at": "tens"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Forty. A positive number divided by a tenth gets bigger, because we are counting smaller pieces.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "4\\div0.1=40",
+       "at": "Forty"
+      },
+      {
+       "do": "highlight",
+       "target": "digits",
+       "at": "bigger",
+       "until": "because"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.7,
+     -1.4,
+     14.7,
+     11.5
+    ],
+    "points": {
+     "gridP": [
+      0,
+      10
+     ],
+     "wholeLabelP": [
+      7,
+      11
+     ],
+     "unitCell": [
+      0.7,
+      9.5
+     ],
+     "cellLabelP": [
+      0.7,
+      11
+     ],
+     "row0p0": [
+      0,
+      10
+     ],
+     "row0p1": [
+      14,
+      10
+     ],
+     "row0p2": [
+      14,
+      9
+     ],
+     "row0p3": [
+      0,
+      9
+     ],
+     "row1p0": [
+      0,
+      9
+     ],
+     "row1p1": [
+      14,
+      9
+     ],
+     "row1p2": [
+      14,
+      8
+     ],
+     "row1p3": [
+      0,
+      8
+     ],
+     "row2p0": [
+      0,
+      8
+     ],
+     "row2p1": [
+      14,
+      8
+     ],
+     "row2p2": [
+      14,
+      7
+     ],
+     "row2p3": [
+      0,
+      7
+     ],
+     "row3p0": [
+      0,
+      7
+     ],
+     "row3p1": [
+      14,
+      7
+     ],
+     "row3p2": [
+      14,
+      6
+     ],
+     "row3p3": [
+      0,
+      6
+     ],
+     "row4p0": [
+      0,
+      6
+     ],
+     "row4p1": [
+      14,
+      6
+     ],
+     "row4p2": [
+      14,
+      5
+     ],
+     "row4p3": [
+      0,
+      5
+     ],
+     "row5p0": [
+      0,
+      5
+     ],
+     "row5p1": [
+      14,
+      5
+     ],
+     "row5p2": [
+      14,
+      4
+     ],
+     "row5p3": [
+      0,
+      4
+     ],
+     "row6p0": [
+      0,
+      4
+     ],
+     "row6p1": [
+      14,
+      4
+     ],
+     "row6p2": [
+      14,
+      3
+     ],
+     "row6p3": [
+      0,
+      3
+     ],
+     "row7p0": [
+      0,
+      3
+     ],
+     "row7p1": [
+      14,
+      3
+     ],
+     "row7p2": [
+      14,
+      2
+     ],
+     "row7p3": [
+      0,
+      2
+     ],
+     "row8p0": [
+      0,
+      2
+     ],
+     "row8p1": [
+      14,
+      2
+     ],
+     "row8p2": [
+      14,
+      1
+     ],
+     "row8p3": [
+      0,
+      1
+     ],
+     "row9p0": [
+      0,
+      1
+     ],
+     "row9p1": [
+      14,
+      1
+     ],
+     "row9p2": [
+      14,
+      0
+     ],
+     "row9p3": [
+      0,
+      0
+     ],
+     "cell0": [
+      0,
+      10
+     ],
+     "cell1": [
+      1.4,
+      10
+     ],
+     "cell2": [
+      1.4,
+      9
+     ],
+     "cell3": [
+      0,
+      9
+     ]
+    },
+    "parts": [
+     {
+      "id": "hundred",
+      "grid": [
+       10,
+       10
+      ],
+      "at": "gridP",
+      "size": [
+       1.4,
+       1
+      ],
+      "fill": "accent-fill",
+      "ink": "accent",
+      "start": true
+     },
+     {
+      "id": "wholeLabel",
+      "label": "\\text{1 whole}",
+      "at": "wholeLabelP",
+      "dir": "c",
+      "size": "l",
+      "start": true
+     },
+     {
+      "id": "cellLabel",
+      "label": "0.01",
+      "at": "cellLabelP",
+      "dir": "c",
+      "size": "l",
+      "ink": "warm"
+     },
+     {
+      "id": "row0",
+      "poly": [
+       "row0p0",
+       "row0p1",
+       "row0p2",
+       "row0p3"
+      ],
+      "ink": "warm",
+      "w": 6,
+      "group": "rows",
+      "fill": "none"
+     },
+     {
+      "id": "row1",
+      "poly": [
+       "row1p0",
+       "row1p1",
+       "row1p2",
+       "row1p3"
+      ],
+      "ink": "warm",
+      "w": 6,
+      "group": "rows",
+      "fill": "none"
+     },
+     {
+      "id": "row2",
+      "poly": [
+       "row2p0",
+       "row2p1",
+       "row2p2",
+       "row2p3"
+      ],
+      "ink": "warm",
+      "w": 6,
+      "group": "rows",
+      "fill": "none"
+     },
+     {
+      "id": "row3",
+      "poly": [
+       "row3p0",
+       "row3p1",
+       "row3p2",
+       "row3p3"
+      ],
+      "ink": "warm",
+      "w": 6,
+      "group": "rows",
+      "fill": "none"
+     },
+     {
+      "id": "row4",
+      "poly": [
+       "row4p0",
+       "row4p1",
+       "row4p2",
+       "row4p3"
+      ],
+      "ink": "warm",
+      "w": 6,
+      "group": "rows",
+      "fill": "none"
+     },
+     {
+      "id": "row5",
+      "poly": [
+       "row5p0",
+       "row5p1",
+       "row5p2",
+       "row5p3"
+      ],
+      "ink": "warm",
+      "w": 6,
+      "group": "rows",
+      "fill": "none"
+     },
+     {
+      "id": "row6",
+      "poly": [
+       "row6p0",
+       "row6p1",
+       "row6p2",
+       "row6p3"
+      ],
+      "ink": "warm",
+      "w": 6,
+      "group": "rows",
+      "fill": "none"
+     },
+     {
+      "id": "row7",
+      "poly": [
+       "row7p0",
+       "row7p1",
+       "row7p2",
+       "row7p3"
+      ],
+      "ink": "warm",
+      "w": 6,
+      "group": "rows",
+      "fill": "none"
+     },
+     {
+      "id": "row8",
+      "poly": [
+       "row8p0",
+       "row8p1",
+       "row8p2",
+       "row8p3"
+      ],
+      "ink": "warm",
+      "w": 6,
+      "group": "rows",
+      "fill": "none"
+     },
+     {
+      "id": "row9",
+      "poly": [
+       "row9p0",
+       "row9p1",
+       "row9p2",
+       "row9p3"
+      ],
+      "ink": "warm",
+      "w": 6,
+      "group": "rows",
+      "fill": "none"
+     },
+     {
+      "id": "oneCell",
+      "poly": [
+       "cell0",
+       "cell1",
+       "cell2",
+       "cell3"
+      ],
+      "fill": "warm-fill",
+      "ink": "warm",
+      "w": 2
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "A hundredth is smaller again. Ten rows of ten equal pieces make a hundred hundredths in one whole.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "How many hundredths fit?"
+      },
+      {
+       "do": "text",
+       "text": "100 equal parts of 1 whole.",
+       "at": "hundredth"
+      },
+      {
+       "do": "write",
+       "tex": "10\\times10=100",
+       "at": "hundred"
+      },
+      {
+       "do": "show",
+       "target": "rows",
+       "at": "rows",
+       "dur": 0.15
+      },
+      {
+       "do": "hide",
+       "target": "rows",
+       "at": "make",
+       "dur": 0.15
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Each little piece is zero point zero one. Counting hundredths gives a hundred pieces for every whole.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": "oneCell",
+       "at": "piece"
+      },
+      {
+       "do": "show",
+       "target": "cellLabel",
+       "at": "zero"
+      },
+      {
+       "do": "write",
+       "tex": "1\\div0.01=100",
+       "at": "hundred"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "So dividing by a hundredth is multiplying by a hundred. Two steps left.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "text",
+       "text": "Divide by 0.01: two steps left.",
+       "at": "Two"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.4,
+     -1.5,
+     12.9,
+     5.2
+    ],
+    "points": {
+     "h0P": [
+      1.25,
+      4.3
+     ],
+     "n0P": [
+      1.25,
+      0.05
+     ],
+     "h1P": [
+      3.75,
+      4.3
+     ],
+     "n1P": [
+      3.75,
+      0.05
+     ],
+     "h2P": [
+      6.25,
+      4.3
+     ],
+     "n2P": [
+      6.25,
+      0.05
+     ],
+     "h3P": [
+      8.75,
+      4.3
+     ],
+     "n3P": [
+      8.75,
+      0.05
+     ],
+     "h4P": [
+      11.25,
+      4.3
+     ],
+     "n4P": [
+      11.25,
+      0.05
+     ],
+     "col0A": [
+      0,
+      0.7
+     ],
+     "col0B": [
+      0,
+      3.6
+     ],
+     "col1A": [
+      2.5,
+      0.7
+     ],
+     "col1B": [
+      2.5,
+      3.6
+     ],
+     "col2A": [
+      5,
+      0.7
+     ],
+     "col2B": [
+      5,
+      3.6
+     ],
+     "col3A": [
+      7.5,
+      0.7
+     ],
+     "col3B": [
+      7.5,
+      3.6
+     ],
+     "col4A": [
+      10,
+      0.7
+     ],
+     "col4B": [
+      10,
+      3.6
+     ],
+     "col5A": [
+      12.5,
+      0.7
+     ],
+     "col5B": [
+      12.5,
+      3.6
+     ],
+     "topA": [
+      0,
+      3.6
+     ],
+     "topB": [
+      12.5,
+      3.6
+     ],
+     "bottomA": [
+      0,
+      0.7
+     ],
+     "bottomB": [
+      12.5,
+      0.7
+     ],
+     "postA": [
+      10,
+      0.7
+     ],
+     "postB": [
+      10,
+      3.6
+     ],
+     "pointP": [
+      10,
+      1.6
+     ],
+     "d0P": [
+      6.25,
+      2.2
+     ],
+     "d1P": [
+      8.75,
+      2.2
+     ],
+     "d2P": [
+      11.25,
+      2.2
+     ],
+     "onesZeroP": [
+      8.75,
+      2.2
+     ]
+    },
+    "parts": [
+     {
+      "id": "h0",
+      "label": "1{,}000",
+      "at": "h0P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n0",
+      "label": "\\scriptsize \\text{thousands}",
+      "at": "n0P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h1",
+      "label": "100",
+      "at": "h1P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n1",
+      "label": "\\scriptsize \\text{hundreds}",
+      "at": "n1P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h2",
+      "label": "10",
+      "at": "h2P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n2",
+      "label": "\\scriptsize \\text{tens}",
+      "at": "n2P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h3",
+      "label": "1",
+      "at": "h3P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n3",
+      "label": "\\scriptsize \\text{ones}",
+      "at": "n3P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h4",
+      "label": "0.1",
+      "at": "h4P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n4",
+      "label": "\\scriptsize \\text{tenths}",
+      "at": "n4P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "col0",
+      "seg": [
+       "col0A",
+       "col0B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col1",
+      "seg": [
+       "col1A",
+       "col1B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col2",
+      "seg": [
+       "col2A",
+       "col2B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col3",
+      "seg": [
+       "col3A",
+       "col3B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col4",
+      "seg": [
+       "col4A",
+       "col4B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col5",
+      "seg": [
+       "col5A",
+       "col5B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "top",
+      "seg": [
+       "topA",
+       "topB"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "bottom",
+      "seg": [
+       "bottomA",
+       "bottomB"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "post",
+      "seg": [
+       "postA",
+       "postB"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "point",
+      "dot": "pointP",
+      "r": 12,
+      "ink": "gold",
+      "start": true
+     },
+     {
+      "id": "d0",
+      "label": "7",
+      "at": "d0P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "flies": true,
+      "start": true,
+      "group": "digits"
+     },
+     {
+      "id": "d1",
+      "label": "4",
+      "at": "d1P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "flies": true,
+      "start": true,
+      "group": "digits"
+     },
+     {
+      "id": "d2",
+      "label": "7",
+      "at": "d2P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "flies": true,
+      "start": true,
+      "group": "digits"
+     },
+     {
+      "id": "onesZero",
+      "label": "0",
+      "at": "onesZeroP",
+      "dir": "c",
+      "size": "xl",
+      "ink": "muted"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Try seventy-four point seven divided by zero point zero one.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Count hundredths: two steps left"
+      },
+      {
+       "do": "problem",
+       "text": "$74.7\\div0.01$"
+      },
+      {
+       "do": "write",
+       "tex": "74.7\\div0.01=74.7\\times100"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "One step to the left. A second step to the left. Fill the ones place with zero.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "d0P": [
+         3.75,
+         2.2
+        ],
+        "d1P": [
+         6.25,
+         2.2
+        ],
+        "d2P": [
+         8.75,
+         2.2
+        ]
+       },
+       "at": "One",
+       "dur": 1.2
+      },
+      {
+       "do": "move",
+       "points": {
+        "d0P": [
+         1.25,
+         2.2
+        ],
+        "d1P": [
+         3.75,
+         2.2
+        ],
+        "d2P": [
+         6.25,
+         2.2
+        ]
+       },
+       "at": "second",
+       "dur": 1.2
+      },
+      {
+       "do": "show",
+       "target": "onesZero",
+       "at": "zero"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Seven thousand four hundred seventy hundredths fit in seventy-four point seven.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "74.7\\div0.01=7{,}470",
+       "at": "seventy"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.4,
+     -1.5,
+     12.9,
+     5.2
+    ],
+    "points": {
+     "h0P": [
+      1.25,
+      4.3
+     ],
+     "n0P": [
+      1.25,
+      0.05
+     ],
+     "h1P": [
+      3.75,
+      4.3
+     ],
+     "n1P": [
+      3.75,
+      0.05
+     ],
+     "h2P": [
+      6.25,
+      4.3
+     ],
+     "n2P": [
+      6.25,
+      0.05
+     ],
+     "h3P": [
+      8.75,
+      4.3
+     ],
+     "n3P": [
+      8.75,
+      0.05
+     ],
+     "h4P": [
+      11.25,
+      4.3
+     ],
+     "n4P": [
+      11.25,
+      0.05
+     ],
+     "col0A": [
+      0,
+      0.7
+     ],
+     "col0B": [
+      0,
+      3.6
+     ],
+     "col1A": [
+      2.5,
+      0.7
+     ],
+     "col1B": [
+      2.5,
+      3.6
+     ],
+     "col2A": [
+      5,
+      0.7
+     ],
+     "col2B": [
+      5,
+      3.6
+     ],
+     "col3A": [
+      7.5,
+      0.7
+     ],
+     "col3B": [
+      7.5,
+      3.6
+     ],
+     "col4A": [
+      10,
+      0.7
+     ],
+     "col4B": [
+      10,
+      3.6
+     ],
+     "col5A": [
+      12.5,
+      0.7
+     ],
+     "col5B": [
+      12.5,
+      3.6
+     ],
+     "topA": [
+      0,
+      3.6
+     ],
+     "topB": [
+      12.5,
+      3.6
+     ],
+     "bottomA": [
+      0,
+      0.7
+     ],
+     "bottomB": [
+      12.5,
+      0.7
+     ],
+     "postA": [
+      5,
+      0.7
+     ],
+     "postB": [
+      5,
+      3.6
+     ],
+     "pointP": [
+      5,
+      1.6
+     ],
+     "d0P": [
+      6.25,
+      2.2
+     ],
+     "d1P": [
+      8.75,
+      2.2
+     ],
+     "d2P": [
+      11.25,
+      2.2
+     ],
+     "leadingP": [
+      3.75,
+      2.2
+     ]
+    },
+    "parts": [
+     {
+      "id": "h0",
+      "label": "10",
+      "at": "h0P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n0",
+      "label": "\\scriptsize \\text{tens}",
+      "at": "n0P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h1",
+      "label": "1",
+      "at": "h1P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n1",
+      "label": "\\scriptsize \\text{ones}",
+      "at": "n1P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h2",
+      "label": "0.1",
+      "at": "h2P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n2",
+      "label": "\\scriptsize \\text{tenths}",
+      "at": "n2P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h3",
+      "label": "0.01",
+      "at": "h3P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n3",
+      "label": "\\scriptsize \\text{hundredths}",
+      "at": "n3P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h4",
+      "label": "0.001",
+      "at": "h4P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n4",
+      "label": "\\scriptsize \\text{thousandths}",
+      "at": "n4P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "col0",
+      "seg": [
+       "col0A",
+       "col0B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col1",
+      "seg": [
+       "col1A",
+       "col1B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col2",
+      "seg": [
+       "col2A",
+       "col2B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col3",
+      "seg": [
+       "col3A",
+       "col3B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col4",
+      "seg": [
+       "col4A",
+       "col4B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col5",
+      "seg": [
+       "col5A",
+       "col5B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "top",
+      "seg": [
+       "topA",
+       "topB"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "bottom",
+      "seg": [
+       "bottomA",
+       "bottomB"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "post",
+      "seg": [
+       "postA",
+       "postB"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "point",
+      "dot": "pointP",
+      "r": 12,
+      "ink": "gold",
+      "start": true
+     },
+     {
+      "id": "d0",
+      "label": "4",
+      "at": "d0P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "flies": true,
+      "start": true,
+      "group": "digits"
+     },
+     {
+      "id": "d1",
+      "label": "1",
+      "at": "d1P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "flies": true,
+      "start": true,
+      "group": "digits"
+     },
+     {
+      "id": "d2",
+      "label": "2",
+      "at": "d2P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "flies": true,
+      "start": true,
+      "group": "digits"
+     },
+     {
+      "id": "leading",
+      "label": "0",
+      "at": "leadingP",
+      "dir": "c",
+      "size": "xl",
+      "ink": "muted",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "A factor is a number being multiplied. This factor is missing.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Find a missing factor"
+      },
+      {
+       "do": "term",
+       "word": "factor",
+       "meaning": "A number being multiplied.",
+       "at": "number"
+      },
+      {
+       "do": "problem",
+       "text": "$\\square\\times0.01=0.412$",
+       "at": "This"
+      }
+     ]
+    },
+    {
+     "say": "What number times one hundredth equals zero point four one two?",
+     "speaker": "teacher",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "digits",
+       "at": "four"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Multiplying by a hundredth moves right twice. To find where we started, I reverse it. One step left. A second step left.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "text",
+       "text": "Undo two steps right with two steps left.",
+       "at": "find"
+      },
+      {
+       "do": "hide",
+       "target": "leading",
+       "at": "One"
+      },
+      {
+       "do": "move",
+       "points": {
+        "d0P": [
+         3.75,
+         2.2
+        ],
+        "d1P": [
+         6.25,
+         2.2
+        ],
+        "d2P": [
+         8.75,
+         2.2
+        ]
+       },
+       "at": "One",
+       "dur": 1.1
+      },
+      {
+       "do": "move",
+       "points": {
+        "d0P": [
+         1.25,
+         2.2
+        ],
+        "d1P": [
+         3.75,
+         2.2
+        ],
+        "d2P": [
+         6.25,
+         2.2
+        ]
+       },
+       "at": "second",
+       "dur": 1.1
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Forty-one point two. Check by going back: one step right, then another. We get zero point four one two.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "write",
+       "tex": "41.2\\times0.01=0.412",
+       "at": "Forty-one"
+      },
+      {
+       "do": "move",
+       "points": {
+        "d0P": [
+         3.75,
+         2.2
+        ],
+        "d1P": [
+         6.25,
+         2.2
+        ],
+        "d2P": [
+         8.75,
+         2.2
+        ]
+       },
+       "at": "one",
+       "dur": 1.3
+      },
+      {
+       "do": "move",
+       "points": {
+        "d0P": [
+         6.25,
+         2.2
+        ],
+        "d1P": [
+         8.75,
+         2.2
+        ],
+        "d2P": [
+         11.25,
+         2.2
+        ]
+       },
+       "at": "another",
+       "dur": 1.3
+      },
+      {
+       "do": "show",
+       "target": "leading",
+       "at": "zero"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The missing factor is forty-one point two.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "\\square=41.2",
+       "at": "forty-one"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.4,
+     -1.8,
+     7.9,
+     6.7
+    ],
+    "points": {
+     "h0P": [
+      1.25,
+      4.3
+     ],
+     "n0P": [
+      1.25,
+      0.05
+     ],
+     "h1P": [
+      3.75,
+      4.3
+     ],
+     "n1P": [
+      3.75,
+      0.05
+     ],
+     "h2P": [
+      6.25,
+      4.3
+     ],
+     "n2P": [
+      6.25,
+      0.05
+     ],
+     "col0A": [
+      0,
+      0.7
+     ],
+     "col0B": [
+      0,
+      3.6
+     ],
+     "col1A": [
+      2.5,
+      0.7
+     ],
+     "col1B": [
+      2.5,
+      3.6
+     ],
+     "col2A": [
+      5,
+      0.7
+     ],
+     "col2B": [
+      5,
+      3.6
+     ],
+     "col3A": [
+      7.5,
+      0.7
+     ],
+     "col3B": [
+      7.5,
+      3.6
+     ],
+     "topA": [
+      0,
+      3.6
+     ],
+     "topB": [
+      7.5,
+      3.6
+     ],
+     "bottomA": [
+      0,
+      0.7
+     ],
+     "bottomB": [
+      7.5,
+      0.7
+     ],
+     "d0P": [
+      1.25,
+      2.2
+     ],
+     "d1P": [
+      3.75,
+      2.2
+     ],
+     "d2P": [
+      6.25,
+      2.2
+     ],
+     "vHundredP": [
+      1.25,
+      -1.1
+     ],
+     "vOneP": [
+      6.25,
+      -1.1
+     ],
+     "stepOneA": [
+      6.25,
+      5.35
+     ],
+     "stepOneB": [
+      3.75,
+      5.35
+     ],
+     "stepTwoA": [
+      3.75,
+      5.35
+     ],
+     "stepTwoB": [
+      1.25,
+      5.35
+     ],
+     "tenOneP": [
+      5,
+      6
+     ],
+     "tenTwoP": [
+      2.5,
+      6
+     ]
+    },
+    "parts": [
+     {
+      "id": "h0",
+      "label": "100",
+      "at": "h0P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n0",
+      "label": "\\text{hundreds}",
+      "at": "n0P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h1",
+      "label": "10",
+      "at": "h1P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n1",
+      "label": "\\text{tens}",
+      "at": "n1P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h2",
+      "label": "1",
+      "at": "h2P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n2",
+      "label": "\\text{ones}",
+      "at": "n2P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "col0",
+      "seg": [
+       "col0A",
+       "col0B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col1",
+      "seg": [
+       "col1A",
+       "col1B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col2",
+      "seg": [
+       "col2A",
+       "col2B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col3",
+      "seg": [
+       "col3A",
+       "col3B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "top",
+      "seg": [
+       "topA",
+       "topB"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "bottom",
+      "seg": [
+       "bottomA",
+       "bottomB"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "d0",
+      "label": "8",
+      "at": "d0P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "flies": true,
+      "start": true,
+      "group": "digits"
+     },
+     {
+      "id": "d1",
+      "label": "5",
+      "at": "d1P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "flies": true,
+      "start": true,
+      "group": "digits"
+     },
+     {
+      "id": "d2",
+      "label": "8",
+      "at": "d2P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "flies": true,
+      "start": true,
+      "group": "digits"
+     },
+     {
+      "id": "vHundred",
+      "label": "800",
+      "at": "vHundredP",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent"
+     },
+     {
+      "id": "vOne",
+      "label": "8",
+      "at": "vOneP",
+      "dir": "c",
+      "size": "l",
+      "ink": "accent"
+     },
+     {
+      "id": "stepOne",
+      "ink": "gold",
+      "w": 2.5,
+      "vector": [
+       "stepOneA",
+       "stepOneB"
+      ]
+     },
+     {
+      "id": "stepTwo",
+      "ink": "gold",
+      "w": 2.5,
+      "vector": [
+       "stepTwoA",
+       "stepTwoB"
+      ]
+     },
+     {
+      "id": "tenOne",
+      "label": "\\times10",
+      "at": "tenOneP",
+      "dir": "c",
+      "size": "m",
+      "ink": "gold"
+     },
+     {
+      "id": "tenTwo",
+      "label": "\\times10",
+      "at": "tenTwoP",
+      "dir": "c",
+      "size": "m",
+      "ink": "gold"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "The same idea compares two matching digits. In three hundred twenty-one thousand, eight hundred fifty-eight, compare the two eights.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "Same digit, different places"
+      },
+      {
+       "do": "problem",
+       "text": "In $321{,}858$, compare the two 8s.",
+       "at": "In"
+      },
+      {
+       "do": "text",
+       "text": "Close view: the last three places.",
+       "at": "compare"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "d0",
+        "d2"
+       ],
+       "at": "eights"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The left eight is in the hundreds place, worth eight hundred. The right eight is in the ones place, worth eight.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "show",
+       "target": "vHundred",
+       "at": "hundred"
+      },
+      {
+       "do": "highlight",
+       "target": "d0",
+       "at": "left",
+       "until": "right"
+      },
+      {
+       "do": "show",
+       "target": "vOne",
+       "at": "ones"
+      },
+      {
+       "do": "highlight",
+       "target": "d2",
+       "at": "right"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "From ones to tens: one step. From tens to hundreds: two steps.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "draw",
+       "target": "stepOne",
+       "at": "one"
+      },
+      {
+       "do": "show",
+       "target": "tenOne",
+       "at": "one"
+      },
+      {
+       "do": "draw",
+       "target": "stepTwo",
+       "at": "two"
+      },
+      {
+       "do": "show",
+       "target": "tenTwo",
+       "at": "two"
+      },
+      {
+       "do": "write",
+       "tex": "10\\times10=100",
+       "at": "two"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Only one digit is between the eights, but there are two steps between their places.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "stepOne",
+        "stepTwo"
+       ],
+       "at": "two"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "So the eight in the hundreds place is worth a hundred times as much as the eight in the ones place.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "800=100\\times8",
+       "at": "hundred"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "For three steps, multiply three tens: a thousand. For four steps, four tens: ten thousand. Count the steps, wherever the matching digits are.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "10^3=1{,}000",
+       "at": "three"
+      },
+      {
+       "do": "write",
+       "tex": "10^4=10{,}000",
+       "at": "four"
+      },
+      {
+       "do": "text",
+       "text": "Count steps between places.",
+       "at": "Count"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "stepOne",
+        "stepTwo",
+        "tenOne",
+        "tenTwo"
+       ],
+       "at": "three",
+       "dur": 0.15
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -0.4,
+     -1.5,
+     10.4,
+     5.2
+    ],
+    "points": {
+     "h0P": [
+      1.25,
+      4.3
+     ],
+     "n0P": [
+      1.25,
+      0.05
+     ],
+     "h1P": [
+      3.75,
+      4.3
+     ],
+     "n1P": [
+      3.75,
+      0.05
+     ],
+     "h2P": [
+      6.25,
+      4.3
+     ],
+     "n2P": [
+      6.25,
+      0.05
+     ],
+     "h3P": [
+      8.75,
+      4.3
+     ],
+     "n3P": [
+      8.75,
+      0.05
+     ],
+     "col0A": [
+      0,
+      0.7
+     ],
+     "col0B": [
+      0,
+      3.6
+     ],
+     "col1A": [
+      2.5,
+      0.7
+     ],
+     "col1B": [
+      2.5,
+      3.6
+     ],
+     "col2A": [
+      5,
+      0.7
+     ],
+     "col2B": [
+      5,
+      3.6
+     ],
+     "col3A": [
+      7.5,
+      0.7
+     ],
+     "col3B": [
+      7.5,
+      3.6
+     ],
+     "col4A": [
+      10,
+      0.7
+     ],
+     "col4B": [
+      10,
+      3.6
+     ],
+     "topA": [
+      0,
+      3.6
+     ],
+     "topB": [
+      10,
+      3.6
+     ],
+     "bottomA": [
+      0,
+      0.7
+     ],
+     "bottomB": [
+      10,
+      0.7
+     ],
+     "postA": [
+      5,
+      0.7
+     ],
+     "postB": [
+      5,
+      3.6
+     ],
+     "pointP": [
+      5,
+      1.6
+     ],
+     "d0P": [
+      3.75,
+      2.2
+     ],
+     "d1P": [
+      6.25,
+      2.2
+     ]
+    },
+    "parts": [
+     {
+      "id": "h0",
+      "label": "10",
+      "at": "h0P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n0",
+      "label": "\\text{tens}",
+      "at": "n0P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h1",
+      "label": "1",
+      "at": "h1P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n1",
+      "label": "\\text{ones}",
+      "at": "n1P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h2",
+      "label": "0.1",
+      "at": "h2P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n2",
+      "label": "\\text{tenths}",
+      "at": "n2P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "h3",
+      "label": "0.01",
+      "at": "h3P",
+      "dir": "c",
+      "size": "m",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "n3",
+      "label": "\\text{hundredths}",
+      "at": "n3P",
+      "dir": "c",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "col0",
+      "seg": [
+       "col0A",
+       "col0B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col1",
+      "seg": [
+       "col1A",
+       "col1B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col2",
+      "seg": [
+       "col2A",
+       "col2B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col3",
+      "seg": [
+       "col3A",
+       "col3B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "col4",
+      "seg": [
+       "col4A",
+       "col4B"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "top",
+      "seg": [
+       "topA",
+       "topB"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "bottom",
+      "seg": [
+       "bottomA",
+       "bottomB"
+      ],
+      "ink": "muted",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "post",
+      "seg": [
+       "postA",
+       "postB"
+      ],
+      "ink": "gold",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "point",
+      "dot": "pointP",
+      "r": 12,
+      "ink": "gold",
+      "start": true
+     },
+     {
+      "id": "d0",
+      "label": "3",
+      "at": "d0P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "accent",
+      "flies": true,
+      "start": true,
+      "group": "digits"
+     },
+     {
+      "id": "d1",
+      "label": "6",
+      "at": "d1P",
+      "dir": "c",
+      "size": "xl",
+      "ink": "warm",
+      "flies": true,
+      "start": true,
+      "group": "digits"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Three point six. Multiply by ten: thirty-six.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "header",
+       "text": "The point stays. The digits slide."
+      },
+      {
+       "do": "move",
+       "points": {
+        "d0P": [
+         1.25,
+         2.2
+        ],
+        "d1P": [
+         3.75,
+         2.2
+        ]
+       },
+       "at": "Multiply",
+       "dur": 1.3
+      },
+      {
+       "do": "write",
+       "tex": "3.6\\times10=36",
+       "at": "thirty-six"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Divide by ten, and we are back to three point six.",
+     "pause": 0.05,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "d0P": [
+         3.75,
+         2.2
+        ],
+        "d1P": [
+         6.25,
+         2.2
+        ]
+       },
+       "at": "Divide",
+       "dur": 1.3
+      },
+      {
+       "do": "write",
+       "tex": "36\\div10=3.6",
+       "at": "six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Left makes each digit worth ten times as much. Right makes it worth one tenth as much.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "text",
+       "text": "Left: $\\times10$; right: $\\div10$.",
+       "at": "Left"
+      },
+      {
+       "do": "highlight",
+       "target": "digits",
+       "at": "digit"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The point stays. The digits slide. Each step is a factor of ten.",
+     "pause": 1,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "post",
+        "point"
+       ],
+       "at": "point",
+       "until": "digits"
+      },
+      {
+       "do": "highlight",
+       "target": "digits",
+       "at": "digits",
+       "until": "Each"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

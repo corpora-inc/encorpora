@@ -1,0 +1,671 @@
+[
+ {
+  "lesson_id": "l.devices-aids.01",
+  "topic_id": "devices-aids",
+  "ord": 1,
+  "title": "Safety devices: the required list and the no-alternatives rule",
+  "skills": [
+   "devices.safety-devices",
+   "devices.safety-device-failure"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "The crane rules split protective equipment into two lists. **Safety devices** (§ 1926.1415) have no workaround: if one fails, the crane stops. **Listed operational aids** (§ 1926.1416) may be covered for a limited time by temporary alternative measures while they are repaired."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Operational aids are devices that assist the operator in the safe operation of the crane by providing information or automatically taking control of a crane function."
+   },
+   {
+    "t": "text",
+    "text": "The required safety devices, with their exceptions:\n- Crane level indicator, built in or available on the equipment. Not required on portal cranes, derricks, floating cranes/derricks, or land cranes/derricks on barges or other flotation.\n- Boom stops, except on derricks and hydraulic booms.\n- Jib stops if a jib is attached, except on derricks.\n- Locks on foot pedal brakes.\n- Integral holding device/check valve on hydraulic outrigger and stabilizer jacks.\n- Rail clamps and rail stops on equipment on rails, except portal cranes.\n- Horn, built in or immediately available to the operator."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1415(a)(1)(iii)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1415(a)(2)",
+    "text": "Boom stops, except for derricks and hydraulic booms."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1415(a)(5)",
+    "text": "Hydraulic outrigger jacks and hydraulic stabilizer jacks must have an integral holding device/check valve."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1415(a)(7)(i)",
+    "text": "The equipment must have a horn that is either built into the equipment or is on the equipment and immediately available to the operator."
+   },
+   {
+    "t": "text",
+    "text": "A **boom stop** keeps the boom from going past its maximum angle and falling backward over the cab. A jib stop does the same job for a jib."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "These devices restrict the boom from moving above a certain maximum angle and toppling over backward."
+   },
+   {
+    "t": "text",
+    "text": "**When a safety device fails:** do not start work. If it fails during work, bring the load to a safe stop, take the crane out of service, and keep it out of service until the device works. A defective built-in level indicator or horn must be tagged out or removed. A defective removable one must be removed, so nobody picks it up and trusts it."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1415(b)",
+    "text": "If a device stops working properly during operations, the operator must safely stop operations."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1415(b)",
+    "text": "Alternative measures are not permitted to be used."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1415(a)(1)(ii)"
+   },
+   {
+    "t": "text",
+    "text": "A common mistake is to treat a dead horn or level indicator as an operational aid and \"work around it\" with a hand level or a whistle. Those devices are on the safety-device list, so no workaround is allowed."
+   },
+   {
+    "t": "check",
+    "question": "The horn quits at midday. Can you keep working and use a signal person's whistle in its place?",
+    "answer": "No. The horn is a safety device: stop safely, take the crane out of service, and don't resume until the horn is fixed."
+   },
+   {
+    "t": "check",
+    "question": "Does a hydraulic telescopic boom need boom stops under § 1926.1415?",
+    "answer": "No. Hydraulic booms (and derricks) are excepted from the boom stop requirement."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "e2ca376f91f2bf23d8d9",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "e3b8ddc9b46ad0f0243b19363abdaf024dd15686f73247c9c173b724b0a9ac5b",
+   "output_sha256": "c1925a3b629a4ee6b3b82996bf4cb2b6354005c6fc71491cb72dcca9279a8d9f",
+   "created_at": "2026-11-27T22:30:07+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.devices-aids.02",
+  "topic_id": "devices-aids",
+  "ord": 2,
+  "title": "Category I aids: boom hoist and luffing jib limiting devices, 7-day repair",
+  "skills": [
+   "devices.category-i",
+   "devices.boom-hoist-limiting",
+   "devices.repair-deadlines"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Category I aids are the boom hoist limiting device, the luffing jib limiting device, and the anti-two-block device (covered in the next lesson). They are the aids that take control of the crane, so their repair deadline is the shorter one."
+   },
+   {
+    "t": "text",
+    "text": "A **boom hoist limiting device** cuts boom hoist power at a preset angle. It works before the boom stop does, so the boom is not driven against the stops."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "This type of device disengages boom hoist power when the boom reaches a predetermined operating angle."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1416(d)(1)(i)",
+    "text": "For equipment manufactured after December 16, 1969, a boom hoist limiting device is required."
+   },
+   {
+    "t": "text",
+    "text": "While the device is being repaired, use at least one of these **temporary alternative measures**:\n- Use a boom angle indicator.\n- Mark the boom hoist cable where the operator can see it, far enough ahead that the operator has time to stop within the minimum allowable radius. Add mirrors or cameras if the operator needs them to see the mark.\n- Mark the cable where a spotter can see it, far enough ahead that the spotter has time to signal and the operator has time to stop.\nThe same measures apply to equipment built on or before December 16, 1969 that has no device."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1416(d)(1)(i)(A)",
+    "text": "Use a boom angle indicator."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1416(d)(1)(i)(C)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1416(d)(1)(ii)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1416(d)(2)",
+    "text": "Equipment with a luffing jib must have a luffing jib limiting device."
+   },
+   {
+    "t": "text",
+    "text": "The luffing jib uses the same alternative measures, applied to the jib's movement."
+   },
+   {
+    "t": "text",
+    "text": "**Repair deadline:** count calendar days, weekends included."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1416(d)",
+    "text": "Operational aids listed in this paragraph that are not working properly must be repaired no later than 7 calendar days after the deficiency occurs."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1416(d)",
+    "text": "Exception: If the employer documents that it has ordered the necessary parts within 7 calendar days of the occurrence of the deficiency, the repair must be completed within 7 calendar days of receipt of the parts."
+   },
+   {
+    "t": "text",
+    "text": "Worked example: the device fails on day 0, so the repair is due by day 7. If parts are ordered on day 3 and the order is documented, and the parts arrive on day 20, the repair is due by day 27. If the order was not documented, the day-7 deadline stands."
+   },
+   {
+    "t": "text",
+    "text": "If a replacement part can no longer be obtained, you may use a substitute device that performs the same function, and it does not count as a modification."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1416(c)"
+   },
+   {
+    "t": "check",
+    "question": "The boom kick-out fails on day 0. Parts are ordered and documented on day 5 and arrive on day 12. When must the repair be done?",
+    "answer": "By day 19, which is 7 calendar days after the parts arrived."
+   },
+   {
+    "t": "check",
+    "question": "Name one acceptable temporary measure for a failed boom hoist limiting device.",
+    "answer": "Use a boom angle indicator, or mark the boom hoist cable so the operator or a spotter can see it in time to stop."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "e2ca376f91f2bf23d8d9",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "e3b8ddc9b46ad0f0243b19363abdaf024dd15686f73247c9c173b724b0a9ac5b",
+   "output_sha256": "c1925a3b629a4ee6b3b82996bf4cb2b6354005c6fc71491cb72dcca9279a8d9f",
+   "created_at": "2026-11-27T22:30:07+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.devices-aids.03",
+  "topic_id": "devices-aids",
+  "ord": 3,
+  "title": "Anti-two-block devices: requirements by crane type",
+  "skills": [
+   "devices.anti-two-block",
+   "devices.category-i"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "An **anti-two-block (ATB) device** protects against the block or overhaul ball being pulled into the boom tip. It is a Category I aid, so the 7-day repair rule applies. What the rule requires depends on the crane type and the date it was built."
+   },
+   {
+    "t": "text",
+    "text": "**Telescopic boom cranes built after February 28, 1992:** the device must automatically prevent the damage, at every point where two-blocking could occur. That includes the main boom tip and any jib or auxiliary head in use."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1416(d)(3)(i)",
+    "text": "The device(s) must prevent such damage at all points where two-blocking could occur."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1416(d)(3)(i)",
+    "text": "Temporary alternative measures: Clearly mark the cable (so that it can easily be seen by the operator) at a point that will give the operator sufficient time to stop the hoist to prevent two-blocking, and use a spotter when extending the boom."
+   },
+   {
+    "t": "text",
+    "text": "For a telescopic crane you need both measures: the mark on the cable and a spotter whenever the boom is extended."
+   },
+   {
+    "t": "text",
+    "text": "**Lattice boom cranes:**\n- Built after February 28, 1992: the device must either automatically prevent the damage or warn the operator in time to stop.\n- Lattice cranes and derricks built after November 8, 2011: the device must automatically prevent the damage. A warning alone is not enough.\n- Exempt work: dragline, clamshell (grapple), magnet, drop ball, container handling, concrete bucket, marine operations that do not involve hoisting personnel, and pile driving."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1416(d)(3)(ii)(A)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1416(d)(3)(ii)(B)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1416(d)(3)(ii)(C)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1416(d)(3)(ii)(D)",
+    "text": "Clearly mark the cable (so that it can easily be seen by the operator) at a point that will give the operator sufficient time to stop the hoist to prevent two-blocking, or use a spotter."
+   },
+   {
+    "t": "text",
+    "text": "For a lattice crane, either measure is enough: the mark or a spotter."
+   },
+   {
+    "t": "text",
+    "text": "**Articulating cranes built after December 31, 1999 with a load hoist:** the device must automatically prevent the damage. The temporary measures depend on how two-blocking can happen:\n- Only by running the load hoist: mark the cable or use a spotter.\n- Also without running the load hoist (for example, by extending the boom): mark the cable and use a spotter when extending."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1416(d)(3)(iii)"
+   },
+   {
+    "t": "text",
+    "text": "**Digger derricks:** the ATB requirement applies only to units built after November 8, 2011."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1416(a)(2)"
+   },
+   {
+    "t": "check",
+    "question": "A 2015 lattice crawler is lifting steel and has only an ATB warning light. Does it comply?",
+    "answer": "No. Lattice cranes built after November 8, 2011 need a device that automatically prevents two-block damage."
+   },
+   {
+    "t": "check",
+    "question": "The ATB fails on a telescopic crane. What are the temporary measures?",
+    "answer": "Mark the cable so the operator can see it in time to stop, and use a spotter when extending the boom."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "e2ca376f91f2bf23d8d9",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "e3b8ddc9b46ad0f0243b19363abdaf024dd15686f73247c9c173b724b0a9ac5b",
+   "output_sha256": "c1925a3b629a4ee6b3b82996bf4cb2b6354005c6fc71491cb72dcca9279a8d9f",
+   "created_at": "2026-11-27T22:30:07+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.devices-aids.04",
+  "topic_id": "devices-aids",
+  "ord": 4,
+  "title": "Two-blocking: how it happens and how to prevent it",
+  "skills": [
+   "devices.two-blocking",
+   "devices.anti-two-block"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "**Two-blocking** happens when the uppermost component on the hoist line meets the boom tip. Once they touch, the rope has nowhere to go. Any more pull from the drum goes straight into the rope, the sheaves, and the block."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "This binds the system and continued application of power can cause failure of the hoist rope or other component."
+   },
+   {
+    "t": "text",
+    "text": "The diagram shows the hook block meeting the boom tip and the ATB weight and switch that are meant to stop it first."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "two-blocking"
+   },
+   {
+    "t": "text",
+    "text": "This is physics and practice, not rule text. There are two common causes:\n- **Hoisting up** too far, often while the operator is watching the load and not the block.\n- **Telescoping out** without paying out hoist line. The rope length is fixed by the drum, so as the boom gets longer the block is pulled toward the tip even though nobody touched the hoist lever. Extending articulating boom sections does the same thing.\nWhen the rope breaks, the load and the block fall."
+   },
+   {
+    "t": "text",
+    "text": "Prevention on site (practice):\n- Test the ATB at the start of the shift, as the manufacturer directs, on every line that is reeved: main and auxiliary.\n- Make sure the ATB weight hangs on the line that is actually in use, and that the switch and its cable are not tied up or bypassed.\n- Pay out hoist line while you telescope out. Keep the block well below the tip.\n- When you work close to the tip, slow down and watch the block, not just the load.\n- If the ATB trips, lower the hook to clear it. Do not override it to keep going."
+   },
+   {
+    "t": "text",
+    "text": "On many cranes a tripped ATB locks out hoist up, telescope out, and boom down, while hoist down still works. This is typical but varies by machine, so read the manual for your crane."
+   },
+   {
+    "t": "text",
+    "text": "Common mistakes:\n- Bypassing a nuisance trip with the override key.\n- Leaving the ATB weight on the unused line.\n- Assuming a telescope-out move cannot two-block.\n- Running a lattice crane with only a cable mark after the 7-day repair window has passed."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1416(d)"
+   },
+   {
+    "t": "check",
+    "question": "You extend the boom 20 ft without touching the hoist lever. Why can the crane still two-block?",
+    "answer": "The hoist rope length is fixed, so a longer boom pulls the block toward the tip unless you pay out line."
+   },
+   {
+    "t": "check",
+    "question": "The ATB trips with the block near the tip. What is the correct first action?",
+    "answer": "Lower the hook to clear the trip. Never bypass the device."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "e2ca376f91f2bf23d8d9",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "e3b8ddc9b46ad0f0243b19363abdaf024dd15686f73247c9c173b724b0a9ac5b",
+   "output_sha256": "c1925a3b629a4ee6b3b82996bf4cb2b6354005c6fc71491cb72dcca9279a8d9f",
+   "created_at": "2026-11-27T22:30:07+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.devices-aids.05",
+  "topic_id": "devices-aids",
+  "ord": 5,
+  "title": "Category II aids and the 30-day repair rule",
+  "skills": [
+   "devices.category-ii",
+   "devices.indicators",
+   "devices.repair-deadlines",
+   "devices.lmi"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Category II aids tell the operator where the boom is and how heavy the load is. They get a longer repair window than Category I aids."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1416(e)",
+    "text": "Operational aids listed in this paragraph that are not working properly must be repaired no later than 30 calendar days after the deficiency occurs."
+   },
+   {
+    "t": "text",
+    "text": "Exception: if the parts were ordered within 7 days, the order is documented, and the parts do not arrive in time for a 30-day repair, the repair is due within 7 days of receiving the parts. Worked example: failure on day 0, so the repair is due by day 30. If parts are ordered on day 4 and documented, and they arrive on day 40, the repair is due by day 47."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1416(e)"
+   },
+   {
+    "t": "text",
+    "text": "Each Category II aid and its temporary measure:\n- **Boom angle or radius indicator**, readable from the operator's station. Temporary measure: measure the angle or radius with a measuring device.\n- **Jib angle indicator** (luffing jib). Temporary measure: find the main boom angle, then measure the radius or jib angle.\n- **Boom length indicator** (telescopic boom, unless capacity does not depend on length). Temporary measure: measured marks on the boom, calculation from angle and radius, or direct measurement.\n- **Load weighing device, LMI, or load moment limiter.** Required on equipment built after March 29, 2003 that is rated over 6,000 pounds, other than derricks and articulating cranes. Articulating cranes built after November 8, 2011 have their own version of this requirement.\n- **Outrigger/stabilizer position sensor** and **hoist drum rotation indicator** (drum not visible from the operator's station), both on equipment built after November 8, 2011."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1416(e)(1)",
+    "text": "The equipment must have a boom angle or radius indicator readable from the operator's station."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1416(e)(2)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1416(e)(3)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1416(e)(4)(i)",
+    "text": "This information must be provided to the operator prior to the lift."
+   },
+   {
+    "t": "text",
+    "text": "While a load aid is down, the load weight must come from a source the industry recognizes, such as the load's manufacturer, or from a recognized calculation, such as a steel beam's measured length times its known weight per foot."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1416(e)(4)(ii)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1416(e)(5)(i)",
+    "text": "The operator must verify that the position of the outriggers or stabilizers is correct (in accordance with manufacturer procedures) before beginning operations requiring outrigger or stabilizer deployment."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1416(e)(5)(ii)",
+    "text": "Mark the drum to indicate the rotation of the drum."
+   },
+   {
+    "t": "text",
+    "text": "Exemptions: articulating cranes are exempt from the boom angle, jib angle, and boom length indicators. Digger derricks need the boom angle indicator and the load weighing aids only if built after November 8, 2011."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1416(a)(1)"
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1416(a)(2)"
+   },
+   {
+    "t": "check",
+    "question": "The LMI on a 2010, 40-ton telescopic crane fails. What must the operator have before the next lift?",
+    "answer": "The load weight, taken from a recognized source or a recognized calculation."
+   },
+   {
+    "t": "check",
+    "question": "A boom angle indicator fails on day 0 and no parts are needed. When is the repair due?",
+    "answer": "By day 30."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "e2ca376f91f2bf23d8d9",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "e3b8ddc9b46ad0f0243b19363abdaf024dd15686f73247c9c173b724b0a9ac5b",
+   "output_sha256": "c1925a3b629a4ee6b3b82996bf4cb2b6354005c6fc71491cb72dcca9279a8d9f",
+   "created_at": "2026-11-27T22:30:07+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.devices-aids.06",
+  "topic_id": "devices-aids",
+  "ord": 6,
+  "title": "Using the LMI/RCL and boom indicators",
+  "skills": [
+   "devices.lmi",
+   "devices.indicators"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "A **load moment indicator (LMI)**, also called a rated capacity indicator, senses load times radius, compares it with the chart, and shows the result as a percentage. A **load moment limiter** goes a step further: at rated capacity it cuts power to the functions that would make the loading worse."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "It compares this lifting condition to the equipment's rated capacity, and indicates to the operator the percentage of capacity at which the equipment is working."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Typically, those functions which decrease the severity of loading on the equipment remain operational, e.g., lowering, telescoping in, or luffing in."
+   },
+   {
+    "t": "text",
+    "text": "Physics: moment is load times radius. A 5,000 lb load at 20 ft radius is 100,000 ft-lb. Boom down until the radius is 40 ft and it becomes 200,000 ft-lb: the same load now has twice the overturning effect. The diagram shows how a lower boom angle gives a longer radius."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "radius-vs-boom-angle"
+   },
+   {
+    "t": "text",
+    "text": "The \"load\" the crane carries includes the rigging, so the LMI reading and your chart arithmetic must include it too."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "both uses refer to the object(s) and the load-attaching equipment, such as, the load block, ropes, slings, shackles, and any other ancillary attachment."
+   },
+   {
+    "t": "text",
+    "text": "Field use (practice):\n- Before the first lift, set the LMI configuration to match the crane exactly: outrigger setting, counterweight, parts of line, and any boom extension or jib. A wrong setup means a wrong percentage.\n- Check the reading against a load of known weight.\n- Check the chart yourself. The LMI backs you up; it does not replace you. The diagram shows how to read a chart cell and get from gross to net capacity."
+   },
+   {
+    "t": "diagram",
+    "diagram_id": "load-chart-reading"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Boom angle indicator means a device which measures the angle of the boom relative to horizontal."
+   },
+   {
+    "t": "text",
+    "text": "Arithmetic without a calculator (physics): at 60 degrees, the horizontal reach of a boom is half its length. A 100 ft boom at 60 degrees reaches about 50 ft out from the boom foot pin. Add the distance from the foot pin to the center of rotation to get the radius. This is how boom length can be estimated from angle and radius when the length indicator is down."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1416(e)(3)(ii)"
+   },
+   {
+    "t": "text",
+    "text": "Common mistakes:\n- Booming down with a load near capacity.\n- Leaving the old setup code in the LMI after changing outrigger setting or counterweight.\n- Using the override to finish a lift.\n- Treating the LMI as a scale for an unknown load."
+   },
+   {
+    "t": "check",
+    "question": "The LMI reads 85% at 30 ft. You boom down to 60 ft with the same load. Roughly what happens to the moment?",
+    "answer": "It doubles, and the capacity at 60 ft is lower, so the lift will likely go over 100%."
+   },
+   {
+    "t": "check",
+    "question": "Which functions does a limiter typically leave working at rated capacity?",
+    "answer": "Lowering, telescoping in, and luffing in."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "e2ca376f91f2bf23d8d9",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "e3b8ddc9b46ad0f0243b19363abdaf024dd15686f73247c9c173b724b0a9ac5b",
+   "output_sha256": "c1925a3b629a4ee6b3b82996bf4cb2b6354005c6fc71491cb72dcca9279a8d9f",
+   "created_at": "2026-11-27T22:30:07+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.devices-aids.07",
+  "topic_id": "devices-aids",
+  "ord": 7,
+  "title": "Power flow and holding devices: why the boom and outriggers stay put",
+  "skills": [
+   "devices.power-flow",
+   "devices.boom-hoist-limiting",
+   "devices.safety-devices"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "**Hydraulic power flow** (physics): the pump pushes oil through a control valve into a cylinder or motor. While a load is held, the oil trapped in the cylinder carries it. If a hose bursts, the trapped oil escapes and the cylinder collapses unless a valve mounted on the cylinder blocks the return flow."
+   },
+   {
+    "t": "text",
+    "text": "A **holding valve** (check or counterbalance valve) mounted right on the cylinder lets oil in freely but lets it out only when the operator commands the motion. Because it sits on the cylinder, a failed hose upstream does not drop the load. The rules require this on outrigger and stabilizer jacks and on telescoping booms."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1415(a)(5)",
+    "text": "Hydraulic outrigger jacks and hydraulic stabilizer jacks must have an integral holding device/check valve."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1426(c)",
+    "text": "Hydraulic telescoping booms must have an integrally mounted holding device to prevent the boom from retracting in the event of hydraulic failure."
+   },
+   {
+    "t": "text",
+    "text": "The outrigger check valve is on the safety-device list. If it fails, the crane goes out of service, and no alternative measure is allowed."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1415(b)"
+   },
+   {
+    "t": "text",
+    "text": "**Mechanical power flow** (practice): the engine drives the hoist drum through a clutch or hydraulic motor, and a brake holds the drum when power is off. Lowering the load under power is controlled; letting the brake alone regulate the descent is free fall."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "Controlled load lowering requires the use of the hoist drive motor, rather than the load hoist brake, to lower the load."
+   },
+   {
+    "t": "text",
+    "text": "Boom hoist limiting devices use the same holding parts. Cutting power is not enough on its own, so the device also sets the brake or closes a valve so the boom cannot come down."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1401",
+    "text": "It also sets brakes or closes valves to prevent the boom from lowering after power is disengaged."
+   },
+   {
+    "t": "text",
+    "text": "Warning signs on site (practice):\n- An outrigger beam or jack that creeps.\n- A boom that drifts down or retracts with the controls in neutral.\n- Oil weeping at a cylinder valve block.\n- A drum that slips when the brake is set.\nAny of these means a holding device or brake is not working. Land the load and report it."
+   },
+   {
+    "t": "check",
+    "question": "A hose to an outrigger jack bursts. What part keeps the crane from settling onto that corner?",
+    "answer": "The integral holding device/check valve mounted on the jack."
+   },
+   {
+    "t": "check",
+    "question": "During a lift, an outrigger jack slowly retracts with the controls in neutral. Can you keep working while a mechanic is called?",
+    "answer": "No. Land the load and take the crane out of service. The check valve is a safety device and no alternative measure is allowed."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "e2ca376f91f2bf23d8d9",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "e3b8ddc9b46ad0f0243b19363abdaf024dd15686f73247c9c173b724b0a9ac5b",
+   "output_sha256": "c1925a3b629a4ee6b3b82996bf4cb2b6354005c6fc71491cb72dcca9279a8d9f",
+   "created_at": "2026-11-27T22:30:07+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ }
+]

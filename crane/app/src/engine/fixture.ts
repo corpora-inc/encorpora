@@ -4,10 +4,10 @@
  * Lexical retrieval only, no model. Replaced by harvest-core when it lands.
  */
 import { checkBody } from "./check.ts";
-import { Bm25, tokens } from "./text.ts";
+import { Bm25, Lexicon, resolveQuery, tokens } from "./text.ts";
 import type {
-  AskOptions, AskResult, Diagram, Engine, Equipment, ExamBlueprintRow, Lesson, PackInfo, Procedure, Question,
-  Role, SearchHit, Section, Segment, SkillRow, Source, Term, Topic,
+  AskResult, Diagram, Engine, Equipment, ExamBlueprintRow, FindResult, Lesson, PackInfo, Procedure, Question,
+  Reading, Role, RuleGroup, Section, Segment, SkillRow, Source, Term, Topic,
 } from "./types.ts";
 
 type Row = Record<string, unknown>;
@@ -33,8 +33,8 @@ export interface RawPack {
 
 const json = <T>(v: unknown): T => (typeof v === "string" ? (JSON.parse(v) as T) : (v as T));
 
-/** Thresholds for serving a baked answer from the alias index. */
-export const MATCH = Object.freeze({ queryCoverage: 0.6, aliasCoverage: 0.5 });
+/** "1926.1419", "1926.1419(c)(2)": a CFR citation inside a query. */
+const CITATION = /(19\d\d\.\d{2,4})((?:\([0-9a-zA-Z]{1,4}\))*)/gi;
 
 export function openFixture(raw: RawPack): Engine {
   const t0 = () => (typeof performance !== "undefined" ? performance.now() : Date.now());
@@ -101,9 +101,6 @@ export function openFixture(raw: RawPack): Engine {
       .filter((s) => s.text.length > 0 || s.heading)
       .map((s) => ({ id: s.section_id, tokens: tokens(`${s.heading ?? ""} ${s.text}`) })),
   );
-  const aliasDocs = raw.answer_alias.map((a, i) => ({ id: String(i), tokens: tokens(a.alias) }));
-  const aliasIndex = new Bm25(aliasDocs);
-
   /** Pick the variant for this role: an exact level match wins over the general answer. */
   const variantFor = (answerId: string, role: Role) => {
     const base = answers.get(answerId);
@@ -129,8 +126,74 @@ export function openFixture(raw: RawPack): Engine {
     };
   };
 
-  const search = (query: string, k = 10): SearchHit[] =>
-    sectionIndex.score(tokens(query), k).map((h) => ({ section_id: h.id, score: h.score }));
+  const lexicon = new Lexicon(sectionIndex.vocab, () => [...sections.values()].map((s) => `${s.heading ?? ""} ${s.text}`));
+
+  /**
+   * The section a typed citation names: as typed, then with its paragraph
+   * letters lowercased ("(C)" -> "(c)"), then one level up at a time, so
+   * "1926.1419(z)" still opens §1926.1419.
+   */
+  const citedSection = (num: string, levels: string): string | null => {
+    const parts = levels.match(/\([0-9a-zA-Z]{1,4}\)/g) ?? [];
+    for (let n = parts.length; n >= 0; n--) {
+      const head = parts.slice(0, n);
+      for (const tail of [head.join(""), head.join("").toLowerCase()]) {
+        const id = `29cfr${num}${tail}`;
+        if (sections.has(id)) return id;
+      }
+      // Mixed levels, e.g. "(a)(2)(iii)(A)": lowercase all but a fourth-level capital.
+      const mixed = head.map((p, i) => (i === 3 ? p.toUpperCase() : p.toLowerCase())).join("");
+      if (sections.has(`29cfr${num}${mixed}`)) return `29cfr${num}${mixed}`;
+    }
+    return null;
+  };
+
+  // A section's own heading counts once more when it is the top of its group.
+  const headingIndex = new Bm25(
+    [...sections.values()].filter((s) => s.parent_id === null && s.heading).map((s) => ({ id: s.section_id, tokens: tokens(s.heading!) })),
+  );
+
+  const find = (query: string, max = 8): FindResult => {
+    const started = t0();
+    // A citation typed as words ("1926.1419", "§1926.1419(c)") opens its paragraph first.
+    // Only a citation the pack holds is taken out of the words searched.
+    const cited: string[] = [];
+    const rest = query.replace(CITATION, (whole, num: string, levels: string) => {
+      const id = citedSection(num, levels);
+      if (!id) return whole;
+      cited.push(id);
+      return " ";
+    });
+    const resolved = resolveQuery(rest, lexicon);
+    const terms = [...new Set(resolved.flatMap((r) => r.terms))];
+    const readings: Reading[] = resolved.flatMap((r) =>
+      r.via === "exact" || r.via === "none" ? [] : [{ word: r.word, as: r.shown ?? r.terms.map((t) => lexicon.said(t)), via: r.via }],
+    );
+    const byRoot = new Map<string, { section_id: string; score: number }[]>();
+    for (const h of terms.length ? sectionIndex.score(terms, 400) : []) {
+      const root = ancestors(h.id)[0]?.section_id ?? h.id;
+      const list = byRoot.get(root) ?? [];
+      list.push({ section_id: h.id, score: h.score });
+      byRoot.set(root, list);
+    }
+    const heading = new Map(headingIndex.score(terms, 100).map((h) => [h.id, h.score]));
+    const groups: RuleGroup[] = [...byRoot.entries()].map(([root_id, hits]) => {
+      // The best paragraph decides; a few more matching paragraphs and a matching heading add a little.
+      const score = hits[0]!.score + 0.3 * (hits[1]?.score ?? 0) + 0.15 * (hits[2]?.score ?? 0) + 0.5 * (heading.get(root_id) ?? 0);
+      // A paragraph that says something, not a bare "Hand signals." heading, unless it is far behind.
+      const textLen = (h: { section_id: string }) => sections.get(h.section_id)?.text.length ?? 0;
+      const best = hits.find((h) => textLen(h) >= 40 && h.score >= 0.6 * hits[0]!.score) ?? hits.find((h) => textLen(h) > 0) ?? hits[0]!;
+      return { root_id, best_id: best.section_id, hits: hits.slice(0, 12), score };
+    });
+    for (const id of cited.reverse()) {
+      const root_id = ancestors(id)[0]?.section_id ?? id;
+      const words = groups.find((g) => g.root_id === root_id);
+      const group: RuleGroup = { root_id, best_id: id, hits: [{ section_id: id, score: words?.hits[0]?.score ?? 0 }, ...(words?.hits ?? []).filter((h) => h.section_id !== id)], score: words?.score ?? 0, cited: true };
+      groups.splice(0, groups.length, ...groups.filter((g) => g.root_id !== root_id), group);
+    }
+    groups.sort((a, b) => Number(Boolean(b.cited)) - Number(Boolean(a.cited)) || b.score - a.score || (sections.get(a.root_id)?.ord ?? 0) - (sections.get(b.root_id)?.ord ?? 0));
+    return { query, terms, readings, groups: groups.slice(0, max), pack_version: info.version, elapsed_ms: Math.round(t0() - started) };
+  };
 
   const engine: Engine = {
     info,
@@ -161,48 +224,8 @@ export function openFixture(raw: RawPack): Engine {
       const a = variantFor(answerId, role);
       return a ? build(a, a.question, t0()) : null;
     },
-    async ask(question: string, opts: AskOptions) {
-      const started = t0();
-      const q = tokens(question);
-      const qset = new Set(q);
-      // 1. The answer cache: an alias that covers the question.
-      let best: { answerId: string; cover: number } | null = null;
-      if (qset.size > 0) {
-        for (const hit of aliasIndex.score(q, 8)) {
-          const alias = aliasDocs[Number(hit.id)]!;
-          const aset = new Set(alias.tokens);
-          const both = [...qset].filter((t) => aset.has(t)).length;
-          const qc = both / qset.size;
-          const ac = aset.size ? both / aset.size : 0;
-          if (qc >= MATCH.queryCoverage && ac >= MATCH.aliasCoverage) {
-            const cover = qc + ac;
-            const answerId = raw.answer_alias[Number(hit.id)]!.answer_id;
-            if (!best || cover > best.cover) best = { answerId, cover };
-          }
-        }
-      }
-      const retrieved = search(question, 8).map((h) => ({ chunk_id: h.section_id, ref_id: h.section_id, lexical: h.score, dense: 0, score: h.score }));
-      if (best) {
-        const a = variantFor(best.answerId, opts.role);
-        if (a) return { ...build(a, a.question, started), retrieved };
-      }
-      // 2. No model in the fixture: decline and point to the nearest sections.
-      return {
-        mode: "declined",
-        answer_id: null,
-        question,
-        body: [],
-        citations: [],
-        retrieved,
-        check: { quotes_ok: true, cites_ok: true, dropped: 0 },
-        nearest: retrieved.slice(0, 4).map((r) => r.ref_id),
-        pack_version: info.version,
-        model: null,
-        elapsed_ms: Math.round(t0() - started),
-      };
-    },
-    async search(query, k) {
-      return search(query, k);
+    async find(query, max) {
+      return find(query, max);
     },
   };
   return engine;

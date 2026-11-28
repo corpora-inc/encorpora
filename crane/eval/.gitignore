@@ -1,3 +1,10 @@
 .judge-cache/
 runs/
 __pycache__/
+# heldout-v3 is hidden: its items, authoring outputs and item-level results stay in the private store.
+heldout-v3*.jsonl
+authoring/raw-v3/
+authoring/*-v3.json
+results/**/*v3*/responses/
+results/**/*v3*/items.csv
+results/**/*v3*/*.jsonl

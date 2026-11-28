@@ -108,15 +108,67 @@ pub struct Procedure {
     pub roles: Vec<String>,
 }
 
-/// What to do when a step fails, with the rule behind it.
+/// What a deficiency rests on (CONTRACT "Procedure step deficiency").
+#[derive(Debug, Clone, Copy, Serialize, serde::Deserialize, PartialEq, Eq)]
+#[serde(rename_all = "lowercase")]
+pub enum Basis {
+    /// A rule: `section_id` and a verbatim `quote` say so.
+    Rule,
+    /// Field practice with no rule behind it: no citation, and never shown
+    /// as a rule.
+    Practice,
+}
+
+/// What to do when a step fails, and the rule behind it when there is one.
 #[derive(Debug, Clone, Serialize, serde::Deserialize, PartialEq)]
 pub struct Deficiency {
     pub guidance: String,
     #[serde(default)]
     pub action: Option<String>,
-    pub section_id: String,
+    /// `rule` or `practice`. A pack row without it is a rule when it cites a
+    /// section and practice when it does not; the reader always fills it in.
+    #[serde(default)]
+    pub basis: Option<Basis>,
+    #[serde(default)]
+    pub section_id: Option<String>,
     #[serde(default)]
     pub quote: Option<String>,
+}
+
+impl Deficiency {
+    /// Fill in `basis` and refuse a row whose basis and citation disagree:
+    /// a rule needs a section and a quote, practice has neither.
+    pub(crate) fn settle(mut self) -> std::result::Result<Self, String> {
+        let cited = self
+            .section_id
+            .as_deref()
+            .is_some_and(|s| !s.trim().is_empty());
+        let quoted = self.quote.as_deref().is_some_and(|q| !q.trim().is_empty());
+        let basis = self
+            .basis
+            .unwrap_or(if cited { Basis::Rule } else { Basis::Practice });
+        match basis {
+            Basis::Rule if !(cited && quoted) => {
+                return Err("a rule deficiency needs section_id and quote".into());
+            }
+            Basis::Practice if cited || quoted => {
+                return Err(
+                    "a practice deficiency cites no rule (section_id and quote are null)".into(),
+                );
+            }
+            _ => {}
+        }
+        if self.guidance.trim().is_empty() {
+            return Err("a deficiency needs guidance".into());
+        }
+        self.basis = Some(basis);
+        Ok(self)
+    }
+
+    /// True when a rule backs this deficiency.
+    pub fn is_rule(&self) -> bool {
+        self.basis == Some(Basis::Rule)
+    }
 }
 
 /// One step of a procedure.
@@ -161,6 +213,8 @@ pub struct Pack {
     equipment: Vec<Equipment>,
     synonyms: Vec<(String, String)>,
     vectors: OnceLock<Option<VecIndex>>,
+    lexicon: OnceLock<crate::lexicon::Lexicon>,
+    node_vectors: OnceLock<Option<VecIndex>>,
 }
 
 impl std::fmt::Debug for Pack {
@@ -255,6 +309,8 @@ impl Pack {
             equipment,
             synonyms,
             vectors: OnceLock::new(),
+            lexicon: OnceLock::new(),
+            node_vectors: OnceLock::new(),
         })
     }
 
@@ -440,7 +496,14 @@ impl Pack {
                             .map_err(|e| bad("section_ids", e))?,
                         deficiency: deficiency
                             .filter(|d| !d.trim().is_empty() && d.trim() != "null")
-                            .map(|d| serde_json::from_str(&d).map_err(|e| bad("deficiency", e)))
+                            .map(|d| {
+                                serde_json::from_str::<Deficiency>(&d)
+                                    .map_err(|e| bad("deficiency", e))?
+                                    .settle()
+                                    .map_err(|m| {
+                                        Error::Pack(format!("proc_step {proc_id}#{ord}: {m}"))
+                                    })
+                            })
                             .transpose()?,
                     })
                 },
@@ -601,24 +664,64 @@ impl Pack {
             .optional()?)
     }
 
+    /// The vocabulary of the retrieval units, built on first use, for reading
+    /// query words the index does not hold as typed.
+    pub fn lexicon(&self) -> Result<&crate::lexicon::Lexicon> {
+        if let Some(l) = self.lexicon.get() {
+            return Ok(l);
+        }
+        let texts: Vec<String> = {
+            let conn = self.conn();
+            let mut stmt = conn.prepare("SELECT text FROM chunk")?;
+            stmt.query_map([], |r| r.get(0))?
+                .collect::<rusqlite::Result<_>>()?
+        };
+        let built = crate::lexicon::Lexicon::build(texts.iter().map(String::as_str));
+        Ok(self.lexicon.get_or_init(|| built))
+    }
+
     /// Dense vectors, when the pack has them for `embedder_id` at `dim`.
     pub(crate) fn vectors(&self, embedder_id: &str, dim: usize) -> Result<Option<&VecIndex>> {
-        if self.meta("embedder_id") != Some(embedder_id)
-            || self.meta("embed_dim").and_then(|d| d.parse::<usize>().ok()) != Some(dim)
-        {
+        if !self.embedder_matches(embedder_id, dim) {
             return Ok(None);
         }
         if let Some(v) = self.vectors.get() {
             return Ok(v.as_ref());
         }
-        let loaded = self.load_vectors(dim)?;
+        let loaded = self.load_vectors("chunk_vec", "chunk_id", dim)?;
         Ok(self.vectors.get_or_init(|| loaded).as_ref())
     }
 
-    fn load_vectors(&self, dim: usize) -> Result<Option<VecIndex>> {
+    /// Course-tree node vectors (`course_node_vec`), same embedder rule.
+    pub(crate) fn node_vectors(&self, embedder_id: &str, dim: usize) -> Result<Option<&VecIndex>> {
+        if !self.embedder_matches(embedder_id, dim) || !self.has_table("course_node_vec")? {
+            return Ok(None);
+        }
+        if let Some(v) = self.node_vectors.get() {
+            return Ok(v.as_ref());
+        }
+        let loaded = self.load_vectors("course_node_vec", "node_id", dim)?;
+        Ok(self.node_vectors.get_or_init(|| loaded).as_ref())
+    }
+
+    fn embedder_matches(&self, embedder_id: &str, dim: usize) -> bool {
+        self.meta("embedder_id") == Some(embedder_id)
+            && self.meta("embed_dim").and_then(|d| d.parse::<usize>().ok()) == Some(dim)
+    }
+
+    /// True when the pack has `table` (optional tables added after v1's first packs).
+    pub(crate) fn has_table(&self, table: &str) -> Result<bool> {
+        Ok(self
+            .conn()
+            .prepare_cached("SELECT 1 FROM sqlite_master WHERE name = ?1")?
+            .exists([table])?)
+    }
+
+    fn load_vectors(&self, table: &str, id_col: &str, dim: usize) -> Result<Option<VecIndex>> {
         let conn = self.conn();
-        let mut stmt =
-            conn.prepare("SELECT chunk_id, vec, scale FROM chunk_vec ORDER BY chunk_id")?;
+        let mut stmt = conn.prepare(&format!(
+            "SELECT {id_col}, vec, scale FROM {table} ORDER BY {id_col}"
+        ))?;
         let mut rows = stmt.query([])?;
         let mut index = VecIndex {
             dim,
@@ -632,7 +735,7 @@ impl Pack {
             let scale: f64 = r.get(2)?;
             if blob.len() != dim {
                 return Err(Error::Pack(format!(
-                    "chunk_vec {id}: {} bytes, embed_dim is {dim}",
+                    "{table} {id}: {} bytes, embed_dim is {dim}",
                     blob.len()
                 )));
             }

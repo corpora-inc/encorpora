@@ -32,9 +32,13 @@ const ROUTES = [
   "/ask",
   "/ask/a/a.powerline-clearance",
   "/ask/q/rules%20for%20barge%20mounted%20cranes",
+  "/ask/q/signaling",
+  "/ask/q/outrigers",
+  "/ask/q/xyzzy",
   "/read/29cfr1926.1408(b)(3)",
   "/do",
   "/do/shift-inspection",
+  "/do/critical-lift-plan",
   "/learn",
   "/learn/topic/power-lines",
   "/learn/topic/ground",
@@ -53,7 +57,7 @@ const ROUTES = [
   "/settings",
   "/settings/about",
 ];
-const SCREENSHOT = new Set(["/learn/topic/ground", "/ask", "/ask/a/a.powerline-clearance", "/read/29cfr1926.1408(b)(3)", "/do/shift-inspection", "/learn", "/practice", "/tools/clearance", "/tools/load-chart", "/tools/signals", "/settings"]);
+const SCREENSHOT = new Set(["/learn/topic/ground", "/ask", "/ask/q/signaling", "/ask/q/outrigers", "/ask/q/xyzzy", "/ask/a/a.powerline-clearance", "/read/29cfr1926.1408(b)(3)", "/do", "/do/shift-inspection", "/learn", "/practice", "/tools/clearance", "/tools/load-chart", "/tools/signals", "/settings"]);
 // Serve every page under the shipped app's Content-Security-Policy, so anything the
 // native WebView would block (inline script, a stray fetch, a blob image) fails here too.
 const CSP = JSON.parse(await readFile(path.join(root, "src-tauri", "tauri.conf.json"), "utf8")).app.security.csp;
@@ -74,16 +78,94 @@ async function waitUp() {
 }
 
 /** Seed settings so a route renders past first run. */
+// Seeds the v1 settings shape (with the retired role) on purpose: every page then runs the v2 migration.
 const seeded = (role = "operator") => `localStorage.setItem("crane.settings", JSON.stringify({ state: { role: "${role}", equipment: null, theme: "system", lang: "en", assistant: false }, version: 1 }));`;
 
-async function newPage(browser, width, theme, { seed = true } = {}) {
-  const context = await browser.newContext({ viewport: { width, height: 860 }, colorScheme: theme, deviceScaleFactor: 1 });
+/**
+ * A stand-in for the Tauri bridge, so the native voice and read-aloud UI runs
+ * in the browser check. It answers the commands src/lib/native.ts invokes with
+ * the shapes the plugins return, emits microphone levels like the STT plugin
+ * (about 8 a second: room noise, a spoken question, then a pause), and records
+ * read-aloud calls in window.__tts. `deny` makes the microphone permission fail
+ * the way iOS reports it.
+ */
+const fakeNative = (opts) => {
+  const callbacks = new Map();
+  let nextId = 1;
+  window.__tts = [];
+  window.__stt = [];
+  window.__calls = [];
+  const listeners = {};
+  const emit = (event, message) => {
+    for (const l of listeners[event] ?? []) callbacks.get(l.id)?.({ message, index: l.index++ });
+  };
+  window.__TAURI_INTERNALS__ = {
+    transformCallback: (cb) => {
+      const id = nextId++;
+      callbacks.set(id, cb);
+      return id;
+    },
+    unregisterCallback: (id) => callbacks.delete(id),
+    invoke: async (cmd, args) => {
+      window.__stt.push(cmd);
+      window.__calls.push([cmd, args]);
+      switch (cmd) {
+        case "voice_model": return { status: args?.wait ? "ready" : "installing", file: "ggml-test.bin" };
+        case "plugin:stt|is_available": return true;
+        case "plugin:stt|validate_model": return { model: args.model, valid: true, problems: [] };
+        case "plugin:stt|prepare": return { ready: true, model: args.args.model };
+        case "plugin:stt|register_listener":
+          (listeners[args.event] ??= []).push({ id: args.handler.id, index: 0 });
+          return null;
+        case "plugin:stt|remove_listener": return null;
+        case "plugin:stt|start_session": {
+          if (opts.deny) throw "MIC_PERMISSION_DENIED: Microphone access was denied";
+          window.__sttPrompt = args.args.whisperParams?.initial_prompt ?? null;
+          let t = 0;
+          const timer = setInterval(() => {
+            t += 125;
+            const rms = t < 500 ? 0.03 : t < 2500 ? 0.18 + 0.04 * Math.sin(t) : 0.03;
+            emit("audio_level", { rms, t });
+            if (t > 9000) clearInterval(timer);
+          }, 125);
+          window.__sttTimer = timer;
+          return { started: true, sessionId: args.args.sessionId };
+        }
+        case "plugin:stt|stop_session":
+          clearInterval(window.__sttTimer);
+          await new Promise((r) => setTimeout(r, 400));
+          return { sessionId: args.args.sessionId, text: " How close can I get to a 345 kV line? " };
+        case "plugin:stt|cancel_session": clearInterval(window.__sttTimer); return null;
+        case "plugin:tts|list_voices":
+          return [
+            { id: "compact", language: "en-US", quality: "default" },
+            { id: "cloud", language: "en-US", quality: "very_high", networkRequired: true },
+            { id: "ava-premium", language: "en-US", quality: "enhanced", name: "Ava (Premium)" },
+          ];
+        case "plugin:tts|speak": window.__tts.push(args.args); await new Promise((r) => setTimeout(r, 300)); return null;
+        case "plugin:tts|stop": return null;
+        case "plugin:tts|open_tts_settings": return null;
+        case "plugin:tts|open_app_details":
+          if (args?.args?.packageName !== "inc.corpora.crane") throw "missing required key args";
+          return null;
+        case "plugin:corpan-llm|llm_status": return { loaded: false, modelId: null };
+        default: throw `unexpected command ${cmd}`;
+      }
+    },
+  };
+};
+
+const ANDROID_UA = "Mozilla/5.0 (Linux; Android 15; Pixel 8a) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0 Mobile Safari/537.36";
+
+async function newPage(browser, width, theme, { seed = true, native = null } = {}) {
+  const context = await browser.newContext({ viewport: { width, height: 860 }, colorScheme: theme, deviceScaleFactor: 1, ...(native?.android ? { userAgent: ANDROID_UA } : {}) });
   await context.route("**/*", async (route) => {
     if (route.request().resourceType() !== "document") return route.continue();
     const response = await route.fetch();
     await route.fulfill({ response, headers: { ...response.headers(), "content-security-policy": CSP } });
   });
   if (seed) await context.addInitScript(seeded());
+  if (native) await context.addInitScript(fakeNative, native);
   await context.addInitScript(() => {
     window.__shift = 0;
     new PerformanceObserver((list) => {
@@ -176,38 +258,89 @@ try {
     }
   }
 
-  // 2. First run: one question, then a cited answer on screen.
+  // 2. First run lands in Practice: what it is for, one step into the first question, a cited answer.
   {
     const { context, page, errors } = await newPage(browser, 390, "light", { seed: false });
     await page.goto(base + "/");
-    await page.waitForURL("**/ask");
-    await page.getByRole("radio", { name: /Operator/ }).click();
-    await page.waitForURL("**/ask/a/a.powerline-clearance");
-    await page.locator("blockquote").first().waitFor();
-    assert.ok(await page.locator(".plate").count() >= 2, "answer has citation plates");
+    await page.waitForURL("**/practice");
+    await page.getByRole("heading", { name: "Pass the Core exam on your first try" }).waitFor();
+    assert.equal(await page.getByRole("radio").count(), 0, "no role question");
+    assert.equal(await page.locator("nav:visible").first().getByRole("link").first().innerText(), "Practice", "Practice is the first tab");
+    await page.screenshot({ path: path.join(out, "flow-first-run-practice.png"), fullPage: true });
+    await page.getByRole("link", { name: "Start with your first question" }).click();
+    await page.waitForURL("**/practice/session");
+    const choices = page.getByRole("group", { name: "Answer choices" }).getByRole("button");
+    await choices.first().click();
+    await page.locator(".practice-feedback").waitFor();
     await page.screenshot({ path: path.join(out, "flow-first-run-answer.png"), fullPage: true });
-    // Citation opens the exact paragraph.
-    await page.locator(".plate", { hasText: "§1926.1408(a)(2)" }).first().click();
-    await page.waitForURL(/\/read\/29cfr1926\.1408\(a\)\(2\)$/);
+    // The source opens the exact paragraph.
+    await page.locator(".practice-feedback a[href^='/read/'], .practice-feedback .plate").first().click();
+    await page.waitForURL(/\/read\//);
     await page.locator('[aria-current="true"]').first().waitFor();
     assert.equal(await page.locator('[aria-current="true"]').count(), 1, "the cited paragraph is marked");
-    assert.match(await page.locator('[aria-current="true"]').innerText(), /closer than 20 feet/);
-    // Refresh restores the screen.
+    // Refresh restores the screen; back and forward.
     await page.reload();
     await page.locator('[aria-current="true"]').waitFor();
-    // Back and forward.
     await page.goBack();
-    await page.waitForURL("**/ask/a/a.powerline-clearance");
+    await page.waitForURL("**/practice/session");
     await page.goForward();
     await page.waitForURL(/\/read\//);
+    // Home now shows progress, not the welcome.
+    await page.goto(base + "/practice");
+    await page.getByRole("link", { name: "Continue practice" }).waitFor();
+    assert.equal(await page.getByRole("heading", { name: "Pass the Core exam on your first try" }).count(), 0);
+    // No role setting anywhere.
+    await page.goto(base + "/settings");
+    await page.getByRole("heading", { name: "Settings" }).waitFor();
+    assert.equal(await page.getByText("Your work").count(), 0);
     assert.deepEqual(errors, []);
     await context.close();
     checks++;
   }
 
-  // 3. Ask: a paraphrase is answered from the pack; an uncovered question declines with nearest sections.
+  // 2a. A starter answer cites the rule, and the citation opens the exact paragraph.
   {
-    const { context, page } = await newPage(browser, 390, "light");
+    const { context, page, errors } = await newPage(browser, 390, "light");
+    await page.goto(base + "/ask/a/a.powerline-clearance");
+    await page.locator("blockquote").first().waitFor();
+    assert.ok(await page.locator(".plate").count() >= 2, "answer has citation plates");
+    await page.locator(".plate", { hasText: "§1926.1408(a)(2)" }).first().click();
+    await page.waitForURL(/\/read\/29cfr1926\.1408\(a\)\(2\)$/);
+    assert.match(await page.locator('[aria-current="true"]').innerText(), /closer than 20 feet/);
+    await page.goBack();
+    await page.waitForURL("**/ask/a/a.powerline-clearance");
+    assert.deepEqual(errors, []);
+    await context.close();
+    checks++;
+  }
+
+  // 2b. A deep link lands its paragraph fully in view, below a header's height of room, above the tab bar.
+  for (const width of WIDTHS) {
+    const { context, page, errors } = await newPage(browser, width, "light");
+    for (const id of ["29cfr1926.1412(d)(1)", "29cfr1926.1408(b)(3)", "29cfr1926.1431(k)(9)"]) {
+      await page.goto(base + "/read/" + encodeURIComponent(id));
+      const target = page.locator('[aria-current="true"]');
+      await target.waitFor();
+      await page.waitForTimeout(80);
+      const m = await target.evaluate((el) => {
+        const r = el.getBoundingClientRect();
+        const header = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--spacing-header")) * 16;
+        const bar = [...document.querySelectorAll("nav")].find((n) => getComputedStyle(n).position === "fixed" && n.getBoundingClientRect().top > 0 && n.getBoundingClientRect().width > n.getBoundingClientRect().height);
+        const floor = bar ? bar.getBoundingClientRect().top : innerHeight;
+        return { top: r.top, bottom: r.bottom, h: r.height, header, floor };
+      });
+      assert.ok(m.top >= m.header - 1, `${id} @${width}: paragraph top ${m.top} under the header room ${m.header}`);
+      if (m.h <= m.floor - m.header) assert.ok(m.bottom <= m.floor + 0.5, `${id} @${width}: paragraph bottom ${m.bottom} below ${m.floor}`);
+      checks++;
+    }
+    await page.screenshot({ path: path.join(out, `flow-reader-deep-link-${width}.png`) });
+    assert.deepEqual(errors, []);
+    await context.close();
+  }
+
+  // 3. Ask is a search over the rules: results grouped by section, course-map matches first, never a cached answer.
+  {
+    const { context, page, errors } = await newPage(browser, 390, "light");
     await page.goto(base + "/ask");
     const input = page.getByLabel("Ask about a rule, a limit or a step");
     // Empty submit: inline error in the reserved line, nothing moves.
@@ -216,10 +349,45 @@ try {
     await input.fill("when do I need a signal person");
     await input.press("Enter");
     await page.waitForURL(/\/ask\/q\//);
-    await page.getByText("The point of operation").first().waitFor();
+    await page.getByRole("heading", { level: 1, name: "Here’s what I found about “when do I need a signal person”" }).waitFor();
+    await page.locator(".rule-hit").first().waitFor();
+    assert.equal(await page.getByText(/answer that directly/).count(), 0, "no decline text over results");
+    // The signal words, however asked, put §1926.1419 in the first group of rules, with the Signals topic and chart above.
+    for (const q of ["signaling", "signalling", "hand signals", "who can give signals"]) {
+      await page.goto(base + "/ask/q/" + encodeURIComponent(q));
+      await page.locator(".rule-hit").first().waitFor();
+      assert.equal(await page.locator(".rule-hit").first().getAttribute("data-root"), "29cfr1926.1419", `${q}: first group`);
+      assert.match(await page.locator(".rule-hit").first().innerText(), /§1926\.1419/, `${q}: first group shows its citation`);
+      const learn = page.getByRole("heading", { name: "Learn", exact: true });
+      const rules = page.getByRole("heading", { name: "In the rules", exact: true });
+      assert.ok((await learn.boundingBox()).y < (await rules.boundingBox()).y, `${q}: course-map matches come first`);
+      assert.ok(await page.locator("a[href='/learn/topic/signals']").count() === 1, `${q}: the Signals topic`);
+      assert.ok(await page.locator("a[href='/tools/signals']").count() === 1, `${q}: the hand signal chart`);
+      assert.ok(await page.locator(".rule-hit mark.hit").count() >= 1, `${q}: matched words highlighted`);
+      checks++;
+    }
+    // A result opens the exact paragraph in the Reader; back returns to the results.
+    const best = page.locator(".rule-hit").first().locator("a").first();
+    const href = await best.getAttribute("href");
+    await best.click();
+    await page.waitForURL((u) => u.pathname === decodeURIComponent(href) || u.pathname === href);
+    await page.locator('[aria-current="true"]').first().waitFor();
+    await page.goBack();
+    await page.locator(".rule-hit").first().waitFor();
+    // A typo is read as the indexed word and says so.
+    await page.goto(base + "/ask/q/outrigers");
+    await page.getByText("Read “outrigers” as “outriggers”.").waitFor();
+    assert.ok(await page.locator(".rule-hit").count() >= 1, "a typo still reaches the rules");
+    await page.goto(base + "/ask/q/" + encodeURIComponent("de-energized"));
+    await page.locator(".rule-hit[data-root='29cfr1926.1408'], .rule-hit[data-root='29cfr1926.1407']").first().waitFor();
+    // Truly off-topic: one plain line and the course map.
+    await page.goto(base + "/ask/q/xyzzy");
+    await page.getByText("Nothing in the crane rules matches that.", { exact: false }).waitFor();
+    assert.equal(await page.locator(".rule-hit").count(), 0);
+    assert.ok(await page.locator("a[href^='/learn/topic/']").count() >= 3, "topics offered");
     await page.goto(base + "/ask/q/" + encodeURIComponent("barge cranes floating on water"));
-    await page.getByText("Closest sections").waitFor();
-    assert.ok(await page.locator("a[href^='/read/']").count() >= 1);
+    await page.locator(".rule-hit[data-root='29cfr1926.1437']").first().waitFor();
+    assert.deepEqual(errors, []);
     await context.close();
     checks++;
   }
@@ -234,7 +402,12 @@ try {
     await page.getByRole("button", { name: "Next" }).click();
     await page.waitForURL(/\/2$/);
     // Navigations commit in a transition: the URL changes before the DOM, so wait for step 2 itself.
-    await page.getByText("Step 2 of 14").waitFor();
+    await page.getByText("Step 2 of 33").waitFor();
+    // Step 2 is a note: record who inspects and when.
+    await page.getByLabel("Note", { exact: true }).fill("J. Rivera, day shift, crane 14.");
+    await page.getByRole("button", { name: "Next" }).click();
+    await page.waitForURL(/\/3$/);
+    await page.getByText("Step 3 of 33").waitFor();
     const prev = page.getByRole("button", { name: "Previous" });
     await steady(page, [prev, page.getByLabel("Note (optional)")], () => page.getByRole("radio", { name: "Deficiency" }).click(), "deficiency");
     await page.getByRole("heading", { name: "Deficiency" }).waitFor();
@@ -247,10 +420,10 @@ try {
     await page.screenshot({ path: path.join(out, "flow-deficiency.png"), fullPage: true });
     await page.reload();
     assert.equal(await page.getByLabel("Note (optional)").inputValue(), "Drive chain shows wear at the sprocket.", "run survives refresh");
-    await page.goto(page.url().replace(/\/2$/, "/14"));
+    await page.goto(page.url().replace(/\/3$/, "/33"));
     await page.getByRole("button", { name: "Finish" }).click();
     await page.waitForURL(/\/do\/runs\//);
-    await page.getByText("Deficiencies").waitFor();
+    await page.getByText("Deficiencies", { exact: true }).first().waitFor();
     assert.equal((await page.locator(".text-display").nth(1).innerText()).trim(), "1");
     await page.screenshot({ path: path.join(out, "flow-run-report.png"), fullPage: true });
     // Export: one zip, run.json in harvest-run/1, the photo inside with its hash.
@@ -260,14 +433,16 @@ try {
     const report = JSON.parse(new TextDecoder().decode(zip["run.json"]));
     assert.equal(report.format, "harvest-run/1");
     assert.equal(report.status, "complete");
-    assert.equal(report.steps.length, 14);
-    assert.deepEqual(report.steps.map((x) => x.ord), Array.from({ length: 14 }, (_, i) => i + 1), "the pack's 1-based ords");
+    assert.equal(report.steps.length, 33);
+    assert.deepEqual(report.steps.map((x) => x.ord), Array.from({ length: 33 }, (_, i) => i + 1), "the pack's 1-based ords");
     assert.equal(report.steps_known, true);
-    assert.deepEqual(report.steps.slice(0, 2).map((x) => x.outcome), ["pass", "fail"]);
-    assert.equal(report.steps[1].deficiency, true);
-    assert.equal(report.steps[1].note, "Drive chain shows wear at the sprocket.");
-    assert.equal(report.steps[1].photos.length, 1);
-    const photo = report.steps[1].photos[0];
+    assert.equal(report.steps[0].outcome, "pass");
+    assert.equal(report.steps[1].note, "J. Rivera, day shift, crane 14.");
+    assert.equal(report.steps[2].outcome, "fail");
+    assert.equal(report.steps[2].deficiency, true);
+    assert.equal(report.steps[2].note, "Drive chain shows wear at the sprocket.");
+    assert.equal(report.steps[2].photos.length, 1);
+    const photo = report.steps[2].photos[0];
     assert.equal(photo.sha256, createHash("sha256").update(zip[photo.path]).digest("hex"), "photo hash matches the bytes");
     await page.getByText("Run report saved.").waitFor();
     assert.deepEqual(errors, []);
@@ -290,6 +465,46 @@ try {
     await page.getByRole("button", { name: "Next question" }).click();
     await choices.first().waitFor();
     assert.equal(await choices.first().isDisabled(), false);
+    // One feedback card, never filler: "Correct." or "Not quite. The answer is C.", why (and, when wrong,
+    // why not the choice made), one line past the answer, "Source: 29 CFR …. Read the source", and one Next button.
+    for (let n = 0; n < 8; n++) {
+      await choices.first().waitFor();
+      const domain = await page.locator("h2").first().locator("xpath=preceding-sibling::p[1]").innerText();
+      assert.match(domain, /^(SITE|OPERATIONS|TECHNICAL KNOWLEDGE|LOAD CHARTS|[A-Z ]+)/, "domain label above the stem");
+      const pick = n % 2 === 0 ? 0 : (await choices.count()) - 1;
+      await choices.nth(pick).click();
+      const panel = page.locator(".practice-feedback");
+      await panel.waitFor();
+      const verdict = await panel.locator("h3").innerText();
+      const reasons = await panel.locator(".feedback-why").allInnerTexts();
+      for (const r of reasons) {
+        assert.ok(r.trim().split(/\s+/).length >= 5, `feedback reason too short: "${r}"`);
+        assert.doesNotMatch(r, /^(correct|incorrect)\b/i, `feedback reason restates the verdict: "${r}"`);
+      }
+      if (verdict === "Correct.") {
+        assert.equal(reasons.length, 1, "a right answer gets one reason");
+      } else {
+        assert.match(verdict, /^Not quite\. The answer is [A-F]\.$/);
+        assert.equal(reasons.length, 2, "a wrong answer gets why, then why not the choice made");
+        assert.match(reasons[1], /^Why not [A-F]: /);
+      }
+      assert.equal(await panel.getByText(/^Correct\.?$/).count(), verdict === "Correct." ? 1 : 0, "no duplicated Correct");
+      const note = await panel.locator(".feedback-note").innerText();
+      assert.ok(note.split(/\s+/).length >= 5 && !reasons.includes(note), `one line past the answer: "${note}"`);
+      assert.match(await panel.locator(".feedback-source").innerText(), /^Source: (29 CFR 19\d\d\.\d+|Appendix)[^]*Read the source$/);
+      assert.equal(await panel.getByRole("button").count(), 1, "a single Next button");
+      if (n === 0) await page.screenshot({ path: path.join(out, "flow-practice-feedback-reasons.png"), fullPage: true });
+      if (verdict !== "Correct." && !(await page.locator(".practice-feedback-shot").count())) await page.screenshot({ path: path.join(out, "flow-practice-feedback-wrong.png"), fullPage: true });
+      if (n === 7) {
+        await panel.getByRole("link", { name: "Read the source" }).click();
+        await page.waitForURL(/\/read\//);
+        await page.locator('[aria-current="true"]').first().waitFor();
+        await page.goBack();
+        await page.locator(".practice-feedback").waitFor();
+      }
+      await page.getByRole("button", { name: "Next question" }).click();
+      checks++;
+    }
     await context.close();
     checks++;
   }
@@ -324,6 +539,89 @@ try {
     assert.ok((await page.locator("a[href^='/read/']").count()) >= 1, "a topic with no lessons links its rules");
     await page.getByRole("link", { name: "Practice this topic" }).waitFor();
     await page.getByLabel("Ask about a rule, a limit or a step").waitFor();
+    await context.close();
+    checks++;
+  }
+
+  // Voice: one tap, live level, ends on the pause, transcript to check and edit, then Ask.
+  for (const width of [320, 390]) {
+    const { context, page, errors } = await newPage(browser, width, "light", { native: {} });
+    await page.goto(base + "/ask");
+    const talk = page.getByRole("button", { name: "Tap and ask" });
+    await talk.waitFor();
+    const box = page.getByLabel("Ask about a rule, a limit or a step");
+    const starters = page.getByText("Common questions");
+    const before = await Promise.all([box.boundingBox(), starters.boundingBox(), talk.boundingBox()]);
+    assert.ok(before[2].height >= 72, `voice control is ${before[2].height}px tall`);
+    await talk.click();
+    const listening = page.getByRole("button", { name: /Listening/ });
+    await listening.waitFor();
+    assert.equal(await listening.getAttribute("aria-pressed"), "true");
+    await page.screenshot({ path: path.join(out, `flow-voice-listening-${width}.png`), fullPage: true });
+    // It stops on its own after the pause; the transcript lands in the box, not asked yet.
+    await page.getByText("Check the question above, fix any word, then tap search.").waitFor({ timeout: 8000 });
+    assert.equal(await box.inputValue(), "How close can I get to a 345 kV line?");
+    assert.match(page.url(), /\/ask$/, "a spoken question is not asked until the person taps Ask");
+    assert.ok((await page.evaluate(() => window.__sttPrompt))?.includes("deenergized"), "whisper is primed with the crane vocabulary");
+    const after = await Promise.all([box.boundingBox(), starters.boundingBox(), talk.boundingBox()]);
+    before.forEach((b, i) => assert.ok(Math.abs(b.y - after[i].y) < 0.5 && Math.abs(b.height - after[i].height) < 0.5, `voice states moved element ${i}`));
+    await page.screenshot({ path: path.join(out, `flow-voice-done-${width}.png`), fullPage: true });
+    await box.fill("What's the minimum clearance for a 345 kV line?");
+    await box.press("Enter");
+    await page.waitForURL(/\/ask\/q\//);
+    assert.ok(decodeURIComponent(page.url()).endsWith("What's the minimum clearance for a 345 kV line?"));
+    assert.deepEqual(errors, []);
+    await context.close();
+    checks++;
+  }
+
+  // Voice with the microphone refused: an inline way forward, typing still works, nothing moves.
+  {
+    const { context, page, errors } = await newPage(browser, 320, "light", { native: { deny: true } });
+    await page.goto(base + "/ask");
+    const talk = page.getByRole("button", { name: "Tap and ask" });
+    const starters = page.getByText("Common questions");
+    const y0 = (await starters.boundingBox()).y;
+    await talk.click();
+    await page.getByText("The microphone is off for this app. Allow it in Settings, or type the question.").waitFor();
+    assert.equal((await starters.boundingBox()).y, y0, "the refusal message does not move the page");
+    // A tap that would only fail again is never offered: the control now opens Settings.
+    await page.getByRole("button", { name: "Open Settings" }).click();
+    await page.waitForFunction(() => window.__stt.includes("plugin:tts|open_tts_settings"));
+    assert.deepEqual(errors.filter((e) => !/voice\.start|MIC_PERMISSION/.test(e)), [], "opening Settings did not fail");
+    await context.close();
+    checks++;
+  }
+
+  // The same refusal on Android opens the app's details screen, with the plugin's argument shape.
+  {
+    const { context, page, errors } = await newPage(browser, 390, "light", { native: { deny: true, android: true } });
+    await page.goto(base + "/ask");
+    await page.getByRole("button", { name: "Tap and ask" }).click();
+    await page.getByRole("button", { name: "Open Settings" }).click();
+    await page.waitForFunction(() => window.__calls.some(([c]) => c === "plugin:tts|open_app_details"));
+    const [, args] = await page.evaluate(() => window.__calls.find(([c]) => c === "plugin:tts|open_app_details"));
+    assert.deepEqual(args, { args: { packageName: "inc.corpora.crane" } });
+    assert.deepEqual(errors.filter((e) => !/voice\.start|MIC_PERMISSION/.test(e)), []);
+    await context.close();
+    checks++;
+  }
+
+  // Read-aloud: answers and procedure steps, in the most natural offline voice.
+  {
+    const { context, page, errors } = await newPage(browser, 390, "light", { native: {} });
+    await page.goto(base + "/do/shift-inspection");
+    await page.getByRole("button", { name: "Start" }).click();
+    await page.waitForURL(/\/do\/run\/.+\/1$/);
+    await page.getByRole("button", { name: "Read step" }).click();
+    await page.waitForFunction(() => window.__tts.length > 0);
+    const spoken = await page.evaluate(() => window.__tts[0]);
+    assert.equal(spoken.voiceId, "ava-premium", "the enhanced offline voice, never the network one");
+    assert.match(spoken.text, /competent person/);
+    await page.goto(base + "/ask/a/a.powerline-clearance");
+    await page.getByRole("button", { name: "Read aloud" }).click();
+    await page.waitForFunction(() => window.__tts.length > 0);
+    assert.deepEqual(errors, []);
     await context.close();
     checks++;
   }

@@ -34,6 +34,7 @@ jobs:
   changes:
     name: changes
     runs-on: ubuntu-24.04
+    timeout-minutes: 5
     outputs:
       corpora_site: ${{ steps.filter.outputs.corpora_site }}
       amp: ${{ steps.filter.outputs.amp }}
@@ -49,6 +50,7 @@ jobs:
       harvest_core: ${{ steps.filter.outputs.harvest_core }}
       harvest_pipeline: ${{ steps.filter.outputs.harvest_pipeline }}
       harvest_practice: ${{ steps.filter.outputs.harvest_practice }}
+      crane_pack: ${{ steps.filter.outputs.crane_pack }}
       ci_scripts: ${{ steps.filter.outputs.ci_scripts }}
       corpan_app: ${{ steps.filter.outputs.corpan_app }}
       dja: ${{ steps.filter.outputs.dja }}
@@ -95,6 +97,9 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          # History for the diff without old file contents: commits and trees
+          # only (about 10 MB instead of 600), and git fetches a blob it reads.
+          filter: blob:none
       - id: filter
         name: Detect changed areas
         env:
@@ -150,10 +155,32 @@ jobs:
           echo "Changed files (${base:-root}..${head}):"
           sed 's/^/  /' "${changed}"
 
+          # An edit to this workflow selects only the jobs it changes. The
+          # script compares ci.yml at both commits job by job and prints the
+          # areas those jobs read; it prints `all` for anything it cannot
+          # attribute (triggers, env, the detection logic itself), which runs
+          # every job as before. AMP keeps full validation only when an AMP
+          # job changed (`amp_policy`): otherwise ci.yml is not a policy
+          # change for the AMP planner.
+          workflow_areas=""
+          planner_input="${changed}"
+          if [ "${run_all}" != "true" ] && grep -qx '\.github/workflows/ci\.yml' "${changed}"; then
+            if [ -z "${base}" ] || ! workflow_areas="$(python3 .github/scripts/ci_workflow_change.py "${base}" "${head}")"; then
+              workflow_areas=all
+            fi
+            echo "ci.yml edit selects: $(printf '%s ' ${workflow_areas})"
+            if [ "${workflow_areas}" = "all" ]; then
+              run_all=true
+            elif ! grep -qx amp_policy <<< "${workflow_areas}"; then
+              planner_input="$(mktemp)"
+              grep -vx '\.github/workflows/ci\.yml' "${changed}" > "${planner_input}" || true
+            fi
+          fi
+
           set_output() {
             local name="$1"
             local pattern="$2"
-            if [ "${run_all}" = "true" ] || grep -Eq "${pattern}" "${changed}"; then
+            if [ "${run_all}" = "true" ] || grep -qx "${name}" <<< "${workflow_areas}" || grep -Eq "${pattern}" "${changed}"; then
               echo "${name}=true" >> "${GITHUB_OUTPUT}"
             else
               echo "${name}=false" >> "${GITHUB_OUTPUT}"
@@ -164,20 +191,22 @@ jobs:
           # reviewer, whose failure mode when it regresses is to PASS wrongly —
           # so its tests must run on any change to it (or to this workflow, or
           # to the workflow that invokes it).
-          set_output amp_film '^(amp/(film/|src/|package(-lock)?\.json$|tsconfig\.json$)|\.github/workflows/ci\.yml$)'
-          set_output amp_native '^(amp/mobile/|amp/src/web/(auth|native-session|native-runtime|NativeGate|NativePreview|learning-transport|BookReader|main)\.|amp/src/server/(app|auth)\.|amp/scripts/verify-native-session\.|\.github/workflows/ci\.yml$)'
+          set_output amp_film '^(amp/(film/|src/|package(-lock)?\.json$|tsconfig\.json$))'
+          set_output amp_native '^(amp/mobile/|amp/src/web/(auth|native-session|native-runtime|NativeGate|NativePreview|learning-transport|BookReader|main)\.|amp/src/server/(app|auth)\.|amp/scripts/verify-native-session\.)'
           # The static site imports AMP analytics, figures, content, audit and theme at build time.
-          set_output corpora_site '^(corpora-site/|amp/(browser-security\.mjs|scripts/(install-browser\.mjs|configure-browser-sandbox\.sh))$|amp/(books/|src/(analytics|math|content|curriculum|books|publishing)/|src/web/([^/]*Figure|MathText)\.tsx$|src/web/ui/tokens\.css$|src/server/trials\.ts$|package(-lock)?\.json$|tsconfig\.json$)|\.github/workflows/ci\.yml$)'
-          set_output aha_app '^(amp/(browser-security\.mjs|scripts/(install-browser\.mjs|configure-browser-sandbox\.sh))$|aha/|homeschool-offline/app/src-tauri/plugins/tauri-plugin-ios-share/|\.github/workflows/ci\.yml$)'
+          set_output corpora_site '^(corpora-site/|amp/(browser-security\.mjs|scripts/(install-browser\.mjs|configure-browser-sandbox\.sh))$|amp/(books/|src/(analytics|math|content|curriculum|books|publishing)/|src/web/([^/]*Figure|MathText)\.tsx$|src/web/ui/tokens\.css$|src/server/trials\.ts$|package(-lock)?\.json$|tsconfig\.json$))'
+          set_output aha_app '^(amp/(browser-security\.mjs|scripts/(install-browser\.mjs|configure-browser-sandbox\.sh))$|aha/|homeschool-offline/app/src-tauri/plugins/tauri-plugin-ios-share/)'
           # Crane app and the harvest engine. The app compiles harvest/practice
           # TypeScript directly and links harvest-core and the shared plugins
           # by path, so each consumer filter includes what it compiles. Every
           # job below skips its steps cleanly until its directory exists.
-          set_output crane_app '^(crane/(app|content)/|harvest/practice/|corpan/plugins/|amp/(browser-security\.mjs|scripts/(install-browser\.mjs|configure-browser-sandbox\.sh))$|\.github/workflows/ci\.yml$)'
-          set_output crane_native '^(crane/app/src-tauri/|harvest/core/|corpan/plugins/|corpan/corpan-app/src-tauri/vendor/|homeschool-offline/app/src-tauri/plugins/tauri-plugin-ios-share/|\.github/workflows/ci\.yml$)'
-          set_output harvest_core '^(harvest/core/|\.github/workflows/ci\.yml$)'
-          set_output harvest_pipeline '^(harvest/pipeline/|\.github/workflows/ci\.yml$)'
-          set_output harvest_practice '^(harvest/practice/|\.github/workflows/ci\.yml$)'
+          set_output crane_app '^(crane/(app|content)/|harvest/practice/|corpan/plugins/|amp/(browser-security\.mjs|scripts/(install-browser\.mjs|configure-browser-sandbox\.sh))$)'
+          set_output crane_native '^(crane/app/src-tauri/|harvest/core/|corpan/plugins/|corpan/corpan-app/src-tauri/vendor/|homeschool-offline/app/src-tauri/plugins/tauri-plugin-ios-share/)'
+          set_output harvest_core '^(harvest/core/)'
+          set_output harvest_pipeline '^(harvest/pipeline/)'
+          set_output harvest_practice '^(harvest/practice/)'
+          # The crane pack: built from its content with the pipeline, read back with the core.
+          set_output crane_pack '^(crane/content/|harvest/(pipeline|core)/|harvest/CONTRACT\.md$)'
           set_output ci_scripts '^(\.github/scripts/|\.github/workflows/[^/]+\.ya?ml$|amp/scripts/test-suite\.mjs$)'
           # `corpan/packs/shared/` and `corpan/packs/sdk/` are in here because the
           # corpan-app job COMPILES them: `tsconfig.json` maps `@shared/*` onto
@@ -192,19 +221,19 @@ jobs:
           # `package.json`: `corpan/packs/shared` has none, so it is skipped
           # outright, and `corpan/packs/sdk`'s declares no test/tsc/build script.
           # Before this line a shared-only change ran nothing that compiled it.
-          set_output corpan_app '^(corpan/(corpan-app|packs/(shared|sdk))/|\.github/workflows/ci\.yml$)'
-          set_output dja '^(corpan/dja/|\.github/workflows/ci\.yml$)'
-          set_output lambda '^(corpan/infra/terraform/lambda/|\.github/workflows/ci\.yml$)'
+          set_output corpan_app '^(corpan/(corpan-app|packs/(shared|sdk))/)'
+          set_output dja '^(corpan/dja/)'
+          set_output lambda '^(corpan/infra/terraform/lambda/)'
           # `pack_catalog_check.js` is the entire body of the `pack-catalog` job.
           # It lives under `.github/scripts/`, but `ci-scripts` runs pytest there
           # and collects no JavaScript — so without this alternation the checker
           # could be edited and never executed, and a break in it would surface on
           # some later, unrelated packs/web PR. Same treatment the `native` filter
           # below gives its two Python helpers.
-          set_output packs '^(corpan/packs/|\.github/workflows/(ci|deploy-pages)\.yml$|\.github/scripts/pack_catalog_check\.js$)'
-          set_output terraform '^(corpan/infra/terraform/.*(\.tf|\.tfvars|\.tf\.json)$|corpan/infra/terraform/\.terraform\.lock\.hcl$|\.github/workflows/ci\.yml$)'
-          set_output amp_ads '^(web/scripts/amp-ads/|amp/(browser-security\.mjs|scripts/(install-browser\.mjs|configure-browser-sandbox\.sh))$|\.github/workflows/ci\.yml$)'
-          set_output web '^(web/(io|data|pages|scripts)/|amp/(browser-security\.mjs|scripts/(install-browser\.mjs|configure-browser-sandbox\.sh))$|\.github/workflows/(ci|deploy-pages)\.yml$)'
+          set_output packs '^(corpan/packs/|\.github/workflows/deploy-pages\.yml$|\.github/scripts/pack_catalog_check\.js$)'
+          set_output terraform '^(corpan/infra/terraform/.*(\.tf|\.tfvars|\.tf\.json)$|corpan/infra/terraform/\.terraform\.lock\.hcl$)'
+          set_output amp_ads '^(web/scripts/amp-ads/|amp/(browser-security\.mjs|scripts/(install-browser\.mjs|configure-browser-sandbox\.sh))$)'
+          set_output web '^(web/(io|data|pages|scripts)/|amp/(browser-security\.mjs|scripts/(install-browser\.mjs|configure-browser-sandbox\.sh))$|\.github/workflows/deploy-pages\.yml$)'
 
           # Dynawalla areas. Every one of them is consumed by a job below.
           #
@@ -226,7 +255,7 @@ jobs:
           # file list tripped this filter anyway. A cleanly-rebased
           # curriculum-only PR would have skipped the app job and reported green
           # with the app broken.
-          set_output dynawalla_app '^(dynawalla/(dynawalla-app|curriculum|engine|packs/shared/curriculum)/|\.github/workflows/ci\.yml$)'
+          set_output dynawalla_app '^(dynawalla/(dynawalla-app|curriculum|engine|packs/shared/curriculum)/)'
           # The committed slice of gen/android and the recorded template it was
           # curated from. `tauri android init` never overwrites an existing
           # file, which is what makes the allowlist survive a CI re-init — and
@@ -234,7 +263,7 @@ jobs:
           # entry would be dropped SILENTLY, at runtime, with nothing in CI
           # compiling Android for either app. So: any move of the CLI pin, of
           # the tracked files, or of the baseline re-runs the drift job.
-          set_output dynawalla_android_gen '^(dynawalla/dynawalla-app/(package(-lock)?\.json$|android-template-baseline/|src-tauri/gen/android/)|\.github/workflows/ci\.yml$)'
+          set_output dynawalla_android_gen '^(dynawalla/dynawalla-app/(package(-lock)?\.json$|android-template-baseline/|src-tauri/gen/android/))'
           # `dynawalla/engine/` is in the curriculum filter because the curriculum
           # gates SCAN engine source: `validate/cli.ts` passes
           # `[curriculum/src, engine/src]` as the lint roots, so `npm run check`
@@ -251,13 +280,13 @@ jobs:
           # of generator, mal-rule and gate source sat outside the pattern that
           # decides whether the gates run at all. A pull request that rewrote the
           # whole library would have skipped its own job and reported green.
-          set_output dynawalla_curriculum '^(dynawalla/(curriculum|engine|packs/shared/curriculum)/|\.github/workflows/ci\.yml$)'
+          set_output dynawalla_curriculum '^(dynawalla/(curriculum|engine|packs/shared/curriculum)/)'
           # Not the mirror image: the engine imports nothing at all (EG-1 asserts
           # exactly that), so a curriculum change cannot break the engine job.
           # `boundary.test.ts` duplicates the float scan for this reason — "the two
           # packages have independent CI filters, and an engine-only pull request
           # must be able to fail this on its own."
-          set_output dynawalla_engine '^(dynawalla/engine/|\.github/workflows/ci\.yml$)'
+          set_output dynawalla_engine '^(dynawalla/engine/)'
           # The games and the pack pipeline, deliberately ONE area rather than
           # two, because there is no change to either half that the other half
           # cannot break: `packs/build.mjs` runs each game's `build:pack`, every
@@ -277,17 +306,14 @@ jobs:
           # invokes it by name. The app's own filter covers that file too, but
           # no job under it runs the pack build, so a rename would otherwise
           # land green and break only the release.
-          set_output dynawalla_packs '^(dynawalla/(games|packs)/|dynawalla/dynawalla-app/package\.json$|\.github/workflows/ci\.yml$)'
-          # Cross-product area. Deliberately no `ci.yml` self-trigger: it exists
-          # to answer "did shared code move", and a workflow edit is not a
-          # change to it. No job consumes it yet.
+          set_output dynawalla_packs '^(dynawalla/(games|packs)/|dynawalla/dynawalla-app/package\.json$)'
+          # Cross-product area: it answers "did shared code move", and a
+          # workflow edit is not a change to it. No job consumes it yet.
           set_output shared_ts '^(shared/|corpan/packs/shared/)'
           # The Rust/native layer: both apps' `src-tauri` trees and every Tauri
-          # plugin crate. Consumed by the `native` job below, so — unlike
-          # `shared_ts` above and unlike this filter before that job existed —
-          # it DOES self-trigger on `ci.yml`, exactly like every other filter
-          # that drives a job. A workflow edit that breaks the native gate has
-          # to be caught by the native gate.
+          # plugin crate. Consumed by the `native` job below. A ci.yml edit to
+          # that job selects it through ci_workflow_change.py (above), so a
+          # workflow edit that breaks the native gate is caught by the gate.
           #
           # The rustfmt ratchet walks every tracked crate (amp/mobile too) and
           # patch_integrity reads every Cargo manifest and lock, so any Rust
@@ -297,7 +323,7 @@ jobs:
           # Dynawalla's `packs::` tests read every `dynawalla/games/*/pack.json`.
           # Nothing else does: TypeScript, content and docs cannot change a
           # Rust build.
-          set_output native '^(native/|.*/src-tauri/|corpan/plugins/|corpan/dja/release\.sqlite3$|dynawalla/games/[^/]+/pack\.json$|\.github/workflows/ci\.yml$|\.github/scripts/(patch_integrity|clippy_report)\.py$)|\.rs$|(^|/)(Cargo\.(toml|lock)|rust-toolchain(\.toml)?|\.?rustfmt\.toml|\.?clippy\.toml|\.cargo/config(\.toml)?)$'
+          set_output native '^(native/|.*/src-tauri/|corpan/plugins/|corpan/dja/release\.sqlite3$|dynawalla/games/[^/]+/pack\.json$|\.github/scripts/(patch_integrity|clippy_report)\.py$)|\.rs$|(^|/)(Cargo\.(toml|lock)|rust-toolchain(\.toml)?|\.?rustfmt\.toml|\.?clippy\.toml|\.cargo/config(\.toml)?)$'
 
           # One tested planner serves routine and deep checks. Missing history
           # forces full validation rather than an incomplete diff.
@@ -308,7 +334,7 @@ jobs:
           if [ "$EVENT_NAME" = workflow_dispatch ] || [ "$amp_full" = true ]; then
             plan_args+=(--full)
           fi
-          python3 .github/scripts/amp_ci_plan.py "${plan_args[@]}" < "$changed" >> "$GITHUB_OUTPUT"
+          python3 .github/scripts/amp_ci_plan.py "${plan_args[@]}" < "$planner_input" >> "$GITHUB_OUTPUT"
 
           # A repeated output name silently keeps only the LAST value. The
           # planner once printed `native`, which replaced the Rust filter above:
@@ -384,7 +410,7 @@ jobs:
           # app compiles all of them). `.github/workflows/ios-native.yml`
           # additionally compiles their Swift, but it is advisory and does not
           # count here.
-          covered='^(amp/|corpan/corpan-app/|corpan/dja/|corpan/infra/terraform/lambda/|corpan/packs/|corpan/infra/terraform/.*(\.tf|\.tfvars|\.tf\.json)$|corpan/infra/terraform/\.terraform\.lock\.hcl$|web/(io|data|pages|scripts)/|corpan/plugins/|dynawalla/dynawalla-app/|dynawalla/(curriculum|engine|games|packs)/|crane/app/|crane/content/tools/|harvest/(core|pipeline|practice)/)'
+          covered='^(amp/|corpan/corpan-app/|corpan/dja/|corpan/infra/terraform/lambda/|corpan/packs/|corpan/infra/terraform/.*(\.tf|\.tfvars|\.tf\.json)$|corpan/infra/terraform/\.terraform\.lock\.hcl$|web/(io|data|pages|scripts)/|corpan/plugins/|dynawalla/dynawalla-app/|dynawalla/(curriculum|engine|games|packs)/|crane/app/|crane/content/|harvest/(core|pipeline|practice)/)'
 
           # Carve-outs checked BEFORE `covered`, because a broader area prefix
           # would otherwise swallow them. grep -E has no negative lookahead,
@@ -430,6 +456,7 @@ jobs:
     needs: changes
     if: needs.changes.outputs.corpan_app == 'true'
     runs-on: ubuntu-24.04
+    timeout-minutes: 10
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -780,6 +807,7 @@ jobs:
     needs: changes
     if: needs.changes.outputs.lambda == 'true'
     runs-on: ubuntu-24.04
+    timeout-minutes: 10
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -822,6 +850,7 @@ jobs:
     needs: changes
     if: needs.changes.outputs.web == 'true'
     runs-on: ubuntu-24.04
+    timeout-minutes: 10
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -878,6 +907,7 @@ jobs:
     needs: changes
     if: needs.changes.outputs.packs == 'true'
     runs-on: ubuntu-24.04
+    timeout-minutes: 10
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -905,6 +935,9 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          # History for the diff without old file contents: commits and trees
+          # only (about 10 MB instead of 600), and git fetches a blob it reads.
+          filter: blob:none
       - uses: actions/setup-node@v4
         with:
           node-version: "22.23.4"
@@ -971,6 +1004,7 @@ jobs:
     needs: changes
     if: needs.changes.outputs.terraform == 'true'
     runs-on: ubuntu-24.04
+    timeout-minutes: 10
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -1018,6 +1052,7 @@ jobs:
     needs: changes
     if: needs.changes.outputs.packs == 'true' || needs.changes.outputs.web == 'true'
     runs-on: ubuntu-24.04
+    timeout-minutes: 10
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -1739,6 +1774,7 @@ jobs:
     needs: changes
     if: needs.changes.outputs.aha_app == 'true'
     runs-on: ubuntu-24.04
+    timeout-minutes: 30
     defaults:
       run:
         working-directory: aha/aha-app
@@ -2122,6 +2158,89 @@ jobs:
           .venv/bin/pip install -e '.[test]' pytest
           .venv/bin/python -m pytest -q
 
+  # Builds the crane pack from main's content (eCFR at the locked dates, the committed response
+  # cache, no model) and reads every table back through harvest-core's read API, the way the app
+  # does. A row the core cannot read fails here, not in the app. An input to `ci-gate`.
+  crane-pack:
+    name: crane-pack
+    needs: changes
+    if: needs.changes.outputs.crane_pack == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/7ac9640a94395e199ea6edf38318b3aa1efb2212/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != 'd28194d064f7e633e894d99a40bf8521da9c7bb1b749e8a38a1a3d832d56717c':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name, '--source-commit', '7ac9640a94395e199ea6edf38318b3aa1efb2212'], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
+      - uses: actions/checkout@v4
+      - id: tree
+        name: Detect crane/content and harvest
+        run: |
+          if [ -f crane/content/corpus.yaml ] && [ -f harvest/core/Cargo.toml ] && [ -f harvest/pipeline/pyproject.toml ]; then
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          else echo "present=false" >> "$GITHUB_OUTPUT"; echo "crane pack inputs not present; skipping."; fi
+      - uses: actions/setup-python@v5
+        if: steps.tree.outputs.present == 'true'
+        with:
+          python-version: '3.12'
+      - uses: Swatinem/rust-cache@v2
+        if: steps.tree.outputs.present == 'true'
+        with:
+          workspaces: harvest/core
+      - name: Cache the locked eCFR sources
+        if: steps.tree.outputs.present == 'true'
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/harvest/raw
+          key: crane-raw-${{ hashFiles('crane/content/corpus.sources.lock.json') }}
+      - name: Build harvest-core
+        if: steps.tree.outputs.present == 'true'
+        working-directory: harvest/core
+        run: cargo build --locked --release --bin harvest
+      - name: Install harvest-pipeline
+        if: steps.tree.outputs.present == 'true'
+        run: |
+          set -euo pipefail
+          python -m venv "$RUNNER_TEMP/venv"
+          "$RUNNER_TEMP/venv/bin/pip" install --upgrade pip
+          "$RUNNER_TEMP/venv/bin/pip" install -e harvest/pipeline
+      - name: Build the pack and read it back (harvest show)
+        if: steps.tree.outputs.present == 'true'
+        env:
+          HARVEST_BIN: ${{ github.workspace }}/harvest/core/target/release/harvest
+        run: |
+          set -euo pipefail
+          export PATH="$RUNNER_TEMP/venv/bin:$PATH"
+          crane/content/build-pack.sh "$RUNNER_TEMP/crane-pack"
+      - uses: actions/upload-artifact@v4
+        if: always() && steps.tree.outputs.present == 'true'
+        with:
+          name: crane-pack-test
+          path: |
+            ${{ runner.temp }}/crane-pack/showcheck.json
+            ${{ runner.temp }}/crane-pack/build.json
+          retention-days: 7
+          if-no-files-found: ignore
+
   harvest-practice:
     name: harvest-practice
     needs: changes
@@ -2184,6 +2303,7 @@ jobs:
     needs: changes
     if: needs.changes.outputs.amp_film == 'true'
     runs-on: ubuntu-24.04
+    timeout-minutes: 30
     defaults:
       run:
         working-directory: amp
@@ -2236,6 +2356,7 @@ jobs:
     needs: changes
     if: needs.changes.outputs.amp_core == 'true'
     runs-on: ubuntu-24.04
+    timeout-minutes: 75
     defaults:
       run:
         working-directory: amp
@@ -2281,6 +2402,7 @@ jobs:
     needs: changes
     if: needs.changes.outputs.amp_database == 'true'
     runs-on: ubuntu-24.04
+    timeout-minutes: 60
     defaults:
       run:
         working-directory: amp
@@ -2357,6 +2479,7 @@ jobs:
     needs: changes
     if: needs.changes.outputs.amp_build == 'true'
     runs-on: ubuntu-24.04
+    timeout-minutes: 10
     defaults:
       run:
         working-directory: amp
@@ -2410,6 +2533,7 @@ jobs:
     - amp-build
     if: ${{ always() && needs.changes.outputs.amp == 'true' }}
     runs-on: ubuntu-24.04
+    timeout-minutes: 5
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -2462,6 +2586,7 @@ jobs:
     needs: changes
     if: needs.changes.outputs.amp_native == 'true'
     runs-on: macos-latest
+    timeout-minutes: 30
     defaults:
       run:
         working-directory: amp/mobile
@@ -2516,7 +2641,7 @@ jobs:
     needs: changes
     if: needs.changes.outputs.corpora_site == 'true'
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -2582,6 +2707,7 @@ jobs:
         harvest-core,
         harvest-pipeline,
         harvest-practice,
+        crane-pack,
         corpora-site,
         corpan-app,
         dja,
@@ -2602,6 +2728,7 @@ jobs:
       contents: read
       issues: write
     runs-on: ubuntu-24.04
+    timeout-minutes: 5
     steps:
       - name: Initialize verified client trust
         id: ci-trust

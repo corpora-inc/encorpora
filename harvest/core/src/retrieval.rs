@@ -86,6 +86,9 @@ pub struct SearchResult {
     pub query: String,
     pub normalized: String,
     pub expansions: Vec<String>,
+    /// Query words the pack does not hold as typed, and what they were read as.
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub readings: Vec<crate::lexicon::Reading>,
     pub hits: Vec<Hit>,
     pub dense: DenseStatus,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -116,7 +119,31 @@ impl<'a> Retriever<'a> {
             .iter()
             .map(|e| (e.equip_id.clone(), e.name.clone(), e.aliases.clone()))
             .collect();
-        normalize::normalize_query(query, self.pack.synonyms(), &equipment)
+        let mut norm = normalize::normalize_query(query, self.pack.synonyms(), &equipment);
+        // A word read as another (a typo, a British spelling, a run-together
+        // or hyphenated word) is covered wherever its reading is.
+        match self.pack.lexicon() {
+            Ok(lex) => {
+                for r in lex.read(query) {
+                    let alt: Vec<String> = r
+                        .as_words
+                        .iter()
+                        .flat_map(|w| normalize::content_stems(w))
+                        .collect();
+                    for part in normalize::content_stems(&r.word.replace('-', " ")) {
+                        if let Some(c) = norm.concepts.iter_mut().find(|c| c.stem == part)
+                            && !c.alts.contains(&alt)
+                        {
+                            c.alts.push(alt.clone());
+                        }
+                    }
+                }
+            }
+            Err(e) => {
+                eprintln!("harvest-core: lexicon unavailable, query words read as typed: {e}")
+            }
+        }
+        norm
     }
 
     /// Search one query (plus its pack-synonym expansions).
@@ -138,9 +165,15 @@ impl<'a> Retriever<'a> {
         let mut dense: HashMap<String, f64> = HashMap::new();
 
         // Lexical: the query with its synonym expansions, and each variant.
+        // Words the index does not hold as typed are searched as they were read:
+        // a spelling variant, the halves of a run-together word, a typo's
+        // nearest word, or a hyphenated word joined.
+        let readings = self.pack.lexicon()?.read(query);
+        let read_as: Vec<String> = readings.iter().map(|r| r.as_words.join(" ")).collect();
         let mut lexical_queries: Vec<Vec<&str>> = vec![
             std::iter::once(norm.text.as_str())
                 .chain(norm.expansions.iter().map(String::as_str))
+                .chain(read_as.iter().map(String::as_str))
                 .collect(),
         ];
         for v in variants {
@@ -265,6 +298,7 @@ impl<'a> Retriever<'a> {
             query: query.to_string(),
             normalized: norm.text,
             expansions: norm.expansions,
+            readings,
             hits,
             dense: dense_status,
             reranker: reranker_id,

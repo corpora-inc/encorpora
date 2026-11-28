@@ -118,7 +118,7 @@ CREATE TABLE question (
   kind TEXT NOT NULL,               -- mc|free_text|numeric
   stem TEXT NOT NULL,
   choices TEXT,                     -- json array of strings (mc)
-  answer TEXT NOT NULL,             -- mc: index as text; numeric: value; free_text: rubric json
+  answer TEXT NOT NULL,             -- mc: index as text; numeric: value or value±tolerance; free_text: rubric json (below)
   rationales TEXT,                  -- json array, one per choice: why right / why wrong
   section_ids TEXT NOT NULL,        -- json array
   difficulty REAL NOT NULL,         -- 0..1 prior
@@ -139,7 +139,7 @@ CREATE TABLE proc_step (proc_id TEXT NOT NULL, ord INTEGER NOT NULL,
   text TEXT NOT NULL, detail TEXT NOT NULL,        -- json {trainee, operator, inspector}
   check_kind TEXT NOT NULL,                        -- pass_fail|value|note|photo
   section_ids TEXT NOT NULL,
-  deficiency TEXT,                                 -- json {guidance, action, section_id, quote}
+  deficiency TEXT,                                 -- json {guidance, action, section_id, quote}: see below
   lang TEXT NOT NULL, prov_id TEXT NOT NULL, PRIMARY KEY (proc_id, ord));
 
 CREATE TABLE chunk (chunk_id TEXT PRIMARY KEY, ref_kind TEXT NOT NULL, ref_id TEXT NOT NULL,
@@ -149,6 +149,21 @@ CREATE VIRTUAL TABLE chunk_fts USING fts5(text, content='chunk', content_rowid='
 CREATE VIRTUAL TABLE alias_fts USING fts5(alias, content='answer_alias', content_rowid='rowid',
                                           tokenize='porter unicode61');
 CREATE TABLE chunk_vec (chunk_id TEXT PRIMARY KEY, vec BLOB NOT NULL, scale REAL NOT NULL); -- int8
+
+CREATE TABLE course_node (          -- the course knowledge tree (empty in packs without one)
+  node_id TEXT PRIMARY KEY,         -- course | exam:<id> | domain:<id> | topic:<id> | skill:<id>
+  parent_id TEXT, ord INTEGER NOT NULL,
+  level TEXT NOT NULL,              -- course|exam|domain|topic|skill
+  title TEXT NOT NULL,
+  summary TEXT NOT NULL,            -- what this part is, in a few sentences
+  hard TEXT NOT NULL,               -- what is hard here ('' when not written)
+  mistakes TEXT NOT NULL,           -- what people get wrong
+  exam TEXT NOT NULL,               -- what the exam asks about it
+  links TEXT NOT NULL,              -- json {node_ids, lesson_ids, q_ids, diagram_ids, film_ids}
+  section_ids TEXT NOT NULL,        -- json array: the rule paragraphs at this node
+  quotes TEXT NOT NULL,             -- json [{section_id, quote}]: the rule text behind any rule the node states
+  lang TEXT NOT NULL, prov_id TEXT NOT NULL);
+CREATE TABLE course_node_vec (node_id TEXT PRIMARY KEY, vec BLOB NOT NULL, scale REAL NOT NULL); -- int8
 
 CREATE TABLE provenance (
   prov_id TEXT PRIMARY KEY,
@@ -164,23 +179,49 @@ CREATE TABLE provenance (
 );
 ```
 
-Only rows with `verdict = 'pass'` ship in a release pack.
+Only rows with `verdict = 'pass'` ship in a release pack. Each generated row has its own
+provenance row: rows from one generation call can earn different verdicts.
 
-### Answer-segment JSON
+### Free-text rubric
 
-Used by `answer.body` and `lesson.body`. The app renders it; the support checker
-validates it.
+`question.answer` for `kind = free_text`. One shape for every reader: the core
+(`grade::Rubric`), `harvest/practice` (`parseRubric`) and the bake (`contract.py`). Unknown
+keys are refused.
 
 ```json
-[ { "t": "text",  "text": "There are three clearances to know." },
-  { "t": "quote", "section_id": "29cfr1926.1408(a)(2)", "text": "<verbatim substring of section.text>" },
-  { "t": "cite",  "section_id": "29cfr1926.1408(a)(2)" },
-  { "t": "diagram", "diagram_id": "…" } ]
+{ "points": [ { "id": "dist", "point": "Says the minimum clearance is 20 feet",
+                "any": ["20 feet", "twenty feet"] } ],
+  "pass": 1,
+  "sample_answer": "At least 20 feet unless Table A allows less.",
+  "misconceptions": ["10 feet is always enough."] }
 ```
 
-A `quote` must be an exact substring of the section's `text` (after whitespace
-normalization). A `cite` must name an existing section. The checker drops any
-claim segment that has no supporting quote or cite in the same paragraph.
+- `points`: at least one; `id` unique; `point` is the criterion in plain words (shown
+  when missed, and what a model judges); `any` lists alternative phrases, and any one of them
+  meets the point.
+- `pass`: how many points are needed, 1 to the number of points; all of them when absent.
+- `sample_answer`, `misconceptions`: optional feedback text.
+
+A `numeric` answer is a plain decimal (`25`, `1,200`, `-3.5`) or one with a tolerance
+(`25±0.5`, `25 +/- 0.5`).
+
+### Procedure step deficiency
+
+`proc_step.deficiency` is null (a step with no failure state) or
+`{"guidance", "action", "basis", "section_id", "quote"}`, one of two kinds:
+
+- **`basis: "rule"`**: a rule says so. `section_id` must exist and `quote` must be a verbatim
+  substring of its text. This holds even when the step itself is a practice method, such as a
+  calculation or a briefing, whose failure breaks a rule.
+- **`basis: "practice"`**: field practice with no rule behind it. `section_id` and `quote` are
+  null. The app shows the guidance and action as practice guidance, never as a rule and never with
+  a citation.
+
+`action` may be null. The bake writes `basis` on every deficiency. It marks one practice only when
+it cites nothing and its source marks it so (`basis: practice`, or a `practice_only` step), and
+it fails any other uncited deficiency. The core reads a row without `basis` as a rule when it
+cites a section, and as practice otherwise. It always returns `basis`, and it refuses a row whose
+basis and citation disagree (a rule with no section or quote, or practice that cites one).
 
 ## Core CLI (what eval and the bake verifier call)
 
@@ -204,7 +245,8 @@ harvest show    <pack> info|sections|topics|skills|lessons|terms|diagrams|questi
   "check": { "quotes_ok": true, "cites_ok": true, "dropped": 0 },
   "nearest": ["…"],            // when declined
   "pack_version": "…", "model": "…|null", "elapsed_ms": 0,
-  "support": { "score": 0.0, "threshold": 0.5, "window": 0.25, "max_sections": 3, "depth": 12,
+  "tool": "range_table:<section_id>",   // present when a table lookup answered first
+  "support": { "score": 0.0, "threshold": 0.4, "window": 0.25, "max_sections": 3, "depth": 12,
                "concepts": ["…"], "cache_similarity": 0.0, "cache_threshold": 0.75,
                "top_dense": 0.0, "min_dense": null,
                "candidates": [{ "section_id": "…", "rank": 1, "retrieval": 0.0,
@@ -221,10 +263,23 @@ dense retrieval ran), the engine also declines when `top_dense < min_dense`,
 with the model on as well, and `threshold` is the gate's coverage bar.
 The cache answers first when `cache_similarity >= cache_threshold`.
 
+Composed answers open with the answer: the clearly most relevant verified
+line (a baked fact's statement whose quote is in the shown passage, or a
+sentence of the role's explanation, covering at least 30% of the question),
+then the rule's own words and the explanation. When the question states a
+number in the unit of a range table the gate chose (a `table` section
+with `x | y` rows such as `over 50 to 200 | 15`), the row is looked up and the
+answer states it, quoting the header and the row (and the table's note when
+the number is a band's bound); `tool` names the table. A cache hit with
+similarity below `cache_confirm` (0.85) is served only when the embedder's
+cosine between the question and the alias reaches `cache_intent_min` (0.9);
+without an embedder it goes to retrieval. A pack may override both in
+`pack_meta` (`cache_confirm_similarity`, `cache_intent_min`).
+
 A pack states its calibrated dense gate in `pack_meta`:
 `gate_dense_support_threshold` and `gate_dense_min` (both numbers as text;
 they belong to the pack's embedder, whose cosine scale they assume). Without
-them, or without dense vectors, the coverage-only threshold (0.5) applies.
+them, or without dense vectors, the coverage-only threshold (0.4) applies.
 
 The Tauri app calls the same functions in-process; the CLI exists so evaluation
 measures exactly the code the app runs.
@@ -302,6 +357,7 @@ never opens the SQLite file. The core (`harvest_core::content`, and
 | `answers()`, `answer_for(id, role)` | the answer cache; the role's variant (same `question`, `level` = role) when there is one; body checked |
 | `equipment()` | variants |
 | `exams()`, `prereqs()`, `starters(role)` | app data from `pack_meta` |
+| `course_nodes()`; `CourseTree::from_pack(pack, exams)` → `node(id)`, `root()`, `children(id)`, `path(id)`, `search(retriever, query, k)` | the course knowledge tree (below) |
 
 Generated rows (term, lesson, diagram, question, answer, procedure, proc_step)
 are returned only when their `provenance.verdict` is `pass`; a procedure
@@ -314,7 +370,60 @@ dropped, with the paragraph it supported.
 App data lives in optional `pack_meta` keys, JSON as text:
 `exam_blueprints` (array of exam blueprints, as `crane/content/exams.json`),
 `skill_prereqs` (`{skill_id: [skill_id]}`), `starter_answers`
-(`{role: [answer_id]}`; ids that do not exist or did not pass are skipped).
+(`{role: [answer_id]}`; ids that do not exist or did not pass are skipped). The bake writes
+them from the corpus YAML's `pack_meta:` map and refuses unknown skill or answer ids, unknown
+roles and prerequisite cycles.
+
+**Read-back check.** `harvest-bake showcheck <pack-dir> --harvest <bin> --pubkey <key>`
+calls every `harvest show` list, every lesson, diagram, question and procedure by id, and
+every answer in every role. It fails on any error, or when the core returns fewer rows than
+the pack holds. CI runs it on the crane pack built from `main` (`crane-pack` job). `--out`
+writes everything it read as one JSON file (`"format": "harvest-show/1"`, keys: the `show`
+names, plus `starters` by role and `answer_bodies[answer_id][role]`). A browser build cannot
+open the signed SQLite file, so it reads this copy.
+
+### Course knowledge tree
+
+`course_node` holds the course as a tree a conversation can move through,
+from the overview down to the rule text:
+
+```
+course
+├── exam:<exam_id>          the written exams
+│   └── domain:<domain_id>  links.node_ids: the skills the domain tests
+└── topic:<topic_id>        (topics may nest)
+    └── skill:<skill_id>    section_ids: the rule paragraphs at the leaf
+```
+
+Every node has `title` and four short texts the content lane writes and
+verifies: `summary` (what this part is), `hard` (what is hard here),
+`mistakes` (what people get wrong) and `exam` (what the exam asks about it);
+`''` when not written. A node that states a rule carries the rule text in
+`quotes` (`[{section_id, quote}]`, verbatim, checked at import and again on
+read). `links` points down to `node_ids` (beyond its children), `lesson_ids`,
+`q_ids`, `diagram_ids` and `film_ids` (films the host resolves from its media
+catalog). Lesson, question and diagram links must exist at import, so
+`course_node` is imported after them, and a link to a row that did not ship
+is dropped on read. A row's provenance covers its text: the skeleton passes
+structure alone, and text without provenance of its own waits for review.
+
+`harvest-bake course-skeleton <blueprint.yaml> [--existing tree.jsonl] --out
+course/tree.jsonl` writes the structure from the blueprint and content files,
+keeping any node text, quotes and films already written, and reports
+blueprint titles a YAML flow mapping cut at a comma.
+
+`course_node_vec` embeds each node (title and texts) with the pack's
+embedder. The tree is its own index: answer retrieval (`chunk`, `ask`) never
+sees it, and older engines ignore both tables. `CourseTree::search` scores
+nodes with BM25 in memory, fused by RRF with cosine over `course_node_vec`
+when the host's embedder matches the pack's. A pack without a tree (or an
+older one) gets the same structure derived from its topics, skills, lessons,
+questions, diagrams and the exam blueprints, with empty node text
+(`derived: true`).
+
+`harvest show <pack> tree [--id NODE] [--exams exams.json]` prints the tree,
+or one node with its path and children; `harvest search <pack> "<q>" --in
+tree` searches it.
 
 ## Bake hit rate
 

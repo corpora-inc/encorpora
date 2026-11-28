@@ -1,18 +1,21 @@
 //! Free-text grading against a baked rubric.
 //!
-//! Rubric JSON (`question.answer` for `kind = free_text`):
+//! Rubric JSON (`question.answer` for `kind = free_text`; CONTRACT, "Free-text
+//! rubric"). The same shape is read by `harvest/practice` (`parseRubric`):
 //!
 //! ```json
-//! { "points": [ { "id": "p1", "text": "Names the hazard",
-//!                 "keywords": [["arc", "contact"], "energized line"], "weight": 1 } ],
-//!   "pass": 0.7 }
+//! { "points": [ { "id": "p1", "point": "Names the hazard of arcing",
+//!                 "any": ["arc", "arcing", "energized line"] } ],
+//!   "pass": 1,
+//!   "sample_answer": "…", "misconceptions": ["…"] }
 //! ```
 //!
-//! A keyword entry is a phrase (all its words must appear) or a list of
-//! alternatives (any one phrase). A point is met when every entry is. With a
-//! model, the model judges each point and must quote the learner's words as
+//! A point is met when any one of its `any` phrases appears in the answer (all
+//! of that phrase's content words, after stemming). `pass` is the number of
+//! points needed (1..=points, default all). With a model, the model judges
+//! each point against its `point` text and must quote the learner's words as
 //! evidence; a point whose evidence is not in the answer falls back to the
-//! keyword rule.
+//! phrase rule.
 
 use crate::error::{Error, Result};
 use crate::llm::{Llm, LlmRequest, complete_json};
@@ -22,35 +25,26 @@ use serde_json::json;
 use std::collections::BTreeSet;
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-#[serde(untagged)]
-pub enum Keyword {
-    Phrase(String),
-    AnyOf(Vec<String>),
-}
-
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[serde(deny_unknown_fields)]
 pub struct RubricPoint {
     pub id: String,
-    pub text: String,
-    #[serde(default)]
-    pub keywords: Vec<Keyword>,
-    #[serde(default = "one")]
-    pub weight: f64,
-}
-
-fn one() -> f64 {
-    1.0
-}
-
-fn default_pass() -> f64 {
-    0.7
+    /// The criterion, in plain words (shown when missed; what a model judges).
+    pub point: String,
+    /// Alternative phrases; any one meets the point.
+    pub any: Vec<String>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[serde(deny_unknown_fields)]
 pub struct Rubric {
     pub points: Vec<RubricPoint>,
-    #[serde(default = "default_pass")]
-    pub pass: f64,
+    /// Points needed to pass; all of them when absent.
+    #[serde(default)]
+    pub pass: Option<usize>,
+    #[serde(default)]
+    pub sample_answer: Option<String>,
+    #[serde(default)]
+    pub misconceptions: Vec<String>,
 }
 
 impl Rubric {
@@ -60,8 +54,86 @@ impl Rubric {
         if r.points.is_empty() {
             return Err(Error::Invalid("rubric has no points".into()));
         }
+        let mut ids = BTreeSet::new();
+        for p in &r.points {
+            if p.id.trim().is_empty() || !ids.insert(p.id.as_str()) {
+                return Err(Error::Invalid(format!(
+                    "rubric point id {:?} is empty or repeated",
+                    p.id
+                )));
+            }
+            if p.point.trim().is_empty() || p.any.iter().all(|a| a.trim().is_empty()) {
+                return Err(Error::Invalid(format!(
+                    "rubric point {:?} needs `point` text and at least one `any` phrase",
+                    p.id
+                )));
+            }
+        }
+        if let Some(n) = r.pass
+            && (n == 0 || n > r.points.len())
+        {
+            return Err(Error::Invalid(format!(
+                "rubric pass {n} is not between 1 and {} points",
+                r.points.len()
+            )));
+        }
         Ok(r)
     }
+
+    /// Points needed to pass.
+    pub fn needed(&self) -> usize {
+        self.pass.unwrap_or(self.points.len())
+    }
+}
+
+/// A numeric key (`question.answer` for `kind = numeric`): `25`, `25±0.5`,
+/// `25 +/- 0.5`, `1,200`. Returns `(value, tolerance)`; the same grammar as
+/// `harvest/practice` `parseNumericKey`.
+pub fn parse_numeric_key(answer: &str) -> Option<(f64, f64)> {
+    let (v, t) = match answer.split_once('±') {
+        Some((v, t)) => (v, Some(t)),
+        None => match answer.split_once("+/-").or_else(|| answer.split_once("+-")) {
+            Some((v, t)) => (v, Some(t)),
+            None => (answer, None),
+        },
+    };
+    let value = plain_number(v)?;
+    let tolerance = match t {
+        Some(t) => plain_number(t).filter(|t| *t >= 0.0)?,
+        None => 0.0,
+    };
+    Some((value, tolerance))
+}
+
+/// A plain decimal with optional thousands commas (`1,200.5`), nothing else.
+fn plain_number(text: &str) -> Option<f64> {
+    let t = text.trim();
+    // An optional minus; a leading plus is refused, as harvest/practice refuses it.
+    let (sign, digits) = match t.strip_prefix('-') {
+        Some(rest) => (&t[..1], rest),
+        None => ("", t),
+    };
+    let (int, frac) = digits.split_once('.').unwrap_or((digits, ""));
+    let groups: Vec<&str> = int.split(',').collect();
+    let int_ok = if groups.len() == 1 {
+        groups[0].chars().all(|c| c.is_ascii_digit())
+    } else {
+        (1..=3).contains(&groups[0].len())
+            && groups.iter().all(|g| g.chars().all(|c| c.is_ascii_digit()))
+            && groups[1..].iter().all(|g| g.len() == 3)
+    };
+    if !int_ok || !frac.chars().all(|c| c.is_ascii_digit()) || (int.is_empty() && frac.is_empty()) {
+        return None;
+    }
+    let n: f64 = format!(
+        "{sign}{}.{}",
+        int.replace(',', ""),
+        if frac.is_empty() { "0" } else { frac }
+    )
+    .trim_end_matches('.')
+    .parse()
+    .ok()?;
+    n.is_finite().then_some(n)
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
@@ -76,7 +148,7 @@ pub struct PointResult {
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub struct Grade {
-    /// Weighted share of points met, 0..1.
+    /// Share of points met, 0..1.
     pub score: f64,
     pub passed: bool,
     pub points: Vec<PointResult>,
@@ -106,24 +178,15 @@ fn evidence_ok(evidence: &str, folded_answer: &str, point: &RubricPoint) -> bool
     if stems.len() >= 3 {
         return true;
     }
-    let mut criterion = normalize::stem_set(&point.text);
-    for k in &point.keywords {
-        match k {
-            Keyword::Phrase(p) => criterion.extend(normalize::stem_set(p)),
-            Keyword::AnyOf(alts) => alts
-                .iter()
-                .for_each(|p| criterion.extend(normalize::stem_set(p))),
-        }
+    let mut criterion = normalize::stem_set(&point.point);
+    for p in &point.any {
+        criterion.extend(normalize::stem_set(p));
     }
     stems.iter().any(|s| criterion.contains(s))
 }
 
 fn keyword_met(point: &RubricPoint, answer: &BTreeSet<String>) -> bool {
-    !point.keywords.is_empty()
-        && point.keywords.iter().all(|k| match k {
-            Keyword::Phrase(p) => phrase_in(p, answer),
-            Keyword::AnyOf(alts) => alts.iter().any(|p| phrase_in(p, answer)),
-        })
+    point.any.iter().any(|p| phrase_in(p, answer))
 }
 
 #[derive(Deserialize)]
@@ -149,7 +212,7 @@ pub fn grade(answer: &str, rubric: &Rubric, llm: Option<&dyn Llm>) -> Result<Gra
             let points: Vec<_> = rubric
                 .points
                 .iter()
-                .map(|p| json!({"id": p.id, "criterion": p.text}))
+                .map(|p| json!({"id": p.id, "criterion": p.point}))
                 .collect();
             let req = LlmRequest {
                 system: "You grade a learner's explanation against rubric criteria. For each \
@@ -192,9 +255,8 @@ pub fn grade(answer: &str, rubric: &Rubric, llm: Option<&dyn Llm>) -> Result<Gra
     };
     let mut results = Vec::with_capacity(rubric.points.len());
     let mut any_model = false;
-    let (mut got, mut total) = (0.0, 0.0);
+    let mut got = 0usize;
     for p in &rubric.points {
-        total += p.weight;
         let judged = model_points
             .as_ref()
             .and_then(|mp| mp.iter().find(|x| x.id == p.id));
@@ -226,14 +288,14 @@ pub fn grade(answer: &str, rubric: &Rubric, llm: Option<&dyn Llm>) -> Result<Gra
             },
         };
         if r.met {
-            got += p.weight;
+            got += 1;
         }
         results.push(r);
     }
-    let score = if total > 0.0 { got / total } else { 0.0 };
+    let score = got as f64 / rubric.points.len() as f64;
     Ok(Grade {
         score,
-        passed: score + 1e-9 >= rubric.pass,
+        passed: got >= rubric.needed(),
         missed: results
             .iter()
             .filter(|r| !r.met)

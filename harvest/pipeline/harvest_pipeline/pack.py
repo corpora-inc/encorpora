@@ -80,9 +80,19 @@ def _chunks(stage: Stage, dst: sqlite3.Connection) -> list[tuple[str, str, str, 
     return out
 
 
+def _node_texts(dst: sqlite3.Connection) -> list[tuple[str, str, str]]:
+    """(node_id, title, text) of every shipped course-tree node. Nodes are embedded apart from the rule
+    chunks (`course_node_vec`), so a conversational turn can search the tree first and an answer's
+    retrieval never sees them; the engine scores them lexically in memory."""
+    rows = dst.execute("SELECT node_id, title, summary, hard, mistakes, exam FROM course_node ORDER BY node_id")
+    return [(r[0], r[1], "\n".join(x for x in r[1:] if x)) for r in rows]
+
+
 def write_pack(stage: Stage, out_dir: Path, pack_id: str, version: str, corpus_id: str,
                embedder: Embedder | None, release: bool = True, bake_backends: dict | None = None,
-               built_at: str | None = None, lang: str = "en") -> dict:
+               built_at: str | None = None, lang: str = "en", extra_meta: dict[str, str] | None = None) -> dict:
+    """`extra_meta`: more pack_meta keys (app data, CONTRACT "Content read API"); they may not
+    replace a key the pack itself sets."""
     out_dir.mkdir(parents=True, exist_ok=True)
     name = f"{pack_id}-{version}.sqlite"
     path = out_dir / name
@@ -130,6 +140,8 @@ def write_pack(stage: Stage, out_dir: Path, pack_id: str, version: str, corpus_i
     dst.execute("INSERT INTO alias_fts(alias_fts) VALUES('rebuild')")
     counts["chunk"] = len(chunks)
 
+    nodes = _node_texts(dst)
+
     meta_embed = {}
     if embedder is not None and chunks:
         vecs = embedder.embed_docs([(c[4], c[3]) for c in chunks])
@@ -137,6 +149,11 @@ def write_pack(stage: Stage, out_dir: Path, pack_id: str, version: str, corpus_i
                         [(c[0], *quantize(v)) for c, v in zip(chunks, vecs)])
         counts["chunk_vec"] = len(chunks)
         meta_embed = embedder.meta()
+    if embedder is not None and nodes:
+        vecs = embedder.embed_docs([(n[1], n[2]) for n in nodes])
+        dst.executemany("INSERT INTO course_node_vec (node_id, vec, scale) VALUES (?,?,?)",
+                        [(n[0], *quantize(v)) for n, v in zip(nodes, vecs)])
+        counts["course_node_vec"] = len(nodes)
 
     built = built_at or os.environ.get("HARVEST_BUILT_AT") or \
         dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat()
@@ -148,6 +165,10 @@ def write_pack(stage: Stage, out_dir: Path, pack_id: str, version: str, corpus_i
         "release": "1" if release else "0",
         **{k: v for k, v in meta_embed.items() if k not in ("embedder_id", "embed_dim")},
     }
+    clash = sorted(set(extra_meta or {}) & set(meta))
+    if clash:
+        raise SystemExit(f"pack_meta keys {clash} are set by the pack itself")
+    meta.update(extra_meta or {})
     dst.executemany("INSERT INTO pack_meta (key, value) VALUES (?,?)", sorted(meta.items()))
     dst.commit()
     dst.execute("VACUUM")

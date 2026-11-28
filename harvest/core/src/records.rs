@@ -966,7 +966,11 @@ fn validate(step: &ProcStep, input: &StepInput) -> Result<()> {
 }
 
 fn guidance(pack: &Pack, d: Deficiency) -> Result<Guidance> {
-    let section = pack.section(&d.section_id)?;
+    // Practice guidance has no rule: no citation, and nothing to verify.
+    let section = match d.section_id.as_deref() {
+        Some(id) if d.is_rule() => pack.section(id)?,
+        _ => None,
+    };
     let quote_verified = match (&section, &d.quote) {
         (Some(s), Some(q)) => crate::check::quote_in(q, &s.text),
         _ => false,

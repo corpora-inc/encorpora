@@ -77,6 +77,42 @@ fn lexical_and_dense_find_the_right_section() {
 }
 
 #[test]
+fn lexical_forgives_spelling_typos_and_run_together_words() {
+    let b = common::pack();
+    let e = common::engine(&b);
+    for (q, want, via) in [
+        ("stabilisers", "ex.4", "spelling"),
+        ("inspecton", "ex.3", "typo"),
+        ("spoter", "ex.2(a)", "typo"),
+    ] {
+        let r = e.retriever().search(q, &SearchOptions::default()).unwrap();
+        assert_eq!(
+            r.readings.first().map(|x| x.via),
+            Some(via),
+            "{q}: {:?}",
+            r.readings
+        );
+        let top = r.hits.iter().find(|h| h.lexical > 0.0).expect(q);
+        assert_eq!(top.section_id.as_deref(), Some(want), "{q}");
+    }
+    // The answer gate counts a read word as covered: a typo is answered like the word.
+    let opts = AskOptions::default();
+    let typed = e
+        .ask("how often is a periodic inspecton needed", &opts)
+        .unwrap();
+    let right = e
+        .ask("how often is a periodic inspection needed", &opts)
+        .unwrap();
+    assert_eq!(typed.mode, right.mode, "{:?}", typed.support);
+    // A word the pack holds is never re-read.
+    let r = e
+        .retriever()
+        .search("stabilizers", &SearchOptions::default())
+        .unwrap();
+    assert!(r.readings.is_empty());
+}
+
+#[test]
 fn lexical_only_without_embedder_and_refused_on_mismatch() {
     let b = common::pack();
     let plain = Engine::new(b.pack.clone());
@@ -415,7 +451,7 @@ fn support_replays_the_gate_offline() {
     ] {
         let r = e.ask(q, &AskOptions::default()).unwrap();
         let s = &r.support;
-        assert_eq!(s.threshold, 0.5);
+        assert_eq!(s.threshold, 0.4);
         assert!(!s.concepts.is_empty(), "{q}");
         assert!(
             s.candidates.windows(2).all(|w| w[0].rank < w[1].rank),
@@ -489,7 +525,7 @@ fn the_dense_gate_applies_only_when_dense_ran() {
     // No embedder: the dense gate is not in force; coverage-only 0.5 applies.
     let lexical = Engine::new(b.pack.clone()).ask(q, &strict).unwrap();
     assert_eq!(lexical.support.min_dense, None);
-    assert_eq!(lexical.support.threshold, 0.5);
+    assert_eq!(lexical.support.threshold, 0.4);
     assert_eq!(lexical.mode, Mode::Composed);
 }
 

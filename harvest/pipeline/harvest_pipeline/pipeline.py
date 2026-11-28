@@ -107,13 +107,17 @@ def build(corpus: Corpus, profile: Profile, out_dir: Path | None = None, release
     stage, info = build_stage(corpus, work_dir(corpus, profile) / "stage.sqlite", log=log)
     reports = enrich(corpus, profile, stage, offline=True, log=log)
     missing = {r.task: r.author_missing + r.judge_missing for r in reports if r.author_missing + r.judge_missing}
+    from .contract import app_meta
+    extra_meta, meta_problems = app_meta(corpus.dir, corpus.raw.get("pack_meta"), stage)
+    if meta_problems:
+        raise SystemExit("pack_meta: " + "; ".join(meta_problems[:20]))
     emb_cfg = embedder_cfg if embedder_cfg is not None else corpus.raw.get("embedder")
     embedder = make_embedder(emb_cfg)
     try:
         res = write_pack(stage, out_dir or default_out_dir(corpus, profile), corpus.pack_id, corpus.version,
                          corpus.corpus_id, embedder, release=release,
                          bake_backends={"author": spec_of(profile.author), "judge": spec_of(profile.judge)},
-                         lang=corpus.lang)
+                         lang=corpus.lang, extra_meta=extra_meta)
     finally:
         embedder.close()
     res["cache_misses"] = missing

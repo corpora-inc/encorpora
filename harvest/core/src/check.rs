@@ -3,7 +3,8 @@
 //! - every `quote` is an exact substring of its section's text after
 //!   whitespace normalization, and its section exists;
 //! - every `cite` names an existing section, every `diagram` an existing
-//!   diagram;
+//!   diagram; a `check` (a lesson self-check) needs a question and an answer,
+//!   stands alone, and is dropped in strict mode;
 //! - a paragraph is a run of `text` segments followed by the `quote` / `cite`
 //!   / `diagram` segments after them; a paragraph with no surviving quote or
 //!   cite loses its text (an unsupported claim);
@@ -119,6 +120,14 @@ pub fn check(pack: &Pack, body: &[Segment], opts: CheckOptions) -> Result<(Vec<S
                     valid.push(seg.clone());
                 }
             }
+            // Baked lessons carry self-checks; a model-composed body never may.
+            Segment::Check { question, answer } => {
+                if opts.strict || question.trim().is_empty() || answer.trim().is_empty() {
+                    report.dropped += 1;
+                } else {
+                    valid.push(seg.clone());
+                }
+            }
         }
     }
 
@@ -126,12 +135,18 @@ pub fn check(pack: &Pack, body: &[Segment], opts: CheckOptions) -> Result<(Vec<S
     let mut out: Vec<Segment> = Vec::with_capacity(valid.len());
     let mut i = 0;
     while i < valid.len() {
+        // A self-check stands alone: it ends a paragraph and supports nothing.
+        if matches!(valid[i], Segment::Check { .. }) {
+            out.push(valid[i].clone());
+            i += 1;
+            continue;
+        }
         let start = i;
         while i < valid.len() && matches!(valid[i], Segment::Text { .. }) {
             i += 1;
         }
         let text_end = i;
-        while i < valid.len() && !matches!(valid[i], Segment::Text { .. }) {
+        while i < valid.len() && !matches!(valid[i], Segment::Text { .. } | Segment::Check { .. }) {
             i += 1;
         }
         let para = &valid[start..i];
@@ -211,7 +226,17 @@ fn strict_paragraph(
     let mut kept_texts = Vec::new();
     let mut inserted = Vec::new();
     for t in texts {
-        let Segment::Text { text } = t else { continue };
+        let Segment::Text { text: shown } = t else {
+            continue;
+        };
+        // A leading "Yes," / "No," is the verdict; the claim after it is what
+        // the sources must support. A bare "Yes." or "No." states nothing the
+        // checker can hold to a source, so it never stands alone.
+        let text = &strip_verdict(shown);
+        if text.trim().is_empty() {
+            report.dropped += 1;
+            continue;
+        }
         let numbers = text_numbers(text);
         if numbers.iter().any(|n| !source_numbers.contains(n)) {
             report.dropped += 1; // a number no source states
@@ -287,6 +312,22 @@ const DISCOURSE: &[&str] = &[
 
 fn is_number(t: &str) -> bool {
     t.chars().next().is_some_and(|c| c.is_ascii_digit())
+}
+
+/// `text` without a leading yes/no verdict ("No, the rule…" → "the rule…").
+fn strip_verdict(text: &str) -> String {
+    let t = text.trim_start();
+    for v in ["yes", "no"] {
+        if t.len() >= v.len() && t[..v.len()].eq_ignore_ascii_case(v) {
+            let rest = &t[v.len()..];
+            if rest.is_empty() || rest.starts_with([',', '.', ';', ':', '!', ' ', '—', '-']) {
+                return rest
+                    .trim_start_matches([',', '.', ';', ':', '!', ' ', '—', '-'])
+                    .to_string();
+            }
+        }
+    }
+    t.to_string()
 }
 
 /// Every number in `text` (number words already turned into digits). Each

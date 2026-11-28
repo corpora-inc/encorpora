@@ -139,6 +139,25 @@ def cmd_verify(a):
     return 1 if problems else 0
 
 
+def cmd_showcheck(a):
+    from .showcheck import showcheck
+    data, problems = showcheck(Path(a.pack_dir), a.harvest, a.pubkey, app_data=a.app_data)
+    if a.out:
+        Path(a.out).write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")) + "\n")
+    counts = {k: len(v) for k, v in data.items() if isinstance(v, (list, dict)) and k != "info"}
+    print(json.dumps({"ok": not problems, "read": counts, "problems": problems[:50]}, indent=1))
+    return 1 if problems else 0
+
+
+def cmd_pubkey(a):
+    """The configured signing key's public half (base64), for the reader that must trust it."""
+    from .sign import load_private_key, public_raw
+    k = load_private_key()
+    if k is None:
+        raise SystemExit("no signing key: set HARVEST_SIGNING_KEY or HARVEST_SIGNING_KEY_FILE")
+    print(base64.b64encode(public_raw(k.public_key())).decode())
+
+
 def cmd_keygen(a):
     from cryptography.hazmat.primitives import serialization
     from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
@@ -168,6 +187,28 @@ def cmd_tasks(a):
         for m in load_corpus(a.corpus).task_modules:
             load_task_module(m)
     print("\n".join(task_names()))
+
+
+def cmd_course_skeleton(a):
+    from .course import problems, skeleton
+    bp = Path(a.blueprint)
+    existing = None
+    if a.existing and Path(a.existing).exists():
+        existing = [json.loads(x) for x in Path(a.existing).read_text().splitlines() if x.strip()]
+    rows = skeleton(bp, Path(a.content) if a.content else bp.parent, a.title, existing)
+    text = "".join(json.dumps(r, ensure_ascii=False, sort_keys=True) + "\n" for r in rows)
+    if a.out:
+        Path(a.out).parent.mkdir(parents=True, exist_ok=True)
+        Path(a.out).write_text(text)
+    else:
+        sys.stdout.write(text)
+    for p in problems(bp):
+        print(f"course-skeleton: {p}", file=sys.stderr)
+    levels = {}
+    for r in rows:
+        levels[r["level"]] = levels.get(r["level"], 0) + 1
+    written = sum(1 for r in rows if any(r[k] for k in ("hard", "mistakes", "exam")))
+    print(f"course-skeleton: {len(rows)} nodes {levels}; {written} with text beyond a summary", file=sys.stderr)
 
 
 def main(argv=None) -> int:
@@ -223,9 +264,25 @@ def main(argv=None) -> int:
     s.add_argument("pack_dir")
     s.add_argument("--pubkey")
     s.set_defaults(fn=cmd_verify)
+    s = sub.add_parser("showcheck", help="read every table back through harvest-core (harvest show)")
+    s.add_argument("pack_dir")
+    s.add_argument("--harvest", default="harvest", help="the harvest-core CLI binary")
+    s.add_argument("--pubkey", required=True)
+    s.add_argument("--app-data", action="store_true", help="also require exams, prereqs and starters")
+    s.add_argument("--out", help="write everything read as one JSON file (harvest-show/1)")
+    s.set_defaults(fn=cmd_showcheck)
+    s = sub.add_parser("pubkey", help="print the signing key's public half (base64)")
+    s.set_defaults(fn=cmd_pubkey)
     s = sub.add_parser("keygen")
     s.add_argument("path")
     s.set_defaults(fn=cmd_keygen)
+    s = sub.add_parser("course-skeleton", help="course-tree nodes from the blueprint and content files (JSONL)")
+    s.add_argument("blueprint")
+    s.add_argument("--content", help="content dir (default: the blueprint's dir)")
+    s.add_argument("--title", default="Course")
+    s.add_argument("--existing", help="a tree JSONL whose node text, quotes and films are kept")
+    s.add_argument("--out")
+    s.set_defaults(fn=cmd_course_skeleton)
     s = sub.add_parser("tasks")
     s.add_argument("corpus", nargs="?")
     s.set_defaults(fn=cmd_tasks)

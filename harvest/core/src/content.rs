@@ -464,8 +464,10 @@ impl Pack {
                                 choices.len()
                             )));
                         }
-                        "numeric" if answer.trim().parse::<f64>().is_err() => {
-                            return Err(bad(format!("numeric answer {answer:?} is not a number")));
+                        "numeric" if crate::grade::parse_numeric_key(&answer).is_none() => {
+                            return Err(bad(format!(
+                                "numeric answer {answer:?} is not a number or number±tolerance"
+                            )));
                         }
                         "free_text" => {
                             crate::grade::Rubric::parse(&answer)

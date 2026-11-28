@@ -159,6 +159,84 @@ def test_workflow_change_runs_every_job(tmp_path, repo, event):
     assert on(values) >= (AREAS - {'shared_ts'}) | {'amp_core', 'amp_database', 'amp_build'}
 
 
+WORKFLOW_TEXT = (ROOT / '.github/workflows/ci.yml').read_text()
+
+
+def edit_job(text, job, old, new):
+    """`text` with `old` replaced by `new` inside one job's block only."""
+    start = text.index(f'\n  {job}:\n')
+    end = re.compile(r'^  [A-Za-z0-9_-]+:\s*$', re.M).search(text, start + 2 + len(job) + 2)
+    end = end.start() if end else len(text)
+    block = text[start:end]
+    assert block.count(old) == 1, (job, old)
+    return text[:start] + block.replace(old, new) + text[end:]
+
+
+def commit_workflow(repo, text):
+    path = repo.path / '.github/workflows/ci.yml'
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(text)
+    repo.git('add', '-A')
+    repo.git('commit', '-q', '-m', 'workflow')
+    return repo.git('rev-parse', 'HEAD')
+
+
+@pytest.mark.parametrize('event', ['pull_request', 'merge_group', 'push'])
+def test_editing_one_job_runs_that_job_and_the_workflow_tests(tmp_path, repo, event):
+    base = commit_workflow(repo, WORKFLOW_TEXT)
+    head = commit_workflow(repo, edit_job(WORKFLOW_TEXT, 'dja', 'runs-on: ubuntu-24.04',
+                                          'runs-on: ubuntu-24.04\n    env:\n      PROBE: "1"'))
+    values = repo.select(tmp_path, event, base, head)
+    assert on(values) == {'dja', 'ci_scripts'}
+
+
+def test_a_job_selects_every_area_it_reads(tmp_path, repo):
+    base = commit_workflow(repo, WORKFLOW_TEXT)
+    # web-io reads `web` in its `if:` and `amp_ads` in two steps.
+    head = commit_workflow(repo, edit_job(WORKFLOW_TEXT, 'web-io', 'runs-on: ubuntu-24.04',
+                                          'runs-on: ubuntu-24.04\n    env:\n      PROBE: "1"'))
+    values = repo.select(tmp_path, 'pull_request', base, head)
+    assert on(values) == {'web', 'amp_ads', 'ci_scripts'}
+
+
+def test_editing_an_area_filter_runs_that_area(tmp_path, repo):
+    base = commit_workflow(repo, WORKFLOW_TEXT)
+    head = commit_workflow(repo, edit_job(WORKFLOW_TEXT, 'changes', "set_output dja '^(corpan/dja/",
+                                          "set_output dja '^(corpan/dja/|corpan/dja-next/"))
+    values = repo.select(tmp_path, 'merge_group', base, head)
+    assert on(values) == {'dja', 'ci_scripts'}
+
+
+def test_a_comment_in_the_detection_step_runs_only_the_workflow_tests(tmp_path, repo):
+    base = commit_workflow(repo, WORKFLOW_TEXT)
+    head = commit_workflow(repo, edit_job(WORKFLOW_TEXT, 'changes', "          set_output dja '",
+                                          "          # A note.\n          set_output dja '"))
+    values = repo.select(tmp_path, 'pull_request', base, head)
+    assert on(values) == {'ci_scripts'}
+
+
+@pytest.mark.parametrize('event', ['pull_request', 'merge_group'])
+def test_editing_an_amp_job_keeps_full_amp_validation(tmp_path, repo, event):
+    base = commit_workflow(repo, WORKFLOW_TEXT)
+    head = commit_workflow(repo, edit_job(WORKFLOW_TEXT, 'amp-database', 'runs-on: ubuntu-24.04',
+                                          'runs-on: ubuntu-24.04\n    concurrency: probe'))
+    values = repo.select(tmp_path, event, base, head)
+    assert {'amp', 'amp_core', 'amp_database', 'amp_build', 'ci_scripts'} <= on(values)
+    assert not on(values) & (OTHER - {'ci_scripts'})
+
+
+@pytest.mark.parametrize('old, new', [
+    ("npm_config_fetch_retries: '2'", "npm_config_fetch_retries: '3'"),  # workflow env
+    ('          plan_args=(--github)', '          plan_args=(--github --full)'),  # detection logic
+])
+def test_editing_shared_workflow_parts_runs_every_job(tmp_path, repo, old, new):
+    base = commit_workflow(repo, WORKFLOW_TEXT)
+    assert WORKFLOW_TEXT.count(old) == 1
+    head = commit_workflow(repo, WORKFLOW_TEXT.replace(old, new))
+    values = repo.select(tmp_path, 'pull_request', base, head)
+    assert on(values) >= (AREAS - {'shared_ts'}) | {'amp_core', 'amp_database', 'amp_build'}
+
+
 @pytest.mark.parametrize('event', ['merge_group', 'push'])
 def test_unrelated_or_missing_base_runs_every_job(tmp_path, repo, event):
     repo.git('checkout', '-q', '-b', 'other')

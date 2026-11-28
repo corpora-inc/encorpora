@@ -1,0 +1,443 @@
+[
+ {
+  "lesson_id": "l.access-fall.01",
+  "topic_id": "access-fall",
+  "ord": 1,
+  "title": "Boom walkways: when required, width and railings",
+  "skills": [
+   "access.walkways-steps"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "A **boom walkway** is a flat surface built along a lattice boom so a worker can move along it without stepping on lacing or chords. Lacing is narrow and round, so a missed step means a fall. The walkway rule covers all equipment in the subpart except tower cranes."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1423(a)(1)"
+   },
+   {
+    "t": "text",
+    "text": "Two conditions together trigger the requirement: the machine was built after the date in the rule, and the lattice boom has a **vertical profile** of 6 feet or more. Measure the profile from chord centerline to chord centerline, top chord to bottom chord."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1423(b)(1)",
+    "text": "Equipment manufactured after November 8, 2011 with lattice booms must be equipped with walkways on the boom(s) if the vertical profile of the boom (from cord centerline to cord centerline) is 6 or more feet."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1423(b)(2)(i)",
+    "text": "The walkways must be at least 12 inches wide."
+   },
+   {
+    "t": "text",
+    "text": "The rule does not require guardrails along the walkway. In some cases it prohibits them, because a rail that snags a pendant or gets taken off at every assembly causes more trouble than it prevents."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1423(b)(2)(ii)(A)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1423(b)(2)(ii)(B)",
+    "text": "Prohibited on booms supported by pendant ropes or bars if the guardrails/railings/attachments could be snagged by the ropes or bars."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1423(b)(2)(ii)(C)",
+    "text": "Prohibited if of the removable type (designed to be installed and removed each time the boom is assembled/disassembled)."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1423(b)(2)(ii)(D)",
+    "text": "Where not prohibited, guardrails or railings may be of any height up to, but not more than, 45 inches."
+   },
+   {
+    "t": "text",
+    "text": "Summary:\n- Lattice boom, built after November 8, 2011, profile 6 ft or more: walkway required.\n- Width: at least 12 in.\n- Rails: optional. Not allowed if pendants could snag them or if they are the removable type. Never more than 45 in high.\n- A walkway is not fall protection. Whether a worker on the walkway must tie off depends on the thresholds in a later lesson."
+   },
+   {
+    "t": "check",
+    "question": "A lattice boom built in 2015 measures 5 ft from chord centerline to chord centerline. Is a walkway required?",
+    "answer": "No. The requirement starts at a vertical profile of 6 ft or more."
+   },
+   {
+    "t": "check",
+    "question": "May a pendant-supported boom carry a 42 in railing that the pendants could catch on?",
+    "answer": "No. Railings that the pendant ropes or bars could snag are prohibited, whatever their height."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "f307ebb3c5d78bbc6efc",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "2fa31e57593ea739258440b218f72a1934bae1fa4c18a56ab63087e087468c43",
+   "output_sha256": "ce3cba357cee5d91d71722a88b021e0bce1f39dd55baf15a5bcf9effdff27e0e",
+   "created_at": "2026-11-27T22:29:16+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.access-fall.02",
+  "topic_id": "access-fall",
+  "ord": 2,
+  "title": "Steps, handholds and ladders to the operator station",
+  "skills": [
+   "access.walkways-steps"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Most falls from cranes happen while workers climb on or off the machine, not during lifts. For that reason the rules require a built-in **access and egress** path from the ground to every operator station on newer machines, and they require that existing devices be kept in good condition on every machine."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1423(c)(3)",
+    "text": "Equipment manufactured after November 8, 2011 must be equipped so as to provide safe access and egress between the ground and the operator work station(s), including the forward and rear positions, by the provision of devices such as steps, handholds, ladders, and guardrails/railings/grabrails."
+   },
+   {
+    "t": "text",
+    "text": "These devices must meet a named design standard (SAE J185 or ISO 11660-2) except where that is infeasible. Every walking or stepping surface except crawler treads must be slip-resistant."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1423(c)(3)(i)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1423(c)(3)(ii)",
+    "text": "Walking/stepping surfaces, except for crawler treads, must have slip-resistant features/properties (such as diamond plate metal, strategically placed grip tape, expanded metal, or slip-resistant paint)."
+   },
+   {
+    "t": "text",
+    "text": "On **tower cranes** built after the same date, the access path runs from the ground to the cab, the machinery platforms and the mast. Those devices must meet ISO 11660-1 and 11660-3 or SAE J185, and all walking surfaces must be slip-resistant, with no crawler-tread exception."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1423(c)(4)"
+   },
+   {
+    "t": "text",
+    "text": "The maintenance duty applies to all equipment, whatever its age. Bent steps, loose handholds and missing grabrails must be repaired."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1423(c)(2)",
+    "text": "The employer must maintain in good condition originally-equipped steps, handholds, ladders and guardrails/railings/grabrails."
+   },
+   {
+    "t": "text",
+    "text": "The general guardrail section of the construction fall protection rules does not govern this equipment."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1423(c)(1)",
+    "text": "Section 1926.502(b) does not apply to equipment covered by this subpart."
+   },
+   {
+    "t": "text",
+    "text": "Field practice (not stated in the rule):\n- Keep three points of contact and face the machine when you climb.\n- Do not jump down from the deck or the tracks.\n- Keep your hands free. Raise tools with a line.\n- Clean mud, ice and grease off steps before you use them."
+   },
+   {
+    "t": "check",
+    "question": "Do crawler treads need slip-resistant surfacing under the access rule?",
+    "answer": "No. Crawler treads are the stated exception."
+   },
+   {
+    "t": "check",
+    "question": "A 2005 crane has a cracked handhold. Does the rule require a repair even though the machine predates November 8, 2011?",
+    "answer": "Yes. The duty to maintain originally-equipped devices applies to all equipment."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "f307ebb3c5d78bbc6efc",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "2fa31e57593ea739258440b218f72a1934bae1fa4c18a56ab63087e087468c43",
+   "output_sha256": "ce3cba357cee5d91d71722a88b021e0bce1f39dd55baf15a5bcf9effdff27e0e",
+   "created_at": "2026-11-27T22:29:16+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.access-fall.03",
+  "topic_id": "access-fall",
+  "ord": 3,
+  "title": "Fall protection thresholds: 6 ft and 15 ft",
+  "skills": [
+   "access.fall-protection-thresholds"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Whether fall protection is required depends on three things: the type of work, where the worker is, and what the worker is doing. For non-assembly/disassembly work on equipment other than tower cranes, the base trigger is an **unprotected side or edge** more than 6 ft above a lower level."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1423(e)",
+    "text": "For non-assembly/disassembly work, the employer must provide and ensure the use of fall protection equipment for employees who are on a walking/working surface with an unprotected side or edge more than 6 feet above a lower level as follows:"
+   },
+   {
+    "t": "text",
+    "text": "**Moving point-to-point** means traveling from one spot to another. The rule depends on the boom type:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1423(e)(1)(i)",
+    "text": "On non-lattice booms (whether horizontal or not horizontal)."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1423(e)(1)(ii)",
+    "text": "On lattice booms that are not horizontal."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1423(e)(1)(iii)",
+    "text": "On horizontal lattice booms where the fall distance is 15 feet or more."
+   },
+   {
+    "t": "text",
+    "text": "A **work station** is a spot where the worker stops to do a task. There, any part of the equipment triggers the requirement, with three named exceptions."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1423(e)(2)",
+    "text": "While at a work station on any part of the equipment (including the boom, of any type), except when the employee is at or near draw-works (when the equipment is running), in the cab, or on the deck."
+   },
+   {
+    "t": "text",
+    "text": "For assembly/disassembly work the trigger is more than 15 ft, with the same three exceptions."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1423(f)"
+   },
+   {
+    "t": "text",
+    "text": "Tower cranes have their own rules. For ordinary work the trigger is more than 6 ft, with the draw-works, cab and deck exceptions. For erecting, climbing and dismantling it is more than 15 ft, and the rule lists no exceptions."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1423(h)"
+   },
+   {
+    "t": "text",
+    "text": "Worked examples, non-assembly work:\n- Walking a telescopic boom 8 ft up: required, because it is a non-lattice boom and more than 6 ft.\n- Walking a horizontal lattice boom with a 10 ft fall distance: not required while moving, because the fall distance is under 15 ft.\n- Stopping on that same boom at 10 ft to grease a sheave: required, because it is a work station more than 6 ft up.\n- Walking a raised lattice boom at 8 ft: required, because the boom is not horizontal."
+   },
+   {
+    "t": "check",
+    "question": "A worker walks a horizontal lattice boom with a 15 ft fall distance during routine (non-assembly) work. Is fall protection required?",
+    "answer": "Yes. On horizontal lattice booms the trigger for moving point-to-point is 15 ft or more."
+   },
+   {
+    "t": "check",
+    "question": "Which three locations are excepted at a work station?",
+    "answer": "At or near the draw-works while the equipment is running, in the cab, and on the deck."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "f307ebb3c5d78bbc6efc",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "2fa31e57593ea739258440b218f72a1934bae1fa4c18a56ab63087e087468c43",
+   "output_sha256": "ce3cba357cee5d91d71722a88b021e0bce1f39dd55baf15a5bcf9effdff27e0e",
+   "created_at": "2026-11-27T22:29:16+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.access-fall.04",
+  "topic_id": "access-fall",
+  "ord": 4,
+  "title": "Anchorages and the load-line rule",
+  "skills": [
+   "access.anchorages"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Fall protection works only if the harness or belt, the connectors and the **anchorage** all hold. System components must meet § 1926.502(d), except the anchorage paragraph (d)(15), which this section handles separately."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1423(d)",
+    "text": "Either body belts or body harnesses must be used in personal fall arrest and fall restraint systems."
+   },
+   {
+    "t": "text",
+    "text": "**Personal fall arrest** stops a fall that has already started. For this system, any apparently substantial part of the equipment can serve as the anchorage. A competent person can rule a point out by visual inspection, without an engineering analysis."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1423(g)(2)(i)",
+    "text": "Personal fall arrest systems must be anchored to any apparently substantial part of the equipment unless a competent person, from a visual inspection, without an engineering analysis, would conclude that the criteria in § 1926.502(d)(15) would not be met."
+   },
+   {
+    "t": "text",
+    "text": "**Positioning device systems** follow the same test against § 1926.502(e)(2). Portable anchor devices clamped onto the machine get no visual-inspection allowance and must meet the anchorage criteria in full."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1423(g)(2)(ii)"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1423(g)(2)(iii)",
+    "text": "Attachable anchor devices (portable anchor devices that are attached to the equipment) must meet the anchorage criteria in § 1926.502(d)(15) for personal fall arrest systems and § 1926.502(e)(2) for positioning device systems."
+   },
+   {
+    "t": "text",
+    "text": "**Fall restraint** keeps the worker from reaching the edge at all. Its anchorage must hold twice the maximum load the worker could put on it."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1423(g)(3)",
+    "text": "Fall restraint systems must be anchored to any part of the equipment that is capable of withstanding twice the maximum load that an employee may impose on it during reasonably anticipated conditions of use."
+   },
+   {
+    "t": "text",
+    "text": "**Load line.** The hook moves when the operator moves it, so tying off to it is allowed only for personal fall arrest and only when all three conditions are met:"
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1423(j)(1)",
+    "text": "A qualified person has determined that the set-up and rated capacity of the crane/derrick (including the hook, load line and rigging) meets or exceeds the requirements in § 1926.502(d)(15)."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1423(j)(2)",
+    "text": "The equipment operator must be at the work site and informed that the equipment is being used for this purpose."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1423(j)(3)",
+    "text": "No load is suspended from the load line when the personal fall arrest system is anchored to the crane/derrick's hook (or other part of the load line)."
+   },
+   {
+    "t": "text",
+    "text": "Field practice: before anyone ties off to the hook, the operator and the worker agree on who controls the hoist and swing. Lock the controls or keep hands off them until the worker unhooks."
+   },
+   {
+    "t": "check",
+    "question": "Can a worker tie off to the hook while a bundle of rebar hangs from it, if a qualified person approved the setup?",
+    "answer": "No. No load may be suspended from the load line while it is used as an anchorage."
+   },
+   {
+    "t": "check",
+    "question": "Can a competent person accept a clamp-on portable anchor by visual inspection alone?",
+    "answer": "No. Attachable anchor devices must meet the anchorage criteria in full."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "f307ebb3c5d78bbc6efc",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "2fa31e57593ea739258440b218f72a1934bae1fa4c18a56ab63087e087468c43",
+   "output_sha256": "ce3cba357cee5d91d71722a88b021e0bce1f39dd55baf15a5bcf9effdff27e0e",
+   "created_at": "2026-11-27T22:29:16+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ },
+ {
+  "lesson_id": "l.access-fall.05",
+  "topic_id": "access-fall",
+  "ord": 5,
+  "title": "Maintenance and inspection at height: applying the rules",
+  "skills": [
+   "access.maintenance",
+   "access.fall-protection-thresholds",
+   "access.anchorages"
+  ],
+  "body": [
+   {
+    "t": "text",
+    "text": "Inspectors, mechanics and oilers work at height on the machine more often than anyone else, for example at boom tip sheaves, gantries, A-frames, mast sections and the tops of counterweights. Wherever they stop to work is a **work station**, so the 6 ft trigger applies on any part of the equipment, including any boom."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1423(e)(2)",
+    "text": "While at a work station on any part of the equipment (including the boom, of any type), except when the employee is at or near draw-works (when the equipment is running), in the cab, or on the deck."
+   },
+   {
+    "t": "text",
+    "text": "The exceptions are named places and should be read narrowly. Standing on the cab roof is not \"in the cab\". The draw-works exception applies only while the equipment is running."
+   },
+   {
+    "t": "text",
+    "text": "Before climbing:\n- Confirm whether the task counts as assembly/disassembly (trigger more than 15 ft) or other work (trigger more than 6 ft).\n- Choose arrest, positioning or restraint, and pick the anchorage point before going up.\n- Do not use the hook as an anchor unless all three load-line conditions are met.\n- Check the steps, handholds and ladders on the way up. Report any damage so it can be repaired."
+   },
+   {
+    "t": "cite",
+    "section_id": "29cfr1926.1423(c)(2)"
+   },
+   {
+    "t": "text",
+    "text": "Field practice (not stated in the rule): when possible, lower the boom onto blocking so tip work is done near the ground. Shut down and secure the machine before anyone climbs onto moving parts. Tell the operator before anyone climbs."
+   },
+   {
+    "t": "text",
+    "text": "**Training** is required for anyone who may be exposed to fall hazards on the equipment or while hoisted by it. It covers the fall protection requirements of this subpart and the applicable parts of §§ 1926.500 and 1926.502."
+   },
+   {
+    "t": "quote",
+    "section_id": "29cfr1926.1423(k)",
+    "text": "The employer must train each employee who may be exposed to fall hazards while on, or hoisted by, equipment covered by this subpart on all of the following:"
+   },
+   {
+    "t": "text",
+    "text": "Common mistakes:\n- Treating a boom walkway as fall protection. Rails are optional, and tie-off still depends on the thresholds.\n- Applying the 15 ft horizontal-lattice rule to a worker who has stopped to work. That rule covers only moving point-to-point.\n- Tying off to the hook with a load on it, or without telling the operator.\n- Clipping a portable anchor on without confirming that it meets the anchorage criteria.\n- Using the assembly 15 ft trigger for routine maintenance."
+   },
+   {
+    "t": "check",
+    "question": "An inspector stops 9 ft up on a horizontal lattice boom to check a sheave during routine work. Is fall protection required?",
+    "answer": "Yes. At a work station the trigger is more than 6 ft on any boom type."
+   },
+   {
+    "t": "check",
+    "question": "Does the cab exception cover a mechanic working on the cab roof?",
+    "answer": "No. The exception covers being in the cab, not on top of it."
+   }
+  ],
+  "lang": "en",
+  "prov": {
+   "prov_id": "f307ebb3c5d78bbc6efc",
+   "backend": "claude-cli",
+   "model": "claude-opus-5-5",
+   "prompt_id": "lessons",
+   "prompt_version": "1",
+   "prompt_sha256": "2bc11faedadfec3eb34f505a6f42629e9ab0f0f577ba8177b2fb4ed65ac037d5",
+   "input_sha256": "2fa31e57593ea739258440b218f72a1934bae1fa4c18a56ab63087e087468c43",
+   "output_sha256": "ce3cba357cee5d91d71722a88b021e0bce1f39dd55baf15a5bcf9effdff27e0e",
+   "created_at": "2026-11-27T22:29:16+00:00",
+   "verifier": "crane-content/verify v1 (exact substring of eCFR text, typography repair)",
+   "verdict": "pass",
+   "notes": null
+  }
+ }
+]

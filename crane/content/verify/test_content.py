@@ -49,6 +49,19 @@ class Blueprint(unittest.TestCase):
                 used.add(ref)
         self.assertEqual(sorted(set(outline) - used), [], "outline items with no skill")
 
+    def test_exams_json_matches_blueprint_and_handbook(self):
+        """The mock exam and the instructor read exams.json; it must say what the handbook says."""
+        exams = {e["id"]: e for e in json.loads((CONTENT / "exams.json").read_text())}
+        for e in BLUEPRINT["exams"]:
+            if not e.get("outline"):
+                continue
+            j = exams[e["exam_id"]]
+            self.assertEqual(j["items"], e["items"], e["exam_id"])
+            self.assertEqual(sum(d["count"] for d in j["domains"]), e["items"], e["exam_id"])
+            self.assertEqual(j["minutes"], e["minutes"])
+            self.assertEqual({d["id"]: d["weight"] for d in j["domains"]}, {d["domain_id"]: d["weight"] for d in e["domains"]})
+            self.assertEqual(j["source"]["edition"], BLUEPRINT["exam_source"]["edition"])
+
     def test_domain_weights_sum_to_one(self):
         for e in BLUEPRINT["exams"]:
             self.assertAlmostEqual(sum(d["weight"] for d in e["domains"]), 1.0, places=6, msg=e["exam_id"])
@@ -217,6 +230,14 @@ class Writers(unittest.TestCase):
         self.b.intent_check(rows, stats)
         self.assertIn("duplicate intent of a1", rows[1]["prov"]["notes"] or "")
         self.assertNotIn("duplicate intent of a2", rows[2]["prov"]["notes"] or "")
+
+    def test_meta_language(self):
+        m = self.b.meta_language
+        self.assertTrue(m("Does the supplied federal rule say to use the next longer radius?"))
+        self.assertTrue(m("The next-longer-radius method cannot be established from this paragraph alone."))
+        self.assertTrue(m("The rule text used here sets no minimum angle."))
+        self.assertEqual(m("The federal rules set no minimum sling angle.", "Use the next longer radius (practice)."), [])
+        self.assertEqual(m("The utility must provide the requested voltage information."), [])
 
     def test_key_stands_out(self):
         self.assertTrue(self.b.key_stands_out(["short", "tiny", "a much longer and more qualified correct answer", "small"], 2))

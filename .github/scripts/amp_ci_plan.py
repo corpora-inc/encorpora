@@ -30,6 +30,9 @@ NATIVE = ('amp/mobile/', 'amp/src/web/native-', 'amp/src/web/Native',
 ORACLE = re.compile(r'amp/scripts/(independent-math-review|[a-z0-9_]+_oracle)\.py')
 SMOKE_CORE = ('tests/contracts.test.ts', 'tests/brand.test.ts', 'tests/test-suite.test.ts')
 COMPLETENESS_TEST = 'tests/problem-type-complete.test.ts'
+# Reads the whole migrations directory: two PRs that each take the next number
+# pass alone, and only the second's queue entry holds both files (#2586).
+MIGRATION_NAMES_TEST = 'tests/migration-names.test.ts'
 PROTECTED_DATABASE = {
     'amp/src/access-grants/': ('access-grants',),
     'amp/src/billing/': ('stripe', 'purchase-consent'),
@@ -287,6 +290,8 @@ def plan(paths, root=ROOT, full=False, quick=False):
         # queue candidate, including oracle-, test- and documentation-only edits.
         if result['affected']:
             changed['core'].append(COMPLETENESS_TEST)
+        if any(p.startswith('amp/migrations/') for p in paths):
+            changed['core'].append(MIGRATION_NAMES_TEST)
         api_changed = any(p.startswith(('amp/src/server/', 'amp/migrations/')) for p in paths)
         if api_changed:
             changed['database'].extend(['tests/database.integration.ts', 'tests/starter.integration.ts'])

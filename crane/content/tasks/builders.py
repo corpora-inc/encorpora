@@ -66,12 +66,22 @@ def procedures_inputs():
 
 def procedures_write(task, items):
     stats = {"procedures": 0, "steps": 0, "quotes_ok": 0, "quotes_repaired": 0, "failures": []}
+    citations = load_yaml(HERE / "procedures" / "citations.yaml") or {}
     for it in items:
         rec = task.cached(it)
         if not rec:
             continue
         out = json.loads(json.dumps(rec["output"]))
         b = it["meta"]
+        patched = []
+        for n, s in enumerate(out["steps"], 1):
+            fix = citations.get(b["proc_id"], {}).get(n)
+            d = s.get("deficiency")
+            if fix and d and not (d.get("section_id") and d.get("quote")):
+                d.update(section_id=fix["section_id"], quote=fix["quote"])
+                patched.append(n)
+                if fix["section_id"] not in s["section_ids"]:
+                    s["section_ids"] = [*s["section_ids"], fix["section_id"]]
         ok, rep, errs = repair_quotes(out)
         steps = []
         for n, s in enumerate(out["steps"], 1):
@@ -79,13 +89,19 @@ def procedures_write(task, items):
             if bad:
                 errs.append(f"step {n}: unknown ids {bad}")
             d = s.get("deficiency")
-            if d and not s.get("practice_only") and s["check_kind"] in ("pass_fail", "value") and not (d.get("section_id") and d.get("quote")):
+            if d and not s.get("practice_only") and not (d.get("section_id") and d.get("quote")):
+                # a rule step's deficiency cites its rule; only a practice step's may cite nothing
+                # (CONTRACT "Procedure step deficiency": basis practice). Add a citation that exists
+                # to procedures/citations.yaml.
                 errs.append(f"step {n}: deficiency without citation")
             steps.append({"ord": n, **s})
         verdict = "pass" if not errs else "fail"
         doc = {"proc_id": b["proc_id"], "title": out["title"], "kind": b["kind"], "summary": out["summary"],
                "roles": out["roles"], "lang": "en", "section_ids": b["section_ids"], "steps": steps,
-               "prov": provenance(rec, VERIFIER, verdict, "; ".join(errs) or None)}
+               "prov": provenance(rec, VERIFIER, verdict, "; ".join(
+                   errs + ([f"deficiency citations for steps {', '.join(map(str, patched))} from "
+                            "tasks/procedures/citations.yaml (hand-added; the model output left them null)"]
+                           if patched else [])) or None)}
         _dump_yaml(CONTENT / "procedures" / f"{b['proc_id']}.yaml", doc)
         stats["procedures"] += 1
         stats["steps"] += len(steps)
@@ -177,6 +193,17 @@ def questions_inputs():
     return items
 
 
+# The writer must sound like the reference, not like a model describing its prompt.
+META = re.compile(r"\b(supplied|provided|given|quoted) (federal )?(rule|rules|text|paragraph|paragraphs|section|sections|excerpt|passage)s?\b"
+                  r"|\b(this|the) (paragraph|excerpt|passage|text) (alone|used here|given|provided|supplied|shown|above)\b"
+                  r"|\btext (used|given|shown) here\b|\baccording to the text\b", re.I)
+
+
+def meta_language(*texts) -> list[str]:
+    hits = [m.group(0) for t in texts if t for m in [META.search(t)] if m]
+    return [f"refers to its prompt: {hits[0]!r}"] if hits else []
+
+
 def key_stands_out(choices: list[str], answer: int) -> bool:
     """The key gives itself away by length: over 1.5x the longest distractor and 20+ chars longer."""
     key = len(choices[answer])
@@ -214,6 +241,7 @@ def questions_write(task, items):
                     e2.append("bad answer/rationales")
                 elif key_stands_out(ch, item["answer"]):
                     e2.append("key conspicuously longest")
+                e2 += meta_language(item["stem"], *ch, *item["rationales"])
                 p = perm(item["stem"], 4)
                 choices = [ch[i] for i in p]
                 rats = [item["rationales"][i] for i in p]
@@ -285,6 +313,7 @@ def answers_write(task, items):
             ok, rep, errs = repair_quotes(a["body"])
             errs += segments_ok(a["body"])
             errs += direct_answer_first(a["question"], a["body"])
+            errs += meta_language(a["question"], *[s.get("text") for s in a["body"] if s.get("t") == "text"])
             stats["quotes_ok"] += ok
             stats["quotes_repaired"] += rep
             seen = {norm_key(a["question"])}
@@ -488,7 +517,10 @@ def lessons_write(task, items):
                 stats["failures"].append({f"{topic_id}#{n}": errs})
             lessons.append({"lesson_id": f"l.{topic_id}.{n:02d}", "topic_id": topic_id, "ord": n, "title": les["title"],
                             "skills": les["skills"], "body": les["body"], "lang": "en",
-                            "prov": provenance(rec, VERIFIER, verdict, "; ".join(errs) or None)})
+                            "prov": provenance(rec, VERIFIER, verdict, "; ".join(
+                   errs + ([f"deficiency citations for steps {', '.join(map(str, patched))} from "
+                            "tasks/procedures/citations.yaml (hand-added; the model output left them null)"]
+                           if patched else [])) or None)})
         p = CONTENT / "data" / "lessons" / f"{topic_id}.json"
         p.parent.mkdir(parents=True, exist_ok=True)
         p.write_text(json.dumps(lessons, ensure_ascii=False, indent=1) + "\n")
@@ -545,7 +577,10 @@ def glossary_write(task, items):
             terms[k] = {"term_id": "t." + re.sub(r"[^a-z0-9]+", "-", t["term"].lower()).strip("-") + ("" if t["basis"] == "rule" or k not in terms else ".p"),
                         "term": t["term"], "definition": t["definition"], "aliases": t["aliases"], "basis": t["basis"],
                         "section_id": t["section_id"], "quote": t["quote"], "lang": "en",
-                        "prov": provenance(rec, VERIFIER, verdict, "; ".join(errs) or None)}
+                        "prov": provenance(rec, VERIFIER, verdict, "; ".join(
+                   errs + ([f"deficiency citations for steps {', '.join(map(str, patched))} from "
+                            "tasks/procedures/citations.yaml (hand-added; the model output left them null)"]
+                           if patched else [])) or None)}
     rows = sorted(terms.values(), key=lambda r: r["term"].lower())
     for r in rows:
         stats["terms"] += 1
@@ -584,7 +619,10 @@ def exams_write():
         for d, c in zip(e["domains"], counts):
             ids = [s["skill_id"] for s in sk if any(x.startswith(d["domain_id"] + ".") for x in s.get("exam", []))]
             doms.append({"id": d["domain_id"], "title": d["title"], "weight": d["weight"], "count": c, "skillIds": ids})
-        out.append({"id": e["exam_id"], "title": e["title"], "minutes": e["minutes"], "calculator": e["calculator"],
+        src = bp["exam_source"]
+        out.append({"id": e["exam_id"], "title": e["title"], "items": e["items"], "minutes": e["minutes"], "calculator": e["calculator"],
+                    "source": {"title": src["title"], "edition": src["edition"], "url": src["url"], "sha256": src["sha256"],
+                               "retrieved_at": src["retrieved_at"]},
                     "passPercent": 70, "passPercentNote": "practice target; the certifier reports scaled scores",
                     "domains": doms})
     p = CONTENT / "exams.json"
