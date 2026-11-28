@@ -105,16 +105,27 @@ export function PracticeSession() {
         })}
       </div>
       {answered && (
-        <Panel className={current.correct ? "border-pass" : "border-fail"}>
+        <Panel className={cx("practice-feedback", current.correct ? "border-pass" : "border-fail")}>
           <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
             <h3 className={cx("text-h3", current.correct ? "text-pass" : "text-fail")}>{current.correct ? t("practice.correct") : t("practice.incorrect")}</h3>
             <Button variant="primary" onClick={() => next(e, Date.now(), focus)} autoFocus>
               {t("practice.next")}
             </Button>
           </div>
-          {!current.correct && current.chosen !== null && <p className="m-0 mb-2">{q.rationales[current.chosen]}</p>}
-          <p className="m-0 mb-4">{q.rationales[key]}</p>
-          <div className="flex flex-wrap gap-2">
+          {/* Why the chosen answer is wrong, then why the key is right; the rule is cited with the key's reason, which states it. */}
+          <div className="flex flex-col gap-3">
+            {!current.correct && current.chosen !== null && (
+              <div className="feedback-why">
+                <p className="m-0 text-small font-semibold text-ink-2">{t("practice.yourAnswer", { choice: q.choices[current.chosen] ?? "" })}</p>
+                <p className="m-0 mt-1">{q.rationales[current.chosen]}</p>
+              </div>
+            )}
+            <div className="feedback-why">
+              {!current.correct && <p className="m-0 text-small font-semibold text-ink-2">{t("practice.theAnswer", { choice: q.choices[key] ?? "" })}</p>}
+              <p className="m-0 mt-1">{q.rationales[key]}</p>
+            </div>
+          </div>
+          <div className="mt-4 flex flex-wrap gap-2">
             {q.section_ids.map((id) => (
               <CitePlate key={id} sectionId={id} />
             ))}
@@ -386,6 +397,7 @@ export function ExamResults() {
               <p className="m-0 mb-2 font-semibold">{i + 1}. {q.stem}</p>
               <p className="m-0 text-small"><span className="text-ink-2">{t("exam.yours")}</span> {it.response === null ? t("exam.blank") : q.choices[Number(it.response)]}</p>
               {!it.correct && <p className="m-0 text-small"><span className="text-ink-2">{t("exam.key")}</span> {q.choices[key]}</p>}
+              {!it.correct && it.response !== null && <p className="m-0 mt-2 text-small text-ink-2">{q.rationales[Number(it.response)]}</p>}
               <p className="m-0 my-2 text-small text-ink-2">{q.rationales[key]}</p>
               <div className="flex flex-wrap gap-2">{q.section_ids.map((sid) => <CitePlate key={sid} sectionId={sid} />)}</div>
             </div>

@@ -15,6 +15,7 @@ import { createHash } from "node:crypto";
 import { readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import * as A from "./fixture/authored.mjs";
+import { rationaleProblems } from "../src/engine/rationale.ts";
 
 const input = process.argv[2];
 if (!input) {
@@ -98,7 +99,8 @@ const questions = A.questions.map((q) => {
   q.section_ids.forEach((id) => checkSection(`question ${q.q_id}`, id));
   const k = Number(q.answer);
   if (!Number.isInteger(k) || k < 0 || k >= q.choices.length) fail(`question ${q.q_id}: bad key`);
-  if (q.rationales.length !== q.choices.length) fail(`question ${q.q_id}: one rationale per choice`);
+  // Real feedback for every choice, or the pack does not build.
+  for (const problem of rationaleProblems(q)) fail(`question ${problem}`);
   if (q.variant_of && !A.questions.some((o) => o.q_id === q.variant_of)) fail(`question ${q.q_id}: unknown base ${q.variant_of}`);
   return { ...q, choices: JSON.stringify(q.choices), rationales: JSON.stringify(q.rationales), section_ids: JSON.stringify(q.section_ids), ...L };
 });

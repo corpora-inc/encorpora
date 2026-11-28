@@ -132,6 +132,8 @@ export const en = {
   "practice.choices": "Answer choices",
   "practice.correct": "Correct",
   "practice.incorrect": "Not this one",
+  "practice.yourAnswer": "Why not “{choice}”",
+  "practice.theAnswer": "Why “{choice}”",
   "practice.next": "Next question",
   "practice.meter": "Mastery of {skill}",
   "practice.noAnswers": "Not practiced yet",
