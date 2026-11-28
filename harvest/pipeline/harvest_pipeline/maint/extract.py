@@ -214,9 +214,17 @@ class Arm:
     coords: bool = True
     system_extra: str = ""
 
+    # options that change only how a call is made, never what the model returns
+    TRANSPORT = {"backend", "model", "timeout", "max_week_pct", "concurrency", "min_interval", "retries", "base_url",
+                 "api_key_env", "binary", "workdir", "rate_limits_file"}
+
     @property
     def spec(self) -> str:
-        return f"{self.author['backend']}:{self.author.get('model') or 'default'}" + ("+img" if self.images else "")
+        """The cache identity: backend, model, image or not, and a hash of every option that can change
+        the output (sampling, reasoning, chat-template switches)."""
+        s = f"{self.author['backend']}:{self.author.get('model') or 'default'}" + ("+img" if self.images else "")
+        opts = {k: v for k, v in self.author.items() if k not in self.TRANSPORT}
+        return s + (f"#{sha256_json(opts)[:8]}" if opts else "")
 
 
 def prompt(unit: Unit, pages: dict[int, PageModel], coords: bool = True) -> str:

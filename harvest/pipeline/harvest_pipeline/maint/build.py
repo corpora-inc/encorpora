@@ -203,12 +203,26 @@ def pack_meta(corpus: Corpus, assemblies: list[Assembly], stage: Stage) -> dict[
 
 
 def verify_graph(harvest: str, pack_dir: Path, pubkey: str | None) -> dict:
-    cmd = [harvest, "verify", str(pack_dir), "--json"] + (["--pubkey", pubkey] if pubkey else [])
+    """`harvest verify --json` on the built pack, trusting `pubkey` (default: the signing key's own half)."""
+    if pubkey is None:
+        import base64
+        import tempfile
+        from ..sign import load_private_key, public_raw
+        k = load_private_key()
+        if k is None:
+            raise SystemExit("maint build signs the pack and verifies it with the core: set HARVEST_SIGNING_KEY(_FILE)")
+        tmp = Path(tempfile.mkdtemp(prefix="harvest-pub-")) / "pack.pub"
+        tmp.write_text(base64.b64encode(public_raw(k.public_key())).decode() + "\n")
+        pubkey = str(tmp)
+    cmd = [harvest, "verify", str(pack_dir), "--json", "--pubkey", pubkey]
     r = subprocess.run(cmd, capture_output=True, text=True)
     try:
-        return json.loads(r.stdout)
+        out = json.loads(r.stdout)
     except json.JSONDecodeError:
+        out = None
+    if not isinstance(out, dict) or "graph" not in out:
         raise SystemExit(f"harvest verify failed ({r.returncode}): {r.stderr.strip()[:600] or r.stdout[:600]}")
+    return out
 
 
 def _forced_from(report: dict, forced: dict) -> int:

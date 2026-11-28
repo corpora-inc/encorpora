@@ -19,7 +19,7 @@ from pathlib import Path
 from ..corpus import Corpus, harvest_home
 from .build import arm, build, ledger
 from .coverage import coverage
-from .score import compare, expected_items, pack_items
+from .score import _title_match, compare, expected_items, pack_items
 
 SHAPE = ("trees", "nodes", "node_kinds", "edges", "facets", "test_procedures", "targets")
 TEXT = ("guards", "steps", "procedures", "setup", "symptoms", "signals", "equipment", "idents", "applies")
@@ -84,9 +84,12 @@ def ab(corpus: Corpus, a_name: str, b_name: str, harvest: str, expected: Path | 
     agree = {}
     for k in SHAPE + TEXT:
         A, B = items[a_name].get(k, set()), items[b_name].get(k, set())
-        union = A | B
-        agree[k] = {"both": len(A & B), "only_a": sorted(map(str, A - B))[:25], "only_b": sorted(map(str, B - A))[:25],
-                    "agreement": round(len(A & B) / len(union), 4) if union else 1.0}
+        # the same matching as the scorer, both ways round (a title kept with its printed prefix matches)
+        both = {a for a in A if any(_title_match(a, b) or _title_match(b, a) for b in B)}
+        both_b = {b for b in B if any(_title_match(a, b) or _title_match(b, a) for a in A)}
+        union = len(A) + len(B) - len(both)
+        agree[k] = {"both": len(both), "only_a": sorted(map(str, A - both))[:25], "only_b": sorted(map(str, B - both_b))[:25],
+                    "agreement": round(len(both) / union, 4) if union else 1.0}
     res["agreement"] = agree
     res["summary_text"] = _summary(res, a_name, b_name)
     if out:

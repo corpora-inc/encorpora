@@ -220,10 +220,16 @@ class Assembly:
         kind = g.get("kind")
         if loc:
             pm, reg = self.region(loc.region)
-            first = pm.region_text(reg, "\n").split("\n")[0].strip().rstrip(":").upper()
-            printed = GUARD_WORDS.get(first)
-            if printed and printed != kind:
-                p.problems.append(f"guard {key}: the block is printed {first}, not {kind}")
+            first_line = pm.region_text(reg, "\n").split("\n")[0].strip()
+            word = re.match(r"^([A-Za-z]+)S?\b", first_line)
+            head = (word.group(1).upper() if word else "")
+            printed = GUARD_WORDS.get(head) if (first_line.rstrip(":").upper() in GUARD_WORDS
+                                                or first_line[len(head):len(head) + 2].lstrip("S").startswith(":")) else None
+            if printed is None:
+                # a guard is what the manual prints as one: a WARNING, CAUTION or NOTE block
+                p.problems.append(f"guard {key}: region {loc.region} is not printed as a WARNING, CAUTION or NOTE block")
+            elif printed != kind:
+                p.problems.append(f"guard {key}: the block is printed {head}, not {kind}")
             sec = self.claim(loc.region, kind or "note", f"{target['sid']}/{kind}", f"{target['citation']}, {kind.title()}",
                              parent_rid=container_rid, strip_heading=True)
             if sec["kind"] not in GUARD_WORDS.values():

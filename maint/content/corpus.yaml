@@ -40,7 +40,8 @@ maint:
     sonnet-text: {author: {backend: claude-cli, model: sonnet, max_week_pct: 60, timeout: 1800}, images: false}
     # controlled material: our own hardware only (SSH tunnel to the lab's llama-server)
     open-weight: {author: {backend: openai-compatible, model: gemma-4-26b-a4b, base_url: "http://127.0.0.1:8093/v1",
-                           mode: json_schema, timeout: 3600, temperature: 0}, images: false}
+                           mode: json_schema, timeout: 3600, temperature: 0,
+                           extra: {chat_template_kwargs: {enable_thinking: false}}}, images: false}
   roles: [apprentice, technician, expert]
   levels:
     - {id: apprentice, label: Apprentice, test_steps: expanded}
