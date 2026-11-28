@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { logError } from "../lib/log.ts";
 import { speech, voice, VoiceError } from "../lib/native.ts";
 import { ENDPOINT, Endpointer } from "./endpoint.ts";
+import { VOCAB_PROMPT } from "./prompt.ts";
 import { cleanTranscript } from "./transcript.ts";
 
 /**
@@ -9,7 +10,8 @@ import { cleanTranscript } from "./transcript.ts";
  *
  *   idle -> starting -> listening -> transcribing -> done | nothing
  *
- * plus `denied` (microphone permission refused) and `failed`. The first tap
+ * plus `denied` (microphone permission refused), `unavailable` (the bundled
+ * model could not be installed, even after a retry) and `failed`. The first tap
  * is where iOS and Android ask for the microphone, in context; nothing asks
  * earlier. Listening ends on its own after a pause (endpoint.ts), on a second
  * tap, or at the time cap. The transcript is handed to `onText` for the
@@ -22,7 +24,9 @@ import { cleanTranscript } from "./transcript.ts";
  * session is still the current one, so leaving the screen mid-start or a
  * late timer never leaves the microphone on or stops someone else's session.
  */
-export type VoicePhase = "idle" | "starting" | "listening" | "transcribing" | "done" | "nothing" | "denied" | "failed";
+export type VoicePhase = "idle" | "starting" | "listening" | "transcribing" | "done" | "nothing" | "denied" | "unavailable" | "failed";
+
+const failure = (e: unknown): VoicePhase => (e instanceof VoiceError ? (e.kind === "permission" ? "denied" : e.kind === "unavailable" ? "unavailable" : "failed") : "failed");
 
 export function useVoiceInput(lang: string, onText: (text: string) => void) {
   const [phase, setPhase] = useState<VoicePhase>("idle");
@@ -47,25 +51,29 @@ export function useVoiceInput(lang: string, onText: (text: string) => void) {
     if (mounted.current) setPhase(p);
   };
 
-  /** Stop and transcribe `id`, if it is still this screen's session. */
-  const finish = useCallback(async (id: string) => {
+  /**
+   * End `id`, if it is still this screen's session: transcribe it, or, when
+   * nothing was heard, discard it without touching what is in the box.
+   */
+  const finish = useCallback(async (id: string, outcome: "done" | "nothing-heard" = "done") => {
     if (session.current !== id) return;
     session.current = null;
     release();
-    if (!mounted.current) {
+    if (!mounted.current || outcome === "nothing-heard") {
       await voice.cancel(id);
+      set("nothing");
       return;
     }
     set("transcribing");
     try {
-      const text = cleanTranscript(await voice.stop(id));
+      const text = cleanTranscript(await voice.stop(id), VOCAB_PROMPT);
       if (!mounted.current) return;
       if (!text) return set("nothing");
       onTextRef.current(text);
       set("done");
     } catch (e) {
       logError("voice.stop", e);
-      set(e instanceof VoiceError && e.kind === "permission" ? "denied" : "failed");
+      set(failure(e));
     }
   }, []);
 
@@ -78,7 +86,8 @@ export function useVoiceInput(lang: string, onText: (text: string) => void) {
         const id = session.current;
         if (!id) return;
         setLevel(rms);
-        if (ep.push(t, rms) === "done") void finish(id);
+        const r = ep.push(t, rms);
+        if (r !== "listening") void finish(id, r);
       });
       if (!mounted.current) return unsub();
       unsubscribe.current = unsub;
@@ -97,7 +106,7 @@ export function useVoiceInput(lang: string, onText: (text: string) => void) {
       release();
       session.current = null;
       logError("voice.start", e);
-      set(e instanceof VoiceError && e.kind === "permission" ? "denied" : "failed");
+      set(failure(e));
     }
   }, [lang, finish]);
 
@@ -106,9 +115,11 @@ export function useVoiceInput(lang: string, onText: (text: string) => void) {
     if (busy.current) return;
     busy.current = true;
     try {
-      if (phase === "listening" && session.current) await finish(session.current);
-      else if (phase === "denied") await voice.openSettings();
-      else if (phase !== "starting" && phase !== "transcribing") await start();
+      // A tap just as listening ended on its own must not start a new session.
+      if (phase === "listening") {
+        if (session.current) await finish(session.current);
+      } else if (phase === "denied") await voice.openSettings();
+      else if (phase !== "starting" && phase !== "transcribing" && phase !== "unavailable") await start();
     } finally {
       busy.current = false;
     }

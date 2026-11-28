@@ -49,8 +49,9 @@ sha2 = "0.10"
 # iOS has no save dialog: export opens the share sheet instead. Same crate AHA uses.
 [target.'cfg(target_os = "ios")'.dependencies]
 tauri-plugin-ios-share = { path = "../../../homeschool-offline/app/src-tauri/plugins/tauri-plugin-ios-share" }
-# Mark the installed speech model do-not-back-up (src/voice.rs).
-libc = "0.2"
+# Mark the installed speech model excluded from backup with Apple's documented
+# NSURLIsExcludedFromBackupKey (src/voice.rs). Same versions Tauri already uses.
+objc2-foundation = { version = "0.3", default-features = false, features = ["std", "NSURL", "NSString", "NSValue", "NSError", "NSObject"] }
 
 # Stream the bundled speech model out of the APK through the NDK asset manager
 # on a background thread (src/voice.rs). Same versions Tauri already uses.

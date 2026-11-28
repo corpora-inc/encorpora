@@ -117,14 +117,27 @@ pub struct ModelInfo {
 }
 
 /// The bundled model's state. `wait: true` blocks until the install has
-/// finished (the first tap); `wait: false` answers at once (boot).
+/// finished (the first tap), and retries once if it failed (a full disk may
+/// have been cleared since); `wait: false` answers at once (boot).
 #[tauri::command]
 pub async fn voice_model(app: AppHandle, wait: Option<bool>) -> Result<ModelInfo, String> {
     let file = manifest().file;
     let status = if wait.unwrap_or(false) {
-        tauri::async_runtime::spawn_blocking(move || app.state::<VoiceState>().wait())
-            .await
-            .map_err(|e| e.to_string())?
+        tauri::async_runtime::spawn_blocking(move || {
+            let state = app.state::<VoiceState>();
+            let status = state.wait();
+            if status != Status::Failed {
+                return status;
+            }
+            let retried = install(&app).unwrap_or_else(|e| {
+                eprintln!("[voice] bundled model install retry failed: {e}");
+                Status::Failed
+            });
+            state.set(retried);
+            retried
+        })
+        .await
+        .map_err(|e| e.to_string())?
     } else {
         app.state::<VoiceState>().now()
     };
@@ -268,31 +281,23 @@ mod android_asset {
 }
 
 /// iOS backs up Documents to iCloud; a file the app can recreate from its own
-/// bundle must be excluded (Apple's iOS Data Storage Guidelines).
+/// bundle must be excluded (Apple's iOS Data Storage Guidelines, QA1719:
+/// `NSURLIsExcludedFromBackupKey`).
 fn exclude_from_backup(path: &Path) {
     #[cfg(target_os = "ios")]
     {
-        use std::os::unix::ffi::OsStrExt;
-        let name = c"com.apple.metadata:com_apple_backup_excludeItem";
-        let value = b"com.apple.backupd";
-        if let Ok(p) = std::ffi::CString::new(path.as_os_str().as_bytes()) {
-            // SAFETY: NUL-terminated path and name; value pointer and length match.
-            let rc = unsafe {
-                libc::setxattr(
-                    p.as_ptr(),
-                    name.as_ptr(),
-                    value.as_ptr().cast(),
-                    value.len(),
-                    0,
-                    0,
-                )
-            };
-            if rc != 0 {
-                eprintln!(
-                    "[voice] could not mark the model do-not-back-up: {}",
-                    std::io::Error::last_os_error()
-                );
-            }
+        use objc2_foundation::{NSNumber, NSString, NSURL, NSURLIsExcludedFromBackupKey};
+        let url = NSURL::fileURLWithPath(&NSString::from_str(&path.to_string_lossy()));
+        let yes = NSNumber::new_bool(true);
+        // SAFETY: NSURLIsExcludedFromBackupKey is a Foundation constant and the
+        // value is an NSNumber, as the key requires.
+        if let Err(e) =
+            unsafe { url.setResourceValue_forKey_error(Some(&yes), NSURLIsExcludedFromBackupKey) }
+        {
+            eprintln!(
+                "[voice] could not exclude the model from backup: {}",
+                e.localizedDescription()
+            );
         }
     }
     #[cfg(not(target_os = "ios"))]

@@ -35,6 +35,7 @@ export const en = {
   "voice.nothing": "Nothing was heard. Tap and ask again, closer to the phone.",
   "voice.denied": "The microphone is off for this app. Allow it in Settings, or type the question.",
   "voice.openSettings": "Open Settings",
+  "voice.unavailable": "Voice input is not available on this device right now. Type the question; voice comes back after a restart.",
   "voice.failed": "Voice input stopped. Tap to try again, or type the question.",
   "ask.readAloud": "Read aloud",
   "ask.stopReading": "Stop",

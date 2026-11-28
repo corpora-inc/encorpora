@@ -89,6 +89,7 @@ const fakeNative = (opts) => {
   let nextId = 1;
   window.__tts = [];
   window.__stt = [];
+  window.__calls = [];
   const listeners = {};
   const emit = (event, message) => {
     for (const l of listeners[event] ?? []) callbacks.get(l.id)?.({ message, index: l.index++ });
@@ -102,6 +103,7 @@ const fakeNative = (opts) => {
     unregisterCallback: (id) => callbacks.delete(id),
     invoke: async (cmd, args) => {
       window.__stt.push(cmd);
+      window.__calls.push([cmd, args]);
       switch (cmd) {
         case "voice_model": return { status: args?.wait ? "ready" : "installing", file: "ggml-test.bin" };
         case "plugin:stt|is_available": return true;
@@ -138,6 +140,9 @@ const fakeNative = (opts) => {
         case "plugin:tts|speak": window.__tts.push(args.args); await new Promise((r) => setTimeout(r, 300)); return null;
         case "plugin:tts|stop": return null;
         case "plugin:tts|open_tts_settings": return null;
+        case "plugin:tts|open_app_details":
+          if (args?.args?.packageName !== "inc.corpora.crane") throw "missing required key args";
+          return null;
         case "plugin:corpan-llm|llm_status": return { loaded: false, modelId: null };
         default: throw `unexpected command ${cmd}`;
       }
@@ -145,8 +150,10 @@ const fakeNative = (opts) => {
   };
 };
 
+const ANDROID_UA = "Mozilla/5.0 (Linux; Android 15; Pixel 8a) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0 Mobile Safari/537.36";
+
 async function newPage(browser, width, theme, { seed = true, native = null } = {}) {
-  const context = await browser.newContext({ viewport: { width, height: 860 }, colorScheme: theme, deviceScaleFactor: 1 });
+  const context = await browser.newContext({ viewport: { width, height: 860 }, colorScheme: theme, deviceScaleFactor: 1, ...(native?.android ? { userAgent: ANDROID_UA } : {}) });
   await context.route("**/*", async (route) => {
     if (route.request().resourceType() !== "document") return route.continue();
     const response = await route.fetch();
@@ -443,6 +450,20 @@ try {
     // A tap that would only fail again is never offered: the control now opens Settings.
     await page.getByRole("button", { name: "Open Settings" }).click();
     await page.waitForFunction(() => window.__stt.includes("plugin:tts|open_tts_settings"));
+    assert.deepEqual(errors.filter((e) => !/voice\.start|MIC_PERMISSION/.test(e)), [], "opening Settings did not fail");
+    await context.close();
+    checks++;
+  }
+
+  // The same refusal on Android opens the app's details screen, with the plugin's argument shape.
+  {
+    const { context, page, errors } = await newPage(browser, 390, "light", { native: { deny: true, android: true } });
+    await page.goto(base + "/ask");
+    await page.getByRole("button", { name: "Tap and ask" }).click();
+    await page.getByRole("button", { name: "Open Settings" }).click();
+    await page.waitForFunction(() => window.__calls.some(([c]) => c === "plugin:tts|open_app_details"));
+    const [, args] = await page.evaluate(() => window.__calls.find(([c]) => c === "plugin:tts|open_app_details"));
+    assert.deepEqual(args, { args: { packageName: "inc.corpora.crane" } });
     assert.deepEqual(errors.filter((e) => !/voice\.start|MIC_PERMISSION/.test(e)), []);
     await context.close();
     checks++;

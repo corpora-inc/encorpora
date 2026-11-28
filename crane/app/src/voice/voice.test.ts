@@ -43,12 +43,19 @@ test("speech at 5 dB SNR over the engine is still heard (about 1.8x the floor)",
 test("a dead first buffer does not set the floor to zero", () => {
   // One silent startup buffer, then cab noise at 0.06 with no speech: never 'speech', so it ends at idle, not at the cap.
   const r = run([[0, 0], ...series(125, 500, 0.06), ...series(500, 21000, 0.06)]);
-  assert.equal(r.last, "done");
+  assert.equal(r.last, "nothing-heard");
   assert.equal(r.t, ENDPOINT.idleMs, `ended at ${r.t}`);
 });
 
-test("nothing said ends at idle (and is still transcribed); a long question stops at the cap", () => {
-  assert.deepEqual(run(series(0, 9000, 0.05)), { last: "done", t: ENDPOINT.idleMs });
+test("talking before the tap finished starting: the drop marks the speech, the pause ends it", () => {
+  // The whole calibration is the person's voice (0.2); they stop at 2000 ms into engine noise (0.05).
+  const r = run([...series(0, 2000, 0.2), ...series(2000, 9000, 0.05)]);
+  assert.equal(r.last, "done");
+  assert.equal(r.t, Math.ceil((2000 + ENDPOINT.pauseMs) / 125) * 125, `ended at ${r.t}`);
+});
+
+test("nothing said ends at idle as nothing heard; a long question stops at the cap", () => {
+  assert.deepEqual(run(series(0, 9000, 0.05)), { last: "nothing-heard", t: ENDPOINT.idleMs });
   const long = run([...series(0, 500, 0.01), ...series(500, 30000, 0.3)]);
   assert.equal(long.last, "done");
   assert.ok(long.t >= ENDPOINT.maxMs && long.t < ENDPOINT.maxMs + 250);
@@ -89,4 +96,8 @@ test("sound markers and stock noise phrases are not questions", () => {
   assert.equal(cleanTranscript("you"), "");
   assert.equal(cleanTranscript("[Music] What does Table A say for 500 kV?"), "What does Table A say for 500 kV?");
   assert.equal(cleanTranscript("Thank you, what's the clearance?"), "Thank you, what's the clearance?");
+  // Whisper repeating its vocabulary prompt on noise is not a question.
+  assert.equal(cleanTranscript("Crane operator questions about 29 CFR 1926 Subpart CC", VOCAB_PROMPT), "");
+  assert.equal(cleanTranscript("power line clearance in kV, Table A, outriggers", VOCAB_PROMPT), "");
+  assert.equal(cleanTranscript("What does Table A say for 500 kV?", VOCAB_PROMPT), "What does Table A say for 500 kV?");
 });

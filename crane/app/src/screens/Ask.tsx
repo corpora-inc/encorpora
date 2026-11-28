@@ -60,7 +60,8 @@ export function AskBox({ initial = "", autoFocus = false }: { initial?: string; 
             setInputError(false);
           }}
           onKeyDown={(e) => {
-            if (e.key === "Enter" && !e.shiftKey && !e.nativeEvent.isComposing) {
+            // Not while an input method is composing (WebKit may report keyCode 229 instead).
+            if (e.key === "Enter" && !e.shiftKey && !e.nativeEvent.isComposing && e.keyCode !== 229) {
               e.preventDefault();
               ask();
             }

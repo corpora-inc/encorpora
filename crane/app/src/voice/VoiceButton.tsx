@@ -12,6 +12,17 @@ import type { VoicePhase } from "./useVoiceInput.ts";
  */
 export function VoiceButton({ phase, level, onPress }: { phase: VoicePhase; level: number; onPress: () => void }) {
   const t = useT();
+  if (phase === "unavailable") {
+    // No tap that is certain to fail: the same space says so, and typing works.
+    return (
+      <div className="flex flex-col gap-2">
+        <div className="flex min-h-[76px] items-center rounded-control border-2 border-dashed border-line-strong px-5 text-small text-ink-2" role="status">
+          {t("voice.unavailable")}
+        </div>
+        <p className="m-0 min-h-[4.35em]" />
+      </div>
+    );
+  }
   const listening = phase === "listening";
   const working = phase === "starting" || phase === "transcribing";
   const denied = phase === "denied";

@@ -100,7 +100,7 @@ export const speech = {
  * the plugin source. Audio never leaves the device: the plugin records and
  * transcribes locally, and the app has no network access (CSP).
  */
-export type VoiceErrorKind = "permission" | "failed";
+export type VoiceErrorKind = "permission" | "unavailable" | "failed";
 
 /** What went wrong, from the plugin's rejection (iOS: "CODE: message"; Android: a code field). */
 export function voiceErrorKind(raw: unknown): VoiceErrorKind {
@@ -112,10 +112,10 @@ export function voiceErrorKind(raw: unknown): VoiceErrorKind {
 
 export class VoiceError extends Error {
   readonly kind: VoiceErrorKind;
-  constructor(raw: unknown) {
+  constructor(raw: unknown, kind?: VoiceErrorKind) {
     super(raw instanceof Error ? raw.message : String(raw));
     this.name = "VoiceError";
-    this.kind = voiceErrorKind(raw);
+    this.kind = kind ?? voiceErrorKind(raw);
   }
 }
 
@@ -152,7 +152,8 @@ export const voice = {
     const invoke = tauriInvoke();
     if (!invoke) throw new VoiceError("Voice input needs the app");
     const bundled = (await asVoiceError(invoke("voice_model", { wait: true }))) as { status: string };
-    if (bundled.status !== "ready") throw new VoiceError(`The speech model is ${bundled.status}`);
+    // The install failed even after a retry: voice cannot work in this launch.
+    if (bundled.status !== "ready") throw new VoiceError(`The speech model is ${bundled.status}`, "unavailable");
     const ready = (await asVoiceError(invoke("plugin:stt|prepare", { args: { model: VOICE_MODEL.file } }))) as { ready: boolean; message?: string | null };
     if (!ready.ready) throw new VoiceError(ready.message ?? "The speech model could not load");
     const sessionId = crypto.randomUUID();
@@ -185,7 +186,8 @@ export const voice = {
     const invoke = tauriInvoke();
     if (!invoke) return;
     try {
-      if (/Android/i.test(navigator.userAgent)) await invoke("plugin:tts|open_app_details", { packageName: PRODUCT.bundleId });
+      // open_app_details(args: OpenAppDetailsArgs): wrapped in `args` like the other tts commands.
+      if (/Android/i.test(navigator.userAgent)) await invoke("plugin:tts|open_app_details", { args: { packageName: PRODUCT.bundleId } });
       else await invoke("plugin:tts|open_tts_settings");
     } catch (e) {
       logError("voice.openSettings", e);

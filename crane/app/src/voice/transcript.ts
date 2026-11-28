@@ -7,10 +7,19 @@
  */
 const STOCK = /^(thank you|thanks for watching|thank you for watching|you|bye|okay|so)[.!?]*$/i;
 
-export function cleanTranscript(raw: string): string {
+const words = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+
+/**
+ * `prompt` is the vocabulary prompt whisper was primed with: on noise alone it
+ * may repeat it back, which is not a question either.
+ */
+export function cleanTranscript(raw: string, prompt = ""): string {
   const text = raw
     .replace(/\[[^\]]*\]|\([^)]*\)|\*[^*]*\*/g, " ")
     .replace(/\s+/g, " ")
     .trim();
-  return STOCK.test(text) ? "" : text;
+  if (STOCK.test(text)) return "";
+  const w = words(text);
+  if (prompt && w.split(" ").length >= 3 && words(prompt).includes(w)) return "";
+  return text;
 }
