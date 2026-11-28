@@ -214,6 +214,11 @@ pub struct FaultTree {
     pub lang: String,
     /// Equipment the tree is limited to (empty: all).
     pub applies_to: Vec<String>,
+    /// The tree's statements (and its first section's) for the asset, when
+    /// it has any; an `unknown` tree is offered flagged, one that does not
+    /// apply is never offered.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub applicability: Option<applic::Applicability>,
 }
 
 /// One node of a tree. `text` is the manual's own words.
@@ -380,6 +385,9 @@ pub struct Symptom {
     pub synonyms: Vec<String>,
     pub lang: String,
     pub applies_to: Vec<String>,
+    /// Its tree's applicability for the asset, when the tree has statements.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub applicability: Option<applic::Applicability>,
 }
 
 /// A machine signal pattern and the entry point it leads to.
@@ -868,6 +876,17 @@ impl Pack {
 
     /// Trees whose provenance passed, filtered to `equip`, by title.
     pub fn fault_trees(&self, equip: Option<&str>) -> Result<Vec<FaultTree>> {
+        self.fault_trees_for(equip, &applic::AttrValues::new())
+    }
+
+    /// The trees for `equip` and an asset's attribute `values`: a tree
+    /// whose statements do not apply is left out, one not determined is
+    /// kept with its `applicability`.
+    pub fn fault_trees_for(
+        &self,
+        equip: Option<&str>,
+        values: &applic::AttrValues,
+    ) -> Result<Vec<FaultTree>> {
         if !self.has_fault_trees()? {
             return Ok(Vec::new());
         }
@@ -878,10 +897,18 @@ impl Pack {
         )?;
         let mut out = Vec::new();
         for id in ids {
-            if let Some(t) = self.fault_tree_row(&id, true)?
+            if let Some(mut t) = self.fault_tree_row(&id, true)?
                 && self.applies(&t.applies_to, equip)
             {
-                out.push(t);
+                t.applicability = self.applicability_with_section(
+                    "fault_tree",
+                    &t.tree_id,
+                    t.section_ids.first().map(String::as_str),
+                    values,
+                )?;
+                if applic::Applicability::shown(&t.applicability) {
+                    out.push(t);
+                }
             }
         }
         Ok(out)
@@ -916,6 +943,7 @@ impl Pack {
             Ok(FaultTree {
                 section_ids: json_col(&tree_id, "section_ids", Some(ids))?,
                 applies_to: self.applies_to("fault_tree", &tree_id)?,
+                applicability: None,
                 tree_id,
                 title,
                 system,
@@ -1126,6 +1154,16 @@ impl Pack {
 
     /// Symptoms whose provenance passed and whose tree applies to `equip`.
     pub fn symptoms(&self, equip: Option<&str>) -> Result<Vec<Symptom>> {
+        self.symptoms_for(equip, &applic::AttrValues::new())
+    }
+
+    /// The symptoms whose trees apply to `equip` and the asset's `values`
+    /// (each with its tree's applicability).
+    pub fn symptoms_for(
+        &self,
+        equip: Option<&str>,
+        values: &applic::AttrValues,
+    ) -> Result<Vec<Symptom>> {
         if !self.has_table("symptom")? {
             return Ok(Vec::new());
         }
@@ -1148,15 +1186,16 @@ impl Pack {
             },
         )?;
         let trees: BTreeMap<String, FaultTree> = self
-            .fault_trees(equip)?
+            .fault_trees_for(equip, values)?
             .into_iter()
             .map(|t| (t.tree_id.clone(), t))
             .collect();
         let mut out = Vec::new();
         for (symptom_id, tree_id, title, system, synonyms, lang) in rows {
-            if !trees.contains_key(&tree_id) {
+            let Some(tree) = trees.get(&tree_id) else {
                 continue;
-            }
+            };
+            let applicability = tree.applicability.clone();
             let applies_to = self.applies_to("symptom", &symptom_id)?;
             if !self.applies(&applies_to, equip) {
                 continue;
@@ -1169,6 +1208,7 @@ impl Pack {
                 system,
                 lang,
                 applies_to,
+                applicability,
             });
         }
         Ok(out)

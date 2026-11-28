@@ -2354,6 +2354,17 @@
     "EntryPoint": {
       "description": "Where the signals suggest starting.",
       "properties": {
+        "applicability": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Applicability"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "The tree's applicability, when it has statements (`unknown`: ask\nbefore starting)."
+        },
         "node_id": {
           "description": "The node to start at (the tree's entry when the rule names none).",
           "type": "string"
@@ -2673,6 +2684,17 @@
     "FacetText": {
       "description": "One verbatim facet text.",
       "properties": {
+        "applicability": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Applicability"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Its section's statements for the asset, when it has any (a text\nthat does not apply is left out)."
+        },
         "section_id": {
           "type": "string"
         },
@@ -2682,7 +2704,8 @@
       },
       "required": [
         "text",
-        "section_id"
+        "section_id",
+        "applicability"
       ],
       "type": "object"
     },
@@ -2858,6 +2881,17 @@
     "FaultTree": {
       "description": "A troubleshooting tree.",
       "properties": {
+        "applicability": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Applicability"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "The tree's statements (and its first section's) for the asset, when\nit has any; an `unknown` tree is offered flagged, one that does not\napply is never offered."
+        },
         "applies_to": {
           "description": "Equipment the tree is limited to (empty: all).",
           "items": {
@@ -9240,6 +9274,17 @@
     "Symptom": {
       "description": "A symptom a technician reports, the way into a tree.",
       "properties": {
+        "applicability": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Applicability"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Its tree's applicability for the asset, when the tree has statements."
+        },
         "applies_to": {
           "items": {
             "type": "string"
@@ -10257,6 +10302,14 @@
     "TreeListParams": {
       "additionalProperties": false,
       "properties": {
+        "asset_id": {
+          "default": null,
+          "description": "The asset: its variant (when `equip_id` is absent) and attributes (a\ntree that does not apply is left out; one not determined is flagged).",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "equip_id": {
           "default": null,
           "type": [

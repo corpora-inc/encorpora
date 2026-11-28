@@ -547,6 +547,10 @@ pub struct TreeListParams {
     pub pack_id: Option<String>,
     #[serde(default)]
     pub equip_id: Option<String>,
+    /// The asset: its variant (when `equip_id` is absent) and attributes (a
+    /// tree that does not apply is left out; one not determined is flagged).
+    #[serde(default)]
+    pub asset_id: Option<String>,
     #[serde(default)]
     pub system: Option<String>,
 }
@@ -1375,11 +1379,13 @@ fn symptom_search(h: &Host, _who: Option<&Principal>, p: SymptomSearchParams) ->
     let pack = &h.pack(nz(&p.pack_id))?;
     let equip = equip_for(h, &p.equip_id, &p.asset_id)?;
     let ranking = search::Ranking::for_pack(pack)?.with(&p.ranking.unwrap_or_default())?;
+    let values = h.records().attr_values(nz(&p.asset_id))?;
     let (hits, dense) = search::symptom_search_with(
         pack,
         nz(&p.text),
         &p.observations,
         equip.as_deref(),
+        &values,
         h.embedder(pack),
         p.k.unwrap_or(10),
         &ranking,
@@ -1387,10 +1393,11 @@ fn symptom_search(h: &Host, _who: Option<&Principal>, p: SymptomSearchParams) ->
     let signals = if p.observations.is_empty() {
         None
     } else {
-        Some(search::signal_match(
+        Some(search::signal_match_with(
             pack,
             &p.observations,
             equip.as_deref(),
+            &values,
         )?)
     };
     let mut thresholds = ranking;
@@ -1423,14 +1430,17 @@ fn signal_decode(h: &Host, _who: Option<&Principal>, p: SignalDecodeParams) -> R
     let pack = &h.pack(nz(&p.pack_id))?;
     let equip = equip_for(h, &p.equip_id, &p.asset_id)?;
     let decoded = crate::decode::decode(p.format, &p.input, nz(&p.signal_kind));
-    let matched = search::signal_match(pack, &decoded.observations, equip.as_deref())?;
+    let values = h.records().attr_values(nz(&p.asset_id))?;
+    let matched =
+        search::signal_match_with(pack, &decoded.observations, equip.as_deref(), &values)?;
     Ok(SignalDecode { decoded, matched })
 }
 
 fn tree_list(h: &Host, _who: Option<&Principal>, p: TreeListParams) -> R<Vec<FaultTree>> {
     let pack = &h.pack(nz(&p.pack_id))?;
+    let (equip, values) = scope(h, &p.equip_id, &p.asset_id)?;
     Ok(pack
-        .fault_trees(nz(&p.equip_id))?
+        .fault_trees_for(equip.as_deref(), &values)?
         .into_iter()
         .filter(|t| nz(&p.system).is_none_or(|s| t.system.as_deref() == Some(s)))
         .collect())

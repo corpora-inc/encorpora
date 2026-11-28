@@ -132,6 +132,10 @@ pub struct EntryPoint {
     pub tree_id: String,
     /// The node to start at (the tree's entry when the rule names none).
     pub node_id: String,
+    /// The tree's applicability, when it has statements (`unknown`: ask
+    /// before starting).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub applicability: Option<super::applic::Applicability>,
 }
 
 /// The result of matching observations.
@@ -345,7 +349,7 @@ pub fn signal_match_with(
     values: &super::applic::AttrValues,
 ) -> Result<SignalMatch> {
     let rules = pack.signal_rules()?;
-    let trees: Vec<super::FaultTree> = pack.fault_trees(equip)?;
+    let trees: Vec<super::FaultTree> = pack.fault_trees_for(equip, values)?;
     let applies = |r: &SignalRule| -> Result<bool> {
         Ok(match &r.tree_id {
             Some(tree) => trees.iter().any(|t| &t.tree_id == tree),
@@ -428,14 +432,14 @@ pub fn signal_match_with(
     // Only a rule with a tree suggests where to start.
     let suggested = hits.iter().find_map(|h| {
         let tree_id = h.rule.tree_id.clone()?;
+        let tree = trees.iter().find(|t| t.tree_id == tree_id);
         Some(EntryPoint {
-            node_id: h.rule.node_id.clone().unwrap_or_else(|| {
-                trees
-                    .iter()
-                    .find(|t| t.tree_id == tree_id)
-                    .map(|t| t.entry_node.clone())
-                    .unwrap_or_default()
-            }),
+            node_id: h
+                .rule
+                .node_id
+                .clone()
+                .unwrap_or_else(|| tree.map(|t| t.entry_node.clone()).unwrap_or_default()),
+            applicability: tree.and_then(|t| t.applicability.clone()),
             tree_id,
         })
     });
@@ -837,20 +841,32 @@ pub fn symptom_search(
     k: usize,
 ) -> Result<(Vec<SymptomHit>, bool)> {
     let rank = Ranking::for_pack(pack)?;
-    symptom_search_with(pack, text, observations, equip, embedder, k, &rank)
+    symptom_search_with(
+        pack,
+        text,
+        observations,
+        equip,
+        &super::applic::AttrValues::new(),
+        embedder,
+        k,
+        &rank,
+    )
 }
 
-/// [`symptom_search`] under an explicit ranking rule.
+/// [`symptom_search`] under an explicit ranking rule, for an asset's
+/// attribute `values` (a symptom whose tree does not apply is left out).
+#[allow(clippy::too_many_arguments)]
 pub fn symptom_search_with(
     pack: &Pack,
     text: Option<&str>,
     observations: &[Observation],
     equip: Option<&str>,
+    values: &super::applic::AttrValues,
     embedder: Option<&dyn Embedder>,
     k: usize,
     rank: &Ranking,
 ) -> Result<(Vec<SymptomHit>, bool)> {
-    let symptoms = pack.symptoms(equip)?;
+    let symptoms = pack.symptoms_for(equip, values)?;
     let text = text.map(str::trim).filter(|t| !t.is_empty());
     // Query stems; pack synonyms add their canonical words as alternatives.
     let q: Vec<String> = text
@@ -872,7 +888,7 @@ pub fn symptom_search_with(
     let signals = if observations.is_empty() {
         None
     } else {
-        Some(signal_match(pack, observations, equip)?)
+        Some(signal_match_with(pack, observations, equip, values)?)
     };
     // Dense: the query against each symptom's chunk vector.
     let mut dense_used = false;

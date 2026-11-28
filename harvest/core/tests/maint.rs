@@ -677,7 +677,8 @@ fn signals_lead_to_an_entry_point() {
         g.suggested.unwrap(),
         search::EntryPoint {
             tree_id: "t-hot".into(),
-            node_id: "oh.0".into()
+            node_id: "oh.0".into(),
+            applicability: None,
         }
     );
     let none = search::signal_match(&b.pack, &[obs("obd2.dtc", "P0300")], None).unwrap();
@@ -1590,5 +1591,108 @@ fn a_procedures_statements_reach_its_steps_and_the_test_procedure() {
     assert_eq!(a.status, Tri::Unknown);
     assert!(
         rules(&graph::validate(&failed.pack).unwrap()).contains(&"applic.provenance".to_string())
+    );
+}
+
+#[test]
+fn a_tree_that_does_not_apply_is_never_offered() {
+    use harvest_core::maint::applic::Tri;
+    // The overheating tree is for controller firmware before 2.4 only; one
+    // cause of the no-crank tree is post-bulletin only.
+    let b = pump_with(exec(
+        r#"INSERT INTO applic VALUES ('fault_tree', 't-hot', 1, '{"attr":"firmware","op":"lt","value":"2.4"}', 'firmware 2.4 and later', 'm40.3-3', 'prov-pump40');
+           INSERT INTO applic VALUES ('section', 'm40.3-1.q2', 1, '{"attr":"sb_40_07","op":"eq","value":"incorporated"}', 'POST SB 40-07', 'm40.6-1', 'prov-pump40');"#,
+    ));
+    let ids = |v: &[(&str, &str)]| -> Vec<String> {
+        b.pack
+            .fault_trees_for(None, &vals(v))
+            .unwrap()
+            .into_iter()
+            .map(|t| t.tree_id)
+            .collect()
+    };
+    assert!(
+        !ids(&[("firmware", "3.0")]).contains(&"t-hot".to_string()),
+        "does not apply: never offered"
+    );
+    assert!(ids(&[("firmware", "2.0")]).contains(&"t-hot".to_string()));
+    let flagged = b.pack.fault_trees_for(None, &vals(&[])).unwrap();
+    let hot = flagged.iter().find(|t| t.tree_id == "t-hot").unwrap();
+    assert_eq!(
+        hot.applicability.as_ref().unwrap().status,
+        Tri::Unknown,
+        "not determined: offered, flagged"
+    );
+    // Symptom search and signal suggestions follow.
+    let rank = search::Ranking::for_pack(&b.pack).unwrap();
+    let (hits, _) = search::symptom_search_with(
+        &b.pack,
+        Some("running hot"),
+        &[],
+        None,
+        &vals(&[("firmware", "3.0")]),
+        None,
+        5,
+        &rank,
+    )
+    .unwrap();
+    assert!(hits.iter().all(|h| h.symptom.tree_id != "t-hot"));
+    let (hits, _) = search::symptom_search_with(
+        &b.pack,
+        Some("running hot"),
+        &[],
+        None,
+        &vals(&[]),
+        None,
+        5,
+        &rank,
+    )
+    .unwrap();
+    assert_eq!(
+        hits[0].symptom.applicability.as_ref().unwrap().status,
+        Tri::Unknown
+    );
+    let m = search::signal_match_with(
+        &b.pack,
+        &[obs("pump40.code", "E21")],
+        None,
+        &vals(&[("firmware", "3.0")]),
+    )
+    .unwrap();
+    assert!(
+        m.suggested.is_none(),
+        "no suggestion into a tree that does not apply"
+    );
+    let m =
+        search::signal_match_with(&b.pack, &[obs("pump40.code", "E21")], None, &vals(&[])).unwrap();
+    assert_eq!(
+        m.suggested.unwrap().applicability.unwrap().status,
+        Tri::Unknown
+    );
+    // Facet texts follow their sections' statements.
+    let t = tree(&b, "t-nocrank");
+    let level = b.pack.level("expert").unwrap();
+    let texts = |v: &[(&str, &str)]| -> usize {
+        view::node_view(&b.pack, &t, "nc.2", &level, None, &vals(v), &[])
+            .unwrap()
+            .facets
+            .iter()
+            .map(|g| g.texts.len())
+            .sum()
+    };
+    assert_eq!(
+        texts(&[("sb_40_07", "not incorporated")]),
+        0,
+        "every nc.2 facet cites m40.3-1.q2"
+    );
+    assert!(texts(&[("sb_40_07", "incorporated")]) > 0);
+    let unknown = view::node_view(&b.pack, &t, "nc.2", &level, None, &vals(&[]), &[]).unwrap();
+    assert!(
+        unknown.facets.iter().flat_map(|g| &g.texts).all(|x| x
+            .applicability
+            .as_ref()
+            .unwrap()
+            .status
+            == Tri::Unknown)
     );
 }
