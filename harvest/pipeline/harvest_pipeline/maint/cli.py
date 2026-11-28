@@ -74,6 +74,9 @@ def main(argv: list[str]) -> int:
     s.add_argument("--harvest")
     s.add_argument("--pubkey")
     s.add_argument("--embedder")
+    s = sub.add_parser("questions", help="a resolver's closed-question answers against the rules' own choice")
+    s.add_argument("corpus")
+    s.add_argument("--arm", required=True)
     s = sub.add_parser("cost")
     s.add_argument("corpus")
     s.add_argument("--arm")
@@ -139,6 +142,10 @@ def main(argv: list[str]) -> int:
                           {"kind": a.embedder} if a.embedder else None)
         print(json.dumps(res, indent=1, default=str))
         return 0 if res.get("ok") else 1
+    if a.cmd == "questions":
+        from .ab import closed_accuracy
+        print(json.dumps(closed_accuracy(c, a.arm), indent=1))
+        return 0
     if a.cmd == "cost":
         from .build import ledger
         rows = [r for r in ledger(c).rows() if not a.arm or r.get("arm") == a.arm]

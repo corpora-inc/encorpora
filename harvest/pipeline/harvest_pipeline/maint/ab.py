@@ -132,3 +132,29 @@ def _summary(res: dict, a: str, b: str) -> str:
             for r, n in X["verification"]["fail_reasons"].items():
                 L.append(f"  {name}: {n} x {r}")
     return "\n".join(L)
+
+
+def closed_accuracy(corpus: Corpus, arm_name: str) -> dict:
+    """How a resolver answered the rules arm's closed questions, against the rules' own choice
+    (which the answer key scores at 1.00 on the proof manuals). From the cache: no model call."""
+    from .build import extract
+    outs, reps, _ = extract(corpus, arm_name, offline=True, log=None)
+    tot = {"questions": 0, "answered": 0, "same_as_rules": 0, "by_kind": {}, "differ": []}
+    for sid, (o, units_) in outs.items():
+        for key, entry in o.items():
+            for q in entry.get("questions") or []:
+                kind = q["id"].split("-")[1] if q["id"].startswith("ask-") else q["id"].split("-")[0]
+                k = tot["by_kind"].setdefault(kind, {"questions": 0, "same_as_rules": 0})
+                tot["questions"] += 1
+                k["questions"] += 1
+                if q.get("answer") is None:
+                    continue
+                tot["answered"] += 1
+                if int(q["answer"]) == q["default"]:
+                    tot["same_as_rules"] += 1
+                    k["same_as_rules"] += 1
+                else:
+                    tot["differ"].append({"q": q["text"][:120], "rules": q["options"][q["default"]][:70],
+                                          "model": q["options"][int(q["answer"])][:70]})
+    tot["usage"] = _usage(corpus, arm_name)
+    return tot
