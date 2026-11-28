@@ -24,7 +24,7 @@ base64 = "0.22"
 # The engine, in process (`shell::open_host`, `api::call`): the host `harvest serve`
 # builds, with no server. `net` is the HTTP client for the embedding helper's
 # loopback URL and a hub address; it is used only when one is configured.
-harvest-core = { path = "../../../harvest/core", default-features = false, features = ["net"] }
+harvest-core = { path = "../../../harvest/core", default-features = false, features = ["net", "platform-roots"] }
 
 # Shared native plugins, as path dependencies on Corpán's crates (never copies).
 # Their identifiers are public API: the frontend invokes `plugin:tts|…` and

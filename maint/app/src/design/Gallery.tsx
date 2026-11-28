@@ -58,7 +58,7 @@ import raw from "./captured.json";
 import practiceRaw from "./practice.json";
 import { PracticeItem, PracticeSummary } from "../screens/Practice.tsx";
 import { rebuild, reportOf, toBank } from "../learn/state.ts";
-import type { PracticeAttempt, PracticeItems } from "../learn/provisional.ts";
+import type { PracticeAttempt, PracticeItems } from "../engine/types.ts";
 
 interface Captured {
   pack: PackInfoView;
@@ -305,7 +305,7 @@ const review: ReviewProps = {
 const PI = practiceRaw as unknown as PracticeItems;
 const pix = toBank(PI);
 const T0 = Date.UTC(2026, 10, 28, 9);
-const someAttempts: PracticeAttempt[] = PI.questions.slice(0, 12).map((q, i) => ({ q_id: q.q_id, chosen: Number(q.answer), correct: i % 4 !== 1, ms: 8000, at: T0 + i * 60_000 }));
+const someAttempts: PracticeAttempt[] = PI.questions.slice(0, 12).map((q, i) => ({ attempt_id: `a${i}`, pack_id: "pump40v2-proof", pack_version: "", skill_id: q.skill_id, q_id: q.q_id, chosen: q.answer, correct: i % 4 !== 1, ms: 8000, at: new Date(T0 + i * 60_000).toISOString() }));
 const pstate = rebuild(pix, someAttempts);
 const pq = PI.questions[0]!;
 const pskill = PI.skills.find((x) => x.skill_id === pq.skill_id)!;

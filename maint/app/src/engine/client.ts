@@ -66,9 +66,6 @@ export function setTransport(t: Transport): void {
   transport = t;
 }
 
-/** The transport in use (for methods not yet in the generated types). */
-export const getTransport = (): Transport => transport;
-
 export async function call<M extends Method>(method: M, params: Params<M>): Promise<Result<M>> {
   const r = await transport.call(method, params);
   if (!r.ok) throw new EngineError(method, r.error.code, r.error.message);

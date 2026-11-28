@@ -1,7 +1,7 @@
 import { Check, ChevronRight, X } from "lucide-react";
 import { Link } from "react-router";
 import type { SkillReport } from "../../../../harvest/practice/src/index.ts";
-import type { PracticeItems, PracticeQuestion } from "../learn/provisional.ts";
+import type { PracticeItems, PracticeQuestion } from "../engine/types.ts";
 import { learnPracticePath, manualPath } from "../routes.ts";
 import { Button, ButtonLink, cx, Page } from "../ui/kit.tsx";
 
@@ -74,7 +74,8 @@ export function PracticeItem(p: PracticeItemProps) {
     );
   const key = Number(q.answer);
   const answered = p.chosen !== null;
-  const passage = (i: number) => q.rationale_citations?.[i]?.section_id ?? q.section_ids[q.section_ids.length - 1] ?? null;
+  // Each rationale's passage, else the question's own; its page when the source has pages.
+  const passage = (i: number) => q.rationale_citations[i] ?? q.citations[q.citations.length - 1] ?? null;
   return (
     <Page title={p.skillTitle} kicker={`${p.topicTitle}${p.reason === "review" ? ", review" : ""}`}>
       <p className="text-lead">{q.stem}</p>
@@ -82,7 +83,7 @@ export function PracticeItem(p: PracticeItemProps) {
         {q.choices.map((c, i) => {
           const isKey = i === key;
           const picked = i === p.chosen;
-          const sid = passage(i);
+          const cite = passage(i);
           return (
             <li key={i} className="flex flex-col gap-2">
               <button
@@ -106,11 +107,11 @@ export function PracticeItem(p: PracticeItemProps) {
                   {isKey && <span className="font-bold text-ink">The manual's answer. </span>}
                   {!isKey && picked && <span className="font-bold text-ink">Your answer. </span>}
                   {q.rationales[i]}
-                  {sid && (
+                  {cite && (
                     <>
                       {" "}
-                      <Link to={manualPath(p.packId, sid)} className="inline-flex min-h-11 items-center font-semibold text-ink">
-                        In the manual
+                      <Link to={manualPath(p.packId, cite.section_id)} className="inline-flex min-h-11 items-center font-semibold text-ink">
+                        {cite.page_label ? `Page ${cite.page_label}` : "In the manual"}
                       </Link>
                     </>
                   )}

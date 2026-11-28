@@ -2,7 +2,7 @@
 //! Everything is optional: with none, the app is lexical-only and offline.
 //!
 //! ```json
-//! { "hub": "https://hub.example",
+//! { "hub": "https://hub.example", "hub_ca": "/path/hub-ca.pem",
 //!   "embedder": { "model": "/path/embeddinggemma-2-Q8_0.gguf", "server": "/opt/homebrew/bin/llama-server" } }
 //! ```
 
@@ -12,9 +12,14 @@ use std::path::{Path, PathBuf};
 #[derive(Debug, Clone, Default, Deserialize)]
 #[serde(deny_unknown_fields)]
 pub struct Config {
-    /// The hub's address. Without it the app never opens a network connection.
+    /// The hub's address (https; plain http only to this machine). Without it
+    /// the app never opens a network connection.
     #[serde(default)]
     pub hub: Option<String>,
+    /// A PEM file with the hub's CA: the only roots trusted for the hub (a pin).
+    /// Without it, the platform's trust store.
+    #[serde(default)]
+    pub hub_ca: Option<PathBuf>,
     /// Search by meaning through a managed local embedding server.
     #[serde(default)]
     pub embedder: Option<EmbedderConfig>,

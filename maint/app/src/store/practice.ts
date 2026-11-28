@@ -4,7 +4,8 @@ import { reportError } from "@appkit/toast.ts";
 import { answer, grade, type IndexedBank, type Pick, type PracticeState } from "../../../../harvest/practice/src/index.ts";
 import { pickNext, rebuild, toBank } from "../learn/state.ts";
 import { EngineError } from "../engine/client.ts";
-import { practiceCall, type PracticeAttempt, type PracticeItems, type PracticeQuestion } from "../learn/provisional.ts";
+import { call } from "../engine/client.ts";
+import type { PracticeItems, PracticeQuestion } from "../engine/types.ts";
 export { reportOf } from "../learn/state.ts";
 
 /**
@@ -40,7 +41,7 @@ export const usePractice = create<PracticeStore>()((set, get) => {
     busy: false,
     async load(packId) {
       try {
-        const [items, history] = await Promise.all([practiceCall<PracticeItems>("practice.items", { pack_id: packId }), practiceCall<PracticeAttempt[]>("practice.history", { pack_id: packId })]);
+        const [items, history] = await Promise.all([call("practice.items", { pack_id: packId }), call("practice.history", { pack_id: packId })]);
         if (items.questions.length === 0) return put(packId, false);
         const ix = toBank(items);
         const state = rebuild(ix, history);
@@ -60,7 +61,7 @@ export const usePractice = create<PracticeStore>()((set, get) => {
       const { correct } = grade(p.pick.item, index);
       set({ busy: true });
       try {
-        await practiceCall("practice.record", { pack_id: packId, q_id: p.pick.item.id, chosen: index, correct, ms: now - p.shownAt, at: now });
+        await call("practice.record", { pack_id: packId, q_id: p.pick.item.id, chosen: String(index), correct, ms: now - p.shownAt, at: new Date(now).toISOString() });
         put(packId, { ...p, state: answer(p.ix, p.state, p.pick, correct, now), chosen: index });
       } catch (e) {
         reportError("practice.record", e, "The answer was not recorded. Try again.");

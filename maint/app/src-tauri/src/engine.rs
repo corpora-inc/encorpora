@@ -76,6 +76,12 @@ impl Engine {
             }
         }
 
+        let hub_ca_pem = match &config.hub_ca {
+            Some(path) => {
+                Some(std::fs::read(path).map_err(|e| format!("hub_ca {}: {e}", path.display()))?)
+            }
+            None => None,
+        };
         let cfg = HostConfig {
             packs_root: root.clone(),
             records_path: paths.data.join("records.db"),
@@ -85,6 +91,8 @@ impl Engine {
             embedder_url: helper.as_ref().map(|h| h.url().to_string()),
             embedder_sha256: helper.as_ref().map(|h| h.model_sha256().to_string()),
             hub_url: config.hub.clone(),
+            hub_ca_pem,
+            hub_platform_roots: true,
             install_root: Some(root),
             ..Default::default()
         };
