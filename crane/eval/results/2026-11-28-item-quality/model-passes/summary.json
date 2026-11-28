@@ -1,0 +1,272 @@
+{
+ "items": 3860,
+ "mc": 3434,
+ "free_text": 426,
+ "variants": 1726,
+ "intended_difficulty": {
+  "0.2": 1549,
+  "0.5": 2065,
+  "0.8": 246
+ },
+ "deterministic": {
+  "key_longest": 0.1264,
+  "key_most_like_rule": 0.8547,
+  "rationales_complete": 1.0,
+  "cites_exist": 0.9844,
+  "quotes_verbatim": 0.9859,
+  "answer_position": {
+   "0": 845,
+   "1": 873,
+   "2": 830,
+   "3": 886
+  },
+  "chance": 0.25
+ },
+ "passes": {
+  "options_only": {
+   "n": 746,
+   "errors": 0,
+   "correct": 0.6247
+  },
+  "no_context.strong": {
+   "n": 746,
+   "errors": 0,
+   "correct": 0.8405
+  },
+  "crane_aware": {
+   "n": 712,
+   "errors": 0,
+   "correct": 0.986
+  }
+ },
+ "calibration_by_tier": {
+  "0.2": {
+   "n": 300,
+   "n_bank": 1547,
+   "options_only": 0.58,
+   "options_only.n": 300,
+   "no_context.strong": 0.8233,
+   "no_context.strong.n": 300,
+   "crane_aware": 0.9895,
+   "crane_aware.n": 286
+  },
+  "0.5": {
+   "n": 300,
+   "n_bank": 1741,
+   "options_only": 0.72,
+   "options_only.n": 300,
+   "no_context.strong": 0.9067,
+   "no_context.strong.n": 300,
+   "crane_aware": 0.9894,
+   "crane_aware.n": 283
+  },
+  "0.8": {
+   "n": 146,
+   "n_bank": 146,
+   "options_only": 0.5205,
+   "options_only.n": 146,
+   "no_context.strong": 0.7397,
+   "no_context.strong.n": 146,
+   "crane_aware": 0.972,
+   "crane_aware.n": 143
+  }
+ },
+ "everyone_correct": {
+  "n": 421,
+  "of": 712,
+  "rate": 0.5913,
+  "passes": [
+   "options_only",
+   "no_context.strong",
+   "crane_aware"
+  ]
+ },
+ "options_only_by_rule_wording": {
+  "key_most_like_rule": {
+   "n": 622,
+   "options_only_correct": 0.6463
+  },
+  "other": {
+   "n": 124,
+   "options_only_correct": 0.5161
+  }
+ },
+ "by_topic": {
+  "access-fall": {
+   "n_bank": 82,
+   "key_longest": 0.0732,
+   "key_most_like_rule": 0.7561,
+   "n": 17,
+   "options_only": 0.5294,
+   "no_context.strong": 0.6471,
+   "crane_aware": 1.0
+  },
+  "assembly": {
+   "n_bank": 228,
+   "key_longest": 0.1491,
+   "key_most_like_rule": 0.8596,
+   "n": 44,
+   "options_only": 0.6364,
+   "no_context.strong": 0.8409,
+   "crane_aware": 1.0
+  },
+  "devices-aids": {
+   "n_bank": 206,
+   "key_longest": 0.0922,
+   "key_most_like_rule": 0.8592,
+   "n": 43,
+   "options_only": 0.5581,
+   "no_context.strong": 0.7674,
+   "crane_aware": 1.0
+  },
+  "inspections": {
+   "n_bank": 238,
+   "key_longest": 0.1218,
+   "key_most_like_rule": 0.8655,
+   "n": 50,
+   "options_only": 0.6,
+   "no_context.strong": 0.82,
+   "crane_aware": 0.96
+  },
+  "lift-planning": {
+   "n_bank": 78,
+   "key_longest": 0.0513,
+   "key_most_like_rule": 0.8462,
+   "n": 17,
+   "options_only": 0.7059,
+   "no_context.strong": 0.8235,
+   "crane_aware": 1.0
+  },
+  "load-charts": {
+   "n_bank": 220,
+   "key_longest": 0.15,
+   "key_most_like_rule": 0.7045,
+   "n": 60,
+   "options_only": 0.5667,
+   "no_context.strong": 0.9,
+   "crane_aware": 0.9667
+  },
+  "operations": {
+   "n_bank": 362,
+   "key_longest": 0.1105,
+   "key_most_like_rule": 0.8867,
+   "n": 90,
+   "options_only": 0.6556,
+   "no_context.strong": 0.8,
+   "crane_aware": 0.9778
+  },
+  "other-equipment": {
+   "n_bank": 236,
+   "key_longest": 0.1186,
+   "key_most_like_rule": 0.8559,
+   "n": 54,
+   "options_only": 0.7593,
+   "no_context.strong": 0.8704,
+   "crane_aware": 0.9815
+  },
+  "personnel-lifts": {
+   "n_bank": 200,
+   "key_longest": 0.145,
+   "key_most_like_rule": 0.82,
+   "n": 44,
+   "options_only": 0.6818,
+   "no_context.strong": 0.8409,
+   "crane_aware": 1.0
+  },
+  "powerlines": {
+   "n_bank": 290,
+   "key_longest": 0.1655,
+   "key_most_like_rule": 0.9034,
+   "n": 63,
+   "options_only": 0.619,
+   "no_context.strong": 0.8095,
+   "crane_aware": 0.9683
+  },
+  "rigging": {
+   "n_bank": 254,
+   "key_longest": 0.1378,
+   "key_most_like_rule": 0.7992,
+   "n": 57,
+   "options_only": 0.5263,
+   "no_context.strong": 0.9123,
+   "crane_aware": 1.0
+  },
+  "roles": {
+   "n_bank": 174,
+   "key_longest": 0.1322,
+   "key_most_like_rule": 0.9138,
+   "n": 31,
+   "options_only": 0.7097,
+   "no_context.strong": 0.9355,
+   "crane_aware": 1.0
+  },
+  "rules": {
+   "n_bank": 138,
+   "key_longest": 0.1087,
+   "key_most_like_rule": 0.8261,
+   "n": 20,
+   "options_only": 0.4,
+   "no_context.strong": 0.7,
+   "crane_aware": 1.0
+  },
+  "signals": {
+   "n_bank": 110,
+   "key_longest": 0.1182,
+   "key_most_like_rule": 0.8636,
+   "n": 28,
+   "options_only": 0.7143,
+   "no_context.strong": 0.8929,
+   "crane_aware": 0.9643
+  },
+  "site": {
+   "n_bank": 224,
+   "key_longest": 0.1116,
+   "key_most_like_rule": 0.8973,
+   "n": 48,
+   "options_only": 0.7917,
+   "no_context.strong": 0.9375,
+   "crane_aware": 1.0
+  },
+  "technical": {
+   "n_bank": 142,
+   "key_longest": 0.1268,
+   "key_most_like_rule": 0.9155,
+   "n": 30,
+   "options_only": 0.3,
+   "no_context.strong": 0.7667,
+   "crane_aware": 1.0
+  },
+  "weather": {
+   "n_bank": 56,
+   "key_longest": 0.0893,
+   "key_most_like_rule": 0.875,
+   "n": 15,
+   "options_only": 0.8667,
+   "no_context.strong": 1.0,
+   "crane_aware": 1.0
+  },
+  "wire-rope": {
+   "n_bank": 196,
+   "key_longest": 0.1531,
+   "key_most_like_rule": 0.8827,
+   "n": 35,
+   "options_only": 0.5714,
+   "no_context.strong": 0.7714,
+   "crane_aware": 1.0
+  }
+ },
+ "models": {
+  "strong": "http://127.0.0.1:18110/v1#gpt-oss-120b"
+ },
+ "per_tier": 300,
+ "cache_only": true,
+ "targets": {
+  "model_passes": 746,
+  "review": 0
+ },
+ "passes_run": [
+  "options_only",
+  "no_context",
+  "crane_aware"
+ ]
+}

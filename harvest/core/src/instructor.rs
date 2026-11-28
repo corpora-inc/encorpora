@@ -1488,6 +1488,8 @@ impl Instructor {
                     Segment::Diagram { diagram_id } => {
                         rule_blocks.push(Block::Diagram { diagram_id })
                     }
+                    // A range-table answer has no lesson checks.
+                    Segment::Check { .. } => {}
                 }
             }
         }

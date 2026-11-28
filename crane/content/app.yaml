@@ -1,0 +1,91 @@
+# App data the pack carries in pack_meta (harvest/CONTRACT.md, "Content read API").
+# corpus.yaml maps these keys into pack_meta; the bake checks every id.
+
+# Practice prerequisites: a skill's frontier opens once its prerequisites are practiced.
+# Only the dependencies a learner genuinely needs first; everything else is open from the start.
+skill_prereqs:
+  # rules and roles
+  rules.exclusions: [rules.scope]
+  rules.construction-vs-general: [rules.scope]
+  roles.operator-evaluation: [roles.operator-certification]
+  roles.operator-in-training: [roles.operator-certification]
+  # site
+  site.hazards-below-surface: [site.ground-conditions]
+  site.controlling-entity-ground: [site.ground-conditions, rules.controlling-entity]
+  site.supporting-materials: [site.ground-conditions]
+  site.ground-bearing: [site.supporting-materials]
+  site.outrigger-sensors: [site.outriggers]
+  site.fall-zone: [site.swing-radius]
+  site.keeping-clear: [site.fall-zone]
+  # power lines: the work zone and the 20-foot check come before the options
+  powerlines.twenty-foot-check: [powerlines.work-zone]
+  powerlines.options: [powerlines.twenty-foot-check]
+  powerlines.table-a: [powerlines.options]
+  powerlines.over-350kv: [powerlines.table-a]
+  powerlines.encroachment-measures: [powerlines.table-a]
+  powerlines.dedicated-spotter: [powerlines.encroachment-measures]
+  powerlines.closer-than-table-a: [powerlines.table-a]
+  powerlines.below-lines: [powerlines.table-a]
+  powerlines.assembly: [powerlines.table-a]
+  powerlines.travel: [powerlines.table-a]
+  # signals
+  signals.hand-signals: [signals.when-required]
+  signals.types: [signals.when-required]
+  signals.radio: [signals.types]
+  signals.voice: [signals.types]
+  signals.multiple-cranes: [signals.one-signaler]
+  # rigging
+  rigging.sling-angle: [rigging.hitches]
+  rigging.multi-leg: [rigging.sling-angle, rigging.center-of-gravity]
+  rigging.chain-slings: [rigging.sling-inspection]
+  rigging.wire-rope-slings: [rigging.sling-inspection]
+  rigging.synthetic-slings: [rigging.sling-inspection]
+  # wire rope
+  wire-rope.parts-of-line: [wire-rope.reeving]
+  wire-rope.line-pull-vs-swl: [wire-rope.parts-of-line]
+  wire-rope.removal-criteria: [wire-rope.shift-inspection]
+  wire-rope.monthly-annual: [wire-rope.shift-inspection]
+  # load charts: read the chart, then interpolate, then deduct
+  loadchart.read-gross: [loadchart.terminology]
+  loadchart.radius-between-rows: [loadchart.read-gross]
+  loadchart.boom-between-columns: [loadchart.read-gross]
+  loadchart.net-capacity: [loadchart.read-gross]
+  loadchart.deductions: [loadchart.net-capacity]
+  loadchart.percent-capacity: [loadchart.net-capacity]
+  loadchart.parts-of-line: [loadchart.net-capacity, wire-rope.parts-of-line]
+  loadchart.structural-vs-stability: [loadchart.read-gross]
+  loadchart.on-rubber: [loadchart.configuration]
+  loadchart.quadrants: [loadchart.configuration]
+  # inspections and devices
+  inspections.monthly: [inspections.shift]
+  inspections.annual: [inspections.monthly]
+  inspections.deficiencies: [inspections.shift]
+  devices.safety-device-failure: [devices.safety-devices]
+  devices.category-ii: [devices.category-i]
+  devices.repair-deadlines: [devices.category-ii]
+  devices.two-blocking: [devices.anti-two-block]
+  # personnel lifts and lift planning
+  personnel.trial-lift: [personnel.when-allowed]
+  personnel.proof-test: [personnel.trial-lift]
+  personnel.pre-lift-meeting: [personnel.when-allowed]
+  lift-planning.critical: [lift-planning.basics, loadchart.percent-capacity]
+  lift-planning.multi-crane-implement: [lift-planning.multi-crane-plan]
+  lift-planning.load-sharing: [lift-planning.multi-crane-plan, rigging.center-of-gravity]
+
+# Suggested first questions on Ask, per role (answer-cache ids).
+starter_answers:
+  trainee:
+    - a.powerlines.table-a.3b63e1bdd7
+    - a.inspections.shift.537162eca0
+    - a.loadchart.net-capacity.6a87c9dfe1
+    - a.signals.voice.c3d02455b7
+  operator:
+    - a.powerlines.table-a.2a9861b190
+    - a.loadchart.net-capacity.520e729f13
+    - a.inspections.shift.31acb6286e
+    - a.rigging.sling-angle.2ef5301c8e
+  inspector:
+    - a.inspections.shift.c1b155dc95
+    - a.inspections.shift.6c4ec47b4a
+    - a.loadchart.net-capacity.ba46ef837a
+    - a.powerlines.table-a.da4d1e20c8

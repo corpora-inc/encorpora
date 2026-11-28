@@ -167,7 +167,7 @@ export function openFixture(raw: RawPack): Engine {
     const resolved = resolveQuery(rest, lexicon);
     const terms = [...new Set(resolved.flatMap((r) => r.terms))];
     const readings: Reading[] = resolved.flatMap((r) =>
-      r.via === "exact" || r.via === "none" ? [] : [{ word: r.word, as: r.terms.map((t) => lexicon.said(t)), via: r.via }],
+      r.via === "exact" || r.via === "none" ? [] : [{ word: r.word, as: r.shown ?? r.terms.map((t) => lexicon.said(t)), via: r.via }],
     );
     const byRoot = new Map<string, { section_id: string; score: number }[]>();
     for (const h of terms.length ? sectionIndex.score(terms, 400) : []) {

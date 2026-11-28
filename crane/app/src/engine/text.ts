@@ -125,6 +125,8 @@ export interface QueryTerm {
   terms: string[];
   /** How it matched. "none" when nothing in the index is close. */
   via: "exact" | "spelling" | "split" | "typo" | "none";
+  /** The words it was read as, when they say it better than the terms (a spelling variant, the two halves). */
+  shown?: string[];
 }
 
 /**
@@ -135,7 +137,7 @@ export interface QueryTerm {
 export class Lexicon {
   readonly df: ReadonlyMap<string, number>;
   private readonly texts: () => Iterable<string>;
-  private built: { word: Map<string, string>; surface: Map<string, string> } | null = null;
+  private built: { word: Map<string, string>; surface: Map<string, string>; pairs: Set<string> } | null = null;
   constructor(df: ReadonlyMap<string, number>, texts: () => Iterable<string>) {
     this.df = df;
     this.texts = texts;
@@ -143,22 +145,45 @@ export class Lexicon {
   private get index() {
     if (this.built) return this.built;
     const counts = new Map<string, Map<string, number>>();
-    for (const text of this.texts())
-      for (const w of words(text)) {
+    const pairs = new Set<string>();
+    for (const text of this.texts()) {
+      const ws = words(text);
+      for (let i = 1; i < ws.length; i++) pairs.add(`${ws[i - 1]} ${ws[i]}`);
+      for (const w of ws) {
         if (STOP.has(w) || /^\d/.test(w)) continue;
         const s = stem(w);
         const m = counts.get(s) ?? new Map<string, number>();
         m.set(w, (m.get(w) ?? 0) + 1);
         counts.set(s, m);
       }
+    }
     const word = new Map<string, string>();
     const surface = new Map<string, string>();
     for (const [s, m] of counts) {
       for (const w of m.keys()) word.set(w, s);
       surface.set(s, [...m.entries()].sort((x, y) => y[1] - x[1] || x[0].localeCompare(y[0]))[0]![0]);
     }
-    this.built = { word, surface };
+    this.built = { word, surface, pairs };
     return this.built;
+  }
+  /**
+   * "powerline" -> power + line: both halves, four letters or more, are words
+   * the pack holds, the most even cut first. With `adjacent`, the pack must
+   * also write the two side by side ("nothing" is never "not hinged").
+   */
+  split(word: string, adjacent: boolean): { terms: string[]; shown: string[] } | null {
+    if (word.length < 8 || word.length > MAX_WORD || !/^\p{L}+$/u.test(word)) return null;
+    const { word: known, pairs } = this.index;
+    const mid = word.length / 2;
+    const cuts = Array.from({ length: word.length - 7 }, (_, i) => i + 4).sort((a, b) => Math.abs(a - mid) - Math.abs(b - mid) || a - b);
+    for (const i of cuts) {
+      const a = word.slice(0, i);
+      const b = word.slice(i);
+      const sa = known.get(a);
+      const sb = known.get(b);
+      if (sa && sb && (!adjacent || pairs.has(`${a} ${b}`))) return { terms: [sa, sb], shown: [a, b] };
+    }
+    return null;
   }
   /** The commonest word in the pack for an index term. */
   said(term: string): string {
@@ -203,14 +228,14 @@ export function resolveQuery(query: string, lex: Lexicon): QueryTerm[] {
     seen.add(word);
     const s = stem(word);
     if (vocab.has(s) || /^\d/.test(word)) {
-      // A rare run-together form ("powerline") also searches the usual two words ("power line").
-      const split = (vocab.get(s) ?? 0) <= 2 ? splitWord(word, vocab) : null;
-      out.push({ word, terms: split ? [s, ...split] : [s], via: "exact" });
+      // A rare run-together form ("powerline") also searches the two words the pack writes side by side.
+      const split = (vocab.get(s) ?? 0) <= 2 ? lex.split(word, true) : null;
+      out.push({ word, terms: split ? [s, ...split.terms] : [s], via: "exact" });
       continue;
     }
-    const spelled = spellingVariants(word).map(stem).find((v) => vocab.has(v));
+    const spelled = spellingVariants(word).find((v) => vocab.has(stem(v)));
     if (spelled) {
-      out.push({ word, terms: [spelled], via: "spelling" });
+      out.push({ word, terms: [stem(spelled)], via: "spelling", shown: [spelled] });
       continue;
     }
     const typo = lex.nearest(word);
@@ -218,24 +243,10 @@ export function resolveQuery(query: string, lex: Lexicon): QueryTerm[] {
       out.push({ word, terms: [typo], via: "typo" });
       continue;
     }
-    const split = splitWord(word, vocab);
-    out.push(split ? { word, terms: split, via: "split" } : { word, terms: [], via: "none" });
+    const split = lex.split(word, false);
+    out.push(split ? { word, terms: split.terms, via: "split", shown: split.shown } : { word, terms: [], via: "none" });
   }
   return out;
-}
-
-/** "powerline" -> ["power", "line"] when both halves, four letters or more, are index terms. */
-function splitWord(word: string, vocab: ReadonlyMap<string, number>): string[] | null {
-  if (word.length < 8 || word.length > MAX_WORD) return null;
-  for (let i = 4; i <= word.length - 4; i++) {
-    const a = word.slice(0, i);
-    const b = word.slice(i);
-    if (STOP.has(a) || STOP.has(b)) continue;
-    const sa = stem(a);
-    const sb = stem(b);
-    if (vocab.has(sa) && vocab.has(sb)) return [sa, sb];
-  }
-  return null;
 }
 
 /** `text` cut into runs, `mark` on each word whose stem is in `terms`. */

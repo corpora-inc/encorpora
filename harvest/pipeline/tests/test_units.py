@@ -234,3 +234,29 @@ def test_remote_embedder_id_names_declared_weights(monkeypatch, tmp_path):
     monkeypatch.delenv("HARVEST_EMBED_MODEL_SHA256")
     with pytest.raises(SystemExit, match="SHA-256"):
         make_embedder({"kind": "llama-server", "model_path": "/x.gguf", "model_name": "m"})
+
+
+def test_contract_numeric_and_rubric_rules_match_the_readers():
+    from harvest_pipeline.contract import numeric_key_ok, rubric_problems
+    # the same cases as harvest-core's numeric_keys_match_the_practice_grammar
+    assert all(numeric_key_ok(k) for k in ["25", "25±0.5", " 25 +/- 0.5 ", "1,200", "-3.5", ".5"])
+    assert not any(numeric_key_ok(k) for k in ["", "abc", "25 ft", "1,20", "25±-1", "1e3", "NaN", "inf", ".", "+5",
+                                               "２５"])
+    point = {"id": "a", "point": "Says a", "any": ["a thing"]}
+    assert rubric_problems({"points": [point], "pass": 1, "sample_answer": "x", "misconceptions": ["y"]}) == []
+    assert rubric_problems({"points": [point], "pass": 2})
+    assert rubric_problems({"points": [point], "pass": True})
+    assert rubric_problems({"points": [point, point]})
+    assert rubric_problems({"points": [{**point, "any": [" "]}]})
+    assert rubric_problems("{}")
+    assert rubric_problems(json.dumps({"points": [point]})) == []  # a JSON string is read as JSON
+    assert rubric_problems({"points": [point], "misconceptions": None})  # the core reads a list
+    assert rubric_problems({"points": [point], "pass": None})  # practice throws on null
+    assert rubric_problems({"points": [{**point, "id": ["x"]}]})  # unhashable id: a problem, not a crash
+    from harvest_pipeline.contract import question_problems
+    mc = {"q_id": "q", "skill_id": "s", "stem": "?", "kind": "mc", "choices": ["a", "b"], "answer": 1,
+          "rationales": ["x", "y"], "section_ids": []}
+    assert question_problems(mc) == [] and question_problems({**mc, "answer": "1"}) == []
+    for bad in ({"choices": [1, 2]}, {"answer": "-0"}, {"answer": "1_0"}, {"answer": True}, {"q_id": None},
+                {"section_ids": "29cfr1926.1402(b)"}, {"rationales": [1, 2]}):
+        assert question_problems({**mc, **bad}), bad

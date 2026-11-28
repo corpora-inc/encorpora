@@ -499,6 +499,7 @@ fn ask(args: &Args) -> Result<(), CliError> {
             ),
             Segment::Cite { section_id } => println!("  [{}]", citation(&pack, section_id)?),
             Segment::Diagram { diagram_id } => println!("  (diagram {diagram_id})"),
+            Segment::Check { question, answer } => println!("  Check: {question} ({answer})"),
         }
     }
     if !resp.nearest.is_empty() {

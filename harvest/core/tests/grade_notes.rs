@@ -1,19 +1,22 @@
 mod common;
 
-use harvest_core::grade::{Rubric, grade};
+use harvest_core::grade::{Rubric, grade, parse_numeric_key};
 use harvest_core::llm::ScriptedLlm;
 use harvest_core::notes::{NoteVocab, VocabTerm, structure_keywords, structure_note};
 use serde_json::json;
 
 fn rubric() -> Rubric {
+    // The CONTRACT shape ("Free-text rubric"), as crane/content writes it.
     Rubric::parse(
         &json!({
             "points": [
-                {"id": "hazard", "text": "Names the hazard of arcing", "keywords": [["arc", "arcing", "jump"]]},
-                {"id": "distance", "text": "Says to keep a minimum distance", "keywords": ["minimum distance"], "weight": 2},
-                {"id": "spotter", "text": "Mentions a spotter", "keywords": ["spotter"]}
+                {"id": "hazard", "point": "Names the hazard of arcing", "any": ["arc", "arcing", "jump"]},
+                {"id": "distance", "point": "Says to keep a minimum distance", "any": ["minimum distance", "clearance"]},
+                {"id": "spotter", "point": "Mentions a spotter", "any": ["spotter"]}
             ],
-            "pass": 0.6
+            "pass": 2,
+            "sample_answer": "Power can arc across a gap, so keep the minimum distance and use a spotter.",
+            "misconceptions": ["Insulated booms make contact safe."]
         })
         .to_string(),
     )
@@ -29,8 +32,8 @@ fn keyword_rubric_without_a_model() {
     )
     .unwrap();
     assert_eq!(g.mode, "keyword");
-    assert!((g.score - 0.75).abs() < 1e-9, "{}", g.score);
-    assert!(g.passed);
+    assert!((g.score - 2.0 / 3.0).abs() < 1e-9, "{}", g.score);
+    assert!(g.passed, "2 of 3 points meets pass = 2");
     assert_eq!(g.missed, vec!["spotter".to_string()]);
     let g = grade("I don't know", &rubric(), None).unwrap();
     assert_eq!(g.score, 0.0);
@@ -64,7 +67,8 @@ fn model_judges_but_must_quote_the_learner() {
             ("spotter", false, "keyword")
         ]
     );
-    assert!((g.score - 0.75).abs() < 1e-9);
+    assert!((g.score - 2.0 / 3.0).abs() < 1e-9);
+    assert!(g.passed);
 }
 
 #[test]
@@ -85,6 +89,25 @@ fn model_garbage_falls_back_to_keywords() {
 fn rubric_validation() {
     assert!(Rubric::parse("{\"points\": []}").is_err());
     assert!(Rubric::parse("nope").is_err());
+    let point = json!({"id": "a", "point": "Says a", "any": ["a thing"]});
+    let ok = |v: serde_json::Value| Rubric::parse(&v.to_string());
+    assert_eq!(
+        ok(json!({"points": [point]})).unwrap().needed(),
+        1,
+        "pass defaults to all"
+    );
+    assert!(ok(json!({"points": [point], "pass": 0})).is_err());
+    assert!(ok(json!({"points": [point], "pass": 2})).is_err());
+    assert!(
+        ok(json!({"points": [point, point]})).is_err(),
+        "repeated id"
+    );
+    assert!(ok(json!({"points": [{"id": "a", "point": "Says a", "any": []}]})).is_err());
+    // The retired shape (text/keywords/weight, fractional pass) is refused, not half-read.
+    assert!(
+        ok(json!({"points": [{"id": "a", "text": "Says a", "keywords": ["a"]}], "pass": 0.7}))
+            .is_err()
+    );
 }
 
 fn vocab() -> NoteVocab {
@@ -212,4 +235,19 @@ fn trivial_model_evidence_does_not_meet_a_point() {
     let g = grade("I don't know the answer", &rubric(), Some(&llm)).unwrap();
     assert!(!g.passed);
     assert_eq!(g.score, 0.0);
+}
+
+#[test]
+fn numeric_keys_match_the_practice_grammar() {
+    assert_eq!(parse_numeric_key("25"), Some((25.0, 0.0)));
+    assert_eq!(parse_numeric_key("25±0.5"), Some((25.0, 0.5)));
+    assert_eq!(parse_numeric_key(" 25 +/- 0.5 "), Some((25.0, 0.5)));
+    assert_eq!(parse_numeric_key("1,200"), Some((1200.0, 0.0)));
+    assert_eq!(parse_numeric_key("-3.5"), Some((-3.5, 0.0)));
+    assert_eq!(parse_numeric_key(".5"), Some((0.5, 0.0)));
+    for bad in [
+        "", "abc", "25 ft", "1,20", "25±-1", "1e3", "NaN", "inf", ".", "+5", "２５",
+    ] {
+        assert_eq!(parse_numeric_key(bad), None, "{bad:?}");
+    }
 }

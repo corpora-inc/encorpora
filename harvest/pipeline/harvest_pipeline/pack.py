@@ -90,7 +90,9 @@ def _node_texts(dst: sqlite3.Connection) -> list[tuple[str, str, str]]:
 
 def write_pack(stage: Stage, out_dir: Path, pack_id: str, version: str, corpus_id: str,
                embedder: Embedder | None, release: bool = True, bake_backends: dict | None = None,
-               built_at: str | None = None, lang: str = "en") -> dict:
+               built_at: str | None = None, lang: str = "en", extra_meta: dict[str, str] | None = None) -> dict:
+    """`extra_meta`: more pack_meta keys (app data, CONTRACT "Content read API"); they may not
+    replace a key the pack itself sets."""
     out_dir.mkdir(parents=True, exist_ok=True)
     name = f"{pack_id}-{version}.sqlite"
     path = out_dir / name
@@ -163,6 +165,10 @@ def write_pack(stage: Stage, out_dir: Path, pack_id: str, version: str, corpus_i
         "release": "1" if release else "0",
         **{k: v for k, v in meta_embed.items() if k not in ("embedder_id", "embed_dim")},
     }
+    clash = sorted(set(extra_meta or {}) & set(meta))
+    if clash:
+        raise SystemExit(f"pack_meta keys {clash} are set by the pack itself")
+    meta.update(extra_meta or {})
     dst.executemany("INSERT INTO pack_meta (key, value) VALUES (?,?)", sorted(meta.items()))
     dst.commit()
     dst.execute("VACUUM")

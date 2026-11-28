@@ -118,7 +118,7 @@ CREATE TABLE question (
   kind TEXT NOT NULL,               -- mc|free_text|numeric
   stem TEXT NOT NULL,
   choices TEXT,                     -- json array of strings (mc)
-  answer TEXT NOT NULL,             -- mc: index as text; numeric: value; free_text: rubric json
+  answer TEXT NOT NULL,             -- mc: index as text; numeric: value or value±tolerance; free_text: rubric json (below)
   rationales TEXT,                  -- json array, one per choice: why right / why wrong
   section_ids TEXT NOT NULL,        -- json array
   difficulty REAL NOT NULL,         -- 0..1 prior
@@ -139,7 +139,7 @@ CREATE TABLE proc_step (proc_id TEXT NOT NULL, ord INTEGER NOT NULL,
   text TEXT NOT NULL, detail TEXT NOT NULL,        -- json {trainee, operator, inspector}
   check_kind TEXT NOT NULL,                        -- pass_fail|value|note|photo
   section_ids TEXT NOT NULL,
-  deficiency TEXT,                                 -- json {guidance, action, section_id, quote}
+  deficiency TEXT,                                 -- json {guidance, action, section_id, quote}: see below
   lang TEXT NOT NULL, prov_id TEXT NOT NULL, PRIMARY KEY (proc_id, ord));
 
 CREATE TABLE chunk (chunk_id TEXT PRIMARY KEY, ref_kind TEXT NOT NULL, ref_id TEXT NOT NULL,
@@ -179,23 +179,49 @@ CREATE TABLE provenance (
 );
 ```
 
-Only rows with `verdict = 'pass'` ship in a release pack.
+Only rows with `verdict = 'pass'` ship in a release pack. Each generated row has its own
+provenance row: rows from one generation call can earn different verdicts.
 
-### Answer-segment JSON
+### Free-text rubric
 
-Used by `answer.body` and `lesson.body`. The app renders it; the support checker
-validates it.
+`question.answer` for `kind = free_text`. One shape for every reader: the core
+(`grade::Rubric`), `harvest/practice` (`parseRubric`) and the bake (`contract.py`). Unknown
+keys are refused.
 
 ```json
-[ { "t": "text",  "text": "There are three clearances to know." },
-  { "t": "quote", "section_id": "29cfr1926.1408(a)(2)", "text": "<verbatim substring of section.text>" },
-  { "t": "cite",  "section_id": "29cfr1926.1408(a)(2)" },
-  { "t": "diagram", "diagram_id": "…" } ]
+{ "points": [ { "id": "dist", "point": "Says the minimum clearance is 20 feet",
+                "any": ["20 feet", "twenty feet"] } ],
+  "pass": 1,
+  "sample_answer": "At least 20 feet unless Table A allows less.",
+  "misconceptions": ["10 feet is always enough."] }
 ```
 
-A `quote` must be an exact substring of the section's `text` (after whitespace
-normalization). A `cite` must name an existing section. The checker drops any
-claim segment that has no supporting quote or cite in the same paragraph.
+- `points`: at least one; `id` unique; `point` is the criterion in plain words (shown
+  when missed, and what a model judges); `any` lists alternative phrases, and any one of them
+  meets the point.
+- `pass`: how many points are needed, 1 to the number of points; all of them when absent.
+- `sample_answer`, `misconceptions`: optional feedback text.
+
+A `numeric` answer is a plain decimal (`25`, `1,200`, `-3.5`) or one with a tolerance
+(`25±0.5`, `25 +/- 0.5`).
+
+### Procedure step deficiency
+
+`proc_step.deficiency` is null (a step with no failure state) or
+`{"guidance", "action", "basis", "section_id", "quote"}`, one of two kinds:
+
+- **`basis: "rule"`**: a rule says so. `section_id` must exist and `quote` must be a verbatim
+  substring of its text. This holds even when the step itself is a practice method, such as a
+  calculation or a briefing, whose failure breaks a rule.
+- **`basis: "practice"`**: field practice with no rule behind it. `section_id` and `quote` are
+  null. The app shows the guidance and action as practice guidance, never as a rule and never with
+  a citation.
+
+`action` may be null. The bake writes `basis` on every deficiency. It marks one practice only when
+it cites nothing and its source marks it so (`basis: practice`, or a `practice_only` step), and
+it fails any other uncited deficiency. The core reads a row without `basis` as a rule when it
+cites a section, and as practice otherwise. It always returns `basis`, and it refuses a row whose
+basis and citation disagree (a rule with no section or quote, or practice that cites one).
 
 ## Core CLI (what eval and the bake verifier call)
 
@@ -344,7 +370,17 @@ dropped, with the paragraph it supported.
 App data lives in optional `pack_meta` keys, JSON as text:
 `exam_blueprints` (array of exam blueprints, as `crane/content/exams.json`),
 `skill_prereqs` (`{skill_id: [skill_id]}`), `starter_answers`
-(`{role: [answer_id]}`; ids that do not exist or did not pass are skipped).
+(`{role: [answer_id]}`; ids that do not exist or did not pass are skipped). The bake writes
+them from the corpus YAML's `pack_meta:` map and refuses unknown skill or answer ids, unknown
+roles and prerequisite cycles.
+
+**Read-back check.** `harvest-bake showcheck <pack-dir> --harvest <bin> --pubkey <key>`
+calls every `harvest show` list, every lesson, diagram, question and procedure by id, and
+every answer in every role. It fails on any error, or when the core returns fewer rows than
+the pack holds. CI runs it on the crane pack built from `main` (`crane-pack` job). `--out`
+writes everything it read as one JSON file (`"format": "harvest-show/1"`, keys: the `show`
+names, plus `starters` by role and `answer_bodies[answer_id][role]`). A browser build cannot
+open the signed SQLite file, so it reads this copy.
 
 ### Course knowledge tree
 

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link, Navigate, useNavigate, useParams } from "react-router";
 import { Camera, Check, Download, Printer, Trash2, TriangleAlert, X } from "lucide-react";
 import { engine } from "../engine/index.ts";
-import type { Procedure, ProcStep, Role } from "../engine/types.ts";
+import { LEVEL, type Procedure, type ProcStep } from "../engine/types.ts";
 import { deletePhotos, loadPhoto, savePhoto, shrinkImage } from "../lib/photos.ts";
 import { canPrint, saveFile } from "../lib/native.ts";
 import { MissingPhotoError, runBundle } from "../records/bundle.ts";
@@ -21,9 +21,8 @@ const when = (iso: string) => new Date(iso).toLocaleString(undefined, { dateStyl
 
 export function DoHome() {
   const t = useT();
-  const role = useSettings((s) => s.role) ?? "operator";
   const runs = useRuns((s) => s.runs);
-  const procs = engine().procedures.slice().sort((a, b) => Number(b.roles[0] === role) - Number(a.roles[0] === role));
+  const procs = engine().procedures;
   const recent = Object.values(runs).sort((a, b) => b.startedAt.localeCompare(a.startedAt)).slice(0, 3);
   return (
     <Page title={t("do.title")}>
@@ -87,14 +86,13 @@ export function ProcedureScreen() {
   const { id = "" } = useParams();
   const t = useT();
   const navigate = useNavigate();
-  const role = useSettings((s) => s.role) ?? "operator";
   const equipment = useSettings((s) => s.equipment);
   const start = useRuns((s) => s.start);
   const p = engine().procedures.find((x) => x.proc_id === id);
   if (!p) return <NotFound />;
   const begin = () => {
     const { pack_id, version } = engine().info;
-    const run = start({ packId: pack_id, packVersion: version, stepsSig: stepsSignature(p), procId: p.proc_id, title: p.title, role, equipment, steps: p.steps.length });
+    const run = start({ packId: pack_id, packVersion: version, stepsSig: stepsSignature(p), procId: p.proc_id, title: p.title, role: p.roles[0] ?? LEVEL, equipment, steps: p.steps.length });
     navigate(runStepPath(run.id, 0));
   };
   return (
@@ -111,7 +109,7 @@ export function ProcedureScreen() {
             </span>
             <span>
               <span className="block">{s.text}</span>
-              {role !== "operator" && <span className="block text-small text-ink-3">{s.detail[role]}</span>}
+              <span className="block text-small text-ink-2">{s.detail[LEVEL]}</span>
             </span>
           </li>
         ))}
@@ -227,7 +225,7 @@ function Deficiency({ step }: { step: ProcStep }) {
       </h2>
       <p className="m-0 mb-2">{d.guidance}</p>
       <p className="m-0 mb-3 font-semibold">{d.action}</p>
-      <Quote sectionId={d.section_id} text={d.quote} showCite />
+      {d.section_id && d.quote && <Quote sectionId={d.section_id} text={d.quote} showCite />}
     </Panel>
   );
 }
@@ -238,13 +236,11 @@ export function RunStep() {
   const navigate = useNavigate();
   const run = useRuns((s) => s.runs[runId]);
   const finish = useRuns((s) => s.finish);
-  const viewerRole = useSettings((s) => s.role);
   const p = run ? engine().procedures.find((x) => x.proc_id === run.procId) : undefined;
   const index = Number(n) - 1;
   if (!run || !p) return <NotFound />;
   if (!Number.isInteger(index) || index < 0 || index >= p.steps.length) return <Navigate to={runStepPath(run.id, 0)} replace />;
   const step = p.steps[index]!;
-  const role: Role = viewerRole ?? run.role;
   const rec = run.steps[index]!;
   const last = index === p.steps.length - 1;
   const done = () => {
@@ -263,9 +259,9 @@ export function RunStep() {
       </div>
       <Panel>
         <p className="m-0 mb-2 text-h3 font-display font-semibold">{step.text}</p>
-        <p className="m-0 mb-4 text-ink-2">{step.detail[role]}</p>
+        <p className="m-0 mb-4 text-ink-2">{step.detail[LEVEL]}</p>
         <div className="mb-4">
-          <ReadAloud text={`${step.text} ${step.detail[role]}`} label={t("do.readStep")} />
+          <ReadAloud text={`${step.text} ${step.detail[LEVEL]}`} label={t("do.readStep")} />
         </div>
         <div className="mb-5 flex flex-wrap gap-2">
           {step.section_ids.map((id) => (
@@ -333,7 +329,7 @@ export function RunReport() {
   return (
     <Page title={run.title} up={{ to: "/do/runs", label: t("do.allRuns") }}>
       <p className="-mt-3 m-0 text-ink-2">
-        {when(run.startedAt)}. {t(`role.${run.role}`)}.
+        {when(run.startedAt)}.
       </p>
       <div className="grid grid-cols-2 gap-3">
         <Panel>

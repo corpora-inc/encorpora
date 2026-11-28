@@ -91,6 +91,25 @@ def main(argv: list[str] | None = None) -> int:
     g.add_argument("--pack", help="pack dir or .sqlite: also check that the set is not in the bake")
     g.add_argument("--set", help="the set file, for the bake check (default: the path the run recorded)")
     g.add_argument("--out", help="write gate-<system>.md and .json here")
+    q = sub.add_parser("items", help="item quality gates and difficulty calibration for a question bank")
+    q.add_argument("--bank", required=True, nargs="+", help="question JSON lines files or directories")
+    q.add_argument("--sections", required=True, help="reference sections (.jsonl) or a pack")
+    q.add_argument("--out", required=True)
+    q.add_argument("--passes", nargs="+", default=["deterministic"],
+                   choices=["deterministic", "options_only", "no_context", "crane_aware", "review"])
+    q.add_argument("--strong", help="strong model: OpenAI-compatible URL[#model] or claude:MODEL")
+    q.add_argument("--weak", help="weaker model for no_context (same forms)")
+    q.add_argument("--judge", help="review judge (default: --strong)")
+    q.add_argument("--per-tier", type=int, help="model passes on at most N items per intended difficulty "
+                   "(stratified, every skill first); deterministic gates always cover the whole bank")
+    q.add_argument("--review-sample", type=int, help="review pass on N of the model-pass items")
+    q.add_argument("--ids", help="file of q_ids: restrict the model passes to these")
+    q.add_argument("--limit", type=int, help="use only the first N items (smoke tests)")
+    q.add_argument("--seed", type=int, default=7)
+    q.add_argument("--jobs", type=int, default=4)
+    q.add_argument("--cache", help="answer cache dir (default <out>/cache)")
+    q.add_argument("--alias", action="append", help="PATTERN=REPLACEMENT for section id spellings")
+    q.add_argument("--cache-only", action="store_true", help="answer from the cache only; items not cached are left out")
     k = sub.add_parser("check-ids", help="gold section ids and key quotes present in a pack or sections file")
     k.add_argument("--set", required=True)
     k.add_argument("--pack", required=True)
@@ -135,6 +154,9 @@ def main(argv: list[str] | None = None) -> int:
         return run(a)
     if a.cmd == "compare":
         return compare_cmd(a)
+    if a.cmd == "items":
+        from .items import items_cmd
+        return items_cmd(a)
     if a.cmd == "gate":
         from .gate import gate_cmd
         return gate_cmd(a)

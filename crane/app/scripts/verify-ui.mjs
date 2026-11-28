@@ -38,6 +38,7 @@ const ROUTES = [
   "/read/29cfr1926.1408(b)(3)",
   "/do",
   "/do/shift-inspection",
+  "/do/critical-lift-plan",
   "/learn",
   "/learn/topic/power-lines",
   "/learn/topic/ground",
@@ -56,7 +57,7 @@ const ROUTES = [
   "/settings",
   "/settings/about",
 ];
-const SCREENSHOT = new Set(["/learn/topic/ground", "/ask", "/ask/q/signaling", "/ask/q/outrigers", "/ask/q/xyzzy", "/ask/a/a.powerline-clearance", "/read/29cfr1926.1408(b)(3)", "/do/shift-inspection", "/learn", "/practice", "/tools/clearance", "/tools/load-chart", "/tools/signals", "/settings"]);
+const SCREENSHOT = new Set(["/learn/topic/ground", "/ask", "/ask/q/signaling", "/ask/q/outrigers", "/ask/q/xyzzy", "/ask/a/a.powerline-clearance", "/read/29cfr1926.1408(b)(3)", "/do", "/do/shift-inspection", "/learn", "/practice", "/tools/clearance", "/tools/load-chart", "/tools/signals", "/settings"]);
 // Serve every page under the shipped app's Content-Security-Policy, so anything the
 // native WebView would block (inline script, a stray fetch, a blob image) fails here too.
 const CSP = JSON.parse(await readFile(path.join(root, "src-tauri", "tauri.conf.json"), "utf8")).app.security.csp;
@@ -77,6 +78,7 @@ async function waitUp() {
 }
 
 /** Seed settings so a route renders past first run. */
+// Seeds the v1 settings shape (with the retired role) on purpose: every page then runs the v2 migration.
 const seeded = (role = "operator") => `localStorage.setItem("crane.settings", JSON.stringify({ state: { role: "${role}", equipment: null, theme: "system", lang: "en", assistant: false }, version: 1 }));`;
 
 /**
@@ -256,33 +258,84 @@ try {
     }
   }
 
-  // 2. First run: one question, then a cited answer on screen.
+  // 2. First run lands in Practice: what it is for, one step into the first question, a cited answer.
   {
     const { context, page, errors } = await newPage(browser, 390, "light", { seed: false });
     await page.goto(base + "/");
-    await page.waitForURL("**/ask");
-    await page.getByRole("radio", { name: /Operator/ }).click();
-    await page.waitForURL("**/ask/a/a.powerline-clearance");
-    await page.locator("blockquote").first().waitFor();
-    assert.ok(await page.locator(".plate").count() >= 2, "answer has citation plates");
+    await page.waitForURL("**/practice");
+    await page.getByRole("heading", { name: "Pass the Core exam on your first try" }).waitFor();
+    assert.equal(await page.getByRole("radio").count(), 0, "no role question");
+    assert.equal(await page.locator("nav:visible").first().getByRole("link").first().innerText(), "Practice", "Practice is the first tab");
+    await page.screenshot({ path: path.join(out, "flow-first-run-practice.png"), fullPage: true });
+    await page.getByRole("link", { name: "Start with your first question" }).click();
+    await page.waitForURL("**/practice/session");
+    const choices = page.getByRole("group", { name: "Answer choices" }).getByRole("button");
+    await choices.first().click();
+    await page.locator(".practice-feedback").waitFor();
     await page.screenshot({ path: path.join(out, "flow-first-run-answer.png"), fullPage: true });
-    // Citation opens the exact paragraph.
-    await page.locator(".plate", { hasText: "§1926.1408(a)(2)" }).first().click();
-    await page.waitForURL(/\/read\/29cfr1926\.1408\(a\)\(2\)$/);
+    // The source opens the exact paragraph.
+    await page.locator(".practice-feedback a[href^='/read/'], .practice-feedback .plate").first().click();
+    await page.waitForURL(/\/read\//);
     await page.locator('[aria-current="true"]').first().waitFor();
     assert.equal(await page.locator('[aria-current="true"]').count(), 1, "the cited paragraph is marked");
-    assert.match(await page.locator('[aria-current="true"]').innerText(), /closer than 20 feet/);
-    // Refresh restores the screen.
+    // Refresh restores the screen; back and forward.
     await page.reload();
     await page.locator('[aria-current="true"]').waitFor();
-    // Back and forward.
     await page.goBack();
-    await page.waitForURL("**/ask/a/a.powerline-clearance");
+    await page.waitForURL("**/practice/session");
     await page.goForward();
     await page.waitForURL(/\/read\//);
+    // Home now shows progress, not the welcome.
+    await page.goto(base + "/practice");
+    await page.getByRole("link", { name: "Continue practice" }).waitFor();
+    assert.equal(await page.getByRole("heading", { name: "Pass the Core exam on your first try" }).count(), 0);
+    // No role setting anywhere.
+    await page.goto(base + "/settings");
+    await page.getByRole("heading", { name: "Settings" }).waitFor();
+    assert.equal(await page.getByText("Your work").count(), 0);
     assert.deepEqual(errors, []);
     await context.close();
     checks++;
+  }
+
+  // 2a. A starter answer cites the rule, and the citation opens the exact paragraph.
+  {
+    const { context, page, errors } = await newPage(browser, 390, "light");
+    await page.goto(base + "/ask/a/a.powerline-clearance");
+    await page.locator("blockquote").first().waitFor();
+    assert.ok(await page.locator(".plate").count() >= 2, "answer has citation plates");
+    await page.locator(".plate", { hasText: "§1926.1408(a)(2)" }).first().click();
+    await page.waitForURL(/\/read\/29cfr1926\.1408\(a\)\(2\)$/);
+    assert.match(await page.locator('[aria-current="true"]').innerText(), /closer than 20 feet/);
+    await page.goBack();
+    await page.waitForURL("**/ask/a/a.powerline-clearance");
+    assert.deepEqual(errors, []);
+    await context.close();
+    checks++;
+  }
+
+  // 2b. A deep link lands its paragraph fully in view, below a header's height of room, above the tab bar.
+  for (const width of WIDTHS) {
+    const { context, page, errors } = await newPage(browser, width, "light");
+    for (const id of ["29cfr1926.1412(d)(1)", "29cfr1926.1408(b)(3)", "29cfr1926.1431(k)(9)"]) {
+      await page.goto(base + "/read/" + encodeURIComponent(id));
+      const target = page.locator('[aria-current="true"]');
+      await target.waitFor();
+      await page.waitForTimeout(80);
+      const m = await target.evaluate((el) => {
+        const r = el.getBoundingClientRect();
+        const header = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--spacing-header")) * 16;
+        const bar = [...document.querySelectorAll("nav")].find((n) => getComputedStyle(n).position === "fixed" && n.getBoundingClientRect().top > 0 && n.getBoundingClientRect().width > n.getBoundingClientRect().height);
+        const floor = bar ? bar.getBoundingClientRect().top : innerHeight;
+        return { top: r.top, bottom: r.bottom, h: r.height, header, floor };
+      });
+      assert.ok(m.top >= m.header - 1, `${id} @${width}: paragraph top ${m.top} under the header room ${m.header}`);
+      if (m.h <= m.floor - m.header) assert.ok(m.bottom <= m.floor + 0.5, `${id} @${width}: paragraph bottom ${m.bottom} below ${m.floor}`);
+      checks++;
+    }
+    await page.screenshot({ path: path.join(out, `flow-reader-deep-link-${width}.png`) });
+    assert.deepEqual(errors, []);
+    await context.close();
   }
 
   // 3. Ask is a search over the rules: results grouped by section, course-map matches first, never a cached answer.
@@ -349,7 +402,12 @@ try {
     await page.getByRole("button", { name: "Next" }).click();
     await page.waitForURL(/\/2$/);
     // Navigations commit in a transition: the URL changes before the DOM, so wait for step 2 itself.
-    await page.getByText("Step 2 of 14").waitFor();
+    await page.getByText("Step 2 of 33").waitFor();
+    // Step 2 is a note: record who inspects and when.
+    await page.getByLabel("Note", { exact: true }).fill("J. Rivera, day shift, crane 14.");
+    await page.getByRole("button", { name: "Next" }).click();
+    await page.waitForURL(/\/3$/);
+    await page.getByText("Step 3 of 33").waitFor();
     const prev = page.getByRole("button", { name: "Previous" });
     await steady(page, [prev, page.getByLabel("Note (optional)")], () => page.getByRole("radio", { name: "Deficiency" }).click(), "deficiency");
     await page.getByRole("heading", { name: "Deficiency" }).waitFor();
@@ -362,10 +420,10 @@ try {
     await page.screenshot({ path: path.join(out, "flow-deficiency.png"), fullPage: true });
     await page.reload();
     assert.equal(await page.getByLabel("Note (optional)").inputValue(), "Drive chain shows wear at the sprocket.", "run survives refresh");
-    await page.goto(page.url().replace(/\/2$/, "/14"));
+    await page.goto(page.url().replace(/\/3$/, "/33"));
     await page.getByRole("button", { name: "Finish" }).click();
     await page.waitForURL(/\/do\/runs\//);
-    await page.getByText("Deficiencies").waitFor();
+    await page.getByText("Deficiencies", { exact: true }).first().waitFor();
     assert.equal((await page.locator(".text-display").nth(1).innerText()).trim(), "1");
     await page.screenshot({ path: path.join(out, "flow-run-report.png"), fullPage: true });
     // Export: one zip, run.json in harvest-run/1, the photo inside with its hash.
@@ -375,14 +433,16 @@ try {
     const report = JSON.parse(new TextDecoder().decode(zip["run.json"]));
     assert.equal(report.format, "harvest-run/1");
     assert.equal(report.status, "complete");
-    assert.equal(report.steps.length, 14);
-    assert.deepEqual(report.steps.map((x) => x.ord), Array.from({ length: 14 }, (_, i) => i + 1), "the pack's 1-based ords");
+    assert.equal(report.steps.length, 33);
+    assert.deepEqual(report.steps.map((x) => x.ord), Array.from({ length: 33 }, (_, i) => i + 1), "the pack's 1-based ords");
     assert.equal(report.steps_known, true);
-    assert.deepEqual(report.steps.slice(0, 2).map((x) => x.outcome), ["pass", "fail"]);
-    assert.equal(report.steps[1].deficiency, true);
-    assert.equal(report.steps[1].note, "Drive chain shows wear at the sprocket.");
-    assert.equal(report.steps[1].photos.length, 1);
-    const photo = report.steps[1].photos[0];
+    assert.equal(report.steps[0].outcome, "pass");
+    assert.equal(report.steps[1].note, "J. Rivera, day shift, crane 14.");
+    assert.equal(report.steps[2].outcome, "fail");
+    assert.equal(report.steps[2].deficiency, true);
+    assert.equal(report.steps[2].note, "Drive chain shows wear at the sprocket.");
+    assert.equal(report.steps[2].photos.length, 1);
+    const photo = report.steps[2].photos[0];
     assert.equal(photo.sha256, createHash("sha256").update(zip[photo.path]).digest("hex"), "photo hash matches the bytes");
     await page.getByText("Run report saved.").waitFor();
     assert.deepEqual(errors, []);
@@ -405,31 +465,43 @@ try {
     await page.getByRole("button", { name: "Next question" }).click();
     await choices.first().waitFor();
     assert.equal(await choices.first().isDisabled(), false);
-    // Feedback is real reasons, never filler: a wrong answer says why it is wrong and why the key is right;
-    // a right answer says why, once. Alternate wrong and right over several items.
+    // One feedback card, never filler: "Correct." or "Not quite. The answer is C.", why (and, when wrong,
+    // why not the choice made), one line past the answer, "Source: 29 CFR …. Read the source", and one Next button.
     for (let n = 0; n < 8; n++) {
       await choices.first().waitFor();
+      const domain = await page.locator("h2").first().locator("xpath=preceding-sibling::p[1]").innerText();
+      assert.match(domain, /^(SITE|OPERATIONS|TECHNICAL KNOWLEDGE|LOAD CHARTS|[A-Z ]+)/, "domain label above the stem");
       const pick = n % 2 === 0 ? 0 : (await choices.count()) - 1;
       await choices.nth(pick).click();
       const panel = page.locator(".practice-feedback");
       await panel.waitFor();
       const verdict = await panel.locator("h3").innerText();
-      const reasons = await panel.locator(".feedback-why p:last-child").allInnerTexts();
+      const reasons = await panel.locator(".feedback-why").allInnerTexts();
       for (const r of reasons) {
         assert.ok(r.trim().split(/\s+/).length >= 5, `feedback reason too short: "${r}"`);
         assert.doesNotMatch(r, /^(correct|incorrect)\b/i, `feedback reason restates the verdict: "${r}"`);
       }
-      if (verdict === "Correct") {
+      if (verdict === "Correct.") {
         assert.equal(reasons.length, 1, "a right answer gets one reason");
-        assert.equal(await panel.getByText(/^Why( not)? “/).count(), 0);
       } else {
-        assert.equal(verdict, "Not this one");
-        assert.equal(reasons.length, 2, "a wrong answer gets why-not and why");
-        assert.equal(await panel.getByText(/^Why not “/).count(), 1);
-        assert.equal(await panel.getByText(/^Why “/).count(), 1);
-        assert.notEqual(reasons[0], reasons[1]);
+        assert.match(verdict, /^Not quite\. The answer is [A-F]\.$/);
+        assert.equal(reasons.length, 2, "a wrong answer gets why, then why not the choice made");
+        assert.match(reasons[1], /^Why not [A-F]: /);
       }
+      assert.equal(await panel.getByText(/^Correct\.?$/).count(), verdict === "Correct." ? 1 : 0, "no duplicated Correct");
+      const note = await panel.locator(".feedback-note").innerText();
+      assert.ok(note.split(/\s+/).length >= 5 && !reasons.includes(note), `one line past the answer: "${note}"`);
+      assert.match(await panel.locator(".feedback-source").innerText(), /^Source: (29 CFR 19\d\d\.\d+|Appendix)[^]*Read the source$/);
+      assert.equal(await panel.getByRole("button").count(), 1, "a single Next button");
       if (n === 0) await page.screenshot({ path: path.join(out, "flow-practice-feedback-reasons.png"), fullPage: true });
+      if (verdict !== "Correct." && !(await page.locator(".practice-feedback-shot").count())) await page.screenshot({ path: path.join(out, "flow-practice-feedback-wrong.png"), fullPage: true });
+      if (n === 7) {
+        await panel.getByRole("link", { name: "Read the source" }).click();
+        await page.waitForURL(/\/read\//);
+        await page.locator('[aria-current="true"]').first().waitFor();
+        await page.goBack();
+        await page.locator(".practice-feedback").waitFor();
+      }
       await page.getByRole("button", { name: "Next question" }).click();
       checks++;
     }
@@ -545,7 +617,7 @@ try {
     await page.waitForFunction(() => window.__tts.length > 0);
     const spoken = await page.evaluate(() => window.__tts[0]);
     assert.equal(spoken.voiceId, "ava-premium", "the enhanced offline voice, never the network one");
-    assert.match(spoken.text, /Control mechanisms/);
+    assert.match(spoken.text, /competent person/);
     await page.goto(base + "/ask/a/a.powerline-clearance");
     await page.getByRole("button", { name: "Read aloud" }).click();
     await page.waitForFunction(() => window.__tts.length > 0);

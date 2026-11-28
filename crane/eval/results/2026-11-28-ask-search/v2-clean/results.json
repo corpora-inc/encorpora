@@ -1,0 +1,141 @@
+{
+ "meta": {
+  "started_at": "2026-11-28T03:24:10+00:00",
+  "set": {
+   "path": "<repo>/crane/eval/heldout-v2.jsonl",
+   "sha256": "f19bd6fe86d33a8506967dec0fcb04fb73a92c164c9ef5f7a80405bba9ed0211",
+   "items": 73
+  },
+  "reference_sections": {
+   "path": "../../crane/eval/results/2026-11-28-ask-search/../../sources/sections-2026-11-24.jsonl",
+   "sha256": "95762f535457192699565a367cf8593e6538e22bb799cdcbad9167ff78db0777"
+  },
+  "harness_commit": "dcdb0d91a876706b81320774748ac873158f6f5f",
+  "host": {
+   "machine": "arm64",
+   "system": "Darwin",
+   "release": "27.2.0",
+   "processor": "arm",
+   "python": "3.14.9"
+  },
+  "judge": null,
+  "backends": {
+   "search-lexical": {
+    "kind": "harvest-search",
+    "pack": "<mac-mirror>/packs/crane-us-main-e113660ed",
+    "pack_sha256": {
+     "crane-us-2026.11.27-1.sqlite": "4d7f00b1ecc8336ab92ecdaf421835a021c51aedae6f09205a572fd37642d15e"
+    },
+    "pack_version": "2026.11.27-1",
+    "binary": "../../crane/eval/results/2026-11-27-baseline/lab/harvest-remote.sh",
+    "llm": null,
+    "role": null,
+    "config_sha256": "673943400aabf924f00fb7f52fe4a812ead4f8391cfc5def8f41cb33dfec82fb",
+    "reported_pack_versions": [
+     "2026.11.27-1"
+    ],
+    "reported_models": []
+   }
+  },
+  "finished_at": "2026-11-28T03:24:16+00:00",
+  "incomplete": []
+ },
+ "backends": {
+  "search-lexical": {
+   "n": 73,
+   "errors": 0,
+   "n_answerable": 59,
+   "n_must_decline": 14,
+   "retrieval": {
+    "strict": {
+     "p@1": 0.3898305084745763,
+     "r@1": 0.2612994350282486,
+     "p@3": 0.2542372881355932,
+     "r@3": 0.4463276836158192,
+     "p@5": 0.1864406779661017,
+     "r@5": 0.5268361581920904,
+     "p@10": 0.12372881355932204,
+     "r@10": 0.615819209039548,
+     "mrr@10": 0.5294188861985472
+    },
+    "lineage": {
+     "p@1": 0.4406779661016949,
+     "r@1": 0.31214689265536727,
+     "p@3": 0.29378531073446323,
+     "r@3": 0.5211864406779662,
+     "p@5": 0.2576271186440678,
+     "r@5": 0.632768361581921,
+     "p@10": 0.1745762711864407,
+     "r@10": 0.7132768361581922,
+     "mrr@10": 0.5720540758676351
+    },
+    "section": {
+     "p@1": 0.559322033898305,
+     "r@1": 0.538135593220339,
+     "p@3": 0.4406779661016949,
+     "r@3": 0.7584745762711864,
+     "p@5": 0.4169491525423729,
+     "r@5": 0.826271186440678,
+     "p@10": 0.3491525423728814,
+     "r@10": 0.8771186440677966,
+     "mrr@10": 0.6731638418079097
+    }
+   },
+   "retrieval_n": 59,
+   "retrieval_r@5_ci95": [
+    0.5338983050847458,
+    0.7401129943502824
+   ],
+   "citation_precision_gold": null,
+   "citation_precision_supported": null,
+   "cites_exist_rate": null,
+   "claims": {
+    "supported": 0,
+    "unsupported": 0,
+    "answers_judged": 0
+   },
+   "unsupported_claim_rate": null,
+   "answers_with_unsupported_claim": null,
+   "quotes": {
+    "total": 0,
+    "verbatim_ok": 0
+   },
+   "quote_verbatim_rate": null,
+   "decline": {
+    "tp": 0,
+    "fp": 0,
+    "fn": 14,
+    "precision": null,
+    "recall": 0.0,
+    "false_decline_rate": 0.0
+   },
+   "correctness": {
+    "graded": 0,
+    "expected": 59,
+    "mean_score": null,
+    "fully_correct": null,
+    "at_least_partly": null,
+    "fully_correct_ci95": null,
+    "must_decline_handled": null
+   },
+   "by_category": {},
+   "equipment_specific": {
+    "n": 0,
+    "fully_correct": null
+   },
+   "by_difficulty": {},
+   "modes": {
+    "search": 73
+   },
+   "bake_hit_rate": 0.0,
+   "bake_hit_rate_of_answered": 0.0,
+   "latency_ms": {
+    "reported_p50": 4.0,
+    "reported_p95": 5.0,
+    "wall_p50": 85.32366700092098,
+    "wall_p95": 101.60763320018302
+   }
+  }
+ },
+ "comparisons": {}
+}
