@@ -608,11 +608,16 @@ CREATE TABLE failure_mode (mode_id TEXT PRIMARY KEY, equip_id TEXT NOT NULL, sys
   everything under it. Block text is verbatim.
 - **Guard classes are the pack's.** `pack_meta.guard_classes` lists the
   safety and advisory classes the manual defines in its front matter,
-  most severe first: `[{"id","label","rank","must_show"}]` (`id` is the
-  section kind, `label` as printed, `rank` 1 the most severe, rising).
+  most severe first: `[{"id","label","rank","must_show","tone"}]` (`id`
+  is the section kind, `label` as printed, `rank` 1 the most severe,
+  rising; `tone` how it looks, set by the bake from the manual's own
+  definition: `danger` imminent death or serious injury, `warning`
+  possible injury, `caution` equipment damage, `notice` important
+  non-hazard information, `note` an ordinary note or tip; absent, it
+  follows the id for those five words, else `note`).
   Without it a pack has `warning`, `caution`, `note`, all `must_show`. A
-  guard view carries `kind` (the id), `label`, `rank`, `must_show` and
-  `applicability`, in manual order; every guard is returned at every
+  guard view carries `kind` (the id), `label`, `rank`, `must_show`,
+  `tone` and `applicability`, in manual order; every guard is returned at every
   level, and a class with `must_show` is never hidden or collapsed (the
   bake sets it for every class at or above caution; a note or tip may
   collapse).

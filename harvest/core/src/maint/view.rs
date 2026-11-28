@@ -60,6 +60,8 @@ pub struct Guard {
     pub rank: u32,
     /// Never hidden or collapsed at any level.
     pub must_show: bool,
+    /// How it looks: `danger` | `warning` | `caution` | `notice` | `note`.
+    pub tone: super::GuardTone,
     /// When its applicability has statements (`unknown` is flagged, never
     /// dropped).
     pub applicability: Option<super::applic::Applicability>,
@@ -345,6 +347,7 @@ fn guards_on_with(
                     label: class.label.clone(),
                     rank: class.rank,
                     must_show: class.must_show,
+                    tone: class.tone(),
                     applicability,
                     section_id: sec.section_id,
                     kind: sec.kind,

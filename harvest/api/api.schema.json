@@ -3557,6 +3557,10 @@
         },
         "text": {
           "type": "string"
+        },
+        "tone": {
+          "$ref": "#/$defs/GuardTone",
+          "description": "How it looks: `danger` | `warning` | `caution` | `notice` | `note`."
         }
       },
       "required": [
@@ -3565,6 +3569,7 @@
         "label",
         "rank",
         "must_show",
+        "tone",
         "applicability",
         "heading",
         "text",
@@ -3572,6 +3577,36 @@
         "applies_to"
       ],
       "type": "object"
+    },
+    "GuardTone": {
+      "description": "What a guard class means, for how it looks.",
+      "oneOf": [
+        {
+          "const": "danger",
+          "description": "Imminent death or serious injury.",
+          "type": "string"
+        },
+        {
+          "const": "warning",
+          "description": "Possible injury.",
+          "type": "string"
+        },
+        {
+          "const": "caution",
+          "description": "Equipment damage.",
+          "type": "string"
+        },
+        {
+          "const": "notice",
+          "description": "Important information, no hazard.",
+          "type": "string"
+        },
+        {
+          "const": "note",
+          "description": "An ordinary note or tip.",
+          "type": "string"
+        }
+      ]
     },
     "Guidance": {
       "description": "What to do when a step fails, and the rule behind it when there is one.",
