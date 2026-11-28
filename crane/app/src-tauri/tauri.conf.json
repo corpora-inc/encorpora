@@ -41,6 +41,9 @@
     },
     "android": {
       "minSdkVersion": 26
-    }
+    },
+    "resources": [
+      "voice"
+    ]
   }
 }

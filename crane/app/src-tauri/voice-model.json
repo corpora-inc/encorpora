@@ -1,0 +1,7 @@
+{
+  "$comment": "The speech model bundled with the app (whisper.cpp ggml). Chosen by crane/app/voice-eval (see its README). scripts/fetch-voice-model.sh downloads it into src-tauri/voice/ and checks the SHA-256; src/voice.rs copies it into tauri-plugin-stt's model folder on first launch.",
+  "file": "ggml-base.en-q5_1.bin",
+  "url": "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-base.en-q5_1.bin",
+  "bytes": 59721011,
+  "sha256": "4baf70dd0d7c4247ba2b81fafd9c01005ac77c2f9ef064e00dcf195d0e2fdd2f"
+}

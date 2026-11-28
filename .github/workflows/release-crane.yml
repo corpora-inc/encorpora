@@ -425,6 +425,18 @@ jobs:
         working-directory: crane/app
         run: npm ci
 
+      # The speech model ships inside the app (voice input works offline from
+      # the first launch, no download): fetch the one voice-model.json pins and
+      # verify its SHA-256 before the build bundles src-tauri/voice/.
+      - name: Cache the bundled speech model
+        uses: actions/cache@v4
+        with:
+          path: crane/app/src-tauri/voice
+          key: crane-voice-model-${{ hashFiles('crane/app/src-tauri/voice-model.json') }}
+      - name: Fetch the bundled speech model
+        working-directory: crane/app
+        run: scripts/fetch-voice-model.sh
+
       - name: Generate the iOS project and apply the store settings
         working-directory: crane/app
         env:
@@ -628,6 +640,12 @@ jobs:
           SDK=$(pb DTSDKName)
           MINOS=$(pb MinimumOSVersion)
           MIC=$(pb NSMicrophoneUsageDescription)
+          # The bundled speech model must be in the app, byte for byte.
+          VOICE_FILE=$(python3 -c "import json,sys;print(json.load(open(sys.argv[1]))['file'])" "$GITHUB_WORKSPACE/crane/app/src-tauri/voice-model.json")
+          VOICE_SHA=$(python3 -c "import json,sys;print(json.load(open(sys.argv[1]))['sha256'])" "$GITHUB_WORKSPACE/crane/app/src-tauri/voice-model.json")
+          # Tauri's iOS resource directory is <App>.app/assets (tauri-utils resource_dir).
+          test -f "$APP/assets/voice/$VOICE_FILE" || { echo "::error::the speech model assets/voice/$VOICE_FILE is not in the app"; exit 1; }
+          [ "$(shasum -a 256 "$APP/assets/voice/$VOICE_FILE" | cut -d' ' -f1)" = "$VOICE_SHA" ] || { echo "::error::the bundled speech model does not match voice-model.json"; exit 1; }
           echo "bundle=$ID short=$SHORT version=$FULL encryption=$ENC sdk=$SDK minOS=$MINOS"
           echo "cfbundleversion=$FULL" >> "$GITHUB_OUTPUT"
           [ "$ID" = "$BUNDLE_ID" ] || { echo "::error::bundle id is $ID, not $BUNDLE_ID"; exit 1; }
@@ -933,6 +951,18 @@ jobs:
         working-directory: crane/app
         run: npm ci
 
+      # The speech model ships inside the app (voice input works offline from
+      # the first launch, no download): fetch the one voice-model.json pins and
+      # verify its SHA-256 before the build bundles src-tauri/voice/.
+      - name: Cache the bundled speech model
+        uses: actions/cache@v4
+        with:
+          path: crane/app/src-tauri/voice
+          key: crane-voice-model-${{ hashFiles('crane/app/src-tauri/voice-model.json') }}
+      - name: Fetch the bundled speech model
+        working-directory: crane/app
+        run: scripts/fetch-voice-model.sh
+
       - name: Generate the Android project and apply the store settings
         working-directory: crane/app
         run: |
@@ -1106,6 +1136,14 @@ jobs:
                   sys.exit(f"::error::the AAB carries ABIs {abis}, expected only arm64-v8a")
               if "base/lib/arm64-v8a/libcrane_lib.so" not in names:
                   sys.exit("::error::base/lib/arm64-v8a/libcrane_lib.so is missing")
+              # The bundled speech model must be in the AAB, byte for byte.
+              import hashlib, json
+              vm = json.load(open(os.path.join(os.environ["GITHUB_WORKSPACE"], "crane/app/src-tauri/voice-model.json")))
+              voice = f"base/assets/voice/{vm['file']}"
+              if voice not in names:
+                  sys.exit(f"::error::the speech model {voice} is not in the AAB")
+              if hashlib.sha256(z.read(voice)).hexdigest() != vm["sha256"]:
+                  sys.exit("::error::the bundled speech model does not match voice-model.json")
               for n in libs:
                   check_elf(n, z.read(n))
               print(f"16 KiB ELF check: PASS ({len(libs)} libraries: {', '.join(sorted(libs))})")
