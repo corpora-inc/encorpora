@@ -13,11 +13,13 @@ use std::collections::BTreeSet;
 
 /// A normalized machine observation (protocol decoding happens before
 /// this): `{"signal_kind": "j1939.dm1", "value": "spn:110/fmi:0"}`,
-/// `{"signal_kind": "obd2.dtc", "value": "P0217"}`.
+/// `{"signal_kind": "obd2.dtc", "value": "P0217"}`. A `null` kind (a code
+/// typed off a display) is matched against every kind.
 #[derive(Debug, Clone, Serialize, Deserialize, JsonSchema, PartialEq)]
 #[serde(deny_unknown_fields)]
 pub struct Observation {
-    pub signal_kind: String,
+    #[serde(default)]
+    pub signal_kind: Option<String>,
     pub value: String,
 }
 
@@ -139,10 +141,11 @@ pub fn signal_match(
     let mut unmatched = Vec::new();
     for (i, o) in observations.iter().enumerate() {
         let mut any = false;
-        for r in rules
-            .iter()
-            .filter(|r| fold(&r.signal_kind) == fold(&o.signal_kind))
-        {
+        for r in rules.iter().filter(|r| {
+            o.signal_kind
+                .as_deref()
+                .is_none_or(|k| fold(&r.signal_kind) == fold(k))
+        }) {
             if !trees.iter().any(|t| t.tree_id == r.tree_id) {
                 continue;
             }
@@ -216,12 +219,91 @@ pub enum Why {
     Dense { cosine: f64 },
 }
 
+/// How sure a symptom match is, by a fixed rule (CONTRACT "Symptom
+/// search"): `confident` when a signal matched, when the query's
+/// meaningful words are covered (at least `symptom_confident_coverage` of
+/// them, and at least two or all of them), or when the dense cosine
+/// reaches `symptom_confident_dense` beside a lexical match; `closest`
+/// otherwise; `none` for a search with no hit.
+#[derive(Debug, Clone, Copy, Serialize, Deserialize, JsonSchema, PartialEq, Eq)]
+#[serde(rename_all = "snake_case")]
+pub enum Confidence {
+    Confident,
+    Closest,
+    None,
+}
+
 /// One ranked symptom.
 #[derive(Debug, Clone, Serialize, Deserialize, JsonSchema, PartialEq)]
 pub struct SymptomHit {
     pub symptom: Symptom,
     pub score: f64,
+    pub confidence: Confidence,
+    /// Share of the query's meaningful words the best phrase covers.
+    pub coverage: f64,
     pub why: Vec<Why>,
+}
+
+/// Words that say nothing about a fault on their own ("it runs", "it
+/// keeps going"): they never make a lexical match by themselves. A pack
+/// may replace the list (`pack_meta.symptom_weak_words`, a JSON array).
+pub const DEFAULT_WEAK_WORDS: &[&str] = &[
+    "run",
+    "running",
+    "runs",
+    "work",
+    "works",
+    "working",
+    "go",
+    "goes",
+    "going",
+    "get",
+    "gets",
+    "make",
+    "makes",
+    "keep",
+    "keeps",
+    "seem",
+    "seems",
+    "use",
+    "used",
+    "thing",
+    "still",
+    "just",
+    "now",
+    "time",
+    "really",
+    "bit",
+    "little",
+    "lot",
+    "again",
+    "sometimes",
+    "problem",
+    "issue",
+];
+
+/// Default `symptom_confident_coverage`.
+pub const CONFIDENT_COVERAGE: f64 = 0.5;
+/// Default `symptom_confident_dense`.
+pub const CONFIDENT_DENSE: f64 = 0.85;
+
+fn meta_f64(pack: &Pack, key: &str, default: f64) -> f64 {
+    pack.meta(key)
+        .and_then(|v| v.trim().parse::<f64>().ok())
+        .filter(|v| v.is_finite())
+        .unwrap_or(default)
+}
+
+fn weak_stems(pack: &Pack) -> Result<BTreeSet<String>> {
+    let words: Vec<String> = match pack.meta("symptom_weak_words") {
+        Some(raw) => serde_json::from_str(raw)
+            .map_err(|e| crate::error::Error::Pack(format!("pack_meta.symptom_weak_words: {e}")))?,
+        None => DEFAULT_WEAK_WORDS.iter().map(|w| w.to_string()).collect(),
+    };
+    Ok(words
+        .iter()
+        .flat_map(|w| normalize::content_stems(w))
+        .collect())
 }
 
 /// Lowest cosine that counts as a dense match on its own.
@@ -280,26 +362,43 @@ pub fn symptom_search(
         },
         _ => None,
     };
+    let weak = weak_stems(pack)?;
+    let strong_q = q.iter().filter(|w| !weak.contains(*w)).count();
+    let cov_t = meta_f64(pack, "symptom_confident_coverage", CONFIDENT_COVERAGE);
+    let dense_t = meta_f64(pack, "symptom_confident_dense", CONFIDENT_DENSE);
     let mut out = Vec::new();
     for s in symptoms {
         let mut why = Vec::new();
         let mut lex = 0.0f64;
+        let mut coverage = 0.0f64;
+        let mut strong_hits = 0usize;
         if !q.is_empty() {
-            let mut best: Option<(f64, Vec<String>, String)> = None;
+            let mut best: Option<(f64, Vec<String>, String, usize)> = None;
             for phrase in std::iter::once(&s.title).chain(s.synonyms.iter()) {
                 let p: BTreeSet<String> = normalize::content_stems(phrase).into_iter().collect();
                 if p.is_empty() {
                     continue;
                 }
                 let words: Vec<String> = p.iter().filter(|w| q_alt.contains(*w)).cloned().collect();
+                let strong = words.iter().filter(|w| !weak.contains(*w)).count();
+                // Weak words alone ("runs") are no match.
+                if strong == 0 {
+                    continue;
+                }
                 let overlap = words.len().min(q.len()) as f64;
                 let dice = 2.0 * overlap / (q.len() + p.len()) as f64;
                 if dice > 0.0 && best.as_ref().is_none_or(|b| dice > b.0) {
-                    best = Some((dice, words, phrase.clone()));
+                    best = Some((dice, words, phrase.clone(), strong));
                 }
             }
-            if let Some((d, words, phrase)) = best {
+            if let Some((d, words, phrase, strong)) = best {
                 lex = d;
+                strong_hits = strong.min(strong_q);
+                coverage = if strong_q == 0 {
+                    0.0
+                } else {
+                    strong_hits as f64 / strong_q as f64
+                };
                 why.push(Why::Words { words, phrase });
             }
         }
@@ -326,7 +425,7 @@ pub fn symptom_search(
             for h in sm.hits.iter().filter(|h| h.rule.tree_id == s.tree_id) {
                 signal = 1.0;
                 why.push(Why::Signal {
-                    signal_kind: h.observed.signal_kind.clone(),
+                    signal_kind: h.rule.signal_kind.clone(),
                     value: h.observed.value.clone(),
                     pattern: h.rule.pattern.clone(),
                 });
@@ -346,9 +445,18 @@ pub fn symptom_search(
         } else {
             lex
         } + signal;
+        let words_cover = coverage >= cov_t && strong_hits >= strong_q.min(2) && strong_hits > 0;
+        let confident =
+            signal > 0.0 || words_cover || (dense_used && lex > 0.0 && dense >= dense_t);
         out.push(SymptomHit {
             symptom: s,
             score: (score * 1_000_000.0).round() / 1_000_000.0,
+            confidence: if confident {
+                Confidence::Confident
+            } else {
+                Confidence::Closest
+            },
+            coverage: (coverage * 1000.0).round() / 1000.0,
             why,
         });
     }

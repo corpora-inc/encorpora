@@ -275,10 +275,14 @@ export interface ChildrenParams {
  * (chapter, paragraph …), page and figure.
  */
 export interface Citation {
+  /** Where the passage sits on that page image, normalized 0 to 1. */
+  boxes: PageBox[];
   citation: string;
   edition: string;
   figure_label: string | null;
   heading: string | null;
+  /** The page image to open (a signed asset), when the pack has one. */
+  page_asset_id: string | null;
   page_index: number | null;
   page_label: string | null;
   /** Root first, ending with this section. */
@@ -309,6 +313,16 @@ export interface Cond {
 
 /** A numeric comparison operator. */
 export type CondOp = "<" | "<=" | ">" | ">=" | "==" | "between";
+
+/**
+ * How sure a symptom match is, by a fixed rule (CONTRACT "Symptom
+ * search"): `confident` when a signal matched, when the query's
+ * meaningful words are covered (at least `symptom_confident_coverage` of
+ * them, and at least two or all of them), or when the dense cosine
+ * reaches `symptom_confident_dense` beside a lexical match; `closest`
+ * otherwise; `none` for a search with no hit.
+ */
+export type Confidence = "confident" | "closest" | "none";
 
 /** Why the dense half did or did not run. */
 export type DenseStatus = "used" | "no_embedder" | {
@@ -384,12 +398,26 @@ export interface Facet {
 }
 
 /**
+ * A facet the pack names: its id and the manual's heading for it
+ * (`pack_meta.facets`, an ordered list; the order is the display order).
+ */
+export interface FacetDef {
+  id: string;
+  label: string;
+}
+
+/**
  * A node's facet (`reason`, `known`, `possible`, `test_option`, …), in
  * order, and whether the level opens it.
  */
 export interface FacetGroup {
   expanded: boolean;
   facet: string;
+  /**
+   * The manual's own heading for it (`pack_meta.facets`); `None` when
+   * the pack names none (validation reports that).
+   */
+  label: string | null;
   texts: FacetText[];
 }
 
@@ -559,12 +587,15 @@ export interface HistoryJob {
   equip_id: string | null;
   job_id: string;
   opened_at: string;
+  pack_id: string;
   repeat: RepeatFlag;
   resolution: ResolutionKind | null;
   status: string;
   symptom_id: string | null;
   system: string | null;
   tree_id: string;
+  /** The tree's title in the pack (when the pack is at hand). */
+  tree_title: string | null;
 }
 
 /**
@@ -580,6 +611,20 @@ export interface Hit {
   ref_kind: string;
   score: number;
   section_id?: string | null;
+}
+
+/**
+ * Where the upload destination stands: configured, and reachable as of
+ * the last attempt (never probed live).
+ */
+export interface HubState {
+  configured: boolean;
+  /** `folder` (a removable drive or shared folder) or `hub`. */
+  destination: string | null;
+  last_attempt_at: string | null;
+  last_error: string | null;
+  /** As of the last attempt; `None` before any. */
+  reachable: boolean | null;
 }
 
 /** One rule that matched. */
@@ -698,7 +743,7 @@ export interface JobStartParams {
   node_id?: string | null;
   pack_id?: string | null;
   query?: string | null;
-  signals?: Observation[];
+  signals?: ObservationInput[];
   symptom_id?: string | null;
   tree_id?: string | null;
 }
@@ -728,11 +773,14 @@ export interface JobSummary {
   equip_id: string | null;
   job_id: string;
   opened_at: string;
+  pack_id: string;
   resolution: ResolutionKind | null;
   status: string;
   symptom_id: string | null;
   system: string | null;
   tree_id: string;
+  /** The tree's title in the pack (when the pack is at hand). */
+  tree_title: string | null;
 }
 
 /** A job and the screen for its current node. */
@@ -888,24 +936,23 @@ export interface NoteScope {
 /**
  * A normalized machine observation (protocol decoding happens before
  * this): `{"signal_kind": "j1939.dm1", "value": "spn:110/fmi:0"}`,
- * `{"signal_kind": "obd2.dtc", "value": "P0217"}`.
+ * `{"signal_kind": "obd2.dtc", "value": "P0217"}`. A `null` kind (a code
+ * typed off a display) is matched against every kind.
  */
 export interface Observation {
-  signal_kind: string;
+  signal_kind: string | null;
   value: string;
 }
 
-/** Queue counts. */
-export interface OutboxStatus {
-  acked: number;
-  /** Pending items that have failed at least once. */
-  failing: number;
-  last_error: string | null;
-  pending: number;
-  /** Pending items per kind. */
-  pending_by_kind: Record<string, number>;
-  /** Items whose stored payload no longer matches its hash; never sent. */
-  quarantined: number;
+/**
+ * A normalized machine observation (protocol decoding happens before
+ * this): `{"signal_kind": "j1939.dm1", "value": "spn:110/fmi:0"}`,
+ * `{"signal_kind": "obd2.dtc", "value": "P0217"}`. A `null` kind (a code
+ * typed off a display) is matched against every kind.
+ */
+export interface ObservationInput {
+  signal_kind?: string | null;
+  value: string;
 }
 
 /** How a step came out. */
@@ -931,6 +978,8 @@ export interface PackInfoView {
   built_at: string | null;
   corpus_id: string | null;
   equipment: Equipment[];
+  /** Facet headings, in the manual's order. */
+  facets: FacetDef[];
   has_fault_trees: boolean;
   /** Depth levels, most guidance first. */
   levels: Level[];
@@ -940,6 +989,8 @@ export interface PackInfoView {
   repeat_window_days: number;
   row_counts: Record<string, number>;
   schema_version: number;
+  /** The signal kinds the pack maps, with a label and an example. */
+  signal_kinds: SignalKind[];
   sources: Source[];
   /** The systems the trees cover. */
   systems: string[];
@@ -949,6 +1000,17 @@ export interface PackInfoView {
 /** Which pack (the only one loaded when absent). */
 export interface PackParams {
   pack_id?: string | null;
+}
+
+/**
+ * A box on a page image, normalized 0 to 1 against the image: `x0 < x1`,
+ * `y0 < y1`, origin top left.
+ */
+export interface PageBox {
+  x0: number;
+  x1: number;
+  y0: number;
+  y1: number;
 }
 
 /** A part used. */
@@ -1228,6 +1290,11 @@ export interface Section {
 
 /** Printed location of a section. */
 export interface SectionLoc {
+  /**
+   * Where the passage sits on its page image, normalized 0 to 1 (a
+   * passage may take more than one box).
+   */
+  boxes: PageBox[];
   figure_label: string | null;
   page_index: number | null;
   page_label: string | null;
@@ -1290,6 +1357,17 @@ export interface SignalHit {
   rule: SignalRule;
 }
 
+/**
+ * A kind of machine signal the pack maps (`pack_meta.signal_kinds`, else
+ * derived from the signal map with the kind as its label).
+ */
+export interface SignalKind {
+  /** A value as it would be typed or read (`spn:110/fmi:0`, `E21`). */
+  example: string | null;
+  kind: string;
+  label: string;
+}
+
 /** The result of matching observations. */
 export interface SignalMatch {
   /** True when the hits lead to more than one tree. */
@@ -1304,7 +1382,7 @@ export interface SignalMatch {
 export interface SignalMatchParams {
   asset_id?: string | null;
   equip_id?: string | null;
-  observations: Observation[];
+  observations: ObservationInput[];
   pack_id?: string | null;
 }
 
@@ -1458,12 +1536,17 @@ export interface Symptom {
 
 /** One ranked symptom. */
 export interface SymptomHit {
+  confidence: Confidence;
+  /** Share of the query's meaningful words the best phrase covers. */
+  coverage: number;
   score: number;
   symptom: Symptom;
   why: Why[];
 }
 
 export interface SymptomSearch {
+  /** The best hit's confidence; `none` with no hit. */
+  confidence: Confidence;
   /** True when the dense half ran. */
   dense: boolean;
   /** The variant the search was filtered to. */
@@ -1480,10 +1563,26 @@ export interface SymptomSearchParams {
   /** Results (default 10). */
   k?: number | null;
   /** Signals read from the machine. */
-  observations?: Observation[];
+  observations?: ObservationInput[];
   pack_id?: string | null;
   /** The technician's words. */
   text?: string | null;
+}
+
+/** The outbox and the link. */
+export interface SyncStatus {
+  acked: number;
+  /** Pending items that have failed at least once. */
+  failing: number;
+  hub: HubState;
+  last_error: string | null;
+  /** When an item was last acknowledged. */
+  last_synced_at: string | null;
+  pending: number;
+  /** Pending items per kind. */
+  pending_by_kind: Record<string, number>;
+  /** Items whose stored payload no longer matches its hash; never sent. */
+  quarantined: number;
 }
 
 /** Where a `goto` (or an `action` that is a task) leads. */
@@ -1653,7 +1752,7 @@ export interface Methods {
   "lesson.list": { params: LessonFilter; result: Lesson[] };
   "field.install": { params: FieldInstallParams; result: FieldInstall };
   "field.list": { params: NoParams; result: FieldNote[] };
-  "sync.status": { params: NoParams; result: OutboxStatus };
+  "sync.status": { params: NoParams; result: SyncStatus };
   "sync.flush": { params: NoParams; result: FlushReport };
   "audit.list": { params: AuditListParams; result: AuditRecord[] };
   "audit.verify": { params: NoParams; result: ChainReport };

@@ -20,7 +20,7 @@ use crate::maint::graph::{self, GraphReport};
 use crate::maint::resolve::{self, Plate, Resolved};
 use crate::maint::search::{self, Observation, SignalMatch, SymptomHit};
 use crate::maint::view::{self, Citation, Guard, LevelText, TaskView};
-use crate::maint::{FaultTree, Level, PackAsset, SectionLoc, Tree};
+use crate::maint::{FacetDef, FaultTree, Level, PackAsset, SectionLoc, SignalKind, Tree};
 use crate::pack::{Equipment, Pack, Section};
 use crate::packs::TrustedKey;
 use crate::records::{
@@ -255,7 +255,7 @@ methods! {
     "lesson.list" => lesson_list(LessonFilter) -> Vec<Lesson>,
     "field.install" => field_install(FieldInstallParams) -> FieldInstall,
     "field.list" => field_list(NoParams) -> Vec<FieldNote>,
-    "sync.status" => sync_status(NoParams) -> OutboxStatus,
+    "sync.status" => sync_status(NoParams) -> SyncStatus,
     "sync.flush" => sync_flush(NoParams) -> FlushReport,
     "audit.list" => audit_list(AuditListParams) -> Vec<AuditRecord>,
     "audit.verify" => audit_verify(NoParams) -> ChainReport,
@@ -628,9 +628,36 @@ pub struct PackInfoView {
     pub has_fault_trees: bool,
     /// The systems the trees cover.
     pub systems: Vec<String>,
+    /// Facet headings, in the manual's order.
+    pub facets: Vec<FacetDef>,
+    /// The signal kinds the pack maps, with a label and an example.
+    pub signal_kinds: Vec<SignalKind>,
     pub repeat_window_days: i64,
     /// Every loaded pack id.
     pub packs: Vec<String>,
+}
+
+/// Where the upload destination stands: configured, and reachable as of
+/// the last attempt (never probed live).
+#[derive(Debug, Clone, Serialize, JsonSchema)]
+pub struct HubState {
+    pub configured: bool,
+    /// `folder` (a removable drive or shared folder) or `hub`.
+    pub destination: Option<String>,
+    /// As of the last attempt; `None` before any.
+    pub reachable: Option<bool>,
+    pub last_attempt_at: Option<String>,
+    pub last_error: Option<String>,
+}
+
+/// The outbox and the link.
+#[derive(Debug, Clone, Serialize, JsonSchema)]
+pub struct SyncStatus {
+    #[serde(flatten)]
+    pub outbox: OutboxStatus,
+    /// When an item was last acknowledged.
+    pub last_synced_at: Option<String>,
+    pub hub: HubState,
 }
 
 /// A variant with its inherited attributes.
@@ -643,6 +670,8 @@ pub struct EquipView {
 
 #[derive(Debug, Clone, Serialize, JsonSchema)]
 pub struct SymptomSearch {
+    /// The best hit's confidence; `none` with no hit.
+    pub confidence: search::Confidence,
     pub hits: Vec<SymptomHit>,
     /// True when the dense half ran.
     pub dense: bool,
@@ -737,6 +766,8 @@ fn pack_info(h: &Host, p: PackParams) -> R<PackInfoView> {
         equipment: pack.equipment().to_vec(),
         has_fault_trees: pack.has_fault_trees()?,
         systems,
+        facets: pack.facet_defs()?,
+        signal_kinds: pack.signal_kinds()?,
         repeat_window_days: pack.repeat_window_days(),
         packs: h.packs.keys().cloned().collect(),
     })
@@ -849,6 +880,9 @@ fn symptom_search(h: &Host, p: SymptomSearchParams) -> R<SymptomSearch> {
         )?)
     };
     Ok(SymptomSearch {
+        confidence: hits
+            .first()
+            .map_or(search::Confidence::None, |h| h.confidence),
         hits,
         dense,
         equip_id: equip,
@@ -955,7 +989,19 @@ fn job_close(h: &Host, p: JobCloseParams) -> R<JobClosed> {
 }
 
 fn job_list(h: &Host, p: JobListParams) -> R<Vec<JobSummary>> {
-    Ok(h.records().jobs(nz(&p.asset_id), nz(&p.status))?)
+    let mut jobs = h.records().jobs(nz(&p.asset_id), nz(&p.status))?;
+    let mut titles: BTreeMap<(String, String), String> = BTreeMap::new();
+    for pack in h.packs() {
+        for t in pack.fault_trees(None)? {
+            titles.insert((pack.pack_id().to_string(), t.tree_id), t.title);
+        }
+    }
+    for j in &mut jobs {
+        if j.tree_title.is_none() {
+            j.tree_title = titles.get(&(j.pack_id.clone(), j.tree_id.clone())).cloned();
+        }
+    }
+    Ok(jobs)
 }
 
 fn job_report(h: &Host, p: JobIdParams) -> R<JobReport> {
@@ -1243,8 +1289,20 @@ fn field_list(h: &Host, _: NoParams) -> R<Vec<FieldNote>> {
     Ok(h.records().field_notes()?)
 }
 
-fn sync_status(h: &Host, _: NoParams) -> R<OutboxStatus> {
-    Ok(h.records().outbox_status()?)
+fn sync_status(h: &Host, _: NoParams) -> R<SyncStatus> {
+    let rec = h.records();
+    let state = rec.sync_state()?;
+    Ok(SyncStatus {
+        outbox: rec.outbox_status()?,
+        last_synced_at: state.last_synced_at,
+        hub: HubState {
+            configured: h.outbox_dir.is_some(),
+            destination: h.outbox_dir.as_ref().map(|_| "folder".to_string()),
+            reachable: state.last_attempt_ok,
+            last_attempt_at: state.last_attempt_at,
+            last_error: state.last_error,
+        },
+    })
 }
 
 fn sync_flush(h: &Host, _: NoParams) -> R<FlushReport> {

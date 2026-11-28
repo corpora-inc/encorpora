@@ -225,6 +225,33 @@ pub struct SectionLoc {
     pub page_label: Option<String>,
     pub page_index: Option<i64>,
     pub figure_label: Option<String>,
+    /// Where the passage sits on its page image, normalized 0 to 1 (a
+    /// passage may take more than one box).
+    #[serde(default)]
+    pub boxes: Vec<PageBox>,
+}
+
+/// A box on a page image, normalized 0 to 1 against the image: `x0 < x1`,
+/// `y0 < y1`, origin top left.
+#[derive(Debug, Clone, Copy, Serialize, Deserialize, JsonSchema, PartialEq)]
+#[serde(deny_unknown_fields)]
+pub struct PageBox {
+    pub x0: f64,
+    pub y0: f64,
+    pub x1: f64,
+    pub y1: f64,
+}
+
+impl PageBox {
+    /// Inside the page and not empty.
+    pub fn valid(&self) -> bool {
+        let unit = |v: f64| (0.0..=1.0).contains(&v);
+        [self.x0, self.y0, self.x1, self.y1]
+            .iter()
+            .all(|v| unit(*v))
+            && self.x0 < self.x1
+            && self.y0 < self.y1
+    }
 }
 
 /// A file of the signed pack (a figure crop or a page image).
@@ -268,6 +295,18 @@ pub struct SignalRule {
     pub quote: Option<String>,
     /// True when `quote` is verbatim in `section_id`.
     pub quote_verified: bool,
+}
+
+/// A kind of machine signal the pack maps (`pack_meta.signal_kinds`, else
+/// derived from the signal map with the kind as its label).
+#[derive(Debug, Clone, Serialize, Deserialize, JsonSchema, PartialEq)]
+#[serde(deny_unknown_fields)]
+pub struct SignalKind {
+    pub kind: String,
+    pub label: String,
+    /// A value as it would be typed or read (`spn:110/fmi:0`, `E21`).
+    #[serde(default)]
+    pub example: Option<String>,
 }
 
 /// One rule that identifies a variant from an observation.
@@ -334,6 +373,15 @@ impl Level {
             .as_ref()
             .is_none_or(|f| f.iter().any(|x| x == facet))
     }
+}
+
+/// A facet the pack names: its id and the manual's heading for it
+/// (`pack_meta.facets`, an ordered list; the order is the display order).
+#[derive(Debug, Clone, Serialize, Deserialize, JsonSchema, PartialEq)]
+#[serde(deny_unknown_fields)]
+pub struct FacetDef {
+    pub id: String,
+    pub label: String,
 }
 
 /// Default levels when a pack declares none: the three roles every pack
@@ -409,6 +457,16 @@ impl Pack {
         Ok(levels)
     }
 
+    /// The pack's facet headings, in display order (empty when it names none).
+    pub fn facet_defs(&self) -> Result<Vec<FacetDef>> {
+        match self.meta("facets") {
+            None => Ok(Vec::new()),
+            Some(raw) => {
+                serde_json::from_str(raw).map_err(|e| Error::Pack(format!("pack_meta.facets: {e}")))
+            }
+        }
+    }
+
     /// One level by id.
     pub fn level(&self, id: &str) -> Result<Level> {
         let levels = self.levels()?;
@@ -460,20 +518,39 @@ impl Pack {
         if !self.has_table("section_loc")? {
             return Ok(SectionLoc::default());
         }
-        let conn = self.conn();
-        let mut stmt = conn.prepare_cached(
-            "SELECT page_label, page_index, figure_label FROM section_loc WHERE section_id = ?1",
-        )?;
-        Ok(stmt
-            .query_row([section_id], |r| {
-                Ok(SectionLoc {
-                    page_label: r.get(0)?,
-                    page_index: r.get(1)?,
-                    figure_label: r.get(2)?,
-                })
+        // `boxes` is optional: packs baked before it have no such column.
+        let boxes_col = if self.has_column("section_loc", "boxes")? {
+            "boxes"
+        } else {
+            "NULL"
+        };
+        type L = (Option<String>, Option<i64>, Option<String>, Option<String>);
+        let row: Option<L> = {
+            let conn = self.conn();
+            let mut stmt = conn.prepare_cached(&format!(
+                "SELECT page_label, page_index, figure_label, {boxes_col} FROM section_loc
+                 WHERE section_id = ?1"
+            ))?;
+            stmt.query_row([section_id], |r| {
+                Ok((r.get(0)?, r.get(1)?, r.get(2)?, r.get(3)?))
             })
             .optional()?
-            .unwrap_or_default())
+        };
+        let Some((page_label, page_index, figure_label, boxes)) = row else {
+            return Ok(SectionLoc::default());
+        };
+        let boxes: Vec<PageBox> = json_col(section_id, "section_loc.boxes", boxes)?;
+        if let Some(b) = boxes.iter().find(|b| !b.valid()) {
+            return Err(Error::Pack(format!(
+                "section_loc {section_id}: box {b:?} is not inside the page (0 to 1, x0 < x1, y0 < y1)"
+            )));
+        }
+        Ok(SectionLoc {
+            page_label,
+            page_index,
+            figure_label,
+            boxes,
+        })
     }
 
     /// The nearest printed page of a section or its ancestors, with the
@@ -486,6 +563,10 @@ impl Pack {
                 if l.page_label.is_some() || l.page_index.is_some() {
                     own.page_label = l.page_label;
                     own.page_index = l.page_index;
+                    // Its boxes stand for this passage only when it has none.
+                    if own.boxes.is_empty() {
+                        own.boxes = l.boxes;
+                    }
                     break;
                 }
             }
@@ -982,6 +1063,35 @@ impl Pack {
                 },
             )
             .collect()
+    }
+
+    /// The signal kinds the pack knows: `pack_meta.signal_kinds`, else one
+    /// per kind in the signal map (label = kind, example = its first exact
+    /// pattern).
+    pub fn signal_kinds(&self) -> Result<Vec<SignalKind>> {
+        if let Some(raw) = self.meta("signal_kinds") {
+            return serde_json::from_str(raw)
+                .map_err(|e| Error::Pack(format!("pack_meta.signal_kinds: {e}")));
+        }
+        let mut out: Vec<SignalKind> = Vec::new();
+        for r in self.signal_rules()? {
+            let exact = !["re:", "prefix:", "glob:"]
+                .iter()
+                .any(|p| r.pattern.starts_with(p));
+            match out.iter_mut().find(|k| k.kind == r.signal_kind) {
+                Some(k) => {
+                    if k.example.is_none() && exact {
+                        k.example = Some(r.pattern.clone());
+                    }
+                }
+                None => out.push(SignalKind {
+                    label: r.signal_kind.clone(),
+                    kind: r.signal_kind,
+                    example: exact.then_some(r.pattern),
+                }),
+            }
+        }
+        Ok(out)
     }
 
     /// Identification rules.
