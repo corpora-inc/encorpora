@@ -1093,3 +1093,60 @@ fn the_confidence_rule_is_pinned_on_constructed_inputs() {
     assert_eq!(r.rate(false, false, 0.9, 0, None, Some(0.9)), Closest);
     assert_eq!(r.rate(false, false, 0.0, 0, Some(0.99), None), Closest);
 }
+
+#[test]
+fn a_value_node_takes_closed_ranges_and_named_readings() {
+    let b = pump_with(exec(
+        r#"UPDATE fault_node SET expect = '{"kind":"value","unit":"V","min":0,"max":30,"labels":["No indication"]}' WHERE node_id = 'nc.2';
+           UPDATE fault_edge SET label = 'Less than 11.5', cond = '{"op":"<","value":11.5}' WHERE from_node = 'nc.2' AND ord = 1;
+           UPDATE fault_edge SET label = '11.5 to 12.5', cond = '{"op":"between","min":11.5,"max":12.5,"min_inclusive":true,"max_inclusive":true}' WHERE from_node = 'nc.2' AND ord = 2;
+           UPDATE fault_edge SET label = 'More than 12.5', cond = '{"op":">","value":12.5}' WHERE from_node = 'nc.2' AND ord = 3;
+           INSERT INTO fault_edge VALUES ('nc.2', 4, 'No indication', NULL, 'nc.3n', 0);"#,
+    ));
+    let report = graph::validate(&b.pack).unwrap();
+    assert!(report.ok, "{:?}", report.violations);
+    let t = tree(&b, "t-nocrank");
+    assert_eq!(
+        choose(&t, "nc.2", volts(12.5, "V")).unwrap(),
+        "nc.2b",
+        "12.5 is in the closed range"
+    );
+    assert_eq!(choose(&t, "nc.2", volts(11.5, "V")).unwrap(), "nc.2b");
+    assert_eq!(choose(&t, "nc.2", volts(12.51, "V")).unwrap(), "nc.3");
+    assert_eq!(
+        choose(&t, "nc.2", outcome("no INDICATION")).unwrap(),
+        "nc.3n"
+    );
+    assert!(choose(&t, "nc.2", outcome("flat")).is_err());
+    // The view lists the keypad's ranges and the named reading together.
+    let level = b.pack.levels().unwrap()[0].clone();
+    let v = view::node_view(&b.pack, &t, "nc.2", &level, None, &[]).unwrap();
+    let outcomes: Vec<_> = v
+        .record
+        .branches
+        .iter()
+        .map(|br| br.outcome.clone())
+        .collect();
+    assert_eq!(
+        outcomes,
+        vec![None, None, None, Some("no indication".to_string())]
+    );
+    // A gap at 12.5 (both neighbours open) and a plain branch that is not a
+    // reading label both fail validation.
+    let gap = pump_with(exec(
+        r#"UPDATE fault_edge SET cond = '{"op":"between","min":11.5,"max":12.5}' WHERE from_node = 'nc.2' AND ord = 2;
+           UPDATE fault_edge SET cond = '{"op":">","value":12.5}' WHERE from_node = 'nc.2' AND ord = 3;"#,
+    ));
+    let r = graph::validate(&gap.pack).unwrap();
+    assert!(
+        r.violations
+            .iter()
+            .any(|v| v.rule == "edge.coverage" && v.detail.contains("12.5")),
+        "{:?}",
+        r.violations
+    );
+    let stray = pump_with(exec(
+        "INSERT INTO fault_edge VALUES ('nc.2', 4, 'Flat', NULL, 'nc.3n', 0);",
+    ));
+    assert!(rules(&graph::validate(&stray.pack).unwrap()).contains(&"edge.coverage".to_string()));
+}

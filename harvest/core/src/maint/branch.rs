@@ -18,26 +18,30 @@ pub enum Expect {
     /// Outcome is one of `options`; one edge labelled with each.
     Choice { options: Vec<String> },
     /// A measured value in `unit`; edges carry numeric conditions that
-    /// partition `[min, max]` (the whole line when absent).
+    /// partition `[min, max]` (the whole line when absent). `labels` are
+    /// readings the manual names instead of a number ("NO INDICATION"):
+    /// each has one plain branch with that label, chosen by its outcome.
     Value {
         unit: String,
         #[serde(default)]
         min: Option<f64>,
         #[serde(default)]
         max: Option<f64>,
+        #[serde(default, skip_serializing_if = "Vec::is_empty")]
+        labels: Vec<String>,
     },
     /// Outcome `done`; one edge.
     Ack,
 }
 
 impl Expect {
-    /// The categorical outcomes this expects (empty for `value`).
+    /// The categorical outcomes this expects (for `value`, its labels).
     pub fn outcomes(&self) -> Vec<String> {
         match self {
             Self::YesNo => vec!["yes".into(), "no".into()],
             Self::PassFail => vec!["pass".into(), "fail".into()],
             Self::Choice { options } => options.iter().map(|o| fold(o)).collect(),
-            Self::Value { .. } => Vec::new(),
+            Self::Value { labels, .. } => labels.iter().map(|o| fold(o)).collect(),
             Self::Ack => vec!["done".into()],
         }
     }
@@ -56,7 +60,8 @@ pub enum CondOp {
     Ge,
     #[serde(rename = "==")]
     Eq,
-    /// `min <= v < max`.
+    /// `min <= v < max` by default; `min_inclusive` / `max_inclusive`
+    /// say otherwise (a printed "0.6 TO 1.2" is both inclusive).
     #[serde(rename = "between")]
     Between,
 }
@@ -73,6 +78,12 @@ pub struct Cond {
     pub min: Option<f64>,
     #[serde(default)]
     pub max: Option<f64>,
+    /// `between` only: is `min` in the range (default true)?
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub min_inclusive: Option<bool>,
+    /// `between` only: is `max` in the range (default false)?
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub max_inclusive: Option<bool>,
 }
 
 /// A half-open or closed interval; infinite ends are open.
@@ -110,6 +121,14 @@ impl Cond {
                 .ok_or_else(|| format!("{:?} needs a finite {what}", self.op))
         };
         let inf = f64::INFINITY;
+        if self.op != CondOp::Between
+            && (self.min_inclusive.is_some() || self.max_inclusive.is_some())
+        {
+            return Err(format!(
+                "{:?}: min_inclusive and max_inclusive belong to between",
+                self.op
+            ));
+        }
         Ok(match self.op {
             CondOp::Lt => Interval {
                 lo: -inf,
@@ -151,9 +170,9 @@ impl Cond {
                 }
                 Interval {
                     lo,
-                    lo_inc: true,
+                    lo_inc: self.min_inclusive.unwrap_or(true),
                     hi,
-                    hi_inc: false,
+                    hi_inc: self.max_inclusive.unwrap_or(false),
                 }
             }
         })
@@ -282,13 +301,34 @@ pub fn choose<'a>(
         )));
     }
     let taken: Vec<&FaultEdge> = match expect {
-        Expect::Value { unit, min, max } => {
-            if result.outcome.is_some() {
+        Expect::Value { unit, labels, .. } if result.outcome.is_some() => {
+            // A named reading instead of a number.
+            if result.value.is_some() || result.unit.is_some() {
                 return Err(Error::Invalid(format!(
-                    "node {} expects a measured value in {unit}, not an outcome",
+                    "node {}: give a value in {unit} or a named reading, not both",
                     node.node_id
                 )));
             }
+            let outcome = result.outcome.as_deref().map(fold).unwrap_or_default();
+            if !labels.iter().any(|l| fold(l) == outcome) {
+                return Err(Error::Invalid(format!(
+                    "node {} expects a measured value in {unit}{}; got {:?}",
+                    node.node_id,
+                    if labels.is_empty() {
+                        String::new()
+                    } else {
+                        format!(" or one of: {}", labels.join(", "))
+                    },
+                    result.outcome
+                )));
+            }
+            edges
+                .iter()
+                .filter(|e| e.cond.is_none() && fold(&e.label) == outcome)
+                .copied()
+                .collect()
+        }
+        Expect::Value { unit, min, max, .. } => {
             let v = result.value.filter(|v| v.is_finite()).ok_or_else(|| {
                 Error::Invalid(format!(
                     "node {} expects a measured value in {unit}",
@@ -312,12 +352,8 @@ pub fn choose<'a>(
             }
             let mut out = Vec::new();
             for e in edges {
-                let c = e.cond.as_ref().ok_or_else(|| {
-                    Error::Pack(format!(
-                        "edge {}#{} of a value node has no condition",
-                        e.from_node, e.ord
-                    ))
-                })?;
+                // Labelled readings are chosen by outcome, never by a number.
+                let Some(c) = e.cond.as_ref() else { continue };
                 let i = c
                     .interval()
                     .map_err(|m| Error::Pack(format!("edge {}#{}: {m}", e.from_node, e.ord)))?;
@@ -377,6 +413,8 @@ mod tests {
             value,
             min,
             max,
+            min_inclusive: None,
+            max_inclusive: None,
         }
         .interval()
         .unwrap()
@@ -415,5 +453,51 @@ mod tests {
         let meter = domain(Some(0.0), Some(30.0));
         assert!(partition_problems(&[l("a", lt), l("b", ge)], meter).is_empty());
         assert!(!partition_problems(&[l("a", lt)], meter).is_empty());
+    }
+
+    fn between(min: f64, max: f64, min_inc: bool, max_inc: bool) -> Interval {
+        Cond {
+            op: CondOp::Between,
+            value: None,
+            min: Some(min),
+            max: Some(max),
+            min_inclusive: Some(min_inc),
+            max_inclusive: Some(max_inc),
+        }
+        .interval()
+        .unwrap()
+    }
+
+    #[test]
+    fn closed_ranges_meet_open_neighbours() {
+        let l = |s: &str, i| (s.to_string(), i);
+        let all = domain(None, None);
+        // "LESS THAN 0.6", "0.6 TO 1.2", "MORE THAN 1.2".
+        let less = iv(CondOp::Lt, Some(0.6), None, None);
+        let to = between(0.6, 1.2, true, true);
+        let more = iv(CondOp::Gt, Some(1.2), None, None);
+        assert!(partition_problems(&[l("lt", less), l("to", to), l("gt", more)], all).is_empty());
+        assert!(to.contains(0.6) && to.contains(1.2) && !more.contains(1.2));
+        // "MORE THAN OR EQUAL TO 1.2" beside a closed range: overlap at 1.2.
+        let ge = iv(CondOp::Ge, Some(1.2), None, None);
+        let p = partition_problems(&[l("lt", less), l("to", to), l("ge", ge)], all);
+        assert!(p.len() == 1 && p[0].contains("overlaps"), "{p:?}");
+        // An open range between open neighbours leaves 0.6 and 1.2 uncovered.
+        let open = between(0.6, 1.2, false, false);
+        let p = partition_problems(&[l("lt", less), l("o", open), l("gt", more)], all);
+        assert_eq!(p.len(), 2, "{p:?}");
+        // Bounds flags belong to between only.
+        assert!(
+            Cond {
+                op: CondOp::Lt,
+                value: Some(1.0),
+                min: None,
+                max: None,
+                min_inclusive: Some(true),
+                max_inclusive: None
+            }
+            .interval()
+            .is_err()
+        );
     }
 }
