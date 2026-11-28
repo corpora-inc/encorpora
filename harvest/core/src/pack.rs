@@ -4,6 +4,7 @@ use crate::error::{Error, Result};
 use crate::packs::{self, Manifest, TrustedKey};
 use crate::segments::Segment;
 use rusqlite::{Connection, OpenFlags, OptionalExtension, params};
+use schemars::JsonSchema;
 use serde::Serialize;
 use std::collections::{BTreeMap, HashMap};
 use std::path::{Path, PathBuf};
@@ -43,7 +44,7 @@ pub enum Verify {
 }
 
 /// One section of the corpus.
-#[derive(Debug, Clone, Serialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, PartialEq, JsonSchema)]
 pub struct Section {
     pub section_id: String,
     pub source_id: String,
@@ -58,7 +59,7 @@ pub struct Section {
 }
 
 /// A fact: a limit, clearance, interval, capacity, duty.
-#[derive(Debug, Clone, Serialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, PartialEq, JsonSchema)]
 pub struct Fact {
     pub fact_id: String,
     pub section_id: String,
@@ -80,7 +81,7 @@ impl Fact {
 }
 
 /// A row of the answer cache.
-#[derive(Debug, Clone, Serialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, PartialEq, JsonSchema)]
 pub struct CachedAnswer {
     pub answer_id: String,
     pub question: String,
@@ -90,7 +91,7 @@ pub struct CachedAnswer {
 }
 
 /// An equipment variant.
-#[derive(Debug, Clone, Serialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, PartialEq, JsonSchema)]
 pub struct Equipment {
     pub equip_id: String,
     pub parent_id: Option<String>,
@@ -99,7 +100,7 @@ pub struct Equipment {
 }
 
 /// A guided procedure (inspection, assembly, lift plan).
-#[derive(Debug, Clone, Serialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, PartialEq, JsonSchema)]
 pub struct Procedure {
     pub proc_id: String,
     pub title: String,
@@ -109,7 +110,7 @@ pub struct Procedure {
 }
 
 /// What a deficiency rests on (CONTRACT "Procedure step deficiency").
-#[derive(Debug, Clone, Copy, Serialize, serde::Deserialize, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, Serialize, serde::Deserialize, PartialEq, Eq, JsonSchema)]
 #[serde(rename_all = "lowercase")]
 pub enum Basis {
     /// A rule: `section_id` and a verbatim `quote` say so.
@@ -120,7 +121,7 @@ pub enum Basis {
 }
 
 /// What to do when a step fails, and the rule behind it when there is one.
-#[derive(Debug, Clone, Serialize, serde::Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, serde::Deserialize, PartialEq, JsonSchema)]
 pub struct Deficiency {
     pub guidance: String,
     #[serde(default)]
@@ -172,7 +173,7 @@ impl Deficiency {
 }
 
 /// One step of a procedure.
-#[derive(Debug, Clone, Serialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, PartialEq, JsonSchema)]
 pub struct ProcStep {
     pub proc_id: String,
     pub ord: i64,
@@ -186,7 +187,7 @@ pub struct ProcStep {
 }
 
 /// A retrieval unit.
-#[derive(Debug, Clone, Serialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, PartialEq, JsonSchema)]
 pub struct Chunk {
     pub chunk_id: String,
     pub ref_kind: String,
@@ -603,13 +604,20 @@ impl Pack {
             json.and_then(|j| serde_json::from_str::<Vec<String>>(&j).ok())
                 .and_then(|v| v.into_iter().next())
         };
+        let levels: Vec<String> = self
+            .levels()
+            .map(|l| l.into_iter().map(|l| l.id).collect())
+            .unwrap_or_default();
         Ok(match ref_kind {
             "section" => Some(ref_id.to_string()),
             // `<section_id>:<level>` (the pipeline's form) or a bare section id.
             "explanation" => Some(
                 ref_id
                     .rsplit_once(':')
-                    .filter(|(_, level)| ["trainee", "operator", "inspector"].contains(level))
+                    .filter(|(_, level)| {
+                        ["trainee", "operator", "inspector"].contains(level)
+                            || levels.iter().any(|l| l == level)
+                    })
                     .map_or(ref_id, |(s, _)| s)
                     .to_string(),
             ),

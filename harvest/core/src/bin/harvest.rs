@@ -26,7 +26,9 @@ const USAGE: &str = "usage:
                   [--id ID] [--role operator] [--exams FILE] [--pubkey KEY]   # verified content as JSON (what the app reads)
   harvest converse <pack-dir> <script.json|-> [--exams FILE] [--llm off|URL [--llm-model NAME]] [--embedder …] [--pubkey KEY]
                   # scripted Instructor conversations (CONTRACT \"Instructor turns\"), one JSON line each
-  harvest fixture <dir> [--version V]     # writes the test-only fixture pack
+  harvest fixture <dir> [--version V] [--maint [--samples DIR]]
+                  # writes a test-only fixture pack; --maint: the fictional pump manual
+                  # (fault trees, tasks, levels); --samples: its field-note bundle and asset registry
 
 KEY: base64 or hex ed25519 public key, or a file holding one; repeatable or
 comma-separated. Defaults to $HARVEST_PUBKEY.";
@@ -43,7 +45,7 @@ impl Args {
         let mut it = raw.into_iter();
         while let Some(a) = it.next() {
             if let Some(name) = a.strip_prefix("--") {
-                if name == "json" || name == "help" {
+                if name == "json" || name == "help" || name == "maint" {
                     flags.push((name.to_string(), None));
                 } else if let Some((k, v)) = name.split_once('=') {
                     flags.push((k.to_string(), Some(v.to_string())));
@@ -158,6 +160,11 @@ fn keys(args: &Args) -> Result<Vec<TrustedKey>, CliError> {
     {
         specs.push(env);
     }
+    keys_from(&specs)
+}
+
+/// Keys from `KEY` specs: base64 or hex, or a file holding one; comma lists.
+fn keys_from(specs: &[String]) -> Result<Vec<TrustedKey>, CliError> {
     let mut out = Vec::new();
     for spec in specs.iter().flat_map(|s| s.split(',')) {
         let spec = spec.trim();
@@ -258,12 +265,19 @@ fn verify(args: &Args) -> Result<(), CliError> {
     let started = Instant::now();
     let pack = Pack::open(&dir, &keys(args)?)?;
     let counts = pack.row_counts()?;
+    let graph = if pack.has_fault_trees()? {
+        Some(harvest_core::maint::graph::validate(&pack)?)
+    } else {
+        None
+    };
     let elapsed = started.elapsed().as_millis() as u64;
+    let graph_ok = graph.as_ref().is_none_or(|g| g.ok);
     if args.has("json") {
         println!(
             "{}",
             json!({
-                "ok": true,
+                "ok": graph_ok,
+                "graph": graph,
                 "pack_id": pack.pack_id(),
                 "version": pack.version(),
                 "schema_version": pack.manifest().schema_version,
@@ -285,6 +299,31 @@ fn verify(args: &Args) -> Result<(), CliError> {
         for (t, n) in counts {
             println!("  {t}: {n}");
         }
+        if let Some(g) = &graph {
+            println!(
+                "  fault trees: {} trees, {} nodes, {} edges, {} guards; {} violation(s)",
+                g.counts.trees,
+                g.counts.nodes,
+                g.counts.edges,
+                g.counts.guards,
+                g.violations.len()
+            );
+            for v in &g.violations {
+                println!(
+                    "    {} {}{}: {}",
+                    v.rule,
+                    v.tree_id.as_deref().unwrap_or("-"),
+                    v.node_id
+                        .as_deref()
+                        .map(|n| format!("/{n}"))
+                        .unwrap_or_default(),
+                    v.detail
+                );
+            }
+        }
+    }
+    if !graph_ok {
+        return Err(CliError::Exit(1));
     }
     Ok(())
 }
@@ -939,14 +978,38 @@ fn exams_arg(args: &Args) -> Result<Option<serde_json::Value>, CliError> {
 }
 
 fn fixture(args: &Args) -> Result<(), CliError> {
-    args.reject_unknown(&["version", "json"])?;
+    args.reject_unknown(&["version", "json", "maint", "samples"])?;
     let dir = PathBuf::from(
         args.positional
             .first()
             .ok_or_else(|| CliError::Usage("missing <dir>".into()))?,
     );
     let version = args.get("version").unwrap_or("2026.1.1-1");
-    harvest_core::fixture::build(&dir, version)?;
+    if args.has("maint") {
+        harvest_core::fixture_maint::build(&dir, version)?;
+    } else {
+        if args.has("samples") {
+            return Err(CliError::Usage("--samples goes with --maint".into()));
+        }
+        harvest_core::fixture::build(&dir, version)?;
+    }
+    if let Some(samples) = args.get("samples") {
+        let samples = PathBuf::from(samples);
+        std::fs::create_dir_all(&samples).map_err(Error::from)?;
+        let write = |name: &str, v: serde_json::Value| -> Result<(), CliError> {
+            std::fs::write(
+                samples.join(name),
+                serde_json::to_vec_pretty(&v).map_err(Error::from)?,
+            )
+            .map_err(Error::from)?;
+            Ok(())
+        };
+        write(
+            "field-bundle.json",
+            harvest_core::fixture_maint::field_bundle(1)?,
+        )?;
+        write("assets.json", harvest_core::fixture_maint::asset_registry())?;
+    }
     let key = harvest_core::fixture::public_key_base64();
     if args.has("json") {
         println!("{}", json!({"dir": dir, "version": version, "pubkey": key}));

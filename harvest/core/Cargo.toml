@@ -44,6 +44,11 @@ chacha20poly1305 = { version = "0.11", default-features = false, features = ["al
 getrandom = { version = "0.2", features = ["std"] }
 # Delta packs: BSDIFF40 patches of the SQLite file (bsdiff 4.x compatible).
 qbsdiff = "1.4"
+# JSON Schema for the types the app reads (the API contract is generated
+# from them).
+schemars = "1.2"
+# Signal patterns (`re:`) in a pack's signal map.
+regex-lite = "0.1"
 # Plain-HTTP client for a local or lab OpenAI-compatible server (CLI only).
 ureq = { version = "3", default-features = false, features = ["json"], optional = true }
 # Same pins as corpan/plugins/tauri-plugin-corpan-llm.

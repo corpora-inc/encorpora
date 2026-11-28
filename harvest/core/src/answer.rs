@@ -13,13 +13,14 @@ use crate::pack::{CachedAnswer, Pack, Section};
 use crate::retrieval::{Hit, Reranker, Retriever, SearchOptions};
 use crate::segments::{self, Segment};
 use rusqlite::params;
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 use std::collections::BTreeSet;
 use std::sync::Arc;
 use std::time::Instant;
 
 /// Who is asking; picks the explanation level.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize, Default)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize, Default, JsonSchema)]
 #[serde(rename_all = "lowercase")]
 pub enum Role {
     Trainee,
@@ -49,7 +50,7 @@ impl Role {
 }
 
 /// How an answer was produced.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize, JsonSchema)]
 #[serde(rename_all = "lowercase")]
 pub enum Mode {
     Baked,
@@ -91,6 +92,13 @@ pub struct AskOptions {
     /// `pack_meta`, see [`AskOptions::for_pack`]). Without dense vectors the
     /// coverage-only `support_threshold` applies.
     pub dense_gate: Option<DenseGate>,
+    /// The explanation level when it is not one of the three roles (a
+    /// pack's own `pack_meta.levels`); overrides `role` where a level is
+    /// read: explanations, cached-answer variants, the model's context.
+    pub level: Option<String>,
+    /// Answer only from these sections and those under them (a tree's,
+    /// a task's or a system's sections); empty: the whole pack.
+    pub within: Vec<String>,
 }
 
 /// Answer gate with dense retrieval: a section needs `support_threshold`
@@ -117,11 +125,18 @@ impl Default for AskOptions {
             max_quote_chars: 600,
             nearest: 5,
             dense_gate: None,
+            level: None,
+            within: Vec::new(),
         }
     }
 }
 
 impl AskOptions {
+    /// The level explanations and cached-answer variants are read at.
+    pub fn level(&self) -> &str {
+        self.level.as_deref().unwrap_or(self.role.as_str())
+    }
+
     /// Defaults with the pack's calibrated dense gate, when it states one:
     /// `pack_meta.gate_dense_support_threshold` and `gate_dense_min`.
     pub fn for_pack(pack: &Pack) -> Self {
@@ -151,7 +166,7 @@ impl AskOptions {
 }
 
 /// A retrieved chunk as `ask --json` reports it.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, JsonSchema)]
 pub struct Retrieved {
     pub chunk_id: String,
     pub ref_id: String,
@@ -176,7 +191,7 @@ impl From<&Hit> for Retrieved {
 /// decision offline for any threshold. A section is kept when its coverage
 /// reaches `threshold` and is within `window` of the best; the first
 /// `max_sections` kept are composed; none kept means decline.
-#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq, JsonSchema)]
 pub struct Support {
     /// Best coverage over the candidates (the value the gate compares).
     pub score: f64,
@@ -200,7 +215,7 @@ pub struct Support {
 }
 
 /// One section the gate considered.
-#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq, JsonSchema)]
 pub struct SupportCandidate {
     pub section_id: String,
     /// 1-based rank of its first retrieved chunk.
@@ -219,7 +234,7 @@ pub struct SupportCandidate {
 pub const SUPPORT_WINDOW: f64 = 0.25;
 
 /// The `ask --json` object of CONTRACT.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, JsonSchema)]
 pub struct AskResponse {
     pub mode: Mode,
     pub answer_id: Option<String>,
@@ -308,6 +323,7 @@ impl Engine {
         let search = SearchOptions {
             k: opts.k.max(opts.max_sections * 4),
             equip: opts.equip.clone(),
+            within: opts.within.clone(),
             ..SearchOptions::default()
         };
         let result = retriever.search(question, &search)?;
@@ -328,6 +344,17 @@ impl Engine {
 
         // Answer cache.
         let (cached, similarity) = self.cache_lookup_for(question, &norm, opts)?;
+        // A scoped question takes a cached answer only when all of it is in scope.
+        let cached = match cached {
+            Some(a) if !opts.within.is_empty() => {
+                let mut ok = !a.section_ids.is_empty();
+                for s in &a.section_ids {
+                    ok &= crate::retrieval::in_scope(&self.pack, Some(s), &opts.within)?;
+                }
+                ok.then_some(a)
+            }
+            other => other,
+        };
         trace.cache_similarity = similarity;
         let support = Support {
             score: trace.support,
@@ -597,6 +624,7 @@ impl Engine {
         let search = SearchOptions {
             k: opts.k.max(20),
             equip: opts.equip.clone(),
+            within: opts.within.clone(),
             ..SearchOptions::default()
         };
         let hits = self
@@ -670,7 +698,7 @@ impl Engine {
             candidates
         };
         let passages = compose::passages(&self.pack, &chosen, 1500)?;
-        let body = compose::compose(llm, question, opts.role.as_str(), &context, &passages)?;
+        let body = compose::compose(llm, question, opts.level(), &context, &passages)?;
         let (mut body, check) = check::check(&self.pack, &body, CheckOptions::STRICT)?;
         // A dropped sentence can leave its cite next to the same cite.
         body.dedup();
@@ -699,8 +727,8 @@ impl Engine {
                 .map(|e| e.name.clone())
         });
         match equip {
-            Some(name) => format!("The user is a {} working with: {name}.", opts.role.as_str()),
-            None => format!("The user is a {}.", opts.role.as_str()),
+            Some(name) => format!("The user is a {} working with: {name}.", opts.level()),
+            None => format!("The user is a {}.", opts.level()),
         }
     }
 
@@ -778,7 +806,7 @@ impl Engine {
             }
             // Prefer the asker's level, then level-neutral rows.
             let level_rank = match answer.level.as_deref() {
-                Some(l) if l == opts.role.as_str() => 2,
+                Some(l) if l == opts.level() => 2,
                 None => 1,
                 _ => 0,
             };
@@ -848,7 +876,7 @@ impl Engine {
             units.extend(chunks);
             if let Some(e) = self
                 .pack
-                .explanation(&section_id, opts.role.as_str(), &opts.lang)?
+                .explanation(&section_id, opts.level(), &opts.lang)?
             {
                 units.push(best_passage(&e, &norm.concepts, opts.max_quote_chars));
             }
@@ -892,7 +920,7 @@ impl Engine {
         // names the section.
         let explanation = self
             .pack
-            .explanation(section_id, opts.role.as_str(), &opts.lang)?;
+            .explanation(section_id, opts.level(), &opts.lang)?;
         // Leads summarize what is quoted: a fact whose quote lies in the shown
         // passage, or an explanation sentence. Only a clear best leads; a tie
         // (two limits for two cases, say) opens with the rule itself.
