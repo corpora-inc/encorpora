@@ -370,11 +370,16 @@ fn figures(text: &str) -> Vec<String> {
         for (i, c) in chars.iter().enumerate() {
             let lead = *c == '.'
                 && chars.get(i + 1).is_some_and(|d| d.is_ascii_digit())
-                && !chars.get(i.wrapping_sub(1)).is_some_and(|d| d.is_ascii_digit());
+                && !chars
+                    .get(i.wrapping_sub(1))
+                    .is_some_and(|d| d.is_ascii_digit());
             if lead {
                 s.push_str(" 0.");
-            } else if *c == ',' && i > 0 && chars[i - 1].is_ascii_digit()
-                && chars.get(i + 1).is_some_and(|d| d.is_ascii_digit())
+            } else if *c == ','
+                && i > 0
+                && chars[i - 1].is_ascii_digit()
+                && (1..=3).all(|k| chars.get(i + k).is_some_and(|d| d.is_ascii_digit()))
+                && !chars.get(i + 4).is_some_and(|d| d.is_ascii_digit())
             {
                 // a thousands comma
             } else {
@@ -384,10 +389,15 @@ fn figures(text: &str) -> Vec<String> {
         s
     };
     for t in normalize::tokens(&spaced) {
-        if is_number(&t)
-            && let Ok(v) = t.trim_end_matches('.').parse::<f64>()
-        {
-            out.push(format!("{v}"));
+        if is_number(&t) {
+            // One spelling for a plain number; anything else (a version-like
+            // "1.2.3", a citation "1926.1400") is compared as written.
+            match t.trim_end_matches('.').parse::<f64>() {
+                Ok(v) if !t.contains('.') || t.matches('.').count() == 1 && t.len() < 8 => {
+                    out.push(format!("{v}"))
+                }
+                _ => out.push(t),
+            }
         }
     }
     out

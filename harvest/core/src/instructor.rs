@@ -587,13 +587,43 @@ const NODE_OVERLAP: f64 = 0.5;
 /// foot", "doubling both sides quarters the pressure", "divide by the area".
 fn is_arithmetic(sentence: &str) -> bool {
     const WORDS: &[&str] = &[
-        "divide", "divided", "multiply", "multiplied", "times", "equals", "square inch",
-        "square foot", "square feet", "per square", "halve", "quarter", "double", "convert",
-        "conversion", "sum", "subtract", "minus", "plus", "ratio", "pressure is", "area is",
-        "e.g", "for example", "say ",
+        "divide",
+        "divided",
+        "multiply",
+        "multiplied",
+        "times",
+        "equals",
+        "square inch",
+        "square foot",
+        "square feet",
+        "per square",
+        "halve",
+        "quarter",
+        "double",
+        "convert",
+        "conversion",
+        "sum",
+        "subtract",
+        "minus",
+        "plus",
+        "ratio",
+        "pressure is",
+        "area is",
+        "e.g",
+        "for example",
+        "say ",
     ];
-    let l = sentence.to_lowercase();
-    WORDS.iter().any(|w| l.contains(w)) && !is_rule_claim(sentence)
+    // Whole words only: "sum" is not in "assume", "quarter" not in "quarterly".
+    let l = format!(
+        " {} ",
+        sentence
+            .to_lowercase()
+            .replace(['.', ',', ';', ':', '!', '?', '(', ')'], " ")
+    );
+    WORDS
+        .iter()
+        .any(|w| l.contains(&format!(" {} ", w.trim_end())))
+        && !is_rule_claim(sentence)
 }
 
 /// A sentence about the exam's format (its share, items, minutes).
@@ -609,10 +639,36 @@ fn is_exam_format(sentence: &str) -> bool {
 /// capacity, an interval or deadline, a voltage band.
 fn is_requirement_number(sentence: &str) -> bool {
     const WORDS: &[&str] = &[
-        "clearance", "distance", "limit", "capacity", "rated", "deadline", "working day",
-        "interval", "every", "each shift", "monthly", "annual", "level", "within", "no more than",
-        "no less than", "kv", "volt", "feet", "foot", "percent", "degree", "proof test",
-        "design factor", "safety factor", "minutes", "hours", "days", "months", "years",
+        "clearance",
+        "distance",
+        "limit",
+        "capacity",
+        "rated",
+        "deadline",
+        "working day",
+        "interval",
+        "every",
+        "each shift",
+        "monthly",
+        "annual",
+        "level",
+        "within",
+        "no more than",
+        "no less than",
+        "kv",
+        "volt",
+        "feet",
+        "foot",
+        "percent",
+        "degree",
+        "proof test",
+        "design factor",
+        "safety factor",
+        "minutes",
+        "hours",
+        "days",
+        "months",
+        "years",
     ];
     let l = format!(" {} ", sentence.to_lowercase());
     WORDS.iter().any(|w| l.contains(w))
@@ -990,7 +1046,12 @@ impl Instructor {
             }
         }
         let exams = self.tree.exams.as_array().map_or(0, Vec::len);
-        let topics = self.tree.nodes.iter().filter(|n| n.level == "topic").count();
+        let topics = self
+            .tree
+            .nodes
+            .iter()
+            .filter(|n| n.level == "topic")
+            .count();
         out.push_str(&format!(" {exams} {topics}"));
         out
     }
@@ -1029,7 +1090,11 @@ impl Instructor {
         for sid in n.section_ids.iter().take(6) {
             if let Ok(Some(sec)) = self.engine.pack.section(sid) {
                 let lines: Vec<String> = if sec.kind == "table" {
-                    sec.text.lines().map(normalize_ws).filter(|l| !l.is_empty()).collect()
+                    sec.text
+                        .lines()
+                        .map(normalize_ws)
+                        .filter(|l| !l.is_empty())
+                        .collect()
                 } else {
                     sentences(&normalize_ws(&sec.text))
                 };
@@ -1056,7 +1121,10 @@ impl Instructor {
                         if nums.iter().all(|x| exam_nums.contains(x)) {
                             kept.push(sent);
                         } else {
-                            trace.dropped.push(format!("node {}: exam number not in the blueprint: {sent}", n.node_id));
+                            trace.dropped.push(format!(
+                                "node {}: exam number not in the blueprint: {sent}",
+                                n.node_id
+                            ));
                         }
                         continue;
                     }
@@ -1071,13 +1139,17 @@ impl Instructor {
                         kept.push(sent);
                         continue;
                     }
-                    let found = pool.iter().find(|c| !runs.contains(c) && holds(std::slice::from_ref(c)));
+                    let found = pool
+                        .iter()
+                        .find(|c| !runs.contains(c) && holds(std::slice::from_ref(c)));
                     match found {
                         Some(c) if runs.len() < NODE_QUOTES + 3 => {
                             runs.push(c.clone());
                             kept.push(sent);
                         }
-                        _ => trace.dropped.push(format!("node {}: no quote states: {sent}", n.node_id)),
+                        _ => trace
+                            .dropped
+                            .push(format!("node {}: no quote states: {sent}", n.node_id)),
                     }
                 }
                 t.text = kept.join(" ");
