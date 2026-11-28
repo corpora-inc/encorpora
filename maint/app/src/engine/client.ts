@@ -24,12 +24,13 @@ export interface Transport {
   call(method: string, params: unknown): Promise<Envelope<unknown>>;
 }
 
-export function httpTransport(base = ""): Transport {
+/** `headers`: added to every call (the hub's sign-in, when a person is signed in). */
+export function httpTransport(base = "", headers: () => Record<string, string> = () => ({})): Transport {
   return {
     async call(method, params) {
       let res: Response;
       try {
-        res = await fetch(`${base}/api/${method}`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(params ?? {}) });
+        res = await fetch(`${base}/api/${method}`, { method: "POST", headers: { "Content-Type": "application/json", ...headers() }, body: JSON.stringify(params ?? {}) });
       } catch (e) {
         return { ok: false, error: { code: "unreachable", message: `The engine did not answer (${e instanceof Error ? e.message : String(e)})` } };
       }
@@ -68,7 +69,12 @@ export async function call<M extends Method>(method: M, params: Params<M>): Prom
  * The hub: review and publishing, on a supervisor's or engineer's screen.
  * Same envelope, its own address (in development, /hub is proxied to it).
  */
-let hubTransport: Transport = httpTransport("/hub");
+let hubToken: string | null = null;
+/** The signed-in person's bearer token for the hub (development sign-in); null signs out. */
+export function setHubToken(t: string | null): void {
+  hubToken = t;
+}
+let hubTransport: Transport = httpTransport("/hub", (): Record<string, string> => (hubToken ? { Authorization: `Bearer ${hubToken}` } : {}));
 export function setHubTransport(t: Transport): void {
   hubTransport = t;
 }

@@ -1,6 +1,7 @@
-import { Check, Send, X } from "lucide-react";
+import { useState } from "react";
+import { Check, LogOut, Send, X } from "lucide-react";
 import { Link } from "react-router";
-import type { HubStatus, Lesson, ReviewItem } from "../engine/types.ts";
+import type { EnrolledDevice, HubStatus, Lesson, Principal, ReviewItem } from "../engine/types.ts";
 import { reviewLessonPath } from "../routes.ts";
 import { formatDate, formatTime } from "../ui/format.ts";
 import { Button, cx, Field, inputClass, Page, Panel, Skeleton } from "../ui/kit.tsx";
@@ -27,9 +28,14 @@ export interface ReviewProps {
   draft: ReviewDraft | null;
   /** The text the hub writes when the reviewer does not edit it. */
   suggested: string;
-  reviewer: string;
+  /** Who is signed in at the hub, and what their roles let them do. */
+  me: Principal;
+  /** Enrolled devices, for an administrator; null for anyone else. */
+  devices: EnrolledDevice[] | null;
   busy: boolean;
-  onReviewer(name: string): void;
+  onSignOut(): void;
+  onEnroll(name: string, publicKey: string): void;
+  onRevoke(deviceId: string, reason: string): void;
   onDraft(d: ReviewDraft): void;
   onApprove(): void;
   onReject(): void;
@@ -46,23 +52,31 @@ export function Review(p: ReviewProps) {
   const l = item?.current ?? null;
   const d = p.draft;
   const edited = !!(d && d.text.trim() !== p.suggested.trim());
+  const can = (r: string) => p.me.roles.includes(r as Principal["roles"][number]);
   return (
     <Page
       title="Review"
       kicker={p.status ? `${p.status.lessons_pending} waiting, ${p.status.lessons_approved} approved, ${p.status.devices} ${p.status.devices === 1 ? "device" : "devices"}` : "Hub"}
       wide
       actions={
-        <Button variant="primary" onClick={p.onPublish} disabled={p.busy || !p.reviewer.trim() || !p.status || p.status.lessons_approved === 0}>
-          <Send aria-hidden size={20} />
-          Send approved notes to the fleet
-        </Button>
+        can("publisher") && (
+          <Button variant="primary" onClick={p.onPublish} disabled={p.busy || !p.status || p.status.lessons_approved === 0}>
+            <Send aria-hidden size={20} />
+            Send to the fleet
+          </Button>
+        )
       }
     >
-      <Panel>
-        <Field label="Reviewer">
-          <input className={inputClass} value={p.reviewer} onChange={(e) => p.onReviewer(e.target.value)} autoComplete="name" />
-        </Field>
-      </Panel>
+      <div className="flex flex-wrap items-center justify-between gap-3 rounded-panel border border-line bg-surface px-4 py-2">
+        <p className="text-small">
+          Signed in as <span className="font-bold">{p.me.name}</span>
+          <span className="text-ink-3">, {p.me.roles.join(", ")}</span>
+        </p>
+        <Button variant="quiet" onClick={p.onSignOut}>
+          <LogOut aria-hidden size={20} />
+          Sign out
+        </Button>
+      </div>
       <div className="grid items-start gap-6 lg:grid-cols-[340px_minmax(0,1fr)]">
         <nav aria-label="Waiting for review" className="overflow-hidden rounded-panel border border-line bg-surface">
           {p.queue === null ? (
@@ -135,16 +149,20 @@ export function Review(p: ReviewProps) {
             <Field label="Note back to the technician">
               <textarea rows={2} className={cx(inputClass, "py-3")} value={d.note} onChange={(e) => p.onDraft({ ...d, note: e.target.value })} />
             </Field>
-            <div className="grid gap-3 sm:grid-cols-2">
-              <Button variant="primary" size="lg" onClick={p.onApprove} disabled={p.busy || !p.reviewer.trim() || !d.text.trim()}>
-                <Check aria-hidden size={22} />
-                {edited ? "Approve with edits" : "Approve"}
-              </Button>
-              <Button size="lg" onClick={p.onReject} disabled={p.busy || !p.reviewer.trim() || !d.note.trim()}>
-                <X aria-hidden size={22} />
-                Send back
-              </Button>
-            </div>
+            {can("reviewer") ? (
+              <div className="grid gap-3 sm:grid-cols-2">
+                <Button variant="primary" size="lg" onClick={p.onApprove} disabled={p.busy || !d.text.trim()}>
+                  <Check aria-hidden size={22} />
+                  {edited ? "Approve with edits" : "Approve"}
+                </Button>
+                <Button size="lg" onClick={p.onReject} disabled={p.busy || !d.note.trim()}>
+                  <X aria-hidden size={22} />
+                  Send back
+                </Button>
+              </div>
+            ) : (
+              <p className="text-small text-ink-2">Your role does not include review.</p>
+            )}
           </section>
         ) : (
           <p className="text-body text-ink-3">{p.queue && p.queue.length > 0 ? "Pick a lesson to review." : ""}</p>
@@ -172,6 +190,96 @@ export function Review(p: ReviewProps) {
           </ul>
         </section>
       )}
+      {p.devices && <Devices devices={p.devices} busy={p.busy} onEnroll={p.onEnroll} onRevoke={p.onRevoke} />}
+    </Page>
+  );
+}
+
+/** For an administrator: the devices the hub accepts uploads from; enroll by public key, revoke. */
+function Devices({ devices, busy, onEnroll, onRevoke }: { devices: EnrolledDevice[]; busy: boolean; onEnroll(name: string, key: string): void; onRevoke(id: string, reason: string): void }) {
+  const [name, setName] = useState("");
+  const [key, setKey] = useState("");
+  const [reason, setReason] = useState<Record<string, string>>({});
+  return (
+    <section aria-labelledby="devices" className="flex flex-col gap-3">
+      <h2 id="devices" className="text-h3">
+        Devices
+      </h2>
+      <ul className="m-0 flex list-none flex-col gap-2 p-0">
+        {devices.map((dv) => (
+          <li key={dv.device_id} className={cx("rounded-panel border border-line bg-surface p-4", dv.revoked_at && "opacity-70")}>
+            <div className="flex flex-wrap items-baseline justify-between gap-2">
+              <span className="font-semibold">{dv.name ?? dv.device_id}</span>
+              <span className="code text-meta text-ink-3">{dv.device_id}</span>
+            </div>
+            <p className="text-meta text-ink-2">
+              {dv.revoked_at
+                ? `Revoked ${formatTime(dv.revoked_at)} by ${dv.revoked_by ?? "?"}${dv.reason ? `: ${dv.reason}` : ""}.`
+                : `Enrolled ${formatTime(dv.enrolled_at)} by ${dv.enrolled_by}. ${dv.items} uploads${dv.last_seen ? `, last ${formatTime(dv.last_seen)}` : ""}.`}
+            </p>
+            {!dv.revoked_at && (
+              <div className="mt-2 flex flex-wrap gap-2">
+                <input
+                  aria-label={`Reason to revoke ${dv.name ?? dv.device_id}`}
+                  placeholder="Reason to revoke"
+                  value={reason[dv.device_id] ?? ""}
+                  onChange={(e) => setReason({ ...reason, [dv.device_id]: e.target.value })}
+                  className={cx(inputClass, "min-w-0 flex-1")}
+                />
+                <Button onClick={() => onRevoke(dv.device_id, reason[dv.device_id] ?? "")} disabled={busy || !(reason[dv.device_id] ?? "").trim()}>
+                  Revoke
+                </Button>
+              </div>
+            )}
+          </li>
+        ))}
+      </ul>
+      <form
+        className="flex flex-col gap-3 rounded-panel border border-line bg-surface p-4"
+        onSubmit={(e) => {
+          e.preventDefault();
+          onEnroll(name.trim(), key.trim());
+          setName("");
+          setKey("");
+        }}
+      >
+        <h3 className="text-small font-bold text-ink-2">Enroll a device</h3>
+        <Field label="Name">
+          <input className={inputClass} value={name} onChange={(e) => setName(e.target.value)} />
+        </Field>
+        <Field label="Public key">
+          <input className={cx(inputClass, "code")} value={key} onChange={(e) => setKey(e.target.value)} spellCheck={false} autoComplete="off" />
+        </Field>
+        <Button type="submit" className="self-start" disabled={busy || !key.trim()}>
+          Enroll
+        </Button>
+      </form>
+    </section>
+  );
+}
+
+/** Sign in at the hub (development tokens; a deployment signs in through its gateway). */
+export function HubSignIn({ error, busy, onSignIn }: { error: string | null; busy: boolean; onSignIn(token: string): void }) {
+  const [token, setToken] = useState("");
+  return (
+    <Page title="Review">
+      <form
+        className="flex max-w-[520px] flex-col gap-3 rounded-panel border border-line bg-surface p-4 sm:p-5"
+        onSubmit={(e) => {
+          e.preventDefault();
+          onSignIn(token.trim());
+        }}
+      >
+        <Field label="Hub sign-in token">
+          <input type="password" className={inputClass} value={token} onChange={(e) => setToken(e.target.value)} autoComplete="current-password" />
+        </Field>
+        <p className="min-h-[1.35em] text-meta text-error" role="alert">
+          {error}
+        </p>
+        <Button type="submit" variant="primary" disabled={busy || !token.trim()}>
+          Sign in
+        </Button>
+      </form>
     </Page>
   );
 }

@@ -2,6 +2,7 @@ import { useRef, type ChangeEvent, type ReactNode } from "react";
 import { Check, CloudOff, Cloud, FileUp, RefreshCw, ShieldCheck, ShieldAlert } from "lucide-react";
 import type { AuditRecord, ChainReport, FieldNote, PackInfoView, SyncStatus } from "../engine/types.ts";
 import { formatDate, formatTime } from "../ui/format.ts";
+import { linkState } from "../ui/link.ts";
 import { Button, cx, Page, Panel, Segmented, Skeleton } from "../ui/kit.tsx";
 import type { Theme } from "../store/settings.ts";
 
@@ -40,12 +41,25 @@ export function Records(p: RecordsProps) {
               <Skeleton className="h-[140px]" />
             ) : (
               <div className="flex flex-col gap-3">
-                <div className="flex items-center gap-3">
-                  {hub?.reachable ? <Cloud aria-hidden size={24} /> : <CloudOff aria-hidden size={24} />}
-                  <p className="text-body">
-                    {!hub?.configured ? "No hub set up on this device." : hub.reachable ? `${hub.destination === "folder" ? "Sync folder" : "Hub"} reached ${formatTime(hub.last_attempt_at)}.` : hub.last_attempt_at ? `Offline. Last tried ${formatTime(hub.last_attempt_at)}.` : "Offline. Not tried yet."}
+                {linkState(p.sync) === "refused" && (
+                  <p className="rounded-control border-2 border-ink bg-surface-2 p-3 text-body">
+                    The hub does not accept uploads from this device yet. An administrator enrolls it at the hub. Everything stays queued here until then.
                   </p>
-                </div>
+                )}
+                {linkState(p.sync) !== "refused" && (
+                  <div className="flex items-center gap-3">
+                    {hub?.reachable ? <Cloud aria-hidden size={24} /> : <CloudOff aria-hidden size={24} />}
+                    <p className="text-body">
+                      {!hub?.configured
+                        ? "No hub set up on this device."
+                        : hub.reachable
+                          ? `${hub.destination === "folder" ? "Sync folder" : "Hub"} reached ${formatTime(hub.last_attempt_at)}.`
+                          : hub.last_attempt_at
+                            ? `Offline. Last tried ${formatTime(hub.last_attempt_at)}.`
+                            : "Offline. Not tried yet."}
+                    </p>
+                  </div>
+                )}
                 <p className="text-small text-ink-2">{p.sync.last_synced_at ? `Last sync ${formatTime(p.sync.last_synced_at)}.` : "Nothing synced yet."}</p>
                 <dl className="m-0 grid grid-cols-[minmax(0,1fr)_auto] gap-x-4 gap-y-1 text-small">
                   {Object.entries(p.sync.pending_by_kind).map(([k, n]) => (
@@ -54,7 +68,7 @@ export function Records(p: RecordsProps) {
                   <Fragmentish label="Waiting in all" value={p.sync.pending} strong />
                   {p.sync.quarantined > 0 && <Fragmentish label="Held back: changed since saved" value={p.sync.quarantined} />}
                 </dl>
-                {hub?.last_error && <p className="text-meta text-ink-3">Last error: {hub.last_error}</p>}
+                {hub?.last_error && linkState(p.sync) !== "refused" && <p className="text-meta text-ink-3">Last error: {hub.last_error}</p>}
                 {hub?.configured && (
                   <Button onClick={p.onSync} disabled={p.busy === "sync"} className="self-start">
                     <RefreshCw aria-hidden size={20} className={cx(p.busy === "sync" && "animate-spin")} />
@@ -159,14 +173,32 @@ export function Records(p: RecordsProps) {
 
           <Panel label="On-device model">
             {p.model ? (
-              <Segmented label={`Model: ${p.model}`} value={p.modelOn ? "on" : "off"} options={[{ value: "off", label: "Off" }, { value: "on", label: "On" }]} onChange={(v) => p.onModel(v === "on")} />
+              <Segmented
+                label={`Model: ${p.model}`}
+                value={p.modelOn ? "on" : "off"}
+                options={[
+                  { value: "off", label: "Off" },
+                  { value: "on", label: "On" },
+                ]}
+                onChange={(v) => p.onModel(v === "on")}
+              />
             ) : (
               <p className="text-body text-ink-2">No model on this device. Everything works without one.</p>
             )}
           </Panel>
 
           <Panel label="Display">
-            <Segmented label="Theme" hideLabel value={p.theme} options={[{ value: "system", label: "Device" }, { value: "light", label: "Light" }, { value: "dark", label: "Dark" }]} onChange={p.onTheme} />
+            <Segmented
+              label="Theme"
+              hideLabel
+              value={p.theme}
+              options={[
+                { value: "system", label: "Device" },
+                { value: "light", label: "Light" },
+                { value: "dark", label: "Dark" },
+              ]}
+              onChange={p.onTheme}
+            />
           </Panel>
         </div>
       </div>

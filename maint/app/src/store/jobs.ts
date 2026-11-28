@@ -29,6 +29,7 @@ interface JobsState {
   start(p: JobStartParams): Promise<string | null>;
   answer(jobId: string, input: ResultInput): Promise<void>;
   back(jobId: string): Promise<void>;
+  follow(jobId: string): Promise<void>;
   setLevel(jobId: string, level: string): Promise<void>;
   setDraft(key: string, v: string): void;
   setNote(key: string, v: string): void;
@@ -107,6 +108,17 @@ export const useJobs = create<JobsState>()(
             after(await call("job.back", { job_id: jobId }));
           } catch (e) {
             reportError("jobs.back", e, say(e, "The last answer could not be reopened."));
+          } finally {
+            busy(jobId, false);
+          }
+        },
+        async follow(jobId) {
+          if (get().sending[jobId]) return;
+          busy(jobId, true);
+          try {
+            after(await call("job.follow", { job_id: jobId }));
+          } catch (e) {
+            reportError("jobs.follow", e, say(e, "The job could not continue in that table."));
           } finally {
             busy(jobId, false);
           }

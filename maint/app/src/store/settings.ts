@@ -12,9 +12,12 @@ interface Settings {
   activeUnit: string | null;
   /** On-device model as an interface only; off by default and never required. */
   model: boolean;
-  /** Who reviews on this hub screen: the one place the app keeps it, recorded with every review. */
-  reviewer: string;
-  setReviewer(name: string): void;
+  /**
+   * The hub sign-in on this screen (development tokens; a deployment signs in
+   * through its gateway instead). The one place the app keeps who reviews.
+   */
+  hubToken: string | null;
+  setHubToken(t: string | null): void;
   setTheme(t: Theme): void;
   setLevel(l: string): void;
   setActiveUnit(id: string | null): void;
@@ -28,14 +31,14 @@ export const useSettings = create<Settings>()(
       level: null,
       activeUnit: null,
       model: false,
-      reviewer: "",
-      setReviewer: (reviewer) => set({ reviewer }),
+      hubToken: null,
+      setHubToken: (hubToken) => set({ hubToken }),
       setTheme: (theme) => set({ theme }),
       setLevel: (level) => set({ level }),
       setActiveUnit: (activeUnit) => set({ activeUnit }),
       setModel: (model) => set({ model }),
     }),
-    { name: "maint.settings", storage: jsonStorage, version: 1 },
+    { name: "maint.settings", storage: jsonStorage, version: 2, migrate: (p) => p as Settings },
   ),
 );
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ArrowUpRight, Camera, ChevronDown, ChevronUp, MessageCircleQuestion, NotebookPen, OctagonAlert, Printer, Undo2, X } from "lucide-react";
+import { ArrowUpRight, Camera, CornerDownRight, ChevronDown, ChevronUp, MessageCircleQuestion, NotebookPen, OctagonAlert, Printer, Undo2, X } from "lucide-react";
 import { Link } from "react-router";
 import type { AskResponse, Citation, FacetGroup, Job, Level, PackAsset, PathEntry, StepView } from "../engine/types.ts";
 import { closeOutPath, jobAskPath, jobPagePath, jobPath, manualPath, printJobPath, procedurePath } from "../routes.ts";
@@ -39,6 +39,8 @@ export interface StepProps {
   onAnswer(input: ResultInput): void;
   onLevel(levelId: string): void;
   onBack(): void;
+  /** At a goto: continue the job in the table it names. */
+  onFollow(): void;
   onPhoto(): void;
   onNote(text: string): void;
   onAskQuery(q: string): void;
@@ -92,6 +94,12 @@ export function Step(p: StepProps) {
             <ManualSheet citation={step.citation} onPage={page ? jobPagePath(job.job_id, page.asset_id) : undefined}>
               {step.node.text}
             </ManualSheet>
+
+            {!step.target && step.reference && (
+              <p className="text-body">
+                See <span className="manual-text font-semibold">{step.reference}</span> in the manual.
+              </p>
+            )}
 
             {main.length > 0 && <FacetSheet groups={main} />}
 
@@ -323,6 +331,14 @@ function ResultBar(p: StepProps & { busy: boolean }) {
   const { step, busy, job } = p;
   const e = step.record.expect;
   const bar = "no-print sticky bottom-[calc(var(--spacing-tabbar)+env(safe-area-inset-bottom))] z-10 -mx-4 border-t border-line bg-page/95 px-4 py-3 backdrop-blur-sm sm:-mx-6 sm:px-6 md:bottom-[env(safe-area-inset-bottom)] lg:mx-0 lg:rounded-panel lg:border lg:px-3";
+  if (step.node.kind === "goto" && step.target?.target.kind === "tree")
+    return (
+      <div className={bar}>
+        <Button variant="primary" size="lg" className="w-full" onClick={p.onFollow} disabled={busy}>
+          Continue in {step.target.title ?? "the next table"}
+        </Button>
+      </div>
+    );
   if (step.terminal)
     return (
       <div className={bar}>
@@ -443,7 +459,10 @@ function PathSoFar({ path, step, busy, onBack }: { path: PathEntry[]; step: Step
             <span className="text-meta font-bold text-ink-3 tabular">{i + 1}</span>
             <span className="min-w-0">
               {e.text && <span className="manual-text block text-small">{e.text}</span>}
-              <span className="mt-0.5 inline-block rounded-plate bg-surface-3 px-2 text-meta font-bold">{e.value != null ? `${e.value} ${e.unit ?? ""}`.trim() : e.label}</span>
+              <span className={cx("mt-0.5 inline-flex items-center gap-1 rounded-plate px-2 text-meta font-bold", e.outcome === "goto" ? "border border-ink" : "bg-surface-3")}>
+                {e.outcome === "goto" && <CornerDownRight aria-hidden size={14} />}
+                {e.value != null ? `${e.value} ${e.unit ?? ""}`.trim() : e.label}
+              </span>
             </span>
           </li>
         ))}

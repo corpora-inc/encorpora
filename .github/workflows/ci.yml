@@ -2062,17 +2062,18 @@ jobs:
         working-directory: maint/app
         env:
           HARVEST_BIN: ${{ github.workspace }}/harvest/core/target/debug/harvest
-          MAINT_IMPORT: B
+          MAINT_IMPORT: B C
         run: |
           set -euo pipefail
           scripts/loop.sh
-          # Device A's app on 4341 and device B's on 4344, each proxying to its own engine.
+          # Each device's app (A 4341, B 4344, C 4346) proxies to its own engine; C is never enrolled.
           nohup npx vite preview --host 127.0.0.1 > "$RUNNER_TEMP/preview-a.log" 2>&1 &
           MAINT_PORT=4343 MAINT_ENGINE=http://127.0.0.1:4320 nohup npx vite preview --host 127.0.0.1 > "$RUNNER_TEMP/preview-b.log" 2>&1 &
-          for port in 4341 4344; do
+          MAINT_PORT=4345 MAINT_ENGINE=http://127.0.0.1:4323 nohup npx vite preview --host 127.0.0.1 > "$RUNNER_TEMP/preview-c.log" 2>&1 &
+          for port in 4341 4344 4346; do
             for _ in $(seq 1 60); do curl -s -o /dev/null "http://127.0.0.1:$port/" && break; sleep 0.5; done
           done
-          MAINT_UI_BASE=http://127.0.0.1:4341 MAINT_UI_BASE_B=http://127.0.0.1:4344 npm run test:flow
+          MAINT_UI_BASE=http://127.0.0.1:4341 MAINT_UI_BASE_B=http://127.0.0.1:4344 MAINT_UI_BASE_C=http://127.0.0.1:4346 npm run test:flow
       - uses: actions/upload-artifact@v4
         if: always() && steps.tree.outputs.present == 'true'
         with:

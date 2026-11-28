@@ -5,6 +5,7 @@ import { useFleet } from "../store/fleet.ts";
 import { usePack, variantName } from "../store/pack.ts";
 import { useSettings } from "../store/settings.ts";
 import { unitName } from "../ui/format.ts";
+import { linkState } from "../ui/link.ts";
 import { Shell } from "../ui/Shell.tsx";
 
 /** The shell for every app screen: the active unit, the link state and what waits to sync. */
@@ -21,7 +22,7 @@ export function Frame() {
     return () => clearInterval(t);
   }, []);
   return (
-    <Shell unit={asset ? { asset_id: asset.asset_id, name: unitName(asset), variant: variantName(equipment, asset.equip_id) } : null} online={sync?.hub.reachable === true} queued={sync?.pending ?? 0} hub={hub}>
+    <Shell unit={asset ? { asset_id: asset.asset_id, name: unitName(asset), variant: variantName(equipment, asset.equip_id) } : null} link={linkState(sync)} queued={sync?.pending ?? 0} hub={hub}>
       <Outlet />
     </Shell>
   );

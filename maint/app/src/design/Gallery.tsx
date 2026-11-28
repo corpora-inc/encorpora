@@ -47,7 +47,7 @@ import { PrintJob, PrintProcedure } from "../screens/Print.tsx";
 import { ManualHome, ManualResults, SectionReader } from "../screens/Manual.tsx";
 import { LearnHome, TreeStudy } from "../screens/Learn.tsx";
 import { Records, type RecordsProps } from "../screens/Records.tsx";
-import { Review, suggestedNote, type ReviewProps } from "../screens/Review.tsx";
+import { HubSignIn, Review, suggestedNote, type ReviewProps } from "../screens/Review.tsx";
 import { designPath } from "../routes.ts";
 import { unitName } from "../ui/format.ts";
 import { AssetSource } from "../ui/manual.tsx";
@@ -61,7 +61,7 @@ interface Captured {
   assets: Asset[];
   resolve: { resolved: Resolved; ambiguous: Resolved; none: Resolved };
   search: { results: SymptomSearch; none: SymptomSearch; closest: SymptomSearch; codes: SymptomSearch };
-  steps: Record<"symptom" | "check" | "checkLevel2" | "value" | "action" | "back" | "passfail" | "escalate" | "actionCheck" | "end" | "choice", JobView>;
+  steps: Record<"symptom" | "check" | "checkLevel2" | "value" | "action" | "back" | "passfail" | "escalate" | "actionCheck" | "end" | "choice" | "goto" | "followed", JobView>;
   task: TaskView;
   tasks: import("../engine/types.ts").TaskSummary[];
   run: Run;
@@ -172,6 +172,7 @@ const step = (v: JobView, extra: Partial<StepProps> = {}): StepProps => ({
   onAnswer: none,
   onLevel: none,
   onBack: none,
+  onFollow: none,
   onPhoto: none,
   onNote: none,
   onAskQuery: none,
@@ -246,9 +247,12 @@ const review: ReviewProps = {
   variants: variantsById,
   draft: first ? { text: suggestedNote(first.current), note: "" } : null,
   suggested: first ? suggestedNote(first.current) : "",
-  reviewer: "Shop supervisor",
+  me: { name: "Shop supervisor", roles: ["reviewer", "publisher", "admin"], via: "token" },
+  devices: [],
   busy: false,
-  onReviewer: none,
+  onSignOut: none,
+  onEnroll: none,
+  onRevoke: none,
   onDraft: none,
   onApprove: none,
   onReject: none,
@@ -319,6 +323,8 @@ export const GALLERY: Record<string, { title: string; states: Entry[] }> = {
       { state: "ask", label: "Ask, cited answer", unit: shellUnit, render: () => <Step {...step(D.steps.check, { overlay: { kind: "ask", query: "How do I check fuse F2?", answer: D.ask } })} /> },
       { state: "ask-declined", label: "Ask, not in the manual", unit: shellUnit, render: () => <Step {...step(D.steps.check, { overlay: { kind: "ask", query: "What colour is the paint?", answer: D.askDeclined } })} /> },
       { state: "ask-loading", label: "Ask, loading", unit: shellUnit, render: () => <Step {...step(D.steps.check, { overlay: { kind: "ask", query: "How do I check fuse F2?", answer: null } })} /> },
+      { state: "goto", label: "Go to another table", unit: shellUnit, render: () => <Step {...step(D.steps.goto)} /> },
+      { state: "followed", label: "Continued in another table", unit: shellUnit, render: () => <Step {...step(D.steps.followed)} /> },
       { state: "action", label: "Corrective action reached", unit: shellUnit, render: () => <Step {...step(D.steps.action)} /> },
       { state: "escalate", label: "Refer", unit: shellUnit, render: () => <Step {...step(D.steps.escalate)} /> },
       { state: "end", label: "Fault corrected", unit: shellUnit, render: () => <Step {...step(D.steps.end)} /> },
@@ -377,6 +383,8 @@ Object.assign(GALLERY, {
     states: [
       { state: "queue", label: "A lesson to review", unit: null, render: () => <Review {...review} /> },
       { state: "edited", label: "Edited before approval", unit: null, render: () => <Review {...review} draft={{ text: "Check the battery date code first: batteries over three years old failed the voltage test.", note: "Made it a check to do first." }} /> },
+      { state: "reviewer-only", label: "Signed in as a reviewer only", unit: null, render: () => <Review {...review} me={{ name: "Line reviewer", roles: ["reviewer"], via: "token" }} devices={null} /> },
+      { state: "sign-in", label: "Sign in", unit: null, render: () => <HubSignIn error={null} busy={false} onSignIn={none} /> },
       { state: "empty", label: "Nothing waiting", unit: null, render: () => <Review {...review} queue={[]} selected={null} draft={null} approved={reviewQueue.map((r) => ({ ...r, status: "approved", reviews: [{ action: "approve", at: r.current.created_at, item_id: r.lesson_id, note: null, reviewer: "Shop supervisor" }] }))} /> },
     ],
   },
@@ -384,7 +392,7 @@ Object.assign(GALLERY, {
 
 export function GalleryIndex() {
   return (
-    <Shell unit={null} online={false} queued={0}>
+    <Shell unit={null} link="offline" queued={0}>
       <div className="mx-auto w-full max-w-[1100px] px-4 pt-5 pb-10 sm:px-6 lg:px-8">
         <h1 className="mb-1 text-h2 sm:text-h1">Design</h1>
         <p className="mb-6 text-body text-ink-2">Every screen and state, from data the engine returned for the Model 40 fixture.</p>
@@ -414,7 +422,7 @@ export function GalleryState() {
   const entry = GALLERY[screen]?.states.find((s) => s.state === state);
   if (!entry)
     return (
-      <Shell unit={null} online={false} queued={0}>
+      <Shell unit={null} link="offline" queued={0}>
         <div className="px-6 py-10">
           <Link to={designPath()}>No such state. Open the gallery.</Link>
         </div>
@@ -425,7 +433,7 @@ export function GalleryState() {
       {entry.bare ? (
         entry.render()
       ) : (
-        <Shell unit={entry.unit} online={false} queued={D.outbox.pending}>
+        <Shell unit={entry.unit} link="offline" queued={D.outbox.pending}>
           {entry.render()}
         </Shell>
       )}

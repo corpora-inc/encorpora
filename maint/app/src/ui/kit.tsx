@@ -59,7 +59,7 @@ export function Segmented<T extends string>({
       <div id={id} className={cx("mb-1.5 text-meta font-semibold text-ink-2", hideLabel && "sr-only")}>
         {label}
       </div>
-      <div className="inline-flex max-w-full rounded-control border-2 border-line-strong bg-surface p-1">
+      <div className="grid max-w-full auto-cols-fr grid-flow-col rounded-control border-2 border-line-strong bg-surface p-1 min-[400px]:inline-grid">
         {options.map((o) => {
           const on = o.value === value;
           return (
@@ -69,7 +69,7 @@ export function Segmented<T extends string>({
               role="radio"
               aria-checked={on}
               onClick={() => onChange(o.value)}
-              className={cx("min-h-11 rounded-[7px] px-4 text-small font-semibold whitespace-nowrap", on ? "bg-ink text-surface" : "text-ink-2")}
+              className={cx("min-h-11 min-w-0 rounded-[7px] px-2 text-meta font-semibold whitespace-nowrap min-[400px]:px-4 min-[400px]:text-small", on ? "bg-ink text-surface" : "text-ink-2")}
             >
               {o.label}
             </button>

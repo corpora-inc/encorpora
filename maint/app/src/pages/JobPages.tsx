@@ -133,6 +133,7 @@ export function JobPage() {
         }}
         onLevel={(l) => void useJobs.getState().setLevel(jobId, l)}
         onBack={() => void useJobs.getState().back(jobId)}
+        onFollow={() => void useJobs.getState().follow(jobId)}
         onPhoto={() => file.current?.click()}
         onNote={(t) => useJobs.getState().setNote(key, t)}
         onAskQuery={(q) => void useJobs.getState().askQuestion(jobId, q)}

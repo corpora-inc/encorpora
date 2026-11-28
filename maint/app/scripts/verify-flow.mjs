@@ -9,7 +9,9 @@
  *   hub: Review -> approve with an edit -> send to the fleet;
  *   device B (a unit that never did the job): Sync -> the same symptom shows
  *   the approved note in the field-note panel; device A sees it too.
- *   Also: a field-note bundle installed from a file.
+ *   device C was never enrolled: its uploads stay queued and Records says why.
+ *   Also: a field-note bundle installed from a file, a goto into another
+ *   table, connect to vehicle, and voice input.
  *
  * Along the way: refresh restores the step, back and forward work, the
  * result bar is reachable without scrolling at every width it pins at, and
@@ -30,6 +32,7 @@ const chromium = secureChromium(rawChromium);
 const root = fileURLToPath(new URL("..", import.meta.url));
 const base = process.env.MAINT_UI_BASE ?? "http://127.0.0.1:4340";
 const baseB = process.env.MAINT_UI_BASE_B ?? "http://127.0.0.1:4343";
+const baseC = process.env.MAINT_UI_BASE_C ?? "http://127.0.0.1:4345";
 const samples = process.env.MAINT_SAMPLES ?? path.join(root, ".engine", "pump40-samples");
 const out = process.env.CI ? path.join(root, "artifacts", "flow") : path.join(root, ".screens", "flow");
 await mkdir(out, { recursive: true });
@@ -213,14 +216,17 @@ try {
   // The hub: review the lesson, edit the note, approve, send to the fleet.
   const NOTE = "Check the battery date code first: on this pump, a battery over three years old was the cause.";
   await page.goto(`${base}/review`);
-  await page.getByLabel("Reviewer").fill("Shop supervisor");
+  await page.getByLabel("Hub sign-in token").fill("dev-supervisor-token");
+  await page.getByRole("button", { name: "Sign in" }).click();
+  await page.getByText("Signed in as").waitFor();
+  assert.match(await page.getByText("Signed in as").innerText(), /Shop supervisor.*admin/);
   await page.getByRole("link", { name: /Engine will not crank/ }).first().click();
   await page.getByRole("heading", { name: "Field note for the fleet" }).waitFor();
   await page.getByLabel("Field note for the fleet").fill(NOTE);
   await shot("review");
   await page.getByRole("button", { name: "Approve with edits" }).click();
   await page.getByText("Approved.").waitFor();
-  await page.getByRole("button", { name: "Send approved notes to the fleet" }).click();
+  await page.getByRole("button", { name: "Send to the fleet" }).click();
   await page.getByText(/Sent to the fleet/).waitFor();
   await shot("review-sent");
 
@@ -242,6 +248,50 @@ try {
   assert.equal(await notesB.first().locator(".manual-text").count(), 0, "field notes must never be set as manual text");
   await pageB.screenshot({ path: path.join(out, `${String(++n).padStart(2, "0")}-device-b-field-note.png`), fullPage: true });
   await pageB.close();
+
+  // A reviewer without the publisher role is never offered "Send to the fleet"; the admin sees Devices.
+  assert.equal(await page.getByRole("heading", { name: "Devices" }).count(), 1);
+  await page.getByRole("button", { name: "Sign out" }).click();
+  await page.getByLabel("Hub sign-in token").fill("dev-reviewer-only-token");
+  await page.getByRole("button", { name: "Sign in" }).click();
+  await page.getByText("Signed in as").waitFor();
+  assert.equal(await page.getByRole("button", { name: "Send to the fleet" }).count(), 0);
+  assert.equal(await page.getByRole("heading", { name: "Devices" }).count(), 0);
+
+  // Device C was never enrolled: what it records stays queued, and Records says why in plain words.
+  const pageC = await context.newPage();
+  pageC.on("pageerror", (e) => errors.push(`C: ${e.message}`));
+  await pageC.goto(`${baseC}/units/unit-101/troubleshoot`);
+  await pageC.getByRole("button", { name: "Pump overheats" }).click();
+  await pageC.getByRole("button", { name: "Continue", exact: true }).click();
+  await pageC.getByRole("button", { name: "No", exact: true }).click();
+  await pageC.getByRole("link", { name: "Do the corrective action" }).click();
+  await pageC.getByRole("button", { name: "Corrective action done" }).click();
+  await pageC.getByRole("button", { name: "Fixed", exact: true }).click();
+  await pageC.getByLabel("Verified cause").fill("Strainer blocked with silt");
+  await pageC.getByRole("button", { name: "Save lesson and close" }).click();
+  await pageC.getByRole("heading", { name: "Job closed" }).waitFor();
+  await pageC.goto(`${baseC}/records`);
+  await pageC.getByRole("button", { name: "Sync now" }).click();
+  await pageC.getByText(/does not accept uploads from this device yet/).first().waitFor();
+  await pageC.getByText("Not enrolled").first().waitFor();
+  const waiting = await pageC.getByText("Waiting in all").locator("xpath=following-sibling::dd[1]").innerText();
+  assert.ok(Number(waiting) >= 1, `device C should keep its uploads queued (${waiting})`);
+  await pageC.screenshot({ path: path.join(out, `${String(++n).padStart(2, "0")}-device-c-not-enrolled.png`), fullPage: true });
+  await pageC.close();
+
+  // A goto: the manual sends the job into another table; the jump is a step on the path.
+  await page.goto(`${base}/units/unit-101/troubleshoot`);
+  await page.getByLabel("Describe the problem").fill("engine does not crank");
+  await page.getByRole("button", { name: /Engine will not crank.*Matched/ }).first().click();
+  await page.getByRole("button", { name: "Continue", exact: true }).click();
+  await page.getByText("Step 2, check").waitFor();
+  await page.getByRole("button", { name: "No", exact: true }).click();
+  await page.getByRole("button", { name: "Temperature lamp on" }).click();
+  await page.getByRole("button", { name: "Continue in Pump overheats" }).click();
+  await page.getByRole("heading", { name: "Pump overheats", level: 1 }).waitFor();
+  assert.match(await page.locator("aside[aria-label=Job]").innerText(), /Go to Pump overheats/);
+  await shot("goto-followed");
 
   // A field-note bundle can also arrive on a drive: installed from a file, it shows on its table (Pump overheats).
   await page.goto(`${base}/records`);

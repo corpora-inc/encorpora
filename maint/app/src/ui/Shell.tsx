@@ -5,6 +5,7 @@ import { PRODUCT } from "../config.ts";
 import { homePath, learnPath, manualHomePath, proceduresPath, recordsPath, reviewPath, unitPath } from "../routes.ts";
 import { cx } from "./kit.tsx";
 import { Toasts } from "./Toasts.tsx";
+import { LINK_LABEL, type LinkState } from "./link.ts";
 
 export interface ShellUnit {
   asset_id: string;
@@ -16,7 +17,7 @@ export interface ShellUnit {
 export interface ShellProps {
   /** The unit everything is filtered to, or null. Always shown. */
   unit: ShellUnit | null;
-  online: boolean;
+  link: LinkState;
   queued: number;
   /** Hub builds show the review queue. */
   hub?: boolean;
@@ -31,7 +32,7 @@ const TABS = [
   { to: recordsPath(), label: "Records", icon: Archive, end: false },
 ];
 
-export function Shell({ unit, online, queued, hub = false, children }: ShellProps) {
+export function Shell({ unit, link, queued, hub = false, children }: ShellProps) {
   const tabs = hub ? [...TABS, { to: reviewPath(), label: "Review", icon: Inbox, end: false }] : TABS;
   return (
     // The rail's white column is painted by the page itself, so it runs the full
@@ -60,7 +61,7 @@ export function Shell({ unit, online, queued, hub = false, children }: ShellProp
         <div className="mx-auto flex h-strip max-w-[1280px] items-center gap-3 px-4 sm:px-6 lg:px-8">
           <UnitPlate unit={unit} />
           <div className="flex-1" />
-          <SyncState online={online} queued={queued} />
+          <SyncState link={link} queued={queued} />
         </div>
       </div>
 
@@ -109,12 +110,12 @@ function UnitPlate({ unit }: { unit: ShellUnit | null }) {
 }
 
 /** Offline is normal here: calm, never an error colour. */
-function SyncState({ online, queued }: { online: boolean; queued: number }) {
-  const Icon = online ? Cloud : CloudOff;
+function SyncState({ link, queued }: { link: LinkState; queued: number }) {
+  const Icon = link === "online" ? Cloud : CloudOff;
   return (
-    <Link to={recordsPath()} className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-control px-2 text-small font-semibold text-ink-2 no-underline" aria-label={`${online ? "Hub connected" : "Offline"}. ${queued} waiting to sync.`}>
+    <Link to={recordsPath()} className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-control px-2 text-small font-semibold text-ink-2 no-underline" aria-label={`${LINK_LABEL[link]}. ${queued} waiting to sync.`}>
       <Icon aria-hidden size={20} />
-      <span className="hidden min-[400px]:inline">{online ? "Hub connected" : "Offline"}</span>
+      <span className="hidden min-[400px]:inline">{LINK_LABEL[link]}</span>
       {queued > 0 && <span className="inline-flex h-7 min-w-7 items-center justify-center rounded-full bg-surface-3 px-2 text-meta text-ink tabular">{queued}</span>}
     </Link>
   );

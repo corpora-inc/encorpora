@@ -83,8 +83,18 @@ const answer2 = (p) => call("job.answer", { job_id: job2, node_id: w.step.node.n
 w = await answer2({ outcome: "done" });
 w = await answer2({ outcome: "no" });
 steps.actionCheck = w;
-w = await answer2({ outcome: "yes" });
+w = await answer2({ outcome: w.step.record.branches.find((b) => /^cranks$/i.test(b.label)).outcome });
 steps.end = w;
+
+// A goto into another table, and the job after following it.
+let g = await call("job.start", { asset_id: unit.asset_id, symptom_id: "s-nocrank", level });
+const job4 = g.job.job_id;
+const answer4 = (p) => call("job.answer", { job_id: job4, node_id: g.step.node.node_id, ...p });
+g = await answer4({ outcome: "done" });
+g = await answer4({ outcome: "no" });
+g = await answer4({ outcome: g.step.record.branches.find((b) => /temperature/i.test(b.label)).outcome });
+steps.goto = g;
+steps.followed = await call("job.follow", { job_id: job4 });
 
 // The overheat tree's three-way choice.
 let h = await call("job.start", { asset_id: unit.asset_id, symptom_id: "s-hot", level });

@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import { setNamespace } from "@appkit/namespace.ts";
 import { logError } from "@appkit/log.ts";
 import { assistant, configureNative, voice } from "@appkit/native.ts";
-import { hubCall } from "./engine/client.ts";
+import { EngineError, hubCall } from "./engine/client.ts";
 import "./styles.css";
 import { brandCss } from "./brands/index.ts";
 import { BRAND, PRODUCT } from "./config.ts";
@@ -47,7 +47,8 @@ async function boot() {
       voice.available(),
       assistant.status(),
       // A review screen only where a hub answers; never an error when it does not.
-      DESIGN_ONLY ? false : hubCall("hub.status", {}).then(() => true, () => false),
+      // Any answer from the hub, even "sign in first", means this screen can reach it.
+      DESIGN_ONLY ? false : hubCall("hub.whoami", {}).then(() => true, (e: unknown) => e instanceof EngineError && e.code !== "unreachable" && e.code !== "internal"),
       DESIGN_ONLY ? null : usePack.getState().load(),
       DESIGN_ONLY ? null : useFleet.getState().refresh(),
     ]);

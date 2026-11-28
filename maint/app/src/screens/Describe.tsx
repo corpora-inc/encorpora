@@ -116,10 +116,12 @@ function Codes(p: DescribeProps) {
           <Plus aria-hidden size={22} />
           Add code
         </Button>
-        <ButtonLink to={p.connectTo} className="hidden sm:inline-flex">
-          <Cable aria-hidden size={20} />
-          Connect
-        </ButtonLink>
+        <span className="hidden sm:contents">
+          <ButtonLink to={p.connectTo}>
+            <Cable aria-hidden size={20} />
+            Connect
+          </ButtonLink>
+        </span>
       </form>
       {p.codes.length > 0 && (
         <div className="flex flex-wrap gap-2" role="list" aria-label="Codes">
