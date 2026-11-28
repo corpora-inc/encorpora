@@ -49,6 +49,15 @@ export function cleanSvg(svg: string): string {
   const root = doc.documentElement;
   let out = "";
   if (root.nodeName.toLowerCase() === "svg" && !doc.querySelector("parsererror")) {
+    // Comments, processing instructions and CDATA read differently once the markup is re-parsed as HTML:
+    // comments and instructions go, CDATA becomes plain text.
+    const walker = doc.createTreeWalker(root, NodeFilter.SHOW_COMMENT | NodeFilter.SHOW_PROCESSING_INSTRUCTION | NodeFilter.SHOW_CDATA_SECTION);
+    const odd: Node[] = [];
+    for (let n = walker.nextNode(); n; n = walker.nextNode()) odd.push(n);
+    for (const n of odd) {
+      if (n.nodeType === Node.CDATA_SECTION_NODE) n.parentNode?.replaceChild(doc.createTextNode(n.nodeValue ?? ""), n);
+      else n.parentNode?.removeChild(n);
+    }
     for (const el of [root, ...root.querySelectorAll("*")]) {
       if (!SVG_TAGS.has(el.nodeName.toLowerCase())) {
         el.remove();

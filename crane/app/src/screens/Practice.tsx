@@ -76,7 +76,8 @@ export function PracticeSession() {
   const next = usePractice((s) => s.next);
   const choose = usePractice((s) => s.choose);
   const topic = focus ? e.topics.find((x) => x.topic_id === focus) : null;
-  const stale = !current || current.focus !== focus;
+  // An item the pack no longer shows (a new pack, a renamed or hidden item) is picked again, never a dead end.
+  const stale = !current || current.focus !== focus || !qById(current.itemId);
   useEffect(() => {
     if (stale) next(e, Date.now(), focus);
   }, [stale, e, focus, next]);

@@ -25,9 +25,12 @@ if [ "$(uname -s)" = Darwin ]; then
   export CMAKE_DISABLE_FIND_PACKAGE_OpenSSL=ON
   SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"
   export SDKROOT
-  clang_rt="$(dirname "$(xcrun --find clang)")/../lib/clang"
-  clang_rt="$(ls -d "$clang_rt"/*/lib/darwin 2>/dev/null | tail -1)"
-  [ -n "$clang_rt" ] && export RUSTFLAGS="${RUSTFLAGS:-} -C link-arg=-L$clang_rt"
+  clang_lib="$(dirname "$(xcrun --find clang)")/../lib/clang"
+  clang_rt="$(ls -d "$clang_lib"/*/lib/darwin 2>/dev/null | sort -V | tail -1 || true)"
+  case "$clang_rt" in
+    *" "*) echo "build-browser-pack: Xcode path has a space ($clang_rt); set RUSTFLAGS yourself" >&2; exit 1 ;;
+  esac
+  if [ -n "$clang_rt" ]; then export RUSTFLAGS="${RUSTFLAGS:-} -C link-arg=-L$clang_rt"; fi
 fi
 
 echo "build-browser-pack: harvest-core CLI" >&2
@@ -35,7 +38,8 @@ nice -n 20 cargo build --locked --release --bin harvest --manifest-path "$repo/h
 export HARVEST_BIN="$repo/harvest/core/target/release/harvest"
 
 echo "build-browser-pack: harvest-pipeline in $venv" >&2
-py="$(command -v python3.12 || command -v python3.13 || command -v python3)"
+py="$(command -v python3.12 || command -v python3.13 || command -v python3 || true)"
+: "${py:?build-browser-pack: no python3 found (3.12 or newer)}"
 [ -x "$venv/bin/python" ] || "$py" -m venv "$venv"
 "$venv/bin/pip" install --quiet --upgrade "$repo/harvest/pipeline" >&2
 export PATH="$venv/bin:$PATH"

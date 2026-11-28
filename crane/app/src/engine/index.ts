@@ -15,8 +15,13 @@ export const PACK_URL = `${import.meta.env.BASE_URL}pack/crane-us.browser.json`;
 export async function openEngine(): Promise<Engine> {
   if (current) return current;
   const res = await fetch(PACK_URL);
-  if (!res.ok) throw new Error(`pack ${PACK_URL}: HTTP ${res.status}. Build it with crane/app/scripts/build-browser-pack.sh`);
-  current = openFixture(fromShow((await res.json()) as ShowPack));
+  const hint = "Build it with crane/app/scripts/build-browser-pack.sh";
+  if (!res.ok) throw new Error(`pack ${PACK_URL}: HTTP ${res.status}. ${hint}`);
+  // A dev server answers a missing file with index.html: say what is missing, not "Unexpected token <".
+  const show = (await res.json().catch(() => {
+    throw new Error(`pack ${PACK_URL} is not JSON (missing?). ${hint}`);
+  })) as ShowPack;
+  current = openFixture(fromShow(show));
   return current;
 }
 
