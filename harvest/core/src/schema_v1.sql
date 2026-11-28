@@ -97,6 +97,21 @@ CREATE VIRTUAL TABLE alias_fts USING fts5(alias, content='answer_alias', content
                                           tokenize='porter unicode61');
 CREATE TABLE chunk_vec (chunk_id TEXT PRIMARY KEY, vec BLOB NOT NULL, scale REAL NOT NULL); -- int8
 
+CREATE TABLE course_node (          -- the course knowledge tree (empty in packs without one)
+  node_id TEXT PRIMARY KEY,         -- course | exam:<id> | domain:<id> | topic:<id> | skill:<id>
+  parent_id TEXT, ord INTEGER NOT NULL,
+  level TEXT NOT NULL,              -- course|exam|domain|topic|skill
+  title TEXT NOT NULL,
+  summary TEXT NOT NULL,            -- what this part is, in a few sentences
+  hard TEXT NOT NULL,               -- what is hard here ('' when not written)
+  mistakes TEXT NOT NULL,           -- what people get wrong
+  exam TEXT NOT NULL,               -- what the exam asks about it
+  links TEXT NOT NULL,              -- json {node_ids, lesson_ids, q_ids, diagram_ids, film_ids}
+  section_ids TEXT NOT NULL,        -- json array: the rule paragraphs at this node
+  quotes TEXT NOT NULL,             -- json [{section_id, quote}]: the rule text behind any rule the node states
+  lang TEXT NOT NULL, prov_id TEXT NOT NULL);
+CREATE TABLE course_node_vec (node_id TEXT PRIMARY KEY, vec BLOB NOT NULL, scale REAL NOT NULL); -- int8
+
 CREATE TABLE provenance (
   prov_id TEXT PRIMARY KEY,
   backend TEXT NOT NULL,            -- claude-cli|anthropic|openai-compatible|codex|deterministic|human

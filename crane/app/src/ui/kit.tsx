@@ -1,4 +1,4 @@
-import { type ButtonHTMLAttributes, type ReactNode, useId } from "react";
+import { type ButtonHTMLAttributes, type ReactNode, type Ref, useId } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { ChevronLeft, ChevronRight, Minus, Plus, Settings as Gear } from "lucide-react";
 import { useT } from "./useT.ts";
@@ -19,7 +19,7 @@ const VARIANT: Record<Variant, string> = {
  * not a className override, because two padding utilities resolve by CSS
  * order, not by the order they are written.
  */
-export function Button({ variant = "secondary", icon = false, className, children, ...rest }: ButtonHTMLAttributes<HTMLButtonElement> & { variant?: Variant; icon?: boolean }) {
+export function Button({ variant = "secondary", icon = false, className, children, ...rest }: ButtonHTMLAttributes<HTMLButtonElement> & { variant?: Variant; icon?: boolean; ref?: Ref<HTMLButtonElement> }) {
   return (
     <button
       type="button"

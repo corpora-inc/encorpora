@@ -150,6 +150,21 @@ CREATE VIRTUAL TABLE alias_fts USING fts5(alias, content='answer_alias', content
                                           tokenize='porter unicode61');
 CREATE TABLE chunk_vec (chunk_id TEXT PRIMARY KEY, vec BLOB NOT NULL, scale REAL NOT NULL); -- int8
 
+CREATE TABLE course_node (          -- the course knowledge tree (empty in packs without one)
+  node_id TEXT PRIMARY KEY,         -- course | exam:<id> | domain:<id> | topic:<id> | skill:<id>
+  parent_id TEXT, ord INTEGER NOT NULL,
+  level TEXT NOT NULL,              -- course|exam|domain|topic|skill
+  title TEXT NOT NULL,
+  summary TEXT NOT NULL,            -- what this part is, in a few sentences
+  hard TEXT NOT NULL,               -- what is hard here ('' when not written)
+  mistakes TEXT NOT NULL,           -- what people get wrong
+  exam TEXT NOT NULL,               -- what the exam asks about it
+  links TEXT NOT NULL,              -- json {node_ids, lesson_ids, q_ids, diagram_ids, film_ids}
+  section_ids TEXT NOT NULL,        -- json array: the rule paragraphs at this node
+  quotes TEXT NOT NULL,             -- json [{section_id, quote}]: the rule text behind any rule the node states
+  lang TEXT NOT NULL, prov_id TEXT NOT NULL);
+CREATE TABLE course_node_vec (node_id TEXT PRIMARY KEY, vec BLOB NOT NULL, scale REAL NOT NULL); -- int8
+
 CREATE TABLE provenance (
   prov_id TEXT PRIMARY KEY,
   backend TEXT NOT NULL,            -- claude-cli|anthropic|openai-compatible|codex|deterministic|human
@@ -193,34 +208,20 @@ A `numeric` answer is a plain decimal (`25`, `1,200`, `-3.5`) or one with a tole
 ### Procedure step deficiency
 
 `proc_step.deficiency` is null (a step with no failure state) or
-`{"guidance", "action", "section_id", "quote"}`. Every deficiency cites the rule it breaks:
-`section_id` must exist and `quote` must be a verbatim substring of its text, even when the
-step itself is a practice method (a calculation or a briefing) rather than a rule. `action` may
-be null. The bake fails a procedure with an uncited deficiency, so the app never shows one.
+`{"guidance", "action", "basis", "section_id", "quote"}`, one of two kinds:
 
-### Answer-segment JSON
+- **`basis: "rule"`**: a rule says so. `section_id` must exist and `quote` must be a verbatim
+  substring of its text. This holds even when the step itself is a practice method, such as a
+  calculation or a briefing, whose failure breaks a rule.
+- **`basis: "practice"`**: field practice with no rule behind it. `section_id` and `quote` are
+  null. The app shows the guidance and action as practice guidance, never as a rule and never with
+  a citation.
 
-Used by `answer.body` and `lesson.body`. The app renders it; the support checker
-validates it.
-
-```json
-[ { "t": "text",  "text": "There are three clearances to know." },
-  { "t": "quote", "section_id": "29cfr1926.1408(a)(2)", "text": "<verbatim substring of section.text>" },
-  { "t": "cite",  "section_id": "29cfr1926.1408(a)(2)" },
-  { "t": "diagram", "diagram_id": "…" },
-  { "t": "check", "question": "Who keeps watch near the line?", "answer": "A dedicated spotter." } ]
-```
-
-A `quote` must be an exact substring of the section's `text` (after whitespace
-normalization). A `cite` must name an existing section. The checker drops any
-claim segment that has no supporting quote or cite in the same paragraph.
-
-A `check` is a lesson's self-check: the app shows `question`, and the reader
-reveals `answer`. It recalls what the lesson's cited paragraphs already taught.
-It is not a claim, it supports nothing, and it ends a paragraph. Baked bodies
-(lessons) may carry checks; the checker drops a check with an empty question or
-answer, and every check in a model-composed (strict) body. No other segment
-kind exists: the bake fails a body with an unknown kind.
+`action` may be null. The bake writes `basis` on every deficiency. It marks one practice only when
+it cites nothing and its source marks it so (`basis: practice`, or a `practice_only` step), and
+it fails any other uncited deficiency. The core reads a row without `basis` as a rule when it
+cites a section, and as practice otherwise. It always returns `basis`, and it refuses a row whose
+basis and citation disagree (a rule with no section or quote, or practice that cites one).
 
 ## Core CLI (what eval and the bake verifier call)
 
@@ -356,6 +357,7 @@ never opens the SQLite file. The core (`harvest_core::content`, and
 | `answers()`, `answer_for(id, role)` | the answer cache; the role's variant (same `question`, `level` = role) when there is one; body checked |
 | `equipment()` | variants |
 | `exams()`, `prereqs()`, `starters(role)` | app data from `pack_meta` |
+| `course_nodes()`; `CourseTree::from_pack(pack, exams)` → `node(id)`, `root()`, `children(id)`, `path(id)`, `search(retriever, query, k)` | the course knowledge tree (below) |
 
 Generated rows (term, lesson, diagram, question, answer, procedure, proc_step)
 are returned only when their `provenance.verdict` is `pass`; a procedure
@@ -379,6 +381,49 @@ the pack holds. CI runs it on the crane pack built from `main` (`crane-pack` job
 writes everything it read as one JSON file (`"format": "harvest-show/1"`, keys: the `show`
 names, plus `starters` by role and `answer_bodies[answer_id][role]`). A browser build cannot
 open the signed SQLite file, so it reads this copy.
+
+### Course knowledge tree
+
+`course_node` holds the course as a tree a conversation can move through,
+from the overview down to the rule text:
+
+```
+course
+├── exam:<exam_id>          the written exams
+│   └── domain:<domain_id>  links.node_ids: the skills the domain tests
+└── topic:<topic_id>        (topics may nest)
+    └── skill:<skill_id>    section_ids: the rule paragraphs at the leaf
+```
+
+Every node has `title` and four short texts the content lane writes and
+verifies: `summary` (what this part is), `hard` (what is hard here),
+`mistakes` (what people get wrong) and `exam` (what the exam asks about it);
+`''` when not written. A node that states a rule carries the rule text in
+`quotes` (`[{section_id, quote}]`, verbatim, checked at import and again on
+read). `links` points down to `node_ids` (beyond its children), `lesson_ids`,
+`q_ids`, `diagram_ids` and `film_ids` (films the host resolves from its media
+catalog). Lesson, question and diagram links must exist at import, so
+`course_node` is imported after them, and a link to a row that did not ship
+is dropped on read. A row's provenance covers its text: the skeleton passes
+structure alone, and text without provenance of its own waits for review.
+
+`harvest-bake course-skeleton <blueprint.yaml> [--existing tree.jsonl] --out
+course/tree.jsonl` writes the structure from the blueprint and content files,
+keeping any node text, quotes and films already written, and reports
+blueprint titles a YAML flow mapping cut at a comma.
+
+`course_node_vec` embeds each node (title and texts) with the pack's
+embedder. The tree is its own index: answer retrieval (`chunk`, `ask`) never
+sees it, and older engines ignore both tables. `CourseTree::search` scores
+nodes with BM25 in memory, fused by RRF with cosine over `course_node_vec`
+when the host's embedder matches the pack's. A pack without a tree (or an
+older one) gets the same structure derived from its topics, skills, lessons,
+questions, diagrams and the exam blueprints, with empty node text
+(`derived: true`).
+
+`harvest show <pack> tree [--id NODE] [--exams exams.json]` prints the tree,
+or one node with its path and children; `harvest search <pack> "<q>" --in
+tree` searches it.
 
 ## Bake hit rate
 

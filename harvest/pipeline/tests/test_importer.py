@@ -121,6 +121,10 @@ def test_import_enforces_the_read_api_shapes(corpus_dir):
         {"proc_id": "uncited", "title": "T", "kind": "inspection", "summary": "S", "roles": ["operator"],
          "steps": [{**step, "deficiency": {"guidance": "Tag out", "action": "stop", "section_id": None,
                                            "quote": None}}], "prov": {**prov(), "prov_id": "pp"}},
+        {"proc_id": "practice", "title": "T", "kind": "inspection", "summary": "S", "roles": ["operator"],
+         "steps": [{**step, "section_ids": [], "practice_only": True,
+                    "deficiency": {"guidance": "Re-level", "action": "stop", "section_id": None, "quote": None}}],
+         "prov": {**prov(), "prov_id": "pp"}},
     ]
     (data / "procs.json").write_text(json.dumps(procs))
     (corpus_dir / "fig").mkdir()
@@ -153,7 +157,9 @@ def test_import_enforces_the_read_api_shapes(corpus_dir):
     assert sorted(got) == ["q.free", "q.mc", "q.num"]
     assert json.loads(got["q.free"]) == rubric and got["q.mc"] == "1" and got["q.num"] == "20±0.5"
     assert len({r[0] for r in conn.execute("SELECT prov_id FROM question")}) == 3  # one provenance row each
-    assert [r[0] for r in conn.execute("SELECT proc_id FROM procedure")] == ["cited"]
+    assert sorted(r[0] for r in conn.execute("SELECT proc_id FROM procedure")) == ["cited", "practice"]
+    basis = {r[0]: json.loads(r[1])["basis"] for r in conn.execute("SELECT proc_id, deficiency FROM proc_step")}
+    assert basis == {"cited": "rule", "practice": "practice"}
     assert [r[0] for r in conn.execute("SELECT diagram_id FROM diagram")] == ["a"]
     assert conn.execute("SELECT svg FROM diagram").fetchone()[0].startswith("<svg")
     meta = dict(conn.execute("SELECT key, value FROM pack_meta").fetchall())
@@ -163,7 +169,7 @@ def test_import_enforces_the_read_api_shapes(corpus_dir):
     report = json.loads(open(res["report"]).read())
     errors = " ".join(e for t in report["tasks"] for e in t["errors"])
     assert "mc answer 5 out of 2" in errors and "rubric point has unknown key 'text'" in errors
-    assert "numeric answer '20 feet'" in errors and "deficiency cites no section" in errors
+    assert "numeric answer '20 feet'" in errors and "deficiency must cite a section" in errors
     assert "nope.svg" in errors and notes is not None
 
 
@@ -201,3 +207,49 @@ def test_segment_kinds_are_checked():
     assert body_problems(ok) == [] and body_problems(json.dumps(ok)) == []
     assert body_problems([{"t": "quiz", "q": "x"}]) == ["segment 0: unknown kind 'quiz'"]
     assert body_problems([{"t": "check", "question": "Q?"}]) == ["segment 0 (check): no answer"]
+
+
+def test_course_tree_imports_checks_links_and_indexes_apart(corpus_dir):
+    data = corpus_dir / "data"
+    data.mkdir()
+    p = {**prov(), "prov_id": "n"}
+    nodes = [
+        {"node_id": "course", "level": "course", "ord": 1, "title": "Crane course",
+         "summary": "Everything you need for the written exam.", "hard": "", "mistakes": "", "exam": "",
+         "links": {"node_ids": ["topic:power"]}, "section_ids": [], "quotes": [], "prov": {**p, "prov_id": "n1"}},
+        {"node_id": "topic:power", "parent_id": "course", "level": "topic", "ord": 1, "title": "Power lines",
+         "summary": "How close a crane may get to an energized line.",
+         "hard": "Reading the clearance table by voltage band.", "mistakes": "Measuring from the wrong point.",
+         "exam": "Table lookups.", "links": {"node_ids": ["skill:power.clearance"], "lesson_ids": []},
+         "section_ids": ["99cfr1999.12(a)(1)"],
+         "quotes": [{"section_id": "99cfr1999.12(a)(1)", "quote": "at least 20 feet from an energized line"}],
+         "prov": {**p, "prov_id": "n2"}},
+        {"node_id": "skill:power.clearance", "parent_id": "topic:power", "level": "skill", "ord": 1,
+         "title": "Know the clearance", "summary": "s", "hard": "", "mistakes": "", "exam": "",
+         "links": {"lesson_ids": ["no-such-lesson"]}, "section_ids": [], "quotes": [], "prov": {**p, "prov_id": "n3"}},
+        {"node_id": "topic:wind", "parent_id": "nowhere", "level": "chapter", "ord": 2, "title": "Wind",
+         "summary": "w", "hard": "", "mistakes": "", "exam": "", "links": {}, "section_ids": [], "quotes": [],
+         "prov": {**p, "prov_id": "n4"}},
+    ]
+    (data / "tree.jsonl").write_text("\n".join(json.dumps(r) for r in nodes) + "\n")
+    y = corpus_dir / "corpus.yaml"
+    y.write_text(y.read_text().replace("tasks: [terms, facts]", "tasks: []\nimports:\n"
+                                       "  - {table: course_node, files: [data/tree.jsonl]}"))
+    c = load_corpus(y)
+    fetch(c)
+    res = build(c, c.profile(), log=None)
+    import sqlite3
+    conn = sqlite3.connect(res["path"])
+    # a bad lesson link and a bad level fail their rows; the rest ship
+    assert [r[0] for r in conn.execute("SELECT node_id FROM course_node ORDER BY node_id")] == [
+        "course", "topic:power"]
+    q = json.loads(conn.execute("SELECT quotes FROM course_node WHERE node_id='topic:power'").fetchone()[0])
+    assert q[0]["quote"] == "at least 20 feet from an energized line"
+    report = json.loads(open(res["report"]).read())
+    imp = {t["task"]: t for t in report["tasks"]}["import:course_node"]
+    assert imp["verdicts"] == {"pass": 2, "fail": 2, "needs_review": 0}
+    assert any("unknown lesson_id no-such-lesson" in e for e in imp["errors"])
+    assert any("unknown parent_id nowhere" in e for e in imp["errors"])
+    # nodes are their own index, never mixed into the rule chunks
+    assert conn.execute("SELECT count(*) FROM chunk WHERE ref_kind LIKE '%node%'").fetchone()[0] == 0
+    assert conn.execute("SELECT count(*) FROM course_node_vec").fetchone()[0] == 2

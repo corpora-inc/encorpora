@@ -158,6 +158,35 @@ fn lesson_self_checks_render_and_never_support_a_claim() {
 }
 
 #[test]
+fn practice_deficiencies_carry_no_rule_and_say_so() {
+    let (_t, p) = pack_with(
+        r#"INSERT INTO proc_step VALUES ('proc-shift', 2, 'Recheck level after the first lift.', '{}', 'pass_fail', '[]',
+             '{"guidance":"The crane settled out of level.","action":"Stop and re-level.","section_id":null,"quote":null}',
+             'en', 'prov-fixture');
+           INSERT INTO proc_step VALUES ('proc-shift', 3, 'Brief the crew.', '{}', 'pass_fail', '[]',
+             '{"guidance":"Not briefed.","basis":"practice","section_id":null,"quote":null}', 'en', 'prov-fixture');"#,
+    );
+    let steps = p.proc_steps("proc-shift").unwrap();
+    let basis = |i: usize| steps[i].deficiency.as_ref().unwrap().basis;
+    assert_eq!(basis(0), Some(harvest_core::pack::Basis::Rule), "a cited row is a rule");
+    assert_eq!(basis(1), Some(harvest_core::pack::Basis::Practice), "an uncited row is practice");
+    assert!(steps[1].deficiency.as_ref().unwrap().section_id.is_none());
+    assert_eq!(basis(2), Some(harvest_core::pack::Basis::Practice));
+
+    // A row that claims a rule but cites none, or practice that cites one, is a pack error.
+    for d in [
+        r#"{"guidance":"g","basis":"rule","section_id":null,"quote":null}"#,
+        r#"{"guidance":"g","basis":"practice","section_id":"ex.2","quote":"x"}"#,
+        r#"{"guidance":"g","section_id":"ex.2","quote":null}"#,
+    ] {
+        let (_t, p) = pack_with(&format!(
+            "INSERT INTO proc_step VALUES ('proc-shift', 2, 'x', '{{}}', 'pass_fail', '[]', '{d}', 'en', 'prov-fixture');"
+        ));
+        assert!(p.proc_steps("proc-shift").is_err(), "{d}");
+    }
+}
+
+#[test]
 fn app_data_comes_from_pack_meta() {
     let (_t, p) = pack_with(
         r#"INSERT INTO pack_meta VALUES ('exam_blueprints', '[{"id":"core","title":"Core","minutes":90,"passPercent":70,"domains":[]}]');

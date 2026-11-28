@@ -89,9 +89,11 @@ def procedures_write(task, items):
             if bad:
                 errs.append(f"step {n}: unknown ids {bad}")
             d = s.get("deficiency")
-            if d and not (d.get("section_id") and d.get("quote")):
-                # every deficiency cites its rule (CONTRACT proc_step.deficiency), practice steps included
-                errs.append(f"step {n}: deficiency without citation (add it to procedures/citations.yaml)")
+            if d and not s.get("practice_only") and not (d.get("section_id") and d.get("quote")):
+                # a rule step's deficiency cites its rule; only a practice step's may cite nothing
+                # (CONTRACT "Procedure step deficiency": basis practice). Add a citation that exists
+                # to procedures/citations.yaml.
+                errs.append(f"step {n}: deficiency without citation")
             steps.append({"ord": n, **s})
         verdict = "pass" if not errs else "fail"
         doc = {"proc_id": b["proc_id"], "title": out["title"], "kind": b["kind"], "summary": out["summary"],
@@ -617,7 +619,10 @@ def exams_write():
         for d, c in zip(e["domains"], counts):
             ids = [s["skill_id"] for s in sk if any(x.startswith(d["domain_id"] + ".") for x in s.get("exam", []))]
             doms.append({"id": d["domain_id"], "title": d["title"], "weight": d["weight"], "count": c, "skillIds": ids})
-        out.append({"id": e["exam_id"], "title": e["title"], "minutes": e["minutes"], "calculator": e["calculator"],
+        src = bp["exam_source"]
+        out.append({"id": e["exam_id"], "title": e["title"], "items": e["items"], "minutes": e["minutes"], "calculator": e["calculator"],
+                    "source": {"title": src["title"], "edition": src["edition"], "url": src["url"], "sha256": src["sha256"],
+                               "retrieved_at": src["retrieved_at"]},
                     "passPercent": 70, "passPercentNote": "practice target; the certifier reports scaled scores",
                     "domains": doms})
     p = CONTENT / "exams.json"

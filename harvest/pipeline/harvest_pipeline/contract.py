@@ -121,9 +121,23 @@ def question_problems(q: dict) -> list[str]:
     return out
 
 
-def deficiency_problems(d) -> list[str]:
-    """`proc_step.deficiency`: null, or {guidance, action?, section_id, quote}; every deficiency
-    cites the rule it breaks (the quote's verbatim check is the importer's)."""
+def deficiency_basis(d: dict, practice_step: bool = False) -> str | None:
+    """`rule` when the deficiency cites a section and quotes it; `practice` when it cites nothing
+    and is marked practice (its own `basis`, or a `practice_only` step); None when neither holds."""
+    cited = isinstance(d.get("section_id"), str) and bool(d["section_id"].strip())
+    quoted = isinstance(d.get("quote"), str) and bool(d["quote"].strip())
+    basis = d.get("basis")
+    if cited and quoted and basis in (None, "rule"):
+        return "rule"
+    if not cited and not quoted and (basis == "practice" or (basis is None and practice_step)):
+        return "practice"
+    return None
+
+
+def deficiency_problems(d, practice_step: bool = False) -> list[str]:
+    """`proc_step.deficiency`: null, or {guidance, action?, basis, section_id, quote}. A rule
+    deficiency cites its section with a quote (the importer checks it is verbatim); a practice one
+    cites nothing and is marked as practice, so it is never shown as a rule."""
     if d is None:
         return []
     if not isinstance(d, dict):
@@ -131,12 +145,11 @@ def deficiency_problems(d) -> list[str]:
     out = []
     if not isinstance(d.get("guidance"), str) or not d["guidance"].strip():
         out.append("deficiency has no guidance")
-    if not isinstance(d.get("section_id"), str) or not d["section_id"]:
-        out.append("deficiency cites no section")
-    if not isinstance(d.get("quote"), str) or not d["quote"].strip():
-        out.append("deficiency has no quote")
     if d.get("action") is not None and not isinstance(d["action"], str):
         out.append("deficiency action is not text")
+    if deficiency_basis(d, practice_step) is None:
+        out.append("deficiency must cite a section with a quote (a rule) or cite nothing and be marked "
+                   "practice (basis: practice, or a practice_only step)")
     return out
 
 
@@ -158,7 +171,7 @@ def procedure_problems(p: dict) -> list[str]:
         detail = s.get("detail")
         if detail is not None and not (isinstance(detail, dict) and all(isinstance(v, str) for v in detail.values())):
             out.append(f"step {k}: detail is not {{role: text}}")
-        out += [f"step {k}: {m}" for m in deficiency_problems(s.get("deficiency"))]
+        out += [f"step {k}: {m}" for m in deficiency_problems(s.get("deficiency"), bool(s.get("practice_only")))]
     return out
 
 

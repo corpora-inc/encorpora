@@ -1,0 +1,528 @@
+proc_id: weather-stop-work
+title: Weather check and stop-work (wind, lightning, ice, temperature)
+kind: operation
+summary: Use this check to judge wind, lightning, ice, snow and temperature, adjust or stop crane work, secure the
+  crane, and restart safely. Do it before each shift, whenever the weather changes, before any personnel lift, and
+  before restarting after a weather stop.
+roles:
+- competent_person
+- operator
+- lift_director
+lang: en
+section_ids:
+- 29cfr1926.1417(n)
+- 29cfr1926.1417(o)
+- 29cfr1926.1418
+- 29cfr1926.1431(k)(8)
+- 29cfr1926.1417(e)
+steps:
+- ord: 1
+  phase: Before you start
+  text: Record who is the competent person and the qualified person for this shift.
+  detail:
+    trainee: Find out who decides weather adjustments (the competent person) and who can clear a stop (the qualified
+      person). You need to know who to call before the weather turns.
+    operator: Confirm you can reach both people by radio or phone during the lift.
+    inspector: Record the names. 1417(n) assigns weather adjustments to the competent person, and 1418 requires
+      a qualified person to determine that safety is assured after a stop.
+  check_kind: note
+  section_ids:
+  - 29cfr1926.1417(n)
+  - 29cfr1926.1418
+  deficiency: null
+  practice_only: false
+  value_unit: null
+- ord: 2
+  phase: Before you start
+  text: Record the manufacturer's wind limits for this crane configuration and boom length.
+  detail:
+    trainee: The crane's manual or load chart gives the highest wind speed allowed for operating. The limit can
+      change with boom length, jib and attachments, so look up the one for today's setup.
+    operator: Write down the in-service wind limit and any reduced limits for long boom, jib or large-area loads.
+    inspector: Record the limit and where it came from (manual page or chart). The given rule text does not set
+      a number; this is a manufacturer limit.
+  check_kind: note
+  section_ids: []
+  deficiency: null
+  practice_only: true
+  value_unit: null
+- ord: 3
+  phase: Before you start
+  text: Record the site weather rules for lightning distance, stop triggers and wait period.
+  detail:
+    trainee: Your site sets when to stop for lightning and how long to wait after the last strike before restarting.
+      Learn these before you need them.
+    operator: Note the site's stop trigger and wait period, plus how the stop call gets announced.
+    inspector: Record the site plan reference. The lightning distance and wait period come from site rules, not
+      the given federal text.
+  check_kind: note
+  section_ids: []
+  deficiency: null
+  practice_only: true
+  value_unit: null
+- ord: 4
+  phase: Before you start
+  text: Check the forecast for wind, gusts, storms, ice and temperature for the work period.
+  detail:
+    trainee: Look at the forecast so you know what weather may be coming. If a storm is likely during a long lift,
+      plan the lift for another time.
+    operator: Note the forecast gust speeds and storm timing, and plan to finish or delay lifts so you don't get
+      caught with a load in the air.
+    inspector: Record the forecast source and time checked.
+  check_kind: note
+  section_ids: []
+  deficiency: null
+  practice_only: true
+  value_unit: null
+- ord: 5
+  phase: Wind
+  text: Read sustained wind and gusts at boom-tip height.
+  detail:
+    trainee: Wind is usually stronger up high than at the ground, so read it at or near the boom tip, for example
+      with a boom-mounted anemometer. Gusts matter more than the average.
+    operator: Compare the highest gust, not the average, to the manufacturer's limit. If gusts are at or above the
+      limit, stop and land the load.
+    inspector: Record the sustained and gust readings, the height, and the instrument. Reading at tip height and
+      going by gusts is good practice, not a figure from the rule.
+  check_kind: value
+  section_ids: []
+  deficiency:
+    guidance: Wind at or above the manufacturer's limit means the crane is outside its rated conditions.
+    action: Stop, land the load and notify the competent person. Do not resume until a qualified person clears it.
+    section_id: 29cfr1926.1418
+    quote: Whenever there is a concern as to safety, the operator must have the authority to stop and refuse to
+      handle loads until a qualified person has determined that safety has been assured.
+  practice_only: true
+  value_unit: mph
+- ord: 6
+  phase: Wind
+  text: Judge the load's sail area and how wind will move or load it.
+  detail:
+    trainee: Large flat loads such as panels, forms and trusses catch wind like a sail. They can swing, spin or
+      push the boom sideways, even when the wind is below the crane's limit.
+    operator: For large-area loads, use the manufacturer's reduced wind values if it gives any, and plan taglines.
+      If the load can't be controlled, don't lift it.
+    inspector: Note the load type and its approximate area. Working out wind force on a load is physics and practice;
+      the given text does not set a method.
+  check_kind: pass_fail
+  section_ids: []
+  deficiency:
+    guidance: Wind on the load could cause a loss of control or side loading on the boom.
+    action: Do not lift. Notify the competent person so they can adjust the operation or wait for calmer wind.
+    section_id: 29cfr1926.1418
+    quote: Whenever there is a concern as to safety, the operator must have the authority to stop and refuse to
+      handle loads until a qualified person has determined that safety has been assured.
+  practice_only: true
+  value_unit: null
+- ord: 7
+  phase: Ice, snow and temperature
+  text: Check the boom, hook block, rigging and load for ice and snow.
+  detail:
+    trainee: Ice and snow add weight and can fall from height. Ice on the boom or load also changes how the crane
+      behaves. Good means no buildup, or buildup that has been cleared.
+    operator: Look along the boom, at the sheaves, wire rope, hook and load. Clear the buildup or report it before
+      lifting.
+    inspector: Record what was found and what was done about it. The competent person must address the effect of
+      ice and snow on stability and rated capacity.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1417(n)
+  deficiency:
+    guidance: Ice or snow on the crane or load reduces the real capacity margin and creates a falling-object hazard.
+    action: Do not lift. Have the competent person adjust the equipment or operations, for example by clearing the
+      buildup or adding its weight to the load.
+    section_id: 29cfr1926.1417(n)
+    quote: The competent person must adjust the equipment and/or operations to address the effect of wind, ice,
+      and snow on equipment stability and rated capacity.
+  practice_only: false
+  value_unit: null
+- ord: 8
+  phase: Ice, snow and temperature
+  text: Check the ground and outrigger pads after rain, snow or thaw.
+  detail:
+    trainee: Wet, frozen or thawing ground can soften and let the crane settle. Good means the pads are level, show
+      no sinking, and the ground isn't saturated or thawing under them.
+    operator: Check the level indicator and look for pad settlement or mud. Re-level or stop if the crane is settling.
+    inspector: Note the ground condition. The given text does not cover ground conditions; this is practice.
+  check_kind: pass_fail
+  section_ids: []
+  deficiency:
+    guidance: A settling support can tip the crane.
+    action: Stop, land the load and notify the competent person.
+    section_id: 29cfr1926.1418
+    quote: Whenever there is a concern as to safety, the operator must have the authority to stop and refuse to
+      handle loads until a qualified person has determined that safety has been assured.
+  practice_only: true
+  value_unit: null
+- ord: 9
+  phase: Ice, snow and temperature
+  text: Record the air temperature and the manufacturer's cold or hot weather limits.
+  detail:
+    trainee: Very cold or hot weather can affect the hydraulics, steel and engine. The manual lists any temperature
+      limits and warm-up steps.
+    operator: Compare the temperature to the manual. Run the warm-up procedure before you lift in cold weather.
+    inspector: Record the temperature and the manufacturer limit. The given text sets no temperature limit.
+  check_kind: note
+  section_ids: []
+  deficiency: null
+  practice_only: true
+  value_unit: null
+- ord: 10
+  phase: Adjust operations
+  text: Competent person sets adjustments for wind, ice and snow before lifting.
+  detail:
+    trainee: Based on the weather, the competent person decides what changes, such as a shorter boom, lighter loads,
+      slower moves, more taglines, or no lifting. Good means the decision is made and everyone knows it.
+    operator: Get the adjustments before the lift and follow them, for example the reduced capacity, the wind cutoff,
+      or which lifts are postponed.
+    inspector: Verify and document the adjustments the competent person made, as 1417(n) requires.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1417(n)
+  deficiency:
+    guidance: No one has addressed the weather's effect on stability and capacity.
+    action: Do not start lifting until the competent person makes and communicates the adjustments.
+    section_id: 29cfr1926.1417(n)
+    quote: The competent person must adjust the equipment and/or operations to address the effect of wind, ice,
+      and snow on equipment stability and rated capacity.
+  practice_only: false
+  value_unit: null
+- ord: 11
+  phase: Adjust operations
+  text: Verify the load weight is within rated capacity after weather adjustments.
+  detail:
+    trainee: Know what the load weighs, from a reliable source or by test-lifting with the crane's capacity system,
+      and confirm it is within capacity. Count added weight such as ice or soaked material.
+    operator: Use a recognized weight source, or the LMI/RCL. If the load is over 75 percent of maximum rated capacity
+      at the longest radius, stop and verify the weight before going on.
+    inspector: Document how the weight was verified under 1417(o)(3)(i) or (ii). The equipment must not be operated
+      over rated capacity.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1417(o)(1)
+  - 29cfr1926.1417(o)(3)
+  - 29cfr1926.1417(o)(3)(i)
+  - 29cfr1926.1417(o)(3)(ii)
+  deficiency:
+    guidance: The load may be over the crane's rated capacity.
+    action: Do not lift. Verify the weight by a recognized source or calculation, or reduce the load or radius.
+    section_id: 29cfr1926.1417(o)(1)
+    quote: The equipment must not be operated in excess of its rated capacity.
+  practice_only: false
+  value_unit: null
+- ord: 12
+  phase: Adjust operations
+  text: Confirm no one is pushing the operator to lift beyond capacity or limits.
+  detail:
+    trainee: Schedule pressure does not override the crane's limits. The operator can't be required to run the crane
+      over its rated capacity.
+    operator: If you're asked to lift beyond capacity or in conditions you think are unsafe, refuse and call the
+      lift director.
+    inspector: Note any pressure to lift and how it was resolved, citing 1417(o)(2) and 1418.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1417(o)(2)
+  - 29cfr1926.1418
+  deficiency:
+    guidance: The operator is being directed to violate the capacity rule.
+    action: Stop. The operator refuses the lift, and the lift director resolves it.
+    section_id: 29cfr1926.1417(o)(2)
+    quote: The operator must not be required to operate the equipment in a manner that would violate paragraph (o)(1)
+      of this section.
+  practice_only: false
+  value_unit: null
+- ord: 13
+  phase: Personnel lifts
+  text: If lifting personnel, read sustained wind and gusts at the personnel platform.
+  detail:
+    trainee: For lifts with people in a platform, the wind that counts is the wind at the platform, sustained or
+      gusting. Over 20 mph, a qualified person has to decide if the lift is safe.
+    operator: If the sustained wind or any gust is over 20 mph at the platform, don't start (or stop) until the
+      qualified person decides.
+    inspector: Record the reading at the platform, and the qualified person's decision if it was over 20 mph, per
+      1431(k)(8)(i).
+  check_kind: value
+  section_ids:
+  - 29cfr1926.1431(k)(8)(i)
+  deficiency:
+    guidance: Wind over 20 mph at the platform needs a qualified person's determination.
+    action: Hold the personnel lift. If the qualified person finds it unsafe, do not begin, or bring the platform
+      down and end the lift.
+    section_id: 29cfr1926.1431(k)(8)(i)
+    quote: If it is not, the lifting operation must not begin (or, if already in progress, must be terminated).
+  practice_only: false
+  value_unit: mph
+- ord: 14
+  phase: Personnel lifts
+  text: Qualified person checks for dangerous weather before and during personnel lifts.
+  detail:
+    trainee: Besides wind, storms, lightning, ice or other dangers can make lifting people unsafe. A qualified person
+      makes that call.
+    operator: Watch the sky. If you see signs of dangerous weather, tell the qualified person and be ready to bring
+      the platform down.
+    inspector: Document the qualified person's determination and any termination, per 1431(k)(8)(ii).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1431(k)(8)(ii)
+  deficiency:
+    guidance: Dangerous weather makes it unsafe to lift personnel.
+    action: Do not begin, or end the personnel lift in progress and bring the platform down.
+    section_id: 29cfr1926.1431(k)(8)(ii)
+    quote: If it is not, the lifting operation must not begin (or, if already in progress, must be terminated).
+  practice_only: false
+  value_unit: null
+- ord: 15
+  phase: Stop work
+  text: Stop and land the load when lightning or a storm is near.
+  detail:
+    trainee: A crane boom is a tall metal target for lightning. When the site's lightning trigger is met, set the
+      load down, stop work and move to a safe place.
+    operator: Land the load, boom down if possible, stop and clear the area according to the site rule. Anyone can
+      call the stop.
+    inspector: Record the time of the stop and what triggered it. The stop trigger comes from the site rule; the
+      operator's stop authority comes from 1418.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1418
+  deficiency:
+    guidance: Work kept going with lightning or a storm near.
+    action: Stop now and land the load. Do not resume until a qualified person determines it is safe.
+    section_id: 29cfr1926.1418
+    quote: Whenever there is a concern as to safety, the operator must have the authority to stop and refuse to
+      handle loads until a qualified person has determined that safety has been assured.
+  practice_only: false
+  value_unit: null
+- ord: 16
+  phase: Stop work
+  text: Operator stops whenever the weather raises a safety concern.
+  detail:
+    trainee: If the wind, the load's swing, ice or visibility worries you, the operator can stop and refuse the
+      load. A qualified person must clear it before work resumes.
+    operator: Stop, land the load if you can do it safely, and call the lift director and the qualified person.
+    inspector: Verify that the operator's stop authority is respected and that a qualified person cleared the restart,
+      per 1418.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1418
+  deficiency:
+    guidance: The operator's stop was overridden, or work resumed without a qualified person's determination.
+    action: Stop work until a qualified person determines that safety is assured.
+    section_id: 29cfr1926.1418
+    quote: Whenever there is a concern as to safety, the operator must have the authority to stop and refuse to
+      handle loads until a qualified person has determined that safety has been assured.
+  practice_only: false
+  value_unit: null
+- ord: 17
+  phase: Securing the crane
+  text: Land the load before leaving the controls.
+  detail:
+    trainee: Never walk away from the controls with a load hanging unless every exception condition is met. Landing
+      it is the normal way to secure for weather.
+    operator: Set the load down and unload the hook before you leave the cab. If the load must stay up, all of the
+      following steps must be met first.
+    inspector: Verify the load was landed, or that every 1417(e)(1) condition was met.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1417(e)(1)
+  deficiency:
+    guidance: The controls were left with a load suspended.
+    action: Return to the controls, or meet every 1417(e)(1) condition right away. Otherwise land the load.
+    section_id: 29cfr1926.1417(e)(1)
+    quote: 'The operator must not leave the controls while the load is suspended, except where all of the following
+      are met:'
+  practice_only: false
+  value_unit: null
+- ord: 18
+  phase: Securing the crane
+  text: If the load must stay suspended, confirm the hold is longer than normal and the operator stays adjacent.
+  detail:
+    trainee: A load can be left hanging only for a hold that is longer than normal lifting. Even then, the operator
+      stays next to the crane with no other duties.
+    operator: Stay beside the crane, and do not take on any other task while the load is up.
+    inspector: Verify both conditions and record the reason for the hold, per 1417(e)(1)(i) and (ii).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1417(e)(1)(i)
+  - 29cfr1926.1417(e)(1)(ii)
+  deficiency:
+    guidance: The exception for leaving a load suspended does not apply.
+    action: The operator returns to the controls or lands the load.
+    section_id: 29cfr1926.1417(e)(1)(i)
+    quote: The operator remains adjacent to the equipment and is not engaged in any other duties.
+  practice_only: false
+  value_unit: null
+- ord: 19
+  phase: Securing the crane
+  text: Competent person approves the hold and restrains boom, telescope, load, swing and outrigger functions.
+  detail:
+    trainee: Before anyone leaves the controls, the competent person has to decide it is safe and lock out the crane's
+      motions so nothing can move.
+    operator: Set the brakes and locks the competent person calls for on boom hoist, telescope, load hoist, swing
+      and outriggers or stabilizers.
+    inspector: Document the competent person's determination and the restraint measures, per 1417(e)(1)(iii).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1417(e)(1)(iii)
+  deficiency:
+    guidance: The functions are not restrained, or there is no competent person determination.
+    action: The operator returns to the controls or lands the load.
+    section_id: 29cfr1926.1417(e)(1)(iii)
+    quote: The competent person determines that it is safe to do so and implements measures necessary to restrain
+      the boom hoist and telescoping, load, swing, and outrigger or stabilizer functions.
+  practice_only: false
+  value_unit: null
+- ord: 20
+  phase: Securing the crane
+  text: Barricade the fall zone and post notices; confirm no one is inside it.
+  detail:
+    trainee: The area where a suspended load could fall must be roped off with signs, and no one at all, riggers
+      included, may go inside.
+    operator: Look and confirm the barricade or caution line and the notices are up and the zone is empty.
+    inspector: Photograph or note the barricade and notices, and verify the fall zone is clear, per 1417(e)(1)(iv).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1417(e)(1)(iv)
+  deficiency:
+    guidance: The fall zone is not controlled, or someone is in it.
+    action: Clear the zone and set up barricades and notices, or land the load.
+    section_id: 29cfr1926.1417(e)(1)(iv)
+    quote: Barricades or caution lines, and notices, are erected to prevent all employees from entering the fall
+      zone.
+  practice_only: false
+  value_unit: null
+- ord: 21
+  phase: Securing the crane
+  text: Confirm anything left hanging is negligible working gear, not over an entrance or exit.
+  detail:
+    trainee: Light working gear such as slings or a spreader bar can stay on the hook under the exception, but only
+      if it isn't hanging over a doorway or exit.
+    operator: If gear stays on the hook, check that its weight is negligible for the crane as set up and that it
+      isn't over an entrance or exit.
+    inspector: Verify the working gear exception applies, per 1417(e)(2).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1417(e)(2)
+  deficiency:
+    guidance: The suspended item doesn't qualify for the working gear exception.
+    action: Land the item, or meet every 1417(e)(1) condition.
+    section_id: 29cfr1926.1417(e)(2)
+    quote: where the weight of the working gear is negligible relative to the lifting capacity of the equipment
+      as positioned, and the working gear is suspended over an area other than an entrance or exit.
+  practice_only: false
+  value_unit: null
+- ord: 22
+  phase: Securing the crane
+  text: Secure the crane for high wind per the manufacturer's out-of-service instructions.
+  detail:
+    trainee: The manual says how to leave the crane in high wind, such as lowering or retracting the boom, or letting
+      a tower crane swing freely with the wind. Follow it exactly.
+    operator: Set the boom position, swing setting, brakes and locks as the manual requires, then shut down and
+      secure the cab.
+    inspector: Note the out-of-service configuration used. This is a manufacturer requirement; the given text does
+      not state it.
+  check_kind: pass_fail
+  section_ids: []
+  deficiency:
+    guidance: The crane is not secured for the expected wind.
+    action: Correct the configuration before anyone leaves the crane.
+    section_id: null
+    quote: null
+  practice_only: true
+  value_unit: null
+- ord: 23
+  phase: Restart
+  text: Confirm the site wait period has passed since the last lightning or storm.
+  detail:
+    trainee: Storms can come back. Wait the full time set by the site rule after the last lightning before anyone
+      goes back to the crane.
+    operator: Log the time of the last strike and the time you plan to restart.
+    inspector: Record the times and the site rule reference. The wait period comes from the site rule.
+  check_kind: note
+  section_ids: []
+  deficiency: null
+  practice_only: true
+  value_unit: null
+- ord: 24
+  phase: Restart
+  text: Walk around for storm damage, ice, and ground or support changes before restarting.
+  detail:
+    trainee: After the weather passes, look for ice on the boom, wet or soft ground, shifted pads and anything blown
+      into the crane. Good means everything looks the same as before the stop.
+    operator: Check the level, the pads, the boom and rope for ice, and the work area. Clear ice and report damage
+      before you run any function.
+    inspector: Document the findings. The competent person must address any remaining ice or snow effects, per 1417(n).
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1417(n)
+  deficiency:
+    guidance: Weather effects remain on the equipment or supports.
+    action: Do not restart until the competent person makes adjustments or the condition is corrected.
+    section_id: 29cfr1926.1417(n)
+    quote: The competent person must adjust the equipment and/or operations to address the effect of wind, ice,
+      and snow on equipment stability and rated capacity.
+  practice_only: false
+  value_unit: null
+- ord: 25
+  phase: Restart
+  text: Re-read wind at boom-tip height and compare to the limits.
+  detail:
+    trainee: Wind can stay high after a storm. Take a new reading before you lift anything.
+    operator: Restart only if the gusts are below the manufacturer's limit and within any adjustments the competent
+      person set.
+    inspector: Record the restart wind reading. Reading at tip height and going by gusts is practice.
+  check_kind: value
+  section_ids: []
+  deficiency:
+    guidance: Wind is still above the limit.
+    action: Stay stopped until a qualified person determines it is safe.
+    section_id: 29cfr1926.1418
+    quote: Whenever there is a concern as to safety, the operator must have the authority to stop and refuse to
+      handle loads until a qualified person has determined that safety has been assured.
+  practice_only: true
+  value_unit: mph
+- ord: 26
+  phase: Restart
+  text: Get the qualified person's clearance before handling loads again.
+  detail:
+    trainee: After a safety stop, a qualified person has to confirm it is safe before work resumes. Good means a
+      clear go-ahead that everyone hears.
+    operator: Do not handle loads until the qualified person confirms that safety is assured.
+    inspector: Record who cleared the restart and when, per 1418.
+  check_kind: pass_fail
+  section_ids:
+  - 29cfr1926.1418
+  deficiency:
+    guidance: Work resumed without a qualified person's determination.
+    action: Stop and get the qualified person's determination.
+    section_id: 29cfr1926.1418
+    quote: Whenever there is a concern as to safety, the operator must have the authority to stop and refuse to
+      handle loads until a qualified person has determined that safety has been assured.
+  practice_only: false
+  value_unit: null
+- ord: 27
+  phase: Records
+  text: Log the weather readings, stop and restart times, adjustments and decisions.
+  detail:
+    trainee: Write down what the weather was, when work stopped and restarted, and who decided. It shows the right
+      calls were made.
+    operator: Record the wind readings, the temperature, the stop reason, the securing method and the restart clearance.
+    inspector: Keep the log with the lift records. Logging is good practice; the given text does not require a written
+      record.
+  check_kind: note
+  section_ids: []
+  deficiency: null
+  practice_only: true
+  value_unit: null
+prov:
+  prov_id: 2a597bb5b4ab1001df9c
+  backend: claude-cli
+  model: claude-opus-5-5
+  prompt_id: procedures
+  prompt_version: '1'
+  prompt_sha256: 739cedd36ddf99f40f81ae9030ade12697499f0414421879c8bf963c86c8454f
+  input_sha256: 48e0cc3ec44c706a12e09aeca5c754d576de4dd2ead9392e646848306bb45452
+  output_sha256: 44d5a5a85fcede2a4187c0009ede288107dd6396859cf0449192339ff0904ff4
+  created_at: '2026-11-28T02:24:27+00:00'
+  verifier: crane-content/verify v1 (exact substring of eCFR text, typography repair)
+  verdict: pass
+  notes: null

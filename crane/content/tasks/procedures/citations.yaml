@@ -1,7 +1,8 @@
-# Rule citations for deficiencies the generator left uncited. Each of these steps is a practice
-# method (a calculation or a briefing), but failing it breaks a rule, and the app shows that rule
-# with the deficiency. Keyed by proc_id and step ord; the writer applies them and re-verifies the
-# quote, and a deficiency that is still uncited fails the procedure.
+# Rule citations for deficiencies the generator left uncited where a rule does back them. Each of
+# these steps is a practice method (a calculation or a briefing), but failing it breaks a rule, and
+# the app shows that rule with the deficiency. Keyed by proc_id and step ord; the writer applies them
+# and re-verifies the quote. A practice step's deficiency with no rule behind it stays uncited and
+# ships as practice guidance (basis: practice), never as a rule.
 critical-lift-plan:
   11:
     section_id: 29cfr1926.1417(o)(1)

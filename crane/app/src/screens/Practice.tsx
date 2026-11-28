@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, Navigate, useNavigate, useParams } from "react-router";
 import { Check, Flag, X } from "lucide-react";
 import { engine } from "../engine/index.ts";
 import type { ExamBlueprintRow, Question } from "../engine/types.ts";
 import { bankFor } from "../practice/bank.ts";
 import { deadline, originalChoice, remainingMs, skillReport } from "../practice/engine.ts";
-import { examItemPath, examPath, examResultsPath, examReviewPath } from "../routes.ts";
+import { examItemPath, examPath, examResultsPath, examReviewPath, readerPath } from "../routes.ts";
 import { usePractice } from "../store/practice.ts";
 import { reportError } from "../store/toast.ts";
 import { Button, ButtonLink, List, Meter, Page, Panel, Row, cx } from "../ui/kit.tsx";
@@ -26,6 +26,17 @@ export function PracticeHome() {
   const mastered = report.filter((r) => r.status === "mastered").length;
   return (
     <Page title={t("practice.title")}>
+      {state.step === 0 && history.length === 0 ? (
+        // First run: what this is for, the exam, and one step into the first question.
+        <Panel className="practice-welcome">
+          <h2 className="mb-2 text-h2">{t("practice.welcome.title")}</h2>
+          <p className="m-0 mb-3 text-body">{t("practice.welcome.body")}</p>
+          <p className="m-0 mb-5 text-small text-ink-2">{t("practice.welcome.exam")}</p>
+          <ButtonLink to="/practice/session" variant="primary">
+            {t("practice.welcome.start")}
+          </ButtonLink>
+        </Panel>
+      ) : (
       <Panel>
         <h2 className="mb-1 text-h3">{t("practice.adaptive")}</h2>
         <p className="m-0 mb-4 text-ink-2">{state.step === 0 ? t("practice.adaptive.new") : t("practice.adaptive.progress", { mastered, total: report.length })}</p>
@@ -33,6 +44,7 @@ export function PracticeHome() {
           {state.step === 0 ? t("practice.start") : t("practice.continue")}
         </ButtonLink>
       </Panel>
+      )}
       <List label={t("practice.exams")}>
         {e.exams.map((bp) => {
           const rec = exams[bp.id];
@@ -68,6 +80,12 @@ export function PracticeSession() {
   useEffect(() => {
     if (stale) next(e, Date.now(), focus);
   }, [stale, e, focus, next]);
+  // Next takes focus once an answer is in, without scrolling: the choices stay where the thumb left them.
+  const nextRef = useRef<HTMLButtonElement>(null);
+  const answeredNow = current?.chosen !== null && current?.chosen !== undefined;
+  useEffect(() => {
+    if (answeredNow) nextRef.current?.focus({ preventScroll: true });
+  }, [answeredNow, current?.itemId]);
   if (focus && !topic) return <NotFound />;
   const title = topic ? topic.title : t("practice.adaptive");
   const up = { to: "/practice", label: t("tab.practice") };
@@ -75,54 +93,78 @@ export function PracticeSession() {
   if (!current) return <Page title={title} up={up}><p className="m-0">{t("practice.empty")}</p></Page>;
   const q = qById(current.itemId);
   if (!q) return <NotFound />;
-  const skill = e.skills.find((s) => s.skill_id === q.skill_id);
   const key = Number(q.answer);
   const answered = current.chosen !== null;
+  const domain = domainOf(e, q.skill_id);
+  const sources = q.section_ids.filter((id) => e.sections.has(id));
   return (
     <Page title={title} up={up}>
-      <p className="-mt-3 m-0 text-small text-ink-2">
-        {skill?.title}
-        {current.reason === "review" && <span className="ml-2 font-semibold text-ink">{t("practice.reviewNote")}</span>}
+      <p className="-mt-3 m-0 font-display text-small font-semibold uppercase tracking-wider text-ink-2">
+        {domain}
+        {current.reason === "review" && <span className="ml-3 normal-case tracking-normal text-ink">{t("practice.reviewNote")}</span>}
       </p>
-      <h2 className="text-h3 font-sans font-semibold">{q.stem}</h2>
+      <h2 className="text-h3 font-sans font-semibold sm:text-h2">{q.stem}</h2>
       <div role="group" aria-label={t("practice.choices")} className="flex flex-col gap-3">
         {q.choices.map((c, i) => {
           const isKey = i === key;
           const isChosen = i === current.chosen;
           return (
             <button key={i} type="button" disabled={answered} onClick={() => choose(e, i, Date.now())}
-              className={cx("flex min-h-tap items-center gap-3 rounded-control border-2 px-4 py-3 text-left disabled:cursor-default",
+              className={cx("flex min-h-tap items-center gap-3 rounded-control border-2 px-4 py-3 text-left text-body disabled:cursor-default",
                 !answered && "border-line bg-surface",
                 answered && isKey && "border-pass bg-pass-wash",
                 answered && isChosen && !isKey && "border-fail bg-fail-wash",
                 answered && !isKey && !isChosen && "border-line bg-surface opacity-70")}>
               <span className="inline-flex size-8 shrink-0 items-center justify-center rounded-full border-2 border-current font-display text-small font-bold">
-                {answered && isKey ? <Check aria-hidden size={16} /> : answered && isChosen ? <X aria-hidden size={16} /> : LETTERS[i]}
+                {LETTERS[i]}
               </span>
               <span className="flex-1">{c}</span>
+              {answered && isKey && <Check aria-label={t("practice.key")} size={22} className="shrink-0 text-pass" />}
+              {answered && isChosen && !isKey && <X aria-label={t("practice.yours")} size={22} className="shrink-0 text-fail" />}
             </button>
           );
         })}
       </div>
       {answered && (
-        <Panel className={current.correct ? "border-pass" : "border-fail"}>
-          <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
-            <h3 className={cx("text-h3", current.correct ? "text-pass" : "text-fail")}>{current.correct ? t("practice.correct") : t("practice.incorrect")}</h3>
-            <Button variant="primary" onClick={() => next(e, Date.now(), focus)} autoFocus>
-              {t("practice.next")}
-            </Button>
-          </div>
-          {!current.correct && current.chosen !== null && <p className="m-0 mb-2">{q.rationales[current.chosen]}</p>}
-          <p className="m-0 mb-4">{q.rationales[key]}</p>
-          <div className="flex flex-wrap gap-2">
-            {q.section_ids.map((id) => (
-              <CitePlate key={id} sectionId={id} />
-            ))}
-          </div>
+        // One feedback card: the verdict, why, the source, next.
+        <Panel className={cx("practice-feedback", current.correct ? "border-pass" : "border-fail")}>
+          <h3 role="status" className={cx("mb-2 text-h3", current.correct ? "text-pass" : "text-fail")}>
+            {current.correct ? t("practice.correct") : t("practice.notQuite", { letter: LETTERS[key] ?? "" })}
+          </h3>
+          <p className="feedback-why m-0">{q.rationales[key]}</p>
+          {!current.correct && current.chosen !== null && (
+            <p className="feedback-why m-0 mt-2 text-ink-2">
+              <span className="font-semibold">{t("practice.whyNot", { letter: LETTERS[current.chosen] ?? "" })}</span> {q.rationales[current.chosen]}
+            </p>
+          )}
+          {q.note && <p className="feedback-note m-0 mt-2">{q.note}</p>}
+          {sources.length > 0 && (
+            <p className="feedback-source m-0 mt-3 text-small text-ink-2">
+              {t("practice.source", { cites: sources.map((id) => cfrCite(e.sections.get(id)!.citation)).join("; ") })}{" "}
+              <Link to={readerPath(sources[0]!)} className="font-semibold whitespace-nowrap text-ink">
+                {t("practice.readSource")}
+              </Link>
+            </p>
+          )}
+          <Button ref={nextRef} variant="primary" className="mt-4 w-full" onClick={() => next(e, Date.now(), focus)}>
+            {t("practice.next")}
+          </Button>
         </Panel>
       )}
     </Page>
   );
+}
+
+/** "§1926.1413(a)(2)" -> "29 CFR 1926.1413(a)(2)"; an appendix keeps its own name. */
+function cfrCite(citation: string): string {
+  return citation.startsWith("§") ? `29 CFR ${citation.slice(1)}` : citation;
+}
+
+/** The exam domain a skill counts toward (the written exam's blueprint), else its topic. */
+function domainOf(e: ReturnType<typeof engine>, skillId: string): string {
+  for (const bp of e.exams) for (const d of bp.domains) if (d.skillIds.includes(skillId)) return d.title;
+  const topic = e.skills.find((s) => s.skill_id === skillId)?.topic_id;
+  return e.topics.find((x) => x.topic_id === topic)?.title ?? "";
 }
 
 export function SkillsScreen() {
@@ -386,6 +428,7 @@ export function ExamResults() {
               <p className="m-0 mb-2 font-semibold">{i + 1}. {q.stem}</p>
               <p className="m-0 text-small"><span className="text-ink-2">{t("exam.yours")}</span> {it.response === null ? t("exam.blank") : q.choices[Number(it.response)]}</p>
               {!it.correct && <p className="m-0 text-small"><span className="text-ink-2">{t("exam.key")}</span> {q.choices[key]}</p>}
+              {!it.correct && it.response !== null && <p className="m-0 mt-2 text-small text-ink-2">{q.rationales[Number(it.response)]}</p>}
               <p className="m-0 my-2 text-small text-ink-2">{q.rationales[key]}</p>
               <div className="flex flex-wrap gap-2">{q.section_ids.map((sid) => <CitePlate key={sid} sectionId={sid} />)}</div>
             </div>
