@@ -2,8 +2,16 @@
  {
   "id": "mobile-core",
   "title": "Mobile crane operator written exam, core (style)",
+  "items": 95,
   "minutes": 90,
   "calculator": false,
+  "source": {
+   "title": "Candidate Handbook, Mobile Crane Operator (LAT, TLL, TSS, STC)",
+   "edition": "MCO CH REV 06/24 (page footers), DOC 50014-102; cover reads MCO CH REV 01/25; PDF modified 2024-11-14",
+   "url": "https://ccocert.org/wp-content/uploads/2026/06/mobile-crane-operator-candidate-handbook_111424-en.pdf",
+   "sha256": "51b0e67f7e250c763dc1a1c47b611bf4a9bc0b1ec24e910a8e7965573b8dd31f",
+   "retrieved_at": "2026-11-27"
+  },
   "passPercent": 70,
   "passPercentNote": "practice target; the certifier reports scaled scores",
   "domains": [
@@ -285,8 +293,16 @@
  {
   "id": "mobile-specialty",
   "title": "Mobile crane operator written exam, specialty (style; telescopic fixed cab, telescopic swing cab, lattice boom)",
+  "items": 28,
   "minutes": 60,
   "calculator": true,
+  "source": {
+   "title": "Candidate Handbook, Mobile Crane Operator (LAT, TLL, TSS, STC)",
+   "edition": "MCO CH REV 06/24 (page footers), DOC 50014-102; cover reads MCO CH REV 01/25; PDF modified 2024-11-14",
+   "url": "https://ccocert.org/wp-content/uploads/2026/06/mobile-crane-operator-candidate-handbook_111424-en.pdf",
+   "sha256": "51b0e67f7e250c763dc1a1c47b611bf4a9bc0b1ec24e910a8e7965573b8dd31f",
+   "retrieved_at": "2026-11-27"
+  },
   "passPercent": 70,
   "passPercentNote": "practice target; the certifier reports scaled scores",
   "domains": [
