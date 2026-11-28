@@ -402,13 +402,15 @@ def build(corpus: Corpus, arm_name: str | None, out_dir: Path | None, harvest: s
                 "failure_modes": len(lr["_out"]["failure_modes"]), "repeats": len(lr["_out"]["repeats"]),
                 "registry": str(out_dir.parent / f"{out_dir.name}.registry.json"),
                 "field_accuracy": (lr.get("score") or {}).get("field_accuracy")}
+    learn = _learn_into(corpus, stage, out_dir, a.spec, meta, files, embedder_cfg, harvest, pubkey, log) \
+        if m.get("learn") else None
     verdicts = dict(stage.conn.execute("SELECT verdict, COUNT(*) FROM provenance GROUP BY verdict").fetchall())
     regions = {r[0]: {"source": r[1], "page": r[2], "region": r[3]} for r in stage.conn.execute(
         "SELECT ref_id, source_id, page_index, region_id FROM _text_loc WHERE ref_kind='section'")}
     (out_dir.parent / f"{out_dir.name}.regions.json").write_text(json.dumps(regions, indent=0, sort_keys=True))
     summary = {"pack": res, "arm": a.name, "spec": a.spec, "extract": reps, "cache_misses": missing,
                "rounds": rounds, "forced_fail": {f"{k[0]}:{k[1]}": v for k, v in forced.items()},
-               "agree_with": agree_with, "history": hist, "review": {f"{k[0]}:{k[1]}": v for k, v in review.items()},
+               "agree_with": agree_with, "history": hist, "learn": learn, "review": {f"{k[0]}:{k[1]}": v for k, v in review.items()},
                "verdicts": verdicts, "graph": rep.get("graph", {}).get("counts"),
                "references": [a.report.get("references") for a in asms],
                "plausibility": [a.report.get("plausibility") for a in asms],
@@ -476,11 +478,13 @@ def build_table(corpus: Corpus, out_dir: Path | None, harvest: str, pubkey: str 
         if emb is not None:
             emb.close()
     rep = verify_graph(harvest, out_dir, pubkey)
-    pc = __import__("sqlite3").connect(res["path"])
+    learn = _learn_into(corpus, stage, out_dir, "rules", meta, [], embedder_cfg, harvest, pubkey, log) \
+        if m.get("learn") else None
+    pc = __import__("sqlite3").connect(next(out_dir.glob("*.sqlite")))
     shipped = {r[0] for r in pc.execute("SELECT tree_id FROM fault_tree")}
     treeless = pc.execute("SELECT COUNT(*) FROM signal_map WHERE tree_id IS NULL").fetchone()[0]
     rows = sum(r["rows"] for r in reports.values())
-    summary = {"pack": res, "tables": reports, "synonyms": syn_rep, "graph": rep.get("graph"), "ok": rep.get("ok"),
+    summary = {"pack": res, "tables": reports, "synonyms": syn_rep, "learn": learn, "graph": rep.get("graph"), "ok": rep.get("ok"),
                "signal_patterns": [{"examples": r.get("pattern_examples"), "misses": len(r["pattern_misses"]),
                                     "collisions": len(r["pattern_collisions"]), **(r.get("pattern_basis") or {})}
                                    for r in reports.values()],
@@ -560,3 +564,25 @@ def signals_check(corpus: Corpus, pack_dir: Path, harvest: str, pubkey: str | No
         proc.terminate()
         proc.wait(timeout=10)
     return out
+
+
+def _learn_into(corpus, stage, out_dir: Path, author_spec, meta, files, embedder_cfg, harvest, pubkey, log) -> dict:
+    """Practice items from the pack just built (cached gates, no model call), into the stage, and the pack
+    written again with them."""
+    from .learn import run, write
+    r = run(corpus, out_dir, call=False, log=log)
+    n = write(stage.conn, r["items"], r["topics"], r["skills"], r["verdicts"], r["readers"])
+    stage.commit()
+    emb = make_embedder(embedder_cfg if embedder_cfg is not None else corpus.raw.get("embedder") or {"kind": "hash"})
+    try:
+        write_pack(stage, out_dir, corpus.pack_id, corpus.version, corpus.corpus_id, emb, release=True,
+                   bake_backends={"author": author_spec, "learn": "structure+gates"}, lang=corpus.lang,
+                   extra_meta=meta, files=files)
+    finally:
+        if emb is not None:
+            emb.close()
+    rep = verify_graph(harvest, out_dir, pubkey)
+    if not rep.get("ok"):
+        raise SystemExit(f"pack with practice items fails validation: {rep.get('graph')}")
+    return {"items": r["total"], "shipped": n["pass"], "failed": n["fail"], "table": r["table"],
+            "topics": len(r["topics"]), "skills": len(r["skills"])}

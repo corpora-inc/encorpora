@@ -305,3 +305,31 @@ def test_chart_printed_as_a_table(tmp_path):
     assert checks[1]["expect"]["kind"] == "yes_no"
     kinds = sorted(n["kind"] for n in t["nodes"] if n["kind"] != "check")
     assert kinds == ["action", "action", "escalate"]
+
+
+def test_practice_items_from_structure(models, tmp_path):
+    from harvest_pipeline.contract import question_problems
+    from harvest_pipeline.maint.learn import build_items, load, verdicts
+    stage = _assemble(models, _output(models[0]), tmp_path)
+    res = write_pack(stage, tmp_path / "pack", "lamp", "1", "lamp", None)
+    p = load(res["path"])
+    items, topics, skills = build_items(p)
+    nxt = [i for i in items if i["_type"] == "next"]
+    assert nxt, items
+    texts = {" ".join(n["text"].split()) for n in p.nodes.values()}
+    for it in nxt:
+        assert not question_problems(it)
+        assert all(c in texts for c in it["choices"])            # every option is the manual's own words
+        assert len(set(it["choices"])) == len(it["choices"]) >= 3
+    q1 = next(i for i in nxt if "Is the fuse good?" in i["stem"] and "result is NO" in i["stem"])
+    assert q1["choices"][int(q1["answer"])] == "Replace the fuse."
+    assert {s["skill_id"] for s in skills} >= {i["skill_id"] for i in items}
+    readers = {"solver": ("with_source", {}), "opt-sonnet": ("options_only", {}), "nos-sonnet": ("no_source", {})}
+    ans = {"solver": {i["q_id"]: int(i["answer"]) for i in items},
+           "opt-sonnet": {i["q_id"]: int(i["answer"]) for i in items},
+           "nos-sonnet": {i["q_id"]: (int(i["answer"]) + 1) % len(i["choices"]) for i in items}}
+    v, table = verdicts(items, ans, readers)
+    assert all(x["pass"] for x in v.values())                   # one blind reader right is not enough to fail
+    ans["nos-sonnet"] = ans["opt-sonnet"]
+    v, _ = verdicts(items, ans, readers)
+    assert not any(x["pass"] for x in v.values())               # both blind readers right: too guessable

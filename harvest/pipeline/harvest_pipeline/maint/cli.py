@@ -92,6 +92,10 @@ def main(argv: list[str]) -> int:
     s.add_argument("--pack", required=True)
     s.add_argument("--sheet", required=True)
     s.add_argument("--include-examples", action="store_true")
+    s = sub.add_parser("learn", help="practice items from a built pack; gates (cached; --call runs the readers)")
+    s.add_argument("corpus")
+    s.add_argument("--pack", required=True)
+    s.add_argument("--call", action="store_true")
     s = sub.add_parser("cost")
     s.add_argument("corpus")
     s.add_argument("--arm")
@@ -181,6 +185,13 @@ def main(argv: list[str]) -> int:
             tmp.write_text(sheet.read_text().replace(",example,", ",self-check,"))
             sheet = tmp
         print(json.dumps(score_labels(Path(a.pack), sheet), indent=1))
+        return 0
+    if a.cmd == "learn":
+        from .learn import run
+        r = run(c, Path(a.pack), a.call)
+        print(json.dumps({"total": r["total"], "pass": r["pass"], "table": r["table"], "usage": r["usage"],
+                          "failed": [{"q_id": q, **v} for q, v in r["verdicts"].items() if not v["pass"]][:15]},
+                         indent=1, default=str))
         return 0
     if a.cmd == "cost":
         from .build import ledger
