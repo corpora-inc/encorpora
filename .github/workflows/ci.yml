@@ -2311,9 +2311,9 @@ jobs:
           if [ -f maint/content/build-pack.sh ] && [ -f harvest/core/Cargo.toml ] && [ -f harvest/pipeline/pyproject.toml ]; then
             echo "present=true" >> "$GITHUB_OUTPUT"
           else echo "present=false" >> "$GITHUB_OUTPUT"; echo "maint pack inputs not present; skipping."; fi
-      - name: Pull the proof manuals (LFS)
+      - name: Pull the proof manuals and scanned log pages (LFS)
         if: steps.tree.outputs.present == 'true'
-        run: git lfs pull --include="maint/content/proof/*.pdf"
+        run: git lfs pull --include="maint/content/proof/*.pdf,maint/content/proof/fleet/logs/scans/*.png"
       - name: Tesseract (the scanned proof page)
         if: steps.tree.outputs.present == 'true'
         run: sudo apt-get install -y --no-install-recommends tesseract-ocr
