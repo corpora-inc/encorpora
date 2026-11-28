@@ -23,7 +23,7 @@ use crate::pack::Pack;
 use crate::retrieval::Retriever;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
-use std::collections::{BTreeMap, HashMap};
+use std::collections::{BTreeMap, BTreeSet, HashMap};
 
 /// Links from a node down to what teaches and tests it.
 #[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
@@ -181,14 +181,30 @@ impl Pack {
             serde_json::from_str(s)
                 .map_err(|e| crate::error::Error::Pack(format!("course_node {id}: {what}: {e}")))
         };
+        // Links only to rows that shipped (a lesson held for review is not in the pack).
+        let passed = |table: &str, col: &str| -> Result<BTreeSet<String>> {
+            let conn = self.conn();
+            let mut stmt =
+                conn.prepare_cached(&format!("SELECT {col} FROM {table} WHERE {PASSED}"))?;
+            let ids = stmt
+                .query_map([], |r| r.get::<_, String>(0))?
+                .collect::<rusqlite::Result<BTreeSet<_>>>()?;
+            Ok(ids)
+        };
+        let lessons = passed("lesson", "lesson_id")?;
+        let questions = passed("question", "q_id")?;
+        let diagrams = passed("diagram", "diagram_id")?;
         let mut out = Vec::with_capacity(rows.len());
         for (id, parent, ord, level, title, summary, hard, mistakes, exam, links, sids, quotes) in
             rows
         {
-            let links: NodeLinks = match parse(&id, "links", &links)? {
+            let mut links: NodeLinks = match parse(&id, "links", &links)? {
                 Value::Null => NodeLinks::default(),
                 v => serde_json::from_value(v)?,
             };
+            links.lesson_ids.retain(|l| lessons.contains(l));
+            links.q_ids.retain(|q| questions.contains(q));
+            links.diagram_ids.retain(|d| diagrams.contains(d));
             let section_ids: Vec<String> = match parse(&id, "section_ids", &sids)? {
                 Value::Null => Vec::new(),
                 v => serde_json::from_value(v)?,

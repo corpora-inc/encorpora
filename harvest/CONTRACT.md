@@ -367,7 +367,9 @@ verifies: `summary` (what this part is), `hard` (what is hard here),
 read). `links` points down to `node_ids` (beyond its children), `lesson_ids`,
 `q_ids`, `diagram_ids` and `film_ids` (films the host resolves from its media
 catalog). Lesson, question and diagram links must exist at import, so
-`course_node` is imported after them. A row's provenance covers its text.
+`course_node` is imported after them, and a link to a row that did not ship
+is dropped on read. A row's provenance covers its text: the skeleton passes
+structure alone, and text without provenance of its own waits for review.
 
 `harvest-bake course-skeleton <blueprint.yaml> [--existing tree.jsonl] --out
 course/tree.jsonl` writes the structure from the blueprint and content files,

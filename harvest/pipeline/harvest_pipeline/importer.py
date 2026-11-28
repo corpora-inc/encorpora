@@ -35,6 +35,7 @@ from pathlib import Path
 import yaml
 
 from . import schema
+from .course import cut_keys
 from .stage import Stage
 from .textutil import canonical_json, locate, sha256_text
 
@@ -121,10 +122,12 @@ def import_topics(stage: Stage, path: Path, rep: "ImportReport") -> None:
         rep.verdicts["pass"] += 1
         rep.problems += [f"{t['topic_id']}: unknown section_id {s}" for s in t.get("section_ids") or []
                          if not stage.exists(s)]
-        for sk in t.get("skills") or []:
-            cut = [k for k, v in sk.items() if v is None]
+        for item in [t, *(t.get("skills") or [])]:
+            cut = cut_keys(item)
             if cut:  # `{title: A, B}` parses as title "A" plus a key "B"
-                rep.problems.append(f"{sk['skill_id']}: title cut at a comma (quote it): {sk['title']!r} + {cut}")
+                iid = item.get("skill_id") or item.get("topic_id")
+                rep.problems.append(f"{iid}: title cut at a comma (quote it): {item.get('title')!r} + {cut}")
+        for sk in t.get("skills") or []:
             stage.insert("skill", {"skill_id": sk["skill_id"], "topic_id": t["topic_id"], "title": sk["title"],
                                    "lang": lang})
             rep.problems += [f"{sk['skill_id']}: unknown section_id {s}" for s in sk.get("section_ids") or []

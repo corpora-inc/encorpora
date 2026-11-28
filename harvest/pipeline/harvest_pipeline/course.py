@@ -36,7 +36,9 @@ def _rows(path: Path) -> list[dict]:
     if data is None:
         return []
     if isinstance(data, dict):
-        data = next((v for v in data.values() if isinstance(v, list)), [data])
+        # `{diagrams: [...]}`: a file holding one named list; any other object is one row.
+        lists = [v for v in data.values() if isinstance(v, list)]
+        data = lists[0] if len(data) == 1 and lists else [data]
     return data if isinstance(data, list) else [data]
 
 
@@ -99,10 +101,15 @@ def skeleton(blueprint: Path, content: Path, title: str, existing: list[dict] | 
                  or set(d.get("section_ids") or []) & set(secs))])
     for r in rows:
         prev = old.get(r["node_id"])
-        r["prov"] = (prev or {}).get("prov") or {
+        if (prev or {}).get("prov"):
+            r["prov"] = prev["prov"]
+            continue
+        # Structure alone states nothing and passes; text with no provenance of its own waits for review.
+        written = any(r[k] for k in TEXT if not (r["level"] == "topic" and k == "summary")) or r["quotes"]
+        r["prov"] = {
             "prov_id": "course-skeleton-" + sha256_text(canonical_json({k: r[k] for k in ("node_id", "title")}))[:16],
             "backend": "deterministic", "model": "none", "prompt_id": "course.skeleton", "prompt_version": "1",
-            "verifier": "course-skeleton:v1", "verdict": "pass"}
+            "verifier": "course-skeleton:v1", "verdict": "needs_review" if written else "pass"}
     return rows
 
 
@@ -111,12 +118,19 @@ def problems(blueprint: Path) -> list[str]:
     (`{title: A, B}` parses as title "A" plus a key "B")."""
     bp = yaml.safe_load(blueprint.read_text()) or {}
     out = []
-    known = {"skill_id", "title", "kind", "levels", "section_ids", "exam", "summary", "ord", "topic_id",
-             "parent_id", "skills"}
     for t in bp.get("topics") or []:
         for item in [t, *(t.get("skills") or [])]:
-            extra = [k for k, v in item.items() if k not in known and v is None]
-            if extra:
+            cut = cut_keys(item)
+            if cut:
                 iid = item.get("skill_id") or item.get("topic_id")
-                out.append(f"{iid}: title cut at a comma (quote it): {item.get('title')!r} + {extra}")
+                out.append(f"{iid}: title cut at a comma (quote it): {item.get('title')!r} + {cut}")
     return out
+
+
+BLUEPRINT_KEYS = {"skill_id", "topic_id", "parent_id", "ord", "title", "summary", "kind", "levels",
+                  "section_ids", "exam", "skills"}
+
+
+def cut_keys(item: dict) -> list[str]:
+    """Keys a flow-mapping comma split off the title: not a blueprint key, and no value."""
+    return [k for k, v in item.items() if v is None and k not in BLUEPRINT_KEYS]

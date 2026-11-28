@@ -58,6 +58,11 @@ def test_skeleton_builds_the_tree_and_keeps_written_text(tmp_path):
     c2 = again["skill:power.clear"]
     assert c2["hard"] == "Picking the band." and c2["quotes"][0]["quote"] == "q"
     assert c2["links"]["film_ids"] == ["film.table-a"] and c2["prov"]["prov_id"] == "lane-1"
+    # Text without provenance of its own is never stamped as passed.
+    bare = {k: v for k, v in written.items() if k != "prov"}
+    again = {r["node_id"]: r for r in skeleton(bp, tmp_path, "Crane course", [bare])}
+    assert again["skill:power.clear"]["prov"]["verdict"] == "needs_review"
+    assert again["skill:power.spot"]["prov"]["verdict"] == "pass"
 
 
 def test_course_skeleton_cli_writes_jsonl(tmp_path, capsys):

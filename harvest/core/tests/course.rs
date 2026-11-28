@@ -64,12 +64,13 @@ fn baked() -> (tempfile::TempDir, Arc<Pack>) {
             r#"
             INSERT INTO provenance VALUES ('prov-bad', 'deterministic', 'none', 'fixture', '1', 'x', 'x', 'x',
               '2026-01-01T00:00:00Z', 'fixture', 'fail', NULL);
+            INSERT INTO lesson VALUES ('lesson-held', 'topic-lines', 2, 'Held', '[]', 'en', 'prov-bad');
             INSERT INTO course_node VALUES ('course', NULL, 0, 'course', 'Machine course',
               'Rules for working near lines and inspecting machines.', 'Clearance tables.', '', '', '{"node_ids":["topic:lines"]}', '[]', '[]', 'en', 'prov-fixture');
             INSERT INTO course_node VALUES ('topic:lines', 'course', 1, 'topic', 'Energized lines',
               'How close a machine may work to a power line.', 'Picking the voltage band.',
               'Measuring from the cab instead of the closest part of the load.', 'Expect a table lookup by voltage.',
-              '{"lesson_ids":["lesson-lines"]}', '["ex.2"]',
+              '{"lesson_ids":["lesson-lines","lesson-held"],"q_ids":["q-clear-1"]}', '["ex.2"]',
               '[{"section_id":"ex.2","quote":"closer than 10 feet to an energized line"},{"section_id":"ex.2","quote":"closer than 99 feet"}]', 'en', 'prov-fixture');
             INSERT INTO course_node VALUES ('topic:inspect', 'course', 2, 'topic', 'Inspections',
               'Shift and periodic inspections.', '', '', '', '{}', '["ex.3"]', '[]', 'en', 'prov-fixture');
@@ -98,6 +99,9 @@ fn a_baked_tree_ships_passed_nodes_with_verbatim_quotes_only() {
         "closer than 10 feet to an energized line"
     );
     assert!(lines.has_text());
+    // A link to a row that did not ship is dropped.
+    assert_eq!(lines.links.lesson_ids, ["lesson-lines"]);
+    assert_eq!(lines.links.q_ids, ["q-clear-1"]);
     // Children by order, link-only nodes once.
     let kids: Vec<&str> = t
         .children("course")
