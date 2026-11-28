@@ -208,8 +208,39 @@ export type AuditRecord = {
   type: "event";
 };
 
+/** AUTOPILOT_VERSION. */
+export interface AutopilotVersion {
+  board_version: number;
+  capabilities: number;
+  /** `major.minor.patch`. */
+  firmware: string;
+  /** `official`, `rc`, `beta`, `alpha`, `dev` or a number. */
+  firmware_type: string;
+  /** The flight software's custom version (a git hash, as autopilots send it). */
+  git_hash: string;
+  product_id: number;
+  sysid: number;
+  uid: number;
+  vendor_id: number;
+}
+
 /** What a deficiency rests on (CONTRACT "Procedure step deficiency"). */
 export type Basis = "rule" | "practice";
+
+/** BATTERY_STATUS. */
+export interface Battery {
+  /** Cell volts, as reported. */
+  cells: number[];
+  consumed_mah: number | null;
+  current: number | null;
+  id: number;
+  remaining: number | null;
+  sysid: number;
+  /** Degrees Celsius. */
+  temperature: number | null;
+  /** Volts, the sum of the cells reported. */
+  voltage: number | null;
+}
 
 /** A branch the technician can take, as code will take it. */
 export interface Branch {
@@ -340,6 +371,42 @@ export interface Conflict {
   winner: string;
 }
 
+/** What a decode produced. */
+export interface Decoded {
+  /** J1939 DM1 messages, one per source address and message. */
+  dm1: Dm1[];
+  /**
+   * Input lines or frames that could not be read, and why (decoding
+   * goes on past them).
+   */
+  errors: string[];
+  /** J1587 diagnostic codes. */
+  j1587: Dtc2[];
+  /** MAVLink messages, when the input was MAVLink. */
+  mavlink: Decoded2 | null;
+  /** Ready for `signal.match` / `symptom.search` / `job.start`. */
+  observations: Observation[];
+}
+
+/** Everything decoded from a stream. */
+export interface Decoded2 {
+  autopilot_versions: AutopilotVersion[];
+  /** Newest per system and battery. */
+  batteries: Battery[];
+  /** Newest per system. */
+  heartbeats: Heartbeat[];
+  /** For `signal.match`. */
+  observations: Observation[];
+  /** Newest value of each parameter. */
+  params: Record<string, number>;
+  /** For `equip.resolve`: firmware, board and parameters. */
+  plate: Plate;
+  stats: Stats;
+  /** In order received. */
+  status_texts: StatusText[];
+  sys_status: SysStatus[];
+}
+
 /** Why the dense half did or did not run. */
 export type DenseStatus = "used" | "no_embedder" | {
   mismatch: {
@@ -354,6 +421,39 @@ export interface DeviceInfo {
   device_id: string | null;
   /** The base64 ed25519 public key an administrator enrolls. */
   public_key: string | null;
+}
+
+/** A DM1 message from one source. */
+export interface Dm1 {
+  /** Empty when the source reports no active codes. */
+  dtcs: Dtc[];
+  lamps: Lamps;
+  source: number;
+}
+
+/** One active trouble code. */
+export interface Dtc {
+  /**
+   * The SPN conversion method bit (1: an older byte order; read as
+   * sent, flagged so the host can tell).
+   */
+  conversion_method: boolean;
+  fmi: number;
+  occurrences: number;
+  spn: number;
+}
+
+/** One diagnostic code. */
+export interface Dtc2 {
+  /** False when the code is previously active. */
+  active: boolean;
+  /** A PID (`sid` false) or a SID (`sid` true) of the transmitter. */
+  code: number;
+  fmi: number;
+  /** The transmitter (message identifier). */
+  mid: number;
+  occurrences: number | null;
+  sid: boolean;
 }
 
 /** A device the hub accepts uploads from (or no longer does). */
@@ -631,6 +731,9 @@ export interface FlushReport {
 /** Whether a test procedure opens expanded or collapsed at a level. */
 export type Fold = "expanded" | "collapsed";
 
+/** The input formats. */
+export type Format = "j1939_candump" | "j1939_frames" | "j1587" | "display" | "mavlink_tlog" | "mavlink_raw";
+
 /** What was checked. */
 export interface GraphCounts {
   assets: number;
@@ -675,6 +778,17 @@ export interface Guidance {
   quote: string | null;
   quote_verified: boolean;
   section_id: string | null;
+}
+
+/** HEARTBEAT. */
+export interface Heartbeat {
+  armed: boolean;
+  autopilot: string;
+  base_mode: number;
+  custom_mode: number;
+  sysid: number;
+  system_status: string;
+  vehicle_type: string;
 }
 
 /** The hub's answer to a hello. */
@@ -997,6 +1111,17 @@ export interface JobView {
   tree_changed: boolean;
 }
 
+/** A lamp's state. */
+export type Lamp = "off" | "on" | "error" | "not_available";
+
+/** The four DM1 lamps. */
+export interface Lamps {
+  amber_warning: Lamp;
+  malfunction: Lamp;
+  protect: Lamp;
+  red_stop: Lamp;
+}
+
 /** A captured lesson. */
 export interface Lesson {
   action: string;
@@ -1299,6 +1424,16 @@ export interface PathEntry {
 export interface PhotoRef {
   path: string;
   sha256: string;
+}
+
+/** What the technician or the machine reports. */
+export interface Plate {
+  firmware: string | null;
+  model: string | null;
+  params: Record<string, string>;
+  serial: string | null;
+  /** Free text (a data plate read aloud or by a camera). */
+  text: string | null;
 }
 
 /** An identified person. */
@@ -1669,13 +1804,38 @@ export type Segment = {
   t: "check";
 };
 
+/** Decoded data and what it matches in the pack. */
+export interface SignalDecode {
+  decoded: Decoded;
+  match: SignalMatch;
+}
+
+/** Raw vehicle data to decode into observations. */
+export interface SignalDecodeParams {
+  asset_id?: string | null;
+  equip_id?: string | null;
+  format: Format;
+  /** The text: log lines, frames, hex messages, or the typed code. */
+  input: string;
+  pack_id?: string | null;
+  /** For a display code: its signal kind (`pump40.code`); any kind when absent. */
+  signal_kind?: string | null;
+}
+
 /** One signal rule an observation matched. */
 export interface SignalHit {
   /** The rule's section citation, when it cites one. */
   citation: string | null;
+  /** False when the rule leads to no troubleshooting tree. */
+  has_tree: boolean;
   matched: MatchKind;
   observed: Observation;
   rule: SignalRule;
+  /**
+   * The cited section's verbatim text. For a rule with no tree this is
+   * all the manual says (a cause with no corrective action).
+   */
+  section: SignalSection | null;
 }
 
 /**
@@ -1691,7 +1851,10 @@ export interface SignalKind {
 
 /** The result of matching observations. */
 export interface SignalMatch {
-  /** True when the hits lead to more than one tree. */
+  /**
+   * True when the hits lead to more than one tree (rules with no tree
+   * do not count).
+   */
   ambiguous: boolean;
   /** Most specific first: exact, glob, prefix, regex; then observation order. */
   hits: SignalHit[];
@@ -1721,7 +1884,19 @@ export interface SignalRule {
   section_id: string | null;
   signal_kind: string;
   title: string;
-  tree_id: string;
+  /**
+   * The tree it leads into; `None` when the manual prints a cause with
+   * no troubleshooting (then `section_id` is what it says).
+   */
+  tree_id: string | null;
+}
+
+/** The manual text a signal rule cites. */
+export interface SignalSection {
+  citation: string;
+  heading: string | null;
+  section_id: string;
+  text: string;
 }
 
 export interface Source {
@@ -1734,6 +1909,28 @@ export interface Source {
   source_id: string;
   title: string;
   url: string;
+}
+
+/** What reading the bytes found. */
+export interface Stats {
+  bad_crc: number;
+  frames: number;
+  signed: number;
+  /** Bytes skipped between frames. */
+  skipped_bytes: number;
+  /**
+   * Valid-looking frames of messages this decoder does not know (their
+   * CRC cannot be checked without the message's CRC_EXTRA).
+   */
+  unknown: number;
+}
+
+/** STATUSTEXT, chunks joined. */
+export interface StatusText {
+  /** `emergency` … `debug`. */
+  severity: string;
+  sysid: number;
+  text: string;
 }
 
 /** What recording a step returns: the guidance to show when it failed. */
@@ -1929,6 +2126,22 @@ export interface SyncStatus {
   quarantined: number;
 }
 
+/** SYS_STATUS: sensors by name, battery. */
+export interface SysStatus {
+  /** Amperes. */
+  battery_current: number | null;
+  /** Percent. */
+  battery_remaining: number | null;
+  /** Volts; `None` when the autopilot does not know. */
+  battery_voltage: number | null;
+  enabled: string[];
+  load_percent: number;
+  present: string[];
+  sysid: number;
+  /** Present and enabled but not healthy. */
+  unhealthy: string[];
+}
+
 /** Where a `goto` (or an `action` that is a task) leads. */
 export type Target = {
   id: string;
@@ -2080,6 +2293,7 @@ export interface Methods {
   "asset.history": { params: AssetHistoryParams; result: AssetHistory };
   "symptom.search": { params: SymptomSearchParams; result: SymptomSearch };
   "signal.match": { params: SignalMatchParams; result: SignalMatch };
+  "signal.decode": { params: SignalDecodeParams; result: SignalDecode };
   "tree.list": { params: TreeListParams; result: FaultTree[] };
   "tree.get": { params: TreeGetParams; result: Tree };
   "job.start": { params: JobStartParams; result: JobView };
@@ -2147,6 +2361,7 @@ export const METHODS = [
   "asset.history",
   "symptom.search",
   "signal.match",
+  "signal.decode",
   "tree.list",
   "tree.get",
   "job.start",

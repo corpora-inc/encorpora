@@ -316,6 +316,7 @@ methods! {
     "asset.history" => asset_history(AssetHistoryParams) -> AssetHistory,
     "symptom.search" => symptom_search(SymptomSearchParams) -> SymptomSearch,
     "signal.match" => signal_match(SignalMatchParams) -> SignalMatch,
+    "signal.decode" => signal_decode(SignalDecodeParams) -> SignalDecode,
     "tree.list" => tree_list(TreeListParams) -> Vec<FaultTree>,
     "tree.get" => tree_get(TreeGetParams) -> Tree,
     "job.start" => job_start(JobStartParams) -> JobView,
@@ -464,6 +465,24 @@ pub struct SignalMatchParams {
     #[serde(default)]
     pub pack_id: Option<String>,
     pub observations: Vec<Observation>,
+    #[serde(default)]
+    pub equip_id: Option<String>,
+    #[serde(default)]
+    pub asset_id: Option<String>,
+}
+
+/// Raw vehicle data to decode into observations.
+#[derive(Debug, Clone, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct SignalDecodeParams {
+    #[serde(default)]
+    pub pack_id: Option<String>,
+    pub format: crate::decode::Format,
+    /// The text: log lines, frames, hex messages, or the typed code.
+    pub input: String,
+    /// For a display code: its signal kind (`pump40.code`); any kind when absent.
+    #[serde(default)]
+    pub signal_kind: Option<String>,
     #[serde(default)]
     pub equip_id: Option<String>,
     #[serde(default)]
@@ -879,6 +898,14 @@ pub struct SyncStatus {
     pub hub: HubState,
 }
 
+/// Decoded data and what it matches in the pack.
+#[derive(Debug, Clone, Serialize, JsonSchema)]
+pub struct SignalDecode {
+    pub decoded: crate::decode::Decoded,
+    #[serde(rename = "match")]
+    pub matched: SignalMatch,
+}
+
 /// A variant with its inherited attributes.
 #[derive(Debug, Clone, Serialize, JsonSchema)]
 pub struct EquipView {
@@ -1116,6 +1143,14 @@ fn signal_match(h: &Host, _who: Option<&Principal>, p: SignalMatchParams) -> R<S
         &p.observations,
         equip.as_deref(),
     )?)
+}
+
+fn signal_decode(h: &Host, _who: Option<&Principal>, p: SignalDecodeParams) -> R<SignalDecode> {
+    let pack = &h.pack(nz(&p.pack_id))?;
+    let equip = equip_for(h, &p.equip_id, &p.asset_id)?;
+    let decoded = crate::decode::decode(p.format, &p.input, nz(&p.signal_kind));
+    let matched = search::signal_match(pack, &decoded.observations, equip.as_deref())?;
+    Ok(SignalDecode { decoded, matched })
 }
 
 fn tree_list(h: &Host, _who: Option<&Principal>, p: TreeListParams) -> R<Vec<FaultTree>> {

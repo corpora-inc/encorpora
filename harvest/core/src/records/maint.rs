@@ -1298,12 +1298,14 @@ impl Records {
         if !req.signals.is_empty() {
             let m = search::signal_match(pack, &req.signals, equip.as_deref())?;
             let hit = match &tree_id {
-                Some(t) => m.hits.iter().find(|h| &h.rule.tree_id == t).map(|h| {
-                    crate::maint::search::EntryPoint {
-                        tree_id: h.rule.tree_id.clone(),
+                Some(t) => m
+                    .hits
+                    .iter()
+                    .find(|h| h.rule.tree_id.as_ref() == Some(t))
+                    .map(|h| crate::maint::search::EntryPoint {
+                        tree_id: h.rule.tree_id.clone().unwrap_or_default(),
                         node_id: h.rule.node_id.clone().unwrap_or_default(),
-                    }
-                }),
+                    }),
                 None => m.suggested.clone(),
             };
             match hit {

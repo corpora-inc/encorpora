@@ -38,6 +38,8 @@ const USAGE: &str = "usage:
                   (--reviewers FILE | --trusted-proxy IP[,IP] --identity-header NAME --roles FILE)
                   [--pubkey KEY] [--dev-key]   # the hub (CONTRACT \"Hub\"); signs with $HARVEST_HUB_KEY
                   # (base64 ed25519 seed); --dev-key: the public test key, for development only
+  harvest decode  <j1939_candump|j1939_frames|j1587|display> <file|-> [--kind KIND]   # observations as JSON
+  harvest mavlink <file.tlog|file.bin|udp://HOST:PORT|tcp://HOST:PORT> [--seconds 10]   # MAVLink observations as JSON
   harvest simulate <scenario.json> [--out metrics.json] [--pack DIR]   # devices and a hub on a simulated link
 
 KEY: base64 or hex ed25519 public key, or a file holding one; repeatable or
@@ -130,6 +132,8 @@ fn main() -> ExitCode {
         "api-schema" => api_schema(&args),
         "hub" => hub(&args),
         "simulate" => simulate(&args),
+        "decode" => decode_cmd(&args),
+        "mavlink" => mavlink_cmd(&args),
         "help" | "--help" | "-h" => {
             println!("{USAGE}");
             return ExitCode::SUCCESS;
@@ -1446,4 +1450,82 @@ fn device_key(args: &Args, records: &Path) -> Result<harvest_core::sync::DeviceK
     #[cfg(not(unix))]
     std::fs::write(&path, text).map_err(Error::from)?;
     Ok(key)
+}
+
+fn decode_cmd(args: &Args) -> Result<(), CliError> {
+    args.reject_unknown(&["kind", "json"])?;
+    let fmt = args
+        .positional
+        .first()
+        .ok_or_else(|| CliError::Usage("missing <format>".into()))?;
+    let format: harvest_core::decode::Format = serde_json::from_value(json!(fmt))
+        .map_err(|_| CliError::Usage(format!("unknown format {fmt:?}")))?;
+    let src = args
+        .positional
+        .get(1)
+        .ok_or_else(|| CliError::Usage("missing <file|->".into()))?;
+    let input = if src == "-" {
+        let mut s = String::new();
+        std::io::Read::read_to_string(&mut std::io::stdin(), &mut s).map_err(Error::from)?;
+        s
+    } else {
+        std::fs::read_to_string(src).map_err(|e| CliError::Usage(format!("{src}: {e}")))?
+    };
+    let d = harvest_core::decode::decode(format, &input, args.get("kind"));
+    println!("{}", serde_json::to_string_pretty(&d).map_err(Error::from)?);
+    Ok(())
+}
+
+/// Read MAVLink bytes from a file, or from a UDP or TCP address for
+/// `--seconds`, and print what they decode to. The reading is here; the
+/// decoding is the core's pure `decode::mavlink`.
+fn mavlink_cmd(args: &Args) -> Result<(), CliError> {
+    use std::io::Read;
+    args.reject_unknown(&["seconds", "json"])?;
+    let src = args
+        .positional
+        .first()
+        .ok_or_else(|| CliError::Usage("missing <file|udp://…|tcp://…>".into()))?;
+    let secs: u64 = args
+        .get("seconds")
+        .unwrap_or("10")
+        .parse()
+        .map_err(|_| CliError::Usage("--seconds N".into()))?;
+    let until = Instant::now() + std::time::Duration::from_secs(secs);
+    let mut bytes = Vec::new();
+    let tlog;
+    if let Some(addr) = src.strip_prefix("udp://") {
+        tlog = false;
+        let sock = std::net::UdpSocket::bind(addr).map_err(Error::from)?;
+        sock.set_read_timeout(Some(std::time::Duration::from_millis(200)))
+            .map_err(Error::from)?;
+        let mut buf = [0u8; 2048];
+        while Instant::now() < until {
+            if let Ok((n, _)) = sock.recv_from(&mut buf) {
+                bytes.extend_from_slice(&buf[..n]);
+            }
+        }
+    } else if let Some(addr) = src.strip_prefix("tcp://") {
+        tlog = false;
+        let mut s = std::net::TcpStream::connect(addr).map_err(Error::from)?;
+        s.set_read_timeout(Some(std::time::Duration::from_millis(200)))
+            .map_err(Error::from)?;
+        let mut buf = [0u8; 4096];
+        while Instant::now() < until {
+            match s.read(&mut buf) {
+                Ok(0) => break,
+                Ok(n) => bytes.extend_from_slice(&buf[..n]),
+                Err(e)
+                    if e.kind() == std::io::ErrorKind::WouldBlock
+                        || e.kind() == std::io::ErrorKind::TimedOut => {}
+                Err(e) => return Err(Error::from(e).into()),
+            }
+        }
+    } else {
+        tlog = src.ends_with(".tlog");
+        bytes = std::fs::read(src).map_err(|e| CliError::Usage(format!("{src}: {e}")))?;
+    }
+    let d = harvest_core::decode::mavlink::decode(&bytes, tlog);
+    println!("{}", serde_json::to_string_pretty(&d).map_err(Error::from)?);
+    Ok(())
 }

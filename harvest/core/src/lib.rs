@@ -13,6 +13,7 @@ pub mod compose;
 pub mod content;
 pub mod course;
 pub mod crypt;
+pub mod decode;
 pub mod delta;
 pub mod embed;
 pub mod error;

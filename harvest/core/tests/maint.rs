@@ -916,3 +916,33 @@ fn page_index_is_the_physical_page() {
         Some(10)
     );
 }
+
+#[test]
+fn a_signal_can_lead_to_a_section_with_no_tree() {
+    let b = pump();
+    let m = search::signal_match(&b.pack, &[obs("pump40.code", "E40")], None).unwrap();
+    assert_eq!(m.hits.len(), 1);
+    let h = &m.hits[0];
+    assert!(!h.has_tree && h.rule.tree_id.is_none());
+    let sec = h.section.as_ref().unwrap();
+    assert_eq!(sec.section_id, "m40.3-2.codes");
+    assert!(
+        sec.text
+            .contains("Code E40: suction pressure below the warning limit.")
+    );
+    assert!(m.suggested.is_none(), "no tree to enter");
+    assert!(graph::validate(&b.pack).unwrap().ok);
+    // With a tree-hit alongside, the tree is suggested.
+    let both = search::signal_match(
+        &b.pack,
+        &[obs("pump40.code", "E40"), obs("pump40.code", "E21")],
+        None,
+    )
+    .unwrap();
+    assert_eq!(both.suggested.unwrap().node_id, "oh.1");
+    assert!(!both.ambiguous);
+    let bad = pump_with(exec(
+        "UPDATE signal_map SET section_id = NULL WHERE pattern = 'E40';",
+    ));
+    assert!(rules(&graph::validate(&bad.pack).unwrap()).contains(&"signal.target".to_string()));
+}

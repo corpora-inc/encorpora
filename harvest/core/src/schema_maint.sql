@@ -34,7 +34,8 @@ CREATE TABLE fault_facet (node_id TEXT NOT NULL, facet TEXT NOT NULL, ord INTEGE
 CREATE TABLE symptom (symptom_id TEXT PRIMARY KEY, tree_id TEXT NOT NULL, title TEXT NOT NULL,
   system TEXT, synonyms TEXT NOT NULL, lang TEXT NOT NULL, prov_id TEXT NOT NULL);
 CREATE TABLE signal_map (signal_kind TEXT NOT NULL, pattern TEXT NOT NULL, title TEXT NOT NULL,
-  tree_id TEXT NOT NULL, node_id TEXT, section_id TEXT, quote TEXT, prov_id TEXT NOT NULL,
+  tree_id TEXT,                                          -- null: a cause with no tree; section_id says it
+  node_id TEXT, section_id TEXT, quote TEXT, prov_id TEXT NOT NULL,
   PRIMARY KEY (signal_kind, pattern, tree_id));
 CREATE TABLE equip_attr (equip_id TEXT NOT NULL, key TEXT NOT NULL, value TEXT NOT NULL,
                          PRIMARY KEY (equip_id, key));

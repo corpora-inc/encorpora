@@ -571,7 +571,8 @@ CREATE TABLE fault_facet (node_id TEXT NOT NULL, facet TEXT NOT NULL, ord INTEGE
 CREATE TABLE symptom (symptom_id TEXT PRIMARY KEY, tree_id TEXT NOT NULL, title TEXT NOT NULL,
   system TEXT, synonyms TEXT NOT NULL, lang TEXT NOT NULL, prov_id TEXT NOT NULL);
 CREATE TABLE signal_map (signal_kind TEXT NOT NULL, pattern TEXT NOT NULL, title TEXT NOT NULL,
-  tree_id TEXT NOT NULL, node_id TEXT, section_id TEXT, quote TEXT, prov_id TEXT NOT NULL,
+  tree_id TEXT,                                          -- null: a cause with no tree; section_id says it
+  node_id TEXT, section_id TEXT, quote TEXT, prov_id TEXT NOT NULL,
   PRIMARY KEY (signal_kind, pattern, tree_id));
 CREATE TABLE equip_attr (equip_id TEXT NOT NULL, key TEXT NOT NULL, value TEXT NOT NULL,
                          PRIMARY KEY (equip_id, key));
@@ -648,7 +649,10 @@ CREATE TABLE failure_mode (mode_id TEXT PRIMARY KEY, equip_id TEXT NOT NULL, sys
   prefix, regex, then observation order; the first suggests the entry
   (its `node_id`, else the tree's entry). An observation with no kind
   matches every kind. `pack_meta.signal_kinds` (`[{"kind","label","example"}]`)
-  labels them for the app.
+  labels them for the app. A row with no `tree_id` (a status the manual explains
+  with a cause and no troubleshooting) cites a `section_id` and no node:
+  its hit carries the section's verbatim text and citation, `has_tree:
+  false`, and never suggests an entry.
 - **Symptom search** is lexical over the title and synonyms (Dice over
   content stems, pack synonyms applied), plus cosine over the symptom's
   `chunk` (`ref_kind = 'symptom'`) when the host's embedder matches the
