@@ -20,6 +20,7 @@ sources:
 
 maint:
   release_arm: sonnet-img
+  history: {config: fleet/fleet.yaml, arm: rules}   # the fleet's logs, read against this pack (no model)
   expected: pump40v2-expected.json            # the answer key: `maint score` and build-pack.sh use it
   cache_dir: cache-v2
   ledger: cache-v2/ledger.jsonl

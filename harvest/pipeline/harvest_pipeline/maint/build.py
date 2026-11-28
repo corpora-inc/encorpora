@@ -307,6 +307,7 @@ def build(corpus: Corpus, arm_name: str | None, out_dir: Path | None, harvest: s
           embedder_cfg: dict | None = None, max_rounds: int = 4, log=sys.stderr, agree_with: str | None = None) -> dict:
     """Deterministic from the raw sources and the committed cache: no model is called. With
     `agree_with`, rows the second arm's pack does not also hold become needs_review."""
+    m = cfg(corpus)
     a = arm(corpus, arm_name)
     outs, reps, srcs = extract(corpus, a.name, offline=True, log=log)
     missing = {s: r["missing"] for s, r in reps.items() if r["missing"]}
@@ -338,13 +339,40 @@ def build(corpus: Corpus, arm_name: str | None, out_dir: Path | None, harvest: s
             raise SystemExit(f"graph validation still fails after {max_rounds} rounds: {rep.get('graph')}")
     finally:
         emb.close()
+    hist = None
+    if m.get("history"):
+        # the fleet's maintenance logs, read against this very pack: history and failure modes ship with it
+        from .logs import run_logs
+        h = m["history"]
+        lr = run_logs((corpus.dir / h["config"]).resolve(), h.get("arm", "rules"), call=False, harvest=harvest,
+                      log=log, pack_db=str(next(out_dir.glob("*.sqlite"))))
+        for row in lr["_out"]["history"]:
+            stage.conn.execute("INSERT OR REPLACE INTO history VALUES (:event_id,:equip_id,:system,:date,:text,"
+                               ":source_id,:attrs)", row)
+        for row in lr["_out"]["failure_modes"]:
+            stage.conn.execute("INSERT OR REPLACE INTO failure_mode VALUES (:mode_id,:equip_id,:system,:title,:count,"
+                               ":share,:tree_id,:examples)", row)
+        stage.commit()
+        emb = make_embedder(embedder_cfg if embedder_cfg is not None else corpus.raw.get("embedder") or {"kind": "hash"})
+        try:
+            res = write_pack(stage, out_dir, corpus.pack_id, corpus.version, corpus.corpus_id, emb, release=True,
+                             bake_backends={"author": a.spec, "judge": None, "history": h.get("arm", "rules")},
+                             lang=corpus.lang, extra_meta=meta, files=files)
+        finally:
+            emb.close()
+        rep = verify_graph(harvest, out_dir, pubkey)
+        (out_dir.parent / f"{out_dir.name}.registry.json").write_text(json.dumps(lr["_out"]["registry"], indent=1))
+        hist = {"arm": h.get("arm", "rules"), "history": len(lr["_out"]["history"]),
+                "failure_modes": len(lr["_out"]["failure_modes"]), "repeats": len(lr["_out"]["repeats"]),
+                "registry": str(out_dir.parent / f"{out_dir.name}.registry.json"),
+                "field_accuracy": (lr.get("score") or {}).get("field_accuracy")}
     verdicts = dict(stage.conn.execute("SELECT verdict, COUNT(*) FROM provenance GROUP BY verdict").fetchall())
     regions = {r[0]: {"source": r[1], "page": r[2], "region": r[3]} for r in stage.conn.execute(
         "SELECT ref_id, source_id, page_index, region_id FROM _text_loc WHERE ref_kind='section'")}
     (out_dir.parent / f"{out_dir.name}.regions.json").write_text(json.dumps(regions, indent=0, sort_keys=True))
     summary = {"pack": res, "arm": a.name, "spec": a.spec, "extract": reps, "cache_misses": missing,
                "rounds": rounds, "forced_fail": {f"{k[0]}:{k[1]}": v for k, v in forced.items()},
-               "agree_with": agree_with, "review": {f"{k[0]}:{k[1]}": v for k, v in review.items()},
+               "agree_with": agree_with, "history": hist, "review": {f"{k[0]}:{k[1]}": v for k, v in review.items()},
                "verdicts": verdicts, "graph": rep.get("graph", {}).get("counts"),
                "references": [a.report.get("references") for a in asms],
                "plausibility": [a.report.get("plausibility") for a in asms],

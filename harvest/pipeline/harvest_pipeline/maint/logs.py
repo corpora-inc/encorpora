@@ -671,7 +671,8 @@ def score(records: list[Record], truth: dict, window: int) -> dict:
     return res
 
 
-def run_logs(config_path: Path, arm_name: str, call: bool, harvest: str | None = None, log=sys.stderr) -> dict:
+def run_logs(config_path: Path, arm_name: str, call: bool, harvest: str | None = None, log=sys.stderr,
+             pack_db: str | None = None) -> dict:
     """Parse, validate, resolve (cache; model calls only with `call`), decide, output, score."""
     import yaml
     from ..corpus import load_corpus
@@ -680,10 +681,12 @@ def run_logs(config_path: Path, arm_name: str, call: bool, harvest: str | None =
     base = config_path.resolve().parent
     cfg = yaml.safe_load(config_path.read_text())
     corpus = load_corpus(base / cfg["pack"]["corpus"])
-    pack_dir = work(corpus) / f"logs-pack-{cfg['pack']['arm']}"
-    if not (pack_dir / "manifest.json").exists():
-        build_pack(corpus, cfg["pack"]["arm"], pack_dir, harvest or "harvest", log=None)
-    db = next(pack_dir.glob("*.sqlite"))
+    if pack_db is None:
+        pack_dir = work(corpus) / f"logs-pack-{cfg['pack']['arm']}"
+        if not (pack_dir / "manifest.json").exists():
+            build_pack(corpus, cfg["pack"]["arm"], pack_dir, harvest or "harvest", log=None)
+        pack_db = str(next(pack_dir.glob("*.sqlite")))
+    db = pack_db
     manual = load_manual(str(db))
     fleet = load_fleet(base, cfg["fleet"])
     records = parse_sources(base, cfg["sources"])
@@ -710,4 +713,5 @@ def run_logs(config_path: Path, arm_name: str, call: bool, harvest: str | None =
                                                           "evidence": r.ev, "flags": sorted(r.flags)},
                                                          default=str, ensure_ascii=False) + "\n" for r in records))
     res["outputs"] = str(wd)
+    res["_out"] = out
     return res

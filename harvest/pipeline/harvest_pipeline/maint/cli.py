@@ -90,6 +90,7 @@ def main(argv: list[str]) -> int:
     if a.cmd == "logs":
         from .logs import run_logs
         res = run_logs(Path(a.config), a.arm, a.call, _harvest(a))
+        res.pop("_out", None)
         print(json.dumps(res, indent=1, default=str))
         return 0
     c = load_corpus(a.corpus)

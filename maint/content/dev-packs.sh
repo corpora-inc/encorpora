@@ -13,6 +13,10 @@ here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 dest="${1:-$HOME/.cache/harvest/packs/maint-dev}"
 bake="${HARVEST_BAKE:-harvest-bake}"
 harvest="${HARVEST_BIN:-harvest}"
+# a rebuild replaces the installed packs (same version numbers): set the old root aside first
+if [ -d "${dest}/root" ]; then
+  (command -v trash >/dev/null && trash "${dest}/root") || mv "${dest}/root" "${dest}/root.old.$(date +%s)"
+fi
 mkdir -p "$dest/build" "$dest/root"
 dest="$(cd "$dest" && pwd)"
 [ -f "$dest/dev-key.pem" ] || "$bake" keygen "$dest/dev-key.pem" >/dev/null
@@ -30,5 +34,7 @@ for p in pump40v2-proof ardupilot-prearm; do
   "$harvest" verify "$dest/build/$p" --pubkey "$dest/pack.pub"
   "$harvest" install "$dest/root" "$dest/build/$p" --pubkey "$dest/pack.pub"
 done
-echo "packs root: $dest/root   public key: $dest/pack.pub"
+# the fleet's asset registry with each unit's events (harvest-assets/1), for `asset.import`
+cp "$dest/build/pump40v2-proof.registry.json" "$dest/fleet-registry.json"
+echo "packs root: $dest/root   public key: $dest/pack.pub   fleet registry: $dest/fleet-registry.json"
 echo "serve: $harvest serve $dest/root --pubkey $dest/pack.pub --records $dest/records.db"
