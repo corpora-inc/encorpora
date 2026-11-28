@@ -590,9 +590,160 @@ def glossary_write(task, items):
     return stats
 
 
-INPUTS = {"procedures": procedures_inputs, "questions": questions_inputs, "answers": answers_inputs,
+
+# ================================================================ course tree text (harvest/CONTRACT.md "course_node", "Instructor turns")
+
+_PLACEHOLDER = re.compile(r"placeholder|\bTBD\b|\bTODO\b|lorem ipsum|NOT FOR USE|\bXXX\b|\[(insert|fill|blank)[^\]]*\]", re.I)
+TREE = CONTENT / "course" / "tree.jsonl"
+WELCOME = CONTENT / "course" / "welcome.json"
+TEXT_FIELDS = ("summary", "hard", "mistakes", "exam")
+
+
+def _tree_rows() -> list[dict]:
+    return [json.loads(x) for x in TREE.read_text().splitlines() if x.strip()]
+
+
+def _exam_facts() -> str:
+    bp = blueprint()
+    src = bp["exam_source"]
+    lines = []
+    for e in bp["exams"]:
+        w = ", ".join(f"{d['title']} {round(d['weight'] * 100)}%" for d in e["domains"])
+        calc = "no calculator" if not e.get("calculator") else "calculator allowed"
+        lines.append(f"- {e['exam_id']} ({e['title']}): {e['items']} questions, {e['minutes']} minutes, {calc}; domains: {w}")
+    return (f"Exam facts, from the candidate handbook ({src['title']}, {src['edition'].split(';')[0]}). Use exactly these numbers:\n"
+            + "\n".join(lines))
+
+
+def course_inputs():
+    bp = blueprint()
+    rows = {r["node_id"]: r for r in _tree_rows()}
+    mis = json.loads((CONTENT / "course" / "misconceptions.json").read_text())["skills"]
+    ex = exam_outline()
+    items = []
+    for t in bp["topics"]:
+        blocks = []
+        for s in t["skills"]:
+            ms = "\n".join(f"    - {m['misconception']}: {m['why_wrong']}" for m in mis.get(s["skill_id"], [])[:12]) or "    (none recorded)"
+            outline = "; ".join(f"{k}: {ex[k]}" for k in s.get("exam", []) if k in ex) or "none (not on the core exam)"
+            blocks.append(f"- node_id: skill:{s['skill_id']}\n  skill: {s['title']} ({s['kind']})\n  exam outline: {outline}\n  misconceptions:\n{ms}")
+        sids = list(dict.fromkeys(t["section_ids"] + [x for s in t["skills"] for x in s["section_ids"]]))
+        text, _ = ground(sids, cap=50000)
+        prompt = (f"Write these nodes: topic:{t['topic_id']} and one node per skill below. No welcome.\n\nTopic: {t['title']}\n"
+                  f"Summary: {t['summary']}\n\nSkills:\n" + "\n".join(blocks) + f"\n\nRule text:\n{text}\n")
+        items.append({"input_id": f"topic:{t['topic_id']}", "prompt": prompt,
+                      "meta": {"nodes": [f"topic:{t['topic_id']}"] + [f"skill:{s['skill_id']}" for s in t["skills"]]}})
+    task = common.Task(HERE / "course")
+    tops = {}
+    for it in items:
+        rec = task.cached(it)
+        if rec and rec.get("prompt_version") == task.version:
+            for n in rec["output"]["nodes"]:
+                if n["node_id"].startswith("topic:"):
+                    tops[n["node_id"]] = n["summary"] + " " + n["hard"]
+    if len(tops) == len(bp["topics"]):
+        upper = [n for n in rows.values() if n["level"] in ("course", "exam", "domain")]
+        lines = []
+        core_outline = {}
+        for e in bp["exams"]:
+            core_outline.update(e.get("outline") or {})
+        for n in upper:
+            extra = ""
+            if n["level"] == "domain":
+                did = n["node_id"].split(":", 1)[1]
+                outl = "; ".join(f"{k}: {v}" for k, v in core_outline.items() if k.startswith(did + "."))
+                tps = sorted({rows[x]["parent_id"] for x in n["links"].get("node_ids", []) if x in rows})
+                extra = f"\n  outline: {outl or '(see the exam)'}\n  topics: " + "; ".join(rows[x]["title"] for x in tps if x in rows)
+            lines.append(f"- node_id: {n['node_id']} ({n['level']}): {n['title']}{extra}")
+        tsum = "\n".join(f"- {k} ({rows[k]['title']}): {v}" for k, v in tops.items())
+        prompt = ("Write these nodes and the welcome:\n" + "\n".join(lines) + "\n\n" + _exam_facts()
+                  + "\n\nThe topics, as their nodes describe them:\n" + tsum + "\n")
+        items.append({"input_id": "top", "prompt": prompt, "meta": {"nodes": [n["node_id"] for n in upper], "welcome": True}})
+    return items
+
+
+_RULE_WORDS = re.compile(r"\b(must|shall|required|prohibited|never|cannot|at least|minimum)\b|\b(feet|ft|kv|pounds|lb|degrees|days)\b", re.I)
+
+
+def course_write(task, items):
+    bp = blueprint()
+    rows = _tree_rows()
+    by_id = {r["node_id"]: r for r in rows}
+    allowed_numbers = set()
+    for e in bp["exams"]:
+        allowed_numbers |= {str(e["items"]), str(e["minutes"])} | {str(round(d["weight"] * 100)) for d in e["domains"]}
+    stats = {"nodes": 0, "pass": 0, "fail": 0, "quotes_ok": 0, "quotes_repaired": 0, "failures": [], "welcome": None}
+    welcome = None
+    for it in items:
+        rec = task.cached(it)
+        if not rec or rec.get("prompt_version") != task.version:
+            continue
+        out = json.loads(json.dumps(rec["output"]))
+        got = {n["node_id"]: n for n in out["nodes"]}
+        for nid in it["meta"]["nodes"]:
+            r, n = by_id.get(nid), got.get(nid)
+            if r is None:
+                continue
+            errs = [] if n else ["node missing from output"]
+            if n:
+                quotes = [{"section_id": q["section_id"], "quote": q["quote"]} for q in n["quotes"]]
+                for q in quotes:
+                    ok, rep, e = repair_quotes(q)
+                    stats["quotes_ok"] += ok
+                    stats["quotes_repaired"] += rep
+                    errs += e
+                texts = [n[k] for k in TEXT_FIELDS]
+                errs += meta_language(*texts)
+                if any(_PLACEHOLDER.search(x) for x in texts):
+                    errs.append("placeholder text")
+                if not n["summary"].strip():
+                    errs.append("empty summary")
+                if r["level"] in ("course", "exam", "domain"):
+                    bad = sorted({x for x in re.findall(r"\b\d+(?:\.\d+)?\b", " ".join(texts)) if x not in allowed_numbers})
+                    if bad:
+                        errs.append(f"numbers not in the exam facts: {bad}")
+                    if quotes:
+                        errs.append("rule quotes above the topic level")
+                r.update({k: n[k].strip() for k in TEXT_FIELDS})
+                r["quotes"] = quotes
+                r["section_ids"] = list(dict.fromkeys(r["section_ids"] + [q["section_id"] for q in quotes]))
+            verdict = "pass" if not errs else "fail"
+            stats["nodes"] += 1
+            stats[verdict] += 1
+            if errs:
+                stats["failures"].append({nid: errs[:3]})
+            r["prov"] = provenance(rec, VERIFIER, verdict, "; ".join(errs) or None)
+        if it["meta"].get("welcome") and out.get("welcome"):
+            w = out["welcome"]
+            werrs = []
+            for part in (w["opening"], w["hard_parts"]):
+                werrs += [f"rule language in the welcome: {m.group(0)!r}" for m in _RULE_WORDS.finditer(part)]
+                bad = sorted({x for x in re.findall(r"\b\d+(?:\.\d+)?\b", part) if x not in allowed_numbers})
+                if bad:
+                    werrs.append(f"numbers not in the exam facts: {bad}")
+                werrs += meta_language(part)
+                if _PLACEHOLDER.search(part):
+                    werrs.append("placeholder text")
+            core = "exam:mobile-core"
+            follow = [{"label": d["title"], "input": {"kind": "open", "node_id": d["node_id"]}}
+                      for d in sorted((x for x in rows if x["parent_id"] == core), key=lambda x: x["ord"])]
+            follow = [{"label": "What's hardest?", "input": {"kind": "open", "node_id": "course", "fields": ["hard"]}}] + follow
+            follow += [{"label": a["label"], "ask": a["ask"]} for a in w["asks"]][:3]
+            welcome = {"who": "instructor", "status": "done", "model": None, "at": "course",
+                       "blocks": [{"t": "text", "text": w["opening"].strip()}, {"t": "exam", "exam_id": "mobile-core"},
+                                  {"t": "text", "text": w["hard_parts"].strip()}],
+                       "follow_ups": follow,
+                       "prov": provenance(rec, VERIFIER + "; welcome: no rule language, exam numbers only", "pass" if not werrs else "fail",
+                                          "; ".join(werrs) or None)}
+            stats["welcome"] = {"verdict": welcome["prov"]["verdict"], "errors": werrs[:5]}
+    TREE.write_text("".join(json.dumps(r, ensure_ascii=False, sort_keys=True) + "\n" for r in rows))
+    if welcome and welcome["prov"]["verdict"] == "pass":  # pack_meta carries no verdict: only a passing welcome is written
+        WELCOME.write_text(json.dumps(welcome, ensure_ascii=False, indent=1) + "\n")
+    return stats
+
+INPUTS = {"course": course_inputs, "procedures": procedures_inputs, "questions": questions_inputs, "answers": answers_inputs,
           "lessons": lessons_inputs, "glossary": glossary_inputs}
-WRITERS = {"procedures": procedures_write, "questions": questions_write, "answers": answers_write,
+WRITERS = {"course": course_write, "procedures": procedures_write, "questions": questions_write, "answers": answers_write,
            "lessons": lessons_write, "glossary": glossary_write}
 
 

@@ -480,6 +480,16 @@ def repair_quotes(obj) -> tuple[int, int, list[str]]:
             d.pop("text", None)
             rep += 1
             return
+        # the prompt shows a section line as "[id] (heading) text": a quote that copied the
+        # "(heading) " prefix is repaired to the text after it
+        raw_head = ix.s[sid].get("heading") or ""
+        qn2 = ecfr.norm(q)
+        if raw_head and qn2.startswith(f"({raw_head}) "):
+            r = ix.repair(sid, qn2[len(raw_head) + 3:])
+            if r:
+                d[key] = r
+                rep += 1
+                return
         errs.append(f"quote not in {sid}: {q[:100]}")
 
     def walk(n):
