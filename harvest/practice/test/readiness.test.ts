@@ -113,7 +113,48 @@ test("synthetic calibration: predicted pass probability matches simulated exam o
   }
 });
 
-test("rejects an empty blueprint or difficulty mix", () => {
+test("rejects bad inputs instead of returning NaN", () => {
   assert.throws(() => readiness({}, { ...BP, domains: [] }, T0), RangeError);
   assert.throws(() => readiness({}, BP, T0, { examDifficulties: [] }), RangeError);
+  assert.throws(() => readiness({}, BP, Number.NaN), RangeError);
+  assert.throws(() => readiness({}, { ...BP, passPercent: Number.NaN }, T0), RangeError);
+  assert.throws(() => readiness({}, BP, T0, { draws: 0 }), RangeError);
+  assert.throws(() => readiness({}, BP, T0, { skillSpread: 0 }), RangeError);
+  assert.throws(() => readiness({}, { ...BP, domains: [{ id: "x", skillIds: ["s1"], count: 2.5 }] }, T0), RangeError);
+  const book = practice({ s1: [5, 0] });
+  assert.throws(() => readiness({ ...book, s1: { ...book.s1!, mu: Number.NaN } }, BP, T0), RangeError);
+});
+
+test("forgetting moves the prediction smoothly toward no evidence and ends confidence", () => {
+  // The review's case: steady practice, then idle days. The prediction must stay between the
+  // trained value and the untrained one, move monotonically, and stop being confident.
+  const book = practice(Object.fromEntries(SKILLS.map((s) => [s, [7, 3] as [number, number]])));
+  const none = readiness({}, BP, T0, { draws: 300 }).pPass;
+  const days = [0, 15, 30, 60, 65, 70, 90, 180, 365, 730];
+  const runs = days.map((d) => readiness(book, BP, T0 + d * DAY_MS, { draws: 300 }));
+  const p = runs.map((r) => r.pPass);
+  const lo = Math.min(p[0]!, none) - 0.03;
+  const hi = Math.max(p[0]!, none) + 0.03;
+  for (let i = 0; i < p.length; i++) {
+    assert.ok(p[i]! >= lo && p[i]! <= hi, `day ${days[i]}: pPass ${p[i]!.toFixed(3)} outside [${lo.toFixed(3)}, ${hi.toFixed(3)}]`);
+    assert.ok(Math.abs(runs[i]!.evidence.learnerLevel) < 4, `day ${days[i]}: learner level ${runs[i]!.evidence.learnerLevel}`);
+    if (i > 0) {
+      const dir = Math.sign(none - p[0]!);
+      assert.ok(dir * (p[i]! - p[i - 1]!) >= -0.03, `day ${days[i]}: moved away from the untrained value`);
+    }
+  }
+  assert.ok(runs[0]!.confident);
+  assert.equal(runs.at(-1)!.confident, false);
+  assert.ok(Math.abs(p.at(-1)! - none) < Math.abs(p[0]! - none), "two idle years should be close to no evidence");
+});
+
+test("skill weights fill a domain like the bank does", () => {
+  const book = practice({ ...Object.fromEntries(SKILLS.map((s) => [s, [8, 1] as [number, number]])), c1: [0, 9] });
+  const even = readiness(book, BP, T0, { draws: 300 });
+  const heavy = readiness(book, BP, T0, { draws: 300, skillWeights: { c1: 3, c2: 1 } });
+  const charts = (r: typeof even) => r.byDomain.find((d) => d.domainId === "charts")!.expected;
+  assert.ok(charts(heavy) < charts(even), "a weak skill that fills more of the domain lowers it");
+  const c1 = heavy.weakest.find((w) => w.skillId === "c1")!;
+  assert.ok(Math.abs(c1.expectedItemsLost / (1 - c1.expected) - 23 * 0.75) < 1e-9);
+  assert.throws(() => readiness(book, BP, T0, { skillWeights: { c1: 0 } }), RangeError);
 });

@@ -51,31 +51,43 @@ No self-report and no time-on-task enter the prediction.
    - **the expected score per domain**;
    - **`weakest`**, the skills ranked by expected exam items lost.
 4. **When to show a number.** `confident` is true once at least 90% of the
-   exam's items rest on skills with 5 or more attempts. Until then the app
-   should say what to practise next, not a percentage.
+   exam's items rest on skills that have 5 or more attempts and have not lost
+   more than half their evidence to forgetting. Until then the app should say
+   what to practise next, not a percentage.
+5. **Forgetting.** A skill's evidence fades with time since its last attempt:
+   its variance grows by `MODEL.driftPerDay` per day and its weight halves every
+   `MODEL.meanHalfLifeDays`, the engine's own forgetting constants. So an idle
+   learner's prediction drifts toward the no-evidence value. Domain items are
+   drawn equally from the domain's skills unless `skillWeights` (for example
+   distinct facts per skill in the bank) says otherwise.
 
 ## Checks so far (synthetic)
 
-These checks use learners simulated under the model's own assumptions. They
-test the arithmetic and calibration of the method, not whether the assumptions
-hold for real operators.
+These checks use learners simulated under the model's own assumptions: abilities
+drawn per learner and per skill, practice and exam on the same difficulty mix,
+skills drawn uniformly. They test the method's arithmetic and calibration, not
+whether the assumptions hold for real operators. All runs use 3,000 learners
+on a 90-item, four-domain blueprint (the unit test runs the same setup at 240
+learners).
 
-| Check | Result |
-|---|---|
-| 600 simulated learners with 10 attempts per skill | Brier 0.10, against 0.25 for always predicting the base rate |
-| Calibration by predicted band | below 0.2: predicted 0.04, observed 0.04; 0.2–0.4: 0.29 vs 0.26; 0.4–0.6: 0.50 vs 0.56; 0.6–0.8: 0.69 vs 0.47; 0.8 and above: 0.95 vs 0.90 |
-| 30 attempts per skill | Brier 0.07; above 0.8: 0.97 vs 0.97 |
-| A mismatched population prior (simulated cohort centred above the engine's default prior) | predictions were pessimistic until the prior was set to the cohort; it must be fitted from real learners |
+| Setup | Brier (base rate 0.25) | Predicted vs observed pass rate by band: < 0.2 / 0.2–0.4 / 0.4–0.6 / 0.6–0.8 / ≥ 0.8 |
+|---|---|---|
+| Default settings (population prior 0 / 1.5, τ = 0.7), 10 attempts per skill | 0.090 | 0.04/0.05, 0.30/0.34, 0.50/0.52, 0.70/0.65, 0.96/0.94 |
+| Population prior fitted to the cohort and τ = 0.5 (the true spread), 10 attempts | 0.092 | 0.04/0.03, 0.30/0.24, 0.50/0.49, 0.70/0.59, 0.96/0.93 |
+| As above, 30 attempts per skill | 0.081 | 0.03/0.03, 0.30/0.29, 0.50/0.44, 0.70/0.52, 0.97/0.95 |
 
-The 0.6–0.8 band runs optimistic by 0.12–0.22, which is 2–3 standard errors at
-40–55 learners per band. This is probably the Gaussian approximations, and it
-is corrected by the recalibration step below. The unit test
-(`harvest/practice/test/readiness.test.ts`) holds the confident ends to 0.1
-and the middle loosely.
+With the defaults every band is within 0.05. When τ is set to the cohort's true
+spread, the 0.6–0.8 band runs 0.11–0.18 optimistic. Each skill's likelihood
+is approximated as Gaussian, and that approximation is too confident for a
+logistic model with a guessing floor; the default τ happens to compensate. Both
+are reasons for the recalibration step below. The unit test
+(`harvest/practice/test/readiness.test.ts`) holds the confident ends to 0.1.
+It also checks forgetting: a learner's prediction moves smoothly toward the
+no-evidence value over idle days and stops being confident.
 
 ## Validation with real candidates
 
-What to collect, with consent, in the app:
+What to collect in the app:
 
 1. **The prediction at the moment it matters.** When a learner records an exam
    date, and again the day before it, store `pPass`, the interval, `confident`,
@@ -92,7 +104,7 @@ How to judge it:
 
 | Question | Measure | Bar to keep the model |
 |---|---|---|
-| Is it calibrated? | reliability by predicted band (0–0.2, …, 0.8–1), expected calibration error | within 0.1 in every band with at least 30 candidates |
+| Is it calibrated? | reliability in three predicted bands (below 0.33, 0.33–0.67, above 0.67), expected calibration error | within 0.1 in every band with at least 100 candidates |
 | Does it beat the obvious rule? | Brier score against "passed the last mock with at least 70%" and against the base rate | lower Brier than both |
 | Does it rank candidates? | AUC on pass / fail | at least 0.75 |
 | Is the number trustworthy when shown? | the same measures on `confident` predictions only | as above |
@@ -110,6 +122,7 @@ Steps, in order:
 4. **Recalibrate `pPass`** with a monotone map (isotonic or Platt) fitted on
    held-out real outcomes, and report its calibration on a later cohort.
 
-Sample size: about 100 reported results give bands of ±0.1. Until then, only
-the synthetic and mock-exam checks back the number, and the app should present
-it as an estimate.
+Sample size: a band of 100 candidates gives an observed pass rate within about
+±0.1 (95%) of the truth, so the three-band check needs about 300 reported
+results. Until then, only the synthetic and mock-exam checks back the number,
+and the app should present it as an estimate.
