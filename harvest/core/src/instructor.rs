@@ -294,6 +294,10 @@ impl Turn {
 }
 
 const FIELDS: &[&str] = &["summary", "hard", "mistakes", "exam"];
+/// What a node shows when no field is named: the overview and the hard part.
+const DEFAULT_FIELDS: &[&str] = &["summary", "hard"];
+/// Rule quotes a node shows in one turn, the ones not shown before first.
+const NODE_QUOTES: usize = 3;
 /// The mastery an unpractised skill counts as in the focus list.
 const UNPRACTISED: f64 = 0.5;
 const INTENTS: &[&str] = &[
@@ -840,7 +844,9 @@ impl Instructor {
     pub fn turn(&self, req: &TurnRequest) -> Result<Turn> {
         let started = Instant::now();
         let mut t = match (&req.input, &req.ask) {
-            (Some(Input::Open { node_id, fields }), _) => self.open(node_id, fields, &req.learner),
+            (Some(Input::Open { node_id, fields }), _) => {
+                self.open(node_id, fields, &req.learner, &req.history)
+            }
             (Some(Input::Rules { node_id }), _) => self.rules_at(node_id),
             (Some(Input::Practice { skill_id }), _) => self.practice(skill_id, &req.learner),
             (Some(Input::Focus), _) => self.focus(&req.learner),
@@ -852,25 +858,42 @@ impl Instructor {
     }
 
     fn node_block(&self, n: &CourseNode, fields: &[String]) -> Block {
-        let want: Vec<&str> = if fields.is_empty() {
-            FIELDS.to_vec()
+        self.node_block_after(n, fields, &[])
+    }
+
+    /// The node's texts: the named fields, else the overview (summary and
+    /// what is hard; what people get wrong and what the exam asks are a tap
+    /// away). Texts the conversation already showed (in `history`) are not
+    /// shown again; when that leaves nothing, the next unshown field is.
+    fn node_block_after(&self, n: &CourseNode, fields: &[String], history: &[Message]) -> Block {
+        let seen = |f: &str| {
+            let t = field_of(n, f);
+            !t.is_empty()
+                && history
+                    .iter()
+                    .any(|m| m.who == "instructor" && m.text.contains(t))
+        };
+        let mut want: Vec<&str> = if fields.is_empty() {
+            DEFAULT_FIELDS.to_vec()
         } else {
             fields.iter().map(String::as_str).collect()
         };
-        let mut texts: Vec<NodeText> = want
+        want.retain(|f| !field_of(n, f).is_empty() && !seen(f));
+        if want.is_empty() {
+            want = FIELDS
+                .iter()
+                .copied()
+                .filter(|f| !field_of(n, f).is_empty() && !seen(f))
+                .take(1)
+                .collect();
+        }
+        let texts: Vec<NodeText> = want
             .iter()
-            .filter(|f| !field_of(n, f).is_empty())
             .map(|f| NodeText {
                 field: f.to_string(),
                 text: field_of(n, f).to_string(),
             })
             .collect();
-        if texts.is_empty() && !n.summary.is_empty() {
-            texts.push(NodeText {
-                field: "summary".into(),
-                text: n.summary.clone(),
-            });
-        }
         Block::Node {
             node_id: n.node_id.clone(),
             level: n.level.clone(),
@@ -901,13 +924,22 @@ impl Instructor {
     }
 
     /// The node's rule quotes, each with its cite.
-    fn node_quotes(&self, n: &CourseNode) -> Vec<Block> {
-        let runs: Vec<(String, String)> = n
+    /// At most [`NODE_QUOTES`] of the node's rule quotes, the ones the
+    /// conversation has not shown yet first.
+    fn node_quotes_after(&self, n: &CourseNode, history: &[Message]) -> Vec<Block> {
+        let shown = |q: &str| {
+            history
+                .iter()
+                .any(|m| m.who == "instructor" && m.text.contains(q))
+        };
+        let mut runs: Vec<(String, String)> = n
             .quotes
             .iter()
             .filter(|q| self.quote_cite(&q.section_id, &q.quote).is_some())
             .map(|q| (q.section_id.clone(), q.quote.clone()))
             .collect();
+        runs.sort_by_key(|(_, q)| shown(q));
+        runs.truncate(NODE_QUOTES);
         Self::run_blocks(&self.with_lead_ins(runs))
     }
 
@@ -1033,17 +1065,23 @@ impl Instructor {
         out
     }
 
-    fn open(&self, node_id: &str, fields: &[String], learner: &Learner) -> Turn {
+    fn open(
+        &self,
+        node_id: &str,
+        fields: &[String],
+        learner: &Learner,
+        history: &[Message],
+    ) -> Turn {
         let Some(n) = self.tree.node(node_id) else {
             return self.lost(node_id);
         };
-        let nb = self.node_block(n, fields);
+        let nb = self.node_block_after(n, fields, history);
         let shown: Vec<String> = match &nb {
             Block::Node { texts, .. } => texts.iter().map(|t| t.field.clone()).collect(),
             _ => Vec::new(),
         };
         let mut blocks = vec![nb];
-        blocks.extend(self.node_quotes(n));
+        blocks.extend(self.node_quotes_after(n, history));
         if fields.is_empty() {
             blocks.extend(self.linked(n, None, learner));
         }
@@ -1510,7 +1548,7 @@ impl Instructor {
     /// No model: the best tree node when the words match one, else a rules search.
     fn model_off(&self, text: &str, node_hits: &[NodeHit], trace: Trace) -> Turn {
         let mut t = match node_hits.first() {
-            Some(h) if h.lexical > 0.0 => self.open(&h.node_id, &[], &Learner::default()),
+            Some(h) if h.lexical > 0.0 => self.open(&h.node_id, &[], &Learner::default(), &[]),
             _ => Turn::new(
                 vec![Block::Search {
                     query: text.to_string(),
@@ -1585,14 +1623,14 @@ impl Instructor {
                     .filter(|f| FIELDS.contains(&f.as_str()))
                     .cloned()
                     .collect();
-                let nb = self.node_block(n, &fields);
+                let nb = self.node_block_after(n, &fields, &req.history);
                 let shown: Vec<String> = match &nb {
                     Block::Node { texts, .. } => texts.iter().map(|t| t.field.clone()).collect(),
                     _ => Vec::new(),
                 };
                 context.push_str(&n.text());
                 blocks.push(nb);
-                blocks.extend(self.node_quotes(n));
+                blocks.extend(self.node_quotes_after(n, &req.history));
                 let mut only = plan.show.clone();
                 if plan.intent == "practice" && !only.iter().any(|s| s == "practice") {
                     only.push("practice".into());
