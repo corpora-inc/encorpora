@@ -156,6 +156,15 @@ from that file's hash. Prefer `--embedder-gguf`: a declared hash is trusted as
 given. On Linux, bindgen may need
 `BINDGEN_EXTRA_CLANG_ARGS=-I/usr/lib/gcc/<triple>/<ver>/include`.
 
+`harvest serve` takes the same embedder options as `search`, and with a
+URL alone (`--embedder http://127.0.0.1:8095`) it asks the server which file
+it loaded (`/props` `model_path`, else `/v1/models`), hashes that file and
+builds the id from it, so a server running other weights is caught.
+`serve` logs, per pack, whether dense search is on and, if not, why;
+`pack.info` and `pack.list` report the same (`dense`). One embedder serves
+every pack baked with it; with several packs, a pack baked with another is
+served lexical only and says so.
+
 Dense retrieval runs only when `Embedder::id()` equals `pack_meta.embedder_id`
 and `Embedder::dim()` equals `pack_meta.embed_dim`. On any mismatch it is
 refused (`SearchResult.dense = mismatch`) and retrieval stays lexical; vectors
@@ -210,7 +219,8 @@ harvest search  <pack-dir> "<query>" --in tree                # search the tree,
 harvest converse <pack-dir> <script.json> [--llm URL] [--exams FILE]   # scripted Instructor conversations (CONTRACT)
 harvest fixture <dir> [--maint [--samples DIR]]
 harvest serve   <packs-root|pack> --records <records-db> [--bind 127.0.0.1:4317] [--static DIR] [--allow-origin URL]
-                [--records-key FILE] [--outbox-dir DIR] [--field-pubkey KEY] [--embedder auto|none|hashing]
+                [--records-key FILE] [--outbox-dir DIR] [--field-pubkey KEY]
+                [--embedder auto|none|hashing|<file.gguf>|<url> [--embedder-gguf FILE|--embedder-sha256 HEX]]
 harvest api-schema <dir> [--check]
 ```
 

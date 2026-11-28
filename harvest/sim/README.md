@@ -17,7 +17,7 @@ The files here are the named scenarios. A test keeps them equal to
 | Scenario | What it models |
 |---|---|
 | `pier-daily.json` | 4 units, 60 days, a 2 to 4 hour link once a day at 2 Mbit/s, a scripted lesson conflict, a pack update on day 20 (delivered as a delta). |
-| `underway-two-weeks.json` | 6 units, 42 days, starting 3 days offline. The link averages 1 hour up and 30 down at 2400 bit/s with 1.2 s latency, 15% drops, 5% duplicates and 2% tampered bundles. |
+| `underway-two-weeks.json` | 6 units, 42 days, starting 3 days offline. The link averages 1 hour up and 30 down at 2400 bit/s with 1.2 s latency, 15% drops, 5% duplicates and 2% tampered bundles. Lessons carry photos (1.2 per lesson, median 1.5 MB): the downscaled copies move underway, the full files at 2 Mbit/s in port. |
 | `disconnected-180.json` | 3 units, 180 days with no link at all, then one sync. Clocks are up to 90 minutes off. |
 | `flapping.json` | 4 units, 30 days, a link of minutes on and off at 64 kbit/s with 30% drops, 10% duplicates and 5% tampered bundles. Adds two scripted conflicts, a device that was never enrolled, and a device revoked on day 20. |
 
@@ -48,7 +48,10 @@ Durations are in hours unless the name says otherwise.
 | `revoke` | `[{device, day}]`: devices revoked at the hub. |
 | `pack_update_day` | A new pack version (and a delta from the first) is published at the hub. |
 | `final_sync` | One last day with every link up, to show what eventually arrives. |
-| `sample_every_days` | How often each device's records-store size is sampled (default 30). |
+| `sample_every_days` | How often each device's records-store size (and the attachment backlog) is sampled (default 30). |
+| `final_bandwidth_bps` | The link speed during the final sync (the unit reaches port). |
+| `photos` | `{per_lesson, median_kb, sigma, small_ratio, byte_scale}`: photos per lesson (Poisson mean), a log-normal size (median and sigma), the host's downscaled copy as a share of the full size (default 0.08). The devices store `1 / byte_scale` of each photo's bytes (default 100, so months of photos fit in memory) and the wire is charged the full size. |
+| `attachments_low`, `attachments_normal`, `chunk_kb` | The hub's attachment policy on a link below 100 kbit/s and on a faster one (`refs`, `downscaled` or `full`; defaults `downscaled` and `full`), and the chunk size (default 64). |
 
 ## Report (`metrics.json`)
 
@@ -66,6 +69,7 @@ Durations are in hours unless the name says otherwise.
 | `bundles` | `published`, `installed` (summed over devices), `tampered_in_transit`, `refused`. |
 | `packs` | Whether an update was published, installs per kind (`delta` or `full`), and errors. |
 | `growth` | Per device: `(day, bytes)` samples of the records store, and bytes per day. |
+| `attachments` | With `photos`: photos taken and their bytes; the lane's own wire bytes, requests, cut requests and chunks (kept apart from `bytes` and `link`, which count records only); photos resumed after a cut; variants and full files complete at the hub; passes cut short for records; `backlog` (`day`, `full_bytes`, `downscaled_bytes` still on the devices); and capture-to-hub hours of every record and lesson with the lane off (`records_latency_without`) and on (`records_latency_with`). |
 | `invariants` | The checks listed below, then `ok` (all of them), then `details` for any that broke. |
 
 The invariants:
@@ -74,4 +78,5 @@ The invariants:
 - **No bad bundle installed:** every bundle a device installed is byte-identical to the hub's own.
 - **Audit chains intact:** the chain verifies on every device and on the hub.
 - **No upload from an unenrolled or revoked device:** the hub holds nothing from the never-enrolled device, and nothing from a revoked device received after its revocation.
+- **Attachments never delay records:** with `photos`, every record and lesson reaches the hub at the same moment with the attachment lane on as with it off.
 - **Refused traffic bounded:** `bytes.refused` stays within (refused devices) × (days + 12) × (one hello and its answer), which is what the back-off allows.

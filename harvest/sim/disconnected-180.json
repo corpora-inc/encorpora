@@ -40,6 +40,7 @@
   "skew_bound_minutes": 30,
   "rogue_device": false,
   "revoke": [],
+  "final_bandwidth_bps": null,
   "photos": null,
   "attachments_low": "downscaled",
   "attachments_normal": "full",

@@ -435,8 +435,24 @@ export interface Decoded2 {
   sys_status: SysStatus[];
 }
 
+/** Why dense search is off for a pack. */
+export type DenseOff = "dimension_mismatch" | "pack_has_no_vectors" | "no_embedder_loaded" | "id_mismatch";
+
+/** Whether dense search runs for a pack on this host. */
+export interface DenseStatus {
+  active: boolean;
+  host_embed_dim: number | null;
+  host_embedder_id: string | null;
+  pack_embed_dim: number | null;
+  pack_embedder_id: string | null;
+  /** Chunk vectors in the pack. */
+  pack_vectors: number;
+  /** Why not, when not. */
+  reason: DenseOff | null;
+}
+
 /** Why the dense half did or did not run. */
-export type DenseStatus = "used" | "no_embedder" | {
+export type DenseStatus2 = "used" | "no_embedder" | {
   mismatch: {
     embedder: string;
     pack: string | null;
@@ -1379,6 +1395,8 @@ export interface PackInfoView {
   api_version: string;
   built_at: string | null;
   corpus_id: string | null;
+  /** Whether dense search runs for this pack on this host, and why not. */
+  dense: DenseStatus;
   equipment: Equipment[];
   /** Facet headings, in the manual's order. */
   facets: FacetDef[];
@@ -1406,6 +1424,8 @@ export interface PackParams {
 
 /** One installed pack, for choosing among several. */
 export interface PackSummary {
+  /** Whether dense search runs for this pack on this host, and why not. */
+  dense: DenseStatus;
   /** The top of each equipment tree (no parent). */
   equipment_roots: Equipment[];
   has_fault_trees: boolean;
@@ -1765,7 +1785,7 @@ export interface Scope {
 
 /** A search result. */
 export interface SearchResult {
-  dense: DenseStatus;
+  dense: DenseStatus2;
   expansions: string[];
   hits: Hit[];
   normalized: string;
@@ -2113,9 +2133,19 @@ export interface Symptom {
 /** One ranked symptom. */
 export interface SymptomHit {
   confidence: Confidence;
+  cosine: number | null;
   /** Share of the query's meaningful words the best phrase covers. */
   coverage: number;
+  /**
+   * The confidence rule's inputs, for calibrating it offline: the
+   * lexical Dice of the best phrase, the meaningful query words it
+   * covers and how many the query has, and the dense cosine (whenever
+   * dense ran, counted or not).
+   */
+  lexical: number;
   score: number;
+  strong_hits: number;
+  strong_query_words: number;
   symptom: Symptom;
   why: Why[];
 }
@@ -2130,6 +2160,11 @@ export interface SymptomSearch {
   hits: SymptomHit[];
   /** The signal match, when observations were given. */
   signals: SignalMatch | null;
+  /**
+   * The confidence rule's thresholds for this pack (with each hit's
+   * inputs, enough to calibrate the rule offline).
+   */
+  thresholds: Thresholds;
 }
 
 export interface SymptomSearchParams {
@@ -2277,6 +2312,16 @@ export interface TestProcedure {
   requirements: Requirement[];
   steps: TaskStep[];
   title: string;
+}
+
+/** The confidence rule's thresholds a pack sets (or the defaults). */
+export interface Thresholds {
+  /** `symptom_confident_coverage`. */
+  coverage: number;
+  /** `symptom_confident_dense`. */
+  dense: number;
+  /** A dense hit with no lexical match counts from this cosine. */
+  dense_alone: number;
 }
 
 /** A whole tree, checked: every node passed and its text is verbatim. */

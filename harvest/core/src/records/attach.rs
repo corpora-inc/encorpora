@@ -69,7 +69,9 @@ pub struct AttachReport {
     pub bytes: u64,
     /// Variants the hub now holds in full (sent now or found there).
     pub completed: u64,
-    /// Bytes not resent because the hub already held them.
+    /// Variants continued from where the hub had them, and the bytes not
+    /// resent because of it.
+    pub resumed: u64,
     pub resumed_bytes: u64,
     /// Stopped early because the host asked (records waiting, window closing).
     pub yielded: bool,
@@ -222,7 +224,12 @@ impl Records {
             return Ok(report);
         }
         // Ask first: the policy depends on the link the device is on now.
+        // A device the hub refused sends nothing here (its uploads back off).
         let mut gate = super::maint::HubGate::load(&self.conn)?;
+        if gate.refused.is_some() {
+            report.error = Some("the hub refuses this device".into());
+            return Ok(report);
+        }
         let reply = match link.hello() {
             Ok(r) => r,
             Err(e) => {
@@ -242,19 +249,30 @@ impl Records {
             .chunk_bytes
             .unwrap_or(crate::sync::DEFAULT_CHUNK_BYTES)
             .max(1);
+        // A dropped request is retried (the hub says where to resume);
+        // `MAX_TRIES` failures in a row, or a refusal, end the pass.
+        let mut tries = Tries::default();
         'items: for (sha, variant, vsha, total) in self.attachment_work(mode)? {
             if self.outbox_status()?.pending > 0 || stop() {
                 report.yielded = true;
                 break;
             }
-            let mut offset = match link.attachment_offset(&vsha, total) {
-                Ok(o) => o.min(total),
-                Err(e) => {
-                    report.error = Some(e.to_string());
-                    break;
+            let mut offset = loop {
+                match link.attachment_offset(&vsha, total) {
+                    Ok(o) => break o.min(total),
+                    Err(e) => {
+                        if tries.give_up(&mut report, e) {
+                            break 'items;
+                        }
+                        if stop() {
+                            report.yielded = true;
+                            break 'items;
+                        }
+                    }
                 }
             };
             if offset > 0 {
+                report.resumed += 1;
                 report.resumed_bytes += offset;
             }
             if offset < total {
@@ -276,15 +294,42 @@ impl Records {
                             report.chunks += 1;
                             report.bytes += piece.len() as u64;
                             // The hub says what it holds; resume from there.
+                            // Going backwards (the hub found the whole
+                            // damaged and dropped it) counts as a failure.
+                            if held < end
+                                && tries.give_up(
+                                    &mut report,
+                                    Error::Sync(format!(
+                                        "attachment {vsha}: the hub holds {held} of {end}"
+                                    )),
+                                )
+                            {
+                                break 'items;
+                            }
+                            if held >= end {
+                                tries = Tries::default();
+                            }
                             offset = held.min(total);
                         }
                         Err(e) => {
-                            report.error = Some(e.to_string());
-                            break 'items;
+                            if tries.give_up(&mut report, e) {
+                                break 'items;
+                            }
+                            // The chunk may have landed: ask where the hub is.
+                            match link.attachment_offset(&vsha, total) {
+                                Ok(o) => offset = o.min(total),
+                                Err(e) => {
+                                    if tries.give_up(&mut report, e) {
+                                        break 'items;
+                                    }
+                                }
+                            }
                         }
                     }
                 }
             }
+            tries = Tries::default();
+            report.error = None;
             report.completed += 1;
             let sent = if variant == "full" { "full" } else { "small" };
             self.conn.execute(
@@ -294,6 +339,21 @@ impl Records {
         }
         report.backlog_bytes = self.attachment_backlog(mode)?;
         Ok(report)
+    }
+}
+
+/// Failures in a row on the attachment lane.
+#[derive(Default)]
+struct Tries(u32);
+
+impl Tries {
+    /// Note a failure; true when the pass should end (a refusal, or three
+    /// failures in a row).
+    fn give_up(&mut self, report: &mut AttachReport, e: Error) -> bool {
+        self.0 += 1;
+        let refused = matches!(e, Error::Signature(_));
+        report.error = Some(e.to_string());
+        refused || self.0 >= 3
     }
 }
 

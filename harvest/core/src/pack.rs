@@ -99,6 +99,44 @@ pub struct Equipment {
     pub aliases: Vec<String>,
 }
 
+/// Whether dense search runs for a pack on this host.
+#[derive(Debug, Clone, Serialize, PartialEq, JsonSchema)]
+pub struct DenseStatus {
+    pub active: bool,
+    /// Why not, when not.
+    pub reason: Option<DenseOff>,
+    pub pack_embedder_id: Option<String>,
+    pub pack_embed_dim: Option<usize>,
+    /// Chunk vectors in the pack.
+    pub pack_vectors: u64,
+    pub host_embedder_id: Option<String>,
+    pub host_embed_dim: Option<usize>,
+}
+
+/// Why dense search is off for a pack.
+#[derive(Debug, Clone, Copy, Serialize, PartialEq, Eq, JsonSchema)]
+#[serde(rename_all = "snake_case")]
+pub enum DenseOff {
+    /// The pack was baked without vectors.
+    PackHasNoVectors,
+    /// The host loaded no embedder for this pack.
+    NoEmbedderLoaded,
+    /// The host's embedder is not the one the pack was baked with.
+    IdMismatch,
+    DimensionMismatch,
+}
+
+impl DenseOff {
+    pub fn as_str(&self) -> &'static str {
+        match self {
+            Self::PackHasNoVectors => "the pack has no vectors",
+            Self::NoEmbedderLoaded => "no embedder loaded",
+            Self::IdMismatch => "the embedder is not the pack's",
+            Self::DimensionMismatch => "the embedder's dimension is not the pack's",
+        }
+    }
+}
+
 /// A guided procedure (inspection, assembly, lift plan).
 #[derive(Debug, Clone, Serialize, PartialEq, JsonSchema)]
 pub struct Procedure {
@@ -713,6 +751,39 @@ impl Pack {
         }
         let loaded = self.load_vectors("course_node_vec", "node_id", dim)?;
         Ok(self.node_vectors.get_or_init(|| loaded).as_ref())
+    }
+
+    /// Whether dense search runs for this pack with `embedder`, and if
+    /// not, why. Never silent: hosts report it and log it at start.
+    pub fn dense_status(
+        &self,
+        embedder: Option<&dyn crate::embed::Embedder>,
+    ) -> Result<DenseStatus> {
+        let pack_id = self.meta("embedder_id").map(str::to_string);
+        let pack_dim = self.meta("embed_dim").and_then(|d| d.parse::<usize>().ok());
+        let vectors: i64 = if self.has_table("chunk_vec")? {
+            self.conn()
+                .query_row("SELECT count(*) FROM chunk_vec", [], |r| r.get(0))?
+        } else {
+            0
+        };
+        let reason = match (&pack_id, pack_dim, embedder) {
+            (None, _, _) | (_, None, _) => Some(DenseOff::PackHasNoVectors),
+            _ if vectors == 0 => Some(DenseOff::PackHasNoVectors),
+            (_, _, None) => Some(DenseOff::NoEmbedderLoaded),
+            (Some(id), _, Some(e)) if e.id() != id => Some(DenseOff::IdMismatch),
+            (_, Some(d), Some(e)) if e.dim() != d => Some(DenseOff::DimensionMismatch),
+            _ => None,
+        };
+        Ok(DenseStatus {
+            active: reason.is_none(),
+            reason,
+            pack_embedder_id: pack_id,
+            pack_embed_dim: pack_dim,
+            pack_vectors: vectors as u64,
+            host_embedder_id: embedder.map(|e| e.id().to_string()),
+            host_embed_dim: embedder.map(|e| e.dim()),
+        })
     }
 
     fn embedder_matches(&self, embedder_id: &str, dim: usize) -> bool {

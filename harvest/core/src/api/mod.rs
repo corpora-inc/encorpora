@@ -852,6 +852,8 @@ pub struct PackSummary {
     /// The sources' licenses, each once.
     pub licenses: Vec<String>,
     pub has_fault_trees: bool,
+    /// Whether dense search runs for this pack on this host, and why not.
+    pub dense: crate::pack::DenseStatus,
 }
 
 /// What a pack is and how to talk to it.
@@ -873,6 +875,8 @@ pub struct PackInfoView {
     pub repeat_window_days: i64,
     /// Every loaded pack id.
     pub packs: Vec<String>,
+    /// Whether dense search runs for this pack on this host, and why not.
+    pub dense: crate::pack::DenseStatus,
 }
 
 /// Where the upload destination stands: configured, and reachable as of
@@ -936,6 +940,9 @@ pub struct SymptomSearch {
     pub hits: Vec<SymptomHit>,
     /// True when the dense half ran.
     pub dense: bool,
+    /// The confidence rule's thresholds for this pack (with each hit's
+    /// inputs, enough to calibrate the rule offline).
+    pub thresholds: search::Thresholds,
     /// The variant the search was filtered to.
     pub equip_id: Option<String>,
     /// The signal match, when observations were given.
@@ -1034,6 +1041,7 @@ fn pack_list(h: &Host, _who: Option<&Principal>, _: NoParams) -> R<Vec<PackSumma
                 .collect(),
             licenses,
             has_fault_trees: pack.has_fault_trees()?,
+            dense: pack.dense_status(h.embedder(&pack))?,
         });
     }
     out.sort_by(|a, b| a.pack_id.cmp(&b.pack_id));
@@ -1060,6 +1068,7 @@ fn pack_info(h: &Host, _who: Option<&Principal>, p: PackParams) -> R<PackInfoVie
         signal_kinds: pack.signal_kinds()?,
         repeat_window_days: pack.repeat_window_days(),
         packs: h.packs().iter().map(|p| p.pack_id().to_string()).collect(),
+        dense: pack.dense_status(h.embedder(pack))?,
     })
 }
 
@@ -1169,6 +1178,7 @@ fn symptom_search(h: &Host, _who: Option<&Principal>, p: SymptomSearchParams) ->
         )?)
     };
     Ok(SymptomSearch {
+        thresholds: search::thresholds(pack),
         confidence: hits
             .first()
             .map_or(search::Confidence::None, |h| h.confidence),
