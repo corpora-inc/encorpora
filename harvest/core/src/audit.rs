@@ -404,6 +404,16 @@ pub fn virtual_now_ms() -> Option<i64> {
     CLOCK.with(|c| c.get())
 }
 
+/// Milliseconds since 1970 (the virtual clock when set).
+pub fn now_ms() -> i64 {
+    virtual_now_ms().unwrap_or_else(|| {
+        std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH)
+            .map(|d| d.as_millis() as i64)
+            .unwrap_or_default()
+    })
+}
+
 /// UTC now as `YYYY-MM-DDTHH:MM:SS.mmmZ` (the virtual clock when set).
 pub fn now_rfc3339() -> String {
     if let Some(ms) = virtual_now_ms() {

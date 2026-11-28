@@ -189,8 +189,10 @@ impl Reassembler {
                     return Err("TP.DT out of sequence; session dropped".into());
                 }
                 s.data.extend_from_slice(&f.data[1..8]);
-                s.next += 1;
-                if s.next > s.packets {
+                // Compare before counting on: 255 packets is a valid size.
+                let last = s.next >= s.packets;
+                s.next = s.next.wrapping_add(1);
+                if last {
                     let s = self.sessions.remove(&key).expect("present");
                     let mut data = s.data;
                     data.truncate(s.size);

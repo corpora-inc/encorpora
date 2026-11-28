@@ -207,3 +207,40 @@ fn mavlink_tlog_messages_observations_and_plate() {
     assert_eq!(api.mavlink.unwrap().status_texts.len(), 2);
     assert_eq!(api.errors.len(), 1, "the broken frame is reported");
 }
+
+#[test]
+fn hostile_text_and_a_255_packet_transfer_do_not_panic() {
+    use harvest_core::decode::{Format, decode};
+    // A multibyte character where hex is expected: an error, not a panic.
+    for (f, input) in [
+        (Format::J1939Frames, "18FECA00 aé0"),
+        (Format::J1939Candump, "can0 18FECA00#aé0"),
+        (Format::J1587, "80 C2 é"),
+    ] {
+        let d = decode(f, input, None);
+        assert!(!d.errors.is_empty(), "{f:?}");
+    }
+    // BAM of 1785 bytes (255 packets) for DM1 from 0x00.
+    let mut lines = vec![format!(
+        "18ECFF00 20{:02X}{:02X}FF{:02X}CAFE00",
+        1785 & 0xFF,
+        1785 >> 8,
+        255
+    )];
+    let mut payload = vec![0u8; 1785];
+    payload[0] = 0x04; // lamps
+    payload[2..6].copy_from_slice(&[0x6E, 0x00, 0x00, 0x01]); // SPN 110 FMI 0, count 1
+    for i in 0..255usize {
+        let mut chunk = [0xFFu8; 7];
+        for (j, b) in chunk.iter_mut().enumerate() {
+            if let Some(v) = payload.get(i * 7 + j) {
+                *b = *v;
+            }
+        }
+        let hex: String = chunk.iter().map(|b| format!("{b:02X}")).collect();
+        lines.push(format!("18EBFF00 {:02X}{hex}", i + 1));
+    }
+    let d = decode(Format::J1939Frames, &lines.join("\n"), None);
+    assert!(d.errors.is_empty(), "{:?}", d.errors);
+    assert_eq!(d.dm1.len(), 1);
+}

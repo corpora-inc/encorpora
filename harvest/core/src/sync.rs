@@ -603,6 +603,9 @@ pub struct HelloReply {
     /// The attachment chunk size, bytes.
     #[serde(default = "default_chunk")]
     pub chunk_bytes: u64,
+    /// The hub's bundle stream: a device pulls by this stream's seq.
+    #[serde(default)]
+    pub stream: Option<String>,
 }
 
 fn default_mode() -> AttachmentMode {

@@ -20,7 +20,11 @@ required-features = ["cli"]
 default = ["cli", "serve", "hub"]
 # The `harvest` binary (eval, bake verifier) and its OpenAI-compatible HTTP
 # client. The app links the library with `default-features = false`.
-cli = ["dep:ureq"]
+cli = ["net"]
+# The plain-HTTP client: an embedding server, an OpenAI-compatible model
+# server, the device's link to a hub. A native shell that links the
+# library with `default-features = false` turns this on to use them.
+net = ["dep:ureq"]
 # `harvest serve`: the local HTTP transport of the JSON API (`api`), for the
 # app in a browser during development. Pure-Rust, synchronous.
 serve = ["cli", "dep:tiny_http"]

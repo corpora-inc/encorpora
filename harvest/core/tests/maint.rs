@@ -812,10 +812,10 @@ fn symptom_matches_say_how_sure_they_are() {
     let (hits, _) =
         search::symptom_search(&b.pack, None, &[obs("pump40.code", "E21")], None, None, 5).unwrap();
     assert_eq!(hits[0].confidence, search::Confidence::Confident);
-    // One word of three: closest.
+    // One meaningful word of four (below 0.30): closest.
     let (hits, _) = search::symptom_search(
         &b.pack,
-        Some("engine smoke and knocking"),
+        Some("engine smoke, knocking and rattling"),
         &[],
         None,
         None,
@@ -825,7 +825,7 @@ fn symptom_matches_say_how_sure_they_are() {
     assert_eq!(hits[0].confidence, search::Confidence::Closest);
     // A pack can raise the bar.
     let strict = pump_with(exec(
-        "INSERT INTO pack_meta VALUES ('symptom_confident_coverage', '1.01');",
+        "INSERT INTO pack_meta VALUES ('symptom_confident_coverage_lexical', '1.01');",
     ));
     let (hits, _) = search::symptom_search(
         &strict.pack,
@@ -1001,4 +1001,95 @@ fn an_unmatched_status_text_gets_closest_entries_never_a_match() {
             .iter()
             .all(|s| s.confidence == search::Confidence::Closest)
     );
+}
+
+#[test]
+fn a_pack_sets_its_ranking_in_pack_meta() {
+    let d = search::Ranking::for_pack(&pump().pack).unwrap();
+    assert_eq!(d, search::Ranking::default());
+    assert_eq!(
+        (
+            d.lexical_weight,
+            d.margin,
+            d.coverage,
+            d.strong_hits,
+            d.dense_alone
+        ),
+        (0.10, 0.02, 0.50, 1, 0.85)
+    );
+    assert_eq!(
+        (d.margin_lexical, d.coverage_lexical, d.strong_hits_lexical),
+        (0.15, 0.30, 1)
+    );
+    let b = pump_with(exec(
+        "INSERT INTO pack_meta VALUES ('symptom_fusion', 'rrf');
+         INSERT INTO pack_meta VALUES ('symptom_fusion_lexical_weight', '0.7');
+         INSERT INTO pack_meta VALUES ('symptom_confident_margin', '0.05');
+         INSERT INTO pack_meta VALUES ('symptom_confident_strong_hits', '2');
+         INSERT INTO pack_meta VALUES ('symptom_confident_margin_lexical', '0.2');
+         INSERT INTO pack_meta VALUES ('symptom_weak_words_add', '[\"pump\"]');",
+    ));
+    let r = search::Ranking::for_pack(&b.pack).unwrap();
+    assert_eq!(r.fusion, search::Fusion::Rrf);
+    assert_eq!(
+        (r.lexical_weight, r.margin, r.strong_hits, r.margin_lexical),
+        (0.7, 0.05, 2, 0.2)
+    );
+    assert_eq!(r.coverage, search::CONFIDENT_COVERAGE);
+    assert!(
+        r.weak_words.contains(&"run".to_string()) && r.weak_words.contains(&"pump".to_string())
+    );
+    let bad = pump_with(exec(
+        "INSERT INTO pack_meta VALUES ('symptom_fusion', 'max');",
+    ));
+    assert!(search::Ranking::for_pack(&bad.pack).is_err());
+    let w = pump_with(exec(
+        "INSERT INTO pack_meta VALUES ('symptom_fusion_lexical_weight', '1.5');",
+    ));
+    assert!(search::Ranking::for_pack(&w.pack).is_err());
+}
+
+#[test]
+fn the_confidence_rule_is_pinned_on_constructed_inputs() {
+    use search::Confidence::{Closest, Confident};
+    let r = search::Ranking::default();
+    // rate(dense_active, signal, coverage, strong_hits, cosine, margin)
+    // A signal: always confident, whatever else.
+    assert_eq!(r.rate(true, true, 0.0, 0, Some(0.1), Some(-1.0)), Confident);
+    assert_eq!(r.rate(false, true, 0.0, 0, None, Some(-1.0)), Confident);
+    // Dense active, words branch: margin 0.02, coverage 0.50, one strong hit.
+    assert_eq!(
+        r.rate(true, false, 0.50, 1, Some(0.2), Some(0.02)),
+        Confident
+    );
+    assert_eq!(
+        r.rate(true, false, 0.49, 1, Some(0.2), Some(0.5)),
+        Closest,
+        "coverage"
+    );
+    assert_eq!(
+        r.rate(true, false, 0.50, 0, Some(0.2), Some(0.5)),
+        Closest,
+        "strong hits"
+    );
+    assert_eq!(
+        r.rate(true, false, 1.0, 3, Some(0.9), Some(0.019)),
+        Closest,
+        "margin"
+    );
+    // Dense active, meaning branch: cosine 0.85 with no word at all.
+    assert_eq!(
+        r.rate(true, false, 0.0, 0, Some(0.85), Some(0.02)),
+        Confident
+    );
+    assert_eq!(r.rate(true, false, 0.0, 0, Some(0.849), Some(0.5)), Closest);
+    // A single hit satisfies the margin.
+    assert_eq!(r.rate(true, false, 0.0, 0, Some(0.86), None), Confident);
+    assert_eq!(r.rate(false, false, 0.3, 1, None, None), Confident);
+    // Dense off: coverage 0.30, one strong hit, margin 0.15; cosine ignored.
+    assert_eq!(r.rate(false, false, 0.30, 1, None, Some(0.15)), Confident);
+    assert_eq!(r.rate(false, false, 0.29, 1, None, Some(0.9)), Closest);
+    assert_eq!(r.rate(false, false, 0.9, 1, None, Some(0.149)), Closest);
+    assert_eq!(r.rate(false, false, 0.9, 0, None, Some(0.9)), Closest);
+    assert_eq!(r.rate(false, false, 0.0, 0, Some(0.99), None), Closest);
 }

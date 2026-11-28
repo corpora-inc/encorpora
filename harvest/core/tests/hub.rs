@@ -634,7 +634,9 @@ fn unenrolled_revoked_and_forged_deliveries_are_refused() {
         .into_iter()
         .filter(|r| matches!(r, harvest_core::audit::AuditRecord::Event { event, .. } if event.event == "hub.refuse"))
         .count();
-    assert_eq!(refusals, 4);
+    // Stranger, revoked, and two forgeries with the same error: the second
+    // forgery within the hour is not written again.
+    assert_eq!(refusals, 3);
     assert_eq!(hub.status().unwrap().items, 2);
 }
 
@@ -855,7 +857,10 @@ fn a_refused_device_sends_only_hellos_and_backs_off() {
         .into_iter()
         .filter(|r| matches!(r, harvest_core::audit::AuditRecord::Event { event, .. } if event.event == "hub.refuse"))
         .count();
-    assert_eq!(refusals, 2, "two hellos refused, no deliveries");
+    assert_eq!(
+        refusals, 1,
+        "two hellos refused within the hour: audited once; no deliveries"
+    );
 }
 
 // --------------------------------------------------------- attachments
@@ -909,6 +914,13 @@ fn attachments_move_by_content_resume_and_follow_the_link_policy() {
         0
     );
     assert_eq!(rec.attachment_backlog(AttachmentMode::Full).unwrap(), 5000);
+    let st = rec.attachment_status().unwrap();
+    assert_eq!(st.mode, Some(AttachmentMode::Downscaled));
+    assert_eq!(
+        (st.pending, st.pending_bytes, st.sent, st.sent_downscaled),
+        (0, 0, 0, 1)
+    );
+    assert!(st.last_attempt_at.is_some() && st.failing.is_none());
 
     // On a normal link the full file follows, cut short and resumed.
     let calls = std::cell::Cell::new(0);
@@ -1021,4 +1033,75 @@ fn underway_attachment_traffic_never_delays_a_record() {
     let mid = &a.backlog[a.backlog.len() / 2];
     assert!(mid.full_bytes > 10 * mid.downscaled_bytes);
     assert_eq!(a.backlog.last().unwrap().full_bytes, 0);
+}
+
+#[test]
+fn the_queue_carries_the_note_an_unedited_approval_publishes() {
+    let f = fleet();
+    let h = Hub::in_memory(hub_key(), "s").unwrap();
+    let (_a, ua) = lesson_upload(&f, None, "Weed in the strainer.", "2026-03-01T10:00");
+    recv(&h, &key(9), &ua);
+    let item = h.queue(Some("pending")).unwrap().remove(0);
+    assert_eq!(
+        item.suggested_note,
+        format!(
+            "Verified cause: Weed in the strainer. Corrective action: {}.",
+            item.current.action.trim_end_matches('.')
+        )
+    );
+    assert_eq!(item.suggested_scope.equip_id, item.current.equip_id);
+    h.approve(&item.lesson_id, "Reviewer A", None, None, None)
+        .unwrap();
+    let b = h.publish(false, "Reviewer A").unwrap().unwrap();
+    assert_eq!(b["notes"][0]["text"], item.suggested_note);
+}
+
+#[test]
+fn refusals_are_audited_once_an_hour_and_only_for_plausible_ids() {
+    let h = Hub::in_memory(hub_key(), "s").unwrap();
+    let audit_len = |h: &Hub| h.audit_records().unwrap().len();
+    let before = audit_len(&h);
+    let stranger = key(55);
+    for _ in 0..5 {
+        assert!(
+            !h.hello(&stranger.hello(Default::default()).unwrap())
+                .unwrap()
+                .accepted
+        );
+    }
+    assert_eq!(audit_len(&h), before + 1, "one row for five refusals");
+    let mut junk = stranger.hello(Default::default()).unwrap();
+    junk.device_id = "x".repeat(10_000);
+    assert!(!h.hello(&junk).unwrap().accepted);
+    assert_eq!(
+        audit_len(&h),
+        before + 1,
+        "an implausible id is not written"
+    );
+}
+
+#[test]
+fn a_device_pulls_by_the_hubs_own_stream() {
+    let f = fleet();
+    *f.hub.lock().unwrap() = Hub::in_memory(hub_key(), "fleet-b").unwrap();
+    let (rec, link) = device(&f);
+    // A bundle from another stream, at a high seq, installed by hand.
+    let other = fixture_maint::field_bundle(40).unwrap();
+    rec.install_field_bundle(&other, &[fixture::trusted_key()])
+        .unwrap();
+    assert_eq!(rec.installed_bundle_seq().unwrap(), 40);
+    // The hub's stream is at seq 1; the device still gets it.
+    let (_a, ua) = lesson_upload(&f, None, "Weed in the strainer.", "2026-03-01T10:00");
+    {
+        let h = f.hub.lock().unwrap();
+        recv(&h, &key(60), &ua);
+        let id = h.queue(Some("pending")).unwrap()[0].lesson_id.clone();
+        h.approve(&id, "Reviewer A", None, None, None).unwrap();
+        h.publish(false, "Reviewer A").unwrap().unwrap();
+    }
+    let keys = vec![f.hub.lock().unwrap().trusted_key()];
+    let p = rec.pull(&link, &keys).unwrap();
+    assert_eq!(p.installed, vec![1], "{p:?}");
+    // And not twice.
+    assert!(rec.pull(&link, &keys).unwrap().installed.is_empty());
 }

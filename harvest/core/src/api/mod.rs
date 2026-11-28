@@ -188,6 +188,26 @@ impl Host {
         self.records.lock().unwrap_or_else(|p| p.into_inner())
     }
 
+    /// A pack asset's bytes and media type, re-hashed against the signed
+    /// manifest before they are returned; `None` for an unknown pack or
+    /// asset.
+    pub fn asset(&self, pack_id: &str, asset_id: &str) -> Result<Option<(String, Vec<u8>)>> {
+        let Ok(pack) = self.pack(Some(pack_id)) else {
+            return Ok(None);
+        };
+        let Some((a, path)) = pack.asset_file(asset_id)? else {
+            return Ok(None);
+        };
+        let bytes = std::fs::read(&path)?;
+        use sha2::{Digest, Sha256};
+        if !crate::packs::hex_encode(&Sha256::digest(&bytes)).eq_ignore_ascii_case(&a.sha256) {
+            return Err(crate::error::Error::Integrity(format!(
+                "asset {asset_id}: sha256 mismatch"
+            )));
+        }
+        Ok(Some((a.media_type, bytes)))
+    }
+
     fn embedder(&self, pack: &Pack) -> Option<&dyn Embedder> {
         self.embedders.get(pack.pack_id()).map(|e| e.as_ref())
     }
@@ -344,6 +364,7 @@ methods! {
     "field.install" => field_install(FieldInstallParams) -> FieldInstall,
     "field.list" => field_list(NoParams) -> Vec<FieldNote>,
     "sync.status" => sync_status(NoParams) -> SyncStatus,
+    "sync.attachments" => sync_attachments(SyncAttachmentsParams) -> crate::records::AttachReport,
     "sync.flush" => sync_flush(SyncFlushParams) -> crate::records::HubFlush,
     "device.info" => device_info(NoParams) -> DeviceInfo,
     "sync.pull" => sync_pull(NoParams) -> SyncPull,
@@ -372,6 +393,18 @@ methods! {
 #[derive(Debug, Clone, Default, Deserialize, JsonSchema)]
 #[serde(deny_unknown_fields)]
 pub struct NoParams {}
+
+/// One pass of the attachment lane (after `sync.flush`; it sends nothing
+/// while records are queued).
+#[derive(Debug, Clone, Default, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct SyncAttachmentsParams {
+    /// Stop starting chunks after this long (default 10, at most 300). The
+    /// pass holds the records store, so a host calls it in short passes
+    /// while the link is up.
+    #[serde(default)]
+    pub max_seconds: Option<u64>,
+}
 
 /// Which pack (the only one loaded when absent).
 #[derive(Debug, Clone, Default, Deserialize, JsonSchema)]
@@ -458,6 +491,9 @@ pub struct SymptomSearchParams {
     /// Results (default 10).
     #[serde(default)]
     pub k: Option<usize>,
+    /// Overrides of the pack's ranking rule (for calibration).
+    #[serde(default)]
+    pub ranking: Option<search::RankingParams>,
 }
 
 #[derive(Debug, Clone, Default, Deserialize, JsonSchema)]
@@ -915,6 +951,8 @@ pub struct SyncStatus {
     /// When an item was last acknowledged.
     pub last_synced_at: Option<String>,
     pub hub: HubState,
+    /// The attachment lane, apart from the records.
+    pub attachments: crate::records::AttachmentStatus,
 }
 
 /// Decoded data and what it matches in the pack.
@@ -940,9 +978,10 @@ pub struct SymptomSearch {
     pub hits: Vec<SymptomHit>,
     /// True when the dense half ran.
     pub dense: bool,
-    /// The confidence rule's thresholds for this pack (with each hit's
-    /// inputs, enough to calibrate the rule offline).
-    pub thresholds: search::Thresholds,
+    /// Every value of the ranking and confidence rule this search applied
+    /// (the pack's, with the call's overrides) and whether dense was
+    /// active: with each hit's inputs, the result can be replayed.
+    pub thresholds: search::Ranking,
     /// The variant the search was filtered to.
     pub equip_id: Option<String>,
     /// The signal match, when observations were given.
@@ -1160,13 +1199,15 @@ fn equip_for(h: &Host, equip: &Option<String>, asset: &Option<String>) -> R<Opti
 fn symptom_search(h: &Host, _who: Option<&Principal>, p: SymptomSearchParams) -> R<SymptomSearch> {
     let pack = &h.pack(nz(&p.pack_id))?;
     let equip = equip_for(h, &p.equip_id, &p.asset_id)?;
-    let (hits, dense) = search::symptom_search(
+    let ranking = search::Ranking::for_pack(pack)?.with(&p.ranking.unwrap_or_default())?;
+    let (hits, dense) = search::symptom_search_with(
         pack,
         nz(&p.text),
         &p.observations,
         equip.as_deref(),
         h.embedder(pack),
         p.k.unwrap_or(10),
+        &ranking,
     )?;
     let signals = if p.observations.is_empty() {
         None
@@ -1177,8 +1218,10 @@ fn symptom_search(h: &Host, _who: Option<&Principal>, p: SymptomSearchParams) ->
             equip.as_deref(),
         )?)
     };
+    let mut thresholds = ranking;
+    thresholds.dense_active = dense;
     Ok(SymptomSearch {
-        thresholds: search::thresholds(pack),
+        thresholds,
         confidence: hits
             .first()
             .map_or(search::Confidence::None, |h| h.confidence),
@@ -1623,7 +1666,23 @@ fn sync_status(h: &Host, _who: Option<&Principal>, _: NoParams) -> R<SyncStatus>
             last_attempt_at: state.last_attempt_at,
             last_error: state.last_error,
         },
+        attachments: rec.attachment_status()?,
     })
+}
+
+fn sync_attachments(
+    h: &Host,
+    _who: Option<&Principal>,
+    p: SyncAttachmentsParams,
+) -> R<crate::records::AttachReport> {
+    let link = h
+        .hub_link
+        .as_ref()
+        .ok_or_else(|| Error::Invalid("no hub is configured".into()))?;
+    let secs = p.max_seconds.unwrap_or(10).clamp(1, 300);
+    let until = std::time::Instant::now() + std::time::Duration::from_secs(secs);
+    Ok(h.records()
+        .send_attachments(link.as_ref(), &|| std::time::Instant::now() >= until)?)
 }
 
 fn sync_flush(

@@ -167,6 +167,9 @@ pub struct ClosestSignal {
     pub rule: SignalRule,
     pub score: f64,
     pub coverage: f64,
+    pub strong_hits: u32,
+    /// The score's lead over the best other rule (its own score alone).
+    pub margin: f64,
     pub confidence: Confidence,
     pub citation: Option<String>,
     pub section: Option<SignalSection>,
@@ -210,14 +213,9 @@ pub fn closest_query(value: &str) -> Option<String> {
     (!normalize::content_stems(&q).is_empty()).then_some(q)
 }
 
-/// Rate a phrase against query stems by the `symptom.search` rule:
-/// `(dice, coverage, confident)`, or `None` with no strong word in common.
-fn rate_phrase(
-    q: &[String],
-    weak: &BTreeSet<String>,
-    cov_t: f64,
-    phrase: &str,
-) -> Option<(f64, f64, bool)> {
+/// A phrase against query stems: `(dice, coverage, strong hits)`, or
+/// `None` with no strong word in common.
+fn rate_phrase(q: &[String], weak: &BTreeSet<String>, phrase: &str) -> Option<(f64, f64, u32)> {
     let p: BTreeSet<String> = normalize::content_stems(phrase).into_iter().collect();
     if p.is_empty() || q.is_empty() {
         return None;
@@ -236,8 +234,7 @@ fn rate_phrase(
         strong_hits as f64 / strong_q as f64
     };
     let dice = 2.0 * words.len().min(qs.len()) as f64 / (qs.len() + p.len()) as f64;
-    let confident = coverage >= cov_t && strong_hits >= strong_q.min(2) && strong_hits > 0;
-    Some((dice, coverage, confident))
+    Some((dice, coverage, strong_hits as u32))
 }
 
 fn closest_for(
@@ -254,8 +251,8 @@ fn closest_for(
     let mut q = normalize::content_stems(&query);
     q.sort();
     q.dedup();
-    let weak = weak_stems(pack)?;
-    let cov_t = meta_f64(pack, "symptom_confident_coverage", CONFIDENT_COVERAGE);
+    let rank = Ranking::for_pack(pack)?;
+    let weak = rank.weak_stems();
     let mut signals = Vec::new();
     for r in rules.iter().filter(|r| {
         o.signal_kind
@@ -272,9 +269,9 @@ fn closest_for(
         }
         let best = [r.pattern.as_str(), r.title.as_str()]
             .into_iter()
-            .filter_map(|ph| rate_phrase(&q, &weak, cov_t, ph))
+            .filter_map(|ph| rate_phrase(&q, &weak, ph))
             .max_by(|a, b| a.0.total_cmp(&b.0).then(a.1.total_cmp(&b.1)));
-        let Some((dice, coverage, confident)) = best else {
+        let Some((dice, coverage, hits)) = best else {
             continue;
         };
         let sec = match &r.section_id {
@@ -283,13 +280,11 @@ fn closest_for(
         };
         signals.push(ClosestSignal {
             rule: r.clone(),
-            score: (dice * 1_000_000.0).round() / 1_000_000.0,
+            score: round6(dice),
             coverage: (coverage * 1000.0).round() / 1000.0,
-            confidence: if confident {
-                Confidence::Confident
-            } else {
-                Confidence::Closest
-            },
+            strong_hits: hits,
+            margin: 0.0,
+            confidence: Confidence::Closest,
             citation: sec.as_ref().map(|s| s.citation.clone()),
             section: sec.map(|s| SignalSection {
                 section_id: s.section_id,
@@ -299,6 +294,20 @@ fn closest_for(
             }),
             has_tree: r.tree_id.is_some(),
         });
+    }
+    // The same rule as symptom search with dense off (signal rules have
+    // no vectors).
+    let leads = margins(&signals.iter().map(|s| s.score).collect::<Vec<_>>());
+    for (s, lead) in signals.iter_mut().zip(leads) {
+        s.margin = round6(lead.unwrap_or(s.score));
+        s.confidence = rank.rate(
+            false,
+            false,
+            s.coverage,
+            s.strong_hits,
+            None,
+            lead.map(round6),
+        );
     }
     signals.sort_by(|a, b| {
         b.score
@@ -465,6 +474,9 @@ pub struct SymptomHit {
     pub strong_hits: u32,
     pub strong_query_words: u32,
     pub cosine: Option<f64>,
+    /// This hit's score minus the best other hit's (its own score when it
+    /// is alone, which satisfies any margin).
+    pub margin: f64,
 }
 
 /// Words that say nothing about a fault on their own ("it runs", "it
@@ -505,29 +517,282 @@ pub const DEFAULT_WEAK_WORDS: &[&str] = &[
     "issue",
 ];
 
-/// The confidence rule's thresholds a pack sets (or the defaults).
-#[derive(Debug, Clone, Serialize, Deserialize, JsonSchema, PartialEq)]
-pub struct Thresholds {
-    /// `symptom_confident_coverage`.
-    pub coverage: f64,
-    /// `symptom_confident_dense`.
-    pub dense: f64,
-    /// A dense hit with no lexical match counts from this cosine.
-    pub dense_alone: f64,
+/// How lexical and dense scores combine.
+#[derive(Debug, Clone, Copy, Serialize, Deserialize, JsonSchema, PartialEq, Eq)]
+#[serde(rename_all = "snake_case")]
+pub enum Fusion {
+    /// `w * lexical + (1 - w) * cosine` with dense active, else `lexical`.
+    Weighted,
+    /// Reciprocal-rank fusion: `1 / (rrf_k + rank)` summed over the lexical
+    /// and the dense ranking (kept for comparison; not the default).
+    Rrf,
 }
 
-pub fn thresholds(pack: &Pack) -> Thresholds {
-    Thresholds {
-        coverage: meta_f64(pack, "symptom_confident_coverage", CONFIDENT_COVERAGE),
-        dense: meta_f64(pack, "symptom_confident_dense", CONFIDENT_DENSE),
-        dense_alone: DENSE_ALONE,
+/// The symptom ranking and confidence rule (CONTRACT "Symptom search"):
+/// the code defaults, then `pack_meta`, then a caller's overrides. A
+/// search returns the values it applied and whether dense was active, so
+/// any result can be replayed.
+#[derive(Debug, Clone, Serialize, Deserialize, JsonSchema, PartialEq)]
+pub struct Ranking {
+    pub fusion: Fusion,
+    /// `symptom_fusion_lexical_weight` w (the cosine weighs `1 - w`).
+    pub lexical_weight: f64,
+    /// `symptom_rrf_k`.
+    pub rrf_k: f64,
+    /// `symptom_dense_floor`: a dense hit with no lexical match is listed
+    /// from this cosine.
+    pub dense_floor: f64,
+    /// Dense active: `symptom_confident_margin`, `symptom_confident_coverage`,
+    /// `symptom_confident_strong_hits`, `symptom_confident_dense_alone`.
+    pub margin: f64,
+    pub coverage: f64,
+    pub strong_hits: u32,
+    pub dense_alone: f64,
+    /// Dense off: `symptom_confident_margin_lexical`,
+    /// `symptom_confident_coverage_lexical`,
+    /// `symptom_confident_strong_hits_lexical`.
+    pub margin_lexical: f64,
+    pub coverage_lexical: f64,
+    pub strong_hits_lexical: u32,
+    /// The weak words in force (the core list or the pack's, plus additions).
+    pub weak_words: Vec<String>,
+    /// Whether the dense half ran for this result (set by the search).
+    pub dense_active: bool,
+}
+
+/// Overrides of a pack's ranking, field by field.
+#[derive(Debug, Clone, Default, Serialize, Deserialize, JsonSchema, PartialEq)]
+#[serde(deny_unknown_fields)]
+pub struct RankingParams {
+    #[serde(default)]
+    pub fusion: Option<Fusion>,
+    #[serde(default)]
+    pub lexical_weight: Option<f64>,
+    #[serde(default)]
+    pub rrf_k: Option<f64>,
+    #[serde(default)]
+    pub dense_floor: Option<f64>,
+    #[serde(default)]
+    pub margin: Option<f64>,
+    #[serde(default)]
+    pub coverage: Option<f64>,
+    #[serde(default)]
+    pub strong_hits: Option<u32>,
+    #[serde(default)]
+    pub dense_alone: Option<f64>,
+    #[serde(default)]
+    pub margin_lexical: Option<f64>,
+    #[serde(default)]
+    pub coverage_lexical: Option<f64>,
+    #[serde(default)]
+    pub strong_hits_lexical: Option<u32>,
+    /// Replace the weak-word list.
+    #[serde(default)]
+    pub weak_words: Option<Vec<String>>,
+    /// Add to it.
+    #[serde(default)]
+    pub weak_words_add: Vec<String>,
+}
+
+/// The calibrated defaults (618 development items).
+pub const LEXICAL_WEIGHT: f64 = 0.10;
+pub const RRF_K: f64 = 60.0;
+pub const DENSE_FLOOR: f64 = 0.5;
+pub const CONFIDENT_MARGIN: f64 = 0.02;
+pub const CONFIDENT_COVERAGE: f64 = 0.50;
+pub const CONFIDENT_STRONG_HITS: u32 = 1;
+pub const CONFIDENT_DENSE_ALONE: f64 = 0.85;
+pub const CONFIDENT_MARGIN_LEXICAL: f64 = 0.15;
+pub const CONFIDENT_COVERAGE_LEXICAL: f64 = 0.30;
+pub const CONFIDENT_STRONG_HITS_LEXICAL: u32 = 1;
+
+fn meta_list(pack: &Pack, key: &str) -> Result<Option<Vec<String>>> {
+    pack.meta(key)
+        .map(|raw| {
+            serde_json::from_str(raw)
+                .map_err(|e| crate::error::Error::Pack(format!("pack_meta.{key}: {e}")))
+        })
+        .transpose()
+}
+
+fn meta_u32(pack: &Pack, key: &str, default: u32) -> u32 {
+    pack.meta(key)
+        .and_then(|v| v.trim().parse::<u32>().ok())
+        .unwrap_or(default)
+}
+
+impl Default for Ranking {
+    fn default() -> Self {
+        Self {
+            fusion: Fusion::Weighted,
+            lexical_weight: LEXICAL_WEIGHT,
+            rrf_k: RRF_K,
+            dense_floor: DENSE_FLOOR,
+            margin: CONFIDENT_MARGIN,
+            coverage: CONFIDENT_COVERAGE,
+            strong_hits: CONFIDENT_STRONG_HITS,
+            dense_alone: CONFIDENT_DENSE_ALONE,
+            margin_lexical: CONFIDENT_MARGIN_LEXICAL,
+            coverage_lexical: CONFIDENT_COVERAGE_LEXICAL,
+            strong_hits_lexical: CONFIDENT_STRONG_HITS_LEXICAL,
+            weak_words: DEFAULT_WEAK_WORDS.iter().map(|w| w.to_string()).collect(),
+            dense_active: false,
+        }
     }
 }
 
-/// Default `symptom_confident_coverage`.
-pub const CONFIDENT_COVERAGE: f64 = 0.5;
-/// Default `symptom_confident_dense`.
-pub const CONFIDENT_DENSE: f64 = 0.85;
+impl Ranking {
+    /// The defaults, then the pack's `pack_meta` keys.
+    pub fn for_pack(pack: &Pack) -> Result<Self> {
+        let d = Self::default();
+        let fusion = match pack.meta("symptom_fusion").map(str::trim) {
+            None | Some("weighted") => Fusion::Weighted,
+            Some("rrf") => Fusion::Rrf,
+            Some(other) => {
+                return Err(crate::error::Error::Pack(format!(
+                    "pack_meta.symptom_fusion {other:?}: weighted or rrf"
+                )));
+            }
+        };
+        let mut weak_words = meta_list(pack, "symptom_weak_words")?.unwrap_or(d.weak_words);
+        weak_words.extend(meta_list(pack, "symptom_weak_words_add")?.unwrap_or_default());
+        let r = Self {
+            fusion,
+            lexical_weight: meta_f64(pack, "symptom_fusion_lexical_weight", d.lexical_weight),
+            rrf_k: meta_f64(pack, "symptom_rrf_k", d.rrf_k),
+            dense_floor: meta_f64(pack, "symptom_dense_floor", d.dense_floor),
+            margin: meta_f64(pack, "symptom_confident_margin", d.margin),
+            coverage: meta_f64(pack, "symptom_confident_coverage", d.coverage),
+            strong_hits: meta_u32(pack, "symptom_confident_strong_hits", d.strong_hits),
+            dense_alone: meta_f64(pack, "symptom_confident_dense_alone", d.dense_alone),
+            margin_lexical: meta_f64(pack, "symptom_confident_margin_lexical", d.margin_lexical),
+            coverage_lexical: meta_f64(
+                pack,
+                "symptom_confident_coverage_lexical",
+                d.coverage_lexical,
+            ),
+            strong_hits_lexical: meta_u32(
+                pack,
+                "symptom_confident_strong_hits_lexical",
+                d.strong_hits_lexical,
+            ),
+            weak_words,
+            dense_active: false,
+        };
+        if !(0.0..=1.0).contains(&r.lexical_weight) {
+            return Err(crate::error::Error::Pack(
+                "pack_meta.symptom_fusion_lexical_weight must be within 0..1".into(),
+            ));
+        }
+        Ok(r)
+    }
+
+    /// Apply a caller's overrides.
+    pub fn with(mut self, p: &RankingParams) -> Result<Self> {
+        let finite = |name: &str, v: Option<f64>| -> Result<Option<f64>> {
+            match v {
+                Some(x) if !x.is_finite() || x < 0.0 => Err(crate::error::Error::Invalid(format!(
+                    "ranking.{name} must be a finite number >= 0"
+                ))),
+                other => Ok(other),
+            }
+        };
+        if let Some(f) = p.fusion {
+            self.fusion = f;
+        }
+        for (name, slot, v) in [
+            ("lexical_weight", &mut self.lexical_weight, p.lexical_weight),
+            ("rrf_k", &mut self.rrf_k, p.rrf_k),
+            ("dense_floor", &mut self.dense_floor, p.dense_floor),
+            ("margin", &mut self.margin, p.margin),
+            ("coverage", &mut self.coverage, p.coverage),
+            ("dense_alone", &mut self.dense_alone, p.dense_alone),
+            ("margin_lexical", &mut self.margin_lexical, p.margin_lexical),
+            (
+                "coverage_lexical",
+                &mut self.coverage_lexical,
+                p.coverage_lexical,
+            ),
+        ] {
+            if let Some(x) = finite(name, v)? {
+                *slot = x;
+            }
+        }
+        if self.lexical_weight > 1.0 {
+            return Err(crate::error::Error::Invalid(
+                "ranking.lexical_weight must be within 0..1".into(),
+            ));
+        }
+        if let Some(n) = p.strong_hits {
+            self.strong_hits = n;
+        }
+        if let Some(n) = p.strong_hits_lexical {
+            self.strong_hits_lexical = n;
+        }
+        if let Some(w) = &p.weak_words {
+            self.weak_words = w.clone();
+        }
+        self.weak_words.extend(p.weak_words_add.iter().cloned());
+        Ok(self)
+    }
+
+    fn weak_stems(&self) -> BTreeSet<String> {
+        self.weak_words
+            .iter()
+            .flat_map(|w| normalize::content_stems(w))
+            .collect()
+    }
+
+    /// The confidence rule on one hit's inputs. `margin` is the hit's score
+    /// minus the best other hit's; `None` when it is the only hit (then the
+    /// margin is satisfied).
+    pub fn rate(
+        &self,
+        dense_active: bool,
+        signal: bool,
+        coverage: f64,
+        strong_hits: u32,
+        cosine: Option<f64>,
+        margin: Option<f64>,
+    ) -> Confidence {
+        if signal {
+            return Confidence::Confident;
+        }
+        let confident = if dense_active {
+            margin.is_none_or(|m| m >= self.margin)
+                && ((coverage >= self.coverage && strong_hits >= self.strong_hits.max(1))
+                    || cosine.is_some_and(|c| c >= self.dense_alone))
+        } else {
+            margin.is_none_or(|m| m >= self.margin_lexical)
+                && coverage >= self.coverage_lexical
+                && strong_hits >= self.strong_hits_lexical.max(1)
+        };
+        if confident {
+            Confidence::Confident
+        } else {
+            Confidence::Closest
+        }
+    }
+}
+
+/// Each score's lead over the best other score; `None` alone.
+fn margins(scores: &[f64]) -> Vec<Option<f64>> {
+    if scores.len() < 2 {
+        return vec![None; scores.len()];
+    }
+    let mut best = (f64::NEG_INFINITY, f64::NEG_INFINITY);
+    for &s in scores {
+        if s > best.0 {
+            best = (s, best.0);
+        } else if s > best.1 {
+            best.1 = s;
+        }
+    }
+    scores
+        .iter()
+        .map(|&s| Some(s - if s >= best.0 { best.1 } else { best.0 }))
+        .collect()
+}
 
 fn meta_f64(pack: &Pack, key: &str, default: f64) -> f64 {
     pack.meta(key)
@@ -536,20 +801,9 @@ fn meta_f64(pack: &Pack, key: &str, default: f64) -> f64 {
         .unwrap_or(default)
 }
 
-fn weak_stems(pack: &Pack) -> Result<BTreeSet<String>> {
-    let words: Vec<String> = match pack.meta("symptom_weak_words") {
-        Some(raw) => serde_json::from_str(raw)
-            .map_err(|e| crate::error::Error::Pack(format!("pack_meta.symptom_weak_words: {e}")))?,
-        None => DEFAULT_WEAK_WORDS.iter().map(|w| w.to_string()).collect(),
-    };
-    Ok(words
-        .iter()
-        .flat_map(|w| normalize::content_stems(w))
-        .collect())
+fn round6(x: f64) -> f64 {
+    (x * 1_000_000.0).round() / 1_000_000.0
 }
-
-/// Lowest cosine that counts as a dense match on its own.
-const DENSE_ALONE: f64 = 0.5;
 
 /// Rank the pack's symptoms for `text` and/or `observations`, for `equip`.
 pub fn symptom_search(
@@ -559,6 +813,20 @@ pub fn symptom_search(
     equip: Option<&str>,
     embedder: Option<&dyn Embedder>,
     k: usize,
+) -> Result<(Vec<SymptomHit>, bool)> {
+    let rank = Ranking::for_pack(pack)?;
+    symptom_search_with(pack, text, observations, equip, embedder, k, &rank)
+}
+
+/// [`symptom_search`] under an explicit ranking rule.
+pub fn symptom_search_with(
+    pack: &Pack,
+    text: Option<&str>,
+    observations: &[Observation],
+    equip: Option<&str>,
+    embedder: Option<&dyn Embedder>,
+    k: usize,
+    rank: &Ranking,
 ) -> Result<(Vec<SymptomHit>, bool)> {
     let symptoms = pack.symptoms(equip)?;
     let text = text.map(str::trim).filter(|t| !t.is_empty());
@@ -604,11 +872,11 @@ pub fn symptom_search(
         },
         _ => None,
     };
-    let weak = weak_stems(pack)?;
+    let weak = rank.weak_stems();
     let strong_q = q.iter().filter(|w| !weak.contains(*w)).count();
-    let cov_t = meta_f64(pack, "symptom_confident_coverage", CONFIDENT_COVERAGE);
-    let dense_t = meta_f64(pack, "symptom_confident_dense", CONFIDENT_DENSE);
     let mut out = Vec::new();
+    // Raw (lexical, dense, signal, dense counted) per hit, scored after.
+    let mut raw: Vec<(f64, f64, f64, bool)> = Vec::new();
     for s in symptoms {
         let mut why = Vec::new();
         let mut lex = 0.0f64;
@@ -677,7 +945,7 @@ pub fn symptom_search(
                 });
             }
         }
-        let dense_counts = dense_used && (lex > 0.0 || dense >= DENSE_ALONE);
+        let dense_counts = dense_used && (lex > 0.0 || dense >= rank.dense_floor);
         if dense_counts {
             why.push(Why::Dense {
                 cosine: (dense * 1000.0).round() / 1000.0,
@@ -686,29 +954,74 @@ pub fn symptom_search(
         if lex <= 0.0 && signal <= 0.0 && !dense_counts {
             continue;
         }
-        let score = if dense_used {
-            0.6 * lex + 0.4 * dense.max(0.0)
-        } else {
-            lex
-        } + signal;
-        let words_cover = coverage >= cov_t && strong_hits >= strong_q.min(2) && strong_hits > 0;
-        let confident =
-            signal > 0.0 || words_cover || (dense_used && lex > 0.0 && dense >= dense_t);
+        raw.push((lex, dense, signal, dense_counts));
         out.push(SymptomHit {
             symptom: s,
-            score: (score * 1_000_000.0).round() / 1_000_000.0,
-            confidence: if confident {
-                Confidence::Confident
-            } else {
-                Confidence::Closest
-            },
+            score: 0.0,
+            confidence: Confidence::Closest,
             coverage: (coverage * 1000.0).round() / 1000.0,
             why,
-            lexical: (lex * 1_000_000.0).round() / 1_000_000.0,
+            lexical: round6(lex),
             strong_hits: strong_hits as u32,
             strong_query_words: strong_q as u32,
-            cosine: dense_used.then_some((dense * 1_000_000.0).round() / 1_000_000.0),
+            cosine: dense_used.then_some(round6(dense)),
+            margin: 0.0,
         });
+    }
+    // Fuse.
+    let w = rank.lexical_weight;
+    let scores: Vec<f64> = match rank.fusion {
+        Fusion::Weighted => raw
+            .iter()
+            .map(|&(lex, dense, signal, _)| {
+                let fused = if dense_used {
+                    w * lex + (1.0 - w) * dense.max(0.0)
+                } else {
+                    lex
+                };
+                round6(fused + signal)
+            })
+            .collect(),
+        Fusion::Rrf => {
+            // 1-based ranks among the hits that have that half (ties by id).
+            let rank_of = |key: &dyn Fn(usize) -> Option<f64>| -> Vec<Option<usize>> {
+                let mut idx: Vec<usize> = (0..raw.len()).filter(|&i| key(i).is_some()).collect();
+                idx.sort_by(|&a, &b| {
+                    key(b)
+                        .unwrap_or(0.0)
+                        .total_cmp(&key(a).unwrap_or(0.0))
+                        .then_with(|| out[a].symptom.symptom_id.cmp(&out[b].symptom.symptom_id))
+                });
+                let mut r = vec![None; raw.len()];
+                for (n, i) in idx.into_iter().enumerate() {
+                    r[i] = Some(n + 1);
+                }
+                r
+            };
+            let lex_rank = rank_of(&|i| (raw[i].0 > 0.0).then_some(raw[i].0));
+            let dense_rank = rank_of(&|i| raw[i].3.then_some(raw[i].1));
+            (0..raw.len())
+                .map(|i| {
+                    let f = |r: Option<usize>| r.map_or(0.0, |r| 1.0 / (rank.rrf_k + r as f64));
+                    round6(f(lex_rank[i]) + f(dense_rank[i]) + raw[i].2)
+                })
+                .collect()
+        }
+    };
+    // Each hit's lead over the best other hit (before truncation), then
+    // the confidence rule.
+    let leads = margins(&scores);
+    for (i, h) in out.iter_mut().enumerate() {
+        h.score = scores[i];
+        h.margin = round6(leads[i].unwrap_or(scores[i]));
+        h.confidence = rank.rate(
+            dense_used,
+            raw[i].2 > 0.0,
+            h.coverage,
+            h.strong_hits,
+            h.cosine,
+            leads[i].map(round6),
+        );
     }
     out.sort_by(|a, b| {
         b.score

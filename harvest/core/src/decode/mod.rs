@@ -136,6 +136,9 @@ pub(crate) fn hex_bytes(s: &str) -> Result<Vec<u8>, String> {
         .filter(|c| !c.is_whitespace() && *c != ':' && *c != ',')
         .collect();
     let digits = digits.trim_start_matches("0x");
+    if !digits.bytes().all(|b| b.is_ascii_hexdigit()) {
+        return Err(format!("not hex: {s:?}"));
+    }
     if !digits.len().is_multiple_of(2) {
         return Err(format!("odd number of hex digits in {s:?}"));
     }

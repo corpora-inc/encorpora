@@ -71,6 +71,51 @@ let report = records.flush(&my_https_transport, 50)?;
 let n = notes::structure_note(note_text, &notes::NoteVocab::from_pack(&pack)?, Some(llm))?;
 ```
 
+### A native shell (the maintenance API in process)
+
+A Tauri (or any native) shell builds the same host `harvest serve` uses and
+calls the dispatcher directly. Link the library with
+`default-features = false`, plus `features = ["net"]` for an embedding
+server URL or a hub address (the plain-HTTP client; without it those two
+settings are refused at start).
+
+```rust
+use harvest_core::shell::{self, HostConfig, KeyStore};
+use harvest_core::api;
+
+struct Keychain; // the shell's OS-keychain bridge
+impl KeyStore for Keychain {
+    fn load(&self, name: &str) -> harvest_core::Result<Option<Vec<u8>>> { /* keychain get */ }
+    fn store(&self, name: &str, secret: &[u8]) -> harvest_core::Result<()> { /* keychain set */ }
+}
+
+let cfg = HostConfig {
+    packs_root: "<app data>/packs".into(),          // <root>/<pack_id>/current
+    records_path: "<app data>/records.db".into(),
+    pack_keys: vec![TrustedKey::parse(PACK_PUBKEY)?],
+    encrypt_records: true,                          // key: shell::RECORDS_KEY in the key store
+    embedder_url: Some("http://127.0.0.1:8095".into()), // the GGUF it serves is found and hashed
+    hub_url: Some("https://hub.example".into()),    // device key: shell::DEVICE_KEY
+    ..Default::default()
+};
+let (host, report) = shell::open_host(&cfg, &Keychain)?;
+// report: packs, per-pack dense status, device id and public key, warnings.
+
+let out: serde_json::Value = api::call(&host, "pack.list", serde_json::json!({}))?;
+let text: String = api::call_json(&host, "symptom.search", r#"{"text":"won't crank"}"#); // {"ok":…}
+let asset: Option<(String, Vec<u8>)> = host.asset("pump40", "fig-3-1")?;   // (media type, bytes), re-hashed
+```
+
+The key store is asked for two secrets by name and stores each once,
+the first time, when the engine generates it: `shell::RECORDS_KEY`
+(32 bytes, records at rest) and `shell::DEVICE_KEY` (the 32-byte ed25519
+seed that is the device's identity at the hub). `shell::FileKeyStore` keeps
+them in a directory (development), `MemoryKeyStore` in memory (tests).
+`api::call` takes `serde_json::Value` params and returns the typed
+result as a value or an `ApiError {code, message}`; `api::call_json`
+takes and returns JSON text in the transport envelope. The methods and
+their shapes are in `harvest/api/types.ts`.
+
 ### The model
 
 The engine asks a model only for small jobs with a JSON schema, and checks
