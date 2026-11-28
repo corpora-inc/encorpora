@@ -1558,7 +1558,96 @@
       ],
       "type": "object"
     },
+    "DenseOff": {
+      "description": "Why dense search is off for a pack.",
+      "oneOf": [
+        {
+          "enum": [
+            "dimension_mismatch"
+          ],
+          "type": "string"
+        },
+        {
+          "const": "pack_has_no_vectors",
+          "description": "The pack was baked without vectors.",
+          "type": "string"
+        },
+        {
+          "const": "no_embedder_loaded",
+          "description": "The host loaded no embedder for this pack.",
+          "type": "string"
+        },
+        {
+          "const": "id_mismatch",
+          "description": "The host's embedder is not the one the pack was baked with.",
+          "type": "string"
+        }
+      ]
+    },
     "DenseStatus": {
+      "description": "Whether dense search runs for a pack on this host.",
+      "properties": {
+        "active": {
+          "type": "boolean"
+        },
+        "host_embed_dim": {
+          "format": "uint",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "host_embedder_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "pack_embed_dim": {
+          "format": "uint",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "pack_embedder_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "pack_vectors": {
+          "description": "Chunk vectors in the pack.",
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/DenseOff"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Why not, when not."
+        }
+      },
+      "required": [
+        "active",
+        "reason",
+        "pack_embedder_id",
+        "pack_embed_dim",
+        "pack_vectors",
+        "host_embedder_id",
+        "host_embed_dim"
+      ],
+      "type": "object"
+    },
+    "DenseStatus2": {
       "description": "Why the dense half did or did not run.",
       "oneOf": [
         {
@@ -5233,6 +5322,10 @@
             "null"
           ]
         },
+        "dense": {
+          "$ref": "#/$defs/DenseStatus",
+          "description": "Whether dense search runs for this pack on this host, and why not."
+        },
         "equipment": {
           "items": {
             "$ref": "#/$defs/Equipment"
@@ -5322,7 +5415,8 @@
         "facets",
         "signal_kinds",
         "repeat_window_days",
-        "packs"
+        "packs",
+        "dense"
       ],
       "type": "object"
     },
@@ -5343,6 +5437,10 @@
     "PackSummary": {
       "description": "One installed pack, for choosing among several.",
       "properties": {
+        "dense": {
+          "$ref": "#/$defs/DenseStatus",
+          "description": "Whether dense search runs for this pack on this host, and why not."
+        },
         "equipment_roots": {
           "description": "The top of each equipment tree (no parent).",
           "items": {
@@ -5377,7 +5475,8 @@
         "version",
         "equipment_roots",
         "licenses",
-        "has_fault_trees"
+        "has_fault_trees",
+        "dense"
       ],
       "type": "object"
     },
@@ -6665,7 +6764,7 @@
       "description": "A search result.",
       "properties": {
         "dense": {
-          "$ref": "#/$defs/DenseStatus"
+          "$ref": "#/$defs/DenseStatus2"
         },
         "expansions": {
           "items": {
@@ -7814,14 +7913,36 @@
         "confidence": {
           "$ref": "#/$defs/Confidence"
         },
+        "cosine": {
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
         "coverage": {
           "description": "Share of the query's meaningful words the best phrase covers.",
+          "format": "double",
+          "type": "number"
+        },
+        "lexical": {
+          "description": "The confidence rule's inputs, for calibrating it offline: the\nlexical Dice of the best phrase, the meaningful query words it\ncovers and how many the query has, and the dense cosine (whenever\ndense ran, counted or not).",
           "format": "double",
           "type": "number"
         },
         "score": {
           "format": "double",
           "type": "number"
+        },
+        "strong_hits": {
+          "format": "uint32",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "strong_query_words": {
+          "format": "uint32",
+          "minimum": 0,
+          "type": "integer"
         },
         "symptom": {
           "$ref": "#/$defs/Symptom"
@@ -7838,7 +7959,11 @@
         "score",
         "confidence",
         "coverage",
-        "why"
+        "why",
+        "lexical",
+        "strong_hits",
+        "strong_query_words",
+        "cosine"
       ],
       "type": "object"
     },
@@ -7875,12 +8000,17 @@
             }
           ],
           "description": "The signal match, when observations were given."
+        },
+        "thresholds": {
+          "$ref": "#/$defs/Thresholds",
+          "description": "The confidence rule's thresholds for this pack (with each hit's\ninputs, enough to calibrate the rule offline)."
         }
       },
       "required": [
         "confidence",
         "hits",
         "dense",
+        "thresholds",
         "equip_id",
         "signals"
       ],
@@ -8428,6 +8558,32 @@
         "guards",
         "requirements",
         "steps"
+      ],
+      "type": "object"
+    },
+    "Thresholds": {
+      "description": "The confidence rule's thresholds a pack sets (or the defaults).",
+      "properties": {
+        "coverage": {
+          "description": "`symptom_confident_coverage`.",
+          "format": "double",
+          "type": "number"
+        },
+        "dense": {
+          "description": "`symptom_confident_dense`.",
+          "format": "double",
+          "type": "number"
+        },
+        "dense_alone": {
+          "description": "A dense hit with no lexical match counts from this cosine.",
+          "format": "double",
+          "type": "number"
+        }
+      },
+      "required": [
+        "coverage",
+        "dense",
+        "dense_alone"
       ],
       "type": "object"
     },

@@ -492,3 +492,54 @@ fn pack_list_names_every_installed_pack() {
         .unwrap();
     assert_eq!(c["has_fault_trees"], false);
 }
+
+struct WrongDim(String);
+impl harvest_core::Embedder for WrongDim {
+    fn id(&self) -> &str {
+        &self.0
+    }
+    fn dim(&self) -> usize {
+        3
+    }
+    fn embed_query(&self, _: &str) -> harvest_core::Result<Vec<f32>> {
+        Ok(vec![0.0; 3])
+    }
+}
+
+#[test]
+fn dense_search_says_when_it_is_off_and_why() {
+    let (_t, h) = host(env());
+    let info = ok(&h, "pack.info", json!({}));
+    assert_eq!(info["dense"]["active"], true, "{}", info["dense"]);
+    assert!(info["dense"]["pack_vectors"].as_u64().unwrap() > 0);
+    let s = ok(
+        &h,
+        "symptom.search",
+        json!({"text": "engine will not crank", "k": 2}),
+    );
+    assert_eq!(s["dense"], true);
+    assert_eq!(s["thresholds"]["coverage"], 0.5);
+    let top = &s["hits"][0];
+    assert!(top["cosine"].is_number() && top["lexical"].is_number());
+    assert!(top["strong_query_words"].as_u64().unwrap() >= top["strong_hits"].as_u64().unwrap());
+
+    let reason = |h: &Host| ok(h, "pack.list", json!({}))[0]["dense"]["reason"].clone();
+    let Env { _tmp, pack, rec } = env();
+    let id = pack.meta("embedder_id").unwrap().to_string();
+    let none = Host::new(vec![pack.clone()], Records::in_memory().unwrap());
+    assert_eq!(reason(&none), "no_embedder_loaded");
+    let other = Host::new(vec![pack.clone()], Records::in_memory().unwrap()).with_embedder(
+        "pump40",
+        Arc::new(harvest_core::HashingEmbedder::new(fixture::EMBED_DIM + 1)),
+    );
+    assert_eq!(reason(&other), "id_mismatch");
+    let dim = Host::new(vec![pack], rec).with_embedder("pump40", Arc::new(WrongDim(id)));
+    assert_eq!(reason(&dim), "dimension_mismatch");
+    let s = ok(
+        &dim,
+        "symptom.search",
+        json!({"text": "engine will not crank"}),
+    );
+    assert_eq!(s["dense"], false);
+    assert!(s["hits"][0]["cosine"].is_null());
+}

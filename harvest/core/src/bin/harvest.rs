@@ -31,7 +31,7 @@ const USAGE: &str = "usage:
                   # (fault trees, tasks, levels); --samples: its field-note bundle and asset registry
   harvest serve   <packs-root|pack-dir> --records <records-db> [--bind 127.0.0.1:4317] [--static DIR]
                   [--allow-origin URL]... [--records-key FILE] [--outbox-dir DIR] [--field-pubkey KEY]
-                  [--embedder auto|none|hashing] [--pubkey KEY]   # the JSON API over HTTP (CONTRACT \"API\")
+                  [--embedder auto|none|hashing|<file.gguf>|<url> [--embedder-gguf FILE|--embedder-sha256 HEX]] [--pubkey KEY]   # the JSON API over HTTP (CONTRACT \"API\")
                   [--hub URL [--packs-root ROOT] [--device-key FILE]]   # sync.flush / sync.pull through a hub
   harvest api-schema <dir> [--check]      # writes (or checks) api.schema.json and types.ts
   harvest hub     <hub-db> --stream NAME [--packs ROOT] [--bind 127.0.0.1:4318] [--allow-origin URL]...
@@ -251,11 +251,8 @@ fn embedder(args: &Args, pack: &Pack) -> Result<Option<Arc<dyn Embedder>>, CliEr
                 }
                 (Some(path), None) => harvest_core::packs::sha256_file(Path::new(path))?,
                 (None, Some(sha)) => sha.to_string(),
-                (None, None) => {
-                    return Err(CliError::Usage(
-                        "--embedder <url> needs --embedder-gguf FILE or --embedder-sha256 HEX (the GGUF the server loaded)".into(),
-                    ));
-                }
+                // Ask the server which file it loaded and hash it here.
+                (None, None) => server_model_sha(url)?,
             };
             let e = harvest_core::embed::ServerEmbedder::for_pack(
                 url,
@@ -267,6 +264,71 @@ fn embedder(args: &Args, pack: &Pack) -> Result<Option<Arc<dyn Embedder>>, CliEr
         }
         other => Err(CliError::Usage(format!("unknown embedder {other:?}"))),
     }
+}
+
+/// The SHA-256 of the GGUF a local llama-server loaded: its `/props`
+/// (`model_path`) or `/v1/models` (the first model's id) names the file,
+/// which is hashed here (once per process).
+fn server_model_sha(url: &str) -> Result<String, CliError> {
+    static CACHE: std::sync::Mutex<std::collections::BTreeMap<String, String>> =
+        std::sync::Mutex::new(std::collections::BTreeMap::new());
+    if let Some(s) = CACHE.lock().unwrap_or_else(|p| p.into_inner()).get(url) {
+        return Ok(s.clone());
+    }
+    let root = url.trim_end_matches('/');
+    let root = root.strip_suffix("/v1").unwrap_or(root);
+    let agent: ureq::Agent = ureq::Agent::config_builder()
+        .timeout_global(Some(std::time::Duration::from_secs(10)))
+        .build()
+        .into();
+    let get = |path: &str| -> Option<serde_json::Value> {
+        agent
+            .get(&format!("{root}{path}"))
+            .call()
+            .ok()?
+            .body_mut()
+            .read_json::<serde_json::Value>()
+            .ok()
+    };
+    let path = get("/props")
+        .and_then(|v| v["model_path"].as_str().map(str::to_string))
+        .or_else(|| get("/v1/models").and_then(|v| v["data"][0]["id"].as_str().map(str::to_string)))
+        .filter(|p| Path::new(p).is_file())
+        .ok_or_else(|| {
+            CliError::Usage(format!(
+                "{url} does not say which GGUF it loaded (or the file is not on this machine): give --embedder-gguf FILE or --embedder-sha256 HEX"
+            ))
+        })?;
+    let sha = harvest_core::packs::sha256_file(Path::new(&path))?;
+    eprintln!("harvest: {url} serves {path} (sha256 {})", &sha[..16]);
+    CACHE
+        .lock()
+        .unwrap_or_else(|p| p.into_inner())
+        .insert(url.to_string(), sha.clone());
+    Ok(sha)
+}
+
+/// Log, per pack, whether dense search runs and why not.
+fn log_dense(cmd: &str, pack: &Pack, e: Option<&dyn Embedder>) -> Result<(), CliError> {
+    let st = pack.dense_status(e)?;
+    match st.reason {
+        None => eprintln!(
+            "harvest {cmd}: {} dense search on ({}, {} vectors)",
+            pack.pack_id(),
+            st.host_embedder_id.unwrap_or_default(),
+            st.pack_vectors
+        ),
+        Some(r) => eprintln!(
+            "harvest {cmd}: {} dense search OFF: {} (pack {:?} dim {:?}; host {:?} dim {:?}); symptom search is lexical only",
+            pack.pack_id(),
+            r.as_str(),
+            st.pack_embedder_id,
+            st.pack_embed_dim,
+            st.host_embedder_id,
+            st.host_embed_dim
+        ),
+    }
+    Ok(())
 }
 
 #[cfg(feature = "llama")]
@@ -1107,6 +1169,8 @@ fn serve(args: &Args) -> Result<(), CliError> {
         "outbox-dir",
         "field-pubkey",
         "embedder",
+        "embedder-gguf",
+        "embedder-sha256",
         "pubkey",
         "hub",
         "packs-root",
@@ -1133,8 +1197,19 @@ fn serve(args: &Args) -> Result<(), CliError> {
         keys_from(&field_specs)?
     };
     let mut host = Host::new(packs.clone(), records).with_field_keys(field_keys);
+    // One embedder serves every pack baked with it. A pack baked with
+    // another is served lexical only, and says so.
     for p in &packs {
-        if let Some(e) = embedder(args, p)? {
+        let e = match embedder(args, p) {
+            Ok(e) => e,
+            Err(CliError::Engine(err)) if packs.len() > 1 => {
+                eprintln!("harvest serve: {}: {err}", p.pack_id());
+                None
+            }
+            Err(e) => return Err(e),
+        };
+        log_dense("serve", p, e.as_deref())?;
+        if let Some(e) = e {
             host = host.with_embedder(p.pack_id(), e);
         }
     }

@@ -457,6 +457,14 @@ pub struct SymptomHit {
     /// Share of the query's meaningful words the best phrase covers.
     pub coverage: f64,
     pub why: Vec<Why>,
+    /// The confidence rule's inputs, for calibrating it offline: the
+    /// lexical Dice of the best phrase, the meaningful query words it
+    /// covers and how many the query has, and the dense cosine (whenever
+    /// dense ran, counted or not).
+    pub lexical: f64,
+    pub strong_hits: u32,
+    pub strong_query_words: u32,
+    pub cosine: Option<f64>,
 }
 
 /// Words that say nothing about a fault on their own ("it runs", "it
@@ -496,6 +504,25 @@ pub const DEFAULT_WEAK_WORDS: &[&str] = &[
     "problem",
     "issue",
 ];
+
+/// The confidence rule's thresholds a pack sets (or the defaults).
+#[derive(Debug, Clone, Serialize, Deserialize, JsonSchema, PartialEq)]
+pub struct Thresholds {
+    /// `symptom_confident_coverage`.
+    pub coverage: f64,
+    /// `symptom_confident_dense`.
+    pub dense: f64,
+    /// A dense hit with no lexical match counts from this cosine.
+    pub dense_alone: f64,
+}
+
+pub fn thresholds(pack: &Pack) -> Thresholds {
+    Thresholds {
+        coverage: meta_f64(pack, "symptom_confident_coverage", CONFIDENT_COVERAGE),
+        dense: meta_f64(pack, "symptom_confident_dense", CONFIDENT_DENSE),
+        dense_alone: DENSE_ALONE,
+    }
+}
 
 /// Default `symptom_confident_coverage`.
 pub const CONFIDENT_COVERAGE: f64 = 0.5;
@@ -677,6 +704,10 @@ pub fn symptom_search(
             },
             coverage: (coverage * 1000.0).round() / 1000.0,
             why,
+            lexical: (lex * 1_000_000.0).round() / 1_000_000.0,
+            strong_hits: strong_hits as u32,
+            strong_query_words: strong_q as u32,
+            cosine: dense_used.then_some((dense * 1_000_000.0).round() / 1_000_000.0),
         });
     }
     out.sort_by(|a, b| {

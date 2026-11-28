@@ -671,7 +671,13 @@ CREATE TABLE failure_mode (mode_id TEXT PRIMARY KEY, equip_id TEXT NOT NULL, sys
   phrase covers at least `symptom_confident_coverage` (default 0.5) of
   the query's other words and at least two of them (or all, when fewer),
   or the cosine reaches `symptom_confident_dense` (default 0.85) beside a
-  lexical match; else `closest`. Each hit says why it matched.
+  lexical match; else `closest`. Each hit says why it matched, and
+  carries the rule's inputs (`lexical`, `coverage`, `strong_hits`,
+  `strong_query_words`, `cosine` whenever dense ran) and the result the
+  pack's `thresholds`, so the rule can be calibrated offline. `pack.info`
+  and `pack.list` say per pack whether dense search runs on this host and
+  why not (`pack_has_no_vectors`, `no_embedder_loaded`, `id_mismatch`,
+  `dimension_mismatch`).
 - **Locations and assets.** `section_loc.page_label` is the printed page
   ("3-2"); `page_index` is the 1-based physical page of the source file.
   `section_loc.boxes` is optional (older packs have no such column). A citation carries the source, edition, the
