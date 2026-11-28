@@ -23,6 +23,8 @@
 //! plugins (desktop, Android) or the iOS share sheet from Rust only.
 
 mod export;
+/// The knowledge pack: installed, verified and read through harvest-core.
+mod pack;
 /// Pack signing keys compiled into the app (production; lab in dev builds only).
 pub mod pack_keys;
 /// The bundled speech model, installed into the STT plugin on first launch.
@@ -47,6 +49,7 @@ pub fn run() {
         })
         .invoke_handler(tauri::generate_handler![
             export::export_file,
+            pack::pack_show,
             voice::voice_model
         ])
         .run(tauri::generate_context!())

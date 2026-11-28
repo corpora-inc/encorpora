@@ -223,7 +223,7 @@ fn open_bundled(app: &AppHandle, file: &str) -> Result<Option<Box<dyn std::io::R
 }
 
 #[cfg(target_os = "android")]
-mod android_asset {
+pub(crate) mod android_asset {
     //! Read an APK asset through the NDK's AAssetManager, on the calling
     //! (background) thread.
     use jni::objects::JObject;
