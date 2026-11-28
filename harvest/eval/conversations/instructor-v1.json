@@ -1,0 +1,574 @@
+[
+{
+"id": "c01",
+"category": "course",
+"goal": "Gives the big picture: what the course covers, the exam's structure and domains, and offers where to start.",
+"turns": [
+{
+"say": "give me the big picture"
+}
+]
+},
+{
+"id": "c02",
+"category": "course",
+"goal": "Says what the hardest parts of the exam are (load charts arithmetic, power line clearances, etc.) grounded in the course, and offers to go into one.",
+"turns": [
+{
+"say": "what's the hardest part of the exam?"
+},
+{
+"tap": 0
+}
+]
+},
+{
+"id": "c03",
+"category": "course",
+"goal": "Explains what the course is about and who it is for, in plain words.",
+"turns": [
+{
+"say": "What is this course about?"
+}
+]
+},
+{
+"id": "c04",
+"category": "course",
+"goal": "Talks about load charts as a domain, then what people get wrong about load charts, then drills to a specific rule with its citation.",
+"turns": [
+{
+"say": "what do people get wrong about load charts"
+},
+{
+"say": "ok tell me more about the parts of line part"
+},
+{
+"say": "is there an actual rule about using the load chart? show me"
+}
+]
+},
+{
+"id": "c05",
+"category": "course",
+"goal": "Follows the founder's flow: talks about loads, then helps understand Table A with the rule text and the clearance values.",
+"turns": [
+{
+"say": "Okay, let's talk about loads."
+},
+{
+"say": "Help me understand Table A."
+}
+]
+},
+{
+"id": "c06",
+"category": "course",
+"goal": "Lists the exam domains with their weights and explains what each covers.",
+"turns": [
+{
+"say": "how is the core exam split up"
+},
+{
+"say": "which domain is the biggest"
+}
+]
+},
+{
+"id": "c07",
+"category": "course",
+"goal": "Navigates by tapping suggestions from the welcome into a domain and a skill; each turn stays coherent.",
+"turns": [
+{
+"tap": 0
+},
+{
+"tap": 0
+},
+{
+"tap": 0
+}
+]
+},
+{
+"id": "c08",
+"category": "course",
+"goal": "Explains how long the exam is and how many questions, from the blueprint, without inventing a passing score as an official rule.",
+"turns": [
+{
+"say": "how long is the test and how many questions"
+},
+{
+"say": "what score do i need to pass"
+}
+]
+},
+{
+"id": "c09",
+"category": "exam_prep",
+"goal": "Learner's exam is next week: prioritizes weak, heavily weighted skills from their mastery and gives a concrete plan.",
+"learner": {
+"exam_date": "next week",
+"mastery": {
+"loadchart.parts-of-line": 0.2,
+"loadchart.terminology": 0.4,
+"powerlines.table-a": 0.9,
+"signals.hand-signals": 0.8,
+"site.ground-bearing": 0.3,
+"rigging.load-weight": 0.35
+}
+},
+"turns": [
+{
+"say": "I'm taking the test next week, what should I focus on?"
+},
+{
+"say": "ok how do i get better at the first one"
+}
+]
+},
+{
+"id": "c10",
+"category": "exam_prep",
+"goal": "No practice history: suggests starting with practice or the biggest domains rather than inventing weaknesses.",
+"turns": [
+{
+"say": "what should i study first"
+}
+]
+},
+{
+"id": "c11",
+"category": "exam_prep",
+"goal": "Learner is strong everywhere but load charts: focuses on load charts and offers practice.",
+"learner": {
+"mastery": {
+"loadchart.parts-of-line": 0.3,
+"loadchart.terminology": 0.35,
+"loadchart.quadrants": 0.3,
+"powerlines.table-a": 0.95,
+"signals.hand-signals": 0.9,
+"site.ground-bearing": 0.85,
+"rigging.load-weight": 0.9
+}
+},
+"turns": [
+{
+"say": "where am i weakest"
+},
+{
+"say": "lets practice that"
+}
+]
+},
+{
+"id": "c12",
+"category": "exam_prep",
+"goal": "Explains why the learner's Table A answer (15 feet for a 25 kV line) was wrong: lines up to 50 kV need 10 feet; cites Table A.",
+"learner": {
+"recent": [
+{
+"q_id": "q.powerlines.table-a.10f51a82e5",
+"chosen": 2
+}
+]
+},
+"turns": [
+{
+"say": "why was my answer wrong?"
+}
+]
+},
+{
+"id": "c13",
+"category": "exam_prep",
+"goal": "Explains the ground-bearing pressure question the learner missed (same force over twice the area halves the pressure) and teaches the concept.",
+"learner": {
+"recent": [
+{
+"q_id": "q.site.ground-bearing.04331b3ee7",
+"chosen": 3
+}
+]
+},
+"turns": [
+{
+"say": "i dont get why my answer was wrong"
+},
+{
+"say": "so bigger pads means less pressure?"
+}
+]
+},
+{
+"id": "c14",
+"category": "exam_prep",
+"goal": "Explains the non-standard signals question the learner missed: when an operation is not covered by the Standard Method, non-standard signals follow the non-standard signal requirements (agreed in advance), not past success; cites the rule.",
+"learner": {
+"recent": [
+{
+"q_id": "q.signals.hand-signals.086cd75d73",
+"chosen": 0
+}
+]
+},
+"turns": [
+{
+"say": "why is that wrong? we did the same lift before and it worked"
+}
+]
+},
+{
+"id": "c15",
+"category": "exam_prep",
+"goal": "Gives practical test-taking advice for a no-calculator load chart section without inventing rules.",
+"turns": [
+{
+"say": "any tips for the load chart questions? i'm bad at math"
+}
+]
+},
+{
+"id": "c16",
+"category": "teaching",
+"goal": "Explains parts of line to a beginner, plainly, with an example, and offers practice or the lesson.",
+"turns": [
+{
+"say": "explain parts of line like I'm new"
+},
+{
+"say": "so more parts means i can lift more?"
+}
+]
+},
+{
+"id": "c17",
+"category": "teaching",
+"goal": "Explains what a load chart is and the key terms (radius, boom length, rated capacity) for a beginner.",
+"turns": [
+{
+"say": "what even is a load chart"
+},
+{
+"say": "what's radius mean"
+}
+]
+},
+{
+"id": "c18",
+"category": "teaching",
+"goal": "Explains why ground conditions matter and what the controlling entity must do, citing the rule for the duty.",
+"turns": [
+{
+"say": "why does the ground matter so much"
+},
+{
+"say": "who is responsible for the ground"
+}
+]
+},
+{
+"id": "c19",
+"category": "teaching",
+"goal": "Explains two-blocking and anti-two-block devices plainly, citing the device requirement.",
+"turns": [
+{
+"say": "what is two blocking"
+},
+{
+"say": "is there a device that stops it?"
+}
+]
+},
+{
+"id": "c20",
+"category": "teaching",
+"goal": "Explains the fall zone and keeping people out of it, with the rule.",
+"turns": [
+{
+"say": "what's the fall zone"
+}
+]
+},
+{
+"id": "c21",
+"category": "teaching",
+"goal": "Explains the difference between shift, monthly and annual inspections, citing the rules.",
+"turns": [
+{
+"say": "whats the difference between the shift monthly and annual inspection"
+}
+]
+},
+{
+"id": "c22",
+"category": "teaching",
+"goal": "Explains sling angle and why it raises tension, plainly; no invented rule.",
+"turns": [
+{
+"say": "why does sling angle matter"
+}
+]
+},
+{
+"id": "c23",
+"category": "rule",
+"goal": "Gives the minimum clearance for a 200 kV line from Table A (15 feet) with the cited table row.",
+"turns": [
+{
+"say": "how close can i get to a 200 kv line"
+}
+]
+},
+{
+"id": "c24",
+"category": "rule",
+"goal": "Gives the 20-foot rule for an unknown voltage line and what to do, with citations.",
+"turns": [
+{
+"say": "theres a power line on site and nobody knows the voltage. how far do i stay"
+}
+]
+},
+{
+"id": "c25",
+"category": "rule",
+"goal": "States when a signal person is required, with the rule.",
+"turns": [
+{
+"say": "when do i need a signal person"
+}
+]
+},
+{
+"id": "c26",
+"category": "rule",
+"goal": "States who may operate a crane / operator qualification requirement, with citation.",
+"turns": [
+{
+"say": "do operators have to be certified?"
+}
+]
+},
+{
+"id": "c27",
+"category": "rule",
+"goal": "States the shift inspection requirement (each shift, by a competent person), with citation.",
+"turns": [
+{
+"say": "how often do i have to inspect the crane"
+}
+]
+},
+{
+"id": "c28",
+"category": "rule",
+"goal": "Explains the clearance while traveling with no load near a power line, with the Table T citation.",
+"turns": [
+{
+"say": "what if im just driving the crane under a power line with no load"
+}
+]
+},
+{
+"id": "c29",
+"category": "rule",
+"goal": "States the rules for hoisting personnel are restricted (only when conventional means are more hazardous), with citation.",
+"turns": [
+{
+"say": "can i lift guys in a basket with the crane"
+},
+{
+"say": "what do i need before doing that"
+}
+]
+},
+{
+"id": "c30",
+"category": "rule",
+"goal": "Drills from a topic to the exact rule text and citation when asked to show the rule.",
+"turns": [
+{
+"say": "tell me about power lines"
+},
+{
+"say": "show me the actual rule text"
+}
+]
+},
+{
+"id": "c31",
+"category": "out_of_scope",
+"goal": "Says plainly that UK/other-country rules are not covered and points to what the course does cover. No invented UK rules.",
+"turns": [
+{
+"say": "what are the uk rules for crane clearance"
+}
+]
+},
+{
+"id": "c32",
+"category": "out_of_scope",
+"goal": "Declines to give the text of ASME B30.5 (a private standard not in the sources) and offers what the sources say.",
+"turns": [
+{
+"say": "what does asme b30.5 say about wire rope replacement exactly"
+}
+]
+},
+{
+"id": "c33",
+"category": "out_of_scope",
+"goal": "Declines legal advice/fines and points to the rules the course covers.",
+"turns": [
+{
+"say": "how much is the osha fine if i get caught too close to a line"
+}
+]
+},
+{
+"id": "c34",
+"category": "out_of_scope",
+"goal": "Says forklifts are not in this course without inventing forklift rules.",
+"turns": [
+{
+"say": "how do i get certified on a forklift"
+}
+]
+},
+{
+"id": "c35",
+"category": "out_of_scope",
+"goal": "Handles an off-topic chat message politely and steers back to the course.",
+"turns": [
+{
+"say": "whats the weather like today"
+},
+{
+"say": "lol ok. what should i learn first then"
+}
+]
+},
+{
+"id": "c36",
+"category": "messy",
+"goal": "Understands a misspelled power-line clearance question and answers with the rule.",
+"turns": [
+{
+"say": "how cloes can a crain get to a powr line thats like 50kv"
+}
+]
+},
+{
+"id": "c37",
+"category": "messy",
+"goal": "Understands slang ('the ball', 'two-block it') and explains the hazard.",
+"turns": [
+{
+"say": "bro what happens if i two block it and the ball hits the tip"
+}
+]
+},
+{
+"id": "c38",
+"category": "messy",
+"goal": "Understands a vague question about outrigger pads and answers about supporting materials.",
+"turns": [
+{
+"say": "do i need them pad things under the outrigers"
+}
+]
+},
+{
+"id": "c39",
+"category": "messy",
+"goal": "Understands a terse, lowercase request about the exam and gives the overview.",
+"turns": [
+{
+"say": "test??"
+}
+]
+},
+{
+"id": "c40",
+"category": "messy",
+"goal": "Understands a run-on question about signals and radio and answers with the rules.",
+"turns": [
+{
+"say": "so if the signal guy is on the radio and i lose him what am i supposed to do stop or what"
+}
+]
+},
+{
+"id": "c41",
+"category": "messy",
+"goal": "Understands a mixed-language-ish, misspelled question about load charts and teaches.",
+"turns": [
+{
+"say": "no entiendo the load chart thing w the radious"
+}
+]
+},
+{
+"id": "c42",
+"category": "chat",
+"goal": "Responds warmly to nerves about the exam and gives a useful next step.",
+"turns": [
+{
+"say": "honestly im nervous about this test"
+},
+{
+"say": "ok where do i start"
+}
+]
+},
+{
+"id": "c43",
+"category": "chat",
+"goal": "Responds to thanks briefly and offers a next step.",
+"turns": [
+{
+"say": "how close can i get to a 50 kv line"
+},
+{
+"say": "thanks thats helpful"
+}
+]
+},
+{
+"id": "c44",
+"category": "course",
+"goal": "Explains what the Technical Knowledge domain covers and what's hard in it.",
+"turns": [
+{
+"say": "what's in the technical knowledge part"
+},
+{
+"say": "what's hard about it"
+}
+]
+},
+{
+"id": "c45",
+"category": "teaching",
+"goal": "Explains a dedicated spotter's job plainly and when one is required, with citations.",
+"turns": [
+{
+"say": "what does a spotter actually do"
+},
+{
+"say": "when do i need one"
+}
+]
+},
+{
+"id": "c46",
+"category": "rule",
+"goal": "Uses the clearance tool or Table A to give the clearance for 345 kV (20 feet) with the cited row.",
+"turns": [
+{
+"say": "345 kv line, whats the clearance"
+}
+]
+}
+]

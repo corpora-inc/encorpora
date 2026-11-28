@@ -203,6 +203,7 @@ harvest delta   <base-dir> <target-dir> <out-dir> [--json]    # signs with $HARV
 harvest show    <pack-dir> <what> [--id ID] [--role R]        # verified content as JSON (what the app reads)
 harvest show    <pack-dir> tree [--id NODE] [--exams FILE]    # the course knowledge tree (CONTRACT)
 harvest search  <pack-dir> "<query>" --in tree                # search the tree, not the rules
+harvest converse <pack-dir> <script.json> [--llm URL] [--exams FILE]   # scripted Instructor conversations (CONTRACT)
 harvest fixture <dir>
 ```
 
