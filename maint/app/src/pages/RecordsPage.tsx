@@ -42,10 +42,14 @@ export function RecordsPage() {
       onSync={async () => {
         setBusy("sync");
         try {
-          const r = await call("sync.flush", {});
-          useToast.getState().show(r.error ? "error" : "info", r.error ? `Sync stopped: ${r.error}` : `Synced ${r.acked} of ${r.sent}.`);
-          await useFleet.getState().refreshSync();
-          await loadAudit();
+          // Send what is queued, then take what the hub has for this device: field notes, a newer pack.
+          const sent = await call("sync.flush", {});
+          const got = await call("sync.pull", {});
+          const problem = sent.error ?? got.bundles.error ?? got.pack_errors[0] ?? null;
+          useToast
+            .getState()
+            .show(problem ? "error" : "info", problem ? `Sync stopped: ${problem}` : `Sent ${sent.acked}. Received ${got.bundles.notes} field ${got.bundles.notes === 1 ? "note" : "notes"}${got.packs.length ? " and a newer pack" : ""}.`);
+          await Promise.all([useFleet.getState().refresh(), loadNotes(), loadAudit()]);
         } catch (e) {
           reportError("records.sync", e, message(e, "Sync did not run."));
         } finally {

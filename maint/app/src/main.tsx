@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { setNamespace } from "@appkit/namespace.ts";
 import { logError } from "@appkit/log.ts";
 import { assistant, configureNative, voice } from "@appkit/native.ts";
+import { hubCall } from "./engine/client.ts";
 import "./styles.css";
 import { brandCss } from "./brands/index.ts";
 import { BRAND, PRODUCT } from "./config.ts";
@@ -41,14 +42,16 @@ async function boot() {
   // The pack and the fleet are read before the first screen, so no screen renders twice.
   // The design gallery needs neither.
   try {
-    const [, hasVoice, model] = await Promise.all([
+    const [, hasVoice, model, hub] = await Promise.all([
       loadFonts(),
       voice.available(),
       assistant.status(),
+      // A review screen only where a hub answers; never an error when it does not.
+      DESIGN_ONLY ? false : hubCall("hub.status", {}).then(() => true, () => false),
       DESIGN_ONLY ? null : usePack.getState().load(),
       DESIGN_ONLY ? null : useFleet.getState().refresh(),
     ]);
-    useDevice.setState({ voice: hasVoice, assistantModel: model.present ? model.model : null });
+    useDevice.setState({ voice: hasVoice, assistantModel: model.present ? model.model : null, hub });
   } catch (e) {
     logError("boot", e);
     root.render(<BootFailed error={e} />);

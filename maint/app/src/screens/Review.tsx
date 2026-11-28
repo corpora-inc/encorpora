@@ -1,134 +1,175 @@
-import { Check, X } from "lucide-react";
+import { Check, Send, X } from "lucide-react";
 import { Link } from "react-router";
-import type { FieldNote, Lesson } from "../engine/types.ts";
+import type { HubStatus, Lesson, ReviewItem } from "../engine/types.ts";
 import { reviewLessonPath } from "../routes.ts";
 import { formatDate, formatTime } from "../ui/format.ts";
-import { Button, cx, Field, inputClass, Page, Panel } from "../ui/kit.tsx";
-import { FieldNotes } from "../ui/manual.tsx";
+import { Button, cx, Field, inputClass, Page, Panel, Skeleton } from "../ui/kit.tsx";
+
+/** The note the hub writes from a lesson when the reviewer does not edit it (harvest hub `approve`). */
+export const suggestedNote = (l: Lesson) => `Verified cause: ${l.cause.replace(/\.+$/, "")}. Corrective action: ${l.action.replace(/\.+$/, "")}.`;
 
 export interface ReviewDraft {
-  cause: string;
-  action: string;
+  /** The field note other technicians will see. */
+  text: string;
+  /** To the technician: why it was edited or sent back. Needed to send back. */
   note: string;
-  /** Why it is sent back; needed to reject. */
-  reviewNote: string;
 }
 
 export interface ReviewProps {
-  queue: Lesson[];
-  selected: Lesson | null;
-  /** Tree titles and unit names, for display. */
+  status: HubStatus | null;
+  /** Null while the hub answers; empty when nothing waits. */
+  queue: ReviewItem[] | null;
+  approved: ReviewItem[];
+  selected: ReviewItem | null;
+  /** Tree titles and variant names, for display. */
   titles: Record<string, string>;
-  units: Record<string, string>;
-  /** The manual's words at the step the lesson is about, when known. */
-  context: string | null;
+  variants: Record<string, string>;
   draft: ReviewDraft | null;
-  sent: FieldNote[];
+  /** The text the hub writes when the reviewer does not edit it. */
+  suggested: string;
+  reviewer: string;
   busy: boolean;
+  onReviewer(name: string): void;
   onDraft(d: ReviewDraft): void;
-  onApprove(edited: boolean): void;
+  onApprove(): void;
   onReject(): void;
+  onPublish(): void;
 }
 
 /**
- * The hub's review queue: lessons from the fleet, read against the manual,
- * approved (as written or edited) or sent back. What is approved goes out to
- * the fleet as field notes, shown below as sent.
+ * The hub's review queue: lessons from the fleet, read against what the
+ * technician recorded, approved (as written or edited) or sent back. Approved
+ * notes go out to the fleet when published.
  */
 export function Review(p: ReviewProps) {
-  const l = p.selected;
+  const item = p.selected;
+  const l = item?.current ?? null;
   const d = p.draft;
-  const edited = !!(l && d && (d.cause !== l.cause || d.action !== l.action || d.note !== (l.note ?? "")));
+  const edited = !!(d && d.text.trim() !== p.suggested.trim());
   return (
-    <Page title="Review" kicker={`${p.queue.length} waiting`} wide>
-      <div className="grid items-start gap-6 lg:grid-cols-[360px_minmax(0,1fr)]">
+    <Page
+      title="Review"
+      kicker={p.status ? `${p.status.lessons_pending} waiting, ${p.status.lessons_approved} approved, ${p.status.devices} ${p.status.devices === 1 ? "device" : "devices"}` : "Hub"}
+      wide
+      actions={
+        <Button variant="primary" onClick={p.onPublish} disabled={p.busy || !p.reviewer.trim() || !p.status || p.status.lessons_approved === 0}>
+          <Send aria-hidden size={20} />
+          Send approved notes to the fleet
+        </Button>
+      }
+    >
+      <Panel>
+        <Field label="Reviewer">
+          <input className={inputClass} value={p.reviewer} onChange={(e) => p.onReviewer(e.target.value)} autoComplete="name" />
+        </Field>
+      </Panel>
+      <div className="grid items-start gap-6 lg:grid-cols-[340px_minmax(0,1fr)]">
         <nav aria-label="Waiting for review" className="overflow-hidden rounded-panel border border-line bg-surface">
-          {p.queue.length === 0 && <p className="p-4 text-body text-ink-3">Nothing waiting.</p>}
-          {p.queue.map((q) => (
-            <Link
-              key={q.lesson_id}
-              to={reviewLessonPath(q.lesson_id)}
-              aria-current={q.lesson_id === l?.lesson_id ? "page" : undefined}
-              className={cx("block border-b border-line px-4 py-3 text-ink no-underline last:border-b-0", q.lesson_id === l?.lesson_id ? "bg-surface-3" : "active:bg-surface-2")}
-            >
-              <span className="block text-meta font-semibold text-ink-3">
-                {(q.asset_id && p.units[q.asset_id]) || q.asset_id}, {formatDate(q.created_at)}
-              </span>
-              <span className="block font-semibold">{(q.tree_id && p.titles[q.tree_id]) || "Job"}</span>
-              <span className="block truncate text-small text-ink-2">{q.cause}</span>
-            </Link>
-          ))}
+          {p.queue === null ? (
+            <Skeleton className="m-3 h-[120px]" />
+          ) : p.queue.length === 0 ? (
+            <p className="p-4 text-body text-ink-3">Nothing waiting.</p>
+          ) : (
+            p.queue.map((q) => (
+              <Link
+                key={q.lesson_id}
+                to={reviewLessonPath(q.lesson_id)}
+                aria-current={q.lesson_id === item?.lesson_id ? "page" : undefined}
+                className={cx("block border-b border-line px-4 py-3 text-ink no-underline last:border-b-0", q.lesson_id === item?.lesson_id ? "bg-surface-3" : "active:bg-surface-2")}
+              >
+                <span className="block text-meta font-semibold text-ink-3">
+                  {formatDate(q.first_received_at)}
+                  {q.reopened && ", changed since review"}
+                </span>
+                <span className="block font-semibold">{(q.current.tree_id && p.titles[q.current.tree_id]) || "Job"}</span>
+                <span className="block truncate text-small text-ink-2">{q.current.cause}</span>
+              </Link>
+            ))
+          )}
         </nav>
 
-        {l && d ? (
+        {item && l && d ? (
           <section className="flex min-w-0 flex-col gap-4" aria-label="Lesson">
-            <Panel>
-              <dl className="m-0 grid grid-cols-[8rem_minmax(0,1fr)] gap-x-4 gap-y-1 text-small">
-                <dt className="text-ink-3">Unit</dt>
-                <dd className="m-0">{(l.asset_id && p.units[l.asset_id]) || l.asset_id}</dd>
-                <dt className="text-ink-3">Variant</dt>
-                <dd className="m-0">{l.equip_id}</dd>
-                <dt className="text-ink-3">Table</dt>
+            <Panel label="From the technician">
+              <dl className="m-0 grid grid-cols-[8rem_minmax(0,1fr)] gap-x-4 gap-y-1.5 text-body">
+                <dt className="text-small text-ink-3">Table</dt>
                 <dd className="m-0">{(l.tree_id && p.titles[l.tree_id]) || l.tree_id}</dd>
-                <dt className="text-ink-3">Level</dt>
-                <dd className="m-0">{l.level}</dd>
-                <dt className="text-ink-3">Saved</dt>
-                <dd className="m-0">{formatTime(l.created_at)}</dd>
-                <dt className="text-ink-3">Pack</dt>
-                <dd className="m-0">
-                  <span className="code">{l.pack_version}</span>
+                <dt className="text-small text-ink-3">Variant</dt>
+                <dd className="m-0">{(l.equip_id && p.variants[l.equip_id]) || l.equip_id}</dd>
+                <dt className="text-small text-ink-3">Cause</dt>
+                <dd className="m-0">{l.cause}</dd>
+                <dt className="text-small text-ink-3">Action</dt>
+                <dd className="m-0">{l.action}</dd>
+                {l.parts.length > 0 && (
+                  <>
+                    <dt className="text-small text-ink-3">Parts</dt>
+                    <dd className="m-0">{l.parts.map((x) => [x.ident, x.text, x.qty && `x${x.qty}`].filter(Boolean).join(" ")).join("; ")}</dd>
+                  </>
+                )}
+                {l.minutes != null && (
+                  <>
+                    <dt className="text-small text-ink-3">Time</dt>
+                    <dd className="m-0">{l.minutes} min</dd>
+                  </>
+                )}
+                {l.note && (
+                  <>
+                    <dt className="text-small text-ink-3">Note</dt>
+                    <dd className="m-0">{l.note}</dd>
+                  </>
+                )}
+                <dt className="text-small text-ink-3">Saved</dt>
+                <dd className="m-0 text-small">
+                  {formatTime(l.created_at)}, level {l.level}, pack <span className="code">{l.pack_version}</span>
                 </dd>
               </dl>
+              {item.versions.length > 1 && <p className="mt-3 text-meta text-ink-3">{item.versions.length} versions received; showing the current one.</p>}
             </Panel>
-            {p.context && (
-              <figure className="sheet m-0 p-4">
-                <figcaption className="mb-1 font-sans text-meta font-bold text-ink-2">The manual, where it ended</figcaption>
-                <blockquote className="m-0 text-body">{p.context}</blockquote>
-              </figure>
-            )}
-            <Panel label="From the technician">
-              <div className="flex flex-col gap-4">
-                <Field label="Verified cause">
-                  <input className={inputClass} value={d.cause} onChange={(e) => p.onDraft({ ...d, cause: e.target.value })} />
-                </Field>
-                <Field label="Action taken">
-                  <input className={inputClass} value={d.action} onChange={(e) => p.onDraft({ ...d, action: e.target.value })} />
-                </Field>
-                {l.parts.length > 0 && (
-                  <div>
-                    <span className="mb-1 block text-meta font-semibold text-ink-2">Parts used</span>
-                    <p className="text-small">{l.parts.map((x) => [x.ident, x.text, x.qty && `x${x.qty}`].filter(Boolean).join(" ")).join("; ")}</p>
-                  </div>
-                )}
-                <Field label="Note for other technicians">
-                  <textarea rows={3} className={cx(inputClass, "py-3")} value={d.note} onChange={(e) => p.onDraft({ ...d, note: e.target.value })} />
-                </Field>
-                <Field label="Note back to the technician">
-                  <textarea rows={2} className={cx(inputClass, "py-3")} value={d.reviewNote} onChange={(e) => p.onDraft({ ...d, reviewNote: e.target.value })} />
-                </Field>
-              </div>
-            </Panel>
+            <section className="field p-4">
+              <h2 id="note-out" className="mb-2 text-small font-bold">
+                Field note for the fleet
+              </h2>
+              <textarea aria-labelledby="note-out" rows={3} className={cx(inputClass, "bg-surface py-3")} value={d.text} onChange={(e) => p.onDraft({ ...d, text: e.target.value })} />
+              <p className="mt-1 text-meta">Shown to technicians beside the manual, marked as field knowledge.</p>
+            </section>
+            <Field label="Note back to the technician">
+              <textarea rows={2} className={cx(inputClass, "py-3")} value={d.note} onChange={(e) => p.onDraft({ ...d, note: e.target.value })} />
+            </Field>
             <div className="grid gap-3 sm:grid-cols-2">
-              <Button variant="primary" size="lg" onClick={() => p.onApprove(edited)} disabled={p.busy}>
+              <Button variant="primary" size="lg" onClick={p.onApprove} disabled={p.busy || !p.reviewer.trim() || !d.text.trim()}>
                 <Check aria-hidden size={22} />
                 {edited ? "Approve with edits" : "Approve"}
               </Button>
-              <Button size="lg" onClick={p.onReject} disabled={p.busy || !d.reviewNote.trim()}>
+              <Button size="lg" onClick={p.onReject} disabled={p.busy || !p.reviewer.trim() || !d.note.trim()}>
                 <X aria-hidden size={22} />
                 Send back
               </Button>
             </div>
           </section>
         ) : (
-          <p className="text-body text-ink-3">Pick a lesson to review.</p>
+          <p className="text-body text-ink-3">{p.queue && p.queue.length > 0 ? "Pick a lesson to review." : ""}</p>
         )}
       </div>
-      {p.sent.length > 0 && (
-        <section aria-labelledby="sent">
-          <h2 id="sent" className="mb-2 text-h3">
-            Sent to the fleet
+      {p.approved.length > 0 && (
+        <section aria-labelledby="approved">
+          <h2 id="approved" className="mb-2 text-h3">
+            Approved
           </h2>
-          <FieldNotes notes={p.sent} />
+          <ul className="m-0 flex list-none flex-col gap-2 p-0">
+            {p.approved.map((a) => {
+              const last = a.reviews[a.reviews.length - 1];
+              return (
+                <li key={a.lesson_id} className="rounded-panel border border-line bg-surface p-4 text-small">
+                  <span className="font-semibold">{(a.current.tree_id && p.titles[a.current.tree_id]) || "Job"}:</span> {a.current.cause}
+                  {last && (
+                    <span className="block text-meta text-ink-3">
+                      {last.action} by {last.reviewer}, {formatTime(last.at)}
+                    </span>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
         </section>
       )}
     </Page>

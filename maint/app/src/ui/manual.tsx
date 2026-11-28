@@ -96,7 +96,7 @@ export function Guards({ guards, firstWarningId }: { guards: Guard[]; firstWarni
 
 const counts = (n: FieldNote) => {
   const c = n.counts;
-  if (c.resolved != null && c.attempts != null) return `Fixed it ${c.resolved} of ${c.attempts} times.`;
+  if (c.resolved != null && c.attempts != null) return `Fixed it ${c.resolved} of ${c.attempts} ${c.attempts === 1 ? "time" : "times"}.`;
   if (c.units != null) return `Seen on ${c.units} ${c.units === 1 ? "unit" : "units"}.`;
   return "";
 };

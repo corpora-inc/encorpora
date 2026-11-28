@@ -263,6 +263,11 @@ function TestProcedure({ step }: { step: StepView }) {
       </div>
       {open && (
         <ol className="m-0 flex list-none flex-col gap-3 border-t border-line px-4 py-4 sm:px-5">
+          {tp.guards.length > 0 && (
+            <li>
+              <Guards guards={tp.guards} />
+            </li>
+          )}
           {tp.steps.map((t) => (
             <li key={t.ord} className={cx("flex flex-col gap-2", !t.applies && "opacity-60")}>
               <Guards guards={t.guards} />

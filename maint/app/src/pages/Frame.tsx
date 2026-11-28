@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Outlet } from "react-router";
+import { useDevice } from "../store/device.ts";
 import { useFleet } from "../store/fleet.ts";
 import { usePack, variantName } from "../store/pack.ts";
 import { useSettings } from "../store/settings.ts";
@@ -12,6 +13,7 @@ export function Frame() {
   const assets = useFleet((s) => s.assets);
   const sync = useFleet((s) => s.sync);
   const equipment = usePack((s) => s.equipment);
+  const hub = useDevice((s) => s.hub);
   const asset = assets.find((a) => a.asset_id === active) ?? null;
   // Keep the outbox count current while the app is open.
   useEffect(() => {
@@ -19,7 +21,7 @@ export function Frame() {
     return () => clearInterval(t);
   }, []);
   return (
-    <Shell unit={asset ? { asset_id: asset.asset_id, name: unitName(asset), variant: variantName(equipment, asset.equip_id) } : null} online={sync?.hub.reachable === true} queued={sync?.pending ?? 0}>
+    <Shell unit={asset ? { asset_id: asset.asset_id, name: unitName(asset), variant: variantName(equipment, asset.equip_id) } : null} online={sync?.hub.reachable === true} queued={sync?.pending ?? 0} hub={hub}>
       <Outlet />
     </Shell>
   );

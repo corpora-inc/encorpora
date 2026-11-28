@@ -58,6 +58,11 @@ export function PrintProcedure({ task, pack, unit }: { task: TaskView; pack: Pac
         <Requirements items={task.requirements} columns />
       </section>
       <h2 className="mb-2 text-h3">Steps</h2>
+      {task.guards.length > 0 && (
+        <div className="mb-3">
+          <Guards guards={task.guards} />
+        </div>
+      )}
       <ol className="m-0 list-none p-0">
         {task.steps
           .filter((s) => s.applies)

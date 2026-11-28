@@ -56,7 +56,7 @@ export function Records(p: RecordsProps) {
                 </dl>
                 {hub?.last_error && <p className="text-meta text-ink-3">Last error: {hub.last_error}</p>}
                 {hub?.configured && (
-                  <Button onClick={p.onSync} disabled={p.busy === "sync" || p.sync.pending === 0} className="self-start">
+                  <Button onClick={p.onSync} disabled={p.busy === "sync"} className="self-start">
                     <RefreshCw aria-hidden size={20} className={cx(p.busy === "sync" && "animate-spin")} />
                     Sync now
                   </Button>

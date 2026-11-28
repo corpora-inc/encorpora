@@ -3,16 +3,21 @@
  * The whole job, end to end, in a real browser against the real engine
  * (`harvest serve` on the Model 40 fixture, with a fresh records file):
  *
- *   fleet (empty) -> import the fleet file -> unit -> describe -> guided steps
- *   (a measured value, then change the last answer) -> corrective action with
- *   its task run -> did it fix it -> lesson -> saved; install the field-note
- *   bundle; a second job shows the approved field note in its own panel.
+ *   device A: fleet (empty) -> import the fleet file -> unit -> describe ->
+ *   guided steps (a measured value, then change the last answer) -> corrective
+ *   action with its task run -> did it fix it -> lesson -> saved -> Sync;
+ *   hub: Review -> approve with an edit -> send to the fleet;
+ *   device B (a unit that never did the job): Sync -> the same symptom shows
+ *   the approved note in the field-note panel; device A sees it too.
+ *   Also: a field-note bundle installed from a file.
  *
  * Along the way: refresh restores the step, back and forward work, the
  * result bar is reachable without scrolling at every width it pins at, and
  * nothing shifts when a result is recorded.
  *
- *   MAINT_UI_BASE=http://127.0.0.1:4340 MAINT_SAMPLES=.engine/pump40-samples node scripts/verify-flow.mjs
+ *   MAINT_IMPORT=B scripts/loop.sh          (hub 4319, device A 4317, device B 4320)
+ *   npm run dev & npm run dev:b             (apps for A on 4340 and B on 4343)
+ *   node scripts/verify-flow.mjs            (MAINT_UI_BASE / MAINT_UI_BASE_B to point elsewhere)
  */
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
@@ -24,6 +29,7 @@ import { secureChromium } from "../../../amp/browser-security.mjs";
 const chromium = secureChromium(rawChromium);
 const root = fileURLToPath(new URL("..", import.meta.url));
 const base = process.env.MAINT_UI_BASE ?? "http://127.0.0.1:4340";
+const baseB = process.env.MAINT_UI_BASE_B ?? "http://127.0.0.1:4343";
 const samples = process.env.MAINT_SAMPLES ?? path.join(root, ".engine", "pump40-samples");
 const out = process.env.CI ? path.join(root, "artifacts", "flow") : path.join(root, ".screens", "flow");
 await mkdir(out, { recursive: true });
@@ -148,7 +154,45 @@ try {
   await page.goForward();
   await settle();
 
-  // Field notes arrive as a signed bundle; then a second job on the same tree shows them, apart from the manual.
+  // Sync: the lesson and the job go to the hub.
+  await page.goto(`${base}/records`);
+  await page.getByRole("button", { name: "Sync now" }).click();
+  await page.getByText(/^Sent \d+\./).waitFor();
+
+  // The hub: review the lesson, edit the note, approve, send to the fleet.
+  const NOTE = "Check the battery date code first: on this pump, a battery over three years old was the cause.";
+  await page.goto(`${base}/review`);
+  await page.getByLabel("Reviewer").fill("Shop supervisor");
+  await page.getByRole("link", { name: /Engine will not crank/ }).first().click();
+  await page.getByRole("heading", { name: "Field note for the fleet" }).waitFor();
+  await page.getByLabel("Field note for the fleet").fill(NOTE);
+  await shot("review");
+  await page.getByRole("button", { name: "Approve with edits" }).click();
+  await page.getByText("Approved.").waitFor();
+  await page.getByRole("button", { name: "Send approved notes to the fleet" }).click();
+  await page.getByText(/Sent to the fleet/).waitFor();
+  await shot("review-sent");
+
+  // Device B never did this job. After a sync, the same symptom on its unit shows the note, apart from the manual.
+  const pageB = await context.newPage();
+  pageB.on("pageerror", (e) => errors.push(`B: ${e.message}`));
+  pageB.on("console", (m) => m.type() === "error" && errors.push(`B: ${m.text()}`));
+  await pageB.goto(`${baseB}/records`);
+  await pageB.getByRole("button", { name: "Sync now" }).click();
+  await pageB.getByText(/Received [1-9]\d* field note/).waitFor();
+  await pageB.goto(`${baseB}/units/unit-102/troubleshoot`);
+  await pageB.getByLabel("Describe the problem").fill("engine does not crank");
+  await pageB.getByRole("button", { name: /Engine will not crank.*Matched/ }).first().click();
+  await pageB.getByText("Step 1, symptom").waitFor();
+  const notesB = pageB.locator("section.field");
+  await notesB.first().waitFor();
+  assert.match(await notesB.first().innerText(), /battery date code first/);
+  assert.match(await notesB.first().innerText(), /Not part of the manual/);
+  assert.equal(await notesB.first().locator(".manual-text").count(), 0, "field notes must never be set as manual text");
+  await pageB.screenshot({ path: path.join(out, `${String(++n).padStart(2, "0")}-device-b-field-note.png`), fullPage: true });
+  await pageB.close();
+
+  // A field-note bundle can also arrive on a drive: installed from a file, it shows on its table (Pump overheats).
   await page.goto(`${base}/records`);
   await page.locator("input[type=file]").nth(0).setInputFiles(path.join(samples, "field-bundle.json"));
   await page.getByText(/Installed \d+ field note/).waitFor();
@@ -157,8 +201,7 @@ try {
   await page.getByText("Step 1, symptom").waitFor();
   const notes = page.locator("section.field");
   await notes.first().waitFor();
-  assert.match(await notes.first().innerText(), /Not part of the manual/);
-  assert.equal(await notes.first().locator(".manual-text").count(), 0, "field notes must never be set as manual text");
+  assert.match(await notes.first().innerText(), /silty water/);
   await shot("second-pass-field-notes");
 
   // The audit trail recorded it all and its chain is intact.

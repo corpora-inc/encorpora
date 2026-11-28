@@ -13,7 +13,10 @@
     "tsc": "tsc --noEmit",
     "test": "node --experimental-strip-types --no-warnings=ExperimentalWarning --test \"src/**/*.test.ts\"",
     "test:ui": "node scripts/verify-ui.mjs",
-    "shots": "node scripts/verify-ui.mjs --shots-only"
+    "shots": "node scripts/verify-ui.mjs --shots-only",
+    "dev:b": "MAINT_PORT=4343 MAINT_ENGINE=http://127.0.0.1:4320 vite --host 127.0.0.1 --bypass-lock",
+    "engines": "scripts/loop.sh",
+    "test:flow": "node scripts/verify-flow.mjs"
   },
   "dependencies": {
     "@fontsource/atkinson-hyperlegible-mono": "^5.3.0",

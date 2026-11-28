@@ -217,37 +217,37 @@
    "attrs": {
     "location": "North yard"
    },
-   "created_at": "2026-11-28T08:15:06.399Z",
+   "created_at": "2026-11-28T08:24:17.622Z",
    "equip_id": "pump40-diesel",
    "hours": 1840.5,
    "miles": null,
    "name": "Pump 101",
    "serial": "P40D-2310",
-   "updated_at": "2026-11-28T08:15:06.399Z"
+   "updated_at": "2026-11-28T08:24:17.622Z"
   },
   {
    "asset_id": "unit-102",
    "attrs": {},
-   "created_at": "2026-11-28T08:15:06.399Z",
+   "created_at": "2026-11-28T08:24:17.622Z",
    "equip_id": "pump40-diesel",
    "hours": 920,
    "miles": null,
    "name": "Pump 102",
    "serial": "P40D-3115",
-   "updated_at": "2026-11-28T08:15:06.399Z"
+   "updated_at": "2026-11-28T08:24:17.622Z"
   },
   {
    "asset_id": "unit-201",
    "attrs": {
     "location": "Pump station 2"
    },
-   "created_at": "2026-11-28T08:15:06.399Z",
+   "created_at": "2026-11-28T08:24:17.622Z",
    "equip_id": "pump40-electric",
    "hours": 4410,
    "miles": null,
    "name": "Pump 201",
    "serial": "P40E-1450",
-   "updated_at": "2026-11-28T08:15:06.399Z"
+   "updated_at": "2026-11-28T08:24:17.622Z"
   }
  ],
  "resolve": {
@@ -502,9 +502,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-6a4790703d8d46c7ce92e182c74d3847",
+    "job_id": "job-a5219c8e1289ae7461246c994352bce5",
     "level": "apprentice",
-    "opened_at": "2026-11-28T08:15:06.425Z",
+    "opened_at": "2026-11-28T08:24:17.646Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -721,9 +721,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-6a4790703d8d46c7ce92e182c74d3847",
+    "job_id": "job-a5219c8e1289ae7461246c994352bce5",
     "level": "apprentice",
-    "opened_at": "2026-11-28T08:15:06.425Z",
+    "opened_at": "2026-11-28T08:24:17.646Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -732,7 +732,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T08:15:06.432Z",
+      "at": "2026-11-28T08:24:17.654Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -930,7 +930,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T08:15:06.432Z",
+      "at": "2026-11-28T08:24:17.654Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -1048,9 +1048,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-6a4790703d8d46c7ce92e182c74d3847",
+    "job_id": "job-a5219c8e1289ae7461246c994352bce5",
     "level": "apprentice",
-    "opened_at": "2026-11-28T08:15:06.425Z",
+    "opened_at": "2026-11-28T08:24:17.646Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -1059,7 +1059,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T08:15:06.432Z",
+      "at": "2026-11-28T08:24:17.654Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -1260,7 +1260,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T08:15:06.432Z",
+      "at": "2026-11-28T08:24:17.654Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -1378,9 +1378,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-6a4790703d8d46c7ce92e182c74d3847",
+    "job_id": "job-a5219c8e1289ae7461246c994352bce5",
     "level": "apprentice",
-    "opened_at": "2026-11-28T08:15:06.425Z",
+    "opened_at": "2026-11-28T08:24:17.646Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -1389,7 +1389,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T08:15:06.432Z",
+      "at": "2026-11-28T08:24:17.654Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -1402,7 +1402,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T08:15:06.443Z",
+      "at": "2026-11-28T08:24:17.666Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -1608,7 +1608,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T08:15:06.432Z",
+      "at": "2026-11-28T08:24:17.654Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -1619,7 +1619,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T08:15:06.443Z",
+      "at": "2026-11-28T08:24:17.666Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -1743,6 +1743,46 @@
     "terminal": false,
     "test_procedure": {
      "expanded": true,
+     "guards": [
+      {
+       "applies_to": [],
+       "citation": {
+        "boxes": [],
+        "citation": "Task 4-2, Warning",
+        "edition": "Revision C, 2026-03-01",
+        "figure_label": null,
+        "heading": "WARNING",
+        "page_asset_id": null,
+        "page_index": 402,
+        "page_label": "4-2",
+        "path": [
+         {
+          "citation": "Chapter 4",
+          "heading": "Maintenance tasks",
+          "section_id": "m40.4"
+         },
+         {
+          "citation": "Task 4-2",
+          "heading": "Battery voltage test",
+          "section_id": "m40.4-2"
+         },
+         {
+          "citation": "Task 4-2, Warning",
+          "heading": "WARNING",
+          "section_id": "m40.4-2.w1"
+         }
+        ],
+        "publisher": "Harvest test fixture",
+        "section_id": "m40.4-2.w1",
+        "source_id": "m40-manual",
+        "source_title": "Model 40 Utility Pump Field Maintenance Manual"
+       },
+       "heading": "WARNING",
+       "kind": "warning",
+       "section_id": "m40.4-2.w1",
+       "text": "Batteries give off explosive gas. Keep sparks and flames away from the battery."
+      }
+     ],
      "proc_id": "proc-battv",
      "requirements": [],
      "steps": [
@@ -1783,46 +1823,7 @@
         "source_title": "Model 40 Utility Pump Field Maintenance Manual"
        },
        "detail": {},
-       "guards": [
-        {
-         "applies_to": [],
-         "citation": {
-          "boxes": [],
-          "citation": "Task 4-2, Warning",
-          "edition": "Revision C, 2026-03-01",
-          "figure_label": null,
-          "heading": "WARNING",
-          "page_asset_id": null,
-          "page_index": 402,
-          "page_label": "4-2",
-          "path": [
-           {
-            "citation": "Chapter 4",
-            "heading": "Maintenance tasks",
-            "section_id": "m40.4"
-           },
-           {
-            "citation": "Task 4-2",
-            "heading": "Battery voltage test",
-            "section_id": "m40.4-2"
-           },
-           {
-            "citation": "Task 4-2, Warning",
-            "heading": "WARNING",
-            "section_id": "m40.4-2.w1"
-           }
-          ],
-          "publisher": "Harvest test fixture",
-          "section_id": "m40.4-2.w1",
-          "source_id": "m40-manual",
-          "source_title": "Model 40 Utility Pump Field Maintenance Manual"
-         },
-         "heading": "WARNING",
-         "kind": "warning",
-         "section_id": "m40.4-2.w1",
-         "text": "Batteries give off explosive gas. Keep sparks and flames away from the battery."
-        }
-       ],
+       "guards": [],
        "ord": 1,
        "section_ids": [
         "m40.4-2.s1"
@@ -1867,44 +1868,6 @@
        },
        "detail": {},
        "guards": [
-        {
-         "applies_to": [],
-         "citation": {
-          "boxes": [],
-          "citation": "Task 4-2, Warning",
-          "edition": "Revision C, 2026-03-01",
-          "figure_label": null,
-          "heading": "WARNING",
-          "page_asset_id": null,
-          "page_index": 402,
-          "page_label": "4-2",
-          "path": [
-           {
-            "citation": "Chapter 4",
-            "heading": "Maintenance tasks",
-            "section_id": "m40.4"
-           },
-           {
-            "citation": "Task 4-2",
-            "heading": "Battery voltage test",
-            "section_id": "m40.4-2"
-           },
-           {
-            "citation": "Task 4-2, Warning",
-            "heading": "WARNING",
-            "section_id": "m40.4-2.w1"
-           }
-          ],
-          "publisher": "Harvest test fixture",
-          "section_id": "m40.4-2.w1",
-          "source_id": "m40-manual",
-          "source_title": "Model 40 Utility Pump Field Maintenance Manual"
-         },
-         "heading": "WARNING",
-         "kind": "warning",
-         "section_id": "m40.4-2.w1",
-         "text": "Batteries give off explosive gas. Keep sparks and flames away from the battery."
-        },
         {
          "applies_to": [],
          "citation": {
@@ -1994,44 +1957,6 @@
          "applies_to": [],
          "citation": {
           "boxes": [],
-          "citation": "Task 4-2, Warning",
-          "edition": "Revision C, 2026-03-01",
-          "figure_label": null,
-          "heading": "WARNING",
-          "page_asset_id": null,
-          "page_index": 402,
-          "page_label": "4-2",
-          "path": [
-           {
-            "citation": "Chapter 4",
-            "heading": "Maintenance tasks",
-            "section_id": "m40.4"
-           },
-           {
-            "citation": "Task 4-2",
-            "heading": "Battery voltage test",
-            "section_id": "m40.4-2"
-           },
-           {
-            "citation": "Task 4-2, Warning",
-            "heading": "WARNING",
-            "section_id": "m40.4-2.w1"
-           }
-          ],
-          "publisher": "Harvest test fixture",
-          "section_id": "m40.4-2.w1",
-          "source_id": "m40-manual",
-          "source_title": "Model 40 Utility Pump Field Maintenance Manual"
-         },
-         "heading": "WARNING",
-         "kind": "warning",
-         "section_id": "m40.4-2.w1",
-         "text": "Batteries give off explosive gas. Keep sparks and flames away from the battery."
-        },
-        {
-         "applies_to": [],
-         "citation": {
-          "boxes": [],
           "citation": "Task 4-2, Note",
           "edition": "Revision C, 2026-03-01",
           "figure_label": null,
@@ -2095,9 +2020,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-6a4790703d8d46c7ce92e182c74d3847",
+    "job_id": "job-a5219c8e1289ae7461246c994352bce5",
     "level": "apprentice",
-    "opened_at": "2026-11-28T08:15:06.425Z",
+    "opened_at": "2026-11-28T08:24:17.646Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -2106,7 +2031,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T08:15:06.432Z",
+      "at": "2026-11-28T08:24:17.654Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -2119,7 +2044,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T08:15:06.443Z",
+      "at": "2026-11-28T08:24:17.666Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -2132,7 +2057,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T08:15:06.454Z",
+      "at": "2026-11-28T08:24:17.677Z",
       "label": "Below 11.5 V",
       "next_node": "nc.2a",
       "node_id": "nc.2",
@@ -2279,7 +2204,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T08:15:06.432Z",
+      "at": "2026-11-28T08:24:17.654Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -2290,7 +2215,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T08:15:06.443Z",
+      "at": "2026-11-28T08:24:17.666Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -2301,7 +2226,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T08:15:06.454Z",
+      "at": "2026-11-28T08:24:17.677Z",
       "label": "Below 11.5 V",
       "next_node": "nc.2a",
       "node_id": "nc.2",
@@ -2407,9 +2332,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-6a4790703d8d46c7ce92e182c74d3847",
+    "job_id": "job-a5219c8e1289ae7461246c994352bce5",
     "level": "apprentice",
-    "opened_at": "2026-11-28T08:15:06.425Z",
+    "opened_at": "2026-11-28T08:24:17.646Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -2418,7 +2343,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T08:15:06.432Z",
+      "at": "2026-11-28T08:24:17.654Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -2431,7 +2356,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T08:15:06.443Z",
+      "at": "2026-11-28T08:24:17.666Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -2444,7 +2369,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T08:15:06.454Z",
+      "at": "2026-11-28T08:24:17.677Z",
       "label": "Below 11.5 V",
       "next_node": "nc.2a",
       "node_id": "nc.2",
@@ -2452,7 +2377,7 @@
       "outcome": null,
       "photos": [],
       "seq": 3,
-      "superseded_at": "2026-11-28T08:15:06.461Z",
+      "superseded_at": "2026-11-28T08:24:17.685Z",
       "unit": "V",
       "value": 10.8
      }
@@ -2650,7 +2575,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T08:15:06.432Z",
+      "at": "2026-11-28T08:24:17.654Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -2661,7 +2586,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T08:15:06.443Z",
+      "at": "2026-11-28T08:24:17.666Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -2785,6 +2710,46 @@
     "terminal": false,
     "test_procedure": {
      "expanded": true,
+     "guards": [
+      {
+       "applies_to": [],
+       "citation": {
+        "boxes": [],
+        "citation": "Task 4-2, Warning",
+        "edition": "Revision C, 2026-03-01",
+        "figure_label": null,
+        "heading": "WARNING",
+        "page_asset_id": null,
+        "page_index": 402,
+        "page_label": "4-2",
+        "path": [
+         {
+          "citation": "Chapter 4",
+          "heading": "Maintenance tasks",
+          "section_id": "m40.4"
+         },
+         {
+          "citation": "Task 4-2",
+          "heading": "Battery voltage test",
+          "section_id": "m40.4-2"
+         },
+         {
+          "citation": "Task 4-2, Warning",
+          "heading": "WARNING",
+          "section_id": "m40.4-2.w1"
+         }
+        ],
+        "publisher": "Harvest test fixture",
+        "section_id": "m40.4-2.w1",
+        "source_id": "m40-manual",
+        "source_title": "Model 40 Utility Pump Field Maintenance Manual"
+       },
+       "heading": "WARNING",
+       "kind": "warning",
+       "section_id": "m40.4-2.w1",
+       "text": "Batteries give off explosive gas. Keep sparks and flames away from the battery."
+      }
+     ],
      "proc_id": "proc-battv",
      "requirements": [],
      "steps": [
@@ -2825,46 +2790,7 @@
         "source_title": "Model 40 Utility Pump Field Maintenance Manual"
        },
        "detail": {},
-       "guards": [
-        {
-         "applies_to": [],
-         "citation": {
-          "boxes": [],
-          "citation": "Task 4-2, Warning",
-          "edition": "Revision C, 2026-03-01",
-          "figure_label": null,
-          "heading": "WARNING",
-          "page_asset_id": null,
-          "page_index": 402,
-          "page_label": "4-2",
-          "path": [
-           {
-            "citation": "Chapter 4",
-            "heading": "Maintenance tasks",
-            "section_id": "m40.4"
-           },
-           {
-            "citation": "Task 4-2",
-            "heading": "Battery voltage test",
-            "section_id": "m40.4-2"
-           },
-           {
-            "citation": "Task 4-2, Warning",
-            "heading": "WARNING",
-            "section_id": "m40.4-2.w1"
-           }
-          ],
-          "publisher": "Harvest test fixture",
-          "section_id": "m40.4-2.w1",
-          "source_id": "m40-manual",
-          "source_title": "Model 40 Utility Pump Field Maintenance Manual"
-         },
-         "heading": "WARNING",
-         "kind": "warning",
-         "section_id": "m40.4-2.w1",
-         "text": "Batteries give off explosive gas. Keep sparks and flames away from the battery."
-        }
-       ],
+       "guards": [],
        "ord": 1,
        "section_ids": [
         "m40.4-2.s1"
@@ -2909,44 +2835,6 @@
        },
        "detail": {},
        "guards": [
-        {
-         "applies_to": [],
-         "citation": {
-          "boxes": [],
-          "citation": "Task 4-2, Warning",
-          "edition": "Revision C, 2026-03-01",
-          "figure_label": null,
-          "heading": "WARNING",
-          "page_asset_id": null,
-          "page_index": 402,
-          "page_label": "4-2",
-          "path": [
-           {
-            "citation": "Chapter 4",
-            "heading": "Maintenance tasks",
-            "section_id": "m40.4"
-           },
-           {
-            "citation": "Task 4-2",
-            "heading": "Battery voltage test",
-            "section_id": "m40.4-2"
-           },
-           {
-            "citation": "Task 4-2, Warning",
-            "heading": "WARNING",
-            "section_id": "m40.4-2.w1"
-           }
-          ],
-          "publisher": "Harvest test fixture",
-          "section_id": "m40.4-2.w1",
-          "source_id": "m40-manual",
-          "source_title": "Model 40 Utility Pump Field Maintenance Manual"
-         },
-         "heading": "WARNING",
-         "kind": "warning",
-         "section_id": "m40.4-2.w1",
-         "text": "Batteries give off explosive gas. Keep sparks and flames away from the battery."
-        },
         {
          "applies_to": [],
          "citation": {
@@ -3036,44 +2924,6 @@
          "applies_to": [],
          "citation": {
           "boxes": [],
-          "citation": "Task 4-2, Warning",
-          "edition": "Revision C, 2026-03-01",
-          "figure_label": null,
-          "heading": "WARNING",
-          "page_asset_id": null,
-          "page_index": 402,
-          "page_label": "4-2",
-          "path": [
-           {
-            "citation": "Chapter 4",
-            "heading": "Maintenance tasks",
-            "section_id": "m40.4"
-           },
-           {
-            "citation": "Task 4-2",
-            "heading": "Battery voltage test",
-            "section_id": "m40.4-2"
-           },
-           {
-            "citation": "Task 4-2, Warning",
-            "heading": "WARNING",
-            "section_id": "m40.4-2.w1"
-           }
-          ],
-          "publisher": "Harvest test fixture",
-          "section_id": "m40.4-2.w1",
-          "source_id": "m40-manual",
-          "source_title": "Model 40 Utility Pump Field Maintenance Manual"
-         },
-         "heading": "WARNING",
-         "kind": "warning",
-         "section_id": "m40.4-2.w1",
-         "text": "Batteries give off explosive gas. Keep sparks and flames away from the battery."
-        },
-        {
-         "applies_to": [],
-         "citation": {
-          "boxes": [],
           "citation": "Task 4-2, Note",
           "edition": "Revision C, 2026-03-01",
           "figure_label": null,
@@ -3137,9 +2987,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-6a4790703d8d46c7ce92e182c74d3847",
+    "job_id": "job-a5219c8e1289ae7461246c994352bce5",
     "level": "apprentice",
-    "opened_at": "2026-11-28T08:15:06.425Z",
+    "opened_at": "2026-11-28T08:24:17.646Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -3148,7 +2998,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T08:15:06.432Z",
+      "at": "2026-11-28T08:24:17.654Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -3161,7 +3011,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T08:15:06.443Z",
+      "at": "2026-11-28T08:24:17.666Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -3174,7 +3024,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T08:15:06.454Z",
+      "at": "2026-11-28T08:24:17.677Z",
       "label": "Below 11.5 V",
       "next_node": "nc.2a",
       "node_id": "nc.2",
@@ -3182,12 +3032,12 @@
       "outcome": null,
       "photos": [],
       "seq": 3,
-      "superseded_at": "2026-11-28T08:15:06.461Z",
+      "superseded_at": "2026-11-28T08:24:17.685Z",
       "unit": "V",
       "value": 10.8
      },
      {
-      "at": "2026-11-28T08:15:06.472Z",
+      "at": "2026-11-28T08:24:17.695Z",
       "label": "12.5 V or more",
       "next_node": "nc.3",
       "node_id": "nc.2",
@@ -3200,7 +3050,7 @@
       "value": 12.7
      },
      {
-      "at": "2026-11-28T08:15:06.479Z",
+      "at": "2026-11-28T08:24:17.702Z",
       "label": "Yes",
       "next_node": "nc.4",
       "node_id": "nc.3",
@@ -3317,7 +3167,7 @@
        "units": 9
       },
       "note_id": "fn-relay-bracket",
-      "received_at": "2026-11-28T08:15:06.405Z",
+      "received_at": "2026-11-28T08:24:17.628Z",
       "scope": {
        "equip_id": "pump40-diesel",
        "node_id": "nc.4",
@@ -3434,7 +3284,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T08:15:06.432Z",
+      "at": "2026-11-28T08:24:17.654Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -3445,7 +3295,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T08:15:06.443Z",
+      "at": "2026-11-28T08:24:17.666Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -3456,7 +3306,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T08:15:06.472Z",
+      "at": "2026-11-28T08:24:17.695Z",
       "label": "12.5 V or more",
       "next_node": "nc.3",
       "node_id": "nc.2",
@@ -3467,7 +3317,7 @@
       "value": 12.7
      },
      {
-      "at": "2026-11-28T08:15:06.479Z",
+      "at": "2026-11-28T08:24:17.702Z",
       "label": "Yes",
       "next_node": "nc.4",
       "node_id": "nc.3",
@@ -3595,9 +3445,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-6a4790703d8d46c7ce92e182c74d3847",
+    "job_id": "job-a5219c8e1289ae7461246c994352bce5",
     "level": "apprentice",
-    "opened_at": "2026-11-28T08:15:06.425Z",
+    "opened_at": "2026-11-28T08:24:17.646Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -3606,7 +3456,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T08:15:06.432Z",
+      "at": "2026-11-28T08:24:17.654Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -3619,7 +3469,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T08:15:06.443Z",
+      "at": "2026-11-28T08:24:17.666Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -3632,7 +3482,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T08:15:06.454Z",
+      "at": "2026-11-28T08:24:17.677Z",
       "label": "Below 11.5 V",
       "next_node": "nc.2a",
       "node_id": "nc.2",
@@ -3640,12 +3490,12 @@
       "outcome": null,
       "photos": [],
       "seq": 3,
-      "superseded_at": "2026-11-28T08:15:06.461Z",
+      "superseded_at": "2026-11-28T08:24:17.685Z",
       "unit": "V",
       "value": 10.8
      },
      {
-      "at": "2026-11-28T08:15:06.472Z",
+      "at": "2026-11-28T08:24:17.695Z",
       "label": "12.5 V or more",
       "next_node": "nc.3",
       "node_id": "nc.2",
@@ -3658,7 +3508,7 @@
       "value": 12.7
      },
      {
-      "at": "2026-11-28T08:15:06.479Z",
+      "at": "2026-11-28T08:24:17.702Z",
       "label": "Yes",
       "next_node": "nc.4",
       "node_id": "nc.3",
@@ -3671,7 +3521,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T08:15:06.488Z",
+      "at": "2026-11-28T08:24:17.710Z",
       "label": "Pass",
       "next_node": "nc.4p",
       "node_id": "nc.4",
@@ -3842,7 +3692,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T08:15:06.432Z",
+      "at": "2026-11-28T08:24:17.654Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -3853,7 +3703,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T08:15:06.443Z",
+      "at": "2026-11-28T08:24:17.666Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -3864,7 +3714,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T08:15:06.472Z",
+      "at": "2026-11-28T08:24:17.695Z",
       "label": "12.5 V or more",
       "next_node": "nc.3",
       "node_id": "nc.2",
@@ -3875,7 +3725,7 @@
       "value": 12.7
      },
      {
-      "at": "2026-11-28T08:15:06.479Z",
+      "at": "2026-11-28T08:24:17.702Z",
       "label": "Yes",
       "next_node": "nc.4",
       "node_id": "nc.3",
@@ -3886,7 +3736,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T08:15:06.488Z",
+      "at": "2026-11-28T08:24:17.710Z",
       "label": "Pass",
       "next_node": "nc.4p",
       "node_id": "nc.4",
@@ -3985,9 +3835,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-723509b0b50b5e36da192d2aa7cb9908",
+    "job_id": "job-a92c3e7cc50b070dcba538b156508d55",
     "level": "apprentice",
-    "opened_at": "2026-11-28T08:15:06.498Z",
+    "opened_at": "2026-11-28T08:24:17.717Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -3996,7 +3846,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T08:15:06.506Z",
+      "at": "2026-11-28T08:24:17.724Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -4009,7 +3859,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T08:15:06.514Z",
+      "at": "2026-11-28T08:24:17.731Z",
       "label": "No",
       "next_node": "nc.1a",
       "node_id": "nc.1",
@@ -4031,9 +3881,9 @@
     "flag": true,
     "matches": [
      {
-      "date": "2026-11-28T08:15:06.425Z",
+      "date": "2026-11-28T08:24:17.646Z",
       "days_before": 0,
-      "job_id": "job-6a4790703d8d46c7ce92e182c74d3847",
+      "job_id": "job-a5219c8e1289ae7461246c994352bce5",
       "kind": "job",
       "reason": "same_symptom",
       "symptom_id": "s-nocrank",
@@ -4160,7 +4010,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T08:15:06.506Z",
+      "at": "2026-11-28T08:24:17.724Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -4171,7 +4021,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T08:15:06.514Z",
+      "at": "2026-11-28T08:24:17.731Z",
       "label": "No",
       "next_node": "nc.1a",
       "node_id": "nc.1",
@@ -4289,9 +4139,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-723509b0b50b5e36da192d2aa7cb9908",
+    "job_id": "job-a92c3e7cc50b070dcba538b156508d55",
     "level": "apprentice",
-    "opened_at": "2026-11-28T08:15:06.498Z",
+    "opened_at": "2026-11-28T08:24:17.717Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -4300,7 +4150,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T08:15:06.506Z",
+      "at": "2026-11-28T08:24:17.724Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -4313,7 +4163,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T08:15:06.514Z",
+      "at": "2026-11-28T08:24:17.731Z",
       "label": "No",
       "next_node": "nc.1a",
       "node_id": "nc.1",
@@ -4326,7 +4176,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T08:15:06.521Z",
+      "at": "2026-11-28T08:24:17.739Z",
       "label": "Yes",
       "next_node": "nc.end",
       "node_id": "nc.1a",
@@ -4348,9 +4198,9 @@
     "flag": true,
     "matches": [
      {
-      "date": "2026-11-28T08:15:06.425Z",
+      "date": "2026-11-28T08:24:17.646Z",
       "days_before": 0,
-      "job_id": "job-6a4790703d8d46c7ce92e182c74d3847",
+      "job_id": "job-a5219c8e1289ae7461246c994352bce5",
       "kind": "job",
       "reason": "same_symptom",
       "symptom_id": "s-nocrank",
@@ -4462,7 +4312,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T08:15:06.506Z",
+      "at": "2026-11-28T08:24:17.724Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -4473,7 +4323,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T08:15:06.514Z",
+      "at": "2026-11-28T08:24:17.731Z",
       "label": "No",
       "next_node": "nc.1a",
       "node_id": "nc.1",
@@ -4484,7 +4334,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T08:15:06.521Z",
+      "at": "2026-11-28T08:24:17.739Z",
       "label": "Yes",
       "next_node": "nc.end",
       "node_id": "nc.1a",
@@ -4585,9 +4435,9 @@
     "entered_by": "symptom",
     "entry_node": "oh.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-25c431fa0f488ac266d7a5d5f6c042e4",
+    "job_id": "job-f3004f33592b5394b1753836022d8a5b",
     "level": "apprentice",
-    "opened_at": "2026-11-28T08:15:06.528Z",
+    "opened_at": "2026-11-28T08:24:17.744Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -4596,7 +4446,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T08:15:06.533Z",
+      "at": "2026-11-28T08:24:17.749Z",
       "label": "Continue",
       "next_node": "oh.1",
       "node_id": "oh.0",
@@ -4609,7 +4459,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T08:15:06.538Z",
+      "at": "2026-11-28T08:24:17.754Z",
       "label": "Yes",
       "next_node": "oh.2",
       "node_id": "oh.1",
@@ -4693,7 +4543,7 @@
        "units": 22
       },
       "note_id": "fn-strainer-silt",
-      "received_at": "2026-11-28T08:15:06.405Z",
+      "received_at": "2026-11-28T08:24:17.628Z",
       "scope": {
        "equip_id": null,
        "node_id": null,
@@ -4810,7 +4660,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T08:15:06.533Z",
+      "at": "2026-11-28T08:24:17.749Z",
       "label": "Continue",
       "next_node": "oh.1",
       "node_id": "oh.0",
@@ -4821,7 +4671,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T08:15:06.538Z",
+      "at": "2026-11-28T08:24:17.754Z",
       "label": "Yes",
       "next_node": "oh.2",
       "node_id": "oh.1",
@@ -4888,6 +4738,7 @@
   "applies_to": [
    "pump40-diesel"
   ],
+  "guards": [],
   "kind": "maintenance",
   "proc_id": "proc-battery",
   "requirements": [
@@ -5267,8 +5118,8 @@
   "pack_version": "2026.1.1-1",
   "proc_id": "proc-battery",
   "role": "apprentice",
-  "run_id": "run-42d0f3837ea51c6e577fcb37d2beeeef",
-  "started_at": "2026-11-28T08:15:06.546Z",
+  "run_id": "run-d6cfc2bd03341a536566c6e85d8178d1",
+  "started_at": "2026-11-28T08:24:17.762Z",
   "status": "open",
   "steps": [
    {
@@ -5277,7 +5128,7 @@
     "ord": 1,
     "outcome": "pass",
     "photos": [],
-    "recorded_at": "2026-11-28T08:15:06.547Z",
+    "recorded_at": "2026-11-28T08:24:17.763Z",
     "structured": null,
     "value": null
    },
@@ -5287,7 +5138,7 @@
     "ord": 2,
     "outcome": "pass",
     "photos": [],
-    "recorded_at": "2026-11-28T08:15:06.548Z",
+    "recorded_at": "2026-11-28T08:24:17.764Z",
     "structured": null,
     "value": null
    }
@@ -5314,7 +5165,7 @@
   "citations": [
    "m40.3-1.q1"
   ],
-  "elapsed_ms": 13,
+  "elapsed_ms": 12,
   "mode": "composed",
   "model": null,
   "nearest": [],
@@ -5675,14 +5526,14 @@
  "closed": {
   "job": {
    "asset_id": "unit-101",
-   "closed_at": "2026-11-28T08:15:06.576Z",
+   "closed_at": "2026-11-28T08:24:17.790Z",
    "current_node": "nc.end",
    "entered_by": "symptom",
    "entry_node": "nc.0",
    "equip_id": "pump40-diesel",
-   "job_id": "job-723509b0b50b5e36da192d2aa7cb9908",
+   "job_id": "job-a92c3e7cc50b070dcba538b156508d55",
    "level": "apprentice",
-   "opened_at": "2026-11-28T08:15:06.498Z",
+   "opened_at": "2026-11-28T08:24:17.717Z",
    "pack_id": "pump40",
    "pack_version": "2026.1.1-1",
    "query": null,
@@ -5695,7 +5546,7 @@
    "status": "closed",
    "steps": [
     {
-     "at": "2026-11-28T08:15:06.506Z",
+     "at": "2026-11-28T08:24:17.724Z",
      "label": "Continue",
      "next_node": "nc.1",
      "node_id": "nc.0",
@@ -5708,7 +5559,7 @@
      "value": null
     },
     {
-     "at": "2026-11-28T08:15:06.514Z",
+     "at": "2026-11-28T08:24:17.731Z",
      "label": "No",
      "next_node": "nc.1a",
      "node_id": "nc.1",
@@ -5721,7 +5572,7 @@
      "value": null
     },
     {
-     "at": "2026-11-28T08:15:06.521Z",
+     "at": "2026-11-28T08:24:17.739Z",
      "label": "Yes",
      "next_node": "nc.end",
      "node_id": "nc.1a",
@@ -5742,10 +5593,10 @@
    "action": "Replaced fuse F2",
    "asset_id": "unit-101",
    "cause": "Start fuse F2 blown",
-   "created_at": "2026-11-28T08:15:06.576Z",
+   "created_at": "2026-11-28T08:24:17.790Z",
    "equip_id": "pump40-diesel",
-   "job_id": "job-723509b0b50b5e36da192d2aa7cb9908",
-   "lesson_id": "lesson-3af05abb722aa4f7d7065e8adbfd1991",
+   "job_id": "job-a92c3e7cc50b070dcba538b156508d55",
+   "lesson_id": "lesson-db48796e96644d776c833d9db023f3b4",
    "level": "apprentice",
    "minutes": 20,
    "node_id": "nc.end",
@@ -5764,22 +5615,22 @@
    "status": "queued",
    "symptom_id": "s-nocrank",
    "tree_id": "t-nocrank",
-   "updated_at": "2026-11-28T08:15:06.576Z"
+   "updated_at": "2026-11-28T08:24:17.790Z"
   }
  },
  "jobReport": {
   "asset_id": "unit-101",
-  "closed_at": "2026-11-28T08:15:06.576Z",
+  "closed_at": "2026-11-28T08:24:17.790Z",
   "entered_by": "symptom",
   "entry_node": "nc.0",
   "equip_id": "pump40-diesel",
   "format": "harvest-job/1",
-  "job_id": "job-723509b0b50b5e36da192d2aa7cb9908",
+  "job_id": "job-a92c3e7cc50b070dcba538b156508d55",
   "lesson_ids": [
-   "lesson-3af05abb722aa4f7d7065e8adbfd1991"
+   "lesson-db48796e96644d776c833d9db023f3b4"
   ],
   "level": "apprentice",
-  "opened_at": "2026-11-28T08:15:06.498Z",
+  "opened_at": "2026-11-28T08:24:17.717Z",
   "pack_id": "pump40",
   "pack_version": "2026.1.1-1",
   "query": null,
@@ -5793,7 +5644,7 @@
   "status": "closed",
   "steps": [
    {
-    "at": "2026-11-28T08:15:06.506Z",
+    "at": "2026-11-28T08:24:17.724Z",
     "label": "Continue",
     "next_node": "nc.1",
     "node_id": "nc.0",
@@ -5807,7 +5658,7 @@
     "value": null
    },
    {
-    "at": "2026-11-28T08:15:06.514Z",
+    "at": "2026-11-28T08:24:17.731Z",
     "label": "No",
     "next_node": "nc.1a",
     "node_id": "nc.1",
@@ -5821,7 +5672,7 @@
     "value": null
    },
    {
-    "at": "2026-11-28T08:15:06.521Z",
+    "at": "2026-11-28T08:24:17.739Z",
     "label": "Yes",
     "next_node": "nc.end",
     "node_id": "nc.1a",
@@ -5847,8 +5698,8 @@
    "closed_at": null,
    "current_node": "oh.2",
    "equip_id": "pump40-diesel",
-   "job_id": "job-25c431fa0f488ac266d7a5d5f6c042e4",
-   "opened_at": "2026-11-28T08:15:06.528Z",
+   "job_id": "job-f3004f33592b5394b1753836022d8a5b",
+   "opened_at": "2026-11-28T08:24:17.744Z",
    "pack_id": "pump40",
    "resolution": null,
    "status": "open",
@@ -5859,11 +5710,11 @@
   },
   {
    "asset_id": "unit-101",
-   "closed_at": "2026-11-28T08:15:06.576Z",
+   "closed_at": "2026-11-28T08:24:17.790Z",
    "current_node": "nc.end",
    "equip_id": "pump40-diesel",
-   "job_id": "job-723509b0b50b5e36da192d2aa7cb9908",
-   "opened_at": "2026-11-28T08:15:06.498Z",
+   "job_id": "job-a92c3e7cc50b070dcba538b156508d55",
+   "opened_at": "2026-11-28T08:24:17.717Z",
    "pack_id": "pump40",
    "resolution": "fixed",
    "status": "closed",
@@ -5877,8 +5728,8 @@
    "closed_at": null,
    "current_node": "nc.4p",
    "equip_id": "pump40-diesel",
-   "job_id": "job-6a4790703d8d46c7ce92e182c74d3847",
-   "opened_at": "2026-11-28T08:15:06.425Z",
+   "job_id": "job-a5219c8e1289ae7461246c994352bce5",
+   "opened_at": "2026-11-28T08:24:17.646Z",
    "pack_id": "pump40",
    "resolution": null,
    "status": "open",
@@ -6742,7 +6593,7 @@
     "units": 9
    },
    "note_id": "fn-relay-bracket",
-   "received_at": "2026-11-28T08:15:06.405Z",
+   "received_at": "2026-11-28T08:24:17.628Z",
    "scope": {
     "equip_id": "pump40-diesel",
     "node_id": "nc.4",
@@ -6764,7 +6615,7 @@
     "units": 22
    },
    "note_id": "fn-strainer-silt",
-   "received_at": "2026-11-28T08:15:06.405Z",
+   "received_at": "2026-11-28T08:24:17.628Z",
    "scope": {
     "equip_id": null,
     "node_id": null,
@@ -6786,7 +6637,7 @@
    "ord": 1,
    "outcome": "fail",
    "photos": [],
-   "recorded_at": "2026-11-28T08:15:06.595Z",
+   "recorded_at": "2026-11-28T08:24:17.809Z",
    "structured": null,
    "value": null
   }
@@ -6797,13 +6648,13 @@
    "attrs": {
     "location": "North yard"
    },
-   "created_at": "2026-11-28T08:15:06.399Z",
+   "created_at": "2026-11-28T08:24:17.622Z",
    "equip_id": "pump40-diesel",
    "hours": 1840.5,
    "miles": null,
    "name": "Pump 101",
    "serial": "P40D-2310",
-   "updated_at": "2026-11-28T08:15:06.399Z"
+   "updated_at": "2026-11-28T08:24:17.622Z"
   },
   "events": [
    {
@@ -6869,8 +6720,8 @@
     "closed_at": null,
     "current_node": "oh.2",
     "equip_id": "pump40-diesel",
-    "job_id": "job-25c431fa0f488ac266d7a5d5f6c042e4",
-    "opened_at": "2026-11-28T08:15:06.528Z",
+    "job_id": "job-f3004f33592b5394b1753836022d8a5b",
+    "opened_at": "2026-11-28T08:24:17.744Z",
     "pack_id": "pump40",
     "repeat": {
      "flag": false,
@@ -6886,19 +6737,19 @@
    },
    {
     "asset_id": "unit-101",
-    "closed_at": "2026-11-28T08:15:06.576Z",
+    "closed_at": "2026-11-28T08:24:17.790Z",
     "current_node": "nc.end",
     "equip_id": "pump40-diesel",
-    "job_id": "job-723509b0b50b5e36da192d2aa7cb9908",
-    "opened_at": "2026-11-28T08:15:06.498Z",
+    "job_id": "job-a92c3e7cc50b070dcba538b156508d55",
+    "opened_at": "2026-11-28T08:24:17.717Z",
     "pack_id": "pump40",
     "repeat": {
      "flag": true,
      "matches": [
       {
-       "date": "2026-11-28T08:15:06.425Z",
+       "date": "2026-11-28T08:24:17.646Z",
        "days_before": 0,
-       "job_id": "job-6a4790703d8d46c7ce92e182c74d3847",
+       "job_id": "job-a5219c8e1289ae7461246c994352bce5",
        "kind": "job",
        "reason": "same_symptom",
        "symptom_id": "s-nocrank",
@@ -6919,8 +6770,8 @@
     "closed_at": null,
     "current_node": "nc.4p",
     "equip_id": "pump40-diesel",
-    "job_id": "job-6a4790703d8d46c7ce92e182c74d3847",
-    "opened_at": "2026-11-28T08:15:06.425Z",
+    "job_id": "job-a5219c8e1289ae7461246c994352bce5",
+    "opened_at": "2026-11-28T08:24:17.646Z",
     "pack_id": "pump40",
     "repeat": {
      "flag": false,
@@ -6942,10 +6793,10 @@
    "action": "Replaced fuse F2",
    "asset_id": "unit-101",
    "cause": "Start fuse F2 blown",
-   "created_at": "2026-11-28T08:15:06.576Z",
+   "created_at": "2026-11-28T08:24:17.790Z",
    "equip_id": "pump40-diesel",
-   "job_id": "job-723509b0b50b5e36da192d2aa7cb9908",
-   "lesson_id": "lesson-3af05abb722aa4f7d7065e8adbfd1991",
+   "job_id": "job-a92c3e7cc50b070dcba538b156508d55",
+   "lesson_id": "lesson-db48796e96644d776c833d9db023f3b4",
    "level": "apprentice",
    "minutes": 20,
    "node_id": "nc.end",
@@ -6964,7 +6815,7 @@
    "status": "queued",
    "symptom_id": "s-nocrank",
    "tree_id": "t-nocrank",
-   "updated_at": "2026-11-28T08:15:06.576Z"
+   "updated_at": "2026-11-28T08:24:17.790Z"
   }
  ],
  "outbox": {
@@ -7004,7 +6855,7 @@
     "pack_version": null,
     "result": null,
     "subject": "harvest-assets/1",
-    "ts": "2026-11-28T08:15:06.400Z"
+    "ts": "2026-11-28T08:24:17.623Z"
    },
    "seq": 1,
    "type": "event"
@@ -7027,7 +6878,7 @@
     "pack_version": null,
     "result": null,
     "subject": "pump40-fleet",
-    "ts": "2026-11-28T08:15:06.405Z"
+    "ts": "2026-11-28T08:24:17.628Z"
    },
    "seq": 2,
    "type": "event"
@@ -7049,8 +6900,8 @@
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "result": null,
-    "subject": "job-6a4790703d8d46c7ce92e182c74d3847",
-    "ts": "2026-11-28T08:15:06.425Z"
+    "subject": "job-a5219c8e1289ae7461246c994352bce5",
+    "ts": "2026-11-28T08:24:17.647Z"
    },
    "seq": 3,
    "type": "event"
@@ -7073,8 +6924,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-6a4790703d8d46c7ce92e182c74d3847",
-    "ts": "2026-11-28T08:15:06.432Z"
+    "subject": "job-a5219c8e1289ae7461246c994352bce5",
+    "ts": "2026-11-28T08:24:17.654Z"
    },
    "seq": 4,
    "type": "event"
@@ -7097,8 +6948,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-6a4790703d8d46c7ce92e182c74d3847",
-    "ts": "2026-11-28T08:15:06.443Z"
+    "subject": "job-a5219c8e1289ae7461246c994352bce5",
+    "ts": "2026-11-28T08:24:17.667Z"
    },
    "seq": 5,
    "type": "event"
@@ -7121,8 +6972,8 @@
      "unit": "V",
      "value": 10.8
     },
-    "subject": "job-6a4790703d8d46c7ce92e182c74d3847",
-    "ts": "2026-11-28T08:15:06.454Z"
+    "subject": "job-a5219c8e1289ae7461246c994352bce5",
+    "ts": "2026-11-28T08:24:17.678Z"
    },
    "seq": 6,
    "type": "event"
@@ -7143,8 +6994,8 @@
      "unit": "V",
      "value": 10.8
     },
-    "subject": "job-6a4790703d8d46c7ce92e182c74d3847",
-    "ts": "2026-11-28T08:15:06.461Z"
+    "subject": "job-a5219c8e1289ae7461246c994352bce5",
+    "ts": "2026-11-28T08:24:17.685Z"
    },
    "seq": 7,
    "type": "event"
@@ -7167,8 +7018,8 @@
      "unit": "V",
      "value": 12.7
     },
-    "subject": "job-6a4790703d8d46c7ce92e182c74d3847",
-    "ts": "2026-11-28T08:15:06.472Z"
+    "subject": "job-a5219c8e1289ae7461246c994352bce5",
+    "ts": "2026-11-28T08:24:17.695Z"
    },
    "seq": 8,
    "type": "event"
@@ -7191,8 +7042,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-6a4790703d8d46c7ce92e182c74d3847",
-    "ts": "2026-11-28T08:15:06.479Z"
+    "subject": "job-a5219c8e1289ae7461246c994352bce5",
+    "ts": "2026-11-28T08:24:17.702Z"
    },
    "seq": 9,
    "type": "event"
@@ -7215,8 +7066,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-6a4790703d8d46c7ce92e182c74d3847",
-    "ts": "2026-11-28T08:15:06.489Z"
+    "subject": "job-a5219c8e1289ae7461246c994352bce5",
+    "ts": "2026-11-28T08:24:17.710Z"
    },
    "seq": 10,
    "type": "event"
@@ -7238,8 +7089,8 @@
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "result": null,
-    "subject": "job-723509b0b50b5e36da192d2aa7cb9908",
-    "ts": "2026-11-28T08:15:06.498Z"
+    "subject": "job-a92c3e7cc50b070dcba538b156508d55",
+    "ts": "2026-11-28T08:24:17.718Z"
    },
    "seq": 11,
    "type": "event"
@@ -7262,8 +7113,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-723509b0b50b5e36da192d2aa7cb9908",
-    "ts": "2026-11-28T08:15:06.507Z"
+    "subject": "job-a92c3e7cc50b070dcba538b156508d55",
+    "ts": "2026-11-28T08:24:17.724Z"
    },
    "seq": 12,
    "type": "event"
@@ -7286,8 +7137,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-723509b0b50b5e36da192d2aa7cb9908",
-    "ts": "2026-11-28T08:15:06.514Z"
+    "subject": "job-a92c3e7cc50b070dcba538b156508d55",
+    "ts": "2026-11-28T08:24:17.732Z"
    },
    "seq": 13,
    "type": "event"
@@ -7310,8 +7161,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-723509b0b50b5e36da192d2aa7cb9908",
-    "ts": "2026-11-28T08:15:06.522Z"
+    "subject": "job-a92c3e7cc50b070dcba538b156508d55",
+    "ts": "2026-11-28T08:24:17.739Z"
    },
    "seq": 14,
    "type": "event"
@@ -7333,8 +7184,8 @@
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "result": null,
-    "subject": "job-25c431fa0f488ac266d7a5d5f6c042e4",
-    "ts": "2026-11-28T08:15:06.528Z"
+    "subject": "job-f3004f33592b5394b1753836022d8a5b",
+    "ts": "2026-11-28T08:24:17.745Z"
    },
    "seq": 15,
    "type": "event"
@@ -7357,8 +7208,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-25c431fa0f488ac266d7a5d5f6c042e4",
-    "ts": "2026-11-28T08:15:06.533Z"
+    "subject": "job-f3004f33592b5394b1753836022d8a5b",
+    "ts": "2026-11-28T08:24:17.749Z"
    },
    "seq": 16,
    "type": "event"
@@ -7381,8 +7232,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-25c431fa0f488ac266d7a5d5f6c042e4",
-    "ts": "2026-11-28T08:15:06.538Z"
+    "subject": "job-f3004f33592b5394b1753836022d8a5b",
+    "ts": "2026-11-28T08:24:17.754Z"
    },
    "seq": 17,
    "type": "event"
@@ -7456,7 +7307,7 @@
      "m40.3-1.q1"
     ],
     "dropped": 0,
-    "elapsed_ms": 13,
+    "elapsed_ms": 12,
     "expansions": [],
     "mode": "composed",
     "model": null,
@@ -7464,7 +7315,7 @@
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": "How do I check fuse F2?",
-    "ts": "2026-11-28T08:15:06.564Z",
+    "ts": "2026-11-28T08:24:17.778Z",
     "verdict": "supported"
    },
    "seq": 18,
@@ -7545,7 +7396,7 @@
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": "What colour is the paint?",
-    "ts": "2026-11-28T08:15:06.574Z",
+    "ts": "2026-11-28T08:24:17.788Z",
     "verdict": "declined"
    },
    "seq": 19,
@@ -7555,7 +7406,7 @@
    "event": {
     "asked": null,
     "detail": {
-     "job_id": "job-723509b0b50b5e36da192d2aa7cb9908",
+     "job_id": "job-a92c3e7cc50b070dcba538b156508d55",
      "submit": true
     },
     "event": "lesson.create",
@@ -7564,8 +7415,8 @@
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "result": null,
-    "subject": "lesson-3af05abb722aa4f7d7065e8adbfd1991",
-    "ts": "2026-11-28T08:15:06.576Z"
+    "subject": "lesson-db48796e96644d776c833d9db023f3b4",
+    "ts": "2026-11-28T08:24:17.790Z"
    },
    "seq": 20,
    "type": "event"
@@ -7574,7 +7425,7 @@
    "event": {
     "asked": null,
     "detail": {
-     "lesson_id": "lesson-3af05abb722aa4f7d7065e8adbfd1991"
+     "lesson_id": "lesson-db48796e96644d776c833d9db023f3b4"
     },
     "event": "job.close",
     "next_node": null,
@@ -7586,8 +7437,8 @@
      "node_id": "nc.end",
      "note": null
     },
-    "subject": "job-723509b0b50b5e36da192d2aa7cb9908",
-    "ts": "2026-11-28T08:15:06.579Z"
+    "subject": "job-a92c3e7cc50b070dcba538b156508d55",
+    "ts": "2026-11-28T08:24:17.792Z"
    },
    "seq": 21,
    "type": "event"
@@ -7606,7 +7457,7 @@
    "lesson.create": 1
   },
   "first_bad": null,
-  "head_hash": "2784160d8fe755de11c94f6a33f22342c3b4e12c4f256a07826643b5ae2a7282",
+  "head_hash": "c776bc0dde8331dee0eae5f91c5a5ba0bc84309bf2f9ef14d624b00a11b357af",
   "modes": {
    "composed": 1,
    "declined": 1

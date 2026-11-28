@@ -12,7 +12,9 @@ import type {
   AuditRecord,
   ChainReport,
   FieldNote,
+  HubStatus,
   JobReport,
+  ReviewItem,
   Lesson,
   ManualSearch,
   SectionRef,
@@ -44,7 +46,7 @@ import { PrintJob, PrintProcedure } from "../screens/Print.tsx";
 import { ManualHome, ManualResults, SectionReader } from "../screens/Manual.tsx";
 import { LearnHome, TreeStudy } from "../screens/Learn.tsx";
 import { Records, type RecordsProps } from "../screens/Records.tsx";
-import { Review, type ReviewProps } from "../screens/Review.tsx";
+import { Review, suggestedNote, type ReviewProps } from "../screens/Review.tsx";
 import { designPath } from "../routes.ts";
 import { unitName } from "../ui/format.ts";
 import { AssetSource } from "../ui/manual.tsx";
@@ -211,20 +213,27 @@ const records: RecordsProps = {
 };
 
 const titles = Object.fromEntries(D.trees.map((t) => [t.tree_id, t.title]));
-const reviewQueue = D.lessons.map((l) => ({ ...l, status: "uploaded" as const }));
+const variantsById = Object.fromEntries(D.equipment.map((e) => [e.equip_id, e.name]));
+const reviewItem = (l: Lesson): ReviewItem => ({ current: l, first_received_at: l.created_at, lesson_id: l.lesson_id, reopened: false, reviews: [], status: "pending", versions: [] });
+const reviewQueue = D.lessons.map(reviewItem);
 const first = reviewQueue[0] ?? null;
+const hubStatus: HubStatus = { bundles: 1, conflicts: 0, devices: 2, items: 3, jobs: 2, key_id: "1c3d7ada6ee7d67c", latest_bundle: 1, lessons_approved: 1, lessons_pending: reviewQueue.length, lessons_rejected: 0, stream: "pump40-fleet" };
 const review: ReviewProps = {
+  status: hubStatus,
   queue: reviewQueue,
+  approved: [],
   selected: first,
   titles,
-  units: Object.fromEntries(D.assets.map((a) => [a.asset_id, unitName(a)])),
-  context: D.steps.end.step?.node.text ?? null,
-  draft: first ? { cause: first.cause, action: first.action, note: first.note ?? "", reviewNote: "" } : null,
-  sent: D.fieldNotes,
+  variants: variantsById,
+  draft: first ? { text: suggestedNote(first.current), note: "" } : null,
+  suggested: first ? suggestedNote(first.current) : "",
+  reviewer: "Shop supervisor",
   busy: false,
+  onReviewer: none,
   onDraft: none,
   onApprove: none,
   onReject: none,
+  onPublish: none,
 };
 
 const sectionPage = D.section.assets.find((a) => a.role === "page") ?? null;
@@ -345,8 +354,8 @@ Object.assign(GALLERY, {
     title: "11. Review (hub)",
     states: [
       { state: "queue", label: "A lesson to review", unit: null, render: () => <Review {...review} /> },
-      { state: "edited", label: "Edited before approval", unit: null, render: () => <Review {...review} draft={review.draft && { ...review.draft, cause: "Battery discharged; date code three years old", reviewNote: "Cause tightened." }} /> },
-      { state: "empty", label: "Nothing waiting", unit: null, render: () => <Review {...review} queue={[]} selected={null} draft={null} /> },
+      { state: "edited", label: "Edited before approval", unit: null, render: () => <Review {...review} draft={{ text: "Check the battery date code first: batteries over three years old failed the voltage test.", note: "Made it a check to do first." }} /> },
+      { state: "empty", label: "Nothing waiting", unit: null, render: () => <Review {...review} queue={[]} selected={null} draft={null} approved={reviewQueue.map((r) => ({ ...r, status: "approved", reviews: [{ action: "approve", at: r.current.created_at, item_id: r.lesson_id, note: null, reviewer: "Shop supervisor" }] }))} /> },
     ],
   },
 });

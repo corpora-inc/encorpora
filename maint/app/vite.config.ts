@@ -10,6 +10,14 @@ const appkit = fileURLToPath(new URL("../../harvest/appkit/src", import.meta.url
 const api = fileURLToPath(new URL("../../harvest/api", import.meta.url));
 // Development: the engine (`harvest serve`) answers /api and /asset on 4317; the app stays same-origin.
 const engineUrl = process.env.MAINT_ENGINE ?? "http://127.0.0.1:4317";
+// The hub (review, publish) answers /hub/api on 4319 in development.
+const hubUrl = process.env.MAINT_HUB ?? "http://127.0.0.1:4319";
+const port = Number(process.env.MAINT_PORT ?? 4340);
+const proxy = {
+  "/api": engineUrl,
+  "/asset": engineUrl,
+  "/hub": { target: hubUrl, changeOrigin: true, rewrite: (p: string) => p.replace(/^\/hub/, "") },
+};
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
@@ -20,12 +28,12 @@ export default defineConfig({
     dedupe: ["react", "react-dom", "zustand", "@tauri-apps/api"],
   },
   server: {
-    port: 4340,
+    port,
     strictPort: true,
     fs: { allow: [".", appkit, api] },
-    proxy: { "/api": engineUrl, "/asset": engineUrl },
+    proxy,
   },
-  preview: { port: 4341, strictPort: true, proxy: { "/api": engineUrl, "/asset": engineUrl } },
+  preview: { port: port + 1, strictPort: true, proxy },
   envPrefix: ["VITE_", "TAURI_ENV_"],
   build: { target: "es2022" },
 });

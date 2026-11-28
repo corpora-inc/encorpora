@@ -7,6 +7,7 @@ import { CloseOutPage, DescribePage, JobPage } from "./pages/JobPages.tsx";
 import { LearnPage, TreeStudyPage } from "./pages/LearnPages.tsx";
 import { ManualHomePage, ManualSearchPage, SectionPage } from "./pages/ManualPages.tsx";
 import { RecordsPage } from "./pages/RecordsPage.tsx";
+import { ReviewPage } from "./pages/ReviewPage.tsx";
 import { PrintJobPage, PrintProcedurePage, TaskListPage, TaskRoute } from "./pages/TaskPages.tsx";
 import { NotFound } from "./screens/NotFound.tsx";
 
@@ -67,6 +68,8 @@ const router = createBrowserRouter([
           { path: "/manual/search/:q", element: <ManualSearchPage /> },
           { path: "/manual/:sectionId", element: <SectionPage /> },
           { path: "/manual/:sectionId/page/:assetId", element: <SectionPage /> },
+          { path: "/review", element: <ReviewPage /> },
+          { path: "/review/:lessonId", element: <ReviewPage /> },
           { path: "/learn", element: <LearnPage /> },
           { path: "/learn/tree/:treeId", element: <TreeStudyPage /> },
           { path: "*", element: <NotFound /> },

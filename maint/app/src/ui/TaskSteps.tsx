@@ -18,24 +18,31 @@ export interface TaskStepsProps {
  */
 export function TaskSteps({ task, records, busy = false, onRecord }: TaskStepsProps) {
   return (
-    <ol className="m-0 list-none border-t border-line p-0">
-      {task.steps.map((s) => {
-        const rec = records?.find((r) => r.ord === s.ord) ?? null;
-        return (
-          <li key={s.ord} className={cx("flex flex-col gap-3 border-b border-line px-4 py-4 last:border-b-0 sm:px-5", !s.applies && "opacity-60")}>
-            <Guards guards={s.guards} />
-            <div className="flex items-start gap-3">
-              <span className="w-7 shrink-0 pt-0.5 font-sans text-body font-bold tabular">{s.ord}.</span>
-              <p className="min-w-0 flex-1 text-body">
-                {s.text}
-                {!s.applies && <span className="ml-2 font-sans text-meta text-ink-3">Not for this variant</span>}
-              </p>
-            </div>
-            {records && onRecord && s.applies && <StepControl kind={s.check_kind} rec={rec} busy={busy} onRecord={(o, v) => onRecord(s.ord, o, v)} />}
-          </li>
-        );
-      })}
-    </ol>
+    <>
+      {task.guards.length > 0 && (
+        <div className="border-t border-line px-4 py-4 sm:px-5">
+          <Guards guards={task.guards} />
+        </div>
+      )}
+      <ol className="m-0 list-none border-t border-line p-0">
+        {task.steps.map((s) => {
+          const rec = records?.find((r) => r.ord === s.ord) ?? null;
+          return (
+            <li key={s.ord} className={cx("flex flex-col gap-3 border-b border-line px-4 py-4 last:border-b-0 sm:px-5", !s.applies && "opacity-60")}>
+              <Guards guards={s.guards} />
+              <div className="flex items-start gap-3">
+                <span className="w-7 shrink-0 pt-0.5 font-sans text-body font-bold tabular">{s.ord}.</span>
+                <p className="min-w-0 flex-1 text-body">
+                  {s.text}
+                  {!s.applies && <span className="ml-2 font-sans text-meta text-ink-3">Not for this variant</span>}
+                </p>
+              </div>
+              {records && onRecord && s.applies && <StepControl kind={s.check_kind} rec={rec} busy={busy} onRecord={(o, v) => onRecord(s.ord, o, v)} />}
+            </li>
+          );
+        })}
+      </ol>
+    </>
   );
 }
 
@@ -63,7 +70,10 @@ function StepControl({ kind, rec, busy, onRecord }: { kind: string; rec: StepRec
       aria-pressed={rec?.outcome === o}
       disabled={busy}
       onClick={() => onRecord(o)}
-      className={cx("flex min-h-tap flex-1 items-center justify-center gap-2 rounded-control border-2 px-4 text-small font-semibold", rec?.outcome === o ? "border-ink bg-ink text-surface" : "border-line-strong bg-surface text-ink")}
+      className={cx(
+        "flex min-h-tap flex-1 items-center justify-center gap-2 rounded-control border-2 px-4 text-small font-semibold",
+        rec?.outcome === o ? "border-ink bg-ink text-surface" : "border-line-strong bg-surface text-ink",
+      )}
     >
       {rec?.outcome === o && <Check aria-hidden size={20} />}
       {label}

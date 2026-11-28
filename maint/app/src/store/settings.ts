@@ -12,6 +12,9 @@ interface Settings {
   activeUnit: string | null;
   /** On-device model as an interface only; off by default and never required. */
   model: boolean;
+  /** Who reviews on this hub screen: the one place the app keeps it, recorded with every review. */
+  reviewer: string;
+  setReviewer(name: string): void;
   setTheme(t: Theme): void;
   setLevel(l: string): void;
   setActiveUnit(id: string | null): void;
@@ -25,6 +28,8 @@ export const useSettings = create<Settings>()(
       level: null,
       activeUnit: null,
       model: false,
+      reviewer: "",
+      setReviewer: (reviewer) => set({ reviewer }),
       setTheme: (theme) => set({ theme }),
       setLevel: (level) => set({ level }),
       setActiveUnit: (activeUnit) => set({ activeUnit }),

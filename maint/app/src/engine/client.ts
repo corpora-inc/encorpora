@@ -64,5 +64,19 @@ export async function call<M extends Method>(method: M, params: Params<M>): Prom
   return r.result as Result<M>;
 }
 
+/**
+ * The hub: review and publishing, on a supervisor's or engineer's screen.
+ * Same envelope, its own address (in development, /hub is proxied to it).
+ */
+let hubTransport: Transport = httpTransport("/hub");
+export function setHubTransport(t: Transport): void {
+  hubTransport = t;
+}
+export async function hubCall<M extends Method>(method: M, params: Params<M>): Promise<Result<M>> {
+  const r = await hubTransport.call(method, params);
+  if (!r.ok) throw new EngineError(method, r.error.code, r.error.message);
+  return r.result as Result<M>;
+}
+
 /** A figure or page image of the signed pack. */
 export const assetUrl = (packId: string, assetId: string) => `/asset/${encodeURIComponent(packId)}/${encodeURIComponent(assetId)}`;
