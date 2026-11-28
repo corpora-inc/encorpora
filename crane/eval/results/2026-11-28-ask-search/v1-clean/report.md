@@ -1,6 +1,6 @@
 # Evaluation report
 
-Set: `<repo>/crane/eval/heldout-v1.jsonl` (342 items, sha256 `21f018c2ce5a65ba…`). Run 2026-11-28T02:14:59+00:00 → 2026-11-28T02:15:25+00:00. Harness commit `f520106f9e`. Host: Darwin arm64, Python 3.14.9.
+Set: `<repo>/crane/eval/heldout-v1.jsonl` (342 items, sha256 `21f018c2ce5a65ba…`). Run 2026-11-28T03:22:13+00:00 → 2026-11-28T03:22:42+00:00. Harness commit `dcdb0d91a8`. Host: Darwin arm64, Python 3.14.9.
 
 ## Systems
 
@@ -29,8 +29,8 @@ Set: `<repo>/crane/eval/heldout-v1.jsonl` (342 items, sha256 `21f018c2ce5a65ba�
 | Retrieval R@5 (lineage) | 0.646 (0.597–0.696) |
 | Bake hit rate | 0.000 |
 | Equipment-specific fully correct | – (n=0) |
-| Latency p50 / p95 ms (reported) | 4 / 5 |
-| Latency p50 / p95 ms (wall) | 69 / 83 |
+| Latency p50 / p95 ms (reported) | 3 / 4 |
+| Latency p50 / p95 ms (wall) | 82 / 98 |
 | Judge agreement (exact / κ) | – / – (n=0) |
 
 ## Retrieval: search-lexical

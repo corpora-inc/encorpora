@@ -13,7 +13,10 @@ first results shown**, and how much typos and misspellings cost.
   - `typo10`: typos in about 10% of words of 4+ letters;
   - `misspell`: phonetic misspellings of crane words ("outriger", "too
     blocking", "personel"; questions without such a word get one typo instead:
-    206 of 342 v1 questions and 48 of 73 v2 questions had one).
+    202 of 342 v1 questions and 46 of 73 v2 questions had one).
+
+  Every perturbed question differs from its original. Digits, acronyms (NCCCO)
+  and section labels ("Subpart CC") are never edited.
 - v3 stays frozen and unused.
 
 R@k is the share of answerable items whose gold rule appears in the first k
@@ -23,16 +26,16 @@ distinct sections shown. Two levels:
 
 ## Lexical search (this PR)
 
-| Set | Section R@1 | Section R@5 | Section R@10 | Paragraph R@1 | Paragraph R@3 | Paragraph R@5 | Paragraph R@10 | MRR@10 |
-|---|---|---|---|---|---|---|---|---|
-| v1 clean | 0.588 | **0.838** | 0.896 | 0.345 | 0.559 | **0.646** | 0.742 | 0.584 |
-| v1 typo1 | 0.576 | 0.812 | 0.874 | 0.342 | 0.543 | 0.624 | 0.723 | 0.575 |
-| v1 typo10 | 0.555 | 0.812 | 0.882 | 0.318 | 0.528 | 0.594 | 0.704 | 0.549 |
-| v1 misspell | 0.544 | 0.777 | 0.857 | 0.312 | 0.493 | 0.565 | 0.673 | 0.529 |
-| v2 clean | 0.538 | **0.826** | 0.877 | 0.312 | 0.521 | **0.633** | 0.713 | 0.572 |
-| v2 typo1 | 0.555 | 0.826 | 0.843 | 0.304 | 0.547 | 0.650 | 0.708 | 0.571 |
-| v2 typo10 | 0.419 | 0.809 | 0.843 | 0.253 | 0.453 | 0.555 | 0.662 | 0.492 |
-| v2 misspell | 0.534 | 0.775 | 0.860 | 0.325 | 0.518 | 0.599 | 0.677 | 0.566 |
+| Set | Section R@1 | Section R@5 | Section R@10 | Paragraph R@1 | Paragraph R@3 | Paragraph R@5 | Paragraph R@10 | Section MRR@10 | Paragraph MRR@10 |
+|---|---|---|---|---|---|---|---|---|---|
+| v1 clean | 0.588 | **0.838** | 0.896 | 0.345 | 0.559 | **0.646** | 0.742 | 0.698 | 0.584 |
+| v1 typo1 | 0.578 | 0.807 | 0.872 | 0.345 | 0.544 | 0.619 | 0.718 | 0.682 | 0.577 |
+| v1 typo10 | 0.555 | 0.815 | 0.886 | 0.317 | 0.532 | 0.599 | 0.702 | 0.668 | 0.547 |
+| v1 misspell | 0.547 | 0.777 | 0.857 | 0.316 | 0.494 | 0.566 | 0.673 | 0.653 | 0.532 |
+| v2 clean | 0.538 | **0.826** | 0.877 | 0.312 | 0.521 | **0.633** | 0.713 | 0.673 | 0.572 |
+| v2 typo1 | 0.538 | 0.826 | 0.843 | 0.304 | 0.547 | 0.650 | 0.708 | 0.668 | 0.571 |
+| v2 typo10 | 0.436 | 0.809 | 0.843 | 0.253 | 0.462 | 0.555 | 0.662 | 0.610 | 0.492 |
+| v2 misspell | 0.517 | 0.792 | 0.877 | 0.325 | 0.535 | 0.599 | 0.677 | 0.652 | 0.570 |
 
 Findings:
 
@@ -40,8 +43,8 @@ Findings:
    questions** (v1 83.8%, v2 82.6%). The right paragraph is there for about
    64%. v2 was written after any tuning, and it matches v1.
 2. **Typos cost a few points; misspellings cost more.** On v1 at paragraph
-   R@5, one typo costs 2.2 points and typos in 10% of words cost 5.2.
-   Phonetic misspellings of the crane words themselves cost 8.1, and 6.1 at
+   R@5, one typo costs 2.7 points and typos in 10% of words cost 4.7.
+   Phonetic misspellings of the crane words themselves cost 8.0, and 6.1 at
    section level. Lexical matching has no spelling tolerance, so a misspelled
    key term ("outriger") stops matching. The normalizer's synonym table could
    carry common misspellings, or the dense half could absorb them (next).

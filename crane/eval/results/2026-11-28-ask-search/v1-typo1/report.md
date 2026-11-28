@@ -1,6 +1,6 @@
 # Evaluation report
 
-Set: `<perturbed>/heldout-v1-typo1.jsonl` (342 items, sha256 `28ec552232fa011a…`). Run 2026-11-28T02:15:38+00:00 → 2026-11-28T02:16:02+00:00. Harness commit `f520106f9e`. Host: Darwin arm64, Python 3.14.9.
+Set: `<perturbed>/heldout-v1-typo1.jsonl` (342 items, sha256 `4d743bee1908aa35…`). Run 2026-11-28T03:22:43+00:00 → 2026-11-28T03:23:11+00:00. Harness commit `dcdb0d91a8`. Host: Darwin arm64, Python 3.14.9.
 
 ## Systems
 
@@ -26,20 +26,20 @@ Set: `<perturbed>/heldout-v1-typo1.jsonl` (342 items, sha256 `28ec552232fa011a�
 | Citation precision (supports a claim) | – |
 | Citations that exist in the corpus | – |
 | Quotes verbatim | – (0/0) |
-| Retrieval R@5 (lineage) | 0.624 (0.574–0.673) |
+| Retrieval R@5 (lineage) | 0.619 (0.569–0.667) |
 | Bake hit rate | 0.000 |
 | Equipment-specific fully correct | – (n=0) |
-| Latency p50 / p95 ms (reported) | 4 / 5 |
-| Latency p50 / p95 ms (wall) | 69 / 82 |
+| Latency p50 / p95 ms (reported) | 3 / 4 |
+| Latency p50 / p95 ms (wall) | 80 / 95 |
 | Judge agreement (exact / κ) | – / – (n=0) |
 
 ## Retrieval: search-lexical
 
 | Level | P@1 | P@3 | P@5 | P@10 | R@1 | R@3 | R@5 | R@10 | MRR@10 |
 |---|---|---|---|---|---|---|---|---|---|
-| strict | 0.447 | 0.265 | 0.201 | 0.133 | 0.315 | 0.473 | 0.545 | 0.645 | 0.548 |
-| lineage | 0.467 | 0.314 | 0.253 | 0.180 | 0.342 | 0.543 | 0.624 | 0.723 | 0.575 |
-| section | 0.588 | 0.471 | 0.439 | 0.371 | 0.576 | 0.733 | 0.812 | 0.874 | 0.682 |
+| strict | 0.450 | 0.265 | 0.199 | 0.132 | 0.316 | 0.472 | 0.542 | 0.643 | 0.547 |
+| lineage | 0.474 | 0.315 | 0.251 | 0.179 | 0.345 | 0.544 | 0.619 | 0.718 | 0.577 |
+| section | 0.591 | 0.471 | 0.436 | 0.370 | 0.578 | 0.733 | 0.807 | 0.872 | 0.682 |
 
 ## Fully correct by category
 

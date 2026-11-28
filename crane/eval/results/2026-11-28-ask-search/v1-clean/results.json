@@ -1,6 +1,6 @@
 {
  "meta": {
-  "started_at": "2026-11-28T02:14:59+00:00",
+  "started_at": "2026-11-28T03:22:13+00:00",
   "set": {
    "path": "<repo>/crane/eval/heldout-v1.jsonl",
    "sha256": "21f018c2ce5a65ba481bf1ffc59129489d21fe5d647859b1c813dc7f2a66acc3",
@@ -10,7 +10,7 @@
    "path": "../../crane/eval/results/2026-11-28-ask-search/../../sources/sections-2026-11-24.jsonl",
    "sha256": "95762f535457192699565a367cf8593e6538e22bb799cdcbad9167ff78db0777"
   },
-  "harness_commit": "f520106f9e856d786f494c975c6920b06232df98",
+  "harness_commit": "dcdb0d91a876706b81320774748ac873158f6f5f",
   "host": {
    "machine": "arm64",
    "system": "Darwin",
@@ -37,7 +37,7 @@
     "reported_models": []
    }
   },
-  "finished_at": "2026-11-28T02:15:25+00:00",
+  "finished_at": "2026-11-28T03:22:42+00:00",
   "incomplete": []
  },
  "backends": {
@@ -130,10 +130,10 @@
    "bake_hit_rate": 0.0,
    "bake_hit_rate_of_answered": 0.0,
    "latency_ms": {
-    "reported_p50": 4.0,
-    "reported_p95": 5.0,
-    "wall_p50": 69.37966650002636,
-    "wall_p95": 82.74787049631414
+    "reported_p50": 3.0,
+    "reported_p95": 4.0,
+    "wall_p50": 81.78110399967409,
+    "wall_p95": 97.82554729608819
    }
   }
  },

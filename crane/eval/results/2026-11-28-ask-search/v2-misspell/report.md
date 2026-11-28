@@ -1,6 +1,6 @@
 # Evaluation report
 
-Set: `<perturbed>/heldout-v2-misspell.jsonl` (73 items, sha256 `2f5e2e4f91e1174f…`). Run 2026-11-28T02:17:08+00:00 → 2026-11-28T02:17:14+00:00. Harness commit `f520106f9e`. Host: Darwin arm64, Python 3.14.9.
+Set: `<perturbed>/heldout-v2-misspell.jsonl` (73 items, sha256 `d06c487e9f0c851f…`). Run 2026-11-28T03:24:29+00:00 → 2026-11-28T03:24:35+00:00. Harness commit `dcdb0d91a8`. Host: Darwin arm64, Python 3.14.9.
 
 ## Systems
 
@@ -26,20 +26,20 @@ Set: `<perturbed>/heldout-v2-misspell.jsonl` (73 items, sha256 `2f5e2e4f91e1174f
 | Citation precision (supports a claim) | – |
 | Citations that exist in the corpus | – |
 | Quotes verbatim | – (0/0) |
-| Retrieval R@5 (lineage) | 0.599 (0.490–0.710) |
+| Retrieval R@5 (lineage) | 0.599 (0.489–0.708) |
 | Bake hit rate | 0.000 |
 | Equipment-specific fully correct | – (n=0) |
-| Latency p50 / p95 ms (reported) | 4 / 6 |
-| Latency p50 / p95 ms (wall) | 79 / 97 |
+| Latency p50 / p95 ms (reported) | 3 / 5 |
+| Latency p50 / p95 ms (wall) | 84 / 98 |
 | Judge agreement (exact / κ) | – / – (n=0) |
 
 ## Retrieval: search-lexical
 
 | Level | P@1 | P@3 | P@5 | P@10 | R@1 | R@3 | R@5 | R@10 | MRR@10 |
 |---|---|---|---|---|---|---|---|---|---|
-| strict | 0.390 | 0.260 | 0.190 | 0.120 | 0.274 | 0.444 | 0.504 | 0.590 | 0.522 |
-| lineage | 0.441 | 0.305 | 0.251 | 0.171 | 0.325 | 0.518 | 0.599 | 0.677 | 0.566 |
-| section | 0.542 | 0.435 | 0.386 | 0.339 | 0.534 | 0.725 | 0.775 | 0.860 | 0.656 |
+| strict | 0.390 | 0.266 | 0.193 | 0.122 | 0.274 | 0.460 | 0.521 | 0.607 | 0.530 |
+| lineage | 0.441 | 0.311 | 0.251 | 0.171 | 0.325 | 0.535 | 0.599 | 0.677 | 0.570 |
+| section | 0.525 | 0.435 | 0.386 | 0.339 | 0.517 | 0.725 | 0.792 | 0.877 | 0.652 |
 
 ## Fully correct by category
 
