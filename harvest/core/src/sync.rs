@@ -11,6 +11,7 @@ use crate::crypt::{self, RecordKey};
 use crate::error::{Error, Result};
 use crate::packs::hex_encode;
 use rusqlite::{Connection, params};
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 use std::collections::BTreeMap;
@@ -46,7 +47,7 @@ pub fn init(conn: &Connection) -> Result<()> {
 }
 
 /// One queued item as it goes up.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, JsonSchema)]
 pub struct Upload {
     pub item_id: String,
     /// `run` | `deficiency` | `deficiency_cleared` | `miss` | any host kind.
@@ -232,7 +233,7 @@ pub fn pending_with(
 }
 
 /// What one [`flush`] did.
-#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq, JsonSchema)]
 pub struct FlushReport {
     pub sent: usize,
     pub acked: usize,
@@ -326,7 +327,7 @@ pub fn flush_with(
 }
 
 /// Queue counts.
-#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq, JsonSchema)]
 pub struct OutboxStatus {
     pub pending: u64,
     pub acked: u64,
