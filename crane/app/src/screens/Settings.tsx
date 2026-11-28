@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { PRODUCT } from "../config.ts";
 import { engine } from "../engine/index.ts";
 import { ROLES } from "../engine/types.ts";
-import { auditEntries, bakeHitRate } from "../lib/audit.ts";
+import { auditEntries } from "../lib/audit.ts";
 import { storedBytes } from "../lib/storage.ts";
 import { deletePhotos } from "../lib/photos.ts";
 import { useDevice } from "../store/device.ts";
@@ -83,7 +83,6 @@ export function AboutScreen() {
   const t = useT();
   const e = engine();
   const entries = auditEntries();
-  const rate = bakeHitRate(entries);
   return (
     <Page title={t("settings.about")} up={{ to: "/settings", label: t("nav.settings") }}>
       <Panel>
@@ -98,7 +97,7 @@ export function AboutScreen() {
           <dt className="text-ink-2">{t("about.version")}</dt><dd className="m-0 break-all tabular">{e.info.version}</dd>
           <dt className="text-ink-2">{t("about.schema")}</dt><dd className="m-0 tabular">{e.info.schema_version}</dd>
           {e.info.ecfr_date && (<><dt className="text-ink-2">{t("about.ecfr")}</dt><dd className="m-0 tabular">{e.info.ecfr_date}</dd></>)}
-          <dt className="text-ink-2">{t("about.answers")}</dt><dd className="m-0 tabular">{rate === null ? t("about.answers.none") : t("about.answers.rate", { n: entries.length, pct: Math.round(rate * 100) })}</dd>
+          <dt className="text-ink-2">{t("about.answers")}</dt><dd className="m-0 tabular">{entries.length === 0 ? t("about.answers.none") : t("about.answers.rate", { n: entries.length })}</dd>
         </dl>
         {e.info.fixture && <p className="m-0 mt-3 text-small text-ink-2">{t("about.fixture")}</p>}
       </Panel>
