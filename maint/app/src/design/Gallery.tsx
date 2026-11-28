@@ -1,90 +1,161 @@
 /**
- * /design: every screen in every state, from sample props, inside the real
- * shell. Development and design builds only. Test data for components: the
- * handlers do nothing and nothing here decides anything.
+ * /design: every screen in every state, inside the real shell, from data the
+ * engine returned (captured.json, written by scripts/capture-samples.mjs from
+ * the fictional Model 40 pump fixture). Development and design builds only.
+ * Test data for components: the handlers do nothing and nothing here decides anything.
  */
 import type { ReactNode } from "react";
 import { Link, useParams } from "react-router";
+import type {
+  AskResponse,
+  Asset,
+  AssetHistory,
+  EquipView,
+  FaultTree,
+  JobClosed,
+  JobSummary,
+  JobView,
+  PackAsset,
+  PackInfoView,
+  Resolved,
+  Run,
+  SymptomSearch,
+  SyncStatus,
+  TaskView,
+} from "../engine/types.ts";
 import { CloseOut, type CloseOutProps } from "../screens/CloseOut.tsx";
-import { Describe, type DescribeProps } from "../screens/Describe.tsx";
+import { Describe, type DescribeProps, type IndexGroup } from "../screens/Describe.tsx";
 import { Home } from "../screens/Home.tsx";
 import { Identify, type IdentifyProps } from "../screens/Identify.tsx";
 import { Step, type StepProps } from "../screens/Step.tsx";
 import { UnitPage } from "../screens/UnitPage.tsx";
 import { designPath } from "../routes.ts";
+import { unitName } from "../ui/format.ts";
+import { AssetSource } from "../ui/manual.tsx";
 import { Shell, type ShellUnit } from "../ui/Shell.tsx";
-import * as S from "./samples.ts";
+import raw from "./captured.json";
+
+interface Captured {
+  pack: PackInfoView;
+  equipment: EquipView[];
+  trees: FaultTree[];
+  assets: Asset[];
+  resolve: { resolved: Resolved; ambiguous: Resolved; none: Resolved };
+  search: { results: SymptomSearch; none: SymptomSearch; closest: SymptomSearch; codes: SymptomSearch };
+  steps: Record<"symptom" | "check" | "checkLevel2" | "value" | "action" | "back" | "passfail" | "escalate" | "actionCheck" | "end" | "choice", JobView>;
+  task: TaskView;
+  run: Run;
+  ask: AskResponse;
+  askDeclined: AskResponse;
+  closed: JobClosed;
+  jobs: JobSummary[];
+  history: AssetHistory;
+  outbox: SyncStatus;
+}
+const D = raw as unknown as Captured;
+
+// Captured page images, by asset id, so the gallery needs no engine.
+const IMAGES = import.meta.glob("./assets/*", { eager: true, query: "?url", import: "default" }) as Record<string, string>;
+const imageFor = (_pack: string, a: PackAsset) => Object.entries(IMAGES).find(([k]) => k.includes(`/${a.asset_id}.`))?.[1] ?? "";
 
 const none = () => {};
-const unit = S.UNITS[0]!;
-const shellUnit: ShellUnit = { asset_id: unit.asset_id, name: unit.name, variant: unit.variant };
+const variants = Object.fromEntries(D.equipment.map((e) => [e.equip_id, e.name]));
+const unit = D.history.asset;
+const variant = (unit.equip_id && variants[unit.equip_id]) || "";
+const shellUnit: ShellUnit = { asset_id: unit.asset_id, name: unitName(unit), variant };
+const openJobs = D.jobs.filter((j) => j.status === "open");
+const index: IndexGroup[] = D.pack.systems.map((system) => ({ system, trees: D.trees.filter((t) => t.system === system) }));
 
 interface Entry {
   state: string;
   label: string;
   unit: ShellUnit | null;
-  online?: boolean;
   render(): ReactNode;
 }
 
-const identify: Omit<IdentifyProps, "mode" | "phase" | "result"> = { observed: { serial: "40D-4172", plate_text: "MODEL 40 UTILITY PUMP" }, picked: null, fleetNumber: "P40-0172", canConnect: false, onObserved: none, onResolve: none, onPick: none, onFleetNumber: none, onSave: none, onConnect: none };
+const identify: Omit<IdentifyProps, "mode" | "phase" | "result"> = {
+  observed: { serial: D.assets[0]?.serial ?? "" },
+  general: false,
+  picked: null,
+  name: "",
+  hours: "",
+  saving: false,
+  canConnect: false,
+  onObserved: none,
+  onResolve: none,
+  onPick: none,
+  onName: none,
+  onHours: none,
+  onSave: none,
+  onConnect: none,
+};
 
 const describe: Omit<DescribeProps, "phase"> = {
-  unit,
+  unitName: unitName(unit),
   query: "",
-  hits: [],
-  codes: null,
-  usedCodes: [],
-  signal: null,
-  index: S.INDEX,
-  voice: "idle",
-  clarify: null,
+  search: null,
+  codes: [],
+  signalKinds: D.pack.signal_kinds,
+  index,
+  voice: "unavailable",
   onQuery: none,
-  onToggleCode: none,
+  onAddCode: none,
+  onRemoveCode: none,
   onVoice: none,
-  onStart: none,
+  onStartSymptom: none,
+  onStartTree: none,
   onStartSignal: none,
 };
 
-const step: Omit<StepProps, "step"> = {
-  symptom: "Low discharge pressure",
+const step = (v: JobView, extra: Partial<StepProps> = {}): StepProps => ({
+  job: v.job,
+  step: v.step!,
+  levels: D.pack.levels,
   phase: "ready",
   draft: "",
-  attachments: [],
-  testOpen: false,
+  note: "",
+  photos: 0,
+  keypadOpen: false,
   overlay: null,
-  model: false,
   onDraft: none,
+  onKeypad: none,
   onAnswer: none,
   onLevel: none,
-  onTestOpen: none,
   onBack: none,
   onPhoto: none,
   onNote: none,
   onAskQuery: none,
-};
+  ...extra,
+});
 
-const close: Omit<CloseOutProps, "phase"> = {
-  symptom: "Low discharge pressure",
-  action: S.STEP_ACTION,
-  procedure: S.PROCEDURE,
-  verify: S.VERIFY,
-  done: [1, 2],
-  lesson: S.LESSON,
-  onStepDone: none,
-  onProcedureDone: none,
+const lessonFrom = (s: JobView) => ({ cause: "", action: s.step!.node.text, parts: D.task.requirements.filter((r) => r.kind === "part").map((r) => ({ ident: r.ident, text: r.text, qty: r.qty })), minutes: 45, note: "" });
+
+const close = (v: JobView, extra: Partial<CloseOutProps> = {}): CloseOutProps => ({
+  phase: "action",
+  step: v.step!,
+  resolution: "fixed",
+  task: D.task,
+  run: D.run,
+  draft: lessonFrom(v),
+  saved: null,
+  busy: false,
+  onRecord: none,
+  onActionDone: none,
   onVerified: none,
-  onLesson: none,
+  onDraft: none,
   onSave: none,
-};
+  ...extra,
+});
+
+const pageAsset = D.steps.check.step!.assets.find((a) => a.role === "page")!;
 
 export const GALLERY: Record<string, { title: string; states: Entry[] }> = {
   home: {
     title: "1. Fleet",
     states: [
-      { state: "first-run", label: "First run", unit: null, render: () => <Home loading={false} units={[]} jobs={[]} queued={0} lastSync={null} /> },
-      { state: "loading", label: "Loading", unit: null, render: () => <Home loading units={[]} jobs={[]} queued={0} lastSync={null} /> },
-      { state: "fleet", label: "Units and open jobs", unit: shellUnit, render: () => <Home loading={false} units={S.UNITS} jobs={S.JOBS} queued={3} lastSync="Today 06:40" /> },
+      { state: "first-run", label: "First run", unit: null, render: () => <Home loading={false} units={[]} variants={variants} openJobs={[]} pending={0} lastSync={null} /> },
+      { state: "loading", label: "Loading", unit: null, render: () => <Home loading units={[]} variants={variants} openJobs={[]} pending={0} lastSync={null} /> },
+      { state: "fleet", label: "Units and open jobs", unit: shellUnit, render: () => <Home loading={false} units={D.assets} variants={variants} openJobs={openJobs} pending={D.outbox.pending} lastSync={D.outbox.last_synced_at} /> },
     ],
   },
   identify: {
@@ -92,9 +163,9 @@ export const GALLERY: Record<string, { title: string; states: Entry[] }> = {
     states: [
       { state: "entry", label: "Typing the plate", unit: null, render: () => <Identify {...identify} mode="type" phase="entry" result={null} /> },
       { state: "resolving", label: "Identifying", unit: null, render: () => <Identify {...identify} mode="type" phase="resolving" result={null} /> },
-      { state: "resolved", label: "Resolved, with the rule", unit: null, render: () => <Identify {...identify} mode="type" phase="done" result={S.RESOLVED} /> },
-      { state: "ambiguous", label: "Two variants match", unit: null, render: () => <Identify {...identify} mode="type" phase="done" result={S.AMBIGUOUS} observed={{ plate_text: "MODEL 40" }} picked="m40-e" /> },
-      { state: "none", label: "No match", unit: null, render: () => <Identify {...identify} mode="type" phase="done" result={S.NO_MATCH} observed={{ serial: "41X-0001" }} /> },
+      { state: "resolved", label: "Resolved, with the rule", unit: null, render: () => <Identify {...identify} mode="type" phase="done" result={D.resolve.resolved} name="Pump 104" hours="12" /> },
+      { state: "general", label: "Model only, no variant", unit: null, render: () => <Identify {...identify} mode="type" phase="done" observed={{ model: "Model 40" }} result={D.resolve.ambiguous} general /> },
+      { state: "none", label: "No match", unit: null, render: () => <Identify {...identify} mode="type" phase="done" observed={{ serial: "ZZ-0001" }} result={D.resolve.none} /> },
       { state: "connect", label: "Connect, no link", unit: null, render: () => <Identify {...identify} mode="connect" phase="entry" result={null} /> },
       { state: "connect-ready", label: "Connect, link present", unit: null, render: () => <Identify {...identify} mode="connect" phase="entry" result={null} canConnect /> },
     ],
@@ -102,76 +173,65 @@ export const GALLERY: Record<string, { title: string; states: Entry[] }> = {
   unit: {
     title: "3. Unit",
     states: [
-      { state: "history", label: "History, repeats, fleet", unit: shellUnit, render: () => <UnitPage unit={unit} history={S.HISTORY} codes={null} openJob={S.JOBS[0]!} /> },
-      { state: "connected", label: "Connected, active codes", unit: shellUnit, render: () => <UnitPage unit={unit} history={S.HISTORY} codes={S.CODES} openJob={null} /> },
-      { state: "new", label: "New unit", unit: shellUnit, render: () => <UnitPage unit={unit} history={S.HISTORY_EMPTY} codes={null} openJob={null} /> },
-      { state: "loading", label: "Loading history", unit: shellUnit, render: () => <UnitPage unit={unit} history={null} codes={null} openJob={null} /> },
+      { state: "history", label: "History, repeats, fleet", unit: shellUnit, render: () => <UnitPage unit={unit} variant={variant} history={D.history} openJob={openJobs[0] ?? null} /> },
+      { state: "new", label: "New unit", unit: shellUnit, render: () => <UnitPage unit={unit} variant={variant} history={{ ...D.history, events: [], jobs: [], fleet_history: [], failure_modes: [] }} openJob={null} /> },
+      { state: "loading", label: "Loading history", unit: shellUnit, render: () => <UnitPage unit={unit} variant={variant} history={null} openJob={null} /> },
     ],
   },
   describe: {
     title: "4. Describe the problem",
     states: [
       { state: "empty", label: "Nothing typed", unit: shellUnit, render: () => <Describe {...describe} phase="empty" /> },
-      { state: "searching", label: "Searching", unit: shellUnit, render: () => <Describe {...describe} query="weak pressure" phase="searching" /> },
-      { state: "results", label: "Ranked symptoms", unit: shellUnit, render: () => <Describe {...describe} query="weak flow, pressure low" phase="results" hits={S.HITS} /> },
-      { state: "codes", label: "With fault codes", unit: shellUnit, render: () => <Describe {...describe} query="" phase="results" hits={S.HITS.slice(0, 1)} codes={S.CODES} usedCodes={["F214"]} signal={S.SIGNAL} /> },
-      { state: "none", label: "No match", unit: shellUnit, render: () => <Describe {...describe} query="smells like toast" phase="none" /> },
+      { state: "searching", label: "Searching", unit: shellUnit, render: () => <Describe {...describe} query="engine does not crank" phase="searching" /> },
+      { state: "results", label: "Confident match", unit: shellUnit, render: () => <Describe {...describe} query="engine does not crank" phase="results" search={D.search.results} /> },
+      { state: "closest", label: "Closest entries only", unit: shellUnit, render: () => <Describe {...describe} query="engine is hot" phase="results" search={D.search.closest} /> },
+      { state: "codes", label: "With a fault code", unit: shellUnit, render: () => <Describe {...describe} phase="results" codes={[{ signal_kind: "j1939.dm1", value: "spn:168/fmi:1" }]} search={D.search.codes} /> },
+      { state: "none", label: "No match", unit: shellUnit, render: () => <Describe {...describe} query="smells like toast" phase="results" search={D.search.none} /> },
       { state: "listening", label: "Voice, listening", unit: shellUnit, render: () => <Describe {...describe} phase="empty" voice="listening" /> },
-      {
-        state: "clarify",
-        label: "Model on, one question",
-        unit: shellUnit,
-        render: () => (
-          <Describe
-            {...describe}
-            query="weak flow"
-            phase="results"
-            hits={S.HITS.slice(0, 2)}
-            clarify={{ question: "Does the pump hold prime after it stops?", options: [{ label: "Holds prime", symptom_id: "s-low" }, { label: "Loses prime", symptom_id: "s-prime" }] }}
-          />
-        ),
-      },
     ],
   },
   step: {
     title: "5. Guided troubleshooting",
     states: [
-      { state: "check", label: "Yes/no, detailed", unit: shellUnit, render: () => <Step {...step} step={S.STEP_CHECK} /> },
-      { state: "check-brief", label: "Yes/no, experienced", unit: shellUnit, render: () => <Step {...step} step={S.STEP_CHECK_BRIEF} /> },
-      { state: "value", label: "Measured value", unit: shellUnit, render: () => <Step {...step} step={S.STEP_VALUE} draft="-12" /> },
-      { state: "passfail", label: "Pass or fail", unit: shellUnit, render: () => <Step {...step} step={S.STEP_PASSFAIL} /> },
-      { state: "page", label: "Original page open", unit: shellUnit, render: () => <Step {...step} step={S.STEP_CHECK} overlay={{ kind: "page", asset: S.STEP_CHECK.assets[0]! }} /> },
-      { state: "attached", label: "Photo and note", unit: shellUnit, render: () => <Step {...step} step={S.STEP_CHECK_BRIEF} attachments={S.ATTACHMENTS} /> },
-      { state: "sending", label: "Result sent", unit: shellUnit, render: () => <Step {...step} step={S.STEP_CHECK_BRIEF} phase="sending" /> },
-      { state: "ask", label: "Ask, cited answer", unit: shellUnit, render: () => <Step {...step} step={S.STEP_CHECK} overlay={{ kind: "ask", query: S.ASK.query, answer: S.ASK }} /> },
-      { state: "ask-model", label: "Ask, model on", unit: shellUnit, render: () => <Step {...step} step={S.STEP_CHECK} model overlay={{ kind: "ask", query: S.ASK.query, answer: S.ASK_MODEL }} /> },
-      { state: "ask-loading", label: "Ask, loading", unit: shellUnit, render: () => <Step {...step} step={S.STEP_CHECK} overlay={{ kind: "ask", query: S.ASK.query, answer: null }} /> },
-      { state: "action", label: "Corrective action", unit: shellUnit, render: () => <Step {...step} step={S.STEP_ACTION} /> },
-      { state: "escalate", label: "Refer", unit: shellUnit, render: () => <Step {...step} step={S.STEP_ESCALATE} /> },
+      { state: "symptom", label: "Symptom, continue", unit: shellUnit, render: () => <Step {...step(D.steps.symptom)} /> },
+      { state: "check", label: "Yes/no, first level", unit: shellUnit, render: () => <Step {...step(D.steps.check)} /> },
+      { state: "check-level2", label: "Yes/no, second level", unit: shellUnit, render: () => <Step {...step(D.steps.checkLevel2)} /> },
+      { state: "value", label: "Measured value", unit: shellUnit, render: () => <Step {...step(D.steps.value, { draft: "10.8" })} /> },
+      { state: "value-keypad", label: "Measured value, keypad open", unit: shellUnit, render: () => <Step {...step(D.steps.value, { draft: "10.8", keypadOpen: true })} /> },
+      { state: "back", label: "After changing an answer", unit: shellUnit, render: () => <Step {...step(D.steps.back)} /> },
+      { state: "passfail", label: "Pass or fail", unit: shellUnit, render: () => <Step {...step(D.steps.passfail)} /> },
+      { state: "choice", label: "Three-way choice", unit: shellUnit, render: () => <Step {...step(D.steps.choice)} /> },
+      { state: "action-check", label: "Action, then a question", unit: shellUnit, render: () => <Step {...step(D.steps.actionCheck)} /> },
+      { state: "page", label: "Original page open", unit: shellUnit, render: () => <Step {...step(D.steps.check, { overlay: { kind: "page", asset: pageAsset } })} /> },
+      { state: "noted", label: "Note and photos", unit: shellUnit, render: () => <Step {...step(D.steps.check, { note: "Fuse holder loose.", photos: 2 })} /> },
+      { state: "sending", label: "Result sent", unit: shellUnit, render: () => <Step {...step(D.steps.check, { phase: "sending" })} /> },
+      { state: "ask", label: "Ask, cited answer", unit: shellUnit, render: () => <Step {...step(D.steps.check, { overlay: { kind: "ask", query: "How do I check fuse F2?", answer: D.ask } })} /> },
+      { state: "ask-declined", label: "Ask, not in the manual", unit: shellUnit, render: () => <Step {...step(D.steps.check, { overlay: { kind: "ask", query: "What colour is the paint?", answer: D.askDeclined } })} /> },
+      { state: "ask-loading", label: "Ask, loading", unit: shellUnit, render: () => <Step {...step(D.steps.check, { overlay: { kind: "ask", query: "How do I check fuse F2?", answer: null } })} /> },
+      { state: "action", label: "Corrective action reached", unit: shellUnit, render: () => <Step {...step(D.steps.action)} /> },
+      { state: "escalate", label: "Refer", unit: shellUnit, render: () => <Step {...step(D.steps.escalate)} /> },
+      { state: "end", label: "Fault corrected", unit: shellUnit, render: () => <Step {...step(D.steps.end)} /> },
     ],
   },
   close: {
     title: "6. Close-out",
     states: [
-      { state: "procedure", label: "Corrective action", unit: shellUnit, render: () => <CloseOut {...close} phase="procedure" /> },
-      { state: "verify", label: "Did it fix it?", unit: shellUnit, render: () => <CloseOut {...close} phase="verify" /> },
-      { state: "lesson", label: "Lesson, prefilled", unit: shellUnit, render: () => <CloseOut {...close} phase="lesson" /> },
-      { state: "saved", label: "Saved on this device", unit: shellUnit, render: () => <CloseOut {...close} phase="saved" /> },
-      { state: "queued", label: "Waiting to sync", unit: shellUnit, render: () => <CloseOut {...close} phase="saved" lesson={{ ...S.LESSON, status: "queued" }} /> },
-      { state: "approved", label: "Approved", unit: shellUnit, online: true, render: () => <CloseOut {...close} phase="saved" lesson={{ ...S.LESSON, status: "approved" }} /> },
+      { state: "action", label: "Corrective action, task run", unit: shellUnit, render: () => <CloseOut {...close(D.steps.action)} /> },
+      { state: "verify", label: "Did it fix it?", unit: shellUnit, render: () => <CloseOut {...close(D.steps.action, { phase: "verify" })} /> },
+      { state: "lesson", label: "Lesson, prefilled", unit: shellUnit, render: () => <CloseOut {...close(D.steps.action, { phase: "lesson" })} /> },
+      { state: "referral", label: "Referral", unit: shellUnit, render: () => <CloseOut {...close(D.steps.escalate, { phase: "lesson", resolution: "escalated", task: null, draft: { ...lessonFrom(D.steps.escalate), parts: [] } })} /> },
+      { state: "queued", label: "Saved, waiting to sync", unit: shellUnit, render: () => <CloseOut {...close(D.steps.end, { phase: "saved", saved: D.closed.lesson })} /> },
+      { state: "approved", label: "Approved", unit: shellUnit, render: () => <CloseOut {...close(D.steps.end, { phase: "saved", saved: { ...D.closed.lesson!, status: "approved" } })} /> },
     ],
   },
 };
-
-/** Every gallery URL, for the browser checks and screenshots. */
-export const GALLERY_ROUTES = Object.entries(GALLERY).flatMap(([screen, g]) => g.states.map((s) => designPath(screen, s.state)));
 
 export function GalleryIndex() {
   return (
     <Shell unit={null} online={false} queued={0}>
       <div className="mx-auto w-full max-w-[1100px] px-4 pt-5 pb-10 sm:px-6 lg:px-8">
         <h1 className="mb-1 text-h2 sm:text-h1">Design</h1>
-        <p className="mb-6 text-body text-ink-2">Every screen and state, from sample props.</p>
+        <p className="mb-6 text-body text-ink-2">Every screen and state, from data the engine returned for the Model 40 fixture.</p>
         <div className="grid gap-6 md:grid-cols-2">
           {Object.entries(GALLERY).map(([screen, g]) => (
             <section key={screen}>
@@ -205,8 +265,10 @@ export function GalleryState() {
       </Shell>
     );
   return (
-    <Shell unit={entry.unit} online={entry.online ?? false} queued={3}>
-      {entry.render()}
-    </Shell>
+    <AssetSource.Provider value={imageFor}>
+      <Shell unit={entry.unit} online={false} queued={D.outbox.pending}>
+        {entry.render()}
+      </Shell>
+    </AssetSource.Provider>
   );
 }

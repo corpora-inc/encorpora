@@ -2,12 +2,19 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { setNamespace } from "@appkit/namespace.ts";
 import { logError } from "@appkit/log.ts";
+import { assistant, configureNative, voice } from "@appkit/native.ts";
 import "./styles.css";
 import { brandCss } from "./brands/index.ts";
 import { BRAND, PRODUCT } from "./config.ts";
-import { App } from "./App.tsx";
+import { App, BootFailed } from "./App.tsx";
+import { useDevice } from "./store/device.ts";
+import { useFleet } from "./store/fleet.ts";
+import { usePack } from "./store/pack.ts";
+import { applyTheme, useSettings } from "./store/settings.ts";
 
 setNamespace(PRODUCT.namespace);
+// No speech model is bundled yet: voice reports unavailable and the microphone is never offered.
+configureNative({ voiceModel: "", voicePrompt: "", bundleId: PRODUCT.bundleId });
 document.title = PRODUCT.name;
 window.addEventListener("error", (e) => logError("window", e.error ?? e.message));
 window.addEventListener("unhandledrejection", (e) => logError("promise", e.reason));
@@ -20,6 +27,8 @@ function loadFonts(): Promise<unknown> {
   return Promise.race([all, new Promise((r) => setTimeout(r, 2000))]);
 }
 
+const DESIGN_ONLY = location.pathname.startsWith("/design");
+
 async function boot() {
   const css = brandCss(BRAND);
   if (css) {
@@ -27,12 +36,29 @@ async function boot() {
     style.textContent = css;
     document.head.append(style);
   }
-  await loadFonts();
-  createRoot(document.getElementById("root")!).render(
+  applyTheme(useSettings.getState().theme);
+  const root = createRoot(document.getElementById("root")!);
+  // The pack and the fleet are read before the first screen, so no screen renders twice.
+  // The design gallery needs neither.
+  try {
+    const [, hasVoice, model] = await Promise.all([
+      loadFonts(),
+      voice.available(),
+      assistant.status(),
+      DESIGN_ONLY ? null : usePack.getState().load(),
+      DESIGN_ONLY ? null : useFleet.getState().refresh(),
+    ]);
+    useDevice.setState({ voice: hasVoice, assistantModel: model.present ? model.model : null });
+  } catch (e) {
+    logError("boot", e);
+    root.render(<BootFailed error={e} />);
+    return;
+  }
+  root.render(
     <StrictMode>
       <App />
     </StrictMode>,
   );
 }
 
-boot().catch((e) => logError("boot", e));
+void boot();

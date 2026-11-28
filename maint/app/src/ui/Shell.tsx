@@ -9,7 +9,8 @@ import { Toasts } from "./Toasts.tsx";
 export interface ShellUnit {
   asset_id: string;
   name: string;
-  variant: { short: string; title: string };
+  /** The variant's name from the pack, e.g. "Model 40 diesel". */
+  variant: string;
 }
 
 export interface ShellProps {
@@ -95,12 +96,11 @@ function UnitPlate({ unit }: { unit: ShellUnit | null }) {
       </span>
     );
   return (
-    <Link to={unitPath(unit.asset_id)} className="plate min-w-0 no-underline" aria-label={`Active unit ${unit.name}, ${unit.variant.title}`}>
+    <Link to={unitPath(unit.asset_id)} className="plate min-w-0 no-underline" aria-label={`Active unit ${unit.name}, ${unit.variant}`}>
       <span className="plate-rivet" />
-      <span className="code truncate">{unit.name}</span>
+      <span className="code shrink-0">{unit.name}</span>
       <span aria-hidden className="h-5 w-px shrink-0 bg-current opacity-40" />
-      <span className="shrink-0">{unit.variant.short}</span>
-      <span className="hidden truncate font-normal opacity-85 lg:inline">{unit.variant.title}</span>
+      <span className="truncate">{unit.variant}</span>
       <span className="plate-rivet" />
     </Link>
   );

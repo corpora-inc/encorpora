@@ -1,189 +1,276 @@
-import { Camera, ChevronDown, ChevronUp, MessageCircleQuestion, NotebookPen, Printer, Undo2, X, ArrowUpRight, Cpu } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ArrowUpRight, Camera, ChevronDown, ChevronUp, MessageCircleQuestion, NotebookPen, OctagonAlert, Printer, Undo2, X } from "lucide-react";
 import { Link } from "react-router";
-import type { AskAnswer, Asset, Attachment, Facet, PathEntry, ResultInput, StepView } from "../engine/types.ts";
-import { closeOutPath, jobAskPath, jobPagePath, jobPath, printJobPath, procedurePath } from "../routes.ts";
+import type { AskResponse, Citation, FacetGroup, Job, Level, PackAsset, PathEntry, StepView } from "../engine/types.ts";
+import { closeOutPath, jobAskPath, jobPagePath, jobPath, manualPath, printJobPath, procedurePath } from "../routes.ts";
 import { Button, cx, Segmented, Skeleton } from "../ui/kit.tsx";
 import { Keypad } from "../ui/Keypad.tsx";
-import { citationText, FieldNotes, Guards, ManualSheet, Requirements, sectionTitle } from "../ui/manual.tsx";
+import { citationText, FieldNotes, guardKind, Guards, ManualSheet, Requirements, sectionTitle, useAssetSrc } from "../ui/manual.tsx";
 
-export type StepOverlay = { kind: "page"; asset: Asset } | { kind: "ask"; query: string; answer: AskAnswer | null } | null;
+export type StepOverlay = { kind: "page"; asset: PackAsset } | { kind: "ask"; query: string; answer: AskResponse | null } | null;
+
+export type ResultInput = { outcome: string } | { value: number; unit: string };
+
+export interface PendingNote {
+  text: string;
+}
 
 export interface StepProps {
+  job: Job;
   step: StepView;
-  /** The symptom this job started from. */
-  symptom: string;
+  /** The pack's levels, most guidance first. */
+  levels: Level[];
   /** "sending": the result is with the engine; the step stays put until the next one arrives. */
   phase: "ready" | "sending";
   /** Typed value for a measurement. */
   draft: string;
-  attachments: Attachment[];
-  testOpen: boolean;
+  /** The note and photos that go with this answer. */
+  note: string;
+  photos: number;
+  keypadOpen: boolean;
   overlay: StepOverlay;
-  model: boolean;
   onDraft(v: string): void;
+  onKeypad(open: boolean): void;
   onAnswer(input: ResultInput): void;
   onLevel(levelId: string): void;
-  onTestOpen(open: boolean): void;
   onBack(): void;
   onPhoto(): void;
-  onNote(): void;
+  onNote(text: string): void;
   onAskQuery(q: string): void;
 }
 
-const KIND = { symptom: "Symptom", check: "Check", action: "Action", goto: "Continue", escalate: "Refer", end: "End" } as const;
+const KIND: Record<string, string> = { symptom: "Symptom", check: "Check", action: "Action", goto: "Continue", escalate: "Refer", end: "End" };
+const WARNING_ID = "step-warning";
 
-/** One question per screen: the manual's words, its warnings first, and large controls for the result. */
+/** One question per screen: the manual's words, its warnings first, and the result always within reach. */
 export function Step(p: StepProps) {
-  const { step } = p;
+  const { step, job } = p;
+  const assetSrc = useAssetSrc();
   const page = step.assets.find((a) => a.role === "page") ?? null;
   const figure = step.assets.find((a) => a.role === "figure") ?? null;
-  const possible = step.facets.find((f) => f.facet === "possible") ?? null;
+  const main = step.facets.filter((f) => f.facet !== "known" && f.facet !== "possible");
   const known = step.facets.filter((f) => f.facet === "known");
-  const facets = step.facets.filter((f) => f.facet !== "possible" && f.facet !== "known");
-  const needs = [...step.setup.conditions, ...step.requirements];
+  const possibleLabel = step.facets.find((f) => f.facet === "possible")?.label ?? null;
+  const needs = [...step.setup, ...step.requirements, ...(step.test_procedure?.requirements ?? [])];
   const busy = p.phase === "sending";
   const pageOpen = p.overlay?.kind === "page" ? p.overlay.asset : null;
+  const stepNo = step.path.length + 1;
+  const detailed = p.levels[0]?.id === step.level.id;
+  const hasWarning = step.guards.some((g) => guardKind(g.kind) === "warning");
+  const [noteOpen, setNoteOpen] = useState(false);
   return (
     <div className="mx-auto w-full max-w-[1280px] px-4 pt-4 pb-10 sm:px-6 lg:px-8">
+      {hasWarning && <WarningMarker text={step.guards.find((g) => guardKind(g.kind) === "warning")!.text} />}
       <header className="mb-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
         <div className="min-w-0">
-          <h1 className="text-h3 sm:text-h2">{p.symptom}</h1>
+          <h1 className="text-h3 sm:text-h2">{step.tree.title}</h1>
           <p className="text-small text-ink-2">
-            Step {step.step_no}, {KIND[step.kind].toLowerCase()}
+            Step {stepNo}, {(KIND[step.node.kind] ?? step.node.kind).toLowerCase()}
           </p>
         </div>
         <div className="no-print flex flex-wrap gap-2">
-          <Link to={jobAskPath(step.job_id)} className="inline-flex min-h-tap items-center gap-2 rounded-control border-2 border-line-strong bg-surface px-5 text-small font-semibold whitespace-nowrap text-ink no-underline">
+          <Link to={jobAskPath(job.job_id)} className="inline-flex min-h-tap items-center gap-2 rounded-control border-2 border-line-strong bg-surface px-5 text-small font-semibold whitespace-nowrap text-ink no-underline">
             <MessageCircleQuestion aria-hidden size={20} />
             Ask about this step
           </Link>
-          <Link to={printJobPath(step.job_id)} aria-label="Print this job" className="inline-flex size-tap items-center justify-center rounded-control border-2 border-line-strong bg-surface text-ink">
+          <Link to={printJobPath(job.job_id)} aria-label="Print this job" className="inline-flex size-tap items-center justify-center rounded-control border-2 border-line-strong bg-surface text-ink">
             <Printer aria-hidden size={22} />
           </Link>
         </div>
       </header>
 
       <div className={cx("grid items-start gap-6", pageOpen ? "lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]" : "lg:grid-cols-[minmax(0,1fr)_380px]")}>
-        <article aria-busy={busy} className={cx("flex min-w-0 flex-col gap-4", busy && "opacity-60")}>
-          <Guards guards={step.guards} />
+        <article aria-busy={busy} className="flex min-w-0 flex-col gap-4">
+          <div className={cx("flex flex-col gap-4", busy && "opacity-60")}>
+            <Guards guards={step.guards} firstWarningId={WARNING_ID} />
 
-          <ManualSheet citation={step.citation} onPage={page ? jobPagePath(step.job_id, page.asset_id) : undefined}>
-            {step.text}
-          </ManualSheet>
+            <ManualSheet citation={step.citation} onPage={page ? jobPagePath(job.job_id, page.asset_id) : undefined}>
+              {step.node.text}
+            </ManualSheet>
 
-          {figure && !pageOpen && <FigureCard figure={figure} jobId={step.job_id} className="lg:hidden" />}
+            {main.length > 0 && <FacetSheet groups={main} />}
 
-          {facets.length > 0 && <FacetSheet facets={facets} />}
+            {detailed && step.detail.length > 0 && <Explanation texts={step.detail.map((d) => d.text)} />}
 
-          {step.test_steps.length > 0 && <TestSteps step={step} open={p.testOpen || step.test_steps_fold === "expanded"} folded={step.test_steps_fold === "collapsed"} onOpen={p.onTestOpen} />}
+            {step.test_procedure && step.test_procedure.steps.length > 0 && <TestProcedure step={step} />}
 
-          {needs.length > 0 && (
-            <section className="rounded-panel border border-line bg-surface p-4 lg:hidden">
-              <Requirements items={needs} columns />
-            </section>
-          )}
+            {figure && !pageOpen && <FigureCard figure={figure} src={assetSrc(step.pack_id, figure)} to={jobPagePath(job.job_id, figure.asset_id)} className="lg:hidden" />}
+            {needs.length > 0 && (
+              <section className="rounded-panel border border-line bg-surface p-4 lg:hidden">
+                <Requirements items={needs} columns />
+              </section>
+            )}
 
-          <ResultControls {...p} busy={busy} />
-
-          <div className="no-print flex flex-wrap items-center gap-2">
-            <Button onClick={p.onPhoto} disabled={busy}>
-              <Camera aria-hidden size={22} />
-              Photo
-            </Button>
-            <Button onClick={p.onNote} disabled={busy}>
-              <NotebookPen aria-hidden size={22} />
-              Note
-            </Button>
-            {p.attachments.map((a) => (
-              <span key={a.id} className="inline-flex min-h-11 max-w-full items-center gap-2 rounded-control bg-surface-3 px-3 text-meta font-semibold">
-                {a.kind === "photo" ? <Camera aria-hidden size={18} className="shrink-0" /> : <NotebookPen aria-hidden size={18} className="shrink-0" />}
-                <span className="truncate">{a.kind === "photo" ? "Photo" : a.text}</span>
-              </span>
-            ))}
+            {step.record.expect?.kind === "value" && (
+              <section className="hidden rounded-panel border-2 border-ink bg-surface p-4 lg:block" aria-label="Measured value">
+                <ValueEntry {...p} />
+              </section>
+            )}
           </div>
 
+          <ResultBar {...p} busy={busy} />
+
+          {!step.terminal && (
+            <div className="no-print flex flex-wrap items-center gap-2">
+              <Button onClick={p.onPhoto} disabled={busy}>
+                <Camera aria-hidden size={22} />
+                Photo{p.photos > 0 && <span className="tabular"> ({p.photos})</span>}
+              </Button>
+              <Button onClick={() => setNoteOpen(true)} disabled={busy}>
+                <NotebookPen aria-hidden size={22} />
+                Note
+              </Button>
+              {p.note && <span className="inline-flex min-h-11 max-w-full min-w-0 items-center rounded-control bg-surface-3 px-3 text-meta font-semibold"><span className="truncate">{p.note}</span></span>}
+            </div>
+          )}
+
           <div className="no-print border-t border-line pt-4">
-            <Segmented label="Detail" value={step.level} options={step.levels.map((l) => ({ value: l.id, label: l.label }))} onChange={p.onLevel} />
+            <Segmented label="Detail" value={step.level.id} options={p.levels.map((l) => ({ value: l.id, label: l.label }))} onChange={p.onLevel} />
           </div>
         </article>
 
         <aside className="flex min-w-0 flex-col gap-4" aria-label="Job">
           {pageOpen ? (
-            <PageViewer asset={pageOpen} jobId={step.job_id} citation={citationText(step.citation)} docked />
+            <PageViewer asset={pageOpen} src={assetSrc(step.pack_id, pageOpen)} citation={step.citation} jobId={job.job_id} docked />
           ) : (
-            page && <PageThumb asset={page} jobId={step.job_id} />
+            page && <PageThumb asset={page} src={assetSrc(step.pack_id, page)} to={jobPagePath(job.job_id, page.asset_id)} label={step.citation.page_label} />
           )}
-          {figure && !pageOpen && <FigureCard figure={figure} jobId={step.job_id} className="hidden lg:block" />}
+          {figure && !pageOpen && <FigureCard figure={figure} src={assetSrc(step.pack_id, figure)} to={jobPagePath(job.job_id, figure.asset_id)} className="hidden lg:block" />}
           {needs.length > 0 && (
             <section className="hidden rounded-panel border border-line bg-surface p-4 lg:block">
               <Requirements items={needs} />
             </section>
           )}
-          <PathSoFar path={step.path} current={step} busy={busy} onBack={p.onBack} />
-          {known.length > 0 && <FacetSheet facets={known} />}
-          {possible && <PossibleOpen facet={possible} />}
           <FieldNotes notes={step.field_notes} compact />
+          <PathSoFar path={step.path} step={step} busy={busy} onBack={p.onBack} />
+          {known.length > 0 && <FacetSheet groups={known} />}
+          {step.possible_open.length > 0 && <PossibleOpen label={possibleLabel} texts={step.possible_open} />}
         </aside>
       </div>
 
       {pageOpen && (
         <div className="fixed inset-0 z-40 bg-page lg:hidden">
-          <PageViewer asset={pageOpen} jobId={step.job_id} citation={citationText(step.citation)} />
+          <PageViewer asset={pageOpen} src={assetSrc(step.pack_id, pageOpen)} citation={step.citation} jobId={job.job_id} />
         </div>
       )}
-      {p.overlay?.kind === "ask" && <AskSheet jobId={step.job_id} query={p.overlay.query} answer={p.overlay.answer} model={p.model} onQuery={p.onAskQuery} />}
+      {p.keypadOpen && step.record.expect?.kind === "value" && <KeypadSheet {...p} />}
+      {noteOpen && (
+        <NoteSheet
+          initial={p.note}
+          onClose={() => setNoteOpen(false)}
+          onSave={(t) => {
+            p.onNote(t);
+            setNoteOpen(false);
+          }}
+        />
+      )}
+      {p.overlay?.kind === "ask" && <AskSheet jobId={job.job_id} query={p.overlay.query} answer={p.overlay.answer} onQuery={p.onAskQuery} />}
     </div>
   );
 }
 
-function FigureCard({ figure, jobId, className }: { figure: Asset; jobId: string; className?: string }) {
+/**
+ * When the step's WARNING has scrolled out above, a one-line marker stays
+ * under the status strip and jumps back to it. It overlays; nothing moves.
+ */
+function WarningMarker({ text }: { text: string }) {
+  const [gone, setGone] = useState(false);
+  useEffect(() => {
+    const el = document.getElementById(WARNING_ID);
+    if (!el) return;
+    const strip = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--spacing-strip")) * 16 || 56;
+    const io = new IntersectionObserver(([e]) => setGone(!!e && !e.isIntersecting && e.boundingClientRect.top < strip), { rootMargin: `-${strip}px 0px 0px 0px` });
+    io.observe(el);
+    return () => io.disconnect();
+  }, [text]);
+  if (!gone) return null;
   return (
-    <Link to={jobPagePath(jobId, figure.asset_id)} className={cx("sheet overflow-hidden no-underline", className)}>
-      <img src={figure.url} alt={figure.label ?? "Figure"} width={figure.width ?? undefined} height={figure.height ?? undefined} className="block h-auto max-h-[300px] w-full bg-white object-contain" />
-      <span className="block border-t border-line px-4 py-2 font-sans text-meta text-ink-3">{figure.label}</span>
-    </Link>
+    <button
+      type="button"
+      onClick={() => document.getElementById(WARNING_ID)?.scrollIntoView({ behavior: "smooth", block: "start" })}
+      className="no-print fixed inset-x-0 top-[calc(var(--spacing-strip)+env(safe-area-inset-top))] z-30 flex h-11 items-center gap-2 bg-warn px-4 text-left text-warn-ink md:left-rail"
+    >
+      <OctagonAlert aria-hidden size={20} strokeWidth={2.5} className="shrink-0" />
+      <span className="shrink-0 text-small font-bold tracking-[0.14em]">WARNING</span>
+      <span className="manual-text min-w-0 truncate text-small">{text}</span>
+    </button>
   );
 }
 
-function FacetSheet({ facets }: { facets: Facet[] }) {
-  const shown = facets.filter((f) => f.shown);
-  if (shown.length === 0) return null;
+/** The manual's facets for this node, under the manual's own headings. */
+function FacetSheet({ groups }: { groups: FacetGroup[] }) {
+  const [open, setOpen] = useState<Record<string, boolean>>({});
   return (
     <section className="sheet flex flex-col gap-3 p-4 sm:p-5">
-      {shown.map((f) => (
-        <div key={f.facet}>
-          <h2 className="font-sans text-meta font-bold text-ink-2">{f.label}</h2>
-          {f.texts.map((t, i) => (
-            <p key={i} className="text-body">
-              {t}
-            </p>
-          ))}
-        </div>
+      {groups.map((g) => {
+        const shown = g.expanded || open[g.facet];
+        return (
+          <div key={g.facet}>
+            <div className="flex items-center justify-between gap-3">
+              <h2 className="font-sans text-meta font-bold text-ink-2">{g.label ?? g.facet}</h2>
+              {!g.expanded && (
+                <button type="button" aria-expanded={shown} onClick={() => setOpen({ ...open, [g.facet]: !shown })} className="-mr-2 inline-flex min-h-11 items-center gap-1 px-2 font-sans text-meta font-semibold text-ink-2">
+                  {shown ? "Hide" : "Show"}
+                  {shown ? <ChevronUp aria-hidden size={18} /> : <ChevronDown aria-hidden size={18} />}
+                </button>
+              )}
+            </div>
+            {shown &&
+              g.texts.map((t, i) => (
+                <p key={i} className="text-body">
+                  {t.text}
+                </p>
+              ))}
+          </div>
+        );
+      })}
+    </section>
+  );
+}
+
+/** Prepared explanation for the detailed level: app type, marked, never the sheet. */
+function Explanation({ texts }: { texts: string[] }) {
+  return (
+    <section className="rounded-panel border border-line bg-surface-2 p-4" aria-labelledby="explanation">
+      <div className="mb-1 flex items-center justify-between gap-3">
+        <h2 id="explanation" className="text-meta font-bold text-ink-2">
+          Explanation
+        </h2>
+        <span className="rounded-full border border-line-strong px-2 text-meta text-ink-3">Not manual text</span>
+      </div>
+      {texts.map((t, i) => (
+        <p key={i} className="text-body">
+          {t}
+        </p>
       ))}
     </section>
   );
 }
 
-function TestSteps({ step, open, folded, onOpen }: { step: StepView; open: boolean; folded: boolean; onOpen(o: boolean): void }) {
+function TestProcedure({ step }: { step: StepView }) {
+  const tp = step.test_procedure!;
+  const [open, setOpen] = useState(tp.expanded);
+  useEffect(() => setOpen(tp.expanded), [tp.expanded, step.node.node_id]);
   return (
     <section className="sheet">
       <div className="flex min-h-tap items-center justify-between gap-3 px-4 sm:px-5">
-        <h2 className="font-sans text-small font-bold">Test procedure</h2>
-        {folded && (
-          <button type="button" onClick={() => onOpen(!open)} aria-expanded={open} className="-mr-2 inline-flex min-h-11 items-center gap-1 rounded-control px-2 font-sans text-small font-semibold text-ink-2">
-            {open ? "Hide" : `Show ${step.test_steps.length} steps`}
-            {open ? <ChevronUp aria-hidden size={20} /> : <ChevronDown aria-hidden size={20} />}
-          </button>
-        )}
+        <h2 className="font-sans text-small font-bold">{tp.title}</h2>
+        <button type="button" onClick={() => setOpen(!open)} aria-expanded={open} className="-mr-2 inline-flex min-h-11 shrink-0 items-center gap-1 rounded-control px-2 font-sans text-small font-semibold text-ink-2">
+          {open ? "Hide" : `Show ${tp.steps.length} steps`}
+          {open ? <ChevronUp aria-hidden size={20} /> : <ChevronDown aria-hidden size={20} />}
+        </button>
       </div>
       {open && (
         <ol className="m-0 flex list-none flex-col gap-3 border-t border-line px-4 py-4 sm:px-5">
-          {step.test_steps.map((t) => (
-            <li key={t.n} className="flex flex-col gap-2">
+          {tp.steps.map((t) => (
+            <li key={t.ord} className={cx("flex flex-col gap-2", !t.applies && "opacity-60")}>
               <Guards guards={t.guards} />
               <div className="flex gap-3">
-                <span className="w-6 shrink-0 font-sans text-body font-bold tabular">{t.n}.</span>
-                <span className="text-body">{t.text}</span>
+                <span className="w-6 shrink-0 font-sans text-body font-bold tabular">{t.ord}.</span>
+                <span className="text-body">
+                  {t.text}
+                  {!t.applies && <span className="ml-2 font-sans text-meta text-ink-3">Not for this variant</span>}
+                </span>
               </div>
             </li>
           ))}
@@ -193,72 +280,136 @@ function TestSteps({ step, open, folded, onOpen }: { step: StepView; open: boole
   );
 }
 
-function ResultControls(p: StepProps & { busy: boolean }) {
-  const { step, busy } = p;
-  const e = step.expect;
-  if (step.kind === "escalate" || step.kind === "end")
-    return (
-      <div className="no-print">
-        <Link to={closeOutPath(step.job_id)} className="flex min-h-result w-full items-center justify-center rounded-control border-2 border-ink bg-ink text-lead font-semibold text-surface no-underline">
-          {step.kind === "escalate" ? "Close as referred" : "Close the job"}
-        </Link>
-      </div>
-    );
-  if (!e) return null;
-  if (e.kind === "value")
-    return (
-      <section className="no-print flex flex-col gap-3 rounded-panel border-2 border-ink bg-surface p-4" aria-label="Record the result">
-        <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-          <Keypad value={p.draft} unit={e.unit} onChange={p.onDraft} label="Measured value" />
-          <div className="flex flex-col gap-3">
-            <h2 className="text-small font-bold text-ink-2">The manual branches at</h2>
-            <ul className="m-0 flex list-none flex-col gap-2 p-0">
-              {step.branches.map((b) => (
-                <li key={b.outcome} className="manual-text rounded-control border border-line bg-sheet px-3 py-2 text-body">
-                  {b.label}
-                </li>
-              ))}
-            </ul>
-            <div className="flex-1" />
-            <Button variant="primary" size="lg" className="w-full" disabled={busy || !isNumber(p.draft)} onClick={() => p.onAnswer({ value: Number(p.draft), unit: e.unit })}>
-              Record {p.draft && isNumber(p.draft) ? `${p.draft} ${e.unit}` : "value"}
-            </Button>
-          </div>
-        </div>
-      </section>
-    );
-  return (
-    <section className="no-print flex flex-col gap-3" aria-label="Record the result">
-      {step.kind === "action" && step.target?.kind === "procedure" && (
-        <Link to={procedurePath(step.target.id)} className="flex min-h-tap items-center justify-between gap-3 rounded-control border-2 border-line-strong bg-surface px-4 text-small font-semibold text-ink no-underline">
-          <span className="min-w-0 truncate">Open the procedure: {step.target.title}</span>
-          <ArrowUpRight aria-hidden size={22} className="shrink-0" />
-        </Link>
-      )}
-      <div className={cx("grid gap-3", step.branches.length === 1 ? "grid-cols-1" : step.branches.length === 2 ? "grid-cols-2" : "grid-cols-1 sm:grid-cols-2")}>
-        {step.branches.map((b) => (
-          <button
-            key={b.outcome}
-            type="button"
-            disabled={busy}
-            onClick={() => p.onAnswer({ outcome: b.outcome })}
-            className={cx(
-              "flex min-h-result items-center justify-center rounded-control border-2 px-4 text-lead font-bold disabled:opacity-40 active:translate-y-px",
-              step.branches.length === 1 ? "border-ink bg-ink text-surface" : "border-ink bg-surface text-ink active:bg-surface-3",
-            )}
-          >
-            {b.label}
-          </button>
-        ))}
-      </div>
-    </section>
-  );
-}
-
 /** Text the keypad produced is a number. Parsing input, not judging it: the engine branches. */
 const isNumber = (s: string) => s !== "" && s !== "-" && s !== "." && Number.isFinite(Number(s));
 
-function PathSoFar({ path, current, busy, onBack }: { path: PathEntry[]; current: StepView; busy: boolean; onBack(): void }) {
+function ValueEntry(p: StepProps) {
+  const e = p.step.record.expect;
+  if (e?.kind !== "value") return null;
+  return (
+    <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+      <Keypad value={p.draft} unit={e.unit} onChange={p.onDraft} label="Measured value" />
+      <div className="flex flex-col gap-2">
+        <h2 className="text-small font-bold text-ink-2">The manual branches at</h2>
+        <ul className="m-0 flex list-none flex-col gap-2 p-0">
+          {p.step.record.branches.map((b) => (
+            <li key={b.to_node} className="manual-text rounded-control border border-line bg-sheet px-3 py-2 text-body">
+              {b.label}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * The result controls, pinned to the bottom of the viewport (above the phone
+ * tab bar) while the step scrolls, in their reading-order place otherwise.
+ * Sticky, so pinning never moves anything.
+ */
+function ResultBar(p: StepProps & { busy: boolean }) {
+  const { step, busy, job } = p;
+  const e = step.record.expect;
+  const bar = "no-print sticky bottom-[calc(var(--spacing-tabbar)+env(safe-area-inset-bottom))] z-10 -mx-4 border-t border-line bg-page/95 px-4 py-3 backdrop-blur-sm sm:-mx-6 sm:px-6 md:bottom-[env(safe-area-inset-bottom)] lg:mx-0 lg:rounded-panel lg:border lg:px-3";
+  if (step.terminal)
+    return (
+      <div className={bar}>
+        <Link to={closeOutPath(job.job_id)} className="flex min-h-result w-full items-center justify-center rounded-control border-2 border-ink bg-ink px-4 text-lead font-semibold text-surface no-underline">
+          {step.node.kind === "escalate" ? "Close as referred" : step.node.kind === "action" ? "Do the corrective action" : "Close the job"}
+        </Link>
+      </div>
+    );
+  if (e?.kind === "value")
+    return (
+      <div className={cx(bar, "grid grid-cols-[minmax(0,1fr)_auto] gap-3")} aria-label="Record the result">
+        <button type="button" onClick={() => p.onKeypad(true)} disabled={busy} aria-label={`Measured value ${p.draft || "not entered"} ${e.unit}. Open the keypad.`} className="flex min-h-result min-w-0 items-center justify-end gap-2 rounded-control border-2 border-ink bg-sheet px-4 lg:pointer-events-none">
+          <span className={cx("truncate text-h2 font-bold tabular", !p.draft && "text-ink-3")}>{p.draft || "0"}</span>
+          <span className="shrink-0 text-lead font-semibold text-ink-2">{e.unit}</span>
+        </button>
+        <Button variant="primary" size="lg" disabled={busy || !isNumber(p.draft)} onClick={() => p.onAnswer({ value: Number(p.draft), unit: e.unit })}>
+          Record
+        </Button>
+      </div>
+    );
+  const n = step.record.branches.length;
+  return (
+    <div className={bar} aria-label="Record the result">
+      {step.node.kind === "action" && step.target?.target.kind === "procedure" && (
+        <Link to={procedurePath(step.target.target.id)} className="mb-3 flex min-h-tap items-center justify-between gap-3 rounded-control border-2 border-line-strong bg-surface px-4 text-small font-semibold text-ink no-underline">
+          <span className="min-w-0 truncate">Open the task: {step.target.title ?? step.target.target.id}</span>
+          <ArrowUpRight aria-hidden size={22} className="shrink-0" />
+        </Link>
+      )}
+      <div className={cx("grid gap-3", n === 1 ? "grid-cols-1" : n === 2 ? "grid-cols-2" : "grid-cols-3")}>
+        {step.record.branches.map((b) => (
+          <button
+            key={b.to_node + b.label}
+            type="button"
+            disabled={busy || b.outcome === null}
+            onClick={() => b.outcome !== null && p.onAnswer({ outcome: b.outcome })}
+            className={cx(
+              "flex min-h-result min-w-0 items-center justify-center rounded-control border-2 px-2 text-lead font-bold disabled:opacity-40 active:translate-y-px",
+              n === 1 ? "border-ink bg-ink text-surface" : "border-ink bg-surface text-ink active:bg-surface-3",
+            )}
+          >
+            <span className="truncate">{b.label}</span>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/** A note that goes with this answer. */
+function NoteSheet({ initial, onSave, onClose }: { initial: string; onSave(t: string): void; onClose(): void }) {
+  const [text, setText] = useState(initial);
+  return (
+    <div className="fixed inset-0 z-40 flex items-end justify-center sm:items-center">
+      <button type="button" aria-label="Close" onClick={onClose} className="absolute inset-0 bg-[var(--scrim)]" />
+      <form
+        role="dialog"
+        aria-modal="true"
+        aria-label="Note"
+        className="relative w-full max-w-[560px] rounded-t-panel bg-surface p-4 pb-[calc(16px+env(safe-area-inset-bottom))] sm:rounded-panel"
+        onSubmit={(e) => {
+          e.preventDefault();
+          onSave(text.trim());
+        }}
+      >
+        <label className="block">
+          <span className="mb-1.5 block text-meta font-semibold text-ink-2">Note with this answer</span>
+          <textarea autoFocus rows={4} value={text} onChange={(e) => setText(e.target.value)} className="block w-full rounded-control border-2 border-line-strong bg-surface px-4 py-3 text-body focus:border-ink focus:outline-none" />
+        </label>
+        <div className="mt-3 grid grid-cols-2 gap-3">
+          <Button onClick={onClose}>Cancel</Button>
+          <Button type="submit" variant="primary">
+            Keep note
+          </Button>
+        </div>
+      </form>
+    </div>
+  );
+}
+
+/** The keypad on narrow screens: a sheet over the step, with the manual's branch points and Record. */
+function KeypadSheet(p: StepProps) {
+  const e = p.step.record.expect;
+  if (e?.kind !== "value") return null;
+  return (
+    <div className="fixed inset-0 z-40 flex items-end justify-center lg:hidden">
+      <button type="button" aria-label="Close the keypad" onClick={() => p.onKeypad(false)} className="absolute inset-0 bg-[var(--scrim)]" />
+      <section role="dialog" aria-modal="true" aria-label="Measured value" className="relative max-h-full w-full max-w-[560px] overflow-auto rounded-t-panel bg-surface p-4 pb-[calc(16px+env(safe-area-inset-bottom))]">
+        <ValueEntry {...p} />
+        <Button variant="primary" size="lg" className="mt-4 w-full" disabled={p.phase === "sending" || !isNumber(p.draft)} onClick={() => p.onAnswer({ value: Number(p.draft), unit: e.unit })}>
+          Record {isNumber(p.draft) ? `${p.draft} ${e.unit}` : "value"}
+        </Button>
+      </section>
+    </div>
+  );
+}
+
+function PathSoFar({ path, step, busy, onBack }: { path: PathEntry[]; step: StepView; busy: boolean; onBack(): void }) {
   return (
     <section className="rounded-panel border border-line bg-surface p-4" aria-labelledby="path">
       <h2 id="path" className="mb-3 text-small font-bold text-ink-2">
@@ -266,20 +417,20 @@ function PathSoFar({ path, current, busy, onBack }: { path: PathEntry[]; current
       </h2>
       <ol className="m-0 flex list-none flex-col p-0">
         {path.map((e, i) => (
-          <li key={e.node_id} className="grid grid-cols-[1.75rem_minmax(0,1fr)] gap-x-2 border-b border-line py-2 last:border-b-0">
+          <li key={e.seq} className="grid grid-cols-[1.75rem_minmax(0,1fr)] gap-x-2 border-b border-line py-2 last:border-b-0">
             <span className="text-meta font-bold text-ink-3 tabular">{i + 1}</span>
             <span className="min-w-0">
-              <span className="manual-text block text-small">{e.text}</span>
-              {e.result && <span className="mt-0.5 inline-block rounded-plate bg-surface-3 px-2 text-meta font-bold">{e.result}</span>}
+              {e.text && <span className="manual-text block text-small">{e.text}</span>}
+              <span className="mt-0.5 inline-block rounded-plate bg-surface-3 px-2 text-meta font-bold">{e.value != null ? `${e.value} ${e.unit ?? ""}`.trim() : e.label}</span>
             </span>
           </li>
         ))}
         <li className="grid grid-cols-[1.75rem_minmax(0,1fr)] gap-x-2 pt-2">
           <span className="text-meta font-bold tabular">{path.length + 1}</span>
-          <span className="text-small font-bold">Now: {KIND[current.kind].toLowerCase()}, {sectionTitle(current.citation)}</span>
+          <span className="text-small font-bold">Now: {sectionTitle(step.citation)}</span>
         </li>
       </ol>
-      {current.step_no > 1 && (
+      {path.length > 0 && (
         <Button onClick={onBack} disabled={busy} className="no-print mt-3 w-full">
           <Undo2 aria-hidden size={20} />
           Change last answer
@@ -289,14 +440,12 @@ function PathSoFar({ path, current, busy, onBack }: { path: PathEntry[]; current
   );
 }
 
-function PossibleOpen({ facet }: { facet: Facet }) {
+function PossibleOpen({ label, texts }: { label: string | null; texts: string[] }) {
   return (
-    <section className="sheet p-4" aria-labelledby="possible">
-      <h2 id="possible" className="mb-2 font-sans text-small font-bold text-ink-2">
-        {facet.label}
-      </h2>
+    <section className="sheet p-4" aria-label={label ?? "Possible problems"}>
+      {label && <h2 className="mb-2 font-sans text-small font-bold text-ink-2">{label}</h2>}
       <ul className="m-0 flex list-none flex-col gap-1.5 p-0">
-        {facet.texts.map((t) => (
+        {texts.map((t) => (
           <li key={t} className="flex gap-2 text-body">
             <span aria-hidden className="mt-[0.6em] size-1.5 shrink-0 rounded-full bg-ink" />
             {t}
@@ -307,38 +456,65 @@ function PossibleOpen({ facet }: { facet: Facet }) {
   );
 }
 
-function PageThumb({ asset, jobId }: { asset: Asset; jobId: string }) {
+function FigureCard({ figure, src, to, className }: { figure: PackAsset; src: string; to: string; className?: string }) {
   return (
-    <Link to={jobPagePath(jobId, asset.asset_id)} className="sheet flex items-center gap-3 p-2 pr-4 no-underline">
-      <img src={asset.url} alt="" width={68} height={88} className="h-[88px] w-[68px] shrink-0 border border-line bg-white object-cover object-top" />
+    <Link to={to} className={cx("sheet overflow-hidden no-underline", className)}>
+      <img src={src} alt="Figure" width={figure.width ?? undefined} height={figure.height ?? undefined} className="block h-auto max-h-[300px] w-full bg-white object-contain" />
+    </Link>
+  );
+}
+
+function PageThumb({ asset, src, to, label }: { asset: PackAsset; src: string; to: string; label: string | null }) {
+  return (
+    <Link to={to} className="sheet flex items-center gap-3 p-2 pr-4 no-underline">
+      <img src={src} alt="" width={68} height={88} className="h-[88px] w-[68px] shrink-0 border border-line bg-white object-cover object-top" data-asset={asset.asset_id} />
       <span className="min-w-0 flex-1 font-sans">
         <span className="block text-small font-bold text-ink">Original page</span>
-        <span className="block text-meta text-ink-3">{asset.label}</span>
+        {label && <span className="block text-meta text-ink-3">Page {label}</span>}
       </span>
     </Link>
   );
 }
 
-/** The original page, beside the step on wide screens and over it on narrow ones. */
-function PageViewer({ asset, jobId, citation, docked = false }: { asset: Asset; jobId: string; citation: string; docked?: boolean }) {
+/**
+ * The original page, beside the step on wide screens and over it on narrow
+ * ones, with the passage's place on the page marked from the citation's boxes.
+ */
+function PageViewer({ asset, src, citation, jobId, docked = false }: { asset: PackAsset; src: string; citation: Citation; jobId: string; docked?: boolean }) {
+  const boxes = citation.page_asset_id === asset.asset_id ? citation.boxes : [];
   return (
-    <section className={cx("flex flex-col", docked ? "sheet sticky top-[calc(var(--spacing-strip)+16px)] hidden max-h-[calc(100dvh-var(--spacing-strip)-32px)] lg:flex" : "h-full")} aria-label={asset.label ?? "Original page"}>
+    <section className={cx("flex flex-col", docked ? "sheet sticky top-[calc(var(--spacing-strip)+16px)] hidden max-h-[calc(100dvh-var(--spacing-strip)-32px)] lg:flex" : "h-full")} aria-label="Original page">
       <div className="flex min-h-tap shrink-0 items-center gap-3 border-b border-line bg-sheet px-4 pt-[env(safe-area-inset-top)]">
-        <span className="min-w-0 flex-1 truncate font-sans text-small font-bold">{asset.label}</span>
+        <span className="min-w-0 flex-1 truncate font-sans text-small font-bold">{citation.page_label ? `Page ${citation.page_label}` : "Original page"}</span>
         <Link to={jobPath(jobId)} aria-label="Close the page" className="-mr-2 inline-flex size-11 items-center justify-center rounded-control text-ink">
           <X aria-hidden size={24} />
         </Link>
       </div>
       <div className="min-h-0 flex-1 overflow-auto bg-surface-3 p-3">
-        <img src={asset.url} alt={asset.label ?? "Original page"} width={asset.width ?? undefined} height={asset.height ?? undefined} className="mx-auto block h-auto w-full max-w-[850px] bg-white shadow-sm" />
+        <div className="relative mx-auto w-full max-w-[850px] bg-white shadow-sm">
+          <img src={src} alt={`Page ${citation.page_label ?? ""}`} width={asset.width ?? undefined} height={asset.height ?? undefined} className="block h-auto w-full" />
+          {boxes.map((b, i) => (
+            <span
+              key={i}
+              aria-hidden
+              className="absolute rounded-[2px] border-2 border-focus bg-focus/10"
+              style={{ left: `${b.x0 * 100}%`, top: `${b.y0 * 100}%`, width: `${(b.x1 - b.x0) * 100}%`, height: `${(b.y1 - b.y0) * 100}%` }}
+            />
+          ))}
+        </div>
       </div>
-      <p className="shrink-0 border-t border-line bg-sheet px-4 py-2 font-sans text-meta text-ink-3">{citation}</p>
+      <p className="shrink-0 border-t border-line bg-sheet px-4 py-2 font-sans text-meta text-ink-3">{citationText(citation)}</p>
     </section>
   );
 }
 
-/** A cited answer from the manual, scoped to this job. Every sentence is the manual's. */
-function AskSheet({ jobId, query, answer, model, onQuery }: { jobId: string; query: string; answer: AskAnswer | null; model: boolean; onQuery(q: string): void }) {
+/**
+ * A cited answer from the manual, scoped to this job. Quotes are the
+ * manual's words, set as the manual; anything else the engine composed is in
+ * the app's type. When the manual does not answer, it says so.
+ */
+function AskSheet({ jobId, query, answer, onQuery }: { jobId: string; query: string; answer: AskResponse | null; onQuery(q: string): void }) {
+  const [draft, setDraft] = useState(query);
   return (
     <div className="fixed inset-0 z-40 flex justify-end">
       <Link to={jobPath(jobId)} aria-label="Close" className="absolute inset-0 bg-[var(--scrim)]" />
@@ -352,34 +528,73 @@ function AskSheet({ jobId, query, answer, model, onQuery }: { jobId: string; que
           </Link>
         </div>
         <div className="flex min-h-0 flex-1 flex-col gap-4 overflow-auto p-4">
-          <form onSubmit={(e) => e.preventDefault()}>
-            <input aria-label="Question" value={query} onChange={(e) => onQuery(e.target.value)} className="block min-h-tap w-full rounded-control border-2 border-line-strong bg-surface px-4 text-body focus:border-ink focus:outline-none" />
+          <form
+            className="flex gap-2"
+            onSubmit={(e) => {
+              e.preventDefault();
+              if (draft.trim()) onQuery(draft.trim());
+            }}
+          >
+            <input aria-label="Question" value={draft} onChange={(e) => setDraft(e.target.value)} className="block min-h-tap w-full min-w-0 rounded-control border-2 border-line-strong bg-surface px-4 text-body focus:border-ink focus:outline-none" />
+            <Button type="submit" variant="primary" disabled={!draft.trim()}>
+              Ask
+            </Button>
           </form>
-          {answer === null ? (
+          {!query ? null : answer === null ? (
             <div className="flex flex-col gap-3" aria-busy>
               <Skeleton className="h-[132px]" />
-              <Skeleton className="h-[132px]" />
+              <Skeleton className="h-[96px]" />
             </div>
           ) : (
-            <>
-              {model && answer.summary && (
-                <div className="flex gap-2.5 rounded-control border-2 border-line-strong p-3">
-                  <Cpu aria-hidden size={20} className="mt-0.5 shrink-0 text-ink-3" />
-                  <div>
-                    <p className="text-body">{answer.summary}</p>
-                    <p className="mt-1 text-meta text-ink-3">On-device model. The manual's words follow.</p>
-                  </div>
-                </div>
-              )}
-              {answer.passages.map((a, i) => (
-                <ManualSheet key={i} citation={a.citation} size="body">
-                  {a.text}
-                </ManualSheet>
-              ))}
-            </>
+            <AskBody answer={answer} />
           )}
         </div>
       </section>
     </div>
   );
 }
+
+function AskBody({ answer }: { answer: AskResponse }) {
+  if (answer.mode === "declined" || answer.body.length === 0)
+    return (
+      <div className="flex flex-col gap-3">
+        <p className="text-body">The manual does not answer this for this step.</p>
+        {answer.nearest.length > 0 && (
+          <div>
+            <h3 className="mb-1 text-meta font-bold text-ink-2">Nearest sections</h3>
+            <ul className="m-0 flex list-none flex-col p-0">
+              {answer.nearest.map((id) => (
+                <li key={id}>
+                  <Link to={manualPath(id)} className="flex min-h-11 items-center font-semibold text-ink">
+                    {id}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    );
+  return (
+    <div className="flex flex-col gap-3">
+      {answer.model && <p className="text-meta text-ink-3">Arranged by the on-device model ({answer.model}). Quotes are checked against the manual.</p>}
+      {answer.body.map((s, i) =>
+        s.t === "quote" ? (
+          <figure key={i} className="sheet m-0">
+            <blockquote className="m-0 p-4 text-body">{s.text}</blockquote>
+            <figcaption className="border-t border-line px-4 py-2 font-sans">
+              <Link to={manualPath(s.section_id)} className="inline-flex min-h-11 items-center text-meta font-semibold text-ink-2">
+                {s.section_id}
+              </Link>
+            </figcaption>
+          </figure>
+        ) : s.t === "text" ? (
+          <p key={i} className="text-body text-ink-2">
+            {s.text}
+          </p>
+        ) : null,
+      )}
+    </div>
+  );
+}
+

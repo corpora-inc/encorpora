@@ -16,7 +16,7 @@
  */
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
-import { mkdir } from "node:fs/promises";
+import { mkdir, rm } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 import { chromium as rawChromium } from "playwright";
@@ -107,6 +107,8 @@ let checks = 0;
 const failures = [];
 try {
   await waitUp();
+  // Screenshots are regenerable output: start clean so no stale state lingers.
+  if (!only) await rm(out, { recursive: true, force: true });
   browser = await chromium.launch();
   const index = await newPage(browser, 1280, "light");
   await index.page.goto(`${base}/design`);

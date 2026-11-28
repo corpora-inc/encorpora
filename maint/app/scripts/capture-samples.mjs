@@ -51,6 +51,7 @@ out.resolve = {
 out.search = {
   results: await call("symptom.search", { asset_id: unit.asset_id, text: "engine does not crank" }),
   none: await call("symptom.search", { asset_id: unit.asset_id, text: "smells like toast" }),
+  closest: await call("symptom.search", { asset_id: unit.asset_id, text: "engine is hot" }),
   codes: await call("symptom.search", { asset_id: unit.asset_id, observations: [{ signal_kind: "j1939.dm1", value: "spn:168/fmi:1" }] }),
 };
 
@@ -95,6 +96,11 @@ steps.choice = h;
 out.steps = steps;
 
 out.task = await call("task.get", { proc_id: "proc-battery", equip_id: unit.equip_id });
+const run = await call("run.start", { proc_id: "proc-battery", asset: unit.asset_id, equip_id: unit.equip_id, role: level });
+const r1 = await call("run.record", { run_id: run.run_id, ord: 1, outcome: "pass" });
+const r2 = await call("run.record", { run_id: run.run_id, ord: 2, outcome: "pass" });
+// The run as the app holds it after two steps: the start, plus each recorded step.
+out.run = { ...run, steps: [r1.record, r2.record] };
 out.ask = await call("ask", { question: "How do I check fuse F2?", equip_id: unit.equip_id, scope: { tree_id: "t-nocrank" } });
 out.askDeclined = await call("ask", { question: "What colour is the paint?", equip_id: unit.equip_id, scope: { tree_id: "t-nocrank" } });
 out.closed = await call("job.close", {

@@ -74,7 +74,10 @@ export function GuardBlock({ guard, id }: { guard: Guard; id?: string }) {
         <span>{label}</span>
       </div>
       <p className={cx("px-4 py-3 sm:px-5", kind === "note" ? "text-body" : "text-lead font-semibold")}>{guard.text}</p>
-      <p className="px-4 pb-2.5 font-sans text-meta text-ink-3 sm:px-5">{citationShort(guard.citation)}</p>
+      <p className="px-4 pb-2.5 font-sans text-meta text-ink-3 sm:px-5">
+        {guard.citation.citation}
+        {guard.citation.page_label && `, page ${guard.citation.page_label}`}
+      </p>
     </section>
   );
 }
