@@ -5,6 +5,7 @@
 //! corpus-agnostic.
 
 pub mod answer;
+pub mod api;
 pub mod audit;
 pub mod canon;
 pub mod check;
@@ -21,6 +22,7 @@ pub mod lexicon;
 #[cfg(feature = "llama")]
 pub mod llama;
 pub mod llm;
+pub mod maint;
 pub mod normalize;
 pub mod notes;
 pub mod pack;
@@ -33,6 +35,8 @@ pub mod tools;
 
 #[doc(hidden)]
 pub mod fixture;
+#[doc(hidden)]
+pub mod fixture_maint;
 
 pub use answer::{AskOptions, AskResponse, Engine, Mode, Role};
 pub use check::{Check, CheckOptions};

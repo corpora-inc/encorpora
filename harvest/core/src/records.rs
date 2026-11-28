@@ -14,10 +14,14 @@ use crate::pack::{Deficiency, Pack, ProcStep};
 use crate::packs::hex_encode;
 use crate::sync;
 use rusqlite::{Connection, OptionalExtension, Transaction, TransactionBehavior, params};
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 use std::path::Path;
 use std::sync::atomic::{AtomicU64, Ordering};
+
+pub mod maint;
+pub use maint::*;
 
 const DDL: &str = "
 CREATE TABLE IF NOT EXISTS records_meta (key TEXT PRIMARY KEY, value TEXT NOT NULL);
@@ -49,7 +53,7 @@ CREATE TABLE IF NOT EXISTS step_result (
 ";
 
 /// How a step came out.
-#[derive(Debug, Clone, Copy, Serialize, Deserialize, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, Serialize, Deserialize, PartialEq, Eq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum Outcome {
     Pass,
@@ -86,14 +90,14 @@ impl Outcome {
 }
 
 /// A photo the host stored; the record keeps its path and hash.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, JsonSchema)]
 pub struct PhotoRef {
     pub path: String,
     pub sha256: String,
 }
 
 /// What the user entered for one step.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, JsonSchema)]
 pub struct StepInput {
     pub outcome: Outcome,
     #[serde(default)]
@@ -120,7 +124,7 @@ impl StepInput {
 }
 
 /// A recorded step.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, JsonSchema)]
 pub struct StepRecord {
     pub ord: i64,
     #[serde(flatten)]
@@ -130,7 +134,7 @@ pub struct StepRecord {
 }
 
 /// What recording a step returns: the guidance to show when it failed.
-#[derive(Debug, Clone, Serialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, PartialEq, JsonSchema)]
 pub struct StepOutcome {
     pub record: StepRecord,
     /// The pack's guidance for a failed step. `quote_verified` says whether
@@ -139,7 +143,7 @@ pub struct StepOutcome {
     pub guidance: Option<Guidance>,
 }
 
-#[derive(Debug, Clone, Serialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, PartialEq, JsonSchema)]
 pub struct Guidance {
     #[serde(flatten)]
     pub deficiency: Deficiency,
@@ -148,7 +152,7 @@ pub struct Guidance {
 }
 
 /// One procedure run.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, JsonSchema)]
 pub struct Run {
     pub run_id: String,
     pub pack_id: String,
@@ -174,7 +178,7 @@ impl Run {
 pub const RUN_REPORT_FORMAT: &str = "harvest-run/1";
 
 /// A run as it is exported and uploaded (`harvest-run/1`).
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, JsonSchema)]
 pub struct RunReport {
     pub format: String,
     pub pack_id: String,
@@ -199,7 +203,7 @@ pub struct RunReport {
 
 /// One step of a report: the pack's step (when known) and what was recorded
 /// (`outcome` is null when the step was not recorded).
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, JsonSchema)]
 pub struct ReportStep {
     pub ord: i64,
     pub text: Option<String>,
@@ -326,6 +330,7 @@ impl Records {
         conn.pragma_update(None, "foreign_keys", true)?;
         conn.busy_timeout(std::time::Duration::from_secs(5))?;
         conn.execute_batch(DDL)?;
+        conn.execute_batch(maint::DDL)?;
         crate::audit::init(&conn)?;
         sync::init(&conn)?;
         let mode: Option<String> = conn
@@ -339,7 +344,8 @@ impl Records {
             (None, _) => {
                 let used: bool = conn.query_row(
                     "SELECT EXISTS (SELECT 1 FROM proc_run) OR EXISTS (SELECT 1 FROM outbox)
-                            OR EXISTS (SELECT 1 FROM audit)",
+                            OR EXISTS (SELECT 1 FROM audit) OR EXISTS (SELECT 1 FROM job)
+                            OR EXISTS (SELECT 1 FROM asset) OR EXISTS (SELECT 1 FROM lesson)",
                     [],
                     |r| r.get(0),
                 )?;
@@ -952,15 +958,21 @@ fn validate(step: &ProcStep, input: &StepInput) -> Result<()> {
         )));
     }
     for p in &input.photos {
-        if p.path.trim().is_empty()
-            || p.sha256.len() != 64
-            || !p.sha256.bytes().all(|b| b.is_ascii_hexdigit())
-        {
-            return Err(Error::Invalid(format!(
-                "photo {:?} needs a path and a SHA-256",
-                p.path
-            )));
-        }
+        check_photo(p)?;
+    }
+    Ok(())
+}
+
+/// A photo reference needs a path and a SHA-256.
+pub(crate) fn check_photo(p: &PhotoRef) -> Result<()> {
+    if p.path.trim().is_empty()
+        || p.sha256.len() != 64
+        || !p.sha256.bytes().all(|b| b.is_ascii_hexdigit())
+    {
+        return Err(Error::Invalid(format!(
+            "photo {:?} needs a path and a SHA-256",
+            p.path
+        )));
     }
     Ok(())
 }

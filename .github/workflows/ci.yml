@@ -207,7 +207,7 @@ jobs:
           # job below skips its steps cleanly until its directory exists.
           set_output crane_app '^(crane/(app|content)/|harvest/(practice|core|pipeline)/|harvest/CONTRACT\.md$|corpan/plugins/|amp/(browser-security\.mjs|scripts/(install-browser\.mjs|configure-browser-sandbox\.sh))$)'
           set_output crane_native '^(crane/app/src-tauri/|harvest/core/|corpan/plugins/|corpan/corpan-app/src-tauri/vendor/|homeschool-offline/app/src-tauri/plugins/tauri-plugin-ios-share/)'
-          set_output harvest_core '^(harvest/core/)'
+          set_output harvest_core '^(harvest/(core|api)/)'
           set_output harvest_pipeline '^(harvest/pipeline/)'
           set_output harvest_practice '^(harvest/practice/)'
           # The crane pack: built from its content with the pipeline, read back with the core.

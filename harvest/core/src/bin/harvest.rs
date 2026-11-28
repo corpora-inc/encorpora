@@ -26,7 +26,13 @@ const USAGE: &str = "usage:
                   [--id ID] [--role operator] [--exams FILE] [--pubkey KEY]   # verified content as JSON (what the app reads)
   harvest converse <pack-dir> <script.json|-> [--exams FILE] [--llm off|URL [--llm-model NAME]] [--embedder …] [--pubkey KEY]
                   # scripted Instructor conversations (CONTRACT \"Instructor turns\"), one JSON line each
-  harvest fixture <dir> [--version V]     # writes the test-only fixture pack
+  harvest fixture <dir> [--version V] [--maint [--samples DIR]]
+                  # writes a test-only fixture pack; --maint: the fictional pump manual
+                  # (fault trees, tasks, levels); --samples: its field-note bundle and asset registry
+  harvest serve   <packs-root|pack-dir> --records <records-db> [--bind 127.0.0.1:4317] [--static DIR]
+                  [--allow-origin URL]... [--records-key FILE] [--outbox-dir DIR] [--field-pubkey KEY]
+                  [--embedder auto|none|hashing] [--pubkey KEY]   # the JSON API over HTTP (CONTRACT \"API\")
+  harvest api-schema <dir> [--check]      # writes (or checks) api.schema.json and types.ts
 
 KEY: base64 or hex ed25519 public key, or a file holding one; repeatable or
 comma-separated. Defaults to $HARVEST_PUBKEY.";
@@ -43,7 +49,7 @@ impl Args {
         let mut it = raw.into_iter();
         while let Some(a) = it.next() {
             if let Some(name) = a.strip_prefix("--") {
-                if name == "json" || name == "help" {
+                if name == "json" || name == "help" || name == "maint" || name == "check" {
                     flags.push((name.to_string(), None));
                 } else if let Some((k, v)) = name.split_once('=') {
                     flags.push((k.to_string(), Some(v.to_string())));
@@ -109,6 +115,8 @@ fn main() -> ExitCode {
         "fixture" => fixture(&args),
         "show" => show(&args),
         "converse" => converse(&args),
+        "serve" => serve(&args),
+        "api-schema" => api_schema(&args),
         "help" | "--help" | "-h" => {
             println!("{USAGE}");
             return ExitCode::SUCCESS;
@@ -158,6 +166,11 @@ fn keys(args: &Args) -> Result<Vec<TrustedKey>, CliError> {
     {
         specs.push(env);
     }
+    keys_from(&specs)
+}
+
+/// Keys from `KEY` specs: base64 or hex, or a file holding one; comma lists.
+fn keys_from(specs: &[String]) -> Result<Vec<TrustedKey>, CliError> {
     let mut out = Vec::new();
     for spec in specs.iter().flat_map(|s| s.split(',')) {
         let spec = spec.trim();
@@ -258,12 +271,19 @@ fn verify(args: &Args) -> Result<(), CliError> {
     let started = Instant::now();
     let pack = Pack::open(&dir, &keys(args)?)?;
     let counts = pack.row_counts()?;
+    let graph = if pack.has_fault_trees()? {
+        Some(harvest_core::maint::graph::validate(&pack)?)
+    } else {
+        None
+    };
     let elapsed = started.elapsed().as_millis() as u64;
+    let graph_ok = graph.as_ref().is_none_or(|g| g.ok);
     if args.has("json") {
         println!(
             "{}",
             json!({
-                "ok": true,
+                "ok": graph_ok,
+                "graph": graph,
                 "pack_id": pack.pack_id(),
                 "version": pack.version(),
                 "schema_version": pack.manifest().schema_version,
@@ -285,6 +305,31 @@ fn verify(args: &Args) -> Result<(), CliError> {
         for (t, n) in counts {
             println!("  {t}: {n}");
         }
+        if let Some(g) = &graph {
+            println!(
+                "  fault trees: {} trees, {} nodes, {} edges, {} guards; {} violation(s)",
+                g.counts.trees,
+                g.counts.nodes,
+                g.counts.edges,
+                g.counts.guards,
+                g.violations.len()
+            );
+            for v in &g.violations {
+                println!(
+                    "    {} {}{}: {}",
+                    v.rule,
+                    v.tree_id.as_deref().unwrap_or("-"),
+                    v.node_id
+                        .as_deref()
+                        .map(|n| format!("/{n}"))
+                        .unwrap_or_default(),
+                    v.detail
+                );
+            }
+        }
+    }
+    if !graph_ok {
+        return Err(CliError::Exit(1));
     }
     Ok(())
 }
@@ -939,14 +984,38 @@ fn exams_arg(args: &Args) -> Result<Option<serde_json::Value>, CliError> {
 }
 
 fn fixture(args: &Args) -> Result<(), CliError> {
-    args.reject_unknown(&["version", "json"])?;
+    args.reject_unknown(&["version", "json", "maint", "samples"])?;
     let dir = PathBuf::from(
         args.positional
             .first()
             .ok_or_else(|| CliError::Usage("missing <dir>".into()))?,
     );
     let version = args.get("version").unwrap_or("2026.1.1-1");
-    harvest_core::fixture::build(&dir, version)?;
+    if args.has("maint") {
+        harvest_core::fixture_maint::build(&dir, version)?;
+    } else {
+        if args.has("samples") {
+            return Err(CliError::Usage("--samples goes with --maint".into()));
+        }
+        harvest_core::fixture::build(&dir, version)?;
+    }
+    if let Some(samples) = args.get("samples") {
+        let samples = PathBuf::from(samples);
+        std::fs::create_dir_all(&samples).map_err(Error::from)?;
+        let write = |name: &str, v: serde_json::Value| -> Result<(), CliError> {
+            std::fs::write(
+                samples.join(name),
+                serde_json::to_vec_pretty(&v).map_err(Error::from)?,
+            )
+            .map_err(Error::from)?;
+            Ok(())
+        };
+        write(
+            "field-bundle.json",
+            harvest_core::fixture_maint::field_bundle(1)?,
+        )?;
+        write("assets.json", harvest_core::fixture_maint::asset_registry())?;
+    }
     let key = harvest_core::fixture::public_key_base64();
     if args.has("json") {
         println!("{}", json!({"dir": dir, "version": version, "pubkey": key}));
@@ -963,4 +1032,174 @@ fn truncate(s: &str, n: usize) -> String {
     } else {
         format!("{}…", s.chars().take(n).collect::<String>())
     }
+}
+
+/// The packs under `root`: a pack directory itself, or a root holding pack
+/// directories or installed packs (`<pack_id>/current`).
+fn load_packs(root: &Path, keys: &[TrustedKey]) -> Result<Vec<Arc<Pack>>, CliError> {
+    let open = |dir: &Path| -> Result<Arc<Pack>, CliError> {
+        Ok(Arc::new(Pack::open_with(
+            dir,
+            keys,
+            harvest_core::Verify::InstallStamp,
+        )?))
+    };
+    if root.join(harvest_core::packs::MANIFEST).is_file() {
+        return Ok(vec![open(root)?]);
+    }
+    let mut out = Vec::new();
+    let mut entries: Vec<PathBuf> = std::fs::read_dir(root)
+        .map_err(|e| CliError::Usage(format!("{}: {e}", root.display())))?
+        .filter_map(|e| e.ok().map(|e| e.path()))
+        .filter(|p| p.is_dir())
+        .collect();
+    entries.sort();
+    for sub in entries {
+        let name = sub
+            .file_name()
+            .and_then(|n| n.to_str())
+            .unwrap_or("")
+            .to_string();
+        if sub.join("current").is_file() {
+            if let Some(dir) = harvest_core::packs::current(root, &name)? {
+                out.push(open(&dir)?);
+            }
+        } else if sub.join(harvest_core::packs::MANIFEST).is_file() {
+            out.push(open(&sub)?);
+        }
+    }
+    if out.is_empty() {
+        return Err(CliError::Usage(format!(
+            "no pack under {} (a pack directory, or a root of packs)",
+            root.display()
+        )));
+    }
+    Ok(out)
+}
+
+#[cfg(feature = "serve")]
+fn serve(args: &Args) -> Result<(), CliError> {
+    use harvest_core::api::{Host, serve};
+    args.reject_unknown(&[
+        "records",
+        "bind",
+        "static",
+        "allow-origin",
+        "records-key",
+        "outbox-dir",
+        "field-pubkey",
+        "embedder",
+        "pubkey",
+    ])?;
+    let root = pack_dir(args)?;
+    let keys = keys(args)?;
+    let packs = load_packs(&root, &keys)?;
+    let records_path = args
+        .get("records")
+        .ok_or_else(|| CliError::Usage("serve needs --records <records-db>".into()))?;
+    let key = records_key(args)?;
+    let records =
+        harvest_core::records::Records::open_with_key(Path::new(records_path), key.as_ref())?;
+    let field_specs: Vec<String> = args
+        .all("field-pubkey")
+        .iter()
+        .map(|s| s.to_string())
+        .collect();
+    let field_keys = if field_specs.is_empty() {
+        keys.clone()
+    } else {
+        keys_from(&field_specs)?
+    };
+    let mut host = Host::new(packs.clone(), records).with_field_keys(field_keys);
+    for p in &packs {
+        if let Some(e) = embedder(args, p)? {
+            host = host.with_embedder(p.pack_id(), e);
+        }
+    }
+    if let Some(d) = args.get("outbox-dir") {
+        host = host.with_outbox_dir(PathBuf::from(d));
+    }
+    let bind: std::net::SocketAddr = args
+        .get("bind")
+        .unwrap_or("127.0.0.1:4317")
+        .parse()
+        .map_err(|e| CliError::Usage(format!("--bind: {e}")))?;
+    if !bind.ip().is_loopback() {
+        eprintln!(
+            "harvest serve: bound to {bind}, reachable from the network; every Host is accepted"
+        );
+    }
+    let cfg = serve::ServeConfig {
+        bind,
+        static_dir: args.get("static").map(PathBuf::from),
+        allow_origins: args
+            .all("allow-origin")
+            .iter()
+            .map(|s| s.to_string())
+            .collect(),
+    };
+    let running = serve::start(Arc::new(host), cfg)?;
+    println!(
+        "harvest serve: http://{} ({} pack(s): {})",
+        running.addr(),
+        packs.len(),
+        packs
+            .iter()
+            .map(|p| format!("{} {}", p.pack_id(), p.version()))
+            .collect::<Vec<_>>()
+            .join(", ")
+    );
+    running.wait();
+    Ok(())
+}
+
+#[cfg(not(feature = "serve"))]
+fn serve(_: &Args) -> Result<(), CliError> {
+    Err(CliError::Usage(
+        "serve needs a build with the `serve` feature".into(),
+    ))
+}
+
+fn api_schema(args: &Args) -> Result<(), CliError> {
+    use harvest_core::api::schema;
+    args.reject_unknown(&["check"])?;
+    let dir = PathBuf::from(
+        args.positional
+            .first()
+            .ok_or_else(|| CliError::Usage("missing <dir>".into()))?,
+    );
+    let files = [
+        (schema::SCHEMA_FILE, schema::schema_text()),
+        (schema::TS_FILE, schema::typescript()),
+    ];
+    if args.has("check") {
+        let mut stale = Vec::new();
+        for (name, text) in &files {
+            if std::fs::read_to_string(dir.join(name)).ok().as_deref() != Some(text.as_str()) {
+                stale.push(*name);
+            }
+        }
+        if !stale.is_empty() {
+            eprintln!(
+                "harvest: stale {:?} in {}; run `harvest api-schema {}`",
+                stale,
+                dir.display(),
+                dir.display()
+            );
+            return Err(CliError::Exit(1));
+        }
+        println!("api schema up to date in {}", dir.display());
+        return Ok(());
+    }
+    std::fs::create_dir_all(&dir).map_err(Error::from)?;
+    for (name, text) in &files {
+        std::fs::write(dir.join(name), text).map_err(Error::from)?;
+    }
+    println!(
+        "wrote {} and {} in {}",
+        files[0].0,
+        files[1].0,
+        dir.display()
+    );
+    Ok(())
 }
