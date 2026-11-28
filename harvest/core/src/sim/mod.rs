@@ -1,0 +1,1473 @@
+//! A discrete-event simulation of a fleet: N real device record stores and
+//! one real hub in one process, joined by simulated links (outages drawn
+//! from distributions, bandwidth caps, latency, drops mid-transfer,
+//! duplicate deliveries, clock skew, tampered bundles, scripted lesson
+//! conflicts). Everything a device or the hub does runs the real code
+//! (`Records`, `Hub`, `install_offer`); only the wire and the clock are
+//! simulated. A seeded scenario in, a metrics report out, the same report
+//! for the same seed.
+
+use crate::audit::set_clock;
+use crate::error::{Error, Result};
+use crate::fixture;
+use crate::fixture_maint;
+use crate::hub::Hub;
+use crate::maint::branch::{self, Expect};
+use crate::pack::Pack;
+use crate::packs::TrustedKey;
+use crate::records::{
+    AssetRegistry, JobAnswer, JobClose, JobStart, LessonFilter, LessonInput, Records,
+    ResolutionKind,
+};
+use crate::sync::{HubLink, LinkTransport, PackOffer, Receipt, Upload};
+use serde::{Deserialize, Serialize};
+use serde_json::{Value, json};
+use std::cell::RefCell;
+use std::collections::{BTreeMap, BTreeSet, BinaryHeap};
+use std::path::{Path, PathBuf};
+use std::sync::Arc;
+
+const HOUR: i64 = 3_600_000;
+const DAY: i64 = 24 * HOUR;
+/// Simulated time starts at 2026-01-01T00:00:00Z.
+const EPOCH_MS: i64 = 1_767_225_600_000;
+
+// ------------------------------------------------------------- scenario
+
+/// A duration distribution, in hours.
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[serde(tag = "dist", rename_all = "snake_case", deny_unknown_fields)]
+pub enum Dist {
+    Fixed { hours: f64 },
+    Exp { mean_hours: f64 },
+    Uniform { min_hours: f64, max_hours: f64 },
+    LogNormal { median_hours: f64, sigma: f64 },
+}
+
+/// One device's link to the hub.
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[serde(deny_unknown_fields)]
+pub struct LinkSpec {
+    /// How long the link stays up, then down, alternating.
+    pub up: Dist,
+    pub down: Dist,
+    /// Days offline at the start (a deployment).
+    #[serde(default)]
+    pub initial_down_days: f64,
+    /// Bits per second each way.
+    pub bandwidth_bps: f64,
+    #[serde(default = "default_latency")]
+    pub latency_ms: f64,
+    /// Chance a request is cut off somewhere in its transfer.
+    #[serde(default)]
+    pub drop_prob: f64,
+    /// Chance an upload reaches the hub twice.
+    #[serde(default)]
+    pub dup_prob: f64,
+    /// Per-request protocol overhead, bytes.
+    #[serde(default = "default_overhead")]
+    pub overhead_bytes: u64,
+}
+
+fn default_latency() -> f64 {
+    300.0
+}
+fn default_overhead() -> u64 {
+    600
+}
+
+/// What technicians do.
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[serde(deny_unknown_fields)]
+pub struct Workload {
+    pub jobs_per_device_per_day: f64,
+    /// Chance a finished job leaves a lesson.
+    pub lesson_prob: f64,
+    /// Chance an answer is corrected (go back, answer again).
+    #[serde(default)]
+    pub back_prob: f64,
+    /// Chance a lesson is edited on the device a few hours later.
+    #[serde(default)]
+    pub edit_prob: f64,
+    #[serde(default = "default_assets")]
+    pub assets_per_device: usize,
+}
+
+fn default_assets() -> usize {
+    3
+}
+
+/// What the reviewer at the hub does.
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[serde(deny_unknown_fields)]
+pub struct HubSpec {
+    #[serde(default = "default_review_every")]
+    pub review_every_hours: f64,
+    /// A lesson waits at least this long before review.
+    #[serde(default)]
+    pub review_delay_hours: f64,
+    #[serde(default = "default_approve")]
+    pub approve_prob: f64,
+    #[serde(default = "default_edit")]
+    pub edit_prob: f64,
+}
+
+fn default_review_every() -> f64 {
+    24.0
+}
+fn default_approve() -> f64 {
+    0.8
+}
+fn default_edit() -> f64 {
+    0.1
+}
+
+impl Default for HubSpec {
+    fn default() -> Self {
+        Self {
+            review_every_hours: default_review_every(),
+            review_delay_hours: 0.0,
+            approve_prob: default_approve(),
+            edit_prob: default_edit(),
+        }
+    }
+}
+
+/// Two units edit the same lesson: `device` starts it, `other` continues it
+/// `gap_minutes` later on its own clock.
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[serde(deny_unknown_fields)]
+pub struct ScriptedConflict {
+    pub day: f64,
+    pub device: usize,
+    pub other: usize,
+    #[serde(default)]
+    pub gap_minutes: f64,
+}
+
+/// A scenario file.
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[serde(deny_unknown_fields)]
+pub struct Scenario {
+    pub name: String,
+    pub seed: u64,
+    pub days: f64,
+    pub devices: usize,
+    pub link: LinkSpec,
+    pub workload: Workload,
+    #[serde(default)]
+    pub hub: HubSpec,
+    /// Each device's clock is off by up to this many minutes either way.
+    #[serde(default)]
+    pub clock_skew_minutes: f64,
+    /// How often a device tries to sync while its link is up.
+    #[serde(default = "default_sync_every")]
+    pub sync_every_minutes: f64,
+    #[serde(default)]
+    pub conflicts: Vec<ScriptedConflict>,
+    /// Chance a bundle is corrupted in transit (the device must refuse it).
+    #[serde(default)]
+    pub tamper_prob: f64,
+    /// A new pack version is published at the hub on this day.
+    #[serde(default)]
+    pub pack_update_day: Option<f64>,
+    /// One last sync window at the end (every link up for a day).
+    #[serde(default)]
+    pub final_sync: bool,
+    #[serde(default = "default_sample")]
+    pub sample_every_days: f64,
+}
+
+fn default_sync_every() -> f64 {
+    60.0
+}
+fn default_sample() -> f64 {
+    30.0
+}
+
+// -------------------------------------------------------------- metrics
+
+/// Median, p90 and max of a sample.
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
+pub struct Stats {
+    pub n: u64,
+    pub median: Option<f64>,
+    pub p90: Option<f64>,
+    pub max: Option<f64>,
+}
+
+fn stats(mut v: Vec<f64>) -> Stats {
+    if v.is_empty() {
+        return Stats::default();
+    }
+    v.sort_by(f64::total_cmp);
+    let pick = |q: f64| {
+        let i = ((v.len() as f64 - 1.0) * q).round() as usize;
+        (v[i] * 100.0).round() / 100.0
+    };
+    Stats {
+        n: v.len() as u64,
+        median: Some(pick(0.5)),
+        p90: Some(pick(0.9)),
+        max: Some(pick(1.0)),
+    }
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
+pub struct Delivery {
+    pub captured: u64,
+    pub delivered: u64,
+    pub pending: u64,
+    pub lost: u64,
+    pub rate: f64,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
+pub struct Bytes {
+    pub up: u64,
+    pub down: u64,
+    pub total: u64,
+    pub per_job: Option<f64>,
+    pub per_lesson: Option<f64>,
+    pub per_day: f64,
+    pub bundles: u64,
+    pub packs: u64,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
+pub struct Link {
+    pub requests: u64,
+    pub failed_requests: u64,
+    /// Failures after the hub stored the upload (the reply was lost).
+    pub lost_replies: u64,
+    pub duplicates_sent: u64,
+    pub duplicates_suppressed: u64,
+    pub flush_attempts: u64,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
+pub struct ConflictOut {
+    pub lesson_id: String,
+    pub winner_device: String,
+    pub loser_device: String,
+    pub rule: String,
+    /// The reviewer sees every version, the losing one marked.
+    pub losing_version_visible: bool,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
+pub struct Lessons {
+    pub created: u64,
+    pub edited_on_device: u64,
+    pub approved: u64,
+    pub approved_edited: u64,
+    pub rejected: u64,
+    pub pending_at_end: u64,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
+pub struct Bundles {
+    pub published: u64,
+    pub installed: u64,
+    pub tampered_in_transit: u64,
+    pub refused: u64,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
+pub struct PackUpdates {
+    pub published: bool,
+    pub installed: u64,
+    pub kinds: BTreeMap<String, u64>,
+    pub errors: Vec<String>,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
+pub struct Growth {
+    pub device: usize,
+    /// `(day, bytes)` of the records store.
+    pub samples: Vec<(f64, u64)>,
+    pub bytes_per_day: f64,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
+pub struct Invariants {
+    pub ok: bool,
+    pub nothing_lost: bool,
+    pub nothing_applied_twice: bool,
+    pub no_bad_bundle_installed: bool,
+    pub audit_chains_intact: bool,
+    pub details: Vec<String>,
+}
+
+/// The report.
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
+pub struct Metrics {
+    pub scenario: String,
+    pub seed: u64,
+    pub days: f64,
+    pub devices: usize,
+    pub jobs: u64,
+    pub delivery: Delivery,
+    pub capture_to_hub_hours: Stats,
+    pub approval_to_device_hours: Stats,
+    pub bytes: Bytes,
+    pub link: Link,
+    pub conflicts: Vec<ConflictOut>,
+    pub lessons: Lessons,
+    pub bundles: Bundles,
+    pub packs: PackUpdates,
+    pub growth: Vec<Growth>,
+    pub invariants: Invariants,
+}
+
+// ------------------------------------------------------------------ rng
+
+/// SplitMix64: small, seeded, the same everywhere.
+struct Rng(u64);
+
+impl Rng {
+    fn next(&mut self) -> u64 {
+        self.0 = self.0.wrapping_add(0x9E37_79B9_7F4A_7C15);
+        let mut z = self.0;
+        z = (z ^ (z >> 30)).wrapping_mul(0xBF58_476D_1CE4_E5B9);
+        z = (z ^ (z >> 27)).wrapping_mul(0x94D0_49BB_1331_11EB);
+        z ^ (z >> 31)
+    }
+    /// Uniform in [0, 1).
+    fn f(&mut self) -> f64 {
+        (self.next() >> 11) as f64 / (1u64 << 53) as f64
+    }
+    fn below(&mut self, n: usize) -> usize {
+        if n == 0 {
+            0
+        } else {
+            (self.next() % n as u64) as usize
+        }
+    }
+    fn normal(&mut self) -> f64 {
+        let u1 = self.f().max(1e-12);
+        let u2 = self.f();
+        (-2.0 * u1.ln()).sqrt() * (2.0 * std::f64::consts::PI * u2).cos()
+    }
+    fn hours(&mut self, d: &Dist) -> i64 {
+        let h = match d {
+            Dist::Fixed { hours } => *hours,
+            Dist::Exp { mean_hours } => -mean_hours * (1.0 - self.f()).ln(),
+            Dist::Uniform {
+                min_hours,
+                max_hours,
+            } => min_hours + (max_hours - min_hours) * self.f(),
+            Dist::LogNormal {
+                median_hours,
+                sigma,
+            } => median_hours * (sigma * self.normal()).exp(),
+        };
+        ((h.max(0.0)) * HOUR as f64) as i64
+    }
+}
+
+// --------------------------------------------------------------- engine
+
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
+enum Ev {
+    LinkFlip(usize),
+    Sync(usize),
+    Job(usize),
+    EditLesson(usize, String),
+    Conflict(usize),
+    Review,
+    Sample,
+    PackUpdate,
+}
+
+struct Device {
+    rec: Records,
+    pack: Arc<Pack>,
+    root: PathBuf,
+    skew_ms: i64,
+    up: bool,
+    window_end: i64,
+    assets: Vec<String>,
+    installed_seqs: BTreeSet<u64>,
+    growth: Vec<(f64, u64)>,
+}
+
+struct Net {
+    rng: Rng,
+    now: i64,
+    window_end: i64,
+    up: bool,
+    spec: LinkSpec,
+    tamper_prob: f64,
+    m: Link,
+    bytes_up: u64,
+    bytes_down: u64,
+    bytes_bundles: u64,
+    bytes_packs: u64,
+    bytes_kind: BTreeMap<String, u64>,
+    hub_at: BTreeMap<String, i64>,
+    tampered: u64,
+    /// The bodies the hub sent per seq, to check what a device installed.
+    sent: BTreeMap<u64, String>,
+}
+
+/// One device's side of the simulated wire.
+struct Wire<'a> {
+    hub: &'a Hub,
+    net: &'a RefCell<Net>,
+    device_id: String,
+    skew_ms: i64,
+}
+
+impl Wire<'_> {
+    /// Move a request of `up` and `down` bytes through the link. Returns
+    /// whether the hub side ran (`upload_done`) and whether the reply
+    /// arrived.
+    fn transfer(&self, up: u64, down: u64) -> (bool, bool) {
+        let mut n = self.net.borrow_mut();
+        n.m.requests += 1;
+        let bps = n.spec.bandwidth_bps.max(1.0);
+        let lat = n.spec.latency_ms as i64;
+        let t_up = lat + ((up + n.spec.overhead_bytes) as f64 * 8.0 / bps * 1000.0) as i64;
+        let t_down = lat + ((down + n.spec.overhead_bytes) as f64 * 8.0 / bps * 1000.0) as i64;
+        let total = t_up + t_down;
+        let drop_at = if n.rng.f() < n.spec.drop_prob {
+            Some((n.rng.f() * total as f64) as i64)
+        } else {
+            None
+        };
+        let window = (n.window_end - n.now).max(0);
+        let cut = match (drop_at, n.up) {
+            (_, false) => Some(0),
+            (Some(d), true) => Some(d.min(window)),
+            (None, true) if total > window => Some(window),
+            (None, true) => None,
+        };
+        let sent_up = up + n.spec.overhead_bytes;
+        let sent_down = down + n.spec.overhead_bytes;
+        match cut {
+            None => {
+                n.now += total;
+                n.bytes_up += sent_up;
+                n.bytes_down += sent_down;
+                (true, true)
+            }
+            Some(c) => {
+                n.m.failed_requests += 1;
+                n.now += c;
+                let frac_up = (c as f64 / t_up.max(1) as f64).min(1.0);
+                n.bytes_up += (sent_up as f64 * frac_up) as u64;
+                if c >= t_up {
+                    n.m.lost_replies += 1;
+                    n.bytes_down +=
+                        (sent_down as f64 * ((c - t_up) as f64 / t_down.max(1) as f64)) as u64;
+                    (true, false)
+                } else {
+                    (false, false)
+                }
+            }
+        }
+    }
+
+    fn at_hub<T>(&self, f: impl FnOnce(&Hub) -> T) -> T {
+        let now = self.net.borrow().now;
+        set_clock(Some(now));
+        let out = f(self.hub);
+        set_clock(Some(now + self.skew_ms));
+        out
+    }
+}
+
+impl HubLink for Wire<'_> {
+    fn device_id(&self) -> String {
+        self.device_id.clone()
+    }
+
+    fn send(&self, batch: &[Upload]) -> Result<Vec<Receipt>> {
+        let body =
+            serde_json::to_vec(&json!({"device_id": self.device_id, "items": batch}))?.len() as u64;
+        let (stored, replied) = self.transfer(body, 120 * batch.len() as u64);
+        if !stored {
+            return Err(Error::Sync("link dropped during the upload".into()));
+        }
+        let fresh: Vec<String> = batch
+            .iter()
+            .filter(|u| !self.hub.has_item(&u.item_id).unwrap_or(true))
+            .map(|u| u.item_id.clone())
+            .collect();
+        let r = self.at_hub(|h| h.receive(&self.device_id, batch))?;
+        {
+            let mut n = self.net.borrow_mut();
+            n.m.duplicates_suppressed += r.duplicates;
+            let now = n.now;
+            for id in fresh {
+                n.hub_at.entry(id).or_insert(now);
+            }
+            for u in batch {
+                *n.bytes_kind.entry(u.kind.clone()).or_default() += u.payload.len() as u64;
+            }
+            if n.rng.f() < n.spec.dup_prob {
+                n.m.duplicates_sent += 1;
+                drop(n);
+                let again = self.at_hub(|h| h.receive(&self.device_id, batch))?;
+                self.net.borrow_mut().m.duplicates_suppressed += again.duplicates;
+            }
+        }
+        if !replied {
+            return Err(Error::Sync(
+                "link dropped before the receipts came back".into(),
+            ));
+        }
+        Ok(r.receipts)
+    }
+
+    fn bundles_since(&self, since: u64) -> Result<Vec<Value>> {
+        let mut bundles = self.at_hub(|h| h.bundles_since(since))?;
+        let size = serde_json::to_vec(&bundles)?.len() as u64;
+        let (_, replied) = self.transfer(80, size);
+        if !replied {
+            return Err(Error::Sync("link dropped while fetching bundles".into()));
+        }
+        let mut n = self.net.borrow_mut();
+        n.bytes_bundles += size;
+        for b in &mut bundles {
+            let seq = b.get("seq").and_then(Value::as_u64).unwrap_or(0);
+            n.sent.entry(seq).or_insert_with(|| b.to_string());
+            if n.rng.f() < n.tamper_prob {
+                n.tampered += 1;
+                b["issued_at"] = json!("1999-01-01T00:00:00.000Z");
+            }
+        }
+        Ok(bundles)
+    }
+
+    fn pack_offer(&self, pack_id: &str, have: Option<&str>) -> Result<Option<PackOffer>> {
+        let offer = self.at_hub(|h| h.pack_offer(pack_id, have))?;
+        let size = serde_json::to_vec(&offer)?.len() as u64;
+        let (_, replied) = self.transfer(80, size);
+        if !replied {
+            return Err(Error::Sync("link dropped while asking for packs".into()));
+        }
+        Ok(offer)
+    }
+
+    fn fetch(&self, offer: &PackOffer, path: &str) -> Result<Vec<u8>> {
+        let bytes = self.at_hub(|h| h.fetch(offer, path))?;
+        let (_, replied) = self.transfer(120, bytes.len() as u64);
+        if !replied {
+            return Err(Error::Sync(format!("link dropped while fetching {path}")));
+        }
+        self.net.borrow_mut().bytes_packs += bytes.len() as u64;
+        Ok(bytes)
+    }
+}
+
+fn db_bytes(rec: &Records) -> u64 {
+    let c = rec.conn();
+    let pages: i64 = c
+        .query_row("PRAGMA page_count", [], |r| r.get(0))
+        .unwrap_or(0);
+    let size: i64 = c
+        .query_row("PRAGMA page_size", [], |r| r.get(0))
+        .unwrap_or(0);
+    (pages * size) as u64
+}
+
+/// Walk a job on `dev` through its tree by random results, as a
+/// technician would answer, and close it. Returns the lesson id, if any.
+fn work_job(
+    dev: &Device,
+    rng: &mut Rng,
+    wl: &Workload,
+    captured: &mut Vec<String>,
+) -> Result<(bool, Option<String>)> {
+    let pack = &dev.pack;
+    let asset_id = dev.assets[rng.below(dev.assets.len())].clone();
+    let asset = dev
+        .rec
+        .asset(&asset_id)?
+        .ok_or_else(|| Error::Invalid("asset vanished".into()))?;
+    let symptoms = pack.symptoms(asset.equip_id.as_deref())?;
+    if symptoms.is_empty() {
+        return Ok((false, None));
+    }
+    let sym = &symptoms[rng.below(symptoms.len())];
+    let levels = pack.levels()?;
+    let level = levels[rng.below(levels.len())].id.clone();
+    let job = dev.rec.start_job(
+        pack,
+        &JobStart {
+            symptom_id: Some(sym.symptom_id.clone()),
+            asset_id: Some(asset_id),
+            level,
+            ..Default::default()
+        },
+    )?;
+    let tree = pack
+        .fault_tree(&job.tree_id)?
+        .ok_or_else(|| Error::Invalid("tree vanished".into()))?;
+    let mut steps = 0;
+    let mut node_id = job.current_node.clone();
+    let mut capped = false;
+    loop {
+        let node = tree
+            .node(&node_id)
+            .ok_or_else(|| Error::Invalid("node vanished".into()))?;
+        let edges = tree.edges_from(&node_id);
+        if edges.is_empty() {
+            break;
+        }
+        steps += 1;
+        if steps > 60 {
+            capped = true;
+            break;
+        }
+        let e = edges[rng.below(edges.len())];
+        let ans = answer_for(node, e, &node_id);
+        let j = dev.rec.answer_job(pack, &job.job_id, &ans)?;
+        node_id = j.current_node;
+        if rng.f() < wl.back_prob {
+            let j = dev.rec.back_job(pack, &job.job_id)?;
+            node_id = j.current_node;
+        }
+    }
+    let end = tree.node(&node_id).map(|n| n.kind);
+    use crate::maint::NodeKind as K;
+    let resolution = match (capped, end) {
+        (true, _) => ResolutionKind::Unresolved,
+        (_, Some(K::Escalate)) => ResolutionKind::Escalated,
+        (_, Some(K::Goto)) => ResolutionKind::Redirected,
+        _ => ResolutionKind::Fixed,
+    };
+    let lesson = if !capped && rng.f() < wl.lesson_prob {
+        let view = dev.rec.job_view(pack, &job.job_id, None)?;
+        let open = view
+            .step
+            .as_ref()
+            .map(|s| s.node.possible_open.clone())
+            .unwrap_or_default();
+        let cause = open
+            .get(rng.below(open.len().max(1)))
+            .cloned()
+            .unwrap_or_else(|| "Cause not found".into());
+        let action = tree
+            .node(&node_id)
+            .map(|n| n.text.clone())
+            .unwrap_or_default();
+        Some(LessonInput {
+            cause,
+            action,
+            minutes: Some(10 + rng.below(80) as u32),
+            submit: true,
+            ..Default::default()
+        })
+    } else {
+        None
+    };
+    let before: BTreeSet<String> = dev
+        .rec
+        .pending(10_000)?
+        .into_iter()
+        .map(|u| u.item_id)
+        .collect();
+    let (_, l) = dev.rec.close_job(
+        pack,
+        &job.job_id,
+        &JobClose {
+            resolution,
+            note: None,
+            lesson,
+        },
+    )?;
+    for u in dev.rec.pending(10_000)? {
+        if !before.contains(&u.item_id) {
+            captured.push(u.item_id);
+        }
+    }
+    Ok((true, l.map(|l| l.lesson_id)))
+}
+
+fn answer_for(
+    node: &crate::maint::FaultNode,
+    e: &crate::maint::FaultEdge,
+    node_id: &str,
+) -> JobAnswer {
+    match &node.expect {
+        Some(Expect::Value { unit, min, max }) => {
+            let dom = branch::domain(*min, *max);
+            let i = e.cond.as_ref().and_then(|c| c.interval().ok());
+            let v = match i {
+                Some(i) => {
+                    let lo = if i.lo.is_finite() {
+                        i.lo
+                    } else if dom.lo.is_finite() {
+                        dom.lo
+                    } else {
+                        i.hi - 10.0
+                    };
+                    let hi = if i.hi.is_finite() {
+                        i.hi
+                    } else if dom.hi.is_finite() {
+                        dom.hi
+                    } else {
+                        i.lo + 10.0
+                    };
+                    (lo + hi) / 2.0
+                }
+                None => 0.0,
+            };
+            JobAnswer {
+                node_id: node_id.into(),
+                value: Some(v),
+                unit: Some(unit.clone()),
+                ..Default::default()
+            }
+        }
+        Some(Expect::Ack) => JobAnswer {
+            node_id: node_id.into(),
+            outcome: Some("done".into()),
+            ..Default::default()
+        },
+        _ => JobAnswer {
+            node_id: node_id.into(),
+            outcome: Some(e.label.clone()),
+            ..Default::default()
+        },
+    }
+}
+
+/// Run a scenario. `pack` is a pack directory to use (signed with the
+/// fixture key); the fictional pump manual when absent.
+pub fn run(s: &Scenario, pack: Option<&Path>) -> Result<Metrics> {
+    if s.devices == 0 || s.days <= 0.0 {
+        return Err(Error::Invalid("a scenario needs devices and days".into()));
+    }
+    let tmp = std::env::temp_dir().join(format!("harvest-sim-{}-{}", std::process::id(), s.seed));
+    if tmp.exists() {
+        std::fs::remove_dir_all(&tmp)?;
+    }
+    let out = run_in(s, pack, &tmp);
+    set_clock(None);
+    let _ = std::fs::remove_dir_all(&tmp);
+    out
+}
+
+fn run_in(s: &Scenario, pack_src: Option<&Path>, tmp: &Path) -> Result<Metrics> {
+    crate::records::reset_sim_ids();
+    set_clock(Some(EPOCH_MS));
+    let keys: Vec<TrustedKey> = vec![fixture::trusted_key()];
+    let hub_packs = tmp.join("hub-packs");
+    // The hub's packs: the given pack, or the pump manual, as version dirs.
+    let base_version;
+    {
+        let src = match pack_src {
+            Some(p) => p.to_path_buf(),
+            None => {
+                let d = tmp.join("src-v1");
+                fixture_maint::build(&d, "2026.1.1-1")?;
+                d
+            }
+        };
+        let m = crate::packs::verify_dir(&src, &keys)?;
+        base_version = m.version.clone();
+        let dest = hub_packs.join(&m.pack_id).join(&m.version);
+        copy_dir(&src, &dest, &m)?;
+    }
+    let hub_key = ed25519_dalek::SigningKey::from_bytes(&[0x5a; 32]);
+    let hub = Hub::in_memory(hub_key, "sim-fleet")?.with_packs(hub_packs.clone(), keys.clone());
+    let field_keys = vec![hub.trusted_key()];
+    let pack_id = crate::packs::read_manifest(&first_version_dir(&hub_packs)?, &keys)?.pack_id;
+    let mut rng = Rng(s.seed);
+    let net = RefCell::new(Net {
+        rng: Rng(s.seed ^ 0xA5A5_A5A5),
+        now: EPOCH_MS,
+        window_end: EPOCH_MS,
+        up: true,
+        spec: s.link.clone(),
+        tamper_prob: s.tamper_prob,
+        m: Link::default(),
+        bytes_up: 0,
+        bytes_down: 0,
+        bytes_bundles: 0,
+        bytes_packs: 0,
+        bytes_kind: BTreeMap::new(),
+        hub_at: BTreeMap::new(),
+        tampered: 0,
+        sent: BTreeMap::new(),
+    });
+    // Devices: each its own packs root, records store, fleet slice.
+    let mut devices = Vec::new();
+    for i in 0..s.devices {
+        let root = tmp.join(format!("dev-{i}"));
+        let skew_ms = ((rng.f() * 2.0 - 1.0) * s.clock_skew_minutes * 60_000.0) as i64;
+        set_clock(Some(EPOCH_MS + skew_ms));
+        let inst =
+            crate::packs::install_dir(&root, &hub_packs.join(&pack_id).join(&base_version), &keys)?;
+        let pack = Arc::new(Pack::open(&inst.dir, &keys)?);
+        let rec = Records::in_memory()?;
+        let variants: Vec<String> = pack
+            .equipment()
+            .iter()
+            .filter(|e| e.parent_id.is_some())
+            .map(|e| e.equip_id.clone())
+            .collect();
+        let mut assets = Vec::new();
+        let mut reg = Vec::new();
+        for a in 0..s.workload.assets_per_device.max(1) {
+            let id = format!("unit-{i}-{a}");
+            let equip = if variants.is_empty() {
+                None
+            } else {
+                Some(variants[rng.below(variants.len())].clone())
+            };
+            reg.push(json!({"asset_id": id, "equip_id": equip, "name": format!("Unit {i}-{a}")}));
+            assets.push(id);
+        }
+        let registry: AssetRegistry =
+            serde_json::from_value(json!({"format": "harvest-assets/1", "assets": reg}))?;
+        rec.import_assets(Some(&pack), &registry)?;
+        let first_window = (s.link.initial_down_days * DAY as f64) as i64;
+        devices.push(Device {
+            rec,
+            pack,
+            root,
+            skew_ms,
+            up: first_window == 0,
+            window_end: EPOCH_MS + first_window,
+            assets,
+            installed_seqs: BTreeSet::new(),
+            growth: Vec::new(),
+        });
+    }
+    let end = EPOCH_MS + (s.days * DAY as f64) as i64;
+    let mut q: BinaryHeap<std::cmp::Reverse<(i64, u64, Ev)>> = BinaryHeap::new();
+    let mut seq = 0u64;
+    let mut push = |q: &mut BinaryHeap<_>, t: i64, e: Ev| {
+        seq += 1;
+        q.push(std::cmp::Reverse((t, seq, e)));
+    };
+    for (i, d) in devices.iter_mut().enumerate() {
+        if d.up {
+            d.window_end = EPOCH_MS + rng.hours(&s.link.up);
+        }
+        push(&mut q, d.window_end, Ev::LinkFlip(i));
+        if d.up {
+            push(&mut q, EPOCH_MS, Ev::Sync(i));
+        }
+        let rate = s.workload.jobs_per_device_per_day.max(1e-9);
+        push(
+            &mut q,
+            EPOCH_MS + (-(1.0 - rng.f()).ln() / rate * DAY as f64) as i64,
+            Ev::Job(i),
+        );
+    }
+    for (ci, c) in s.conflicts.iter().enumerate() {
+        if c.device >= s.devices || c.other >= s.devices || c.device == c.other {
+            return Err(Error::Invalid(format!(
+                "conflict {ci}: two different devices"
+            )));
+        }
+        push(
+            &mut q,
+            EPOCH_MS + (c.day * DAY as f64) as i64,
+            Ev::Conflict(ci),
+        );
+    }
+    push(
+        &mut q,
+        EPOCH_MS + (s.hub.review_every_hours * HOUR as f64) as i64,
+        Ev::Review,
+    );
+    push(&mut q, EPOCH_MS, Ev::Sample);
+    if let Some(d) = s.pack_update_day {
+        push(&mut q, EPOCH_MS + (d * DAY as f64) as i64, Ev::PackUpdate);
+    }
+    let mut m = Metrics {
+        scenario: s.name.clone(),
+        seed: s.seed,
+        days: s.days,
+        devices: s.devices,
+        ..Default::default()
+    };
+    let mut captured: BTreeMap<String, i64> = BTreeMap::new();
+    let mut approved_at: BTreeMap<String, i64> = BTreeMap::new();
+    let mut to_device: Vec<f64> = Vec::new();
+    let mut details: Vec<String> = Vec::new();
+    let mut applied_twice = false;
+    let mut bad_install = false;
+    let mut conflict_lessons: BTreeMap<usize, String> = BTreeMap::new();
+    let sync_every = (s.sync_every_minutes.max(1.0) * 60_000.0) as i64;
+    let horizon = if s.final_sync { end + DAY } else { end };
+    let mut final_started = false;
+
+    while let Some(std::cmp::Reverse((t, _, ev))) = q.pop() {
+        if t > horizon {
+            break;
+        }
+        if s.final_sync && t >= end && !final_started {
+            final_started = true;
+            for (i, d) in devices.iter_mut().enumerate() {
+                d.up = true;
+                d.window_end = horizon;
+                push(&mut q, t, Ev::Sync(i));
+            }
+            push(&mut q, t + HOUR, Ev::Review);
+        }
+        if t >= end
+            && matches!(
+                ev,
+                Ev::Job(_) | Ev::Conflict(_) | Ev::EditLesson(..) | Ev::LinkFlip(_)
+            )
+        {
+            continue;
+        }
+        match ev {
+            Ev::LinkFlip(i) => {
+                let d = &mut devices[i];
+                d.up = !d.up;
+                let dur = if d.up {
+                    rng.hours(&s.link.up)
+                } else {
+                    rng.hours(&s.link.down)
+                };
+                d.window_end = t + dur.max(60_000);
+                push(&mut q, d.window_end, Ev::LinkFlip(i));
+                if d.up {
+                    push(&mut q, t, Ev::Sync(i));
+                }
+            }
+            Ev::Sync(i) => {
+                let (up, window_end, skew) =
+                    (devices[i].up, devices[i].window_end, devices[i].skew_ms);
+                if !up {
+                    continue;
+                }
+                {
+                    let mut n = net.borrow_mut();
+                    n.now = t;
+                    n.up = true;
+                    n.window_end = window_end;
+                }
+                set_clock(Some(t + skew));
+                let d = &mut devices[i];
+                let wire = Wire {
+                    hub: &hub,
+                    net: &net,
+                    device_id: d.rec.device_id()?,
+                    skew_ms: skew,
+                };
+                net.borrow_mut().m.flush_attempts += 1;
+                d.rec.flush(&LinkTransport(&wire), 50)?;
+                let pull = d.rec.pull(&wire, &field_keys)?;
+                for seqn in &pull.installed {
+                    if !d.installed_seqs.insert(*seqn) {
+                        applied_twice = true;
+                        details.push(format!("device {i} installed bundle {seqn} twice"));
+                    }
+                    let n = net.borrow();
+                    let original = n.sent.get(seqn).cloned();
+                    drop(n);
+                    let ok = match &original {
+                        Some(body) => {
+                            hub.bundles_since(seqn - 1)?
+                                .first()
+                                .map(|b| b.to_string())
+                                .as_ref()
+                                == Some(body)
+                        }
+                        None => false,
+                    };
+                    if !ok {
+                        bad_install = true;
+                        details.push(format!(
+                            "device {i} installed bundle {seqn} that is not the hub's"
+                        ));
+                    }
+                    let now = net.borrow().now;
+                    if let Some(b) = hub.bundles_since(seqn - 1)?.first() {
+                        for note in b["notes"].as_array().into_iter().flatten() {
+                            if let Some(at) =
+                                note["note_id"].as_str().and_then(|id| approved_at.get(id))
+                            {
+                                to_device.push((now - at) as f64 / HOUR as f64);
+                            }
+                        }
+                    }
+                }
+                m.bundles.installed += pull.installed.len() as u64;
+                if pull.refused.is_some() {
+                    m.bundles.refused += 1;
+                }
+                if s.pack_update_day.is_some() {
+                    let have = d.pack.version().to_string();
+                    if let Ok(Some(offer)) = wire.pack_offer(d.pack.pack_id(), Some(&have)) {
+                        match crate::sync::install_offer(&d.root, &wire, &offer, &keys)
+                            .and_then(|inst| Ok(Arc::new(Pack::open(&inst.dir, &keys)?)))
+                        {
+                            Ok(p) => {
+                                d.pack = p;
+                                m.packs.installed += 1;
+                                *m.packs.kinds.entry(offer.kind.clone()).or_default() += 1;
+                            }
+                            Err(e) => m.packs.errors.push(format!("device {i}: {e}")),
+                        }
+                    }
+                }
+                let next = net.borrow().now.max(t) + sync_every;
+                if next < devices[i].window_end {
+                    push(&mut q, next, Ev::Sync(i));
+                }
+            }
+            Ev::Job(i) => {
+                let d = &devices[i];
+                set_clock(Some(t + d.skew_ms));
+                let mut new_items = Vec::new();
+                let (did, lesson) = work_job(d, &mut rng, &s.workload, &mut new_items)?;
+                if did {
+                    m.jobs += 1;
+                }
+                for it in new_items {
+                    captured.insert(it, t);
+                }
+                if let Some(l) = lesson {
+                    m.lessons.created += 1;
+                    if rng.f() < s.workload.edit_prob {
+                        push(
+                            &mut q,
+                            t + 2 * HOUR + rng.below(6) as i64 * HOUR,
+                            Ev::EditLesson(i, l),
+                        );
+                    }
+                }
+                let rate = s.workload.jobs_per_device_per_day.max(1e-9);
+                push(
+                    &mut q,
+                    t + (-(1.0 - rng.f()).ln() / rate * DAY as f64) as i64,
+                    Ev::Job(i),
+                );
+            }
+            Ev::EditLesson(i, lesson_id) => {
+                let d = &devices[i];
+                set_clock(Some(t + d.skew_ms));
+                let cur = d
+                    .rec
+                    .lessons(&LessonFilter::default())?
+                    .into_iter()
+                    .find(|l| l.lesson_id == lesson_id);
+                if let Some(l) = cur {
+                    let before: BTreeSet<String> = d
+                        .rec
+                        .pending(10_000)?
+                        .into_iter()
+                        .map(|u| u.item_id)
+                        .collect();
+                    d.rec.update_lesson(
+                        Some(&d.pack),
+                        &lesson_id,
+                        LessonInput {
+                            cause: l.cause,
+                            action: format!("{} Checked again after an hour.", l.action),
+                            submit: true,
+                            ..Default::default()
+                        },
+                    )?;
+                    m.lessons.edited_on_device += 1;
+                    for u in d.rec.pending(10_000)? {
+                        if !before.contains(&u.item_id) {
+                            captured.insert(u.item_id, t);
+                        }
+                    }
+                }
+            }
+            Ev::Conflict(ci) => {
+                let c = &s.conflicts[ci];
+                let (a, b) = (c.device, c.other);
+                let lesson_id = match conflict_lessons.get(&ci) {
+                    Some(id) => id.clone(),
+                    None => {
+                        let d = &devices[a];
+                        set_clock(Some(t + d.skew_ms));
+                        let before: BTreeSet<String> = d
+                            .rec
+                            .pending(10_000)?
+                            .into_iter()
+                            .map(|u| u.item_id)
+                            .collect();
+                        let tree = d
+                            .pack
+                            .fault_trees(None)?
+                            .into_iter()
+                            .next()
+                            .map(|t| t.tree_id);
+                        let l = d.rec.create_lesson(
+                            Some(&d.pack),
+                            LessonInput {
+                                tree_id: tree,
+                                cause: "Loose connector at the starter relay".into(),
+                                action: "Reseated the connector".into(),
+                                submit: true,
+                                ..Default::default()
+                            },
+                        )?;
+                        m.lessons.created += 1;
+                        for u in d.rec.pending(10_000)? {
+                            if !before.contains(&u.item_id) {
+                                captured.insert(u.item_id, t);
+                            }
+                        }
+                        conflict_lessons.insert(ci, l.lesson_id.clone());
+                        let gap = (c.gap_minutes * 60_000.0) as i64;
+                        push(&mut q, t + gap.max(1), Ev::Conflict(ci));
+                        continue;
+                    }
+                };
+                let d = &devices[b];
+                set_clock(Some(t + d.skew_ms));
+                let before: BTreeSet<String> = d
+                    .rec
+                    .pending(10_000)?
+                    .into_iter()
+                    .map(|u| u.item_id)
+                    .collect();
+                let tree = d
+                    .pack
+                    .fault_trees(None)?
+                    .into_iter()
+                    .next()
+                    .map(|t| t.tree_id);
+                d.rec.create_lesson(
+                    Some(&d.pack),
+                    LessonInput {
+                        lesson_id: Some(lesson_id),
+                        tree_id: tree,
+                        cause: "Corroded terminal at the starter relay".into(),
+                        action: "Cleaned and reseated the connector".into(),
+                        submit: true,
+                        ..Default::default()
+                    },
+                )?;
+                for u in d.rec.pending(10_000)? {
+                    if !before.contains(&u.item_id) {
+                        captured.insert(u.item_id, t);
+                    }
+                }
+            }
+            Ev::Review => {
+                set_clock(Some(t));
+                let delay = (s.hub.review_delay_hours * HOUR as f64) as i64;
+                for item in hub.queue(Some("pending"))? {
+                    let first =
+                        crate::records::maint::day_number(&item.first_received_at).unwrap_or(0);
+                    let _ = first;
+                    let received = parse_ms(&item.first_received_at).unwrap_or(t);
+                    if t - received < delay {
+                        continue;
+                    }
+                    let roll = rng.f();
+                    if roll < s.hub.approve_prob {
+                        let edit = if rng.f() < s.hub.edit_prob {
+                            m.lessons.approved_edited += 1;
+                            Some(crate::hub::NoteEdit {
+                                text: Some(format!("{} (reviewed)", item.current.action)),
+                                scope: None,
+                            })
+                        } else {
+                            None
+                        };
+                        let n = hub.approve(&item.lesson_id, "Reviewer A", edit, None)?;
+                        approved_at.insert(n.note_id, t);
+                        m.lessons.approved += 1;
+                    } else {
+                        hub.reject(&item.lesson_id, "Reviewer A", Some("Not enough detail"))?;
+                        m.lessons.rejected += 1;
+                    }
+                }
+                if hub.publish(false)?.is_some() {
+                    m.bundles.published += 1;
+                }
+                push(
+                    &mut q,
+                    t + (s.hub.review_every_hours * HOUR as f64) as i64,
+                    Ev::Review,
+                );
+            }
+            Ev::Sample => {
+                let day = (t - EPOCH_MS) as f64 / DAY as f64;
+                for d in &mut devices {
+                    d.growth
+                        .push(((day * 10.0).round() / 10.0, db_bytes(&d.rec)));
+                }
+                if t < end {
+                    push(
+                        &mut q,
+                        (t + (s.sample_every_days * DAY as f64) as i64).min(end),
+                        Ev::Sample,
+                    );
+                }
+            }
+            Ev::PackUpdate => {
+                set_clock(Some(t));
+                let v2 = next_version(&base_version);
+                let target = hub_packs.join(&pack_id).join(&v2);
+                if pack_src.is_none() {
+                    fixture_maint::build_with(&target, &v2, |c| {
+                        c.execute_batch(
+                            "UPDATE section SET text = text || ' Revision D.' WHERE section_id = 'm40.1';",
+                        )?;
+                        Ok(())
+                    })?;
+                    let base = hub_packs.join(&pack_id).join(&base_version);
+                    let delta = hub_packs
+                        .join(&pack_id)
+                        .join(format!("delta-{base_version}-{v2}"));
+                    crate::delta::make_delta(
+                        &base,
+                        &target,
+                        &delta,
+                        &keys,
+                        Some(&fixture::signing_key()),
+                    )?;
+                    m.packs.published = true;
+                }
+            }
+        }
+    }
+    set_clock(Some(horizon));
+    // Final accounting.
+    let n = net.into_inner();
+    m.link = n.m.clone();
+    m.bundles.tampered_in_transit = n.tampered;
+    let mut lost = 0u64;
+    let mut pending = 0u64;
+    let mut delivered = 0u64;
+    let mut to_hub = Vec::new();
+    let pending_ids: BTreeSet<String> = devices
+        .iter()
+        .flat_map(|d| {
+            d.rec
+                .pending(1_000_000)
+                .unwrap_or_default()
+                .into_iter()
+                .map(|u| u.item_id)
+        })
+        .collect();
+    for (id, at) in &captured {
+        // Where the device holds it: (row present, acknowledged).
+        let mut row = (false, false);
+        for d in &devices {
+            if let Ok(acked) = d.rec.conn().query_row(
+                "SELECT acked_at IS NOT NULL FROM outbox WHERE item_id = ?1",
+                [id],
+                |r| r.get::<_, bool>(0),
+            ) {
+                row = (true, acked);
+            }
+        }
+        if hub.has_item(id)? {
+            delivered += 1;
+            if let Some(h) = n.hub_at.get(id) {
+                to_hub.push((h - at) as f64 / HOUR as f64);
+            }
+        } else if row.0 && row.1 {
+            lost += 1;
+            details.push(format!(
+                "item {id} was acknowledged but the hub does not hold it"
+            ));
+        } else if pending_ids.contains(id) || row.0 {
+            pending += 1;
+        }
+        // No row and not at the hub: a lesson upload withdrawn by a later
+        // edit on the device, replaced by the new version (not lost).
+    }
+    let replaced = captured.len() as u64 - delivered - pending - lost;
+    let counted = captured.len() as u64 - replaced;
+    m.delivery = Delivery {
+        captured: counted,
+        delivered,
+        pending,
+        lost,
+        rate: if counted == 0 {
+            1.0
+        } else {
+            ((delivered as f64 / counted as f64) * 10_000.0).round() / 10_000.0
+        },
+    };
+    m.capture_to_hub_hours = stats(to_hub);
+    m.approval_to_device_hours = stats(to_device);
+    let jobs_at_hub = hub.status()?.jobs;
+    let lessons_bytes = *n.bytes_kind.get("lesson").unwrap_or(&0);
+    let job_bytes = *n.bytes_kind.get("job").unwrap_or(&0);
+    let lessons_at_hub: u64 =
+        hub.conn()
+            .query_row("SELECT count(*) FROM lesson_version", [], |r| {
+                r.get::<_, i64>(0)
+            })? as u64;
+    m.bytes = Bytes {
+        up: n.bytes_up,
+        down: n.bytes_down,
+        total: n.bytes_up + n.bytes_down,
+        per_job: (jobs_at_hub > 0).then(|| (job_bytes as f64 / jobs_at_hub as f64).round()),
+        per_lesson: (lessons_at_hub > 0)
+            .then(|| (lessons_bytes as f64 / lessons_at_hub as f64).round()),
+        per_day: ((n.bytes_up + n.bytes_down) as f64 / s.days).round(),
+        bundles: n.bytes_bundles,
+        packs: n.bytes_packs,
+    };
+    let queue = hub.queue(None)?;
+    m.lessons.pending_at_end = queue.iter().filter(|q| q.status == "pending").count() as u64;
+    for c in hub.conflicts()? {
+        let item = queue.iter().find(|q| q.lesson_id == c.lesson_id);
+        let dev_of = |item_id: &str| {
+            item.and_then(|q| q.versions.iter().find(|v| v.item_id == item_id))
+                .map(|v| v.device_id.clone())
+                .unwrap_or_default()
+        };
+        m.conflicts.push(ConflictOut {
+            lesson_id: c.lesson_id.clone(),
+            winner_device: dev_of(&c.winner),
+            loser_device: dev_of(&c.loser),
+            rule: c.rule.clone(),
+            losing_version_visible: item.is_some_and(|q| {
+                q.versions
+                    .iter()
+                    .any(|v| v.item_id == c.loser && v.state != "current")
+            }),
+        });
+    }
+    // Applied twice at the hub: one row per item and per job.
+    let items: i64 = hub
+        .conn()
+        .query_row("SELECT count(*) FROM item", [], |r| r.get(0))?;
+    let distinct: i64 =
+        hub.conn()
+            .query_row("SELECT count(DISTINCT item_id) FROM item", [], |r| r.get(0))?;
+    if items != distinct {
+        applied_twice = true;
+        details.push("the hub holds an item twice".into());
+    }
+    let mut chains = hub.verify_audit()?.ok;
+    if !chains {
+        details.push("the hub's audit chain is broken".into());
+    }
+    for (i, d) in devices.iter().enumerate() {
+        if !d.rec.verify_audit()?.ok {
+            chains = false;
+            details.push(format!("device {i}'s audit chain is broken"));
+        }
+        let first = d.growth.first().map(|g| g.1).unwrap_or(0);
+        let last = db_bytes(&d.rec);
+        let mut samples = d.growth.clone();
+        if samples.last().map(|x| x.0) != Some(s.days) {
+            samples.push((s.days, last));
+        }
+        m.growth.push(Growth {
+            device: i,
+            samples,
+            bytes_per_day: ((last.saturating_sub(first)) as f64 / s.days).round(),
+        });
+    }
+    m.invariants = Invariants {
+        nothing_lost: lost == 0,
+        nothing_applied_twice: !applied_twice,
+        no_bad_bundle_installed: !bad_install,
+        audit_chains_intact: chains,
+        ok: lost == 0 && !applied_twice && !bad_install && chains,
+        details,
+    };
+    Ok(m)
+}
+
+fn parse_ms(t: &str) -> Option<i64> {
+    let day = crate::records::maint::day_number(t)?;
+    let hms = t.get(11..23)?;
+    let h: i64 = hms.get(0..2)?.parse().ok()?;
+    let mi: i64 = hms.get(3..5)?.parse().ok()?;
+    let se: i64 = hms.get(6..8)?.parse().ok()?;
+    let ms: i64 = hms.get(9..12)?.parse().ok()?;
+    Some(day * DAY + h * HOUR + mi * 60_000 + se * 1000 + ms)
+}
+
+fn next_version(v: &str) -> String {
+    match v.rsplit_once('-') {
+        Some((head, n)) if n.parse::<u64>().is_ok() => {
+            format!("{head}-{}", n.parse::<u64>().unwrap_or(0) + 1)
+        }
+        _ => format!("{v}-2"),
+    }
+}
+
+fn first_version_dir(root: &Path) -> Result<PathBuf> {
+    for e in std::fs::read_dir(root)? {
+        let p = e?.path();
+        for v in std::fs::read_dir(&p)? {
+            let v = v?.path();
+            if v.join(crate::packs::MANIFEST).is_file() {
+                return Ok(v);
+            }
+        }
+    }
+    Err(Error::Invalid("no pack".into()))
+}
+
+fn copy_dir(src: &Path, dest: &Path, m: &crate::packs::Manifest) -> Result<()> {
+    std::fs::create_dir_all(dest)?;
+    std::fs::copy(
+        src.join(crate::packs::MANIFEST),
+        dest.join(crate::packs::MANIFEST),
+    )?;
+    for f in &m.files {
+        let to = dest.join(&f.path);
+        if let Some(p) = to.parent() {
+            std::fs::create_dir_all(p)?;
+        }
+        std::fs::copy(src.join(&f.path), to)?;
+    }
+    Ok(())
+}
+
+/// The named scenarios shipped with the core (`harvest/sim/*.json` holds
+/// the same).
+pub fn named(name: &str) -> Option<Scenario> {
+    let v = match name {
+        "pier-daily" => json!({
+            "name": "pier-daily", "seed": 7, "days": 60, "devices": 4,
+            "link": {"up": {"dist": "uniform", "min_hours": 2, "max_hours": 4},
+                     "down": {"dist": "uniform", "min_hours": 20, "max_hours": 22},
+                     "bandwidth_bps": 2000000, "drop_prob": 0.01, "dup_prob": 0.01},
+            "workload": {"jobs_per_device_per_day": 2, "lesson_prob": 0.5, "back_prob": 0.05, "edit_prob": 0.1},
+            "clock_skew_minutes": 3,
+            "conflicts": [{"day": 10, "device": 0, "other": 1, "gap_minutes": 30}],
+            "pack_update_day": 20, "final_sync": true
+        }),
+        "underway-two-weeks" => json!({
+            "name": "underway-two-weeks", "seed": 11, "days": 42, "devices": 6,
+            "link": {"up": {"dist": "exp", "mean_hours": 1}, "down": {"dist": "exp", "mean_hours": 30},
+                     "initial_down_days": 3, "bandwidth_bps": 2400, "latency_ms": 1200,
+                     "drop_prob": 0.15, "dup_prob": 0.05},
+            "workload": {"jobs_per_device_per_day": 1.5, "lesson_prob": 0.6, "back_prob": 0.05},
+            "clock_skew_minutes": 20, "sync_every_minutes": 30,
+            "conflicts": [{"day": 5, "device": 2, "other": 3, "gap_minutes": 10}],
+            "tamper_prob": 0.02, "final_sync": true
+        }),
+        "disconnected-180" => json!({
+            "name": "disconnected-180", "seed": 3, "days": 180, "devices": 3,
+            "link": {"up": {"dist": "fixed", "hours": 0}, "down": {"dist": "fixed", "hours": 100000},
+                     "initial_down_days": 180, "bandwidth_bps": 256000},
+            "workload": {"jobs_per_device_per_day": 1, "lesson_prob": 0.5, "edit_prob": 0.05},
+            "clock_skew_minutes": 90, "final_sync": true
+        }),
+        "flapping" => json!({
+            "name": "flapping", "seed": 23, "days": 30, "devices": 4,
+            "link": {"up": {"dist": "log_normal", "median_hours": 0.2, "sigma": 1.2},
+                     "down": {"dist": "log_normal", "median_hours": 0.5, "sigma": 1.5},
+                     "bandwidth_bps": 64000, "drop_prob": 0.3, "dup_prob": 0.1},
+            "workload": {"jobs_per_device_per_day": 3, "lesson_prob": 0.5, "back_prob": 0.1, "edit_prob": 0.2},
+            "clock_skew_minutes": 10, "sync_every_minutes": 5,
+            "conflicts": [{"day": 3, "device": 0, "other": 1, "gap_minutes": 0},
+                          {"day": 9, "device": 2, "other": 3, "gap_minutes": 45}],
+            "tamper_prob": 0.05, "final_sync": true
+        }),
+        _ => return None,
+    };
+    serde_json::from_value(v).ok()
+}

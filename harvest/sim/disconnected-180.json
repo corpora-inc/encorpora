@@ -1,0 +1,42 @@
+{
+  "name": "disconnected-180",
+  "seed": 3,
+  "days": 180.0,
+  "devices": 3,
+  "link": {
+    "up": {
+      "dist": "fixed",
+      "hours": 0.0
+    },
+    "down": {
+      "dist": "fixed",
+      "hours": 100000.0
+    },
+    "initial_down_days": 180.0,
+    "bandwidth_bps": 256000.0,
+    "latency_ms": 300.0,
+    "drop_prob": 0.0,
+    "dup_prob": 0.0,
+    "overhead_bytes": 600
+  },
+  "workload": {
+    "jobs_per_device_per_day": 1.0,
+    "lesson_prob": 0.5,
+    "back_prob": 0.0,
+    "edit_prob": 0.05,
+    "assets_per_device": 3
+  },
+  "hub": {
+    "review_every_hours": 24.0,
+    "review_delay_hours": 0.0,
+    "approve_prob": 0.8,
+    "edit_prob": 0.1
+  },
+  "clock_skew_minutes": 90.0,
+  "sync_every_minutes": 60.0,
+  "conflicts": [],
+  "tamper_prob": 0.0,
+  "pack_update_day": null,
+  "final_sync": true,
+  "sample_every_days": 30.0
+}

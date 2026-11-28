@@ -1154,6 +1154,34 @@
       ],
       "type": "string"
     },
+    "Conflict": {
+      "description": "A conflict between two units' versions of a lesson and how it resolved.",
+      "properties": {
+        "at": {
+          "type": "string"
+        },
+        "lesson_id": {
+          "type": "string"
+        },
+        "loser": {
+          "type": "string"
+        },
+        "rule": {
+          "type": "string"
+        },
+        "winner": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "lesson_id",
+        "winner",
+        "loser",
+        "rule",
+        "at"
+      ],
+      "type": "object"
+    },
     "DenseStatus": {
       "description": "Why the dense half did or did not run.",
       "oneOf": [
@@ -1870,6 +1898,251 @@
       ],
       "type": "object"
     },
+    "FieldNoteIn": {
+      "additionalProperties": false,
+      "description": "A reviewer-approved field note as the hub sends it.",
+      "properties": {
+        "approved_at": {
+          "type": "string"
+        },
+        "approver": {
+          "type": "string"
+        },
+        "counts": {
+          "$ref": "#/$defs/NoteCounts",
+          "default": {
+            "attempts": null,
+            "resolved": null,
+            "units": null
+          }
+        },
+        "lang": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "note_id": {
+          "type": "string"
+        },
+        "scope": {
+          "$ref": "#/$defs/NoteScope"
+        },
+        "supersedes": {
+          "default": null,
+          "description": "The note this one replaces.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "note_id",
+        "scope",
+        "text",
+        "counts",
+        "approver",
+        "approved_at",
+        "supersedes",
+        "lang"
+      ],
+      "type": "object"
+    },
+    "FleetAction": {
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "type": "string"
+        },
+        "attempts": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "resolved": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "tree_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "tree_id",
+        "action",
+        "attempts",
+        "resolved"
+      ],
+      "type": "object"
+    },
+    "FleetCause": {
+      "additionalProperties": false,
+      "properties": {
+        "cause": {
+          "type": "string"
+        },
+        "count": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "cause",
+        "count"
+      ],
+      "type": "object"
+    },
+    "FleetCauses": {
+      "additionalProperties": false,
+      "properties": {
+        "causes": {
+          "items": {
+            "$ref": "#/$defs/FleetCause"
+          },
+          "type": "array"
+        },
+        "symptom_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "symptom_id",
+        "causes"
+      ],
+      "type": "object"
+    },
+    "FleetJobs": {
+      "additionalProperties": false,
+      "properties": {
+        "equip_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "fixed": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "jobs": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "symptom_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "tree_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "tree_id",
+        "symptom_id",
+        "equip_id",
+        "jobs",
+        "fixed"
+      ],
+      "type": "object"
+    },
+    "FleetRepeat": {
+      "additionalProperties": false,
+      "properties": {
+        "asset_id": {
+          "type": "string"
+        },
+        "jobs": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "symptom_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "system": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "asset_id",
+        "symptom_id",
+        "system",
+        "jobs"
+      ],
+      "type": "object"
+    },
+    "FleetSummary": {
+      "additionalProperties": false,
+      "description": "What the fleet shows, aggregated by the hub across every unit.",
+      "properties": {
+        "actions": {
+          "description": "Corrective actions: how often each resolved the fault it was tried on.",
+          "items": {
+            "$ref": "#/$defs/FleetAction"
+          },
+          "type": "array"
+        },
+        "generated_at": {
+          "type": "string"
+        },
+        "jobs": {
+          "description": "Jobs per symptom (or tree, when entered without one) and variant.",
+          "items": {
+            "$ref": "#/$defs/FleetJobs"
+          },
+          "type": "array"
+        },
+        "repeats": {
+          "description": "The same asset with the same symptom or system again within the window.",
+          "items": {
+            "$ref": "#/$defs/FleetRepeat"
+          },
+          "type": "array"
+        },
+        "top_causes": {
+          "description": "The most frequent verified causes per symptom.",
+          "items": {
+            "$ref": "#/$defs/FleetCauses"
+          },
+          "type": "array"
+        },
+        "units": {
+          "description": "Units that reported.",
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "generated_at",
+        "units",
+        "jobs",
+        "actions",
+        "repeats",
+        "top_causes"
+      ],
+      "type": "object"
+    },
     "FlushReport": {
       "description": "What one [`flush`] did.",
       "properties": {
@@ -2274,6 +2547,102 @@
       ],
       "type": "object"
     },
+    "HubApproveParams": {
+      "additionalProperties": false,
+      "properties": {
+        "edit": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/NoteEdit"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Edit before approving: the note's text and/or scope."
+        },
+        "lesson_id": {
+          "type": "string"
+        },
+        "note": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reviewer": {
+          "description": "Who approves (recorded and audited).",
+          "type": "string"
+        }
+      },
+      "required": [
+        "lesson_id",
+        "reviewer"
+      ],
+      "type": "object"
+    },
+    "HubBundlesParams": {
+      "additionalProperties": false,
+      "properties": {
+        "since": {
+          "default": 0,
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "HubPublishParams": {
+      "additionalProperties": false,
+      "properties": {
+        "always": {
+          "default": false,
+          "description": "Publish a bundle (with the fleet summary) even when no note changed.",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "HubQueueParams": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "default": null,
+          "description": "`pending` | `approved` | `rejected`; all when absent.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "HubRejectParams": {
+      "additionalProperties": false,
+      "properties": {
+        "lesson_id": {
+          "type": "string"
+        },
+        "reason": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reviewer": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "lesson_id",
+        "reviewer"
+      ],
+      "type": "object"
+    },
     "HubState": {
       "description": "Where the upload destination stands: configured, and reachable as of\nthe last attempt (never probed live).",
       "properties": {
@@ -2313,6 +2682,76 @@
         "reachable",
         "last_attempt_at",
         "last_error"
+      ],
+      "type": "object"
+    },
+    "HubStatus": {
+      "description": "How the hub stands.",
+      "properties": {
+        "bundles": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "conflicts": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "devices": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "items": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "jobs": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "key_id": {
+          "type": "string"
+        },
+        "latest_bundle": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "lessons_approved": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "lessons_pending": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "lessons_rejected": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "stream": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "stream",
+        "key_id",
+        "devices",
+        "items",
+        "jobs",
+        "lessons_pending",
+        "lessons_approved",
+        "lessons_rejected",
+        "bundles",
+        "latest_bundle",
+        "conflicts"
       ],
       "type": "object"
     },
@@ -3265,6 +3704,14 @@
             "null"
           ]
         },
+        "lesson_id": {
+          "default": null,
+          "description": "The lesson's id when it continues one begun on another unit (its\nedits then meet at the hub); new when absent.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "level": {
           "default": null,
           "description": "The technician's level.",
@@ -3348,6 +3795,62 @@
         "rejected"
       ],
       "type": "string"
+    },
+    "LessonUpdateParams": {
+      "additionalProperties": false,
+      "properties": {
+        "lesson": {
+          "$ref": "#/$defs/LessonInput"
+        },
+        "lesson_id": {
+          "type": "string"
+        },
+        "pack_id": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "lesson_id",
+        "lesson"
+      ],
+      "type": "object"
+    },
+    "LessonVersion": {
+      "description": "One stored version of a lesson.",
+      "properties": {
+        "device_id": {
+          "type": "string"
+        },
+        "item_id": {
+          "type": "string"
+        },
+        "lesson": {
+          "$ref": "#/$defs/Lesson"
+        },
+        "received_at": {
+          "type": "string"
+        },
+        "state": {
+          "description": "`current` (the winner), `superseded` (an earlier version from the\nwinner's unit) or `lost` (another unit's version that lost the rule).",
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "item_id",
+        "device_id",
+        "updated_at",
+        "received_at",
+        "state",
+        "lesson"
+      ],
+      "type": "object"
     },
     "Level": {
       "additionalProperties": false,
@@ -3632,6 +4135,33 @@
       ],
       "type": "object"
     },
+    "NoteEdit": {
+      "additionalProperties": false,
+      "description": "A reviewer's changes when approving.",
+      "properties": {
+        "scope": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/NoteScopeInput"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Where it shows; the lesson's variant, tree and symptom when absent."
+        },
+        "text": {
+          "default": null,
+          "description": "The field note's text; from the lesson when absent.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    },
     "NoteScope": {
       "additionalProperties": false,
       "description": "What a field note is about: any of these; every one given must match.",
@@ -3671,6 +4201,41 @@
         "node_id",
         "symptom_id"
       ],
+      "type": "object"
+    },
+    "NoteScopeInput": {
+      "additionalProperties": false,
+      "description": "What a field note is about: any of these; every one given must match.",
+      "properties": {
+        "equip_id": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "node_id": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "symptom_id": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "tree_id": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
       "type": "object"
     },
     "Observation": {
@@ -3913,6 +4478,37 @@
       },
       "type": "object"
     },
+    "PackUpdate": {
+      "description": "A pack replaced by a newer one from the hub.",
+      "properties": {
+        "bytes": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "from": {
+          "type": "string"
+        },
+        "kind": {
+          "description": "`full` | `delta`.",
+          "type": "string"
+        },
+        "pack_id": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "pack_id",
+        "from",
+        "to",
+        "kind",
+        "bytes"
+      ],
+      "type": "object"
+    },
     "PageBox": {
       "additionalProperties": false,
       "description": "A box on a page image, normalized 0 to 1 against the image: `x0 < x1`,\n`y0 < y1`, origin top left.",
@@ -4072,6 +4668,60 @@
       ],
       "type": "object"
     },
+    "PullReport": {
+      "description": "What one pull from the hub did.",
+      "properties": {
+        "bytes": {
+          "description": "Bytes of bundles received.",
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "error": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "fleet_updated": {
+          "type": "boolean"
+        },
+        "installed": {
+          "description": "Bundles installed, in order.",
+          "items": {
+            "format": "uint64",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "notes": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "refused": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RefusedBundle"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "The bundle that was refused (and why); the pull stops there and the\nnext one asks for it again."
+        }
+      },
+      "required": [
+        "installed",
+        "refused",
+        "notes",
+        "fleet_updated",
+        "bytes",
+        "error"
+      ],
+      "type": "object"
+    },
     "Reading": {
       "description": "How a query word the pack does not hold as typed was read.",
       "properties": {
@@ -4121,6 +4771,26 @@
       "required": [
         "expect",
         "branches"
+      ],
+      "type": "object"
+    },
+    "RefusedBundle": {
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "seq": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "seq",
+        "error"
       ],
       "type": "object"
     },
@@ -4610,6 +5280,81 @@
         "lexical",
         "dense",
         "score"
+      ],
+      "type": "object"
+    },
+    "ReviewItem": {
+      "description": "A lesson in the review queue, with every version.",
+      "properties": {
+        "current": {
+          "$ref": "#/$defs/Lesson"
+        },
+        "first_received_at": {
+          "type": "string"
+        },
+        "lesson_id": {
+          "type": "string"
+        },
+        "reopened": {
+          "description": "True when a newer version arrived after a review.",
+          "type": "boolean"
+        },
+        "reviews": {
+          "items": {
+            "$ref": "#/$defs/ReviewRecord"
+          },
+          "type": "array"
+        },
+        "status": {
+          "description": "`pending` | `approved` | `rejected`.",
+          "type": "string"
+        },
+        "versions": {
+          "items": {
+            "$ref": "#/$defs/LessonVersion"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "lesson_id",
+        "status",
+        "reopened",
+        "current",
+        "versions",
+        "reviews",
+        "first_received_at"
+      ],
+      "type": "object"
+    },
+    "ReviewRecord": {
+      "description": "A review action as recorded.",
+      "properties": {
+        "action": {
+          "type": "string"
+        },
+        "at": {
+          "type": "string"
+        },
+        "item_id": {
+          "type": "string"
+        },
+        "note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reviewer": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "action",
+        "reviewer",
+        "at",
+        "note",
+        "item_id"
       ],
       "type": "object"
     },
@@ -5980,6 +6725,33 @@
       },
       "type": "object"
     },
+    "SyncPull": {
+      "description": "What `sync.pull` did.",
+      "properties": {
+        "bundles": {
+          "$ref": "#/$defs/PullReport"
+        },
+        "pack_errors": {
+          "description": "A pack the hub offered that could not be installed, and why.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "packs": {
+          "items": {
+            "$ref": "#/$defs/PackUpdate"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "bundles",
+        "packs",
+        "pack_errors"
+      ],
+      "type": "object"
+    },
     "SyncStatus": {
       "description": "The outbox and the link.",
       "properties": {
@@ -6260,6 +7032,13 @@
           },
           "type": "array"
         },
+        "guards": {
+          "description": "Guards on the task (its section or above), shown once at its head;\na step carries only the guards on that step.",
+          "items": {
+            "$ref": "#/$defs/Guard"
+          },
+          "type": "array"
+        },
         "kind": {
           "type": "string"
         },
@@ -6297,6 +7076,7 @@
         "kind",
         "summary",
         "roles",
+        "guards",
         "requirements",
         "steps",
         "applies_to"
@@ -6309,6 +7089,13 @@
         "expanded": {
           "description": "Whether it opens expanded at this level.",
           "type": "boolean"
+        },
+        "guards": {
+          "description": "Guards on the whole procedure, shown once before its steps.",
+          "items": {
+            "$ref": "#/$defs/Guard"
+          },
+          "type": "array"
         },
         "proc_id": {
           "type": "string"
@@ -6333,6 +7120,7 @@
         "proc_id",
         "title",
         "expanded",
+        "guards",
         "requirements",
         "steps"
       ],
@@ -6670,6 +7458,101 @@
         "type": "array"
       }
     },
+    "fleet.summary": {
+      "params": {
+        "$ref": "#/$defs/NoParams"
+      },
+      "result": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/FleetSummary"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "hub.approve": {
+      "params": {
+        "$ref": "#/$defs/HubApproveParams"
+      },
+      "result": {
+        "$ref": "#/$defs/FieldNoteIn"
+      }
+    },
+    "hub.audit": {
+      "params": {
+        "$ref": "#/$defs/AuditListParams"
+      },
+      "result": {
+        "items": {
+          "$ref": "#/$defs/AuditRecord"
+        },
+        "type": "array"
+      }
+    },
+    "hub.bundles": {
+      "params": {
+        "$ref": "#/$defs/HubBundlesParams"
+      },
+      "result": {
+        "items": true,
+        "type": "array"
+      }
+    },
+    "hub.conflicts": {
+      "params": {
+        "$ref": "#/$defs/NoParams"
+      },
+      "result": {
+        "items": {
+          "$ref": "#/$defs/Conflict"
+        },
+        "type": "array"
+      }
+    },
+    "hub.fleet": {
+      "params": {
+        "$ref": "#/$defs/NoParams"
+      },
+      "result": {
+        "$ref": "#/$defs/FleetSummary"
+      }
+    },
+    "hub.publish": {
+      "params": {
+        "$ref": "#/$defs/HubPublishParams"
+      },
+      "result": true
+    },
+    "hub.queue": {
+      "params": {
+        "$ref": "#/$defs/HubQueueParams"
+      },
+      "result": {
+        "items": {
+          "$ref": "#/$defs/ReviewItem"
+        },
+        "type": "array"
+      }
+    },
+    "hub.reject": {
+      "params": {
+        "$ref": "#/$defs/HubRejectParams"
+      },
+      "result": {
+        "$ref": "#/$defs/HubStatus"
+      }
+    },
+    "hub.status": {
+      "params": {
+        "$ref": "#/$defs/NoParams"
+      },
+      "result": {
+        "$ref": "#/$defs/HubStatus"
+      }
+    },
     "job.answer": {
       "params": {
         "$ref": "#/$defs/JobAnswerParams"
@@ -6746,6 +7629,14 @@
           "$ref": "#/$defs/Lesson"
         },
         "type": "array"
+      }
+    },
+    "lesson.update": {
+      "params": {
+        "$ref": "#/$defs/LessonUpdateParams"
+      },
+      "result": {
+        "$ref": "#/$defs/Lesson"
       }
     },
     "manual.children": {
@@ -6853,6 +7744,14 @@
       },
       "result": {
         "$ref": "#/$defs/FlushReport"
+      }
+    },
+    "sync.pull": {
+      "params": {
+        "$ref": "#/$defs/NoParams"
+      },
+      "result": {
+        "$ref": "#/$defs/SyncPull"
       }
     },
     "sync.status": {

@@ -576,6 +576,10 @@ pub struct PartUsed {
 #[derive(Debug, Clone, Default, Serialize, Deserialize, JsonSchema, PartialEq)]
 #[serde(deny_unknown_fields)]
 pub struct LessonInput {
+    /// The lesson's id when it continues one begun on another unit (its
+    /// edits then meet at the hub); new when absent.
+    #[serde(default)]
+    pub lesson_id: Option<String>,
     /// Fills asset, equipment, tree, symptom and node when they are absent.
     #[serde(default)]
     pub job_id: Option<String>,
@@ -751,7 +755,90 @@ pub struct FieldBundle {
     pub revoke: Vec<String>,
     #[serde(default)]
     pub reviews: Vec<LessonReview>,
+    /// The hub's fleet summary as of this bundle.
+    #[serde(default)]
+    pub fleet: Option<FleetSummary>,
     pub signature: Value,
+}
+
+/// What the fleet shows, aggregated by the hub across every unit.
+#[derive(Debug, Clone, Default, Serialize, Deserialize, JsonSchema, PartialEq)]
+#[serde(deny_unknown_fields)]
+pub struct FleetSummary {
+    pub generated_at: String,
+    /// Units that reported.
+    pub units: u64,
+    /// Jobs per symptom (or tree, when entered without one) and variant.
+    pub jobs: Vec<FleetJobs>,
+    /// Corrective actions: how often each resolved the fault it was tried on.
+    pub actions: Vec<FleetAction>,
+    /// The same asset with the same symptom or system again within the window.
+    pub repeats: Vec<FleetRepeat>,
+    /// The most frequent verified causes per symptom.
+    pub top_causes: Vec<FleetCauses>,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize, JsonSchema, PartialEq)]
+#[serde(deny_unknown_fields)]
+pub struct FleetJobs {
+    pub tree_id: String,
+    pub symptom_id: Option<String>,
+    pub equip_id: Option<String>,
+    pub jobs: u64,
+    pub fixed: u64,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize, JsonSchema, PartialEq)]
+#[serde(deny_unknown_fields)]
+pub struct FleetAction {
+    pub tree_id: Option<String>,
+    pub action: String,
+    pub attempts: u64,
+    pub resolved: u64,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize, JsonSchema, PartialEq)]
+#[serde(deny_unknown_fields)]
+pub struct FleetRepeat {
+    pub asset_id: String,
+    pub symptom_id: Option<String>,
+    pub system: Option<String>,
+    pub jobs: u64,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize, JsonSchema, PartialEq)]
+#[serde(deny_unknown_fields)]
+pub struct FleetCauses {
+    pub symptom_id: String,
+    pub causes: Vec<FleetCause>,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize, JsonSchema, PartialEq)]
+#[serde(deny_unknown_fields)]
+pub struct FleetCause {
+    pub cause: String,
+    pub count: u64,
+}
+
+/// What one pull from the hub did.
+#[derive(Debug, Clone, Default, Serialize, Deserialize, JsonSchema, PartialEq)]
+pub struct PullReport {
+    /// Bundles installed, in order.
+    pub installed: Vec<u64>,
+    /// The bundle that was refused (and why); the pull stops there and the
+    /// next one asks for it again.
+    pub refused: Option<RefusedBundle>,
+    pub notes: u64,
+    pub fleet_updated: bool,
+    /// Bytes of bundles received.
+    pub bytes: u64,
+    pub error: Option<String>,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize, JsonSchema, PartialEq)]
+pub struct RefusedBundle {
+    pub seq: Option<u64>,
+    pub error: String,
 }
 
 /// A field note as stored and shown: field knowledge, never manual text.
@@ -1846,7 +1933,21 @@ impl Records {
         let equip = opt(input.equip_id).or_else(|| job.as_ref().and_then(|j| j.equip_id.clone()));
         Self::check_equip(pack, equip.as_deref())?;
         let now = now_rfc3339();
-        let lesson_id = new_id("lesson", &[&cause, &action]);
+        let lesson_id = match opt(input.lesson_id.clone()) {
+            Some(id) if valid_id(&id) && id.starts_with("lesson-") => id,
+            Some(id) => return Err(Error::Invalid(format!("lesson id {id:?}"))),
+            None => new_id("lesson", &[&cause, &action]),
+        };
+        let exists: bool = tx.query_row(
+            "SELECT EXISTS (SELECT 1 FROM lesson WHERE lesson_id = ?1)",
+            [&lesson_id],
+            |r| r.get(0),
+        )?;
+        if exists {
+            return Err(Error::Invalid(format!(
+                "lesson {lesson_id} exists; update it"
+            )));
+        }
         let l = Lesson {
             lesson_id: lesson_id.clone(),
             pack_id: pack
@@ -2164,6 +2265,13 @@ impl Records {
                 params![r.lesson_id, status, r.note, now],
             )? as u64;
         }
+        if let Some(f) = &b.fleet {
+            tx.execute(
+                "INSERT INTO records_meta (key, value) VALUES ('fleet_summary', ?1)
+                 ON CONFLICT (key) DO UPDATE SET value = excluded.value",
+                [serde_json::to_string(f)?],
+            )?;
+        }
         tx.execute(
             "INSERT INTO field_stream (stream, seq, key_id, installed_at) VALUES (?1, ?2, ?3, ?4)
              ON CONFLICT (stream) DO UPDATE SET seq = excluded.seq, key_id = excluded.key_id,
@@ -2274,6 +2382,173 @@ impl Records {
                 })
             })
             .collect()
+    }
+}
+
+impl Records {
+    /// This store's device id: made once, kept in `records_meta`.
+    pub fn device_id(&self) -> Result<String> {
+        let id: Option<String> = self
+            .conn
+            .query_row(
+                "SELECT value FROM records_meta WHERE key = 'device_id'",
+                [],
+                |r| r.get(0),
+            )
+            .optional()?;
+        if let Some(id) = id {
+            return Ok(id);
+        }
+        let id = new_id("dev", &["device"]);
+        self.conn.execute(
+            "INSERT INTO records_meta (key, value) VALUES ('device_id', ?1)",
+            [&id],
+        )?;
+        Ok(id)
+    }
+
+    /// The fleet summary from the newest installed bundle that carried one.
+    pub fn fleet_summary(&self) -> Result<Option<FleetSummary>> {
+        let raw: Option<String> = self
+            .conn
+            .query_row(
+                "SELECT value FROM records_meta WHERE key = 'fleet_summary'",
+                [],
+                |r| r.get(0),
+            )
+            .optional()?;
+        raw.map(|r| serde_json::from_str(&r).map_err(Error::from))
+            .transpose()
+    }
+
+    /// The highest bundle seq installed (across streams).
+    pub fn installed_bundle_seq(&self) -> Result<u64> {
+        let n: Option<i64> = self
+            .conn
+            .query_row("SELECT MAX(seq) FROM field_stream", [], |r| r.get(0))?;
+        Ok(n.unwrap_or(0).max(0) as u64)
+    }
+
+    /// Fetch the bundles the hub published since the newest installed one
+    /// and install them in order. The first refused bundle stops the pull
+    /// (the next pull asks for it again); a link error is reported, never
+    /// a partial install.
+    pub fn pull(&self, link: &dyn crate::sync::HubLink, keys: &[TrustedKey]) -> Result<PullReport> {
+        let mut report = PullReport::default();
+        let since = self.installed_bundle_seq()?;
+        let bundles = match link.bundles_since(since) {
+            Ok(b) => b,
+            Err(e) => {
+                report.error = Some(e.to_string());
+                return Ok(report);
+            }
+        };
+        for b in bundles {
+            report.bytes += serde_json::to_vec(&b)?.len() as u64;
+            let seq = b.get("seq").and_then(Value::as_u64);
+            if seq.is_some_and(|s| s <= self.installed_bundle_seq().unwrap_or(0)) {
+                continue; // a duplicate delivery: already installed
+            }
+            match self.install_field_bundle(&b, keys) {
+                Ok(r) => {
+                    report.installed.push(r.seq);
+                    report.notes += r.installed;
+                    report.fleet_updated |= b.get("fleet").is_some_and(|f| !f.is_null());
+                }
+                Err(e) => {
+                    report.refused = Some(RefusedBundle {
+                        seq,
+                        error: e.to_string(),
+                    });
+                    break;
+                }
+            }
+        }
+        Ok(report)
+    }
+
+    /// Change a lesson that is still on the device or already sent: its
+    /// content is replaced, a pending upload is withdrawn and the new
+    /// version queued (the hub keeps every version).
+    pub fn update_lesson(
+        &self,
+        pack: Option<&Pack>,
+        lesson_id: &str,
+        input: LessonInput,
+    ) -> Result<Lesson> {
+        let current = self
+            .lessons(&LessonFilter::default())?
+            .into_iter()
+            .find(|l| l.lesson_id == lesson_id)
+            .ok_or_else(|| Error::Invalid(format!("no lesson {lesson_id:?}")))?;
+        let cause = input.cause.trim().to_string();
+        let action = input.action.trim().to_string();
+        if cause.is_empty() || action.is_empty() {
+            return Err(Error::Invalid(
+                "a lesson needs the verified cause and the corrective action".into(),
+            ));
+        }
+        for p in &input.photos {
+            super::check_photo(p)?;
+        }
+        let tx = self.write_tx()?;
+        let now = now_rfc3339();
+        let l = Lesson {
+            cause,
+            action,
+            parts: input.parts,
+            minutes: input.minutes.or(current.minutes),
+            note: opt(input.note).or(current.note),
+            photos: if input.photos.is_empty() {
+                current.photos
+            } else {
+                input.photos
+            },
+            node_id: opt(input.node_id).or(current.node_id),
+            status: if input.submit {
+                LessonStatus::Queued
+            } else {
+                LessonStatus::Local
+            },
+            review_note: None,
+            updated_at: now.clone(),
+            pack_version: pack
+                .map(|p| p.version().to_string())
+                .or(current.pack_version),
+            ..current
+        };
+        let aad = |col: &str| format!("lesson.{col}:{lesson_id}");
+        tx.execute(
+            "UPDATE lesson SET cause = ?2, action = ?3, parts = ?4, minutes = ?5, note = ?6, photos = ?7,
+                    node_id = ?8, status = ?9, review_note = NULL, updated_at = ?10, pack_version = ?11
+             WHERE lesson_id = ?1",
+            params![
+                lesson_id,
+                self.seal(&aad("cause"), Some(&l.cause))?,
+                self.seal(&aad("action"), Some(&l.action))?,
+                self.seal(&aad("parts"), Some(&serde_json::to_string(&l.parts)?))?,
+                l.minutes,
+                self.seal(&aad("note"), l.note.as_deref())?,
+                self.seal(&aad("photos"), Some(&serde_json::to_string(&l.photos)?))?,
+                l.node_id,
+                if input.submit { "queued" } else { "local" },
+                now,
+                l.pack_version
+            ],
+        )?;
+        sync::supersede(&tx, "lesson", lesson_id)?;
+        if input.submit {
+            let mut payload = serde_json::to_value(&l)?;
+            payload["format"] = Value::String(LESSON_FORMAT.into());
+            sync::enqueue_ref(&tx, self.key(), "lesson", Some(lesson_id), &payload)?;
+        }
+        let mut ev = AuditEvent::new("lesson.update", lesson_id);
+        ev.pack_id = l.pack_id.clone();
+        ev.pack_version = l.pack_version.clone();
+        ev.detail = serde_json::json!({"submit": input.submit});
+        self.audit_event(&tx, &ev)?;
+        tx.commit()?;
+        Ok(l)
     }
 }
 

@@ -44,28 +44,39 @@ pub const API_VERSION: &str = "harvest-api/1";
 
 /// Everything the API serves from: verified packs, the device's records,
 /// optional embedders (per pack), an optional model, the hub's trusted keys
-/// for field-note bundles, and where `sync.flush` writes.
+/// for field-note bundles, the upload destination (a hub link or a
+/// folder), and, on a hub, the hub's store.
 pub struct Host {
-    packs: BTreeMap<String, Arc<Pack>>,
+    packs: std::sync::RwLock<BTreeMap<String, Arc<Pack>>>,
     records: Mutex<Records>,
     embedders: BTreeMap<String, Arc<dyn Embedder>>,
     llm: Option<Arc<dyn Llm>>,
     field_keys: Vec<TrustedKey>,
+    pack_keys: Vec<TrustedKey>,
     outbox_dir: Option<PathBuf>,
+    hub_link: Option<Arc<dyn crate::sync::HubLink + Send + Sync>>,
+    packs_root: Option<PathBuf>,
+    hub: Option<Arc<Mutex<crate::hub::Hub>>>,
 }
 
 impl Host {
     pub fn new(packs: Vec<Arc<Pack>>, records: Records) -> Self {
         Self {
-            packs: packs
-                .into_iter()
-                .map(|p| (p.pack_id().to_string(), p))
-                .collect(),
+            packs: std::sync::RwLock::new(
+                packs
+                    .into_iter()
+                    .map(|p| (p.pack_id().to_string(), p))
+                    .collect(),
+            ),
             records: Mutex::new(records),
             embedders: BTreeMap::new(),
             llm: None,
             field_keys: Vec::new(),
+            pack_keys: Vec::new(),
             outbox_dir: None,
+            hub_link: None,
+            packs_root: None,
+            hub: None,
         }
     }
     /// The embedder for one pack (dense retrieval runs only when it matches).
@@ -83,30 +94,78 @@ impl Host {
         self
     }
     /// The folder `sync.flush` writes the outbox into (a removable drive,
-    /// a shared folder). Without it `sync.flush` is refused.
+    /// a shared folder), when there is no hub link.
     pub fn with_outbox_dir(mut self, dir: PathBuf) -> Self {
         self.outbox_dir = Some(dir);
         self
     }
+    /// The device's link to its hub: `sync.flush` sends through it and
+    /// `sync.pull` fetches bundles and pack updates. With `packs_root`
+    /// (the installed layout) and the publisher's `pack_keys`, a newer pack
+    /// is installed and replaces the loaded one.
+    pub fn with_hub_link(
+        mut self,
+        link: Arc<dyn crate::sync::HubLink + Send + Sync>,
+        packs_root: Option<PathBuf>,
+        pack_keys: Vec<TrustedKey>,
+    ) -> Self {
+        self.hub_link = Some(link);
+        self.packs_root = packs_root;
+        self.pack_keys = pack_keys;
+        self
+    }
+    /// The hub's store, for the `hub.*` methods and the device routes of
+    /// `harvest hub`.
+    pub fn with_hub(mut self, hub: Arc<Mutex<crate::hub::Hub>>) -> Self {
+        self.hub = Some(hub);
+        self
+    }
 
-    pub fn packs(&self) -> impl Iterator<Item = &Arc<Pack>> {
-        self.packs.values()
+    /// The hub's store, when this host is a hub.
+    pub fn hub(&self) -> Option<&Arc<Mutex<crate::hub::Hub>>> {
+        self.hub.as_ref()
+    }
+
+    fn hub_store(&self) -> Result<MutexGuard<'_, crate::hub::Hub>> {
+        let h = self
+            .hub
+            .as_ref()
+            .ok_or_else(|| Error::Invalid("this host is not a hub".into()))?;
+        Ok(h.lock().unwrap_or_else(|p| p.into_inner()))
+    }
+
+    /// The loaded packs.
+    pub fn packs(&self) -> Vec<Arc<Pack>> {
+        self.packs
+            .read()
+            .unwrap_or_else(|p| p.into_inner())
+            .values()
+            .cloned()
+            .collect()
     }
 
     /// A pack by id, or the only one when `None`.
-    pub fn pack(&self, id: Option<&str>) -> Result<&Arc<Pack>> {
+    pub fn pack(&self, id: Option<&str>) -> Result<Arc<Pack>> {
+        let packs = self.packs.read().unwrap_or_else(|p| p.into_inner());
         match id {
-            Some(id) => self
-                .packs
+            Some(id) => packs
                 .get(id)
+                .cloned()
                 .ok_or_else(|| Error::Invalid(format!("no pack {id:?} is loaded"))),
-            None if self.packs.len() == 1 => Ok(self.packs.values().next().expect("one pack")),
-            None if self.packs.is_empty() => Err(Error::Invalid("no pack is loaded".into())),
+            None if packs.len() == 1 => Ok(packs.values().next().expect("one pack").clone()),
+            None if packs.is_empty() => Err(Error::Invalid("no pack is loaded".into())),
             None => Err(Error::Invalid(format!(
                 "more than one pack is loaded; name one with pack_id: {:?}",
-                self.packs.keys().collect::<Vec<_>>()
+                packs.keys().collect::<Vec<_>>()
             ))),
         }
+    }
+
+    fn replace_pack(&self, pack: Arc<Pack>) {
+        self.packs
+            .write()
+            .unwrap_or_else(|p| p.into_inner())
+            .insert(pack.pack_id().to_string(), pack);
     }
 
     fn records(&self) -> MutexGuard<'_, Records> {
@@ -257,8 +316,20 @@ methods! {
     "field.list" => field_list(NoParams) -> Vec<FieldNote>,
     "sync.status" => sync_status(NoParams) -> SyncStatus,
     "sync.flush" => sync_flush(NoParams) -> FlushReport,
+    "sync.pull" => sync_pull(NoParams) -> SyncPull,
+    "lesson.update" => lesson_update(LessonUpdateParams) -> Lesson,
+    "fleet.summary" => fleet_summary(NoParams) -> Option<crate::records::FleetSummary>,
     "audit.list" => audit_list(AuditListParams) -> Vec<AuditRecord>,
     "audit.verify" => audit_verify(NoParams) -> ChainReport,
+    "hub.status" => hub_status(NoParams) -> crate::hub::HubStatus,
+    "hub.queue" => hub_queue(HubQueueParams) -> Vec<crate::hub::ReviewItem>,
+    "hub.approve" => hub_approve(HubApproveParams) -> crate::records::FieldNoteIn,
+    "hub.reject" => hub_reject(HubRejectParams) -> crate::hub::HubStatus,
+    "hub.publish" => hub_publish(HubPublishParams) -> Option<Value>,
+    "hub.bundles" => hub_bundles(HubBundlesParams) -> Vec<Value>,
+    "hub.fleet" => hub_fleet(NoParams) -> crate::records::FleetSummary,
+    "hub.conflicts" => hub_conflicts(NoParams) -> Vec<crate::hub::Conflict>,
+    "hub.audit" => hub_audit(AuditListParams) -> Vec<AuditRecord>,
 }
 
 // ------------------------------------------------------------ params
@@ -614,7 +685,81 @@ pub struct AuditListParams {
     pub limit: Option<usize>,
 }
 
+#[derive(Debug, Clone, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct LessonUpdateParams {
+    #[serde(default)]
+    pub pack_id: Option<String>,
+    pub lesson_id: String,
+    pub lesson: LessonInput,
+}
+
+#[derive(Debug, Clone, Default, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct HubQueueParams {
+    /// `pending` | `approved` | `rejected`; all when absent.
+    #[serde(default)]
+    pub status: Option<String>,
+}
+
+#[derive(Debug, Clone, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct HubApproveParams {
+    pub lesson_id: String,
+    /// Who approves (recorded and audited).
+    pub reviewer: String,
+    /// Edit before approving: the note's text and/or scope.
+    #[serde(default)]
+    pub edit: Option<crate::hub::NoteEdit>,
+    #[serde(default)]
+    pub note: Option<String>,
+}
+
+#[derive(Debug, Clone, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct HubRejectParams {
+    pub lesson_id: String,
+    pub reviewer: String,
+    #[serde(default)]
+    pub reason: Option<String>,
+}
+
+#[derive(Debug, Clone, Default, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct HubPublishParams {
+    /// Publish a bundle (with the fleet summary) even when no note changed.
+    #[serde(default)]
+    pub always: bool,
+}
+
+#[derive(Debug, Clone, Default, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct HubBundlesParams {
+    #[serde(default)]
+    pub since: u64,
+}
+
 // ----------------------------------------------------------- results
+
+/// A pack replaced by a newer one from the hub.
+#[derive(Debug, Clone, Serialize, JsonSchema)]
+pub struct PackUpdate {
+    pub pack_id: String,
+    pub from: String,
+    pub to: String,
+    /// `full` | `delta`.
+    pub kind: String,
+    pub bytes: u64,
+}
+
+/// What `sync.pull` did.
+#[derive(Debug, Clone, Serialize, JsonSchema)]
+pub struct SyncPull {
+    pub bundles: crate::records::PullReport,
+    pub packs: Vec<PackUpdate>,
+    /// A pack the hub offered that could not be installed, and why.
+    pub pack_errors: Vec<String>,
+}
 
 /// What a pack is and how to talk to it.
 #[derive(Debug, Clone, Serialize, JsonSchema)]
@@ -751,7 +896,7 @@ fn nz(s: &Option<String>) -> Option<&str> {
 }
 
 fn pack_info(h: &Host, p: PackParams) -> R<PackInfoView> {
-    let pack = h.pack(nz(&p.pack_id))?;
+    let pack = &h.pack(nz(&p.pack_id))?;
     let mut systems: Vec<String> = pack
         .fault_trees(None)?
         .into_iter()
@@ -769,16 +914,17 @@ fn pack_info(h: &Host, p: PackParams) -> R<PackInfoView> {
         facets: pack.facet_defs()?,
         signal_kinds: pack.signal_kinds()?,
         repeat_window_days: pack.repeat_window_days(),
-        packs: h.packs.keys().cloned().collect(),
+        packs: h.packs().iter().map(|p| p.pack_id().to_string()).collect(),
     })
 }
 
 fn pack_validate(h: &Host, p: PackParams) -> R<GraphReport> {
-    Ok(graph::validate(h.pack(nz(&p.pack_id))?)?)
+    let pack = h.pack(nz(&p.pack_id))?;
+    Ok(graph::validate(&pack)?)
 }
 
 fn equip_list(h: &Host, p: PackParams) -> R<Vec<EquipView>> {
-    let pack = h.pack(nz(&p.pack_id))?;
+    let pack = &h.pack(nz(&p.pack_id))?;
     pack.equipment()
         .iter()
         .map(|e| {
@@ -791,7 +937,7 @@ fn equip_list(h: &Host, p: PackParams) -> R<Vec<EquipView>> {
 }
 
 fn equip_resolve(h: &Host, p: EquipResolveParams) -> R<Resolved> {
-    let pack = h.pack(nz(&p.pack_id))?;
+    let pack = &h.pack(nz(&p.pack_id))?;
     Ok(resolve::resolve(
         pack,
         &Plate {
@@ -814,7 +960,7 @@ fn asset_get(h: &Host, p: AssetIdParams) -> R<Asset> {
         .ok_or_else(|| Error::Invalid(format!("no asset {:?}", p.asset_id)))?)
 }
 
-fn optional_pack<'a>(h: &'a Host, id: &Option<String>) -> R<Option<&'a Arc<Pack>>> {
+fn optional_pack(h: &Host, id: &Option<String>) -> R<Option<Arc<Pack>>> {
     match nz(id) {
         Some(id) => Ok(Some(h.pack(Some(id))?)),
         None => Ok(h.pack(None).ok()),
@@ -823,24 +969,22 @@ fn optional_pack<'a>(h: &'a Host, id: &Option<String>) -> R<Option<&'a Arc<Pack>
 
 fn asset_create(h: &Host, p: AssetCreateParams) -> R<Asset> {
     let pack = optional_pack(h, &p.pack_id)?;
-    Ok(h.records()
-        .create_asset(pack.map(|p| p.as_ref()), p.asset)?)
+    Ok(h.records().create_asset(pack.as_deref(), p.asset)?)
 }
 
 fn asset_update(h: &Host, p: AssetUpdateParams) -> R<Asset> {
     let pack = optional_pack(h, &p.pack_id)?;
     Ok(h.records()
-        .update_asset(pack.map(|p| p.as_ref()), &p.asset_id, p.changes)?)
+        .update_asset(pack.as_deref(), &p.asset_id, p.changes)?)
 }
 
 fn asset_import(h: &Host, p: AssetImportParams) -> R<ImportReport> {
     let pack = optional_pack(h, &p.pack_id)?;
-    Ok(h.records()
-        .import_assets(pack.map(|p| p.as_ref()), &p.registry)?)
+    Ok(h.records().import_assets(pack.as_deref(), &p.registry)?)
 }
 
 fn asset_history(h: &Host, p: AssetHistoryParams) -> R<AssetHistory> {
-    let pack = h.pack(nz(&p.pack_id))?;
+    let pack = &h.pack(nz(&p.pack_id))?;
     Ok(h.records().asset_history(pack, &p.asset_id)?)
 }
 
@@ -860,7 +1004,7 @@ fn equip_for(h: &Host, equip: &Option<String>, asset: &Option<String>) -> R<Opti
 }
 
 fn symptom_search(h: &Host, p: SymptomSearchParams) -> R<SymptomSearch> {
-    let pack = h.pack(nz(&p.pack_id))?;
+    let pack = &h.pack(nz(&p.pack_id))?;
     let equip = equip_for(h, &p.equip_id, &p.asset_id)?;
     let (hits, dense) = search::symptom_search(
         pack,
@@ -891,7 +1035,7 @@ fn symptom_search(h: &Host, p: SymptomSearchParams) -> R<SymptomSearch> {
 }
 
 fn signal_match(h: &Host, p: SignalMatchParams) -> R<SignalMatch> {
-    let pack = h.pack(nz(&p.pack_id))?;
+    let pack = &h.pack(nz(&p.pack_id))?;
     let equip = equip_for(h, &p.equip_id, &p.asset_id)?;
     Ok(search::signal_match(
         pack,
@@ -901,7 +1045,7 @@ fn signal_match(h: &Host, p: SignalMatchParams) -> R<SignalMatch> {
 }
 
 fn tree_list(h: &Host, p: TreeListParams) -> R<Vec<FaultTree>> {
-    let pack = h.pack(nz(&p.pack_id))?;
+    let pack = &h.pack(nz(&p.pack_id))?;
     Ok(pack
         .fault_trees(nz(&p.equip_id))?
         .into_iter()
@@ -910,13 +1054,13 @@ fn tree_list(h: &Host, p: TreeListParams) -> R<Vec<FaultTree>> {
 }
 
 fn tree_get(h: &Host, p: TreeGetParams) -> R<Tree> {
-    let pack = h.pack(nz(&p.pack_id))?;
+    let pack = &h.pack(nz(&p.pack_id))?;
     Ok(pack
         .fault_tree(&p.tree_id)?
         .ok_or_else(|| Error::Invalid(format!("no tree {:?}", p.tree_id)))?)
 }
 
-fn job_pack<'a>(h: &'a Host, rec: &Records, job_id: &str) -> R<&'a Arc<Pack>> {
+fn job_pack(h: &Host, rec: &Records, job_id: &str) -> R<Arc<Pack>> {
     let job = rec
         .job(job_id)?
         .ok_or_else(|| Error::Invalid(format!("no job {job_id:?}")))?;
@@ -924,7 +1068,7 @@ fn job_pack<'a>(h: &'a Host, rec: &Records, job_id: &str) -> R<&'a Arc<Pack>> {
 }
 
 fn job_start(h: &Host, p: JobStartParams) -> R<JobView> {
-    let pack = h.pack(nz(&p.pack_id))?;
+    let pack = &h.pack(nz(&p.pack_id))?;
     let rec = h.records();
     let job = rec.start_job(
         pack,
@@ -944,13 +1088,13 @@ fn job_start(h: &Host, p: JobStartParams) -> R<JobView> {
 
 fn job_get(h: &Host, p: JobGetParams) -> R<JobView> {
     let rec = h.records();
-    let pack = job_pack(h, &rec, &p.job_id)?;
+    let pack = &job_pack(h, &rec, &p.job_id)?;
     Ok(rec.job_view(pack, &p.job_id, nz(&p.level))?)
 }
 
 fn job_answer(h: &Host, p: JobAnswerParams) -> R<JobView> {
     let rec = h.records();
-    let pack = job_pack(h, &rec, &p.job_id)?;
+    let pack = &job_pack(h, &rec, &p.job_id)?;
     rec.answer_job(
         pack,
         &p.job_id,
@@ -968,14 +1112,14 @@ fn job_answer(h: &Host, p: JobAnswerParams) -> R<JobView> {
 
 fn job_back(h: &Host, p: JobIdParams) -> R<JobView> {
     let rec = h.records();
-    let pack = job_pack(h, &rec, &p.job_id)?;
+    let pack = &job_pack(h, &rec, &p.job_id)?;
     rec.back_job(pack, &p.job_id)?;
     Ok(rec.job_view(pack, &p.job_id, None)?)
 }
 
 fn job_close(h: &Host, p: JobCloseParams) -> R<JobClosed> {
     let rec = h.records();
-    let pack = job_pack(h, &rec, &p.job_id)?;
+    let pack = &job_pack(h, &rec, &p.job_id)?;
     let (job, lesson) = rec.close_job(
         pack,
         &p.job_id,
@@ -991,7 +1135,7 @@ fn job_close(h: &Host, p: JobCloseParams) -> R<JobClosed> {
 fn job_list(h: &Host, p: JobListParams) -> R<Vec<JobSummary>> {
     let mut jobs = h.records().jobs(nz(&p.asset_id), nz(&p.status))?;
     let mut titles: BTreeMap<(String, String), String> = BTreeMap::new();
-    for pack in h.packs() {
+    for pack in &h.packs() {
         for t in pack.fault_trees(None)? {
             titles.insert((pack.pack_id().to_string(), t.tree_id), t.title);
         }
@@ -1006,12 +1150,12 @@ fn job_list(h: &Host, p: JobListParams) -> R<Vec<JobSummary>> {
 
 fn job_report(h: &Host, p: JobIdParams) -> R<JobReport> {
     let rec = h.records();
-    let pack = job_pack(h, &rec, &p.job_id)?;
+    let pack = &job_pack(h, &rec, &p.job_id)?;
     Ok(rec.job_report(pack, &p.job_id)?)
 }
 
 fn task_list(h: &Host, p: TaskListParams) -> R<Vec<TaskSummary>> {
-    let pack = h.pack(nz(&p.pack_id))?;
+    let pack = &h.pack(nz(&p.pack_id))?;
     let mut out = Vec::new();
     for t in pack.procedures()? {
         let applies_to = pack.applies_to("procedure", &t.procedure.proc_id)?;
@@ -1029,12 +1173,12 @@ fn task_list(h: &Host, p: TaskListParams) -> R<Vec<TaskSummary>> {
 }
 
 fn task_get(h: &Host, p: TaskGetParams) -> R<TaskView> {
-    let pack = h.pack(nz(&p.pack_id))?;
+    let pack = &h.pack(nz(&p.pack_id))?;
     Ok(view::task_view(pack, &p.proc_id, nz(&p.equip_id))?
         .ok_or_else(|| Error::Invalid(format!("no task {:?}", p.proc_id)))?)
 }
 
-fn run_pack<'a>(h: &'a Host, rec: &Records, run_id: &str) -> R<&'a Arc<Pack>> {
+fn run_pack(h: &Host, rec: &Records, run_id: &str) -> R<Arc<Pack>> {
     let run = rec
         .run(run_id)?
         .ok_or_else(|| Error::Invalid(format!("no run {run_id:?}")))?;
@@ -1042,7 +1186,7 @@ fn run_pack<'a>(h: &'a Host, rec: &Records, run_id: &str) -> R<&'a Arc<Pack>> {
 }
 
 fn run_start(h: &Host, p: RunStartParams) -> R<Run> {
-    let pack = h.pack(nz(&p.pack_id))?;
+    let pack = &h.pack(nz(&p.pack_id))?;
     Ok(h.records().start_run(
         pack,
         &p.proc_id,
@@ -1056,7 +1200,7 @@ fn run_start(h: &Host, p: RunStartParams) -> R<Run> {
 
 fn run_record(h: &Host, p: RunRecordParams) -> R<StepOutcome> {
     let rec = h.records();
-    let pack = run_pack(h, &rec, &p.run_id)?;
+    let pack = &run_pack(h, &rec, &p.run_id)?;
     Ok(rec.record_step(
         pack,
         &p.run_id,
@@ -1073,19 +1217,19 @@ fn run_record(h: &Host, p: RunRecordParams) -> R<StepOutcome> {
 
 fn run_finish(h: &Host, p: RunIdParams) -> R<Run> {
     let rec = h.records();
-    let pack = run_pack(h, &rec, &p.run_id)?;
+    let pack = &run_pack(h, &rec, &p.run_id)?;
     Ok(rec.finish_run(pack, &p.run_id)?)
 }
 
 fn run_abandon(h: &Host, p: RunIdParams) -> R<Run> {
     let rec = h.records();
-    let pack = run_pack(h, &rec, &p.run_id)?;
+    let pack = &run_pack(h, &rec, &p.run_id)?;
     Ok(rec.abandon_run(pack, &p.run_id)?)
 }
 
 fn run_report(h: &Host, p: RunIdParams) -> R<RunReport> {
     let rec = h.records();
-    let pack = run_pack(h, &rec, &p.run_id)?;
+    let pack = &run_pack(h, &rec, &p.run_id)?;
     Ok(rec.report(pack, &p.run_id)?)
 }
 
@@ -1101,7 +1245,7 @@ fn section_ref(pack: &Pack, s: &Section) -> Result<SectionRef> {
 }
 
 fn manual_section(h: &Host, p: SectionParams) -> R<SectionView> {
-    let pack = h.pack(nz(&p.pack_id))?;
+    let pack = &h.pack(nz(&p.pack_id))?;
     let section = pack
         .section(&p.section_id)?
         .ok_or_else(|| Error::Invalid(format!("no section {:?}", p.section_id)))?;
@@ -1136,7 +1280,7 @@ fn manual_section(h: &Host, p: SectionParams) -> R<SectionView> {
 }
 
 fn manual_children(h: &Host, p: ChildrenParams) -> R<Vec<SectionRef>> {
-    let pack = h.pack(nz(&p.pack_id))?;
+    let pack = &h.pack(nz(&p.pack_id))?;
     let rows: Vec<Section> = match nz(&p.section_id) {
         Some(id) => pack.children(id)?,
         None => pack
@@ -1196,7 +1340,7 @@ fn scope_sections(pack: &Pack, scope: &Option<Scope>) -> Result<Vec<String>> {
 }
 
 fn manual_search(h: &Host, p: ManualSearchParams) -> R<ManualSearch> {
-    let pack = h.pack(nz(&p.pack_id))?;
+    let pack = &h.pack(nz(&p.pack_id))?;
     let mut r = crate::retrieval::Retriever::new(pack);
     r.embedder = h.embedder(pack);
     let result = r.search(
@@ -1233,7 +1377,7 @@ fn manual_search(h: &Host, p: ManualSearchParams) -> R<ManualSearch> {
 }
 
 fn ask(h: &Host, p: AskParams) -> R<AskResponse> {
-    let pack = h.pack(nz(&p.pack_id))?;
+    let pack = &h.pack(nz(&p.pack_id))?;
     let level = match nz(&p.level) {
         Some(l) => pack.level(l)?,
         None => pack
@@ -1271,7 +1415,7 @@ fn lesson_create(h: &Host, p: LessonCreateParams) -> R<Lesson> {
             None => h.pack(None).ok(),
         },
     };
-    Ok(rec.create_lesson(pack.map(|p| p.as_ref()), p.lesson)?)
+    Ok(rec.create_lesson(pack.as_deref(), p.lesson)?)
 }
 
 fn lesson_list(h: &Host, p: LessonFilter) -> R<Vec<Lesson>> {
@@ -1292,12 +1436,17 @@ fn field_list(h: &Host, _: NoParams) -> R<Vec<FieldNote>> {
 fn sync_status(h: &Host, _: NoParams) -> R<SyncStatus> {
     let rec = h.records();
     let state = rec.sync_state()?;
+    let destination = if h.hub_link.is_some() {
+        Some("hub".to_string())
+    } else {
+        h.outbox_dir.as_ref().map(|_| "folder".to_string())
+    };
     Ok(SyncStatus {
         outbox: rec.outbox_status()?,
         last_synced_at: state.last_synced_at,
         hub: HubState {
-            configured: h.outbox_dir.is_some(),
-            destination: h.outbox_dir.as_ref().map(|_| "folder".to_string()),
+            configured: destination.is_some(),
+            destination,
             reachable: state.last_attempt_ok,
             last_attempt_at: state.last_attempt_at,
             last_error: state.last_error,
@@ -1306,12 +1455,122 @@ fn sync_status(h: &Host, _: NoParams) -> R<SyncStatus> {
 }
 
 fn sync_flush(h: &Host, _: NoParams) -> R<FlushReport> {
+    if let Some(link) = &h.hub_link {
+        return Ok(h
+            .records()
+            .flush(&crate::sync::LinkTransport(link.as_ref()), 50)?);
+    }
     let dir = h
         .outbox_dir
         .as_ref()
         .ok_or_else(|| Error::Sync("no upload destination is configured on this device".into()))?;
     Ok(h.records()
         .flush(&crate::sync::DirTransport::new(dir), 50)?)
+}
+
+fn sync_pull(h: &Host, _: NoParams) -> R<SyncPull> {
+    let link = h
+        .hub_link
+        .as_ref()
+        .ok_or_else(|| Error::Sync("no hub is configured on this device".into()))?;
+    if h.field_keys.is_empty() {
+        return Err(Error::Signature("no trusted key for field-note bundles".into()).into());
+    }
+    let bundles = h.records().pull(link.as_ref(), &h.field_keys)?;
+    let mut packs = Vec::new();
+    let mut pack_errors = Vec::new();
+    if let Some(root) = &h.packs_root {
+        for pack in h.packs() {
+            let offer = match link.pack_offer(pack.pack_id(), Some(pack.version())) {
+                Ok(Some(o)) => o,
+                Ok(None) => continue,
+                Err(e) => {
+                    pack_errors.push(format!("{}: {e}", pack.pack_id()));
+                    continue;
+                }
+            };
+            let installed = crate::sync::install_offer(root, link.as_ref(), &offer, &h.pack_keys)
+                .and_then(|i| {
+                    let p = Pack::open(&i.dir, &h.pack_keys)?;
+                    Ok((i, p))
+                });
+            match installed {
+                Ok((i, p)) => {
+                    packs.push(PackUpdate {
+                        pack_id: i.pack_id,
+                        from: pack.version().to_string(),
+                        to: i.version,
+                        kind: offer.kind.clone(),
+                        bytes: offer.bytes,
+                    });
+                    h.replace_pack(Arc::new(p));
+                }
+                Err(e) => pack_errors.push(format!("{} {}: {e}", offer.pack_id, offer.version)),
+            }
+        }
+    }
+    Ok(SyncPull {
+        bundles,
+        packs,
+        pack_errors,
+    })
+}
+
+fn lesson_update(h: &Host, p: LessonUpdateParams) -> R<Lesson> {
+    let pack = optional_pack(h, &p.pack_id)?;
+    Ok(h.records()
+        .update_lesson(pack.as_deref(), &p.lesson_id, p.lesson)?)
+}
+
+fn fleet_summary(h: &Host, _: NoParams) -> R<Option<crate::records::FleetSummary>> {
+    Ok(h.records().fleet_summary()?)
+}
+
+fn hub_status(h: &Host, _: NoParams) -> R<crate::hub::HubStatus> {
+    Ok(h.hub_store()?.status()?)
+}
+
+fn hub_queue(h: &Host, p: HubQueueParams) -> R<Vec<crate::hub::ReviewItem>> {
+    Ok(h.hub_store()?.queue(nz(&p.status))?)
+}
+
+fn hub_approve(h: &Host, p: HubApproveParams) -> R<crate::records::FieldNoteIn> {
+    Ok(h.hub_store()?
+        .approve(&p.lesson_id, &p.reviewer, p.edit, p.note.as_deref())?)
+}
+
+fn hub_reject(h: &Host, p: HubRejectParams) -> R<crate::hub::HubStatus> {
+    let hub = h.hub_store()?;
+    hub.reject(&p.lesson_id, &p.reviewer, p.reason.as_deref())?;
+    Ok(hub.status()?)
+}
+
+fn hub_publish(h: &Host, p: HubPublishParams) -> R<Option<Value>> {
+    Ok(h.hub_store()?.publish(p.always)?)
+}
+
+fn hub_bundles(h: &Host, p: HubBundlesParams) -> R<Vec<Value>> {
+    Ok(h.hub_store()?.bundles_since(p.since)?)
+}
+
+fn hub_fleet(h: &Host, _: NoParams) -> R<crate::records::FleetSummary> {
+    Ok(h.hub_store()?.fleet()?)
+}
+
+fn hub_conflicts(h: &Host, _: NoParams) -> R<Vec<crate::hub::Conflict>> {
+    Ok(h.hub_store()?.conflicts()?)
+}
+
+fn hub_audit(h: &Host, p: AuditListParams) -> R<Vec<AuditRecord>> {
+    let all = h.hub_store()?.audit_records()?;
+    let after = p.after_seq.unwrap_or(0);
+    Ok(all
+        .into_iter()
+        .filter(|r| match r {
+            AuditRecord::Answer { seq, .. } | AuditRecord::Event { seq, .. } => *seq > after,
+        })
+        .take(p.limit.unwrap_or(200))
+        .collect())
 }
 
 fn audit_list(h: &Host, p: AuditListParams) -> R<Vec<AuditRecord>> {

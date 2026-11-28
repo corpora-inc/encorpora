@@ -293,6 +293,15 @@ const KEY_CHECK: &str = "harvest-records-v1";
 
 static COUNTER: AtomicU64 = AtomicU64::new(0);
 
+thread_local! {
+    static SIM_COUNTER: std::cell::Cell<u64> = const { std::cell::Cell::new(0) };
+}
+
+/// Restart the id sequence of a virtual-clock run (simulations only).
+pub fn reset_sim_ids() {
+    SIM_COUNTER.with(|c| c.set(0));
+}
+
 /// A fresh, unguessable-enough local id: SHA-256 over the parts, the clock
 /// and a process counter, 32 hex.
 pub(crate) fn new_id(prefix: &str, parts: &[&str]) -> String {
@@ -301,12 +310,29 @@ pub(crate) fn new_id(prefix: &str, parts: &[&str]) -> String {
         h.update(p.as_bytes());
         h.update([0]);
     }
-    let t = std::time::SystemTime::now()
-        .duration_since(std::time::UNIX_EPOCH)
-        .unwrap_or_default();
-    h.update(t.as_nanos().to_le_bytes());
-    h.update(COUNTER.fetch_add(1, Ordering::Relaxed).to_le_bytes());
-    h.update(std::process::id().to_le_bytes());
+    match crate::audit::virtual_now_ms() {
+        // On a virtual clock (a simulation) ids repeat run for run.
+        Some(ms) => {
+            h.update(ms.to_le_bytes());
+            h.update(
+                SIM_COUNTER
+                    .with(|c| {
+                        let n = c.get();
+                        c.set(n + 1);
+                        n
+                    })
+                    .to_le_bytes(),
+            );
+        }
+        None => {
+            let t = std::time::SystemTime::now()
+                .duration_since(std::time::UNIX_EPOCH)
+                .unwrap_or_default();
+            h.update(t.as_nanos().to_le_bytes());
+            h.update(COUNTER.fetch_add(1, Ordering::Relaxed).to_le_bytes());
+            h.update(std::process::id().to_le_bytes());
+        }
+    }
     format!("{prefix}-{}", &hex_encode(&h.finalize())[..32])
 }
 
@@ -1000,9 +1026,15 @@ fn validate(step: &ProcStep, input: &StepInput) -> Result<()> {
         }
     };
     if !ok {
+        let send = match step.check_kind.as_str() {
+            "pass_fail" => "outcome pass, fail or na",
+            "value" => "outcome value with a non-empty value (or na)",
+            "note" => "outcome note with a non-empty note (or na)",
+            _ => "outcome photo with at least one photo (or na)",
+        };
         return Err(Error::Invalid(format!(
-            "step {} expects {} (with its value, note or photo), got {:?}",
-            step.ord, step.check_kind, input.outcome
+            "step {} is a {} step: send {send}",
+            step.ord, step.check_kind
         )));
     }
     for p in &input.photos {

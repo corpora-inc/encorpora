@@ -67,7 +67,7 @@ impl Upload {
 }
 
 /// The server's acknowledgement of one item.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, schemars::JsonSchema)]
 pub struct Receipt {
     pub item_id: String,
     /// Must equal the item's `payload_sha256`.
@@ -427,4 +427,97 @@ fn sync_dir(dir: &Path) -> Result<()> {
     #[cfg(not(unix))]
     let _ = dir;
     Ok(())
+}
+
+/// A device's link to its hub: uploads, field-note bundles and pack
+/// updates. The app implements it over HTTPS; a simulation over a
+/// simulated link; tests over an in-process hub.
+pub trait HubLink {
+    /// The device's id as the hub knows it.
+    fn device_id(&self) -> String;
+    /// Store `batch`; receipts as for [`Transport::send`].
+    fn send(&self, batch: &[Upload]) -> Result<Vec<Receipt>>;
+    /// Signed field-note bundles with `seq` above `since`, in order.
+    fn bundles_since(&self, since: u64) -> Result<Vec<serde_json::Value>>;
+    /// The pack the hub offers for `pack_id` to a device holding `have`.
+    fn pack_offer(&self, pack_id: &str, have: Option<&str>) -> Result<Option<PackOffer>>;
+    /// One file of an offer (`manifest.json` or a listed path).
+    fn fetch(&self, offer: &PackOffer, path: &str) -> Result<Vec<u8>>;
+}
+
+/// A pack the hub offers: the full pack, or a delta from the device's
+/// version.
+#[derive(Debug, Clone, Serialize, Deserialize, schemars::JsonSchema, PartialEq)]
+pub struct PackOffer {
+    pub pack_id: String,
+    pub version: String,
+    /// `full` | `delta`.
+    pub kind: String,
+    pub base_version: Option<String>,
+    /// The hub's name for the offered directory.
+    pub dir: String,
+    /// The files to fetch besides `manifest.json`.
+    pub files: Vec<crate::packs::FileEntry>,
+    pub bytes: u64,
+}
+
+/// [`HubLink`] as an upload [`Transport`].
+pub struct LinkTransport<'a>(pub &'a dyn HubLink);
+
+impl Transport for LinkTransport<'_> {
+    fn send(&self, batch: &[Upload]) -> Result<Vec<Receipt>> {
+        self.0.send(batch)
+    }
+}
+
+/// Download an offer through `link` into a staging directory under
+/// `root`, check every file against the offer, and install it (full or
+/// delta; verified, atomic, no downgrade).
+pub fn install_offer(
+    root: &Path,
+    link: &dyn HubLink,
+    offer: &PackOffer,
+    keys: &[crate::packs::TrustedKey],
+) -> Result<crate::packs::Installed> {
+    if !crate::packs::valid_id(&offer.pack_id) || !crate::packs::valid_version(&offer.version) {
+        return Err(Error::Sync(format!(
+            "bad offer {} {}",
+            offer.pack_id, offer.version
+        )));
+    }
+    let staging = root
+        .join(&offer.pack_id)
+        .join(format!(".download-{}", offer.version));
+    if staging.exists() {
+        std::fs::remove_dir_all(&staging)?;
+    }
+    std::fs::create_dir_all(&staging)?;
+    let result = (|| {
+        let manifest = link.fetch(offer, crate::packs::MANIFEST)?;
+        std::fs::write(staging.join(crate::packs::MANIFEST), manifest)?;
+        for f in &offer.files {
+            let rel = crate::packs::safe_relative(&f.path)?;
+            let bytes = link.fetch(offer, &f.path)?;
+            if bytes.len() as u64 != f.bytes
+                || !hex_encode(&Sha256::digest(&bytes)).eq_ignore_ascii_case(&f.sha256)
+            {
+                return Err(Error::Integrity(format!(
+                    "{}: not what the offer lists",
+                    f.path
+                )));
+            }
+            let to = staging.join(rel);
+            if let Some(p) = to.parent() {
+                std::fs::create_dir_all(p)?;
+            }
+            std::fs::write(to, bytes)?;
+        }
+        if offer.kind == "delta" {
+            crate::delta::install_delta(root, &staging, keys)
+        } else {
+            crate::packs::install_dir(root, &staging, keys)
+        }
+    })();
+    let _ = std::fs::remove_dir_all(&staging);
+    result
 }

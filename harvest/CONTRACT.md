@@ -15,6 +15,7 @@ the conversation layer, and every product feature works with it off.
 |---|---|---|
 | `harvest/pipeline/` | Python 3.12+ | Ingest: source registry, fetch, parse, enrich (pluggable model backends), verify, write pack, edition diff. CLI `harvest-bake`. |
 | `harvest/core/` | Rust crate `harvest-core` + bin `harvest` | Pack open and signature check, hybrid retrieval, answer engine, support checker, decline, audit log, record store, sync queue. |
+| `harvest/sim/` | JSON | The named fleet-simulation scenarios (`harvest simulate`). |
 | `harvest/api/` | generated JSON Schema + TypeScript | The app's API contract (`api.schema.json`, `types.ts`), generated from `harvest-core`; never edited by hand. |
 | `harvest/practice/` | TypeScript, no runtime deps | Practice and assessment: item selection, spaced review, evidence model per skill, exam simulator scoring. |
 | `crane/content/` | YAML/Markdown + Python tasks | Crane corpus registry, topic and skill blueprint, procedure specs, task prompts. |
@@ -236,6 +237,8 @@ harvest outbox  <records-db> [--to <dir>] [--json]
 harvest show    <pack> info|sections|topics|skills|lessons|terms|diagrams|questions|procedures|answers|exams|prereqs|starters [--id ID] [--role R]
 harvest serve   <packs-root|pack> --records <records-db> [--bind 127.0.0.1:4317] [--static DIR] [--allow-origin URL]
 harvest api-schema <dir> [--check]               # writes harvest/api from the Rust types
+harvest hub     <hub-db> --stream NAME [--packs ROOT] [--bind 127.0.0.1:4318]   # signs with $HARVEST_HUB_KEY
+harvest simulate <scenario.json> [--out metrics.json]   # exits 1 when an invariant breaks
 harvest fixture <dir> --maint [--samples DIR]     # the fictional pump manual, a field bundle, an asset registry
 ```
 
@@ -736,3 +739,85 @@ for the shapes; this section states the rules.
   answers only its own loopback `Host`, refuses an `Origin` it was not
   told to allow and takes calls only as `application/json`. A Tauri host
   calls the same `call`; no transport holds logic.
+
+## Hub
+
+`harvest_core::hub::Hub` (store: one SQLite file) receives what devices
+upload, holds lessons for review, publishes field notes and offers packs.
+`harvest hub` serves it over HTTP together with the API (`hub.*` methods,
+for a reviewer's screen).
+
+- **Receive.** `POST /hub/receive` `{device_id, items: [Upload]}` →
+  `{receipts, stored, duplicates, refused}`. Items are stored by `item_id`:
+  the same id with the same hash gets the same receipt again (a duplicate,
+  never applied twice); a payload that does not match its hash, or an id
+  already stored with other content, gets none. `job` items
+  (`harvest-job/1`) and `lesson` items (`harvest-lesson/1`) are indexed;
+  every kind is kept as received.
+- **Lessons and conflicts.** Every upload of a lesson is a version. The
+  current version is the greatest by (`updated_at`, device id, item id);
+  arrival order never matters. A newer version from another unit, or one
+  arriving after review, reopens the lesson (`reopened: true`). The queue
+  shows every version as `current`, `superseded` (an earlier one from the
+  winning unit) or `lost` (another unit's), and `hub.conflicts` lists each
+  conflict with the rule that decided it.
+- **Review.** `approve` (as is, or with `edit: {text?, scope?}`), `reject`,
+  each with the reviewer's name and time, recorded per lesson and appended
+  to the hub's own hash-chained audit log (`hub.receive`, `hub.approve`,
+  `hub.edit_approve`, `hub.reject`, `hub.publish`). An approved lesson
+  becomes field note `fn-<lesson_id>` (scope: its variant, tree and
+  symptom unless edited; text: its verified cause and corrective action
+  unless edited).
+- **Bundles.** `publish` signs the next `harvest-field/1` bundle (seq + 1)
+  with the hub's ed25519 key: new or re-approved notes with their counts
+  (units the action was recorded on, resolved of attempts), notes to
+  revoke, review outcomes, and `fleet`, the fleet summary (jobs per tree,
+  symptom and variant; resolved of attempts per corrective action; repeat
+  discrepancies per asset; the top causes per symptom). `GET
+  /hub/bundles?since=<seq>` returns them in order. A device's
+  `Records::pull` installs them in order and stops at the first it
+  refuses, so the next pull asks for it again.
+- **Packs.** The hub's packs root holds `<pack_id>/<version>/` (full) and
+  `<pack_id>/delta-<base>-<target>/` (delta) directories, checked against
+  the publisher's keys. `GET /hub/pack-offer?pack_id=&have=` returns the
+  newest version as a delta from `have` when one exists, else full (`null`
+  when the device is current); `GET /hub/pack-file/<pack>/<dir>/<path>`
+  serves only files the offer's manifest lists. The device checks every
+  file against the offer, then installs it like any pack (signature, every
+  hash, no downgrade) and swaps the loaded pack (`sync.pull`).
+- **Device link.** `sync::HubLink` is what a device needs from a hub
+  (send, bundles since, pack offer, fetch); `HttpHubLink` is the HTTP one,
+  `LocalLink` an in-process one. `harvest serve --hub URL [--packs-root
+  ROOT]` makes `sync.flush` send through it and `sync.pull` fetch bundles
+  and packs.
+- Reviewers and devices are not authenticated yet; run the hub on a
+  network you trust.
+
+## Fleet simulation
+
+`harvest simulate <scenario.json>` (`harvest_core::sim`) runs N real device
+record stores and one real hub in one process on a virtual clock (the
+audit clock is thread-local; ids are deterministic under it). Only the wire
+and the clock are simulated: a link per device alternates up and down
+windows drawn from distributions (`fixed`, `exp`, `uniform`, `log_normal`,
+in hours, plus `initial_down_days`), with a bandwidth cap, latency,
+per-request overhead, drops at a random point of a transfer (before the
+hub stored the upload, or after, losing only the receipts), duplicate
+deliveries, bundles corrupted in transit (`tamper_prob`), clock skew per
+device, scripted conflicts (two units editing one lesson), an optional
+pack update (delta) and a final sync window. Technicians walk real jobs
+with random results, correct answers, capture and edit lessons; a reviewer
+approves, edits or rejects on a schedule and publishes.
+
+The report: delivery (captured, delivered, pending, lost, rate); hours from
+capture to hub and from approval to each device (median, p90, max); bytes
+up, down, per job, per lesson, per day, for bundles and packs; requests,
+failures, lost replies, duplicates sent and suppressed; every conflict and
+how it resolved (and that the losing version stays visible); lesson and
+bundle counts (tampered bundles all refused); pack updates; records-store
+size per device over time; and the invariants: nothing lost (no item
+acknowledged that the hub does not hold), nothing applied twice, no
+bundle installed that is not the hub's own, every audit chain intact.
+The same seed gives the same report. `harvest/sim/` holds the named
+scenarios: `pier-daily`, `underway-two-weeks`, `disconnected-180`,
+`flapping`.

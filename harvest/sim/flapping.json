@@ -1,0 +1,57 @@
+{
+  "name": "flapping",
+  "seed": 23,
+  "days": 30.0,
+  "devices": 4,
+  "link": {
+    "up": {
+      "dist": "log_normal",
+      "median_hours": 0.2,
+      "sigma": 1.2
+    },
+    "down": {
+      "dist": "log_normal",
+      "median_hours": 0.5,
+      "sigma": 1.5
+    },
+    "initial_down_days": 0.0,
+    "bandwidth_bps": 64000.0,
+    "latency_ms": 300.0,
+    "drop_prob": 0.3,
+    "dup_prob": 0.1,
+    "overhead_bytes": 600
+  },
+  "workload": {
+    "jobs_per_device_per_day": 3.0,
+    "lesson_prob": 0.5,
+    "back_prob": 0.1,
+    "edit_prob": 0.2,
+    "assets_per_device": 3
+  },
+  "hub": {
+    "review_every_hours": 24.0,
+    "review_delay_hours": 0.0,
+    "approve_prob": 0.8,
+    "edit_prob": 0.1
+  },
+  "clock_skew_minutes": 10.0,
+  "sync_every_minutes": 5.0,
+  "conflicts": [
+    {
+      "day": 3.0,
+      "device": 0,
+      "other": 1,
+      "gap_minutes": 0.0
+    },
+    {
+      "day": 9.0,
+      "device": 2,
+      "other": 3,
+      "gap_minutes": 45.0
+    }
+  ],
+  "tamper_prob": 0.05,
+  "pack_update_day": null,
+  "final_sync": true,
+  "sample_every_days": 30.0
+}
