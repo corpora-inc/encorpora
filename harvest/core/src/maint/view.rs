@@ -396,6 +396,10 @@ pub fn node_view(
         .map(|e| Branch {
             label: e.label.clone(),
             outcome: match &node.expect {
+                // A labelled reading on a value node is chosen by outcome.
+                Some(Expect::Value { .. }) if e.cond.is_none() => {
+                    Some(super::branch::fold(&e.label))
+                }
                 Some(Expect::Value { .. }) | None => None,
                 Some(Expect::Ack) => Some("done".into()),
                 Some(_) => Some(super::branch::fold(&e.label)),

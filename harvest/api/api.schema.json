@@ -1494,11 +1494,25 @@
             "null"
           ]
         },
+        "max_inclusive": {
+          "description": "`between` only: is `max` in the range (default false)?",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
         "min": {
           "default": null,
           "format": "double",
           "type": [
             "number",
+            "null"
+          ]
+        },
+        "min_inclusive": {
+          "description": "`between` only: is `min` in the range (default true)?",
+          "type": [
+            "boolean",
             "null"
           ]
         },
@@ -1537,7 +1551,7 @@
         },
         {
           "const": "between",
-          "description": "`min <= v < max`.",
+          "description": "`min <= v < max` by default; `min_inclusive` / `max_inclusive`\nsay otherwise (a printed \"0.6 TO 1.2\" is both inclusive).",
           "type": "string"
         }
       ]
@@ -2259,11 +2273,17 @@
         },
         {
           "additionalProperties": false,
-          "description": "A measured value in `unit`; edges carry numeric conditions that\npartition `[min, max]` (the whole line when absent).",
+          "description": "A measured value in `unit`; edges carry numeric conditions that\npartition `[min, max]` (the whole line when absent). `labels` are\nreadings the manual names instead of a number (\"NO INDICATION\"):\neach has one plain branch with that label, chosen by its outcome.",
           "properties": {
             "kind": {
               "const": "value",
               "type": "string"
+            },
+            "labels": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
             },
             "max": {
               "default": null,

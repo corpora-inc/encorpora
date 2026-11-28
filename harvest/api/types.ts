@@ -413,7 +413,11 @@ export interface ClosestSignal {
  */
 export interface Cond {
   max: number | null;
+  /** `between` only: is `max` in the range (default false)? */
+  max_inclusive?: boolean | null;
   min: number | null;
+  /** `between` only: is `min` in the range (default true)? */
+  min_inclusive?: boolean | null;
   op: CondOp;
   value: number | null;
 }
@@ -609,6 +613,7 @@ export type Expect = {
   options: string[];
 } | {
   kind: "value";
+  labels?: string[];
   max: number | null;
   min: number | null;
   unit: string;

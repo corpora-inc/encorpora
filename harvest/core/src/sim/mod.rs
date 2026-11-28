@@ -1138,7 +1138,12 @@ fn answer_for(
     node_id: &str,
 ) -> JobAnswer {
     match &node.expect {
-        Some(Expect::Value { unit, min, max }) => {
+        Some(Expect::Value { .. }) if e.cond.is_none() => JobAnswer {
+            node_id: node_id.to_string(),
+            outcome: Some(e.label.clone()),
+            ..Default::default()
+        },
+        Some(Expect::Value { unit, min, max, .. }) => {
             let dom = branch::domain(*min, *max);
             let i = e.cond.as_ref().and_then(|c| c.interval().ok());
             let v = match i {
