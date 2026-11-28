@@ -1,0 +1,4 @@
+source_id,page_label,block_kind,block_text_start,guards,guards_page_label,guards_text_start,labeller,date,notes
+m40,3-3,WARNING,Batteries give off explosive gas,procedure,3-3,Battery voltage test,example,2026-11-28,the warning sits above step 1: it guards the whole test procedure
+m40,3-3,CAUTION,Do not let the meter leads touch,step,3-3,Place the red lead on B+,example,2026-11-28,printed directly above step 2
+m40,3-6,WARNING,Do not open the radiator cap,tree,3-6,Pump overheats,example,2026-11-28,top of the troubleshooting table: guards the whole tree (diesel variant)

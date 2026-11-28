@@ -263,3 +263,66 @@ def format_score(r: dict) -> str:
         for m in v["extra"][:6]:
             lines.append(f"  extra   {k}: {m}")
     return "\n".join(lines)
+
+
+def score_labels(pack_dir: Path, sheet: Path) -> dict:
+    """A hand-labelled sample of warning/caution/note attachments against a built pack: found,
+    attached, attached to the labelled target (matched by the printed start of each text)."""
+    import csv
+    c = _db(pack_dir)
+    sec = {r["section_id"]: r for r in c.execute("SELECT section_id, kind, heading, text FROM section")}
+    loc = {r[0]: r[1] for r in c.execute("SELECT section_id, page_label FROM section_loc")} \
+        if _has(c, "section_loc") else {}
+    gx: dict[str, list[str]] = {}
+    for x in c.execute("SELECT from_id, to_id FROM xref WHERE kind='guards'"):
+        gx.setdefault(x["from_id"], []).append(x["to_id"])
+    steps = {}
+    for s in c.execute("SELECT text, section_ids FROM proc_step"):
+        for sid in json.loads(s["section_ids"] or "[]"):
+            steps[sid] = "step"
+    trees = {sid: "tree" for (ids,) in c.execute("SELECT section_ids FROM fault_tree") for sid in json.loads(ids)} \
+        if _has(c, "fault_tree") else {}
+    nodes = {r[0]: "question" for r in c.execute("SELECT section_id FROM fault_node")} if _has(c, "fault_node") else {}
+    procs = {r[0] for r in c.execute("SELECT title FROM procedure")}
+    res = {"rows": 0, "found": 0, "attached": 0, "right": 0, "by_kind": {}, "disagree": []}
+    start = lambda t: norm(t)[:40]  # noqa: E731
+    for row in csv.DictReader(sheet.open()):
+        if row.get("labeller") == "example":
+            continue
+        res["rows"] += 1
+        k = res["by_kind"].setdefault(row["block_kind"].upper(), {"rows": 0, "found": 0, "attached": 0, "right": 0})
+        k["rows"] += 1
+        want = norm(row["block_text_start"])
+        g = next((sid for sid, s in sec.items() if s["kind"] in ("warning", "caution", "note")
+                  and want[:40] in norm(s["text"]) and (not row["page_label"] or loc.get(sid) == row["page_label"])),
+                 None)
+        if g is None:
+            res["disagree"].append({"block": row["block_text_start"], "page": row["page_label"], "got": "not in the pack"})
+            continue
+        res["found"] += 1
+        k["found"] += 1
+        targets = gx.get(g, [])
+        if targets:
+            res["attached"] += 1
+            k["attached"] += 1
+        wt = norm(row["guards_text_start"])[:40]
+        ok = False
+        got = []
+        for t in targets:
+            s = sec.get(t)
+            if s is None:
+                continue
+            what = steps.get(t) or trees.get(t) or nodes.get(t) or ("procedure" if s["heading"] in procs or
+                                                                  any(norm(p).endswith(norm(s["heading"] or "x")) for p in procs)
+                                                                  else ("heading" if s["kind"] in ("chapter", "section") else s["kind"]))
+            txt = norm(s["heading"] or s["text"])
+            got.append(f"{what}: {txt[:50]}")
+            if what == row["guards"] and (txt.startswith(wt) or wt in txt):
+                ok = True
+        if ok:
+            res["right"] += 1
+            k["right"] += 1
+        else:
+            res["disagree"].append({"block": row["block_text_start"], "page": row["page_label"],
+                                    "labelled": f"{row['guards']}: {row['guards_text_start']}", "got": got or "none"})
+    return res

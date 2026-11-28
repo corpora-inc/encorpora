@@ -87,6 +87,11 @@ def main(argv: list[str]) -> int:
     s.add_argument("--pack", required=True)
     s.add_argument("--harvest")
     s.add_argument("--pubkey")
+    s = sub.add_parser("labels", help="a hand-labelled sample of warning/caution attachments against a pack")
+    s.add_argument("corpus")
+    s.add_argument("--pack", required=True)
+    s.add_argument("--sheet", required=True)
+    s.add_argument("--include-examples", action="store_true")
     s = sub.add_parser("cost")
     s.add_argument("corpus")
     s.add_argument("--arm")
@@ -167,6 +172,16 @@ def main(argv: list[str]) -> int:
         r = signals_check(c, Path(a.pack), _harvest(a), a.pubkey)
         print(json.dumps(r, indent=1))
         return 0 if r.get("right") == r.get("observations") and not r.get("wrong") else 1
+    if a.cmd == "labels":
+        from .score import score_labels
+        sheet = Path(a.sheet)
+        if a.include_examples:       # score the sheet's own example rows (a self-check of the scorer)
+            import tempfile
+            tmp = Path(tempfile.mkdtemp()) / "sheet.csv"
+            tmp.write_text(sheet.read_text().replace(",example,", ",self-check,"))
+            sheet = tmp
+        print(json.dumps(score_labels(Path(a.pack), sheet), indent=1))
+        return 0
     if a.cmd == "cost":
         from .build import ledger
         rows = [r for r in ledger(c).rows() if not a.arm or r.get("arm") == a.arm]

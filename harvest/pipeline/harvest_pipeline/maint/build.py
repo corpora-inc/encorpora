@@ -114,7 +114,27 @@ def sources(corpus: Corpus, log=sys.stderr) -> list[tuple[dict, list[PageModel],
             continue
         key = sha256_json({"v": LAYOUT_VERSION, "sha": rec["sha256"], "opts": opts})[:16]
         cache = work(corpus) / f"{spec.id}-{key}.pages.jsonl"
-        models = load_models(cache) if cache.exists() else page_models(data, spec.id, opts, _pages(opts, data))
+        pages = _pages(opts, data)
+        if opts.get("label_pages"):        # a pilot names pages as printed ("2-1474..2-1477")
+            from .layout import label_index, resolve_labels
+            lcache = work(corpus) / f"{spec.id}-{rec['sha256'][:16]}.labels.json"
+            idx = json.loads(lcache.read_text()) if lcache.exists() else label_index(data, opts)
+            lcache.write_text(json.dumps(idx))
+            pages, missing = resolve_labels(opts["label_pages"], idx)
+            if missing and log:
+                print(f"[maint] {spec.id}: printed labels not found: {missing[:20]}", file=log)
+        if opts.get("find_pages"):         # pages named by what they print ("Table 2-16", a task title)
+            from .layout import find_pages
+            tcache = work(corpus) / f"{spec.id}-{rec['sha256'][:16]}.text.json"
+            prior = {"texts": json.loads(tcache.read_text())} if tcache.exists() else None
+            found, info = find_pages(data, opts["find_pages"], prior)
+            if not tcache.exists():
+                tcache.write_text(json.dumps(info["texts"]))
+            for rx_, hits in info["hits"].items():
+                if not hits and log:
+                    print(f"[maint] {spec.id}: no page prints {rx_!r}", file=log)
+            pages = sorted(set(pages or []) | set(found)) if (pages or opts.get("label_pages")) else found
+        models = load_models(cache) if cache.exists() else page_models(data, spec.id, opts, pages)
         render_pages(data, rec["sha256"], models, work(corpus) / "pages", px)
         save_models(models, cache)
         if log:

@@ -539,3 +539,95 @@ def save_models(models: list[PageModel], path: Path) -> None:
 
 def load_models(path: Path) -> list[PageModel]:
     return [PageModel.from_json(json.loads(x)) for x in path.read_text().splitlines() if x.strip()]
+
+
+def label_index(data: bytes, options: dict | None = None) -> dict[str, list[int]]:
+    """Printed page label -> 0-based page indices, from the footer and header bands only (cheap: a
+    2,000-page volume takes a minute, once; cache the result). Labels repeat across a volume's
+    front matter and appendices, hence lists."""
+    import pdfplumber
+    o = options or {}
+    rx = re.compile(o.get("page_label_regex", LABEL_RX))
+    out: dict[str, list[int]] = {}
+    seen: list[str | None] = []
+    with pdfplumber.open(io.BytesIO(data)) as pdf:
+        for i, page in enumerate(pdf.pages):
+            h, w = float(page.height), float(page.width)
+            found = None
+            for band in ((0, 0.92 * h, w, h), (0, 0, w, 0.07 * h)):
+                try:
+                    words = page.crop(band).extract_words()
+                except Exception as e:
+                    print(f"[layout] page {i}: label scan failed: {e!r}")
+                    continue
+                for wd in sorted(words, key=lambda x: abs((x["x0"] + x["x1"]) / 2 - w / 2)):
+                    if rx.match(wd["text"]):
+                        found = wd["text"]
+                        break
+                if found:
+                    break
+            if found:
+                out.setdefault(found, []).append(i)
+            seen.append(found)
+    # a page with no readable label (a scan) between numbered pages takes the next number in sequence
+    for i, lb in enumerate(seen):
+        if lb is None and i > 0 and seen[i - 1]:
+            m = re.match(r"^(.*?)(\d+)$", seen[i - 1])
+            if m:
+                guess = f"{m.group(1)}{int(m.group(2)) + 1}"
+                nxt = next((x for x in seen[i + 1:] if x), None)
+                mn = re.match(r"^(.*?)(\d+)$", nxt or "")
+                if nxt is None or (mn and mn.group(1) == m.group(1) and int(mn.group(2)) > int(m.group(2)) + 1):
+                    seen[i] = guess
+                    out.setdefault(guess, []).append(i)
+    return out
+
+
+def resolve_labels(spec: list[str], index: dict[str, list[int]]) -> tuple[list[int], list[str]]:
+    """["2-1474..2-1477", "8-10", "H-121"] -> page indices (each label's first occurrence) and the
+    labels not found. A range runs over consecutive numbers in one chapter."""
+    pages, missing = [], []
+    for item in spec:
+        if ".." in item:
+            a, b = (x.strip() for x in item.split("..", 1))
+            ma, mb = re.match(r"^(.*?)(\d+)$", a), re.match(r"^(.*?)(\d+)$", b)
+            if not ma or not mb or ma.group(1) != mb.group(1):
+                missing.append(item)
+                continue
+            labels = [f"{ma.group(1)}{n}" for n in range(int(ma.group(2)), int(mb.group(2)) + 1)]
+        else:
+            labels = [item.strip()]
+        for lb in labels:
+            if lb in index:
+                pages.append(index[lb][0])
+            else:
+                missing.append(lb)
+    return sorted(set(pages)), missing
+
+
+def find_pages(data: bytes, patterns: list, cache: dict | None = None) -> tuple[list[int], dict]:
+    """Pages whose text matches a pattern (pypdfium2's text layer: fast enough for a whole volume),
+    plus `then` following pages: [{"regex": "Table 2-16", "then": 2}] or plain regex strings."""
+    import pypdfium2 as pdfium
+    texts = (cache or {}).get("texts")
+    if texts is None:
+        pdf = pdfium.PdfDocument(data)
+        try:
+            texts = []
+            for i in range(len(pdf)):
+                tp = pdf[i].get_textpage()
+                texts.append(tp.get_text_range())
+                tp.close()
+        finally:
+            pdf.close()
+    pages, hits = set(), {}
+    for p in patterns:
+        rx = re.compile(p["regex"] if isinstance(p, dict) else p)
+        then = int(p.get("then", 0)) if isinstance(p, dict) else 0
+        found = [i for i, t in enumerate(texts) if rx.search(t or "")]
+        if isinstance(p, dict) and p.get("first"):
+            found = found[:1]
+        hits[rx.pattern] = found
+        for i in found:
+            pages.update(range(i, min(i + then + 1, len(texts))))
+    return sorted(pages), {"texts": texts, "hits": hits}
