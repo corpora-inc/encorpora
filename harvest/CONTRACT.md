@@ -438,20 +438,27 @@ names what the app needs to reserve its height:
 What the model may write: the model chooses the intent, the node and which
 of its texts, the linked blocks, the rule sentences (by handle, never by
 text) and a tool, and writes one short `say`. The engine shows `say` as the
-turn's first `text` block, sentence by sentence: a sentence that states a
-requirement (must, shall, required, prohibited, at least, minimum…) or a
-number stands only when the rule sentences the model named support it under
-the strict checker; a number in a sentence with no rule word may also come
-from the exam blueprint or the node text shown in the turn. Anything else is
-dropped and listed in `trace.dropped`. A `rule` turn with no supported rule
-sentence states nothing and shows a `search` block for the question.
+turn's first `text` block, sentence by sentence. A sentence that states a
+requirement (must, shall, required, prohibited, never, cannot, at least,
+minimum, only … may; have to / should beside a duty word), or measures with
+a rule's unit (feet, kV, pounds, degrees, days…), stands only when the rule
+sentences quoted in this turn support it on their own: every number in
+them, its content words in them, the same negation. A number in any other
+sentence must come from the exam blueprint, the course counts or the node
+text shown in the turn. Anything else is dropped and listed in
+`trace.dropped`. A `rule` turn with no rule sentence shown states no rule
+and shows a `search` block for the question. Tool numbers come from the
+learner's words, never the model's: `clearance` carries the voltage the
+learner said, and a value in a range table's unit leads with that row.
 `trace` (`intent`, `node_hits`, `rule_hits`, `dropped`, `model_error`,
 `elapsed_ms`) is for the audit log, never rendered.
 
 The welcome is `pack_meta.instructor_welcome`: one instructor Turn (what the
 course and exam are, the hard parts, follow-ups), checked on read like any
-turn (a quote that is not verbatim, or a link to a row that did not ship, is
-dropped). A pack without one opens on the course node's text, the `exam`
+turn: a quote that is not verbatim, a cite not right after a kept quote of
+its section, a link to a row that did not ship and a `focus` block are
+dropped; `node` blocks are rebuilt from the tree; `text` goes through the
+sentence check with no rule sentences shown. A pack without one opens on the course node's text, the `exam`
 block and follow-ups to the exam's domains.
 
 ## Bake hit rate

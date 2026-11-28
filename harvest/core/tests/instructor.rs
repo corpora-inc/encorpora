@@ -128,7 +128,7 @@ fn rule_quotes_come_from_the_pack_and_unsupported_prose_is_dropped() {
             None,
             vec![a, c],
             "The controlling party must identify energized lines within the work zone before work begins. \
-             Nothing may come closer than 10 feet to a line up to 50 kV. \
+             No part of the machine may come closer than 10 feet to a line rated up to 50 kV. \
              You must also wear a hard hat rated for the line.",
         )
     }));
@@ -136,15 +136,15 @@ fn rule_quotes_come_from_the_pack_and_unsupported_prose_is_dropped() {
     let t = i
         .turn(&ask("what do i do about power lines before work"))
         .unwrap();
-    // Kept: the supported claim. Dropped: a limit restated in other words (the
-    // quote shows it verbatim) and a duty no rule states.
     assert_eq!(
         t.blocks[0],
         Block::Text {
-            text: "The controlling party must identify energized lines within the work zone before work begins.".into()
+            text: "The controlling party must identify energized lines within the work zone before work begins. \
+                   No part of the machine may come closer than 10 feet to a line rated up to 50 kV."
+                .into()
         }
     );
-    assert_eq!(t.trace.dropped.len(), 2, "{:?}", t.trace.dropped);
+    assert_eq!(t.trace.dropped.len(), 1, "{:?}", t.trace.dropped);
     let quotes: Vec<&Block> = t
         .blocks
         .iter()
@@ -171,6 +171,32 @@ fn rule_quotes_come_from_the_pack_and_unsupported_prose_is_dropped() {
         })
     );
     assert_eq!(t.model.as_deref(), Some("dyn-test"));
+}
+
+#[test]
+fn support_is_only_the_rule_sentences_shown() {
+    let b = common::pack();
+    // The model names only the first sentence of §2; the 10-foot limit is in
+    // the same section but not shown, so it cannot support the claim.
+    let llm = Dyn(Box::new(|u| {
+        let a = handle(u, "§2", "must identify energized lines");
+        plan(
+            "rule",
+            None,
+            vec![a],
+            "Keep the machine 10 feet from the line.",
+        )
+    }));
+    let i = instructor(&b.pack, Some(Arc::new(llm)));
+    let t = i
+        .turn(&ask("what do i do about power lines before work"))
+        .unwrap();
+    assert!(
+        !t.blocks.iter().any(|b| matches!(b, Block::Text { .. })),
+        "{:?}",
+        t.blocks
+    );
+    assert_eq!(t.trace.dropped.len(), 1);
 }
 
 #[test]
@@ -359,10 +385,38 @@ fn rule_claims_are_told_from_teaching() {
         assert!(is_rule_claim(s), "{s}");
     }
     for s in [
+        "Never ride the load.",
+        "Riding the hook is forbidden.",
+        "You can't swing a load over workers.",
+        "Only a qualified rigger can attach loads.",
+        "You should always wear a harness.",
+        "You should wear a harness.",
+    ] {
+        assert!(is_rule_claim(s), "{s}");
+    }
+    for s in [
         "You have to read the chart and do the math carefully.",
+        "You should practice the load chart questions.",
         "Load charts are where most people lose points.",
         "Let's look at radius next.",
     ] {
         assert!(!is_rule_claim(s), "{s}");
     }
+}
+
+#[test]
+fn a_leading_no_is_a_verdict_only_before_punctuation() {
+    use harvest_core::check::holds;
+    let src = "Parts of the machine may come closer than 10 feet to a de-energized line.";
+    // "No part …" negates the claim; it must not pass against a positive source.
+    assert!(!holds(
+        "No part of the machine may come closer than 10 feet to a de-energized line.",
+        src,
+        0.75
+    ));
+    assert!(holds(
+        "No, parts of the machine may come closer than 10 feet to a de-energized line.",
+        src,
+        0.75
+    ));
 }

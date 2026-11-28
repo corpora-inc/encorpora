@@ -295,6 +295,39 @@ const DISCOURSE: &[&str] = &[
     "also", "first", "follow", "import", "key", "rememb", "second", "simpl", "thing", "third",
 ];
 
+/// True when `text` (one sentence) holds against `source` alone, by the
+/// strict rules: every number in it is in `source`, its content stems
+/// overlap `source` by `min_overlap` (all of them under 3 stems), and it is
+/// negated exactly when the source sentence it restates is. Unlike
+/// [`check`], nothing outside `source` counts: no whole section, no facts.
+pub fn holds(text: &str, source: &str, min_overlap: f64) -> bool {
+    let text = strip_verdict(text);
+    if text.trim().is_empty() {
+        return false;
+    }
+    let source_numbers: BTreeSet<String> = normalize::tokens(source)
+        .into_iter()
+        .filter(|t| is_number(t))
+        .collect();
+    if text_numbers(&text)
+        .iter()
+        .any(|n| !source_numbers.contains(n))
+    {
+        return false;
+    }
+    let source_stems = normalize::stem_set(source);
+    let stems: Vec<String> = normalize::content_stems(&text)
+        .into_iter()
+        .filter(|s| !is_number(s) && !DISCOURSE.contains(&s.as_str()))
+        .collect();
+    if stems.is_empty() {
+        return false;
+    }
+    let hit = stems.iter().filter(|s| source_stems.contains(*s)).count();
+    let need = if stems.len() < 3 { 1.0 } else { min_overlap };
+    (hit as f64) / (stems.len() as f64) >= need && polarity_ok(&sentences(source), &stems, &text)
+}
+
 fn is_number(t: &str) -> bool {
     t.chars().next().is_some_and(|c| c.is_ascii_digit())
 }
@@ -305,7 +338,9 @@ fn strip_verdict(text: &str) -> String {
     for v in ["yes", "no"] {
         if t.len() >= v.len() && t[..v.len()].eq_ignore_ascii_case(v) {
             let rest = &t[v.len()..];
-            if rest.is_empty() || rest.starts_with([',', '.', ';', ':', '!', ' ', '—', '-']) {
+            // "No, …" is a verdict; "No part of …" is a negated claim and
+            // keeps its "No".
+            if rest.is_empty() || rest.starts_with([',', '.', ';', ':', '!', '—', '-']) {
                 return rest
                     .trim_start_matches([',', '.', ';', ':', '!', ' ', '—', '-'])
                     .to_string();

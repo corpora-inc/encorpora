@@ -155,17 +155,19 @@ def import_rows(stage: Stage, corpus_dir: Path, specs: list[dict]) -> list[Impor
                 prov = dict(raw.get("prov") or {})
                 body = {k: v for k, v in raw.items() if k != "prov"}
                 problems = verify_refs(body, stage)
+                pruned: list[str] = []
                 if table == "course_node":
                     problems += node_level_problems(body)
-                    for dropped in prune_node_links(body, stage):
-                        rep.problems.append(f"{path.name}#{n}: link dropped: {dropped}")
+                    pruned = prune_node_links(body, stage)
+                    rep.problems += [f"{path.name}#{n}: link dropped: {d}" for d in pruned]
                 own = prov.get("verdict", "needs_review")
                 verdict = "fail" if problems else (own if own in ("pass", "fail", "needs_review") else "needs_review")
                 rep.verdicts[verdict] += 1
                 if problems:
                     rep.problems.append(f"{path.name}#{n}: {'; '.join(problems[:3])}")
                 prov_id = prov.get("prov_id") or sha256_text(canonical_json(body))[:20]
-                notes = [x for x in (prov.get("notes"), "; ".join(problems) or None) if x]
+                notes = [x for x in (prov.get("notes"), "; ".join(problems) or None,
+                                     ("links dropped: " + "; ".join(pruned)) if pruned else None) if x]
                 stage.add_provenance({
                     "prov_id": prov_id, "backend": prov.get("backend", "import"), "model": prov.get("model", "unknown"),
                     "prompt_id": prov.get("prompt_id", f"import.{table}"), "prompt_version": str(prov.get("prompt_version", "0")),

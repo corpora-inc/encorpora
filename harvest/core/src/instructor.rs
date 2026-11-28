@@ -344,6 +344,15 @@ const RULE_WORDS: &[&str] = &[
     "is allowed",
     "are allowed",
     "at least",
+    "never",
+    "always",
+    "cannot",
+    "can't",
+    "can not",
+    "forbidden",
+    "illegal",
+    "banned",
+    "not supposed to",
     "no closer",
     "minimum",
     "maximum",
@@ -360,6 +369,14 @@ pub fn is_rule_claim(sentence: &str) -> bool {
     if RULE_WORDS.iter().any(|w| s.contains(&format!(" {w} "))) {
         return true;
     }
+    // "Only a qualified rigger can attach loads."
+    if s.contains(" only ")
+        && [" can ", " may ", " is allowed ", " are allowed "]
+            .iter()
+            .any(|w| s.contains(w))
+    {
+        return true;
+    }
     // "You have to read the chart" teaches; "you have to be certified"
     // states a duty: a soft modal counts with a duty word beside it.
     SOFT_MODALS.iter().any(|w| s.contains(&format!(" {w} ")))
@@ -369,13 +386,54 @@ pub fn is_rule_claim(sentence: &str) -> bool {
 }
 
 const SOFT_MODALS: &[&str] = &[
-    "have to", "has to", "need to", "needs to", "got to", "gotta",
+    "have to",
+    "has to",
+    "need to",
+    "needs to",
+    "got to",
+    "gotta",
+    "should",
+    "shouldn't",
+    "don't",
+    "do not",
+    "ought to",
 ];
 /// Word starts that make a soft modal a duty.
 const DUTY_STEMS: &[&str] = &[
     "certif", "qualif", "inspect", "permit", "osha", "rule", "law", "legal", "regulat", "requir",
-    "employer", "document", "train", "authoriz", "approv", "licens",
+    "employer", "document", "train", "authoriz", "approv", "licens", "wear", "harness", "ride",
+    "swing", "clearanc", "distanc", "signal", "spotter", "tag", "lock",
 ];
+
+/// True when `sentence` measures something a rule would: a length, weight,
+/// voltage, speed, angle, or an interval of days or more (not exam minutes
+/// or percentages).
+fn has_rule_unit(sentence: &str) -> bool {
+    const UNITS: &[&str] = &[
+        "feet",
+        "inches",
+        "pounds",
+        "kilograms",
+        "meters",
+        "millimeters",
+        "kv",
+        "volts",
+        "mph",
+        "degrees",
+        "tons",
+        "day",
+        "days",
+        "week",
+        "weeks",
+        "month",
+        "months",
+        "year",
+        "years",
+    ];
+    normalize::tokens(sentence)
+        .iter()
+        .any(|t| UNITS.contains(&t.as_str()))
+}
 
 fn numbers(text: &str) -> Vec<String> {
     normalize::tokens(text)
@@ -407,8 +465,6 @@ struct Plan {
     #[serde(default)]
     tool: Option<String>,
     #[serde(default)]
-    kv: Option<f64>,
-    #[serde(default)]
     traveling: Option<bool>,
     #[serde(default)]
     search: Option<String>,
@@ -426,11 +482,10 @@ fn plan_schema() -> Value {
             "evidence": {"type": "array", "items": {"type": "string"}},
             "say": {"type": "string"},
             "tool": {"type": ["string", "null"], "enum": [TOOLS[0], TOOLS[1], TOOLS[2], null]},
-            "kv": n("number"),
             "traveling": n("boolean"),
             "search": n("string")
         },
-        "required": ["intent", "node_id", "fields", "show", "evidence", "say", "tool", "kv", "traveling", "search"],
+        "required": ["intent", "node_id", "fields", "show", "evidence", "say", "tool", "traveling", "search"],
         "additionalProperties": false
     })
 }
@@ -533,34 +588,75 @@ impl Instructor {
         ))
     }
 
-    /// Re-check blocks that came from outside the engine: quotes verbatim,
-    /// cites and links to rows that exist.
+    /// Re-check a turn that came from outside the engine (the baked
+    /// welcome) as the engine's own: quotes verbatim, a cite only after a
+    /// kept quote of its section or for a real section, links to rows that
+    /// shipped, node blocks rebuilt from the tree, prose through the same
+    /// sentence check as the model's (it has no rule sentences named).
     fn checked(&self, blocks: Vec<Block>, trace: &mut Trace) -> Vec<Block> {
         let pack = &self.engine.pack;
-        blocks
-            .into_iter()
-            .filter(|b| {
-                let ok = match b {
-                    Block::Quote { section_id, text } => pack
-                        .section(section_id)
-                        .ok()
-                        .flatten()
-                        .is_some_and(|s| check::quote_in(text, &s.text)),
-                    Block::Cite { section_id } => pack.section_exists(section_id).unwrap_or(false),
-                    Block::Lesson { lesson_id } => pack.lesson(lesson_id).ok().flatten().is_some(),
-                    Block::Diagram { diagram_id } => {
-                        pack.diagram(diagram_id).ok().flatten().is_some()
-                    }
-                    Block::Question { q_id, .. } => pack.question(q_id).ok().flatten().is_some(),
-                    Block::Node { node_id, .. } => self.tree.node(node_id).is_some(),
-                    _ => true,
-                };
-                if !ok {
-                    trace.dropped.push(format!("welcome block: {b:?}"));
+        let mut context = self.tree.exams.to_string();
+        for n in &self.tree.nodes {
+            if matches!(n.level.as_str(), "course" | "exam" | "domain") {
+                context.push(' ');
+                context.push_str(&n.text());
+            }
+        }
+        let mut out: Vec<Block> = Vec::new();
+        for b in blocks {
+            let kept = match b {
+                Block::Quote {
+                    ref section_id,
+                    ref text,
+                } => pack
+                    .section(section_id)
+                    .ok()
+                    .flatten()
+                    .is_some_and(|s| check::quote_in(text, &s.text))
+                    .then_some(b.clone()),
+                Block::Cite { ref section_id } => {
+                    let after_quote = matches!(out.last(), Some(Block::Quote { section_id: q, .. }) if q == section_id);
+                    (after_quote && pack.section_exists(section_id).unwrap_or(false))
+                        .then_some(b.clone())
                 }
-                ok
-            })
-            .collect()
+                Block::Text { ref text } => self
+                    .check_say(text, &[], &context, trace)
+                    .map(|t| Block::Text { text: t }),
+                Block::Node {
+                    ref node_id,
+                    ref texts,
+                    ..
+                } => self.tree.node(node_id).map(|n| {
+                    let fields: Vec<String> = texts.iter().map(|t| t.field.clone()).collect();
+                    self.node_block(n, &fields)
+                }),
+                Block::Lesson { ref lesson_id } => pack
+                    .lesson(lesson_id)
+                    .ok()
+                    .flatten()
+                    .is_some()
+                    .then_some(b.clone()),
+                Block::Diagram { ref diagram_id } => pack
+                    .diagram(diagram_id)
+                    .ok()
+                    .flatten()
+                    .is_some()
+                    .then_some(b.clone()),
+                Block::Question { ref q_id, .. } => pack
+                    .question(q_id)
+                    .ok()
+                    .flatten()
+                    .is_some()
+                    .then_some(b.clone()),
+                Block::Focus { .. } => None, // the learner's own, never baked
+                _ => Some(b.clone()),
+            };
+            match kept {
+                Some(k) => out.push(k),
+                None => trace.dropped.push(format!("welcome block: {b:?}")),
+            }
+        }
+        out
     }
 
     /// One turn.
@@ -890,7 +986,7 @@ impl Instructor {
              - intent: node (show a course node), rule (answer what a rule requires from the rule \
              passages), focus (study priorities from their mastery), review (explain their last \
              practice answer), practice (an inline practice question on a skill node), tool (a \
-             calculator: clearance needs kv), chat (greeting, thanks, nerves), out_of_scope (not \
+             calculator: clearance for a voltage, load-chart, signals), chat (greeting, thanks, nerves), out_of_scope (not \
              in this course: other countries, other machines, legal advice or fines, the text of \
              private standards), clarify (ask one short question).\n\
              - node_id: the best node from `nodes` (or the current node), else null.\n\
@@ -901,7 +997,7 @@ impl Instructor {
              - say: 1 to 3 short sentences, plain words. Never state a rule, number or \
              requirement unless its sentence is in evidence; the app drops any that is not. If \
              nothing fits, say so honestly and point to what the course covers.\n\
-             - tool, kv, traveling: for intent tool.\n\
+             - tool, traveling: for intent tool (the voltage comes from the learner's words).\n\
              - search: a better search for the rules index if `rules` miss, else null.",
             title = self.course_title,
         )
@@ -1252,9 +1348,7 @@ impl Instructor {
                 context.push_str(&seen.to_string());
                 blocks.push(b);
             }
-            "tool" => {
-                blocks.extend(self.tool_blocks(plan.tool.as_deref(), plan.kv, plan.traveling))
-            }
+            "tool" => blocks.extend(self.tool_blocks(plan.tool.as_deref(), text, plan.traveling)),
             _ => {}
         }
 
@@ -1303,10 +1397,13 @@ impl Instructor {
                     .unwrap_or_else(|| text.to_string()),
             });
         }
+        // Next steps from where the conversation is, else from the part of
+        // the course the learner's words found, else the top.
         if follow.is_empty()
             && let Some(b) = at
                 .as_deref()
                 .and_then(|a| self.tree.node(a))
+                .or_else(|| trace.node_hits.first().and_then(|h| self.tree.node(h)))
                 .or_else(|| self.tree.root())
         {
             follow = self.next_steps(b, &[]);
@@ -1407,41 +1504,41 @@ impl Instructor {
         trace: &mut Trace,
     ) -> Option<String> {
         let ctx: BTreeSet<String> = numbers(context).into_iter().collect();
+        // Only the rule text shown in this turn supports a claim.
+        let quoted: String = sources
+            .iter()
+            .filter_map(|s| match s {
+                Segment::Quote { text, .. } => Some(text.as_str()),
+                _ => None,
+            })
+            .collect::<Vec<_>>()
+            .join(" ");
         let mut kept: Vec<String> = Vec::new();
         for s in sentences(&normalize_ws(say)) {
-            if !is_rule_claim(&s) && numbers(&s).iter().all(|n| ctx.contains(n)) {
+            let nums = numbers(&s);
+            // A number with a measuring unit (feet, kV, pounds…) is a rule's
+            // number whatever else the turn shows.
+            let measured = !nums.is_empty() && has_rule_unit(&s);
+            if !is_rule_claim(&s) && !measured && nums.iter().all(|n| ctx.contains(n)) {
                 kept.push(s);
                 continue;
             }
-            if sources.is_empty() {
+            if quoted.is_empty() {
                 trace.dropped.push(format!("no rule named: {s}"));
-                continue;
-            }
-            let mut segs = vec![Segment::text(s.clone())];
-            segs.extend(sources.iter().cloned());
-            match check::check(&self.engine.pack, &segs, CheckOptions::STRICT) {
-                Ok((out, _))
-                    if out
-                        .iter()
-                        .any(|x| matches!(x, Segment::Text { text } if text == &s)) =>
-                {
-                    kept.push(s)
-                }
-                Ok(_) => trace.dropped.push(format!("not in the quoted rules: {s}")),
-                Err(e) => trace.dropped.push(format!("check failed ({e}): {s}")),
+            } else if check::holds(&s, &quoted, CheckOptions::STRICT.min_overlap) {
+                kept.push(s);
+            } else {
+                trace.dropped.push(format!("not in the quoted rules: {s}"));
             }
         }
         (!kept.is_empty()).then(|| kept.join(" "))
     }
 
-    /// A tool block; for `clearance` with a voltage, the table row it finds
-    /// as checked text, quotes and cite.
-    fn tool_blocks(
-        &self,
-        tool: Option<&str>,
-        kv: Option<f64>,
-        traveling: Option<bool>,
-    ) -> Vec<Block> {
+    /// The tool block. Its numbers come from the learner's words, never the
+    /// model's: `clearance` carries the voltage only when the learner said
+    /// it, and the table row itself is shown by [`Self::table_rows`] from
+    /// the same words.
+    fn tool_blocks(&self, tool: Option<&str>, text: &str, traveling: Option<bool>) -> Vec<Block> {
         let Some(tool) = tool.filter(|t| TOOLS.contains(t)) else {
             return Vec::new();
         };
@@ -1451,42 +1548,15 @@ impl Instructor {
                 input: Value::Null,
             }];
         }
-        let traveling = traveling.unwrap_or(false);
-        let mut out = vec![Block::Tool {
+        let toks = normalize::tokens(text);
+        let kv = toks
+            .windows(2)
+            .find(|w| w[1] == "kv")
+            .and_then(|w| w[0].parse::<f64>().ok());
+        vec![Block::Tool {
             tool: "clearance".into(),
-            input: json!({"kv": kv, "traveling": traveling}),
-        }];
-        let Some(kv) = kv else { return out };
-        let Ok(sections) = self.engine.pack.sections() else {
-            return out;
-        };
-        for sec in sections.iter().filter(|s| s.kind == "table") {
-            let Some(t) = RangeTable::parse(sec) else {
-                continue;
-            };
-            let heading = sec.heading.clone().unwrap_or_default().to_lowercase();
-            if t.unit != "kv" || heading.contains("travel") != traveling {
-                continue;
-            }
-            let caption = if traveling {
-                "the minimum clearance while traveling with no load is"
-            } else {
-                "the minimum clearance is"
-            };
-            if let Some(body) = t.answer(kv, caption)
-                && let Ok((body, _)) =
-                    check::check(&self.engine.pack, &body, CheckOptions::STRUCTURAL)
-            {
-                out.extend(body.into_iter().map(|s| match s {
-                    Segment::Text { text } => Block::Text { text },
-                    Segment::Quote { section_id, text } => Block::Quote { section_id, text },
-                    Segment::Cite { section_id } => Block::Cite { section_id },
-                    Segment::Diagram { diagram_id } => Block::Diagram { diagram_id },
-                }));
-                break;
-            }
-        }
-        out
+            input: json!({"kv": kv, "traveling": traveling.unwrap_or(false)}),
+        }]
     }
 }
 
