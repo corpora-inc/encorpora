@@ -48,6 +48,7 @@ def main(argv: list[str]) -> int:
     s.add_argument("--harvest")
     s.add_argument("--pubkey")
     s.add_argument("--embedder")
+    s.add_argument("--agree-with", help="a second arm: rows it does not also produce go to needs_review")
     for name in ("coverage", "score"):
         s = sub.add_parser(name)
         s.add_argument("corpus")
@@ -99,7 +100,7 @@ def main(argv: list[str]) -> int:
     if a.cmd == "build":
         from .build import build
         emb = {"kind": a.embedder} if a.embedder else None
-        res = build(c, a.arm, Path(a.out) if a.out else None, _harvest(a), a.pubkey, emb)
+        res = build(c, a.arm, Path(a.out) if a.out else None, _harvest(a), a.pubkey, emb, agree_with=a.agree_with)
         print(json.dumps(res, indent=1, default=str))
         return 0
     if a.cmd == "coverage":

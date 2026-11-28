@@ -94,6 +94,11 @@ class Assembly:
         self.consumed_labels: set[str] = set()
         self.equipment: dict[str, dict] = {}
         self.forced: dict = (self.o.get("forced") or {})   # (table, key) -> reason, from the core's graph check
+        self.review_of: dict = (self.o.get("review") or {})  # (table, key) -> reason, from cross-arm agreement
+        self.guard_recs: list = []
+        self.edge_recs: list = []
+        self.node_recs: list = []
+        self.plausibility_on = bool(self.o.get("plausibility", True))
         self._unit_pages: list[int] = []
 
     # ---- spans --------------------------------------------------------------------------------
@@ -165,6 +170,9 @@ class Assembly:
         if (table, key) in self.forced:
             problems = problems + [self.forced[(table, key)]]
         verdict = "fail" if problems else "pass"
+        review = [self.review_of[(table, key)]] if (table, key) in self.review_of else []
+        if review and verdict == "pass":
+            verdict = "needs_review"
         pid = sha256_text(f"{ctx.arm_spec}|{ctx.unit_key}|{table}|{key}")[:20]
         out_sha = sha256_text(canonical_json(item))
         self.provs[pid] = {
@@ -173,10 +181,115 @@ class Assembly:
             "prompt_sha256": ctx.prompt_sha, "input_sha256": ctx.entry.get("input_sha256", ""),
             "output_sha256": out_sha, "created_at": ctx.entry.get("created_at", ""), "verifier": VERIFIER,
             "verdict": verdict,
-            "notes": json.dumps({"unit": ctx.unit_key, "row": f"{table}:{key}", "problems": problems,
+            "notes": json.dumps({"unit": ctx.unit_key, "row": f"{table}:{key}", "problems": problems + review,
                                  "notes": p.notes}, ensure_ascii=False),
         }
         return pid
+
+    def review(self, pid: str, reason: str) -> None:
+        """A keyless signal says a human should look: pass becomes needs_review (fail stays fail)."""
+        pr = self.provs[pid]
+        n = json.loads(pr["notes"])
+        if reason not in n["problems"]:
+            n["problems"].append(reason)
+        pr["notes"] = json.dumps(n, ensure_ascii=False)
+        if pr["verdict"] == "pass":
+            pr["verdict"] = "needs_review"
+
+    def plausibility(self) -> dict:
+        """Attachments that contradict the page geometry become needs_review (no answer key needed):
+        a guard on another page than its step, below it, or with a nearer step in between; a guard of
+        a whole procedure printed below one of its steps; a facet box not beside its question; an edge
+        with no drawn arrow behind it on a page that draws its arrows."""
+        if not self.plausibility_on:
+            return {}
+        counts = {"guards": 0, "facets": 0, "edges": 0}
+        steps_of: dict = {}
+        for s in self.sections.values():
+            if s["kind"] == "step" and s.get("parent_rid"):
+                steps_of.setdefault(s["parent_rid"], []).append(s)
+        for pid, grid, tsec in self.guard_recs:
+            if grid is None or self.provs[pid]["verdict"] != "pass":
+                continue
+            gpm, g = self.region(grid)
+            why = None
+            if tsec["kind"] == "step":
+                if gpm.index != tsec["page"]:
+                    why = f"the guard is on page {gpm.label}, its step on page {tsec['label']}"
+                elif g.bbox[1] > tsec["bbox"][3]:
+                    why = "the guard is printed below the step it guards"
+                else:
+                    between = [s for s in steps_of.get(tsec.get("parent_rid"), []) if s is not tsec
+                               and s["page"] == gpm.index and g.bbox[3] <= s["bbox"][1] < tsec["bbox"][1]
+                               and min(s["bbox"][2], g.bbox[2]) - max(s["bbox"][0], g.bbox[0]) > 0]
+                    if between:
+                        why = f"a nearer step ({between[0]['sid']}) lies between the guard and its step"
+                    elif g.bbox[3] > tsec["bbox"][1] + 2:   # beside, not above: the nearest step by vertical overlap
+                        near = [s for s in steps_of.get(tsec.get("parent_rid"), []) if s["page"] == gpm.index]
+                        best = min(near, key=lambda s: abs((s["bbox"][1] + s["bbox"][3]) / 2 - (g.bbox[1] + g.bbox[3]) / 2))
+                        if best is not tsec:
+                            why = f"the guard sits beside {best['sid']}, not the step it is attached to"
+            elif tsec["kind"] in ("section",):
+                kids = [s for s in steps_of.get(tsec["rid"], []) if s["page"] == gpm.index and s["bbox"][3] <= g.bbox[1]
+                        and min(s["bbox"][2], g.bbox[2]) - max(s["bbox"][0], g.bbox[0]) > 0]
+                if kids:
+                    why = "the guard of the whole task is printed below one of its steps"
+                elif gpm.index < tsec["page"]:
+                    why = "the guard is printed before the title of what it guards"
+            elif tsec["kind"] == "chapter" and gpm.index != tsec["page"]:
+                why = "the guard is not on its heading's page"
+            if why:
+                counts["guards"] += 1
+                self.review(pid, f"geometry: {why}")
+        for rec, tr in self.node_recs:
+            pid = rec.get("pid")
+            if not pid or self.provs[pid]["verdict"] != "pass" or not rec.get("loc"):
+                continue
+            npm, nreg = self.region(rec["loc"].region)
+            checks = [r2 for r2, _ in self.node_recs if r2.get("loc") and r2["raw"].get("kind") == "check"
+                      and r2["loc"].page == rec["loc"].page and r2 is not rec]
+            for f in rec.get("facets", []):
+                fsec = next((s for s in self.sections.values() if s["sid"] == f["section_id"]), None)
+                if fsec is None:
+                    continue
+                why = None
+                if fsec["page"] != npm.index:
+                    why = f"facet box on page {fsec['label']}, its question on page {npm.label}"
+                else:
+                    nxt = [c["loc"] for c in checks if c["loc"].bbox[1] > nreg.bbox[1]]
+                    limit = min((l.bbox[1] for l in nxt), default=1e9)
+                    if not (nreg.bbox[1] - 2 <= fsec["bbox"][1] < limit - 2):
+                        why = "facet box is not beside its question (it starts above it or beside the next one)"
+                if why:
+                    counts["facets"] += 1
+                    self.review(pid, f"geometry: {why}")
+                    break
+        for a, b, label in self.edge_recs:
+            pid = a.get("pid")
+            if not pid or self.provs[pid]["verdict"] != "pass" or not a.get("loc") or not b.get("loc"):
+                continue
+            pm = self.models[a["loc"].page]
+            if not pm.connectors:
+                continue          # no drawn arrows on this page (scan or text-only layout): nothing to check
+            out_c = [c for c in pm.connectors if c.tail == a["loc"].region]
+            if a["loc"].page == b["loc"].page:
+                ok = any(c.head == b["loc"].region for c in out_c)
+            else:
+                ok = any(c.head and re.match(r"^(?:Go|GO|Continue|CONTINUE)\s+(?:to|TO)\b",
+                                             pm.region_text(pm.region(c.head)) or "") for c in out_c)
+            if not ok and a["raw"].get("kind") != "symptom":
+                counts["edges"] += 1
+                self.review(pid, f"geometry: no drawn arrow from {a['loc'].region} to {b['loc'].region} ({label})")
+        # a tree with a node under review is under review
+        for tr in self.trees.values():
+            if not tr.get("pid"):
+                continue
+            bad = [r["node_id"] for r in tr.get("nodes", {}).values()
+                   if r.get("pid") and self.provs[r["pid"]]["verdict"] == "needs_review"]
+            if bad:
+                self.review(tr["pid"], f"nodes need review: {', '.join(bad)}")
+        self.report["plausibility"] = counts
+        return counts
 
     def fail(self, pid: str, reason: str) -> None:
         pr = self.provs[pid]
@@ -241,7 +354,9 @@ class Assembly:
             if sec["kind"] not in GUARD_WORDS.values():
                 p.problems.append(f"guard {key}: its region is already a {sec['kind']}")
         row = {"from_id": None, "to_id": target["sid"], "kind": "guards"}
-        pid = self.prov(ctx, "xref", f"{key}:{target['sid']}", g, p)
+        gkey = f"guard:{self.sections[loc.region]['sid']}->{target['sid']}" if loc else f"{key}:{target['sid']}"
+        pid = self.prov(ctx, "xref", gkey, g, p)
+        self.guard_recs.append((pid, loc.region if loc else None, target))
         if loc:
             row["from_id"] = self.sections[loc.region]["sid"]
             self.rows.append(("xref", row, pid))
@@ -342,13 +457,16 @@ class Assembly:
                 self.applies(ctx, a, "section", title_sec["sid"], f"{proc_id}.sapplies{ak}")
         if not pr.get("steps"):
             p.problems.append("procedure has no steps")
-        bad = [self.provs[s] for s in step_ids if self.provs[s]["verdict"] != "pass"]
+        bad = [self.provs[s] for s in step_ids if self.provs[s]["verdict"] == "fail"]
+        held = [self.provs[s] for s in step_ids if self.provs[s]["verdict"] == "needs_review"]
         if bad:
             p.problems.append(f"{len(bad)} of its steps failed verification")
         row = {"proc_id": proc_id, "title": tloc.text if tloc else "", "kind": rec["kind"],
                "summary": tloc.text if tloc else "", "roles": json.dumps(self.o.get("roles") or []), "lang": "en"}
         pid = self.prov(ctx, "procedure", proc_id, {k: v for k, v in pr.items() if k != "steps"}, p)
         rec["pid"] = pid
+        if held:
+            self.review(pid, f"{len(held)} of its steps need review")
         self.rows.append(("procedure", row, pid))
         if tloc:
             self.loc("procedure", proc_id, "title", tloc)
@@ -550,7 +668,10 @@ class Assembly:
             for f in rec.get("facets", []):
                 self.rows.append(("fault_facet", f, pid))
             self.tally("fault_node", pid)
+        for gk, rec in ordered:
+            self.node_recs.append((rec, tr))
         for e in edges_out:
+            self.edge_recs.append((nodes[e["from"]], nodes[e["to"]], e["label"]))
             self.rows.append(("fault_edge", {"from_node": nodes[e["from"]]["node_id"], "ord": e["ord"],
                                              "label": e["label"], "cond": canonical_json(e["cond"]) if e["cond"] else None,
                                              "to_node": nodes[e["to"]]["node_id"], "retry": int(e["retry"])},
@@ -564,6 +685,9 @@ class Assembly:
                "section_ids": json.dumps([title_sec["sid"]] if title_sec else []), "lang": "en"}
         pid = self.prov(ctx0, "fault_tree", tree_id, {"ref": tr["ref"], "parts": len(tr["parts"])}, tp)
         tr["pid"], tr["nodes"], tr["title_sec"] = pid, nodes, title_sec
+        held = [r["node_id"] for _, r in ordered if r.get("pid") and self.provs[r["pid"]]["verdict"] == "needs_review"]
+        if held:
+            self.review(pid, f"nodes need review: {', '.join(held)}")
         self.rows.append(("fault_tree", row, pid))
         if title_loc:
             self.loc("fault_tree", tree_id, "title", title_loc)

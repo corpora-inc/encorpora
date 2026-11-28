@@ -53,7 +53,14 @@ def edge_key(expect: dict | None, label: str, cond: dict | None, retry: bool) ->
 
 
 def pack_items(pack_dir: Path) -> dict[str, set]:
-    c = _db(pack_dir)
+    return db_items(_db(pack_dir))
+
+
+def db_items(c: sqlite3.Connection, refs: dict | None = None) -> dict[str, set]:
+    """Items of a pack or stage database. `refs`, when given, maps (category, item) to the
+    provenance key of the row it rests on: (table, key), as the assembler names them."""
+    c.row_factory = sqlite3.Row
+    R = refs if refs is not None else {}
     out: dict[str, set] = {k: set() for k in ("trees", "nodes", "node_kinds", "edges", "facets", "guards", "steps",
                                               "procedures", "test_procedures", "targets", "setup", "symptoms",
                                               "signals", "equipment", "idents", "applies")}
@@ -67,13 +74,17 @@ def pack_items(pack_dir: Path) -> dict[str, set]:
     ttitle = {t: norm(r["title"]) for t, r in trees.items()}
     ntext = {n: norm(r["text"]) for n, r in nodes.items()}
     ptitle = {p: norm(r["title"]) for p, r in procs.items()}
-    for t in ttitle.values():
+    for tid, t in ttitle.items():
         out["trees"].add(t)
+        R[("trees", t)] = ("fault_tree", tid)
     for n, r in nodes.items():
         out["nodes"].add((ttitle.get(r["tree_id"]), ntext[n]))
         out["node_kinds"].add((ttitle.get(r["tree_id"]), ntext[n], r["kind"]))
+        R[("nodes", (ttitle.get(r["tree_id"]), ntext[n]))] = ("fault_node", n)
+        R[("node_kinds", (ttitle.get(r["tree_id"]), ntext[n], r["kind"]))] = ("fault_node", n)
         if r["proc_id"] and r["proc_id"] in ptitle:
             out["test_procedures"].add((ntext[n], ptitle[r["proc_id"]]))
+            R[("test_procedures", (ntext[n], ptitle[r["proc_id"]]))] = ("fault_node", n)
         if r["target"] and r["target"].startswith("procedure:") and r["target"][10:] in ptitle:
             out["targets"].add((ntext[n], "procedure:" + ptitle[r["target"][10:]]))
     for e in c.execute("SELECT * FROM fault_edge"):
@@ -82,13 +93,17 @@ def pack_items(pack_dir: Path) -> dict[str, set]:
             continue
         ex = json.loads(f["expect"]) if f["expect"] else None
         cond = json.loads(e["cond"]) if e["cond"] else None
-        out["edges"].add((ttitle.get(f["tree_id"]), ntext[e["from_node"]], edge_key(ex, e["label"], cond, bool(e["retry"])),
-                          ntext.get(e["to_node"])))
+        it = (ttitle.get(f["tree_id"]), ntext[e["from_node"]], edge_key(ex, e["label"], cond, bool(e["retry"])),
+              ntext.get(e["to_node"]))
+        out["edges"].add(it)
+        R[("edges", it)] = ("fault_node", e["from_node"])
     for f in c.execute("SELECT * FROM fault_facet"):
         out["facets"].add((ntext.get(f["node_id"]), f["facet"], norm(f["text"])))
+        R[("facets", (ntext.get(f["node_id"]), f["facet"], norm(f["text"])))] = ("fault_node", f["node_id"])
     step_sec = {}
     for s in steps:
         out["steps"].add((ptitle.get(s["proc_id"]), s["ord"], norm(s["text"])))
+        R[("steps", (ptitle.get(s["proc_id"]), s["ord"], norm(s["text"])))] = ("proc_step", f"{s['proc_id']}#{s['ord']}")
         for sid in json.loads(s["section_ids"] or "[]"):
             step_sec[sid] = "step:" + norm(s["text"])
     for p, t in ptitle.items():
@@ -103,6 +118,7 @@ def pack_items(pack_dir: Path) -> dict[str, set]:
         for r in c.execute("SELECT * FROM requirement"):
             owner = {"procedure": ptitle, "fault_tree": ttitle, "fault_node": ntext}.get(r["ref_kind"], {}).get(r["ref_id"])
             out["setup"].add((owner, r["kind"], norm(r["text"])))
+            R[("setup", (owner, r["kind"], norm(r["text"])))] = ("requirement", f"{r['ref_kind']}:{r['ref_id']}#{r['ord']}")
     for sid, s in sec.items():
         h = norm(s["heading"])
         for p, t in ptitle.items():
@@ -118,12 +134,16 @@ def pack_items(pack_dir: Path) -> dict[str, set]:
             tgt = ("heading:" if sec[x["to_id"]]["kind"] == "chapter" else f"{sec[x['to_id']]['kind']}:") \
                 + norm(sec[x["to_id"]]["heading"] or sec[x["to_id"]]["text"])
         out["guards"].add((g["kind"], norm(g["text"]), tgt))
+        R[("guards", (g["kind"], norm(g["text"]), tgt))] = ("xref", f"guard:{x['from_id']}->{x['to_id']}")
     if _has(c, "symptom"):
         for s in c.execute("SELECT * FROM symptom"):
             out["symptoms"].add((norm(s["title"]), ttitle.get(s["tree_id"])))
+            R[("symptoms", (norm(s["title"]), ttitle.get(s["tree_id"])))] = ("symptom", s["symptom_id"])
         for s in c.execute("SELECT * FROM signal_map"):
-            out["signals"].add((s["signal_kind"], norm(s["pattern"]), ttitle.get(s["tree_id"]),
-                                ntext.get(s["node_id"]) if s["node_id"] else None))
+            it = (s["signal_kind"], norm(s["pattern"]), ttitle.get(s["tree_id"]),
+                  ntext.get(s["node_id"]) if s["node_id"] else None)
+            out["signals"].add(it)
+            R[("signals", it)] = ("signal_map", f"{s['signal_kind']}:{s['pattern']}")
     eq = {r["equip_id"]: r for r in c.execute("SELECT * FROM equipment")}
     for e in eq.values():
         out["equipment"].add((norm(e["name"]), norm(eq[e["parent_id"]]["name"]) if e["parent_id"] in eq else None))

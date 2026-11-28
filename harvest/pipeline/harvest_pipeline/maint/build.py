@@ -140,7 +140,7 @@ def extract(corpus: Corpus, arm_name: str | None, offline: bool, only_units: set
 
 
 def assemble(corpus: Corpus, a: Arm, outs: dict, srcs: list, stage_path: Path,
-             forced: dict | None = None) -> tuple[Stage, list[Assembly], list[tuple[str, Path]]]:
+             forced: dict | None = None, review: dict | None = None) -> tuple[Stage, list[Assembly], list[tuple[str, Path]]]:
     m = cfg(corpus)
     stage = Stage(stage_path)
     files: list[tuple[str, Path]] = []
@@ -151,7 +151,7 @@ def assemble(corpus: Corpus, a: Arm, outs: dict, srcs: list, stage_path: Path,
         stage.add_source(rec)
         sid = rec["source_id"]
         asm = Assembly(stage, sid, models, opts.get("id_prefix", sid), opts.get("citation_prefix", ""),
-                       {**m, "forced": forced or {}})
+                       {**m, "forced": forced or {}, "review": review or {}})
         asm.forced = forced or {}
         o, us = outs.get(sid, ({}, []))
         for u in us:
@@ -166,6 +166,7 @@ def assemble(corpus: Corpus, a: Arm, outs: dict, srcs: list, stage_path: Path,
         asm.index_rows()
         asm.resolve_applies()
         asm.leftovers()
+        asm.plausibility()
         page_assets = {}
         for pm in models:
             if pm.image:
@@ -254,19 +255,53 @@ def _forced_from(report: dict, forced: dict) -> int:
     return n
 
 
+def agreement_review(stage: Stage, other_pack: Path, other_name: str) -> dict:
+    """Rows of this arm that a second, independent arm's pack does not also hold -> needs_review,
+    with the other arm's version beside it. Equipment rows carry no provenance and are not judged."""
+    from .score import _title_match, db_items, pack_items
+    other = pack_items(other_pack)
+    refs: dict = {}
+    mine = db_items(stage.conn, refs)
+    stage.conn.row_factory = __import__("sqlite3").Row
+    review: dict = {}
+    for cat, items in mine.items():
+        if cat in ("equipment", "idents", "applies", "procedures"):
+            continue
+        theirs = other.get(cat, set())
+        for it in items:
+            if any(_title_match(it, o) or _title_match(o, it) for o in theirs):
+                continue
+            ref = refs.get((cat, it))
+            if ref is None:
+                continue
+            alt = [o for o in theirs if isinstance(o, tuple) and isinstance(it, tuple) and o[:1] == it[:1]][:2]
+            reason = f"cross-arm: {other_name} disagrees on {cat} {it!s:.160}" + (f"; it has {alt!s:.200}" if alt else
+                                                                                f"; it has no such {cat[:-1]}")
+            review.setdefault(ref, reason)
+    return review
+
+
 def build(corpus: Corpus, arm_name: str | None, out_dir: Path | None, harvest: str, pubkey: str | None = None,
-          embedder_cfg: dict | None = None, max_rounds: int = 4, log=sys.stderr) -> dict:
-    """Deterministic from the raw sources and the committed cache: no model is called."""
+          embedder_cfg: dict | None = None, max_rounds: int = 4, log=sys.stderr, agree_with: str | None = None) -> dict:
+    """Deterministic from the raw sources and the committed cache: no model is called. With
+    `agree_with`, rows the second arm's pack does not also hold become needs_review."""
     a = arm(corpus, arm_name)
     outs, reps, srcs = extract(corpus, a.name, offline=True, log=log)
     missing = {s: r["missing"] for s, r in reps.items() if r["missing"]}
     out_dir = out_dir or harvest_home() / "packs" / corpus.pack_id / a.name
     forced: dict = {}
+    review: dict = {}
     rounds = []
+    if agree_with:
+        other_dir = harvest_home() / "packs" / corpus.pack_id / f"{agree_with}.agree"
+        build(corpus, agree_with, other_dir, harvest, pubkey, embedder_cfg, max_rounds, log=None)
+        stage0, _, _ = assemble(corpus, a, outs, srcs, work(corpus) / f"stage-{a.name}.sqlite")
+        review = agreement_review(stage0, other_dir, agree_with)
+        stage0.conn.close()
     emb = make_embedder(embedder_cfg if embedder_cfg is not None else corpus.raw.get("embedder") or {"kind": "hash"})
     try:
         for rnd in range(1, max_rounds + 1):
-            stage, asms, files = assemble(corpus, a, outs, srcs, work(corpus) / f"stage-{a.name}.sqlite", forced)
+            stage, asms, files = assemble(corpus, a, outs, srcs, work(corpus) / f"stage-{a.name}.sqlite", forced, review)
             meta = pack_meta(corpus, asms, stage)
             res = write_pack(stage, out_dir, corpus.pack_id, corpus.version, corpus.corpus_id, emb, release=True,
                              bake_backends={"author": a.spec, "judge": None}, lang=corpus.lang, extra_meta=meta,
@@ -287,6 +322,7 @@ def build(corpus: Corpus, arm_name: str | None, out_dir: Path | None, harvest: s
     (out_dir.parent / f"{out_dir.name}.regions.json").write_text(json.dumps(regions, indent=0, sort_keys=True))
     summary = {"pack": res, "arm": a.name, "spec": a.spec, "extract": reps, "cache_misses": missing,
                "rounds": rounds, "forced_fail": {f"{k[0]}:{k[1]}": v for k, v in forced.items()},
+               "agree_with": agree_with, "review": {f"{k[0]}:{k[1]}": v for k, v in review.items()},
                "verdicts": verdicts, "graph": rep.get("graph", {}).get("counts"),
                "stage": str(work(corpus) / f"stage-{a.name}.sqlite")}
     (work(corpus) / f"build-{a.name}.json").write_text(json.dumps(summary, indent=2, default=str))
