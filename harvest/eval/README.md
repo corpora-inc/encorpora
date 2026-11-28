@@ -37,6 +37,39 @@ Check that a pack carries every gold section id and key quote of a set:
 .venv/bin/python -m harvest_eval check-ids --set <jsonl> --pack <pack or sections.jsonl>
 ```
 
+## Item quality (question banks)
+
+`harvest_eval items` checks a multiple-choice bank (CONTRACT `question` rows) for the tells
+that make items too easy, and calibrates difficulty with models. The content lane runs it on
+every bank change. The eval lane reports the baseline in `crane/eval/results/`.
+
+```sh
+.venv/bin/python -m harvest_eval items --bank ../../crane/content/data/questions \
+    --sections ../../crane/eval/sources/sections-2026-11-24.jsonl \
+    "--alias=^29cfr1926\.cc\.app=29cfr1926-subpartCC-app" "--alias=-table-=-table" \
+    --out <dir> --passes deterministic                      # no model: seconds, the whole bank
+.venv/bin/python -m harvest_eval items ... --passes deterministic options_only no_context crane_aware review \
+    --strong 'http://host:port/v1#gpt-oss-120b' --weak 'http://host:port/v1#gpt-oss-20b' \
+    --per-tier 300 --review-sample 300 --out <dir>          # or --strong claude:sonnet
+```
+
+| Gate | What it measures | A good bank |
+|---|---|---|
+| `key_longest` | the key is strictly the longest option | about 1/k (0.25 for 4 options) |
+| `key_most_like_rule` | the key shares strictly the most words with the item's rule quote and fact | a signal, not a target: a correct key agrees with the rule; read it with `options_only` split by it (`options_only_by_rule_wording`) |
+| `rationales` | every option has a rationale | 1.0 |
+| `cites_exist`, `quotes_verbatim` | cited sections exist; quotes are exact substrings | 1.0 |
+| answer position | where the key sits | even |
+| `options_only` | a strong model picks the key from the options alone, no stem (options shuffled per item) | near 1/k |
+| `no_context.weak` / `.strong` | models answer with the stem and no rule text | falls with the intended tier |
+| `crane_aware` | the strong model answers with the cited rule text | near 1.0 (a miss suggests a wrong key or an ambiguous item) |
+| `review` | a judge reads the item and the cited rule: key correct, rule supports the key, single best answer, each distractor wrong and plausible (0 obvious, 1 a novice might pick it, 2 a trained operator might) | key correct and supported near 1.0; plausibility well above 0 |
+
+Name every OpenAI-style model as `URL#model`: the name keys the cache, so swapping the model behind a URL needs a new name.
+
+`everyone_correct` lists items every answering pass gets right: candidates to make harder or
+retire. Answers are cached under `<out>/cache` (or `--cache`), so reruns cost only new items.
+
 ## Tests
 
 ```sh
