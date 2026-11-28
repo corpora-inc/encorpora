@@ -41,6 +41,7 @@ API = "https://www.ecfr.gov/api/versioner/v1"
 SOURCES = {
     # source_id: (query, label)
     "ecfr-29-1926-cc": ("part=1926&subpart=CC", "29 CFR 1926 Subpart CC"),
+    "ecfr-29-1926-251": ("part=1926&section=1926.251", "29 CFR 1926.251"),
     "ecfr-29-1910-179": ("part=1910&section=1910.179", "29 CFR 1910.179"),
     "ecfr-29-1910-180": ("part=1910&section=1910.180", "29 CFR 1910.180"),
     "ecfr-29-1910-184": ("part=1910&section=1910.184", "29 CFR 1910.184"),

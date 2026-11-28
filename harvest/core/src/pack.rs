@@ -108,15 +108,67 @@ pub struct Procedure {
     pub roles: Vec<String>,
 }
 
-/// What to do when a step fails, with the rule behind it.
+/// What a deficiency rests on (CONTRACT "Procedure step deficiency").
+#[derive(Debug, Clone, Copy, Serialize, serde::Deserialize, PartialEq, Eq)]
+#[serde(rename_all = "lowercase")]
+pub enum Basis {
+    /// A rule: `section_id` and a verbatim `quote` say so.
+    Rule,
+    /// Field practice with no rule behind it: no citation, and never shown
+    /// as a rule.
+    Practice,
+}
+
+/// What to do when a step fails, and the rule behind it when there is one.
 #[derive(Debug, Clone, Serialize, serde::Deserialize, PartialEq)]
 pub struct Deficiency {
     pub guidance: String,
     #[serde(default)]
     pub action: Option<String>,
-    pub section_id: String,
+    /// `rule` or `practice`. A pack row without it is a rule when it cites a
+    /// section and practice when it does not; the reader always fills it in.
+    #[serde(default)]
+    pub basis: Option<Basis>,
+    #[serde(default)]
+    pub section_id: Option<String>,
     #[serde(default)]
     pub quote: Option<String>,
+}
+
+impl Deficiency {
+    /// Fill in `basis` and refuse a row whose basis and citation disagree:
+    /// a rule needs a section and a quote, practice has neither.
+    pub(crate) fn settle(mut self) -> std::result::Result<Self, String> {
+        let cited = self
+            .section_id
+            .as_deref()
+            .is_some_and(|s| !s.trim().is_empty());
+        let quoted = self.quote.as_deref().is_some_and(|q| !q.trim().is_empty());
+        let basis = self
+            .basis
+            .unwrap_or(if cited { Basis::Rule } else { Basis::Practice });
+        match basis {
+            Basis::Rule if !(cited && quoted) => {
+                return Err("a rule deficiency needs section_id and quote".into());
+            }
+            Basis::Practice if cited || quoted => {
+                return Err(
+                    "a practice deficiency cites no rule (section_id and quote are null)".into(),
+                );
+            }
+            _ => {}
+        }
+        if self.guidance.trim().is_empty() {
+            return Err("a deficiency needs guidance".into());
+        }
+        self.basis = Some(basis);
+        Ok(self)
+    }
+
+    /// True when a rule backs this deficiency.
+    pub fn is_rule(&self) -> bool {
+        self.basis == Some(Basis::Rule)
+    }
 }
 
 /// One step of a procedure.
@@ -444,7 +496,14 @@ impl Pack {
                             .map_err(|e| bad("section_ids", e))?,
                         deficiency: deficiency
                             .filter(|d| !d.trim().is_empty() && d.trim() != "null")
-                            .map(|d| serde_json::from_str(&d).map_err(|e| bad("deficiency", e)))
+                            .map(|d| {
+                                serde_json::from_str::<Deficiency>(&d)
+                                    .map_err(|e| bad("deficiency", e))?
+                                    .settle()
+                                    .map_err(|m| {
+                                        Error::Pack(format!("proc_step {proc_id}#{ord}: {m}"))
+                                    })
+                            })
                             .transpose()?,
                     })
                 },

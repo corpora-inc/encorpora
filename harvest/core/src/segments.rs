@@ -14,6 +14,10 @@ pub enum Segment {
     Cite { section_id: String },
     /// A pack diagram.
     Diagram { diagram_id: String },
+    /// A self-check in a lesson: the reader answers `question`, then sees
+    /// `answer`. It recalls what the lesson's cited paragraphs taught; it is
+    /// not a claim and supports nothing (CONTRACT "Answer-segment JSON").
+    Check { question: String, answer: String },
 }
 
 impl Segment {
@@ -62,12 +66,14 @@ mod tests {
     fn round_trips_contract_json() {
         let json = r#"[{"t":"text","text":"There are three."},
             {"t":"quote","section_id":"a(1)","text":"exact"},
-            {"t":"cite","section_id":"a(1)"},{"t":"diagram","diagram_id":"d1"}]"#;
+            {"t":"cite","section_id":"a(1)"},{"t":"diagram","diagram_id":"d1"},
+            {"t":"check","question":"How far?","answer":"20 feet."}]"#;
         let body: Vec<Segment> = serde_json::from_str(json).unwrap();
-        assert_eq!(body.len(), 4);
+        assert_eq!(body.len(), 5);
         assert_eq!(citations(&body), vec!["a(1)".to_string()]);
         let back = serde_json::to_string(&body).unwrap();
         assert!(back.contains(r#"{"t":"quote","section_id":"a(1)","text":"exact"}"#));
+        assert!(back.contains(r#"{"t":"check","question":"How far?","answer":"20 feet."}"#));
     }
 
     #[test]

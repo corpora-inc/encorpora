@@ -232,12 +232,13 @@ steps:
     inspector: Record the load share and percent of capacity for each crane. The share calculation and any planning
       margin are practice. Exceeding rated capacity violates 1926.1417(o)(1).
   check_kind: value
-  section_ids: []
+  section_ids:
+  - 29cfr1926.1417(o)(1)
   deficiency:
     guidance: A crane's share is over rated capacity or over the site planning limit.
     action: Replan the configuration, radius, pick points or crane selection before the lift.
-    section_id: null
-    quote: null
+    section_id: 29cfr1926.1417(o)(1)
+    quote: The equipment must not be operated in excess of its rated capacity.
   practice_only: true
   value_unit: '%'
 - ord: 12
@@ -270,12 +271,14 @@ steps:
     inspector: Record the rigging list, angles and calculated tensions. This is rigging practice; the given text
       does not set sling-angle values.
   check_kind: value
-  section_ids: []
+  section_ids:
+  - 29cfr1926.251(a)(2)(ii)
   deficiency:
     guidance: A rigging component is loaded beyond its rated load at the planned angle.
     action: Change the rigging or the sling angle before the lift.
-    section_id: null
-    quote: null
+    section_id: 29cfr1926.251(a)(2)(ii)
+    quote: Not be loaded in excess of its recommended safe working load as prescribed on the identification markings
+      by the manufacturer
   practice_only: true
   value_unit: lb
 - ord: 14
@@ -712,4 +715,5 @@ prov:
   created_at: '2026-11-27T06:50:24+00:00'
   verifier: crane-content/verify v1 (exact substring of eCFR text, typography repair)
   verdict: pass
-  notes: null
+  notes: deficiency citations for steps 11, 13 from tasks/procedures/citations.yaml (hand-added; the model output
+    left them null)
