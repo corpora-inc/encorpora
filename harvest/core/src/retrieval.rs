@@ -165,6 +165,12 @@ impl<'a> Retriever<'a> {
         opts: &SearchOptions,
     ) -> Result<SearchResult> {
         let norm = self.normalize(query);
+        // A scoped search looks deeper: the scope drops most candidates.
+        let depth = if opts.within.is_empty() {
+            opts.depth
+        } else {
+            opts.depth.max(2000)
+        };
         let mut lists: Vec<Vec<(String, f64)>> = Vec::new();
         let mut lexical: HashMap<String, f64> = HashMap::new();
         let mut dense: HashMap<String, f64> = HashMap::new();
@@ -186,7 +192,7 @@ impl<'a> Retriever<'a> {
         }
         for parts in &lexical_queries {
             if let Some(m) = normalize::fts_query(parts.iter().copied()) {
-                let list = self.lexical(&m, opts.depth)?;
+                let list = self.lexical(&m, depth)?;
                 for (id, s) in &list {
                     let e = lexical.entry(id.clone()).or_insert(0.0);
                     *e = e.max(*s);
@@ -207,7 +213,7 @@ impl<'a> Retriever<'a> {
                             break;
                         }
                         normalize_l2(&mut q);
-                        let list = dense_top(index, &q, opts.depth);
+                        let list = dense_top(index, &q, depth);
                         for (id, s) in &list {
                             let d = dense.entry(id.clone()).or_insert(f64::MIN);
                             *d = d.max(*s);

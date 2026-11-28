@@ -224,8 +224,10 @@ pub(crate) fn partition_problems(conds: &[(String, Interval)], dom: Interval) ->
                 ));
             }
         }
-        if p.hi > need.0 || (p.hi == need.0 && p.hi_inc) || !start_ok {
-            need = (p.hi, !p.hi_inc);
+        // Move the cursor only forward: past `hi`, or onto it still open.
+        let next = (p.hi, !p.hi_inc);
+        if next.0 > need.0 || (next.0 == need.0 && need.1 && !next.1) {
+            need = next;
         }
     }
     let end_ok = need.0 == dom.hi && (need.1 == !dom.hi_inc || !dom.hi.is_finite());
@@ -380,6 +382,10 @@ mod tests {
         .unwrap()
     }
 
+    fn meter_all() -> Interval {
+        domain(Some(0.0), None)
+    }
+
     #[test]
     fn partitions() {
         let lt = iv(CondOp::Lt, Some(11.5), None, None);
@@ -396,6 +402,13 @@ mod tests {
         // Gap at exactly 11.5.
         assert!(!partition_problems(&[l("a", lt), l("b", gt13)], all).is_empty());
         assert!(partition_problems(&[l("a", lt), l("m", mid), l("c", ge13)], all).is_empty());
+        // An overlap is reported once, not followed by a false gap.
+        let wide = iv(CondOp::Between, None, Some(0.0), Some(100.0));
+        let inner = iv(CondOp::Between, None, Some(10.0), Some(20.0));
+        let top = iv(CondOp::Ge, Some(100.0), None, None);
+        let p = partition_problems(&[l("w", wide), l("i", inner), l("t", top)], meter_all());
+        assert_eq!(p.len(), 1, "{p:?}");
+        assert!(p[0].contains("overlaps"));
         // Gap at 13 (between is half-open).
         assert!(!partition_problems(&[l("a", lt), l("m", mid), l("c", gt13)], all).is_empty());
         // A bounded domain needs only cover itself.

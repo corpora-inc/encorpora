@@ -265,7 +265,7 @@ fn verify(args: &Args) -> Result<(), CliError> {
     let started = Instant::now();
     let pack = Pack::open(&dir, &keys(args)?)?;
     let counts = pack.row_counts()?;
-    let graph = if pack.has_fault_trees()? {
+    let graph = if pack.has_maint_tables()? {
         Some(harvest_core::maint::graph::validate(&pack)?)
     } else {
         None
@@ -289,7 +289,8 @@ fn verify(args: &Args) -> Result<(), CliError> {
         );
     } else {
         println!(
-            "ok {} {} (schema {}, {} files, {} ms)",
+            "{} {} {} (schema {}, {} files, {} ms)",
+            if graph_ok { "ok" } else { "FAIL" },
             pack.pack_id(),
             pack.version(),
             pack.manifest().schema_version,

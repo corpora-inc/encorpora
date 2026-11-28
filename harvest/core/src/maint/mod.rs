@@ -436,6 +436,26 @@ impl Pack {
         self.has_table("fault_tree")
     }
 
+    /// True when the pack has any maintenance table.
+    pub fn has_maint_tables(&self) -> Result<bool> {
+        for t in [
+            "fault_tree",
+            "section_loc",
+            "asset",
+            "requirement",
+            "symptom",
+            "signal_map",
+            "equip_ident",
+            "history",
+            "failure_mode",
+        ] {
+            if self.has_table(t)? {
+                return Ok(true);
+            }
+        }
+        Ok(false)
+    }
+
     /// The pack's depth levels: `pack_meta.levels`, else the default three.
     pub fn levels(&self) -> Result<Vec<Level>> {
         let Some(raw) = self.meta("levels") else {

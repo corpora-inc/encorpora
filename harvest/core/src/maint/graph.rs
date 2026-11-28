@@ -680,10 +680,18 @@ fn validate_requirements(
                 format!("{what}: unknown kind {kind:?}"),
             );
         }
-        if let Some(s) = section
-            && let Err(m) = pack.verbatim(&text, &s)
-        {
-            out.add("requirement.verbatim", None, None, format!("{what}: {m}"));
+        match section {
+            None => out.add(
+                "requirement.verbatim",
+                None,
+                None,
+                format!("{what}: cites no section, so its text cannot be checked"),
+            ),
+            Some(s) => {
+                if let Err(m) = pack.verbatim(&text, &s) {
+                    out.add("requirement.verbatim", None, None, format!("{what}: {m}"));
+                }
+            }
         }
     }
     Ok(())
