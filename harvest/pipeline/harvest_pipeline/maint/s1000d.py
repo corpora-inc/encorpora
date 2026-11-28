@@ -31,8 +31,10 @@ import xml.etree.ElementTree as ET
 from .layout import PageModel, Region, Word
 from .rules import DEFAULTS
 
-TEXT_EL = {"techName", "simplePara", "warningAndCautionPara", "action", "isolationStepQuestion", "choice", "para",
-           "personnelDescr", "name", "reqQuantity", "title"}
+TEXT_EL = {"techName", "simplePara", "warningAndCautionPara", "notePara", "action", "isolationStepQuestion", "choice",
+           "para", "personnelDescr", "name", "reqQuantity", "title"}
+# attribute values that are content (ACT enumeration labels and values, PCT assignments)
+TEXT_ATTR = {"enumeration": ("enumerationLabel", "applicPropertyValues"), "assign": ("applicPropertyValue",)}
 
 
 def _local(tag: str) -> str:
@@ -45,11 +47,20 @@ def page_model(data: bytes, source_id: str, index: int, label: str) -> tuple[Pag
     pm = PageModel(source_id, index, 1000.0, 1000.0, label=label)
     reg_of: dict[int, str] = {}
     y = 0.0
+    items = []
     for el in root.iter():
         name = _local(el.tag)
-        if name not in TEXT_EL:
-            continue
-        text = " ".join("".join(el.itertext()).split())
+        if name in TEXT_EL:
+            # an action's own words, not a nested dmRef's code
+            if name in ("para", "action") and any(_local(c.tag) == "dmRef" for c in el.iter()):
+                text = " ".join("".join(t for t in _own_text(el)).split())
+            else:
+                text = " ".join("".join(el.itertext()).split())
+            items.append((id(el), text))
+        for a in TEXT_ATTR.get(name, ()):
+            if el.get(a):
+                items.append(((id(el), a), " ".join(el.get(a).split())))
+    for key, text in items:
         if not text:
             continue
         idxs = []
@@ -61,9 +72,85 @@ def page_model(data: bytes, source_id: str, index: int, label: str) -> tuple[Pag
             x += 6 * len(w) + 4
         rid = f"p{index}.r{len(pm.regions) + 1}"
         pm.regions.append(Region(rid, "text", (0.0, y, min(x, 1000.0), y + 10), words=idxs, lines=[idxs]))
-        reg_of[id(el)] = rid
+        reg_of[key] = rid
         y += 12
     return pm, {"root": root, "reg": reg_of}
+
+
+def _own_text(el):
+    """Text of an element without the text inside dmRef children (their codes are not prose)."""
+    yield el.text or ""
+    for c in el:
+        if _local(c.tag) != "dmRef":
+            yield from _own_text(c)
+        yield c.tail or ""
+
+
+def dmc_of(el) -> str | None:
+    c = _find(el, "dmCode")
+    if c is None:
+        return None
+    a = c.attrib
+    return (f"DMC-{a.get('modelIdentCode')}-{a.get('systemDiffCode')}-{a.get('systemCode')}-{a.get('subSystemCode')}"
+            f"{a.get('subSubSystemCode')}-{a.get('assyCode')}-{a.get('disassyCode')}{a.get('disassyCodeVariant')}-"
+            f"{a.get('infoCode')}{a.get('infoCodeVariant')}-{a.get('itemLocationCode')}")
+
+
+def _spa(ctx, el, attr) -> dict | None:
+    rid = ctx["reg"].get((id(el), attr))
+    return {"region": rid, "text": " ".join(el.get(attr).split())} if rid else None
+
+
+def derive_set(ctxs: list[dict], equipment: list[dict]) -> list[dict]:
+    """A data module set: variants from its ACT/PCT (else the corpus's equipment), and a module that a
+    fault isolation step references by dmRef becomes that question's test procedure (emitted once)."""
+    by_dmc = {}
+    for c in ctxs:
+        ident = _find(c["root"], "dmIdent")
+        c["dmc"] = dmc_of(ident) if ident is not None else None
+        by_dmc[c["dmc"]] = c
+    equip_items, equip = [], list(equipment)
+    act = next((c for c in ctxs if _find(c["root"], "applicCrossRefTable") is not None), None)
+    pct = next((c for c in ctxs if _find(c["root"], "productCrossRefTable") is not None), None)
+    if act is not None:
+        serials = {}
+        if pct is not None:
+            for prod in _findall(pct["root"], "product"):
+                vals = {a.get("applicPropertyIdent"): a for a in _findall(prod, "assign")}
+                if "model" in vals and "serialno" in vals:
+                    serials[vals["model"].get("applicPropertyValue")] = vals["serialno"]
+        parent_el = _find(act["root"], "techName")
+        parent = " ".join("".join(parent_el.itertext()).split()) if parent_el is not None else None
+        from ..textutil import slug
+        for pa in _findall(act["root"], "productAttribute"):
+            if pa.get("id") != "model":
+                continue
+            for en in _findall(pa, "enumeration"):
+                label, val = en.get("enumerationLabel"), en.get("applicPropertyValues")
+                if not label or not val:
+                    continue
+                sn = serials.get(val)
+                equip_items.append({"name": _spa(act, en, "enumerationLabel"), "parent": parent,
+                                    "model": _spa(act, en, "applicPropertyValues"),
+                                    "serials": _spa(pct, sn, "applicPropertyValue") if sn is not None else None,
+                                    "attrs": [], "_ev": ["S1000D ACT enumeration" + (" + PCT" if sn is not None else "")]})
+                equip.append({"id": slug(label, 40), "name": label, "ident": {"model": [val]}})
+    referenced = {}
+    for c in ctxs:
+        for st in _findall(c["root"], "isolationStep"):
+            for ref in _findall(st, "dmRef"):
+                tgt = by_dmc.get(dmc_of(ref))
+                if tgt is not None and _find(tgt["root"], "procedure") is not None:
+                    referenced[id(tgt)] = True
+    outs = []
+    for c in ctxs:
+        out = derive(c, equip, by_dmc)
+        if act is not None and c is act:
+            out["equipment"] = equip_items
+        if id(c) in referenced:
+            out["procedures"] = []          # emitted inside the fault isolation module that references it
+        outs.append(out)
+    return outs
 
 
 def _sp(ctx, el) -> dict | None:
@@ -83,7 +170,7 @@ def _findall(el, name):
     return [e for e in el.iter() if _local(e.tag) == name]
 
 
-def derive(ctx: dict, equipment: list[dict]) -> dict:
+def derive(ctx: dict, equipment: list[dict], by_dmc: dict | None = None) -> dict:
     root = ctx["root"]
     out = {"headings": [], "trees": [], "procedures": [], "symptoms": [], "codes": [], "equipment": []}
     models = {}
@@ -165,8 +252,19 @@ def derive(ctx: dict, equipment: list[dict]) -> dict:
                 kind = "escalate" if esc.search(txt) else "end" if end.search(txt) else "action"
             else:
                 kind = "symptom" if k == 1 else "action"
+            tp = None
+            for ref in _findall(st, "dmRef"):
+                tgt = (by_dmc or {}).get(dmc_of(ref))
+                if tgt is not None and _find(tgt["root"], "procedure") is not None:
+                    sub = derive(tgt, equipment)
+                    for p_ in sub["procedures"]:
+                        p_["key"] = f"dm:{tgt['dmc']}"
+                        p_["kind"] = "test"
+                        p_["_ev"] = p_.get("_ev", []) + [f"referenced by dmRef from {st.get('id')}"]
+                        out["procedures"].append(p_)
+                        tp = p_["key"]
             nodes.append({"id": st.get("id"), "kind": kind, "number": None, "text": sp, "expect": expect, "facets": [],
-                          "branches": branches, "test_procedure": None, "target": None, "guards": [],
+                          "branches": branches, "test_procedure": tp, "target": None, "guards": [],
                           "_ev": [f"S1000D {_local(st.tag)} {st.get('id')}"]})
         fault = _find(fi, "fault")
         out["trees"].append({"ref": (fault.get("faultCode") if fault is not None else None) or "fault isolation",
@@ -195,9 +293,18 @@ def derive(ctx: dict, equipment: list[dict]) -> dict:
             txt = " ".join("".join(para.itertext()).split()) if para is not None else ""
             ck = "value" if re.match(r"(?i)^(read|measure)\b", txt) else "note" if txt.lower().startswith("record") \
                 else "pass_fail"
-            steps.append({"text": _sp(ctx, para), "check_kind": ck, "guards": guards_of(ps),
+            inline = []
+            for kind in ("warning", "caution", "note"):
+                for w in [e for e in ps if _local(e.tag) == kind]:
+                    p_ = _find(w, "warningAndCautionPara")
+                    p_ = p_ if p_ is not None else _find(w, "notePara")
+                    if p_ is not None:
+                        inline.append({"kind": kind, "text": _sp(ctx, p_), "applies": [], "_typed": True,
+                                       "_ev": [f"S1000D {kind} inside step {ps.get('id')}"]})
+            steps.append({"text": _sp(ctx, para), "check_kind": ck, "guards": guards_of(ps) + inline,
                           "_ev": [f"S1000D proceduralStep {ps.get('id')}"]})
+        safety = [g for sr in _findall(pr, "safetyRqmts") for g in guards_of(sr)]
         out["procedures"].append({"key": "proc", "ref": None, "kind": "maintenance", "title": _sp(ctx, title_el),
                                   "applies": applies(status_applic), "setup": [s for s in setup if s["text"]],
-                                  "guards": guards_of(pr), "steps": steps, "_ev": ["S1000D procedure"]})
+                                  "guards": guards_of(pr) + safety, "steps": steps, "_ev": ["S1000D procedure"]})
     return out

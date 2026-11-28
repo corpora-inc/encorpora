@@ -30,7 +30,7 @@ from .spans import Located, locate
 VERIFIER = "maint-spans:v1"
 PROMPT_ID = "harvest.maint.extract"
 GUARD_WORDS = {"WARNING": "warning", "CAUTION": "caution", "NOTE": "note", "DANGER": "warning"}
-_SERIAL = re.compile(r"^\s*([A-Za-z0-9]*?[-/]?)(\d+)\s*(?:to|through|thru|-|–|—)\s*([A-Za-z0-9]*?[-/]?)(\d+)\s*$")
+_SERIAL = re.compile(r"^\s*([A-Za-z0-9]*?[-/]?)(\d+)\s*(?:to|through|thru|-|–|—|~)\s*([A-Za-z0-9]*?[-/]?)(\d+)\s*$")
 _J1939 = re.compile(r"\bSPN\s*(\d+)\s*(?:/|,)?\s*FMI\s*(\d+)\b", re.I)
 
 

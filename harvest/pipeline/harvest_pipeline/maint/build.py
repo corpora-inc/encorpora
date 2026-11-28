@@ -95,10 +95,22 @@ def sources(corpus: Corpus, log=sys.stderr) -> list[tuple[dict, list[PageModel],
         rec, data = read_raw(corpus, spec.id)
         opts = dict(spec.parser_options)
         if spec.parser == "maint-s1000d":
+            # one data module, or a zipped data module set (how S1000D publications are delivered)
+            import io
+            import zipfile
             from .s1000d import page_model
-            pm, ctx = page_model(data, spec.id, 0, opts.get("label") or spec.id)
-            opts["_s1000d"] = ctx
-            out.append((rec, [pm], opts))
+            if data[:2] == b"PK":
+                with zipfile.ZipFile(io.BytesIO(data)) as z:
+                    mods = [(n, z.read(n)) for n in sorted(z.namelist()) if n.upper().endswith(".XML")]
+            else:
+                mods = [(opts.get("label") or spec.id, data)]
+            models, ctxs = [], []
+            for i, (name, xml) in enumerate(mods):
+                pm, ctx = page_model(xml, spec.id, i, name.rsplit("/", 1)[-1].split("_")[0])
+                models.append(pm)
+                ctxs.append(ctx)
+            opts["_s1000d"] = ctxs
+            out.append((rec, models, opts))
             continue
         key = sha256_json({"v": LAYOUT_VERSION, "sha": rec["sha256"], "opts": opts})[:16]
         cache = work(corpus) / f"{spec.id}-{key}.pages.jsonl"
@@ -136,15 +148,17 @@ def extract(corpus: Corpus, arm_name: str | None, offline: bool, only_units: set
     outs, reps, srcs = {}, {}, sources(corpus, log)
     for rec, models, opts in srcs:
         pages = {p.index: p for p in models}
-        if "_s1000d" in opts:       # a data module is structured already: mapped by the schema, no arm, no model
-            from .s1000d import derive
+        if "_s1000d" in opts:       # data modules are structured already: mapped by the schema, no arm, no model
+            from .s1000d import derive_set
             from .extract import Unit
-            u = Unit(f"{rec['source_id']}@dm", [0])
-            out_ = derive(opts["_s1000d"], corpus.equipment)
-            outs[rec["source_id"]] = ({u.key: {"output": out_, "backend": "deterministic", "model_id": "s1000d-map:v1",
-                                               "input_sha256": rec["sha256"], "prompt_version": "s1000d-1",
-                                               "created_at": ""}}, [u])
-            reps[rec["source_id"]] = {"arm": "s1000d", "units": 1, "missing": 0}
+            ous, us_ = {}, []
+            for pm, out_ in zip(models, derive_set(opts["_s1000d"], corpus.equipment)):
+                u = Unit(f"{rec['source_id']}@{pm.label}", [pm.index])
+                us_.append(u)
+                ous[u.key] = {"output": out_, "backend": "deterministic", "model_id": "s1000d-map:v1",
+                              "input_sha256": rec["sha256"], "prompt_version": "s1000d-1", "created_at": ""}
+            outs[rec["source_id"]] = (ous, us_)
+            reps[rec["source_id"]] = {"arm": "s1000d", "units": len(us_), "missing": 0}
             continue
         us = units(models, {**(m.get("units") or {}), **opts})
         if only_units:

@@ -1,29 +1,16 @@
 {
   "sources": {
-    "dm-24-920": {
-      "bytes": 3672,
+    "m40-s1000d": {
+      "bytes": 6316,
       "edition": "Issue 003",
-      "fetched_url": "file:s1000d/DMC-M40-A-24-0-0-00-00A-920A-A_003-00_EN-US.XML",
+      "fetched_url": "file:pump40-s1000d.zip",
       "license": "fictional-test-content",
-      "media_type": "application/xml",
+      "media_type": "application/zip",
       "publisher": "Harvest proof (fictional content)",
-      "retrieved_at": "2026-11-28T09:08:02+00:00",
-      "sha256": "50a7422f03e1f77c4f0e011a5a69c34395fb0074e9e6a0953db411fd0c42bc2f",
-      "source_id": "dm-24-920",
-      "title": "Battery replacement (DMC-M40-A-24-0-0-00-00A-920A-A, fictional)",
-      "url": "https://example.invalid/model-40/s1000d"
-    },
-    "dm-32-421": {
-      "bytes": 4406,
-      "edition": "Issue 003",
-      "fetched_url": "file:s1000d/DMC-M40-A-32-0-0-00-00A-421A-A_003-00_EN-US.XML",
-      "license": "fictional-test-content",
-      "media_type": "application/xml",
-      "publisher": "Harvest proof (fictional content)",
-      "retrieved_at": "2026-11-28T09:08:02+00:00",
-      "sha256": "ac6b085fbdbbab58f7d13faccb038d8524d2a1d3340393658d907dae22a2af04",
-      "source_id": "dm-32-421",
-      "title": "Pump overheats, fault isolation (DMC-M40-A-32-0-0-00-00A-421A-A, fictional)",
+      "retrieved_at": "2026-11-28T09:21:47+00:00",
+      "sha256": "36cef04789682459cb1918f12c1f5d3cd2520f6315785669c36d9c5cc4840de3",
+      "source_id": "m40-s1000d",
+      "title": "Model 40 utility pump, S1000D data module set (ACT, PCT, fault isolation, test, replace; fictional)",
       "url": "https://example.invalid/model-40/s1000d"
     }
   }
