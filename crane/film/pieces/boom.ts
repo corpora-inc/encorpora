@@ -146,7 +146,7 @@ export class BoomPiece implements Piece {
     // the axis of rotation: the line the radius is measured from
     const axis = el("g", root);
     const [ax0, ay0] = P(0, -4.6), [, ay1] = P(0, 22);
-    el("line", axis, { x1: ax0, y1: ay0, x2: ax0, y2: ay1 }, "cf-centerline");
+    this.axisLine = el("line", axis, { x1: ax0, y1: ay0, x2: ax0, y2: ay1 }, "cf-centerline");
 
     // the boom: base section and four telescoping sections, drawn tip first so each sits inside the one before
     const sections = el("g", root);
@@ -209,6 +209,7 @@ export class BoomPiece implements Piece {
     this.parts = ["boom", "boom.crane", "boom.sections", "boom.axis", "boom.radius", "boom.line", "boom.block", "boom.slings", "boom.load", "boom.jib", "boom.readout", ...this.readouts.map((r) => `boom.readout.${r}`)];
   }
   private P: (x: number, y: number) => Pt;
+  private axisLine!: SVGLineElement;
   /** The chart's boom foot (behind and above the center pin); a chart without one draws with the HT-50's. */
   private get geo() {
     return this.chart.geometry ?? { pivotOffsetFt: -4, pivotHeightFt: 8 };
@@ -308,7 +309,9 @@ export class BoomPiece implements Piece {
 
     fade(g.crane, op("boom.crane"));
     const axl = lit("boom.axis");
-    g.axis.style.setProperty("stroke", mix("var(--cf-ink-3)", "var(--cf-light-edge)", axl));
+    // lit, the center line turns amber and solidly heavier, like the radius it is measured from
+    this.axisLine.style.stroke = mix("var(--cf-ink-3)", "var(--cf-light-edge)", axl);
+    this.axisLine.style.strokeWidth = String(3 + 4 * axl);
     fade(g.axis, op("boom.axis"));
 
     // the radius dimension

@@ -4,27 +4,29 @@
   "skill": "loadchart.read-gross",
   "shots": [
     {
-      "figure": { "crane": { "boom": { "chart": "ht-50", "config": "outriggers-full-360", "length": 74, "radius": 20, "load": 18000, "jib": true } } },
+      "figure": { "crane": { "boom": { "chart": "ht-50", "config": "outriggers-full-360", "length": 74, "radius": 20, "jib": true } } },
       "beats": [
         { "say": "What a crane can lift depends on where its hook hangs.", "do": [
           { "do": "crane", "light": "boom.block", "at": "hook" } ] },
         { "say": "Lower the boom, and the hook moves out.", "pause": 0.4, "do": [
           { "do": "crane", "set": { "boom.radius": 45 }, "at": "Lower", "dur": 3.6 } ] },
-        { "say": "The radius grows, and the capacity falls, step by step.", "do": [
+        { "say": "The radius grows, and the capacity falls.", "do": [
+          { "do": "text", "text": "The radius grows, and the capacity falls.", "at": "radius" },
           { "do": "crane", "light": "boom.readout.radius", "at": "radius" },
           { "do": "crane", "light": "boom.readout.capacity", "at": "capacity" } ] },
-        { "say": "Radius: the level distance from the center of rotation to the hook, with the load on.", "do": [
-          { "do": "term", "word": "Radius", "meaning": "The level distance from the center of rotation to the hook, with the load on.", "at": "Radius" },
-          { "do": "crane", "light": "boom.axis", "at": "center", "until": "hook" },
-          { "do": "crane", "light": "boom.radius", "at": "hook" } ] }
+        { "say": "Radius: the level distance from the center of rotation to the hoist line, with the load on.", "do": [
+          { "do": "term", "word": "Radius", "meaning": "The level distance from the center of rotation to the hoist line, with the load on.", "at": "Radius" },
+          { "do": "crane", "light": "boom.axis", "at": "center", "until": "hoist" },
+          { "do": "crane", "light": "boom.radius", "at": "hoist" } ] }
       ]
     },
     {
       "figure": { "crane": { "chart": { "chart": "ht-50", "config": "outriggers-full-360", "booms": [38, 50, 62, 74, 86], "radii": [20, 25, 30, 35, 40, 45] } } },
       "beats": [
-        { "say": "A load chart lists those capacities. Each page is for one setup: here, outriggers fully extended, all the way around.", "do": [
+        { "say": "A load chart lists those capacities. Each page is for one setup. This one: outriggers fully extended, all the way around.", "do": [
           { "do": "clear" },
-          { "do": "crane", "light": "chart.title", "at": "setup" } ] },
+          { "do": "crane", "light": "chart.title", "at": "setup" },
+          { "do": "text", "text": "Each page is for one setup.", "at": "Each" } ] },
         { "say": "Boom lengths run across the top. Radii run down the side.", "do": [
           { "do": "crane", "light": "chart.booms", "at": "Boom", "until": "Radii" },
           { "do": "crane", "light": "chart.radii", "at": "Radii" } ] },
@@ -40,7 +42,7 @@
     {
       "figure": { "crane": { "boom": { "chart": "ht-50", "config": "outriggers-full-360", "length": 74, "radius": 30, "load": 18000, "jib": true } } },
       "beats": [
-        { "say": "That number is gross. Everything under the boom tip counts as load.", "do": [
+        { "say": "That number is gross. Everything under the boom tip counts as load, and the chart lists more to deduct.", "do": [
           { "do": "clear" },
           { "do": "header", "tex": "\\text{Gross} = \\cg{24{,}300}\\ \\text{lb}", "label": "Boom 74 ft, radius 30 ft, load 18,000 lb", "at": "gross" },
           { "do": "crane", "light": ["boom.block", "boom.slings", "boom.load"], "at": "Everything" } ] },
@@ -67,11 +69,11 @@
       "beats": [
         { "say": "Same load, same rigging. Now the boom is sixty-eight feet, and the radius is thirty-three.", "do": [
           { "do": "clear" },
-          { "do": "problem", "text": "Same load, same rigging. Now the boom is\u00a0$68$\u00a0ft, and the radius is\u00a0$33$\u00a0ft.", "id": "p2", "at": "Same" },
+          { "do": "header", "text": "Boom\u00a0$68$\u00a0ft, radius\u00a0$33$\u00a0ft", "label": "Same load, same rigging", "at": "Same" },
           { "do": "crane", "set": { "chart.bmark": 68 }, "show": "chart.bmark", "at": "sixty-eight", "dur": 0.4 },
           { "do": "crane", "set": { "chart.rmark": 33 }, "show": "chart.rmark", "at": "thirty-three", "dur": 0.4 } ] },
         { "say": "Neither one is printed on the chart. Never guess between rows.", "do": [
-          { "do": "crane", "light": ["chart.row.30", "chart.row.35"], "at": "Never" } ] },
+          { "do": "crane", "light": ["chart.row.30", "chart.row.35", "chart.col.62", "chart.col.74"], "at": "Neither" } ] },
         { "say": "The note under the chart says: use the next longer radius. Thirty-five.", "do": [
           { "do": "crane", "light": "chart.note.radius", "at": "note" },
           { "do": "crane", "set": { "chart.rmark": 35 }, "at": "next", "dur": 1.2 },
@@ -89,30 +91,34 @@
           { "do": "write", "tex": "\\cg{21{,}400} - \\cw{3{,}800} = 17{,}600", "fresh": true, "id": "n2", "at": "Minus" } ] },
         { "say": "The load is eighteen thousand. Too heavy, by four hundred pounds.", "do": [
           { "do": "answer", "tex": "18{,}000 > 17{,}600\\ \\ \\text{no}", "id": "a2", "at": "eighteen" } ] },
-        { "say": "Three feet more radius, and the same lift is a no.", "do": [
-          { "do": "crane", "light": "chart.cell.30.74", "at": "Three", "until": "same" },
-          { "do": "crane", "light": "chart.cell.35.74", "at": "same" } ] }
+        { "say": "Same column. Only the row moved: three feet of radius turned yes into no.", "do": [
+          { "do": "crane", "light": "chart.col.74", "at": "Same", "until": "row" },
+          { "do": "crane", "light": "chart.cell.30.74", "at": "row", "until": "turned" },
+          { "do": "crane", "light": "chart.cell.35.74", "at": "turned" } ] }
       ]
     },
     {
       "figure": { "crane": { "chart": { "chart": "ht-50", "config": "outriggers-full-360", "booms": [38, 50, 62, 74, 86], "radii": [20, 25, 30, 35, 40, 45], "notes": ["blank", "shaded"] } } },
       "beats": [
-        { "say": "The notes under the chart are rules.", "do": [
+        { "say": "The chart's notes are rules.", "do": [
           { "do": "clear" },
           { "do": "crane", "light": "chart.notes", "at": "notes" },
-          { "do": "text", "text": "The notes under the chart are rules.", "id": "r0", "at": "notes" } ] },
-        { "say": "A dash means no capacity at all.", "do": [
+          { "do": "text", "text": "The chart's notes are rules.", "id": "r0", "at": "notes" } ] },
+        { "say": "A dash or a blank means no load may be lifted there.", "do": [
           { "do": "crane", "light": "chart.cell.35.38", "at": "dash" },
-          { "do": "text", "text": "A dash means no capacity at all.", "id": "r1", "at": "dash" } ] },
-        { "say": "A thirty-eight foot boom cannot reach thirty-five feet, so nothing may be lifted there.", "do": [
-          { "do": "crane", "light": "chart.cell.35.38", "at": "thirty-eight" },
-          { "do": "crane", "light": "chart.note.blank", "at": "nothing" } ] },
+          { "do": "crane", "light": "chart.note.blank", "at": "blank" },
+          { "do": "text", "text": "A dash or a blank means no load may be lifted there.", "id": "r1", "at": "dash" } ] },
+        { "say": "A thirty-eight foot boom cannot reach thirty-five feet.", "do": [
+          { "do": "crane", "light": "chart.cell.35.38", "at": "thirty-eight" } ] },
         { "say": "Shaded cells are limited by strength, not by tipping.", "do": [
           { "do": "crane", "light": ["chart.shade", "chart.note.shaded"], "at": "Shaded" },
           { "do": "text", "text": "Shaded cells are limited by strength, not by tipping.", "id": "r2", "at": "Shaded" } ] },
-        { "say": "In a shaded cell, the crane fails before it tips. Tipping is no warning.", "do": [
-          { "do": "crane", "light": "chart.shade", "at": "fails" },
-          { "do": "watch", "text": "In a shaded cell, the crane fails before it tips. Tipping is no warning.", "at": "In" } ] }
+        { "say": "In a shaded cell, the crane can break before it shows any sign of tipping.", "do": [
+          { "do": "crane", "light": "chart.shade", "at": "break" },
+          { "do": "watch", "text": "In a shaded cell, the crane can break before it shows any sign of tipping.", "at": "In" } ] },
+        { "say": "Both lifts in this lesson sit in shaded cells. Four hundred pounds over, and nothing would have warned you.", "do": [
+          { "do": "crane", "light": ["chart.cell.30.74", "chart.cell.35.74"], "at": "Both", "until": "Four" },
+          { "do": "crane", "light": "chart.cell.35.74", "at": "Four" } ] }
       ]
     },
     {
@@ -121,10 +127,10 @@
           { "do": "overview", "of": "n1" } ] },
         { "say": "Use the page for your setup.", "do": [
           { "do": "recap", "text": "Use the page for your setup." } ] },
-        { "say": "Find the boom column and the radius row. Between two, take the next longer.", "do": [
-          { "do": "recap", "text": "Find the boom column and the radius row. Between two, take the next longer." } ] },
-        { "say": "Take away everything under the boom tip to get the net.", "do": [
-          { "do": "recap", "text": "Take away everything under the boom tip to get the net.", "marks": ["d4", "n1"] } ] },
+        { "say": "Boom column, radius row. Between two, the next longer.", "do": [
+          { "do": "recap", "text": "Boom column, radius row. Between two, the next longer." } ] },
+        { "say": "Subtract the block, the rigging and the chart deductions: the net.", "do": [
+          { "do": "recap", "text": "Subtract the block, the rigging and the chart deductions: the net.", "marks": ["d4", "n1"] } ] },
         { "say": "The load must be no more than the net.", "do": [
           { "do": "recap", "text": "The load must be no more than the net.", "marks": ["a1"] } ] }
       ]

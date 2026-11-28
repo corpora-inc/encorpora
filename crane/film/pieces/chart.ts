@@ -25,12 +25,12 @@ import { known, nums, str, type Piece, type PieceInit, type Spec } from "./piece
 const FIELDS = ["chart", "config", "booms", "radii", "marks", "notes", "hidden", "title"] as const;
 /** The chart's notes, said plainly. Each is the chart's own rule (charts/<id>.json `notes`). */
 export const NOTES: Record<string, string> = {
-  gross: "Capacities are gross: the block and rigging are part of the load.",
-  radius: "Radius between two rows: use the next longer radius.",
-  boom: "Boom between two lengths: use the next longer boom.",
-  blank: "No number: no load may be lifted there.",
-  shaded: "Shaded: limited by strength, not by tipping.",
-  stowed: "Extension stowed on the boom: deduct its weight.",
+  gross: "Capacities are gross: rigging is part of the load.",
+  radius: "Radius between rows: the next longer radius.",
+  boom: "Boom between lengths: the next longer boom.",
+  blank: "Dash or blank: no load may be lifted.",
+  shaded: "Shaded: limited by strength, not tipping.",
+  stowed: "Extension stowed on the boom: deduct it.",
 };
 const TITLES: Record<string, string> = {
   "outriggers-full-360": "Outriggers fully extended, 360°",
@@ -39,7 +39,7 @@ const TITLES: Record<string, string> = {
 
 const mix = (base: string, lit: string, em: number) => (em <= 0.001 ? base : `color-mix(in srgb, ${lit} ${Math.round(em * 100)}%, ${base})`);
 
-const COL = 152, RCOL = 132, HEAD = 84, ROW = 80, TITLE = 128, CAPROW = 54, UNITS = 66, MARK_W = 150, MARK_H = 78, NOTE = 58;
+const COL = 152, RCOL = 132, HEAD = 84, ROW = 80, TITLE = 128, CAPROW = 54, UNITS = 66, MARK_W = 136, MARK_H = 78, NOTE = 66;
 
 export class ChartPiece implements Piece {
   readonly w: number;
@@ -56,6 +56,7 @@ export class ChartPiece implements Piece {
   private bmark?: { g: SVGGElement; text: SVGTextElement; x: (b: number) => number };
   private noteEls: { key: string; g: SVGGElement; bg: SVGPathElement }[] = [];
   private gridX: number;
+  private titleBand!: SVGPathElement;
   private gridY: number;
 
   constructor(spec: Spec, init: PieceInit) {
@@ -100,6 +101,8 @@ export class ChartPiece implements Piece {
 
     // title: which chart and which setup this page is for
     const title = el("g", root);
+    // lit, the title sits on an amber band: this page is for this setup
+    this.titleBand = el("path", title, { d: roundRect(left - 16, 56, Math.max(560, RCOL + COL * this.booms.length) + 32, 64, 12) }, "cf-band");
     text(title, left, 40, `${chart.id.toUpperCase()} truck crane · fictional chart`.toUpperCase(), "cf-chart-kicker");
     text(title, left, 100, TITLES[cfg.id] ?? cfg.label, "cf-chart-title");
     this.parts_.set("chart.title", title);
@@ -197,8 +200,8 @@ export class ChartPiece implements Piece {
       for (const key of noteKeys) {
         const ng = el("g", g);
         const bg = el("path", ng, { d: roundRect(left - 6, y, gridW + 12, NOTE - 8, 12) }, "cf-note-bg");
-        el("rect", ng, { x: left + 10, y: y + 17, width: 16, height: 16, rx: 3 }, "cf-note-bullet");
-        const t = text(ng, left + 42, y + 36, NOTES[key] ?? key, "cf-note-text");
+        el("rect", ng, { x: left + 12, y: y + 20, width: 18, height: 18, rx: 3 }, "cf-note-bullet");
+        const t = text(ng, left + 46, y + 43, NOTES[key] ?? key, "cf-note-text");
         if (textWidth(t) > gridW - 50) issues.push(`${where}: the note "${key}" is wider than the chart.`);
         this.noteEls.push({ key: `chart.note.${key}`, g: ng, bg });
         y += NOTE;
@@ -215,6 +218,7 @@ export class ChartPiece implements Piece {
 
   draw(tl: CraneTimeline, t: number) {
     for (const [name, g] of this.parts_) fade(g, tl.opacity(name, t));
+    fade(this.titleBand, tl.light("chart.title", t));
     for (const b of this.bands) {
       const em = tl.light(b.key, t);
       fade(b.rect, em * tl.opacity(b.key, t));

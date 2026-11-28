@@ -181,11 +181,11 @@ body { font-family: var(--font-body); color: var(--ink); background: var(--page)
 .cf-chart-kicker { fill: var(--cf-ink-3); font-size: 28px; font-weight: 600; letter-spacing: 0.1em; }
 .cf-chart-title { fill: var(--cf-ink); font-size: 46px; font-weight: 700; }
 .cf-chart-cap { fill: var(--cf-ink-3); font-size: 26px; font-weight: 600; letter-spacing: 0.1em; }
-.cf-chart-corner { fill: var(--cf-ink-3); font-size: 26px; font-weight: 600; letter-spacing: 0.08em; }
+.cf-chart-corner { fill: var(--cf-ink-3); font-size: 26px; font-weight: 600; letter-spacing: 0.04em; }
 .cf-chart-head { fill: var(--cf-ink); font-size: 46px; font-weight: 700; }
 .cf-chart-rule { stroke: var(--cf-ink-2); stroke-width: 3; }
-.cf-chart-limit { fill: none; stroke: var(--cf-ink); stroke-width: 7; stroke-linecap: round; }
-.cf-chart-units { fill: var(--cf-ink-3); font-size: 30px; font-weight: 600; }
+.cf-chart-limit { fill: none; stroke: var(--cf-ink); stroke-width: 6; stroke-linecap: square; }
+.cf-chart-units { fill: var(--cf-ink-3); font-size: 34px; font-weight: 600; }
 .cf-cell { fill: var(--cf-paper); stroke: var(--cf-line); stroke-width: 2; }
 .cf-cell-structural { fill: var(--cf-structural); }
 .cf-cell-text { fill: var(--cf-ink); font-size: 44px; font-weight: 600; }
@@ -196,7 +196,7 @@ body { font-family: var(--font-body); color: var(--ink); background: var(--page)
 .cf-mark-text { fill: var(--cf-paper); font-size: 36px; font-weight: 700; }
 .cf-note-bg { fill: var(--cf-paper); stroke: var(--cf-line); stroke-width: 2; }
 .cf-note-bullet { fill: var(--cf-light); }
-.cf-note-text { fill: var(--cf-ink); font-family: var(--font-body) !important; font-size: 32px; font-weight: 500; }
+.cf-note-text { fill: var(--cf-ink); font-family: var(--font-body) !important; font-size: 38px; font-weight: 500; }
 
 /* A pinned header covers the work that scrolls up under it, instead of letting the top line show through cut in half. */
 #film .film-head { background: var(--color-surface); }
