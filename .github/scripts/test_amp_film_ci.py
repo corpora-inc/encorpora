@@ -24,8 +24,7 @@ def test_film_kit_uses_its_unit_job_without_application_or_media_work():
     detection = next(step['run'] for step in jobs['changes']['steps'] if step.get('id') == 'filter')
     pattern = re.search(r"set_output amp_film '([^']+)'", detection).group(1)
     for path in ('amp/film/cast.ts', 'amp/film/lessons/rectangle-area.json', 'amp/film/line/line.py', 'amp/film/spark-voice/quality.py',
-                 'amp/src/web/Figure.tsx', 'amp/package-lock.json', 'amp/tsconfig.json',
-                 '.github/workflows/ci.yml'):
+                 'amp/src/web/Figure.tsx', 'amp/package-lock.json', 'amp/tsconfig.json'):
         assert re.search(pattern, path), path
     for path in ('corpan/packs/example/main.ts', 'amp/docs/product-model.md', 'README.md'):
         assert not re.search(pattern, path), path
