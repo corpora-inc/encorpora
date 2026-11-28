@@ -60,10 +60,18 @@ pub fn reader_features(pack: &Pack) -> Result<Vec<String>> {
     if pack.meta("guard_classes").is_some() {
         out.push("guard_classes".to_string());
     }
-    if pack.meta("attributes").is_some() || pack.has_table("applic")? {
+    let rows = |t: &str| -> Result<i64> {
+        if !pack.has_table(t)? {
+            return Ok(0);
+        }
+        Ok(pack
+            .conn()
+            .query_row(&format!("SELECT count(*) FROM {t}"), [], |r| r.get(0))?)
+    };
+    if pack.meta("attributes").is_some() || rows("applic")? > 0 {
         out.push("applicability conditions".to_string());
     }
-    if pack.has_table("ref_table")? {
+    if rows("ref_table")? > 0 {
         out.push("reference tables".to_string());
     }
     if pack.has_table("fault_node")? {

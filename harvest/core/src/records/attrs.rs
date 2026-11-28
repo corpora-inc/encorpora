@@ -89,14 +89,22 @@ impl Records {
             return Err(Error::Invalid(format!("no asset {asset_id:?}")));
         }
         if let Some(defs) = defs {
-            for k in values.keys() {
-                if !defs.iter().any(|d| &d.id == k) {
+            for (k, v) in values {
+                let Some(d) = defs.iter().find(|d| &d.id == k) else {
                     return Err(Error::Invalid(format!(
                         "attribute {k:?} is not one the pack declares ({})",
                         defs.iter()
                             .map(|d| d.id.as_str())
                             .collect::<Vec<_>>()
                             .join(", ")
+                    )));
+                };
+                if let Some(v) = v
+                    && !crate::maint::applic::parses(d.kind, v)
+                {
+                    return Err(Error::Invalid(format!(
+                        "attribute {k:?}: {v:?} is not a {:?} value",
+                        d.kind
                     )));
                 }
             }

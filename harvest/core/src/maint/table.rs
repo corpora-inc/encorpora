@@ -237,7 +237,7 @@ impl Pack {
 
     /// One row by `<table_id>#<ord>`.
     pub fn ref_row(&self, row_id: &str) -> Result<Option<RefRow>> {
-        let Some((t, _)) = row_id.split_once('#') else {
+        let Some((t, _)) = row_id.rsplit_once('#') else {
             return Ok(None);
         };
         Ok(self.ref_rows(t)?.into_iter().find(|r| r.row_id == row_id))
@@ -344,9 +344,13 @@ pub fn lookup(
             .map(|c| c.id.as_str())
             .collect();
         for r in pack.ref_rows(&t.table_id)? {
+            // Only what applies to the asset can match.
+            let Some(row) = row_view(pack, &r, equip, values)? else {
+                continue;
+            };
             let (matched, score) = if let Some(k) = &key {
                 let exact = key_cols.iter().any(|c| {
-                    r.cells
+                    row.cells
                         .get(*c)
                         .is_some_and(|cell| cell.texts().iter().any(|t| fold(t) == *k))
                 });
@@ -355,7 +359,7 @@ pub fn lookup(
                 }
                 ("exact", 1.0)
             } else {
-                let words: std::collections::BTreeSet<String> = r
+                let words: std::collections::BTreeSet<String> = row
                     .cells
                     .values()
                     .flat_map(|c| {
@@ -370,9 +374,6 @@ pub fn lookup(
                     continue;
                 }
                 ("words", found as f64 / q.len() as f64)
-            };
-            let Some(row) = row_view(pack, &r, equip, values)? else {
-                continue;
             };
             hits.push(RowHit {
                 table_id: t.table_id.clone(),

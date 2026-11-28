@@ -714,3 +714,47 @@ fn tables_and_asset_attributes_through_the_api() {
         .unwrap();
     assert_eq!(row["row"]["row_id"], "tab-3-3#3");
 }
+
+#[test]
+fn search_leaves_out_what_does_not_apply_and_values_must_parse() {
+    let (_t, h) = host(env());
+    assert!(
+        api::call(
+            &h,
+            "asset.set_attrs",
+            json!({"asset_id": "unit-201", "values": {"firmware": "2.4.1 (build 77)"}})
+        )
+        .is_err(),
+        "not a version"
+    );
+    ok(
+        &h,
+        "asset.set_attrs",
+        json!({"asset_id": "unit-201", "values": {"firmware": "2.0"}}),
+    );
+    let s = ok(
+        &h,
+        "manual.search",
+        json!({"query": "inverter overcurrent", "asset_id": "unit-201"}),
+    );
+    assert!(
+        s["hits"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .all(|x| x["ref_id"] != "tab-3-3#3"),
+        "the E52 row does not apply below firmware 2.4"
+    );
+    let s = ok(
+        &h,
+        "manual.search",
+        json!({"query": "inverter overcurrent"}),
+    );
+    let row = s["hits"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .find(|x| x["ref_id"] == "tab-3-3#3")
+        .unwrap();
+    assert_eq!(row["applicability"]["status"], "unknown");
+}

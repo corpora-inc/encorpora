@@ -5455,6 +5455,17 @@
     "ManualHit": {
       "description": "One search hit with its text and citation.",
       "properties": {
+        "applicability": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Applicability"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "The hit's statements, when it has any (a hit that does not apply to\nthe asset is left out; one not determined is flagged)."
+        },
         "chunk_id": {
           "type": "string"
         },
@@ -5510,7 +5521,8 @@
         "heading",
         "text",
         "score",
-        "row"
+        "row",
+        "applicability"
       ],
       "type": "object"
     },
@@ -6496,6 +6508,14 @@
     "PracticeItemsParams": {
       "additionalProperties": false,
       "properties": {
+        "asset_id": {
+          "default": null,
+          "description": "The asset (its variant and attributes).",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "equip_id": {
           "default": null,
           "description": "The variant (questions that do not apply to it are left out).",
@@ -6519,6 +6539,17 @@
         "answer": {
           "description": "mc: the choice index as text; numeric: the value; free_text: rubric JSON.",
           "type": "string"
+        },
+        "applicability": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Applicability"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Its statements, when it has any."
         },
         "choices": {
           "items": {
@@ -6596,7 +6627,8 @@
         "note",
         "rationales",
         "rationale_citations",
-        "citations"
+        "citations",
+        "applicability"
       ],
       "type": "object"
     },
@@ -10118,6 +10150,17 @@
     "TestProcedure": {
       "description": "The test procedure that answers a node's question.",
       "properties": {
+        "applicability": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Applicability"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "The procedure's statements, when it has any."
+        },
         "expanded": {
           "description": "Whether it opens expanded at this level.",
           "type": "boolean"
@@ -10154,7 +10197,8 @@
         "expanded",
         "guards",
         "requirements",
-        "steps"
+        "steps",
+        "applicability"
       ],
       "type": "object"
     },

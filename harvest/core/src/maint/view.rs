@@ -165,6 +165,8 @@ pub struct TestProcedure {
     pub guards: Vec<Guard>,
     pub requirements: Vec<Requirement>,
     pub steps: Vec<TaskStep>,
+    /// The procedure's statements, when it has any.
+    pub applicability: Option<Applicability>,
 }
 
 /// Where a `goto` or task action leads.
@@ -423,9 +425,18 @@ pub fn task_view(
         return Ok(None);
     };
     let rows = pack.proc_steps(proc_id)?;
+    let applicability = pack.applicability("procedure", proc_id, values)?;
+    // A step carries the procedure's statements with its own.
     let steps = rows
         .iter()
-        .map(|s| task_step(pack, s, equip, values))
+        .map(|s| {
+            let mut st = task_step(pack, s, equip, values)?;
+            if applicability.is_some() {
+                st.applicability = Applicability::and(applicability.clone(), st.applicability);
+                st.applies = st.applies && Applicability::shown(&st.applicability);
+            }
+            Ok(st)
+        })
         .collect::<Result<Vec<_>>>()?;
     // What guards the task as a whole: everything above its steps.
     let own: BTreeSet<String> = rows.iter().flat_map(|s| s.section_ids.clone()).collect();
@@ -438,7 +449,7 @@ pub fn task_view(
         );
     }
     Ok(Some(TaskView {
-        applicability: pack.applicability("procedure", proc_id, values)?,
+        applicability,
         guards: guards_on_with(pack, &above, equip, values)?,
         requirements: pack.requirements_for("procedure", proc_id, equip)?,
         applies_to: pack.applies_to("procedure", proc_id)?,
@@ -540,6 +551,7 @@ pub fn node_view(
                 guards: task.guards,
                 requirements: task.requirements,
                 steps: task.steps,
+                applicability: task.applicability,
             })
         }
         None => None,

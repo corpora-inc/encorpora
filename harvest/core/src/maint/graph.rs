@@ -623,7 +623,32 @@ fn validate_tables(pack: &Pack, out: &mut Out, counts: &mut GraphCounts) -> Resu
     Ok(())
 }
 
+fn node_exists(pack: &Pack, node_id: &str) -> Result<bool> {
+    if !pack.has_table("fault_node")? {
+        return Ok(false);
+    }
+    Ok(pack
+        .conn()
+        .prepare_cached("SELECT 1 FROM fault_node WHERE node_id = ?1")?
+        .exists([node_id])?)
+}
+
 fn validate_applic(pack: &Pack, out: &mut Out, counts: &mut GraphCounts) -> Result<()> {
+    if pack.has_table("applic")? {
+        let failed: i64 = pack.conn().query_row(
+            &format!("SELECT count(*) FROM applic WHERE NOT ({})", super::PASSED),
+            [],
+            |r| r.get(0),
+        )?;
+        if failed > 0 {
+            out.add(
+                "applic.provenance",
+                None,
+                None,
+                format!("{failed} applicability statements did not pass verification; their items read as not determined"),
+            );
+        }
+    }
     let defs = match pack.attribute_defs() {
         Ok(d) => d,
         Err(e) => {
@@ -669,6 +694,19 @@ fn validate_applic(pack: &Pack, out: &mut Out, counts: &mut GraphCounts) -> Resu
                 None => false,
             },
             "procedure" => pack.procedure(&r.ref_id)?.is_some(),
+            "proc_step" => match r.ref_id.rsplit_once('#') {
+                Some((p, o)) => o.parse::<i64>().ok().is_some_and(|o| {
+                    pack.proc_steps(p)
+                        .is_ok_and(|s| s.iter().any(|x| x.ord == o))
+                }),
+                None => false,
+            },
+            "fault_tree" => pack
+                .fault_trees(None)?
+                .iter()
+                .any(|t| t.tree_id == r.ref_id),
+            "fault_node" => node_exists(pack, &r.ref_id)?,
+            "question" => pack.question(&r.ref_id)?.is_some(),
             _ => true,
         };
         if !exists {
