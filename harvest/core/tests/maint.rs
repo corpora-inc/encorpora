@@ -946,3 +946,59 @@ fn a_signal_can_lead_to_a_section_with_no_tree() {
     ));
     assert!(rules(&graph::validate(&bad.pack).unwrap()).contains(&"signal.target".to_string()));
 }
+
+#[test]
+fn an_unmatched_status_text_gets_closest_entries_never_a_match() {
+    // The vehicle adds a tag and an instance number the table does not print.
+    let b = pump_with(exec(
+        "INSERT INTO signal_map VALUES ('mavlink.statustext', 'Battery below minimum arming voltage', 'Battery below minimum arming voltage', NULL, NULL, 'm40.3-2.codes', NULL, 'prov-pump40');
+         INSERT INTO symptom VALUES ('s-arm', 't-nocrank', 'Battery below minimum arming voltage', 'starting', '[]', 'en', 'prov-pump40');",
+    ));
+    assert_eq!(
+        search::closest_query("PreArm: Battery 1 below minimum arming voltage").as_deref(),
+        Some("Battery below minimum arming voltage")
+    );
+    assert_eq!(search::closest_query("E40"), None, "a code is not text");
+    assert_eq!(search::closest_query("12.5 V"), None);
+    let o = obs(
+        "mavlink.statustext",
+        "PreArm: Battery 1 below minimum arming voltage",
+    );
+    let m = search::signal_match(&b.pack, std::slice::from_ref(&o), None).unwrap();
+    assert!(
+        m.hits.is_empty() && m.suggested.is_none(),
+        "never a match or a start"
+    );
+    assert_eq!(m.unmatched, vec![o.clone()]);
+    let c = &m.closest[0];
+    assert_eq!(c.symptoms[0].symptom.symptom_id, "s-arm");
+    assert_eq!(c.symptoms[0].confidence, search::Confidence::Confident);
+    assert_eq!(
+        c.signals[0].rule.pattern,
+        "Battery below minimum arming voltage"
+    );
+    assert_eq!(c.signals[0].confidence, search::Confidence::Confident);
+    assert!(!c.signals[0].has_tree);
+    assert_eq!(
+        c.signals[0].section.as_ref().unwrap().section_id,
+        "m40.3-2.codes"
+    );
+    // Deterministic.
+    assert_eq!(search::signal_match(&b.pack, &[o], None).unwrap(), m);
+    // One shared word is only "closest".
+    let weak = search::signal_match(
+        &b.pack,
+        &[obs(
+            "mavlink.statustext",
+            "PreArm: Compass2 voltage odd reading",
+        )],
+        None,
+    )
+    .unwrap();
+    assert!(
+        weak.closest[0]
+            .signals
+            .iter()
+            .all(|s| s.confidence == search::Confidence::Closest)
+    );
+}

@@ -190,6 +190,11 @@ pub struct HubGate {
     pub backoff_s: u64,
     pub next_try_at: Option<String>,
     pub fleet_every_hours: Option<f64>,
+    /// The attachment policy and chunk size learned at the last hello.
+    #[serde(default)]
+    pub attachments: Option<crate::sync::AttachmentMode>,
+    #[serde(default)]
+    pub chunk_bytes: Option<u64>,
 }
 
 /// First back-off after a refusal, and its cap.
@@ -197,6 +202,17 @@ pub const BACKOFF_FIRST_S: u64 = 300;
 pub const BACKOFF_CAP_S: u64 = 86_400;
 
 impl HubGate {
+    /// Learn what a hello says (the policy, a refusal) without the upload
+    /// back-off bookkeeping.
+    pub(crate) fn learn(&mut self, reply: &crate::sync::HelloReply) {
+        self.fleet_every_hours = Some(reply.fleet_every_hours);
+        self.attachments = Some(reply.attachments);
+        self.chunk_bytes = Some(reply.chunk_bytes);
+        if reply.accepted {
+            self.refused = None;
+        }
+    }
+
     pub(crate) fn load(conn: &Connection) -> Result<Self> {
         let raw: Option<String> = conn
             .query_row(
@@ -209,7 +225,7 @@ impl HubGate {
             .and_then(|r| serde_json::from_str(&r).ok())
             .unwrap_or_default())
     }
-    fn save(&self, conn: &Connection) -> Result<()> {
+    pub(crate) fn save(&self, conn: &Connection) -> Result<()> {
         conn.execute(
             "INSERT INTO records_meta (key, value) VALUES ('hub_gate', ?1)
              ON CONFLICT (key) DO UPDATE SET value = excluded.value",
@@ -2738,7 +2754,8 @@ impl Records {
                 error: None,
             });
         }
-        // Nothing queued: nothing to ask the hub for.
+        // Nothing queued: nothing to ask the hub for (the attachment lane
+        // says its own hello).
         if !force && self.outbox_status()?.pending == 0 {
             return Ok(HubFlush {
                 hello: None,
@@ -2768,6 +2785,8 @@ impl Records {
             }
         };
         gate.fleet_every_hours = Some(reply.fleet_every_hours);
+        gate.attachments = Some(reply.attachments);
+        gate.chunk_bytes = Some(reply.chunk_bytes);
         if !reply.accepted {
             gate.backoff_s = if force || gate.refused != reply.refused {
                 BACKOFF_FIRST_S

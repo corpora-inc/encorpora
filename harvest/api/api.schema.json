@@ -519,6 +519,27 @@
       ],
       "type": "object"
     },
+    "AttachmentMode": {
+      "description": "What attachments travel on a link (the hub's policy per link class).",
+      "oneOf": [
+        {
+          "enum": [
+            "full"
+          ],
+          "type": "string"
+        },
+        {
+          "const": "refs",
+          "description": "Only the references (they travel with the records); the files wait.",
+          "type": "string"
+        },
+        {
+          "const": "downscaled",
+          "description": "The downscaled copy when the host made one, else the file.",
+          "type": "string"
+        }
+      ]
+    },
     "AuditChunk": {
       "description": "One retrieved chunk as the log keeps it.",
       "properties": {
@@ -1219,6 +1240,87 @@
         "section_id",
         "citation",
         "heading"
+      ],
+      "type": "object"
+    },
+    "Closest": {
+      "description": "The closest entries for one text observation no rule matched.",
+      "properties": {
+        "observed": {
+          "$ref": "#/$defs/Observation"
+        },
+        "query": {
+          "description": "The words searched: the text with a leading tag (`PreArm:`) taken\noff and numbers and instance digits dropped.",
+          "type": "string"
+        },
+        "signals": {
+          "description": "Text rules of the same signal kind, rated by the same rule.",
+          "items": {
+            "$ref": "#/$defs/ClosestSignal"
+          },
+          "type": "array"
+        },
+        "symptoms": {
+          "description": "The symptom index, ranked and rated as `symptom.search` does.",
+          "items": {
+            "$ref": "#/$defs/SymptomHit"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "observed",
+        "query",
+        "symptoms",
+        "signals"
+      ],
+      "type": "object"
+    },
+    "ClosestSignal": {
+      "description": "A signal rule close to an unmatched text.",
+      "properties": {
+        "citation": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "confidence": {
+          "$ref": "#/$defs/Confidence"
+        },
+        "coverage": {
+          "format": "double",
+          "type": "number"
+        },
+        "has_tree": {
+          "type": "boolean"
+        },
+        "rule": {
+          "$ref": "#/$defs/SignalRule"
+        },
+        "score": {
+          "format": "double",
+          "type": "number"
+        },
+        "section": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SignalSection"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "rule",
+        "score",
+        "coverage",
+        "confidence",
+        "citation",
+        "section",
+        "has_tree"
       ],
       "type": "object"
     },
@@ -2951,6 +3053,18 @@
         "accepted": {
           "type": "boolean"
         },
+        "attachments": {
+          "$ref": "#/$defs/AttachmentMode",
+          "default": "full",
+          "description": "What attachments may travel on the link the device named."
+        },
+        "chunk_bytes": {
+          "default": 65536,
+          "description": "The attachment chunk size, bytes.",
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
         "fleet_every_hours": {
           "description": "How often a device fetches a changed fleet summary (a hub setting\nthe device learns here).",
           "format": "double",
@@ -2974,7 +3088,9 @@
         "accepted",
         "refused",
         "fleet_every_hours",
-        "hub_time"
+        "hub_time",
+        "attachments",
+        "chunk_bytes"
       ],
       "type": "object"
     },
@@ -5224,6 +5340,47 @@
       },
       "type": "object"
     },
+    "PackSummary": {
+      "description": "One installed pack, for choosing among several.",
+      "properties": {
+        "equipment_roots": {
+          "description": "The top of each equipment tree (no parent).",
+          "items": {
+            "$ref": "#/$defs/Equipment"
+          },
+          "type": "array"
+        },
+        "has_fault_trees": {
+          "type": "boolean"
+        },
+        "licenses": {
+          "description": "The sources' licenses, each once.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "pack_id": {
+          "type": "string"
+        },
+        "title": {
+          "description": "`pack_meta.title`, else the first source's title, else the id.",
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "pack_id",
+        "title",
+        "version",
+        "equipment_roots",
+        "licenses",
+        "has_fault_trees"
+      ],
+      "type": "object"
+    },
     "PackUpdate": {
       "description": "A pack replaced by a newer one from the hub.",
       "properties": {
@@ -7004,6 +7161,13 @@
           "description": "True when the hits lead to more than one tree (rules with no tree\ndo not count).",
           "type": "boolean"
         },
+        "closest": {
+          "description": "For each unmatched text observation, the closest entries in the\nmanual: never a match, never a start. The app says \"no exact\nentry; closest entries in this manual\".",
+          "items": {
+            "$ref": "#/$defs/Closest"
+          },
+          "type": "array"
+        },
         "hits": {
           "description": "Most specific first: exact, glob, prefix, regex; then observation order.",
           "items": {
@@ -7033,7 +7197,8 @@
         "hits",
         "suggested",
         "ambiguous",
-        "unmatched"
+        "unmatched",
+        "closest"
       ],
       "type": "object"
     },
@@ -8863,6 +9028,17 @@
       },
       "result": {
         "$ref": "#/$defs/PackInfoView"
+      }
+    },
+    "pack.list": {
+      "params": {
+        "$ref": "#/$defs/NoParams"
+      },
+      "result": {
+        "items": {
+          "$ref": "#/$defs/PackSummary"
+        },
+        "type": "array"
       }
     },
     "pack.validate": {

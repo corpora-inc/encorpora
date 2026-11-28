@@ -60,6 +60,10 @@
       "day": 20.0
     }
   ],
+  "photos": null,
+  "attachments_low": "downscaled",
+  "attachments_normal": "full",
+  "chunk_kb": 64,
   "pack_update_day": null,
   "final_sync": true,
   "sample_every_days": 30.0

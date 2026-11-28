@@ -49,6 +49,10 @@
   "skew_bound_minutes": 30,
   "rogue_device": false,
   "revoke": [],
+  "photos": null,
+  "attachments_low": "downscaled",
+  "attachments_normal": "full",
+  "chunk_kb": 64,
   "pack_update_day": 20.0,
   "final_sync": true,
   "sample_every_days": 30.0

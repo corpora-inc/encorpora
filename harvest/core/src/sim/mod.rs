@@ -145,6 +145,34 @@ pub struct ScriptedConflict {
     pub gap_minutes: f64,
 }
 
+/// Photos taken with lessons. Sizes are log-normal. The simulation keeps
+/// real bytes at `1 / byte_scale` of the drawn size (so 180 days of photos
+/// fit in memory) and charges the wire for the full size.
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[serde(deny_unknown_fields)]
+pub struct PhotoSpec {
+    /// Mean photos per lesson (Poisson).
+    pub per_lesson: f64,
+    pub median_kb: f64,
+    #[serde(default = "default_sigma")]
+    pub sigma: f64,
+    /// The host's downscaled copy, as a share of the full size.
+    #[serde(default = "default_small_ratio")]
+    pub small_ratio: f64,
+    #[serde(default = "default_scale")]
+    pub byte_scale: u64,
+}
+
+fn default_sigma() -> f64 {
+    0.5
+}
+fn default_small_ratio() -> f64 {
+    0.08
+}
+fn default_scale() -> u64 {
+    100
+}
+
 /// A device revoked at the hub.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(deny_unknown_fields)]
@@ -192,6 +220,17 @@ pub struct Scenario {
     /// accepted.
     #[serde(default)]
     pub revoke: Vec<ScriptedRevoke>,
+    /// Photos with lessons; their bytes move on the attachment lane.
+    #[serde(default)]
+    pub photos: Option<PhotoSpec>,
+    /// The hub's attachment policy on a low link (below 100 kbit/s) and a
+    /// normal one, and its chunk size.
+    #[serde(default = "default_low_mode")]
+    pub attachments_low: crate::sync::AttachmentMode,
+    #[serde(default = "default_normal_mode")]
+    pub attachments_normal: crate::sync::AttachmentMode,
+    #[serde(default = "default_chunk_kb")]
+    pub chunk_kb: u64,
     /// A new pack version is published at the hub on this day.
     #[serde(default)]
     pub pack_update_day: Option<f64>,
@@ -202,6 +241,15 @@ pub struct Scenario {
     pub sample_every_days: f64,
 }
 
+fn default_low_mode() -> crate::sync::AttachmentMode {
+    crate::sync::AttachmentMode::Downscaled
+}
+fn default_normal_mode() -> crate::sync::AttachmentMode {
+    crate::sync::AttachmentMode::Full
+}
+fn default_chunk_kb() -> u64 {
+    64
+}
 fn default_skew_bound() -> i64 {
     crate::hub::DEFAULT_SKEW_BOUND_MINUTES
 }
@@ -353,6 +401,9 @@ pub struct Invariants {
     /// step: `bytes.refused` stays within (refused devices) × (days + 12) ×
     /// (one hello and its answer).
     pub refused_traffic_bounded: bool,
+    /// With photos: the attachment lane never changed when a record or a
+    /// lesson reached the hub.
+    pub attachments_never_delay_records: bool,
     pub details: Vec<String>,
 }
 
@@ -376,7 +427,38 @@ pub struct Metrics {
     pub bundles: Bundles,
     pub packs: PackUpdates,
     pub growth: Vec<Growth>,
+    /// The attachment lane, when the scenario takes photos.
+    pub attachments: Option<Attachments>,
     pub invariants: Invariants,
+}
+
+/// The attachment lane: what moved, what waits, and whether it ever held
+/// up a record.
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
+pub struct Attachments {
+    pub photos: u64,
+    /// Full-size bytes of every photo taken.
+    pub bytes_taken: u64,
+    /// Wire bytes the lane sent (full scale), and the requests.
+    pub bytes_sent: u64,
+    pub chunks: u64,
+    /// Bytes not resent after an interruption (the hub already held them).
+    pub resumed_bytes: u64,
+    /// Variants complete at the hub, and the photos complete in full.
+    pub complete_at_hub: u64,
+    pub full_at_hub: u64,
+    /// Passes the lane cut short to let records go first.
+    pub yields: u64,
+    /// `(day, bytes)` of photo bytes still on devices under the full
+    /// policy (what waits for a link good enough to send it).
+    pub backlog: Vec<(f64, u64)>,
+    /// Capture to hub of every record and lesson, in a run with the
+    /// attachment lane off and in this run.
+    pub records_latency_without: Stats,
+    pub records_latency_with: Stats,
+    /// Every record arrived at the same time in both runs.
+    pub never_delayed_a_record: bool,
+    pub byte_scale: u64,
 }
 
 // ------------------------------------------------------------------ rng
@@ -455,6 +537,13 @@ struct Device {
 
 struct Net {
     rng: Rng,
+    /// The attachment lane draws from its own stream, so turning it on or
+    /// off leaves every record transfer the same.
+    att_rng: Rng,
+    att_lane: bool,
+    att_bytes: u64,
+    att_chunks: u64,
+    byte_scale: u64,
     now: i64,
     window_end: i64,
     up: bool,
@@ -496,8 +585,11 @@ impl Wire<'_> {
         let t_up = lat + ((up + n.spec.overhead_bytes) as f64 * 8.0 / bps * 1000.0) as i64;
         let t_down = lat + ((down + n.spec.overhead_bytes) as f64 * 8.0 / bps * 1000.0) as i64;
         let total = t_up + t_down;
-        let drop_at = if n.rng.f() < n.spec.drop_prob {
-            Some((n.rng.f() * total as f64) as i64)
+        let att = n.att_lane;
+        let roll = if att { n.att_rng.f() } else { n.rng.f() };
+        let drop_at = if roll < n.spec.drop_prob {
+            let at = if att { n.att_rng.f() } else { n.rng.f() };
+            Some((at * total as f64) as i64)
         } else {
             None
         };
@@ -648,7 +740,7 @@ impl HubLink for Wire<'_> {
     }
 
     fn hello(&self) -> Result<HelloReply> {
-        let h = self.key.hello()?;
+        let h = self.key.hello(self.link_class())?;
         let size = serde_json::to_vec(&h)?.len() as u64;
         let (asked, replied) = self.transfer(size, 160);
         if !asked {
@@ -672,6 +764,56 @@ impl HubLink for Wire<'_> {
     fn public_key(&self) -> String {
         self.key.public_base64()
     }
+
+    fn link_class(&self) -> crate::sync::LinkClass {
+        if self.net.borrow().spec.bandwidth_bps < 100_000.0 {
+            crate::sync::LinkClass::Low
+        } else {
+            crate::sync::LinkClass::Normal
+        }
+    }
+
+    fn attachment_offset(&self, sha256: &str, total: u64) -> Result<u64> {
+        let (_, replied) = self.transfer(160, 80);
+        if !replied {
+            return Err(Error::Sync(
+                "link dropped while asking for an attachment".into(),
+            ));
+        }
+        self.at_hub(|h| h.attachment_offset(sha256, total))
+    }
+
+    fn put_chunk(
+        &self,
+        sha256: &str,
+        variant: &str,
+        total: u64,
+        offset: u64,
+        data: &[u8],
+    ) -> Result<u64> {
+        let c = self.key.chunk(sha256, variant, total, offset, data)?;
+        let scale = self.net.borrow().byte_scale;
+        // The wire carries the full-size chunk (base64 and the signature included).
+        let size = (c.data.len() as u64) * scale + 400;
+        let (stored, replied) = self.transfer(size, 80);
+        {
+            let mut n = self.net.borrow_mut();
+            n.att_bytes += size;
+            n.att_chunks += 1;
+        }
+        if !stored {
+            return Err(Error::Sync(
+                "link dropped during an attachment chunk".into(),
+            ));
+        }
+        let held = self.at_hub(|h| h.put_chunk(&c))?;
+        if !replied {
+            return Err(Error::Sync(
+                "link dropped before the hub answered the chunk".into(),
+            ));
+        }
+        Ok(held)
+    }
 }
 
 fn db_bytes(rec: &Records) -> u64 {
@@ -692,6 +834,7 @@ fn work_job(
     rng: &mut Rng,
     wl: &Workload,
     captured: &mut Vec<String>,
+    photos: Option<(&PhotoSpec, &mut Rng, &mut (u64, u64))>,
 ) -> Result<(bool, Option<String>)> {
     let pack = &dev.pack;
     let asset_id = dev.assets[rng.below(dev.assets.len())].clone();
@@ -782,10 +925,36 @@ fn work_job(
             .node(&node_id)
             .map(|n| n.text.clone())
             .unwrap_or_default();
+        let mut refs = Vec::new();
+        if let Some((spec, prng, taken)) = photos {
+            // Poisson count, log-normal size; real bytes at 1/scale.
+            let l = (-spec.per_lesson.max(0.0)).exp();
+            let (mut k, mut p) = (0u32, 1.0f64);
+            loop {
+                p *= prng.f();
+                if p <= l || k > 20 {
+                    break;
+                }
+                k += 1;
+            }
+            for _ in 0..k {
+                let kb = spec.median_kb * (spec.sigma * prng.normal()).exp();
+                let full = (kb * 1024.0) as u64;
+                let scale = spec.byte_scale.max(1);
+                let n = ((full / scale).max(16)) as usize;
+                let bytes: Vec<u8> = (0..n).map(|_| (prng.next() & 0xFF) as u8).collect();
+                let small_n = ((n as f64 * spec.small_ratio) as usize).max(8);
+                let small: Vec<u8> = bytes[..small_n.min(n)].iter().map(|b| b ^ 0x5A).collect();
+                refs.push(dev.rec.add_attachment(&bytes, "image/jpeg", Some(&small))?);
+                taken.0 += 1;
+                taken.1 += full;
+            }
+        }
         Some(LessonInput {
             cause,
             action,
             minutes: Some(10 + rng.below(80) as u32),
+            photos: refs,
             submit: true,
             ..Default::default()
         })
@@ -874,13 +1043,41 @@ pub fn run(s: &Scenario, pack: Option<&Path>) -> Result<Metrics> {
     if tmp.exists() {
         std::fs::remove_dir_all(&tmp)?;
     }
-    let out = run_in(s, pack, &tmp);
+    let out = (|| {
+        if s.photos.is_none() {
+            return Ok(run_in(s, pack, &tmp, false)?.0);
+        }
+        // The same fleet twice: the attachment lane off, then on. Records
+        // draw from their own random stream, so any difference in when a
+        // record arrives is the lane's doing.
+        let (_, without) = run_in(s, pack, &tmp.join("without"), false)?;
+        let (mut m, with) = run_in(s, pack, &tmp.join("with"), true)?;
+        if let Some(a) = m.attachments.as_mut() {
+            a.records_latency_without = stats(without.clone());
+            a.records_latency_with = stats(with.clone());
+            a.never_delayed_a_record = without == with;
+        }
+        let same = without == with;
+        m.invariants.attachments_never_delay_records = same;
+        if !same {
+            m.invariants.ok = false;
+            m.invariants
+                .details
+                .push("the attachment lane changed when records reached the hub".into());
+        }
+        Ok(m)
+    })();
     set_clock(None);
     let _ = std::fs::remove_dir_all(&tmp);
     out
 }
 
-fn run_in(s: &Scenario, pack_src: Option<&Path>, tmp: &Path) -> Result<Metrics> {
+fn run_in(
+    s: &Scenario,
+    pack_src: Option<&Path>,
+    tmp: &Path,
+    attachments_on: bool,
+) -> Result<(Metrics, Vec<f64>)> {
     crate::records::reset_sim_ids();
     set_clock(Some(EPOCH_MS));
     let keys: Vec<TrustedKey> = vec![fixture::trusted_key()];
@@ -905,12 +1102,22 @@ fn run_in(s: &Scenario, pack_src: Option<&Path>, tmp: &Path) -> Result<Metrics> 
     let hub = Hub::in_memory(hub_key, "sim-fleet")?
         .with_packs(hub_packs.clone(), keys.clone())
         .with_fleet_every_hours(s.fleet_every_hours)
-        .with_skew_bound_minutes(s.skew_bound_minutes);
+        .with_skew_bound_minutes(s.skew_bound_minutes)
+        .with_attachment_policy(
+            s.attachments_low,
+            s.attachments_normal,
+            (s.chunk_kb * 1024 / s.photos.as_ref().map_or(1, |p| p.byte_scale.max(1))).max(1024),
+        );
     let field_keys = vec![hub.trusted_key()];
     let pack_id = crate::packs::read_manifest(&first_version_dir(&hub_packs)?, &keys)?.pack_id;
     let mut rng = Rng(s.seed);
     let net = RefCell::new(Net {
         rng: Rng(s.seed ^ 0xA5A5_A5A5),
+        att_rng: Rng(s.seed ^ 0x5EED_A77A),
+        att_lane: false,
+        att_bytes: 0,
+        att_chunks: 0,
+        byte_scale: s.photos.as_ref().map_or(1, |p| p.byte_scale.max(1)),
         now: EPOCH_MS,
         window_end: EPOCH_MS,
         up: true,
@@ -1057,6 +1264,12 @@ fn run_in(s: &Scenario, pack_src: Option<&Path>, tmp: &Path) -> Result<Metrics> 
     let mut applied_twice = false;
     let mut bad_install = false;
     let mut conflict_lessons: BTreeMap<usize, String> = BTreeMap::new();
+    let mut photo_rng = Rng(s.seed ^ 0x0F07_0F07);
+    let mut photos_taken: (u64, u64) = (0, 0);
+    let mut att = Attachments {
+        byte_scale: s.photos.as_ref().map_or(1, |p| p.byte_scale.max(1)),
+        ..Default::default()
+    };
     let mut revoked_at: BTreeMap<usize, String> = BTreeMap::new();
     let sync_every = (s.sync_every_minutes.max(1.0) * 60_000.0) as i64;
     let horizon = if s.final_sync { end + DAY } else { end };
@@ -1179,6 +1392,34 @@ fn run_in(s: &Scenario, pack_src: Option<&Path>, tmp: &Path) -> Result<Metrics> 
                     }
                 }
                 let next = net.borrow().now.max(t) + sync_every;
+                if attachments_on && s.photos.is_some() {
+                    // The attachment lane: only what is left of this tick,
+                    // never past the window, never past the next record.
+                    let next_record = q
+                        .iter()
+                        .filter_map(|std::cmp::Reverse((et, _, e))| match e {
+                            Ev::Job(j) | Ev::EditLesson(j, _) if *j == i => Some(*et),
+                            Ev::Conflict(ci)
+                                if s.conflicts[*ci].device == i || s.conflicts[*ci].other == i =>
+                            {
+                                Some(*et)
+                            }
+                            _ => None,
+                        })
+                        .min()
+                        .unwrap_or(i64::MAX);
+                    let deadline = next.min(window_end).min(next_record);
+                    net.borrow_mut().att_lane = true;
+                    let r = d
+                        .rec
+                        .send_attachments(&wire, &|| net.borrow().now >= deadline);
+                    net.borrow_mut().att_lane = false;
+                    let r = r?;
+                    att.resumed_bytes += r.resumed_bytes * att.byte_scale;
+                    if r.yielded {
+                        att.yields += 1;
+                    }
+                }
                 if next < devices[i].window_end {
                     push(&mut q, next, Ev::Sync(i));
                 }
@@ -1187,7 +1428,11 @@ fn run_in(s: &Scenario, pack_src: Option<&Path>, tmp: &Path) -> Result<Metrics> 
                 let d = &devices[i];
                 set_clock(Some(t + d.skew_ms));
                 let mut new_items = Vec::new();
-                let (did, lesson) = work_job(d, &mut rng, &s.workload, &mut new_items)?;
+                let photos = s
+                    .photos
+                    .as_ref()
+                    .map(|p| (p, &mut photo_rng, &mut photos_taken));
+                let (did, lesson) = work_job(d, &mut rng, &s.workload, &mut new_items, photos)?;
                 if did {
                     m.jobs += 1;
                 }
@@ -1376,6 +1621,16 @@ fn run_in(s: &Scenario, pack_src: Option<&Path>, tmp: &Path) -> Result<Metrics> 
             }
             Ev::Sample => {
                 let day = (t - EPOCH_MS) as f64 / DAY as f64;
+                if s.photos.is_some() {
+                    let mut b = 0u64;
+                    for d in &devices {
+                        b += d
+                            .rec
+                            .attachment_backlog(crate::sync::AttachmentMode::Full)?
+                            * att.byte_scale;
+                    }
+                    att.backlog.push(((day * 10.0).round() / 10.0, b));
+                }
                 for d in &mut devices {
                     d.growth
                         .push(((day * 10.0).round() / 10.0, db_bytes(&d.rec)));
@@ -1427,6 +1682,7 @@ fn run_in(s: &Scenario, pack_src: Option<&Path>, tmp: &Path) -> Result<Metrics> 
     set_clock(Some(horizon));
     // Final accounting.
     let n = net.into_inner();
+    let net_att = (n.att_bytes, n.att_chunks);
     m.link = n.m.clone();
     m.link.refused_deliveries = n.refused_deliveries;
     m.link.refused_hellos = n.refused_hellos;
@@ -1504,6 +1760,8 @@ fn run_in(s: &Scenario, pack_src: Option<&Path>, tmp: &Path) -> Result<Metrics> 
         delivered_of_captured: ratio(delivered, counted),
         delivered_of_deliverable: ratio(delivered, counted.saturating_sub(blocked)),
     };
+    let mut latencies = to_hub.clone();
+    latencies.sort_by(f64::total_cmp);
     m.capture_to_hub_hours = stats(to_hub);
     m.approval_to_device_hours = stats(to_device);
     let jobs_at_hub = hub.status()?.jobs;
@@ -1623,10 +1881,37 @@ fn run_in(s: &Scenario, pack_src: Option<&Path>, tmp: &Path) -> Result<Metrics> 
         audit_chains_intact: chains,
         no_upload_from_unenrolled_or_revoked: unenrolled_ok,
         refused_traffic_bounded: refused_ok,
+        attachments_never_delay_records: true,
         ok: lost == 0 && !applied_twice && !bad_install && chains && unenrolled_ok && refused_ok,
         details,
     };
-    Ok(m)
+    if s.photos.is_some() {
+        let n = net_att;
+        att.photos = photos_taken.0;
+        att.bytes_taken = photos_taken.1;
+        att.bytes_sent = n.0;
+        att.chunks = n.1;
+        att.complete_at_hub = hub.conn().query_row(
+            "SELECT count(*) FROM attachment WHERE complete = 1",
+            [],
+            |r| r.get::<_, i64>(0),
+        )? as u64;
+        att.full_at_hub = hub.conn().query_row(
+            "SELECT count(*) FROM attachment WHERE complete = 1 AND variant = 'full'",
+            [],
+            |r| r.get::<_, i64>(0),
+        )? as u64;
+        let mut b = 0u64;
+        for d in &devices {
+            b += d
+                .rec
+                .attachment_backlog(crate::sync::AttachmentMode::Full)?
+                * att.byte_scale;
+        }
+        att.backlog.push((s.days, b));
+        m.attachments = Some(att);
+    }
+    Ok((m, latencies))
 }
 
 fn ratio(a: u64, b: u64) -> f64 {

@@ -448,8 +448,26 @@ pub trait HubLink {
     /// The small signed hello that opens every upload: the hub answers
     /// whether it accepts this device before any payload is sent.
     fn hello(&self) -> Result<HelloReply>;
+    /// The link the device is on now (the hub's attachment policy depends
+    /// on it); `normal` unless the host knows better.
+    fn link_class(&self) -> LinkClass {
+        LinkClass::Normal
+    }
     /// The device's public key (base64), for an administrator to enroll.
     fn public_key(&self) -> String;
+    /// How much of an attachment variant the hub already holds (resume
+    /// point; `total` when it holds it all, from any device).
+    fn attachment_offset(&self, sha256: &str, total: u64) -> Result<u64>;
+    /// Sign and send one chunk of an attachment variant; returns how much
+    /// of it the hub now holds.
+    fn put_chunk(
+        &self,
+        sha256: &str,
+        variant: &str,
+        total: u64,
+        offset: u64,
+        data: &[u8],
+    ) -> Result<u64>;
 }
 
 /// Why the hub refuses a device.
@@ -480,7 +498,78 @@ impl Refusal {
 pub struct Hello {
     pub device_id: String,
     pub signed_at: String,
+    /// The link the device is on now, as the host knows it.
+    #[serde(default)]
+    pub link: LinkClass,
     pub signature: String,
+}
+
+/// How good the device's current link is (the host decides: a satellite
+/// or radio link is `low`).
+#[derive(
+    Debug, Clone, Copy, Default, Serialize, Deserialize, JsonSchema, PartialEq, Eq, PartialOrd, Ord,
+)]
+#[serde(rename_all = "snake_case")]
+pub enum LinkClass {
+    Low,
+    #[default]
+    Normal,
+}
+
+/// What attachments travel on a link (the hub's policy per link class).
+#[derive(
+    Debug, Clone, Copy, Serialize, Deserialize, JsonSchema, PartialEq, Eq, PartialOrd, Ord,
+)]
+#[serde(rename_all = "snake_case")]
+pub enum AttachmentMode {
+    /// Only the references (they travel with the records); the files wait.
+    Refs,
+    /// The downscaled copy when the host made one, else the file.
+    Downscaled,
+    Full,
+}
+
+/// One chunk of an attachment upload, signed by the device over the
+/// content's hash, the variant, the offset and the chunk's hash.
+#[derive(Debug, Clone, Serialize, Deserialize, JsonSchema, PartialEq)]
+#[serde(deny_unknown_fields)]
+pub struct AttachmentChunk {
+    pub device_id: String,
+    /// The SHA-256 of the file this variant is (content addressed).
+    pub sha256: String,
+    /// `full` or `small`.
+    pub variant: String,
+    /// The size of the whole variant.
+    pub total: u64,
+    pub offset: u64,
+    /// The chunk, base64.
+    pub data: String,
+    pub signed_at: String,
+    pub signature: String,
+}
+
+impl AttachmentChunk {
+    fn message(&self) -> Result<Vec<u8>> {
+        use base64::Engine as _;
+        let raw = base64::engine::general_purpose::STANDARD
+            .decode(self.data.as_bytes())
+            .map_err(|_| Error::Invalid("attachment chunk is not base64".into()))?;
+        crate::canon::to_vec(&serde_json::json!({
+            "format": "harvest-attachment/1",
+            "device_id": self.device_id,
+            "sha256": self.sha256,
+            "variant": self.variant,
+            "total": self.total,
+            "offset": self.offset,
+            "chunk_sha256": hex_encode(&Sha256::digest(&raw)),
+            "signed_at": self.signed_at,
+        }))
+    }
+
+    /// Check the signature against the device's public key.
+    pub fn verify(&self, public: &[u8; 32]) -> Result<()> {
+        verify_sig(public, &self.device_id, &self.signature, &self.message()?)
+    }
 }
 
 impl Hello {
@@ -489,6 +578,7 @@ impl Hello {
             "format": "harvest-hello/1",
             "device_id": self.device_id,
             "signed_at": self.signed_at,
+            "link": self.link,
         }))
     }
 
@@ -507,7 +597,23 @@ pub struct HelloReply {
     /// the device learns here).
     pub fleet_every_hours: f64,
     pub hub_time: String,
+    /// What attachments may travel on the link the device named.
+    #[serde(default = "default_mode")]
+    pub attachments: AttachmentMode,
+    /// The attachment chunk size, bytes.
+    #[serde(default = "default_chunk")]
+    pub chunk_bytes: u64,
 }
+
+fn default_mode() -> AttachmentMode {
+    AttachmentMode::Full
+}
+fn default_chunk() -> u64 {
+    DEFAULT_CHUNK_BYTES
+}
+
+/// Default attachment chunk size.
+pub const DEFAULT_CHUNK_BYTES: u64 = 64 * 1024;
 
 fn verify_sig(public: &[u8; 32], device_id: &str, signature: &str, message: &[u8]) -> Result<()> {
     use base64::Engine as _;
@@ -556,10 +662,11 @@ impl DeviceKey {
         device_id_for(self.0.verifying_key().as_bytes())
     }
     /// Sign a hello.
-    pub fn hello(&self) -> Result<Hello> {
+    pub fn hello(&self, link: LinkClass) -> Result<Hello> {
         let mut h = Hello {
             device_id: self.device_id(),
             signed_at: now_rfc3339(),
+            link,
             signature: String::new(),
         };
         use base64::Engine as _;
@@ -567,6 +674,32 @@ impl DeviceKey {
         h.signature =
             base64::engine::general_purpose::STANDARD.encode(self.0.sign(&h.message()?).to_bytes());
         Ok(h)
+    }
+
+    /// Sign one chunk of an attachment upload.
+    pub fn chunk(
+        &self,
+        sha256: &str,
+        variant: &str,
+        total: u64,
+        offset: u64,
+        data: &[u8],
+    ) -> Result<AttachmentChunk> {
+        use base64::Engine as _;
+        use ed25519_dalek::Signer;
+        let mut c = AttachmentChunk {
+            device_id: self.device_id(),
+            sha256: sha256.to_string(),
+            variant: variant.to_string(),
+            total,
+            offset,
+            data: base64::engine::general_purpose::STANDARD.encode(data),
+            signed_at: now_rfc3339(),
+            signature: String::new(),
+        };
+        c.signature =
+            base64::engine::general_purpose::STANDARD.encode(self.0.sign(&c.message()?).to_bytes());
+        Ok(c)
     }
 
     /// Sign a delivery of `items`.
