@@ -666,8 +666,8 @@ fn a_node_opens_on_its_overview_and_never_repeats_itself() {
         c.execute_batch(
             r#"INSERT INTO course_node VALUES ('course', NULL, 0, 'course', 'Machine course', 'All of it.', '', '', '', '{}', '[]', '[]', 'en', 'prov-fixture');
                INSERT INTO course_node VALUES ('topic:lines', 'course', 1, 'topic', 'Energized lines',
-                 'How close a machine may work to a power line.', 'Picking the voltage band.',
-                 'Measuring from the cab.', 'Expect a table lookup.', '{}', '["ex.2"]', '[]', 'en', 'prov-fixture');"#,
+                 'How close a machine may work to an energized power line, by voltage.', 'Picking the right voltage band when a value sits on a boundary.',
+                 'Measuring from the cab instead of the closest part of the load.', 'Expect a table lookup.', '{}', '["ex.2"]', '[]', 'en', 'prov-fixture');"#,
         )?;
         Ok(())
     })
@@ -715,7 +715,7 @@ fn a_node_opens_on_its_overview_and_never_repeats_itself() {
         texts,
         &[NodeText {
             field: "mistakes".into(),
-            text: "Measuring from the cab.".into()
+            text: "Measuring from the cab instead of the closest part of the load.".into()
         }]
     );
 }
