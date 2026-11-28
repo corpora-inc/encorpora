@@ -1,0 +1,30 @@
+{
+  "sources": {
+    "dm-24-920": {
+      "bytes": 3672,
+      "edition": "Issue 003",
+      "fetched_url": "file:s1000d/DMC-M40-A-24-0-0-00-00A-920A-A_003-00_EN-US.XML",
+      "license": "fictional-test-content",
+      "media_type": "application/xml",
+      "publisher": "Harvest proof (fictional content)",
+      "retrieved_at": "2026-11-28T09:08:02+00:00",
+      "sha256": "50a7422f03e1f77c4f0e011a5a69c34395fb0074e9e6a0953db411fd0c42bc2f",
+      "source_id": "dm-24-920",
+      "title": "Battery replacement (DMC-M40-A-24-0-0-00-00A-920A-A, fictional)",
+      "url": "https://example.invalid/model-40/s1000d"
+    },
+    "dm-32-421": {
+      "bytes": 4406,
+      "edition": "Issue 003",
+      "fetched_url": "file:s1000d/DMC-M40-A-32-0-0-00-00A-421A-A_003-00_EN-US.XML",
+      "license": "fictional-test-content",
+      "media_type": "application/xml",
+      "publisher": "Harvest proof (fictional content)",
+      "retrieved_at": "2026-11-28T09:08:02+00:00",
+      "sha256": "ac6b085fbdbbab58f7d13faccb038d8524d2a1d3340393658d907dae22a2af04",
+      "source_id": "dm-32-421",
+      "title": "Pump overheats, fault isolation (DMC-M40-A-32-0-0-00-00A-421A-A, fictional)",
+      "url": "https://example.invalid/model-40/s1000d"
+    }
+  }
+}

@@ -86,13 +86,20 @@ def sources(corpus: Corpus, log=sys.stderr) -> list[tuple[dict, list[PageModel],
     lock = load_lock(corpus)["sources"]
     out = []
     for spec in corpus.sources:
-        if spec.parser != "maint-pdf":
+        if spec.parser not in ("maint-pdf", "maint-s1000d"):
             continue
         if spec.optional and spec.id not in lock:
-            print(f"[maint] {spec.id}: not fetched (optional); skipped", file=log)
+            if log:
+                print(f"[maint] {spec.id}: not fetched (optional); skipped", file=log)
             continue
         rec, data = read_raw(corpus, spec.id)
         opts = dict(spec.parser_options)
+        if spec.parser == "maint-s1000d":
+            from .s1000d import page_model
+            pm, ctx = page_model(data, spec.id, 0, opts.get("label") or spec.id)
+            opts["_s1000d"] = ctx
+            out.append((rec, [pm], opts))
+            continue
         key = sha256_json({"v": LAYOUT_VERSION, "sha": rec["sha256"], "opts": opts})[:16]
         cache = work(corpus) / f"{spec.id}-{key}.pages.jsonl"
         models = load_models(cache) if cache.exists() else page_models(data, spec.id, opts, _pages(opts, data))
@@ -129,6 +136,16 @@ def extract(corpus: Corpus, arm_name: str | None, offline: bool, only_units: set
     outs, reps, srcs = {}, {}, sources(corpus, log)
     for rec, models, opts in srcs:
         pages = {p.index: p for p in models}
+        if "_s1000d" in opts:       # a data module is structured already: mapped by the schema, no arm, no model
+            from .s1000d import derive
+            from .extract import Unit
+            u = Unit(f"{rec['source_id']}@dm", [0])
+            out_ = derive(opts["_s1000d"], corpus.equipment)
+            outs[rec["source_id"]] = ({u.key: {"output": out_, "backend": "deterministic", "model_id": "s1000d-map:v1",
+                                               "input_sha256": rec["sha256"], "prompt_version": "s1000d-1",
+                                               "created_at": ""}}, [u])
+            reps[rec["source_id"]] = {"arm": "s1000d", "units": 1, "missing": 0}
+            continue
         us = units(models, {**(m.get("units") or {}), **opts})
         if only_units:
             us = [u for u in us if u.key in only_units]
@@ -151,8 +168,13 @@ def assemble(corpus: Corpus, a: Arm, outs: dict, srcs: list, stage_path: Path,
         stage.add_source(rec)
         sid = rec["source_id"]
         asm = Assembly(stage, sid, models, opts.get("id_prefix", sid), opts.get("citation_prefix", ""),
-                       {**m, "forced": forced or {}, "review": review or {}})
+                       {**m, "forced": forced or {}, "review": review or {},
+                        "plausibility": "_s1000d" not in opts})     # no page geometry in a data module
         asm.forced = forced or {}
+        for e in corpus.equipment:           # declared variants: applicability statements resolve against them
+            asm.equipment.setdefault(e["id"], {"equip_id": e["id"], "name": e["name"], "parent": e.get("parent"),
+                                               "idents": [(k, v) for k, vs in (e.get("ident") or {}).items() for v in vs],
+                                               "attrs": [], "ctx": None, "prov": None})
         o, us = outs.get(sid, ({}, []))
         for u in us:
             entry = o.get(u.key)
@@ -375,6 +397,9 @@ def build_table(corpus: Corpus, out_dir: Path | None, harvest: str, pubkey: str 
             "levels": json.dumps(m.get("levels") or DEFAULT_LEVELS), "open_facet": "possible"}
     if m.get("signal_kinds"):
         meta["signal_kinds"] = json.dumps(m["signal_kinds"])
+    basis = [r.get("pattern_basis") for r in reports.values() if r.get("pattern_basis")]
+    if basis:   # the app may say a match rests on documentation that was never checked against the firmware
+        meta["signal_pattern_basis"] = json.dumps({"derived_from": "documentation", "verified_against_firmware": False})
     for k in ("attribution", "license", "license_url"):
         if m.get(k):
             meta[k] = str(m[k])
@@ -389,6 +414,9 @@ def build_table(corpus: Corpus, out_dir: Path | None, harvest: str, pubkey: str 
     shipped = {r[0] for r in __import__("sqlite3").connect(res["path"]).execute("SELECT tree_id FROM fault_tree")}
     rows = sum(r["rows"] for r in reports.values())
     summary = {"pack": res, "tables": reports, "synonyms": syn_rep, "graph": rep.get("graph"), "ok": rep.get("ok"),
+               "signal_patterns": [{"examples": r.get("pattern_examples"), "misses": len(r["pattern_misses"]),
+                                    "collisions": len(r["pattern_collisions"]), **(r.get("pattern_basis") or {})}
+                                   for r in reports.values()],
                "coverage": {"rows_in_source": rows, "trees_shipped": len(shipped),
                             "rows_unfit": sum(len(r["unfit"]) for r in reports.values()),
                             "rate": round(len(shipped) / rows, 4) if rows else 1.0},

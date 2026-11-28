@@ -1,0 +1,41 @@
+# The proof's S1000D side: the same pump content as data modules (s1000d.py), mapped into the pack by
+# the schema (harvest_pipeline/maint/s1000d.py), no model. Answer key: pump40-s1000d-expected.json
+# (the overheating tree without facets, which S1000D isolation steps do not carry, and task 4-3).
+corpus_id: maint-proof-pump40-s1000d
+pack_id: pump40-s1000d-proof
+lang: en
+version: 2026.11.28-1
+
+sources:
+  - id: dm-32-421
+    title: "Pump overheats, fault isolation (DMC-M40-A-32-0-0-00-00A-421A-A, fictional)"
+    publisher: Harvest proof (fictional content)
+    url: https://example.invalid/model-40/s1000d
+    license: fictional-test-content
+    edition: "Issue 003"
+    parser: maint-s1000d
+    parser_options: {id_prefix: m40-32-421, citation_prefix: "DMC-M40-A-32-0-0-00-00A-421A-A"}
+    fetch: {kind: file, path: s1000d/DMC-M40-A-32-0-0-00-00A-421A-A_003-00_EN-US.XML}
+  - id: dm-24-920
+    title: "Battery replacement (DMC-M40-A-24-0-0-00-00A-920A-A, fictional)"
+    publisher: Harvest proof (fictional content)
+    url: https://example.invalid/model-40/s1000d
+    license: fictional-test-content
+    edition: "Issue 003"
+    parser: maint-s1000d
+    parser_options: {id_prefix: m40-24-920, citation_prefix: "DMC-M40-A-24-0-0-00-00A-920A-A"}
+    fetch: {kind: file, path: s1000d/DMC-M40-A-24-0-0-00-00A-920A-A_003-00_EN-US.XML}
+
+equipment:
+  - {id: model-40-utility-pump, name: Model 40 utility pump}
+  - {id: model-40-diesel, parent: model-40-utility-pump, name: Model 40 diesel, ident: {model: [P40-D]}}
+  - {id: model-40-electric, parent: model-40-utility-pump, name: Model 40 electric, ident: {model: [P40-E]}}
+
+maint:
+  release_arm: s1000d
+  expected: pump40-s1000d-expected.json
+  arms:
+    s1000d: {author: {backend: rules}, images: false}
+  signal_kinds: []
+
+embedder: {kind: hash}

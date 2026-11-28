@@ -143,3 +143,19 @@ def write_modules(out: Path) -> list[Path]:
         p.write_text(text)
         paths.append(p)
     return paths
+
+
+def expected() -> dict:
+    """The answer key for what the two modules carry: the overheating tree (S1000D has no facets) and
+    task 4-3, with their warnings, cautions, setup and applicability."""
+    x = C.expected()
+    x["trees"] = [dict(t, facets=[], nodes=[{k: v for k, v in n.items() if k != "proc"} for n in t["nodes"]])
+                  for t in x["trees"] if t["title"] == C.T2_TITLE]      # no facets; no test-procedure module
+    for e in x["equipment"]:
+        e["ident"] = [i for i in e.get("ident", []) if i[0] == "model"]  # serial ranges live in the ACT/PCT, not here
+    x["procedures"] = [p for p in x["procedures"] if p["title"] == C.T43_TITLE]
+    keep = {"tree:" + C.T2_TITLE} | {"step:" + s for s in C.T43_STEPS}
+    x["guards"] = [g for g in x["guards"] if g["guards"] in keep]
+    x["symptoms"], x["signals"] = [], []
+    x["variant"] = "s1000d"
+    return x

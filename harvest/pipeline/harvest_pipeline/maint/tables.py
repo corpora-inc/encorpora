@@ -162,8 +162,22 @@ def _esc(s: str) -> str:
     return "".join("\\" + ch if ch in _META else ch for ch in s)
 
 
-def message_regex(msg: str) -> str:
-    """A regex (Rust regex-lite syntax, case-insensitive in the core) for the message as sent."""
+# Component nouns a device may follow with an instance number the documentation leaves out
+# ("Battery below minimum arming voltage" is sent as "Battery 1 below ..."): an optional number after
+# the message's leading component noun. Configurable per corpus (`instance_nouns`).
+INSTANCE_NOUNS = ["Accel", "Accels", "ADSB", "AHRS", "Airspeed", "Baro", "Battery", "Compass", "Compasses", "EKF3",
+                  "ESC", "Fence", "Generator", "GPS", "Gyro", "Gyros", "INS", "Logging", "Mag", "Motors", "Mount",
+                  "Proximity", "Rangefinder", "Relay", "RPM", "Servo", "Terrain", "VisOdom"]
+
+
+def message_regex(msg: str, instance_nouns: list[str] | None = None) -> str:
+    """A regex (Rust regex-lite syntax, case-insensitive in the core) for the message as sent: numbers and
+    placeholders filled, an optional instance number after a leading component noun, whitespace and
+    the punctuation : , . ; optional and flexible."""
+    nouns = instance_nouns if instance_nouns is not None else INSTANCE_NOUNS
+    first = re.match(r"^([A-Za-z][A-Za-z0-9]*)(?=[\s:,]|$)", msg)
+    inst = bool(first and first.group(1).lower() in {n.lower() for n in nouns}
+                and not re.match(r"^\S+\s+(?:\d|[xX]\b)", msg))      # the table already shows an instance
     out = []
     pos = 0
     tokens = re.finditer(
@@ -172,7 +186,7 @@ def message_regex(msg: str) -> str:
         r"|(?P<ph>(?:\bX\b|(?:(?<=[:=<>])|(?<=: )|(?<=\bmax )|(?<=\bmin ))[xyz]\b))"   # Compass X; a value after : = < > max min (not an axis name like "(z diff")
         r"|(?P<num>(?<![A-Za-z0-9_.])-?\d+(?:\.\d+)?(?![A-Z_]|\.\d))", msg)  # 875, 4.3-5.8v (not 3D, EK3)
     for m in tokens:
-        out.append(_esc(msg[pos:m.start()]))
+        out.append(_lit(msg[pos:m.start()]))
         if m.group("idx"):
             out.append(r"\d+")
         elif m.group("unit"):
@@ -182,13 +196,42 @@ def message_regex(msg: str) -> str:
         else:
             out.append(NUM)
         pos = m.end()
-    out.append(_esc(msg[pos:]))
-    return re.sub(r" +", r"\\s+", "".join(out))
+    out.append(_lit(msg[pos:].rstrip(".")))      # a closing period may be absent (pattern_for allows one)
+    body = "".join(out)
+    if inst:
+        head = _esc(first.group(1))
+        body = head + r"(?:\s*\d+)?" + body[len(head):]
+    return body
 
 
-def pattern_for(msg: str, prefix: str) -> str:
-    pre = f"(?:{_esc(prefix.strip())}\\s*)?" if prefix else ""
-    return f"re:^{pre}{message_regex(msg)}\\s*$"
+def _lit(s: str) -> str:
+    """Literal text: whitespace flexible, and : , ; optional with any spacing ("Airspeed: 1" ~ "Airspeed 1")."""
+    out = []
+    for part in re.split(r"(\s*[:,;]\s*|\s+)", s):
+        if not part:
+            continue
+        if re.fullmatch(r"\s*[:,;]\s*", part):
+            out.append(r"\s*" + _esc(part.strip()) + r"?\s*")
+        elif part.isspace():
+            out.append(r"\s+")
+        else:
+            out.append(_esc(part))
+    return "".join(out)
+
+
+def pattern_for(msg: str, prefix: str, instance_nouns: list[str] | None = None) -> str:
+    pre = f"(?:{_esc(prefix.strip().rstrip(':'))}\\s*:?\\s*)?" if prefix else ""
+    return f"re:^\\s*{pre}{message_regex(msg, instance_nouns)}\\s*\\.?\\s*$"
+
+
+def examples_for(msg: str, prefix: str, instance_nouns: list[str] | None = None) -> list[str]:
+    """The table's form, and the device's form with an instance number after a component noun."""
+    ex = [example_for(msg, prefix)]
+    nouns = {n.lower() for n in (instance_nouns if instance_nouns is not None else INSTANCE_NOUNS)}
+    m = re.match(r"^([A-Za-z][A-Za-z0-9]*)(?=[\s:,]|$)", msg)
+    if m and m.group(1).lower() in nouns and not re.match(r"^\S+\s+(?:\d|[xX]\b)", msg):
+        ex.append(example_for(msg[:m.end()] + " 1" + msg[m.end():], prefix))
+    return ex
 
 
 def example_for(msg: str, prefix: str) -> str:
@@ -218,6 +261,7 @@ class TableBuild:
     cite: str
     signal_kind: str
     signal_prefix: str
+    instance_nouns: list | None = None
     report: dict = field(default_factory=lambda: {"rows": 0, "trees": 0, "symptoms": 0, "signals": 0,
                                                   "unfit": [], "pattern_collisions": [], "pattern_misses": []})
     provs: dict = field(default_factory=dict)
@@ -229,7 +273,8 @@ def build_table_pack(stage: Stage, rec: dict, data: bytes, o: dict, synonyms: di
     sid_ = rec["source_id"]
     prefix = o.get("id_prefix", sid_)
     cite = o.get("citation_prefix", "")
-    tb = TableBuild(stage, sid_, prefix, cite, o.get("signal_kind", "message"), o.get("signal_prefix", ""))
+    tb = TableBuild(stage, sid_, prefix, cite, o.get("signal_kind", "message"), o.get("signal_prefix", ""),
+                    o.get("instance_nouns"))
     cols = o.get("columns", {"message": 0, "cause": 1, "solution": 2})
     used: set[str] = set()
 
@@ -422,7 +467,7 @@ def _trees(tb: TableBuild, by_msg: dict, synonyms: dict[int, dict]) -> None:
         st.conn.execute("INSERT INTO symptom VALUES (?,?,?,?,?,?,?)",
                         (f"s-{tid[2:]}", tid, msg, None, json.dumps(syn_ok, ensure_ascii=False), "en", spid))
         tb.report["symptoms"] += 1
-        pat = pattern_for(msg, tb.signal_prefix)
+        pat = pattern_for(msg, tb.signal_prefix, tb.instance_nouns)
         gpid = _prov(tb, "signal_map", f"{tb.signal_kind}:{pat}", {"pattern": pat, "message": msg}, problems,
                      "deterministic", "rules", [f"example: {example_for(msg, tb.signal_prefix)!r}"])
         st.conn.execute("INSERT INTO signal_map VALUES (?,?,?,?,?,?,?,?)",
@@ -462,13 +507,21 @@ def _check_patterns(tb: TableBuild) -> None:
             comp.append((re.compile(p[3:], re.I), title, tid, p))
         except re.error as e:
             tb.report["pattern_misses"].append({"message": title, "why": f"does not compile: {e}"})
+    n_ex = 0
     for rx, title, tid, p in comp:
-        ex = example_for(title, tb.signal_prefix)
-        if not rx.match(ex.strip()):
-            tb.report["pattern_misses"].append({"message": title, "example": ex})
-        others = [t for r2, t, _, _ in comp if r2 is not rx and r2.match(ex.strip())]
-        if others:
-            tb.report["pattern_collisions"].append({"example": ex, "also": others})
+        for ex in examples_for(title, tb.signal_prefix, tb.instance_nouns):
+            n_ex += 1
+            if not rx.match(ex.strip()):
+                tb.report["pattern_misses"].append({"message": title, "example": ex})
+            others = [t for r2, t, _, _ in comp if r2 is not rx and r2.match(ex.strip())]
+            if others:
+                tb.report["pattern_collisions"].append({"example": ex, "also": others})
+    tb.report["pattern_examples"] = n_ex
+    tb.report["pattern_basis"] = {
+        "derived_from": "documentation (the table's message column), not the firmware's format strings",
+        "verified_against_firmware": False,
+        "firmware_verification": None,   # slot: {source, strings, hit_rate, ambiguous, misses: [...]} once run
+    }
 
 
 # ---- synonyms (the one model task) ------------------------------------------------------------

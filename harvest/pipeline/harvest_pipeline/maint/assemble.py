@@ -346,7 +346,9 @@ class Assembly:
             head = (word.group(1).upper() if word else "")
             printed = GUARD_WORDS.get(head) if (first_line.rstrip(":").upper() in GUARD_WORDS
                                                 or first_line[len(head):len(head) + 2].lstrip("S").startswith(":")) else None
-            if printed is None:
+            if printed is None and g.get("_typed"):
+                p.notes.append(f"guard {key}: typed {kind} by the source's schema")
+            elif printed is None:
                 # a guard is what the manual prints as one: a WARNING, CAUTION or NOTE block
                 p.problems.append(f"guard {key}: region {loc.region} is not printed as a WARNING, CAUTION or NOTE block")
             elif printed != kind:
@@ -937,7 +939,10 @@ class Assembly:
             p = Prov()
             loc = self.span(sp, p, f"applies {key}")
             hits = []
-            if loc:
+            if loc and sp.get("_equip"):      # the source says which variants (S1000D applic asserts)
+                hits = [e for e in sp["_equip"] if e in self.equipment]
+                p.notes.extend(sp.get("_ev") or [])
+            elif loc:
                 words = set(re.findall(r"[a-z0-9]+", loc.text.lower()))
                 if not ({"all", "every"} & words):
                     for e in leaves:

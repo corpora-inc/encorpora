@@ -6,8 +6,8 @@ import json
 import re
 import sqlite3
 
-from harvest_pipeline.maint.tables import (build_table_pack, example_for, html_blocks, message_regex, pattern_for,
-                                           sentences)
+from harvest_pipeline.maint.tables import (build_table_pack, example_for, examples_for, html_blocks, message_regex,
+                                           pattern_for, sentences)
 from harvest_pipeline.pack import write_pack
 from harvest_pipeline.stage import Stage
 
@@ -38,7 +38,9 @@ def test_blocks_keep_inline_text_without_spaces():
 def test_patterns_match_what_the_device_sends():
     cases = {
         "Battery below minimum arming voltage": ["PreArm: Battery below minimum arming voltage",
-                                                 "Battery below minimum arming voltage"],
+                                                 "Battery below minimum arming voltage",
+                                                 "PreArm: Battery 1 below minimum arming voltage",   # the firmware's instance
+                                                 "PreArm Battery 2 below minimum arming voltage."],
         "Compass X not healthy": ["PreArm: Compass 2 not healthy"],
         "SERVOx_MAX is less than SERVOx_TRIM": ["PreArm: SERVO3_MAX is less than SERVO3_TRIM"],
         "Board (Xv) out of range 4.3-5.8v": ["PreArm: Board (4.1v) out of range 4.3-5.8v"],
@@ -48,11 +50,11 @@ def test_patterns_match_what_the_device_sends():
     }
     pats = {m: re.compile(pattern_for(m, "PreArm: ")[3:], re.I) for m in cases}
     for m, examples in cases.items():
-        for ex in examples + [example_for(m, "PreArm: ")]:
+        for ex in examples + examples_for(m, "PreArm: "):
             assert pats[m].match(ex), (m, ex)
             assert [o for o, p in pats.items() if o != m and p.match(ex)] == [], (m, ex)
     # an axis name is literal, a value after a colon is not
-    assert "\\(z\\s+diff:" in message_regex("Check mag field (z diff:x>875)")
+    assert "\\(z\\s+diff\\s*:?" in message_regex("Check mag field (z diff:x>875)")
     assert not pats["Compass X not healthy"].match("PreArm: Compass not healthy")
     # only regex syntax the core's engine takes: no escaped spaces or letters
     assert not re.search(r"\\[ a-zA-Z](?<!\\d)(?<!\\s)", pattern_for("Battery below minimum arming voltage", "PreArm: ")[3:]

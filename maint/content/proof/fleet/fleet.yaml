@@ -1,0 +1,33 @@
+# The proof fleet's maintenance logs (synthetic, make_fleet_logs.py) read against the pump manual pack.
+#   harvest-bake maint logs maint/content/proof/fleet/fleet.yaml --arm rules        (no model)
+#   harvest-bake maint logs maint/content/proof/fleet/fleet.yaml --arm sonnet --call (closed questions)
+pack: {corpus: ../corpus-v2.yaml, arm: rules}     # the manual whose symptoms and actions the logs are read against
+fleet:
+  registry: registry.json
+  parts: parts.json
+  period: ["2025-03-01", "2026-09-30"]
+  window_days: 30
+  technicians: [J. Ruiz, A. Patel, M. Chen, K. Osei, D. Novak]
+truth: truth.json
+sources:
+  - {id: shop-a, path: logs/shop-a.csv, kind: csv,
+     columns: {unit: Unit, date: Date, hours: Hours, symptom: Complaint, action: Action, part: Part, tech: Tech}}
+  - {id: shop-b, path: logs/shop-b.csv, kind: csv,
+     columns: {date: date, unit: equipment, hours: meter_hrs, text: "problem / work done", part: parts used, tech: mechanic}}
+  - {id: narratives, path: logs/narratives.txt, kind: text}
+  - {id: scans, path: logs/scans, kind: scans}
+# the shop's own shorthand, read deterministically before matching words against the manual
+abbreviations: {"R&R": replace, adj: adjust, batt: battery, strnr: strainer, clnd: cleaned, chg: change,
+                mx: maintenance, eng: engine, sw: switch, "w/": with, temp: temperature, lite: light, crnk: crank,
+                wont: will not, "hi": high, maint: maintenance}
+cache_dir: cache-logs
+ledger: cache-logs/ledger.jsonl
+arms:
+  rules: {}
+  gemma4-e4b: {resolver: {backend: openai-compatible, model: gemma-4-e4b, base_url: "http://127.0.0.1:8093/v1",
+               mode: json_schema, timeout: 1800, temperature: 0, extra: {chat_template_kwargs: {enable_thinking: false}}}}
+  gemma4-26b: {resolver: {backend: openai-compatible, model: gemma-4-26b-a4b, base_url: "http://127.0.0.1:8093/v1",
+               mode: json_schema, timeout: 1800, temperature: 0, extra: {chat_template_kwargs: {enable_thinking: false}}}}
+  gpt-oss-20b: {resolver: {backend: openai-compatible, model: gpt-oss-20b, base_url: "http://127.0.0.1:8093/v1",
+                mode: json_schema, timeout: 1800, temperature: 1.0, extra: {chat_template_kwargs: {reasoning_effort: medium}}}}
+  sonnet: {resolver: {backend: claude-cli, model: sonnet, max_week_pct: 60}}

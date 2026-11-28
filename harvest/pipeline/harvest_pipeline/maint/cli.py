@@ -77,11 +77,21 @@ def main(argv: list[str]) -> int:
     s = sub.add_parser("questions", help="a resolver's closed-question answers against the rules' own choice")
     s.add_argument("corpus")
     s.add_argument("--arm", required=True)
+    s = sub.add_parser("logs", help="maintenance logs -> validated history, failure modes, repeats; scored when a truth table is set")
+    s.add_argument("config")
+    s.add_argument("--arm", default="rules")
+    s.add_argument("--call", action="store_true", help="call the resolver model on cache misses (else cache only)")
+    s.add_argument("--harvest")
     s = sub.add_parser("cost")
     s.add_argument("corpus")
     s.add_argument("--arm")
     s.add_argument("--pages", type=int, help="project for this many pages")
     a = ap.parse_args(argv)
+    if a.cmd == "logs":
+        from .logs import run_logs
+        res = run_logs(Path(a.config), a.arm, a.call, _harvest(a))
+        print(json.dumps(res, indent=1, default=str))
+        return 0
     c = load_corpus(a.corpus)
 
     if a.cmd == "pages":
