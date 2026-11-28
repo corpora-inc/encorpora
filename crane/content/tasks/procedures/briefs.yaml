@@ -59,3 +59,33 @@
   roles: [rigger, operator, competent_person, inspector]
   section_ids: ["29cfr1910.184"]
   notes: "Daily inspection before use by a competent person; identification markings; removal criteria per sling type (alloy chain with wear and stretch, wire rope broken wires/abrasion/kinks/heat/end fittings/hooks opened over 15 percent, metal mesh, natural and synthetic fiber rope, synthetic web); safe operating practices before the lift."
+- proc_id: multiple-crane-lift
+  title: Multiple-crane (tandem) lift
+  kind: operation
+  roles: [lift_director, operator, signal_person, rigger, qualified_person]
+  section_ids: ["29cfr1926.1432", "29cfr1926.1417(o)", "29cfr1926.1419", "29cfr1926.1424(a)", "29cfr1926.1425"]
+  notes: "Every 1432 requirement: the plan developed by a qualified person or registered engineer, reviewed in a meeting with all workers involved, the lift directed by a qualified person or competent person who meets the qualified person criteria; load shares and the percent of each crane's capacity (planning practice: each crane's share stays inside its chart with margin for load shift, and the lead crane is designated); one signal person or a clear signal hierarchy and crane identification (1419); communication test; swing and fall zone control; stop conditions when a crane's load share changes. Practice steps are marked practice_only."
+- proc_id: weather-stop-work
+  title: Weather check and stop-work (wind, lightning, ice, temperature)
+  kind: operation
+  roles: [competent_person, operator, lift_director]
+  section_ids: ["29cfr1926.1417(n)", "29cfr1926.1417(o)", "29cfr1926.1418", "29cfr1926.1431(k)(8)", "29cfr1926.1417(e)"]
+  notes: "The competent person's duty to adjust equipment and operations for wind, ice and snow (1417(n)); the operator's authority to stop (1418); the manufacturer's wind limits and the load's sail area (practice: read wind at boom-tip height, gusts govern); lightning and storm practice (stop and lower when lightning is near, wait period by site rule); personnel hoisting wind rule (1431(k)(8)); securing the crane before leaving it (1417(e)); restart checks after the weather passes. Values from the rules are value steps; manufacturer and site limits are note steps."
+- proc_id: signal-person-qualification-check
+  title: Signal person qualification check
+  kind: inspection
+  roles: [controlling_entity, competent_person, lift_director, operator]
+  section_ids: ["29cfr1926.1428", "29cfr1926.1419", "29cfr1926.1420", "29cfr1926.1421", "29cfr1926.1422", "29cfr1926.cc.appC"]
+  notes: "Verify before signaling begins: qualification by a third-party qualified evaluator or the employer's qualified evaluator (1428(a)), documentation available at the site, the qualification criteria (know and understand the signal types used, competent in their application, basic understanding of crane operation and limitations including boom deflection, know the relevant requirements of 1419-1422 and 1428, oral or written test plus practical test); what to do if the person is not qualified or shows they are not (1428(b), (c)); radio and voice signal set-up (1420, 1421); hand signal chart posted (1422)."
+- proc_id: travel-under-power-lines
+  title: Travel under or near power lines (no load)
+  kind: operation
+  roles: [operator, signal_person, competent_person]
+  section_ids: ["29cfr1926.1411", "29cfr1926.1408(b)", "29cfr1926.1417(u)"]
+  notes: "Every 1411 requirement: boom/mast and support system lowered sufficiently to meet the Table T clearances, the effects of speed and terrain considered, a dedicated spotter when closer than 20 feet (or Table T) is possible, travel at night or in poor visibility with the lines illuminated or a lighted path, the Table T distances by voltage as value steps; route survey for overhead lines before moving (practice); travel with a load is a separate rule (1417(u)), say so."
+- proc_id: post-incident
+  title: After an incident (power-line contact, overload, two-block, dropped load, structural damage)
+  kind: operation
+  roles: [operator, competent_person, qualified_person, controlling_entity]
+  section_ids: ["29cfr1926.1408(g)", "29cfr1926.1417(f)", "29cfr1926.1417(j)", "29cfr1926.1412(b)", "29cfr1926.1412(c)", "29cfr1926.1418", "29cfr1926.1416(e)"]
+  notes: "Immediate response first (power-line contact: the 1408(g) training content: stay in the cab, warn others, jump clear only if there is an imminent danger such as fire, never touch crane and ground); stop and secure the load; tag out (1417(f)); report and do not resume until repaired (1417(j)); inspection by a qualified person before return to service after repair or adjustment (1412(b)) and the triggers; operational aids and devices checked (1416(e)); documentation and lessons learned (practice). Mark practice steps practice_only."
