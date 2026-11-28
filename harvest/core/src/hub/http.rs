@@ -3,6 +3,7 @@
 //!
 //! ```text
 //! POST /hub/receive                     Delivery (signed by the device) → ReceiveReport
+//! POST /hub/hello                       Hello (signed by the device) → HelloReply
 //! GET  /hub/fleet                       → the signed fleet summary | null
 //! GET  /hub/bundles?since=<seq>         → [bundle]
 //! GET  /hub/pack-offer?pack_id=&have=   → PackOffer | null
@@ -11,7 +12,7 @@
 
 use super::ReceiveReport;
 use crate::error::{Error, Result};
-use crate::sync::{DeviceKey, HubLink, PackOffer, Receipt, Upload};
+use crate::sync::{DeviceKey, HelloReply, HubLink, PackOffer, Receipt, Upload};
 use serde_json::Value;
 
 /// A hub over HTTP.
@@ -110,5 +111,19 @@ impl HubLink for HttpHubLink {
     fn fleet(&self) -> Result<Option<Value>> {
         let v = self.get_json("/hub/fleet")?;
         Ok((!v.is_null()).then_some(v))
+    }
+
+    fn hello(&self) -> Result<HelloReply> {
+        self.agent
+            .post(&format!("{}/hub/hello", self.base))
+            .send_json(self.key.hello()?)
+            .map_err(|e| Error::Sync(format!("hub hello: {e}")))?
+            .body_mut()
+            .read_json()
+            .map_err(|e| Error::Sync(format!("hub hello: {e}")))
+    }
+
+    fn public_key(&self) -> String {
+        self.key.public_base64()
     }
 }

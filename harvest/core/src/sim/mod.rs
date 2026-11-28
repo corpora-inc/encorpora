@@ -19,7 +19,7 @@ use crate::records::{
     AssetRegistry, JobAnswer, JobClose, JobStart, LessonFilter, LessonInput, Records,
     ResolutionKind,
 };
-use crate::sync::{DeviceKey, HubLink, LinkTransport, PackOffer, Receipt, Upload};
+use crate::sync::{DeviceKey, HelloReply, HubLink, PackOffer, Receipt, Upload};
 use serde::{Deserialize, Serialize};
 use serde_json::{Value, json};
 use std::cell::RefCell;
@@ -176,9 +176,14 @@ pub struct Scenario {
     /// Chance a bundle is corrupted in transit (the device must refuse it).
     #[serde(default)]
     pub tamper_prob: f64,
-    /// A changed fleet summary is fetched at most this often.
+    /// The hub's setting: devices fetch a changed fleet summary at most
+    /// this often (they learn it at every hello).
     #[serde(default = "default_fleet_every")]
     pub fleet_every_hours: f64,
+    /// The hub's clock-skew bound: two units' edits of one lesson closer
+    /// than this wait for a reviewer to choose.
+    #[serde(default = "default_skew_bound")]
+    pub skew_bound_minutes: i64,
     /// One more device that was never enrolled: it works and tries to
     /// upload like the others; the hub must accept nothing from it.
     #[serde(default)]
@@ -197,6 +202,9 @@ pub struct Scenario {
     pub sample_every_days: f64,
 }
 
+fn default_skew_bound() -> i64 {
+    crate::hub::DEFAULT_SKEW_BOUND_MINUTES
+}
 fn default_fleet_every() -> f64 {
     crate::records::maint::DEFAULT_FLEET_EVERY_HOURS
 }
@@ -244,7 +252,11 @@ pub struct Delivery {
     /// revoked); they stay on the device, never accepted.
     pub blocked: u64,
     pub lost: u64,
-    pub rate: f64,
+    /// `delivered / captured`.
+    pub delivered_of_captured: f64,
+    /// `delivered / (captured - blocked)`: of what the hub would accept,
+    /// excluding items held on refused devices.
+    pub delivered_of_deliverable: f64,
 }
 
 #[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
@@ -258,6 +270,8 @@ pub struct Bytes {
     pub bundles: u64,
     /// The signed fleet summary, fetched only when it changed.
     pub fleet: u64,
+    /// Spent by devices the hub refuses (hellos and any refused delivery).
+    pub refused: u64,
     pub packs: u64,
 }
 
@@ -270,8 +284,13 @@ pub struct Link {
     pub duplicates_sent: u64,
     pub duplicates_suppressed: u64,
     pub flush_attempts: u64,
-    /// Deliveries the hub refused (an unenrolled or revoked device).
+    /// Deliveries the hub refused (an unenrolled or revoked device that
+    /// got past the hello, revoked in between).
     pub refused_deliveries: u64,
+    /// Hellos the hub answered with a refusal.
+    pub refused_hellos: u64,
+    /// Sync attempts a device skipped while backing off after a refusal.
+    pub backoff_skips: u64,
 }
 
 #[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
@@ -280,7 +299,11 @@ pub struct ConflictOut {
     pub winner_device: String,
     pub loser_device: String,
     pub rule: String,
-    /// The reviewer sees every version, the losing one marked.
+    /// `auto` (the rule decided) or `needs_reviewer` (within the clock-skew
+    /// bound; the reviewer chose).
+    pub class: String,
+    pub resolved_by: Option<String>,
+    /// The reviewer sees every version, each marked.
     pub losing_version_visible: bool,
 }
 
@@ -326,6 +349,10 @@ pub struct Invariants {
     pub no_bad_bundle_installed: bool,
     pub audit_chains_intact: bool,
     pub no_upload_from_unenrolled_or_revoked: bool,
+    /// A refused device costs the link at most one hello per back-off
+    /// step: `bytes.refused` stays within (refused devices) × (days + 12) ×
+    /// (one hello and its answer).
+    pub refused_traffic_bounded: bool,
     pub details: Vec<String>,
 }
 
@@ -343,6 +370,8 @@ pub struct Metrics {
     pub bytes: Bytes,
     pub link: Link,
     pub conflicts: Vec<ConflictOut>,
+    /// Conflicts per class (`auto`, `needs_reviewer`).
+    pub conflict_classes: BTreeMap<String, u64>,
     pub lessons: Lessons,
     pub bundles: Bundles,
     pub packs: PackUpdates,
@@ -437,6 +466,8 @@ struct Net {
     bytes_bundles: u64,
     bytes_fleet: u64,
     refused_deliveries: u64,
+    refused_hellos: u64,
+    bytes_refused: u64,
     bytes_packs: u64,
     bytes_kind: BTreeMap<String, u64>,
     hub_at: BTreeMap<String, i64>,
@@ -532,7 +563,9 @@ impl HubLink for Wire<'_> {
         let r = match self.at_hub(|h| h.receive(&delivery)) {
             Ok(r) => r,
             Err(e) => {
-                self.net.borrow_mut().refused_deliveries += 1;
+                let mut n = self.net.borrow_mut();
+                n.refused_deliveries += 1;
+                n.bytes_refused += body;
                 return Err(e);
             }
         };
@@ -612,6 +645,32 @@ impl HubLink for Wire<'_> {
         }
         self.net.borrow_mut().bytes_fleet += size;
         Ok(doc)
+    }
+
+    fn hello(&self) -> Result<HelloReply> {
+        let h = self.key.hello()?;
+        let size = serde_json::to_vec(&h)?.len() as u64;
+        let (asked, replied) = self.transfer(size, 160);
+        if !asked {
+            return Err(Error::Sync("link dropped during the hello".into()));
+        }
+        let r = self.at_hub(|hub| hub.hello(&h))?;
+        if !r.accepted {
+            let mut n = self.net.borrow_mut();
+            let o = n.spec.overhead_bytes;
+            n.bytes_refused += size + 160 + 2 * o;
+            n.refused_hellos += 1;
+        }
+        if !replied {
+            return Err(Error::Sync(
+                "link dropped before the hub answered the hello".into(),
+            ));
+        }
+        Ok(r)
+    }
+
+    fn public_key(&self) -> String {
+        self.key.public_base64()
     }
 }
 
@@ -843,7 +902,10 @@ fn run_in(s: &Scenario, pack_src: Option<&Path>, tmp: &Path) -> Result<Metrics> 
         copy_dir(&src, &dest, &m)?;
     }
     let hub_key = ed25519_dalek::SigningKey::from_bytes(&[0x5a; 32]);
-    let hub = Hub::in_memory(hub_key, "sim-fleet")?.with_packs(hub_packs.clone(), keys.clone());
+    let hub = Hub::in_memory(hub_key, "sim-fleet")?
+        .with_packs(hub_packs.clone(), keys.clone())
+        .with_fleet_every_hours(s.fleet_every_hours)
+        .with_skew_bound_minutes(s.skew_bound_minutes);
     let field_keys = vec![hub.trusted_key()];
     let pack_id = crate::packs::read_manifest(&first_version_dir(&hub_packs)?, &keys)?.pack_id;
     let mut rng = Rng(s.seed);
@@ -860,6 +922,8 @@ fn run_in(s: &Scenario, pack_src: Option<&Path>, tmp: &Path) -> Result<Metrics> 
         bytes_bundles: 0,
         bytes_fleet: 0,
         refused_deliveries: 0,
+        refused_hellos: 0,
+        bytes_refused: 0,
         bytes_packs: 0,
         bytes_kind: BTreeMap::new(),
         hub_at: BTreeMap::new(),
@@ -1055,8 +1119,11 @@ fn run_in(s: &Scenario, pack_src: Option<&Path>, tmp: &Path) -> Result<Metrics> 
                     skew_ms: skew,
                 };
                 net.borrow_mut().m.flush_attempts += 1;
-                d.rec.flush(&LinkTransport(&wire), 50)?;
-                let pull = d.rec.pull_with(&wire, &field_keys, s.fleet_every_hours)?;
+                let up = d.rec.flush_to_hub(&wire, 50, false)?;
+                if up.skipped_until.is_some() {
+                    net.borrow_mut().m.backoff_skips += 1;
+                }
+                let pull = d.rec.pull(&wire, &field_keys)?;
                 for seqn in &pull.installed {
                     if !d.installed_seqs.insert(*seqn) {
                         applied_twice = true;
@@ -1272,7 +1339,25 @@ fn run_in(s: &Scenario, pack_src: Option<&Path>, tmp: &Path) -> Result<Metrics> 
                         } else {
                             None
                         };
-                        let n = hub.approve(&item.lesson_id, "Reviewer A", edit, None)?;
+                        // A conflict the clocks cannot order: the reviewer
+                        // takes the version received last.
+                        let version = item.needs_reviewer.then(|| {
+                            item.versions
+                                .iter()
+                                .max_by(|a, b| {
+                                    a.received_at
+                                        .cmp(&b.received_at)
+                                        .then(a.item_id.cmp(&b.item_id))
+                                })
+                                .map(|v| v.item_id.clone())
+                        });
+                        let n = hub.approve(
+                            &item.lesson_id,
+                            "Reviewer A",
+                            edit,
+                            None,
+                            version.flatten().as_deref(),
+                        )?;
                         approved_at.insert(n.note_id, t);
                         m.lessons.approved += 1;
                     } else {
@@ -1344,6 +1429,7 @@ fn run_in(s: &Scenario, pack_src: Option<&Path>, tmp: &Path) -> Result<Metrics> 
     let n = net.into_inner();
     m.link = n.m.clone();
     m.link.refused_deliveries = n.refused_deliveries;
+    m.link.refused_hellos = n.refused_hellos;
     m.bundles.tampered_in_transit = n.tampered;
     let mut lost = 0u64;
     let mut pending = 0u64;
@@ -1415,12 +1501,8 @@ fn run_in(s: &Scenario, pack_src: Option<&Path>, tmp: &Path) -> Result<Metrics> 
         pending,
         blocked,
         lost,
-        // Of what accepted devices captured.
-        rate: if counted <= blocked {
-            1.0
-        } else {
-            ((delivered as f64 / (counted - blocked) as f64) * 10_000.0).round() / 10_000.0
-        },
+        delivered_of_captured: ratio(delivered, counted),
+        delivered_of_deliverable: ratio(delivered, counted.saturating_sub(blocked)),
     };
     m.capture_to_hub_hours = stats(to_hub);
     m.approval_to_device_hours = stats(to_device);
@@ -1442,6 +1524,7 @@ fn run_in(s: &Scenario, pack_src: Option<&Path>, tmp: &Path) -> Result<Metrics> 
         per_day: ((n.bytes_up + n.bytes_down) as f64 / s.days).round(),
         bundles: n.bytes_bundles,
         fleet: n.bytes_fleet,
+        refused: n.bytes_refused,
         packs: n.bytes_packs,
     };
     let queue = hub.queue(None)?;
@@ -1458,12 +1541,14 @@ fn run_in(s: &Scenario, pack_src: Option<&Path>, tmp: &Path) -> Result<Metrics> 
             winner_device: dev_of(&c.winner),
             loser_device: dev_of(&c.loser),
             rule: c.rule.clone(),
+            class: c.class.clone(),
+            resolved_by: c.resolved_by.clone(),
             losing_version_visible: item.is_some_and(|q| {
-                q.versions
-                    .iter()
-                    .any(|v| v.item_id == c.loser && v.state != "current")
+                q.versions.iter().any(|v| v.item_id == c.loser)
+                    && q.versions.iter().any(|v| v.item_id == c.winner)
             }),
         });
+        *m.conflict_classes.entry(c.class.clone()).or_default() += 1;
     }
     // Applied twice at the hub: one row per item and per job.
     let items: i64 = hub
@@ -1521,16 +1606,35 @@ fn run_in(s: &Scenario, pack_src: Option<&Path>, tmp: &Path) -> Result<Metrics> 
             ));
         }
     }
+    let refused_devices = (revoked_at.len() + usize::from(s.rogue_device)) as u64;
+    let per_hello = 400 + 160 + 2 * s.link.overhead_bytes;
+    let refused_bound = refused_devices * (s.days.ceil() as u64 + 12) * per_hello;
+    let refused_ok = m.bytes.refused <= refused_bound;
+    if !refused_ok {
+        details.push(format!(
+            "refused devices spent {} bytes on the link, above the bound of {refused_bound}",
+            m.bytes.refused
+        ));
+    }
     m.invariants = Invariants {
         nothing_lost: lost == 0,
         nothing_applied_twice: !applied_twice,
         no_bad_bundle_installed: !bad_install,
         audit_chains_intact: chains,
         no_upload_from_unenrolled_or_revoked: unenrolled_ok,
-        ok: lost == 0 && !applied_twice && !bad_install && chains && unenrolled_ok,
+        refused_traffic_bounded: refused_ok,
+        ok: lost == 0 && !applied_twice && !bad_install && chains && unenrolled_ok && refused_ok,
         details,
     };
     Ok(m)
+}
+
+fn ratio(a: u64, b: u64) -> f64 {
+    if b == 0 {
+        1.0
+    } else {
+        ((a as f64 / b as f64) * 10_000.0).round() / 10_000.0
+    }
 }
 
 fn parse_ms(t: &str) -> Option<i64> {
@@ -1603,14 +1707,14 @@ pub fn named(name: &str) -> Option<Scenario> {
             "workload": {"jobs_per_device_per_day": 1.5, "lesson_prob": 0.6, "back_prob": 0.05},
             "clock_skew_minutes": 20, "sync_every_minutes": 30,
             "conflicts": [{"day": 5, "device": 2, "other": 3, "gap_minutes": 10}],
-            "tamper_prob": 0.02, "final_sync": true
+            "tamper_prob": 0.02, "fleet_every_hours": 168, "final_sync": true
         }),
         "disconnected-180" => json!({
             "name": "disconnected-180", "seed": 3, "days": 180, "devices": 3,
             "link": {"up": {"dist": "fixed", "hours": 0}, "down": {"dist": "fixed", "hours": 100000},
                      "initial_down_days": 180, "bandwidth_bps": 256000},
             "workload": {"jobs_per_device_per_day": 1, "lesson_prob": 0.5, "edit_prob": 0.05},
-            "clock_skew_minutes": 90, "final_sync": true
+            "clock_skew_minutes": 90, "fleet_every_hours": 168, "final_sync": true
         }),
         "flapping" => json!({
             "name": "flapping", "seed": 23, "days": 30, "devices": 4,

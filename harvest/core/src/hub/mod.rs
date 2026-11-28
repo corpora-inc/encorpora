@@ -27,7 +27,9 @@ use crate::records::maint::{
     LessonStatus, NoteCounts, NoteScope, day_number,
 };
 use crate::records::{JOB_REPORT_FORMAT, LESSON_FORMAT, Lesson};
-use crate::sync::{Delivery, DeviceKey, HubLink, PackOffer, Receipt, Upload};
+use crate::sync::{
+    Delivery, DeviceKey, Hello, HelloReply, HubLink, PackOffer, Receipt, Refusal, Upload,
+};
 use ed25519_dalek::SigningKey;
 use rusqlite::{Connection, OptionalExtension, params};
 use schemars::JsonSchema;
@@ -75,6 +77,7 @@ CREATE TABLE IF NOT EXISTS lesson (
   current_item TEXT NOT NULL,
   status       TEXT NOT NULL CHECK (status IN ('pending', 'approved', 'rejected')),
   reopened     INTEGER NOT NULL DEFAULT 0,
+  needs_reviewer INTEGER NOT NULL DEFAULT 0,
   first_received_at TEXT NOT NULL
 );
 CREATE TABLE IF NOT EXISTS lesson_version (
@@ -135,9 +138,14 @@ CREATE TABLE IF NOT EXISTS conflict (
   winner    TEXT NOT NULL,
   loser     TEXT NOT NULL,
   rule      TEXT NOT NULL,
-  at        TEXT NOT NULL
+  at        TEXT NOT NULL,
+  class     TEXT NOT NULL DEFAULT 'auto',
+  resolved_by TEXT
 );
 ";
+
+/// Default clock-skew bound for lesson conflicts.
+pub const DEFAULT_SKEW_BOUND_MINUTES: i64 = 30;
 
 /// How the hub stands.
 #[derive(Debug, Clone, Serialize, Deserialize, JsonSchema, PartialEq)]
@@ -232,6 +240,9 @@ pub struct ReviewItem {
     pub versions: Vec<LessonVersion>,
     pub reviews: Vec<ReviewRecord>,
     pub first_received_at: String,
+    /// Two units edited it within the clock-skew bound: approving it needs
+    /// the reviewer to choose a version.
+    pub needs_reviewer: bool,
 }
 
 /// A reviewer's changes when approving.
@@ -254,6 +265,11 @@ pub struct Conflict {
     pub loser: String,
     pub rule: String,
     pub at: String,
+    /// `auto` (the rule decided) or `needs_reviewer` (the edits were within
+    /// the clock-skew bound; a reviewer chooses the version).
+    pub class: String,
+    /// The reviewer who chose, for a `needs_reviewer` conflict.
+    pub resolved_by: Option<String>,
 }
 
 /// The hub's store and key.
@@ -264,6 +280,8 @@ pub struct Hub {
     packs_root: Option<PathBuf>,
     pack_keys: Vec<TrustedKey>,
     repeat_window_days: i64,
+    fleet_every_hours: f64,
+    skew_bound_ms: i64,
 }
 
 fn fold(s: &str) -> String {
@@ -291,6 +309,20 @@ impl Hub {
         }
         conn.busy_timeout(std::time::Duration::from_secs(5))?;
         conn.execute_batch(DDL)?;
+        for (table, column, ty) in [
+            ("lesson", "needs_reviewer", "INTEGER NOT NULL DEFAULT 0"),
+            ("conflict", "class", "TEXT NOT NULL DEFAULT 'auto'"),
+            ("conflict", "resolved_by", "TEXT"),
+        ] {
+            let n: i64 = conn.query_row(
+                "SELECT count(*) FROM pragma_table_info(?1) WHERE name = ?2",
+                [table, column],
+                |r| r.get(0),
+            )?;
+            if n == 0 {
+                conn.execute_batch(&format!("ALTER TABLE {table} ADD COLUMN {column} {ty}"))?;
+            }
+        }
         crate::audit::init(&conn)?;
         let key_id = packs::key_id_for(key.verifying_key().as_bytes());
         let stored: Option<String> = conn
@@ -319,6 +351,8 @@ impl Hub {
             packs_root: None,
             pack_keys: Vec::new(),
             repeat_window_days: crate::maint::DEFAULT_REPEAT_WINDOW_DAYS,
+            fleet_every_hours: crate::records::maint::DEFAULT_FLEET_EVERY_HOURS,
+            skew_bound_ms: DEFAULT_SKEW_BOUND_MINUTES * 60_000,
         })
     }
 
@@ -328,6 +362,24 @@ impl Hub {
     pub fn with_packs(mut self, root: PathBuf, keys: Vec<TrustedKey>) -> Self {
         self.packs_root = Some(root);
         self.pack_keys = keys;
+        self
+    }
+
+    /// How often devices fetch a changed fleet summary (they learn it at
+    /// every hello).
+    pub fn with_fleet_every_hours(mut self, hours: f64) -> Self {
+        self.fleet_every_hours = if hours.is_finite() && hours > 0.0 {
+            hours
+        } else {
+            24.0
+        };
+        self
+    }
+
+    /// Two units' edits of one lesson closer in time than this are not
+    /// ordered by their clocks: the lesson waits for a reviewer to choose.
+    pub fn with_skew_bound_minutes(mut self, minutes: i64) -> Self {
+        self.skew_bound_ms = minutes.max(0) * 60_000;
         self
     }
 
@@ -369,30 +421,9 @@ impl Hub {
     pub fn receive(&self, d: &Delivery) -> Result<ReceiveReport> {
         let device_id = d.device_id.as_str();
         let batch = d.items.as_slice();
-        let enrolled: Option<(String, Option<String>)> = self
-            .conn
-            .query_row(
-                "SELECT public_key, revoked_at FROM enrolled WHERE device_id = ?1",
-                [device_id],
-                |r| Ok((r.get(0)?, r.get(1)?)),
-            )
-            .optional()?;
-        let verdict = match &enrolled {
-            None => Err(Error::Signature(format!(
-                "device {device_id} is not enrolled"
-            ))),
-            Some((_, Some(at))) => Err(Error::Signature(format!(
-                "device {device_id} was revoked at {at}"
-            ))),
-            Some((key, None)) => decode_key(key).and_then(|k| d.verify(&k)),
-        };
-        if let Err(e) = verdict {
-            let tx = self.tx()?;
-            let mut ev = AuditEvent::new("hub.refuse", device_id);
-            ev.detail = json!({"items": batch.len(), "why": e.to_string()});
-            self.audit(&tx, &ev)?;
-            tx.commit()?;
-            return Err(e);
+        if let Err((why, e)) = self.check_device(device_id, |k| d.verify(k)) {
+            self.refuse(device_id, why, &e, batch.len())?;
+            return Err(Error::Signature(format!("{}: {e}", why.as_str())));
         }
         let tx = self.tx()?;
         let now = now_rfc3339();
@@ -452,6 +483,63 @@ impl Hub {
         }
         tx.commit()?;
         Ok(report)
+    }
+
+    /// Is the device enrolled, not revoked, and did its key sign this?
+    fn check_device(
+        &self,
+        device_id: &str,
+        verify: impl FnOnce(&[u8; 32]) -> Result<()>,
+    ) -> std::result::Result<(), (Refusal, String)> {
+        let enrolled: Option<(String, Option<String>)> = self
+            .conn
+            .query_row(
+                "SELECT public_key, revoked_at FROM enrolled WHERE device_id = ?1",
+                [device_id],
+                |r| Ok((r.get(0)?, r.get(1)?)),
+            )
+            .optional()
+            .map_err(|e| (Refusal::Unenrolled, e.to_string()))?;
+        match &enrolled {
+            None => Err((
+                Refusal::Unenrolled,
+                format!("device {device_id} is not enrolled"),
+            )),
+            Some((_, Some(at))) => Err((
+                Refusal::Revoked,
+                format!("device {device_id} was revoked at {at}"),
+            )),
+            Some((key, None)) => decode_key(key)
+                .and_then(|k| verify(&k))
+                .map_err(|e| (Refusal::Signature, e.to_string())),
+        }
+    }
+
+    fn refuse(&self, device_id: &str, why: Refusal, detail: &str, items: usize) -> Result<()> {
+        let tx = self.tx()?;
+        let mut ev = AuditEvent::new("hub.refuse", device_id);
+        ev.detail = json!({"items": items, "refused": why.as_str(), "why": detail});
+        self.audit(&tx, &ev)?;
+        tx.commit()?;
+        Ok(())
+    }
+
+    /// Answer a device's hello: accepted, or why not. A refusal is audited.
+    pub fn hello(&self, h: &Hello) -> Result<HelloReply> {
+        let verdict = self.check_device(&h.device_id, |k| h.verify(k));
+        let refused = match verdict {
+            Ok(()) => None,
+            Err((why, e)) => {
+                self.refuse(&h.device_id, why, &e, 0)?;
+                Some(why)
+            }
+        };
+        Ok(HelloReply {
+            accepted: refused.is_none(),
+            refused,
+            fleet_every_hours: self.fleet_every_hours,
+            hub_time: now_rfc3339(),
+        })
     }
 
     /// Enroll a device by its public key (base64). Returns its id.
@@ -648,19 +736,38 @@ impl Hub {
         } else {
             "same time and unit: larger item id"
         };
+        // Two units within the clock-skew bound of each other: their clocks
+        // cannot order the edits, so a reviewer chooses.
+        let close = match (
+            crate::records::maint::parse_rfc3339_ms(&new.0),
+            crate::records::maint::parse_rfc3339_ms(&old.0),
+        ) {
+            (Some(a), Some(b)) => (a - b).abs() < self.skew_bound_ms,
+            _ => true,
+        };
+        let needs_reviewer = old.1 != new.1 && close;
+        let (rule, class) = if needs_reviewer {
+            (
+                "within the clock-skew bound: a reviewer chooses",
+                "needs_reviewer",
+            )
+        } else {
+            (rule, "auto")
+        };
         if old.1 != new.1 {
             tx.execute(
-                "INSERT INTO conflict (lesson_id, winner, loser, rule, at) VALUES (?1, ?2, ?3, ?4, ?5)",
-                params![l.lesson_id, winner.2, loser.2, rule, now],
+                "INSERT INTO conflict (lesson_id, winner, loser, rule, at, class) VALUES (?1, ?2, ?3, ?4, ?5, ?6)",
+                params![l.lesson_id, winner.2, loser.2, rule, now, class],
             )?;
         }
-        if winner.2 != cur_item {
+        if winner.2 != cur_item || needs_reviewer {
             let reopen = status != "pending";
             tx.execute(
                 "UPDATE lesson SET current_item = ?2, status = 'pending',
-                        reopened = CASE WHEN ?3 THEN 1 ELSE reopened END
+                        reopened = CASE WHEN ?3 THEN 1 ELSE reopened END,
+                        needs_reviewer = CASE WHEN ?4 THEN 1 ELSE needs_reviewer END
                  WHERE lesson_id = ?1",
-                params![l.lesson_id, winner.2, reopen],
+                params![l.lesson_id, winner.2, reopen, needs_reviewer],
             )?;
         }
         Ok(())
@@ -680,18 +787,18 @@ impl Hub {
     /// The review queue (`status` `pending` | `approved` | `rejected`, or
     /// all), oldest first.
     pub fn queue(&self, status: Option<&str>) -> Result<Vec<ReviewItem>> {
-        let rows: Vec<(String, String, String, bool, String)> = self
+        let rows: Vec<(String, String, String, bool, String, bool)> = self
             .conn
             .prepare(
-                "SELECT lesson_id, current_item, status, reopened, first_received_at FROM lesson
+                "SELECT lesson_id, current_item, status, reopened, first_received_at, needs_reviewer FROM lesson
                  WHERE (?1 IS NULL OR status = ?1) ORDER BY first_received_at, lesson_id",
             )?
             .query_map([status], |r| {
-                Ok((r.get(0)?, r.get(1)?, r.get(2)?, r.get(3)?, r.get(4)?))
+                Ok((r.get(0)?, r.get(1)?, r.get(2)?, r.get(3)?, r.get(4)?, r.get(5)?))
             })?
             .collect::<rusqlite::Result<_>>()?;
         rows.into_iter()
-            .map(|(lesson_id, cur, status, reopened, first)| {
+            .map(|(lesson_id, cur, status, reopened, first, needs_reviewer)| {
                 let current = self.lesson_at(&cur)?;
                 let winner_dev: String = self.conn.query_row(
                     "SELECT device_id FROM lesson_version WHERE item_id = ?1",
@@ -747,6 +854,7 @@ impl Hub {
                     versions,
                     reviews,
                     first_received_at: first,
+                    needs_reviewer,
                 })
             })
             .collect()
@@ -780,12 +888,42 @@ impl Hub {
         reviewer: &str,
         edit: Option<NoteEdit>,
         note: Option<&str>,
+        version: Option<&str>,
     ) -> Result<FieldNoteIn> {
         let reviewer = reviewer.trim();
         if reviewer.is_empty() {
             return Err(Error::Invalid("a review names its reviewer".into()));
         }
-        let item = self.pending_item(lesson_id)?;
+        let mut item = self.pending_item(lesson_id)?;
+        let needs: bool = self.conn.query_row(
+            "SELECT needs_reviewer FROM lesson WHERE lesson_id = ?1",
+            [lesson_id],
+            |r| r.get(0),
+        )?;
+        match version {
+            Some(v) => {
+                let of: Option<String> = self
+                    .conn
+                    .query_row(
+                        "SELECT lesson_id FROM lesson_version WHERE item_id = ?1",
+                        [v],
+                        |r| r.get(0),
+                    )
+                    .optional()?;
+                if of.as_deref() != Some(lesson_id) {
+                    return Err(Error::Invalid(format!(
+                        "{v} is not a version of lesson {lesson_id}"
+                    )));
+                }
+                item = v.to_string();
+            }
+            None if needs => {
+                return Err(Error::Invalid(format!(
+                    "two units edited lesson {lesson_id} within the clock-skew bound; choose a version"
+                )));
+            }
+            None => {}
+        }
         let l = self.lesson_at(&item)?;
         let edited = edit
             .as_ref()
@@ -826,9 +964,17 @@ impl Hub {
             params![note_id, lesson_id, serde_json::to_string(&scope)?, text, reviewer, now],
         )?;
         tx.execute(
-            "UPDATE lesson SET status = 'approved', reopened = 0 WHERE lesson_id = ?1",
-            [lesson_id],
+            "UPDATE lesson SET status = 'approved', reopened = 0, needs_reviewer = 0, current_item = ?2
+             WHERE lesson_id = ?1",
+            params![lesson_id, item],
         )?;
+        if needs {
+            tx.execute(
+                "UPDATE conflict SET resolved_by = ?2 WHERE lesson_id = ?1 AND class = 'needs_reviewer'
+                   AND resolved_by IS NULL",
+                params![lesson_id, reviewer],
+            )?;
+        }
         tx.execute(
             "INSERT INTO review (lesson_id, item_id, action, reviewer, at, note) VALUES (?1, ?2, ?3, ?4, ?5, ?6)",
             params![lesson_id, item, action, reviewer, now, note],
@@ -1031,7 +1177,7 @@ impl Hub {
     pub fn conflicts(&self) -> Result<Vec<Conflict>> {
         Ok(self
             .conn
-            .prepare("SELECT lesson_id, winner, loser, rule, at FROM conflict ORDER BY seq")?
+            .prepare("SELECT lesson_id, winner, loser, rule, at, class, resolved_by FROM conflict ORDER BY seq")?
             .query_map([], |r| {
                 Ok(Conflict {
                     lesson_id: r.get(0)?,
@@ -1039,6 +1185,8 @@ impl Hub {
                     loser: r.get(2)?,
                     rule: r.get(3)?,
                     at: r.get(4)?,
+                    class: r.get(5)?,
+                    resolved_by: r.get(6)?,
                 })
             })?
             .collect::<rusqlite::Result<_>>()?)
@@ -1389,6 +1537,13 @@ impl HubLink for LocalLink {
     }
     fn fleet(&self) -> Result<Option<Value>> {
         self.hub().fleet_document()
+    }
+    fn hello(&self) -> Result<HelloReply> {
+        let h = self.key.hello()?;
+        self.hub().hello(&h)
+    }
+    fn public_key(&self) -> String {
+        self.key.public_base64()
     }
 }
 

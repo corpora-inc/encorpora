@@ -31,7 +31,7 @@ use crate::records::{
 };
 use crate::records::{FieldInstall, FieldNote};
 use crate::retrieval::{SearchOptions, SearchResult};
-use crate::sync::{FlushReport, OutboxStatus};
+use crate::sync::OutboxStatus;
 use schemars::JsonSchema;
 use serde::de::DeserializeOwned;
 use serde::{Deserialize, Serialize};
@@ -342,7 +342,8 @@ methods! {
     "field.install" => field_install(FieldInstallParams) -> FieldInstall,
     "field.list" => field_list(NoParams) -> Vec<FieldNote>,
     "sync.status" => sync_status(NoParams) -> SyncStatus,
-    "sync.flush" => sync_flush(NoParams) -> FlushReport,
+    "sync.flush" => sync_flush(SyncFlushParams) -> crate::records::HubFlush,
+    "device.info" => device_info(NoParams) -> DeviceInfo,
     "sync.pull" => sync_pull(NoParams) -> SyncPull,
     "lesson.update" => lesson_update(LessonUpdateParams) -> Lesson,
     "fleet.summary" => fleet_summary(NoParams) -> Option<crate::records::FleetSummary>,
@@ -716,6 +717,15 @@ pub struct AuditListParams {
     pub limit: Option<usize>,
 }
 
+#[derive(Debug, Clone, Default, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct SyncFlushParams {
+    /// Try now even while backing off after a refusal (an operator retrying
+    /// after the device was enrolled).
+    #[serde(default)]
+    pub force: bool,
+}
+
 #[derive(Debug, Clone, Deserialize, JsonSchema)]
 #[serde(deny_unknown_fields)]
 pub struct LessonUpdateParams {
@@ -737,6 +747,10 @@ pub struct HubQueueParams {
 #[serde(deny_unknown_fields)]
 pub struct HubApproveParams {
     pub lesson_id: String,
+    /// The version to approve (an item id from the queue); required when
+    /// the lesson `needs_reviewer`.
+    #[serde(default)]
+    pub version: Option<String>,
     /// Edit before approving: the note's text and/or scope.
     #[serde(default)]
     pub edit: Option<crate::hub::NoteEdit>,
@@ -834,10 +848,25 @@ pub struct HubState {
     pub configured: bool,
     /// `folder` (a removable drive or shared folder) or `hub`.
     pub destination: Option<String>,
-    /// As of the last attempt; `None` before any.
+    /// Whether the hub answered on the last attempt (a refusal is an
+    /// answer); `None` before any. Never probed live.
     pub reachable: Option<bool>,
+    /// Why the hub refused this device: `unenrolled`, `revoked` or
+    /// `signature`; `None` when accepted or not yet asked.
+    pub refused: Option<crate::sync::Refusal>,
+    /// No upload is tried before this time (backing off after a refusal).
+    pub backoff_until: Option<String>,
     pub last_attempt_at: Option<String>,
     pub last_error: Option<String>,
+}
+
+/// This device as the hub knows it.
+#[derive(Debug, Clone, Serialize, JsonSchema)]
+pub struct DeviceInfo {
+    /// `dev-<key id>`; `None` when no hub link (and so no device key) is set.
+    pub device_id: Option<String>,
+    /// The base64 ed25519 public key an administrator enrolls.
+    pub public_key: Option<String>,
 }
 
 /// The outbox and the link.
@@ -1499,25 +1528,43 @@ fn sync_status(h: &Host, _who: Option<&Principal>, _: NoParams) -> R<SyncStatus>
         hub: HubState {
             configured: destination.is_some(),
             destination,
-            reachable: state.last_attempt_ok,
+            reachable: state.reachable,
+            refused: state.refused,
+            backoff_until: state.backoff_until,
             last_attempt_at: state.last_attempt_at,
             last_error: state.last_error,
         },
     })
 }
 
-fn sync_flush(h: &Host, _who: Option<&Principal>, _: NoParams) -> R<FlushReport> {
+fn sync_flush(
+    h: &Host,
+    _who: Option<&Principal>,
+    p: SyncFlushParams,
+) -> R<crate::records::HubFlush> {
     if let Some(link) = &h.hub_link {
-        return Ok(h
-            .records()
-            .flush(&crate::sync::LinkTransport(link.as_ref()), 50)?);
+        return Ok(h.records().flush_to_hub(link.as_ref(), 50, p.force)?);
     }
     let dir = h
         .outbox_dir
         .as_ref()
         .ok_or_else(|| Error::Sync("no upload destination is configured on this device".into()))?;
-    Ok(h.records()
-        .flush(&crate::sync::DirTransport::new(dir), 50)?)
+    Ok(crate::records::HubFlush {
+        hello: None,
+        flush: Some(
+            h.records()
+                .flush(&crate::sync::DirTransport::new(dir), 50)?,
+        ),
+        skipped_until: None,
+        error: None,
+    })
+}
+
+fn device_info(h: &Host, _who: Option<&Principal>, _: NoParams) -> R<DeviceInfo> {
+    Ok(DeviceInfo {
+        device_id: h.hub_link.as_ref().map(|l| l.device_id()),
+        public_key: h.hub_link.as_ref().map(|l| l.public_key()),
+    })
 }
 
 fn sync_pull(h: &Host, _who: Option<&Principal>, _: NoParams) -> R<SyncPull> {
@@ -1619,8 +1666,13 @@ fn hub_approve(
     p: HubApproveParams,
 ) -> R<crate::records::FieldNoteIn> {
     let who = need(who, Some(HubRole::Reviewer))?;
-    Ok(h.hub_store()?
-        .approve(&p.lesson_id, &who.name, p.edit, p.note.as_deref())?)
+    Ok(h.hub_store()?.approve(
+        &p.lesson_id,
+        &who.name,
+        p.edit,
+        p.note.as_deref(),
+        p.version.as_deref(),
+    )?)
 }
 
 fn hub_reject(h: &Host, who: Option<&Principal>, p: HubRejectParams) -> R<crate::hub::HubStatus> {

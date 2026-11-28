@@ -381,6 +381,14 @@ fn hub_route(
                 serde_json::to_value(r).map_err(|e| (500, e.to_string()))?,
             ))
         }
+        (Method::Post, "/hub/hello") => {
+            let h: crate::sync::Hello =
+                serde_json::from_str(body).map_err(|e| (400, format!("hello: {e}")))?;
+            let r = hub.hello(&h).map_err(err)?;
+            Ok(HubReply::Json(
+                serde_json::to_value(r).map_err(|e| (500, e.to_string()))?,
+            ))
+        }
         (Method::Get, "/hub/fleet") => Ok(HubReply::Json(
             hub.fleet_document()
                 .map_err(err)?

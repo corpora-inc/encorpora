@@ -183,6 +183,14 @@ pub struct SyncState {
     pub last_attempt_at: Option<String>,
     pub last_attempt_ok: Option<bool>,
     pub last_error: Option<String>,
+    /// Whether the hub answered at all on the last attempt (a refusal is an
+    /// answer).
+    pub reachable: Option<bool>,
+    /// Why the hub refused this device on the last hello.
+    pub refused: Option<sync::Refusal>,
+    /// No upload is attempted before this time (backing off after a
+    /// refusal).
+    pub backoff_until: Option<String>,
 }
 
 /// The run report format id.
@@ -460,9 +468,11 @@ impl Records {
         // Remember how the last attempt went (never a live probe).
         let state = match &out {
             Ok(r) => {
-                serde_json::json!({"at": now_rfc3339(), "ok": r.error.is_none(), "error": r.error})
+                serde_json::json!({"at": now_rfc3339(), "ok": r.error.is_none(), "reachable": r.error.is_none(), "error": r.error})
             }
-            Err(e) => serde_json::json!({"at": now_rfc3339(), "ok": false, "error": e.to_string()}),
+            Err(e) => {
+                serde_json::json!({"at": now_rfc3339(), "ok": false, "reachable": false, "error": e.to_string()})
+            }
         };
         // The flush's own result wins; failing to note it is only logged.
         if let Err(e) = self.conn.execute(
@@ -491,11 +501,17 @@ impl Records {
             .optional()?;
         let last: Option<serde_json::Value> = last.and_then(|l| serde_json::from_str(&l).ok());
         let get = |k: &str| last.as_ref().and_then(|v| v.get(k)).cloned();
+        let gate = maint::HubGate::load(&self.conn)?;
         Ok(SyncState {
             last_synced_at,
             last_attempt_at: get("at").and_then(|v| v.as_str().map(str::to_string)),
             last_attempt_ok: get("ok").and_then(|v| v.as_bool()),
             last_error: get("error").and_then(|v| v.as_str().map(str::to_string)),
+            reachable: get("reachable")
+                .and_then(|v| v.as_bool())
+                .or(get("ok").and_then(|v| v.as_bool())),
+            refused: gate.refused,
+            backoff_until: gate.next_try_at,
         })
     }
 
