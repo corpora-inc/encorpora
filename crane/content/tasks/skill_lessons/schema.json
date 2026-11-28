@@ -1,0 +1,58 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "lesson"
+  ],
+  "properties": {
+    "lesson": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "body"
+      ],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "body": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "t"
+            ],
+            "properties": {
+              "t": {
+                "enum": [
+                  "text",
+                  "quote",
+                  "cite",
+                  "diagram",
+                  "check"
+                ]
+              },
+              "text": {
+                "type": "string"
+              },
+              "section_id": {
+                "type": "string"
+              },
+              "diagram_id": {
+                "type": "string"
+              },
+              "question": {
+                "type": "string"
+              },
+              "answer": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

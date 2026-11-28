@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["items"],
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "answer", "confidence", "tier", "flaw"],
+        "properties": {
+          "id": {"type": "string"},
+          "answer": {"type": "integer", "minimum": 0, "maximum": 3},
+          "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+          "tier": {"type": "integer", "enum": [1, 2, 3]},
+          "flaw": {"type": "string"}
+        }
+      }
+    }
+  }
+}

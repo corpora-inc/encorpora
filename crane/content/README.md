@@ -14,9 +14,11 @@ endorsement by OSHA or any certification body.
 | `tools/loadcharts/` | Original fictional load charts and exact practice-problem generators. |
 | `tools/signals/` | Appendix A hand signals: traced official figures and verbatim captions. |
 | `diagrams/` | Teaching SVGs with captions, alt text and cited sections. |
-| `data/questions/<topic>.jsonl` | Question bank (MC with a rationale per choice; free-text with rubrics). |
+| `data/questions/<topic>.jsonl` | Exam-prep bank: four-option items at three tiers, a why per option, a `note` (one line beyond the key: why it matters, the edge case, the rule people confuse it with), misconception labels, gate results. |
 | `data/answers/<topic>.jsonl` | Answer cache: canonical questions, cited answer segments, aliases. |
 | `data/lessons/<topic>.json` | Lessons per topic in answer-segment JSON with diagram slots. |
+| `data/lessons/<topic>.skills.json` | One lesson per skill, built around the misconceptions its items' wrong options represent. |
+| `data/course/tree.json` | The course knowledge tree for the instructor chat: guide, exam, domains, topics, skills (see `harvest/CONTRACT.md`, `course_node`). |
 | `data/glossary.jsonl` | Glossary: rule-defined terms (quoted) and field terms (practice). |
 | `tasks/` | Generation tasks: prompts, schemas, input builders, runner. |
 | `verify/` | eCFR fetch and index (`ecfr.py`), citation/quote verifier (`verify.py`), tests. |
@@ -91,9 +93,24 @@ for an input with none, it takes an output of a version listed under
 ## Writer checks
 
 - Quotes and citations against the eCFR index (above).
-- Questions: 4 distinct choices, a rationale each, and a key that does not stand out
-  by length (over 1.5x the longest distractor and 20+ characters longer fails).
-  Free-text sample answers must pass their own rubric under the practice grader.
+- Questions (`tasks/questions`, one set per skill from each writing model): 4 distinct
+  options with no combination option and no option contained in another; every option
+  within 20% of the item's mean length (6 characters slack); a why for every option and
+  a `beyond` line for the key; no placeholder text; rule items quote the rule verbatim,
+  practice items name a public source (ASME B30.5 by chapter only). Then two gates,
+  run by non-Claude or cross-family judges:
+  - testwiseness (`gate_naive`, a non-Claude judge for every writer): a smart test-taker
+    with no crane training reads the stem and options and answers on common sense and
+    test-taking instinct alone; an item fails when that reader's top pick is the key
+    with probability 0.4 or more;
+  - solver (`gate_solve`): the judge answers the full item; it fails unless the judge
+    picks the key with confidence 0.6 or more, sees no flaw, and rates the tier within
+    one of the label (a tier-3 item rated tier 1 fails).
+  Failed Opus items get one Opus rewrite round (`questions_fix`); other writers' failures
+  are dropped unless their skill would fall below 8 passing items. Rewrites pass the same
+  checks and gates, and a passing rewrite replaces its original. The key's extra line
+  ships as the row's `note` (CONTRACT `question.note`). The writer reports how often the
+  key is the longest and the shortest option across the bank (chance is about 25% each).
 - Answers open with a text segment whose first sentence is the direct answer: Yes or
   No for a yes/no question, a number for a how-many or how-far question.
 - Answer-cache intent (`tasks/intent.py`, the engine's alias similarity ported): an

@@ -1,0 +1,220 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "nodes"
+  ],
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "node_id",
+          "intro",
+          "summary",
+          "hard",
+          "mistakes",
+          "exam",
+          "study"
+        ],
+        "properties": {
+          "node_id": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "t",
+                "text",
+                "section_id"
+              ],
+              "properties": {
+                "t": {
+                  "type": "string",
+                  "enum": [
+                    "text",
+                    "quote",
+                    "cite"
+                  ]
+                },
+                "text": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "section_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          },
+          "hard": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "t",
+                "text",
+                "section_id"
+              ],
+              "properties": {
+                "t": {
+                  "type": "string",
+                  "enum": [
+                    "text",
+                    "quote",
+                    "cite"
+                  ]
+                },
+                "text": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "section_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          },
+          "mistakes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mistake",
+                "correction"
+              ],
+              "properties": {
+                "mistake": {
+                  "type": "string"
+                },
+                "correction": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "t",
+                      "text",
+                      "section_id"
+                    ],
+                    "properties": {
+                      "t": {
+                        "type": "string",
+                        "enum": [
+                          "text",
+                          "quote",
+                          "cite"
+                        ]
+                      },
+                      "text": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "section_id": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "exam": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "t",
+                "text",
+                "section_id"
+              ],
+              "properties": {
+                "t": {
+                  "type": "string",
+                  "enum": [
+                    "text",
+                    "quote",
+                    "cite"
+                  ]
+                },
+                "text": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "section_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          },
+          "study": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "t",
+                "text",
+                "section_id"
+              ],
+              "properties": {
+                "t": {
+                  "type": "string",
+                  "enum": [
+                    "text",
+                    "quote",
+                    "cite"
+                  ]
+                },
+                "text": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "section_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          },
+          "intro": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

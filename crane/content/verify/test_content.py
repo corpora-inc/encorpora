@@ -49,9 +49,30 @@ class Blueprint(unittest.TestCase):
                 used.add(ref)
         self.assertEqual(sorted(set(outline) - used), [], "outline items with no skill")
 
+    def test_exams_json_matches_blueprint_and_handbook(self):
+        """The mock exam and the instructor read exams.json; it must say what the handbook says."""
+        exams = {e["id"]: e for e in json.loads((CONTENT / "exams.json").read_text())}
+        for e in BLUEPRINT["exams"]:
+            if not e.get("outline"):
+                continue
+            j = exams[e["exam_id"]]
+            self.assertEqual(j["items"], e["items"], e["exam_id"])
+            self.assertEqual(sum(d["count"] for d in j["domains"]), e["items"], e["exam_id"])
+            self.assertEqual(j["minutes"], e["minutes"])
+            self.assertEqual({d["id"]: d["weight"] for d in j["domains"]}, {d["domain_id"]: d["weight"] for d in e["domains"]})
+            self.assertEqual(j["source"]["edition"], BLUEPRINT["exam_source"]["edition"])
+
     def test_domain_weights_sum_to_one(self):
         for e in BLUEPRINT["exams"]:
             self.assertAlmostEqual(sum(d["weight"] for d in e["domains"]), 1.0, places=6, msg=e["exam_id"])
+
+    def test_flow_mappings_parse_whole(self):
+        """An unquoted comma inside a flow mapping silently cuts a title and adds a stray key."""
+        allowed = {"skill_id", "title", "kind", "levels", "section_ids", "exam", "equipment"}
+        for s in self.skills():
+            self.assertEqual(set(s) - allowed, set(), s["skill_id"])
+        for e in BLUEPRINT["equipment"]:
+            self.assertEqual(set(e) - {"equip_id", "parent_id", "name", "aliases"}, set(), e["equip_id"])
 
     def test_skill_fields(self):
         equip = {e["equip_id"] for e in BLUEPRINT["equipment"]}
@@ -85,6 +106,8 @@ class Blueprint(unittest.TestCase):
         bad = []
         for f in sorted(data.rglob("*.json*")):
             rows = [json.loads(line) for line in f.read_text().splitlines() if line.strip()] if f.suffix == ".jsonl" else json.loads(f.read_text())
+            if isinstance(rows, dict):
+                rows = rows.get("nodes", [])  # data/course/tree.json
             for r in rows:
                 if r.get("prov", {}).get("verdict") != "pass":
                     continue
@@ -226,9 +249,39 @@ class Writers(unittest.TestCase):
         self.assertEqual(m("The federal rules set no minimum sling angle.", "Use the next longer radius (practice)."), [])
         self.assertEqual(m("The utility must provide the requested voltage information."), [])
 
-    def test_key_stands_out(self):
-        self.assertTrue(self.b.key_stands_out(["short", "tiny", "a much longer and more qualified correct answer", "small"], 2))
-        self.assertFalse(self.b.key_stands_out(["about this long", "roughly as long", "same length here", "near the same"], 0))
+    def test_choice_flaws(self):
+        f = self.b.choice_flaws
+        self.assertEqual(f(["10 feet", "15 feet", "20 feet", "25 feet"], 2), [])
+        self.assertIn("options differ in length", f(["No", "Yes", "Only with a dedicated spotter and insulating links", "Never"], 2))
+        self.assertEqual(f(["Stop the lift and report it", "Lower the load and re-rig", "Swing clear and keep going", "Call the lift director"], 0), [])
+        self.assertIn("combination option (all/none/both)", f(["A thing", "B thing", "All of the above", "C thing"], 0))
+        self.assertIn("choices overlap", f(["Stop the lift", "Stop the lift and report it", "Lower the boom", "Swing away"], 0))
+        self.assertIn("duplicate choices", f(["Stop", "stop", "Go", "Wait"], 2))
+        # near-miss options that differ in one word or number are the point, not an overlap
+        self.assertEqual(self.b.key_length_ranks([{"choices": ["aa", "a", "aaa", "aaaa"], "answer": "3"}, {"choices": ["aa", "a", "aaa", "aaaa"], "answer": "1"}])["longest_share"], 0.5)
+        self.assertEqual(f(["Above 50 percent at the longest radius", "Above 75 percent at the longest radius",
+                            "Above 90 percent at the longest radius", "Above 75 percent at the shortest radius"], 1), [])
+
+    def test_exam_rows_bundle_options_and_shuffle_consistently(self):
+        class T:
+            version = "5"
+
+            def cached(self, it):
+                return {"prompt_version": "5", "model": "m", "backend": "b", "prompt_id": "questions", "prompt_sha256": "p",
+                        "input_sha256": "i", "output_sha256": "o", "created_at": "t", "input_id": "s.k",
+                        "output": {"items": [{"tier": 2, "point": "p", "stem": "How far?", "basis": "physics", "section_id": None,
+                                              "quote": None, "source": None, "difficulty": 0.5,
+                                              "beyond": "b", "options": [{"text": f"{n} feet", "key": n == 20, "why": f"why {n}", "misconception": "key" if n == 20 else f"m{n}"}
+                                                          for n in (10, 15, 20, 25)]}]}}
+
+        T.cached_all = lambda self, it: [self.cached(it)]
+        by_topic, stats = self.b.exam_rows(T(), [{"input_id": "s.k", "meta": {"skill_id": "s.k", "topic_id": "t"}}])
+        r = by_topic["t"][0]
+        k = int(r["answer"])
+        self.assertEqual(r["choices"][k], "20 feet")
+        self.assertEqual(r["rationales"][k], "why 20")
+        self.assertEqual(r["misconceptions"][k], "key")
+        self.assertEqual(r["_errs"], [])
 
 
 class Budget(unittest.TestCase):

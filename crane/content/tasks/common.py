@@ -375,6 +375,27 @@ class Task:
                 best, best_rank = rec, rank
         return best
 
+    def cached_all(self, item) -> list[dict]:
+        """Every output for this input text at the current prompt, one per writing model
+        (for tasks with `multi_writer: true`, where each model's output is kept)."""
+        want = sha(item["prompt"])
+        out = []
+        for f in sorted(self.cache.glob(f"{item['input_id']}--*.json")):
+            rec = json.loads(f.read_text())
+            if (rec.get("input_id") == item["input_id"] and rec.get("input_sha256") == want
+                    and rec.get("prompt_version") == self.version and rec.get("prompt_sha256") == self.prompt_sha):
+                out.append(rec)
+        return out
+
+    def done(self, item, model: str) -> bool:
+        """Whether this input needs no call: it has a current-prompt output (from the same
+        backend as `model` when the task keeps every writer's output)."""
+        if self.spec.get("multi_writer"):
+            return any(backend_of(r.get("model", "").split(",")[0]) == backend_of(item.get("model", model))
+                       for r in self.cached_all(item))
+        c = self.cached(item)
+        return bool(c and c.get("prompt_version") == self.version)
+
     def run_one(self, item: dict) -> dict:
         p = self.key(item)
         if p.exists():
@@ -401,7 +422,7 @@ class Task:
 
     def run(self, items: list[dict], concurrency: int = 4, log=print) -> dict:
         # an input is done when it has an output for the current prompt from any model
-        todo = [i for i in items if not ((c := self.cached(i)) and c.get("prompt_version") == self.version)]
+        todo = [i for i in items if not self.done(i, self.model)]
         model = self.model
         log(f"{self.task_id}: {len(items)} inputs, {len(items) - len(todo)} cached, {len(todo)} to generate")
         done, failed = 0, []

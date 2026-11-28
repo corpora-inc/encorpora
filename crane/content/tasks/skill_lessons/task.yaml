@@ -1,0 +1,4 @@
+task_id: skill_lessons
+prompt_version: 1
+model: opus
+description: One lesson per skill, built around the misconceptions its practice items' wrong options represent. Topic lessons stay; these are what the app shows for a skill the learner is missing.

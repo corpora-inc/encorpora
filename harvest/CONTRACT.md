@@ -142,6 +142,16 @@ CREATE TABLE proc_step (proc_id TEXT NOT NULL, ord INTEGER NOT NULL,
   deficiency TEXT,                                 -- json {guidance, action, section_id, quote}
   lang TEXT NOT NULL, prov_id TEXT NOT NULL, PRIMARY KEY (proc_id, ord));
 
+CREATE TABLE course_node (         -- the course knowledge tree the instructor chat reads
+  node_id TEXT PRIMARY KEY,         -- 'guide' | 'exam.<exam_id>' | 'domain.<domain_id>' | 'topic.<topic_id>' | 'skill.<skill_id>'
+  kind TEXT NOT NULL,               -- guide|exam|domain|topic|skill
+  title TEXT NOT NULL,
+  body TEXT NOT NULL,               -- json {summary, hard, exam, study: segments; mistakes: [{mistake, correction: segments}]}
+  links TEXT NOT NULL,              -- json {lessons, skills, topics, questions (passing count), diagrams, section_ids, exam_outline}
+  lang TEXT NOT NULL, prov_id TEXT NOT NULL);
+CREATE TABLE course_edge (parent_id TEXT NOT NULL, child_id TEXT NOT NULL, ord INTEGER NOT NULL,
+                          PRIMARY KEY (parent_id, child_id));  -- a skill may sit under several domains
+
 CREATE TABLE chunk (chunk_id TEXT PRIMARY KEY, ref_kind TEXT NOT NULL, ref_id TEXT NOT NULL,
                     text TEXT NOT NULL, lang TEXT NOT NULL);  -- retrieval units
 CREATE VIRTUAL TABLE chunk_fts USING fts5(text, content='chunk', content_rowid='rowid',
@@ -168,7 +178,7 @@ Only rows with `verdict = 'pass'` ship in a release pack.
 
 ### Answer-segment JSON
 
-Used by `answer.body` and `lesson.body`. The app renders it; the support checker
+Used by `answer.body`, `lesson.body` and every segment list in `course_node.body`. The app renders it; the support checker
 validates it.
 
 ```json
@@ -316,6 +326,7 @@ never opens the SQLite file. The core (`harvest_core::content`, and
 | `answers()`, `answer_for(id, role)` | the answer cache; the role's variant (same `question`, `level` = role) when there is one; body checked |
 | `equipment()` | variants |
 | `exams()`, `prereqs()`, `starters(role)` | app data from `pack_meta` |
+| `course_tree()`, `course_node(id)` | the knowledge tree: `guide`, then exam → domain → topic → skill edges; node bodies checked |
 
 Generated rows (term, lesson, diagram, question, answer, procedure, proc_step)
 are returned only when their `provenance.verdict` is `pass`; a procedure

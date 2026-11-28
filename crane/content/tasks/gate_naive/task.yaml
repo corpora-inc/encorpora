@@ -1,0 +1,4 @@
+task_id: gate_naive
+prompt_version: 1
+model: codex:gpt-6-astra
+description: Testwiseness gate. A smart test-taker with no crane training reads each item (stem and options) and answers with common sense and test-taking instinct only; an item fails when that reader gets the key with a clear pick.

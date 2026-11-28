@@ -1,0 +1,4 @@
+task_id: course
+prompt_version: 1
+model: opus
+description: The course knowledge tree for the instructor chat. Phase "topic" writes one topic node and its skill nodes; phase "top" writes the course guide, the exam node and the four domain nodes. Each node, a summary, what is hard, common mistakes, and what the exam asks; links are added by the writer.
