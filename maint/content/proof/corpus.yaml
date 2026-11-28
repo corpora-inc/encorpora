@@ -36,7 +36,7 @@ maint:
                           extra: {chat_template_kwargs: {enable_thinking: false}}}, images: false}
     gpt-oss-120b: {author: {backend: openai-compatible, model: gpt-oss-120b, base_url: "http://127.0.0.1:8093/v1",
                             mode: json_schema, timeout: 3600, temperature: 1.0,
-                            extra: {chat_template_kwargs: {reasoning_effort: high}}}, images: false}
+                            extra: {chat_template_kwargs: {reasoning_effort: medium}}}, images: false}
     # rules first: structure from the page model by deterministic rules; leftovers as closed questions
     rules: {author: {backend: rules}, images: false}
     rules+gemma4-26b: {author: {backend: rules, resolver: {backend: openai-compatible, model: gemma-4-26b-a4b,

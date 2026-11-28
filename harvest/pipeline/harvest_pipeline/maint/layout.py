@@ -220,8 +220,8 @@ def _regions_from_layout(pm: PageModel, page, o: dict) -> None:
             cy = sum(p[1] for p in pts) / len(pts)
             tip = max(pts, key=lambda p: (p[0] - cx) ** 2 + (p[1] - cy) ** 2)
             heads.append((tip[0], tip[1], b))
-        elif (b[2] - b[0]) >= min_box and (b[3] - b[1]) >= min_box and _closed_rect(pts):
-            boxes.append(b)
+        elif (b[2] - b[0]) >= min_box and (b[3] - b[1]) >= min_box and (_closed_rect(pts) or _closed(pts)):
+            boxes.append(b)          # ruled boxes drawn as paths, and round off-page connectors
         else:
             segs.extend(((pts[k], pts[k + 1], 0.0) for k in range(len(pts) - 1)))
     boxes = _dedupe(boxes)
@@ -357,6 +357,11 @@ def _closed_rect(pts) -> bool:
     return len(pts) >= 4 and len(xs) <= 2 and len(ys) <= 2
 
 
+def _closed(pts) -> bool:
+    """A closed outline (circle, rounded box): it ends where it starts and is not a thin line."""
+    return len(pts) >= 4 and abs(pts[0][0] - pts[-1][0]) < 1.0 and abs(pts[0][1] - pts[-1][1]) < 1.0
+
+
 def _dedupe(boxes):
     out = []
     for b in boxes:
@@ -457,17 +462,42 @@ def ocr_page(source_id: str, index: int, img, width_pt: float, height_pt: float,
         pm.words.append(Word(k, f[11].strip(), round(x * sx, 2), round(y * sy, 2), round((x + w) * sx, 2),
                              round((y + h) * sy, 2), round(h * sy, 2), False))
         paras.setdefault((int(f[2]), int(f[3]), int(f[4])), []).append(k)
-    for n, (key, idxs) in enumerate(sorted(paras.items()), 1):
-        ws = [pm.words[i] for i in idxs]
-        reg = Region(f"p{index}.r{n}", "text", (min(w.x0 for w in ws), min(w.top for w in ws),
-                                               max(w.x1 for w in ws), max(w.bottom for w in ws)))
-        reg.lines = _lines_of(pm.words, idxs)
-        reg.words = [i for ln in reg.lines for i in ln]
-        pm.regions.append(reg)
+    n = 0
+    for key, idxs in sorted(paras.items()):
+        # a paragraph splits where a line opens a numbered or lettered item ("4.", "a.", "(1)")
+        groups: list[list[list[int]]] = []
+        for ln in _lines_of(pm.words, idxs):
+            first = pm.words[ln[0]].text
+            if not groups or re.match(r"^(?:\d{1,3}|[a-z])[.)]$|^\(\w{1,3}\)$", first):
+                groups.append([ln])
+            else:
+                groups[-1].append(ln)
+        for lines in groups:
+            n += 1
+            ws = [pm.words[i] for ln in lines for i in ln]
+            reg = Region(f"p{index}.r{n}", "text", (min(w.x0 for w in ws), min(w.top for w in ws),
+                                                   max(w.x1 for w in ws), max(w.bottom for w in ws)))
+            reg.lines = lines
+            reg.words = [i for ln in lines for i in ln]
+            pm.regions.append(reg)
     for reg in pm.regions:
-        if reg.bbox[1] >= 0.94 * height_pt and re.match(LABEL_RX, pm.region_text(reg)):
+        if reg.bbox[1] >= 0.94 * height_pt:
             reg.kind = "footer"
-            pm.label = pm.region_text(reg)
+            t = pm.region_text(reg)
+            if pm.label is None and re.match(LABEL_RX, t):
+                pm.label = t
+            m = re.match(CHANGE_RX, t)
+            if m and pm.change is None:
+                pm.change = m.group(0)
+        elif reg.bbox[3] <= 0.06 * height_pt:
+            reg.kind = "header"
+    if pm.label is None:   # the label may share a footer line with other text ("Change 1    4-2")
+        for reg in pm.regions:
+            if reg.kind == "footer":
+                for w in (pm.words[i] for i in reg.words):
+                    if re.match(LABEL_RX, w.text) and abs((w.x0 + w.x1) / 2 - width_pt / 2) < 0.15 * width_pt:
+                        pm.label = w.text
+    pm.regions.sort(key=lambda r: (r.bbox[1], r.bbox[0]))
     return pm
 
 

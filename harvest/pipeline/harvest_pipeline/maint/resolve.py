@@ -56,6 +56,18 @@ def apply(out: dict, q: Question, choice: int, by: str) -> None:
         for e in out["equipment"]:
             e["parent"] = parent
             e.setdefault("_ev", []).append(note)
+    elif q.apply == "beside":
+        g = q.data["guard"]
+        target = q.data["regions"][choice]
+        for p in out["procedures"]:
+            for st in p["steps"]:
+                if g in st["guards"]:
+                    st["guards"].remove(g)
+            for st in p["steps"]:
+                if st["text"]["region"] == target:
+                    st["guards"].append(g)
+        g["_conf"] = "resolved"
+        g.setdefault("_ev", []).append(note)
     elif q.apply == "guard":
         g = q.data["guard"]
         for owner in q.data["owners"]:

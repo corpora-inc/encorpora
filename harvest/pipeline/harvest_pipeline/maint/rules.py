@@ -135,6 +135,7 @@ def derive(unit_pages: list[int], pages: dict[int, PageModel], options: dict | N
     proc = None            # the open procedure dict
     heading = None
     pending_guards: list[tuple] = []   # (guard, region, page) waiting for the next step
+    beside_guards: dict[str, list] = {}  # step region id -> guards printed beside it
     ev = lambda d, *e: d.setdefault("_ev", []).extend(e)  # noqa: E731
 
     def close_proc():
@@ -207,7 +208,28 @@ def derive(unit_pages: list[int], pages: dict[int, PageModel], options: dict | N
                 g = _guard(pm, r, lines, head, rx)
                 target_open = proc if proc is not None else None
                 if proc is not None:
-                    pending_guards.append((g, r, pi))
+                    steps_here = [x for x in regs if x.kind == "text" and rx["step"].match(_lines(pm, x)[0] if x.lines else "")
+                                  or (x.kind == "text" and rx["substep"].match(_lines(pm, x)[0] if x.lines else ""))]
+                    beside = steps_here and not any(_xover(x.bbox, r.bbox) > 0 for x in steps_here)
+                    if beside:
+                        # a block in a side column guards the step it sits beside (nearest vertical centre)
+                        cy = (r.bbox[1] + r.bbox[3]) / 2
+                        ranked = sorted(steps_here, key=lambda x: abs((x.bbox[1] + x.bbox[3]) / 2 - cy))
+                        best = ranked[0]
+                        overl = [x for x in steps_here if min(x.bbox[3], r.bbox[3]) - max(x.bbox[1], r.bbox[1]) > 0]
+                        g["_conf"] = "high" if len(overl) == 1 and overl[0] is best else "low"
+                        ev(g, f"block beside the steps column: guards the step at the same height ({best.id})")
+                        beside_guards.setdefault(best.id, []).append(g)
+                        if g["_conf"] == "low" and len(ranked) > 1:
+                            questions.append(Question(f"beside-{r.id}", f"Which step does the {g['kind']} block {r.id} "
+                                                      "printed beside the steps guard?", [pm.region_text(x)[:80] for x in ranked[:4]],
+                                                      0, "beside", {"guard": g, "regions": [x.id for x in ranked[:4]]}))
+                        done = next((st for st in proc["steps"] if st["text"]["region"] == best.id), None)
+                        if done is not None:
+                            done["guards"].append(g)
+                            beside_guards[best.id].remove(g)
+                    else:
+                        pending_guards.append((g, r, pi))
                 elif tree is not None:
                     tree["guards"].append(g)
                     ev(g, "guard on a tree page above the flowchart: guards the tree")
@@ -239,6 +261,11 @@ def derive(unit_pages: list[int], pages: dict[int, PageModel], options: dict | N
                 if rx["from_box"].match(text):
                     continue
                 n = _Node(r.id, pi, "action", text, top=r.bbox[1], bbox=r.bbox)
+                if re.fullmatch(r"[A-Z0-9]{1,2}", text.strip()):
+                    n.kind, n.number = "letter", text.strip()     # an off-page connector: circle A
+                    n.ev.append(f"off-page connector {text.strip()}")
+                    nodes[r.id] = n
+                    continue
                 gm = rx["goto_box"].match(text)
                 if gm:
                     n.kind = "offpage"
@@ -281,6 +308,7 @@ def derive(unit_pages: list[int], pages: dict[int, PageModel], options: dict | N
                                   + ("" if same_col else " (other column or page)"))
                             g["_conf"] = "high" if same_col else "low"
                     pending_guards.clear()
+                    step["guards"].extend(beside_guards.pop(r.id, []))
                     proc["steps"].append(step)
                     continue
                 if text.lower().startswith("tools:") and proc is not None:
@@ -379,7 +407,9 @@ def _finish_tree(t: dict, out: dict, questions: list[Question]) -> None:
     nodes: dict[str, _Node] = t.pop("_nodes")
     order = sorted(nodes.values(), key=lambda n: (n.page, n.top, n.bbox[0]))
     # off-page connectors: branches into them go to the numbered question of the same tree
-    real = [n for n in order if n.kind != "offpage"]
+    real = [n for n in order if n.kind not in ("offpage", "letter")]
+    # a lettered connector: the arrow into circle L continues from the circle L that has an arrow out
+    entries = {n.number: n for n in order if n.kind == "letter" and n.branches}
     for k, n in enumerate(real, 1):
         n.id = f"n{k}"
     # symptom: a box with no incoming arrow, before the first question, with one plain arrow out
@@ -413,6 +443,15 @@ def _finish_tree(t: dict, out: dict, questions: list[Question]) -> None:
         bout = []
         for b, (oc, cnd) in zip(n.branches, outs):
             tgt: _Node = b["_to"]
+            via = ""
+            if tgt.kind == "letter":
+                entry = entries.get(tgt.number)
+                if entry is None or not entry.branches:
+                    questions.append(Question(f"connector-{tgt.rid}", f"Off-page connector {tgt.number} has no "
+                                              "matching connector on these pages", ["leave the branch out"], 0, "none"))
+                    continue
+                via = f" through off-page connector {tgt.number}"
+                tgt = entry.branches[0]["_to"]
             if tgt.kind == "offpage":
                 to = f"{t['ref']}#{tgt.number}"
             else:
@@ -420,7 +459,7 @@ def _finish_tree(t: dict, out: dict, questions: list[Question]) -> None:
             retry = tgt.kind != "offpage" and pos.get(id(tgt), 1 << 30) < pos[id(n)]
             outcome = "done" if n.expect and n.expect["kind"] == "ack" else (oc or "")
             bout.append({"label": b["label"], "outcome": outcome, "cond": cnd, "to": to, "retry": retry,
-                         "_ev": b["_ev"] + (" (back to an earlier box: a retry loop)" if retry else "")})
+                         "_ev": b["_ev"] + via + (" (back to an earlier box: a retry loop)" if retry else "")})
         n.branches = bout
         if n.kind == "action" and n.expect and n.expect["kind"] in ("yes_no", "pass_fail", "choice") and \
                 not n.text.rstrip().endswith("?"):

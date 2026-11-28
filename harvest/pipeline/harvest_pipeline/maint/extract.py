@@ -189,7 +189,7 @@ def units(models: list[PageModel], options: dict | None = None) -> list[Unit]:
     o = options or {}
     brk = re.compile(o.get("unit_break_regex",
                            r"^(?:CHAPTER\s+\d+|Chapter\s+\d+|Table\s+\d+-\d+\.|Task\s+\d+-\d+\.|TASK\s+\d+-\d+)"))
-    cont = re.compile(o.get("unit_continue_regex", r"\((?:Sheet\s+[2-9]\d*\s+of|Continued|CONTINUED|Cont)"))
+    cont = re.compile(o.get("unit_continue_regex", r"\((?:Sheet\s+[2-9]\d*\s+of|Continued|CONTINUED|Cont|CONT\b)"))
     cap = int(o.get("max_unit_pages", 8))
     out: list[Unit] = []
     for pm in models:

@@ -275,8 +275,10 @@ class Assembly:
             if a["loc"].page == b["loc"].page:
                 ok = any(c.head == b["loc"].region for c in out_c)
             else:
-                ok = any(c.head and re.match(r"^(?:Go|GO|Continue|CONTINUE)\s+(?:to|TO)\b",
-                                             pm.region_text(pm.region(c.head)) or "") for c in out_c)
+                ok = any(c.head and (re.match(r"^(?:Go|GO|Continue|CONTINUE)\s+(?:to|TO)\b",
+                                              pm.region_text(pm.region(c.head)) or "")
+                                     or re.fullmatch(r"[A-Z0-9]{1,2}", (pm.region_text(pm.region(c.head)) or "").strip()))
+                         for c in out_c)
             if not ok and a["raw"].get("kind") != "symptom":
                 counts["edges"] += 1
                 self.review(pid, f"geometry: no drawn arrow from {a['loc'].region} to {b['loc'].region} ({label})")
