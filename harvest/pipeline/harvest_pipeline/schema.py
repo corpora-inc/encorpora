@@ -74,7 +74,8 @@ CREATE TABLE question (
   rationales TEXT,
   section_ids TEXT NOT NULL,
   difficulty REAL NOT NULL,
-  lang TEXT NOT NULL, prov_id TEXT NOT NULL
+  lang TEXT NOT NULL, prov_id TEXT NOT NULL,
+  note TEXT
 );
 
 CREATE TABLE answer (

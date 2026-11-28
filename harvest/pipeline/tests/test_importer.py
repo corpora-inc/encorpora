@@ -255,3 +255,17 @@ def test_course_tree_imports_checks_links_and_indexes_apart(corpus_dir):
     # nodes are their own index, never mixed into the rule chunks
     assert conn.execute("SELECT count(*) FROM chunk WHERE ref_kind LIKE '%node%'").fetchone()[0] == 0
     assert conn.execute("SELECT count(*) FROM course_node_vec").fetchone()[0] == 3
+
+
+def test_question_note_from_the_banks_beyond_field(corpus_dir):
+    import sqlite3
+    data = corpus_dir / "data"
+    data.mkdir()
+    q = {"q_id": "q1", "skill_id": "s", "kind": "mc", "stem": "How far?", "choices": ["10 ft", "20 ft"], "answer": 1,
+         "rationales": ["no", "yes"], "section_ids": ["99cfr1999.12(a)(1)"], "lang": "en", "prov": prov()}
+    rows = [{**q, "beyond": "Above 50 kV the distance grows."}, {**q, "q_id": "q2"}, {**q, "q_id": "q3", "beyond": 7}]
+    (data / "q.jsonl").write_text("\n".join(json.dumps(r) for r in rows) + "\n")
+    c = _with_imports(corpus_dir, "  - {table: question, files: [data/q.jsonl], rename: {beyond: note}}\n")
+    conn = sqlite3.connect(build(c, c.profile(), log=None)["path"])
+    assert dict(conn.execute("SELECT q_id, note FROM question").fetchall()) == {
+        "q1": "Above 50 kV the distance grows.", "q2": None}  # q3's note is not text: it fails
