@@ -227,7 +227,15 @@ EMBEDDINGGEMMA2 = {
 }
 
 
-def make_embedder(cfg: dict | None) -> Embedder:
+CORE_ID = re.compile(r"^[^@\s]+@[0-9a-f]{16}(?:/mrl\d+)?$")
+
+
+def core_accepts(embedder_id: str) -> bool:
+    """An embedder id harvest-core can match on the query side (embed.rs ServerEmbedder)."""
+    return bool(CORE_ID.match(embedder_id or ""))
+
+
+def make_embedder(cfg: dict | None) -> Embedder | None:
     """HARVEST_EMBED_BASE_URL points a llama-server embedder at an already running server
     (e.g. the lab machine through an SSH tunnel) instead of starting one locally.
     HARVEST_EMBED_MODEL_SHA256 declares the SHA-256 of the GGUF that server loaded when the file is
@@ -238,7 +246,12 @@ def make_embedder(cfg: dict | None) -> Embedder:
     if os.environ.get("HARVEST_EMBED_MODEL_SHA256") and cfg.get("kind") != "hash":
         cfg.setdefault("model_sha256", os.environ["HARVEST_EMBED_MODEL_SHA256"])
     kind = cfg.pop("kind", "hash")
-    if kind == "hash":
+    if kind in ("hash", "none"):
+        # No vectors: a lexical-only pack. The core reads dense vectors only from an embedder it can run
+        # for the query side (`<model>@<gguf sha16>`, core_accepts); a pipeline-only hash would be
+        # stored, silently ignored by the engine and mistaken for a dense pack.
+        return None
+    if kind == "hash-test":            # tests only: never in a pack (write_pack refuses its id)
         return HashEmbedder(int(cfg.get("dim", 256)))
     if kind == "embeddinggemma-2":
         path = cfg.get("model_path") or str(harvest_home() / "models" / EMBEDDINGGEMMA2["file"])

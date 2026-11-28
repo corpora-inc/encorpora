@@ -34,6 +34,7 @@ class Request:
     schema: dict
     name: str = "output"          # schema name for APIs that want one
     max_tokens: int = 16000
+    images: list = field(default_factory=list)   # [(media_type, bytes)], shown before the prompt
 
 
 @dataclass
@@ -60,6 +61,8 @@ class Backend:
 
     def complete(self, req: Request) -> Response:  # pragma: no cover - interface
         raise NotImplementedError
+
+    supports_images = False
 
     def check_guard(self) -> None:
         """Raise UsageLimitReached when the backend's own quota guard trips. Default: never."""
