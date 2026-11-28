@@ -1,0 +1,23 @@
+/* crane.clearance piece styles (theme roles only: --cf-*, crane tokens).
+ * Danger roles for the band and the overlap; a part's --lit mixes it toward amber. */
+.cfc-band { fill: color-mix(in srgb, var(--cf-light) calc(var(--lit, 0) * 22%), color-mix(in srgb, var(--cf-danger) 12%, var(--cf-paper))); }
+.cfc-band-edge { stroke: color-mix(in srgb, var(--cf-light-edge) calc(var(--lit, 0) * 100%), var(--cf-danger)); stroke-width: calc(3px + 3px * var(--lit, 0)); stroke-dasharray: 14 9; }
+.cfc-zone {
+  fill: color-mix(in srgb, var(--cf-light) calc(var(--lit, 0) * 14%), color-mix(in srgb, var(--cf-ink) 4%, transparent));
+  stroke: color-mix(in srgb, var(--cf-light-edge) calc(var(--lit, 0) * 100%), var(--cf-ink-2));
+  stroke-width: calc(3px + 3px * var(--lit, 0));
+  stroke-dasharray: 18 10;
+}
+.cfc-overlap {
+  fill: color-mix(in srgb, var(--cf-light) calc(var(--lit, 0) * 40%), color-mix(in srgb, var(--cf-danger) 42%, var(--cf-paper)));
+  stroke: color-mix(in srgb, var(--cf-light-edge) calc(var(--lit, 0) * 100%), var(--cf-danger));
+  stroke-width: calc(3.5px + 2.5px * var(--lit, 0));
+  stroke-linejoin: round;
+}
+.cfc-wire { stroke: color-mix(in srgb, var(--cf-light-edge) calc(var(--lit, 0) * 100%), var(--cf-ink)); stroke-width: calc(3.5px + 2px * var(--lit, 0)); }
+.cfc-arm { fill: var(--cf-steel-dark); stroke: color-mix(in srgb, var(--cf-light-edge) calc(var(--lit, 0) * 100%), var(--cf-ink-2)); stroke-width: 2.5; }
+.cfc-tag { fill: color-mix(in srgb, var(--cf-light) calc(var(--lit, 0) * 100%), var(--cf-ink)); }
+.cfc-tag-text { fill: color-mix(in srgb, var(--cf-light-ink) calc(var(--lit, 0) * 100%), var(--cf-paper)); font-size: 40px; font-weight: 700; }
+/* the gap readout turns to the alarm once the zone reaches the band */
+.is-inside .cf-panel-cell { fill: color-mix(in srgb, var(--cf-danger) 30%, var(--cf-panel-cell)); }
+.is-inside .cf-panel-value { fill: color-mix(in srgb, var(--cf-danger) 55%, var(--cf-panel-ink)); }

@@ -1,0 +1,278 @@
+{
+ "id": "demo-base",
+ "title": "Why a crane tips",
+ "shots": [
+  {
+   "figure": {
+    "crane": {
+     "base": {
+      "craneWeight": 60000,
+      "cg": 3,
+      "axis": 12,
+      "radius": 30,
+      "load": 20000
+     }
+    }
+   },
+   "beats": [
+    {
+     "say": "A crane on outriggers tips about the float nearest the load. That float is the tipping axis.",
+     "do": [
+      {
+       "do": "crane",
+       "light": "base.outriggers",
+       "at": "outriggers"
+      },
+      {
+       "do": "crane",
+       "light": "base.axis",
+       "at": "tipping"
+      }
+     ]
+    },
+    {
+     "say": "The crane's own weight, sixty thousand pounds, acts fifteen feet behind the axis.",
+     "do": [
+      {
+       "do": "crane",
+       "light": "base.cg",
+       "at": "weight"
+      },
+      {
+       "do": "crane",
+       "light": "base.armCrane",
+       "at": "fifteen"
+      },
+      {
+       "do": "crane",
+       "light": "base.moments.crane",
+       "at": "fifteen"
+      }
+     ]
+    },
+    {
+     "say": "The load, twenty thousand pounds, hangs eighteen feet out in front of it.",
+     "do": [
+      {
+       "do": "crane",
+       "light": "base.load",
+       "at": "load"
+      },
+      {
+       "do": "crane",
+       "light": "base.armLoad",
+       "at": "eighteen"
+      },
+      {
+       "do": "crane",
+       "light": "base.moments.load",
+       "at": "eighteen"
+      }
+     ]
+    },
+    {
+     "say": "Boom out to fifty-seven feet. The load's arm grows to forty-five feet, and the two moments balance.",
+     "do": [
+      {
+       "do": "crane",
+       "set": {
+        "base.radius": 57
+       },
+       "at": "Boom",
+       "dur": 3
+      },
+      {
+       "do": "crane",
+       "light": "base.armLoad",
+       "at": "arm"
+      },
+      {
+       "do": "crane",
+       "light": "base.moments",
+       "at": "balance"
+      }
+     ]
+    },
+    {
+     "say": "Any farther out, and the load wins. The crane tips over the float.",
+     "pause": 1,
+     "do": [
+      {
+       "do": "crane",
+       "set": {
+        "base.radius": 60
+       },
+       "at": "farther",
+       "dur": 1.5
+      },
+      {
+       "do": "crane",
+       "set": {
+        "base.tilt": 6
+       },
+       "at": "tips",
+       "dur": 2
+      },
+      {
+       "do": "crane",
+       "light": "base.axis",
+       "at": "float"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "crane": {
+     "base": {
+      "craneWeight": 60000,
+      "cg": 3,
+      "axis": 12,
+      "radius": 57,
+      "load": 20000,
+      "rated": true,
+      "hidden": [
+       "base.rated"
+      ]
+     }
+    }
+   },
+   "beats": [
+    {
+     "say": "At fifty-seven feet the crane tips at twenty thousand pounds.",
+     "do": [
+      {
+       "do": "crane",
+       "light": "base.tipping",
+       "at": "tips"
+      }
+     ]
+    },
+    {
+     "say": "The chart rates it at eighty-five percent of that: seventeen thousand pounds.",
+     "do": [
+      {
+       "do": "crane",
+       "show": "base.rated",
+       "at": "eighty-five"
+      },
+      {
+       "do": "crane",
+       "light": "base.rated",
+       "at": "seventeen"
+      }
+     ]
+    },
+    {
+     "say": "Pull the outriggers in to mid extension. The axis moves to seven feet, the crane's arm shrinks to ten, and the rating drops to ten thousand two hundred.",
+     "do": [
+      {
+       "do": "crane",
+       "set": {
+        "base.axis": 7
+       },
+       "at": "Pull",
+       "dur": 2.5
+      },
+      {
+       "do": "crane",
+       "light": "base.axis",
+       "at": "axis"
+      },
+      {
+       "do": "crane",
+       "light": "base.armCrane",
+       "at": "ten"
+      },
+      {
+       "do": "crane",
+       "light": "base.rated",
+       "at": "rating"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "crane": {
+     "base": {
+      "view": "plan",
+      "axis": 12,
+      "front": 12,
+      "rear": 12,
+      "swing": 90,
+      "radius": 30
+     }
+    }
+   },
+   "beats": [
+    {
+     "say": "From above: over the side, the axis is the line through the two side floats, twelve feet out.",
+     "do": [
+      {
+       "do": "crane",
+       "light": "base.axis.left",
+       "at": "line"
+      },
+      {
+       "do": "crane",
+       "light": "base.axisDim",
+       "at": "twelve"
+      }
+     ]
+    },
+    {
+     "say": "Swing over the corner and the axis is farther away, about seventeen feet.",
+     "do": [
+      {
+       "do": "crane",
+       "set": {
+        "base.swing": 45
+       },
+       "at": "Swing",
+       "dur": 2.5
+      },
+      {
+       "do": "crane",
+       "light": [
+        "base.float.fl"
+       ],
+       "at": "corner"
+      },
+      {
+       "do": "crane",
+       "light": "base.axisDim",
+       "at": "seventeen"
+      }
+     ]
+    },
+    {
+     "say": "Over the front, the axis is the line through the two front floats.",
+     "do": [
+      {
+       "do": "crane",
+       "set": {
+        "base.swing": 0
+       },
+       "at": "Over",
+       "dur": 1.6
+      },
+      {
+       "do": "crane",
+       "light": "base.axis.front",
+       "at": "line"
+      },
+      {
+       "do": "crane",
+       "light": "base.axisDim",
+       "at": "front",
+       "nth": 2
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

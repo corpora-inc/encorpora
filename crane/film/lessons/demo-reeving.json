@@ -1,0 +1,34 @@
+{
+  "id": "demo-reeving",
+  "title": "Parts of line",
+  "shots": [
+    { "figure": { "crane": { "reeving": { "parts": 4, "load": 40000, "linePull": 10000, "deadEnd": "tip" } } },
+      "beats": [
+        { "say": "One rope runs from the drum, over the boom tip, and down and up between the tip and the block.", "do": [
+          { "do": "crane", "light": "reeving.lead", "at": "drum" },
+          { "do": "crane", "light": "reeving.tip", "at": "tip" },
+          { "do": "crane", "light": "reeving.block", "at": "block" } ] },
+        { "say": "Count the lines that hold the block. One, two, three, four.", "do": [
+          { "do": "crane", "light": "reeving.part.1", "at": "One" },
+          { "do": "crane", "light": "reeving.part.2", "at": "two" },
+          { "do": "crane", "light": "reeving.part.3", "at": "three" },
+          { "do": "crane", "light": "reeving.part.4", "at": "four" },
+          { "do": "crane", "light": "reeving.readout.parts", "at": "four" } ] },
+        { "say": "The lead line goes to the drum, so it does not count. The end is tied off at the tip.", "do": [
+          { "do": "crane", "light": "reeving.lead", "at": "lead" },
+          { "do": "crane", "light": "reeving.deadend", "at": "tied" } ] },
+        { "say": "Each part carries the same pull. Forty thousand pounds over four parts is ten thousand pounds each.", "do": [
+          { "do": "crane", "light": "reeving.tension", "at": "same" },
+          { "do": "crane", "light": "reeving.load", "at": "Forty" },
+          { "do": "crane", "light": "reeving.readout.perpart", "at": "ten" } ] },
+        { "say": "Add ten thousand pounds and four parts are not enough.", "do": [
+          { "do": "crane", "set": { "reeving.load": 50000 }, "at": "Add", "dur": 1.2 },
+          { "do": "crane", "light": "reeving.readout.check", "at": "not" } ] },
+        { "say": "Reeve five parts. The line can now hold fifty thousand pounds, and the end moves to the block.", "do": [
+          { "do": "crane", "set": { "reeving.parts": 5 }, "at": "Reeve", "dur": 1.4 },
+          { "do": "crane", "light": "reeving.readout.parts", "at": "five" },
+          { "do": "crane", "light": "reeving.readout.capacity", "at": "fifty" },
+          { "do": "crane", "light": "reeving.deadend", "at": "end" } ] }
+      ] }
+  ]
+}

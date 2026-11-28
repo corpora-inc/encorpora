@@ -502,6 +502,20 @@ export const actionSchema = z.discriminatedUnion("do", [
   z.object({ do: z.literal("send"), target: targets, to: z.union([name, z.array(name).min(2)]), ...timing }).strict(),
   /** Things go away one by one. With `toward`, each drifts that way as it fades (ducks fly off upward) instead of fading where it sits. */
   z.object({ do: z.literal("leave"), target: targets, toward: z.enum(["n", "s", "e", "w", "ne", "nw", "se", "sw"]).optional(), ...timing }).strict(),
+  /**
+   * A figure drawn by another product's kit (figure {crane: ...}, crane/film): `set` eases named
+   * values (a boom's radius) over `dur`, `show` and `hide` fade parts, `light` emphasizes parts
+   * until `until` or the end of the beat. That kit checks the names when it mounts the figure.
+   */
+  z.object({
+    do: z.literal("crane"),
+    set: z.record(dotted, num).optional(),
+    show: targets.optional(),
+    hide: targets.optional(),
+    light: targets.optional(),
+    ...timing,
+    ...highlightTiming,
+  }).strict().refine((a) => a.set || a.show || a.hide || a.light, { message: "A crane action sets, shows, hides or lights something" }),
   /** An app figure (figure {example: true} or {scene: ...}): scene timeline actions on its part names. */
   z.object({ do: z.literal("scene"), actions: z.array(filmSceneActionSchema).min(1), ...timing }).strict(),
   // ---- the work column
@@ -606,10 +620,17 @@ export const sceneFigureSchema = z
   .strict()
   .refine((f) => !f.scene.steps, { message: "A film drives its scene with scene actions; leave out steps", path: ["scene", "steps"] });
 
+/**
+ * A figure another product's kit draws: `{crane: spec}` is a crane picture from
+ * crane/film, whose own mount checks the spec. The stage only hosts it.
+ */
+export const kitFigureSchema = z.object({ crane: z.record(z.string(), z.unknown()) }).strict();
+export type KitFigure = z.infer<typeof kitFigureSchema>;
+
 export const shotSchema = z
   .object({
-    /** A built figure, the lesson's real figure, any app figure, or none (the work fills the frame). */
-    figure: z.union([geoSchema, z.object({ example: z.literal(true) }).strict(), sceneFigureSchema]).optional(),
+    /** A built figure, the lesson's real figure, any app figure, another kit's figure, or none (the work fills the frame). */
+    figure: z.union([geoSchema, z.object({ example: z.literal(true) }).strict(), sceneFigureSchema, kitFigureSchema]).optional(),
     beats: z.array(beatSchema).min(1),
   })
   .strict();
@@ -624,8 +645,8 @@ export const scriptSchema = z
      * `--`). Publishing links the film from each one that has no film of its own.
      */
     teaches: z.array(z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/)).optional(),
-    /** Routing only: this film is the lesson film for its own problem type's skill. */
-    skill: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/).optional(),
+    /** Routing only: this film is the lesson film for its own problem type's skill (another kit's skill ids may be dotted: `loadchart.read-gross`). */
+    skill: z.string().regex(/^[a-z0-9]+(?:[.-][a-z0-9]+)*$/).optional(),
     /** Seed of the worked example shown by figure {example: true}. */
     seed: z.string().optional(),
     /**

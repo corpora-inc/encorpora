@@ -35,6 +35,8 @@ export function startsCleared(list: { a: Action; t0: number; dur?: number }[]): 
  * template's own figure (`figure`). `scene` actions drive their parts.
  */
 export function mountExample(figure: any, host: HTMLElement, shot: Shot, list: { a: Action; t0: number; dur: number; sceneEnds?: (number | undefined)[] }[], onUnmount?: (dispose: () => void) => void): MountedFigure {
+  // another kit's figure is drawn by that kit's mount (crane/film), never as this template's example
+  if (shot.figure && "crane" in shot.figure) return { issues: ["a crane figure is drawn by the crane kit: make the film with --kit crane."], notes: [] };
   const own = shot.figure && "scene" in shot.figure ? shot.figure.scene : undefined;
   const fig = own ? { kind: "scene", scene: own } : figure;
   if (!fig) throw new Error("This template's example has no figure. Build one with geo, or give the shot its own scene.");

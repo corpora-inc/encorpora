@@ -1,0 +1,18 @@
+/* crane.reeving piece styles (theme roles only: --cf-*, crane tokens). */
+.cf-rv-frame { fill: var(--cf-steel); stroke: var(--cf-ink-2); stroke-width: 3; }
+.cf-rv-cap { fill: var(--cf-ink-2); font-size: 28px; font-weight: 600; letter-spacing: 0.1em; }
+.cf-rv-hub { fill: var(--cf-ink-2); }
+.cf-rv-rope { fill: none; stroke: var(--cf-ink); stroke-width: 6; stroke-linecap: round; }
+.cf-rv-head { fill: var(--cf-ink); }
+.cf-rv-sling { fill: none; stroke: var(--cf-ink); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.cf-rv-socket { fill: var(--cf-steel-dark); stroke: var(--cf-ink); stroke-width: 3; stroke-linejoin: round; }
+.cf-rv-pin { fill: var(--cf-paper); stroke: var(--cf-ink); stroke-width: 2.5; }
+.cf-rv-pill { fill: var(--cf-paper); stroke: var(--cf-ink-2); stroke-width: 2.5; }
+.cf-rv-t { fill: var(--cf-ink); font-size: 40px; font-weight: 700; }
+.cf-rv-load-text { fill: var(--cf-ink); font-size: 40px; font-weight: 700; }
+.cf-rv-unit { font-size: 34px; font-weight: 600; }
+.cf-rv-check { fill: var(--cf-panel-ink); font-size: 34px; font-weight: 600; }
+.cf-rv-sign { fill: var(--cf-light); font-weight: 700; }
+.cf-rv-over .cf-rv-sign { fill: var(--cf-panel-ink); }
+.cf-rv-swivel { fill: var(--cf-steel-dark); stroke: var(--cf-ink); stroke-width: 2.5; }
+.cf-rv-hook { fill: none; stroke: var(--cf-ink); stroke-width: 7; stroke-linecap: round; }

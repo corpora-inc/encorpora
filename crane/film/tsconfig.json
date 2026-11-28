@@ -1,0 +1,19 @@
+{
+  "//": "Type-checks the crane film kit with amp's TypeScript and the stage it imports: cd amp && npx tsc -p ../crane/film",
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "jsx": "react-jsx",
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "typeRoots": ["../../amp/node_modules/@types"],
+    "types": []
+  },
+  "include": ["*.ts", "*.tsx", "pieces/*.ts", "review/review.tsx", "env.d.ts"]
+}

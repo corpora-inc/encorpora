@@ -8,6 +8,8 @@
  *   npx tsx film/make.ts <template-id> --res 540 --fps 30   a quick look
  *   npx tsx film/make.ts <template-id> --still 12.5,40  single frames
  *   npx tsx film/make.ts <template-id> --provider spark    house voices from the Spark (spark-voice/README.md)
+ *   npx tsx film/make.ts <film-id> --kit crane          another product's film (kits.ts): its screenplays, page and figures
+ *   npx tsx film/make.ts <template-id> --silent         a silent edition on estimated timing, for review before a voice is chosen
  *
  * Voice takes are cached by their text, so editing one shot only pays for that shot.
  */
@@ -33,6 +35,7 @@ import { renderFormat } from "./render-format";
 import { heldFrames } from "./held-frames";
 import { displayScript, letterNotes } from "./letters";
 import { captionText } from "./captions";
+import { kitOf } from "./kits";
 
 const { values, positionals } = parseArgs({
   allowPositionals: true,
@@ -51,8 +54,13 @@ const { values, positionals } = parseArgs({
     workers: { type: "string", default: "1" },
     /** Shoot the phone layout (1080 by 1920) instead of the 16:9 film: storyboard-tall.jpg, board-tall/, stills-tall/. */
     tall: { type: "boolean", default: false },
+    /** Write timing.json and a silent narration.wav on estimated timing: a film the live player can show with no voice. */
+    silent: { type: "boolean", default: false },
+    /** Whose film this is (kits.ts): amp (default) or crane. */
+    kit: { type: "string", default: "amp" },
   },
 });
+const kit = kitOf(values.kit);
 const id = positionals[0];
 if (!id) throw new Error("Usage: npx tsx film/make.ts <template-id>");
 const res = Number(values.res), fps = Number(values.fps);
@@ -71,7 +79,7 @@ const started = Date.now();
 const clock: Record<string, number> = {};
 const lap = (name: string, from: number) => (clock[name] = Math.round((Date.now() - from) / 100) / 10);
 
-const raw: unknown = JSON.parse(readFileSync(join(HERE, "lessons", `${id}.json`), "utf8"));
+const raw: unknown = JSON.parse(readFileSync(join(kit.lessons, `${id}.json`), "utf8"));
 // Things to count: an unknown kind, or a count whose words do not match the things on screen,
 // is reported in plain words before the schema, the browser or a paid voice is involved.
 const misuse = thingsProblems(raw);
@@ -319,15 +327,23 @@ async function takeSlot() {
 }
 
 // ------------------------------------------------------------------ pictures
-const timing = values.dry ? estimate() : await voice();
+const timing = values.dry || values.silent ? estimate() : await voice();
+if (values.silent) {
+  // No voice yet: the live player keeps time by a silent track of the estimated length, and no voice is recorded.
+  timing.voices = {};
+  writeFileSync(join(OUT, "timing.json"), JSON.stringify(timing));
+  writeFileSync(join(OUT, "narration.wav"), wav(new Int16Array(Math.round(SR * timing.duration))));
+  values.check = true;
+}
 const slotDir = await takeSlot();
 if (!values.dry) captions(timing);
-const lesson = problemLesson(template, script.seed ?? "film");
+// another kit's film teaches no AMP problem type: it has no template example
+const exampleFigure = kit.facts ? problemLesson(template, script.seed ?? "film").example.figure ?? null : null;
 const suffix = values.tall ? "-tall" : "";
 const server = await createServer({
   root: join(HERE, ".."),
   logLevel: "error",
-  server: { host: "127.0.0.1", port: 0, hmr: false, watch: null }, // a saved file must never reload a page mid-render
+  server: { host: "127.0.0.1", port: 0, hmr: false, watch: null, fs: { allow: [join(HERE, ".."), ...kit.allow] } }, // a saved file must never reload a page mid-render
   plugins: [{
     name: "film",
     configureServer(vite) {
@@ -335,9 +351,9 @@ const server = await createServer({
         if (!req.url?.startsWith("/__film")) return next();
         // estimated timing runs a little off the real voice: hold the dry check to a 6 s still limit for margin.
         // `figure` is the template's example, for {example: true} shots; a shot's own scene travels in the script.
-        const payload = JSON.stringify({ script, timing, figure: lesson.example.figure ?? null, still: values.dry ? 6 : 7.5, layout: values.tall ? "tall" : "wide" }).replace(/</g, "\\u003c");
+        const payload = JSON.stringify({ script, timing, figure: exampleFigure, still: values.dry ? 6 : 7.5, layout: values.tall ? "tall" : "wide" }).replace(/</g, "\\u003c");
         res_.setHeader("Content-Type", "text/html");
-        res_.end(await vite.transformIndexHtml(req.url, `<!doctype html><html lang="en" data-theme="light"><head><meta charset="utf-8"></head><body><div id="film"></div><script>window.__filmData=${payload}</script><script type="module" src="/film/page.tsx"></script></body></html>`));
+        res_.end(await vite.transformIndexHtml(req.url, `<!doctype html><html lang="en" data-theme="light"><head><meta charset="utf-8"></head><body><div id="film"></div><script>window.__filmData=${payload}</script><script type="module" src="${kit.page}"></script></body></html>`));
       });
     },
   }],

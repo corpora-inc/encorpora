@@ -190,7 +190,8 @@ jobs:
           # reviewer, whose failure mode when it regresses is to PASS wrongly —
           # so its tests must run on any change to it (or to this workflow, or
           # to the workflow that invokes it).
-          set_output amp_film '^(amp/(film/|src/|package(-lock)?\.json$|tsconfig\.json$))'
+          # crane/film is the lesson-film kit's crane figures and screenplays; it runs on the same stage
+          set_output amp_film '^(amp/(film/|src/|package(-lock)?\.json$|tsconfig\.json$)|crane/film/)'
           set_output amp_native '^(amp/mobile/|amp/src/web/(auth|native-session|native-runtime|NativeGate|NativePreview|learning-transport|BookReader|main)\.|amp/src/server/(app|auth)\.|amp/scripts/verify-native-session\.)'
           # The static site imports AMP analytics, figures, content, audit and theme at build time.
           set_output corpora_site '^(corpora-site/|amp/(browser-security\.mjs|scripts/(install-browser\.mjs|configure-browser-sandbox\.sh))$|amp/(books/|src/(analytics|math|content|curriculum|books|publishing)/|src/web/([^/]*Figure|MathText)\.tsx$|src/web/ui/tokens\.css$|src/server/trials\.ts$|package(-lock)?\.json$|tsconfig\.json$))'
@@ -407,7 +408,7 @@ jobs:
           # app compiles all of them). `.github/workflows/ios-native.yml`
           # additionally compiles their Swift, but it is advisory and does not
           # count here.
-          covered='^(amp/|corpan/corpan-app/|corpan/dja/|corpan/infra/terraform/lambda/|corpan/packs/|corpan/infra/terraform/.*(\.tf|\.tfvars|\.tf\.json)$|corpan/infra/terraform/\.terraform\.lock\.hcl$|web/(io|data|pages|scripts)/|corpan/plugins/|dynawalla/dynawalla-app/|dynawalla/(curriculum|engine|games|packs)/|crane/app/|crane/content/tools/|harvest/(core|pipeline|practice)/)'
+          covered='^(amp/|corpan/corpan-app/|corpan/dja/|corpan/infra/terraform/lambda/|corpan/packs/|corpan/infra/terraform/.*(\.tf|\.tfvars|\.tf\.json)$|corpan/infra/terraform/\.terraform\.lock\.hcl$|web/(io|data|pages|scripts)/|corpan/plugins/|dynawalla/dynawalla-app/|dynawalla/(curriculum|engine|games|packs)/|crane/app/|crane/content/tools/|crane/film/|harvest/(core|pipeline|practice)/)'
 
           # Carve-outs checked BEFORE `covered`, because a broader area prefix
           # would otherwise swallow them. grep -E has no negative lookahead,
@@ -2256,6 +2257,8 @@ jobs:
         run: npx playwright install-deps chromium && node scripts/install-browser.mjs --configure-linux-sandbox
       - name: Lesson-film kit tests
         run: npm run film:test
+      - name: Crane film kit types (crane/film draws on this stage)
+        run: npx tsc -p ../crane/film
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
