@@ -110,6 +110,8 @@ const fakeNative = (opts) => {
       window.__stt.push(cmd);
       window.__calls.push([cmd, args]);
       switch (cmd) {
+        // harvest-core's harvest-show/1 text, as src-tauri/src/pack.rs returns it (here: the served copy).
+        case "pack_show": return (await fetch("/pack/crane-us.browser.json")).text();
         case "voice_model": return { status: args?.wait ? "ready" : "installing", file: "ggml-test.bin" };
         case "plugin:stt|is_available": return true;
         case "plugin:stt|validate_model": return { model: args.model, valid: true, problems: [] };
@@ -556,6 +558,7 @@ try {
   for (const width of [320, 390]) {
     const { context, page, errors } = await newPage(browser, width, "light", { native: {} });
     await page.goto(base + "/ask");
+    assert.ok((await page.evaluate(() => window.__calls.map((c) => c[0]))).includes("pack_show"), "the native app opens the pack through harvest-core");
     const talk = page.getByRole("button", { name: "Tap and ask" });
     await talk.waitFor();
     const box = page.getByLabel("Ask about a rule, a limit or a step");
