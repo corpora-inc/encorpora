@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { call, EngineError } from "../engine/client.ts";
+import { call } from "../engine/client.ts";
 import type { EquipView, FaultTree, PackInfoView, TaskSummary } from "../engine/types.ts";
 
 /** One loaded pack: its manual, its equipment family, its tables and tasks. */
@@ -22,26 +22,11 @@ interface PackState {
   load(): Promise<void>;
 }
 
-/**
- * The loaded pack ids. pack.info answers for the only pack when one is
- * loaded; with several it refuses and names them. Interim, until the engine
- * has a pack.list: read the names from that refusal.
- */
-async function packIds(): Promise<string[]> {
-  try {
-    return (await call("pack.info", {})).packs;
-  } catch (e) {
-    const m = e instanceof EngineError ? /\[(.*)\]/.exec(e.message) : null;
-    if (!m) throw e;
-    return JSON.parse(`[${m[1]}]`) as string[];
-  }
-}
-
 export const usePack = create<PackState>()((set) => ({
   packs: {},
   ids: [],
   async load() {
-    const ids = await packIds();
+    const ids = (await call("pack.list", {})).map((p) => p.pack_id);
     const loaded = await Promise.all(
       ids.map(async (pack_id) => {
         const [info, equipment, trees, tasks] = await Promise.all([call("pack.info", { pack_id }), call("equip.list", { pack_id }), call("tree.list", { pack_id }), call("task.list", { pack_id })]);

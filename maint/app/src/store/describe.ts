@@ -24,6 +24,8 @@ interface DescribeState {
   setQuery(assetId: string, q: string): void;
   addCode(assetId: string, value: string): void;
   addCodes(assetId: string, values: string[]): void;
+  /** Observations a decoder read (each with its kind), added once each. */
+  addObservations(assetId: string, obs: ObservationInput[]): void;
   removeCode(assetId: string, i: number): void;
   clearCodes(assetId: string): void;
   matchCodes(assetId: string, packId: string): Promise<void>;
@@ -49,6 +51,11 @@ export const useDescribe = create<DescribeState>()(
         addCodes: (id, values) => {
           const have = new Set(entry(id).codes.map((c) => c.value));
           const fresh = [...new Set(values)].filter((v) => !have.has(v)).map((value) => ({ signal_kind: null, value }));
+          put(id, { ...entry(id), codes: [...entry(id).codes, ...fresh] });
+        },
+        addObservations: (id, obs) => {
+          const have = new Set(entry(id).codes.map((c) => `${c.signal_kind ?? ""}|${c.value}`));
+          const fresh = obs.filter((o) => !have.has(`${o.signal_kind ?? ""}|${o.value}`));
           put(id, { ...entry(id), codes: [...entry(id).codes, ...fresh] });
         },
         removeCode: (id, i) => put(id, { ...entry(id), codes: entry(id).codes.filter((_, j) => j !== i) }),

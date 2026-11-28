@@ -11,6 +11,8 @@ import type {
   Asset,
   AuditRecord,
   ChainReport,
+  Decoded,
+  SignalMatch,
   FieldNote,
   HubStatus,
   JobReport,
@@ -81,6 +83,8 @@ interface Captured {
   tree: Tree;
   fieldNotes: FieldNote[];
   failedStep: StepOutcome;
+  decode: { decoded: Decoded; match: SignalMatch };
+  closestMatch: SignalMatch;
 }
 const D = raw as unknown as Captured;
 
@@ -142,18 +146,28 @@ const describe: Omit<DescribeProps, "phase"> = {
 
 const connect: ConnectProps = {
   unitName: unitName(unit),
+  source: "typed",
   linkAvailable: false,
+  formats: [
+    { value: "j1939_candump", label: "J1939 candump" },
+    { value: "j1939_frames", label: "J1939 frames" },
+  ],
+  format: "j1939_candump",
   signalKinds: D.pack.signal_kinds,
   codes: [],
+  decoded: null,
   match: null,
-  matching: false,
+  busy: false,
   describeTo: "/units/unit-101/troubleshoot",
+  onSource: none,
+  onFormat: none,
   onRead: none,
-  onAddCode: none,
-  onPasteLog: none,
+  onDecode: none,
+  onType: none,
   onRemove: none,
   onClear: none,
   onStart: none,
+  onStartSymptom: none,
 };
 
 const step = (v: JobView, extra: Partial<StepProps> = {}): StepProps => ({

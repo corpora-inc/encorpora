@@ -105,6 +105,8 @@ h = await answer3({ outcome: "yes" });
 steps.choice = h;
 out.steps = steps;
 
+out.decode = await call("signal.decode", { asset_id: unit.asset_id, format: "j1939_candump", input: "(1700000000.000000) can0 18FECA00#0401A8000101FFFF\n(1700000001.000000) can0 18FECA00#0401A8000101FFFF\n" });
+out.closestMatch = await call("signal.match", { asset_id: unit.asset_id, observations: [{ signal_kind: null, value: "engine running hot" }] });
 out.task = await call("task.get", { proc_id: "proc-battery", equip_id: unit.equip_id });
 const run = await call("run.start", { proc_id: "proc-battery", asset: unit.asset_id, equip_id: unit.equip_id, role: level });
 const r1 = await call("run.record", { run_id: run.run_id, ord: 1, outcome: "pass" });

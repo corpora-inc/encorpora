@@ -154,9 +154,13 @@ function Signals({ match, onStart }: { match: SignalMatch; onStart(e: EntryPoint
             {h.rule.quote && h.rule.quote_verified && <p className="mt-2 text-body">{h.rule.quote}</p>}
             {h.citation && <p className="mt-1 font-sans text-meta text-ink-3">{h.citation}</p>}
           </div>
-          <Button variant="primary" onClick={() => onStart({ tree_id: h.rule.tree_id, node_id: h.rule.node_id ?? "" })} className="shrink-0 font-sans">
-            Start here
-          </Button>
+          {h.has_tree && h.rule.tree_id ? (
+            <Button variant="primary" onClick={() => onStart({ tree_id: h.rule.tree_id!, node_id: h.rule.node_id ?? "" })} className="shrink-0 font-sans">
+              Start here
+            </Button>
+          ) : (
+            <p className="font-sans text-small text-ink-2">The manual gives no corrective action for this.</p>
+          )}
         </section>
       ))}
     </div>

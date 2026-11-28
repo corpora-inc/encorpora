@@ -314,10 +314,16 @@ try {
   // Connect to vehicle with no link on this device: a pasted log; the engine says what each code is and where to start.
   await page.goto(`${base}/units/unit-101`);
   await page.getByRole("link", { name: "Connect to vehicle" }).click();
-  await page.getByLabel("Diagnostic log").fill("spn:168/fmi:1\nX99\n");
-  await page.getByRole("button", { name: "Add the codes" }).click();
+  await page.getByRole("radio", { name: "Recorded log" }).click();
+  await page.getByLabel("Recorded log").fill("(1700000000.000000) can0 18FECA00#0401A8000101FFFF\n");
+  await page.getByRole("button", { name: "Read the log" }).click();
+  await page.getByText("SPN 168", { exact: true }).waitFor();
   await page.getByText("Battery voltage low").first().waitFor();
-  await page.getByText("Not in this manual").waitFor();
+  await page.getByRole("radio", { name: "Typed" }).click();
+  await page.getByLabel("Code or message").fill("engine running hot");
+  await page.getByRole("button", { name: "Add", exact: true }).click();
+  await page.getByText(/No exact entry for/).waitFor();
+  await page.getByText("Closest entries in this manual:").waitFor();
   await shot("connect-codes");
   await page.goto(`${base}/units/unit-101`);
   await page.getByText("Battery voltage low").first().waitFor();

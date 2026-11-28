@@ -2,11 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import { Navigate, useLocation, useNavigate, useParams } from "react-router";
 import { reportError } from "@appkit/toast.ts";
 import { useVoiceInput } from "@appkit/voice/useVoiceInput.ts";
-import { call } from "../engine/client.ts";
-import type { EntryPoint, PackInfoView, TaskView } from "../engine/types.ts";
+import { call, EngineError } from "../engine/client.ts";
+import type { Decoded, EntryPoint, Format, PackInfoView, TaskView } from "../engine/types.ts";
 import { closeOutPath, connectPath, describePath, jobPath } from "../routes.ts";
 import { CloseOut, type LessonDraft } from "../screens/CloseOut.tsx";
-import { Connect } from "../screens/Connect.tsx";
+import { Connect, type CodeSource } from "../screens/Connect.tsx";
 import { Describe, type IndexGroup } from "../screens/Describe.tsx";
 import { NotFound } from "../screens/NotFound.tsx";
 import { Step, type StepOverlay } from "../screens/Step.tsx";
@@ -261,6 +261,25 @@ export function CloseOutPage() {
   );
 }
 
+const FORMAT_LABEL: Record<Format, string> = {
+  j1939_candump: "J1939 candump",
+  j1939_frames: "J1939 frames",
+  j1587: "J1587",
+  display: "Display",
+  mavlink_tlog: "MAVLink log",
+  mavlink_raw: "MAVLink raw",
+};
+
+/** The log formats that carry the signal kinds this manual maps (all of them when it names none). */
+function formatsFor(info: PackInfoView): Format[] {
+  const kinds = info.signal_kinds.map((k) => k.kind);
+  const f: Format[] = [];
+  if (kinds.some((k) => k.startsWith("j1939"))) f.push("j1939_candump", "j1939_frames");
+  if (kinds.some((k) => k.startsWith("j1587"))) f.push("j1587");
+  if (kinds.some((k) => k.startsWith("mavlink"))) f.push("mavlink_tlog", "mavlink_raw");
+  return f.length ? f : ["j1939_candump", "j1939_frames", "j1587", "mavlink_tlog", "mavlink_raw"];
+}
+
 export function ConnectPage() {
   const { unitId = "" } = useParams();
   const navigate = useNavigate();
@@ -268,39 +287,74 @@ export function ConnectPage() {
   const level = useSettings((s) => s.level);
   const codes = useDescribe((s) => s.entries[unitId]?.codes ?? NO_CODES);
   const match = useDescribe((s) => s.matches[unitId] ?? null);
-  const [matching, setMatching] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [source, setSource] = useState<CodeSource>("typed");
+  const [decoded, setDecoded] = useState<Decoded | null>(null);
   const unit = assets.find((a) => a.asset_id === unitId);
   const info = usePackFor(unit?.equip_id)?.info ?? null;
+  const formats = info ? formatsFor(info) : [];
+  const [format, setFormat] = useState<Format | null>(null);
   useActiveUnit(unit?.asset_id);
   useEffect(() => {
     if (!unit || !info) return;
-    setMatching(true);
+    setBusy(true);
     void useDescribe
       .getState()
       .matchCodes(unitId, info.pack_id)
-      .finally(() => setMatching(false));
+      .finally(() => setBusy(false));
   }, [unitId, unit, info, codes]);
   if (!unit || !info) return loaded ? <NotFound /> : null;
   const d = useDescribe.getState();
+  const decode = async (fmt: Format, input: string) => {
+    setBusy(true);
+    try {
+      const r = await call("signal.decode", { pack_id: info.pack_id, asset_id: unitId, format: fmt, input });
+      if (fmt !== "display") setDecoded(r.decoded);
+      return r.decoded;
+    } catch (e) {
+      reportError("connect.decode", e, e instanceof EngineError ? e.message : "The log could not be read.");
+      return null;
+    } finally {
+      setBusy(false);
+    }
+  };
+  const start = async (p: { tree_id?: string; node_id?: string | null; symptom_id?: string }) => {
+    const id = await useJobs.getState().start({ pack_id: info.pack_id, asset_id: unitId, level: pickLevel(info, level), signals: codes, ...p });
+    if (id) navigate(jobPath(id));
+  };
   return (
     <Connect
       unitName={unitName(unit)}
+      source={source}
       linkAvailable={false}
+      formats={formats.map((f) => ({ value: f, label: FORMAT_LABEL[f] }))}
+      format={format ?? formats[0]!}
       signalKinds={info.signal_kinds}
       codes={codes}
+      decoded={decoded}
       match={codes.length ? match : null}
-      matching={matching}
+      busy={busy}
       describeTo={describePath(unitId)}
+      onSource={setSource}
+      onFormat={setFormat}
       onRead={() => {}}
-      onAddCode={(v) => d.addCode(unitId, v)}
-      // One code per line; the engine decodes and matches each against every kind it maps.
-      onPasteLog={(text) => d.addCodes(unitId, text.split(/\r?\n/).map((l) => l.trim()).filter(Boolean))}
-      onRemove={(i) => d.removeCode(unitId, i)}
-      onClear={() => d.clearCodes(unitId)}
-      onStart={async (e) => {
-        const id = await useJobs.getState().start({ pack_id: info.pack_id, asset_id: unitId, level: pickLevel(info, level), tree_id: e.tree_id, node_id: e.node_id || null, signals: codes });
-        if (id) navigate(jobPath(id));
+      onDecode={async (input) => {
+        const r = await decode(format ?? formats[0]!, input);
+        if (r) d.addObservations(unitId, r.observations);
       }}
+      onType={async (value) => {
+        // A short display code is decoded ("E21", "SPN 168 FMI 1"); a message the unit printed goes as it is,
+        // matched against every kind of signal the manual maps.
+        const r = await decode("display", value);
+        d.addObservations(unitId, r && r.observations.length ? r.observations : [{ signal_kind: null, value }]);
+      }}
+      onRemove={(i) => d.removeCode(unitId, i)}
+      onClear={() => {
+        d.clearCodes(unitId);
+        setDecoded(null);
+      }}
+      onStart={(e) => void start({ tree_id: e.tree_id, node_id: e.node_id || null })}
+      onStartSymptom={(symptom_id) => void start({ symptom_id })}
     />
   );
 }
