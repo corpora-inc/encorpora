@@ -62,8 +62,10 @@ export function ReviewPage() {
   if (!me) return checking ? null : <HubSignIn error={signInError} busy={checking} onSignIn={(t) => void signIn(t)} />;
 
   const selected = queue?.find((q) => q.lesson_id === lessonId) ?? null;
-  const suggested = selected ? suggestedNote(selected.current) : "";
-  const draft = selected ? (drafts[selected.lesson_id] ?? { text: suggested, note: "" }) : null;
+  const draft = selected ? (drafts[selected.lesson_id] ?? { text: suggestedNote(selected.current), note: "", version: null }) : null;
+  // The hub writes the note from the chosen version's lesson when the text is left as it suggests.
+  const chosen = selected?.versions.find((v) => v.item_id === draft?.version)?.lesson ?? selected?.current ?? null;
+  const suggested = chosen ? suggestedNote(chosen) : "";
   const act = async (fn: () => Promise<unknown>, done: string, leave = true) => {
     setBusy(true);
     try {
@@ -106,6 +108,7 @@ export function ReviewPage() {
             hubCall("hub.approve", {
               lesson_id: selected.lesson_id,
               note: draft.note.trim() || null,
+              version: selected.needs_reviewer ? draft.version : null,
               // Only an edited text is sent; otherwise the hub writes the note from the lesson.
               edit: draft.text.trim() !== suggested.trim() ? { text: draft.text.trim() } : null,
             }),

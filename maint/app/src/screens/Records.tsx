@@ -1,13 +1,15 @@
 import { useRef, type ChangeEvent, type ReactNode } from "react";
 import { Check, CloudOff, Cloud, FileUp, RefreshCw, ShieldCheck, ShieldAlert } from "lucide-react";
-import type { AuditRecord, ChainReport, FieldNote, PackInfoView, SyncStatus } from "../engine/types.ts";
+import type { AuditRecord, ChainReport, DeviceInfo, FieldNote, PackInfoView, SyncStatus } from "../engine/types.ts";
 import { formatDate, formatTime } from "../ui/format.ts";
-import { linkState } from "../ui/link.ts";
+import { linkState, refusalText } from "../ui/link.ts";
 import { Button, cx, Page, Panel, Segmented, Skeleton } from "../ui/kit.tsx";
 import type { Theme } from "../store/settings.ts";
 
 export interface RecordsProps {
   sync: SyncStatus | null;
+  /** This device's id and public key, for an administrator to enroll. */
+  device: DeviceInfo | null;
   pack: PackInfoView;
   notes: FieldNote[] | null;
   audit: AuditRecord[] | null;
@@ -32,6 +34,7 @@ export function Records(p: RecordsProps) {
   const notesFile = useRef<HTMLInputElement>(null);
   const fleetFile = useRef<HTMLInputElement>(null);
   const hub = p.sync?.hub;
+  const refusal = refusalText(linkState(p.sync));
   return (
     <Page title="Records" wide>
       <div className="grid items-start gap-6 lg:grid-cols-2">
@@ -41,12 +44,13 @@ export function Records(p: RecordsProps) {
               <Skeleton className="h-[140px]" />
             ) : (
               <div className="flex flex-col gap-3">
-                {linkState(p.sync) === "refused" && (
-                  <p className="rounded-control border-2 border-ink bg-surface-2 p-3 text-body">
-                    The hub does not accept uploads from this device yet. An administrator enrolls it at the hub. Everything stays queued here until then.
-                  </p>
+                {refusal && (
+                  <div className="rounded-control border-2 border-ink bg-surface-2 p-3">
+                    <p className="text-body">{refusal}</p>
+                    {hub?.backoff_until && <p className="mt-1 text-small text-ink-2">It tries again by itself after {formatTime(hub.backoff_until)}. Sync now tries at once.</p>}
+                  </div>
                 )}
-                {linkState(p.sync) !== "refused" && (
+                {!refusal && (
                   <div className="flex items-center gap-3">
                     {hub?.reachable ? <Cloud aria-hidden size={24} /> : <CloudOff aria-hidden size={24} />}
                     <p className="text-body">
@@ -68,7 +72,7 @@ export function Records(p: RecordsProps) {
                   <Fragmentish label="Waiting in all" value={p.sync.pending} strong />
                   {p.sync.quarantined > 0 && <Fragmentish label="Held back: changed since saved" value={p.sync.quarantined} />}
                 </dl>
-                {hub?.last_error && linkState(p.sync) !== "refused" && <p className="text-meta text-ink-3">Last error: {hub.last_error}</p>}
+                {hub?.last_error && !refusal && <p className="text-meta text-ink-3">Last error: {hub.last_error}</p>}
                 {hub?.configured && (
                   <Button onClick={p.onSync} disabled={p.busy === "sync"} className="self-start">
                     <RefreshCw aria-hidden size={20} className={cx(p.busy === "sync" && "animate-spin")} />
@@ -78,6 +82,17 @@ export function Records(p: RecordsProps) {
               </div>
             )}
           </Panel>
+
+          {p.device?.device_id && (
+            <Panel label="This device">
+              <dl className="m-0 grid grid-cols-[6rem_minmax(0,1fr)] gap-x-4 gap-y-1.5 text-small">
+                <dt className="text-ink-3">Device</dt>
+                <dd className="code m-0 break-all">{p.device.device_id}</dd>
+                <dt className="text-ink-3">Public key</dt>
+                <dd className="code m-0 break-all select-all">{p.device.public_key}</dd>
+              </dl>
+            </Panel>
+          )}
 
           <Panel label="Field notes on this device">
             {p.notes === null ? (

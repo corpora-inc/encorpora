@@ -14,6 +14,8 @@ export interface ReviewDraft {
   text: string;
   /** To the technician: why it was edited or sent back. Needed to send back. */
   note: string;
+  /** The version chosen when two units' edits conflict (an item id). */
+  version: string | null;
 }
 
 export interface ReviewProps {
@@ -52,6 +54,7 @@ export function Review(p: ReviewProps) {
   const l = item?.current ?? null;
   const d = p.draft;
   const edited = !!(d && d.text.trim() !== p.suggested.trim());
+  const mustPick = !!item?.needs_reviewer;
   const can = (r: string) => p.me.roles.includes(r as Principal["roles"][number]);
   return (
     <Page
@@ -104,6 +107,42 @@ export function Review(p: ReviewProps) {
 
         {item && l && d ? (
           <section className="flex min-w-0 flex-col gap-4" aria-label="Lesson">
+            {mustPick && d && (
+              <section aria-labelledby="versions" className="flex flex-col gap-2">
+                <h2 id="versions" className="text-lead font-bold">
+                  Two units changed this lesson at nearly the same time
+                </h2>
+                <p className="text-small text-ink-2">Pick the version to approve.</p>
+                <div role="radiogroup" aria-labelledby="versions" className="grid gap-3 sm:grid-cols-2">
+                  {item.versions
+                    .filter((v) => v.state !== "superseded")
+                    .map((v) => {
+                      const on = d.version === v.item_id;
+                      return (
+                        <button
+                          key={v.item_id}
+                          type="button"
+                          role="radio"
+                          aria-checked={on}
+                          onClick={() => p.onDraft({ ...d, version: v.item_id, text: suggestedNote(v.lesson) })}
+                          className={cx("flex flex-col gap-1 rounded-panel border-2 p-4 text-left", on ? "border-ink bg-surface-3" : "border-line-strong bg-surface")}
+                        >
+                          <span className="code text-meta text-ink-3">
+                            {v.device_id}, {formatTime(v.updated_at)}
+                          </span>
+                          <span className="text-body">
+                            <span className="font-bold">Cause:</span> {v.lesson.cause}
+                          </span>
+                          <span className="text-body">
+                            <span className="font-bold">Action:</span> {v.lesson.action}
+                          </span>
+                          {v.lesson.note && <span className="text-small text-ink-2">{v.lesson.note}</span>}
+                        </button>
+                      );
+                    })}
+                </div>
+              </section>
+            )}
             <Panel label="From the technician">
               <dl className="m-0 grid grid-cols-[8rem_minmax(0,1fr)] gap-x-4 gap-y-1.5 text-body">
                 <dt className="text-small text-ink-3">Table</dt>
@@ -151,7 +190,7 @@ export function Review(p: ReviewProps) {
             </Field>
             {can("reviewer") ? (
               <div className="grid gap-3 sm:grid-cols-2">
-                <Button variant="primary" size="lg" onClick={p.onApprove} disabled={p.busy || !d.text.trim()}>
+                <Button variant="primary" size="lg" onClick={p.onApprove} disabled={p.busy || !d.text.trim() || (mustPick && !d.version)}>
                   <Check aria-hidden size={22} />
                   {edited ? "Approve with edits" : "Approve"}
                 </Button>

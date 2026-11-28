@@ -216,6 +216,7 @@ const taskPage = (extra: Partial<TaskPageProps> = {}): TaskPageProps => ({
 
 const records: RecordsProps = {
   sync: D.outbox,
+  device: { device_id: "dev-15db3c55739b5c4c", public_key: "5MdZk4KLMfL+gvk5FUsE4EmxidH7WojwxR4xVwCE2Qs=" },
   pack: D.pack,
   notes: D.fieldNotes,
   audit: D.audit,
@@ -234,7 +235,7 @@ const records: RecordsProps = {
 
 const titles = Object.fromEntries(D.trees.map((t) => [t.tree_id, t.title]));
 const variantsById = Object.fromEntries(D.equipment.map((e) => [e.equip_id, e.name]));
-const reviewItem = (l: Lesson): ReviewItem => ({ current: l, first_received_at: l.created_at, lesson_id: l.lesson_id, reopened: false, reviews: [], status: "pending", versions: [] });
+const reviewItem = (l: Lesson): ReviewItem => ({ current: l, first_received_at: l.created_at, lesson_id: l.lesson_id, needs_reviewer: false, reopened: false, reviews: [], status: "pending", versions: [] });
 const reviewQueue = D.lessons.map(reviewItem);
 const first = reviewQueue[0] ?? null;
 const hubStatus: HubStatus = { bundles: 1, conflicts: 0, devices: 2, items: 3, jobs: 2, key_id: "1c3d7ada6ee7d67c", latest_bundle: 1, lessons_approved: 1, lessons_pending: reviewQueue.length, lessons_rejected: 0, stream: "pump40-fleet" };
@@ -245,7 +246,7 @@ const review: ReviewProps = {
   selected: first,
   titles,
   variants: variantsById,
-  draft: first ? { text: suggestedNote(first.current), note: "" } : null,
+  draft: first ? { text: suggestedNote(first.current), note: "", version: null } : null,
   suggested: first ? suggestedNote(first.current) : "",
   me: { name: "Shop supervisor", roles: ["reviewer", "publisher", "admin"], via: "token" },
   devices: [],
@@ -382,7 +383,25 @@ Object.assign(GALLERY, {
     title: "11. Review (hub)",
     states: [
       { state: "queue", label: "A lesson to review", unit: null, render: () => <Review {...review} /> },
-      { state: "edited", label: "Edited before approval", unit: null, render: () => <Review {...review} draft={{ text: "Check the battery date code first: batteries over three years old failed the voltage test.", note: "Made it a check to do first." }} /> },
+      { state: "edited", label: "Edited before approval", unit: null, render: () => <Review {...review} draft={{ text: "Check the battery date code first: batteries over three years old failed the voltage test.", note: "Made it a check to do first.", version: null }} /> },
+      {
+        state: "conflict",
+        label: "Two units' versions to choose from",
+        unit: null,
+        render: () => {
+          const l = first!.current;
+          const other = { ...l, cause: "Battery terminals corroded", action: "Cleaned and greased the terminals", note: null };
+          const item: ReviewItem = {
+            ...first!,
+            needs_reviewer: true,
+            versions: [
+              { device_id: "dev-15db3c55739b5c4c", item_id: "item-a", lesson: l, received_at: l.created_at, state: "current", updated_at: l.updated_at },
+              { device_id: "dev-8e21f07a9c4b3d11", item_id: "item-b", lesson: other, received_at: l.created_at, state: "lost", updated_at: l.updated_at },
+            ],
+          };
+          return <Review {...review} queue={[item]} selected={item} draft={{ text: suggestedNote(l), note: "", version: "item-a" }} />;
+        },
+      },
       { state: "reviewer-only", label: "Signed in as a reviewer only", unit: null, render: () => <Review {...review} me={{ name: "Line reviewer", roles: ["reviewer"], via: "token" }} devices={null} /> },
       { state: "sign-in", label: "Sign in", unit: null, render: () => <HubSignIn error={null} busy={false} onSignIn={none} /> },
       { state: "empty", label: "Nothing waiting", unit: null, render: () => <Review {...review} queue={[]} selected={null} draft={null} approved={reviewQueue.map((r) => ({ ...r, status: "approved", reviews: [{ action: "approve", at: r.current.created_at, item_id: r.lesson_id, note: null, reviewer: "Shop supervisor" }] }))} /> },

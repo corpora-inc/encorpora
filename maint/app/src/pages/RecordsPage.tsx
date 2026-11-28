@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { reportError, useToast } from "@appkit/toast.ts";
 import { call, EngineError } from "../engine/client.ts";
-import type { AuditRecord, ChainReport, FieldNote } from "../engine/types.ts";
+import type { AuditRecord, ChainReport, DeviceInfo, FieldNote } from "../engine/types.ts";
 import { Records } from "../screens/Records.tsx";
+import { LINK_LABEL, linkState, refusalText } from "../ui/link.ts";
 import { useDevice } from "../store/device.ts";
 import { useFleet } from "../store/fleet.ts";
 import { usePack } from "../store/pack.ts";
@@ -18,6 +19,7 @@ export function RecordsPage() {
   const [notes, setNotes] = useState<FieldNote[] | null>(null);
   const [audit, setAudit] = useState<AuditRecord[] | null>(null);
   const [chain, setChain] = useState<ChainReport | null>(null);
+  const [device, setDevice] = useState<DeviceInfo | null>(null);
   const [busy, setBusy] = useState<"sync" | "chain" | "notes" | "fleet" | null>(null);
   const loadNotes = () => call("field.list", {}).then(setNotes);
   const loadAudit = () => call("audit.list", { limit: 200 }).then(setAudit);
@@ -25,12 +27,16 @@ export function RecordsPage() {
     void useFleet.getState().refreshSync();
     loadNotes().catch((e: unknown) => reportError("records.notes", e, "Field notes could not be read."));
     loadAudit().catch((e: unknown) => reportError("records.audit", e, "The audit trail could not be read."));
+    call("device.info", {})
+      .then(setDevice)
+      .catch((e: unknown) => reportError("records.device", e, "This device's identity could not be read."));
   }, []);
   if (!info) return null;
   const readJson = async (f: File) => JSON.parse(await f.text()) as unknown;
   return (
     <Records
       sync={sync}
+      device={device}
       pack={info}
       notes={notes}
       audit={audit}
@@ -43,13 +49,15 @@ export function RecordsPage() {
         setBusy("sync");
         try {
           // Send what is queued, then take what the hub has for this device: field notes, a newer pack.
-          const sent = await call("sync.flush", {});
+          // A person's tap always tries now, even while the device is backing off after a refusal.
+          const sent = await call("sync.flush", { force: true });
           const got = await call("sync.pull", {});
-          const refused = /\b403\b/.test(sent.error ?? "");
-          const problem = refused ? "the hub does not accept uploads from this device yet; they stay queued" : (sent.error ?? got.bundles.error ?? got.pack_errors[0] ?? null);
-          useToast
-            .getState()
-            .show(problem ? "error" : "info", problem ? `Sync stopped: ${problem}` : `Sent ${sent.acked}. Received ${got.bundles.notes} field ${got.bundles.notes === 1 ? "note" : "notes"}${got.packs.length ? " and a newer pack" : ""}.`);
+          await useFleet.getState().refreshSync();
+          const state = linkState(useFleet.getState().sync);
+          const refusal = refusalText(state);
+          const problem = refusal ?? sent.error ?? got.bundles.error ?? got.pack_errors[0] ?? null;
+          const received = `Received ${got.bundles.notes} field ${got.bundles.notes === 1 ? "note" : "notes"}${got.packs.length ? " and a newer pack" : ""}.`;
+          useToast.getState().show(problem ? "error" : "info", problem ? (refusal ? `${LINK_LABEL[state]}. Uploads stay queued. ${received}` : `Sync stopped: ${problem}`) : `Sent ${sent.flush?.acked ?? 0}. ${received}`);
           await Promise.all([useFleet.getState().refresh(), loadNotes(), loadAudit()]);
         } catch (e) {
           reportError("records.sync", e, message(e, "Sync did not run."));
