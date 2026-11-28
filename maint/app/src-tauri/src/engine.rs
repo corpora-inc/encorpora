@@ -94,6 +94,9 @@ impl Engine {
             hub_ca_pem,
             hub_platform_roots: true,
             install_root: Some(root),
+            llm_url: config.llm_url.clone(),
+            llm_model: config.llm_model.clone(),
+            prefill_policy: config.prefill_policy.clone(),
             ..Default::default()
         };
         let (host, mut report) = shell::open_host(&cfg, store).map_err(|e| e.to_string())?;

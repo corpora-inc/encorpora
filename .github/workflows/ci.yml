@@ -2117,8 +2117,14 @@ jobs:
         env:
           HARVEST_BIN: ${{ github.workspace }}/harvest/core/target/debug/harvest
           MAINT_IMPORT: B C
+          # The devices ask a scripted model endpoint (canned outputs, valid and invalid): deterministic.
+          MAINT_LLM_URL: http://127.0.0.1:4390/v1
+          MAINT_LLM_MODEL: scripted
+          MAINT_PREFILL: cause,action,parts,minutes,note
         run: |
           set -euo pipefail
+          nohup node scripts/model-stub.mjs 4390 > "$RUNNER_TEMP/model-stub.log" 2>&1 &
+          for _ in $(seq 1 40); do curl -s -o /dev/null http://127.0.0.1:4390/v1/models && break; sleep 0.25; done
           scripts/loop.sh
           # Each device's app (A 4341, B 4344, C 4346) proxies to its own engine; C is never enrolled.
           nohup npx vite preview --host 127.0.0.1 > "$RUNNER_TEMP/preview-a.log" 2>&1 &

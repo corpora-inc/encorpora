@@ -7,7 +7,6 @@
 import type { ReactNode } from "react";
 import { Link, useParams } from "react-router";
 import type {
-  AskResponse,
   Asset,
   AuditRecord,
   ChainReport,
@@ -37,7 +36,7 @@ import type {
   SyncStatus,
   TaskView,
 } from "../engine/types.ts";
-import { CloseOut, type CloseOutProps } from "../screens/CloseOut.tsx";
+import { applyProposal, CloseOut, type CloseOutProps } from "../screens/CloseOut.tsx";
 import { Connect, type ConnectProps } from "../screens/Connect.tsx";
 import { Describe, type DescribeProps, type IndexGroup } from "../screens/Describe.tsx";
 import { Home } from "../screens/Home.tsx";
@@ -58,9 +57,10 @@ import raw from "./captured.json";
 import practiceRaw from "./practice.json";
 import { PracticeItem, PracticeSummary } from "../screens/Practice.tsx";
 import { rebuild, reportOf, toBank } from "../learn/state.ts";
-import type { Applicability, AssetAttrs, PracticeAttempt, PracticeItems, RowHit, TableSummary, TableView } from "../engine/types.ts";
+import type { Applicability, AssetAttrs, LessonPrefill, LlmStatus, StepAsk, SymptomSuggest, PracticeAttempt, PracticeItems, RowHit, TableSummary, TableView } from "../engine/types.ts";
 import { ReferenceHome, ReferenceRow, ReferenceTable } from "../screens/Reference.tsx";
 import { Undetermined } from "../ui/applicability.tsx";
+import { shownAsk, shownProposal, shownSuggest } from "../engine/shown.ts";
 import { RefTables } from "../ui/reference.tsx";
 
 interface Captured {
@@ -74,8 +74,12 @@ interface Captured {
   task: TaskView;
   tasks: import("../engine/types.ts").TaskSummary[];
   run: Run;
-  ask: AskResponse;
-  askDeclined: AskResponse;
+  suggest: Record<"route" | "suggest" | "clarify" | "list", SymptomSuggest>;
+  stepAsk: Record<"answer" | "decline", StepAsk>;
+  prefill: LessonPrefill;
+  llm: LlmStatus;
+  llmBefore: LlmStatus;
+  llmOff: LlmStatus;
   closed: JobClosed;
   jobs: JobSummary[];
   history: AssetHistory;
@@ -158,6 +162,7 @@ const describe: Omit<DescribeProps, "phase"> = {
   codes: [],
   signalKinds: D.pack.signal_kinds,
   index,
+  suggest: null,
   voice: "unavailable",
   onQuery: none,
   onAddCode: none,
@@ -240,8 +245,17 @@ const close = (v: JobView, extra: Partial<CloseOutProps> = {}): CloseOutProps =>
   onVerified: none,
   onDraft: none,
   onSave: none,
+  prefilling: false,
+  confirming: false,
+  onConfirming: none,
+  voice: "unavailable",
+  onVoice: none,
   ...extra,
 });
+
+// The scripted model's proposal for the note, as the close-out lays it over the job's draft.
+const PREFILL_NOTE = "The fuse let go. Swapped it, took 25 minutes.";
+const prefilled = applyProposal({ ...lessonFrom(D.steps.end), note: PREFILL_NOTE, cause: "", action: "" }, shownProposal(D.prefill.proposal));
 
 const pageAsset = D.steps.check.step!.assets.find((a) => a.role === "page")!;
 
@@ -268,7 +282,7 @@ const records: RecordsProps = {
   notes: D.fieldNotes,
   audit: D.audit,
   chain: null,
-  model: null,
+  llm: D.llmOff,
   modelOn: false,
   theme: "system",
   busy: null,
@@ -443,6 +457,10 @@ export const GALLERY: Record<string, { title: string; states: Entry[] }> = {
     states: [
       { state: "empty", label: "Nothing typed", unit: shellUnit, render: () => <Describe {...describe} phase="empty" /> },
       { state: "searching", label: "Searching", unit: shellUnit, render: () => <Describe {...describe} query="engine does not crank" phase="searching" /> },
+      { state: "suggest", label: "Model, one suggested entry", unit: shellUnit, render: () => <Describe {...describe} query="the pump engine is acting up and making a weird noise" phase="results" search={D.suggest.suggest.search} suggest={shownSuggest(D.suggest.suggest)} /> },
+      { state: "clarify", label: "Model, which of these is it?", unit: shellUnit, render: () => <Describe {...describe} query="the pump engine is acting up and there is a rattle" phase="results" search={D.suggest.clarify.search} suggest={shownSuggest(D.suggest.clarify)} /> },
+      { state: "model-list", label: "Model, no pick: the list", unit: shellUnit, render: () => <Describe {...describe} query="the pump engine is acting up and grinding" phase="results" search={D.suggest.list.search} suggest={shownSuggest(D.suggest.list)} /> },
+      { state: "route", label: "Model on, the engine's own match", unit: shellUnit, render: () => <Describe {...describe} query="engine does not crank" phase="results" search={D.suggest.route.search} suggest={shownSuggest(D.suggest.route)} /> },
       { state: "results", label: "Confident match", unit: shellUnit, render: () => <Describe {...describe} query="engine does not crank" phase="results" search={D.search.results} /> },
       { state: "closest", label: "Closest entries only", unit: shellUnit, render: () => <Describe {...describe} query="engine is hot" phase="results" search={D.search.closest} /> },
       { state: "codes", label: "With a fault code", unit: shellUnit, render: () => <Describe {...describe} phase="results" codes={[{ signal_kind: "j1939.dm1", value: "spn:168/fmi:1" }]} search={D.search.codes} /> },
@@ -465,8 +483,9 @@ export const GALLERY: Record<string, { title: string; states: Entry[] }> = {
       { state: "page", label: "Original page open", unit: shellUnit, render: () => <Step {...step(D.steps.check, { overlay: { kind: "page", asset: pageAsset } })} /> },
       { state: "noted", label: "Note and photos", unit: shellUnit, render: () => <Step {...step(D.steps.check, { note: "Fuse holder loose.", photos: 2 })} /> },
       { state: "sending", label: "Result sent", unit: shellUnit, render: () => <Step {...step(D.steps.check, { phase: "sending" })} /> },
-      { state: "ask", label: "Ask, cited answer", unit: shellUnit, render: () => <Step {...step(D.steps.check, { overlay: { kind: "ask", query: "How do I check fuse F2?", answer: D.ask } })} /> },
-      { state: "ask-declined", label: "Ask, not in the manual", unit: shellUnit, render: () => <Step {...step(D.steps.check, { overlay: { kind: "ask", query: "What colour is the paint?", answer: D.askDeclined } })} /> },
+      { state: "ask", label: "Ask, cited answer", unit: shellUnit, render: () => <Step {...step(D.steps.check, { overlay: { kind: "ask", query: "How do I check fuse F2?", answer: shownAsk(D.stepAsk.answer) } })} /> },
+      { state: "ask-declined", label: "Ask, not in the manual", unit: shellUnit, render: () => <Step {...step(D.steps.check, { overlay: { kind: "ask", query: "What colour is the paint?", answer: shownAsk(D.stepAsk.decline) } })} /> },
+      { state: "ask-passages", label: "Ask, model off: the manual's passages", unit: shellUnit, render: () => <Step {...step(D.steps.check, { overlay: { kind: "ask", query: "How do I check fuse F2?", answer: { ...shownAsk(D.stepAsk.decline), decision: "passages" } } })} /> },
       { state: "ask-loading", label: "Ask, loading", unit: shellUnit, render: () => <Step {...step(D.steps.check, { overlay: { kind: "ask", query: "How do I check fuse F2?", answer: null } })} /> },
       { state: "goto", label: "Go to another table", unit: shellUnit, render: () => <Step {...step(D.steps.goto)} /> },
       { state: "followed", label: "Continued in another table", unit: shellUnit, render: () => <Step {...step(D.steps.followed)} /> },
@@ -485,6 +504,9 @@ export const GALLERY: Record<string, { title: string; states: Entry[] }> = {
       { state: "action", label: "Corrective action, task run", unit: shellUnit, render: () => <CloseOut {...close(D.steps.action)} /> },
       { state: "verify", label: "Did it fix it?", unit: shellUnit, render: () => <CloseOut {...close(D.steps.action, { phase: "verify" })} /> },
       { state: "lesson", label: "Lesson, prefilled", unit: shellUnit, render: () => <CloseOut {...close(D.steps.action, { phase: "lesson" })} /> },
+      { state: "lesson-note", label: "Lesson, a note to fill from", unit: shellUnit, render: () => <CloseOut {...close(D.steps.end, { phase: "lesson", draft: { ...lessonFrom(D.steps.end), note: PREFILL_NOTE }, onPrefill: none })} /> },
+      { state: "lesson-suggested", label: "Lesson, suggested fields", unit: shellUnit, render: () => <CloseOut {...close(D.steps.end, { phase: "lesson", draft: prefilled, onPrefill: none })} /> },
+      { state: "lesson-confirm", label: "Lesson, confirm before saving", unit: shellUnit, render: () => <CloseOut {...close(D.steps.end, { phase: "lesson", draft: prefilled, onPrefill: none, confirming: true })} /> },
       {
         state: "referral",
         label: "Referral",
@@ -576,7 +598,10 @@ Object.assign(GALLERY, {
     title: "10. Sync and records",
     states: [
       { state: "records", label: "Queue, notes, audit, pack", unit: shellUnit, render: () => <Records {...records} /> },
-      { state: "chain", label: "Chain checked", unit: shellUnit, render: () => <Records {...records} chain={D.chain} model="gemma-4-e4b" modelOn /> },
+      { state: "chain", label: "Chain checked", unit: shellUnit, render: () => <Records {...records} chain={D.chain} /> },
+      { state: "model-not-asked", label: "Model set up, not asked yet", unit: shellUnit, render: () => <Records {...records} llm={D.llmBefore} modelOn /> },
+      { state: "model-on", label: "Model answered, switch on", unit: shellUnit, render: () => <Records {...records} llm={D.llm} modelOn /> },
+      { state: "model-off", label: "Model set up, switched off", unit: shellUnit, render: () => <Records {...records} llm={D.llm} /> },
     ],
   },
   review: {

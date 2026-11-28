@@ -185,9 +185,8 @@ fn with_the_helper_only_loopback() {
         bundled: Some(bundled),
     };
     let config = Config {
-        hub: None,
-        hub_ca: None,
         embedder: Some(EmbedderConfig { model, server }),
+        ..Config::default()
     };
     let engine = Engine::open_with(&paths, &config, &Store::Files(dir.join("secrets")))
         .expect("engine opens");

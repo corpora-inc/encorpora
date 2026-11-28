@@ -2,12 +2,13 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { setNamespace } from "@appkit/namespace.ts";
 import { logError } from "@appkit/log.ts";
-import { assistant, configureNative, voice } from "@appkit/native.ts";
+import { configureNative, voice } from "@appkit/native.ts";
 import { EngineError, hubCall } from "./engine/client.ts";
 import "./styles.css";
 import { brandCss } from "./brands/index.ts";
 import { BRAND, PRODUCT } from "./config.ts";
 import { App, BootFailed } from "./App.tsx";
+import { useModel } from "./store/model.ts";
 import { useDevice } from "./store/device.ts";
 import { useFleet } from "./store/fleet.ts";
 import { usePack } from "./store/pack.ts";
@@ -42,17 +43,17 @@ async function boot() {
   // The pack and the fleet are read before the first screen, so no screen renders twice.
   // The design gallery needs neither.
   try {
-    const [, hasVoice, model, hub] = await Promise.all([
+    const [, hasVoice, , hub] = await Promise.all([
       loadFonts(),
       voice.available(),
-      assistant.status(),
+      DESIGN_ONLY ? null : useModel.getState().refresh(),
       // A review screen only where a hub answers; never an error when it does not.
       // Any answer from the hub, even "sign in first", means this screen can reach it.
       DESIGN_ONLY ? false : hubCall("hub.whoami", {}).then(() => true, (e: unknown) => e instanceof EngineError && e.code !== "unreachable" && e.code !== "internal"),
       DESIGN_ONLY ? null : usePack.getState().load(),
       DESIGN_ONLY ? null : useFleet.getState().refresh(),
     ]);
-    useDevice.setState({ voice: hasVoice, assistantModel: model.present ? model.model : null, hub });
+    useDevice.setState({ voice: hasVoice, hub });
   } catch (e) {
     logError("boot", e);
     root.render(<BootFailed error={e} />);

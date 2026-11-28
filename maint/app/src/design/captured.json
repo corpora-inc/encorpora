@@ -226,37 +226,37 @@
    "attrs": {
     "location": "North yard"
    },
-   "created_at": "2026-11-28T13:32:14.620Z",
+   "created_at": "2026-11-28T17:29:33.301Z",
    "equip_id": "pump40-diesel",
    "hours": 1840.5,
    "miles": null,
    "name": "Pump 101",
    "serial": "P40D-2310",
-   "updated_at": "2026-11-28T13:32:14.620Z"
+   "updated_at": "2026-11-28T17:29:33.301Z"
   },
   {
    "asset_id": "unit-102",
    "attrs": {},
-   "created_at": "2026-11-28T13:32:14.620Z",
+   "created_at": "2026-11-28T17:29:33.301Z",
    "equip_id": "pump40-diesel",
    "hours": 920,
    "miles": null,
    "name": "Pump 102",
    "serial": "P40D-3115",
-   "updated_at": "2026-11-28T13:32:14.620Z"
+   "updated_at": "2026-11-28T17:29:33.301Z"
   },
   {
    "asset_id": "unit-201",
    "attrs": {
     "location": "Pump station 2"
    },
-   "created_at": "2026-11-28T13:32:14.620Z",
+   "created_at": "2026-11-28T17:29:33.301Z",
    "equip_id": "pump40-electric",
    "hours": 4410,
    "miles": null,
    "name": "Pump 201",
    "serial": "P40E-1450",
-   "updated_at": "2026-11-28T13:32:14.620Z"
+   "updated_at": "2026-11-28T17:29:33.301Z"
   }
  ],
  "resolve": {
@@ -733,9 +733,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-276db0142e7aff1cfcf4cf4f7150a887",
+    "job_id": "job-0e73e4fa42c0a2c4b2c7f31797adb2fc",
     "level": "apprentice",
-    "opened_at": "2026-11-28T13:32:14.650Z",
+    "opened_at": "2026-11-28T17:29:33.334Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -961,9 +961,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-276db0142e7aff1cfcf4cf4f7150a887",
+    "job_id": "job-0e73e4fa42c0a2c4b2c7f31797adb2fc",
     "level": "apprentice",
-    "opened_at": "2026-11-28T13:32:14.650Z",
+    "opened_at": "2026-11-28T17:29:33.334Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -972,7 +972,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T13:32:14.658Z",
+      "at": "2026-11-28T17:29:33.344Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -1185,7 +1185,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T13:32:14.658Z",
+      "at": "2026-11-28T17:29:33.344Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -1305,9 +1305,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-276db0142e7aff1cfcf4cf4f7150a887",
+    "job_id": "job-0e73e4fa42c0a2c4b2c7f31797adb2fc",
     "level": "apprentice",
-    "opened_at": "2026-11-28T13:32:14.650Z",
+    "opened_at": "2026-11-28T17:29:33.334Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -1316,7 +1316,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T13:32:14.658Z",
+      "at": "2026-11-28T17:29:33.344Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -1532,7 +1532,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T13:32:14.658Z",
+      "at": "2026-11-28T17:29:33.344Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -1652,9 +1652,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-276db0142e7aff1cfcf4cf4f7150a887",
+    "job_id": "job-0e73e4fa42c0a2c4b2c7f31797adb2fc",
     "level": "apprentice",
-    "opened_at": "2026-11-28T13:32:14.650Z",
+    "opened_at": "2026-11-28T17:29:33.334Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -1663,7 +1663,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T13:32:14.658Z",
+      "at": "2026-11-28T17:29:33.344Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -1677,7 +1677,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T13:32:14.673Z",
+      "at": "2026-11-28T17:29:33.361Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -1898,7 +1898,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T13:32:14.658Z",
+      "at": "2026-11-28T17:29:33.344Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -1909,7 +1909,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T13:32:14.673Z",
+      "at": "2026-11-28T17:29:33.361Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -2331,9 +2331,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-276db0142e7aff1cfcf4cf4f7150a887",
+    "job_id": "job-0e73e4fa42c0a2c4b2c7f31797adb2fc",
     "level": "apprentice",
-    "opened_at": "2026-11-28T13:32:14.650Z",
+    "opened_at": "2026-11-28T17:29:33.334Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -2342,7 +2342,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T13:32:14.658Z",
+      "at": "2026-11-28T17:29:33.344Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -2356,7 +2356,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T13:32:14.673Z",
+      "at": "2026-11-28T17:29:33.361Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -2370,7 +2370,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T13:32:14.686Z",
+      "at": "2026-11-28T17:29:33.374Z",
       "label": "Below 11.5 V",
       "next_node": "nc.2a",
       "node_id": "nc.2",
@@ -2525,7 +2525,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T13:32:14.658Z",
+      "at": "2026-11-28T17:29:33.344Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -2536,7 +2536,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T13:32:14.673Z",
+      "at": "2026-11-28T17:29:33.361Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -2547,7 +2547,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T13:32:14.686Z",
+      "at": "2026-11-28T17:29:33.374Z",
       "label": "Below 11.5 V",
       "next_node": "nc.2a",
       "node_id": "nc.2",
@@ -2655,9 +2655,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-276db0142e7aff1cfcf4cf4f7150a887",
+    "job_id": "job-0e73e4fa42c0a2c4b2c7f31797adb2fc",
     "level": "apprentice",
-    "opened_at": "2026-11-28T13:32:14.650Z",
+    "opened_at": "2026-11-28T17:29:33.334Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -2666,7 +2666,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T13:32:14.658Z",
+      "at": "2026-11-28T17:29:33.344Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -2680,7 +2680,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T13:32:14.673Z",
+      "at": "2026-11-28T17:29:33.361Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -2694,7 +2694,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T13:32:14.686Z",
+      "at": "2026-11-28T17:29:33.374Z",
       "label": "Below 11.5 V",
       "next_node": "nc.2a",
       "node_id": "nc.2",
@@ -2702,7 +2702,7 @@
       "outcome": null,
       "photos": [],
       "seq": 3,
-      "superseded_at": "2026-11-28T13:32:14.694Z",
+      "superseded_at": "2026-11-28T17:29:33.382Z",
       "tree_id": "t-nocrank",
       "unit": "V",
       "value": 10.8
@@ -2915,7 +2915,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T13:32:14.658Z",
+      "at": "2026-11-28T17:29:33.344Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -2926,7 +2926,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T13:32:14.673Z",
+      "at": "2026-11-28T17:29:33.361Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -3348,9 +3348,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-276db0142e7aff1cfcf4cf4f7150a887",
+    "job_id": "job-0e73e4fa42c0a2c4b2c7f31797adb2fc",
     "level": "apprentice",
-    "opened_at": "2026-11-28T13:32:14.650Z",
+    "opened_at": "2026-11-28T17:29:33.334Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -3359,7 +3359,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T13:32:14.658Z",
+      "at": "2026-11-28T17:29:33.344Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -3373,7 +3373,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T13:32:14.673Z",
+      "at": "2026-11-28T17:29:33.361Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -3387,7 +3387,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T13:32:14.686Z",
+      "at": "2026-11-28T17:29:33.374Z",
       "label": "Below 11.5 V",
       "next_node": "nc.2a",
       "node_id": "nc.2",
@@ -3395,13 +3395,13 @@
       "outcome": null,
       "photos": [],
       "seq": 3,
-      "superseded_at": "2026-11-28T13:32:14.694Z",
+      "superseded_at": "2026-11-28T17:29:33.382Z",
       "tree_id": "t-nocrank",
       "unit": "V",
       "value": 10.8
      },
      {
-      "at": "2026-11-28T13:32:14.708Z",
+      "at": "2026-11-28T17:29:33.395Z",
       "label": "12.5 V or more",
       "next_node": "nc.3",
       "node_id": "nc.2",
@@ -3415,7 +3415,7 @@
       "value": 12.7
      },
      {
-      "at": "2026-11-28T13:32:14.718Z",
+      "at": "2026-11-28T17:29:33.404Z",
       "label": "Yes",
       "next_node": "nc.4",
       "node_id": "nc.3",
@@ -3539,7 +3539,7 @@
       },
       "note_id": "fn-relay-bracket",
       "pack_id": "pump40",
-      "received_at": "2026-11-28T13:32:14.625Z",
+      "received_at": "2026-11-28T17:29:33.306Z",
       "scope": {
        "equip_id": "pump40-diesel",
        "node_id": "nc.4",
@@ -3667,7 +3667,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T13:32:14.658Z",
+      "at": "2026-11-28T17:29:33.344Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -3678,7 +3678,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T13:32:14.673Z",
+      "at": "2026-11-28T17:29:33.361Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -3689,7 +3689,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T13:32:14.708Z",
+      "at": "2026-11-28T17:29:33.395Z",
       "label": "12.5 V or more",
       "next_node": "nc.3",
       "node_id": "nc.2",
@@ -3700,7 +3700,7 @@
       "value": 12.7
      },
      {
-      "at": "2026-11-28T13:32:14.718Z",
+      "at": "2026-11-28T17:29:33.404Z",
       "label": "Yes",
       "next_node": "nc.4",
       "node_id": "nc.3",
@@ -3830,9 +3830,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-276db0142e7aff1cfcf4cf4f7150a887",
+    "job_id": "job-0e73e4fa42c0a2c4b2c7f31797adb2fc",
     "level": "apprentice",
-    "opened_at": "2026-11-28T13:32:14.650Z",
+    "opened_at": "2026-11-28T17:29:33.334Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -3841,7 +3841,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T13:32:14.658Z",
+      "at": "2026-11-28T17:29:33.344Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -3855,7 +3855,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T13:32:14.673Z",
+      "at": "2026-11-28T17:29:33.361Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -3869,7 +3869,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T13:32:14.686Z",
+      "at": "2026-11-28T17:29:33.374Z",
       "label": "Below 11.5 V",
       "next_node": "nc.2a",
       "node_id": "nc.2",
@@ -3877,13 +3877,13 @@
       "outcome": null,
       "photos": [],
       "seq": 3,
-      "superseded_at": "2026-11-28T13:32:14.694Z",
+      "superseded_at": "2026-11-28T17:29:33.382Z",
       "tree_id": "t-nocrank",
       "unit": "V",
       "value": 10.8
      },
      {
-      "at": "2026-11-28T13:32:14.708Z",
+      "at": "2026-11-28T17:29:33.395Z",
       "label": "12.5 V or more",
       "next_node": "nc.3",
       "node_id": "nc.2",
@@ -3897,7 +3897,7 @@
       "value": 12.7
      },
      {
-      "at": "2026-11-28T13:32:14.718Z",
+      "at": "2026-11-28T17:29:33.404Z",
       "label": "Yes",
       "next_node": "nc.4",
       "node_id": "nc.3",
@@ -3911,7 +3911,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T13:32:14.728Z",
+      "at": "2026-11-28T17:29:33.413Z",
       "label": "Pass",
       "next_node": "nc.4p",
       "node_id": "nc.4",
@@ -4095,7 +4095,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T13:32:14.658Z",
+      "at": "2026-11-28T17:29:33.344Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -4106,7 +4106,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T13:32:14.673Z",
+      "at": "2026-11-28T17:29:33.361Z",
       "label": "Yes",
       "next_node": "nc.2",
       "node_id": "nc.1",
@@ -4117,7 +4117,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T13:32:14.708Z",
+      "at": "2026-11-28T17:29:33.395Z",
       "label": "12.5 V or more",
       "next_node": "nc.3",
       "node_id": "nc.2",
@@ -4128,7 +4128,7 @@
       "value": 12.7
      },
      {
-      "at": "2026-11-28T13:32:14.718Z",
+      "at": "2026-11-28T17:29:33.404Z",
       "label": "Yes",
       "next_node": "nc.4",
       "node_id": "nc.3",
@@ -4139,7 +4139,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T13:32:14.728Z",
+      "at": "2026-11-28T17:29:33.413Z",
       "label": "Pass",
       "next_node": "nc.4p",
       "node_id": "nc.4",
@@ -4240,9 +4240,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-b74fe47028458783cdab33a6a4af6387",
+    "job_id": "job-86852b2517d2348d42e98b178dc1ffdc",
     "level": "apprentice",
-    "opened_at": "2026-11-28T13:32:14.737Z",
+    "opened_at": "2026-11-28T17:29:33.422Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -4251,7 +4251,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T13:32:14.745Z",
+      "at": "2026-11-28T17:29:33.430Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -4265,7 +4265,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T13:32:14.754Z",
+      "at": "2026-11-28T17:29:33.439Z",
       "label": "No",
       "next_node": "nc.1a",
       "node_id": "nc.1",
@@ -4288,9 +4288,9 @@
     "flag": true,
     "matches": [
      {
-      "date": "2026-11-28T13:32:14.650Z",
+      "date": "2026-11-28T17:29:33.334Z",
       "days_before": 0,
-      "job_id": "job-276db0142e7aff1cfcf4cf4f7150a887",
+      "job_id": "job-0e73e4fa42c0a2c4b2c7f31797adb2fc",
       "kind": "job",
       "reason": "same_symptom",
       "symptom_id": "s-nocrank",
@@ -4429,7 +4429,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T13:32:14.745Z",
+      "at": "2026-11-28T17:29:33.430Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -4440,7 +4440,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T13:32:14.754Z",
+      "at": "2026-11-28T17:29:33.439Z",
       "label": "No",
       "next_node": "nc.1a",
       "node_id": "nc.1",
@@ -4572,9 +4572,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-b74fe47028458783cdab33a6a4af6387",
+    "job_id": "job-86852b2517d2348d42e98b178dc1ffdc",
     "level": "apprentice",
-    "opened_at": "2026-11-28T13:32:14.737Z",
+    "opened_at": "2026-11-28T17:29:33.422Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -4583,7 +4583,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T13:32:14.745Z",
+      "at": "2026-11-28T17:29:33.430Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -4597,7 +4597,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T13:32:14.754Z",
+      "at": "2026-11-28T17:29:33.439Z",
       "label": "No",
       "next_node": "nc.1a",
       "node_id": "nc.1",
@@ -4611,7 +4611,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T13:32:14.762Z",
+      "at": "2026-11-28T17:29:33.447Z",
       "label": "Cranks",
       "next_node": "nc.end",
       "node_id": "nc.1a",
@@ -4634,9 +4634,9 @@
     "flag": true,
     "matches": [
      {
-      "date": "2026-11-28T13:32:14.650Z",
+      "date": "2026-11-28T17:29:33.334Z",
       "days_before": 0,
-      "job_id": "job-276db0142e7aff1cfcf4cf4f7150a887",
+      "job_id": "job-0e73e4fa42c0a2c4b2c7f31797adb2fc",
       "kind": "job",
       "reason": "same_symptom",
       "symptom_id": "s-nocrank",
@@ -4755,7 +4755,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T13:32:14.745Z",
+      "at": "2026-11-28T17:29:33.430Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -4766,7 +4766,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T13:32:14.754Z",
+      "at": "2026-11-28T17:29:33.439Z",
       "label": "No",
       "next_node": "nc.1a",
       "node_id": "nc.1",
@@ -4777,7 +4777,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T13:32:14.762Z",
+      "at": "2026-11-28T17:29:33.447Z",
       "label": "Cranks",
       "next_node": "nc.end",
       "node_id": "nc.1a",
@@ -4880,9 +4880,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-b8de323ce9dd47307e5b042b8be68cf1",
+    "job_id": "job-b6e39abb7f9d7bb038360c786764a182",
     "level": "apprentice",
-    "opened_at": "2026-11-28T13:32:14.771Z",
+    "opened_at": "2026-11-28T17:29:33.455Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -4891,7 +4891,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T13:32:14.779Z",
+      "at": "2026-11-28T17:29:33.462Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -4905,7 +4905,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T13:32:14.789Z",
+      "at": "2026-11-28T17:29:33.472Z",
       "label": "No",
       "next_node": "nc.1a",
       "node_id": "nc.1",
@@ -4919,7 +4919,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T13:32:14.797Z",
+      "at": "2026-11-28T17:29:33.479Z",
       "label": "Temperature lamp on",
       "next_node": "nc.1g",
       "node_id": "nc.1a",
@@ -4942,18 +4942,18 @@
     "flag": true,
     "matches": [
      {
-      "date": "2026-11-28T13:32:14.737Z",
+      "date": "2026-11-28T17:29:33.422Z",
       "days_before": 0,
-      "job_id": "job-b74fe47028458783cdab33a6a4af6387",
+      "job_id": "job-86852b2517d2348d42e98b178dc1ffdc",
       "kind": "job",
       "reason": "same_symptom",
       "symptom_id": "s-nocrank",
       "system": "starting"
      },
      {
-      "date": "2026-11-28T13:32:14.650Z",
+      "date": "2026-11-28T17:29:33.334Z",
       "days_before": 0,
-      "job_id": "job-276db0142e7aff1cfcf4cf4f7150a887",
+      "job_id": "job-0e73e4fa42c0a2c4b2c7f31797adb2fc",
       "kind": "job",
       "reason": "same_symptom",
       "symptom_id": "s-nocrank",
@@ -5089,7 +5089,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T13:32:14.779Z",
+      "at": "2026-11-28T17:29:33.462Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -5100,7 +5100,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T13:32:14.789Z",
+      "at": "2026-11-28T17:29:33.472Z",
       "label": "No",
       "next_node": "nc.1a",
       "node_id": "nc.1",
@@ -5111,7 +5111,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T13:32:14.797Z",
+      "at": "2026-11-28T17:29:33.479Z",
       "label": "Temperature lamp on",
       "next_node": "nc.1g",
       "node_id": "nc.1a",
@@ -5221,9 +5221,9 @@
     "entered_by": "symptom",
     "entry_node": "nc.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-b8de323ce9dd47307e5b042b8be68cf1",
+    "job_id": "job-b6e39abb7f9d7bb038360c786764a182",
     "level": "apprentice",
-    "opened_at": "2026-11-28T13:32:14.771Z",
+    "opened_at": "2026-11-28T17:29:33.455Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -5232,7 +5232,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T13:32:14.779Z",
+      "at": "2026-11-28T17:29:33.462Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -5246,7 +5246,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T13:32:14.789Z",
+      "at": "2026-11-28T17:29:33.472Z",
       "label": "No",
       "next_node": "nc.1a",
       "node_id": "nc.1",
@@ -5260,7 +5260,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T13:32:14.797Z",
+      "at": "2026-11-28T17:29:33.479Z",
       "label": "Temperature lamp on",
       "next_node": "nc.1g",
       "node_id": "nc.1a",
@@ -5274,7 +5274,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T13:32:14.806Z",
+      "at": "2026-11-28T17:29:33.488Z",
       "label": "Go to Pump overheats",
       "next_node": "oh.1",
       "node_id": "nc.1g",
@@ -5297,18 +5297,18 @@
     "flag": true,
     "matches": [
      {
-      "date": "2026-11-28T13:32:14.737Z",
+      "date": "2026-11-28T17:29:33.422Z",
       "days_before": 0,
-      "job_id": "job-b74fe47028458783cdab33a6a4af6387",
+      "job_id": "job-86852b2517d2348d42e98b178dc1ffdc",
       "kind": "job",
       "reason": "same_symptom",
       "symptom_id": "s-nocrank",
       "system": "starting"
      },
      {
-      "date": "2026-11-28T13:32:14.650Z",
+      "date": "2026-11-28T17:29:33.334Z",
       "days_before": 0,
-      "job_id": "job-276db0142e7aff1cfcf4cf4f7150a887",
+      "job_id": "job-0e73e4fa42c0a2c4b2c7f31797adb2fc",
       "kind": "job",
       "reason": "same_symptom",
       "symptom_id": "s-nocrank",
@@ -5399,7 +5399,7 @@
       },
       "note_id": "fn-strainer-silt",
       "pack_id": "pump40",
-      "received_at": "2026-11-28T13:32:14.625Z",
+      "received_at": "2026-11-28T17:29:33.306Z",
       "scope": {
        "equip_id": null,
        "node_id": null,
@@ -5522,7 +5522,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T13:32:14.779Z",
+      "at": "2026-11-28T17:29:33.462Z",
       "label": "Continue",
       "next_node": "nc.1",
       "node_id": "nc.0",
@@ -5533,7 +5533,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T13:32:14.789Z",
+      "at": "2026-11-28T17:29:33.472Z",
       "label": "No",
       "next_node": "nc.1a",
       "node_id": "nc.1",
@@ -5544,7 +5544,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T13:32:14.797Z",
+      "at": "2026-11-28T17:29:33.479Z",
       "label": "Temperature lamp on",
       "next_node": "nc.1g",
       "node_id": "nc.1a",
@@ -5555,7 +5555,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T13:32:14.806Z",
+      "at": "2026-11-28T17:29:33.488Z",
       "label": "Go to Pump overheats",
       "next_node": "oh.1",
       "node_id": "nc.1g",
@@ -5616,9 +5616,9 @@
     "entered_by": "symptom",
     "entry_node": "oh.0",
     "equip_id": "pump40-diesel",
-    "job_id": "job-d8dea2bb609c317a3f9d1ff897ed05df",
+    "job_id": "job-515b6c0dc7b644695bd1972dbec26a20",
     "level": "apprentice",
-    "opened_at": "2026-11-28T13:32:14.816Z",
+    "opened_at": "2026-11-28T17:29:33.497Z",
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "query": null,
@@ -5627,7 +5627,7 @@
     "status": "open",
     "steps": [
      {
-      "at": "2026-11-28T13:32:14.821Z",
+      "at": "2026-11-28T17:29:33.502Z",
       "label": "Continue",
       "next_node": "oh.1",
       "node_id": "oh.0",
@@ -5641,7 +5641,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T13:32:14.828Z",
+      "at": "2026-11-28T17:29:33.508Z",
       "label": "Yes",
       "next_node": "oh.2",
       "node_id": "oh.1",
@@ -5730,7 +5730,7 @@
       },
       "note_id": "fn-strainer-silt",
       "pack_id": "pump40",
-      "received_at": "2026-11-28T13:32:14.625Z",
+      "received_at": "2026-11-28T17:29:33.306Z",
       "scope": {
        "equip_id": null,
        "node_id": null,
@@ -5858,7 +5858,7 @@
     "pack_version": "2026.1.1-1",
     "path": [
      {
-      "at": "2026-11-28T13:32:14.821Z",
+      "at": "2026-11-28T17:29:33.502Z",
       "label": "Continue",
       "next_node": "oh.1",
       "node_id": "oh.0",
@@ -5869,7 +5869,7 @@
       "value": null
      },
      {
-      "at": "2026-11-28T13:32:14.828Z",
+      "at": "2026-11-28T17:29:33.508Z",
       "label": "Yes",
       "next_node": "oh.2",
       "node_id": "oh.1",
@@ -6538,8 +6538,8 @@
   "pack_version": "2026.1.1-1",
   "proc_id": "proc-battery",
   "role": "apprentice",
-  "run_id": "run-badbf2c04449e263416489702bf588ff",
-  "started_at": "2026-11-28T13:32:14.845Z",
+  "run_id": "run-3f1611d1166cb5a77ba300033d1f6d42",
+  "started_at": "2026-11-28T17:29:33.524Z",
   "status": "open",
   "steps": [
    {
@@ -6548,7 +6548,7 @@
     "ord": 1,
     "outcome": "pass",
     "photos": [],
-    "recorded_at": "2026-11-28T13:32:14.846Z",
+    "recorded_at": "2026-11-28T17:29:33.525Z",
     "structured": null,
     "value": null
    },
@@ -6558,402 +6558,944 @@
     "ord": 2,
     "outcome": "pass",
     "photos": [],
-    "recorded_at": "2026-11-28T13:32:14.847Z",
+    "recorded_at": "2026-11-28T17:29:33.526Z",
     "structured": null,
     "value": null
    }
   ]
  },
- "ask": {
-  "answer_id": null,
-  "body": [
-   {
-    "section_id": "m40.3-1.q1",
-    "t": "quote",
-    "text": "Is the battery switch ON and is the 15 A start fuse F2 good? TEST OPTIONS: Look at the switch. Pull F2 and check it with the multimeter. REASON FOR QUESTION: A switch left OFF or a blown fuse stops all cranking current. KNOWN INFO: The engine does not crank. POSSIBLE PROBLEMS: Battery switch off. Start fuse F2 blown. Battery discharged. Starter relay K1 failed. If NO: Turn the battery switch ON or replace fuse F2, then try to start. Does the engine crank now? If it cranks but the temperature lamp comes on: go to Table 3-2, question 1."
-   },
-   {
-    "section_id": "m40.3-1.q1",
-    "t": "cite"
-   }
+ "llmBefore": {
+  "configured": true,
+  "last": null,
+  "model": "scripted",
+  "prompt_versions": [
+   "t1-2026-11-28.1/strict+syn+scores",
+   "t2-2026-11-28.1/v2",
+   "t3-2026-11-28.1/tmpl"
   ],
-  "check": {
-   "cites_ok": true,
-   "dropped": 0,
-   "quotes_ok": true
-  },
-  "citations": [
-   "m40.3-1.q1"
-  ],
-  "elapsed_ms": 13,
-  "mode": "composed",
-  "model": null,
-  "nearest": [],
-  "pack_version": "2026.1.1-1",
-  "retrieved": [
-   {
-    "chunk_id": "c-m40.3-1.q1",
-    "dense": 0.40069669485092163,
-    "lexical": 6.806923368528173,
-    "ref_id": "m40.3-1.q1",
-    "score": 0.04098360655737705
-   },
-   {
-    "chunk_id": "c-m40.3-1.f1",
-    "dense": 0.19716602563858032,
-    "lexical": 5.299322337224139,
-    "ref_id": "m40.3-1.f1",
-    "score": 0.04032258064516129
-   },
-   {
-    "chunk_id": "c-m40.3-1.q2",
-    "dense": 0.11977884918451309,
-    "lexical": 2.118522297896343,
-    "ref_id": "m40.3-1.q2",
-    "score": 0.03968253968253968
-   },
-   {
-    "chunk_id": "c-m40.3-1.q3",
-    "dense": 0.07228177040815353,
-    "lexical": 1.2747313130842184,
-    "ref_id": "m40.3-1.q3",
-    "score": 0.03876201923076923
-   },
-   {
-    "chunk_id": "c-m40.3-1.q4",
-    "dense": 0.11268224567174911,
-    "lexical": 0,
-    "ref_id": "m40.3-1.q4",
-    "score": 0.01953125
-   },
-   {
-    "chunk_id": "c-m40.3-1",
-    "dense": 0,
-    "lexical": 0,
-    "ref_id": "m40.3-1",
-    "score": 0.017123287671232876
-   },
-   {
-    "chunk_id": "c-m40.3-1.c1",
-    "dense": 0,
-    "lexical": 0,
-    "ref_id": "m40.3-1.c1",
-    "score": 0.016891891891891893
-   },
-   {
-    "chunk_id": "c-m40.3-1.end",
-    "dense": 0,
-    "lexical": 0,
-    "ref_id": "m40.3-1.end",
-    "score": 0.016666666666666666
-   },
-   {
-    "chunk_id": "c-m40.3-1.q0",
-    "dense": 0,
-    "lexical": 0,
-    "ref_id": "m40.3-1.q0",
-    "score": 0.01644736842105263
-   },
-   {
-    "chunk_id": "c-m40.3-1.setup",
-    "dense": 0,
-    "lexical": 0,
-    "ref_id": "m40.3-1.setup",
-    "score": 0.016233766233766236
-   }
-  ],
-  "support": {
-   "cache_similarity": 0,
-   "cache_threshold": 0.75,
-   "candidates": [
+  "reachable": null
+ },
+ "suggest": {
+  "route": {
+   "decision": "route",
+   "elapsed_ms": 1,
+   "entries": [
     {
-     "coverage": 1,
-     "covered": [
-      "check",
-      "fuse",
-      "f2"
+     "also": [
+      "engine won't start",
+      "no crank",
+      "starter does nothing",
+      "nothing happens when I turn the key"
      ],
-     "rank": 1,
-     "retrieval": 0.04098360655737705,
-     "section_id": "m40.3-1.q1"
-    },
-    {
-     "coverage": 0.6666666666666666,
-     "covered": [
-      "fuse",
-      "f2"
+     "applicability": null,
+     "causes": [
+      "Battery switch off.",
+      "Start fuse F2 blown.",
+      "Battery discharged.",
+      "Starter relay K1 failed."
      ],
-     "rank": 2,
-     "retrieval": 0.04032258064516129,
-     "section_id": "m40.3-1.f1"
-    },
-    {
-     "coverage": 0.6666666666666666,
-     "covered": [
-      "fuse",
-      "f2"
-     ],
-     "rank": 3,
-     "retrieval": 0.03968253968253968,
-     "section_id": "m40.3-1.q2"
-    },
-    {
-     "coverage": 0.3333333333333333,
-     "covered": [
-      "fuse"
-     ],
-     "rank": 4,
-     "retrieval": 0.03876201923076923,
-     "section_id": "m40.3-1.q3"
-    },
-    {
-     "coverage": 0,
-     "covered": [],
-     "rank": 5,
-     "retrieval": 0.01953125,
-     "section_id": "m40.3-1.q4"
-    },
-    {
-     "coverage": 0,
-     "covered": [],
-     "rank": 6,
-     "retrieval": 0.017123287671232876,
-     "section_id": "m40.3-1"
-    },
-    {
-     "coverage": 0,
-     "covered": [],
-     "rank": 7,
-     "retrieval": 0.016891891891891893,
-     "section_id": "m40.3-1.c1"
-    },
-    {
-     "coverage": 0,
-     "covered": [],
-     "rank": 8,
-     "retrieval": 0.016666666666666666,
-     "section_id": "m40.3-1.end"
-    },
-    {
-     "coverage": 0,
-     "covered": [],
-     "rank": 9,
-     "retrieval": 0.01644736842105263,
-     "section_id": "m40.3-1.q0"
-    },
-    {
-     "coverage": 0,
-     "covered": [],
-     "rank": 10,
-     "retrieval": 0.016233766233766236,
-     "section_id": "m40.3-1.setup"
+     "confidence": "confident",
+     "match": 0.623387,
+     "statement": "The engine does not crank when the start key is turned to START.",
+     "symptom_id": "s-nocrank",
+     "title": "Engine will not crank",
+     "tree_id": "t-nocrank"
     }
    ],
-   "concepts": [
-    "check",
-    "fuse",
-    "f2"
+   "model": null,
+   "prompt_version": null,
+   "search": {
+    "confidence": "confident",
+    "dense": true,
+    "equip_id": "pump40-diesel",
+    "hits": [
+     {
+      "confidence": "confident",
+      "cosine": 0.581541,
+      "coverage": 1,
+      "lexical": 1,
+      "margin": 0.623387,
+      "score": 0.623387,
+      "strong_hits": 3,
+      "strong_query_words": 3,
+      "symptom": {
+       "applies_to": [],
+       "lang": "en",
+       "symptom_id": "s-nocrank",
+       "synonyms": [
+        "engine won't start",
+        "no crank",
+        "starter does nothing",
+        "nothing happens when I turn the key"
+       ],
+       "system": "starting",
+       "title": "Engine will not crank",
+       "tree_id": "t-nocrank"
+      },
+      "why": [
+       {
+        "kind": "words",
+        "phrase": "Engine will not crank",
+        "words": [
+         "crank",
+         "engin",
+         "not"
+        ]
+       },
+       {
+        "cosine": 0.582,
+        "kind": "dense"
+       }
+      ]
+     }
+    ],
+    "signals": null,
+    "thresholds": {
+     "coverage": 0.3,
+     "coverage_lexical": 0.3,
+     "dense_active": true,
+     "dense_alone": 0.8,
+     "dense_floor": 0.5,
+     "fusion": "weighted",
+     "lexical_weight": 0.1,
+     "margin": 0.05,
+     "margin_lexical": 0.15,
+     "rrf_k": 60,
+     "strong_hits": 1,
+     "strong_hits_lexical": 1,
+     "weak_words": [
+      "run",
+      "running",
+      "runs",
+      "work",
+      "works",
+      "working",
+      "go",
+      "goes",
+      "going",
+      "get",
+      "gets",
+      "make",
+      "makes",
+      "keep",
+      "keeps",
+      "seem",
+      "seems",
+      "use",
+      "used",
+      "thing",
+      "still",
+      "just",
+      "now",
+      "time",
+      "really",
+      "bit",
+      "little",
+      "lot",
+      "again",
+      "sometimes",
+      "problem",
+      "issue"
+     ]
+    }
+   }
+  },
+  "suggest": {
+   "decision": "suggest",
+   "elapsed_ms": 4,
+   "entries": [
+    {
+     "also": [
+      "engine won't start",
+      "no crank",
+      "starter does nothing",
+      "nothing happens when I turn the key"
+     ],
+     "applicability": null,
+     "causes": [
+      "Battery switch off.",
+      "Start fuse F2 blown.",
+      "Battery discharged.",
+      "Starter relay K1 failed."
+     ],
+     "confidence": "closest",
+     "match": 0.141866,
+     "statement": "The engine does not crank when the start key is turned to START.",
+     "symptom_id": "s-nocrank",
+     "title": "Engine will not crank",
+     "tree_id": "t-nocrank"
+    }
    ],
-   "depth": 10,
-   "max_sections": 3,
-   "min_dense": null,
-   "score": 1,
-   "threshold": 0.4,
-   "top_dense": 0.40069669485092163,
-   "window": 0.25
+   "model": "scripted",
+   "prompt_version": "t1-2026-11-28.1/strict+syn+scores",
+   "search": {
+    "confidence": "closest",
+    "dense": true,
+    "equip_id": "pump40-diesel",
+    "hits": [
+     {
+      "confidence": "closest",
+      "cosine": 0.143038,
+      "coverage": 0.167,
+      "lexical": 0.222222,
+      "margin": 0.009091,
+      "score": 0.150957,
+      "strong_hits": 1,
+      "strong_query_words": 6,
+      "symptom": {
+       "applies_to": [],
+       "lang": "en",
+       "symptom_id": "s-hot",
+       "synonyms": [
+        "running hot",
+        "high temperature",
+        "temperature light on",
+        "overheating"
+       ],
+       "system": "cooling",
+       "title": "Pump overheats",
+       "tree_id": "t-hot"
+      },
+      "why": [
+       {
+        "kind": "words",
+        "phrase": "Pump overheats",
+        "words": [
+         "pump"
+        ]
+       },
+       {
+        "cosine": 0.143,
+        "kind": "dense"
+       }
+      ]
+     },
+     {
+      "confidence": "closest",
+      "cosine": 0.135407,
+      "coverage": 0.167,
+      "lexical": 0.2,
+      "margin": -0.009091,
+      "score": 0.141866,
+      "strong_hits": 1,
+      "strong_query_words": 6,
+      "symptom": {
+       "applies_to": [],
+       "lang": "en",
+       "symptom_id": "s-nocrank",
+       "synonyms": [
+        "engine won't start",
+        "no crank",
+        "starter does nothing",
+        "nothing happens when I turn the key"
+       ],
+       "system": "starting",
+       "title": "Engine will not crank",
+       "tree_id": "t-nocrank"
+      },
+      "why": [
+       {
+        "kind": "words",
+        "phrase": "Engine will not crank",
+        "words": [
+         "engin"
+        ]
+       },
+       {
+        "cosine": 0.135,
+        "kind": "dense"
+       }
+      ]
+     }
+    ],
+    "signals": null,
+    "thresholds": {
+     "coverage": 0.3,
+     "coverage_lexical": 0.3,
+     "dense_active": true,
+     "dense_alone": 0.8,
+     "dense_floor": 0.5,
+     "fusion": "weighted",
+     "lexical_weight": 0.1,
+     "margin": 0.05,
+     "margin_lexical": 0.15,
+     "rrf_k": 60,
+     "strong_hits": 1,
+     "strong_hits_lexical": 1,
+     "weak_words": [
+      "run",
+      "running",
+      "runs",
+      "work",
+      "works",
+      "working",
+      "go",
+      "goes",
+      "going",
+      "get",
+      "gets",
+      "make",
+      "makes",
+      "keep",
+      "keeps",
+      "seem",
+      "seems",
+      "use",
+      "used",
+      "thing",
+      "still",
+      "just",
+      "now",
+      "time",
+      "really",
+      "bit",
+      "little",
+      "lot",
+      "again",
+      "sometimes",
+      "problem",
+      "issue"
+     ]
+    }
+   }
+  },
+  "clarify": {
+   "decision": "clarify",
+   "elapsed_ms": 3,
+   "entries": [
+    {
+     "also": [
+      "engine won't start",
+      "no crank",
+      "starter does nothing",
+      "nothing happens when I turn the key"
+     ],
+     "applicability": null,
+     "causes": [
+      "Battery switch off.",
+      "Start fuse F2 blown.",
+      "Battery discharged.",
+      "Starter relay K1 failed."
+     ],
+     "confidence": "closest",
+     "match": 0.17005,
+     "statement": "The engine does not crank when the start key is turned to START.",
+     "symptom_id": "s-nocrank",
+     "title": "Engine will not crank",
+     "tree_id": "t-nocrank"
+    },
+    {
+     "also": [
+      "running hot",
+      "high temperature",
+      "temperature light on",
+      "overheating"
+     ],
+     "applicability": null,
+     "causes": [
+      "Intake strainer blocked.",
+      "Cooling fan belt loose or broken.",
+      "Internal cooling fault."
+     ],
+     "confidence": "closest",
+     "match": 0.130721,
+     "statement": "The high temperature lamp is on or the controller shows a high temperature code.",
+     "symptom_id": "s-hot",
+     "title": "Pump overheats",
+     "tree_id": "t-hot"
+    }
+   ],
+   "model": "scripted",
+   "prompt_version": "t1-2026-11-28.1/strict+syn+scores",
+   "search": {
+    "confidence": "closest",
+    "dense": true,
+    "equip_id": "pump40-diesel",
+    "hits": [
+     {
+      "confidence": "closest",
+      "cosine": 0.161166,
+      "coverage": 0.2,
+      "lexical": 0.25,
+      "margin": 0.039329,
+      "score": 0.17005,
+      "strong_hits": 1,
+      "strong_query_words": 5,
+      "symptom": {
+       "applies_to": [],
+       "lang": "en",
+       "symptom_id": "s-nocrank",
+       "synonyms": [
+        "engine won't start",
+        "no crank",
+        "starter does nothing",
+        "nothing happens when I turn the key"
+       ],
+       "system": "starting",
+       "title": "Engine will not crank",
+       "tree_id": "t-nocrank"
+      },
+      "why": [
+       {
+        "kind": "words",
+        "phrase": "Engine will not crank",
+        "words": [
+         "engin"
+        ]
+       },
+       {
+        "cosine": 0.161,
+        "kind": "dense"
+       }
+      ]
+     },
+     {
+      "confidence": "closest",
+      "cosine": 0.1135,
+      "coverage": 0.2,
+      "lexical": 0.285714,
+      "margin": -0.039329,
+      "score": 0.130721,
+      "strong_hits": 1,
+      "strong_query_words": 5,
+      "symptom": {
+       "applies_to": [],
+       "lang": "en",
+       "symptom_id": "s-hot",
+       "synonyms": [
+        "running hot",
+        "high temperature",
+        "temperature light on",
+        "overheating"
+       ],
+       "system": "cooling",
+       "title": "Pump overheats",
+       "tree_id": "t-hot"
+      },
+      "why": [
+       {
+        "kind": "words",
+        "phrase": "Pump overheats",
+        "words": [
+         "pump"
+        ]
+       },
+       {
+        "cosine": 0.113,
+        "kind": "dense"
+       }
+      ]
+     }
+    ],
+    "signals": null,
+    "thresholds": {
+     "coverage": 0.3,
+     "coverage_lexical": 0.3,
+     "dense_active": true,
+     "dense_alone": 0.8,
+     "dense_floor": 0.5,
+     "fusion": "weighted",
+     "lexical_weight": 0.1,
+     "margin": 0.05,
+     "margin_lexical": 0.15,
+     "rrf_k": 60,
+     "strong_hits": 1,
+     "strong_hits_lexical": 1,
+     "weak_words": [
+      "run",
+      "running",
+      "runs",
+      "work",
+      "works",
+      "working",
+      "go",
+      "goes",
+      "going",
+      "get",
+      "gets",
+      "make",
+      "makes",
+      "keep",
+      "keeps",
+      "seem",
+      "seems",
+      "use",
+      "used",
+      "thing",
+      "still",
+      "just",
+      "now",
+      "time",
+      "really",
+      "bit",
+      "little",
+      "lot",
+      "again",
+      "sometimes",
+      "problem",
+      "issue"
+     ]
+    }
+   }
+  },
+  "list": {
+   "decision": "list",
+   "elapsed_ms": 2,
+   "entries": [
+    {
+     "also": [
+      "engine won't start",
+      "no crank",
+      "starter does nothing",
+      "nothing happens when I turn the key"
+     ],
+     "applicability": null,
+     "causes": [
+      "Battery switch off.",
+      "Start fuse F2 blown.",
+      "Battery discharged.",
+      "Starter relay K1 failed."
+     ],
+     "confidence": "closest",
+     "match": 0.17005,
+     "statement": "The engine does not crank when the start key is turned to START.",
+     "symptom_id": "s-nocrank",
+     "title": "Engine will not crank",
+     "tree_id": "t-nocrank"
+    },
+    {
+     "also": [
+      "running hot",
+      "high temperature",
+      "temperature light on",
+      "overheating"
+     ],
+     "applicability": null,
+     "causes": [
+      "Intake strainer blocked.",
+      "Cooling fan belt loose or broken.",
+      "Internal cooling fault."
+     ],
+     "confidence": "closest",
+     "match": 0.130721,
+     "statement": "The high temperature lamp is on or the controller shows a high temperature code.",
+     "symptom_id": "s-hot",
+     "title": "Pump overheats",
+     "tree_id": "t-hot"
+    }
+   ],
+   "model": "scripted",
+   "prompt_version": "t1-2026-11-28.1/strict+syn+scores",
+   "search": {
+    "confidence": "closest",
+    "dense": true,
+    "equip_id": "pump40-diesel",
+    "hits": [
+     {
+      "confidence": "closest",
+      "cosine": 0.161166,
+      "coverage": 0.2,
+      "lexical": 0.25,
+      "margin": 0.039329,
+      "score": 0.17005,
+      "strong_hits": 1,
+      "strong_query_words": 5,
+      "symptom": {
+       "applies_to": [],
+       "lang": "en",
+       "symptom_id": "s-nocrank",
+       "synonyms": [
+        "engine won't start",
+        "no crank",
+        "starter does nothing",
+        "nothing happens when I turn the key"
+       ],
+       "system": "starting",
+       "title": "Engine will not crank",
+       "tree_id": "t-nocrank"
+      },
+      "why": [
+       {
+        "kind": "words",
+        "phrase": "Engine will not crank",
+        "words": [
+         "engin"
+        ]
+       },
+       {
+        "cosine": 0.161,
+        "kind": "dense"
+       }
+      ]
+     },
+     {
+      "confidence": "closest",
+      "cosine": 0.1135,
+      "coverage": 0.2,
+      "lexical": 0.285714,
+      "margin": -0.039329,
+      "score": 0.130721,
+      "strong_hits": 1,
+      "strong_query_words": 5,
+      "symptom": {
+       "applies_to": [],
+       "lang": "en",
+       "symptom_id": "s-hot",
+       "synonyms": [
+        "running hot",
+        "high temperature",
+        "temperature light on",
+        "overheating"
+       ],
+       "system": "cooling",
+       "title": "Pump overheats",
+       "tree_id": "t-hot"
+      },
+      "why": [
+       {
+        "kind": "words",
+        "phrase": "Pump overheats",
+        "words": [
+         "pump"
+        ]
+       },
+       {
+        "cosine": 0.113,
+        "kind": "dense"
+       }
+      ]
+     }
+    ],
+    "signals": null,
+    "thresholds": {
+     "coverage": 0.3,
+     "coverage_lexical": 0.3,
+     "dense_active": true,
+     "dense_alone": 0.8,
+     "dense_floor": 0.5,
+     "fusion": "weighted",
+     "lexical_weight": 0.1,
+     "margin": 0.05,
+     "margin_lexical": 0.15,
+     "rrf_k": 60,
+     "strong_hits": 1,
+     "strong_hits_lexical": 1,
+     "weak_words": [
+      "run",
+      "running",
+      "runs",
+      "work",
+      "works",
+      "working",
+      "go",
+      "goes",
+      "going",
+      "get",
+      "gets",
+      "make",
+      "makes",
+      "keep",
+      "keeps",
+      "seem",
+      "seems",
+      "use",
+      "used",
+      "thing",
+      "still",
+      "just",
+      "now",
+      "time",
+      "really",
+      "bit",
+      "little",
+      "lot",
+      "again",
+      "sometimes",
+      "problem",
+      "issue"
+     ]
+    }
+   }
   }
  },
- "askDeclined": {
-  "answer_id": null,
-  "body": [],
-  "check": {
-   "cites_ok": true,
-   "dropped": 0,
-   "quotes_ok": true
+ "stepAsk": {
+  "answer": {
+   "decision": "answer",
+   "elapsed_ms": 1,
+   "heading": "What the manual says to do:",
+   "model": "scripted",
+   "nearest": [],
+   "prompt_version": "t3-2026-11-28.1/tmpl",
+   "sentences": [
+    {
+     "citation": {
+      "boxes": [],
+      "citation": "Table 3-2, Question 2",
+      "edition": "Revision C, 2026-03-01",
+      "figure_label": null,
+      "heading": null,
+      "page_asset_id": null,
+      "page_index": 6,
+      "page_label": "3-5",
+      "path": [
+       {
+        "citation": "Chapter 3",
+        "heading": "Troubleshooting",
+        "section_id": "m40.3"
+       },
+       {
+        "citation": "Table 3-2",
+        "heading": "Pump overheats",
+        "section_id": "m40.3-2"
+       },
+       {
+        "citation": "Table 3-2, Question 2",
+        "heading": null,
+        "section_id": "m40.3-2.q2"
+       }
+      ],
+      "publisher": "Harvest test fixture",
+      "section_id": "m40.3-2.q2",
+      "source_id": "m40-manual",
+      "source_title": "Model 40 Utility Pump Field Maintenance Manual"
+     },
+     "text": "What is the condition of the cooling fan belt: tight, loose or broken?"
+    },
+    {
+     "citation": {
+      "boxes": [],
+      "citation": "Chapter 3, Warning",
+      "edition": "Revision C, 2026-03-01",
+      "figure_label": null,
+      "heading": "WARNING",
+      "page_asset_id": null,
+      "page_index": 2,
+      "page_label": "3-1",
+      "path": [
+       {
+        "citation": "Chapter 3",
+        "heading": "Troubleshooting",
+        "section_id": "m40.3"
+       },
+       {
+        "citation": "Chapter 3, Warning",
+        "heading": "WARNING",
+        "section_id": "m40.3.w1"
+       }
+      ],
+      "publisher": "Harvest test fixture",
+      "section_id": "m40.3.w1",
+      "source_id": "m40-manual",
+      "source_title": "Model 40 Utility Pump Field Maintenance Manual"
+     },
+     "text": "Stop the pump and remove the start key or lock out the supply before you open any cover."
+    }
+   ]
   },
-  "citations": [],
-  "elapsed_ms": 7,
-  "mode": "declined",
-  "model": null,
-  "nearest": [
-   "m40.3-1.f1",
-   "m40.3-1.end",
-   "m40.3-1.q0",
-   "m40.3-1",
-   "m40.3-1.q2"
-  ],
-  "pack_version": "2026.1.1-1",
-  "retrieved": [
-   {
-    "chunk_id": "c-m40.3-1.f1",
-    "dense": 0.10738395154476166,
-    "lexical": 0,
-    "ref_id": "m40.3-1.f1",
-    "score": 0.020161290322580645
-   },
-   {
-    "chunk_id": "c-m40.3-1.end",
-    "dense": 0.10607168078422546,
-    "lexical": 0,
-    "ref_id": "m40.3-1.end",
-    "score": 0.01984126984126984
-   },
-   {
-    "chunk_id": "c-m40.3-1.q0",
-    "dense": 0.08988867700099945,
-    "lexical": 0,
-    "ref_id": "m40.3-1.q0",
-    "score": 0.01953125
-   },
-   {
-    "chunk_id": "c-m40.3-1",
-    "dense": 0.07178303599357605,
-    "lexical": 0,
-    "ref_id": "m40.3-1",
-    "score": 0.01893939393939394
-   },
-   {
-    "chunk_id": "c-m40.3-1.q2",
-    "dense": 0.024898409843444824,
-    "lexical": 0,
-    "ref_id": "m40.3-1.q2",
-    "score": 0.018656716417910446
-   },
-   {
-    "chunk_id": "c-m40.3-1.c1",
-    "dense": 0,
-    "lexical": 0,
-    "ref_id": "m40.3-1.c1",
-    "score": 0.017857142857142856
-   },
-   {
-    "chunk_id": "c-m40.3-1.q1",
-    "dense": 0,
-    "lexical": 0,
-    "ref_id": "m40.3-1.q1",
-    "score": 0.017605633802816902
-   },
-   {
-    "chunk_id": "c-m40.3-1.q4",
-    "dense": -0.025297097861766815,
-    "lexical": 0,
-    "ref_id": "m40.3-1.q4",
-    "score": 0.012376237623762377
-   },
-   {
-    "chunk_id": "c-m40.3-1.q3",
-    "dense": -0.0292698722332716,
-    "lexical": 0,
-    "ref_id": "m40.3-1.q3",
-    "score": 0.012254901960784314
-   },
-   {
-    "chunk_id": "c-m40.3-1.setup",
-    "dense": -0.05753695219755173,
-    "lexical": 0,
-    "ref_id": "m40.3-1.setup",
-    "score": 0.011904761904761906
-   }
-  ],
-  "support": {
-   "cache_similarity": 0,
-   "cache_threshold": 0.75,
-   "candidates": [
+  "decline": {
+   "decision": "decline",
+   "elapsed_ms": 1,
+   "heading": "",
+   "model": "scripted",
+   "nearest": [
     {
-     "coverage": 0,
-     "covered": [],
-     "rank": 1,
-     "retrieval": 0.020161290322580645,
-     "section_id": "m40.3-1.f1"
+     "citation": {
+      "boxes": [],
+      "citation": "Table 3-2, Warning",
+      "edition": "Revision C, 2026-03-01",
+      "figure_label": null,
+      "heading": "WARNING",
+      "page_asset_id": null,
+      "page_index": 5,
+      "page_label": "3-4",
+      "path": [
+       {
+        "citation": "Chapter 3",
+        "heading": "Troubleshooting",
+        "section_id": "m40.3"
+       },
+       {
+        "citation": "Table 3-2",
+        "heading": "Pump overheats",
+        "section_id": "m40.3-2"
+       },
+       {
+        "citation": "Table 3-2, Warning",
+        "heading": "WARNING",
+        "section_id": "m40.3-2.w1"
+       }
+      ],
+      "publisher": "Harvest test fixture",
+      "section_id": "m40.3-2.w1",
+      "source_id": "m40-manual",
+      "source_title": "Model 40 Utility Pump Field Maintenance Manual"
+     },
+     "text": "Do not open the radiator cap while the engine is hot. Hot coolant can cause burns."
     },
     {
-     "coverage": 0,
-     "covered": [],
-     "rank": 2,
-     "retrieval": 0.01984126984126984,
-     "section_id": "m40.3-1.end"
+     "citation": {
+      "boxes": [],
+      "citation": "Table 3-2, Codes",
+      "edition": "Revision C, 2026-03-01",
+      "figure_label": null,
+      "heading": "Fault codes",
+      "page_asset_id": null,
+      "page_index": 5,
+      "page_label": "3-4",
+      "path": [
+       {
+        "citation": "Chapter 3",
+        "heading": "Troubleshooting",
+        "section_id": "m40.3"
+       },
+       {
+        "citation": "Table 3-2",
+        "heading": "Pump overheats",
+        "section_id": "m40.3-2"
+       },
+       {
+        "citation": "Table 3-2, Codes",
+        "heading": "Fault codes",
+        "section_id": "m40.3-2.codes"
+       }
+      ],
+      "publisher": "Harvest test fixture",
+      "section_id": "m40.3-2.codes",
+      "source_id": "m40-manual",
+      "source_title": "Model 40 Utility Pump Field Maintenance Manual"
+     },
+     "text": "Code SPN 110 FMI 0: engine coolant temperature above the shutdown limit. Code E21: motor winding temperature high. Code SPN 168 FMI 1: battery voltage below the cranking limit. Code E40: suction pressure below the warning limit."
     },
     {
-     "coverage": 0,
-     "covered": [],
-     "rank": 3,
-     "retrieval": 0.01953125,
-     "section_id": "m40.3-1.q0"
-    },
-    {
-     "coverage": 0,
-     "covered": [],
-     "rank": 4,
-     "retrieval": 0.01893939393939394,
-     "section_id": "m40.3-1"
-    },
-    {
-     "coverage": 0,
-     "covered": [],
-     "rank": 5,
-     "retrieval": 0.018656716417910446,
-     "section_id": "m40.3-1.q2"
-    },
-    {
-     "coverage": 0,
-     "covered": [],
-     "rank": 6,
-     "retrieval": 0.017857142857142856,
-     "section_id": "m40.3-1.c1"
-    },
-    {
-     "coverage": 0,
-     "covered": [],
-     "rank": 7,
-     "retrieval": 0.017605633802816902,
-     "section_id": "m40.3-1.q1"
-    },
-    {
-     "coverage": 0,
-     "covered": [],
-     "rank": 8,
-     "retrieval": 0.012376237623762377,
-     "section_id": "m40.3-1.q4"
-    },
-    {
-     "coverage": 0,
-     "covered": [],
-     "rank": 9,
-     "retrieval": 0.012254901960784314,
-     "section_id": "m40.3-1.q3"
-    },
-    {
-     "coverage": 0,
-     "covered": [],
-     "rank": 10,
-     "retrieval": 0.011904761904761906,
-     "section_id": "m40.3-1.setup"
+     "citation": {
+      "boxes": [],
+      "citation": "Table 3-2",
+      "edition": "Revision C, 2026-03-01",
+      "figure_label": null,
+      "heading": "Pump overheats",
+      "page_asset_id": null,
+      "page_index": 5,
+      "page_label": "3-4",
+      "path": [
+       {
+        "citation": "Chapter 3",
+        "heading": "Troubleshooting",
+        "section_id": "m40.3"
+       },
+       {
+        "citation": "Table 3-2",
+        "heading": "Pump overheats",
+        "section_id": "m40.3-2"
+       }
+      ],
+      "publisher": "Harvest test fixture",
+      "section_id": "m40.3-2",
+      "source_id": "m40-manual",
+      "source_title": "Model 40 Utility Pump Field Maintenance Manual"
+     },
+     "text": "Table 3-2. Pump overheats or shows a high temperature code."
     }
    ],
-   "concepts": [
-    "colour",
-    "paint"
-   ],
-   "depth": 10,
-   "max_sections": 3,
-   "min_dense": null,
-   "score": 0,
-   "threshold": 0.4,
-   "top_dense": 0.10738395154476166,
-   "window": 0.25
+   "prompt_version": "t3-2026-11-28.1/tmpl",
+   "sentences": []
   }
+ },
+ "prefill": {
+  "elapsed_ms": 1,
+  "model": "scripted",
+  "prompt_version": "t2-2026-11-28.1/v2",
+  "proposal": {
+   "action": {
+    "label": "other",
+    "source": "model",
+    "value": "MODEL TEXT swapped the fuse from the truck"
+   },
+   "asset_id": {
+    "label": null,
+    "source": "job",
+    "value": "unit-101"
+   },
+   "cause": {
+    "label": "C2",
+    "source": "model",
+    "value": "Start fuse F2 blown."
+   },
+   "equip_id": {
+    "label": null,
+    "source": "job",
+    "value": "pump40-diesel"
+   },
+   "job_id": {
+    "label": null,
+    "source": "job",
+    "value": "job-86852b2517d2348d42e98b178dc1ffdc"
+   },
+   "minutes": {
+    "source": "model",
+    "value": 25
+   },
+   "note": {
+    "label": null,
+    "source": "model",
+    "value": "MODEL TEXT happened twice this week"
+   },
+   "parts": {
+    "labels": [],
+    "source": "unknown",
+    "value": []
+   },
+   "symptom_id": {
+    "label": null,
+    "source": "job",
+    "value": "s-nocrank"
+   },
+   "tree_id": {
+    "label": null,
+    "source": "job",
+    "value": "t-nocrank"
+   }
+  }
+ },
+ "llm": {
+  "configured": true,
+  "last": {
+   "answered": true,
+   "at": "2026-11-28T17:29:33.612Z",
+   "elapsed_ms": 1,
+   "error": null,
+   "method": "lesson.prefill",
+   "ok": true
+  },
+  "model": "scripted",
+  "prompt_versions": [
+   "t1-2026-11-28.1/strict+syn+scores",
+   "t2-2026-11-28.1/v2",
+   "t3-2026-11-28.1/tmpl"
+  ],
+  "reachable": true
+ },
+ "llmOff": {
+  "configured": false,
+  "last": null,
+  "model": null,
+  "prompt_versions": [
+   "t1-2026-11-28.1/strict+syn+scores",
+   "t2-2026-11-28.1/v2",
+   "t3-2026-11-28.1/tmpl"
+  ],
+  "reachable": null
  },
  "closed": {
   "job": {
    "asset_id": "unit-101",
-   "closed_at": "2026-11-28T13:32:14.877Z",
+   "closed_at": "2026-11-28T17:29:33.615Z",
    "current_node": "nc.end",
    "entered_by": "symptom",
    "entry_node": "nc.0",
    "equip_id": "pump40-diesel",
-   "job_id": "job-b74fe47028458783cdab33a6a4af6387",
+   "job_id": "job-86852b2517d2348d42e98b178dc1ffdc",
    "level": "apprentice",
-   "opened_at": "2026-11-28T13:32:14.737Z",
+   "opened_at": "2026-11-28T17:29:33.422Z",
    "pack_id": "pump40",
    "pack_version": "2026.1.1-1",
    "query": null,
@@ -6966,7 +7508,7 @@
    "status": "closed",
    "steps": [
     {
-     "at": "2026-11-28T13:32:14.745Z",
+     "at": "2026-11-28T17:29:33.430Z",
      "label": "Continue",
      "next_node": "nc.1",
      "node_id": "nc.0",
@@ -6980,7 +7522,7 @@
      "value": null
     },
     {
-     "at": "2026-11-28T13:32:14.754Z",
+     "at": "2026-11-28T17:29:33.439Z",
      "label": "No",
      "next_node": "nc.1a",
      "node_id": "nc.1",
@@ -6994,7 +7536,7 @@
      "value": null
     },
     {
-     "at": "2026-11-28T13:32:14.762Z",
+     "at": "2026-11-28T17:29:33.447Z",
      "label": "Cranks",
      "next_node": "nc.end",
      "node_id": "nc.1a",
@@ -7016,10 +7558,10 @@
    "action": "Replaced fuse F2",
    "asset_id": "unit-101",
    "cause": "Start fuse F2 blown",
-   "created_at": "2026-11-28T13:32:14.877Z",
+   "created_at": "2026-11-28T17:29:33.615Z",
    "equip_id": "pump40-diesel",
-   "job_id": "job-b74fe47028458783cdab33a6a4af6387",
-   "lesson_id": "lesson-df2ab7431aa3adc89ad78f5ef46b75c5",
+   "job_id": "job-86852b2517d2348d42e98b178dc1ffdc",
+   "lesson_id": "lesson-cb37a3f47de65ac6c4c95e6d66bdb682",
    "level": "apprentice",
    "minutes": 20,
    "node_id": "nc.end",
@@ -7038,22 +7580,22 @@
    "status": "queued",
    "symptom_id": "s-nocrank",
    "tree_id": "t-nocrank",
-   "updated_at": "2026-11-28T13:32:14.877Z"
+   "updated_at": "2026-11-28T17:29:33.615Z"
   }
  },
  "jobReport": {
   "asset_id": "unit-101",
-  "closed_at": "2026-11-28T13:32:14.877Z",
+  "closed_at": "2026-11-28T17:29:33.615Z",
   "entered_by": "symptom",
   "entry_node": "nc.0",
   "equip_id": "pump40-diesel",
   "format": "harvest-job/1",
-  "job_id": "job-b74fe47028458783cdab33a6a4af6387",
+  "job_id": "job-86852b2517d2348d42e98b178dc1ffdc",
   "lesson_ids": [
-   "lesson-df2ab7431aa3adc89ad78f5ef46b75c5"
+   "lesson-cb37a3f47de65ac6c4c95e6d66bdb682"
   ],
   "level": "apprentice",
-  "opened_at": "2026-11-28T13:32:14.737Z",
+  "opened_at": "2026-11-28T17:29:33.422Z",
   "pack_id": "pump40",
   "pack_version": "2026.1.1-1",
   "query": null,
@@ -7067,7 +7609,7 @@
   "status": "closed",
   "steps": [
    {
-    "at": "2026-11-28T13:32:14.745Z",
+    "at": "2026-11-28T17:29:33.430Z",
     "label": "Continue",
     "next_node": "nc.1",
     "node_id": "nc.0",
@@ -7082,7 +7624,7 @@
     "value": null
    },
    {
-    "at": "2026-11-28T13:32:14.754Z",
+    "at": "2026-11-28T17:29:33.439Z",
     "label": "No",
     "next_node": "nc.1a",
     "node_id": "nc.1",
@@ -7097,7 +7639,7 @@
     "value": null
    },
    {
-    "at": "2026-11-28T13:32:14.762Z",
+    "at": "2026-11-28T17:29:33.447Z",
     "label": "Cranks",
     "next_node": "nc.end",
     "node_id": "nc.1a",
@@ -7124,8 +7666,8 @@
    "closed_at": null,
    "current_node": "oh.2",
    "equip_id": "pump40-diesel",
-   "job_id": "job-d8dea2bb609c317a3f9d1ff897ed05df",
-   "opened_at": "2026-11-28T13:32:14.816Z",
+   "job_id": "job-515b6c0dc7b644695bd1972dbec26a20",
+   "opened_at": "2026-11-28T17:29:33.497Z",
    "pack_id": "pump40",
    "resolution": null,
    "status": "open",
@@ -7139,8 +7681,8 @@
    "closed_at": null,
    "current_node": "oh.1",
    "equip_id": "pump40-diesel",
-   "job_id": "job-b8de323ce9dd47307e5b042b8be68cf1",
-   "opened_at": "2026-11-28T13:32:14.771Z",
+   "job_id": "job-b6e39abb7f9d7bb038360c786764a182",
+   "opened_at": "2026-11-28T17:29:33.455Z",
    "pack_id": "pump40",
    "resolution": null,
    "status": "open",
@@ -7151,11 +7693,11 @@
   },
   {
    "asset_id": "unit-101",
-   "closed_at": "2026-11-28T13:32:14.877Z",
+   "closed_at": "2026-11-28T17:29:33.615Z",
    "current_node": "nc.end",
    "equip_id": "pump40-diesel",
-   "job_id": "job-b74fe47028458783cdab33a6a4af6387",
-   "opened_at": "2026-11-28T13:32:14.737Z",
+   "job_id": "job-86852b2517d2348d42e98b178dc1ffdc",
+   "opened_at": "2026-11-28T17:29:33.422Z",
    "pack_id": "pump40",
    "resolution": "fixed",
    "status": "closed",
@@ -7169,8 +7711,8 @@
    "closed_at": null,
    "current_node": "nc.4p",
    "equip_id": "pump40-diesel",
-   "job_id": "job-276db0142e7aff1cfcf4cf4f7150a887",
-   "opened_at": "2026-11-28T13:32:14.650Z",
+   "job_id": "job-0e73e4fa42c0a2c4b2c7f31797adb2fc",
+   "opened_at": "2026-11-28T17:29:33.334Z",
    "pack_id": "pump40",
    "resolution": null,
    "status": "open",
@@ -8105,7 +8647,7 @@
    },
    "note_id": "fn-relay-bracket",
    "pack_id": "pump40",
-   "received_at": "2026-11-28T13:32:14.625Z",
+   "received_at": "2026-11-28T17:29:33.306Z",
    "scope": {
     "equip_id": "pump40-diesel",
     "node_id": "nc.4",
@@ -8128,7 +8670,7 @@
    },
    "note_id": "fn-strainer-silt",
    "pack_id": "pump40",
-   "received_at": "2026-11-28T13:32:14.625Z",
+   "received_at": "2026-11-28T17:29:33.306Z",
    "scope": {
     "equip_id": null,
     "node_id": null,
@@ -9632,7 +10174,7 @@
   "values": [
    {
     "attr": "firmware",
-    "set_at": "2026-11-28T13:32:14.930Z",
+    "set_at": "2026-11-28T17:29:33.668Z",
     "source": "typed",
     "value": "2.6"
    }
@@ -9662,13 +10204,13 @@
   "values": [
    {
     "attr": "firmware",
-    "set_at": "2026-11-28T13:32:14.930Z",
+    "set_at": "2026-11-28T17:29:33.668Z",
     "source": "typed",
     "value": "2.6"
    },
    {
     "attr": "serial",
-    "set_at": "2026-11-28T13:32:14.936Z",
+    "set_at": "2026-11-28T17:29:33.675Z",
     "source": "plate",
     "value": "P40D-2310"
    }
@@ -9698,19 +10240,19 @@
   "values": [
    {
     "attr": "firmware",
-    "set_at": "2026-11-28T13:32:14.930Z",
+    "set_at": "2026-11-28T17:29:33.668Z",
     "source": "typed",
     "value": "2.6"
    },
    {
     "attr": "sb_40_07",
-    "set_at": "2026-11-28T13:32:14.937Z",
+    "set_at": "2026-11-28T17:29:33.676Z",
     "source": "typed",
     "value": "incorporated"
    },
    {
     "attr": "serial",
-    "set_at": "2026-11-28T13:32:14.936Z",
+    "set_at": "2026-11-28T17:29:33.675Z",
     "source": "plate",
     "value": "P40D-2310"
    }
@@ -9724,7 +10266,7 @@
    "ord": 1,
    "outcome": "fail",
    "photos": [],
-   "recorded_at": "2026-11-28T13:32:14.944Z",
+   "recorded_at": "2026-11-28T17:29:33.682Z",
    "structured": null,
    "value": null
   }
@@ -9735,13 +10277,13 @@
    "attrs": {
     "location": "North yard"
    },
-   "created_at": "2026-11-28T13:32:14.620Z",
+   "created_at": "2026-11-28T17:29:33.301Z",
    "equip_id": "pump40-diesel",
    "hours": 1840.5,
    "miles": null,
    "name": "Pump 101",
    "serial": "P40D-2310",
-   "updated_at": "2026-11-28T13:32:14.620Z"
+   "updated_at": "2026-11-28T17:29:33.301Z"
   },
   "events": [
    {
@@ -9807,8 +10349,8 @@
     "closed_at": null,
     "current_node": "oh.2",
     "equip_id": "pump40-diesel",
-    "job_id": "job-d8dea2bb609c317a3f9d1ff897ed05df",
-    "opened_at": "2026-11-28T13:32:14.816Z",
+    "job_id": "job-515b6c0dc7b644695bd1972dbec26a20",
+    "opened_at": "2026-11-28T17:29:33.497Z",
     "pack_id": "pump40",
     "repeat": {
      "flag": false,
@@ -9827,25 +10369,25 @@
     "closed_at": null,
     "current_node": "oh.1",
     "equip_id": "pump40-diesel",
-    "job_id": "job-b8de323ce9dd47307e5b042b8be68cf1",
-    "opened_at": "2026-11-28T13:32:14.771Z",
+    "job_id": "job-b6e39abb7f9d7bb038360c786764a182",
+    "opened_at": "2026-11-28T17:29:33.455Z",
     "pack_id": "pump40",
     "repeat": {
      "flag": true,
      "matches": [
       {
-       "date": "2026-11-28T13:32:14.737Z",
+       "date": "2026-11-28T17:29:33.422Z",
        "days_before": 0,
-       "job_id": "job-b74fe47028458783cdab33a6a4af6387",
+       "job_id": "job-86852b2517d2348d42e98b178dc1ffdc",
        "kind": "job",
        "reason": "same_symptom",
        "symptom_id": "s-nocrank",
        "system": "starting"
       },
       {
-       "date": "2026-11-28T13:32:14.650Z",
+       "date": "2026-11-28T17:29:33.334Z",
        "days_before": 0,
-       "job_id": "job-276db0142e7aff1cfcf4cf4f7150a887",
+       "job_id": "job-0e73e4fa42c0a2c4b2c7f31797adb2fc",
        "kind": "job",
        "reason": "same_symptom",
        "symptom_id": "s-nocrank",
@@ -9863,19 +10405,19 @@
    },
    {
     "asset_id": "unit-101",
-    "closed_at": "2026-11-28T13:32:14.877Z",
+    "closed_at": "2026-11-28T17:29:33.615Z",
     "current_node": "nc.end",
     "equip_id": "pump40-diesel",
-    "job_id": "job-b74fe47028458783cdab33a6a4af6387",
-    "opened_at": "2026-11-28T13:32:14.737Z",
+    "job_id": "job-86852b2517d2348d42e98b178dc1ffdc",
+    "opened_at": "2026-11-28T17:29:33.422Z",
     "pack_id": "pump40",
     "repeat": {
      "flag": true,
      "matches": [
       {
-       "date": "2026-11-28T13:32:14.650Z",
+       "date": "2026-11-28T17:29:33.334Z",
        "days_before": 0,
-       "job_id": "job-276db0142e7aff1cfcf4cf4f7150a887",
+       "job_id": "job-0e73e4fa42c0a2c4b2c7f31797adb2fc",
        "kind": "job",
        "reason": "same_symptom",
        "symptom_id": "s-nocrank",
@@ -9896,8 +10438,8 @@
     "closed_at": null,
     "current_node": "nc.4p",
     "equip_id": "pump40-diesel",
-    "job_id": "job-276db0142e7aff1cfcf4cf4f7150a887",
-    "opened_at": "2026-11-28T13:32:14.650Z",
+    "job_id": "job-0e73e4fa42c0a2c4b2c7f31797adb2fc",
+    "opened_at": "2026-11-28T17:29:33.334Z",
     "pack_id": "pump40",
     "repeat": {
      "flag": false,
@@ -9919,10 +10461,10 @@
    "action": "Replaced fuse F2",
    "asset_id": "unit-101",
    "cause": "Start fuse F2 blown",
-   "created_at": "2026-11-28T13:32:14.877Z",
+   "created_at": "2026-11-28T17:29:33.615Z",
    "equip_id": "pump40-diesel",
-   "job_id": "job-b74fe47028458783cdab33a6a4af6387",
-   "lesson_id": "lesson-df2ab7431aa3adc89ad78f5ef46b75c5",
+   "job_id": "job-86852b2517d2348d42e98b178dc1ffdc",
+   "lesson_id": "lesson-cb37a3f47de65ac6c4c95e6d66bdb682",
    "level": "apprentice",
    "minutes": 20,
    "node_id": "nc.end",
@@ -9941,7 +10483,7 @@
    "status": "queued",
    "symptom_id": "s-nocrank",
    "tree_id": "t-nocrank",
-   "updated_at": "2026-11-28T13:32:14.877Z"
+   "updated_at": "2026-11-28T17:29:33.615Z"
   }
  ],
  "outbox": {
@@ -9968,12 +10510,11 @@
   },
   "last_error": null,
   "last_synced_at": null,
-  "pending": 4,
+  "pending": 3,
   "pending_by_kind": {
    "deficiency": 1,
    "job": 1,
-   "lesson": 1,
-   "miss": 1
+   "lesson": 1
   },
   "quarantined": 0
  },
@@ -9993,7 +10534,7 @@
     "pack_version": null,
     "result": null,
     "subject": "harvest-assets/1",
-    "ts": "2026-11-28T13:32:14.620Z"
+    "ts": "2026-11-28T17:29:33.301Z"
    },
    "seq": 1,
    "type": "event"
@@ -10016,7 +10557,7 @@
     "pack_version": null,
     "result": null,
     "subject": "pump40-fleet",
-    "ts": "2026-11-28T13:32:14.625Z"
+    "ts": "2026-11-28T17:29:33.306Z"
    },
    "seq": 2,
    "type": "event"
@@ -10038,8 +10579,8 @@
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "result": null,
-    "subject": "job-276db0142e7aff1cfcf4cf4f7150a887",
-    "ts": "2026-11-28T13:32:14.651Z"
+    "subject": "job-0e73e4fa42c0a2c4b2c7f31797adb2fc",
+    "ts": "2026-11-28T17:29:33.335Z"
    },
    "seq": 3,
    "type": "event"
@@ -10062,8 +10603,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-276db0142e7aff1cfcf4cf4f7150a887",
-    "ts": "2026-11-28T13:32:14.658Z"
+    "subject": "job-0e73e4fa42c0a2c4b2c7f31797adb2fc",
+    "ts": "2026-11-28T17:29:33.344Z"
    },
    "seq": 4,
    "type": "event"
@@ -10086,8 +10627,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-276db0142e7aff1cfcf4cf4f7150a887",
-    "ts": "2026-11-28T13:32:14.673Z"
+    "subject": "job-0e73e4fa42c0a2c4b2c7f31797adb2fc",
+    "ts": "2026-11-28T17:29:33.361Z"
    },
    "seq": 5,
    "type": "event"
@@ -10110,8 +10651,8 @@
      "unit": "V",
      "value": 10.8
     },
-    "subject": "job-276db0142e7aff1cfcf4cf4f7150a887",
-    "ts": "2026-11-28T13:32:14.687Z"
+    "subject": "job-0e73e4fa42c0a2c4b2c7f31797adb2fc",
+    "ts": "2026-11-28T17:29:33.375Z"
    },
    "seq": 6,
    "type": "event"
@@ -10132,8 +10673,8 @@
      "unit": "V",
      "value": 10.8
     },
-    "subject": "job-276db0142e7aff1cfcf4cf4f7150a887",
-    "ts": "2026-11-28T13:32:14.694Z"
+    "subject": "job-0e73e4fa42c0a2c4b2c7f31797adb2fc",
+    "ts": "2026-11-28T17:29:33.383Z"
    },
    "seq": 7,
    "type": "event"
@@ -10156,8 +10697,8 @@
      "unit": "V",
      "value": 12.7
     },
-    "subject": "job-276db0142e7aff1cfcf4cf4f7150a887",
-    "ts": "2026-11-28T13:32:14.708Z"
+    "subject": "job-0e73e4fa42c0a2c4b2c7f31797adb2fc",
+    "ts": "2026-11-28T17:29:33.395Z"
    },
    "seq": 8,
    "type": "event"
@@ -10180,8 +10721,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-276db0142e7aff1cfcf4cf4f7150a887",
-    "ts": "2026-11-28T13:32:14.718Z"
+    "subject": "job-0e73e4fa42c0a2c4b2c7f31797adb2fc",
+    "ts": "2026-11-28T17:29:33.404Z"
    },
    "seq": 9,
    "type": "event"
@@ -10204,8 +10745,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-276db0142e7aff1cfcf4cf4f7150a887",
-    "ts": "2026-11-28T13:32:14.728Z"
+    "subject": "job-0e73e4fa42c0a2c4b2c7f31797adb2fc",
+    "ts": "2026-11-28T17:29:33.413Z"
    },
    "seq": 10,
    "type": "event"
@@ -10227,8 +10768,8 @@
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "result": null,
-    "subject": "job-b74fe47028458783cdab33a6a4af6387",
-    "ts": "2026-11-28T13:32:14.738Z"
+    "subject": "job-86852b2517d2348d42e98b178dc1ffdc",
+    "ts": "2026-11-28T17:29:33.423Z"
    },
    "seq": 11,
    "type": "event"
@@ -10251,8 +10792,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-b74fe47028458783cdab33a6a4af6387",
-    "ts": "2026-11-28T13:32:14.745Z"
+    "subject": "job-86852b2517d2348d42e98b178dc1ffdc",
+    "ts": "2026-11-28T17:29:33.430Z"
    },
    "seq": 12,
    "type": "event"
@@ -10275,8 +10816,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-b74fe47028458783cdab33a6a4af6387",
-    "ts": "2026-11-28T13:32:14.754Z"
+    "subject": "job-86852b2517d2348d42e98b178dc1ffdc",
+    "ts": "2026-11-28T17:29:33.439Z"
    },
    "seq": 13,
    "type": "event"
@@ -10299,8 +10840,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-b74fe47028458783cdab33a6a4af6387",
-    "ts": "2026-11-28T13:32:14.762Z"
+    "subject": "job-86852b2517d2348d42e98b178dc1ffdc",
+    "ts": "2026-11-28T17:29:33.447Z"
    },
    "seq": 14,
    "type": "event"
@@ -10322,8 +10863,8 @@
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "result": null,
-    "subject": "job-b8de323ce9dd47307e5b042b8be68cf1",
-    "ts": "2026-11-28T13:32:14.772Z"
+    "subject": "job-b6e39abb7f9d7bb038360c786764a182",
+    "ts": "2026-11-28T17:29:33.456Z"
    },
    "seq": 15,
    "type": "event"
@@ -10346,8 +10887,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-b8de323ce9dd47307e5b042b8be68cf1",
-    "ts": "2026-11-28T13:32:14.779Z"
+    "subject": "job-b6e39abb7f9d7bb038360c786764a182",
+    "ts": "2026-11-28T17:29:33.463Z"
    },
    "seq": 16,
    "type": "event"
@@ -10370,8 +10911,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-b8de323ce9dd47307e5b042b8be68cf1",
-    "ts": "2026-11-28T13:32:14.789Z"
+    "subject": "job-b6e39abb7f9d7bb038360c786764a182",
+    "ts": "2026-11-28T17:29:33.472Z"
    },
    "seq": 17,
    "type": "event"
@@ -10394,8 +10935,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-b8de323ce9dd47307e5b042b8be68cf1",
-    "ts": "2026-11-28T13:32:14.797Z"
+    "subject": "job-b6e39abb7f9d7bb038360c786764a182",
+    "ts": "2026-11-28T17:29:33.480Z"
    },
    "seq": 18,
    "type": "event"
@@ -10414,8 +10955,8 @@
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "result": null,
-    "subject": "job-b8de323ce9dd47307e5b042b8be68cf1",
-    "ts": "2026-11-28T13:32:14.807Z"
+    "subject": "job-b6e39abb7f9d7bb038360c786764a182",
+    "ts": "2026-11-28T17:29:33.489Z"
    },
    "seq": 19,
    "type": "event"
@@ -10437,8 +10978,8 @@
     "pack_id": "pump40",
     "pack_version": "2026.1.1-1",
     "result": null,
-    "subject": "job-d8dea2bb609c317a3f9d1ff897ed05df",
-    "ts": "2026-11-28T13:32:14.816Z"
+    "subject": "job-515b6c0dc7b644695bd1972dbec26a20",
+    "ts": "2026-11-28T17:29:33.498Z"
    },
    "seq": 20,
    "type": "event"
@@ -10461,8 +11002,8 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-d8dea2bb609c317a3f9d1ff897ed05df",
-    "ts": "2026-11-28T13:32:14.822Z"
+    "subject": "job-515b6c0dc7b644695bd1972dbec26a20",
+    "ts": "2026-11-28T17:29:33.503Z"
    },
    "seq": 21,
    "type": "event"
@@ -10485,191 +11026,91 @@
      "unit": null,
      "value": null
     },
-    "subject": "job-d8dea2bb609c317a3f9d1ff897ed05df",
-    "ts": "2026-11-28T13:32:14.828Z"
+    "subject": "job-515b6c0dc7b644695bd1972dbec26a20",
+    "ts": "2026-11-28T17:29:33.508Z"
    },
    "seq": 22,
    "type": "event"
   },
   {
-   "entry": {
-    "answer_id": null,
-    "chunks": [
-     {
-      "chunk_id": "c-m40.3-1.q1",
-      "dense": 0.4006966948509216,
-      "lexical": 6.806923368528173,
-      "score": 0.04098360655737705
-     },
-     {
-      "chunk_id": "c-m40.3-1.f1",
-      "dense": 0.19716602563858032,
-      "lexical": 5.299322337224139,
-      "score": 0.04032258064516129
-     },
-     {
-      "chunk_id": "c-m40.3-1.q2",
-      "dense": 0.11977884918451308,
-      "lexical": 2.118522297896343,
-      "score": 0.03968253968253968
-     },
-     {
-      "chunk_id": "c-m40.3-1.q3",
-      "dense": 0.07228177040815353,
-      "lexical": 1.2747313130842184,
-      "score": 0.03876201923076923
-     },
-     {
-      "chunk_id": "c-m40.3-1.q4",
-      "dense": 0.11268224567174911,
-      "lexical": 0,
-      "score": 0.01953125
-     },
-     {
-      "chunk_id": "c-m40.3-1",
-      "dense": 0,
-      "lexical": 0,
-      "score": 0.017123287671232876
-     },
-     {
-      "chunk_id": "c-m40.3-1.c1",
-      "dense": 0,
-      "lexical": 0,
-      "score": 0.016891891891891893
-     },
-     {
-      "chunk_id": "c-m40.3-1.end",
-      "dense": 0,
-      "lexical": 0,
-      "score": 0.016666666666666666
-     },
-     {
-      "chunk_id": "c-m40.3-1.q0",
-      "dense": 0,
-      "lexical": 0,
-      "score": 0.01644736842105263
-     },
-     {
-      "chunk_id": "c-m40.3-1.setup",
-      "dense": 0,
-      "lexical": 0,
-      "score": 0.016233766233766236
-     }
-    ],
-    "citations": [
-     "m40.3-1.q1"
-    ],
-    "dropped": 0,
-    "elapsed_ms": 13,
-    "expansions": [],
-    "mode": "composed",
-    "model": null,
-    "normalized": "how do i check fuse f2",
-    "pack_id": "pump40",
-    "pack_version": "2026.1.1-1",
-    "query": "How do I check fuse F2?",
-    "ts": "2026-11-28T13:32:14.864Z",
-    "verdict": "supported"
+   "event": {
+    "asked": null,
+    "detail": {
+     "decision": "route",
+     "elapsed_ms": 1,
+     "error": null,
+     "method": "symptom.suggest",
+     "model": null,
+     "offered": [
+      "s-nocrank"
+     ],
+     "prompt_version": "t1-2026-11-28.1/strict+syn+scores",
+     "raw": null
+    },
+    "event": "model",
+    "next_node": null,
+    "node_id": null,
+    "pack_id": null,
+    "pack_version": null,
+    "result": null,
+    "subject": "symptom.suggest",
+    "ts": "2026-11-28T17:29:33.531Z"
    },
    "seq": 23,
-   "type": "answer"
-  },
-  {
-   "entry": {
-    "answer_id": null,
-    "chunks": [
-     {
-      "chunk_id": "c-m40.3-1.f1",
-      "dense": 0.10738395154476166,
-      "lexical": 0,
-      "score": 0.020161290322580645
-     },
-     {
-      "chunk_id": "c-m40.3-1.end",
-      "dense": 0.10607168078422546,
-      "lexical": 0,
-      "score": 0.01984126984126984
-     },
-     {
-      "chunk_id": "c-m40.3-1.q0",
-      "dense": 0.08988867700099945,
-      "lexical": 0,
-      "score": 0.01953125
-     },
-     {
-      "chunk_id": "c-m40.3-1",
-      "dense": 0.07178303599357605,
-      "lexical": 0,
-      "score": 0.01893939393939394
-     },
-     {
-      "chunk_id": "c-m40.3-1.q2",
-      "dense": 0.024898409843444824,
-      "lexical": 0,
-      "score": 0.01865671641791045
-     },
-     {
-      "chunk_id": "c-m40.3-1.c1",
-      "dense": 0,
-      "lexical": 0,
-      "score": 0.017857142857142856
-     },
-     {
-      "chunk_id": "c-m40.3-1.q1",
-      "dense": 0,
-      "lexical": 0,
-      "score": 0.017605633802816902
-     },
-     {
-      "chunk_id": "c-m40.3-1.q4",
-      "dense": -0.025297097861766815,
-      "lexical": 0,
-      "score": 0.012376237623762377
-     },
-     {
-      "chunk_id": "c-m40.3-1.q3",
-      "dense": -0.0292698722332716,
-      "lexical": 0,
-      "score": 0.012254901960784314
-     },
-     {
-      "chunk_id": "c-m40.3-1.setup",
-      "dense": -0.05753695219755173,
-      "lexical": 0,
-      "score": 0.011904761904761906
-     }
-    ],
-    "citations": [],
-    "dropped": 0,
-    "elapsed_ms": 7,
-    "expansions": [],
-    "mode": "declined",
-    "model": null,
-    "normalized": "what colour is the paint",
-    "pack_id": "pump40",
-    "pack_version": "2026.1.1-1",
-    "query": "What colour is the paint?",
-    "ts": "2026-11-28T13:32:14.875Z",
-    "verdict": "declined"
-   },
-   "seq": 24,
-   "type": "answer"
+   "type": "event"
   },
   {
    "event": {
     "asked": null,
     "detail": {
-     "job_id": "job-b74fe47028458783cdab33a6a4af6387",
-     "submit": true
+     "decision": "suggest",
+     "elapsed_ms": 4,
+     "error": null,
+     "method": "symptom.suggest",
+     "model": "scripted",
+     "offered": [
+      "s-hot",
+      "s-nocrank"
+     ],
+     "prompt_version": "t1-2026-11-28.1/strict+syn+scores",
+     "raw": "{\"decision\":\"pick\",\"candidate\":2}"
     },
-    "event": "lesson.create",
+    "event": "model",
     "next_node": null,
-    "node_id": "nc.end",
-    "pack_id": "pump40",
-    "pack_version": "2026.1.1-1",
+    "node_id": null,
+    "pack_id": null,
+    "pack_version": null,
     "result": null,
-    "subject": "lesson-df2ab7431aa3adc89ad78f5ef46b75c5",
-    "ts": "2026-11-28T13:32:14.877Z"
+    "subject": "symptom.suggest",
+    "ts": "2026-11-28T17:29:33.538Z"
+   },
+   "seq": 24,
+   "type": "event"
+  },
+  {
+   "event": {
+    "asked": null,
+    "detail": {
+     "decision": "clarify",
+     "elapsed_ms": 3,
+     "error": null,
+     "method": "symptom.suggest",
+     "model": "scripted",
+     "offered": [
+      "s-nocrank",
+      "s-hot"
+     ],
+     "prompt_version": "t1-2026-11-28.1/strict+syn+scores",
+     "raw": "{\"decision\":\"clarify\",\"between\":[1,2]}"
+    },
+    "event": "model",
+    "next_node": null,
+    "node_id": null,
+    "pack_id": null,
+    "pack_version": null,
+    "result": null,
+    "subject": "symptom.suggest",
+    "ts": "2026-11-28T17:29:33.543Z"
    },
    "seq": 25,
    "type": "event"
@@ -10678,20 +11119,26 @@
    "event": {
     "asked": null,
     "detail": {
-     "lesson_id": "lesson-df2ab7431aa3adc89ad78f5ef46b75c5"
+     "decision": "list",
+     "elapsed_ms": 2,
+     "error": "llm: output does not match schema: expected ident at line 1 column 2",
+     "method": "symptom.suggest",
+     "model": "scripted",
+     "offered": [
+      "s-nocrank",
+      "s-hot"
+     ],
+     "prompt_version": "t1-2026-11-28.1/strict+syn+scores",
+     "raw": "this is not json"
     },
-    "event": "job.close",
+    "event": "model",
     "next_node": null,
-    "node_id": "nc.end",
-    "pack_id": "pump40",
-    "pack_version": "2026.1.1-1",
-    "result": {
-     "kind": "fixed",
-     "node_id": "nc.end",
-     "note": null
-    },
-    "subject": "job-b74fe47028458783cdab33a6a4af6387",
-    "ts": "2026-11-28T13:32:14.879Z"
+    "node_id": null,
+    "pack_id": null,
+    "pack_version": null,
+    "result": null,
+    "subject": "symptom.suggest",
+    "ts": "2026-11-28T17:29:33.548Z"
    },
    "seq": 26,
    "type": "event"
@@ -10700,19 +11147,108 @@
    "event": {
     "asked": null,
     "detail": {
-     "source": "typed",
-     "values": {
-      "firmware": "2.6"
-     }
+     "decision": "answer",
+     "elapsed_ms": 1,
+     "error": null,
+     "method": "step.ask",
+     "model": "scripted",
+     "offered": [
+      {
+       "h": "S1",
+       "text": "What is the condition of the cooling fan belt: tight, loose or broken?"
+      },
+      {
+       "h": "S2",
+       "text": "Stop the pump and remove the start key or lock out the supply before you open any cover."
+      },
+      {
+       "h": "S3",
+       "text": "Rotating parts can cause serious injury."
+      },
+      {
+       "h": "S4",
+       "text": "Do not open the radiator cap while the engine is hot."
+      },
+      {
+       "h": "S5",
+       "text": "Hot coolant can cause burns."
+      },
+      {
+       "h": "S6",
+       "text": "Cooling fan belt loose or broken."
+      },
+      {
+       "h": "S7",
+       "text": "Internal cooling fault."
+      },
+      {
+       "h": "S8",
+       "text": "Table 3-2."
+      },
+      {
+       "h": "S9",
+       "text": "Pump overheats or shows a high temperature code."
+      },
+      {
+       "h": "S10",
+       "text": "Code SPN 110 FMI 0: engine coolant temperature above the shutdown limit."
+      },
+      {
+       "h": "S11",
+       "text": "Code E21: motor winding temperature high."
+      },
+      {
+       "h": "S12",
+       "text": "Code SPN 168 FMI 1: battery voltage below the cranking limit."
+      },
+      {
+       "h": "S13",
+       "text": "Code E40: suction pressure below the warning limit."
+      },
+      {
+       "h": "S14",
+       "text": "The high temperature lamp is on or the controller shows a high temperature code."
+      },
+      {
+       "h": "S15",
+       "text": "Is the intake strainer clear of debris?"
+      },
+      {
+       "h": "S16",
+       "text": "REASON FOR QUESTION:"
+      },
+      {
+       "h": "S17",
+       "text": "A blocked strainer starves the pump and it heats up."
+      },
+      {
+       "h": "S18",
+       "text": "POSSIBLE PROBLEMS:"
+      },
+      {
+       "h": "S19",
+       "text": "Intake strainer blocked."
+      },
+      {
+       "h": "S20",
+       "text": "If NO:"
+      },
+      {
+       "h": "S21",
+       "text": "Clean the intake strainer."
+      }
+     ],
+     "prompt_version": "t3-2026-11-28.1/tmpl",
+     "raw": "{\"kind\":\"answer\",\"sentences\":[\"S1\",\"S2\"],\"connector\":\"What the manual says to do:\"}"
     },
-    "event": "asset.attrs",
+    "event": "model",
     "next_node": null,
     "node_id": null,
     "pack_id": null,
     "pack_version": null,
     "result": null,
-    "subject": "unit-101",
-    "ts": "2026-11-28T13:32:14.930Z"
+    "subject": "step.ask",
+    "ts": "2026-11-28T17:29:33.572Z"
    },
    "seq": 27,
    "type": "event"
@@ -10721,19 +11257,108 @@
    "event": {
     "asked": null,
     "detail": {
-     "source": "plate",
-     "values": {
-      "serial": "P40D-2310"
-     }
+     "decision": "decline",
+     "elapsed_ms": 1,
+     "error": null,
+     "method": "step.ask",
+     "model": "scripted",
+     "offered": [
+      {
+       "h": "S1",
+       "text": "What is the condition of the cooling fan belt: tight, loose or broken?"
+      },
+      {
+       "h": "S2",
+       "text": "Stop the pump and remove the start key or lock out the supply before you open any cover."
+      },
+      {
+       "h": "S3",
+       "text": "Rotating parts can cause serious injury."
+      },
+      {
+       "h": "S4",
+       "text": "Do not open the radiator cap while the engine is hot."
+      },
+      {
+       "h": "S5",
+       "text": "Hot coolant can cause burns."
+      },
+      {
+       "h": "S6",
+       "text": "Cooling fan belt loose or broken."
+      },
+      {
+       "h": "S7",
+       "text": "Internal cooling fault."
+      },
+      {
+       "h": "S8",
+       "text": "Code SPN 110 FMI 0: engine coolant temperature above the shutdown limit."
+      },
+      {
+       "h": "S9",
+       "text": "Code E21: motor winding temperature high."
+      },
+      {
+       "h": "S10",
+       "text": "Code SPN 168 FMI 1: battery voltage below the cranking limit."
+      },
+      {
+       "h": "S11",
+       "text": "Code E40: suction pressure below the warning limit."
+      },
+      {
+       "h": "S12",
+       "text": "Table 3-2."
+      },
+      {
+       "h": "S13",
+       "text": "Pump overheats or shows a high temperature code."
+      },
+      {
+       "h": "S14",
+       "text": "The high temperature lamp is on or the controller shows a high temperature code."
+      },
+      {
+       "h": "S15",
+       "text": "Is the intake strainer clear of debris?"
+      },
+      {
+       "h": "S16",
+       "text": "REASON FOR QUESTION:"
+      },
+      {
+       "h": "S17",
+       "text": "A blocked strainer starves the pump and it heats up."
+      },
+      {
+       "h": "S18",
+       "text": "POSSIBLE PROBLEMS:"
+      },
+      {
+       "h": "S19",
+       "text": "Intake strainer blocked."
+      },
+      {
+       "h": "S20",
+       "text": "If NO:"
+      },
+      {
+       "h": "S21",
+       "text": "Clean the intake strainer."
+      }
+     ],
+     "prompt_version": "t3-2026-11-28.1/tmpl",
+     "raw": "{\"kind\":\"decline\"}"
     },
-    "event": "asset.attrs",
+    "event": "model",
     "next_node": null,
     "node_id": null,
     "pack_id": null,
     "pack_version": null,
     "result": null,
-    "subject": "unit-101",
-    "ts": "2026-11-28T13:32:14.936Z"
+    "subject": "step.ask",
+    "ts": "2026-11-28T17:29:33.591Z"
    },
    "seq": 28,
    "type": "event"
@@ -10742,19 +11367,27 @@
    "event": {
     "asked": null,
     "detail": {
-     "source": "typed",
-     "values": {
-      "sb_40_07": "incorporated"
-     }
+     "decision": "proposal",
+     "elapsed_ms": 1,
+     "error": null,
+     "method": "lesson.prefill",
+     "model": "scripted",
+     "offered": {
+      "actions": 6,
+      "causes": 6,
+      "parts": 0
+     },
+     "prompt_version": "t2-2026-11-28.1/v2",
+     "raw": "{\"cause\":\"C2\",\"cause_text\":\"\",\"action\":\"other\",\"action_text\":\"MODEL TEXT swapped the fuse from the truck\",\"parts\":[\"P1\",\"other\"],\"parts_other\":[\"MODEL TEXT zip tie\"],\"minutes\":25,\"note\":\"MODEL TEXT happened twice this week\"}"
     },
-    "event": "asset.attrs",
+    "event": "model",
     "next_node": null,
     "node_id": null,
     "pack_id": null,
     "pack_version": null,
     "result": null,
-    "subject": "unit-101",
-    "ts": "2026-11-28T13:32:14.937Z"
+    "subject": "lesson.prefill",
+    "ts": "2026-11-28T17:29:33.612Z"
    },
    "seq": 29,
    "type": "event"
@@ -10763,28 +11396,25 @@
    "event": {
     "asked": null,
     "detail": {
-     "source": "typed",
-     "values": {
-      "firmware": null,
-      "sb_40_07": null
-     }
+     "job_id": "job-86852b2517d2348d42e98b178dc1ffdc",
+     "submit": true
     },
-    "event": "asset.attrs",
+    "event": "lesson.create",
     "next_node": null,
-    "node_id": null,
-    "pack_id": null,
-    "pack_version": null,
+    "node_id": "nc.end",
+    "pack_id": "pump40",
+    "pack_version": "2026.1.1-1",
     "result": null,
-    "subject": "unit-101",
-    "ts": "2026-11-28T13:32:14.941Z"
+    "subject": "lesson-cb37a3f47de65ac6c4c95e6d66bdb682",
+    "ts": "2026-11-28T17:29:33.616Z"
    },
    "seq": 30,
    "type": "event"
   }
  ],
  "chain": {
-  "bake_hit_rate": 0,
-  "entries": 30,
+  "bake_hit_rate": null,
+  "entries": 35,
   "events": {
    "asset.attrs": 4,
    "asset.import": 1,
@@ -10794,14 +11424,12 @@
    "job.close": 1,
    "job.goto": 1,
    "job.start": 4,
-   "lesson.create": 1
+   "lesson.create": 1,
+   "model": 7
   },
   "first_bad": null,
-  "head_hash": "fa4916e5f927b85c07426b0fc903ab17545fd42f2cb869d8c8c5a617a85319d4",
-  "modes": {
-   "composed": 1,
-   "declined": 1
-  },
+  "head_hash": "76e961085062daf07eb39b34096228d030628cf87a4c7a0d54d5985256c820e0",
+  "modes": {},
   "ok": true
  }
 }

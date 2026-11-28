@@ -4,8 +4,8 @@ import { call, EngineError, shellReport } from "../engine/client.ts";
 import type { AssetRegistry, AuditRecord, ChainReport, DeviceInfo, FieldNote } from "../engine/types.ts";
 import { Records } from "../screens/Records.tsx";
 import { LINK_LABEL, linkState, refusalText } from "../ui/link.ts";
-import { useDevice } from "../store/device.ts";
 import { useFleet } from "../store/fleet.ts";
+import { useModel } from "../store/model.ts";
 import { packOf, usePack } from "../store/pack.ts";
 import { applyTheme, useSettings } from "../store/settings.ts";
 
@@ -28,7 +28,7 @@ const message = (e: unknown, fallback: string) => (e instanceof EngineError ? e.
 export function RecordsPage() {
   const sync = useFleet((s) => s.sync);
   const packs = usePack((s) => s.packs);
-  const model = useDevice((s) => s.assistantModel);
+  const llm = useModel((s) => s.status);
   const { model: modelOn, theme, setModel, setTheme } = useSettings();
   const [notes, setNotes] = useState<FieldNote[] | null>(null);
   const [audit, setAudit] = useState<AuditRecord[] | null>(null);
@@ -39,6 +39,7 @@ export function RecordsPage() {
   const loadNotes = () => call("field.list", {}).then(setNotes);
   const loadAudit = () => call("audit.list", { limit: 200 }).then(setAudit);
   useEffect(() => {
+    void useModel.getState().refresh();
     void useFleet.getState().refreshSync();
     loadNotes().catch((e: unknown) => reportError("records.notes", e, "Field notes could not be read."));
     loadAudit().catch((e: unknown) => reportError("records.audit", e, "The audit trail could not be read."));
@@ -59,7 +60,7 @@ export function RecordsPage() {
       notes={notes}
       audit={audit}
       chain={chain}
-      model={model}
+      llm={llm}
       modelOn={modelOn}
       theme={theme}
       busy={busy}

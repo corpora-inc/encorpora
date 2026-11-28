@@ -1,16 +1,17 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { ArrowUpRight, Camera, CornerDownRight, ChevronDown, ChevronUp, MessageCircleQuestion, NotebookPen, OctagonAlert, Printer, Undo2, X } from "lucide-react";
 import { Link } from "react-router";
-import type { Applicability, AskResponse, Citation, FacetGroup, Job, Level, PackAsset, PathEntry, StepView } from "../engine/types.ts";
-import { closeOutPath, jobAskPath, jobPagePath, jobPath, manualPath, printJobPath, procedurePath } from "../routes.ts";
+import type { Applicability, Citation, FacetGroup, Job, Level, PackAsset, PathEntry, StepView } from "../engine/types.ts";
+import { closeOutPath, jobAskPath, jobPagePath, jobPath, manualPagePath, manualPath, printJobPath, procedurePath } from "../routes.ts";
 import { Button, cx, Segmented, Skeleton } from "../ui/kit.tsx";
 import { useVoiceInput } from "@appkit/voice/useVoiceInput.ts";
 import { Keypad } from "../ui/Keypad.tsx";
 import { VoiceControl, voiceStatus } from "../ui/VoiceControl.tsx";
 import { PageViewer } from "../ui/PageViewer.tsx";
+import type { ShownAsk, ShownPassage } from "../engine/shown.ts";
 import { citationText, FieldNotes, pageFor, gravest, Guards, markOnly, ManualSheet, Requirements, sectionTitle, useAssetSrc } from "../ui/manual.tsx";
 
-export type StepOverlay = { kind: "page"; asset: PackAsset } | { kind: "ask"; query: string; answer: AskResponse | null } | null;
+export type StepOverlay = { kind: "page"; asset: PackAsset } | { kind: "ask"; query: string; answer: ShownAsk | null } | null;
 
 export type ResultInput = { outcome: string } | { value: number; unit: string };
 
@@ -539,7 +540,7 @@ function PageThumb({ asset, src, to, label }: { asset: PackAsset; src: string; t
  * manual's words, set as the manual; anything else the engine composed is in
  * the app's type. When the manual does not answer, it says so.
  */
-function AskSheet({ packId, jobId, query, answer, onQuery }: { packId: string; jobId: string; query: string; answer: AskResponse | null; onQuery(q: string): void }) {
+function AskSheet({ packId, jobId, query, answer, onQuery }: { packId: string; jobId: string; query: string; answer: ShownAsk | null; onQuery(q: string): void }) {
   const [draft, setDraft] = useState(query);
   return (
     <div className="fixed inset-0 z-40 flex justify-end">
@@ -580,47 +581,48 @@ function AskSheet({ packId, jobId, query, answer, onQuery }: { packId: string; j
   );
 }
 
-function AskBody({ packId, answer }: { packId: string; answer: AskResponse }) {
-  if (answer.mode === "declined" || answer.body.length === 0)
+/**
+ * The answer to a question about this step: only the manual's sentences, each
+ * with its citation opening the page, under the engine's fixed heading. When
+ * they do not answer it, that is said, with the nearest passages.
+ */
+function AskBody({ packId, answer }: { packId: string; answer: ShownAsk }) {
+  if (answer.decision === "answer")
     return (
-      <div className="flex flex-col gap-3">
-        <p className="text-body">The manual does not answer this for this step.</p>
-        {answer.nearest.length > 0 && (
-          <div>
-            <h3 className="mb-1 text-meta font-bold text-ink-2">Nearest sections</h3>
-            <ul className="m-0 flex list-none flex-col p-0">
-              {answer.nearest.map((id) => (
-                <li key={id}>
-                  <Link to={manualPath(packId, id)} className="flex min-h-11 items-center font-semibold text-ink">
-                    {id}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </div>
+      <section className="flex flex-col gap-3" aria-label="From the manual" data-ask="answer">
+        {answer.heading && <h3 className="text-small font-bold text-ink-2">{answer.heading}</h3>}
+        <Passages packId={packId} items={answer.sentences} />
+      </section>
     );
   return (
-    <div className="flex flex-col gap-3">
-      {answer.model && <p className="text-meta text-ink-3">Arranged by the on-device model ({answer.model}). Quotes are checked against the manual.</p>}
-      {answer.body.map((s, i) =>
-        s.t === "quote" ? (
-          <figure key={i} className="sheet m-0">
+    <section className="flex flex-col gap-3" data-ask={answer.decision}>
+      <p className="text-body">{answer.decision === "decline" ? "The manual's passages here do not answer that." : "Passages in the manual for that question."}</p>
+      {answer.nearest.length > 0 && (
+        <div>
+          {answer.decision === "decline" && <h3 className="mb-2 text-meta font-bold text-ink-2">Nearest passages</h3>}
+          <Passages packId={packId} items={answer.nearest} />
+        </div>
+      )}
+    </section>
+  );
+}
+
+function Passages({ packId, items }: { packId: string; items: ShownPassage[] }) {
+  return (
+    <ol className="m-0 flex list-none flex-col gap-3 p-0">
+      {items.map((s, i) => (
+        <li key={i}>
+          <figure className="sheet m-0">
             <blockquote className="m-0 p-4 text-body">{s.text}</blockquote>
-            <figcaption className="border-t border-line px-4 py-2 font-sans">
-              <Link to={manualPath(packId, s.section_id)} className="inline-flex min-h-11 items-center text-meta font-semibold text-ink-2">
-                {s.section_id}
+            <figcaption className="border-t border-line px-4 py-1 font-sans">
+              <Link to={s.page_asset_id ? manualPagePath(packId, s.section_id, s.page_asset_id) : manualPath(packId, s.section_id)} className="inline-flex min-h-11 items-center text-meta font-semibold text-ink-2">
+                {s.cite}
               </Link>
             </figcaption>
           </figure>
-        ) : s.t === "text" ? (
-          <p key={i} className="text-body text-ink-2">
-            {s.text}
-          </p>
-        ) : null,
-      )}
-    </div>
+        </li>
+      ))}
+    </ol>
   );
 }
 

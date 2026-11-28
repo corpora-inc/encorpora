@@ -119,6 +119,9 @@ try {
   await page.goto(`${base}/records`);
   await page.locator("input[type=file]").nth(1).setInputFiles(path.join(samples, "assets.json"));
   await page.getByText(/Added 3 and updated 0 units/).waitFor();
+  // The model (the scripted endpoint in tests) is set up on this device; the switch turns its use on.
+  await page.getByRole("radiogroup", { name: "Use the model" }).getByRole("radio", { name: "On" }).click();
+  await page.locator('[data-reachable="unknown"]').waitFor();
 
   // Identify a new unit from its plate.
   await page.goto(`${base}/units/new/type`);
@@ -194,10 +197,22 @@ try {
   // The lesson, prefilled from the session: the manual's action and the task's parts.
   await page.getByLabel("Verified cause").waitFor();
   assert.equal(await page.getByLabel("Action taken").inputValue(), "Replace the battery. Refer to task 4-3.");
+  // The note fills the form through the model: a pick among the manual's causes and a time come back
+  // marked Suggested; the model's own words (an "other" action, a note) never appear.
+  await page.getByLabel("Your note").fill("Battery let go, date code three years old. Took 25 minutes.");
+  await page.getByRole("button", { name: "Fill the form from my note" }).click();
+  await page.locator('[data-suggested="minutes"]').waitFor();
+  assert.ok(await page.locator('[data-suggested="cause"]').count(), "the cause is marked Suggested");
+  assert.equal(await page.getByText("MODEL TEXT").count(), 0, "a model's own words reached the screen");
+  assert.equal(await page.getByLabel("Action taken").inputValue(), "Replace the battery. Refer to task 4-3.");
+  await shot("closeout-prefill");
+  // Picking a cause confirms it; the time is still only suggested, so saving asks once, inline.
   await page.getByRole("button", { name: "Battery discharged." }).click();
-  await page.getByLabel("Note for the next technician").fill("Battery date code three years old.");
-  await shot("closeout-lesson");
+  assert.equal(await page.locator('[data-suggested="cause"]').count(), 0);
   await page.getByRole("button", { name: "Save lesson and close" }).click();
+  await page.getByRole("group", { name: "Confirm the suggested fields" }).getByText("Time").waitFor();
+  await shot("closeout-confirm");
+  await page.getByRole("button", { name: "Confirm and save" }).click();
   await page.getByRole("heading", { name: "Job closed" }).waitFor();
   await page.getByText("Waiting to sync").waitFor();
   await shot("closeout-saved");
@@ -371,6 +386,42 @@ try {
   await shot("row-started");
   await page.goto(`${base}/units/unit-101/connect`);
   await page.getByRole("button", { name: "Clear all" }).click();
+
+  // Describe with the model: one suggested entry that waits for Start, never starting by itself.
+  await page.goto(`${base}/units/unit-101/troubleshoot`);
+  await page.getByLabel("Describe the problem").fill("the pump engine is acting up and making a weird noise");
+  const suggested = page.getByRole("region", { name: "Suggested entry" });
+  await suggested.waitFor();
+  await settle();
+  assert.match(page.url(), /\/troubleshoot$/, "a suggestion must not start a job by itself");
+  await shot("describe-suggest");
+  await suggested.getByRole("button", { name: "Start" }).click();
+  await page.getByText("Step 1, symptom").waitFor();
+  // Words that fit two entries: the technician picks between them.
+  await page.goto(`${base}/units/unit-101/troubleshoot`);
+  await page.getByLabel("Describe the problem").fill("the pump engine is acting up and there is a rattle");
+  const choice = page.getByRole("region", { name: "Which of these is it?" });
+  await choice.waitFor();
+  assert.equal(await choice.getByRole("button").count(), 2);
+  await shot("describe-clarify");
+  await choice.getByRole("button").first().click();
+  await page.getByText("Step 1, symptom").waitFor();
+  // Ask about this step: the manual's sentences under a fixed heading, each opening its page; or a decline.
+  await page.getByRole("link", { name: "Ask about this step" }).click();
+  await page.getByLabel("Question").fill("How do I check this?");
+  await page.getByRole("button", { name: "Ask", exact: true }).click();
+  const answered = page.locator('[data-ask="answer"]');
+  await answered.waitFor();
+  assert.match(await answered.innerText(), /^What the manual says to do:/);
+  assert.ok((await answered.getByRole("link").count()) > 0, "each sentence cites its page");
+  await shot("ask-answer");
+  await page.getByLabel("Question").fill("What colour is the paint?");
+  await page.getByRole("button", { name: "Ask", exact: true }).click();
+  await page.locator('[data-ask="decline"]').getByText("do not answer that").waitFor();
+  await shot("ask-decline");
+  // Records reports the model as it answered.
+  await page.goto(`${base}/records`);
+  await page.locator('[data-reachable="true"]').waitFor();
 
   // Voice, on a device with the speech model: the words land in the box to be checked before they are used.
   const native = await browser.newContext({ viewport: { width: 1280, height: 800 } });

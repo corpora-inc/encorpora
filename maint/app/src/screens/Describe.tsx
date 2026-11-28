@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Cable, ChevronRight, Plus, Search, X } from "lucide-react";
 import type { EntryPoint, FaultTree, ObservationInput, SignalKind, SignalMatch, SymptomHit, SymptomSearch, Why } from "../engine/types.ts";
 import { Button, ButtonLink, cx, inputClass, Page, Skeleton } from "../ui/kit.tsx";
+import type { ShownEntry, ShownSuggest } from "../engine/shown.ts";
 import { HitCard } from "../ui/SignalCard.tsx";
 import { VoiceControl, voiceStatus, type VoicePhase } from "../ui/VoiceControl.tsx";
 
@@ -18,6 +19,11 @@ export interface DescribeProps {
   /** "searching": a search is out; the previous results stay until it returns. */
   phase: "empty" | "searching" | "results";
   search: SymptomSearch | null;
+  /**
+   * What the engine decided with the model (null: the search alone). suggest: one entry offered
+   * under its own label, started only by the technician; clarify: two or three to choose between.
+   */
+  suggest: ShownSuggest | null;
   /** Codes read off the unit or typed from its display. */
   codes: ObservationInput[];
   signalKinds: SignalKind[];
@@ -170,8 +176,11 @@ function Results(p: DescribeProps) {
     );
   const sure = s.hits.filter((h) => h.confidence === "confident");
   const near = s.hits.filter((h) => h.confidence !== "confident");
+  const d = sure.length === 0 ? p.suggest : null;
   return (
     <section aria-label="Matching symptoms" aria-busy={p.phase === "searching"} className={cx("flex flex-col gap-4", p.phase === "searching" && "opacity-60")}>
+      {d?.decision === "suggest" && d.entries[0] && <Suggested entry={d.entries[0]} onStart={p.onStartSymptom} />}
+      {d?.decision === "clarify" && d.entries.length > 1 && <Clarify entries={d.entries} onStart={p.onStartSymptom} />}
       {s.hits.length === 0 && (
         <div className="rounded-panel border-2 border-dashed border-line-strong p-5">
           <p className="text-lead font-semibold">No symptom in this manual matches.</p>
@@ -181,11 +190,61 @@ function Results(p: DescribeProps) {
       {sure.length > 0 && <HitList hits={sure} onStart={p.onStartSymptom} strong />}
       {near.length > 0 && (
         <div>
-          <h2 className="mb-1 text-small font-bold text-ink-2">{sure.length > 0 ? "Other entries" : "Closest entries in this manual"}</h2>
+          <h2 className="mb-1 text-small font-bold text-ink-2">{sure.length > 0 || d?.decision === "suggest" || d?.decision === "clarify" ? "Other entries" : "Closest entries in this manual"}</h2>
           {sure.length === 0 && <p className="mb-2 text-meta text-ink-3">None of these is a sure match. Check the wording against the unit.</p>}
           <HitList hits={near} onStart={p.onStartSymptom} />
         </div>
       )}
+    </section>
+  );
+}
+
+/** The entry's printed title and statement, in the manual's voice. */
+function EntryText({ entry }: { entry: ShownEntry }) {
+  return (
+    <span className="block min-w-0">
+      <span className="manual-text block text-lead font-semibold">{entry.title}</span>
+      {entry.statement && <span className="manual-text mt-1 block text-body">{entry.statement}</span>}
+    </span>
+  );
+}
+
+/**
+ * One entry offered: not a match, a suggestion. It sits apart from the list
+ * (dashed, under its own label) and starts only when the technician presses Start.
+ */
+function Suggested({ entry, onStart }: { entry: ShownEntry; onStart(id: string): void }) {
+  return (
+    <section aria-label="Suggested entry" data-suggest="suggest" className="flex flex-col gap-3 rounded-panel border-2 border-dashed border-line-strong bg-surface p-4">
+      <h2 className="text-small font-bold text-ink-2">Suggested entry</h2>
+      <div className="sheet p-4">
+        <EntryText entry={entry} />
+      </div>
+      <Button onClick={() => onStart(entry.symptom_id)} className="self-start">
+        Start
+      </Button>
+    </section>
+  );
+}
+
+/** Two or three entries the words could mean, side by side: the technician picks one. */
+function Clarify({ entries, onStart }: { entries: ShownEntry[]; onStart(id: string): void }) {
+  return (
+    <section aria-label="Which of these is it?" data-suggest="clarify" className="flex flex-col gap-3">
+      <h2 className="text-small font-bold text-ink-2">Which of these is it?</h2>
+      <ul className={cx("m-0 grid list-none gap-3 p-0", entries.length === 3 ? "md:grid-cols-3" : "sm:grid-cols-2")}>
+        {entries.map((e) => (
+          <li key={e.symptom_id} className="min-w-0">
+            <button type="button" onClick={() => onStart(e.symptom_id)} className="sheet flex h-full min-h-[120px] w-full flex-col items-start gap-3 p-4 text-left active:bg-surface-2">
+              <EntryText entry={e} />
+              <span className="mt-auto inline-flex min-h-11 items-center gap-1 font-sans text-small font-semibold">
+                This one
+                <ChevronRight aria-hidden size={20} />
+              </span>
+            </button>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }

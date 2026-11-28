@@ -10,6 +10,9 @@
 #   MAINT_PACKS=<packs root> and MAINT_PACKS_PUBKEY=<key file>: serve real packs instead of the
 #   fixture (the preview; tests stay on the fixture).
 #   MAINT_OFFSET=<n>: shift every port by n (a test run beside the running preview uses 100).
+#   MAINT_LLM_URL=<…/v1>: the model the devices may ask (symptom.suggest, lesson.prefill, step.ask);
+#   MAINT_LLM_MODEL names it (tests: the scripted endpoint, model "scripted"); MAINT_PREFILL lists the
+#   fields lesson.prefill may fill (engine default: minutes,parts). Without a URL the model is off.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 BIN="${HARVEST_BIN:-.engine/harvest}"
@@ -44,8 +47,14 @@ JSON
     # MAINT_EMBEDDER: an embedding server's URL (search by meaning); lexical only without it.
     EMB=()
     if [ -n "${MAINT_EMBEDDER:-}" ]; then EMB=(--embedder "$MAINT_EMBEDDER"); fi
+    LLM=()
+    if [ -n "${MAINT_LLM_URL:-}" ]; then
+      LLM=(--llm "$MAINT_LLM_URL")
+      if [ -n "${MAINT_LLM_MODEL:-}" ]; then LLM+=(--llm-model "$MAINT_LLM_MODEL"); fi
+      if [ -n "${MAINT_PREFILL:-}" ]; then LLM+=(--prefill "$MAINT_PREFILL"); fi
+    fi
     exec "$BIN" serve "$PACKS" --field-pubkey "$FIELD_KEY" --records ".engine/records-$NAME-$STAMP.db" --pubkey "$KEY" \
-      --bind "127.0.0.1:$PORT" --hub "$HUB" ${EMB[@]+"${EMB[@]}"} "${ORIGINS[@]}"
+      --bind "127.0.0.1:$PORT" --hub "$HUB" ${EMB[@]+"${EMB[@]}"} ${LLM[@]+"${LLM[@]}"} "${ORIGINS[@]}"
     ;;
   *) echo "usage: engine.sh hub | device A|B|C" >&2; exit 2 ;;
 esac

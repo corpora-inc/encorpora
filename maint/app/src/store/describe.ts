@@ -4,7 +4,9 @@ import { logError } from "@appkit/log.ts";
 import { reportError } from "@appkit/toast.ts";
 import { jsonStorage } from "@appkit/storage.ts";
 import { call } from "../engine/client.ts";
+import { shownSuggest, type ShownSuggest } from "../engine/shown.ts";
 import type { ObservationInput, SignalMatch, SymptomSearch } from "../engine/types.ts";
+import { modelOn, useModel } from "./model.ts";
 
 interface Entry {
   query: string;
@@ -21,6 +23,8 @@ interface DescribeState {
   results: Record<string, SymptomSearch>;
   pending: Record<string, boolean>;
   matches: Record<string, SignalMatch>;
+  /** What `symptom.suggest` decided for the words, when the model is on (null: the search alone). */
+  suggests: Record<string, ShownSuggest | null>;
   setQuery(assetId: string, q: string): void;
   addCode(assetId: string, value: string): void;
   addCodes(assetId: string, values: string[]): void;
@@ -45,6 +49,7 @@ export const useDescribe = create<DescribeState>()(
         results: {},
         pending: {},
         matches: {},
+        suggests: {},
         setQuery: (id, query) => put(id, { ...entry(id), query }),
         // A typed code carries no kind: the engine matches it against every kind the pack maps.
         addCode: (id, value) => put(id, { ...entry(id), codes: [...entry(id).codes, { signal_kind: null, value }] }),
@@ -84,9 +89,18 @@ export const useDescribe = create<DescribeState>()(
           const mine = ++seq;
           set({ pending: { ...get().pending, [id]: true } });
           try {
-            const r = await call("symptom.search", { asset_id: id, pack_id: packId, text: e.query.trim() || null, observations: e.codes });
-            // A slower, older search never overwrites a newer one.
-            if (mine === seq) set({ results: { ...get().results, [id]: r } });
+            // With the model on and words to read, the engine decides (route, suggest, clarify, list);
+            // its search comes back with it. Otherwise the search alone, as without a model.
+            const text = e.query.trim();
+            if (text && modelOn()) {
+              const r = await call("symptom.suggest", { asset_id: id, pack_id: packId, text, observations: e.codes });
+              if (mine === seq) set({ results: { ...get().results, [id]: r.search }, suggests: { ...get().suggests, [id]: shownSuggest(r) } });
+              void useModel.getState().refresh();
+            } else {
+              const r = await call("symptom.search", { asset_id: id, pack_id: packId, text: text || null, observations: e.codes });
+              // A slower, older search never overwrites a newer one.
+              if (mine === seq) set({ results: { ...get().results, [id]: r }, suggests: { ...get().suggests, [id]: null } });
+            }
           } catch (err) {
             logError("describe.search", err);
             reportError("describe.search", err, "The search did not run. Check the words and try again.");

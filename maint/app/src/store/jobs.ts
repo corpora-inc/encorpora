@@ -2,9 +2,11 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { reportError } from "@appkit/toast.ts";
 import { jsonStorage } from "@appkit/storage.ts";
+import { shownAsk, type ShownAsk } from "../engine/shown.ts";
+import { modelOn, useModel } from "./model.ts";
 import { call, EngineError } from "../engine/client.ts";
 import { photoHash, savePhoto, shrinkImage } from "@appkit/photos.ts";
-import type { AskResponse, JobClosed, JobStartParams, JobView, LessonInput, PhotoRef, ResolutionKind } from "../engine/types.ts";
+import type { JobClosed, JobStartParams, JobView, LessonInput, PhotoRef, ResolutionKind } from "../engine/types.ts";
 import { useFleet } from "./fleet.ts";
 
 export type ResultInput = { outcome: string } | { value: number; unit: string };
@@ -24,7 +26,7 @@ interface JobsState {
   notes: Record<string, string>;
   /** Photos taken at a node, kept in IndexedDB; the record keeps path and hash. */
   photos: Record<string, PhotoRef[]>;
-  ask: Record<string, { query: string; answer: AskResponse | null }>;
+  ask: Record<string, { query: string; answer: ShownAsk | null }>;
   load(jobId: string): Promise<JobView | null>;
   start(p: JobStartParams): Promise<string | null>;
   answer(jobId: string, input: ResultInput): Promise<void>;
@@ -144,13 +146,17 @@ export const useJobs = create<JobsState>()(
           const v = get().views[jobId];
           set({ ask: { ...get().ask, [jobId]: { query, answer: null } } });
           try {
-            const answer = await call("ask", {
-              question: query,
-              pack_id: v?.job.pack_id ?? null,
-              equip_id: v?.job.equip_id ?? null,
-              level: v?.step?.level.id ?? null,
-              scope: v ? { tree_id: v.job.tree_id } : null,
-            });
+            let answer: ShownAsk;
+            if (modelOn()) {
+              // The model only picks the manual's sentences and a fixed heading; shown.ts keeps it so.
+              answer = shownAsk(await call("step.ask", { job_id: jobId, question: query }));
+              void useModel.getState().refresh();
+            } else {
+              // The model off: the manual's own passages for the question, from a search scoped to the tree.
+              const r = await call("manual.search", { pack_id: v?.job.pack_id ?? null, asset_id: v?.job.asset_id ?? null, query, k: 5, scope: v ? { tree_id: v.job.tree_id } : null });
+              const nearest = r.hits.filter((h) => h.section_id && !h.row).map((h) => ({ text: h.text, cite: [h.citation, h.heading].filter(Boolean).join(" "), section_id: h.section_id!, page_asset_id: null }));
+              answer = { decision: "passages", heading: "", sentences: [], nearest };
+            }
             set({ ask: { ...get().ask, [jobId]: { query, answer } } });
           } catch (e) {
             set({ ask: { ...get().ask, [jobId]: { query: "", answer: null } } });

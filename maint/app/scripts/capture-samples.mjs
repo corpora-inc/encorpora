@@ -5,8 +5,11 @@
  * pump fixture, so the gallery shows the engine's own shapes and words.
  *
  *   harvest fixture .engine/pump40 --maint --samples .engine/pump40-samples
- *   harvest serve .engine/pump40 --records .engine/capture.db --pubkey <test key> --bind 127.0.0.1:4322
- *   MAINT_ENGINE=http://127.0.0.1:4322 node scripts/capture-samples.mjs
+ *   node scripts/model-stub.mjs 4390
+ *   harvest serve .engine/pump40 --records .engine/capture.db --pubkey <test key> --bind 127.0.0.1:4322 \
+ *     --llm http://127.0.0.1:4390/v1 --llm-model scripted --prefill cause,action,parts,minutes,note
+ *   harvest serve .engine/pump40 --records .engine/capture-off.db --pubkey <test key> --bind 127.0.0.1:4326
+ *   MAINT_ENGINE=http://127.0.0.1:4322 MAINT_ENGINE_OFF=http://127.0.0.1:4326 node scripts/capture-samples.mjs
  *
  * Use a fresh records file: the capture imports the fleet and installs the
  * field-note bundle. Writes src/design/captured.json and the pack's figure and
@@ -113,8 +116,25 @@ const r1 = await call("run.record", { run_id: run.run_id, ord: 1, outcome: "pass
 const r2 = await call("run.record", { run_id: run.run_id, ord: 2, outcome: "pass" });
 // The run as the app holds it after two steps: the start, plus each recorded step.
 out.run = { ...run, steps: [r1.record, r2.record] };
-out.ask = await call("ask", { question: "How do I check fuse F2?", equip_id: unit.equip_id, scope: { tree_id: "t-nocrank" } });
-out.askDeclined = await call("ask", { question: "What colour is the paint?", equip_id: unit.equip_id, scope: { tree_id: "t-nocrank" } });
+// The model-assisted methods, against the scripted model (scripts/model-stub.mjs): every decision.
+out.llmBefore = await call("llm.status");
+const VAGUE = "the pump engine is acting up";
+out.suggest = {
+  route: await call("symptom.suggest", { asset_id: unit.asset_id, text: "engine does not crank" }),
+  suggest: await call("symptom.suggest", { asset_id: unit.asset_id, text: `${VAGUE} and making a weird noise` }),
+  clarify: await call("symptom.suggest", { asset_id: unit.asset_id, text: `${VAGUE} and there is a rattle` }),
+  list: await call("symptom.suggest", { asset_id: unit.asset_id, text: `${VAGUE} and grinding` }),
+};
+out.stepAsk = {
+  answer: await call("step.ask", { job_id: job3, question: "How do I check this?" }),
+  decline: await call("step.ask", { job_id: job3, question: "What colour is the paint?" }),
+};
+out.prefill = await call("lesson.prefill", { job_id: job2, text: "The fuse let go. Swapped it, took 25 minutes." });
+out.llm = await call("llm.status");
+if (process.env.MAINT_ENGINE_OFF) {
+  const res = await fetch(`${process.env.MAINT_ENGINE_OFF}/api/llm.status`, { method: "POST", headers: { "Content-Type": "application/json" }, body: "{}" });
+  out.llmOff = (await res.json()).result;
+}
 out.closed = await call("job.close", {
   job_id: job2,
   resolution: "fixed",

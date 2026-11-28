@@ -5,7 +5,7 @@ import { useVoiceInput } from "@appkit/voice/useVoiceInput.ts";
 import { call, EngineError } from "../engine/client.ts";
 import type { Decoded, EntryPoint, Format, PackInfoView, TaskView } from "../engine/types.ts";
 import { closeOutPath, connectPath, describePath, jobPath } from "../routes.ts";
-import { CloseOut, type LessonDraft } from "../screens/CloseOut.tsx";
+import { applyProposal, CloseOut, NOT_STATED, type LessonDraft } from "../screens/CloseOut.tsx";
 import { Connect, type CodeSource } from "../screens/Connect.tsx";
 import { Describe, type IndexGroup } from "../screens/Describe.tsx";
 import { NotFound } from "../screens/NotFound.tsx";
@@ -21,6 +21,8 @@ import { useSettings } from "../store/settings.ts";
 import { unitName } from "../ui/format.ts";
 import { Button, Page } from "../ui/kit.tsx";
 import { useAnswerer } from "./answer.tsx";
+import { shownProposal } from "../engine/shown.ts";
+import { useModelOn, useModel as useModelStore } from "../store/model.ts";
 import { useActiveUnit } from "./Frame.tsx";
 
 export function DescribePage() {
@@ -29,6 +31,7 @@ export function DescribePage() {
   const { loaded, assets } = useFleet();
   const entry = useDescribe((s) => s.entries[unitId]);
   const search = useDescribe((s) => s.results[unitId] ?? null);
+  const suggest = useDescribe((s) => s.suggests[unitId] ?? null);
   const pending = useDescribe((s) => s.pending[unitId] ?? false);
   const level = useSettings((s) => s.level);
   const voiceOn = useDevice((s) => s.voice);
@@ -64,6 +67,7 @@ export function DescribePage() {
       query={query}
       phase={!query.trim() && codes.length === 0 ? "empty" : pending ? "searching" : "results"}
       search={search}
+      suggest={suggest}
       codes={codes}
       signalKinds={info.signal_kinds}
       index={index}
@@ -195,6 +199,14 @@ export function CloseOutPage() {
   const co = useCloseOut();
   const [task, setTask] = useState<TaskView | null>(null);
   const [missing, setMissing] = useState(false);
+  const [prefilling, setPrefilling] = useState(false);
+  const [confirming, setConfirming] = useState(false);
+  const modelInUse = useModelOn();
+  const voiceOn = useDevice((s) => s.voice);
+  const voice = useVoiceInput("en", (text) => {
+    const d = useCloseOut.getState().drafts[jobId];
+    if (d) useCloseOut.getState().setDraft(jobId, { ...d, note: text });
+  });
   useActiveUnit(view?.job.asset_id);
   useEffect(() => {
     void useJobs.getState().load(jobId).then((v) => setMissing(!v));
@@ -249,11 +261,38 @@ export function CloseOutPage() {
         navigate(jobPath(jobId), { replace: true });
       }}
       onDraft={(d) => co.setDraft(jobId, d)}
+      prefilling={prefilling}
+      confirming={confirming}
+      onConfirming={setConfirming}
+      voice={voiceOn ? voice.phase : "unavailable"}
+      onVoice={() => {
+        // Dictation fills the note; the draft must exist for it to land in.
+        co.setDraft(jobId, draft);
+        void voice.toggle();
+      }}
+      onPrefill={
+        modelInUse
+          ? async () => {
+              setPrefilling(true);
+              try {
+                const r = await call("lesson.prefill", { job_id: jobId, text: draft.note.trim() });
+                co.setDraft(jobId, applyProposal(useCloseOut.getState().drafts[jobId] ?? draft, shownProposal(r.proposal)));
+              } catch (e) {
+                reportError("closeout.prefill", e, e instanceof EngineError ? e.message : "The note could not be read into the form.");
+              } finally {
+                setPrefilling(false);
+                void useModelStore.getState().refresh();
+              }
+            }
+          : undefined
+      }
       onSave={async () => {
+        // An unstated cause or action is saved as such; nothing is invented for it.
+        const stated = (f: "cause" | "action") => draft[f].trim() || ((draft.notStated ?? []).includes(f) ? NOT_STATED : "");
         const c = await useJobs.getState().close(jobId, resolution, {
           job_id: jobId,
-          cause: draft.cause.trim(),
-          action: draft.action.trim(),
+          cause: stated("cause"),
+          action: stated("action"),
           parts: draft.parts,
           minutes: draft.minutes,
           note: draft.note.trim() || null,

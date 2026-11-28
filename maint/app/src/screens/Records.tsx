@@ -1,6 +1,6 @@
 import { useRef, type ChangeEvent, type ReactNode } from "react";
 import { Check, CloudOff, Cloud, FileUp, RefreshCw, ShieldCheck, ShieldAlert } from "lucide-react";
-import type { AuditRecord, ChainReport, DeviceInfo, FieldNote, PackInfoView, SyncStatus } from "../engine/types.ts";
+import type { AuditRecord, ChainReport, DeviceInfo, FieldNote, LlmStatus, PackInfoView, SyncStatus } from "../engine/types.ts";
 import { formatDate, formatTime } from "../ui/format.ts";
 import { linkState, refusalText } from "../ui/link.ts";
 import { Button, cx, Page, Panel, Segmented, Skeleton } from "../ui/kit.tsx";
@@ -17,8 +17,9 @@ export interface RecordsProps {
   notes: FieldNote[] | null;
   audit: AuditRecord[] | null;
   chain: ChainReport | null;
-  /** The on-device model, when one is installed. */
-  model: string | null;
+  /** The engine's model state (`llm.status`); null when the engine has no model interface. */
+  llm: LlmStatus | null;
+  /** The switch: off, the app makes no call that may ask the model. */
   modelOn: boolean;
   theme: Theme;
   busy: "sync" | "chain" | "notes" | "fleet" | null;
@@ -234,19 +235,7 @@ export function Records(p: RecordsProps) {
           </section>
 
           <Panel label="On-device model">
-            {p.model ? (
-              <Segmented
-                label={`Model: ${p.model}`}
-                value={p.modelOn ? "on" : "off"}
-                options={[
-                  { value: "off", label: "Off" },
-                  { value: "on", label: "On" },
-                ]}
-                onChange={(v) => p.onModel(v === "on")}
-              />
-            ) : (
-              <p className="text-body text-ink-2">No model on this device. Everything works without one.</p>
-            )}
+            <ModelState llm={p.llm} on={p.modelOn} onModel={p.onModel} />
           </Panel>
 
           <Panel label="Display">
@@ -339,5 +328,58 @@ function Attachments({ sync }: { sync: SyncStatus }) {
       {a.mode && <p className="mt-2 text-meta text-ink-3">{MODE[a.mode] ?? a.mode} on this link.</p>}
       {a.failing && <p className="mt-1 text-meta text-ink-3">Last try stopped: {a.failing}</p>}
     </Panel>
+  );
+}
+
+/**
+ * The model the engine may ask (suggesting an entry, prefilling a lesson,
+ * picking the manual's sentences for a question), as the engine reports it,
+ * and the switch that turns all model use off. Everything works with it off.
+ */
+function ModelState({ llm, on, onModel }: { llm: LlmStatus | null; on: boolean; onModel(on: boolean): void }) {
+  if (!llm?.configured)
+    return (
+      <div className="flex flex-col gap-2">
+        <p className="text-body text-ink-2">No model is set up on this device. Everything works without one.</p>
+        {llm && llm.prompt_versions.length > 0 && <Versions versions={llm.prompt_versions} />}
+      </div>
+    );
+  const last = llm.last;
+  return (
+    <div className="flex flex-col gap-3">
+      <dl className="m-0 grid grid-cols-[auto_minmax(0,1fr)] gap-x-4 gap-y-1.5 text-small">
+        <dt className="font-semibold text-ink-2">Model</dt>
+        <dd className="code m-0 min-w-0 break-all">{llm.model ?? "Not named"}</dd>
+        <dt className="font-semibold text-ink-2">Reachable</dt>
+        <dd className="m-0 min-w-0" data-reachable={llm.reachable === null ? "unknown" : String(llm.reachable)}>
+          {llm.reachable === null || !last ? "Not asked yet" : llm.reachable ? `Answered, ${formatTime(last.at)}` : `Did not answer, ${formatTime(last.at)}`}
+        </dd>
+      </dl>
+      <Versions versions={llm.prompt_versions} />
+      <Segmented
+        label="Use the model"
+        value={on ? "on" : "off"}
+        options={[
+          { value: "off", label: "Off" },
+          { value: "on", label: "On" },
+        ]}
+        onChange={(v) => onModel(v === "on")}
+      />
+    </div>
+  );
+}
+
+function Versions({ versions }: { versions: string[] }) {
+  return (
+    <div>
+      <p className="text-meta font-semibold text-ink-2">Prompt versions</p>
+      <ul className="m-0 flex list-none flex-col gap-0.5 p-0">
+        {versions.map((v) => (
+          <li key={v} className="code text-meta break-all">
+            {v}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
