@@ -1929,6 +1929,13 @@
         "note_id": {
           "type": "string"
         },
+        "pack_id": {
+          "description": "The pack the note was issued for (its tree and node ids are that\npack's); any pack when `None`.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "received_at": {
           "type": "string"
         },
@@ -1961,6 +1968,7 @@
         "note_id",
         "source",
         "stream",
+        "pack_id",
         "seq",
         "scope",
         "text",

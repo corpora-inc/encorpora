@@ -527,6 +527,11 @@ export interface FieldNote {
   approver: string;
   counts: NoteCounts;
   note_id: string;
+  /**
+   * The pack the note was issued for (its tree and node ids are that
+   * pack's); any pack when `None`.
+   */
+  pack_id: string | null;
   received_at: string;
   scope: NoteScope;
   seq: number;
