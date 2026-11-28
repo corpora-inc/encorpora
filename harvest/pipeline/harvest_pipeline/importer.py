@@ -50,7 +50,7 @@ from .textutil import canonical_json, locate, sha256_text
 
 VERIFIER = "harvest-import:v1"
 PRIMARY_KEY = {"question": "q_id", "answer": "answer_id", "procedure": "proc_id", "diagram": "diagram_id",
-               "term": "term_id", "lesson": "lesson_id"}
+               "term": "term_id", "lesson": "lesson_id", "course_node": "node_id"}
 
 
 @dataclass
@@ -193,8 +193,11 @@ def import_rows(stage: Stage, corpus_dir: Path, specs: list[dict]) -> list[Impor
                         problems.append(f"{col}: file {body.get(name_key)!r} not found under the corpus")
                 problems += verify_refs(body, stage)
                 problems += contract.row_problems(table, body)
+                pruned: list[str] = []
                 if table == "course_node":
-                    problems += node_link_problems(body, stage)
+                    problems += node_level_problems(body)
+                    pruned = prune_node_links(body, stage)
+                    rep.problems += [f"{path.name}#{n}: link dropped: {d}" for d in pruned]
                 own = prov.get("verdict", "needs_review")
                 verdict = "fail" if problems else (own if own in ("pass", "fail", "needs_review") else "needs_review")
                 rep.verdicts[verdict] += 1
@@ -206,7 +209,8 @@ def import_rows(stage: Stage, corpus_dir: Path, specs: list[dict]) -> list[Impor
                 base = prov.get("prov_id") or sha256_text(canonical_json(body))[:20]
                 row_key = body.get(PRIMARY_KEY.get(table, ""))
                 prov_id = f"{base}:{sha256_text(f'{table}:{row_key}')[:10]}" if row_key else base
-                notes = [x for x in (prov.get("notes"), "; ".join(problems) or None) if x]
+                notes = [x for x in (prov.get("notes"), "; ".join(problems) or None,
+                                     ("links dropped: " + "; ".join(pruned)) if pruned else None) if x]
                 stage.add_provenance({
                     "prov_id": prov_id, "backend": prov.get("backend", "import"), "model": prov.get("model", "unknown"),
                     "prompt_id": prov.get("prompt_id", f"import.{table}"), "prompt_version": str(prov.get("prompt_version", "0")),
@@ -267,20 +271,34 @@ NODE_LINKS = {"lesson_ids": ("lesson", "lesson_id"), "q_ids": ("question", "q_id
               "diagram_ids": ("diagram", "diagram_id")}
 
 
-def node_link_problems(body: dict, stage: Stage) -> list[str]:
-    """A course-tree node: a known level, and every linked lesson, question and diagram exists in the
-    stage (import `course_node` after the tables it links to)."""
+def node_level_problems(body: dict) -> list[str]:
+    """A course-tree node has a known level and a links object."""
     problems = []
     if body.get("level") not in NODE_LEVELS:
         problems.append(f"level {body.get('level')!r} is not one of {', '.join(NODE_LEVELS)}")
-    links = body.get("links") or {}
+    if not isinstance(body.get("links") or {}, dict):
+        problems.append("links is not an object")
+    return problems
+
+
+def prune_node_links(body: dict, stage: Stage) -> list[str]:
+    """Drop linked lessons, questions and diagrams the stage does not have (import `course_node`
+    after the tables it links to); a dead link states nothing, so the node still ships. Returns
+    what was dropped, for the report."""
+    links = body.get("links")
     if not isinstance(links, dict):
-        return problems + ["links is not an object"]
+        return []
+    dropped = []
     for key, (table, col) in NODE_LINKS.items():
+        keep = []
         for i in links.get(key) or []:
             if stage.conn.execute(f"SELECT 1 FROM {table} WHERE {col} = ?", (i,)).fetchone() is None:
-                problems.append(f"unknown {key[:-1]} {i}")
-    return problems
+                dropped.append(f"unknown {key[:-1]} {i}")
+            else:
+                keep.append(i)
+        if key in links:
+            links[key] = keep
+    return dropped
 
 
 def dangling_nodes(stage: Stage) -> list[str]:
