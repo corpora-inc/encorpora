@@ -58,6 +58,12 @@ maint:
                        temperature: 1.0, extra: {chat_template_kwargs: {reasoning_effort: medium}}}}, images: false}
     ask+sonnet: {author: {backend: rules, rules: {ask: [guards, facets]}, resolver: {backend: claude-cli, model: sonnet,
                  max_week_pct: 60}}, images: false}
+  # recorded machine inputs, decoded by harvest-core and matched against the pack (`maint signals`)
+  signal_samples:
+    - {file: samples/pump40-dm1.candump, format: j1939_candump,
+       expect: [{tree: Pump overheats}, {tree: Engine will not crank, node: What is the battery voltage}]}
+    - {file: samples/pump40-display.txt, format: display, kind: display,
+       expect: [{tree: Pump overheats, node: Is the intake strainer clear}]}
   roles: [apprentice, technician, expert]
   signal_kinds:
     - {kind: j1939.dm1, label: "Engine fault code (SPN/FMI)", example: "spn:110/fmi:0"}

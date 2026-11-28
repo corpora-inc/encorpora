@@ -87,6 +87,9 @@ def test_table_pack(tmp_path):
         assert " ".join(text.split()) in " ".join(sec.split())
     syn = json.loads(db.execute("SELECT synonyms FROM symptom WHERE title LIKE 'Compass%'").fetchone()[0])
     assert syn == ["compass not working"]          # "compass 7 dead" names a number the row does not print
+    # a row with a cause and no printed solution: no tree, but its message still resolves to its section
+    row = db.execute("SELECT tree_id, node_id, section_id FROM signal_map WHERE title LIKE 'FFT%'").fetchone()
+    assert row is not None and row[0] is None and row[1] is None and row[2]
     g = db.execute("SELECT s.kind, s.text FROM xref x JOIN section s ON s.section_id = x.from_id "
                    "WHERE x.kind='guards'").fetchone()
     assert g == ("warning", "Never disable the checks.")

@@ -82,6 +82,11 @@ def main(argv: list[str]) -> int:
     s.add_argument("--arm", default="rules")
     s.add_argument("--call", action="store_true", help="call the resolver model on cache misses (else cache only)")
     s.add_argument("--harvest")
+    s = sub.add_parser("signals", help="recorded machine inputs through harvest decode and signal.match, checked")
+    s.add_argument("corpus")
+    s.add_argument("--pack", required=True)
+    s.add_argument("--harvest")
+    s.add_argument("--pubkey")
     s = sub.add_parser("cost")
     s.add_argument("corpus")
     s.add_argument("--arm")
@@ -157,6 +162,11 @@ def main(argv: list[str]) -> int:
         from .ab import closed_accuracy
         print(json.dumps(closed_accuracy(c, a.arm), indent=1))
         return 0
+    if a.cmd == "signals":
+        from .build import signals_check
+        r = signals_check(c, Path(a.pack), _harvest(a), a.pubkey)
+        print(json.dumps(r, indent=1))
+        return 0 if r.get("right") == r.get("observations") else 1
     if a.cmd == "cost":
         from .build import ledger
         rows = [r for r in ledger(c).rows() if not a.arm or r.get("arm") == a.arm]

@@ -455,3 +455,65 @@ def build_table(corpus: Corpus, out_dir: Path | None, harvest: str, pubkey: str 
                "verdicts": dict(stage.conn.execute("SELECT verdict, COUNT(*) FROM provenance GROUP BY verdict").fetchall())}
     (work(corpus) / "build-table.json").write_text(json.dumps(summary, indent=2, default=str))
     return summary
+
+
+def signals_check(corpus: Corpus, pack_dir: Path, harvest: str, pubkey: str | None = None) -> dict:
+    """Recorded machine inputs (`maint.signal_samples`) through the core's own decoders (`harvest
+    decode`) and matcher (`signal.match` on `harvest serve`), against what the manual says they mean."""
+    import socket
+    import tempfile
+    import time as _t
+    import urllib.request
+    samples = cfg(corpus).get("signal_samples") or []
+    if not samples:
+        return {"samples": 0}
+    if pubkey is None:
+        import base64
+        from ..sign import load_private_key, public_raw
+        k = load_private_key()
+        tmpk = Path(tempfile.mkdtemp(prefix="harvest-pub-")) / "pack.pub"
+        tmpk.write_text(base64.b64encode(public_raw(k.public_key())).decode() + "\n")
+        pubkey = str(tmpk)
+    s = socket.socket()
+    s.bind(("127.0.0.1", 0))
+    port = s.getsockname()[1]
+    s.close()
+    td = Path(tempfile.mkdtemp(prefix="harvest-signals-"))
+    proc = subprocess.Popen([harvest, "serve", str(pack_dir), "--records", str(td / "records.db"), "--pubkey", pubkey,
+                             "--bind", f"127.0.0.1:{port}"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    out = {"samples": 0, "observations": 0, "right": 0, "wrong": []}
+    try:
+        for _ in range(50):
+            try:
+                urllib.request.urlopen(f"http://127.0.0.1:{port}/api", timeout=1)
+                break
+            except OSError:
+                _t.sleep(0.2)
+        import sqlite3
+        db = sqlite3.connect(str(next(pack_dir.glob("*.sqlite"))))
+        trees = dict(db.execute("SELECT tree_id, title FROM fault_tree"))
+        nodes = dict(db.execute("SELECT node_id, text FROM fault_node"))
+        for smp in samples:
+            out["samples"] += 1
+            cmd = [harvest, "decode", smp["format"], str((corpus.dir / smp["file"]).resolve())]
+            if smp.get("kind"):
+                cmd += ["--kind", smp["kind"]]
+            dec = json.loads(subprocess.run(cmd, capture_output=True, text=True).stdout or "{}")
+            for obs, want in zip(dec.get("observations", []), smp["expect"]):
+                out["observations"] += 1
+                body = json.dumps({"observations": [obs]}).encode()
+                req = urllib.request.Request(f"http://127.0.0.1:{port}/api/signal.match", data=body,
+                                             headers={"content-type": "application/json"}, method="POST")
+                res = json.loads(urllib.request.urlopen(req).read()).get("result") or {}
+                sug = res.get("suggested") or {}
+                got_tree = trees.get(sug.get("tree_id"))
+                got_node = nodes.get(sug.get("node_id")) if sug.get("node_id") else None
+                ok = (got_tree or "").lower().startswith(want["tree"].lower()) and \
+                    (want.get("node") is None or (got_node or "").startswith(want["node"]))
+                out["right"] += ok
+                if not ok:
+                    out["wrong"].append({"observation": obs, "want": want, "got": {"tree": got_tree, "node": got_node}})
+    finally:
+        proc.terminate()
+        proc.wait(timeout=10)
+    return out

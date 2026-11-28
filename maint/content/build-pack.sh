@@ -66,3 +66,6 @@ if [ -n "$key" ] && [ -f "$expected" ]; then
   "$bake" maint score "$corpus" "${arm[@]}" --pack "$out/pack" --expected "$expected" --json > "$out/score.json"
   "$bake" maint score "$corpus" "${arm[@]}" --pack "$out/pack" --expected "$expected"
 fi
+# recorded machine inputs (J1939 DM1 frames, display codes) through harvest-core's decoders and matcher
+"$bake" maint signals "$corpus" --pack "$out/pack" --harvest "$harvest" --pubkey "$out/pack.pub" > "$out/signals.json"
+cat "$out/signals.json"
