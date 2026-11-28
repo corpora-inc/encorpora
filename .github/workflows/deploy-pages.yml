@@ -37,6 +37,7 @@ env:
 jobs:
   build:
     runs-on: ubuntu-24.04
+    timeout-minutes: 20
     env:
       ENCORPORA_BASE_PATH: /encorpora
     steps:
@@ -472,6 +473,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-24.04
+    timeout-minutes: 15
     needs: build
     environment:
       name: github-pages

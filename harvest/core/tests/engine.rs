@@ -415,7 +415,7 @@ fn support_replays_the_gate_offline() {
     ] {
         let r = e.ask(q, &AskOptions::default()).unwrap();
         let s = &r.support;
-        assert_eq!(s.threshold, 0.5);
+        assert_eq!(s.threshold, 0.4);
         assert!(!s.concepts.is_empty(), "{q}");
         assert!(
             s.candidates.windows(2).all(|w| w[0].rank < w[1].rank),
@@ -489,7 +489,7 @@ fn the_dense_gate_applies_only_when_dense_ran() {
     // No embedder: the dense gate is not in force; coverage-only 0.5 applies.
     let lexical = Engine::new(b.pack.clone()).ask(q, &strict).unwrap();
     assert_eq!(lexical.support.min_dense, None);
-    assert_eq!(lexical.support.threshold, 0.5);
+    assert_eq!(lexical.support.threshold, 0.4);
     assert_eq!(lexical.mode, Mode::Composed);
 }
 

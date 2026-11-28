@@ -495,3 +495,11 @@ def test_lowering_the_architecture_baseline_runs_only_the_ratchet():
         for key in ('build', 'colors', 'browser', 'browser_scripts', 'content', 'native'):
             assert not result[key], key
     assert (ROOT / 'amp/tests/architecture-ratchet.baseline.json').is_file()
+
+
+@pytest.mark.parametrize('path', ['amp/migrations/0999-new.sql', 'amp/migrations/0158-film-flags.sql'])
+def test_a_migration_change_checks_migration_numbers_in_quick_mode(path):
+    # Two PRs that each take the next number pass alone; the queue entry that
+    # holds both must run the test that reads the whole directory.
+    assert 'tests/migration-names.test.ts' in plan([path], quick=True)['core']
+    assert 'tests/migration-names.test.ts' not in plan(['amp/src/server/app.ts'], quick=True)['core']

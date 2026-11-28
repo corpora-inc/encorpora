@@ -138,7 +138,11 @@ fn model_failure_falls_back_to_the_deterministic_answer() {
     let (r, trace) = e
         .ask_traced(
             "Who must inspect the machine each shift?",
-            &AskOptions::default(),
+            // Few enough candidates that compose is asked without a selection.
+            &AskOptions {
+                support_threshold: 0.5,
+                ..AskOptions::default()
+            },
         )
         .unwrap();
     assert_eq!(r.mode, Mode::Composed);
