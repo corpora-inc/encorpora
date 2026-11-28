@@ -59,6 +59,35 @@ pub struct Host {
     packs_root: Option<PathBuf>,
     hub: Option<Arc<Mutex<crate::hub::Hub>>>,
     identity: Option<Arc<dyn Identify>>,
+    /// What the last model call found (no live probe).
+    llm_last: Mutex<Option<LlmLast>>,
+    /// The fields `lesson.prefill` may fill by default (the device class).
+    prefill_policy: crate::assist::PrefillPolicy,
+}
+
+/// The last model call, as `llm.status` reports it.
+#[derive(Debug, Clone, Serialize, JsonSchema)]
+pub struct LlmLast {
+    pub method: String,
+    pub at: String,
+    /// The model answered (whatever it said).
+    pub answered: bool,
+    /// It answered with a usable decision.
+    pub ok: bool,
+    pub error: Option<String>,
+    pub elapsed_ms: u64,
+}
+
+/// Whether a model is configured and how its last call went.
+#[derive(Debug, Clone, Serialize, JsonSchema)]
+pub struct LlmStatus {
+    pub configured: bool,
+    pub model: Option<String>,
+    /// As of the last call (`None` before any).
+    pub reachable: Option<bool>,
+    pub last: Option<LlmLast>,
+    /// The prompt versions this engine runs.
+    pub prompt_versions: Vec<String>,
 }
 
 impl Host {
@@ -80,6 +109,8 @@ impl Host {
             packs_root: None,
             hub: None,
             identity: None,
+            llm_last: Mutex::new(None),
+            prefill_policy: crate::assist::PrefillPolicy::default(),
         }
     }
     /// The embedder for one pack (dense retrieval runs only when it matches).
@@ -90,6 +121,27 @@ impl Host {
     pub fn with_llm(mut self, llm: Arc<dyn Llm>) -> Self {
         self.llm = Some(llm);
         self
+    }
+    /// The fields `lesson.prefill` may fill unless a call says otherwise
+    /// (by device class; default minutes and parts).
+    pub fn with_prefill_policy(mut self, p: crate::assist::PrefillPolicy) -> Self {
+        self.prefill_policy = p;
+        self
+    }
+
+    /// Audit a model exchange and remember how it went.
+    fn model_done(&self, ex: &crate::assist::Exchange) -> Result<()> {
+        if ex.model.is_some() {
+            *self.llm_last.lock().unwrap_or_else(|p| p.into_inner()) = Some(LlmLast {
+                method: ex.method.clone(),
+                at: crate::audit::now_rfc3339(),
+                answered: ex.raw.is_some(),
+                ok: ex.raw.is_some() && ex.error.is_none(),
+                error: ex.error.clone(),
+                elapsed_ms: ex.elapsed_ms,
+            });
+        }
+        self.records().audit_model(ex)
     }
     /// Keys a field-note bundle must be signed with.
     pub fn with_field_keys(mut self, keys: Vec<TrustedKey>) -> Self {
@@ -382,6 +434,10 @@ methods! {
     "table.lookup" => table_lookup(TableLookupParams) -> Vec<crate::maint::table::RowHit>,
     "asset.attrs" => asset_attrs(AssetAttrsParams) -> AssetAttrs,
     "asset.set_attrs" => asset_set_attrs(AssetSetAttrsParams) -> AssetAttrs,
+    "symptom.suggest" => symptom_suggest(SymptomSuggestParams) -> SymptomSuggest,
+    "lesson.prefill" => lesson_prefill(LessonPrefillParams) -> LessonPrefill,
+    "step.ask" => step_ask(StepAskParams) -> StepAsk,
+    "llm.status" => llm_status(NoParams) -> LlmStatus,
     "practice.items" => practice_items(PracticeItemsParams) -> crate::practice::PracticeItems,
     "practice.record" => practice_record(PracticeRecordParams) -> crate::records::PracticeAttempt,
     "practice.history" => practice_history(PackParams) -> Vec<crate::records::PracticeAttempt>,
@@ -828,6 +884,75 @@ pub struct HubQueueParams {
     /// At most this many (default 100, at most 500).
     #[serde(default)]
     pub limit: Option<usize>,
+}
+
+#[derive(Debug, Clone, Default, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct SymptomSuggestParams {
+    #[serde(default)]
+    pub pack_id: Option<String>,
+    #[serde(default)]
+    pub equip_id: Option<String>,
+    #[serde(default)]
+    pub asset_id: Option<String>,
+    /// The technician's words.
+    pub text: String,
+    #[serde(default)]
+    pub observations: Vec<Observation>,
+}
+
+/// A proposal the engine checked: never an action.
+#[derive(Debug, Clone, Serialize, JsonSchema)]
+pub struct SymptomSuggest {
+    pub decision: crate::assist::SuggestDecision,
+    /// `route`: the one entry; `suggest`: the model's pick; `clarify`: the
+    /// two or three to choose between; `list`: the candidates.
+    pub entries: Vec<crate::assist::SymptomEntry>,
+    /// The model asked (`None`: the engine decided, or no model).
+    pub model: Option<String>,
+    pub prompt_version: Option<String>,
+    pub elapsed_ms: u64,
+    pub search: SymptomSearch,
+}
+
+#[derive(Debug, Clone, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct LessonPrefillParams {
+    pub job_id: String,
+    /// The technician's close-out note.
+    pub text: String,
+    /// The fields the model may fill (else the host's policy).
+    #[serde(default)]
+    pub policy: Option<crate::assist::PrefillPolicy>,
+}
+
+#[derive(Debug, Clone, Serialize, JsonSchema)]
+pub struct LessonPrefill {
+    pub proposal: crate::assist::LessonProposal,
+    pub model: Option<String>,
+    pub prompt_version: String,
+    pub elapsed_ms: u64,
+}
+
+#[derive(Debug, Clone, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct StepAskParams {
+    pub job_id: String,
+    pub question: String,
+}
+
+#[derive(Debug, Clone, Serialize, JsonSchema)]
+pub struct StepAsk {
+    pub decision: crate::assist::AskDecision,
+    /// One of the fixed headings (empty: none).
+    pub heading: String,
+    /// The pack's own sentences, each with its citation.
+    pub sentences: Vec<crate::assist::ShownSentence>,
+    /// On decline: the nearest passages.
+    pub nearest: Vec<crate::assist::ShownSentence>,
+    pub model: Option<String>,
+    pub prompt_version: String,
+    pub elapsed_ms: u64,
 }
 
 /// A pack read for a variant or an asset (its variant and attributes).
@@ -2040,6 +2165,166 @@ fn scope(
     let e = equip_for(h, equip, asset)?;
     let v = h.records().attr_values(nz(asset))?;
     Ok((e, v))
+}
+
+fn symptom_suggest(
+    h: &Host,
+    who: Option<&Principal>,
+    p: SymptomSuggestParams,
+) -> R<SymptomSuggest> {
+    let search = symptom_search(
+        h,
+        who,
+        SymptomSearchParams {
+            pack_id: p.pack_id.clone(),
+            text: Some(p.text.clone()),
+            observations: p.observations.clone(),
+            equip_id: p.equip_id.clone(),
+            asset_id: p.asset_id.clone(),
+            k: Some(crate::assist::prompts::T1_K),
+            ranking: None,
+        },
+    )?;
+    let pack = h.pack(nz(&p.pack_id))?;
+    let s = crate::assist::symptom_suggest(&pack, &p.text, &search.hits, h.llm.as_deref())?;
+    h.model_done(&s.exchange)?;
+    Ok(SymptomSuggest {
+        decision: s.decision,
+        entries: s.entries,
+        prompt_version: s
+            .exchange
+            .model
+            .as_ref()
+            .map(|_| s.exchange.prompt_version.clone()),
+        model: s.exchange.model,
+        elapsed_ms: s.exchange.elapsed_ms,
+        search,
+    })
+}
+
+/// The job, its pack, and the views of the nodes it reached (path, then
+/// the current node), for the asset.
+fn job_views(
+    h: &Host,
+    job_id: &str,
+) -> R<(Arc<Pack>, crate::records::JobReport, Vec<view::NodeView>)> {
+    let rec = h.records();
+    let pack = job_pack(h, &rec, job_id)?;
+    let job = rec
+        .job(job_id)?
+        .ok_or_else(|| Error::Invalid(format!("no job {job_id:?}")))?;
+    let values = rec.attr_values(job.asset_id.as_deref())?;
+    let level = pack.level(&job.level).or_else(|_| {
+        pack.levels()?
+            .into_iter()
+            .next()
+            .ok_or_else(|| Error::Pack("the pack declares no levels".into()))
+    })?;
+    let mut views = Vec::new();
+    for s in job.path() {
+        if let Some(t) = pack.fault_tree(&s.tree_id)?
+            && t.node(&s.node_id).is_some()
+        {
+            views.push(view::node_view(
+                &pack,
+                &t,
+                &s.node_id,
+                &level,
+                job.equip_id.as_deref(),
+                &values,
+                &[],
+            )?);
+        }
+    }
+    let current = rec
+        .job_view(&pack, job_id, None)?
+        .step
+        .ok_or_else(|| Error::Invalid("the tree changed since the job began".into()))?
+        .node;
+    views.push(current);
+    let report = rec.job_report(&pack, job_id)?;
+    Ok((pack, report, views))
+}
+
+fn lesson_prefill(h: &Host, _who: Option<&Principal>, p: LessonPrefillParams) -> R<LessonPrefill> {
+    let (pack, report, views) = job_views(h, &p.job_id)?;
+    let ctx = crate::assist::prefill_context(&pack, &report, &views)?;
+    let policy = p.policy.unwrap_or_else(|| h.prefill_policy.clone());
+    let r =
+        crate::assist::lesson_prefill(&pack, &report, &ctx, &p.text, &policy, h.llm.as_deref())?;
+    h.model_done(&r.exchange)?;
+    Ok(LessonPrefill {
+        proposal: r.proposal,
+        model: r.exchange.model,
+        prompt_version: r.exchange.prompt_version,
+        elapsed_ms: r.exchange.elapsed_ms,
+    })
+}
+
+fn step_ask(h: &Host, who: Option<&Principal>, p: StepAskParams) -> R<StepAsk> {
+    let (pack, report, views) = job_views(h, &p.job_id)?;
+    let v = views
+        .last()
+        .cloned()
+        .ok_or_else(|| Error::Invalid("the job has no step".into()))?;
+    // The manual's search, scoped to the job's tree (k = 5), sections not
+    // already in the step.
+    let found = manual_search(
+        h,
+        who,
+        ManualSearchParams {
+            pack_id: Some(pack.pack_id().to_string()),
+            query: p.question.clone(),
+            k: Some(crate::assist::prompts::T3_SEARCH_K),
+            equip_id: report.equip_id.clone(),
+            asset_id: report.asset_id.clone(),
+            scope: Some(Scope {
+                tree_id: Some(v.tree.tree_id.clone()),
+                ..Default::default()
+            }),
+        },
+    )?;
+    let mut seen: std::collections::BTreeSet<String> = [v.node.section_id.clone()].into();
+    let mut blocks = Vec::new();
+    for hit in &found.hits {
+        let Some(sid) = &hit.section_id else { continue };
+        if !seen.insert(sid.clone()) {
+            continue;
+        }
+        if let Some(sec) = pack.section(sid)? {
+            blocks.push(crate::assist::Block {
+                label: hit.citation.clone().unwrap_or_else(|| sid.clone()),
+                text: sec.text,
+                citation: view::citation(&pack, sid).ok(),
+            });
+        }
+    }
+    let a = crate::assist::step_ask(&pack, &v, &blocks, &p.question, h.llm.as_deref())?;
+    h.model_done(&a.exchange)?;
+    Ok(StepAsk {
+        decision: a.decision,
+        heading: a.heading,
+        sentences: a.sentences,
+        nearest: a.nearest,
+        model: a.exchange.model,
+        prompt_version: a.exchange.prompt_version,
+        elapsed_ms: a.exchange.elapsed_ms,
+    })
+}
+
+fn llm_status(h: &Host, _who: Option<&Principal>, _: NoParams) -> R<LlmStatus> {
+    let last = h.llm_last.lock().unwrap_or_else(|p| p.into_inner()).clone();
+    Ok(LlmStatus {
+        configured: h.llm.is_some(),
+        model: h.llm.as_ref().map(|l| l.id()),
+        reachable: last.as_ref().map(|l| l.answered),
+        last,
+        prompt_versions: vec![
+            crate::assist::prompts::T1_VERSION.into(),
+            crate::assist::prompts::T2_VERSION.into(),
+            crate::assist::prompts::T3_VERSION.into(),
+        ],
+    })
 }
 
 fn table_list(

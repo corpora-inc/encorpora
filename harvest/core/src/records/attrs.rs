@@ -174,3 +174,16 @@ impl Records {
         }
     }
 }
+
+impl Records {
+    /// Audit one model exchange (method, prompt version, model, what was
+    /// offered, the raw output, the decision, elapsed).
+    pub fn audit_model(&self, ex: &crate::assist::Exchange) -> Result<()> {
+        let tx = self.write_tx()?;
+        let mut ev = AuditEvent::new("model", &ex.method);
+        ev.detail = serde_json::to_value(ex)?;
+        crate::audit::append_event_locked_with(&tx, self.key(), &ev)?;
+        tx.commit()?;
+        Ok(())
+    }
+}

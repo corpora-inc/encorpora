@@ -945,6 +945,60 @@ for the shapes; this section states the rules.
   extensions pack id and version, `timestamp`, `stored`; `id` a UUID
   derived from the item id), for a training records system to ingest.
 
+## Model interface
+
+Three methods may ask a model. Each returns a **proposal the engine
+checked**, never an action, with the model id, the prompt version, and the
+time taken. The prompts, the output schemas and the settings are the ones
+measured on held-out data across nine open-weight models; they live in
+`harvest_core::assist::prompts` with a version id per method, and a
+changed prompt is a new version and a new measurement. A model is a host's
+`Llm`: a local OpenAI-compatible server (`harvest serve --llm
+http://host:port/v1 [--llm-model NAME]`, `HostConfig.llm_url`) whose
+JSON-schema `response_format` constrains the output (a grammar). Calls run
+at temperature 0 with thinking off (the server's context: 4096). Every call
+is audited as a `model` event: method, prompt version, model id, what was
+offered (candidate ids, list sizes, or sentence handles and texts), the raw
+output, the decision, elapsed. `llm.status` says whether a model is
+configured and, as of the last call (no probe), whether it answered.
+
+- **`symptom.suggest {pack_id?, asset_id | equip_id, text, observations?}`**
+  (`t1-2026-11-28.1/strict+syn+scores`): `symptom.search` with k = 12 and
+  the defaults. A confident top hit is `route` (the engine's own rule) and
+  no hits is `list`, both without a model call. Otherwise the 12
+  candidates, each `i. title [search match 0.xx] — statement (causes: up
+  to 4 open causes in tree order) (also said as: up to 4 synonyms)`, go to
+  the model under the strict prompt and `schema(12)` (pick 1..12, none,
+  or clarify between 2 or 3), 64 output tokens. A pick is `suggest` with
+  that entry; clarify returns those 2 or 3 entries; none, an unparsable or
+  out-of-range answer, or a model that is off or unreachable is `list`
+  (all candidates). Entries carry the pack's own title, statement, causes,
+  synonyms, match, confidence and applicability.
+- **`lesson.prefill {job_id, text, policy?}`** (`t2-2026-11-28.1/v2`): the
+  job's context (steps recorded with results, the open causes across the
+  tree as C#, the actions with reached ones first as A#, the parts and
+  consumables of the reached nodes, their test procedures and target tasks
+  as P#) and the note go to the model under the v2 prompt and schema
+  (labels, `other` with a short text, `unknown`, minutes), 400 tokens. The
+  proposal is `LessonInput`-shaped, each field `{value, source: job |
+  model | unknown, label}`: job, asset, equipment, tree and symptom come
+  from the job; a label the context does not have, or an `other` with no
+  text, is unknown. `policy.fields` (from `cause`, `action`, `parts`,
+  `minutes`, `note`; the host's by device class, default `minutes` and
+  `parts`) says which fields the model may fill; the others come back
+  unknown. Unknown is always a valid result.
+- **`step.ask {job_id, question}`** (`t3-2026-11-28.1/tmpl`): the current
+  step's passages (node text, guards, facets with their headings, the test
+  procedure's guards and steps, requirements and setup, the printed
+  reference) and the sections a `manual.search` scoped to the tree (k = 5)
+  returns, split into sentences (S1…S48), go to the model under the
+  headings prompt and schema (1 to 4 handles and one of ten fixed
+  headings, or decline), 400 tokens. `answer` shows the chosen sentences,
+  the pack's own text each with its citation, under the heading (only a
+  fixed heading is ever shown); a handle that does not exist is dropped;
+  no sentence left is `decline` with the nearest passages. The model writes
+  no text that is shown.
+
 ## Hub
 
 `harvest_core::hub::Hub` (store: one SQLite file) receives what devices

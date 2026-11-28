@@ -758,3 +758,274 @@ fn search_leaves_out_what_does_not_apply_and_values_must_parse() {
         .unwrap();
     assert_eq!(row["applicability"]["status"], "unknown");
 }
+
+// ------------------------------------------------------- the model interface
+
+fn model_host(outputs: &[&str]) -> (tempfile::TempDir, Host, Arc<harvest_core::llm::ScriptedLlm>) {
+    let Env { _tmp, pack, rec } = env();
+    let llm = Arc::new(harvest_core::llm::ScriptedLlm::new(
+        outputs.iter().map(|s| s.to_string()),
+    ));
+    let h = Host::new(vec![pack], rec)
+        .with_field_keys(vec![fixture::trusted_key()])
+        .with_embedder(
+            "pump40",
+            Arc::new(harvest_core::HashingEmbedder::new(fixture::EMBED_DIM)),
+        )
+        .with_llm(llm.clone());
+    (_tmp, h, llm)
+}
+
+fn req_user_lists_no_parts(llm: &harvest_core::llm::ScriptedLlm) -> bool {
+    llm.requests.lock().unwrap()[0]
+        .user
+        .contains("Parts and consumables the manual lists for this job: (none)")
+}
+
+/// A walked job ending at the relay replacement.
+fn walked_job(h: &Host) -> String {
+    let v = ok(
+        h,
+        "job.start",
+        json!({"symptom_id": "s-nocrank", "asset_id": "unit-101", "level": "apprentice"}),
+    );
+    let job = v["job"]["job_id"].as_str().unwrap().to_string();
+    let mut node = v["step"]["node"]["node_id"].as_str().unwrap().to_string();
+    for (pick, value) in [(0, None), (0, None), (0, Some(12.8)), (0, None), (1, None)] {
+        let step = ok(h, "job.get", json!({"job_id": job}))["step"].clone();
+        let b = &step["record"]["branches"][pick];
+        let params = match value {
+            Some(x) => {
+                json!({"job_id": job, "node_id": node, "value": x, "unit": step["record"]["expect"]["unit"]})
+            }
+            None => json!({"job_id": job, "node_id": node, "outcome": b["outcome"]}),
+        };
+        node = ok(h, "job.answer", params)["step"]["node"]["node_id"]
+            .as_str()
+            .unwrap()
+            .to_string();
+    }
+    job
+}
+
+const VAGUE: &str = "the pump engine is acting up and making a weird noise";
+
+#[test]
+fn symptom_suggest_routes_suggests_clarifies_or_lists() {
+    // The engine's own confident rule routes; no model call.
+    let (_t, h, llm) = model_host(&[]);
+    let r = ok(
+        &h,
+        "symptom.suggest",
+        json!({"text": "starter does nothing", "asset_id": "unit-101"}),
+    );
+    assert_eq!(r["decision"], "route");
+    assert!(r["model"].is_null() && llm.asked().is_empty());
+    // Not confident: the model decides over the candidates.
+    let vague = |out: &str| {
+        let (_t, h, llm) = model_host(&[out]);
+        let r = ok(
+            &h,
+            "symptom.suggest",
+            json!({"text": VAGUE, "asset_id": "unit-101"}),
+        );
+        assert_ne!(r["search"]["confidence"], "confident", "{}", r["search"]);
+        let req = llm.requests.lock().unwrap()[0].clone();
+        (r, req)
+    };
+    let (r, req) = vague(r#"{"decision":"pick","candidate":2}"#);
+    assert_eq!(r["decision"], "suggest", "{r}");
+    assert_eq!(r["entries"].as_array().unwrap().len(), 1);
+    assert_eq!(
+        r["entries"][0]["symptom_id"],
+        r["search"]["hits"][1]["symptom"]["symptom_id"]
+    );
+    assert_eq!(r["model"], "scripted-test-model");
+    assert_eq!(
+        r["prompt_version"],
+        harvest_core::assist::prompts::T1_VERSION
+    );
+    // The measured request: strict prompt, schema(12), temperature 0, 64 tokens.
+    assert_eq!(req.system, harvest_core::assist::prompts::t1_system());
+    assert_eq!(req.schema.1, harvest_core::assist::prompts::t1_schema(12));
+    assert_eq!((req.max_tokens, req.temperature), (64, 0.0));
+    assert!(
+        req.user.starts_with("Equipment: Model 40 utility pump"),
+        "{}",
+        req.user
+    );
+    assert!(req.user.contains(&format!("Technician: \"{VAGUE}\"")));
+    assert!(req.user.contains("1. ") && req.user.contains("[search match 0."));
+    assert!(req.user.ends_with("\n\nDecision as JSON."));
+    // Clarify between two (sorted, de-duplicated).
+    let (r, _) = vague(r#"{"decision":"clarify","between":[2,1,2]}"#);
+    assert_eq!(r["decision"], "clarify");
+    assert_eq!(r["entries"].as_array().unwrap().len(), 2);
+    // None, garbage, out of range, a hallucinated candidate: the list.
+    for out in [
+        r#"{"decision":"none"}"#,
+        "I think it is the overheating one",
+        r#"{"decision":"pick","candidate":11}"#,
+        r#"{"decision":"pick","candidate":"s-hot"}"#,
+        r#"{"decision":"clarify","between":[]}"#,
+    ] {
+        let (r, _) = vague(out);
+        assert_eq!(r["decision"], "list", "{out}");
+        assert_eq!(
+            r["entries"].as_array().unwrap().len(),
+            r["search"]["hits"].as_array().unwrap().len()
+        );
+    }
+    // Unreachable (the scripted model has nothing to say) and off: the list.
+    let (_t, h, _) = model_host(&[]);
+    let r = ok(&h, "symptom.suggest", json!({"text": VAGUE}));
+    assert_eq!(r["decision"], "list");
+    let st = ok(&h, "llm.status", json!({}));
+    assert_eq!(
+        (st["configured"].clone(), st["reachable"].clone()),
+        (json!(true), json!(false))
+    );
+    let (_t2, off) = host(env());
+    let r = ok(&off, "symptom.suggest", json!({"text": VAGUE}));
+    assert_eq!(
+        (r["decision"].clone(), r["model"].clone()),
+        (json!("list"), Value::Null)
+    );
+    assert_eq!(ok(&off, "llm.status", json!({}))["configured"], false);
+    // No hits at all: the list, no call.
+    let (_t, h, llm) = model_host(&[]);
+    let r = ok(&h, "symptom.suggest", json!({"text": "zzqx"}));
+    assert_eq!(r["decision"], "list");
+    assert!(llm.asked().is_empty());
+}
+
+#[test]
+fn lesson_prefill_proposes_only_what_the_policy_allows() {
+    let out = r#"{"cause":"C1","cause_text":"","action":"A1","action_text":"","parts":["other"],"parts_other":["spare fuse"],"minutes":45,"note":"done"}"#;
+    let (_t, h, llm) = model_host(&[
+        out,
+        out,
+        r#"{"cause":"C99","cause_text":"","action":"other","action_text":"cleaned the terminals","parts":["P42"],"parts_other":[],"minutes":null,"note":""}"#,
+        "not json at all",
+    ]);
+    let job = walked_job(&h);
+    // Default policy: minutes and parts; cause and action stay unknown.
+    let r = ok(
+        &h,
+        "lesson.prefill",
+        json!({"job_id": job, "text": "swapped the relay and a fuse, 45 min"}),
+    );
+    let p = &r["proposal"];
+    assert_eq!(p["job_id"]["source"], "job");
+    assert_eq!(p["asset_id"]["value"], "unit-101");
+    assert_eq!(
+        (p["cause"]["source"].clone(), p["action"]["source"].clone()),
+        (json!("unknown"), json!("unknown"))
+    );
+    assert_eq!(p["minutes"], json!({"value": 45, "source": "model"}));
+    assert_eq!(p["parts"]["labels"], json!(["other"]));
+    assert_eq!(p["parts"]["value"][0]["text"], "spare fuse");
+    assert!(req_user_lists_no_parts(&llm));
+    let req = llm.requests.lock().unwrap()[0].clone();
+    assert_eq!(req.system, harvest_core::assist::prompts::T2_SYSTEM);
+    assert!(req.user.contains("Steps recorded:\n  1. "), "{}", req.user);
+    assert!(req.user.contains("Causes listed by the manual:\n  C1. "));
+    assert!(req.user.contains("[reached]"));
+    assert!(req.user.ends_with("\n\nRecord as JSON."));
+    // A policy that allows cause and action.
+    let r = ok(
+        &h,
+        "lesson.prefill",
+        json!({"job_id": job, "text": "relay", "policy": {"fields": ["cause", "action", "parts", "minutes", "note"]}}),
+    );
+    let p = &r["proposal"];
+    assert_eq!(
+        (p["cause"]["source"].clone(), p["cause"]["label"].clone()),
+        (json!("model"), json!("C1"))
+    );
+    assert!(p["cause"]["value"].is_string() && p["action"]["value"].is_string());
+    assert_eq!(p["note"]["value"], "done");
+    // A label the context lacks becomes unknown; "other" carries its text.
+    let r = ok(
+        &h,
+        "lesson.prefill",
+        json!({"job_id": job, "text": "x", "policy": {"fields": ["cause", "action", "parts"]}}),
+    );
+    let p = &r["proposal"];
+    assert_eq!(
+        p["cause"],
+        json!({"value": null, "source": "unknown", "label": null})
+    );
+    assert_eq!(p["action"]["value"], "cleaned the terminals");
+    assert_eq!(p["parts"]["source"], "unknown", "P42 is not in the context");
+    // Garbage: everything unknown, still a valid result.
+    let r = ok(&h, "lesson.prefill", json!({"job_id": job, "text": "x"}));
+    assert_eq!(r["proposal"]["minutes"]["source"], "unknown");
+    // Audited.
+    let audit = ok(&h, "audit.list", json!({}));
+    let models: Vec<&Value> = audit
+        .as_array()
+        .unwrap()
+        .iter()
+        .filter(|e| e["event"]["event"] == "model")
+        .collect();
+    assert_eq!(models.len(), 4, "{audit}");
+    assert_eq!(
+        models[0]["event"]["detail"]["prompt_version"],
+        harvest_core::assist::prompts::T2_VERSION
+    );
+}
+
+#[test]
+fn step_ask_shows_only_the_packs_sentences() {
+    let (_t, h, llm) = model_host(&[
+        r#"{"kind":"answer","sentences":["S1","S1","S99"],"connector":"The manual says:"}"#,
+        r#"{"kind":"answer","sentences":["S99"],"connector":"Safety first:"}"#,
+        r#"{"kind":"decline"}"#,
+        r#"{"kind":"answer","sentences":["S2"],"connector":"Trust me, it is fine."}"#,
+    ]);
+    let job = walked_job(&h);
+    let r = ok(
+        &h,
+        "step.ask",
+        json!({"job_id": job, "question": "why replace the relay?"}),
+    );
+    assert_eq!(r["decision"], "answer");
+    assert_eq!(r["heading"], "The manual says:");
+    assert_eq!(
+        r["sentences"].as_array().unwrap().len(),
+        1,
+        "duplicates and missing handles dropped"
+    );
+    assert!(r["sentences"][0]["citation"]["citation"].is_string());
+    let req = llm.requests.lock().unwrap()[0].clone();
+    assert_eq!(req.system, harvest_core::assist::prompts::t3_system());
+    assert!(
+        req.user.contains("Manual sentences:\n[Current step]\nS1: "),
+        "{}",
+        req.user
+    );
+    assert!(req.user.contains("Headings: (none) | The manual says: |"));
+    // Only a handle that does not exist: decline with the nearest passages.
+    let r = ok(&h, "step.ask", json!({"job_id": job, "question": "why?"}));
+    assert_eq!(
+        (r["decision"].clone(), r["heading"].clone()),
+        (json!("decline"), json!(""))
+    );
+    assert!(!r["nearest"].as_array().unwrap().is_empty());
+    let r = ok(
+        &h,
+        "step.ask",
+        json!({"job_id": job, "question": "what colour is the sky?"}),
+    );
+    assert_eq!(r["decision"], "decline");
+    // A heading not in the fixed list is never shown.
+    let r = ok(&h, "step.ask", json!({"job_id": job, "question": "and?"}));
+    assert_eq!(
+        (r["decision"].clone(), r["heading"].clone()),
+        (json!("answer"), json!(""))
+    );
+    let st = ok(&h, "llm.status", json!({}));
+    assert_eq!(st["reachable"], true);
+    assert_eq!(st["last"]["method"], "step.ask");
+}

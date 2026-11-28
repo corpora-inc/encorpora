@@ -33,6 +33,7 @@ const USAGE: &str = "usage:
                   [--allow-origin URL]... [--records-key FILE] [--outbox-dir DIR] [--field-pubkey KEY]
                   [--embedder auto|none|hashing|<file.gguf>|<url> [--embedder-gguf FILE|--embedder-sha256 HEX]] [--pubkey KEY]   # the JSON API over HTTP (CONTRACT \"API\")
                   [--hub URL [--hub-ca PEM] [--hub-insecure-http] [--packs-root ROOT] [--device-key FILE]]
+                  [--llm off|http://host:port/v1 [--llm-model NAME] [--llm-timeout S]] [--prefill minutes,parts]
                   # sync through a hub: https:// (Mozilla roots, or only --hub-ca), http:// to this machine only
   harvest api-schema <dir> [--check]      # writes (or checks) api.schema.json and types.ts
   harvest hub     <hub-db> --stream NAME [--packs ROOT] [--bind 127.0.0.1:4318] [--allow-origin URL]...
@@ -1120,6 +1121,10 @@ fn serve(args: &Args) -> Result<(), CliError> {
         "hub-insecure-http",
         "packs-root",
         "device-key",
+        "llm",
+        "llm-model",
+        "llm-timeout",
+        "prefill",
     ])?;
     let root = pack_dir(args)?;
     let keys = keys(args)?;
@@ -1142,6 +1147,48 @@ fn serve(args: &Args) -> Result<(), CliError> {
         keys_from(&field_specs)?
     };
     let mut host = Host::new(packs.clone(), records).with_field_keys(field_keys);
+    // The on-device model (symptom.suggest, lesson.prefill, step.ask): a
+    // local OpenAI-compatible server with JSON-schema output. Unreachable
+    // at start is not fatal: the methods answer with the model off.
+    match args.get("llm").unwrap_or("off") {
+        "off" => {}
+        url if url.starts_with("http://") || url.starts_with("https://") => {
+            let secs: u64 = match args.get("llm-timeout") {
+                Some(t) => t
+                    .parse()
+                    .map_err(|_| CliError::Usage("--llm-timeout must be seconds".into()))?,
+                None => 60,
+            };
+            match harvest_core::llm::OpenAiCompatible::new(
+                url,
+                args.get("llm-model"),
+                std::time::Duration::from_secs(secs),
+            ) {
+                Ok(llm) => {
+                    eprintln!(
+                        "harvest serve: model {} at {url}",
+                        harvest_core::Llm::id(&llm)
+                    );
+                    host = host.with_llm(Arc::new(llm));
+                }
+                Err(e) => eprintln!("harvest serve: model off: {e}"),
+            }
+        }
+        other => {
+            return Err(CliError::Usage(format!(
+                "--llm {other}: expected off or an http(s)://…/v1 endpoint"
+            )));
+        }
+    }
+    if let Some(fields) = args.get("prefill") {
+        host = host.with_prefill_policy(harvest_core::assist::PrefillPolicy {
+            fields: fields
+                .split(',')
+                .map(|f| f.trim().to_string())
+                .filter(|f| !f.is_empty())
+                .collect(),
+        });
+    }
     // One embedder serves every pack baked with it. A pack baked with
     // another is served lexical only, and says so.
     for p in &packs {
