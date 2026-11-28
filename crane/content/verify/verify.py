@@ -63,7 +63,8 @@ class Index:
             return text[i:i + len(cq)]
         # any run of whitespace for a space ('§1926' also matches '§ 1926'); a quote may
         # join table cells with a space where the source row has ' | '
-        pat = re.escape(cq).replace(r"\ ", r"\s+(?:\|\s+)?").replace("§", r"§\s*")
+        # empty table cells (' | | ') and a 'Note:' label the quote runs past are skipped too
+        pat = re.escape(cq).replace(r"\ ", r"\s+(?:\|\s+)*(?:notes?:\s+)?").replace("§", r"§\s*")
         m = re.search(pat, ct)
         if m:
             return text[m.start():m.end()]

@@ -9,6 +9,9 @@ endorsement by OSHA or any certification body.
 | Path | What |
 |---|---|
 | `blueprint.yaml` | Topic tree, skills (the practice engine's units), exam blueprint verified against the current candidate handbook, equipment variants. |
+| `course/tree.jsonl` | The course knowledge tree the Instructor walks (CONTRACT `course_node`): structure from `harvest-bake course-skeleton`, text (summary, hard, mistakes, exam, rule quotes) from `tasks/course`. |
+| `course/welcome.json` | The Instructor's opening turn (`pack_meta.instructor_welcome`). |
+| `course/misconceptions.json` | The misconceptions the practice items' wrong options represent, by skill; input to the tree's `mistakes`. |
 | `exam-coverage.json` | Every item of the core exam's content outline, with the outline ids and skills that cover it. |
 | `procedures/*.yaml` | Field procedures: role-tiered steps, check kind, citations, deficiency guidance with verbatim quotes. A deficiency cites its rule, or, on a practice step with no rule behind it, ships as practice guidance (`basis: practice`); `tasks/procedures/citations.yaml` supplies rule citations the generator left out. |
 | `app.yaml` | Practice prerequisites and Ask starters, written into the pack's `pack_meta` with `exams.json`. |

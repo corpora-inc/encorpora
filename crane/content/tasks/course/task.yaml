@@ -1,0 +1,4 @@
+task_id: course
+prompt_version: 1
+model: opus
+description: Text for the course knowledge tree (harvest/CONTRACT.md, course_node) and the Instructor's welcome. One call per topic writes the topic and its skills; one call writes the course, exam and domain nodes and the welcome.

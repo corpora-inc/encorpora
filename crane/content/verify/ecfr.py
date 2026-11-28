@@ -15,8 +15,8 @@ A table is its caption, then one row per line with cells joined by " | "
 (empty cells kept, fraction slash kept), the same rendering as the pipeline's
 stage (harvest/pipeline parsers/ecfr.py), so a quote from one paragraph or one
 table row that verifies here also verifies at bake time. The stage also keeps
-paragraph markers and "Note:" labels, so a quote that crosses one of those
-verifies only here. A node's `own` keeps
+paragraph markers, so a quote that crosses a marker verifies only here. A "Note:"
+label is kept in the exact text of the note after it, as in the stage. A node's `own` keeps
 the older space-joined rendering, which the generation prompts were built from
 (changing it would re-key every cached output); `own_cells` holds the rows
 when they differ, and `text` is built from it.
@@ -238,6 +238,7 @@ def parse_div8(xml: str, base: str, source_id: str, b: Builder):
             if 'class="title"' in it:
                 continue  # table caption, handled with the table
             plist.append(("p", re.sub(r"^<P[^>]*>|</P>$", "", it)))
+    note = None  # a "Note:" label, kept in the exact text of the note paragraph after it (as in the stage)
     for idx, (kind, raw) in enumerate(plist):
         if kind == "table":
             cap = re.search(r'<P class="title">(.*?)</P>', raw, re.S)
@@ -251,12 +252,16 @@ def parse_div8(xml: str, base: str, source_id: str, b: Builder):
             b.add(base, None, "x", "", None, text, cells)
             continue
         if kind == "hed":
+            h = norm(strip_tags(raw))
+            note = h if re.match(r"Notes?\b", h) else None
             continue
         pieces, rest = split_markers(raw)
         if not pieces:
             target = b.path() if b.stack else base
-            b.add(target, None, "x", "", None, strip_tags(raw))
+            b.add(target, None, "x", "", None, strip_tags(raw), f"{note} {strip_tags(raw)}" if note else None)
+            note = None
             continue
+        note = None
         # lookahead token for ambiguous romans
         la = None
         for k2, r2 in plist[idx + 1:]:  # the next MARKED paragraph, skipping tables and unmarked text
