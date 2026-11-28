@@ -755,6 +755,13 @@ fn figures_match_however_they_are_written() {
     use harvest_core::check::holds;
     let row = "Voltage (nominal, kV) | Minimum clearance distance (feet)\nover .75 to 50 | 6\nover 750 to 1,000 | 45";
     assert!(holds("Over 0.75 to 50 kV it is 6 feet.", row, 0.5));
-    assert!(holds("Over 750 to 1000 kV the clearance is 45 feet.", row, 0.5));
-    assert!(!holds("Over 0.75 to 50 kV it is 45 feet.", row, 0.5), "45 is another row");
+    assert!(holds(
+        "Over 750 to 1000 kV the clearance is 45 feet.",
+        row,
+        0.5
+    ));
+    assert!(
+        !holds("Over 0.75 to 50 kV it is 45 feet.", row, 0.5),
+        "45 is another row"
+    );
 }
