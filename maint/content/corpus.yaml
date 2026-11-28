@@ -1,0 +1,53 @@
+# The maintenance assistant's corpus: vehicle maintenance manuals (born-digital PDF), built into
+# one verified, signed pack by harvest/pipeline (`harvest-bake maint ...`, see build-pack.sh).
+#
+# Sources stay empty until the manuals are approved for download. Each one, when added, records
+# in corpus.sources.lock.json (written by `harvest-bake fetch`): URL, edition, the distribution
+# marking exactly as printed on the cover, license, bytes and SHA-256. Raw files live under
+# $HARVEST_HOME/raw, never in git. A controlled source is ingested only by an arm whose backend
+# runs on our own hardware (`open-weight`); never send it to the frontier arms.
+corpus_id: maint-fleet
+pack_id: maint-fleet
+lang: en
+
+sources: []
+#  - id: vm-tm-34p                       # one volume per source; parts list volume separately
+#    title: "<title as printed>"
+#    publisher: "<issuing body as printed>"
+#    url: "<where it was downloaded from>"
+#    edition: "<date and change number as printed>"
+#    distribution: "<distribution statement as printed>"
+#    license: "<public domain, or the terms that allow this use>"
+#    parser: maint-pdf
+#    parser_options: {id_prefix: tm34p, citation_prefix: "TM 34P", pages: "1-2400"}
+#    fetch: {kind: manual, path: ~/.cache/harvest/manual/tm-34p.pdf, url: "<url>"}
+#    optional: true
+
+maint:
+  release_arm: sonnet-img
+  cache_dir: cache                      # committed response cache, one folder per arm
+  ledger: cache/ledger.jsonl            # every model call: arm, model, tokens, seconds, cost
+  prompt_file: prompts/conventions.md   # this corpus's layout conventions, appended to the prompt
+  image_px: 1400                        # page images in the pack (WebP), and what a vision model reads
+  concurrency: 2
+  units:
+    # a troubleshooting procedure, a task or a chapter starts a new unit unless it says it continues
+    unit_break_regex: '^(?:CHAPTER\s+\d+|Chapter\s+\d+|Table\s+\d+-\d+\.|Task\s+\d+-\d+\.|TASK\s+\d+-\d+|\d+-\d+\.\s+[A-Z])'
+    unit_continue_regex: '\((?:Sheet\s+[2-9]\d*\s+of|Continued|CONTINUED|Cont)'
+    max_unit_pages: 8
+  arms:
+    sonnet-img: {author: {backend: claude-cli, model: sonnet, max_week_pct: 60, timeout: 1800}, images: true}
+    sonnet-text: {author: {backend: claude-cli, model: sonnet, max_week_pct: 60, timeout: 1800}, images: false}
+    # controlled material: our own hardware only (SSH tunnel to the lab's llama-server)
+    open-weight: {author: {backend: openai-compatible, model: gemma-4-26b-a4b, base_url: "http://127.0.0.1:8093/v1",
+                           mode: json_schema, timeout: 3600, temperature: 0}, images: false}
+  roles: [apprentice, technician, expert]
+  levels:
+    - {id: apprentice, label: Apprentice, test_steps: expanded}
+    - {id: technician, label: Technician, facets: [possible, test_option], test_steps: collapsed}
+    - {id: expert, label: Expert, facets: [], test_steps: collapsed}
+  signal_kinds:
+    - {kind: j1939.dm1, label: "Engine fault code (SPN/FMI)", example: "spn:110/fmi:0"}
+    - {kind: display, label: "Displayed diagnostic code", example: "13 12"}
+
+embedder: {kind: embeddinggemma-2}

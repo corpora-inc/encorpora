@@ -66,7 +66,11 @@ def arm(corpus: Corpus, name: str | None) -> Arm:
     if name not in arms:
         raise SystemExit(f"unknown arm {name!r}; corpus has {sorted(arms)}")
     a = arms[name]
-    return Arm(name, a["author"], images=bool(a.get("images", True)), coords=bool(a.get("coords", True)))
+    extra = ""
+    if m.get("prompt_file"):
+        extra = (corpus.dir / m["prompt_file"]).read_text()
+    return Arm(name, a["author"], images=bool(a.get("images", True)), coords=bool(a.get("coords", True)),
+               system_extra=extra)
 
 
 def work(corpus: Corpus) -> Path:
@@ -141,7 +145,8 @@ def assemble(corpus: Corpus, a: Arm, outs: dict, srcs: list, stage_path: Path,
     stage = Stage(stage_path)
     files: list[tuple[str, Path]] = []
     assemblies = []
-    prompt_sha = sha256_text(json.dumps({"system": SYSTEM, "schema": SCHEMA, "v": PROMPT_VERSION}, sort_keys=True))
+    prompt_sha = sha256_text(json.dumps({"system": SYSTEM, "extra": a.system_extra, "schema": SCHEMA,
+                                         "v": PROMPT_VERSION}, sort_keys=True))
     for rec, models, opts in srcs:
         stage.add_source(rec)
         sid = rec["source_id"]

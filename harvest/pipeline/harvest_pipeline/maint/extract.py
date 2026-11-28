@@ -205,11 +205,14 @@ def units(models: list[PageModel], options: dict | None = None) -> list[Unit]:
 
 @dataclass
 class Arm:
-    """One way of running the extraction: a backend, a model, with or without page images."""
+    """One way of running the extraction: a backend, a model, with or without page images.
+    `system_extra`: the corpus's own conventions, appended to the system prompt (its text is part
+    of the cache key, so changing it re-extracts)."""
     name: str
     author: dict
     images: bool = True
     coords: bool = True
+    system_extra: str = ""
 
     @property
     def spec(self) -> str:
@@ -261,7 +264,8 @@ class RunReport:
 
 def request_for(unit: Unit, pages: dict[int, PageModel], arm: Arm, images_ok: bool) -> tuple[Request, str]:
     imgs = page_images(unit, pages) if arm.images and images_ok else []
-    req = Request(system=SYSTEM, prompt=prompt(unit, pages, arm.coords), schema=SCHEMA, name="manual_structure",
+    system = SYSTEM + ("\n\nThis manual's conventions:\n" + arm.system_extra.strip() if arm.system_extra.strip() else "")
+    req = Request(system=system, prompt=prompt(unit, pages, arm.coords), schema=SCHEMA, name="manual_structure",
                   max_tokens=32000, images=imgs)
     isha = sha256_json({"system": req.system, "schema": req.schema, "prompt": req.prompt,
                         "images": [pages[i].image_id for i in unit.pages] if arm.images else []})
