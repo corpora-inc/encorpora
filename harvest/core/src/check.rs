@@ -21,11 +21,12 @@ use crate::normalize::{self, normalize_ws};
 use crate::pack::Pack;
 use crate::segments::Segment;
 use rusqlite::OptionalExtension;
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 use std::collections::BTreeSet;
 
 /// The `check` object of CONTRACT's `ask --json`.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize, Default)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize, Default, JsonSchema)]
 pub struct Check {
     /// Every quote in the input was verbatim and named an existing section.
     pub quotes_ok: bool,

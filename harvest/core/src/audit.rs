@@ -10,6 +10,7 @@ use crate::crypt::{self, RecordKey};
 use crate::error::{Error, Result};
 use crate::packs::hex_encode;
 use rusqlite::{Connection, OptionalExtension, params};
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 use std::collections::BTreeMap;
@@ -31,7 +32,7 @@ CREATE TRIGGER IF NOT EXISTS audit_no_delete BEFORE DELETE ON audit
 ";
 
 /// One retrieved chunk as the log keeps it.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, JsonSchema, PartialEq)]
 pub struct AuditChunk {
     pub chunk_id: String,
     pub lexical: f64,
@@ -40,7 +41,7 @@ pub struct AuditChunk {
 }
 
 /// What one query did.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, JsonSchema, PartialEq)]
 pub struct AuditEntry {
     pub ts: String,
     pub query: String,
@@ -99,6 +100,59 @@ impl AuditEntry {
     }
 }
 
+/// One recorded action that is not a question: a troubleshooting job's
+/// start, answer, correction and close, a lesson, a field-note install.
+/// It chains like an answer entry.
+#[derive(Debug, Clone, Serialize, Deserialize, JsonSchema, PartialEq)]
+pub struct AuditEvent {
+    pub ts: String,
+    /// `job.start` | `job.answer` | `job.back` | `job.close` | `lesson.create` | `field.install` | ….
+    pub event: String,
+    pub pack_id: Option<String>,
+    pub pack_version: Option<String>,
+    /// What the event is about (a job id, a lesson id, a bundle stream).
+    pub subject: String,
+    /// The node the job was at.
+    #[serde(default)]
+    pub node_id: Option<String>,
+    /// What was asked there: the node's verbatim text.
+    #[serde(default)]
+    pub asked: Option<String>,
+    /// What was recorded.
+    #[serde(default)]
+    pub result: Option<serde_json::Value>,
+    /// Where code sent the job next.
+    #[serde(default)]
+    pub next_node: Option<String>,
+    #[serde(default)]
+    pub detail: serde_json::Value,
+}
+
+impl AuditEvent {
+    pub fn new(event: &str, subject: &str) -> Self {
+        Self {
+            ts: now_rfc3339(),
+            event: event.to_string(),
+            pack_id: None,
+            pack_version: None,
+            subject: subject.to_string(),
+            node_id: None,
+            asked: None,
+            result: None,
+            next_node: None,
+            detail: serde_json::Value::Null,
+        }
+    }
+}
+
+/// One row of the log, as read back.
+#[derive(Debug, Clone, Serialize, JsonSchema, PartialEq)]
+#[serde(tag = "type", rename_all = "snake_case")]
+pub enum AuditRecord {
+    Answer { seq: i64, entry: AuditEntry },
+    Event { seq: i64, event: AuditEvent },
+}
+
 /// Create the audit table and triggers if absent.
 pub fn init(conn: &Connection) -> Result<()> {
     conn.execute_batch(DDL)?;
@@ -147,6 +201,24 @@ pub fn append_locked_with(
     key: Option<&RecordKey>,
     entry: &AuditEntry,
 ) -> Result<i64> {
+    append_text_locked(tx, key, &entry.ts, &entry_bytes(entry)?)
+}
+
+/// Append an event inside a transaction holding the write lock.
+pub fn append_event_locked_with(
+    tx: &Connection,
+    key: Option<&RecordKey>,
+    event: &AuditEvent,
+) -> Result<i64> {
+    append_text_locked(tx, key, &event.ts, &serde_json::to_string(event)?)
+}
+
+fn append_text_locked(
+    tx: &Connection,
+    key: Option<&RecordKey>,
+    ts: &str,
+    text: &str,
+) -> Result<i64> {
     // A keyless append to an encrypted store (or a wrong key) is refused.
     crate::records::check_key(tx, key)?;
     let prev: String = tx
@@ -157,17 +229,17 @@ pub fn append_locked_with(
         )
         .optional()?
         .unwrap_or_else(|| GENESIS.to_string());
-    let bytes = crypt::seal_opt(key, &entry_aad(&prev), &entry_bytes(entry)?)?;
+    let bytes = crypt::seal_opt(key, &entry_aad(&prev), text)?;
     let hash = chain_hash(&prev, &bytes);
     tx.execute(
         "INSERT INTO audit (ts, entry, prev_hash, hash) VALUES (?1, ?2, ?3, ?4)",
-        params![entry.ts, bytes, prev, hash],
+        params![ts, bytes, prev, hash],
     )?;
     Ok(tx.last_insert_rowid())
 }
 
 /// The result of [`verify_chain`].
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, JsonSchema, PartialEq)]
 pub struct ChainReport {
     pub ok: bool,
     pub entries: u64,
@@ -175,8 +247,11 @@ pub struct ChainReport {
     pub first_bad: Option<i64>,
     /// Answers per mode (`sealed` counts entries read without the key).
     pub modes: BTreeMap<String, u64>,
-    /// `baked / (all answers)`; `None` with no entries.
+    /// `baked / (all answers)`; `None` with no answers.
     pub bake_hit_rate: Option<f64>,
+    /// Events (not answers) per event name.
+    #[serde(default)]
+    pub events: BTreeMap<String, u64>,
     /// The hash of the newest entry. The chain detects edits but cannot see
     /// its own newest rows removed: a host that needs that anchors
     /// `(entries, head_hash)` outside the database (an upload, a signature).
@@ -210,7 +285,9 @@ pub fn verify_chain_with(conn: &Connection, key: Option<&RecordKey>) -> Result<C
         modes: BTreeMap::new(),
         bake_hit_rate: None,
         head_hash: None,
+        events: BTreeMap::new(),
     };
+    let mut answers = 0u64;
     if !has_table(conn)? {
         return Ok(report);
     }
@@ -233,12 +310,22 @@ pub fn verify_chain_with(conn: &Connection, key: Option<&RecordKey>) -> Result<C
             continue;
         }
         let opened = crypt::open_opt(key, &entry_aad(&prev_hash), &entry).ok();
-        if let Some(e) = opened.and_then(|t| serde_json::from_str::<AuditEntry>(&t).ok()) {
+        let answer = opened
+            .as_deref()
+            .and_then(|t| serde_json::from_str::<AuditEntry>(t).ok());
+        let event = opened
+            .as_deref()
+            .filter(|_| answer.is_none())
+            .and_then(|t| serde_json::from_str::<AuditEvent>(t).ok());
+        if let Some(e) = answer {
+            answers += 1;
             let mode = serde_json::to_value(e.mode)?
                 .as_str()
                 .unwrap_or("unknown")
                 .to_string();
             *report.modes.entry(mode).or_insert(0) += 1;
+        } else if let Some(ev) = event {
+            *report.events.entry(ev.event).or_insert(0) += 1;
         } else if report.ok {
             report.ok = false;
             report.first_bad = Some(seq);
@@ -247,9 +334,9 @@ pub fn verify_chain_with(conn: &Connection, key: Option<&RecordKey>) -> Result<C
     }
     if report.entries > 0 {
         report.head_hash = Some(prev);
-        if !report.modes.contains_key("sealed") {
+        if !report.modes.contains_key("sealed") && answers > 0 {
             let baked = *report.modes.get("baked").unwrap_or(&0) as f64;
-            report.bake_hit_rate = Some(baked / report.entries as f64);
+            report.bake_hit_rate = Some(baked / answers as f64);
         }
     }
     Ok(report)
@@ -260,8 +347,20 @@ pub fn entries(conn: &Connection) -> Result<Vec<(i64, AuditEntry)>> {
     entries_with(conn, None)
 }
 
-/// [`entries`] for a store encrypted with `key`.
+/// [`entries`] for a store encrypted with `key`. Answer entries only;
+/// events are read with [`records_with`].
 pub fn entries_with(conn: &Connection, key: Option<&RecordKey>) -> Result<Vec<(i64, AuditEntry)>> {
+    Ok(records_with(conn, key)?
+        .into_iter()
+        .filter_map(|r| match r {
+            AuditRecord::Answer { seq, entry } => Some((seq, entry)),
+            AuditRecord::Event { .. } => None,
+        })
+        .collect())
+}
+
+/// Every row of the log, answers and events, oldest first.
+pub fn records_with(conn: &Connection, key: Option<&RecordKey>) -> Result<Vec<AuditRecord>> {
     if !has_table(conn)? {
         return Ok(Vec::new());
     }
@@ -278,8 +377,11 @@ pub fn entries_with(conn: &Connection, key: Option<&RecordKey>) -> Result<Vec<(i
     rows.into_iter()
         .map(|(s, e, prev)| {
             let text = crypt::open_opt(key, &entry_aad(&prev), &e)?;
-            serde_json::from_str(&text)
-                .map(|e| (s, e))
+            if let Ok(entry) = serde_json::from_str::<AuditEntry>(&text) {
+                return Ok(AuditRecord::Answer { seq: s, entry });
+            }
+            serde_json::from_str::<AuditEvent>(&text)
+                .map(|event| AuditRecord::Event { seq: s, event })
                 .map_err(|e| Error::Pack(format!("audit {s}: {e}")))
         })
         .collect()

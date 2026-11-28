@@ -10,11 +10,12 @@
 //! the crane app's browser engine uses, so both read a query alike.
 
 use crate::normalize::{fold, is_stopword, stem, tokens};
+use schemars::JsonSchema;
 use serde::Serialize;
 use std::collections::{HashMap, HashSet};
 
 /// How a query word the pack does not hold as typed was read.
-#[derive(Debug, Clone, PartialEq, Eq, Serialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, JsonSchema)]
 pub struct Reading {
     /// The word as typed.
     pub word: String,
