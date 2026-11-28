@@ -183,10 +183,11 @@ export function Page({
           <button
             type="button"
             onClick={() => (up === "back" ? (canGoBack ? navigate(-1) : navigate("/learn/rules")) : navigate(up.to))}
-            className="-ml-2 inline-flex min-h-11 items-center gap-1 rounded-control px-2 font-semibold text-ink-2"
+            className="-ml-2 inline-flex min-h-11 min-w-0 items-center gap-1 rounded-control px-2 font-semibold text-ink-2"
           >
-            <ChevronLeft aria-hidden size={22} />
-            <span>{up === "back" ? t("nav.back") : up.label}</span>
+            <ChevronLeft aria-hidden size={22} className="shrink-0" />
+            {/* A long parent title (a lesson's topic) keeps to the header row. */}
+            <span className="truncate">{up === "back" ? t("nav.back") : up.label}</span>
           </button>
         )}
         <div className="flex-1" />

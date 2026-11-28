@@ -95,7 +95,8 @@ export function LessonScreen() {
     <Page title={lesson.title} up={{ to: topicPath(lesson.topic_id), label: topic?.title ?? t("tab.learn") }}>
       <Segments body={lesson.body} />
       {next && (
-        <ButtonLink to={lessonPath(next.lesson_id)} variant="primary" className="self-start">
+        // A lesson title can be long: the button wraps at spaces rather than run off a narrow screen.
+        <ButtonLink to={lessonPath(next.lesson_id)} variant="primary" className="max-w-full self-start py-3 text-left whitespace-normal!">
           {t("learn.next", { title: next.title })}
         </ButtonLink>
       )}

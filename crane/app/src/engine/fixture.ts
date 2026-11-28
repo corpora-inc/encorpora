@@ -3,10 +3,10 @@
  * (src/engine/fixture/pack.json, built by scripts/build-fixture.mjs).
  * Lexical retrieval only, no model. Replaced by harvest-core when it lands.
  */
-import { checkBody } from "./check.ts";
+import { reasonProblems } from "./rationale.ts";
 import { Bm25, Lexicon, resolveQuery, tokens } from "./text.ts";
 import type {
-  AskResult, Diagram, Engine, Equipment, ExamBlueprintRow, FindResult, Lesson, PackInfo, Procedure, Question,
+  Diagram, Engine, Equipment, ExamBlueprintRow, FindResult, Lesson, PackInfo, Procedure, Question,
   Reading, Role, RuleGroup, Section, Segment, SkillRow, Source, Term, Topic,
 } from "./types.ts";
 
@@ -28,7 +28,7 @@ export interface RawPack {
   answer_alias: { alias: string; answer_id: string; lang: string }[];
   procedure: Row[];
   proc_step: Row[];
-  app: { prereqs: Record<string, string[]>; starters: Record<Role, string[]>; exams: ExamBlueprintRow[] };
+  app: { prereqs: Record<string, string[]>; exams: ExamBlueprintRow[] };
 }
 
 const json = <T>(v: unknown): T => (typeof v === "string" ? (JSON.parse(v) as T) : (v as T));
@@ -64,12 +64,16 @@ export function openFixture(raw: RawPack): Engine {
   const diagrams = new Map<string, Diagram>(
     raw.diagram.map((d) => [d.diagram_id as string, { ...(d as unknown as Diagram), section_ids: json<string[]>(d.section_ids) }]),
   );
-  const questions: Question[] = raw.question.map((q) => ({
-    ...(q as unknown as Question),
-    choices: json<string[]>(q.choices ?? "[]"),
-    rationales: json<string[]>(q.rationales ?? "[]"),
-    section_ids: json<string[]>(q.section_ids),
-  }));
+  // Practice shows multiple-choice items whose every choice carries a real reason (rationale.ts).
+  // The full content rule (a note line too) gates the build; a pack item without a note shows without one.
+  const questions: Question[] = raw.question
+    .map((q) => ({
+      ...(q as unknown as Question),
+      choices: json<string[]>(q.choices ?? "[]"),
+      rationales: json<string[]>(q.rationales ?? "[]"),
+      section_ids: json<string[]>(q.section_ids),
+    }))
+    .filter((q) => q.kind === "mc" && reasonProblems(q).length === 0);
   const steps = raw.proc_step.map((s) => ({
     ...(s as unknown as Procedure["steps"][number]),
     detail: json<Record<Role, string>>(s.detail),
@@ -83,7 +87,6 @@ export function openFixture(raw: RawPack): Engine {
   }));
   const equipment: Equipment[] = raw.equipment.map((e) => ({ ...(e as unknown as Equipment), aliases: json<string[]>(e.aliases) }));
 
-  const answers = new Map(raw.answer.map((a) => [a.answer_id, a]));
   const counts = json<Record<string, number>>(raw.pack_meta.row_counts ?? "{}");
   const info: PackInfo = {
     pack_id: raw.pack_meta.pack_id ?? "unknown",
@@ -101,31 +104,6 @@ export function openFixture(raw: RawPack): Engine {
       .filter((s) => s.text.length > 0 || s.heading)
       .map((s) => ({ id: s.section_id, tokens: tokens(`${s.heading ?? ""} ${s.text}`) })),
   );
-  /** Pick the variant for this role: an exact level match wins over the general answer. */
-  const variantFor = (answerId: string, role: Role) => {
-    const base = answers.get(answerId);
-    if (!base) return null;
-    const specific = answers.get(`${answerId.replace(/\.(trainee|operator|inspector)$/, "")}.${role}`);
-    return specific ?? answers.get(answerId.replace(/\.(trainee|operator|inspector)$/, "")) ?? base;
-  };
-
-  const build = (a: RawPack["answer"][number], question: string, started: number): AskResult => {
-    const checked = checkBody(json<Segment[]>(a.body), sections);
-    return {
-      mode: "baked",
-      answer_id: a.answer_id.replace(/\.(trainee|operator|inspector)$/, ""),
-      question,
-      body: checked.body,
-      citations: checked.citations,
-      retrieved: [],
-      check: { quotes_ok: checked.quotes_ok, cites_ok: checked.cites_ok, dropped: checked.dropped },
-      nearest: [],
-      pack_version: info.version,
-      model: null,
-      elapsed_ms: Math.round(t0() - started),
-    };
-  };
-
   const lexicon = new Lexicon(sectionIndex.vocab, () => [...sections.values()].map((s) => `${s.heading ?? ""} ${s.text}`));
 
   /**
@@ -215,15 +193,6 @@ export function openFixture(raw: RawPack): Engine {
     equipment,
     exams: raw.app.exams,
     prereqs: raw.app.prereqs,
-    starters: (role) =>
-      (raw.app.starters[role] ?? []).flatMap((id) => {
-        const a = variantFor(id, role);
-        return a ? [{ answer_id: id, question: a.question }] : [];
-      }),
-    answer(answerId, role) {
-      const a = variantFor(answerId, role);
-      return a ? build(a, a.question, t0()) : null;
-    },
     async find(query, max) {
       return find(query, max);
     },

@@ -119,8 +119,11 @@ export function PracticeSession() {
                 {LETTERS[i]}
               </span>
               <span className="flex-1">{c}</span>
-              {answered && isKey && <Check aria-label={t("practice.key")} size={22} className="shrink-0 text-pass" />}
-              {answered && isChosen && !isKey && <X aria-label={t("practice.yours")} size={22} className="shrink-0 text-fail" />}
+              {/* The mark's slot is always there, so a choice never rewraps when the answer is shown. */}
+              <span className="inline-flex size-[22px] shrink-0 items-center justify-center">
+                {answered && isKey && <Check aria-label={t("practice.key")} size={22} className="text-pass" />}
+                {answered && isChosen && !isKey && <X aria-label={t("practice.yours")} size={22} className="text-fail" />}
+              </span>
             </button>
           );
         })}

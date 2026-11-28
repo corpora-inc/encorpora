@@ -217,6 +217,8 @@ function Deficiency({ step }: { step: ProcStep }) {
   const t = useT();
   if (!step.deficiency) return null;
   const d = step.deficiency;
+  // A rule deficiency quotes its rule. Good practice that no rule states says so, with no citation and no rule styling.
+  const rule = d.basis !== "practice" && d.section_id && d.quote;
   return (
     <Panel className="border-fail bg-fail-wash">
       <h2 className="mb-2 flex items-center gap-2 text-h3 text-fail">
@@ -224,8 +226,8 @@ function Deficiency({ step }: { step: ProcStep }) {
         {t("do.deficiency")}
       </h2>
       <p className="m-0 mb-2">{d.guidance}</p>
-      <p className="m-0 mb-3 font-semibold">{d.action}</p>
-      {d.section_id && d.quote && <Quote sectionId={d.section_id} text={d.quote} showCite />}
+      <p className={cx("m-0 font-semibold", rule ? "mb-3" : "")}>{d.action}</p>
+      {rule ? <Quote sectionId={d.section_id!} text={d.quote!} showCite /> : <p className="practice-basis m-0 mt-3 text-small text-ink-2">{t("do.practiceBasis")}</p>}
     </Panel>
   );
 }
