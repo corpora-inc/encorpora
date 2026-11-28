@@ -1,0 +1,52 @@
+# Release bar runs, 2026-11-27: harvest at main e113660ed (#2580 local support, #2588 answer-first,
+# tables, cache intent check, #2589 coverage gate 0.4, #2591 evidence sentences) over the pack built
+# from the same commit (#2540 answer cache pilot, #2581 lessons and glossary). Dense half and the
+# gate as in ../2026-11-27-dense-gate/. Checked with `harvest_eval gate` against
+# ../../release-bar.yaml. harvest runs on the lab machine through
+# ../2026-11-27-baseline/lab/harvest-remote.sh; "@lab/" paths are files there.
+set: ../../heldout-v2.jsonl
+reference_sections: ../../sources/sections-2026-11-24.jsonl
+
+match:
+  aliases:
+    - {pattern: "^29cfr1926\\.cc\\.app", replace: "29cfr1926-subpartCC-app"}
+    - {pattern: "-table-", replace: "-table"}
+
+backends:
+  - name: harvest-model-off            # lexical, default gate: the reference on the fresh set
+    kind: harvest
+    binary: harvest
+    pack: pack
+    llm: "off"
+    role: operator
+  - name: harvest-model-off-dense-gate
+    kind: harvest
+    binary: harvest
+    pack: pack
+    llm: "off"
+    role: operator
+    extra_args: [--embedder, "http://127.0.0.1:18096", --embedder-gguf, "@lab/home/models/embeddinggemma-2-Q8_0.gguf",
+                 --dense-gate, "0.2:0.77"]
+  - name: harvest-gpt-oss-20b-dense-gate
+    kind: harvest
+    binary: harvest
+    pack: pack
+    llm: http://127.0.0.1:18103/v1     # llama-server on the lab machine, no --reasoning-budget (#2550)
+    role: operator
+    extra_args: [--llm-model, gpt-oss-20b-MXFP4.gguf, --embedder, "http://127.0.0.1:18096",
+                 --embedder-gguf, "@lab/home/models/embeddinggemma-2-Q8_0.gguf", --dense-gate, "0.2:0.77"]
+    jobs: 3
+    timeout_s: 600
+
+compare:
+  - [harvest-model-off, harvest-model-off-dense-gate]
+  - [harvest-model-off, harvest-gpt-oss-20b-dense-gate]
+  - [harvest-model-off-dense-gate, harvest-gpt-oss-20b-dense-gate]
+
+judge:
+  model: opus
+  agreement_model: sonnet
+  agreement_sample: 0.15
+  cache: ../2026-11-27-baseline/.judge-cache     # restored from the lab copy; identical answers are never re-judged
+  per_call: 6
+  jobs: 3

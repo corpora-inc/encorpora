@@ -48,7 +48,8 @@ def main() -> None:
     ap.add_argument("--log", type=Path, required=True)
     ap.add_argument("--authored-at", default="2026-11-27")
     ap.add_argument("--id-prefix", default="crane-v1")
-    ap.add_argument("--avoid", type=Path, help="an existing set: drop near-duplicates of its questions too")
+    ap.add_argument("--avoid", type=Path, nargs="*", default=[],
+                    help="existing sets: drop near-duplicates of their questions too")
     a = ap.parse_args()
 
     secs = {json.loads(l)["section_id"]: json.loads(l) for l in a.sections.open()}
@@ -171,7 +172,7 @@ def main() -> None:
 
     kept = []
     prior = [{"_src": f"avoid:{x['id']}", "question": x["question"], "section_ids": x.get("section_ids") or []}
-             for x in map(json.loads, a.avoid.open())] if a.avoid else []
+             for path in a.avoid for x in map(json.loads, path.open())]
     for it in items:
         t = tokens(it["question"])
         dup = None

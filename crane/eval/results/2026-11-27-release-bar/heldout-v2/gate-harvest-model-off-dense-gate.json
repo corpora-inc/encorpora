@@ -1,0 +1,318 @@
+{
+ "system": "harvest-model-off-dense-gate",
+ "set": {
+  "path": "../../crane/eval/results/2026-11-27-release-bar/../../heldout-v2.jsonl",
+  "sha256": "f19bd6fe86d33a8506967dec0fcb04fb73a92c164c9ef5f7a80405bba9ed0211",
+  "items": 73,
+  "fresh_name": "heldout-v2",
+  "hidden": false
+ },
+ "pass": false,
+ "checks": [
+  {
+   "criterion": "fresh held-out set",
+   "pass": true,
+   "value": "heldout-v2",
+   "bar": "one of heldout-v2, heldout-v3",
+   "why": ""
+  },
+  {
+   "criterion": "set size",
+   "pass": false,
+   "value": 73,
+   "bar": ">= 300 items",
+   "why": "too small to certify; reported as interim"
+  },
+  {
+   "criterion": "no failed calls",
+   "pass": true,
+   "value": {
+    "errors": 0,
+    "grades_missing": 0
+   },
+   "bar": "0 and 0",
+   "why": ""
+  },
+  {
+   "criterion": "fully correct (answerable)",
+   "pass": false,
+   "value": 0.3729,
+   "bar": ">= 0.9",
+   "why": "22 of 59; 95% CI [0.2542372881355932, 0.5084745762711864]"
+  },
+  {
+   "criterion": "correct declines (must-decline declined)",
+   "pass": false,
+   "value": 0.9286,
+   "bar": ">= 0.95",
+   "why": "13 of 14"
+  },
+  {
+   "criterion": "unsupported claims in shipped answers",
+   "pass": false,
+   "value": 7,
+   "bar": "<= 0",
+   "why": "rate 0.035; 3 answers carry one"
+  },
+  {
+   "criterion": "every quote verbatim",
+   "pass": true,
+   "value": 1.0,
+   "bar": ">= 1.0",
+   "why": "133 of 133"
+  },
+  {
+   "criterion": "every citation real",
+   "pass": true,
+   "value": 1.0,
+   "bar": ">= 1.0",
+   "why": ""
+  },
+  {
+   "criterion": "beats frontier-alone on fully correct",
+   "pass": false,
+   "value": {
+    "system": 0.3729,
+    "frontier-alone": 0.8475
+   },
+   "bar": "system > comparison, with 0 unsupported claims",
+   "why": "frontier-alone unsupported-claim rate 0.21419185282522996"
+  },
+  {
+   "criterion": "beats opus-alone on fully correct",
+   "pass": false,
+   "value": {
+    "system": 0.3729,
+    "opus-alone": 0.7966
+   },
+   "bar": "system > comparison, with 0 unsupported claims",
+   "why": "opus-alone unsupported-claim rate 0.3567110036275695"
+  },
+  {
+   "criterion": "set not in the bake",
+   "pass": true,
+   "value": 0,
+   "bar": "no pack alias, answer or question with token Jaccard >= 0.9 to a set question",
+   "why": "0 look-alikes in [0.6, 0.9) over 1764 pack texts (reported, not failing)"
+  }
+ ],
+ "by_category": [
+  {
+   "category": "assembly-disassembly",
+   "n": 6,
+   "metric": "fully correct",
+   "value": 0.5,
+   "below_floor": true,
+   "answers_with_unsupported": 0
+  },
+  {
+   "category": "crawler-truck-locomotive",
+   "n": 3,
+   "metric": "fully correct",
+   "value": 0.6667,
+   "below_floor": true,
+   "answers_with_unsupported": 0
+  },
+  {
+   "category": "decline-asme",
+   "n": 2,
+   "metric": "declined",
+   "value": 0.5,
+   "below_floor": true,
+   "answers_with_unsupported": 1
+  },
+  {
+   "category": "decline-legal",
+   "n": 2,
+   "metric": "declined",
+   "value": 1.0,
+   "below_floor": false,
+   "answers_with_unsupported": 0
+  },
+  {
+   "category": "decline-manufacturer",
+   "n": 3,
+   "metric": "declined",
+   "value": 1.0,
+   "below_floor": false,
+   "answers_with_unsupported": 0
+  },
+  {
+   "category": "decline-non-crane",
+   "n": 2,
+   "metric": "declined",
+   "value": 1.0,
+   "below_floor": false,
+   "answers_with_unsupported": 0
+  },
+  {
+   "category": "decline-other",
+   "n": 1,
+   "metric": "declined",
+   "value": 1.0,
+   "below_floor": false,
+   "answers_with_unsupported": 0
+  },
+  {
+   "category": "decline-other-jurisdiction",
+   "n": 2,
+   "metric": "declined",
+   "value": 1.0,
+   "below_floor": false,
+   "answers_with_unsupported": 0
+  },
+  {
+   "category": "decline-specific-load-chart",
+   "n": 2,
+   "metric": "declined",
+   "value": 1.0,
+   "below_floor": false,
+   "answers_with_unsupported": 0
+  },
+  {
+   "category": "derricks",
+   "n": 2,
+   "metric": "fully correct",
+   "value": 0.5,
+   "below_floor": true,
+   "answers_with_unsupported": 0
+  },
+  {
+   "category": "fall-protection",
+   "n": 1,
+   "metric": "fully correct",
+   "value": 1.0,
+   "below_floor": false,
+   "answers_with_unsupported": 0
+  },
+  {
+   "category": "floating-cranes",
+   "n": 2,
+   "metric": "fully correct",
+   "value": 0.5,
+   "below_floor": true,
+   "answers_with_unsupported": 0
+  },
+  {
+   "category": "inspections",
+   "n": 1,
+   "metric": "fully correct",
+   "value": 1.0,
+   "below_floor": false,
+   "answers_with_unsupported": 0
+  },
+  {
+   "category": "operational-aids",
+   "n": 4,
+   "metric": "fully correct",
+   "value": 0.0,
+   "below_floor": true,
+   "answers_with_unsupported": 0
+  },
+  {
+   "category": "operator-duties",
+   "n": 4,
+   "metric": "fully correct",
+   "value": 0.25,
+   "below_floor": true,
+   "answers_with_unsupported": 0
+  },
+  {
+   "category": "operator-qualification",
+   "n": 4,
+   "metric": "fully correct",
+   "value": 0.5,
+   "below_floor": true,
+   "answers_with_unsupported": 0
+  },
+  {
+   "category": "overhead-gantry",
+   "n": 3,
+   "metric": "fully correct",
+   "value": 0.6667,
+   "below_floor": true,
+   "answers_with_unsupported": 0
+  },
+  {
+   "category": "personnel-lifts",
+   "n": 3,
+   "metric": "fully correct",
+   "value": 0.3333,
+   "below_floor": true,
+   "answers_with_unsupported": 0
+  },
+  {
+   "category": "power-lines",
+   "n": 10,
+   "metric": "fully correct",
+   "value": 0.4,
+   "below_floor": true,
+   "answers_with_unsupported": 0
+  },
+  {
+   "category": "rigging-slings",
+   "n": 4,
+   "metric": "fully correct",
+   "value": 0.0,
+   "below_floor": true,
+   "answers_with_unsupported": 1
+  },
+  {
+   "category": "safety-devices",
+   "n": 1,
+   "metric": "fully correct",
+   "value": 1.0,
+   "below_floor": false,
+   "answers_with_unsupported": 0
+  },
+  {
+   "category": "scope-definitions",
+   "n": 3,
+   "metric": "fully correct",
+   "value": 0.0,
+   "below_floor": true,
+   "answers_with_unsupported": 0
+  },
+  {
+   "category": "sideboom-pile-small",
+   "n": 1,
+   "metric": "fully correct",
+   "value": 0.0,
+   "below_floor": true,
+   "answers_with_unsupported": 0
+  },
+  {
+   "category": "tower-cranes",
+   "n": 2,
+   "metric": "fully correct",
+   "value": 0.5,
+   "below_floor": true,
+   "answers_with_unsupported": 0
+  },
+  {
+   "category": "wire-rope",
+   "n": 4,
+   "metric": "fully correct",
+   "value": 0.25,
+   "below_floor": true,
+   "answers_with_unsupported": 1
+  },
+  {
+   "category": "work-area-control",
+   "n": 1,
+   "metric": "fully correct",
+   "value": 0.0,
+   "below_floor": true,
+   "answers_with_unsupported": 0
+  }
+ ],
+ "contamination": {
+  "pack_texts": 1764,
+  "near": [],
+  "leaks": []
+ },
+ "runs": [
+  "../../crane/eval/results/2026-11-27-release-bar/heldout-v2",
+  "../../crane/eval/results/2026-11-27-frontier/heldout-v2"
+ ]
+}
