@@ -168,8 +168,16 @@ fn practice_deficiencies_carry_no_rule_and_say_so() {
     );
     let steps = p.proc_steps("proc-shift").unwrap();
     let basis = |i: usize| steps[i].deficiency.as_ref().unwrap().basis;
-    assert_eq!(basis(0), Some(harvest_core::pack::Basis::Rule), "a cited row is a rule");
-    assert_eq!(basis(1), Some(harvest_core::pack::Basis::Practice), "an uncited row is practice");
+    assert_eq!(
+        basis(0),
+        Some(harvest_core::pack::Basis::Rule),
+        "a cited row is a rule"
+    );
+    assert_eq!(
+        basis(1),
+        Some(harvest_core::pack::Basis::Practice),
+        "an uncited row is practice"
+    );
     assert!(steps[1].deficiency.as_ref().unwrap().section_id.is_none());
     assert_eq!(basis(2), Some(harvest_core::pack::Basis::Practice));
 
@@ -179,9 +187,12 @@ fn practice_deficiencies_carry_no_rule_and_say_so() {
         r#"{"guidance":"g","basis":"practice","section_id":"ex.2","quote":"x"}"#,
         r#"{"guidance":"g","section_id":"ex.2","quote":null}"#,
     ] {
-        let (_t, p) = pack_with(&format!(
+        let (_t, p) = pack_with(
+            format!(
             "INSERT INTO proc_step VALUES ('proc-shift', 2, 'x', '{{}}', 'pass_fail', '[]', '{d}', 'en', 'prov-fixture');"
-        ));
+                    )
+            .leak(),
+        );
         assert!(p.proc_steps("proc-shift").is_err(), "{d}");
     }
 }

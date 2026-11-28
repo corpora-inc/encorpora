@@ -139,15 +139,22 @@ impl Deficiency {
     /// Fill in `basis` and refuse a row whose basis and citation disagree:
     /// a rule needs a section and a quote, practice has neither.
     pub(crate) fn settle(mut self) -> std::result::Result<Self, String> {
-        let cited = self.section_id.as_deref().is_some_and(|s| !s.trim().is_empty());
+        let cited = self
+            .section_id
+            .as_deref()
+            .is_some_and(|s| !s.trim().is_empty());
         let quoted = self.quote.as_deref().is_some_and(|q| !q.trim().is_empty());
-        let basis = self.basis.unwrap_or(if cited { Basis::Rule } else { Basis::Practice });
+        let basis = self
+            .basis
+            .unwrap_or(if cited { Basis::Rule } else { Basis::Practice });
         match basis {
             Basis::Rule if !(cited && quoted) => {
                 return Err("a rule deficiency needs section_id and quote".into());
             }
             Basis::Practice if cited || quoted => {
-                return Err("a practice deficiency cites no rule (section_id and quote are null)".into());
+                return Err(
+                    "a practice deficiency cites no rule (section_id and quote are null)".into(),
+                );
             }
             _ => {}
         }

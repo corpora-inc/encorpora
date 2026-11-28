@@ -146,9 +146,7 @@ pub fn check(pack: &Pack, body: &[Segment], opts: CheckOptions) -> Result<(Vec<S
             i += 1;
         }
         let text_end = i;
-        while i < valid.len()
-            && !matches!(valid[i], Segment::Text { .. } | Segment::Check { .. })
-        {
+        while i < valid.len() && !matches!(valid[i], Segment::Text { .. } | Segment::Check { .. }) {
             i += 1;
         }
         let para = &valid[start..i];
