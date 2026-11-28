@@ -1180,31 +1180,49 @@ impl Instructor {
         let Some(e) = self.exam(learner) else {
             return Vec::new();
         };
-        let mut items: Vec<(f64, FocusItem)> = Vec::new();
-        let mut seen = BTreeSet::new();
+        // A skill several domains test counts in each of them (its share of
+        // each domain added up); it is listed under the domain it counts
+        // most in.
+        let mut by_skill: BTreeMap<String, (f64, f64, String, f64)> = BTreeMap::new();
         for d in e["domains"].as_array().into_iter().flatten() {
             let weight = d["weight"].as_f64().unwrap_or(0.0);
             let did = format!("domain:{}", d["id"].as_str().unwrap_or_default());
-            let skills = self.tree.children(&did);
-            let n_skills = skills.len().max(1) as f64;
+            let skills: Vec<&CourseNode> = self
+                .tree
+                .children(&did)
+                .into_iter()
+                .filter(|s| s.level == "skill")
+                .collect();
+            let share = weight / (skills.len().max(1) as f64).sqrt();
+            let title = d["title"].as_str().unwrap_or_default().to_string();
             for s in skills {
-                if s.level != "skill" || !seen.insert(s.node_id.clone()) {
-                    continue;
+                let e =
+                    by_skill
+                        .entry(s.node_id.clone())
+                        .or_insert((0.0, 0.0, title.clone(), weight));
+                e.0 += share;
+                if share > e.1 {
+                    *e = (e.0, share, title.clone(), weight);
                 }
+            }
+        }
+        let mut items: Vec<(f64, FocusItem)> = by_skill
+            .into_iter()
+            .filter_map(|(id, (sum, _, domain, weight))| {
+                let s = self.tree.node(&id)?;
                 let m = learner.mastery.get(skill_id(s)).copied();
-                let score = weight / n_skills.sqrt() * (1.0 - m.unwrap_or(UNPRACTISED));
-                items.push((
-                    score,
+                Some((
+                    sum * (1.0 - m.unwrap_or(UNPRACTISED)),
                     FocusItem {
-                        node_id: s.node_id.clone(),
+                        node_id: id,
                         title: s.title.clone(),
-                        domain: d["title"].as_str().unwrap_or_default().to_string(),
+                        domain,
                         weight,
                         mastery: m,
                     },
-                ));
-            }
-        }
+                ))
+            })
+            .collect();
         items.sort_by(|a, b| {
             b.0.total_cmp(&a.0)
                 .then_with(|| a.1.node_id.cmp(&b.1.node_id))

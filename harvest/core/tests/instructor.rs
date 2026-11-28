@@ -719,3 +719,33 @@ fn a_node_opens_on_its_overview_and_never_repeats_itself() {
         }]
     );
 }
+
+#[test]
+fn a_skill_two_domains_test_counts_in_both() {
+    let b = common::pack();
+    let ex = json!([{"id": "core", "title": "Core", "domains": [
+        {"id": "a", "title": "A", "weight": 0.5, "skillIds": ["skill-clearance"]},
+        {"id": "b", "title": "B", "weight": 0.5, "skillIds": ["skill-clearance"]}]}]);
+    let e = Engine::new(b.pack.clone());
+    let i = Instructor::new(
+        Arc::new(e),
+        None,
+        CourseTree::from_pack(&b.pack, Some(ex)).unwrap(),
+    );
+    let learner = Learner {
+        mastery: [("skill-clearance".to_string(), 0.2)].into(),
+        ..Learner::default()
+    };
+    let t = i
+        .turn(&TurnRequest {
+            learner,
+            input: Some(Input::Focus),
+            ask: None,
+            ..ask("")
+        })
+        .unwrap();
+    let Block::Focus { items } = &t.blocks[0] else {
+        panic!()
+    };
+    assert_eq!(items.len(), 1, "listed once: {items:?}");
+}
