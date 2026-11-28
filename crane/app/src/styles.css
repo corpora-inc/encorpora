@@ -236,6 +236,13 @@
   .plate:active {
     transform: translateY(1px);
   }
+  /* Pack diagrams draw in currentColor and three named colours; they follow the app's theme. */
+  .diagram {
+    color: var(--ink);
+    --crane-accent: var(--amber);
+    --crane-muted: var(--ink-3);
+    --crane-danger: var(--fail);
+  }
   .diagram svg {
     width: 100%;
     height: auto;

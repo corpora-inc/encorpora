@@ -1,18 +1,17 @@
 import { Fragment, useEffect, useState, type FormEvent } from "react";
-import { Link, useNavigate, useParams } from "react-router";
+import { Link, Navigate, useNavigate, useParams } from "react-router";
 import { BookMarked, Search } from "lucide-react";
 import { engine } from "../engine/index.ts";
 import { excerpt, highlight, matchWindow } from "../engine/text.ts";
-import { LEVEL, type AskResult, type FindResult, type RuleGroup } from "../engine/types.ts";
-import { audit, auditFind } from "../lib/audit.ts";
+import type { FindResult, RuleGroup } from "../engine/types.ts";
+import { auditFind } from "../lib/audit.ts";
 import { teachableMatches, type Teachable } from "../lib/match.ts";
-import { answerPath, askQueryPath, lessonPath, readerPath, signalPath, termPath, topicPath } from "../routes.ts";
+import { askQueryPath, lessonPath, readerPath, signalPath, termPath, topicPath } from "../routes.ts";
 import { SIGNALS, displayName } from "../tools/signals.ts";
 import { useDevice } from "../store/device.ts";
 import { useSettings } from "../store/settings.ts";
 import { reportError } from "../store/toast.ts";
 import { Button, List, Page, Row } from "../ui/kit.tsx";
-import { Segments, spokenText } from "../ui/law.tsx";
 import { ReadAloud } from "../ui/ReadAloud.tsx";
 import { useT } from "../ui/useT.ts";
 import { useVoiceInput } from "../voice/useVoiceInput.ts";
@@ -90,25 +89,12 @@ export function AskHome() {
   return (
     <Page title={t("ask.title")}>
       <AskBox autoFocus={false} />
+      {/* Searches to start from: the course map's topics, looked up in the rules. Never a cached answer. */}
       <List label={t("ask.starters")}>
-        {engine()
-          .starters(LEVEL)
-          .map((s) => (
-            <Row key={s.answer_id} to={answerPath(s.answer_id)} title={s.question} />
-          ))}
+        {engine().topics.map((x) => (
+          <Row key={x.topic_id} to={askQueryPath(x.title)} title={x.title} meta={excerpt(x.summary, 90)} />
+        ))}
       </List>
-    </Page>
-  );
-}
-
-function AnswerView({ result }: { result: AskResult }) {
-  const t = useT();
-  return (
-    <Page title={result.question} up={{ to: "/ask", label: t("tab.ask") }} actions={result.body.length > 0 ? <ReadAloud text={spokenText(result.body)} /> : undefined}>
-      <Segments body={result.body} />
-      <div className="mt-4 border-t border-line pt-5">
-        <AskBox />
-      </div>
     </Page>
   );
 }
@@ -286,19 +272,7 @@ export function AskQuery() {
   return <FindView query={q} result={state && state.q === q ? state.result : null} />;
 }
 
+/** Old links to a cached answer: Ask has no answer cache; open Ask once. */
 export function AskAnswer() {
-  const { id = "" } = useParams();
-  const t = useT();
-  const result = engine().answer(id, LEVEL);
-  useEffect(() => {
-    if (result) audit(result);
-  }, [result?.answer_id]); // eslint-disable-line react-hooks/exhaustive-deps
-  if (!result)
-    return (
-      <Page title={t("notFound.title")} up={{ to: "/ask", label: t("tab.ask") }}>
-        <p className="m-0">{t("notFound.answer")}</p>
-        <Link to="/ask">{t("tab.ask")}</Link>
-      </Page>
-    );
-  return <AnswerView result={result} />;
+  return <Navigate to="/ask" replace />;
 }

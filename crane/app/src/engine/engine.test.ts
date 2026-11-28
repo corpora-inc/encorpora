@@ -136,14 +136,6 @@ test("an empty or off-topic query finds nothing", async () => {
   assert.deepEqual((await e.find("xyzzy qwerty")).groups, []);
 });
 
-test("a starter answer adapts to the role when a role variant exists", () => {
-  const op = e.answer("a.powerline-clearance", "operator");
-  const tr = e.answer("a.powerline-clearance", "trainee");
-  assert.equal(op?.answer_id, tr?.answer_id);
-  assert.notDeepEqual(op?.body, tr?.body);
-  assert.equal(tr?.body[0]?.t, "text");
-});
-
 test("hierarchy: ancestors, children, root and cross references", () => {
   const path = e.ancestors("29cfr1926.1408(a)(2)(iii)(A)").map((s) => s.section_id);
   assert.deepEqual(path, ["29cfr1926.1408", "29cfr1926.1408(a)", "29cfr1926.1408(a)(2)", "29cfr1926.1408(a)(2)(iii)", "29cfr1926.1408(a)(2)(iii)(A)"]);
@@ -165,7 +157,6 @@ test("static tables are consistent", () => {
     p.steps.forEach((s, i) => assert.equal(s.ord, i + 1, "step ords are 1-based, as in packs"));
     for (const s of p.steps) for (const r of ["trainee", "operator", "inspector"] as const) assert.ok(s.detail[r]);
   }
-  for (const r of ["trainee", "operator", "inspector"] as const) assert.ok(e.starters(r).length >= 3);
   for (const t of e.terms) assert.ok(e.sections.get(t.section_id)!.text.includes(t.quote!));
   assert.ok(e.explanation("29cfr1926.1408", "inspector", "en"));
   assert.equal(e.explanation("29cfr1926.1408", "inspector", "xx"), null);

@@ -16,7 +16,12 @@ test("placeholder reasons fail the content rule", () => {
   assert.deepEqual(rationaleProblems({ q_id: "y", choices: ["a"], rationales: ["A real reason that is long enough."] }), ["y note: empty"]);
 });
 
-test("every practice question in the pack has a real reason for every choice and a note", () => {
-  assert.ok(e.questions.length > 0);
-  for (const q of e.questions) if (q.kind === "mc") assert.deepEqual(rationaleProblems(q), [], q.q_id);
+test("every practice question in the fixture has a real reason for every choice and a note", () => {
+  // The raw rows, not the engine's list: the engine hides items that fail, which would hide a regression here.
+  const rows = (JSON.parse(readFileSync(new URL("./fixture/pack.json", import.meta.url), "utf8")) as RawPack).question;
+  assert.equal(e.questions.length, rows.length, "the engine hides no fixture item");
+  for (const r of rows) {
+    const q = { q_id: String(r.q_id), choices: JSON.parse(String(r.choices)) as string[], rationales: JSON.parse(String(r.rationales)) as string[], note: (r.note as string | null) ?? null };
+    assert.deepEqual(rationaleProblems(q), [], q.q_id);
+  }
 });

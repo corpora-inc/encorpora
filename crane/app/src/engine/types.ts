@@ -18,7 +18,9 @@ export type Segment =
   | { t: "text"; text: string }
   | { t: "quote"; section_id: string; text: string }
   | { t: "cite"; section_id: string }
-  | { t: "diagram"; diagram_id: string };
+  | { t: "diagram"; diagram_id: string }
+  /** A self-check inside a lesson: a question the learner answers in their head, then reveals. */
+  | { t: "check"; question: string; answer: string };
 
 export interface Source {
   source_id: string;
@@ -107,6 +109,8 @@ export interface Question {
 export interface Deficiency {
   guidance: string;
   action: string;
+  /** "rule": a rule requires it (section_id and quote set). "practice": good practice no rule states (both null). */
+  basis?: "rule" | "practice";
   /** The rule and its exact words; both null for a good-practice deficiency that no rule states. */
   section_id: string | null;
   quote: string | null;
@@ -242,9 +246,6 @@ export interface Engine {
   equipment: Equipment[];
   exams: ExamBlueprintRow[];
   prereqs: Record<string, string[]>;
-  starters(role: Role): { answer_id: string; question: string }[];
-  /** Baked answer by id, picking the variant for the role. */
-  answer(answerId: string, role: Role): AskResult | null;
   /**
    * Look the words up in the rules. No answer is ever chosen by phrasing:
    * the result is what the index holds, grouped by section. A native engine

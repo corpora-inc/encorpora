@@ -200,7 +200,7 @@ jobs:
           # TypeScript directly and links harvest-core and the shared plugins
           # by path, so each consumer filter includes what it compiles. Every
           # job below skips its steps cleanly until its directory exists.
-          set_output crane_app '^(crane/(app|content)/|harvest/practice/|corpan/plugins/|amp/(browser-security\.mjs|scripts/(install-browser\.mjs|configure-browser-sandbox\.sh))$)'
+          set_output crane_app '^(crane/(app|content)/|harvest/(practice|core|pipeline)/|harvest/CONTRACT\.md$|corpan/plugins/|amp/(browser-security\.mjs|scripts/(install-browser\.mjs|configure-browser-sandbox\.sh))$)'
           set_output crane_native '^(crane/app/src-tauri/|harvest/core/|corpan/plugins/|corpan/corpan-app/src-tauri/vendor/|homeschool-offline/app/src-tauri/plugins/tauri-plugin-ios-share/)'
           set_output harvest_core '^(harvest/core/)'
           set_output harvest_pipeline '^(harvest/pipeline/)'
@@ -1879,7 +1879,7 @@ jobs:
     needs: changes
     if: needs.changes.outputs.crane_app == 'true'
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 40
     defaults:
       run:
         working-directory: .
@@ -1932,6 +1932,27 @@ jobs:
       - if: steps.tree.outputs.present == 'true'
         working-directory: crane/content/tools
         run: npm ci && node --test "loadcharts/**/*.test.ts" "powerline/**/*.test.ts" && npm run tsc
+      # The app reads the real pack: build it from this checkout (harvest-core + harvest-pipeline,
+      # build-pack.sh with an ephemeral key, showcheck) and place its browser copy in public/pack/.
+      - uses: actions/setup-python@v5
+        if: steps.tree.outputs.present == 'true'
+        with:
+          python-version: '3.12'
+      - uses: Swatinem/rust-cache@v2
+        if: steps.tree.outputs.present == 'true'
+        with:
+          workspaces: harvest/core
+      - name: Cache the locked eCFR sources
+        if: steps.tree.outputs.present == 'true'
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/harvest/raw
+          key: crane-raw-${{ hashFiles('crane/content/corpus.sources.lock.json') }}
+      - name: Build the pack's browser copy
+        if: steps.tree.outputs.present == 'true'
+        env:
+          HARVEST_VENV: ${{ runner.temp }}/harvest-venv
+        run: crane/app/scripts/build-browser-pack.sh
       - if: steps.tree.outputs.present == 'true'
         working-directory: crane/app
         run: npm run build
