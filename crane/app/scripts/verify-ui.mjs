@@ -29,6 +29,7 @@ const base = `http://127.0.0.1:${port}`;
 const WIDTHS = [320, 390, 768, 1280];
 const THEMES = ["light", "dark"];
 const ROUTES = [
+  "/instructor",
   "/ask",
   "/ask/q/rules%20for%20barge%20mounted%20cranes",
   "/ask/q/signaling",
@@ -57,7 +58,7 @@ const ROUTES = [
   "/settings",
   "/settings/about",
 ];
-const SCREENSHOT = new Set(["/learn/topic/site", "/learn/lesson/l.assembly.05", "/ask", "/ask/q/signaling", "/ask/q/outrigers", "/ask/q/xyzzy", "/read/29cfr1926.1408(b)(3)", "/do", "/do/shift-inspection", "/learn", "/practice", "/tools/clearance", "/tools/load-chart", "/tools/signals", "/settings"]);
+const SCREENSHOT = new Set(["/instructor", "/learn/topic/site", "/learn/lesson/l.assembly.05", "/ask", "/ask/q/signaling", "/ask/q/outrigers", "/ask/q/xyzzy", "/read/29cfr1926.1408(b)(3)", "/do", "/do/shift-inspection", "/learn", "/practice", "/tools/clearance", "/tools/load-chart", "/tools/signals", "/settings"]);
 // Serve every page under the shipped app's Content-Security-Policy, so anything the
 // native WebView would block (inline script, a stray fetch, a blob image) fails here too.
 const CSP = JSON.parse(await readFile(path.join(root, "src-tauri", "tauri.conf.json"), "utf8")).app.security.csp;
@@ -352,6 +353,42 @@ try {
     await page.screenshot({ path: path.join(out, `flow-reader-deep-link-${width}.png`) });
     assert.deepEqual(errors, []);
     await context.close();
+  }
+
+  // 2c. The Instructor: the welcome from the pack, a tapped move answered from the course tree, free text
+  // answered with the course and the rules (no model in the browser), conversations at their own routes.
+  for (const width of [320, 390, 1280]) {
+    const { context, page, errors } = await newPage(browser, width, "light");
+    await page.goto(base + "/instructor");
+    const chips = page.getByRole("group", { name: "Next" }).getByRole("button");
+    await chips.first().waitFor();
+    assert.ok(await page.locator(".instructor-turn").count() >= 1, "the welcome turn");
+    assert.ok((await page.locator(".node-block, .exam-block").count()) >= 1, "the welcome shows the course or the exam");
+    if (width === 390) await page.screenshot({ path: path.join(out, "flow-instructor-welcome.png"), fullPage: true });
+    const label = (await chips.first().innerText()).trim();
+    await chips.first().click();
+    await page.waitForURL(/\/instructor\/c\/c-/);
+    await page.locator(".learner-turn", { hasText: label }).waitFor();
+    await page.locator("li:nth-child(3) .instructor-turn").waitFor();
+    assert.ok(await page.getByRole("group", { name: "Next" }).getByRole("button").count() >= 1, "every turn ends with follow-ups");
+    // Free text: the course node its words match, then the rules that match them.
+    await page.getByLabel("Ask the instructor").fill("hand signals");
+    await page.getByLabel("Ask the instructor").press("Enter");
+    await page.locator(".learner-turn", { hasText: "hand signals" }).waitFor();
+    const rule = page.locator(".search-block .rule-hit").first();
+    await rule.waitFor();
+    assert.equal(await rule.getAttribute("data-root"), "29cfr1926.1419", "free text reaches the signal rules");
+    if (width === 390) await page.screenshot({ path: path.join(out, "flow-instructor-conversation.png"), fullPage: true });
+    // A real route: refresh restores the conversation; Back leaves it.
+    const url = page.url();
+    await page.reload();
+    await page.locator(".learner-turn", { hasText: "hand signals" }).waitFor();
+    assert.equal(page.url(), url);
+    await page.goto(base + "/instructor");
+    await page.getByRole("link", { name: label }).first().waitFor();
+    assert.deepEqual(errors, []);
+    await context.close();
+    checks++;
   }
 
   // 3. Ask is a search over the rules: results grouped by section, course-map matches first, never a cached answer.

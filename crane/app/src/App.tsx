@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { createBrowserRouter, Navigate, RouterProvider, useLocation } from "react-router";
 import { Shell } from "./ui/Shell.tsx";
 import { AskAnswer, AskHome, AskQuery } from "./screens/Ask.tsx";
+import { ConversationScreen, InstructorHome } from "./screens/Instructor.tsx";
 import { DoHome, ProcedureScreen, RunReport, RunStep, RunsList } from "./screens/Do.tsx";
 import { Glossary, LearnHome, LessonScreen, RulesIndex, TermScreen, TopicScreen } from "./screens/Learn.tsx";
 import { ExamIntro, ExamItem, ExamResults, ExamReview, PracticeHome, PracticeSession, SkillsScreen } from "./screens/Practice.tsx";
@@ -34,6 +35,8 @@ export const routes = [
     children: [
       // Practice is home: first run lands in it.
       { path: "/", element: <Navigate to="/practice" replace /> },
+      { path: "/instructor", element: <InstructorHome /> },
+      { path: "/instructor/c/:id", element: <ConversationScreen /> },
       { path: "/ask", element: <AskHome /> },
       { path: "/ask/q/:q", element: <AskQuery /> },
       { path: "/ask/a/:id", element: <AskAnswer /> },

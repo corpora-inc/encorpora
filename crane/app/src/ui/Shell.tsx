@@ -7,7 +7,8 @@ import type { StringKey } from "../i18n/index.ts";
 // Practice first: it is home.
 const TABS: { to: string; label: StringKey; icon: typeof BookOpen }[] = [
   { to: "/practice", label: "tab.practice", icon: Target },
-  { to: "/ask", label: "tab.ask", icon: MessageCircleQuestion },
+  // The Instructor is the conversation; rule search lives inside it (and at /ask).
+  { to: "/instructor", label: "tab.instructor", icon: MessageCircleQuestion },
   { to: "/learn", label: "tab.learn", icon: BookOpen },
   { to: "/do", label: "tab.do", icon: ClipboardCheck },
   { to: "/tools", label: "tab.tools", icon: Wrench },
