@@ -21,6 +21,7 @@ sources:
 
 maint:
   release_arm: sonnet-img
+  expected: pump40-expected.json            # the answer key: `maint score` and build-pack.sh use it
   cache_dir: cache
   ledger: cache/ledger.jsonl
   image_px: 1400

@@ -60,8 +60,9 @@ print(f"build-pack: warnings+cautions attached {wc['attached']}/{wc['present']},
 if wc["rate"] < need:
     sys.exit(f"build-pack: coverage {wc['rate']:.1%} is below {need:.0%}")
 PY
-expected="$(dirname "$corpus")/pump40-expected.json"
-if [ -f "$expected" ]; then
+key="$(python3 -c 'import sys, yaml; print((yaml.safe_load(open(sys.argv[1])).get("maint") or {}).get("expected") or "")' "$corpus")"
+expected="$(dirname "$corpus")/$key"
+if [ -n "$key" ] && [ -f "$expected" ]; then
   "$bake" maint score "$corpus" "${arm[@]}" --pack "$out/pack" --expected "$expected" --json > "$out/score.json"
   "$bake" maint score "$corpus" "${arm[@]}" --pack "$out/pack" --expected "$expected"
 fi

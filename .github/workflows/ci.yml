@@ -56,6 +56,7 @@ jobs:
       harvest_pipeline: ${{ steps.filter.outputs.harvest_pipeline }}
       harvest_practice: ${{ steps.filter.outputs.harvest_practice }}
       crane_pack: ${{ steps.filter.outputs.crane_pack }}
+      maint_pack: ${{ steps.filter.outputs.maint_pack }}
       ci_scripts: ${{ steps.filter.outputs.ci_scripts }}
       corpan_app: ${{ steps.filter.outputs.corpan_app }}
       dja: ${{ steps.filter.outputs.dja }}
@@ -212,6 +213,8 @@ jobs:
           set_output harvest_practice '^(harvest/practice/)'
           # The crane pack: built from its content with the pipeline, read back with the core.
           set_output crane_pack '^(crane/content/|harvest/(pipeline|core)/|harvest/CONTRACT\.md$)'
+          # The maintenance proof packs: built from the committed extraction cache, graph-validated by the core.
+          set_output maint_pack '^(maint/content/|harvest/(pipeline|core)/|harvest/CONTRACT\.md$)'
           set_output ci_scripts '^(\.github/scripts/|\.github/workflows/[^/]+\.ya?ml$|amp/scripts/test-suite\.mjs$)'
           # `corpan/packs/shared/` and `corpan/packs/sdk/` are in here because the
           # corpan-app job COMPILES them: `tsconfig.json` maps `@shared/*` onto
@@ -2267,6 +2270,91 @@ jobs:
           retention-days: 7
           if-no-files-found: ignore
 
+  # The maintenance proof packs (maint/content/proof): built from the committed extraction cache
+  # with no model call, fault trees validated by harvest-core (`harvest verify`), coverage of
+  # warnings and cautions checked, and precision/recall scored against the proof's answer key.
+  # Variant 2 builds from the rules arm and runs one scanned page through OCR. An input to `ci-gate`.
+  maint-pack:
+    name: maint-pack
+    needs: changes
+    if: needs.changes.outputs.maint_pack == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/7ac9640a94395e199ea6edf38318b3aa1efb2212/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != 'd28194d064f7e633e894d99a40bf8521da9c7bb1b749e8a38a1a3d832d56717c':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name, '--source-commit', '7ac9640a94395e199ea6edf38318b3aa1efb2212'], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
+      - uses: actions/checkout@v4
+      - id: tree
+        name: Detect maint/content and harvest
+        run: |
+          if [ -f maint/content/build-pack.sh ] && [ -f harvest/core/Cargo.toml ] && [ -f harvest/pipeline/pyproject.toml ]; then
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          else echo "present=false" >> "$GITHUB_OUTPUT"; echo "maint pack inputs not present; skipping."; fi
+      - name: Pull the proof manuals (LFS)
+        if: steps.tree.outputs.present == 'true'
+        run: git lfs pull --include="maint/content/proof/*.pdf"
+      - name: Tesseract (the scanned proof page)
+        if: steps.tree.outputs.present == 'true'
+        run: sudo apt-get install -y --no-install-recommends tesseract-ocr
+      - uses: actions/setup-python@v5
+        if: steps.tree.outputs.present == 'true'
+        with:
+          python-version: '3.12'
+      - uses: Swatinem/rust-cache@v2
+        if: steps.tree.outputs.present == 'true'
+        with:
+          workspaces: harvest/core
+      - name: Build harvest-core
+        if: steps.tree.outputs.present == 'true'
+        working-directory: harvest/core
+        run: cargo build --locked --release --bin harvest
+      - name: Install harvest-pipeline
+        if: steps.tree.outputs.present == 'true'
+        run: |
+          set -euo pipefail
+          python -m venv "$RUNNER_TEMP/venv"
+          "$RUNNER_TEMP/venv/bin/pip" install --upgrade pip
+          "$RUNNER_TEMP/venv/bin/pip" install -e 'harvest/pipeline[pdf,ocr]'
+      - name: Build, validate, cover and score the proof packs
+        if: steps.tree.outputs.present == 'true'
+        env:
+          HARVEST_BIN: ${{ github.workspace }}/harvest/core/target/release/harvest
+        run: |
+          set -euo pipefail
+          export PATH="$RUNNER_TEMP/venv/bin:$PATH"
+          maint/content/build-pack.sh "$RUNNER_TEMP/maint-v1" maint/content/proof/corpus.yaml
+          MAINT_PACK_ARM=rules maint/content/build-pack.sh "$RUNNER_TEMP/maint-v2" maint/content/proof/corpus-v2.yaml
+      - uses: actions/upload-artifact@v4
+        if: always() && steps.tree.outputs.present == 'true'
+        with:
+          name: maint-pack-test
+          path: |
+            ${{ runner.temp }}/maint-v1/*.json
+            ${{ runner.temp }}/maint-v2/*.json
+          retention-days: 7
+          if-no-files-found: ignore
+
   harvest-practice:
     name: harvest-practice
     needs: changes
@@ -2760,6 +2848,7 @@ jobs:
         dynawalla-curriculum,
         dynawalla-engine,
         dynawalla-packs,
+        maint-pack,
       ]
     if: ${{ always() }}
     permissions:
