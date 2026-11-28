@@ -1,5 +1,5 @@
 /** On-device audit log of answers: question, mode, citations, pack version. */
-import type { AskResult } from "../engine/types.ts";
+import type { AskResult, FindResult } from "../engine/types.ts";
 import { logError } from "./log.ts";
 
 const KEY = "crane.audit";
@@ -8,7 +8,7 @@ const MAX = 500;
 export interface AuditEntry {
   at: string;
   question: string;
-  mode: AskResult["mode"];
+  mode: AskResult["mode"] | "search";
   answer_id: string | null;
   citations: string[];
   retrieved: string[];
@@ -35,6 +35,26 @@ export function audit(r: AskResult): void {
   }
 }
 
+/** A search is logged with the sections it showed; it cites nothing itself. */
+export function auditFind(r: FindResult): void {
+  try {
+    const list = JSON.parse(localStorage.getItem(KEY) ?? "[]") as AuditEntry[];
+    list.push({
+      at: new Date().toISOString(),
+      question: r.query,
+      mode: "search",
+      answer_id: null,
+      citations: [],
+      retrieved: r.groups.slice(0, 8).map((g) => g.best_id),
+      pack_version: r.pack_version,
+      model: null,
+    });
+    localStorage.setItem(KEY, JSON.stringify(list.slice(-MAX)));
+  } catch (e) {
+    logError("audit", e);
+  }
+}
+
 export function auditEntries(): AuditEntry[] {
   try {
     return JSON.parse(localStorage.getItem(KEY) ?? "[]") as AuditEntry[];
@@ -42,10 +62,4 @@ export function auditEntries(): AuditEntry[] {
     logError("audit.read", e);
     return [];
   }
-}
-
-/** Share of answers served from the bake. */
-export function bakeHitRate(entries = auditEntries()): number | null {
-  if (entries.length === 0) return null;
-  return entries.filter((e) => e.mode === "baked").length / entries.length;
 }
