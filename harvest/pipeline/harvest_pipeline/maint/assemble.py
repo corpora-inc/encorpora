@@ -156,6 +156,12 @@ class Assembly:
     # ---- provenance -----------------------------------------------------------------------------
     def prov(self, ctx: Ctx, table: str, key: str, item, p: Prov, extra_problems: list[str] | None = None) -> str:
         problems = p.problems + (extra_problems or [])
+        if isinstance(item, dict):   # the rules arm says which rule decided, and how sure it is
+            for e in item.get("_ev") or []:
+                if e not in p.notes:
+                    p.notes.append(e if isinstance(e, str) else str(e))
+            if item.get("_conf") == "low":
+                p.notes.append("low-confidence rule decision")
         if (table, key) in self.forced:
             problems = problems + [self.forced[(table, key)]]
         verdict = "fail" if problems else "pass"

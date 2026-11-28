@@ -283,6 +283,8 @@ def request_for(unit: Unit, pages: dict[int, PageModel], arm: Arm, images_ok: bo
 def run(unit_list: list[Unit], pages: dict[int, PageModel], arm: Arm, cache_dir: Path, offline: bool,
         ledger: Ledger | None = None, concurrency: int = 2, log=sys.stderr) -> tuple[dict[str, dict], RunReport]:
     """Outputs by unit key (cache entries), calling the backend only for cache misses."""
+    if arm.author.get("backend") == "rules":
+        return run_rules(unit_list, pages, arm, cache_dir, offline, ledger, log)
     cache = ResponseCache(cache_dir)
     rep = RunReport(arm.name, units=len(unit_list))
     backend = None if offline else make_backend(arm.author)
@@ -353,3 +355,82 @@ def run(unit_list: list[Unit], pages: dict[int, PageModel], arm: Arm, cache_dir:
 
 def _now() -> str:
     return dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat()
+
+
+RULES_VERSION = "1"
+
+
+def run_rules(unit_list: list[Unit], pages: dict[int, PageModel], arm: Arm, cache_dir: Path, offline: bool,
+              ledger: Ledger | None, log=sys.stderr) -> tuple[dict[str, dict], RunReport]:
+    """The rules arm: structure by deterministic rules; closed questions to the arm's `resolver`
+    model (cached and ledgered like any call). Without a resolver the rules' defaults stand."""
+    from . import resolve
+    from .rules import derive
+    rep = RunReport(arm.name, units=len(unit_list))
+    resolver_cfg = arm.author.get("resolver")
+    rules_opts = arm.author.get("rules") or {}
+    cache = ResponseCache(cache_dir)
+    backend = make_backend(resolver_cfg) if resolver_cfg and not offline else None
+    runner = Runner(backend, 1) if backend else None
+    rspec = None
+    if resolver_cfg:
+        rspec = Arm("resolver", resolver_cfg, images=False).spec
+    out: dict[str, dict] = {}
+    rep.usage = {"questions": 0, "resolved": 0, "defaults": 0}
+    try:
+        for u in unit_list:
+            structure, questions = derive(u.pages, pages, rules_opts)
+            rep.usage["questions"] += len(questions)
+            entry_usage: dict = {}
+            answers = None
+            isha = sha256_json({"rules": RULES_VERSION, "pages": [pages[i].image_id or i for i in u.pages],
+                                "questions": [(q.id, q.text, q.options) for q in questions]})
+            if questions and resolver_cfg:
+                req = resolve.request(questions, resolve.pages_text(u.pages, pages))
+                qsha = sha256_json({"system": req.system, "schema": req.schema, "prompt": req.prompt})
+                hit = cache.get("maint.resolve", RULES_VERSION, qsha, rspec)
+                if hit is not None:
+                    rep.cached += 1
+                    answers = hit["output"]["answers"]
+                    entry_usage = hit.get("usage") or {}
+                elif runner is not None:
+                    t0 = time.monotonic()
+                    try:
+                        resp = runner.call(req)
+                        secs = round(time.monotonic() - t0, 2)
+                        answers = resp.output["answers"]
+                        entry_usage = {**resp.usage, "seconds": secs}
+                        cache.put({"task": "maint.resolve", "prompt_version": RULES_VERSION, "input_sha256": qsha,
+                                   "model": rspec, "key": u.key, "backend": backend.name, "model_id": resp.model_id,
+                                   "created_at": _now(), "output": resp.output, "usage": entry_usage})
+                        rep.called += 1
+                        if ledger:
+                            ledger.add({"at": _now(), "arm": arm.name, "backend": backend.name, "model": resp.model_id,
+                                        "unit": u.key, "pages": len(u.pages), "images": 0, "questions": len(questions),
+                                        "input_tokens": resp.usage.get("input_tokens", 0),
+                                        "output_tokens": resp.usage.get("output_tokens", 0),
+                                        "cost_usd": round(float(resp.usage.get("cost_usd", 0.0)), 6), "seconds": secs})
+                    except (BackendError, UsageLimitReached) as e:
+                        rep.failed += 1
+                        rep.errors.append(f"{u.key}: {e}")
+                else:
+                    rep.missing += 1
+            for q in questions:
+                if answers is not None and q.id in answers:
+                    choice, by = int(answers[q.id]), rspec
+                    rep.usage["resolved"] += 1
+                else:
+                    choice, by = q.default, "rules default"
+                    rep.usage["defaults"] += 1
+                resolve.apply(structure, q, choice, by)
+            out[u.key] = {"task": TASK, "prompt_version": RULES_VERSION, "input_sha256": isha, "model": arm.spec,
+                          "key": u.key, "backend": "rules", "created_at": "",
+                          "model_id": f"rules:v{RULES_VERSION}" + (f"+{rspec}" if questions and resolver_cfg else ""),
+                          "output": structure, "usage": entry_usage, "pages": u.pages,
+                          "questions": [{"id": q.id, "text": q.text, "options": q.options, "default": q.default,
+                                         "answer": (answers or {}).get(q.id)} for q in questions]}
+            if log:
+                print(f"[extract:{arm.name}] {u.key}: {len(questions)} closed question(s)", file=log, flush=True)
+    finally:
+        cache.close()
+    return out, rep
