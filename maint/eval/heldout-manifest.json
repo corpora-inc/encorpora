@@ -1,0 +1,128 @@
+{
+ "split_seed": 20261128,
+ "location": "outside the repository ($MAINT_EVAL_HELDOUT)",
+ "t1": {
+  "dev": {
+   "file": "t1-dev-v1.jsonl",
+   "sha256": "074450cf12914488890955d86d8393ce4a3d8259c6fa1102c6a7af51ec3b063a",
+   "n": 208,
+   "by_kind": {
+    "ambiguous": 11,
+    "single": 183,
+    "decline": 14
+   },
+   "by_pack": {
+    "ardupilot-prearm": 196,
+    "pump40v2-proof": 12
+   },
+   "by_register": {
+    "novice": 47,
+    "expert": 40,
+    "typo": 38,
+    "observed": 42,
+    "asr": 41
+   }
+  },
+  "heldout": {
+   "file": "t1-heldout-v1.jsonl",
+   "sha256": "dd4034955305ea93dfd8d2aa4a00e471faf0e2c0e32b78f6ec56a23c82d46b22",
+   "n": 837,
+   "by_kind": {
+    "ambiguous": 52,
+    "single": 734,
+    "decline": 51
+   },
+   "by_pack": {
+    "ardupilot-prearm": 798,
+    "pump40v2-proof": 39
+   },
+   "by_register": {
+    "expert": 174,
+    "typo": 160,
+    "asr": 157,
+    "novice": 173,
+    "observed": 173
+   }
+  }
+ },
+ "t2": {
+  "dev": {
+   "file": "t2-dev-v1.jsonl",
+   "sha256": "5ec55c406ed17cb376aa0d546f74e8dd928927b635b1cbded9fc0b21baa3df7f",
+   "n": 41,
+   "by_kind": {
+    "closeout": 41
+   },
+   "by_pack": {
+    "ardupilot-prearm": 21,
+    "pump40v2-proof": 20
+   },
+   "by_register": {
+    "expert": 8,
+    "novice": 9,
+    "rambling": 9,
+    "typo": 8,
+    "asr": 7
+   }
+  },
+  "heldout": {
+   "file": "t2-heldout-v1.jsonl",
+   "sha256": "283b92d65d518e354d4ee20e894153d97ec2723f584cff96e3d953e6c0ebfe06",
+   "n": 107,
+   "by_kind": {
+    "closeout": 107
+   },
+   "by_pack": {
+    "ardupilot-prearm": 87,
+    "pump40v2-proof": 20
+   },
+   "by_register": {
+    "asr": 23,
+    "rambling": 22,
+    "novice": 18,
+    "expert": 24,
+    "typo": 20
+   }
+  }
+ },
+ "t3": {
+  "dev": {
+   "file": "t3-dev-v1.jsonl",
+   "sha256": "01411798e3a695d17b5db1170cbae20c721335ed2956fb44b8544fb4bbcec936",
+   "n": 50,
+   "by_kind": {
+    "answerable": 33,
+    "unanswerable": 17
+   },
+   "by_pack": {
+    "ardupilot-prearm": 17,
+    "pump40v2-proof": 33
+   },
+   "by_register": {
+    "asr": 12,
+    "expert": 13,
+    "typo": 11,
+    "novice": 14
+   }
+  },
+  "heldout": {
+   "file": "t3-heldout-v1.jsonl",
+   "sha256": "cf20b2043b5547bc902b03a93f708db526f3fe22bd0d8ce6c86cccebdfffd01e",
+   "n": 121,
+   "by_kind": {
+    "answerable": 82,
+    "unanswerable": 39
+   },
+   "by_pack": {
+    "ardupilot-prearm": 101,
+    "pump40v2-proof": 20
+   },
+   "by_register": {
+    "asr": 28,
+    "expert": 28,
+    "novice": 30,
+    "typo": 35
+   }
+  }
+ }
+}
