@@ -112,7 +112,7 @@ impl Default for AskOptions {
             cache_threshold: 0.75,
             cache_confirm: 0.85,
             cache_intent_min: 0.9,
-            support_threshold: 0.5,
+            support_threshold: 0.4,
             max_sections: 3,
             max_quote_chars: 600,
             nearest: 5,

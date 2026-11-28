@@ -205,7 +205,7 @@ harvest show    <pack> info|sections|topics|skills|lessons|terms|diagrams|questi
   "nearest": ["…"],            // when declined
   "pack_version": "…", "model": "…|null", "elapsed_ms": 0,
   "tool": "range_table:<section_id>",   // present when a table lookup answered first
-  "support": { "score": 0.0, "threshold": 0.5, "window": 0.25, "max_sections": 3, "depth": 12,
+  "support": { "score": 0.0, "threshold": 0.4, "window": 0.25, "max_sections": 3, "depth": 12,
                "concepts": ["…"], "cache_similarity": 0.0, "cache_threshold": 0.75,
                "top_dense": 0.0, "min_dense": null,
                "candidates": [{ "section_id": "…", "rank": 1, "retrieval": 0.0,
@@ -238,7 +238,7 @@ without an embedder it goes to retrieval. A pack may override both in
 A pack states its calibrated dense gate in `pack_meta`:
 `gate_dense_support_threshold` and `gate_dense_min` (both numbers as text;
 they belong to the pack's embedder, whose cosine scale they assume). Without
-them, or without dense vectors, the coverage-only threshold (0.5) applies.
+them, or without dense vectors, the coverage-only threshold (0.4) applies.
 
 The Tauri app calls the same functions in-process; the CLI exists so evaluation
 measures exactly the code the app runs.
