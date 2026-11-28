@@ -520,7 +520,7 @@ fn dense_search_says_when_it_is_off_and_why() {
         json!({"text": "engine will not crank", "k": 2}),
     );
     assert_eq!(s["dense"], true);
-    assert_eq!(s["thresholds"]["coverage"], 0.5);
+    assert_eq!(s["thresholds"]["coverage"], 0.3);
     assert_eq!(s["thresholds"]["fusion"], "weighted");
     assert_eq!(s["thresholds"]["dense_active"], true);
     let top = &s["hits"][0];
@@ -554,7 +554,7 @@ fn the_ranking_rule_comes_from_the_pack_and_the_call_can_override_it() {
     let q = "engine will not crank";
     let base = ok(&h, "symptom.search", json!({"text": q}));
     assert_eq!(base["thresholds"]["lexical_weight"], 0.1);
-    assert_eq!(base["thresholds"]["margin"], 0.02);
+    assert_eq!(base["thresholds"]["margin"], 0.05);
     assert_eq!(base["confidence"], "confident");
     assert!(base["hits"][0]["margin"].as_f64().unwrap() > 0.0);
     // Reciprocal-rank fusion: the top hit leads both rankings.

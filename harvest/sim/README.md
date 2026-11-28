@@ -19,7 +19,7 @@ The files here are the named scenarios. A test keeps them equal to
 | `pier-daily.json` | 4 units, 60 days, a 2 to 4 hour link once a day at 2 Mbit/s, a scripted lesson conflict, a pack update on day 20 (delivered as a delta). |
 | `underway-two-weeks.json` | 6 units, 42 days, starting 3 days offline. The link averages 1 hour up and 30 down at 2400 bit/s with 1.2 s latency, 15% drops, 5% duplicates and 2% tampered bundles. Lessons carry photos (1.2 per lesson, median 1.5 MB): the downscaled copies move underway, the full files at 2 Mbit/s in port. |
 | `disconnected-180.json` | 3 units, 180 days with no link at all, then one sync. Clocks are up to 90 minutes off. |
-| `flapping.json` | 4 units, 30 days, a link of minutes on and off at 64 kbit/s with 30% drops, 10% duplicates and 5% tampered bundles. Adds two scripted conflicts, a device that was never enrolled, and a device revoked on day 20. |
+| `flapping.json` | 4 units, 30 days, a link of minutes on and off at 64 kbit/s with 30% drops, 10% duplicates, 5% tampered bundles and 5% forged replies. Adds two scripted conflicts, a device that was never enrolled, and a device revoked on day 20. |
 
 ## Scenario format
 
@@ -44,6 +44,7 @@ Durations are in hours unless the name says otherwise.
 | `skew_bound_minutes` | The hub's clock-skew bound for lesson conflicts (default 30). |
 | `conflicts` | `[{day, device, other, gap_minutes}]`: `other` edits the lesson `device` started, `gap_minutes` later. |
 | `tamper_prob` | Chance a bundle is corrupted in transit. The device must refuse it, and asks for it again on the next pull. |
+| `forge_prob` | Chance a reply is forged on the link (receipts, a hello reply, an attachment `held`), unsigned or signed with a key the devices do not trust. |
 | `rogue_device` | One extra device that was never enrolled; it works and tries to upload. |
 | `revoke` | `[{device, day}]`: devices revoked at the hub. |
 | `pack_update_day` | A new pack version (and a delta from the first) is published at the hub. |
@@ -79,4 +80,5 @@ The invariants:
 - **Audit chains intact:** the chain verifies on every device and on the hub.
 - **No upload from an unenrolled or revoked device:** the hub holds nothing from the never-enrolled device, and nothing from a revoked device received after its revocation.
 - **Attachments never delay records:** with `photos`, every record and lesson reaches the hub at the same moment with the attachment lane on as with it off.
+- **No attachment marked sent without the hub:** every photo a device marks sent (full or downscaled), the hub holds.
 - **Refused traffic bounded:** `bytes.refused` stays within (refused devices) × (days + 12) × (one hello and its answer), which is what the back-off allows.

@@ -204,6 +204,11 @@ pub struct Scenario {
     /// Chance a bundle is corrupted in transit (the device must refuse it).
     #[serde(default)]
     pub tamper_prob: f64,
+    /// Chance a reply is forged by someone on the link (receipts for items
+    /// the hub never got, a hello reply, an attachment `held` of the whole
+    /// file), unsigned or signed with a key the device does not trust.
+    #[serde(default)]
+    pub forge_prob: f64,
     /// The hub's setting: devices fetch a changed fleet summary at most
     /// this often (they learn it at every hello).
     #[serde(default = "default_fleet_every")]
@@ -343,6 +348,10 @@ pub struct Link {
     pub refused_hellos: u64,
     /// Sync attempts a device skipped while backing off after a refusal.
     pub backoff_skips: u64,
+    /// Replies someone on the link forged (all refused by the devices: the
+    /// invariants show it).
+    #[serde(default)]
+    pub forged_replies: u64,
 }
 
 #[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
@@ -408,6 +417,10 @@ pub struct Invariants {
     /// With photos: the attachment lane never changed when a record or a
     /// lesson reached the hub.
     pub attachments_never_delay_records: bool,
+    /// No attachment is marked sent on a device unless the hub holds it
+    /// (forged `held` and receipts count for nothing).
+    #[serde(default)]
+    pub no_attachment_marked_sent_without_hub: bool,
     pub details: Vec<String>,
 }
 
@@ -567,6 +580,8 @@ struct Net {
     up: bool,
     spec: LinkSpec,
     tamper_prob: f64,
+    forge_prob: f64,
+    forged: u64,
     m: Link,
     bytes_up: u64,
     bytes_down: u64,
@@ -659,6 +674,53 @@ impl Wire<'_> {
         out
     }
 
+    /// Does someone on the link forge this reply? Draws only when the
+    /// scenario forges, from the lane's own stream.
+    fn forges(&self) -> Option<bool> {
+        let mut n = self.net.borrow_mut();
+        if n.forge_prob <= 0.0 {
+            return None;
+        }
+        let att = n.att_lane;
+        let (roll, how) = if att {
+            (n.att_rng.f(), n.att_rng.f())
+        } else {
+            (n.rng.f(), n.rng.f())
+        };
+        if roll < n.forge_prob {
+            n.forged += 1;
+            // Half unsigned, half signed with the forger's own key.
+            Some(how < 0.5)
+        } else {
+            None
+        }
+    }
+
+    fn forge<T: Serialize>(&self, reply: &T, signed: bool) -> Result<Option<serde_json::Value>> {
+        Ok(if signed {
+            Some(crate::sync::hub_sign(
+                reply,
+                &ed25519_dalek::SigningKey::from_bytes(&[0x66; 32]),
+            )?)
+        } else {
+            None
+        })
+    }
+
+    fn forged_held(&self, sha256: &str, total: u64, signed: bool) -> Result<crate::sync::Held> {
+        let mut h = crate::sync::Held {
+            format: crate::sync::HELD_FORMAT.into(),
+            device_id: self.key.device_id(),
+            sha256: sha256.to_string(),
+            total,
+            held: total,
+            signed_at: crate::audit::now_rfc3339(),
+            signature: None,
+        };
+        h.signature = self.forge(&h, signed)?;
+        Ok(h)
+    }
+
     fn at_hub<T>(&self, f: impl FnOnce(&Hub) -> T) -> T {
         let now = self.net.borrow().now;
         set_clock(Some(now));
@@ -673,12 +735,32 @@ impl HubLink for Wire<'_> {
         self.key.device_id()
     }
 
-    fn send(&self, batch: &[Upload]) -> Result<Vec<Receipt>> {
+    fn send(&self, batch: &[Upload]) -> Result<crate::sync::ReceiptSet> {
         let delivery = self.key.deliver(batch)?;
         let body = serde_json::to_vec(&delivery)?.len() as u64;
         let (stored, replied) = self.transfer(body, 120 * batch.len() as u64);
         if !stored {
             return Err(Error::Sync("link dropped during the upload".into()));
+        }
+        if let Some(signed) = self.forges() {
+            // The upload never reaches the hub; receipts for all of it come back.
+            let mut set = crate::sync::ReceiptSet {
+                format: crate::sync::RECEIPTS_FORMAT.into(),
+                device_id: self.key.device_id(),
+                receipts: batch
+                    .iter()
+                    .map(|u| Receipt {
+                        item_id: u.item_id.clone(),
+                        payload_sha256: u.payload_sha256.clone(),
+                        server_id: "hub:forged".into(),
+                        received_at: crate::audit::now_rfc3339(),
+                    })
+                    .collect(),
+                signed_at: crate::audit::now_rfc3339(),
+                signature: None,
+            };
+            set.signature = self.forge(&set, signed)?;
+            return Ok(set);
         }
         let fresh: Vec<String> = batch
             .iter()
@@ -716,7 +798,8 @@ impl HubLink for Wire<'_> {
                 "link dropped before the receipts came back".into(),
             ));
         }
-        Ok(r.receipts)
+        r.signed
+            .ok_or_else(|| Error::Sync("the hub signed no receipts".into()))
     }
 
     fn bundles_since(&self, since: u64) -> Result<Vec<Value>> {
@@ -779,6 +862,15 @@ impl HubLink for Wire<'_> {
         if !asked {
             return Err(Error::Sync("link dropped during the hello".into()));
         }
+        if let Some(signed) = self.forges() {
+            // A reply that never saw the hub: accepted, everything allowed.
+            let mut r = self.at_hub(|hub| hub.hello(&h))?;
+            r.accepted = true;
+            r.refused = None;
+            r.attachments = crate::sync::AttachmentMode::Full;
+            r.signature = self.forge(&r, signed)?;
+            return Ok(r);
+        }
         let r = self.at_hub(|hub| hub.hello(&h))?;
         if !r.accepted {
             let mut n = self.net.borrow_mut();
@@ -806,14 +898,17 @@ impl HubLink for Wire<'_> {
         }
     }
 
-    fn attachment_offset(&self, sha256: &str, total: u64) -> Result<u64> {
+    fn attachment_offset(&self, sha256: &str, total: u64) -> Result<crate::sync::Held> {
         let (_, replied) = self.transfer(160, 80);
         if !replied {
             return Err(Error::Sync(
                 "link dropped while asking for an attachment".into(),
             ));
         }
-        self.at_hub(|h| h.attachment_offset(sha256, total))
+        if let Some(signed) = self.forges() {
+            return self.forged_held(sha256, total, signed);
+        }
+        self.at_hub(|h| h.held_for(&self.key.device_id(), sha256, total))
     }
 
     fn put_chunk(
@@ -823,7 +918,7 @@ impl HubLink for Wire<'_> {
         total: u64,
         offset: u64,
         data: &[u8],
-    ) -> Result<u64> {
+    ) -> Result<crate::sync::Held> {
         let c = self.key.chunk(sha256, variant, total, offset, data)?;
         let scale = self.net.borrow().byte_scale;
         // The wire carries the full-size chunk (base64 and the signature included).
@@ -835,7 +930,11 @@ impl HubLink for Wire<'_> {
                 "link dropped during an attachment chunk".into(),
             ));
         }
-        let held = self.at_hub(|h| h.put_chunk(&c))?;
+        if let Some(signed) = self.forges() {
+            // The chunk is swallowed; "you are done" comes back.
+            return self.forged_held(sha256, total, signed);
+        }
+        let held = self.at_hub(|h| h.put_chunk_signed(&c))?;
         if !replied {
             return Err(Error::Sync(
                 "link dropped before the hub answered the chunk".into(),
@@ -1172,6 +1271,8 @@ fn run_in(
         up: true,
         spec: s.link.clone(),
         tamper_prob: s.tamper_prob,
+        forge_prob: s.forge_prob,
+        forged: 0,
         m: Link::default(),
         bytes_up: 0,
         bytes_down: 0,
@@ -1384,7 +1485,7 @@ fn run_in(
                     skew_ms: skew,
                 };
                 net.borrow_mut().m.flush_attempts += 1;
-                let up = d.rec.flush_to_hub(&wire, 50, false)?;
+                let up = d.rec.flush_to_hub(&wire, &field_keys, 50, false)?;
                 if up.skipped_until.is_some() {
                     net.borrow_mut().m.backoff_skips += 1;
                 }
@@ -1471,9 +1572,9 @@ fn run_in(
                             + 2 * n.spec.latency_ms as i64
                     };
                     net.borrow_mut().att_lane = true;
-                    let r = d
-                        .rec
-                        .send_attachments(&wire, &|| net.borrow().now + chunk_ms >= deadline);
+                    let r = d.rec.send_attachments(&wire, &field_keys, &|| {
+                        net.borrow().now + chunk_ms >= deadline
+                    });
                     net.borrow_mut().att_lane = false;
                     let r = r?;
                     att.resumed += r.resumed;
@@ -1744,6 +1845,7 @@ fn run_in(
     m.link = n.m.clone();
     m.link.refused_deliveries = n.refused_deliveries;
     m.link.refused_hellos = n.refused_hellos;
+    m.link.forged_replies = n.forged;
     m.bundles.tampered_in_transit = n.tampered;
     let mut lost = 0u64;
     let mut pending = 0u64;
@@ -1932,6 +2034,26 @@ fn run_in(
             m.bytes.refused
         ));
     }
+    // Every attachment a device marks sent, the hub holds.
+    let mut att_ok = true;
+    for (i, d) in devices.iter().enumerate() {
+        for a in d.rec.attachments()? {
+            let want = match a.sent.as_str() {
+                "full" => Some(a.sha256.clone()),
+                "small" => a.small_sha256.clone(),
+                _ => None,
+            };
+            if let Some(sha) = want
+                && !hub.has_attachment(&sha)?
+            {
+                att_ok = false;
+                details.push(format!(
+                    "device {i} marks attachment {} sent; the hub does not hold it",
+                    &a.sha256[..12]
+                ));
+            }
+        }
+    }
     m.invariants = Invariants {
         nothing_lost: lost == 0,
         nothing_applied_twice: !applied_twice,
@@ -1940,7 +2062,14 @@ fn run_in(
         no_upload_from_unenrolled_or_revoked: unenrolled_ok,
         refused_traffic_bounded: refused_ok,
         attachments_never_delay_records: true,
-        ok: lost == 0 && !applied_twice && !bad_install && chains && unenrolled_ok && refused_ok,
+        no_attachment_marked_sent_without_hub: att_ok,
+        ok: lost == 0
+            && !applied_twice
+            && !bad_install
+            && chains
+            && unenrolled_ok
+            && refused_ok
+            && att_ok,
         details,
     };
     if s.photos.is_some() {
@@ -2069,7 +2198,7 @@ pub fn named(name: &str) -> Option<Scenario> {
             "clock_skew_minutes": 10, "sync_every_minutes": 5,
             "conflicts": [{"day": 3, "device": 0, "other": 1, "gap_minutes": 0},
                           {"day": 9, "device": 2, "other": 3, "gap_minutes": 45}],
-            "tamper_prob": 0.05, "rogue_device": true,
+            "tamper_prob": 0.05, "forge_prob": 0.05, "rogue_device": true,
             "revoke": [{"device": 3, "day": 20}], "final_sync": true
         }),
         _ => return None,

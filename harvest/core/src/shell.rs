@@ -96,8 +96,15 @@ pub struct HostConfig {
     /// loaded is found and hashed unless `embedder_sha256` names it.
     pub embedder_url: Option<String>,
     pub embedder_sha256: Option<String>,
-    /// The hub, feature `net`.
+    /// The hub, feature `net`: `https://` (or `http://` to this machine).
     pub hub_url: Option<String>,
+    /// Trust only this PEM (the hub's CA) for the hub: a pin. Else the
+    /// platform's store (`hub_platform_roots`, feature `platform-roots`), else
+    /// Mozilla's roots.
+    pub hub_ca_pem: Option<Vec<u8>>,
+    pub hub_platform_roots: bool,
+    /// Plain HTTP to a hub on another machine (development only).
+    pub allow_insecure_http: bool,
     /// The link the device is on (the hub's attachment policy follows it).
     pub link: LinkClass,
     /// Where installed pack updates go (`packs_root` when absent).
@@ -246,8 +253,17 @@ fn with_hub(host: Host, cfg: &HostConfig, dk: DeviceKey) -> Result<Host> {
     let Some(url) = &cfg.hub_url else {
         return Ok(host);
     };
-    let link = crate::hub::http::HttpHubLink::new(url, dk, std::time::Duration::from_secs(60))
-        .with_link(cfg.link);
+    let tls = crate::hub::http::HubTls {
+        roots: match &cfg.hub_ca_pem {
+            Some(pem) => crate::hub::http::HubRoots::Pem(pem.clone()),
+            None if cfg.hub_platform_roots => crate::hub::http::HubRoots::Platform,
+            None => crate::hub::http::HubRoots::Mozilla,
+        },
+        allow_insecure_http: cfg.allow_insecure_http,
+    };
+    let link =
+        crate::hub::http::HttpHubLink::with_tls(url, dk, std::time::Duration::from_secs(60), &tls)?
+            .with_link(cfg.link);
     let root = cfg
         .install_root
         .clone()

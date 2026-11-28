@@ -379,9 +379,9 @@ methods! {
     "hub.publish" => hub_publish(HubPublishParams) -> Option<Value>,
     "hub.bundles" => hub_bundles(HubBundlesParams) -> Vec<Value>,
     "hub.fleet" => hub_fleet(NoParams) -> crate::records::FleetSummary,
-    "hub.conflicts" => hub_conflicts(NoParams) -> Vec<crate::hub::Conflict>,
+    "hub.conflicts" => hub_conflicts(PageParams) -> Vec<crate::hub::Conflict>,
     "hub.audit" => hub_audit(AuditListParams) -> Vec<AuditRecord>,
-    "hub.devices" => hub_devices(NoParams) -> Vec<crate::hub::EnrolledDevice>,
+    "hub.devices" => hub_devices(PageParams) -> Vec<crate::hub::EnrolledDevice>,
     "hub.enroll" => hub_enroll(HubEnrollParams) -> crate::hub::EnrolledDevice,
     "hub.revoke" => hub_revoke(HubRevokeParams) -> crate::hub::EnrolledDevice,
     "hub.whoami" => hub_whoami(NoParams) -> Principal,
@@ -797,6 +797,29 @@ pub struct HubQueueParams {
     /// `pending` | `approved` | `rejected`; all when absent.
     #[serde(default)]
     pub status: Option<String>,
+    #[serde(default)]
+    pub offset: usize,
+    /// At most this many (default 100, at most 500).
+    #[serde(default)]
+    pub limit: Option<usize>,
+}
+
+/// A page of a hub list: skip `offset`, return at most `limit` (default
+/// 100, at most 500). Fewer than `limit` means the end.
+#[derive(Debug, Clone, Default, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct PageParams {
+    #[serde(default)]
+    pub offset: usize,
+    #[serde(default)]
+    pub limit: Option<usize>,
+}
+
+fn page<T>(all: Vec<T>, offset: usize, limit: Option<usize>) -> Vec<T> {
+    all.into_iter()
+        .skip(offset)
+        .take(limit.unwrap_or(100).clamp(1, 500))
+        .collect()
 }
 
 #[derive(Debug, Clone, Deserialize, JsonSchema)]
@@ -852,6 +875,9 @@ pub struct HubRevokeParams {
 pub struct HubBundlesParams {
     #[serde(default)]
     pub since: u64,
+    /// At most this many (default 50, at most 200), in seq order.
+    #[serde(default)]
+    pub limit: Option<usize>,
 }
 
 // ----------------------------------------------------------- results
@@ -1682,7 +1708,9 @@ fn sync_attachments(
     let secs = p.max_seconds.unwrap_or(10).clamp(1, 300);
     let until = std::time::Instant::now() + std::time::Duration::from_secs(secs);
     Ok(h.records()
-        .send_attachments(link.as_ref(), &|| std::time::Instant::now() >= until)?)
+        .send_attachments(link.as_ref(), &h.field_keys, &|| {
+            std::time::Instant::now() >= until
+        })?)
 }
 
 fn sync_flush(
@@ -1691,7 +1719,9 @@ fn sync_flush(
     p: SyncFlushParams,
 ) -> R<crate::records::HubFlush> {
     if let Some(link) = &h.hub_link {
-        return Ok(h.records().flush_to_hub(link.as_ref(), 50, p.force)?);
+        return Ok(h
+            .records()
+            .flush_to_hub(link.as_ref(), &h.field_keys, 50, p.force)?);
     }
     let dir = h
         .outbox_dir
@@ -1805,7 +1835,11 @@ fn hub_queue(
     p: HubQueueParams,
 ) -> R<Vec<crate::hub::ReviewItem>> {
     need(who, None)?;
-    Ok(h.hub_store()?.queue(nz(&p.status))?)
+    Ok(page(
+        h.hub_store()?.queue(nz(&p.status))?,
+        p.offset,
+        p.limit,
+    ))
 }
 
 fn hub_approve(
@@ -1837,7 +1871,8 @@ fn hub_publish(h: &Host, who: Option<&Principal>, p: HubPublishParams) -> R<Opti
 
 fn hub_bundles(h: &Host, who: Option<&Principal>, p: HubBundlesParams) -> R<Vec<Value>> {
     need(who, None)?;
-    Ok(h.hub_store()?.bundles_since(p.since)?)
+    Ok(h.hub_store()?
+        .bundles_page(p.since, p.limit.unwrap_or(50).clamp(1, 200))?)
 }
 
 fn hub_fleet(h: &Host, who: Option<&Principal>, _: NoParams) -> R<crate::records::FleetSummary> {
@@ -1845,18 +1880,18 @@ fn hub_fleet(h: &Host, who: Option<&Principal>, _: NoParams) -> R<crate::records
     Ok(h.hub_store()?.fleet()?)
 }
 
-fn hub_conflicts(h: &Host, who: Option<&Principal>, _: NoParams) -> R<Vec<crate::hub::Conflict>> {
+fn hub_conflicts(h: &Host, who: Option<&Principal>, p: PageParams) -> R<Vec<crate::hub::Conflict>> {
     need(who, None)?;
-    Ok(h.hub_store()?.conflicts()?)
+    Ok(page(h.hub_store()?.conflicts()?, p.offset, p.limit))
 }
 
 fn hub_devices(
     h: &Host,
     who: Option<&Principal>,
-    _: NoParams,
+    p: PageParams,
 ) -> R<Vec<crate::hub::EnrolledDevice>> {
     need(who, None)?;
-    Ok(h.hub_store()?.devices()?)
+    Ok(page(h.hub_store()?.devices()?, p.offset, p.limit))
 }
 
 fn hub_enroll(
@@ -1893,7 +1928,7 @@ fn hub_audit(h: &Host, who: Option<&Principal>, p: AuditListParams) -> R<Vec<Aud
         .filter(|r| match r {
             AuditRecord::Answer { seq, .. } | AuditRecord::Event { seq, .. } => *seq > after,
         })
-        .take(p.limit.unwrap_or(200))
+        .take(p.limit.unwrap_or(200).clamp(1, 1000))
         .collect())
 }
 

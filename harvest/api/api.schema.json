@@ -3327,10 +3327,18 @@
           "minimum": 0,
           "type": "integer"
         },
+        "device_id": {
+          "description": "The device the hub answered (signed with the rest).",
+          "type": "string"
+        },
         "fleet_every_hours": {
           "description": "How often a device fetches a changed fleet summary (a hub setting\nthe device learns here).",
           "format": "double",
           "type": "number"
+        },
+        "format": {
+          "description": "`harvest-hello-reply/1`.",
+          "type": "string"
         },
         "hub_time": {
           "type": "string"
@@ -3345,6 +3353,9 @@
             }
           ]
         },
+        "signature": {
+          "description": "The hub's signature over the rest (its bundle key)."
+        },
         "stream": {
           "default": null,
           "description": "The hub's bundle stream: a device pulls by this stream's seq.",
@@ -3355,6 +3366,8 @@
         }
       },
       "required": [
+        "format",
+        "device_id",
         "accepted",
         "refused",
         "fleet_every_hours",
@@ -3578,6 +3591,16 @@
     "HubBundlesParams": {
       "additionalProperties": false,
       "properties": {
+        "limit": {
+          "default": null,
+          "description": "At most this many (default 50, at most 200), in seq order.",
+          "format": "uint",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
         "since": {
           "default": 0,
           "format": "uint64",
@@ -3668,6 +3691,22 @@
     "HubQueueParams": {
       "additionalProperties": false,
       "properties": {
+        "limit": {
+          "default": null,
+          "description": "At most this many (default 100, at most 500).",
+          "format": "uint",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "offset": {
+          "default": 0,
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
         "status": {
           "default": null,
           "description": "`pending` | `approved` | `rejected`; all when absent.",
@@ -5720,6 +5759,28 @@
         "x1",
         "y1"
       ],
+      "type": "object"
+    },
+    "PageParams": {
+      "additionalProperties": false,
+      "description": "A page of a hub list: skip `offset`, return at most `limit` (default\n100, at most 500). Fewer than `limit` means the end.",
+      "properties": {
+        "limit": {
+          "default": null,
+          "format": "uint",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "offset": {
+          "default": 0,
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
       "type": "object"
     },
     "PartUsed": {
@@ -9378,7 +9439,7 @@
     },
     "hub.conflicts": {
       "params": {
-        "$ref": "#/$defs/NoParams"
+        "$ref": "#/$defs/PageParams"
       },
       "result": {
         "items": {
@@ -9389,7 +9450,7 @@
     },
     "hub.devices": {
       "params": {
-        "$ref": "#/$defs/NoParams"
+        "$ref": "#/$defs/PageParams"
       },
       "result": {
         "items": {

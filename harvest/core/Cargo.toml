@@ -24,7 +24,11 @@ cli = ["net"]
 # The plain-HTTP client: an embedding server, an OpenAI-compatible model
 # server, the device's link to a hub. A native shell that links the
 # library with `default-features = false` turns this on to use them.
-net = ["dep:ureq"]
+net = ["dep:ureq", "ureq/rustls"]
+# The platform's trust store for the hub (rustls-platform-verifier; on
+# Android the host initializes it). Without it: Mozilla's roots or a pinned
+# PEM.
+platform-roots = ["net", "ureq/platform-verifier"]
 # `harvest serve`: the local HTTP transport of the JSON API (`api`), for the
 # app in a browser during development. Pure-Rust, synchronous.
 serve = ["cli", "dep:tiny_http"]

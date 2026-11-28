@@ -212,6 +212,8 @@ fn decode_key(b64: &str) -> Result<[u8; 32]> {
 #[derive(Debug, Clone, Default, Serialize, Deserialize, JsonSchema, PartialEq)]
 pub struct ReceiveReport {
     pub receipts: Vec<Receipt>,
+    /// The same receipts signed with the hub's key: what a device acts on.
+    pub signed: Option<crate::sync::ReceiptSet>,
     /// Newly stored.
     pub stored: u64,
     /// Already stored with the same hash: answered with the same receipt.
@@ -570,6 +572,15 @@ impl Hub {
             self.audit(&tx, &ev)?;
         }
         tx.commit()?;
+        let mut set = crate::sync::ReceiptSet {
+            format: crate::sync::RECEIPTS_FORMAT.into(),
+            device_id: device_id.to_string(),
+            receipts: report.receipts.clone(),
+            signed_at: now,
+            signature: None,
+        };
+        set.signature = Some(crate::sync::hub_sign(&set, &self.key)?);
+        report.signed = Some(set);
         Ok(report)
     }
 
@@ -641,7 +652,9 @@ impl Hub {
                 Some(why)
             }
         };
-        Ok(HelloReply {
+        let mut reply = HelloReply {
+            format: crate::sync::HELLO_REPLY_FORMAT.into(),
+            device_id: h.device_id.clone(),
             accepted: refused.is_none(),
             refused,
             fleet_every_hours: self.fleet_every_hours,
@@ -652,7 +665,42 @@ impl Hub {
             },
             chunk_bytes: self.chunk_bytes,
             stream: Some(self.stream.clone()),
-        })
+            signature: None,
+        };
+        reply.signature = Some(crate::sync::hub_sign(&reply, &self.key)?);
+        Ok(reply)
+    }
+
+    /// [`Self::attachment_offset`] as a signed answer to `device_id`.
+    pub fn held_for(&self, device_id: &str, sha256: &str, total: u64) -> Result<crate::sync::Held> {
+        let held = self.attachment_offset(sha256, total)?;
+        self.sign_held(device_id, sha256, total, held)
+    }
+
+    /// [`Self::put_chunk`] with a signed answer.
+    pub fn put_chunk_signed(&self, c: &crate::sync::AttachmentChunk) -> Result<crate::sync::Held> {
+        let held = self.put_chunk(c)?;
+        self.sign_held(&c.device_id, &c.sha256, c.total, held)
+    }
+
+    fn sign_held(
+        &self,
+        device_id: &str,
+        sha256: &str,
+        total: u64,
+        held: u64,
+    ) -> Result<crate::sync::Held> {
+        let mut h = crate::sync::Held {
+            format: crate::sync::HELD_FORMAT.into(),
+            device_id: device_id.to_string(),
+            sha256: sha256.to_string(),
+            total,
+            held,
+            signed_at: now_rfc3339(),
+            signature: None,
+        };
+        h.signature = Some(crate::sync::hub_sign(&h, &self.key)?);
+        Ok(h)
     }
 
     /// How much of an attachment variant the hub holds (`total` when
@@ -1376,10 +1424,16 @@ impl Hub {
 
     /// Bundles with `seq` above `since`, in order.
     pub fn bundles_since(&self, since: u64) -> Result<Vec<Value>> {
+        self.bundles_page(since, usize::MAX)
+    }
+
+    /// At most `limit` bundles after `since`, in seq order.
+    pub fn bundles_page(&self, since: u64, limit: usize) -> Result<Vec<Value>> {
+        let limit = i64::try_from(limit).unwrap_or(i64::MAX);
         let rows: Vec<String> = self
             .conn
-            .prepare("SELECT body FROM bundle WHERE seq > ?1 ORDER BY seq")?
-            .query_map([since as i64], |r| r.get(0))?
+            .prepare("SELECT body FROM bundle WHERE seq > ?1 ORDER BY seq LIMIT ?2")?
+            .query_map(params![since as i64, limit], |r| r.get(0))?
             .collect::<rusqlite::Result<_>>()?;
         rows.iter().map(|b| Ok(serde_json::from_str(b)?)).collect()
     }
@@ -1735,9 +1789,12 @@ impl HubLink for LocalLink {
     fn device_id(&self) -> String {
         self.key.device_id()
     }
-    fn send(&self, batch: &[Upload]) -> Result<Vec<Receipt>> {
+    fn send(&self, batch: &[Upload]) -> Result<crate::sync::ReceiptSet> {
         let d = self.key.deliver(batch)?;
-        Ok(self.hub().receive(&d)?.receipts)
+        self.hub()
+            .receive(&d)?
+            .signed
+            .ok_or_else(|| Error::Sync("the hub signed no receipts".into()))
     }
     fn bundles_since(&self, since: u64) -> Result<Vec<Value>> {
         self.hub().bundles_since(since)
@@ -1758,8 +1815,8 @@ impl HubLink for LocalLink {
     fn link_class(&self) -> crate::sync::LinkClass {
         self.link
     }
-    fn attachment_offset(&self, sha256: &str, total: u64) -> Result<u64> {
-        self.hub().attachment_offset(sha256, total)
+    fn attachment_offset(&self, sha256: &str, total: u64) -> Result<crate::sync::Held> {
+        self.hub().held_for(&self.key.device_id(), sha256, total)
     }
     fn put_chunk(
         &self,
@@ -1768,9 +1825,9 @@ impl HubLink for LocalLink {
         total: u64,
         offset: u64,
         data: &[u8],
-    ) -> Result<u64> {
+    ) -> Result<crate::sync::Held> {
         let c = self.key.chunk(sha256, variant, total, offset, data)?;
-        self.hub().put_chunk(&c)
+        self.hub().put_chunk_signed(&c)
     }
     fn public_key(&self) -> String {
         self.key.public_base64()

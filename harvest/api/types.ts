@@ -893,13 +893,19 @@ export interface HelloReply {
   attachments: AttachmentMode;
   /** The attachment chunk size, bytes. */
   chunk_bytes: number;
+  /** The device the hub answered (signed with the rest). */
+  device_id: string;
   /**
    * How often a device fetches a changed fleet summary (a hub setting
    * the device learns here).
    */
   fleet_every_hours: number;
+  /** `harvest-hello-reply/1`. */
+  format: string;
   hub_time: string;
   refused: Refusal | null;
+  /** The hub's signature over the rest (its bundle key). */
+  signature?: unknown;
   /** The hub's bundle stream: a device pulls by this stream's seq. */
   stream: string | null;
 }
@@ -962,6 +968,8 @@ export interface HubApproveParams {
 }
 
 export interface HubBundlesParams {
+  /** At most this many (default 50, at most 200), in seq order. */
+  limit?: number | null;
   since?: number;
 }
 
@@ -991,6 +999,9 @@ export interface HubPublishParams {
 }
 
 export interface HubQueueParams {
+  /** At most this many (default 100, at most 500). */
+  limit?: number | null;
+  offset?: number;
   /** `pending` | `approved` | `rejected`; all when absent. */
   status?: string | null;
 }
@@ -1509,6 +1520,15 @@ export interface PageBox {
   x1: number;
   y0: number;
   y1: number;
+}
+
+/**
+ * A page of a hub list: skip `offset`, return at most `limit` (default
+ * 100, at most 500). Fewer than `limit` means the end.
+ */
+export interface PageParams {
+  limit?: number | null;
+  offset?: number;
 }
 
 /** A part used. */
@@ -2562,9 +2582,9 @@ export interface Methods {
   "hub.publish": { params: HubPublishParams; result: unknown };
   "hub.bundles": { params: HubBundlesParams; result: unknown[] };
   "hub.fleet": { params: NoParams; result: FleetSummary };
-  "hub.conflicts": { params: NoParams; result: Conflict[] };
+  "hub.conflicts": { params: PageParams; result: Conflict[] };
   "hub.audit": { params: AuditListParams; result: AuditRecord[] };
-  "hub.devices": { params: NoParams; result: EnrolledDevice[] };
+  "hub.devices": { params: PageParams; result: EnrolledDevice[] };
   "hub.enroll": { params: HubEnrollParams; result: EnrolledDevice };
   "hub.revoke": { params: HubRevokeParams; result: EnrolledDevice };
   "hub.whoami": { params: NoParams; result: Principal };
