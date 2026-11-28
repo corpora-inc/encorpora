@@ -1,0 +1,21 @@
+/** Every screen has a URL. Builders keep links consistent. */
+const enc = encodeURIComponent;
+export const homePath = () => "/";
+export type IdentifyMode = "type" | "scan" | "connect";
+export const newUnitPath = (mode: IdentifyMode = "type") => `/units/new/${mode}`;
+export const unitPath = (id: string) => `/units/${enc(id)}`;
+export const describePath = (unitId: string) => `/units/${enc(unitId)}/troubleshoot`;
+export const jobPath = (jobId: string) => `/jobs/${enc(jobId)}`;
+export const jobPagePath = (jobId: string, assetId: string) => `/jobs/${enc(jobId)}/page/${enc(assetId)}`;
+export const jobAskPath = (jobId: string) => `/jobs/${enc(jobId)}/ask`;
+export const closeOutPath = (jobId: string) => `/jobs/${enc(jobId)}/close`;
+export const proceduresPath = () => "/procedures";
+export const procedurePath = (taskId: string) => `/procedures/${enc(taskId)}`;
+export const printJobPath = (jobId: string) => `/print/job/${enc(jobId)}`;
+export const printProcedurePath = (taskId: string) => `/print/procedure/${enc(taskId)}`;
+export const manualHomePath = () => "/manual";
+export const manualPath = (sectionId: string) => `/manual/${enc(sectionId)}`;
+export const learnPath = () => "/learn";
+export const recordsPath = () => "/records";
+export const reviewPath = () => "/review";
+export const designPath = (screen?: string, state?: string) => (screen ? `/design/${enc(screen)}${state ? `/${enc(state)}` : ""}` : "/design");

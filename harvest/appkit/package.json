@@ -1,0 +1,13 @@
+{
+  "name": "@harvest/appkit",
+  "version": "0.1.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "description": "Shared app parts for the harvest apps: safe storage, error log, toasts, the native bridge and on-device voice input. Compiled from source by each app (vite alias @appkit), using the app's own react, zustand and @tauri-apps/api.",
+  "type": "module",
+  "peerDependencies": {
+    "@tauri-apps/api": "^2.11.1",
+    "react": "^19.2.8",
+    "zustand": "^5.0.14"
+  }
+}

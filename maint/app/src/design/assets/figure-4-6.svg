@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420" font-family="Georgia, serif">
+  <rect width="640" height="420" fill="#fff"/>
+  <g fill="none" stroke="#111" stroke-width="3">
+    <!-- housing -->
+    <path d="M200 120h240v220a20 20 0 0 1-20 20H220a20 20 0 0 1-20-20z"/>
+    <path d="M80 250h120M440 250h120"/>
+    <path d="M80 222h120M440 222h120"/>
+    <!-- cover and clamp -->
+    <rect x="186" y="96" width="268" height="24" rx="4"/>
+    <path d="M300 96v-30h40v30"/>
+    <!-- basket -->
+    <path d="M240 130h160v190a12 12 0 0 1-12 12H252a12 12 0 0 1-12-12z" stroke-dasharray="8 6"/>
+  </g>
+  <g stroke="#111" stroke-width="1.5">
+    <path d="M250 160h140M250 190h140M250 220h140M250 250h140M250 280h140M250 310h140"/>
+    <path d="M280 135v190M320 135v190M360 135v190"/>
+  </g>
+  <g font-size="20" fill="#111">
+    <path d="M340 70 L500 40" stroke="#111" stroke-width="1.5"/><text x="506" y="46">1</text>
+    <path d="M440 108 L540 108" stroke="#111" stroke-width="1.5"/><text x="548" y="114">2</text>
+    <path d="M400 290 L540 300" stroke="#111" stroke-width="1.5"/><text x="548" y="306">3</text>
+    <path d="M100 236 L60 180" stroke="#111" stroke-width="1.5"/><text x="44" y="174">4</text>
+  </g>
+  <g font-size="16" fill="#111">
+    <text x="40" y="392">1. Cover clamp  2. Strainer cover  3. Basket  4. Suction inlet</text>
+  </g>
+</svg>
