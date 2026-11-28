@@ -3,7 +3,8 @@
   harvest-bake maint pages    CORPUS.yaml [--dump N]            page models + page images; counts (or one page as prompt text)
   harvest-bake maint extract  CORPUS.yaml --arm A [--units K,..] call the arm's model on cache misses (ledgered)
   harvest-bake maint build    CORPUS.yaml [--arm A] [--out DIR] [--harvest BIN] [--pubkey FILE] [--embedder KIND]
-                                                                no model calls; graph-validated, signed pack
+                              [--targets R|none]                no model calls; graph-validated, signed pack
+  harvest-bake maint targets  CORPUS.yaml [--arm A] [--resolver R]  closed questions on what each guard guards (cached)
   harvest-bake maint coverage CORPUS.yaml [--arm A] [--pack DIR] warnings, cautions, notes and question boxes attached
   harvest-bake maint score    CORPUS.yaml --expected FILE [--arm A] [--pack DIR]   precision / recall vs a known pack
   harvest-bake maint ab       CORPUS.yaml --a A --b B [--expected FILE] [--out FILE]  two arms, item by item
@@ -51,6 +52,11 @@ def main(argv: list[str]) -> int:
     s.add_argument("--pubkey")
     s.add_argument("--embedder")
     s.add_argument("--agree-with", help="a second arm: rows it does not also produce go to needs_review")
+    s.add_argument("--targets", help="guard-target resolver from maint.guard_targets (default its `use`; none: off)")
+    s = sub.add_parser("targets")
+    s.add_argument("corpus")
+    s.add_argument("--arm")
+    s.add_argument("--resolver", help="one of maint.guard_targets.resolvers (default its `use`)")
     for name in ("coverage", "score"):
         s = sub.add_parser(name)
         s.add_argument("corpus")
@@ -144,8 +150,13 @@ def main(argv: list[str]) -> int:
     if a.cmd == "build":
         from .build import build
         emb = {"kind": a.embedder} if a.embedder else None
-        res = build(c, a.arm, Path(a.out) if a.out else None, _harvest(a), a.pubkey, emb, agree_with=a.agree_with)
+        res = build(c, a.arm, Path(a.out) if a.out else None, _harvest(a), a.pubkey, emb, agree_with=a.agree_with,
+                    targets=a.targets)
         print(json.dumps(res, indent=1, default=str))
+        return 0
+    if a.cmd == "targets":
+        from .build import ask_targets
+        print(json.dumps(ask_targets(c, a.arm, a.resolver), indent=1, default=str))
         return 0
     if a.cmd == "coverage":
         from .coverage import coverage, format_coverage

@@ -20,6 +20,10 @@ maint:
   levels: [...]               # pack_meta.levels
   signal_kinds: [{kind, label, example}]
   roles: [apprentice, technician, expert]
+  guard_targets:              # closed questions on what a guard guards, where position leaves it open (targets.py)
+    use: sonnet               # `maint targets` asks; a build reads the cache (`--targets none`: off)
+    cache_dir: cache/targets  # <cache_dir>/<resolver>/maint.targets.jsonl
+    resolvers: {sonnet: {backend: claude-cli, model: sonnet}, sonnet-img: {backend: claude-cli, model: sonnet, images: true}}
 ```
 """
 
@@ -191,8 +195,22 @@ def extract(corpus: Corpus, arm_name: str | None, offline: bool, only_units: set
     return outs, reps, srcs
 
 
+def targets_cfg(corpus: Corpus, name: str | None = None) -> tuple[str | None, dict | None, Path | None]:
+    """The resolver for guard-target questions (`maint.guard_targets`): its name, author and cache folder.
+    `name` picks one of `resolvers` (default `use`); "none" turns the questions off."""
+    gt = cfg(corpus).get("guard_targets") or {}
+    name = name or gt.get("use")
+    if not name or name == "none":
+        return None, None, None
+    author = (gt.get("resolvers") or {}).get(name)
+    if author is None:
+        raise SystemExit(f"guard_targets: no resolver {name!r}; corpus has {sorted(gt.get('resolvers') or {})}")
+    return name, author, (corpus.dir / gt.get("cache_dir", "cache/targets") / name).resolve()
+
+
 def assemble(corpus: Corpus, a: Arm, outs: dict, srcs: list, stage_path: Path,
-             forced: dict | None = None, review: dict | None = None) -> tuple[Stage, list[Assembly], list[tuple[str, Path]]]:
+             forced: dict | None = None, review: dict | None = None, targets: str | None = None,
+             call: bool = False, log=sys.stderr) -> tuple[Stage, list[Assembly], list[tuple[str, Path]]]:
     m = cfg(corpus)
     stage = Stage(stage_path)
     files: list[tuple[str, Path]] = []
@@ -225,6 +243,10 @@ def assemble(corpus: Corpus, a: Arm, outs: dict, srcs: list, stage_path: Path,
         asm.resolve_applies()
         asm.write_applic()
         asm.leftovers()
+        if asm.plausibility_on:           # a data module has no page geometry to derive candidates from
+            from .targets import answer
+            _, t_author, t_dir = targets_cfg(corpus, targets)
+            answer(asm, t_author, t_dir, call=call, ledger=ledger(corpus) if call else None, log=log)
         asm.plausibility()
         page_assets = {}
         for pm in models:
@@ -436,8 +458,22 @@ def agreement_review(stage: Stage, other_pack: Path, other_name: str) -> dict:
     return review
 
 
+def ask_targets(corpus: Corpus, arm_name: str | None, targets: str | None = None, log=sys.stderr) -> list[dict]:
+    """Fill the guard-target cache: assemble an arm's cached reading and ask every open question
+    (`guard_targets`) the cache does not answer yet. Returns each source's question stats."""
+    a = arm(corpus, arm_name)
+    if targets_cfg(corpus, targets)[1] is None:
+        raise SystemExit("guard_targets: no resolver configured (maint.guard_targets.use or --resolver)")
+    outs, _, srcs = extract(corpus, a.name, offline=True, log=log)
+    stage, asms, _ = assemble(corpus, a, outs, srcs, work(corpus) / f"stage-{a.name}-targets.sqlite",
+                              targets=targets, call=True, log=log)
+    stage.conn.close()
+    return [x.report.get("targets") for x in asms]
+
+
 def build(corpus: Corpus, arm_name: str | None, out_dir: Path | None, harvest: str, pubkey: str | None = None,
-          embedder_cfg: dict | None = None, max_rounds: int = 4, log=sys.stderr, agree_with: str | None = None) -> dict:
+          embedder_cfg: dict | None = None, max_rounds: int = 4, log=sys.stderr, agree_with: str | None = None,
+          targets: str | None = None) -> dict:
     """Deterministic from the raw sources and the committed cache: no model is called. With
     `agree_with`, rows the second arm's pack does not also hold become needs_review."""
     m = cfg(corpus)
@@ -457,7 +493,8 @@ def build(corpus: Corpus, arm_name: str | None, out_dir: Path | None, harvest: s
     emb = make_embedder(embedder_cfg if embedder_cfg is not None else corpus.raw.get("embedder") or {"kind": "hash"})
     try:
         for rnd in range(1, max_rounds + 1):
-            stage, asms, files = assemble(corpus, a, outs, srcs, work(corpus) / f"stage-{a.name}.sqlite", forced, review)
+            stage, asms, files = assemble(corpus, a, outs, srcs, work(corpus) / f"stage-{a.name}.sqlite", forced, review,
+                                          targets=targets, log=log)
             meta = pack_meta(corpus, asms, stage)
             res = write_pack(stage, out_dir, corpus.pack_id, corpus.version, corpus.corpus_id, emb, release=True,
                              bake_backends={"author": a.spec, "judge": None}, lang=corpus.lang, extra_meta=meta,
@@ -514,6 +551,7 @@ def build(corpus: Corpus, arm_name: str | None, out_dir: Path | None, harvest: s
                "verdicts": verdicts, "graph": rep.get("graph", {}).get("counts"),
                "references": [a.report.get("references") for a in asms],
                "plausibility": [a.report.get("plausibility") for a in asms],
+               "targets": [a.report.get("targets") for a in asms],
                "stage": str(work(corpus) / f"stage-{a.name}.sqlite")}
     summary["density"] = _density(out_dir, srcs, m)
     (work(corpus) / f"build-{a.name}.json").write_text(json.dumps(summary, indent=2, default=str))
