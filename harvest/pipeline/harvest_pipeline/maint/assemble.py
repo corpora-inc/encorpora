@@ -698,12 +698,18 @@ class Assembly:
     def resolve_targets(self) -> None:
         """Action targets name a task or table by its printed reference; resolve across units."""
         procs = {ref_key(r["ref"]): r for r in self.procs if r.get("ref") and r.get("proc_id")}
+        refs = self.report.setdefault("references", {"printed": 0, "resolved": 0, "unresolved": {}})
         for tr in self.trees.values():
             for rec in tr.get("nodes", {}).values():
                 t = rec.get("target")
                 if not t or not rec.get("row"):
                     continue
                 key = ref_key(t.get("ref"))
+                refs["printed"] += 1
+                if (t.get("kind") == "procedure" and key in procs) or (t.get("kind") == "tree" and key in self.trees):
+                    refs["resolved"] += 1
+                else:
+                    refs["unresolved"][t.get("ref")] = refs["unresolved"].get(t.get("ref"), 0) + 1
                 if t.get("kind") == "procedure" and key in procs:
                     rec["row"]["target"] = f"procedure:{procs[key]['proc_id']}"
                 elif t.get("kind") == "tree" and key in self.trees:

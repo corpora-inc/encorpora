@@ -324,6 +324,8 @@ def build(corpus: Corpus, arm_name: str | None, out_dir: Path | None, harvest: s
                "rounds": rounds, "forced_fail": {f"{k[0]}:{k[1]}": v for k, v in forced.items()},
                "agree_with": agree_with, "review": {f"{k[0]}:{k[1]}": v for k, v in review.items()},
                "verdicts": verdicts, "graph": rep.get("graph", {}).get("counts"),
+               "references": [a.report.get("references") for a in asms],
+               "plausibility": [a.report.get("plausibility") for a in asms],
                "stage": str(work(corpus) / f"stage-{a.name}.sqlite")}
     (work(corpus) / f"build-{a.name}.json").write_text(json.dumps(summary, indent=2, default=str))
     return summary
