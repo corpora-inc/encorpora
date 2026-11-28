@@ -378,12 +378,17 @@ pub fn is_rule_claim(sentence: &str) -> bool {
     let own = [
         " i assume ",
         " i'll assume ",
+        " i'd assume ",
         " let's assume ",
+        " let me assume ",
         " i'm assuming ",
+        " we assume ",
+        " you can assume ",
+        " you'd assume ",
     ];
     if (s.contains(" assume ") || s.contains(" assumed ")) && !own.iter().any(|w| s.contains(w))
         || [
-            " presume",
+            " presume ",
             " presumed ",
             " responsible for ",
             " deemed ",
@@ -397,8 +402,29 @@ pub fn is_rule_claim(sentence: &str) -> bool {
     }
     // An instruction about the work ("Keep the boom clear of the line",
     // "Stay out of the swing radius") is a rule told as an order.
-    let words: Vec<&str> = s.split_whitespace().collect();
-    if words.first().is_some_and(|w| IMPERATIVES.contains(w))
+    // Softeners before the verb ("please keep", "remember to stay") do not
+    // change it; study advice ("keep practicing load charts", "use the
+    // clearance tool") is not an order about the work.
+    let mut words: Vec<&str> = s.split_whitespace().collect();
+    loop {
+        let n = match words.as_slice() {
+            ["please", ..] | ["just", ..] => 1,
+            ["remember", "to", ..] => 2,
+            ["be", "sure", "to", ..] | ["make", "sure", "to", ..] | ["make", "sure", "you", ..] => {
+                3
+            }
+            _ => 0,
+        };
+        if n == 0 {
+            break;
+        }
+        words.drain(..n);
+    }
+    let study = words
+        .iter()
+        .any(|w| STUDY_WORDS.iter().any(|x| w.starts_with(x)));
+    if !study
+        && words.first().is_some_and(|w| IMPERATIVES.contains(w))
         && words
             .iter()
             .any(|w| WORK_WORDS.contains(&w.trim_end_matches('s')))
@@ -462,6 +488,24 @@ const IMPERATIVES: &[&str] = &[
     "give",
     "post",
     "mark",
+];
+/// Words of studying, not of the work.
+const STUDY_WORDS: &[&str] = &[
+    "practic",
+    "study",
+    "review",
+    "exam",
+    "test",
+    "chart",
+    "question",
+    "lesson",
+    "quiz",
+    "tool",
+    "card",
+    "topic",
+    "skill",
+    "flashcard",
+    "score",
 ];
 /// Things the work is done with or near (singular; a trailing s is dropped).
 const WORK_WORDS: &[&str] = &[
@@ -1632,14 +1676,14 @@ impl Instructor {
             Some(Block::Text { .. }) => Some(rule_blocks.remove(0)),
             _ => None,
         };
+        blocks.extend(rule_blocks);
+        let said = said.and_then(|s| self.undangle(&s, &blocks, &mut trace));
         if let Some(s) = said {
             blocks.insert(0, Block::Text { text: s });
         }
         if let Some(l) = lead {
             blocks.insert(0, l);
         }
-        blocks.extend(rule_blocks);
-        self.drop_dangling(&mut blocks, &mut trace);
         if plan.intent == "rule" && !has_rules {
             // Unsure: show what the rules search finds rather than guess.
             blocks.push(Block::Search {
@@ -1756,10 +1800,10 @@ impl Instructor {
         runs
     }
 
-    /// Drop sentences of the model's line that point at something the turn
+    /// The model's line without sentences that point at something the turn
     /// does not show ("the rule quoted below" with no quote, "the lesson
     /// below" with no lesson card).
-    fn drop_dangling(&self, blocks: &mut Vec<Block>, trace: &mut Trace) {
+    fn undangle(&self, text: &str, blocks: &[Block], trace: &mut Trace) -> Option<String> {
         let has = |f: &dyn Fn(&Block) -> bool| blocks.iter().any(f);
         let quote = has(&|b| matches!(b, Block::Quote { .. }));
         let lesson = has(&|b| matches!(b, Block::Lesson { .. }));
@@ -1767,14 +1811,6 @@ impl Instructor {
         let film = has(&|b| matches!(b, Block::Film { .. }));
         let diagram = has(&|b| matches!(b, Block::Diagram { .. }));
         let any = has(&|b| !matches!(b, Block::Text { .. }));
-        // The model's line is the first text block that is not the engine's
-        // table lead ("For 200 kV, …").
-        let Some(Block::Text { text }) = blocks
-            .iter_mut()
-            .find(|b| matches!(b, Block::Text { text } if !text.starts_with("For ")))
-        else {
-            return;
-        };
         let mut kept = Vec::new();
         for sent in sentences(text) {
             let l = format!(
@@ -1822,19 +1858,25 @@ impl Instructor {
                     .push(format!("points at nothing shown: {sent}"));
             }
         }
-        *text = kept.join(" ");
-        blocks.retain(|b| !matches!(b, Block::Text { text } if text.trim().is_empty()));
+        (!kept.is_empty()).then(|| kept.join(" "))
     }
 
     /// `runs` with the sentence that introduces each list item's list (and its
     /// parent list) quoted before it, once.
     fn with_lead_ins(&self, runs: Vec<(String, String)>) -> Vec<(String, String)> {
+        // Everything these runs show already, so an intro another run quotes
+        // (a parent named after its item) is not quoted twice.
+        let all: String = runs
+            .iter()
+            .map(|(_, t)| t.as_str())
+            .collect::<Vec<_>>()
+            .join("\n");
         let mut out: Vec<(String, String)> = Vec::new();
         for r in runs {
             let shown: String = out
                 .iter()
-                .chain(std::iter::once(&r))
                 .map(|(_, t)| t.as_str())
+                .chain([all.as_str()])
                 .collect::<Vec<_>>()
                 .join("\n");
             if let Ok(intros) = self.engine.pack.list_lead_ins(&r.0, &shown) {

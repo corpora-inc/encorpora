@@ -485,7 +485,7 @@ them, its content words in them, the same negation. A number in any other
 sentence must come from the exam blueprint, the course counts or the node
 text shown in the turn. Anything else is dropped and listed in
 `trace.dropped`. Named rule sentences are quoted in `rule`, `tool` and
-`review` turns (at most four runs); in other turns only when they back a
+`review` turns (at most four named runs, each with its list's lead-in); in other turns only when they back a
 claim the line makes. A table's rows are its sentences. A quoted list item
 ("(v) The load is over a cofferdam.") is preceded by the quoted sentence
 that introduces its list, and its parent list's, when not already shown. A

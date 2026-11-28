@@ -614,13 +614,19 @@ fn orders_and_presumptions_are_claims_and_pointers_need_their_block() {
         "The controlling entity is responsible for ground conditions.",
         "Keep the boom clear of the line.",
         "Stay out of the swing radius.",
+        "Please keep the boom clear of the line.",
+        "Remember to stay out of the swing radius.",
     ] {
         assert!(is_rule_claim(s), "{s}");
     }
     for s in [
         "I assume you mean the load chart.",
+        "We assume you have seen a load chart.",
+        "Presumably you have done a few.",
         "Try the practice question next.",
         "Read the chart title first.",
+        "Keep practicing load charts.",
+        "Use the clearance tool for your line.",
     ] {
         assert!(!is_rule_claim(s), "{s}");
     }
@@ -630,7 +636,7 @@ fn orders_and_presumptions_are_claims_and_pointers_need_their_block() {
             "node",
             Some("domain:core.site"),
             vec![],
-            "The rule is quoted below. Site is 60% of the exam.",
+            "For details, see the rule quoted below. Site is 60% of the exam.",
         )
     }));
     let i = instructor(&b.pack, Some(Arc::new(llm)));
